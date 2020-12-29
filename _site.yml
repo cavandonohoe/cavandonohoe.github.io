@@ -9,4 +9,5 @@ navbar:
       href: about.html
     - text: "CV"
       href: cv-builder.html
-      
+    includes:
+      after_body: include_footer.html
