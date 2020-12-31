@@ -1,13 +1,18 @@
 name: "Cavan Donohoe"
 output_dir: "."
+output:  
+  html_document:  
+    self_contained: no  
+    theme: sandstone
 navbar:
   title: "Cavan Donohoe"
+  type: inverse
   left:
     - text: "Home"
+      icon: fa-home
       href: index.html
     - text: "About Me"
+      icon: fa-info
       href: about.html
     - text: "CV"
       href: cv-builder.html
-    includes:
-      after_body: include_footer.html

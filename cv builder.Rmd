@@ -5,7 +5,7 @@ date: "`r Sys.Date()`"
 output:
   pagedown::html_resume:
     # set it to true for a self-contained HTML page but it'll take longer to render
-    self_contained: true
+    self_contained: false
 # uncomment this line to produce HTML and PDF in RStudio:
 # knit: pagedown::chrome_print
 ---
@@ -153,7 +153,7 @@ Awards {data-icon=medal}
 --------------------------------------------------------------------------------
 
 ```{r awards, echo=FALSE, results='asis'}
-positions_collapsed_bullets_final %>% filter(section=="awards") %>% glue_data("### {title}", 
+positions_collapsed_bullets_final %>% filter(section=="awards") %>% glue_data("### {description_section}", 
                                                                               "\n\n",
                                                                               "{institution}",
                                                                               "\n\n",

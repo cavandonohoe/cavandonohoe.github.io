@@ -6,7 +6,7 @@ title: "About Me"
 
 [Instagram](https://www.instagram.com/cavandonohoe)
 
-[LinkedIn](https://www.facebook..com/cavan-donohoe)
+[LinkedIn](https://www.facebook.com/cavan-donohoe)
 
 [GitHub](https://github.com/cavandonohoe)
 
@@ -20,9 +20,33 @@ It is important for processes to be reproducible and scalable, even if they are 
 
 My father has been an actuary for more than 25 years and the biggest piece of advice he gave me was "if you are not available, make sure *anyone* can do your job. That doesn't mean your job is easy, it's because the documentation is so easy to comprehend."
 
-I use that theme throughout my work life and make sure I explain everything in great detail to make sure everyone understands my analysis procedure. 
+I use that principle throughout my work life and make sure I explain everything in great detail to make sure everyone understands my analysis procedure. 
 
-I am also a big volleyballer.
+## Hobbies, Interests, and My Story
+
+I have been playing beach volleyball for the past `r lubridate::year(Sys.Date()) - 2009` years. I knew my body would probably combust if I lived anywhere not close to a beach.So naturally out of university I moved to Oahu to work as an Actuarial Analyst. 
 
 ![](Volleyball silhouette.jpg)
+
+Oahu was incredible. Every single weekend was a vacation. I got to go on hikes, go in the warm waters and look at fish, surf, and spend some quality time with good friends. I didn't have a car and I honestly didn't need one. Some days I did get a little carried away and just kept biking. Some days I just needed that escape and that warm wind in my face. 
+
+I took a lot of pictures when I was in Hawaii, but this is my favorite:
+
+![Out of the sea, Wish I could be, Part of that world](little mermaid.jpg)
+
+
+Now, I am back on the mainland after being offered a new job back home. I got on a plane and left that beautiful island and as soon I got back, the world seemed to be in flames. Suddenly everyone knew the word Coronavirus and became medical experts on Facebook. Still, I pursued my passions and hobbies as safely as I could. Volleyball had to have less high fives and licking the ball before jump serving. We all had to make some big adjustments. 
+
+I noticed upon arriving back home, that my diet can start to change from 50% pineapple and 50% ahi tuna to something a little more diverse. I started enjoying the delicious LA eateries and all of their to-go containers. Inside dining was a hive for COVID-19 to fester in, so we ate these delicious meals in our cars. 
+
+I've tried more than 50 new places to eat this year with La Azteca leading the charge for burritos, Lao Xi'er Noodle House killing the game in Noodz, and Street Thai Cafe having the best Pad Thai and Thai Tea I have had and somehow staying under $10 for a meal. 
+
+I'm pretty basic though. I like to eat, I like to play volleyball, and I like to bike. I can't wait to explore the world when everything is open again. I don't just want to travel, I want to live. I want to work with the Pyramids in the background, I want to eat a freshly made baguette while coding, and I want to work while watching the waves crash in the distance of whatever island is next. Let's hope my next employer doesn't mind not seeing my face. 
+
+
+
+
+
+
+
 
