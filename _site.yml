@@ -11,6 +11,7 @@ navbar:
       icon: fa-info
       href: about.html
     - text: "Services"
+      icon: fa-wrench
       href: services.html
     - text: "CV"
       href: cv.html
