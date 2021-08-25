@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Cavan Donohoe" />
+
+<meta name="date" content="2021-08-25" />
+
+<title>Cavan Donohoe’s Resume</title>
+
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Cavan Donohoe</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="fa fa-info"></span>
+     
+    About Me
+  </a>
+</li>
+<li>
+  <a href="cv-builder.html">CV</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Cavan Donohoe’s Resume</h1>
+<h4 class="author">Cavan Donohoe</h4>
+<h4 class="date">2021-08-25</h4>
+
+</div>
+
+
+<div id="aside" class="section level1">
+<h1>Aside</h1>
+<p><a href="https://cavandonohoe.github.io/">Back to Home Page</a></p>
+<div id="contact" class="section level2">
+<h2>Contact Info</h2>
+<ul>
+<li><i class="fa fa-envelope"></i> <a href="mailto:cavandonohoe@gmail.com" class="email">cavandonohoe@gmail.com</a></li>
+<li><i class="fa fa-github"></i> <a href="https://github.com/cavandonohoe">github.com/cavandonohoe</a></li>
+<li><i class="fa fa-linkedin"></i> <a href="https://www.linkedin.com/in/cavan-donohoe/">linkedin.com/in/cavan-donohoe/</a></li>
+<li><i class="fa fa-phone"></i> (805) 404-3321</li>
+</ul>
+</div>
+<div id="skills" class="section level2">
+<h2>Skills</h2>
+<ul>
+<li>Expert in Microsoft Excel and Wide Knowledge of VBA (pivot tables, vlookups, sumifts, etc.)</li>
+<li>Expert in R (tidyverse, RODBC, RDCOMClient, openxslx, APIs, automation, data manipulation, R Markdown, etc.)</li>
+</ul>
+</div>
+<div id="disclaimer" class="section level2">
+<h2>Disclaimer</h2>
+<p>This resume was made with the R package <a href="https://github.com/rstudio/pagedown"><strong>pagedown</strong></a>.</p>
+<p>Last updated on 2021-08-25.</p>
+</div>
+</div>
+<div id="main" class="section level1">
+<h1>Main</h1>
+<div id="title" class="section level2">
+<h2>Cavan Donohoe</h2>
+<div id="currently-looking-for-the-next-opportunity-in-data-science" class="section level3">
+<h3>Currently looking for the next opportunity in Data Science</h3>
+<p>I am currently working as a Senior Statistical Programmer Analyst in Menlo Park at GRAIL, Inc and love getting challenged at my current role. I have a level of expertise in both R and Excel that helps me both manipulate and analyze data as well as automate monthly tedious tasks. With the mind of a tutor, I make sure to document everything and answer questions quickly and efficiently when I explain my methodology to coworkers or clients. I am reaching out to companies and teams with needs for data science improvement to reduce human error and increase efficiency. Reach out to me if you have a project I can work on or just a conversation.</p>
+</div>
+</div>
+<div id="education" class="section level2" data-icon="graduation-cap" data-concise="true">
+<h2 data-icon="graduation-cap" data-concise="true">Education</h2>
+<div id="bachelor-of-science" class="section level3">
+<h3>Bachelor of Science</h3>
+<p>University of California, Irvine</p>
+<p>Irvine, CA</p>
+<p>2018</p>
+<ul>
+<li>Major in Mathematics</li>
+<li>Minor in Statistics</li>
+</ul>
+</div>
+</div>
+<div id="professional-experience" class="section level2" data-icon="suitcase">
+<h2 data-icon="suitcase">Professional Experience</h2>
+<div id="actuarial-analyst" class="section level3">
+<h3>Actuarial Analyst</h3>
+<p>HMSA</p>
+<p>Honolulu, HI</p>
+<p>January 2019 - March 2020</p>
+<ul>
+<li>Automated the CRG (Community Rated Groups) Band Renewal Process in R (4 hour process that now takes 1 minute)</li>
+<li>Developed the demographic and plan risk factors for AMS and Underwriting Department (now automated in R)</li>
+<li>Worked on mandatory ACA rate filing</li>
+<li>Automated the Mental Health Parity process for hundreds of plans</li>
+<li>Automated the Forecasting Model with user friendly Excel and R integration for obtaining data and easing the process</li>
+<li>Automated a tedious CRG proposal process that used to take an hour and now takes 4 seconds</li>
+<li>Explained processes with easily read documentation and hosted meetings to explain modeling changes and methodologies</li>
+<li>Fit empirical distributions to theoretical distributions using Kolmogorov-Smirnov tests and Maximum Likelihood Estimation in R while splitting every single partition of a sample in a time efficient manor</li>
+</ul>
+</div>
+<div id="reporting-analyst" class="section level3">
+<h3>Reporting Analyst</h3>
+<p>24 Hour Home Care</p>
+<p>El Segundo, CA</p>
+<p>April 2020 - January 2021</p>
+<ul>
+<li>Automated a weekly report that calculates the Accounts Receivable aging for our company. This weekly report is now being calculated in R and automatically sends an email formatted in HTML with CSS to show summary tables and a highlighted list of achievements</li>
+<li>Imported, Cleaned, Manipulated, and Visualized data for ad hoc dashboard requests</li>
+<li>Assumed role of Analytics team liaison to other teams within the company</li>
+<li>Automated batch invoice emails via R for use between teams to run</li>
+<li>Connected R to Azure Web App to allow for script driven data exports now allowing for automated exports saving teams hundreds of hours per year</li>
+</ul>
+</div>
+<div id="senior-statistical-programmer-analyst" class="section level3">
+<h3>Senior Statistical Programmer Analyst</h3>
+<p>GRAIL, Inc</p>
+<p>Menlo Park</p>
+<p>February 2021 -</p>
+<ul>
+<li>Creating and documenting new Derived Variables for ongoing studies using Git for collaboration and R for coding</li>
+<li>Performing Code Reviews and Independent Analysis for cancer and subject level datasets</li>
+<li>Creating new R Markdowns for documentation purposes and validations of dozens of TFLs (Tables, Figures, and Listings)</li>
+<li>Author new R Packages now used in production coding across company</li>
+<li>Provide statistical programming support to data cleaning and locking activities, pre-defined and exploratory analysis, formal reports, publications, presentations, and new statistical methodologies</li>
+<li>Work closely with biostatisticians to create data and analysis program specifications based on the statistical analysis plan (SAP)</li>
+<li>Maintain complete and auditable programming documentation for analysis of clinical studies</li>
+<li>Contribute to the development, documentation and maintenance of a reusable programming code library</li>
+<li>Create a timeline visualizer for significant cancer screenings and events leading to an eventual diagnosis using R Shiny Output</li>
+<li>Write unit tests to ensure programmatic updates will be compatible to previous versions</li>
+</ul>
+</div>
+</div>
+<div id="awards" class="section level2" data-icon="medal">
+<h2 data-icon="medal">Awards</h2>
+<div id="bas-ucla-case-competition-finalist-project-presentation-and-project-memorandum" class="section level3">
+<h3>- BAS UCLA Case Competition Finalist (<a href="http://www.math.ucla.edu/~actuary/caseCompetition/Case%20Comp%202018%20-%20Team%20UCI%20Presentation.pdf">Project Presentation</a> and <a href="http://www.math.ucla.edu/~actuary/caseCompetition/Case%20Comp%202018%20-%20Team%20UCI%20Executive%20Summary.pdf">Project Memorandum</a>)</h3>
+<p>N/A</p>
+<p>N/A</p>
+</div>
+</div>
+<div id="credentials" class="section level2" data-icon="th-list">
+<h2 data-icon="th-list">Credentials</h2>
+<div id="passed-3-actuarial-exams" class="section level3">
+<h3>- Passed 3 Actuarial Exams</h3>
+<p>N/A</p>
+<p>N/A</p>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
