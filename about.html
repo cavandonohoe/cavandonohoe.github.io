@@ -13,12 +13,22 @@
 
 <title>About Me</title>
 
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/sandstone.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -35,11 +45,6 @@
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -52,32 +57,6 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
 
 
 
@@ -88,10 +67,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -108,40 +83,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 61px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 66px;
-  margin-top: -66px;
-}
-.section h2 {
-  padding-top: 66px;
-  margin-top: -66px;
-}
-.section h3 {
-  padding-top: 66px;
-  margin-top: -66px;
-}
-.section h4 {
-  padding-top: 66px;
-  margin-top: -66px;
-}
-.section h5 {
-  padding-top: 66px;
-  margin-top: -66px;
-}
-.section h6 {
-  padding-top: 66px;
-  margin-top: -66px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -169,7 +117,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -181,7 +129,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -192,10 +140,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -207,7 +168,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -285,17 +245,20 @@ $(document).ready(function () {
       <ul class="nav navbar-nav">
         <li>
   <a href="index.html">
-    <span class="fas fa-home"></span>
+    <span class="fa fa-home"></span>
      
     Home
   </a>
 </li>
 <li>
   <a href="about.html">
-    <span class="fas fa-info"></span>
+    <span class="fa fa-info"></span>
      
     About Me
   </a>
+</li>
+<li>
+  <a href="services.html">Services</a>
 </li>
 <li>
   <a href="cv-builder.html">CV</a>
@@ -308,7 +271,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -328,18 +291,18 @@ $(document).ready(function () {
 <p>I use that principle throughout my work life and make sure I explain everything in great detail to make sure everyone understands my analysis procedure.</p>
 <div id="hobbies-interests-and-my-story" class="section level2">
 <h2>Hobbies, Interests, and My Story</h2>
-<p>I have been playing beach volleyball for the past 11 years. I knew my body would probably combust if I lived anywhere not close to a beach.So naturally out of university I moved to Oahu to work as an Actuarial Analyst.</p>
+<p>I have been playing beach volleyball for the past 12 years. I knew my body would probably combust if I lived anywhere not close to a beach. So naturally out of university I moved to Oahu to work as an Actuarial Analyst.</p>
 <p><img src="Volleyball%20silhouette.jpg" /></p>
 <p>Oahu was incredible. Every single weekend was a vacation. I got to go on hikes, go in the warm waters and look at fish, surf, and spend some quality time with good friends. I didn’t have a car and I honestly didn’t need one. Some days I did get a little carried away and just kept biking. Some days I just needed that escape and that warm wind in my face.</p>
 <p>I took a lot of pictures when I was in Hawaii, but this is my favorite:</p>
 <div class="figure">
 <img src="little%20mermaid.jpg" alt="" />
-<p class="caption">Out of the sea, Wish I could be, Part of that world</p>
+<p class="caption"><em>Out of the sea, Wish I could be, Part of that world</em></p>
 </div>
 <p>Now, I am back on the mainland after being offered a new job back home. I got on a plane and left that beautiful island and as soon I got back, the world seemed to be in flames. Suddenly everyone knew the word Coronavirus and became medical experts on Facebook. Still, I pursued my passions and hobbies as safely as I could. Volleyball had to have less high fives and licking the ball before jump serving. We all had to make some big adjustments.</p>
 <p>I noticed upon arriving back home, that my diet can start to change from 50% pineapple and 50% ahi tuna to something a little more diverse. I started enjoying the delicious LA eateries and all of their to-go containers. Inside dining was a hive for COVID-19 to fester in, so we ate these delicious meals in our cars.</p>
 <p>I’ve tried more than 50 new places to eat this year with La Azteca leading the charge for burritos, Lao Xi’er Noodle House killing the game in Noodz, and Street Thai Cafe having the best Pad Thai and Thai Tea I have had and somehow staying under $10 for a meal.</p>
-<p>I’m pretty basic though. I like to eat, I like to play volleyball, and I like to bike. I can’t wait to explore the world when everything is open again. I don’t just want to travel, I want to live. I want to work with the Pyramids in the background, I want to eat a freshly made baguette while coding, and I want to work while watching the waves crash in the distance of whatever island is next. Let’s hope my next employer doesn’t mind not seeing my face.</p>
+<p>I’m pretty basic though. I like to eat, I like to play volleyball, and I like to bike. I can’t wait to explore the world when everything is open again. I don’t just want to travel, I want to live. I want to work with the Pyramids in the background, I want to eat a freshly made baguette while coding, and I want to work while watching the waves crash in the distance of whatever island is next. Let’s hope my next employer doesn’t mind not seeing my face in person.</p>
 </div>
 
 
@@ -369,7 +332,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
