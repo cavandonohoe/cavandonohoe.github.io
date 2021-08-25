@@ -30,7 +30,7 @@ resume_v2 = resume_v1.1 %>% pivot_longer(starts_with('description'),
 
 resume_v3 = resume_v2 %>% mutate(start = ifelse(is.na(start), "", start), end=ifelse(is.na(end), "", end)) %>% 
   mutate(time_period = case_when(start=="" ~ end, 
-                                 end == "" & section=="awards" ~ start,
+                                 end == "" & section=="Awards" ~ start,
                                  TRUE ~ paste(start, end, sep=" - "))) %>% 
   mutate(description_paste = ifelse(section!="About Me", paste("-", description), description)) %>% 
   filter(in_resume)
@@ -41,8 +41,8 @@ positions_collapsed_bullets = resume_v3 %>%
   summarise(description_section = paste(description_paste, collapse = "\n")) %>% arrange(section_num)
 
 positions_collapsed_bullets_v1.1 = positions_collapsed_bullets %>% ungroup() %>% 
-  mutate(description_section = case_when(section == "skills" ~ gsub(x=description_section, pattern= "\n", replacement = "\n\n"), 
-                                         section %in% c("awards", "credentials") ~ gsub(x=description_section, pattern= "- ", replacement = ""),
+  mutate(description_section = case_when(section == "Skills" ~ gsub(x=description_section, pattern= "\\n", replacement = "\n\n"), 
+                                         section %in% c("Awards", "Credentials") ~ gsub(x=description_section, pattern= "- ", replacement = ""),
                                          TRUE ~ description_section)) %>% 
   replace(is.na(.), "N/A")
 
