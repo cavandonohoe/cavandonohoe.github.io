@@ -13,5 +13,9 @@ navbar:
     - text: "Services"
       icon: fa-wrench
       href: services.html
+    - text: "Projects"
+      icon: fa-laptop
+      href: imdb_top_250_tv_series.html
     - text: "CV"
       href: cv.html
+    
