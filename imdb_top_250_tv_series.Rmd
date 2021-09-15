@@ -38,8 +38,8 @@ max_ratings_per_series = all_eps_ratings_tib %>%
   ungroup()
 
 max_ratings_per_series %>% 
-  select(series_name, year, episode_name = episode, season, episode = season_ep, user_rating) %>% 
-  datatable(filter = "top", options = list(paging = FALSE, scrollY = "400px"))
+  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = user_rating) %>% 
+  datatable(filter = "top", options = list(paging = FALSE, scrollY = "400px", scrollX = TRUE))
 ```
 
 
@@ -53,8 +53,8 @@ strong_closer = all_eps_ratings_tib %>% group_by(imdb_id) %>%
            user_rating == max(user_rating, na.rm = TRUE)) %>% ungroup()
 
 strong_closer %>% 
-  select(series_name, year, episode_name = episode, season, episode = season_ep, user_rating) %>% 
-  datatable(filter = "top", options = list(paging = FALSE, scrollY = "400px"))
+  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = user_rating) %>% 
+  datatable(filter = "top", options = list(paging = FALSE, scrollY = "400px", scrollX = TRUE))
 ```
 
 ## Did They Start Strong?
@@ -67,8 +67,8 @@ strong_starter = all_eps_ratings_tib %>% group_by(imdb_id) %>%
            user_rating == max(user_rating, na.rm = TRUE)) %>% ungroup()
 
 strong_starter %>% 
-  select(series_name, year, episode_name = episode, season, episode = season_ep, user_rating) %>% 
-  datatable(filter = "top", options = list(paging = FALSE, scrollY = "400px"))
+  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = user_rating) %>% 
+  datatable(filter = "top", options = list(paging = FALSE, scrollY = "400px", scrollX = TRUE))
 ```
 
 Looks like people really get wowed over these nature documentaries from the first episode, then they get used to it. 
@@ -83,8 +83,8 @@ shit_ending = all_eps_ratings_tib %>% group_by(imdb_id) %>%
            user_rating == min(user_rating, na.rm = TRUE)) %>% ungroup()
 
 shit_ending %>% 
-  select(series_name, year, episode_name = episode, season, episode = season_ep, user_rating) %>% 
-  datatable(filter = "top", options = list(paging = FALSE, scrollY = "400px"))
+  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = user_rating) %>% 
+  datatable(filter = "top", options = list(paging = FALSE, scrollY = "400px", scrollX = TRUE))
 ```
 
 ## Nowhere To Go But Up
@@ -97,8 +97,8 @@ awful_pilot = all_eps_ratings_tib %>% group_by(imdb_id) %>%
            user_rating == min(user_rating, na.rm = TRUE)) %>% ungroup()
 
 awful_pilot %>% 
-  select(series_name, year, episode_name = episode, season, episode = season_ep, user_rating) %>% 
-  datatable(filter = "top", options = list(paging = FALSE, scrollY = "400px"))
+  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = user_rating) %>% 
+  datatable(filter = "top", options = list(paging = FALSE, scrollY = "400px", scrollX = TRUE))
 ```
 
 
