@@ -15,7 +15,9 @@ navbar:
       href: services.html
     - text: "Projects"
       icon: fa-laptop
-      href: imdb_top_250_tv_series.html
+      menu:
+      - text: "IMDb TV Series"
+        href: imdb_top_250_tv_series.html
     - text: "CV"
       href: cv.html
     
