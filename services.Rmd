@@ -1,5 +1,9 @@
 ---
 title: "Services"
+output:
+  html_document:
+    includes:
+      in_header: header.html
 ---
 
 If you have read the *About Me* section, you know of my passion for Data Science and making people's work easier. I have realized some older systems need improving. Sometimes Microsoft Excel (even when you have formulas), can bog down the run time given all the lingering manual work.
