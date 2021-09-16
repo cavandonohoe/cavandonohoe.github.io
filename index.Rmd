@@ -2,7 +2,8 @@
 title: "Cavan Donohoe - Data Scientist"
 output:
   html_document:
-    in_header: header.html
+    includes:
+      in_header: header.html
 ---
 
 
