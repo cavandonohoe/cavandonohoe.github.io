@@ -46,7 +46,7 @@ max_ratings_per_series = all_eps_ratings_tib %>%
 max_ratings_per_series %>% 
   select(series_name, year, episode_name = episode, season, episode = season_ep, rating = episode_rating) %>% 
   datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, buttons = c("copy", "csv", "excel"),
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
 ```
 
@@ -63,7 +63,7 @@ strong_closer = all_eps_ratings_tib %>% group_by(imdb_id) %>%
 strong_closer %>% 
   select(series_name, year, episode_name = episode, season, episode = season_ep, rating = episode_rating) %>% 
   datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, buttons = c("copy", "csv", "excel"),
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
 ```
 
@@ -79,7 +79,7 @@ strong_starter = all_eps_ratings_tib %>% group_by(imdb_id) %>%
 strong_starter %>% 
   select(series_name, year, episode_name = episode, season, episode = season_ep, rating = episode_rating) %>% 
   datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, buttons = c("copy", "csv", "excel"),
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
 ```
 
@@ -97,7 +97,7 @@ shit_ending = all_eps_ratings_tib %>% group_by(imdb_id) %>%
 shit_ending %>% 
   select(series_name, year, episode_name = episode, season, episode = season_ep, rating = episode_rating) %>% 
   datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, buttons = c("copy", "csv", "excel"),
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
 ```
 
@@ -113,7 +113,7 @@ awful_pilot = all_eps_ratings_tib %>% group_by(imdb_id) %>%
 awful_pilot %>% 
   select(series_name, year, episode_name = episode, season, episode = season_ep, rating = episode_rating) %>% 
   datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, buttons = c("copy", "csv", "excel"),
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
 ```
 
