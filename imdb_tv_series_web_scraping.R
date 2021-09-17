@@ -44,8 +44,15 @@ all_eps_ratings = parallel::mclapply(top_series_tib$id, get_all_episodes,
                                      mc.cores = parallel::detectCores() - 1)
 
 
-all_eps_ratings_tib = all_eps_ratings %>% bind_rows() %>% 
-  mutate(user_rating = as.numeric(user_rating))
+all_eps_ratings_tib = all_eps_ratings %>% 
+  bind_rows() %>% 
+  mutate(user_rating = as.numeric(user_rating)) %>%
+  left_join(top_series_tib %>% select(-title), by = c("imdb_id" = "id")) %>% 
+  rename(episode_rating = user_rating,
+         episode_votes = user_votes,
+         series_rating = imdb_rating,
+         series_url = site,
+         episode_url = url)
 
 # uncomment to override csv
 # all_eps_ratings_tib %>% write.csv("top250_imdb_series.csv")
