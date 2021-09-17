@@ -87,7 +87,7 @@ Looks like people really get wowed over these nature documentaries from the firs
 
 ## Was the Ending Shit?
 
-Looking at you GOT...
+Looking at you GOT... Ok maybe some of these aren't that bad. Some of these may have just had a strong story leading up and the finale missed it's mark by just a decimal point. But we will never forget Game of Thrones. 
 
 ```{r shit_ending}
 shit_ending = all_eps_ratings_tib %>% group_by(imdb_id) %>% 
