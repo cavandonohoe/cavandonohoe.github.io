@@ -31,6 +31,8 @@ We'll focus our attention to IMDb since they make it so easy to web scrape with 
 
 Now the time consuming part would be to click every single series, go into their episode guide, go into each season, and look at every single rating of each episode. Luckily we have **rvest**, so we can do that automatically. Check source code on my [github](https://github.com/cavandonohoe/cavandonohoe.github.io) account for details.
 
+[Raw Data](top250_imdb_series.csv)
+
 ## Best Episodes Per Series
 
 Some of them are tied and I didn't bother creating any tie breaking metrics or get into all of the detailed ratings per episode. Some may say lazy, but I say efficient on time management. 
@@ -38,12 +40,12 @@ Some of them are tied and I didn't bother creating any tie breaking metrics or g
 ```{r best_episode}
 max_ratings_per_series = all_eps_ratings_tib %>%
   group_by(imdb_id) %>% 
-  filter(user_rating == max(user_rating, na.rm = TRUE)) %>% 
+  filter(episode_rating == max(episode_rating, na.rm = TRUE)) %>% 
   ungroup()
 
 max_ratings_per_series %>% 
-  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = user_rating) %>% 
-  datatable(filter = "top", options = list(paging = FALSE, scrollY = "400px", scrollX = TRUE))
+  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = episode_rating) %>% 
+  datatable(filter = "top", options = list(paging = FALSE, buttons = c("copy", "csv", "excel"), scrollY = "400px", scrollX = TRUE))
 ```
 
 
@@ -54,11 +56,12 @@ I was also wondering whether the last episode was the highest rated one.
 ```{r strong_closer}
 strong_closer = all_eps_ratings_tib %>% group_by(imdb_id) %>% 
   filter(series_ep == max(series_ep, na.rm = TRUE) &
-           user_rating == max(user_rating, na.rm = TRUE)) %>% ungroup()
+           episode_rating == max(episode_rating, na.rm = TRUE)) %>% ungroup()
 
 strong_closer %>% 
-  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = user_rating) %>% 
-  datatable(filter = "top", options = list(paging = FALSE, scrollY = "400px", scrollX = TRUE))
+  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = episode_rating) %>% 
+  datatable(filter = "top", options = list(paging = FALSE, buttons = c("copy", "csv", "excel"),
+                                           scrollY = "400px", scrollX = TRUE))
 ```
 
 ## Did They Start Strong?
@@ -68,11 +71,12 @@ Fairly rare, but did a series start with the strongest episode?
 ```{r strong_starter}
 strong_starter = all_eps_ratings_tib %>% group_by(imdb_id) %>% 
   filter(series_ep == min(series_ep, na.rm = TRUE) &
-           user_rating == max(user_rating, na.rm = TRUE)) %>% ungroup()
+           episode_rating == max(episode_rating, na.rm = TRUE)) %>% ungroup()
 
 strong_starter %>% 
-  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = user_rating) %>% 
-  datatable(filter = "top", options = list(paging = FALSE, scrollY = "400px", scrollX = TRUE))
+  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = episode_rating) %>% 
+  datatable(filter = "top", options = list(paging = FALSE, buttons = c("copy", "csv", "excel"),
+                                           scrollY = "400px", scrollX = TRUE))
 ```
 
 Looks like people really get wowed over these nature documentaries from the first episode, then they get used to it. 
@@ -84,11 +88,12 @@ Looking at you GOT...
 ```{r shit_ending}
 shit_ending = all_eps_ratings_tib %>% group_by(imdb_id) %>% 
   filter(series_ep == max(series_ep, na.rm = TRUE) &
-           user_rating == min(user_rating, na.rm = TRUE)) %>% ungroup()
+           episode_rating == min(episode_rating, na.rm = TRUE)) %>% ungroup()
 
 shit_ending %>% 
-  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = user_rating) %>% 
-  datatable(filter = "top", options = list(paging = FALSE, scrollY = "400px", scrollX = TRUE))
+  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = episode_rating) %>% 
+  datatable(filter = "top", options = list(paging = FALSE, buttons = c("copy", "csv", "excel"),
+                                           scrollY = "400px", scrollX = TRUE))
 ```
 
 ## Nowhere To Go But Up
@@ -98,11 +103,12 @@ Some shows have some god-awful beginnings, and I wonder how they got picked up. 
 ```{r awful_pilot}
 awful_pilot = all_eps_ratings_tib %>% group_by(imdb_id) %>% 
   filter(series_ep == min(series_ep, na.rm = TRUE) &
-           user_rating == min(user_rating, na.rm = TRUE)) %>% ungroup()
+           episode_rating == min(episode_rating, na.rm = TRUE)) %>% ungroup()
 
 awful_pilot %>% 
-  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = user_rating) %>% 
-  datatable(filter = "top", options = list(paging = FALSE, scrollY = "400px", scrollX = TRUE))
+  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = episode_rating) %>% 
+  datatable(filter = "top", options = list(paging = FALSE, buttons = c("copy", "csv", "excel"),
+                                           scrollY = "400px", scrollX = TRUE))
 ```
 
 
