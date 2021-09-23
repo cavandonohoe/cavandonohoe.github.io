@@ -3,7 +3,7 @@ title: "About Me"
 output:
   html_document:
     includes:
-      in_header: header.html
+      in_header: header/header.html
 ---
 
 [Facebook](https://www.facebook.com/cavandonohoe)
@@ -31,13 +31,13 @@ I use that principle throughout my work life and make sure I explain everything 
 
 I have been playing beach volleyball for the past `r lubridate::year(Sys.Date()) - 2009` years. I knew my body would probably combust if I lived anywhere not close to a beach. So naturally out of university I moved to Oahu to work as an Actuarial Analyst. 
 
-![](Volleyball silhouette.jpg)
+![](images/Volleyball silhouette.jpg)
 
 Oahu was incredible. Every single weekend was a vacation. I got to go on hikes, go in the warm waters and look at fish, surf, and spend some quality time with good friends. I didn't have a car and I honestly didn't need one. Some days I did get a little carried away and just kept biking. Some days I just needed that escape and that warm wind in my face. 
 
 I took a lot of pictures when I was in Hawaii, but this is my favorite:
-
-![*Out of the sea, Wish I could be, Part of that world*](little mermaid.jpg)
+  
+![*Out of the sea, Wish I could be, Part of that world*](images/little mermaid.jpg)
 
 
 Now, I am back on the mainland after being offered a new job back home. I got on a plane and left that beautiful island and as soon I got back, the world seemed to be in flames. Suddenly everyone knew the word Coronavirus and became medical experts on Facebook. Still, I pursued my passions and hobbies as safely as I could. Volleyball had to have less high fives and licking the ball before jump serving. We all had to make some big adjustments. 
