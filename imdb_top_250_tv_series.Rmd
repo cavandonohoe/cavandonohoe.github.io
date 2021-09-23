@@ -24,7 +24,7 @@ library(DT)
 ```
 
 ```{r data}
-all_eps_ratings_tib = read_csv("top250_imdb_series.csv")
+all_eps_ratings_tib = read_csv("data/top250_imdb_series.csv")
 ```
 
 We'll focus our attention to IMDb since they make it so easy to web scrape with their interface. And they already have a list of the top 250 tv series based on overall series rating. That list can be found [here](https://www.imdb.com/chart/toptv/).
