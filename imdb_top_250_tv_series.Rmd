@@ -31,7 +31,7 @@ We'll focus our attention to IMDb since they make it so easy to web scrape with 
 
 Now the time consuming part would be to click every single series, go into their episode guide, go into each season, and look at every single rating of each episode. Luckily we have **rvest**, so we can do that automatically. Check source code on my [github](https://github.com/cavandonohoe/cavandonohoe.github.io) account for details.
 
-[Raw Data](top250_imdb_series.csv)
+[Raw Data](data/top250_imdb_series.csv)
 
 ## Best Episodes Per Series
 
