@@ -129,7 +129,7 @@ Also note, there are `r nrow(no_box_lifetime_gross)` movies without a lifetime g
 cat(no_box_lifetime_gross %>% pull(list)) 
 ```
 
-Very obviously, on average Best Picture Winners are a lagging a little bit at the box office (Best Pictures: `r dollar(mean(oscars$life_time_gross_oscars, na.rm = TRUE))` vs Top Box Office: `r dollar(mean(box_office$life_time_gross, na.rm = TRUE))`. 
+Very obviously, on average Best Picture Winners are a lagging a little bit at the box office (Best Pictures: `r dollar(mean(oscars$life_time_gross_oscars, na.rm = TRUE))` vs Top Box Office: `r dollar(mean(box_office$life_time_gross, na.rm = TRUE))`). 
 
 ## IMDb Rating for Best Picture vs Top 1000 Box Office
 
@@ -157,5 +157,5 @@ best_pic_top_box_boxplot %>% ggplotly(tooltip = "label")
 
 How fun! It looks like a manta ray!
 
-Also notice how IMDb rates Best Picture Winners higher than the Top 1000 Box Office Movies (Best Picture: `r mean(oscars$imdb_rating, na.rm = TRUE)` vs Top Box Office: `r mean(box_office$imdb_rating, na.rm = TRUE)`).
+Also notice how IMDb rates Best Picture Winners higher on average than the Top 1000 Box Office Movies (Best Picture: `r round(mean(oscars$imdb_rating, na.rm = TRUE), digits = 1)` vs Top Box Office: `r round(mean(box_office$imdb_rating, na.rm = TRUE), digits = 1)`).
 
