@@ -1,0 +1,99 @@
+---
+title: "Stock Market Quick Data"
+editor_options: 
+  chunk_output_type: console
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+---
+
+```{r setup, include=FALSE}
+# Set default chunk output
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE,
+  results = "asis"
+)
+```
+
+```{r libraries}
+library(tidyverse)
+library(DT)
+library(scales)
+library(plotly)
+library(tidyquant)
+library(rvest)
+```
+
+```{r grab_stock_data}
+
+price_data = tq_get(x = "VOO", from = "2018-01-01", to = as.character(Sys.Date()), get = "stock.prices")
+
+
+
+url = "https://finance.yahoo.com/quote/VOO/history?p=VOO"
+
+voo_history_html = read_html(url)
+
+voo_history = voo_history_html %>% 
+  html_nodes("#Col1-1-HistoricalDataTable-Proxy > section") %>% 
+  html_table()
+
+voo_history_close = voo_history[[1]] %>%
+  filter(!grepl(x = Open, pattern = "Dividend|Close")) %>%
+  mutate(date = as.Date(Date, format = "%b %d, %Y"),
+         `Close*` = as.numeric(`Close*`)) %>%
+  select(date, close_yahoo = `Close*`)
+
+voo_full = price_data %>% 
+  select(symbol, date, close) %>% 
+  left_join(voo_history_close) %>% 
+  mutate(close_official = ifelse(is.na(close), close_yahoo, close)) %>% 
+  select(symbol, date, close_official)
+
+
+
+intersections_voo = voo_full %>%
+  mutate(intersection = close_official >= close_official[date == max(date)],
+         intersection_lead = lead(intersection)) %>% 
+  filter(intersection != intersection_lead)
+
+
+
+```
+
+## S&P 500 Over the Last 3 Years
+
+Omg the stock market just crashed! 1% down in a day is a crash right? Well maybe not... Let's just take a look at the history of the S&P 500 Index Fund (VOO) for some perspective.
+
+```{r sp500_last_2_years}
+sp500_2018_pres_plot = voo_full %>% 
+  ggplot(aes(x = date, y = close_official)) +
+  geom_line() +
+  ggtitle("S&P 500")+
+  ylab("Closing Price")
+
+sp500_2018_pres_plot %>% ggplotly()
+```
+
+## S&P More Recently
+
+Let's zoom in on just the last two months. 
+
+```{r sp500_intersections}
+sp_intersections_plot = voo_full %>% 
+  filter(date >= min(intersections_voo$date %m-% months(1))) %>% 
+  ggplot(aes(x = date, y = close_official)) +
+  geom_line() +
+  ggtitle("S&P 500")+
+  ylab("Closing Price") +
+  ggrepel::geom_text_repel(data = intersections_voo, aes(label = as.character(date), segment.color = "red"), box.padding = .5,
+                           nudge_y = 10)
+
+sp_intersections_plot
+
+```
+
+Guess what? If you invested in the S&P 500 prior to `r min(intersections_voo$date)`, then you're still net positive. So calm down.
+
+
