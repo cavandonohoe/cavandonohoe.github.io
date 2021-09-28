@@ -7,6 +7,7 @@ url = "https://www.imdb.com/search/title/?groups=best_picture_winner&sort=year,d
 
 best_pictures = url %>% read_html()
 
+# grab the movies
 oscar_winners = best_pictures %>% 
   html_nodes("#main > div > div.lister.list.detail.sub-list > div") %>%
   html_nodes("div.lister-item-content > div > div.col-title > span") %>% 
@@ -14,7 +15,7 @@ oscar_winners = best_pictures %>%
   gsub(pattern ="\n", replacement = "") %>%
   str_squish()
 
-
+# grab the ratings
 oscar_imdb_ratings = best_pictures %>% 
   html_nodes("#main > div > div.lister.list.detail.sub-list > div") %>%
   html_nodes("div.lister-item-content > div > div.col-imdb-rating > strong") %>% 
@@ -22,35 +23,22 @@ oscar_imdb_ratings = best_pictures %>%
   gsub(pattern ="\n", replacement = "") %>%
   str_squish()
 
+# grab the unique imdb id (important for looking at the imdb page for these movies for more data)
 oscar_imdb_id = best_pictures %>% 
   html_nodes("#main > div > div.lister.list.detail.sub-list > div") %>% 
   html_nodes("div.lister-item-content > div > div.col-title > span") %>% 
   html_nodes("a") %>% 
   html_attr("href")
 
-
-oscar_winners = tibble(oscar_winners, oscar_imdb_ratings, oscar_imdb_id) %>% 
+# make a table from all the vectors
+oscar_winners_tib = tibble(oscar_winners, oscar_imdb_ratings, oscar_imdb_id) %>% 
   mutate(rank = gsub(x = oscar_winners, pattern = "\\s.*", replacement = ""),
          # extract text between first and last space
          oscar_titles = gsub(x = oscar_winners, pattern = "^\\S+\\s+|\\s+[^ ]+$", replacement = ""),
          oscar_imdb_id = paste0("https://www.imdb.com", oscar_imdb_id))
 
-"#__next > main > div > section.ipc-page-background.ipc-page-background--base.TitlePage__StyledPageBackground-wzlr49-0.dDUGgO > div > section > div > div.TitleMainBelowTheFoldGroup__TitleMainPrimaryGroup-sc-1vpywau-1.btXiqv.ipc-page-grid__item.ipc-page-grid__item--span-2 > section:nth-child(48) > div.styles__MetaDataContainer-sc-12uhu9s-0.cgqHBf > ul > li:nth-child(3)"
 
-check = oscar_winners$oscar_imdb_id[1] %>% 
-  read_html() %>% 
-  html_nodes(paste("#__next > main > div", 
-                   "section.ipc-page-background.ipc-page-background--base.TitlePage__StyledPageBackground-wzlr49-0.dDUGgO",
-                   "div > section > div",
-                   "div.TitleMainBelowTheFoldGroup__TitleMainPrimaryGroup-sc-1vpywau-1.btXiqv.ipc-page-grid__item.ipc-page-grid__item--span-2",
-                   sep = " > ")) %>%
-  html_nodes("div.styles__MetaDataContainer-sc-12uhu9s-0.cgqHBf > ul") %>% 
-  # html_nodes("div > ul > li > span") %>%
-  html_text()
-  
-check %>% as_tibble() %>% filter(grepl(x=value, pattern = "Gross worldwide")) %>% 
-  mutate(value = gsub(x=value, pattern = ".*Gross worldwide", replacement = "")) %>% pull
-  
+# create a function for grabbing box office data from each imdb page
 box_office_from_imdb_page = function(url) {
   gross_worldwide = url %>% read_html() %>% 
     html_nodes(paste("#__next > main > div", 
@@ -69,17 +57,15 @@ box_office_from_imdb_page = function(url) {
   return(gross_worldwide)
 }
 
-oscar_box_office = oscar_winners$oscar_imdb_id %>% 
+# grab box office data for each best picture winner
+oscar_box_office = oscar_winners_tib$oscar_imdb_id %>% 
   parallel::mclapply(box_office_from_imdb_page, mc.cores = parallel::detectCores() - 1) %>%
   unlist() %>% 
   as_tibble() %>% 
   rename(life_time_gross = value)
 
-oscar_winners
-
-oscar_box_office
-
-oscar_winners_clean = oscar_winners %>%
+# clean it up
+oscar_winners_clean = oscar_winners_tib %>%
   bind_cols(oscar_box_office) %>% 
   # doesn't actually look like Sunrise won the oscar
   filter(oscar_titles != "Sunrise") %>%
