@@ -1,0 +1,225 @@
+---
+title: "Covid Cases: Then & Now"
+date: '`r format(Sys.time(), "%Y-%m-%d %X")`'
+editor_options: 
+  chunk_output_type: console
+output:
+  html_document:
+    toc: yes
+    toc_depth: 3
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    includes:
+      in_header: header/header.html
+---
+
+```{r setup, include=FALSE}
+# Set default chunk output
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE,
+  results = "asis"
+)
+```
+
+```{r libraries}
+library(tidyverse)
+library(DT)
+library(scales)
+library(plotly)
+library(zoo)
+library(lubridate)
+library(ggrepel)
+
+```
+
+
+
+```{r grab_data}
+covid.cases = read_csv(paste0("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/",
+                              "csse_covid_19_data/csse_covid_19_time_series/",
+                              "time_series_covid19_confirmed_global.csv"))
+```
+
+## United States
+
+```{r united_states_data}
+covid.cases_v2 = covid.cases %>%
+  gather(key="Date", value="confirmed", -c(`Country/Region`, `Province/State`, Lat, Long)) %>% 
+  mutate(Date = as.Date(Date, format="%m/%d/%y"))
+
+
+covid.cases_v3 = covid.cases_v2 %>% filter(grepl(x=`Country/Region`, pattern= "US")) %>%
+  mutate(confirmed.previous.day = lag(confirmed)) %>% 
+  mutate(New.Cases = confirmed - confirmed.previous.day)
+
+covid.cases_v4 = covid.cases_v3 %>%
+  mutate(Seven.Day.Average = rollmean(New.Cases, 7, na.pad = TRUE, align = "right"))
+
+
+# covid.cases_v4 %>% ggplot() + geom_line(aes(x=Date, y=Seven.Day.Average)) + geom_line(aes(x=Date, y=New.Cases)) + ggtitle("New Covid Cases")
+
+covid.cases_v5 = covid.cases_v4 %>% filter(!is.na(Seven.Day.Average)) %>% 
+  mutate(Seven.Day.Average_lag = lag(Seven.Day.Average)) %>%
+  mutate(Change = Seven.Day.Average - Seven.Day.Average_lag) %>% 
+  mutate(Change = ifelse(Change >= 0, paste0("+", round(Change, 0)), 
+                         paste0(round(Change, 0))))
+```
+
+Please note I only have data until `r max(covid.cases_v2$Date)`. The rolling average is the mean of that days cases as well as the 6 days prior. 
+
+```{r us_plots}
+us_cases_plot = covid.cases_v5 %>% ggplot(aes(x=Date, y=Seven.Day.Average)) +
+  geom_line() + ggtitle("Seven Day Average Across the US") + 
+  scale_y_continuous(labels = scales::comma) +
+  scale_x_date(date_labels = "%b %y", breaks = pretty_breaks(n=7))+
+  geom_hline(yintercept = covid.cases_v5$Seven.Day.Average[covid.cases_v5$Date ==
+                                                             max(covid.cases_v5$Date)],
+             linetype=2, colour="red")+
+  ylab("Seven Day Average") +
+  theme(axis.title.x=element_blank())
+
+us_cases_plot %>% ggplotly()
+
+```
+
+The red dashed line helps us visualize where our cases used to be. The following table provides the actual days and seven day average cases of those intersections.
+
+```{r intersection_points_us}
+covid.cases_v5 %>% 
+  mutate(Intersection = Seven.Day.Average >= 
+           covid.cases_v5$Seven.Day.Average[covid.cases_v5$Date == 
+                                              max(covid.cases_v5$Date, na.rm = TRUE)]) %>% 
+  mutate(Intersection_lead = lead(Intersection)) %>% 
+  filter(Intersection_lead != Intersection | Date == max(Date)) %>% 
+  select(-Lat, -Long) %>% 
+  select(Date, seven_day_average = Seven.Day.Average) %>% 
+  mutate(seven_day_average = round(seven_day_average)) %>% 
+  datatable(filter = "top", extensions = "Buttons",
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE))
+
+```
+
+## California
+
+I like to check on my state as well.
+
+```{r  grab_data_california}
+covid.cases_state = read_csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv")
+
+```
+
+```{r clean_ca_data}
+covid.cases_state_v2 = covid.cases_state %>% select(date, state, cases) %>% arrange(date) %>% 
+  rename(Date = date, confirmed = cases, NAME = state) %>% 
+  left_join(tibble(NAME = state.name, state = state.abb))
+  
+
+covid.cases_state_v3 = covid.cases_state_v2 %>% filter(state == "CA") %>%
+  mutate(confirmed = replace_na(confirmed, 0)) %>% 
+  mutate(confirmed.previous.day = lag(confirmed)) %>% 
+  mutate(New.Cases = confirmed - confirmed.previous.day)
+
+covid.cases_state_v4 = covid.cases_state_v3 %>%
+  mutate(Seven.Day.Average = rollmean(New.Cases, 7, na.pad = TRUE, align = "right"))
+
+
+covid.cases_state_v5 = covid.cases_state_v4 %>% filter(!is.na(Seven.Day.Average)) %>% 
+  mutate(Seven.Day.Average_lag = lag(Seven.Day.Average)) %>%
+  mutate(Change = Seven.Day.Average - Seven.Day.Average_lag) %>% 
+  mutate(Change_format = ifelse(Change >= 0, paste0("+", round(Change, 0)), 
+                         paste0(round(Change, 0))))
+```
+
+
+```{r ca_plot}
+ca_plot = covid.cases_state_v5 %>% ggplot(aes(x=Date, y=Seven.Day.Average, label=Change_format)) + geom_line() + 
+  ggtitle(paste("New", unique(covid.cases_state_v5$NAME), "Covid Cases")) + 
+  scale_y_continuous(labels = scales::comma) +
+  scale_x_date(breaks = pretty_breaks(7), date_labels = "%b %y")+
+  geom_hline(yintercept = covid.cases_state_v5$Seven.Day.Average[covid.cases_state_v5$Date ==
+                                                                   max(covid.cases_state_v5$Date)],
+             linetype=2, colour="red") 
+
+ca_plot %>% ggplotly()
+```
+
+Just like the US chart, the red dashed line can help us visualize the last times we were at today's COVID cases. Below is a table of the exact dates of intersection between today's cases vs previous cases. 
+
+```{r ca_intersections}
+covid.cases_state_v5 %>% 
+  mutate(Intersection = Seven.Day.Average >= 
+           covid.cases_state_v5$Seven.Day.Average[covid.cases_state_v5$Date == 
+                                              max(covid.cases_state_v5$Date, na.rm = TRUE)]) %>% 
+  mutate(Intersection_lead = lead(Intersection)) %>% 
+  filter(Intersection_lead != Intersection | Date == max(Date)) %>% 
+  select(Date, seven_day_average = Seven.Day.Average) %>% 
+  mutate(seven_day_average = round(seven_day_average)) %>% 
+  datatable(filter = "top", extensions = "Buttons",
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE))
+
+```
+
+## State vs State
+
+```{r grab_statewide_data}
+# luckily we already have this in the script
+# covid.cases_state = read_csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv")
+
+# need to normalize everything to the same standard
+state_pop = read_csv("http://www2.census.gov/programs-surveys/popest/datasets/2010-2019/national/totals/nst-est2019-alldata.csv")
+
+```
+
+```{r clean_statewide_data}
+state_pop_v2 = state_pop %>% select(NAME, POPESTIMATE2019) %>%
+  left_join(tibble(NAME = state.name, state = state.abb)) %>% 
+  rename(population = POPESTIMATE2019)
+
+covid.cases_state_v2 = covid.cases_state %>%
+  select(date, state, cases, deaths) %>% arrange(date) %>% 
+  rename(Date = date, confirmed = cases, NAME = state) %>% left_join(state_pop_v2) %>%
+  select(Date, state, confirmed, population, deaths) %>%
+  arrange(Date) %>% 
+  mutate(confirmed = confirmed / population,
+         death_per_cap = deaths / population) %>% 
+  filter(state %in% state.abb)
+
+
+covid.cases_state_v3 = covid.cases_state_v2 %>% group_by(state) %>%
+  mutate(confirmed = replace_na(confirmed, 0),
+         death_per_cap = replace_na(death_per_cap, 0)) %>% 
+  mutate(confirmed.previous.day = lag(confirmed),
+         death_per_cap_previous_day = lag(death_per_cap)) %>% 
+  mutate(New.Cases = confirmed - confirmed.previous.day,
+         new_deaths = death_per_cap - death_per_cap_previous_day)
+
+covid.cases_state_v4 = covid.cases_state_v3 %>%
+  mutate(Seven.Day.Average = rollmean(New.Cases, 7, na.pad = TRUE, align = "right"),
+         seven_day_average_deaths = rollmean(new_deaths, 7, na.pad = TRUE, align = "right")) %>% 
+  ungroup()
+
+
+covid.cases_state_v5 = covid.cases_state_v4 %>%
+  filter(!is.na(Seven.Day.Average))
+
+
+```
+
+
+```{r}
+covid.cases_state_plot = covid.cases_state_v5 %>% ggplot(aes(x=Date, y=Seven.Day.Average, colour = state)) + geom_line() + 
+  ggtitle("New Covid Cases per Capita") + 
+  scale_y_continuous(labels = scales::comma) + scale_x_date(date_breaks = "1 month", date_labels = "%b %y") 
+
+covid.cases_state_plot %>% ggplotly()
+
+```
+
+
+<!-- ## Vaccines -->
+
+<!-- Now, I'm no public health expert, but it does seem like the higher vaccine rate a state has, the lower the COVID cases are. Let's just let the data talk. -->
+
