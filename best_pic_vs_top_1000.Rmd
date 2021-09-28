@@ -84,8 +84,11 @@ If a lot of people go to the movies, does that mean it's a good movie? Maybe. If
 One of the fun parts of this project is just getting the data. There isn't a nice "export" button on IMDb. So I needed to webscrape with rvest and after doing that, I put all the data in a nice little table. Look at my [GitHub](https://github.com/cavandonohoe/cavandonohoe.github.io) for more information on my strategy of web scraping. The major benefit of webscraping is allowing easier reproducibility. Rather than copy pasting a table into Excel and then cleaning it by hand and taking that time to make human error, webscraping will bypass all of that as long as the website stays in the same format.
 
 [Best Pictures](https://www.imdb.com/search/title/?groups=best_picture_winner&sort=year,desc&count=100&view=advanced)
+[Web Scraping Script](https://github.com/cavandonohoe/cavandonohoe.github.io/blob/main/web_scraping/best_picture_winners.R)
+
 
 [Top 1000 Box Office Movies](https://www.boxofficemojo.com/chart/top_lifetime_gross/?area=XWW)
+[Web Scraping Script](https://github.com/cavandonohoe/cavandonohoe.github.io/blob/main/web_scraping/top1000_box_office.R)
 
 ## Lifetime Gross for Best Picture vs Top 1000 Box Office
 
