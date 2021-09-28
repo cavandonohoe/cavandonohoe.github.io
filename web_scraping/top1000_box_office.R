@@ -16,9 +16,6 @@ links = read_html(url) %>%
   html_nodes("a") %>% 
   html_attr("href")
 
-tibble(links) %>% filter(grepl(x=links, pattern="cso") &
-                           grepl(x=links, pattern = "title")) %>%
-  mutate(id = gsub(x=links, pattern = "/title/|/\\?ref.*", replacement = ""))
 
 offset = seq(from = 200, to = 800, by = 200)
 
@@ -53,43 +50,12 @@ for (url_index in all_urls) {
 rankings_tib_final = rankings_tib %>%
   mutate(Rank = ifelse(is.na(Rank) & row_number() == 1000, 1000, Rank))
 
-# imdb_title_basics = read_tsv("https://datasets.imdbws.com/title.basics.tsv.gz")
-# 
-# imdb_movies = imdb_title_basics %>% filter(titleType == "movie")
-# 
-# rankings_with_id = rankings_tib_final %>%
-#   left_join(imdb_movies %>%
-#               select(Title = primaryTitle, Year = startYear, tconst))
-# 
-# # tt2771200 is the right one for beauty and the beast
-# imdb_movies %>%
-#   filter(grepl(x=primaryTitle, pattern = "beauty and the beast", ignore.case = TRUE)) %>%
-#   filter(startYear == 2017)
-# 
-# # lion king 2019 isnt listed
-# # should be tt6105098
-# imdb_movies %>%
-#   filter(grepl(x=primaryTitle, pattern = "lion king", ignore.case = TRUE))
-# 
-# # note: look up the director of these movies cuz some of them are kinda bs
-# 
-# rankings_with_id %>% group_by(Title, Year) %>% filter(n() >1) %>% ungroup() %>% arrange(Title)
-
-
-rankings_tib_final
-
-
 
 # now include user rating ---------------------------------------------------------------------
 
 
 rankings_tib_final2 = rankings_tib_final %>% mutate(imdb_link = paste0("https://www.imdb.com/title/", id))
 
-# grab_user_rating = function(html_object) {
-#   html_object %>% read_html() %>%
-#     html_nodes(xpath = "//*[@id='__next']/main/div/section[1]/section/div[3]/section/section/div[1]/div[2]/div/div[1]/a/div/div/div[2]/div[1]/span[1]") %>%
-#     html_text()
-# }
 
 get_rating = function(link){
   link %>% read_html() %>% 
@@ -98,26 +64,22 @@ get_rating = function(link){
 }
 
 
+# this one takes a while
+# look through 1000 websites and find each rating
+# luckily imdb has unique id's for each movie unlike a different movie rating website
+# *cough* rotten tomatoes *cough*
 all_user_ratings = rankings_tib_final2$imdb_link %>% 
   parallel::mclapply(get_rating, mc.cores = parallel::detectCores() - 1)
 
 
 
-rankings_tib_final2 %>% mutate(imdb_rating = as.numeric(unlist(all_user_ratings)))
-
 
 
 
 imdb_rank_ratings =
-  # rankings_tib_final2 %>% 
-  # # slice(1:5) %>% 
-  # rowwise() %>%
-  # mutate(rating = get_rating(imdb_link)) %>% 
-  # ungroup()
   rankings_tib_final2 %>%
   mutate(imdb_rating = as.numeric(unlist(all_user_ratings)))
 
-imdb_rank_ratings
 
 imdb_rank_ratings_clean = imdb_rank_ratings %>%
   mutate(`Lifetime Gross` = as.numeric(gsub('\\$|,', '', `Lifetime Gross`)),
