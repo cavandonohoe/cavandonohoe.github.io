@@ -43,15 +43,14 @@ voo_history_close = voo_history[[1]] %>%
   filter(!grepl(x = Open, pattern = "Dividend|Close")) %>%
   mutate(date = as.Date(Date, format = "%b %d, %Y"),
          `Close*` = as.numeric(`Close*`)) %>%
-  select(date, close_yahoo = `Close*`)
+  select(date, close_yahoo = `Close*`) %>%
+  mutate(symbol = "VOO")
 
 voo_full = price_data %>% 
   select(symbol, date, close) %>% 
-  left_join(voo_history_close) %>% 
+  full_join(voo_history_close) %>% 
   mutate(close_official = ifelse(is.na(close), close_yahoo, close)) %>% 
   select(symbol, date, close_official)
-
-
 
 intersections_voo = voo_full %>%
   mutate(intersection = close_official >= close_official[date == max(date)],
