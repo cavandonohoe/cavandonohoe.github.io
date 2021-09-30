@@ -57,8 +57,6 @@ covid.cases_v4 = covid.cases_v3 %>%
   mutate(Seven.Day.Average = rollmean(New.Cases, 7, na.pad = TRUE, align = "right"))
 
 
-# covid.cases_v4 %>% ggplot() + geom_line(aes(x=Date, y=Seven.Day.Average)) + geom_line(aes(x=Date, y=New.Cases)) + ggtitle("New Covid Cases")
-
 covid.cases_v5 = covid.cases_v4 %>% filter(!is.na(Seven.Day.Average)) %>% 
   mutate(Seven.Day.Average_lag = lag(Seven.Day.Average)) %>%
   mutate(Change = Seven.Day.Average - Seven.Day.Average_lag) %>% 
@@ -66,7 +64,7 @@ covid.cases_v5 = covid.cases_v4 %>% filter(!is.na(Seven.Day.Average)) %>%
                          paste0(round(Change, 0))))
 ```
 
-Please note I only have data until `r max(covid.cases_v2$Date)`. The rolling average is the mean of that days cases as well as the 6 days prior. 
+Please note I only have data until `r max(covid.cases_v2$Date)`. The rolling average is the mean of that day's cases as well as the 6 days prior. 
 
 ```{r us_plots}
 us_cases_plot = covid.cases_v5 %>% ggplot(aes(x=Date, y=Seven.Day.Average)) +
@@ -162,6 +160,8 @@ covid.cases_state_v5 %>%
 
 ```
 
+Also, the way the intersection table works is if today's 7 Day Average Cases = 10000, and we had 9,982 cases on August 2nd, 2021 and 10,190 cases on August 3rd, 2021, then August 2nd, 2021 would be listed in the table.
+
 ## State vs State
 
 ```{r grab_statewide_data}
@@ -209,17 +209,143 @@ covid.cases_state_v5 = covid.cases_state_v4 %>%
 ```
 
 
-```{r}
+```{r state_by_state_plot}
 covid.cases_state_plot = covid.cases_state_v5 %>% ggplot(aes(x=Date, y=Seven.Day.Average, colour = state)) + geom_line() + 
   ggtitle("New Covid Cases per Capita") + 
-  scale_y_continuous(labels = scales::comma) + scale_x_date(date_breaks = "1 month", date_labels = "%b %y") 
+  scale_y_continuous(labels = scales::comma) + scale_x_date(breaks = pretty_breaks(7), date_labels = "%b %y") 
 
 covid.cases_state_plot %>% ggplotly()
 
 ```
 
 
-<!-- ## Vaccines -->
+## Vaccines
 
-<!-- Now, I'm no public health expert, but it does seem like the higher vaccine rate a state has, the lower the COVID cases are. Let's just let the data talk. -->
+Now, I'm no public health expert, but it does seem like the higher vaccine rate a state has, the lower the COVID cases are. Let's just let the data talk.
+
+```{r vaccine_data}
+vaccines = read_csv("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/us_state_vaccinations.csv")
+
+state_tib = tibble(location = state.name, state = state.abb)
+
+vaccines_current_rate = vaccines %>%
+  mutate(location = ifelse(location == "New York State", "New York", location)) %>% 
+  filter(date == max(date)) %>% 
+  filter(location %in% state.name) %>% 
+  select(location, people_fully_vaccinated_per_hundred) %>% 
+  arrange(desc(people_fully_vaccinated_per_hundred))
+
+covid_current = covid.cases_state_v5 %>% ungroup() %>% filter(Date == max(Date, na.rm = TRUE)) %>% 
+  arrange(Seven.Day.Average) %>%
+  mutate(new_cases_actual = New.Cases * population) %>% 
+  select(state, Seven.Day.Average) %>% 
+  left_join(state_tib)
+
+covid_cases_w_vaccines = covid_current %>% full_join(vaccines_current_rate)
+
+vaccines_historic_rate = vaccines %>%
+  mutate(location = ifelse(location == "New York State", "New York", location)) %>% 
+  filter(location %in% state.name) %>% 
+  select(date, location, people_fully_vaccinated_per_hundred, people_fully_vaccinated) %>% 
+  arrange(desc(people_fully_vaccinated_per_hundred))
+
+```
+
+
+
+```{r vaccines_by_state}
+
+vaccines_historic_rate_plot = vaccines_historic_rate %>%
+  ggplot(aes(x=date, y= people_fully_vaccinated_per_hundred, colour = location)) +
+  geom_point() +
+  scale_x_date(date_labels = "%h %d", breaks = scales::pretty_breaks(7)) +
+  ylab("% fully vaxxed") +
+  ggtitle("vax rate per state")
+
+vaccines_historic_rate_plot %>% ggplotly()
+
+```
+
+Now if that is a little too noisy, I'll break it down between red and blue.
+
+```{r vaccine_party_plot}
+usa_pop = state_pop_v2 %>% filter(NAME == "United States") %>% pull(population)
+
+vaccines_usa = vaccines %>%
+  mutate(location = ifelse(location == "New York State", "New York", location)) %>% 
+  filter(location %in% state.name) %>% 
+  group_by(date) %>% 
+  summarise(people_fully_vaccinated = sum(people_fully_vaccinated, na.rm = TRUE)) %>% 
+  ungroup() %>% mutate(per_fully_vaxxed = people_fully_vaccinated / usa_pop)
+
+# voting preference
+voting_pref = read_csv("data/president_1976_2020.csv")
+
+voting_pref2 = voting_pref %>% filter(year == 2020 & party_detailed %in% c("DEMOCRAT", "REPUBLICAN")) %>% 
+  mutate(per_votes = candidatevotes / totalvotes) %>%
+  group_by(state) %>% 
+  filter(candidatevotes == max(candidatevotes)) %>%
+  ungroup() %>% 
+  select(state, state_po, party_detailed, per_votes) %>% 
+  mutate(party_simp = ifelse(party_detailed == "REPUBLICAN", "R", "D"),
+         party_color = ifelse(party_simp == "R", "red", "blue"),
+         STATE = state,
+         location = snakecase::to_any_case(string = tolower(STATE), case = "title"),
+         per_votes_sign = ifelse(party_simp == "D", per_votes, -per_votes)) 
+  
+vaccine_party = vaccines_historic_rate %>% left_join(voting_pref2)
+
+
+vaccine_party_plot = vaccine_party %>%
+  ggplot(aes(x=date, y=people_fully_vaccinated_per_hundred, colour = per_votes_sign,
+             label = location)) +
+  geom_point() +
+  scale_colour_gradient(low = ("red"),
+                        high = ("blue")) +
+  scale_x_date(date_labels = "%h %d", breaks = pretty_breaks(7)) +
+  ylab("% fully vaxxed") +
+  ggtitle("vax rate per state per party")
+
+vaccine_party_plot %>% ggplotly()
+
+```
+
+
+```{r deaths}
+deaths_since_july = covid.cases_state %>%
+  group_by(date) %>% summarise(total_deaths = sum(deaths)) %>% 
+  ungroup() %>% 
+  mutate(death_change = total_deaths - lag(total_deaths)) %>% 
+  mutate(seven_day_average_death = rollmean(death_change, 7, na.pad = TRUE)) %>%
+  filter(date >= as.Date("2021-07-01")) %>%
+  ggplot(aes(x=date, y=seven_day_average_death)) +
+  geom_path()+
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 20))+
+  ggtitle("Covid Deaths per Day after 7/1/2021")+
+  ylab("Seven Day Average Deaths")
+
+deaths_since_july %>% ggplotly()
+
+july2021_deaths = covid.cases_state %>%
+  group_by(date) %>% summarise(total_deaths = sum(deaths)) %>% 
+  ungroup() %>% 
+  mutate(death_change = total_deaths - lag(total_deaths)) %>% 
+  mutate(seven_day_average_death = rollmean(death_change, 7, na.pad = TRUE)) %>% 
+  filter(date >= as.Date("2021-07-01")) %>% 
+  filter(!is.na(seven_day_average_death))
+
+perc_change =
+  july2021_deaths$seven_day_average_death[july2021_deaths$date == max(july2021_deaths$date)] /
+  min(july2021_deaths$seven_day_average_death,na.rm = TRUE)
+
+
+```
+
+This is `r round(perc_change, digits = 1)` times the amount we had at the lowest 7 day average death count in July.
+
+
+
+
+
+
 
