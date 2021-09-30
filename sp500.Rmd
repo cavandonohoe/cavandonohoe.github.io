@@ -86,8 +86,11 @@ sp_intersections_plot = voo_full %>%
   geom_line() +
   ggtitle("S&P 500")+
   ylab("Closing Price") +
-  ggrepel::geom_text_repel(data = intersections_voo, aes(label = as.character(date), segment.color = "red"), box.padding = .5,
-                           nudge_y = 20, direction = "x") +
+  ggrepel::geom_text_repel(data = intersections_voo, aes(label = as.character(date), segment.color = "red"),
+                           box.padding = .8,
+                           nudge_y = 20, 
+                           direction = "x",
+                           vjust = 0) +
   geom_hline(yintercept = voo_full$close_official[voo_full$date ==
                                                              max(voo_full$date)],
              linetype=2, colour="red")
