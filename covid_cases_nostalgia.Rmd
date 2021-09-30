@@ -138,7 +138,8 @@ ca_plot = covid.cases_state_v5 %>% ggplot(aes(x=Date, y=Seven.Day.Average, label
   scale_x_date(breaks = pretty_breaks(7), date_labels = "%b %y")+
   geom_hline(yintercept = covid.cases_state_v5$Seven.Day.Average[covid.cases_state_v5$Date ==
                                                                    max(covid.cases_state_v5$Date)],
-             linetype=2, colour="red") 
+             linetype=2, colour="red") +
+  ylab("Seven Day Average Deaths")
 
 ca_plot %>% ggplotly()
 ```
@@ -212,7 +213,8 @@ covid.cases_state_v5 = covid.cases_state_v4 %>%
 ```{r state_by_state_plot}
 covid.cases_state_plot = covid.cases_state_v5 %>% ggplot(aes(x=Date, y=Seven.Day.Average, colour = state)) + geom_line() + 
   ggtitle("New Covid Cases per Capita") + 
-  scale_y_continuous(labels = scales::comma) + scale_x_date(breaks = pretty_breaks(7), date_labels = "%b %y") 
+  scale_y_continuous(labels = scales::comma) + scale_x_date(breaks = pretty_breaks(7), date_labels = "%b %y") +
+  ylab("Seven Day Average Deaths")
 
 covid.cases_state_plot %>% ggplotly()
 
@@ -310,6 +312,7 @@ vaccine_party_plot %>% ggplotly()
 
 ```
 
+## Deaths since July 2021
 
 ```{r deaths}
 deaths_since_july = covid.cases_state %>%
