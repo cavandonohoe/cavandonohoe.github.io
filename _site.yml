@@ -24,6 +24,8 @@ navbar:
         href: sp500.html
       - text: "Covid Cases: Then & Now"
         href: covid_cases_nostalgia.html
+      - text: "Top 250 IMDb Movies with Rotten Tomato Scores"
+        href: top_250_imdb_with_rt.html
     - text: "CV"
       href: cv.html
     
