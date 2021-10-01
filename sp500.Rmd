@@ -27,8 +27,14 @@ library(rvest)
 
 ```{r grab_stock_data}
 
-price_data = tq_get(x = "VOO", from = "2018-01-01", to = as.character(Sys.Date()), get = "stock.prices")
+price_data = tq_get(x = "VOO", from = "2010-01-01", to = as.character(Sys.Date()), get = "stock.prices")
 
+# buy the dip
+max_change = price_data %>% mutate(day_change = lead(close) / close) %>%
+  filter(day_change == max(day_change, na.rm = TRUE))
+max_date = max_change %>% slice(1) %>% pull(date)
+max_change_perc = max_change %>% slice(1) %>% pull(day_change)
+percent(max_change_perc - 1, accuracy = .1)
 
 
 url = "https://finance.yahoo.com/quote/VOO/history?p=VOO"
@@ -100,5 +106,10 @@ sp_intersections_plot
 ```
 
 Guess what? If you invested in the S&P 500 prior to `r min(intersections_voo$date)`, then you're still net positive. So calm down.
+
+Also, the largest single day increase from close to close was on `r max_date` with a single day jump of `r percent(max_change_perc - 1, accuracy = .1)`. So, keep investing and continue to buy the dip.
+
+
+
 
 
