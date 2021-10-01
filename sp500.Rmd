@@ -34,7 +34,9 @@ max_change = price_data %>% mutate(day_change = lead(close) / close) %>%
   filter(day_change == max(day_change, na.rm = TRUE))
 max_date = max_change %>% slice(1) %>% pull(date)
 max_change_perc = max_change %>% slice(1) %>% pull(day_change)
-percent(max_change_perc - 1, accuracy = .1)
+# percent(max_change_perc - 1, accuracy = .1)
+min_date = price_data %>%
+  filter(date == min(date, na.rm = TRUE)) %>% pull(date)
 
 
 url = "https://finance.yahoo.com/quote/VOO/history?p=VOO"
@@ -107,7 +109,7 @@ sp_intersections_plot
 
 Guess what? If you invested in the S&P 500 prior to `r min(intersections_voo$date)`, then you're still net positive. So calm down.
 
-Also, the largest single day increase from close to close was on `r max_date` with a single day jump of `r percent(max_change_perc - 1, accuracy = .1)`. So, keep investing and continue to buy the dip.
+Also, the largest single day increase from close to close since `r min_date` was on `r max_date` with a single day jump of `r percent(max_change_perc - 1, accuracy = .1)`. So, keep investing and continue to buy the dip.
 
 
 
