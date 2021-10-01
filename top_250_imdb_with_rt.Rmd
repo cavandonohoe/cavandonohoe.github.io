@@ -58,6 +58,12 @@ producer_leaders_plot = top_250_imdb_rot_tom %>% separate_rows(producers_imdb, s
   
 
 producer_leaders_plot %>% ggplotly(tooltip = c("x", "text", "fill"))
+
+# add a section for actors and producers dude!
+
+# also just out of curiosity
+# top_250_imdb_rot_tom %>%
+#   filter(grepl(x=producers_imdb, pattern = "focus", ignore.case = TRUE))
 ```
 
 
@@ -90,6 +96,7 @@ resid_plot = top_250_imdb_rot_tom %>%
   xlab("TomatoMeter")
 
 resid_plot %>% ggplotly
+
 ```
 
 
