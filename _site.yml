@@ -26,6 +26,8 @@ navbar:
         href: covid_cases_nostalgia.html
       - text: "Top 250 IMDb Movies with Rotten Tomato Scores"
         href: top_250_imdb_with_rt.html
+      - text: "Best Picture Nominees"
+        href: best_picture_nominees.html
     - text: "CV"
       href: cv.html
     
