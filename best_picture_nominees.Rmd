@@ -34,7 +34,9 @@ Best Picture Nominees are cool too. Incredibly difficult to scrape though... IMD
 
 But now, I have all the Best Picture nominees since the first Academy Awards!
 
-Also, IMDb has a section called "Production companies" in their Details section of each movie homepage. I will define a Distributor as the first listed Production Company. 
+Also, IMDb has a section called "Production companies" in their Details section of each movie homepage. I will define a Distributor as the first listed Production Company.
+
+## Distributors
 
 ```{r distibutor_leaderboards}
 distributors_plot_nominees = best_pic_noms_final %>%
@@ -58,6 +60,26 @@ distributors_plot_nominees %>% ggplotly(tooltip = c("x", "text", "fill"))
 
 ```
 
+For more detail, please look at this table:
+
+```{r distributor_table}
+best_pic_noms_final %>%
+  separate_rows(producers, sep = "\\|") %>%
+  group_by(id) %>% 
+  slice(1) %>% 
+  group_by(distributor = producers) %>% 
+  summarise(n = n(), all_titles = paste(title, collapse = "<br>")) %>%
+  ungroup() %>% 
+  arrange(desc(n)) %>% 
+  datatable(filter = "top", extensions = "Buttons",
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE),
+            escape = FALSE)
+```
+
+
+
+## All Nominees
 
 ```{r full_table}
 best_pic_noms_final %>%
