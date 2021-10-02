@@ -1,0 +1,72 @@
+---
+title: "Best Picture Nominees"
+editor_options: 
+  chunk_output_type: console
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+---
+
+```{r setup, include=FALSE}
+# Set default chunk output
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE,
+  results = "asis"
+)
+```
+
+```{r libraries}
+library(tidyverse)
+library(DT)
+library(scales)
+library(plotly)
+```
+
+
+
+```{r data}
+best_pic_noms_final = read_csv("data/best_picture_nominees.csv")
+
+```
+
+Best Picture Nominees are cool too. Incredibly difficult to scrape though... IMDb sometimes implores JavaScript in their html, so I had to parse through even more noise than usual to get to my info. 
+
+But now, I have all the Best Picture nominees since the first Academy Awards!
+
+Also, IMDb has a section called "Production companies" in their Details section of each movie homepage. I will define a Distributor as the first listed Production Company. 
+
+```{r distibutor_leaderboards}
+distributors_plot_nominees = best_pic_noms_final %>%
+  separate_rows(producers, sep = "\\|") %>%
+  group_by(id) %>% 
+  slice(1) %>% 
+  group_by(distributor = producers) %>% 
+  summarise(n = n(), all_titles = paste(title, collapse = "\n")) %>% 
+  ungroup() %>% 
+  arrange(desc(n)) %>%
+  slice(1:15) %>% 
+  ggplot(aes(x = n, y= reorder(distributor, -n), text = all_titles, fill = distributor)) +
+  geom_col()+
+  theme(axis.title.y=element_blank(),
+        axis.title.x=element_blank(),
+        legend.position = "none") +
+  ggtitle("Number of Nominees per Distributor (Top 15)") +
+  geom_text(aes(label = n), hjust = 0, position = position_dodge(width = 1))
+
+distributors_plot_nominees %>% ggplotly(tooltip = c("x", "text", "fill"))
+
+```
+
+
+```{r full_table}
+best_pic_noms_final %>%
+  select(year, title, nominees_or_winner, producers, imdb_url) %>% 
+  datatable(filter = "top", extensions = "Buttons",
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE))
+
+
+```
+
+

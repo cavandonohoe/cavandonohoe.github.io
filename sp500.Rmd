@@ -61,6 +61,7 @@ voo_full = price_data %>%
   select(symbol, date, close_official)
 
 intersections_voo = voo_full %>%
+  # arrange(desc(date)) %>% 
   mutate(intersection = close_official >= close_official[date == max(date)],
          intersection_lead = lead(intersection)) %>% 
   filter(intersection != intersection_lead)
@@ -69,7 +70,7 @@ intersections_voo = voo_full %>%
 
 ```
 
-## S&P 500 Over the Last 3 Years
+## S&P 500 Over the Last 10 Years
 
 Omg the stock market just crashed! 1% down in a day is a crash right? Well maybe not... Let's just take a look at the history of the S&P 500 Index Fund (VOO) for some perspective.
 
