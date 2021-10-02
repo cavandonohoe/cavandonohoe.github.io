@@ -34,9 +34,10 @@ Best Picture Nominees are cool too. Incredibly difficult to scrape though... IMD
 
 But now, I have all the Best Picture nominees since the first Academy Awards!
 
-Also, IMDb has a section called "Production companies" in their Details section of each movie homepage. I will define a Distributor as the first listed Production Company.
 
 ## Distributors
+
+IMDb has a section called "Production companies" in their Details section of each movie homepage. I will define a Distributor as the first listed Production Company.
 
 ```{r distibutor_leaderboards}
 distributors_plot_nominees = best_pic_noms_final %>%
@@ -68,6 +69,47 @@ best_pic_noms_final %>%
   group_by(id) %>% 
   slice(1) %>% 
   group_by(distributor = producers) %>% 
+  summarise(n = n(), all_titles = paste(title, collapse = "<br>")) %>%
+  ungroup() %>% 
+  arrange(desc(n)) %>% 
+  datatable(filter = "top", extensions = "Buttons",
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE),
+            escape = FALSE)
+```
+
+## Producers
+
+```{r producer_leaderboards}
+producers_plot_nominees = best_pic_noms_final %>%
+  separate_rows(producers, sep = "\\|") %>%
+  # group_by(id) %>% 
+  # slice(1) %>% 
+  group_by(producers) %>% 
+  summarise(n = n(), all_titles = paste(title, collapse = "\n")) %>% 
+  ungroup() %>% 
+  arrange(desc(n)) %>%
+  slice(1:15) %>% 
+  ggplot(aes(x = n, y= reorder(producers, -n), text = all_titles, fill = producers)) +
+  geom_col()+
+  theme(axis.title.y=element_blank(),
+        axis.title.x=element_blank(),
+        legend.position = "none") +
+  ggtitle("Number of Nominees per Producer (Top 15)") +
+  geom_text(aes(label = n), hjust = 0, position = position_dodge(width = 1))
+
+producers_plot_nominees %>% ggplotly(tooltip = c("x", "text", "fill"))
+
+```
+
+For more detail, please look at this table:
+
+```{r producer_table}
+best_pic_noms_final %>%
+  separate_rows(producers, sep = "\\|") %>%
+  # group_by(id) %>% 
+  # slice(1) %>% 
+  group_by(producers) %>% 
   summarise(n = n(), all_titles = paste(title, collapse = "<br>")) %>%
   ungroup() %>% 
   arrange(desc(n)) %>% 
