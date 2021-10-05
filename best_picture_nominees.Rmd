@@ -40,13 +40,28 @@ But now, I have all the Best Picture nominees since the first Academy Awards!
 IMDb has a section called "Production companies" in their Details section of each movie homepage. I will define a Distributor as the first listed Production Company.
 
 ```{r distibutor_leaderboards}
+
+only_winners = function(x) {
+  no_noms = gsub(x = x, pattern = ".*(%)", replacement = "") 
+  
+  no_noms[no_noms != ""] %>%
+    paste0(collapse = "\n")
+}
+
+
 distributors_plot_nominees = best_pic_noms_final %>%
   separate_rows(producers, sep = "\\|") %>%
   group_by(id) %>% 
   slice(1) %>% 
   group_by(distributor = producers) %>% 
-  summarise(n = n(), all_titles = paste(title, collapse = "\n")) %>% 
-  ungroup() %>% 
+  summarise(n = n(),
+            all_titles = paste0(title, ifelse(nominees_or_winner == "winner", " *", "%"),
+                               collapse = "\n"),
+            n_winners = sum(nominees_or_winner == "winner")) %>% 
+  ungroup() %>%
+  mutate(check = strsplit(all_titles, split = "\\\n"),
+         winners = check %>% lapply(only_winners) %>% unlist,
+         all_titles = gsub(x = all_titles, pattern = "\\%", replacement = "")) %>% 
   arrange(desc(n)) %>%
   slice(1:15) %>% 
   ggplot(aes(x = n, y= reorder(distributor, -n), text = all_titles, fill = distributor)) +
@@ -55,9 +70,17 @@ distributors_plot_nominees = best_pic_noms_final %>%
         axis.title.x=element_blank(),
         legend.position = "none") +
   ggtitle("Number of Nominees per Distributor (Top 15)") +
-  geom_text(aes(label = n), hjust = 0, position = position_dodge(width = 1))
+  geom_text(aes(label = n), hjust = 0, position = position_dodge(width = 1)) +
+  geom_col(aes(x = n_winners, y = reorder(distributor, -n)), fill = "gold") +
+  labs(caption = "* = winners")
 
-distributors_plot_nominees %>% ggplotly(tooltip = c("x", "text", "fill"))
+
+distributors_plot_nominees %>% ggplotly(tooltip = c("x", "text", "fill")) %>% 
+  layout(annotations = 
+           list(x = 1, y = -0.1, text = "* = winners", 
+                showarrow = F, xref='paper', yref='paper', 
+                xanchor='right', yanchor='auto', xshift=0, yshift=0,
+                font=list(size=15, color="red")))
 
 ```
 
