@@ -66,13 +66,14 @@ distributors_plot_nominees = best_pic_noms_final %>%
   slice(1:15) %>% 
   ggplot(aes(x = n, y= reorder(distributor, -n), text = all_titles, fill = distributor)) +
   geom_col()+
+  # labs(caption = "* = winners")+
   theme(axis.title.y=element_blank(),
         axis.title.x=element_blank(),
+        plot.caption = element_text(colour = "gold"),
         legend.position = "none") +
   ggtitle("Number of Nominees per Distributor (Top 15)") +
   geom_text(aes(label = n), hjust = 0, position = position_dodge(width = 1)) +
-  geom_col(aes(x = n_winners, y = reorder(distributor, -n)), fill = "gold") +
-  labs(caption = "* = winners")
+  geom_col(aes(x = n_winners, y = reorder(distributor, -n)), fill = "gold")
 
 
 distributors_plot_nominees %>% ggplotly(tooltip = c("x", "text", "fill")) %>% 
@@ -80,7 +81,7 @@ distributors_plot_nominees %>% ggplotly(tooltip = c("x", "text", "fill")) %>%
            list(x = 1, y = -0.1, text = "* = winners", 
                 showarrow = F, xref='paper', yref='paper', 
                 xanchor='right', yanchor='auto', xshift=0, yshift=0,
-                font=list(size=15, color="red")))
+                font=list(size=15, color="gold")))
 
 ```
 
