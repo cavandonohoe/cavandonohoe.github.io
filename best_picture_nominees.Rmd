@@ -76,7 +76,7 @@ distributors_plot_nominees = best_pic_noms_final %>%
   geom_col(aes(x = n_winners, y = reorder(distributor, -n)), fill = "gold")
 
 
-distributors_plot_nominees %>% ggplotly(tooltip = c("x", "text", "fill")) %>% 
+distributors_plot_nominees %>% ggplotly(tooltip = c("x", "text", "fill"), height = 800) %>% 
   layout(annotations = 
            list(x = 1, y = -0.1, text = "* = winners", 
                 showarrow = F, xref='paper', yref='paper', 
@@ -133,7 +133,7 @@ producers_plot_nominees = best_pic_noms_final %>%
   geom_col(aes(x = n_winners, y = reorder(producers, -n)), fill = "gold")
 
 
-producers_plot_nominees %>% ggplotly(tooltip = c("x", "text", "fill")) %>% 
+producers_plot_nominees %>% ggplotly(tooltip = c("x", "text", "fill"), height = 800) %>% 
   layout(annotations = 
            list(x = 1, y = -0.1, text = "* = winners", 
                 showarrow = F, xref='paper', yref='paper', 
