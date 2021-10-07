@@ -87,19 +87,19 @@ sp500_2018_pres_plot %>% ggplotly()
 
 ## S&P More Recently
 
-Let's zoom in on just the last two months. 
+Let's zoom in on just the last three months. 
 
 ```{r sp500_intersections}
 sp_intersections_plot = voo_full %>% 
-  filter(date >= min(intersections_voo$date %m-% months(1))) %>% 
+  filter(date >= min(intersections_voo$date %m-% months(2))) %>% 
   ggplot(aes(x = date, y = close_official)) +
   geom_line() +
   ggtitle("S&P 500")+
   ylab("Closing Price") +
   ggrepel::geom_text_repel(data = intersections_voo, aes(label = as.character(date), segment.color = "red"),
                            box.padding = .8,
-                           nudge_y = 20, 
-                           direction = "x",
+                           # nudge_y = 20, 
+                           # direction = "x",
                            vjust = 0) +
   geom_hline(yintercept = voo_full$close_official[voo_full$date ==
                                                              max(voo_full$date)],
