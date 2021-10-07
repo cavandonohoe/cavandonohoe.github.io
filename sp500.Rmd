@@ -58,7 +58,8 @@ voo_full = price_data %>%
   select(symbol, date, close) %>% 
   full_join(voo_history_close) %>% 
   mutate(close_official = ifelse(is.na(close), close_yahoo, close)) %>% 
-  select(symbol, date, close_official)
+  select(symbol, date, close_official) %>%
+  filter(!is.na(close_official))
 
 intersections_voo = voo_full %>%
   # arrange(desc(date)) %>% 
