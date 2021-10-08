@@ -65,7 +65,7 @@ intersections_voo = voo_full %>%
   # arrange(desc(date)) %>% 
   mutate(intersection = close_official >= close_official[date == max(date)],
          intersection_lead = lead(intersection)) %>% 
-  filter(intersection != intersection_lead)
+  filter(intersection != intersection_lead & !intersection)
 
 
 
@@ -85,7 +85,7 @@ sp500_2018_pres_plot = voo_full %>%
 sp500_2018_pres_plot %>% ggplotly()
 ```
 
-## S&P More Recently
+## S&P 500 More Recently
 
 Let's zoom in on just the last three months. 
 
@@ -98,9 +98,16 @@ sp_intersections_plot = voo_full %>%
   ylab("Closing Price") +
   ggrepel::geom_text_repel(data = intersections_voo, aes(label = as.character(date), segment.color = "red"),
                            box.padding = .8,
-                           # nudge_y = 20, 
-                           # direction = "x",
-                           vjust = 0) +
+                           nudge_y = 15,
+                           direction = "x",
+                           vjust = 0,
+                           hjust = 1,
+                           xlim =
+                             c(voo_full %>% 
+                                 filter(date >= min(intersections_voo$date %m-% months(2))) %>%
+                                 pull(date) %>% min,
+                               voo_full %>%
+                                 pull(date) %>% max)) +
   geom_hline(yintercept = voo_full$close_official[voo_full$date ==
                                                              max(voo_full$date)],
              linetype=2, colour="red")
