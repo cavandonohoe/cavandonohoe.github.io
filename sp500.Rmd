@@ -110,13 +110,14 @@ sp_intersections_plot = voo_full %>%
                                  pull(date) %>% max)) +
   geom_hline(yintercept = voo_full$close_official[voo_full$date ==
                                                              max(voo_full$date)],
-             linetype=2, colour="red")
+             linetype=2, colour="red") +
+  labs(caption = "Note, the date captions note the price the day before\nthe price closes just before today's price/close")
 
 sp_intersections_plot
 
 ```
 
-Guess what? If you invested in the S&P 500 prior to `r min(intersections_voo$date)`, then you're still net positive. So calm down.
+Guess what? If you invested in the S&P 500 on any of the labeled dates or prior to `r min(intersections_voo$date)`, then you're still net positive. So calm down.
 
 Also, the largest single day increase from close to close since `r min_date` was on `r max_date` with a single day jump of `r percent(max_change_perc - 1, accuracy = .1)`. So, keep investing and continue to buy the dip.
 
