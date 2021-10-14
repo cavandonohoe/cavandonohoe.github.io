@@ -1,5 +1,6 @@
 ---
 title: "S&P 500 Perspective"
+date: '`r format(Sys.time(), "%Y-%m-%d %X")`'
 editor_options: 
   chunk_output_type: console
 output:
