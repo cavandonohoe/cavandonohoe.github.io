@@ -112,7 +112,7 @@ sp_intersections_plot = voo_full %>%
   geom_hline(yintercept = voo_full$close_official[voo_full$date ==
                                                              max(voo_full$date)],
              linetype=2, colour="red") +
-  labs(caption = "Note, the date captions note the price the day before\nthe price closes just before today's price/close")
+  labs(caption = "Note, the date captions note the price the day before\nthe price closes just under today's price/close")
 
 sp_intersections_plot
 
