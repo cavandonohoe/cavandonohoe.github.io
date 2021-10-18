@@ -66,6 +66,12 @@ covid.cases_v5 = covid.cases_v4 %>% filter(!is.na(Seven.Day.Average)) %>%
 
 Please note I only have data until `r max(covid.cases_v2$Date)`. The rolling average is the mean of that day's cases as well as the 6 days prior. 
 
+Also for the US total aggregate cases, my data is coming from [https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv](https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv)
+
+Same source as Johns Hopkins, so I hope it's legit.
+
+[Git Repo](https://github.com/CSSEGISandData/COVID-19)
+
 ```{r us_plots}
 us_cases_plot = covid.cases_v5 %>% ggplot(aes(x=Date, y=Seven.Day.Average)) +
   geom_line() + ggtitle("Seven Day Average Across the US") + 
@@ -102,6 +108,12 @@ covid.cases_v5 %>%
 ## California
 
 I like to check on my state as well.
+
+When parsing for states, my data is coming from here: [https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv](https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv)
+
+Same as NY Times.
+
+[Git Repo](https://github.com/nytimes/covid-19-data)
 
 ```{r  grab_data_california}
 covid.cases_state = read_csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv")
@@ -165,6 +177,8 @@ Also, the way the intersection table works is if today's 7 Day Average Cases = 1
 
 ## State vs State
 
+State populations are coming from here: [http://www2.census.gov/programs-surveys/popest/datasets/2010-2019/national/totals/nst-est2019-alldata.csv](http://www2.census.gov/programs-surveys/popest/datasets/2010-2019/national/totals/nst-est2019-alldata.csv)
+
 ```{r grab_statewide_data}
 # luckily we already have this in the script
 # covid.cases_state = read_csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv")
@@ -225,6 +239,8 @@ Yes, this is noisy, but you have the option to double click any number of states
 ## Vaccines
 
 Now, I'm no public health expert, but it does seem like the higher vaccine rate a state has, the lower the COVID cases are. Let's just let the data talk.
+
+Vaccination data from here: [https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/us_state_vaccinations.csv](https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/us_state_vaccinations.csv)
 
 ```{r vaccine_data}
 vaccines = read_csv("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/us_state_vaccinations.csv")
