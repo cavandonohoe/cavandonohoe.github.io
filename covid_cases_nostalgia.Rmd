@@ -128,7 +128,7 @@ covid.cases_state_v2 = covid.cases_state %>% select(date, state, cases) %>% arra
 
 covid.cases_state_v3 = covid.cases_state_v2 %>% filter(state == "CA") %>%
   mutate(confirmed = replace_na(confirmed, 0)) %>% 
-  mutate(confirmed.previous.day = lag(confirmed)) %>% 
+  mutate(confirmed.previous.day = lag(confirmed)) %>%
   mutate(New.Cases = confirmed - confirmed.previous.day)
 
 covid.cases_state_v4 = covid.cases_state_v3 %>%
