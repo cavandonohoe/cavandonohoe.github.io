@@ -90,7 +90,7 @@ Omg did the stock market just crash? 1% down in a day is a crash right? Well may
 sp500_2018_pres_plot = voo_full %>% 
   ggplot(aes(x = date, y = close_official)) +
   geom_line() +
-  geom_point(data = voo_maxes, aes(x = date, y = rolling_max), color = "red", size = 1) +
+  geom_point(data = voo_maxes, aes(x = date, y = rolling_max), color = "red", size = .5) +
   ggtitle("S&P 500")+
   ylab("Closing Price")
 
