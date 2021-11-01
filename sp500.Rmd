@@ -62,6 +62,16 @@ voo_full = price_data %>%
   select(symbol, date, close_official) %>%
   filter(!is.na(close_official))
 
+
+voo_full$rolling_max = NA
+for (i in 1:nrow(voo_full)) {
+  voo_full$rolling_max[i] = rollmax(x = voo_full$close_official[1:i], k = i)
+}
+
+voo_maxes = voo_full %>% 
+  filter(close_official == rolling_max)
+
+
 intersections_voo = voo_full %>%
   # arrange(desc(date)) %>% 
   mutate(intersection = close_official >= close_official[date == max(date)],
@@ -72,19 +82,22 @@ intersections_voo = voo_full %>%
 
 ```
 
-## S&P 500 Over the Last 10 Years
+## S&P 500 Over the Last 11 Years
 
-Omg the stock market just crashed! 1% down in a day is a crash right? Well maybe not... Let's just take a look at the history of the S&P 500 Index Fund (VOO) for some perspective.
+Omg did the stock market just crash? 1% down in a day is a crash right? Well maybe not... Let's just take a look at the history of the S&P 500 Index Fund (VOO) for some perspective.
 
 ```{r sp500_last_2_years}
 sp500_2018_pres_plot = voo_full %>% 
   ggplot(aes(x = date, y = close_official)) +
   geom_line() +
+  geom_point(data = voo_maxes, aes(x = date, y = rolling_max), color = "red", size = 1) +
   ggtitle("S&P 500")+
   ylab("Closing Price")
 
 sp500_2018_pres_plot %>% ggplotly()
 ```
+
+Btw, every red dot is a record breaking closing day. We are currently at `r voo_maxes %>% nrow` record breaking closes since `r voo_full %>% pull(date) %>% min`.
 
 ## S&P 500 More Recently
 
