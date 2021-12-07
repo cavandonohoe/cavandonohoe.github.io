@@ -98,7 +98,7 @@ covid.cases_v5 %>%
   filter(Intersection_lead != Intersection | Date == max(Date)) %>% 
   select(-Lat, -Long) %>% 
   select(Date, seven_day_average = Seven.Day.Average) %>% 
-  mutate(seven_day_average = round(seven_day_average)) %>% 
+  mutate(seven_day_average = round(seven_day_average)) %>%
   datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))

@@ -43,9 +43,11 @@ min_date = price_data %>%
 url = "https://finance.yahoo.com/quote/VOO/history?p=VOO"
 
 voo_history_html = read_html(url)
-
-voo_history = voo_history_html %>% 
-  html_nodes("#Col1-1-HistoricalDataTable-Proxy > section") %>% 
+# //*[@id="Col1-1-HistoricalDataTable-Proxy"]/section/div[2]/table
+voo_history = voo_history_html %>%
+  # html_nodes("#Col1-1-HistoricalDataTable-Proxy > section") %>% 
+  html_nodes(xpath = "//*[@id='Col1-1-HistoricalDataTable-Proxy']/section/div[2]/table") %>% 
+  # html_name()
   html_table()
 
 voo_history_close = voo_history[[1]] %>%
