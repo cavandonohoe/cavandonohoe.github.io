@@ -58,12 +58,14 @@ segments_and_weekends = jasons_work_schedule %>%
          work_status = case_when(bool == 1 ~ "working",
                                  TRUE ~ "off"))
 
+years_till_retirement = 65 - (lubridate::year(Sys.Date()) - 1994)
 ```
 
-Jason's Work Schedule for the next 37 years (Retire at 65 right?)
+Jason's Work Schedule for the next `r years_till_retirement` years (Retire at 65 right?)
 
 ```{r}
 segments_and_weekends %>%
+  filter(days >= as.Date(Sys.Date())) %>% 
   select(date = days, work_status, type) %>% 
   datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
