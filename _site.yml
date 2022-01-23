@@ -28,6 +28,8 @@ navbar:
         href: top_250_imdb_with_rt.html
       - text: "Best Picture Nominees"
         href: best_picture_nominees.html
-    - text: "CV"
-      href: cv.html
+      - text: "Jason's Firefighter Schedule"
+        href: jason_firefighter.html
+      - text: "CV"
+        href: cv.html
     
