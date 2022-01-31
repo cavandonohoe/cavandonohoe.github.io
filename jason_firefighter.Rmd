@@ -60,6 +60,11 @@ segments_and_weekends = jasons_work_schedule %>%
          day_of_week = weekdays(days))
 
 years_till_retirement = 65 - (lubridate::year(Sys.Date()) - 1994)
+
+# fun code to check our overlap
+# segments_and_weekends %>% 
+#   filter(day_of_week %in% c("Saturday", "Sunday") &
+#            type == "weekend")
 ```
 
 Jason's Work Schedule for the next `r years_till_retirement` years (Retire at 65 right?)
