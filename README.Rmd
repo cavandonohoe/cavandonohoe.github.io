@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 The goal of my website is to display some fun side projects I have been working on. Movie data intrigues me, so I scraped IMDb to use some of their clean data. I have looked into COVID-19 data to see daily case and death updates as well as seeing vaccine trends. I also have my resume here too.
-test
+
 Check out my website at [https://cavandonohoe.github.io](https://cavandonohoe.github.io)
 
 * [COVID-19](https://cavandonohoe.github.io/covid_cases_nostalgia.html)
