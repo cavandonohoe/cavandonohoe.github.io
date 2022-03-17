@@ -22,21 +22,11 @@ library(DT)
 ```
 
 
-
-
 ```{r}
 jasons_work_schedule =
   tibble(days = seq.Date(as.Date("2022-01-18"), by = 1, length.out = 13509),
          bool = rep(c(1, 0, 1, 0, 1, 0, 0, 0, 0), 13509 / 9))
 
-# jasons_work_schedule %>%
-#   filter(lead(bool, n = 1) == lead(bool, n = 2) & lead(bool, n = 2) == lead(bool, n = 3) & bool == 0)
-# 
-# jasons_work_schedule %>%
-#   mutate(type = 
-#            case_when(
-#              lead(bool, n = 1) == lead(bool, n = 2) &
-#                lead(bool, n = 2) == lead(bool, n = 3) & bool == 0 ~ "start of weekend"))
 
 segments_and_weekends = jasons_work_schedule %>%
   mutate(type = 
@@ -68,6 +58,8 @@ years_till_retirement = 65 - (lubridate::year(Sys.Date()) - 1994)
 ```
 
 Jason's Work Schedule for the next `r years_till_retirement` years (Retire at 65 right?)
+
+This is based on the Kelly Schedule.
 
 ```{r}
 segments_and_weekends %>%
