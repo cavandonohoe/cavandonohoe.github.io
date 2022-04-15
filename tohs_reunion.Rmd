@@ -1,0 +1,43 @@
+---
+title: "TOHS Class Reunion"
+editor_options: 
+  chunk_output_type: console
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+---
+
+```{r setup, include=FALSE}
+# Set default chunk output
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE,
+  results = "asis"
+)
+```
+
+```{r libraries}
+library(tidyverse)
+library(DT)
+library(googlesheets4)
+```
+
+It's so awesome talking to old friends and seeing how everyone is doing! We do need people's emails though, so if you know anyone who is on this list, reach out! We would love to have them at our reunion! Thank you for all of your help!
+
+As of `r format(Sys.time(), "%B %d, %Y at %H:%M")`, we have the following missing emails:
+
+
+
+```{r}
+grad_list = read_sheet("https://docs.google.com/spreadsheets/d/1JwWeBjwwQHzmGgh8HPuO_0pghzemC3ikpLx_pXlQvsI/edit#gid=1184195844",
+                       sheet = "Full Grad Class")
+
+missing_list = grad_list %>% filter(is.na(`Accounted For?`)) %>%
+  select(`First Name`:`Accounted For?`) %>%
+  mutate(text = paste0(row_number(), ". ", `First Name`, " ", `Last Name`)) %>%
+  pull(text) %>% 
+  paste(collapse = "\n")
+
+cat(missing_list)
+
+```
