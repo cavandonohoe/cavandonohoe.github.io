@@ -22,15 +22,20 @@ library(DT)
 library(googlesheets4)
 ```
 
-It's so awesome talking to old friends and seeing how everyone is doing! We do need people's emails though, so if you know anyone who is on this list, reach out! We would love to have them at our reunion! Thank you for all of your help!
-
-As of `r format(Sys.time(), "%B %d, %Y at %H:%M")`, we have the following missing emails:
-
 
 
 ```{r}
 grad_list = read_sheet("https://docs.google.com/spreadsheets/d/1JwWeBjwwQHzmGgh8HPuO_0pghzemC3ikpLx_pXlQvsI/edit#gid=1184195844",
                        sheet = "Full Grad Class")
+
+percent_accounted = grad_list %>% group_by(`Accounted For?`) %>% count %>%
+  ungroup() %>%
+  mutate(total = sum(n)) %>%
+  mutate(percent = scales::percent(n / sum(n))) %>%
+  mutate(text = paste0(percent, " (", n, "/", total, ")")) %>%
+  filter(`Accounted For?`)
+
+percent_accounted_text = percent_accounted$text
 
 missing_list = grad_list %>% filter(is.na(`Accounted For?`)) %>%
   select(`First Name`:`Accounted For?`) %>%
@@ -38,6 +43,13 @@ missing_list = grad_list %>% filter(is.na(`Accounted For?`)) %>%
   pull(text) %>% 
   paste(collapse = "\n")
 
-cat(missing_list)
-
 ```
+
+It's so awesome talking to old friends and seeing how everyone is doing! We do need people's emails though, so if you know anyone who is on this list, reach out! We would love to have them at our reunion! Thank you for all of your help! Currently we have emails for `r percent_accounted_text` of our class.
+
+As of `r format(Sys.time(), "%B %d, %Y at %H:%M")`, we have the following missing emails:
+
+```{r}
+cat(missing_list)
+```
+
