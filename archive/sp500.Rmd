@@ -1,0 +1,143 @@
+---
+title: "S&P 500 Perspective"
+date: '`r format(Sys.time(), "%Y-%m-%d %X")`'
+editor_options: 
+  chunk_output_type: console
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+---
+
+```{r setup, include=FALSE}
+# Set default chunk output
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE,
+  results = "asis"
+)
+```
+
+```{r libraries}
+library(tidyverse)
+library(DT)
+library(scales)
+library(plotly)
+library(tidyquant)
+library(rvest)
+```
+
+```{r grab_stock_data}
+
+price_data = tq_get(x = "VOO", from = "2010-01-01", to = as.character(Sys.Date()), get = "stock.prices")
+
+# buy the dip
+max_change = price_data %>% mutate(day_change = lead(close) / close) %>%
+  filter(day_change == max(day_change, na.rm = TRUE))
+max_date = max_change %>% slice(1) %>% pull(date)
+max_change_perc = max_change %>% slice(1) %>% pull(day_change)
+# percent(max_change_perc - 1, accuracy = .1)
+min_date = price_data %>%
+  filter(date == min(date, na.rm = TRUE)) %>% pull(date)
+
+
+url = "https://finance.yahoo.com/quote/VOO/history?p=VOO"
+
+voo_history_html = read_html(url)
+# //*[@id="Col1-1-HistoricalDataTable-Proxy"]/section/div[2]/table
+voo_history = voo_history_html %>%
+  # html_nodes("#Col1-1-HistoricalDataTable-Proxy > section") %>% 
+  html_nodes(xpath = "//*[@id='Col1-1-HistoricalDataTable-Proxy']/section/div[2]/table") %>% 
+  # html_name()
+  html_table()
+
+voo_history_close = voo_history[[1]] %>%
+  filter(!grepl(x = Open, pattern = "Dividend|Close")) %>%
+  mutate(date = as.Date(Date, format = "%b %d, %Y"),
+         `Close*` = as.numeric(`Close*`)) %>%
+  select(date, close_yahoo = `Close*`) %>%
+  mutate(symbol = "VOO")
+
+voo_full = price_data %>% 
+  select(symbol, date, close) %>% 
+  full_join(voo_history_close) %>% 
+  mutate(close_official = ifelse(is.na(close), close_yahoo, close)) %>% 
+  select(symbol, date, close_official) %>%
+  filter(!is.na(close_official))
+
+
+voo_full$rolling_max = NA
+for (i in 1:nrow(voo_full)) {
+  voo_full$rolling_max[i] = rollmax(x = voo_full$close_official[1:i], k = i)
+}
+
+voo_maxes = voo_full %>% 
+  filter(close_official == rolling_max)
+
+
+intersections_voo = voo_full %>%
+  # arrange(desc(date)) %>% 
+  mutate(intersection = close_official >= close_official[date == max(date)],
+         intersection_lead = lead(intersection)) %>% 
+  filter(intersection != intersection_lead & !intersection)
+
+
+
+```
+
+## S&P 500 Over the Last 11 Years
+
+Omg did the stock market just crash? 1% down in a day is a crash right? Well maybe not... Let's just take a look at the history of the S&P 500 Index Fund (VOO) for some perspective.
+
+```{r sp500_last_2_years}
+sp500_2018_pres_plot = voo_full %>% 
+  ggplot(aes(x = date, y = close_official)) +
+  geom_line() +
+  geom_point(data = voo_maxes, aes(x = date, y = rolling_max), color = "red", size = .5) +
+  ggtitle("S&P 500")+
+  ylab("Closing Price")
+
+sp500_2018_pres_plot %>% ggplotly()
+```
+
+Btw, every red dot is a record breaking closing day. We are currently at `r voo_maxes %>% nrow` record breaking closes since `r voo_full %>% pull(date) %>% min`.
+
+## S&P 500 More Recently
+
+Let's zoom in on just the last three months. 
+
+```{r sp500_intersections}
+sp_intersections_plot = voo_full %>% 
+  filter(date >= min(intersections_voo$date %m-% months(2))) %>% 
+  ggplot(aes(x = date, y = close_official)) +
+  geom_line() +
+  ggtitle("S&P 500")+
+  ylab("Closing Price") +
+  ggrepel::geom_text_repel(data = intersections_voo, aes(label = as.character(date), segment.color = "red"),
+                           box.padding = .8,
+                           nudge_y = 15,
+                           direction = "x",
+                           vjust = 0,
+                           hjust = 1,
+                           xlim =
+                             c(voo_full %>% 
+                                 filter(date >= min(intersections_voo$date %m-% months(2))) %>%
+                                 pull(date) %>% min,
+                               voo_full %>%
+                                 pull(date) %>% max)) +
+  geom_hline(yintercept = voo_full$close_official[voo_full$date ==
+                                                             max(voo_full$date)],
+             linetype=2, colour="red") +
+  labs(caption = "Note, the date captions note the price the day before\nthe price closes just under today's price/close")
+
+sp_intersections_plot
+
+```
+
+Guess what? If you invested in the S&P 500 on any of the labeled dates or prior to `r min(intersections_voo$date)`, then you're still net positive. So calm down.
+
+Also, the largest single day increase from close to close since `r min_date` was on `r max_date` with a single day jump of `r percent(max_change_perc - 1, accuracy = .1)`. So, keep investing and continue to buy the dip.
+
+
+
+
+
