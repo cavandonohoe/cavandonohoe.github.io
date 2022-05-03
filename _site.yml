@@ -20,8 +20,6 @@ navbar:
         href: imdb_top_250_tv_series.html
       - text: "Best Picture and Top 1000 Box Office"
         href: best_pic_vs_top_1000.html
-      - text: "S&P 500 Perspective"
-        href: sp500.html
       - text: "Covid Cases: Then & Now"
         href: covid_cases_nostalgia.html
       - text: "Top 250 IMDb Movies with Rotten Tomato Scores"
