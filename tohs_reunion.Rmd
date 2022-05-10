@@ -45,7 +45,7 @@ missing_list = grad_list %>% filter(is.na(`Accounted For?`)) %>%
 
 ```
 
-It's so awesome talking to old friends and seeing how everyone is doing! We do need people's emails though, so if you know anyone who is on this list, reach out! We would love to have them at our reunion! Thank you for all of your help! Currently we have emails for `r percent_accounted_text` of our class.
+It's so awesome talking to old friends and seeing how everyone is doing! We do need people's emails though, so if you know anyone who is on this list, reach out! We would love to have them at our reunion! Thank you for all of your help! Currently we have emails for `r percent_accounted_text` of our class. If you see yourself on this list, please fill out this [survey](https://forms.gle/YHxgzqmgfTQhfjE87) to add your email.
 
 As of `r format(Sys.time(), "%B %d, %Y at %H:%M")`, we have the following missing emails:
 
