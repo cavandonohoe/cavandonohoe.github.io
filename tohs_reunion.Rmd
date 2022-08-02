@@ -28,17 +28,25 @@ library(googlesheets4)
 grad_list = read_sheet("https://docs.google.com/spreadsheets/d/1JwWeBjwwQHzmGgh8HPuO_0pghzemC3ikpLx_pXlQvsI/edit#gid=1184195844",
                        sheet = "Full Grad Class")
 
-percent_accounted = grad_list %>% group_by(`Accounted For?`) %>% count %>%
+grad_list_clean = grad_list %>% slice(-1) %>%
+  mutate(`First Name` = unlist(`First Name`),
+         Email = lapply(Email, function(x) ifelse(is.null(x), NA, x)),
+         Email = unlist(Email)) %>%
+  mutate(email_bool = !is.na(Email))
+
+percent_accounted = grad_list_clean %>%
+  group_by(email_bool) %>% count %>%
   ungroup() %>%
   mutate(total = sum(n)) %>%
   mutate(percent = scales::percent(n / sum(n))) %>%
   mutate(text = paste0(percent, " (", n, "/", total, ")")) %>%
-  filter(`Accounted For?`)
+  filter(email_bool)
+
 
 percent_accounted_text = percent_accounted$text
 
-missing_list = grad_list %>% filter(is.na(`Accounted For?`)) %>%
-  select(`First Name`:`Accounted For?`) %>%
+missing_list = grad_list_clean %>% filter(!email_bool) %>%
+  select(`First Name`, `Last Name`) %>%
   mutate(text = paste0(row_number(), ". ", `First Name`, " ", `Last Name`)) %>%
   pull(text) %>% 
   paste(collapse = "\n")
