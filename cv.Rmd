@@ -8,6 +8,7 @@ output:
     css:
       - cv_css.css
       - resume
+knit: pagedown::chrome_print
 ---
 
 ```{r background code, echo=FALSE, message=FALSE, error=FALSE, warning=FALSE}
