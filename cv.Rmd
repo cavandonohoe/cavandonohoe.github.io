@@ -12,6 +12,10 @@ knit: pagedown::chrome_print
 ---
 
 ```{r background code, echo=FALSE, message=FALSE, error=FALSE, warning=FALSE}
+# note for future cavan:
+# you have to render this individually instead of just building the website
+# that way the pdf version gets updated as well
+
 library(glue)
 library(tidyverse)
 library(readxl)
