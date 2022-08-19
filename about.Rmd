@@ -70,5 +70,7 @@ I ended up working abroad! I worked from Spain, Italy, France, and Croatia! And 
 knitr::include_url("https://www.linkedin.com/embed/feed/update/urn:li:share:6956906897379590144", height = 718)
 ```
 
+Inspiring right? Also, side note, I just learned how to embed a LinkedIn post in an Rmd. More difficult than you'd think, but as soon as you have done it once, you don't have to worry about relearning it.
+
 
 
