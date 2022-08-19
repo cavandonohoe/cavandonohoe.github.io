@@ -65,10 +65,9 @@ Now the thought is how to fully take advantage of the work from wherever lifesty
 
 I ended up working abroad! I worked from Spain, Italy, France, and Croatia! And I was actually responsibly productive about it. Cannot believe I did this in my 20s! Now what is next? Maybe an inspiring LinkedIn post... 
 
-```{r}
-# htmltools::browsable('<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:6956906897379590144" height="718" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>')
+```{r echo=FALSE}
 
-knitr::include_url("https://www.linkedin.com/embed/feed/update/urn:li:share:6956906897379590144")
+knitr::include_url("https://www.linkedin.com/embed/feed/update/urn:li:share:6956906897379590144", height = 718)
 ```
 
 
