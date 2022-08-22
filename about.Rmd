@@ -67,7 +67,8 @@ I ended up working abroad! I worked from Spain, Italy, France, and Croatia! And 
 
 
 ```{r echo=FALSE}
-knitr::include_url("https://www.linkedin.com/embed/feed/update/urn:li:share:6956906897379590144", height = 718)
+knitr::include_url("https://www.linkedin.com/embed/feed/update/urn:li:share:6956906897379590144", height = 600)
+
 ```
 
 
