@@ -1,5 +1,5 @@
 ---
-title: "Jason's Schedule"
+title: "Jason and Wyett's Schedule"
 editor_options: 
   chunk_output_type: console
 output:
@@ -57,7 +57,7 @@ years_till_retirement = 65 - (lubridate::year(Sys.Date()) - 1994)
 #            type == "weekend")
 ```
 
-Jason's Work Schedule for the next `r years_till_retirement` years (Retire at 65 right?)
+Jason and Wyett's Work Schedule for the next `r years_till_retirement` years (Retire at 65 right?)
 
 This is based on the Kelly Schedule.
 
