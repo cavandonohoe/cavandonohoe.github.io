@@ -37,6 +37,15 @@ top_series_tib = top_series_tbl[[1]] %>% as_tibble(.name_repair = "universal") %
          site = paste0("https://www.imdb.com/title/", id)) %>% 
   select(rank, title, year, imdb_rating = IMDb.Rating, id, site)
 
+# before running this parallel::mclapply, make sure the
+# get_all_episodes.R script is up to date
+# so you're going to have to look at the entire for loop to check where
+# this script may fail
+# remember one piece? or random series that just enjoy messing with you?
+# for (imdb_id in top_series_tib$id) {
+#   get_all_episodes(imdb_id)
+# }
+# top_series_tib %>% filter(id == imdb_id)
 
 # this runs a little faster than a normal lapply, but an lapply works too
 # took less than 9 mins on my mac

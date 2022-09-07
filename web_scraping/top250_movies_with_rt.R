@@ -194,6 +194,10 @@ rotten_tomatoes_url = top_250_tib_clean %>%
                        "1017776-rocky",
                      title == "Hera Pheri" & imdb_director == "Priyadarshan" ~
                        "hera-pheri",
+                     title == "The Wizard of Oz" & imdb_director == "Victor Fleming" ~
+                       "the_wizard_of_oz_1939",
+                     title == "Life of Brian" & imdb_director == "Terry Jones" ~
+                       "monty_pythons_life_of_brian",
                      TRUE ~ gsub(x = snakecase::to_any_case(
                        string = gsub(x = title, pattern = "'|\\.", replacement = ""),
                        case = "snake"),
@@ -208,6 +212,7 @@ for (rot_url in rotten_tomatoes_url$rotten_tomatoes_url) {
   html_list_rot[[index]] = read_html(rot_url)
   index = index + 1
 }
+# rotten_tomatoes_url %>% filter(row_number() == index)
 
 # let's go again
 # let's grab the imdb html data
