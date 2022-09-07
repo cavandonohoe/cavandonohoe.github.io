@@ -44,7 +44,8 @@ top_250_tib_clean = top_250_tib %>%
          title = gsub(x = Rank...Title, pattern = "^\\S+\\s+|\\s+[^ ]+$", replacement = ""),
          site = paste0("https://www.imdb.com/title/", id),
          director = directors) %>%
-  select(rank, title, director, year, imdb_rating = IMDb.Rating, id, site)
+  select(rank, title, director, year, imdb_rating = IMDb.Rating, id, site) %>%
+  mutate(producer_site = file.path(site, "companycredits?ref_=ttfc_sa_3"))
 
 
 # next step is to grab each rotten tomato section
@@ -63,8 +64,7 @@ rotten_tomatoes_url = top_250_tib_clean %>%
            case_when((title == "The Dark Knight" & imdb_director == "Christopher Nolan") |
                        (title == "The Dark Knight Rises" & imdb_director == "Christopher Nolan") |
                        (title == "The Gold Rush" & imdb_director == "Charles Chaplin") |
-                       (title == "The Grand Budapest Hotel" & imdb_director == "Wes Anderson") |
-                       (title == "The Handmaiden" & imdb_director == "Park Chan-Wook") ~ 
+                       (title == "The Grand Budapest Hotel" & imdb_director == "Wes Anderson") ~ 
                        snakecase::to_any_case(string = title, case = "snake"),
                      title == "12 Angry Men" & imdb_director == "Sidney Lumet" ~
                        "1000013_12_angry_men",
@@ -198,6 +198,8 @@ rotten_tomatoes_url = top_250_tib_clean %>%
                        "the_wizard_of_oz_1939",
                      title == "Life of Brian" & imdb_director == "Terry Jones" ~
                        "monty_pythons_life_of_brian",
+                     title == "The Handmaiden" & imdb_director == "Park Chan-wook" ~
+                       "the_handmaiden",
                      TRUE ~ gsub(x = snakecase::to_any_case(
                        string = gsub(x = title, pattern = "'|\\.", replacement = ""),
                        case = "snake"),
@@ -230,22 +232,45 @@ for (imdb_url in top_250_tib_clean$site) {
 
 # production companies
 
-production_companies_imdb_fun = function(html_object) {
+# fucking this isn't here anymore
+# fucking imdb...
+
+
+html_imdb_prod_list = list()
+index = 1
+for (imdb_url in top_250_tib_clean$producer_site) {
+  html_imdb_prod_list[[index]] = read_html(imdb_url)
+  index = index + 1
+}
+
+
+imdb_producers <- function(html_object) {
   html_object %>%
-    html_nodes("#__next > main > div") %>% 
-    html_nodes("section.ipc-page-background.ipc-page-background--base.TitlePage__StyledPageBackground-wzlr49-0.dDUGgO") %>% 
-    html_nodes("div > section > div") %>% 
-    html_nodes("div.TitleMainBelowTheFoldGroup__TitleMainPrimaryGroup-sc-1vpywau-1.btXiqv.ipc-page-grid__item.ipc-page-grid__item--span-2") %>% 
-    # html_nodes("section:nth-child(44) > div.styles__MetaDataContainer-sc-12uhu9s-0.cgqHBf > ul > li:nth-child(7)")
-    html_nodes("section") %>%
-    # html_attr("data-testid")
-    html_nodes(xpath = "//*[@data-testid='Details']") %>%
-    html_nodes("div") %>% 
-    html_nodes(xpath = "//*[@data-testid='title-details-companies']") %>%
-    html_nodes("div > ul > li > a") %>% 
-    html_text() %>% 
+    html_nodes("#company_credits_content > ul") %>%
+    html_text() %>%
+    .[1] %>%
+    str_split(pattern = "\n") %>%
+    unlist %>% str_trim() %>% str_squish() %>%
+    `[` (.!="") %>%
     paste(collapse = "|")
 }
+
+# production_companies_imdb_fun = function(html_object) {
+#   html_object %>%
+#     html_nodes("#__next > main > div") %>% 
+#     html_nodes("section.ipc-page-background.ipc-page-background--base.TitlePage__StyledPageBackground-wzlr49-0.dDUGgO") %>% 
+#     html_nodes("div > section > div") %>% 
+#     html_nodes("div.TitleMainBelowTheFoldGroup__TitleMainPrimaryGroup-sc-1vpywau-1.btXiqv.ipc-page-grid__item.ipc-page-grid__item--span-2") %>% 
+#     # html_nodes("section:nth-child(44) > div.styles__MetaDataContainer-sc-12uhu9s-0.cgqHBf > ul > li:nth-child(7)")
+#     html_nodes("section") %>%
+#     # html_attr("data-testid")
+#     html_nodes(xpath = "//*[@data-testid='Details']") %>%
+#     html_nodes("div") %>% 
+#     html_nodes(xpath = "//*[@data-testid='title-details-companies']") %>%
+#     html_nodes("div > ul > li > a") %>% 
+#     html_text() %>% 
+#     paste(collapse = "|")
+# }
 
 
 
@@ -304,9 +329,13 @@ names(movie_info) = top_250_tib_clean$title
 
 movie_info_tib = movie_info %>% bind_rows(.id = "title")
 
-producers_imdb = html_imdb_list %>% 
-  lapply(production_companies_imdb_fun) %>% 
+producers_imdb = html_imdb_prod_list %>% 
+  lapply(imdb_producers) %>% 
   unlist()
+
+producers_imdb <- producers_imdb %>%
+  # remove all parentheses and insides of parentheses
+  str_remove_all("\\s*\\([^\\)]+\\)")
 
 producers_imdb = tibble(id = top_250_tib_clean$id, producers_imdb)
 
