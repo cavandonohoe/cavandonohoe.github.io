@@ -127,11 +127,11 @@ get_all_episodes = function(series_imdb_id) {
       as_tibble()
     
     # Filter only episodes that were displayed on TV
-    if (nrow(season_episodes) > length(episode_rating)) {
+    if (nrow(season_episodes) > nrow(episode_rating_votes)) {
       season_episodes = season_episodes %>% 
-        filter(row_number() <= length(episode_rating))
-      episode_name = episode_name[1:length(episode_rating)]
-      episode_number = episode_number[1:length(episode_rating)]
+        filter(row_number() <= nrow(episode_rating_votes))
+      episode_name = episode_name[1:nrow(episode_rating_votes)]
+      episode_number = episode_number[1:nrow(episode_rating_votes)]
     }
     
     # collect everything
