@@ -118,11 +118,37 @@ production_companies_imdb_fun = function(html_object) {
     paste(collapse = "|")
 }
 
+# looking deeper into the credits
+# imdb had an update to remove it from the home screen
+# those douchebags
+# making it slightly harder to webscrape
+imdb_prod_html_list = list()
+i = 1
+for (url in best_pic_noms$imdb_url) {
+  imdb_prod_html_list[[i]] = url %>% file.path("companycredits?ref_=ttfc_sa_3") %>% read_html()
+  i = i+1
+}
 
-producers = imdb_html_list %>%
-  lapply(production_companies_imdb_fun) %>% 
+
+imdb_producers <- function(html_object) {
+  html_object %>%
+    html_nodes("#company_credits_content > ul") %>%
+    html_text() %>%
+    .[1] %>%
+    str_split(pattern = "\n") %>%
+    unlist %>% str_trim() %>% str_squish() %>%
+    `[` (.!="") %>%
+    paste(collapse = "|") %>%
+    str_remove_all("\\s*\\([^\\)]+\\)")
+}
+
+# producers = imdb_html_list %>%
+#   lapply(production_companies_imdb_fun) %>% 
+#   unlist()
+
+producers = imdb_prod_html_list %>%
+  lapply(imdb_producers) %>% 
   unlist()
-
 
 
 best_pic_noms_final = best_pic_noms %>% mutate(producers = producers) %>%

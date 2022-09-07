@@ -59,7 +59,12 @@ rankings_tib_final2 = rankings_tib_final %>% mutate(imdb_link = paste0("https://
 
 get_rating = function(link){
   link %>% read_html() %>% 
-    html_nodes(xpath = "//*[@id='__next']/main/div/section[1]/section/div[3]/section/section/div[1]/div[2]/div/div[1]/a/div/div/div[2]/div[1]/span[1]") %>%
+    # old version
+    # html_nodes(xpath = "//*[@id='__next']/main/div/section[1]/section/div[3]/section/section/div[1]/div[2]/div/div[1]/a/div/div/div[2]/div[1]/span[1]") %>%
+    # new version
+    html_nodes("#__next > main > div > section.ipc-page-background.ipc-page-background--base.sc-ca85a21c-0.efoFqn > section > div:nth-child(4) > section > section > div.sc-80d4314-0.fjPRnj > div.sc-db8c1937-0.eGmDjE.sc-80d4314-3.iBtAhY > div > div:nth-child(1) > a") %>% 
+    html_nodes("div > div") %>% 
+    html_nodes("div.sc-7ab21ed2-0.fAePGh > div.sc-7ab21ed2-2.kYEdvH > span.sc-7ab21ed2-1.jGRxWM") %>%
     html_text()
 }
 
@@ -70,9 +75,6 @@ get_rating = function(link){
 # *cough* rotten tomatoes *cough*
 all_user_ratings = rankings_tib_final2$imdb_link %>% 
   parallel::mclapply(get_rating, mc.cores = parallel::detectCores() - 1)
-
-
-
 
 
 
