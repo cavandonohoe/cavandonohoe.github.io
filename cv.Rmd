@@ -21,10 +21,12 @@ library(tidyverse)
 library(readxl)
 library(rmarkdown)
 library(readxl)
+library(googlesheets4)
 # coding in the resume
 
-resume = read_excel("data/resume.xlsx")
-# shell.exec("T:/Cavan/Test Folder/Resume.xlsx")
+# resume = read_excel("data/resume.xlsx")
+resume = read_sheet("https://docs.google.com/spreadsheets/d/1JD4Vqc8QDHFYzcrbEUrq6Fc0hKRcmqY0ASFdZvlMxl8")
+
 resume_v1.1 = resume %>% mutate(start.date = as.Date(paste(start, "1", sep="-"), format="%B %Y-%d")) %>%
   mutate(section_num = row_number())
 
