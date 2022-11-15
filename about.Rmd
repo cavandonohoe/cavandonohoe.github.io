@@ -8,6 +8,13 @@ editor_options:
   chunk_output_type: console
 ---
 
+Check this out
+<html>
+<button onclick="window.location.href='https://w3docs.com';">
+Click here
+</button>
+</html>
+
 [Facebook](https://www.facebook.com/cavandonohoe)
 
 [Instagram](https://www.instagram.com/cavandonohoe)
