@@ -8,20 +8,37 @@ editor_options:
   chunk_output_type: console
 ---
 
-Check this out
 <html>
-<button onclick="window.location.href='https://w3docs.com';">
-Click here
+<button onclick="window.location.href='https://www.facebook.com/cavandonohoe';">
+Facebook
+</button>
+</html>
+<br>
+<html>
+<button onclick="window.location.href='https://www.instagram.com/cavandonohoe';">
+Instagram
+</button>
+</html>
+<br>
+<html>
+<button onclick="window.location.href='https://www.linkedin.com/in/cavan-donohoe';">
+LinkedIn
+</button>
+</html>
+<br>
+<html>
+<button onclick="window.location.href='https://github.com/cavandonohoe';">
+GitHub
 </button>
 </html>
 
-[Facebook](https://www.facebook.com/cavandonohoe)
+<!-- [Facebook](https://www.facebook.com/cavandonohoe) -->
 
-[Instagram](https://www.instagram.com/cavandonohoe)
+<!-- [Instagram](https://www.instagram.com/cavandonohoe) -->
 
-[LinkedIn](https://www.linkedin.com/in/cavan-donohoe)
+<!-- [LinkedIn](https://www.linkedin.com/in/cavan-donohoe) -->
 
-[GitHub](https://github.com/cavandonohoe)
+<!-- [GitHub](https://github.com/cavandonohoe) -->
 
 *What do we live for, if not to make life less difficult for each other?*
 - George Eliot
