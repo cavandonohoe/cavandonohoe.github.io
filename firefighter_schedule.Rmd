@@ -57,7 +57,7 @@ years_till_retirement = 65 - (lubridate::year(Sys.Date()) - 1994)
 #            type == "weekend")
 ```
 
-Jason and Wyett's Work Schedule for the next `r years_till_retirement` years (Retire at 65 right?)
+Jason and Wyett's Work Schedule for the next `r years_till_retirement` years (Retire at 65 right?). Even though they both started in 2021 and 2022, respectively, I love being around them when someone thanks them for their service and they literally don't know what to say next. I suppose they need to legit save someone from a brush fire to start saying "you're welcome" with confidence.
 
 This is based on the Kelly Schedule.
 
