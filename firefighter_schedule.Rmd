@@ -23,12 +23,14 @@ library(DT)
 
 
 ```{r}
-jasons_work_schedule =
+
+# C schedule
+wyetts_work_schedule =
   tibble(days = seq.Date(as.Date("2022-01-18"), by = 1, length.out = 13509),
          bool = rep(c(1, 0, 1, 0, 1, 0, 0, 0, 0), 13509 / 9))
 
 
-segments_and_weekends = jasons_work_schedule %>%
+segments_and_weekends_c = wyetts_work_schedule %>%
   mutate(type = 
            case_when(
              # first day of 'weekend'
@@ -52,17 +54,47 @@ segments_and_weekends = jasons_work_schedule %>%
 years_till_retirement = 65 - (lubridate::year(Sys.Date()) - 1994)
 
 # fun code to check our overlap
-# segments_and_weekends %>% 
+# segments_and_weekends_c %>% 
 #   filter(day_of_week %in% c("Saturday", "Sunday") &
 #            type == "weekend")
+
+# B Schedule
+jasons_work_schedule =
+  tibble(days = seq.Date(as.Date("2022-12-29"), by = 1, length.out = 13509),
+         bool = rep(c(1, 0, 1, 0, 1, 0, 0, 0, 0), 13509 / 9))
+
+
+segments_and_weekends_b = jasons_work_schedule %>%
+  mutate(type = 
+           case_when(
+             # first day of 'weekend'
+             (lead(bool, n = 1) == lead(bool, n = 2) &
+                lead(bool, n = 2) == lead(bool, n = 3) |
+                # second day of 'weekend'
+                lag(bool, n = 1) == lead(bool, n = 1) &
+                lead(bool, n = 1) == lead(bool, n = 2) |
+                # third day of 'weekend'
+                lag(bool, n = 2) == lag(bool, n = 1) &
+                lag(bool, n = 1) == lead(bool, n = 1) |
+                # fourth day of 'weekend'
+                lag(bool, n = 1) == lag(bool, n = 2) &
+                lag(bool, n = 2) == lag(bool, n = 3)) &
+               bool == 0 ~ "weekend",
+             TRUE ~ "segment"),
+         work_status = case_when(bool == 1 ~ "working",
+                                 TRUE ~ "off"),
+         day_of_week = weekdays(days))
+
 ```
 
 Jason and Wyett's Work Schedule for the next `r years_till_retirement` years (Retire at 65 right?). Even though they both started in 2021 and 2022, respectively, I love being around them when someone thanks them for their service and they literally don't know what to say next. I suppose they need to legit save someone from a brush fire to start saying "you're welcome" with confidence.
 
 This is based on the Kelly Schedule.
 
+## Jason's:
+
 ```{r}
-segments_and_weekends %>%
+segments_and_weekends_b %>%
   filter(days >= as.Date(Sys.Date())) %>% 
   select(date = days, day_of_week, work_status, type) %>% 
   datatable(filter = "top", extensions = "Buttons",
@@ -70,4 +102,14 @@ segments_and_weekends %>%
                            scrollY = "400px", scrollX = TRUE))
 ```
 
+## Wyett's:
+
+```{r}
+segments_and_weekends_c %>%
+  filter(days >= as.Date(Sys.Date())) %>% 
+  select(date = days, day_of_week, work_status, type) %>% 
+  datatable(filter = "top", extensions = "Buttons",
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE))
+```
 
