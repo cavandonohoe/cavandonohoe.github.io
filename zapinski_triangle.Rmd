@@ -1,0 +1,83 @@
+---
+title: "Zapinski's Triangle"
+editor_options: 
+  chunk_output_type: console
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+---
+
+
+```{r setup, include=FALSE}
+# Set default chunk output
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE,
+  results = "asis"
+)
+```
+
+```{r libraries}
+library(tidyverse)
+```
+
+
+```{r include=FALSE}
+triangle_list = list(x1 = c(0,0), x2 = c(.5, 1), x3 = c(1,0))
+
+midpoint = function(x,y) {
+  c((x[1] + y[1]) / 2, (x[2] + y[2]) / 2)
+}
+
+test_list = list()
+starting_point = c(.5,.25)
+for (i in 1:20000) {
+  if (i == 1) {
+    middle_point = starting_point
+  } else {
+    random_point = sample(triangle_list, 1) %>% unlist
+    middle_point = midpoint(test_list[[i-1]], random_point)
+  }
+  test_list[[i]] = middle_point
+}
+
+starting_triangle = triangle_list %>% lapply(function(z) tibble(x = z[1], y = z[2])) %>% bind_rows()
+
+zap_triangle = test_list %>% lapply(function(z) tibble(x = z[1], y = z[2])) %>% bind_rows() %>% bind_rows(starting_triangle, .)
+```
+
+n = 10
+
+```{r}
+zap_triangle %>%
+  mutate(time = row_number()) %>%
+  filter(time <= 10) %>%
+  ggplot(aes(x, y)) + geom_point()
+```
+
+n = 100
+
+```{r}
+zap_triangle %>%
+  mutate(time = row_number()) %>%
+  filter(time <= 100) %>%
+  ggplot(aes(x, y)) + geom_point()
+```
+
+n = 1000
+
+```{r}
+zap_triangle %>%
+  mutate(time = row_number()) %>%
+  filter(time <= 1000) %>%
+  ggplot(aes(x, y)) + geom_point()
+```
+
+n = 20000
+
+```{r}
+zap_triangle %>%
+  mutate(time = row_number()) %>%
+  filter(time <= 20000) %>%
+  ggplot(aes(x, y)) + geom_point()
+```
