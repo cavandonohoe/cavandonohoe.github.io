@@ -1,5 +1,5 @@
 ---
-title: "Zapinski's Triangle"
+title: "Sierpinski Triangle"
 editor_options: 
   chunk_output_type: console
 output:
@@ -9,11 +9,13 @@ output:
 ---
 
 
+So I saw [this video](https://www.youtube.com/watch?v=Fgu5-3ihVVI) the other day while strolling through my feed. It was a video of the demonstration of the Sierpinski Triangle and how you can make it with a bunch of points. The idea is you draw the 3 vertices, and then choose a random point. Then take the midpoint between a random vertex and that point, then plot that point. Then for the new point take a random vertex and plot the midpoint again. Then keep doing that over and over again until something beautiful appears.
+
 ```{r setup, include=FALSE}
 # Set default chunk output
 knitr::opts_chunk$set(
   echo = FALSE, message = FALSE, warning = FALSE,
-  results = "asis"
+  results = "asis", fig.height = 4, fig.width = 4
 )
 ```
 
@@ -46,7 +48,18 @@ starting_triangle = triangle_list %>% lapply(function(z) tibble(x = z[1], y = z[
 zap_triangle = test_list %>% lapply(function(z) tibble(x = z[1], y = z[2])) %>% bind_rows() %>% bind_rows(starting_triangle, .)
 ```
 
-n = 10
+The first 3 points
+
+### n = 3
+
+```{r}
+zap_triangle %>%
+  mutate(time = row_number()) %>%
+  filter(time <= 3) %>%
+  ggplot(aes(x, y)) + geom_point()
+```
+
+### n = 10
 
 ```{r}
 zap_triangle %>%
@@ -55,7 +68,7 @@ zap_triangle %>%
   ggplot(aes(x, y)) + geom_point()
 ```
 
-n = 100
+### n = 100
 
 ```{r}
 zap_triangle %>%
@@ -64,7 +77,7 @@ zap_triangle %>%
   ggplot(aes(x, y)) + geom_point()
 ```
 
-n = 1000
+### n = 1000
 
 ```{r}
 zap_triangle %>%
@@ -73,7 +86,7 @@ zap_triangle %>%
   ggplot(aes(x, y)) + geom_point()
 ```
 
-n = 20000
+### n = 20000
 
 ```{r}
 zap_triangle %>%
