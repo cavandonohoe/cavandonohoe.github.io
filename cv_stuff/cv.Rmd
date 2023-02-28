@@ -6,7 +6,7 @@ output:
   pagedown::html_resume:
     self_contained: true
     css:
-      - cv_css.css # change to 'cv_css.css' if you just want to knit this Rmd individually
+      - ../cv_stuff/cv_css.css
       - resume
 knit: pagedown::chrome_print
 ---
