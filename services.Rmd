@@ -6,15 +6,16 @@ output:
       in_header: header/header.html
 ---
 
-If you have read the *About Me* section, you know of my passion for Data Science and making people's work easier. I have realized some older systems need improving. Sometimes Microsoft Excel (even when you have formulas), can bog down the run time given all the lingering manual work.
+If you have read the [*About Me*](https://cavandonohoe.github.io/services.html) section, you know of my passion for Data Science and making people's work easier. I have realized some older systems need improving. Sometimes Microsoft Excel (even when you have formulas), can bog down the run time given all the lingering manual work.
 
 R and RStudio have made my automation goals extremely achievable. I have helped with tasks such as:
 
 - Help actuarial teams improve their rate adjustment process (8 hours a week down to 1 minute)
 - Help accounting teams clean and analyze QuickBooks data (10 hours a week down to 30 seconds)
 - Help financial teams send out summary reports (4 hours a week down to 1 minute)
+- Make R packages with version control to document various analyses
 
-Let's have a conversation so I can help your team improve your workflow. 
+Let's have a conversation so I can help improve your team's workflow. 
 
 - <i class="fa fa-envelope"></i> cavandonohoe@gmail.com
 - <i class="fa fa-github"></i> [github.com/cavandonohoe](https://github.com/cavandonohoe)
