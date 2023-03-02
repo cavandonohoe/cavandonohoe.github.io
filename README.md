@@ -32,7 +32,3 @@ Check out my website at <https://cavandonohoe.github.io>
 - [Confederate Statue
   Analysis](https://github.com/cavandonohoe/confederate_statues)
 - [CV](https://cavandonohoe.github.io/cv.html)
-
-Also check out a [side
-project](https://github.com/cavandonohoe/confederate_statues) where I
-looked at Wikipedia for when confederate statues were created.
