@@ -1,0 +1,194 @@
+---
+title: "Cavan Donohoe's Resume"
+author: Cavan Donohoe
+date: "`r Sys.Date()`"
+output:
+  pagedown::html_resume:
+    self_contained: true
+    css:
+      - ./cv_stuff/cv_css.css
+      - resume
+knit: pagedown::chrome_print
+---
+
+```{r background code, echo=FALSE, message=FALSE, error=FALSE, warning=FALSE}
+# note for future cavan:
+# you have to render this individually instead of just building the website
+# that way the pdf version gets updated as well
+
+library(glue)
+library(tidyverse)
+library(readxl)
+library(rmarkdown)
+library(readxl)
+library(googlesheets4)
+# coding in the resume
+
+# resume = read_excel("data/resume.xlsx")
+resume = read_sheet("https://docs.google.com/spreadsheets/d/1JD4Vqc8QDHFYzcrbEUrq6Fc0hKRcmqY0ASFdZvlMxl8")
+
+resume_v1.1 = resume %>% mutate(start.date = as.Date(paste(start, "1", sep="-"), format="%B %Y-%d")) %>%
+  mutate(section_num = row_number())
+
+resume_v2 = resume_v1.1 %>% pivot_longer(starts_with('description'),
+                                         names_to = 'description_num',
+                                         values_to = 'description',
+                                         values_drop_na = TRUE)
+
+resume_v3 = resume_v2 %>% mutate(start = ifelse(is.na(start), "", start), end=ifelse(is.na(end), "", end)) %>% 
+  mutate(time_period = case_when(start=="" ~ end, 
+                                 end == "" & section=="Awards" ~ start,
+                                 TRUE ~ paste(start, end, sep=" - "))) %>% 
+  mutate(description_paste = ifelse(section!="About Me", paste("-", description), description)) %>% 
+  filter(in_resume)
+
+positions_collapsed_bullets = resume_v3 %>%
+  mutate(group_num = cur_group_id()) %>%
+  group_by(section, title, location, institution, time_period, section_num) %>% 
+  summarise(description_section = paste(description_paste, collapse = "\n")) %>% arrange(section_num)
+
+positions_collapsed_bullets_v1.1 = positions_collapsed_bullets %>% ungroup() %>% 
+  mutate(description_section = case_when(section == "Skills" ~ gsub(x=description_section, pattern= "\\n", replacement = "\n\n"), 
+                                         section %in% c("Awards", "Credentials") ~ gsub(x=description_section, pattern= "- ", replacement = ""),
+                                         TRUE ~ description_section)) %>% 
+  replace(is.na(.), "N/A")
+
+# dealing with hyperlinks
+positions_collapsed_bullets_v1.2 = positions_collapsed_bullets_v1.1 %>% 
+  mutate(description_section = gsub(x=description_section, pattern = "Project Presentation", 
+                                    replacement = 
+                                      "[Project Presentation](http://www.math.ucla.edu/~actuary/caseCompetition/Case%20Comp%202018%20-%20Team%20UCI%20Presentation.pdf)")) %>% 
+  mutate(description_section = gsub(x=description_section, pattern = "Project Memorandum", 
+                                    replacement = 
+                                      "[Project Memorandum](http://www.math.ucla.edu/~actuary/caseCompetition/Case%20Comp%202018%20-%20Team%20UCI%20Executive%20Summary.pdf)"))
+
+positions_collapsed_bullets_v1.3 = positions_collapsed_bullets_v1.2 %>% 
+  mutate(description_section = case_when(grepl(x=description_section, pattern = "\\[keep\\]") ~ "N/A",
+                                         TRUE~ description_section))
+
+positions_collapsed_bullets_final = positions_collapsed_bullets_v1.3
+
+```
+
+Aside
+================================================================================
+
+
+
+[Back to Home Page](https://cavandonohoe.github.io/)
+
+[PDF version](https://github.com/cavandonohoe/cavandonohoe.github.io/raw/main/cv.pdf)
+
+
+
+
+Contact Info {#contact}
+--------------------------------------------------------------------------------
+
+- <i class="fa fa-envelope"></i> cavandonohoe@gmail.com
+- <i class="fa fa-github"></i> [github.com/cavandonohoe](https://github.com/cavandonohoe)
+- <i class="fa fa-linkedin"></i> [linkedin.com/in/cavan-donohoe/](https://www.linkedin.com/in/cavan-donohoe/)
+- <i class="fa fa-phone"></i> (805) 404-3321
+
+
+Skills {#skills}
+--------------------------------------------------------------------------------
+
+
+```{r skills, echo=FALSE, results='asis'}
+positions_collapsed_bullets_final %>% filter(section=="Skills") %>% glue_data("{description_section}", 
+                                                                        "\n\n")
+```
+
+
+Disclaimer {#disclaimer}
+--------------------------------------------------------------------------------
+
+This resume was made with the R package [**pagedown**](https://github.com/rstudio/pagedown).
+
+Last updated on `r Sys.Date()`.
+
+
+
+Main
+================================================================================
+
+
+
+Cavan Donohoe {#title}
+--------------------------------------------------------------------------------
+
+### Looking to improve your company's data workflow
+
+
+```{r summary, echo=FALSE, results='asis'}
+positions_collapsed_bullets_final %>% filter(section=="About Me") %>% glue_data("{description_section}", "\n\n")
+```
+
+
+Education {data-icon=graduation-cap data-concise=true}
+--------------------------------------------------------------------------------
+
+
+```{r education, echo=FALSE, results='asis'}
+positions_collapsed_bullets_final %>% filter(section=="Education") %>% glue_data("### {title}", "\n\n",
+                                                                    "{institution}",
+                                                                    "\n\n",
+                                                                    "{location}",
+                                                                    "\n\n",
+                                                                    "{time_period}",
+                                                                    "\n\n",
+                                                                    "{description_section}", 
+                                                                    "\n\n",
+                                                                    .na="")
+```
+
+
+
+Professional Experience {data-icon=suitcase}
+--------------------------------------------------------------------------------
+
+
+```{r professional experience, echo=FALSE, results='asis'}
+positions_collapsed_bullets_final %>% filter(section=="Experience") %>% glue_data("### {title}", "\n\n",
+                                                                    "{institution}",
+                                                                    "\n\n",
+                                                                    "{location}",
+                                                                    "\n\n",
+                                                                    "{time_period}",
+                                                                    "\n\n",
+                                                                    "{description_section}", 
+                                                                    "\n\n",
+                                                                    .na="")
+```
+
+Awards {data-icon=medal}
+--------------------------------------------------------------------------------
+
+
+```{r awards, echo=FALSE, results='asis'}
+positions_collapsed_bullets_final %>% filter(section=="Awards") %>% glue_data("### {description_section}", 
+                                                                              "\n\n",
+                                                                              "{institution}",
+                                                                              "\n\n",
+                                                                              "{location}",
+                                                                              "\n\n",
+                                                                              "{time_period}",
+                                                                              "\n\n")
+```
+
+Credentials {data-icon=th-list}
+--------------------------------------------------------------------------------
+
+
+```{r credentials, echo=FALSE, results='asis'}
+positions_collapsed_bullets_final %>% filter(section=="Credentials") %>% glue_data("### {description_section}", 
+                                                                              "\n\n",
+                                                                              "{institution}",
+                                                                              "\n\n",
+                                                                              "{location}",
+                                                                              "\n\n",
+                                                                              "{time_period}",
+                                                                              "\n\n")
+```
+
