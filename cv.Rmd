@@ -6,7 +6,7 @@ output:
   pagedown::html_resume:
     self_contained: true
     css:
-      - ../cv_stuff/cv_css.css
+      - ./cv_stuff/cv_css.css
       - resume
 knit: pagedown::chrome_print
 ---
@@ -77,7 +77,7 @@ Aside
 
 [Back to Home Page](https://cavandonohoe.github.io/)
 
-[PDF version](https://github.com/cavandonohoe/cavandonohoe.github.io/raw/main/cv_stuff/cv.pdf)
+[PDF version](https://github.com/cavandonohoe/cavandonohoe.github.io/raw/main/cv.pdf)
 
 
 
