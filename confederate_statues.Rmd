@@ -38,15 +38,13 @@ This was motivated by my recent trip to South Carolina and seeing my first confe
 
 Check these out btw:
 
-1. https://www.youtube.com/watch?v=dOkFXPblLpU
-2. https://www.youtube.com/watch?v=WClgR6Q0aPE
-3. https://www.theguardian.com/us-news/2017/aug/16/confederate-monuments-civil-war-history-trump
+* https://www.youtube.com/watch?v=dOkFXPblLpU
+  - how the United Daughters of the Confederacy brainwashed the youth by pretending slavery wasn't the cause of the Civil War
+* https://www.youtube.com/watch?v=WClgR6Q0aPE
+  - the reason why each peek of confederate statues were created
+* https://www.theguardian.com/us-news/2017/aug/16/confederate-monuments-civil-war-history-trump
+  - how each peek and why these statues were created
 
-((1)) is about how the United Daughters of the Confederacy brainwashed the youth by pretending slavery wasn't the cause of the Civil War
-
-((2)) talks about the reason why each peek of confederate statues were created
-
-((3)) also talks about each peek and why these statues were created
 
 ```{r}
 all_dates = readr::read_csv("https://raw.githubusercontent.com/cavandonohoe/confederate_statues/main/data/confederate_statue_dates.csv")
