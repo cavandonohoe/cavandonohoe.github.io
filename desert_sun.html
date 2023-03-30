@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>desert_sun.knit</title>
+
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Cavan Donohoe</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="fa fa-info"></span>
+     
+    About Me
+  </a>
+</li>
+<li>
+  <a href="services.html">
+    <span class="fa fa-wrench"></span>
+     
+    Services
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-laptop"></span>
+     
+    Projects
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="imdb_top_250_tv_series.html">IMDb TV Series</a>
+    </li>
+    <li>
+      <a href="best_pic_vs_top_1000.html">Best Picture and Top 1000 Box Office</a>
+    </li>
+    <li>
+      <a href="top_250_imdb_with_rt.html">Top 250 IMDb Movies with Rotten Tomato Scores</a>
+    </li>
+    <li>
+      <a href="best_picture_nominees.html">Best Picture Nominees</a>
+    </li>
+    <li>
+      <a href="firefighter_schedule.html">Jason and Wyett's Firefighter Schedule</a>
+    </li>
+    <li>
+      <a href="tohs_reunion.html">TOHS Class of 2012 Reunion</a>
+    </li>
+    <li>
+      <a href="sierpinski_triangle.html">Sierpinski Triangle</a>
+    </li>
+    <li>
+      <a href="my_travels.html">Get Bloggy With It</a>
+    </li>
+    <li>
+      <a href="desert_sun.html">script_mak</a>
+    </li>
+    <li>
+      <a href="confederate_statues.html">When Were Confederate Statues Erected?</a>
+    </li>
+    <li>
+      <a href="cv.html">CV</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<p>Desert Sun Ep. 3 The Anamorphosis Series</p>
+<p>written by</p>
+<p>Makenna Perkal</p>
+<p>35 Via Solano, Rancho Santa Margarita, CA 92688 <a
+href="mailto:Productions.anamorphosis@gmail.com"
+class="email">Productions.anamorphosis@gmail.com</a>
+www.anamorphosisproductions.com INT. LIZ’S CAR, ELAPSING TIME UNTIL
+PRESENT MOMENT Montage. Liz drives as Maggie drooling while napping,
+drinks her water bottle, writes. Maggie is driving, bored out of her
+mind. She throws something at a Liz sleeping. Liz wakes up, throws it
+back and rolls over. MAGGIE I’m bored. Hang with me. Liz Do you hate me?
+MAGGIE Never. Liz You’re acting like it. Maggie makes a face of disgust
+and sits back in her seat. She takes a sip of her water bottle. Title.
+EXT. REST STOP with Restaurant, night, Hours later The girls look like
+they could’ve been hit by the bus they’re so tired. Wide, 1 medium of
+Maggie, 2 shot. Maggie If I don’t eat, I’m going to morph. Stranger Into
+what? Liz A raging bitch. They both stare silently, waiting for their
+privacy. Stranger doesn’t get it. Maggie exits frame and Liz follows.
+Tracking two shot. Maggie People have no boundaries nowadays. Liz Maybe
+he wanted to be friends? Maggie Maybe… Liz Isn’t it weird how when we
+aren’t interested in someone, they’re clingy or unbecoming? maggie Maybe
+we’re the problem. They both think. Then at the same time realize it’s
+their turn to be seated. Maggie’s phone rings. It’s her Grandfather.
+MAGGIE It’s my Grandpa. Liz See you in a minute. Liz follows the server
+to be seated. EXT. Bus stOP WITH diner, night, moments LATER Maggie
+yells into the phone, for her Grandpa is hard of hearing. Maggie Hey
+Grandpa! How are you? Grandpa Hello?? MAGGIE (beat. Then louder) Hey
+Grandpa! How are you doing? Grandpa (vo) Good, I’m good honey. How are
+you? MAGGIE I’m good. We just got to Joshua Tree. Grandpa Where? MAGGIE
+Germany. GRANDPA I’ve been there. Went there in 1996 with your
+Grandmother. MAGGIE Any highlights? GRANDPA It’s funny, I just remember
+spending time with your Grandmother. MAGGIE That’s so sweet, Grandpa.
+Grandpa And the Holocaust museums. Maggie Less romantic. GRANDPA What
+was that honey? MAGGIE LESS ROMANTIC. It was a joke. GRANDPA Ahhhh, a
+funny. You have a boyfriend yet? MAGGIE Nope. No boyfriend, flying solo.
+GRANDPA Oy vey. Well alright. But just remain open. MAGGIE I will,
+thanks Grandpa. GRANDPA I love you. Call soon. MAGGIE I will. I love you
+bunches. GRANDPA I love you. Bye now. INT. DINER, MOMENTS LATER Liz is
+sitting alone in a booth directly in front of where Maggie is standing
+outside. She takes a moment after the phone call. As Maggie walks away,
+a man sits down with Liz. Dan Hey, can I sit here for a moment? Liz
+Someone’s actually / coming right back. He sits down. Liz / Okaaaay. Dan
+Look, I don’t want to be intrusive, I just would love to talk to you for
+a minute. What’s your name? Liz Liz. DAN Nice to meet you, I’m Dan. Liz
+Nice to meet you. The shake hands. Maggie sees this in the wide. Her jaw
+drops. She quickly closes it and tries to give Liz space. DAN Are you
+staying here or passing through? Liz We’re going to Joshua Tree thirty
+miles North of here. dan For the weekend? Liz I’m moving there for a
+year. A long weekend for my friend. Dan Wow. You get a new job? Liz My
+job is actually remote and I wanted a change of scenery. Pretty lucky.
+Dan Pretty cool. Liz is touched. Maggie walks up, looking a bit
+exhausted. Liz How was it? Maggie Oh you know, sad. Liz releases a
+“mmm.” She gets it. Maggie Are you joining us? Liz No, he’s - Dan Just
+getting her number? Maggie Totally dropped something. Or something.
+Maggie walks away. Dan Can I have your number? Liz Okay, sure. She
+writes it down. Dan takes the paper and folds it. Wide. Maggie is back
+outside looking at her phone. Dan knocks on the window. Dan You can come
+back now! Maggie Thank you for the invite. Dan Of course, I kept your
+seat warm for ya. This made Liz laugh. He soaks it in as Maggie comes
+back. Dan I’m Dan. Maggie Maggie. Nice to meet you. (she sits) Anything
+we should order here in particular? Dan Pancakes. Maggie And a Bloody
+Mary. Easiest decision all day. Liz I’m in. They close their menus. INT.
+AIR B &amp; B, HOURS LATER Maggie This place is cute. Liz I love it
+here. MAGGIE I can’t believe this is your home for the next year. Liz
+Honestly, I can’t either. MAGGIE I’m so proud of you - you’re living
+your dream. Liz Thank you for coming with me for the first weekend of my
+journey. MAGGIE Thank you for letting me cramp your style. Liz You could
+never. MAGGIE So you wanna hang with that guy tomorrow? He seemed nice.
+Liz Yeah, I think I would. MAGGIE Fabulous. He should text you within -
+Liz Already did. MAGGIE Okay queen. I’m gunna try and get some rest. See
+you in the morning. Love you, mean it. Liz Love you, say it back. MAGGIE
+Oh, so sorry. I love you. The girls exit frame. Int. Air B &amp; B, the
+next morning, 10 am Maggie’s sitting at her desk over a blank page. Her
+phone rings, it’s her grandfather. Maggie Hey Grandpa, how are you
+doing? Grandpa Hey Honey! Maggie How are you doing?? Grandpa Good,
+honey. How are you? MAGGIE Doing okay. Trying to write, but I just can’t
+think of anything to say that has the potential of being interesting.
+GRANDPA There’s a story of a poet that hears her work in the wind. She
+waits until a poem comes to her, then she runs with the inspiration and
+completes as much as she can. Maybe now just isn’t the right moment to
+write. MAGGIE Maybe you’re right… thanks Grandpa. GRANDPA You’re
+welcome, sweetie. What else is going on? Maggie Got to Joshua Tree last
+night with Liz. GRANDPA Who? Maggie (louder) Liz. My best friend.
+GRANDPA Besides me, you mean. Maggie Well obviously, but don’t tell her.
+GRANDPA How come? MAGGIE I don’t want to hurt her feelings! GRANDPA Eh,
+you win some you lose some. Anything else? Got a boyfriend? MAGGIE Still
+no boyfriend, but if I get one tonight, you’ll be the first person I
+call. GRANDPA Huh? Maggie No, no boyfriend. GRANDPA Alright honey. Well
+have a great day. Okay? I love you. MAGGIE I love you too, Grandpa.
+Thanks for believing in me. GRANDPA Bye bye now. Maggie Hey Grandpa?
+GRANDPA Yeah? Maggie Will the missing of Grandma ever get easier?
+GRANDPA Oh… you know, you two were very close. I think eventually you’ll
+miss her and long for her, but it won’t ache as bad as it does now. But,
+I also told you that years ago. Has it gotten any easier over the last
+fourteen years? MAGGIE The first year felt like a blur… I definitely
+feel better than then. GRANDPA Well the first year is full of firsts -
+birthdays, Hanukah, anniversaries… the first year is always the worst. I
+have to be honest with you though - Maggie Always. Grandpa Always. It
+won’t ever go away completely, but I think that’s because love can’t be
+destroyed. It has to morph into something else to fill the space. Maybe
+try loving someone else the way you loved her. MAGGIE I love you that
+much. GRANDPA Obviously, but you’ve always loved me that much. Maybe
+someone else… maybe, Maggie Oh god… Grandpa A man… MAGGIE Okay, I’m out.
+Love you, Grandpa. Grandpa Love you too, sweetie. Maybe the person is
+yourself. MAGGIE Huh? GRANDPA Maybe you love yourself more. MAGGIE Huh,
+yeah. Thanks. I’ll think about that. GRANDPA Love you, bye bye now.
+MAGGIE Bye. Maggie hangs up the phone and doesn’t think on this. Liz
+knocks on the door. Liz Any luck? Maggie I’m just dry. What if I can’t
+sell another poem again? Liz Mags, you’re spiraling. MAGGIE Okay, okay
+you’re right. Liz You’ve sold so many and won big slams. You just need
+to be patient. And you’re on vacation, you don’t need to be working
+right now. Maybe it’s refresh time. MAGGIE Okay… well I was reading
+through some old journals and I have so many intense poems that I have
+zero idea who they’re about? Liz Try me. Maybe I’ll be able to decipher.
+Maggie It’s titled, I was your price tag. “Softness is the new weakness
+I will avoid Because of all the jocks that stole my flirtations The
+artists that plagued me with their facades and all the lost souls that
+used me to climb back to the Earth. I am not your stepping stone to a
+better life You can’t use me and move on stronger My love comes with a
+price and Your robbery has left me with a deficit.” Liz I’m not laughing
+at the poem. I just have no idea who that is about. MAGGIE I know, I
+know. Me either. Anyway, distract me from my feelings of being obsolete.
+Liz Honestly, perfect transition. Dan invited us to a party tonight.
+Wanna walk around and grab dinner first? Maggie FUN. Yes,
+absolutely.<br />
+Liz I really don’t want to make a big deal of hanging with this guy.
+It’s not even a real date - you’ll be there. MAGGIE Still a date, but we
+won’t make a big deal of it. I want to take pictures to properly
+document our first full day here. So we have to look cute. Liz Down. Be
+ready by 3? Maggie Mhmm. Int. Air B &amp; B, Liz’s room, 1 MINUTES LATER
+Shots of clothes being flown across the room. Piles of clothes on the
+floor. Quick shots of Liz coming out + responses from Maggie as she lays
+on the bed with a flask. MAGGIE Not that one. Liz goes back. Comes out
+again in a new outfit. Maggie I don’t think so. Liz goes back. Comes out
+again in a new outfit. Maggie Strong contender. Liz goes back. Comes out
+again in a new outfit. MAGGIE Okay it’s perfect for a desert house
+party. Liz How would you know that? MAGGIE Because I’m a dreamer, and it
+fits in with the vision of tonight. Liz (shrugging off the logic) I’ll
+take it. Maggie gets up. MAGGIE I’m gunna go to that little store we
+passed to get snacks. Liz You want me to come with? MAGGIE Nah, take
+your time getting ready. Liz You do love me. MAGGIE I’VE LOVED YOU
+EVERYDAY FOR SIXTEEN YEARS. Liz Lol. MAGGIE But not enough to laugh out
+loud. I’ll “Always Remember Us This Way”. Liz Goodness, GO. Ext.
+Sidewalk, ten minutes later Maggie walks down the sidewalk and into a
+small little store. INT. SMALL STORE, MOMENTS LATER She grabs some
+crackers, cookies, one handle of Vodka, a bottle of rum, OJ and some
+eggs. She places them on the counter and gives an awkward smile. Cut to:
+Int. KITCHEN, AIR B &amp; B, TEN MINUTES LATER Maggie is finishing
+unpacking the eggs and OJ. She pours the rum into a flask. There are two
+cocktails on the counter, one is half way finished. Liz comes out ready
+for the evening. Maggie Okay you look incredible. And I still have to
+shower. Liz Twenty minutes and counting. Liz looks at her watch and sets
+a timer. Mags rises to the challenge. MAGGIE On it. Maggie finishes her
+drink and runs out. Cut to: INT. AIR B &amp; B, bathroom 10 MINUTES
+LATER Maggie is showering. Liz (v.o.) 10 minutes! Maggie Kay! Cut to:
+INT. AIR B &amp; B, BATHROOM 5 MINUTES LATER Liz is sitting on the couch
+playing Wordle. Liz Five! Actually, like four? Somewhere in between.
+Maggie (v.o.) You’re a goddess. INT. AIR B &amp; B, 19 minutes LATER Liz
+30 seconds!! Maggie comes stumbling out of the bedroom with one shoe on.
+Maggie I’m done. I’ve done it. Liz You’re victorious. MAGGIE I’m a
+champion. Liz How does it feel? MAGGIE Well, I’d like to thank my Mom,
+and best friend, you. Of course. Liz So sweet. MAGGIE And no one else,
+because the world is full of haters. Liz Okay, Plath. Let’s go. I’m
+getting hungry. EXT. Sidewalk, one hour LATER They walk in the same
+diner they went to before. Liz I know it’s not very adventurous, but I
+liked this place. Down to go again? Maggie Let’s do it. They enter the
+restaurant. INT. diner, moments later They sit at a different booth and
+look at the menu. Waiter What can I get started for ya? Maggie Rum and
+coke please. And the breakfast platter with waffles instead of pancakes.
+Thank you. Liz makes a face at Maggie’s drink order. Liz I’ll have the
+cheeseburger and fries please. The waiter walks away. Liz You really
+have to order a drink right now? Maggie I’m pre-gaming. And we’re on
+vacation. Live a little, join meeeeee. Liz I’m too nervous. Maggie It
+could help your nerves. Liz Okay, I’ll order one. But that’s it. Maggie
+Yessss. (the waiter walks by) Could we have two rum and cokes please?
+Waiter Sure thing. Cut to: Int. diner, MOMENTS LATER There are four
+empty rum and coke glasses, napkins on the table and the bill. Maggie
+I’ll get this one. Liz You sure? Maggie Yeah, you got basically nothing.
+Liz Let me throw you twenty bucks, the rum and cokes were more expensive
+than I thought they would be. MAGGIE Yeah, same. Thanks girl. How far
+are we from Dan’s party? Liz Fifteen minute walk. Maggie Incredible.
+Ext. House, thirty minutes LATER Maggie sips her water bottle and Liz
+stares at the door anxiously. Liz I’m nervous. Maggie He is lucky to
+spend time with you. Liz Oh god- MAGGIE I’m serious. You’re a catch. And
+he can see that. You ready? Liz Yes. Maggie rings the doorbell. Dan
+answers and gives Liz a big hug. Maggie (mouthing) See? Never question
+me. Liz rolls her eyes as Dan gives Maggie a hug hello. INt. House,
+moments later Maggie Straight Vodka please. Dan Like a shot? Maggie Like
+a double? Liz How do you do that? MAGGIE It’s like water. Liz Except
+it’s not. Dan We don’t have Vodka tonight, we have Rum, Bourbon and
+Seltzers. Liz Really? Hm, seltzer for me. Maggie Ohhhh, Bourbon for me.
+Dan A double? Liz is a little embarrassed of Maggie’s drink order.
+MAGGIE Good guess. Here, I’ll make mine, you can grab hers.<br />
+They share a nice, friendly moment. Maggie pours a full cup when Dan
+turns around. He hands her coke, she pretends to open it as Liz and Dan
+talk behind her. Dan How long have y’all known each other? Liz Since we
+were 11. Maggie So seventeen years? Dan Oh dang, that’s like me and my
+buddy over there, Gabe! (addressing Gabe) Hey! Come here. Gabe crosses
+over. Dan Meet Gabe, this is Liz and Maggie. Gabe Nice to meet you.
+Maggie You too. Gabe We were just talking about playing some adult hide
+and seek. You wanna play? Maggie YES. We love an excuse to be
+competitive. Liz Absolutely! We see someone exits, someone’s arms as
+they explain something as the girls speak via brainwaves. Maggie
+(thought VO) He’s cute. Liz (THOUGHT VO) Full support. MAGGIE (THOUGHT
+VO) Tonight is gunna be fun. They high five. title card: 3 hours LATER
+INT. HOUSE PARTY, 3 HOURS LATER The frame is the same, but Maggie is
+gone. Liz yells after her… Liz MAGS! Can I have some water? Maggie
+doesn’t reply. Liz Mags! Ugh, she’s such a germaphobe that I feel bad
+drinking out of her bottle. Gabe Isn’t she your best friend? Liz Yeah,
+but that’s why I’m thinking about her feelings. Dan You’re so nice. Liz
+I – ugh. Fine. She laughs off her frustration and drinks the bottle. She
+immediately spits the liquid all over her date. Dan What the hell?! Liz
+Vodka. That’s Vodka. Gabe What? Liz That’s straight fucking Vodka. Did
+she fill that here? Dan We don’t have Vodka tonight. Liz gets up as
+Maggie enters the room. Maggie Here I’ll take my bottle. Liz No, I’ll
+keep it. Can we talk outside? MAGGIE Sure? Hand it to me, drunk one. Liz
+No. MAGGIE Why are you acting so weird? Liz Why is it full of Vodka?
+MAGGIE What? Liz I took a sip- MAGGIE You drank out of my bottle?? I
+have like one boundary with you - Liz I know, I know - I’m sorry. MAGGIE
+Give me my bottle. Liz No! MAGGIE Yes! Give it to me. It’s mine! Liz
+What, are you four? Maggie reaches for the bottle, but Liz drunkenly
+doesn’t want to let go. They start playing tug of war over it. Maggie
+Give it to me! Liz Mags, you don’t need it. Let go! MAGGIE No! Liz Yes!
+MAGGIE No! Liz Yes! MAGGIE FINE. Maggie lets go and the bottle hits Liz
+hard in the face. EXT. House, moments later They are sitting on a curb
+in silence, Liz has an ice pack on her head. The bottle is next to Mags.
+Liz Do you think you’re an alcoholic? Maggie No. I don’t need it, it
+just makes things easier. Liz How much do you drink a day? MAGGIE I
+don’t know… Liz Mags. MAGGIE I don’t know - I don’t keep track. Liz How
+do you even afford to drink that much? MAGGIE Since I’ve gotten my new
+job, I haven’t had to worry about it. Before, it was part of my grocery
+bill. Liz Mags. You can’t live like that. MAGGIE Like what? Liz Numbing
+like that. All the time. Maggie It’s really not that bad. I think you’re
+over reacting. Liz I knew you drank throughout the day, but I didn’t
+realize that you were drinking constantly. Why? MAGGIE I’m fine. Thank
+you, but really. I just find it all boring. Liz What? MAGGIE Life.
+(beat) Don’t you find it all just boring? Liz Sometimes, but not all the
+time. (beat) Do you think you’re depressed? MAGGIE Sometimes. But isn’t
+everyone? I feel like I’m living with a clock in my face; counting down
+the time until my Grandpa dies. Every minute passed, he’s a minute
+closer. Liz You can’t think of it like that, Mags. MAGGIE What else is
+life worth living for if not the people we love? Liz Is being drunk all
+the time living? MAGGIE I’m not drunk all the time. Liz You’re not drunk
+off of a water bottle filled with vodka? MAGGIE Fine, I’m tipsy all the
+time. I have it under control. Liz I feel like I let you down a bit. For
+not saying something sooner about the partying. I always knew you drank
+a lot, but didn’t realize it was like this.<br />
+Maggie Don’t. I didn’t want you to worry when I know everything is fine.
+Liz Mags, I’m worried about you. I need you to talk to someone about
+this when you get back. You deserve to let this shit out. Promise me.
+MAGGIE I don’t know, Liz. I’m too messed up right now. Wide of them
+sitting on the curb holding hands. INT. Liz’s Bedroom, the next morning,
+9 am Mags is awake and writing in her journal. They are both in the same
+clothes as the night before. Liz wakes up. Liz Mags? Maggie Yeah? Liz
+Can today be your day one? Maggie What? Liz Can today be your first day
+sober? MAGGIE Liz, I’ve never been without you and we are about to be in
+different cities for a year. I don’t even think it’s healthy to go off
+cold-turkey like that. Liz Okay… Would you go stay somewhere for
+support? MAGGIE I don’t need to go somewhere, my god. I can barely
+afford this vacation, how am I supposed to go somewhere? Liz I’m sorry,
+that was stupid. What about AA? MAGGIE I’m not an alcoholic, Liz. Liz I
+think you are. MAGGIE I think you should keep your thoughts about this
+to yourself. Liz Woah, that’s never been our way. MAGGIE Well I’m
+calling it. Setting the boundary. I don’t want to talk about this. Liz
+Then I don’t want you to stay here. MAGGIE What? Liz What kind of friend
+would I be if I just let you drink yourself to death? MAGGIE Drink
+myself to death?? A little dramatic, don’t you think? Liz Secretly
+drinking straight vodka out of a water bottle is dramatic, don’t you
+think? MAGGIE You’re a partier. Liz I don’t drink vodka in bulk!! And I
+know that flask has rum in it. You’re not being honest with me. MAGGIE
+So now I’m a liar? Liz Am I wrong? MAGGIE You’re being an asshole,
+that’s for sure. Liz Don’t push me away like that. MAGGIE Don’t make me.
+Liz I’m not making you, I’m loving you. You just don’t like hearing the
+truth. You’re addicted to alcohol. MAGGIE I’m out of here. Liz You push
+everyone away, Mags. Don’t do it to me. I need you. MAGGIE Well
+congrats, you lost a friend today. I push people away, but you have
+always pushed people’s limits. Rather than thinking about me, why don’t
+you ever reflect on why you don’t have other friends, huh? There’s gotta
+be a reason why the only person you spend time with is so crazy that
+they can’t keep anyone in their life! You’re just as messed up as I am.
+Liz is taken aback. She’s hurt. Maggie realizes she took it one step too
+far.<br />
+Maggie I’m sorry. (covering up her anger about the alcoholism) I’m
+scared to be without you. Liz I am too. And you don’t have to leave,
+that was rude of me. Just promise me you’ll go to one meeting. MAGGIE
+You’re still pushing me. I don’t want to stay. You’re pulling this
+information out of your ass because you watch a lot of dramatic
+television. Liz Everyone knows to quit you need support.<br />
+MAGGIE I can’t change right now. Liz And I can’t be silent about this.
+Maggie picks up her luggage to leave. Liz I look forward to talking to
+you when you’re sober. They are both unsure if they are doing the right
+thing. INT. diner, ONE HOUR LATER A glass of bourbon gets placed down on
+the bar. Hands grab it. Medium of Maggie taking her first sip. She adds
+some from her flask. INT. Bus, one hour later Shots of Maggie drinking,
+crying and processing the conversation with Liz. She’s trying to write
+but can’t come up with anything. Int. Subway, five hours later Maggie is
+still drinking, very drunk. She tries to get up and drops all of her
+stuff. She is obviously inebriated. Ext. Sidewalk, ten hours later She
+stumbles walking home. Somehow she’s almost made it. Int. Living room,
+one day later Empty bottles lay around, the place is a mess, smells
+horrible and is pitch dark. The TV is on and a few candles are lit.
+Maggie is drunkenly asleep on the couch. She wakes up to discover that
+she peed herself. She gets up to shower, but falls onto the coffee
+table, knocking over a candle. She sits it up right and crawls to the
+bathroom, turns on the shower and gets in to clean off the pee. After
+sobbing in the shower for some time, she falls asleep. Slowly her body
+slumps down and she starts choking on the water. Her choking wakes
+herself up and she turns off the faucet. She can’t live like this. She
+searches her pants for her phone and opens a text to Liz. They haven’t
+talked since she left three days ago. Maggie (text) I’m so sorry for
+drinking too much. I’m scared to go to a meeting alone. Is there anyway
+you could come with me? I know it’s asking a lot. EXT. Community center,
+one week later Maggie smokes a cigarette outside. She’s holding her
+water bottle. People occasionally walk by her. She stomps out the
+cigarette and waits anxiously. Liz turns the corner. They hug for a long
+time. Maggie I’m so sorry. You were trying to help me and I let my fear
+get in the way of us. Liz I think I pushed you too hard too fast. I just
+got so worried, I felt like I had to stand my ground. MAGGIE I’m so
+sorry. Liz Me too. They hug. Maggie Liz, I’m scared. Liz I know. I’m
+here. I’m here now. They release each other, hold hands, Mags takes a
+deep breath and wipes her face. Maggie Are you still seeing Dan? Liz
+(with a small laugh) What? MAGGIE I just don’t know what is going on
+with you. I know that may sound - Liz Yeah, we’ve been going on dates.
+He seems like a nice guy. But come on, we’re going to be late. They walk
+in together. Int. Community center, moments later Counselor Hey, I’m
+Andy. I’ll be leading group today. Maggie Hi, Maggie. And that’s Liz.
+She’s here to support me. Nice to meet you. COUNSELOR Have you been to a
+meeting before? MAGGIE Nope. This is my first. CounSELOR Welcome. I’m
+glad you’re here. What’s in the bottle? Maggie Water. COUNSELOR Cool.
+Obviously no alcohol or drugs is permitted in meetings. Write your name
+on one of these tags and take a seat anywhere. Maggie Thank you. Maggie
+takes the name tag and writes “Maggie”. Her hands are shaking. Maggie
+What if I can’t stay and do this, Liz? Liz You will. You know what’s
+right. COUNSELOR Hi everyone, I am Andy, an alcoholic. I would like to
+welcome you to the Monday evening Alcoholics Anonymous meeting. We would
+like to give a special welcome to new attendees and have you introduce
+yourselves. Caroline I’m Caroline. Cari I’m Cari. Maggie Maggie. Maggie
+starts disassociating. Her hearing gets muffled, focus goes in and out.
+INT. COMMUNITY CENTER, MOMENTS LATER Ultra wide, we can see the whole
+circle. Full coverage of Mags. Counselor Does anyone that has been to
+less than 15 meetings wanna speak? Someone raises their hand. Maggie is
+petrified at the idea of speaking. Blaine Hi, my name is Blaine. I’m an
+alcoholic. I’ve been sober for four days. I relapsed last week and have
+been too ashamed to let anyone besides my sponsor know. I’m a mother of
+two… I still consider myself a mother of two. I lost my child, my Anna,
+six months and two days ago. And don’t get me wrong, I’ve always drank
+too much. I’m embarrassed that I raised her drunk everyday. My husband
+left me and got custody when she found out I drove her to school drunk
+one morning. When I’m intoxicated, I feel fearless. When I’m sober I
+feel terrified. Terrified of failure, rejection in the workplace,
+interpersonal rejection, boredom. Because when I let the world go quiet
+my brain screams. I can’t believe she’s gone. I can’t believe her mother
+hates herself this much. I don’t know when I’m going to be able to
+breathe again. Because right now, the weight is so heavy that I don’t
+even want to live. I don’t want to be conscious. But I feel like to
+honor her, and really support my son. I need to. So I’m on day four
+today. And I feel like shit. But I’m proud to be here.<br />
+Maggie looks at Michael, grabs her purse and gets up. She doesn’t think
+she belongs here. EXT. COMMUNITY CENTER, MOMENTS LATER Liz MAGS! Maggie
+I don’t belong in there, Liz. Liz Why because you haven’t lost a kid?
+Maggie Because I don’t have destructive behavior when I drink. Sometimes
+I go too hard, sure I drink too much but I don’t think I need support
+like that. Those people are on a different level than me. Liz I don’t
+think they are. I think if you would go back inside you would relate to
+what those people have to say. MAGGIE I’m sorry, I can’t pretend to be
+something I’m not. Liz You already are. MAGGIE Fuck off, okay? Liz is
+heart broken. Liz Wow. Yeah, I’ll go right on and fuck off on my three
+hour drive back to my life in Joshua Tree. You’re welcome by the way.
+MAGGIE Yeah, guilt me for asking for help. Really classy. Liz Just as
+classy as leaving an AA meeting right after someone talks about their
+dead kid. Good work. MAGGIE Whatever, I’ll see you when I see you.
+Maybe. Liz Yeah, go and drink. I hope you enjoy your vodka bottle. Or
+maybe this time you’ll get messed up on the flask? Oh if it’s a good day
+you’ll do both at the same time. MAGGIE SHUT UP. (maggie throws her
+water bottle on the ground) You walk around with insecurities leaking
+off you and use anyone else’s short comings as ammo to ignore everything
+wrong with you. Did you ever wonder why you can’t love someone? Why you
+can’t get past the third date? Maybe because you don’t scratch the
+surface on your bullshit. And trust me, as someone that’s unfortunately
+known you for 16 years your issues are oceanic. A never ending abyss of
+misery. Liz is floored. Liz Holy shit. Go drink. You’re easier to be
+around. MAGGIE After this conversation, I could use one. Liz Of course
+you could. Have a good life. Maggie I’d say the same, but honestly I
+don’t give a fuck right now. Maggie storms off. She starts to pace to
+get some of her anger out. She does this for a long while. Eventually,
+sun light has shifted and the meeting ends. She realizes this and starts
+walking to her car. Michael walks outside, hands in his pockets, looking
+for Maggie. Michael Hey, I’m Michael. Was that your first meeting?
+MAGGIE Yeah but, I don’t think I belong with y’all in there. No offense
+at all. Michael I thought the same thing my first meeting. What’s the
+substance? MAGGIE Alcohol. Michael How much a day? MAGGIE I don’t know…
+Michael Yeah, okay. MAGGIE An average day… half a handle. Plus a bottle
+of Bourbon and Rum a week. Michael And you don’t think that’s a problem?
+Maggie doesn’t answer. Michael Give me your phone. MAGGIE I’m not really
+looking for anything right now, I’m kind of a mess if you didn’t notice.
+Michael Girl, I’m trying to be your friend. We support each other here.
+MAGGIE I won’t be coming back. Michael Then don’t use the number. MAGGIE
+That’s fair. What do you do? I feel like you should be a MAGGIE Lawyer.
+Michael Lawyer. Yeah I know. Now imagine what it’s like dating me.
+Maggie laughs. Michael Wanna go to a meeting later with me? MAGGIE Not
+really, no. Michael smiles. Michael You’re funny. I hope you call. Good
+luck, kid. MAGGIE I think we’re the same age.</p>
+<p>Michael I’m 18 months sober, homie. You’re basically still in the
+womb. Maggie rolls her eyes. Michael gets up and leaves Maggie alone in
+the two shot. She looks alone. The fight with Liz starts to settle in.
+INT. Bar, 1 hour later Maggie is sloshed. She orders a drink. Then
+another. We see drink after drink being thrown down. She’s completely
+gone. EXT. Bar parking lot, midnight It’s been hours and Maggie can
+barely walk straight. She looks up a Lyft, but it’s too expensive. She
+taps the top of her head, then rubs her stomach. Maggie Close enough.
+She gets in the car, turns it on and starts to drive. Somehow she makes
+it out of the parking lot. Driving down the road, she tries to make a
+left turn and runs into a pole. We see police lights on a medium of
+Maggie’s face. int. Michael Car, the next morning Michael is sitting in
+his car, waiting for Maggie. He bailed her out. Maggie opens the car
+door and sits down. Her eyes are puffy and red. She looks like shit.
+Maggie I don’t have the money right now, but I’ll pay you back. Michael
+I’ll make you a deal. If you’re ready to become sober, we call it even.
+Maggie What? Michael My sponsor did it for me. Maggie Are you offering
+to be my sponsor? Michael Are you looking for one? MAGGIE I could have
+killed someone. Michael puts the car in reverse and starts driving.
+Michael Yes you could have. MAGGIE I’m a horrible person. Michael No,
+you’re a… MAGGIE I can’t. Michael You can. You look like you know it.
+MAGGIE I can’t say it. Because then I have to deal with it. I have to
+tell people, apologize to Liz, I have to reckon with my grief. It’s so
+deep, man. It goes so deep and it hurts there. Michael I drowned my
+grief with alcohol so I wouldn’t feel it. And guess what? It always came
+back. Sometimes when I was drunk, my supposedly safe space. I think
+about relapsing everyday, but you know what helps me not? The group is
+the best community I’ve ever had. Do you have friends? A support system?
+Maggie Not really, no. I push people away. Michael Me too. Want to be
+friends? I could take another. Maggie I could use one. Michael You have
+that woman you were with. MAGGIE Liz? I think I ruined that yesterday.
+Michael “1. We admitted we were powerless over alcohol — that our lives
+had become unmanageable.” Maybe she’ll understand. MAGGIE I’m supposed
+to make amends, right? Michael “9. Made direct amends to such people
+wherever possible, except when to do so would injure them or others.”
+Maggie Except to injure them… I don’t know if I’m a good friend to her.
+Michael An apology can come at anytime. Think on it. But probably not
+for too long. Maggie smiles. MAGGIE Okay, yeah. I’ll think about it.
+Michael pulls up the car at a diner. Maggie What are we doing here?
+Michael Figured you could use a good meal. Maggie looks forward at the
+diner. Maggie You have no idea how good that sounds. Michael opens his
+door, Maggie follows. INT. Diner, 1 minute later Michael and Maggie are
+sitting across from each other. Michael doesn’t open the menu, he
+already knows what he wants. Maggie quickly looks, see’s the breakfast
+platter and closes it. Waiter 2 What can I get you? Maggie The breakfast
+platter and a black coffee. Can I add chocolate chips to the pancakes?
+WAITER 2 Yes you can. MAGGIE Awesome, that would be great. Michael And
+I’ll have the breakfast skillet with bacon, burnt. Waiter 2 Great, I’ll
+have it right out. Maggie Thanks. Michael So what are you passionate
+about? Maggie Damn, what a question… I’m a poet. I love writing and
+performing my poems at Slams. Michael I’d love to hear a poem of yours.
+MAGGIE Oh, I haven’t read my poems out loud in awhile. I haven’t been
+able to write much for about a year. There was awhile where I was able
+to support myself off of my poems - I wasn’t living the high life or
+anything… but I was really proud of myself for that. Michael That’s
+incredible. MAGGIE Thanks. Michael What happened? MAGGIE I started
+drinking more. Again. I’ve had periods where I slowed down before.
+Michael You ever quit? MAGGIE Yeah, but not with AA. I never thought I
+was that bad. Michael Had to get in a car wreck to be shaken out of that
+one, huh? MAGGIE Yeah, I guess so. Michael I hit someone on their bike.
+MAGGIE Oh my gosh. Michael Luckily they were okay and didn’t press
+charges. Small world, but the person was a student of my father’s when
+he was younger. MAGGIE Your father was a teacher? Michael Senior English
+Teacher. MAGGIE What made you want to be a lawyer? Michael I love to
+talk. And research to debate. Law School was brutal though. Maggie Mmmm.
+(she gets it) Thanks for having my back today. Michael You’re welcome.
+Don’t do it again. You’re better than your addiction. MAGGIE Thank you.
+You are too. (as if reasoning her own validity) You are too. The food
+gets placed on the table. Waiter 2 exits frame. Two shot of them digging
+in. INT. Community center, ONE MEETING LATER Maggie stands and receives
+a coin for 24 hours of sobriety. INT. Maggie’s apartment, one hour later
+Maggie cleans up alcohol bottles and trash. She picks up the Vodka
+handle and considers throwing it out, but isn’t ready. She puts it in
+the back of her pantry. INT. COMMUNITY CENTER, ONE MEETING LATER ULTRA
+WIDE, PEOPLE ARE IN DIFFERENT SPOTS, DIFFERENT OUTFITS. Maggie isn’t
+looking great. She’s going through with drawls. COUNSELOR Does anyone
+that has been to less than 15 meetings wanna speak? There’s no way
+Maggie could manage this. INT. MAGGIE’S APARTMENT, THAT EVENING Maggie
+is throwing up in the toilet. She finishes, flushes and looks up “how
+long do alcohol with-drawls last”. 24-72 hours. The doorbell rings.
+Maggie goes to answer it. Maggie 24-48 hours more of this shit? Michael
+enters the house and goes straight to the couch. He is comfortable here.
+Michael SHE IS BEING BORN!! Welcome, kid. MAGGIE Talk more softly
+please. Michael (whispering) Sorry. My favorite of the steps right now
+is 4. Made a searching and fearless moral inventory of ourselves. Use
+this pain to look into yourself. Don’t disassociate out of it. You’ll be
+better off for it. Flashback to when Maggie was freaking out /
+disassociating in her first meeting. She looked at Michael and he looked
+at her. MAGGIE It’s like torture. And my heart feels like it’s being
+squeezed by a hand of grief. Michael Powerful line there, I’m going to
+text it to you for a potential poem. Hold on. Maggie I hate you. But
+thank you. Maggie holds. We see how much pain she’s in. Michael Feel it
+while you’re here, Mags. You owe yourself that. Maggie gets emotional.
+She’s terrified. Maggie Okay. Maggie leans in to kiss Michael. He
+immediately shifts away. Michael Maggie, that’s not why I’m here. I’m
+your sponsor. I’m here to support you with your sobriety. MAGGIE I’m so
+sorry, oh my god I can’t believe I just did that. Maggie is devastated.
+Michael That’s okay. Really. Maggie I’m such an idiot, I can’t believe I
+just did that. Michael You’re desperate to feel something. You miss the
+high. MAGGIE I miss anything but the low right now. I don’t know if I
+can do this. I don’t know if I’m strong enough to do handle this.
+Michael You’ll come out of it. Now look, I came with a care package. He
+hands Maggie a bag full of snacks and treats. Maggie You give me hope.
+INT. COMMUNITY CENTER, ONE MEETING LATER ULTRA WIDE, PEOPLE ARE IN
+DIFFERENT SPOTS, DIFFERENT OUTFITS. Maggie is doing a bit better, but
+still not great. INT. Maggie’S APARTMENT, THE NEXT DAY She throws out
+the bottle of vodka and rum in the dumpster outside. Int. Maggie’s
+apartment, the next day Maggie is in different clothes, working from
+home as a telephone operator. She is writing in her journal, trying to
+come up with new poems. Maggie “I have no map no holy book to explain
+how all this happened. I didn’t mark this “X” and it doesn’t feel like
+I’m winning treasure The stories of pirates always ended with getting
+more. So why do I feel so hollow?” Her phone rings shortly after. Maggie
+Hello there, this is Maggie. Who do I have the pleasure of speaking with
+today? EXT. Park, early morning, the next day Maggie is filling in 5
+things she likes about herself. INT. COMMUNITY CENTER, ONE MEETING LATER
+ULTRA WIDE, PEOPLE ARE IN DIFFERENT SPOTS, DIFFERENT OUTFITS. Counselor
+Does anyone that has been to less than 15 meetings wanna speak? Maggie
+feels uncomfortable. INT. COMMUNITY CENTER, ONE MEETING LATER DOLLY IS
+PUSHING IN FROM THE WIDE. PEOPLE ARE IN DIFFERENT SPOTS, DIFFERENT
+OUTFITS. COUNSELOR Does anyone that has been to less than 15 meetings
+wanna speak? Maggie slumps in her seat. INT. MAGGIE’S APARTMENT, THE
+NEXT DAY Maggie is making her bed and drinking coffee. INT. MAGGIE’S
+CAR, LATER THAT DAY Maggie is listening to the phone ring. She’s call
+Michael. Maggie is driving to the grocery store. MAGGIE It’s happening!
+I’m going to the grocery store for the first time since being sober. And
+I am not buying alcohol. And hopefully you’re free right now to just
+chat while I’m in there.<br />
+MICHAEL Wow, it was bound to happen. You can’t afford to keep getting
+things delivered. MAGGIE Really good pump up, sponsor. Thanks. MICHAEL
+You’re doing great and I’m absolutely available. MAGGIE Much better
+thank you. MICHAEL You’re so welcome. MAGGIE So I picked up a kids meal
+today, and I tried to give the toy to a kid. But, this six year old girl
+shook her pointer finger at me and said “Nuhuh. No.” MICHAEL I think
+it’s great that she can assert her boundaries and wants at a young age.
+That’s a challenging trait to build! MAGGIE Okay, don’t take her side.
+MICHAEL You’re so right. That six year old sucks. What was she even
+thinking? Gosh. MAGGIE There we gooooo. Maggie turns off the car. MAGGIE
+Okay I’m going in. INT. MAGGIE’S APARTMENT, THE NEXT DAY Michael and
+Maggie are sitting comfortably on the couch. They each have a sparkling
+water. MAGGIE Okay, okay. What about lakes or pools? MICHAEL They are so
+different… MAGGIE But still a large body of water that -in this case-
+you can swim in. MICHAEL I can’t have a boat in a pool. MAGGIE But you
+can have a really cute floaty. MICHAEL That’s true, that’s true. Lake.
+You? MAGGIE Lake. I can’t believe it took you that long. MICHAEL Fair
+enough. They both smile. INT. COMMUNITY CENTER, ONE MEETING LATER DOLLY
+IS PUSHING IN FROM THE WIDE + WILL LAND IN A MEDIUM. PEOPLE ARE IN
+DIFFERENT SPOTS, DIFFERENT OUTFITS. COUNSELOR Does anyone with over a
+year want to speak? Michael I do. CounSELOR Go ahead. In a medium on
+Michael and Maggie. Michael Hi, I’m Michael. I’m an alcoholic. I used to
+drink half a handle of vodka before noon. I stopped nineteen months ago,
+and I thought I would feel stronger than I do. I feel like shit. And so
+ashamed. I can apologize to others, follow the steps but the want is
+still there to escape, to drink. And I’m so ashamed of that. And of all
+the pain I’ve ensued on those that I love. I guess I just want to say
+I’m struggling. In hopes that saying it, knowing you all know, will help
+me not relapse. Because right now, I really want to. CounSELOR Thank you
+for sharing. I think it’s safe to say, everyone here can relate. People
+nod. Counselor We are here to support you in the journey. And your
+sponsor is there for moments like these. Have you reached out to them?
+Michael No, I haven’t. COUNSELOR We need to lean on one another in times
+where we don’t feel our strength. If we don’t reach out to others, how
+will they feel safe to lean on us? Maggie stares at Michael. She feels
+seen. CounSELOR Anyone else want to share? Maggie sinks in her seat.
+EXT. SIDE WALK, LATER THAT DAY Maggie is going on a run. Int. CommUNITY
+CENTER, ONE MEETING LATER CouNSELOR “5. Admitted to God, to ourselves,
+and to another human being the exact nature of our wrongs.” Maggie
+thinks this over. EXT. COMMUNITY CENTER, After meeting Maggie is walking
+to her car when she stops in the spot where she was standing in her and
+Liz’s fight. She remembers what she said, takes a deep breath and calls
+Liz. Liz picks up. Liz Hello? Maggie Hey, I’m going to just rant about
+where I’m at so you realize I’m actively changing. Is that okay? Liz Hit
+it. MAGGIE I’ve been going to AA. I’ve been sober for 7 days. I’m so
+sorry for how I spoke to you in our fight. You were trying to help me
+and be a good friend. I didn’t even wake up from our fight, I drunk
+drove and hit a pole that night. I got arressted and bailed out by my
+sponsor. I’ve been going to AA everyday and the community is really
+helping me. I miss you and hope that you can forgive me. I want to stay
+sober. I don’t want to be the person that drinks and drives, or yells at
+her best friend. I was an asshole. I feel horrible and you deserve
+better. LIZ I missed you. Welcome back, Mags. MAGGIE How are you doing?
+How’s Joshua Tree? LIZ I’m doing really well. Work is whatever, I love
+Joshua Tree, I’ve been hiking a ton, I’m still seeing Dan and he’s
+introduced me to a lot of really great friends here. How has writing
+been? MAGGIE It’s actually a bit better. I feel like because I’m
+processing life more, I’m able to write about it in my work. I feel
+scared, awake and alert. It’s like a breath of fresh air-well… in the
+easy moments, that is. LIZ Oh MY GOSH I’VE MISSED YOU. MAGGIE Thank you
+for trying to forgive me. LIZ You’re so welcome. MAGGIE Alright, I’d
+love to talk again soon. Liz Me too. Love you mean it. Maggie Love you
+say it back. Liz Oh! I love you. Int. Liz’s House, one moment later Liz
+I think that went really well. Dan It seemed like it! What did she say??
+EXT. Community center, moments later Maggie hangs up the phone and takes
+a moment to herself. Which gets disrupted by… Michael MAGS! Diner? She
+laughs. Maggie Yeah, you drive. Maggie exits frame. Maggie You’ll never
+guess what I just did… Michael You called Liz? MAGGIE How the hell did
+you guess that? MICHAEL We were just talking about it! MAGGIE But you
+stole my thunder. MICHAEL Hold up, let’s roll it back. He walks
+backwards, she laughs, then does the same. Maggie You’ll never guess
+what I just did! MICHAEL I have no idea, what is it? MAGGIE (she gives
+him a look) I called Liz, apologized and she accepted my apology.
+Michael puts his hands on top of the car as he looks at Maggie. This
+stops her. MICHAEL I’m so proud of you. This affects Maggie. MAGGIE
+Thank you. That’s really nice to hear. He starts to open his door, then
+stops. Michaels Mags… I need to tell you something. MAGGIE Okay.
+MICHAELS I can’t be your sponsor anymore. But I want us to stay in each
+other’s lives. Maggie What?? Michael I will still be here to support
+you, and I’ll help you through the process of finding someone new.
+MAGGIE Why? MICHAEL I don’t want to talk about it, but it’s a me thing.
+Just try and trust me, okay? MAGGIE I trust you. But I need you,
+Michael. Michael I’m not leaving you, Mags. I’m just not being your
+sponsor. Maggie Okay… you know, I lost my appetite. I’m sorry, I’m going
+to see my Grandpa in an hour anyway. Just let me process this. Michael I
+get it. Call when you want to talk. INT. GRANDPA’S HOUSE, EARLY EVENING
+Maggie sits, similarly slumped, on the couch waiting as her Grandfather
+brings a bowl of popcorn and roasted peanuts to the coffee table. Maggie
+I want to tell you something, Grandpa. Grandpa Do you need money? MAGGIE
+What? No, I – GRANDPA Have a boyfriend? MAGGIE GRANDPA. Give me a
+second. This is hard to share. GraNDPA No jokes right now, got it.
+MAGGIE Thank you. I’m an alcoholic. GRANDPA What? MAGGIE I started
+drinking when I was 14 when Grandma died. At first it was just a little,
+then I started drinking every morning before school to help my anxiety.
+Then I started having two drinks before school and filling my water
+bottle with Vodka. I think I mastered the art of drinking enough to be
+drunk inconspicuously. Until recently. I was mean to a good friend,
+drunk drove and got in an accident. Luckily no one was hurt. I’ve been
+going to AA and, well, I had a sponsor. I want to apologize for not
+being honest with you. Beat. GRANDPA Wow. I never would have guessed.
+Are you drunk now? Maggie No, Grandpa. I’ve been going to AA. And I was
+finally able to write the other day. I think it’s because of it. Grandpa
+Will you read it to me? MAGGIE Always. It’s called Heart Drops.</p>
+<p>“The bathtub takes time to fill Drip Drops Rome wasn’t built in a day
+but in a flash of a moment, a single blink the stopper disappears the
+water is slipping through the finger tips Down my throat I’m treading
+through nothingness left to be empty Rome wasn’t built in a day But it
+sure can be destroyed in one.” GRANDPA I should have seen something.
+What can I do to help? MAGGIE I don’t know. Try and forgive me for
+lying. For throwing school down the drain and having a DUI. Am I a
+disappointment to you? Grandpa Are you kidding? I’m always proud of you.
+Face your demons, kid. They’ll never go away until you face them. MAGGIE
+What if I can’t conquer them? GRANDPA You will. You’re the bravest
+person I know. MAGGIE I don’t feel brave. Grandpa Well, you are. It’s
+evident to anyone that knows you. You’ve always been fearless. MAGGIE
+I’ve always been petrified. GRANDPA Then you hide it well. And maybe you
+shouldn’t. Maybe you should talk about it more. Talking about your
+fears, or loving yourself more, doesn’t make you scared, it makes you
+brave. Maggie digests this. Maggie You told me to love myself more
+awhile ago too… Maybe that’s the problem. Maybe I don’t love myself
+enough. GRANDPA I don’t know why you wouldn’t love yourself. But if you
+don’t, it seems like now is the best time to start. Take the void of the
+alcohol and fill it with love for yourself. Maybe you can write five
+things you like about yourself a day. Here - He gets up and grabs her a
+piece of paper and a pen. grandpa I’m ordering us pepperoni and jalapeño
+pizza. You deserve it. Maggie looks at him with fear. GRANDPA What?
+Maggie I don’t know what to write. Grandpa You’re a great writer. One.
+You fill in the rest. Grandpa exits to order some pizza. Maggie stares
+down at the paper and writes “5 things I like about myself. 1. I’m a
+great writer”. She pauses and tries to think… she gets emotional at her
+inability to find something. “2. My …” Suddenly she hears her
+grandfather screaming into the telephone. Grandpa (v.o.) HELLO! Can I
+order a large pepperoni and jalapeño pizza to be delivered? (beat) HUH?
+Can you talk louder? Stupid phone. We were better off without them.
+Maggie releases a small laugh, looks down at the paper and writes “my
+hands are pretty. 3.” Cut to wide of her writing things she likes about
+herself. INT. COMMUNITY CENTER, ONE MEETING LATER DOLLY STARTS WIDE AND
+WILL LAND IN A CLOSE UP. Maggie is in the same area of the frame as the
+previous wide. PEOPLE ARE IN DIFFERENT SPOTS, DIFFERENT OUTFITS.
+COUNSELOR Does anyone that has been to less than 15 meetings wanna
+speak? Maggie I’ll say something. Where do I start? I’m feeling nervous.
+CouNSELOR How long have you been sober? MAGGIE I had four days and
+relapsed. I’m on nine. I usually drink everyday. Most of the day. In my
+water bottle. (realizing) Not today! I wouldn’t do that here. A beat.
+COUNSELOR You can just share what you’re thinking about today. MAGGIE
+Today is my thirty day, and the anniversary of my Grandma’s passing. She
+was a best friend, a role model of mine. I miss her so much, it hurts. I
+feel like I just haven’t recouped. Some people are just special. She
+changed people’s lives. Actually.</p>
+<p>It’s strange when I think about my Grandpa passing. I selfishly want
+him alive so badly, but there’s also an ease in digesting the
+information, the loss. Because he’s lived a long life. Someone younger,
+like my Grandma, I have felt more of an ache. A pain.</p>
+<p>I have a lot of stomach issues and I think it’s because I struggle to
+digest. Because how can you? Just accepting that “it is what it is”, I
+suppose. My grandma said that. I live by it. She changed my life. I
+avoid things that hurt with alcohol. Like talking about how she changed
+people’s lives. I was trying to express how much she affected me. And
+despite having been gone 9 years ago today, she still is my role model.
+Drinking makes it easier and without that outlet I feel like I’m going
+to explode with grief.</p>
+<p>When I’m drinking I keep everything together. I don’t party too hard,
+it’s like a slow burn. And is that really so bad? Everyone’s addicted to
+something, right? Couneselor You deserve to be present in your life.
+Maggie Yeah. Yeah. Sometimes I feel like I have to live a good life to
+honor her. I don’t fully know why that is. Maybe to make her proud?
+COUNSELOR Are you living a good life? Maggie looks at the counselor.
+Then away. She thinks. She knows she isn’t. But this is the first step.
+She wants to take it. MAGGIE No, I don’t think so. I feel like a broken
+person. But I want to live a good life. I want to live a better life
+than this. I’ve never had many friends… one great one and that’s it. I
+push others away because I don’t think I ever loved myself… I’m trying
+this thing where I write down five things I love about myself a day and
+at first it was really hard, but as I notice more and more about myself,
+I notice more I can love. I’m embarrassed to say how scared I feel to be
+happy. Because if I’m happy, if I heal from the loss of my grandmother,
+if I keep not drinking, how will I fill my time? With myself, with
+others, with my work. Hopefully, with love. I hope that’s what’s waiting
+for me on the other side of a this. I think I’m ready to be happy. INT.
+Community Center, Hallway, Post-Meeting Maggie is walking out. Michael
+catches up to her. Michael Maggie! Maggie Hey MICHAEL I know we aren’t
+talking right now, but I just wanted to say that was incredible. You
+were just so honest and vulnerable. That takes a lot of bravery. Thank
+you for sharing. MAGGIE (touched) Thanks, Michael. That means a lot.
+MICHAEL Do you want to talk? MAGGIE Yeah, wanna come to my place?
+MICHAEL Yeah, I’ll meet you there. They both try and cross frame, but
+run into each other. You see a glimpse of nervousness between them.
+MAGGIE My bad. MICHAEL Sorry about that. They pause. She motions for him
+to go and he does. She processes how much she missed him. INT. Maggie’s
+apartment, living room, that night Michael and Maggie are sitting
+comfortably on the couch. They each have a sparkling water. Maggie I
+think I’m gunna read at a poetry slam. MICHAEL Can people go? MAGGIE
+Yeah, Liz and her boyfriend are actually coming in for it from Joshua
+Tree. It’s tomorrow night. MICHAEL I’d love to go, if you’d be open to
+me being there. Beat. Maggie Why couldn’t you be my sponsor anymore?
+Michael considers whether or not to say… then, MICHAEL I have feelings
+for you, Maggie. I can’t be a good sponsor to you when I feel this way.
+A defense mechanism… MAGGIE I… I don’t think I’m in a good place right
+now for a relationship. I’ve been sober for one month and am scared I’m
+going to fall back. MICHAEL That’s okay. They sit in silence. A deep
+breath in. Maggie But I’m interested. MICHAEL Yeah? MAGGIE Yeah. But I
+don’t know when I’ll be ready. Michael That’s okay. MAGGIE Okay, cool.
+Until we talk about it again…. can we just be friends? (underplaying in
+delivery) I don’t want to lose you. Michael Yes, of course, you crazy
+person. But I can’t pretend to be something I’m not with you. You
+deserve better than that. MAGGIE Thank you. That’s so kind. MICHAEL It’s
+just honest. Maggie I’d love for you to come to the Slam. INT. Home
+living room / theatre space, poety slam, evening The tapping of Maggie’s
+foot in a dark and loud room. Maggie, Michael, Liz and Dan sit at a
+poetry slam. Host (v.O.) Hey everyone welcome to this weeks Poetry Slam.
+As always, we pull readers from a bowl. Tonight’s poet order is as
+follows… Maggie Monroe, Catie Alverez, Bianca Ramearro and Abby
+Rustin.<br />
+Maggie and Liz have a silent moment of celebration. Host Introducing,
+Maggie! Maggie Hi everyone, my name is Maggie. It’s my first slam in
+about a year. I’m really happy to be here. Liz (yelling from the
+audience) GET IT GIRL! MAGGIE It’s called Desert(ion). “I am slipping
+between my finger tips like water, this journey of 12 steps rushing up
+my body never finding my mind. She who seeks shall find. So I trek
+through my days in deserts, of oceanic flows of foggy overlooks and I
+Open my heart and take it all, I pray Release me of these hot flashes
+these visions that replay when I beg differently Visions of fear that
+you say is the Devil. Well, no shit because it is hotter than hell here.
+Coverage of Mag’s loved ones. medium, observation shots. Maggie You tell
+me that if I can’t stand the heat to get out of the kitchen I didn’t
+know thats where this led me but I need to eat so feed me? nourish me
+and take me back to days of slumber- fuzzy blankets and cuddles mid-day
+spiders that were friends and imaginations that ran free Ran to places
+of fairytales and always re-reading me stories that took me too long to
+understand. You told me to stop with coloring books because I was too
+old To free myself of the confines of someone else’s imagination, but
+what if I have found myself trapped in my own Images of him leaving
+visions of the heat becoming too much of walking into the light and
+feeling the cool on my face for the first time in 16 years. What if you
+took my hand, invited me to your new home and let me color in books
+again because we got to start over. What if you gave me light. Created
+wind to defeat the fire that is reaching up my face and into each pore
+that is supposed to be protecting something greater. How many steps can
+I take without knowing the end point? * The end point is where I declare
+it. Take a deep breath and release the heat back to where it came from,
+they say… Play with the sand between my toes and make the heat my
+friend. Inhale they say, I cough out the golden dust all around me “Keep
+treking,” they respond. Let go of the sand, hold onto the moment.” Thank
+you.</p>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
