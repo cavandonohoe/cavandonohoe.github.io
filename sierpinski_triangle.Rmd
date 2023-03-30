@@ -25,6 +25,8 @@ library(tidyverse)
 
 
 ```{r include=FALSE}
+set.seed(12)
+
 triangle_list = list(x1 = c(0,0), x2 = c(.5, 1), x3 = c(1,0))
 
 midpoint = function(x,y) {
