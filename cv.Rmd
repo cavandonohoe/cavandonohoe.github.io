@@ -9,6 +9,8 @@ output:
       - ./cv_stuff/cv_css.css
       - resume
 knit: pagedown::chrome_print
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r background code, echo=FALSE, message=FALSE, error=FALSE, warning=FALSE}
