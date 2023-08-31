@@ -98,7 +98,8 @@ segments_and_weekends_b %>%
   filter(days >= as.Date(Sys.Date())) %>% 
   select(date = days, day_of_week, work_status, type) %>% 
   datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+            options = list(paging = TRUE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           pageLength = 500,
                            scrollY = "400px", scrollX = TRUE))
 ```
 
@@ -109,7 +110,8 @@ segments_and_weekends_c %>%
   filter(days >= as.Date(Sys.Date())) %>% 
   select(date = days, day_of_week, work_status, type) %>% 
   datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+            options = list(paging = TRUE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           pageLength = 500,
                            scrollY = "400px", scrollX = TRUE))
 ```
 
