@@ -37,16 +37,16 @@ navbar:
       - text: "Learn R"
         href: learn_r.html
         menu:
-        - text: "Intro to R"
-          href: intro_to_r.html
-        - text: "Basic Operations"
-          href: basic_operations_r.html
-        - text: "Data Manipulations"
-          href: data_manipulation_r.html
-        - text: "Data Visualization"
-          href: data_visualization_r.html
-        - text: "Statistics with R"
-          href: statistics_with_r.html
+          - text: "Intro to R"
+            href: intro_to_r.html
+          - text: "Basic Operations"
+            href: basic_operations_r.html
+          - text: "Data Manipulations"
+            href: data_manipulation_r.html
+          - text: "Data Visualization"
+            href: data_visualization_r.html
+          - text: "Statistics with R"
+            href: statistics_with_r.html
       - text: "CV"
         href: cv.html
     
