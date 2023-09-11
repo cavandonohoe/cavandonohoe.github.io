@@ -9,9 +9,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Cavan Donohoe" />
 
 
-<title>Cavan Donohoe - Data Scientist</title>
+<title>Introduction to R</title>
 
 <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -29,6 +30,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -231,6 +235,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -238,6 +305,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -348,27 +425,86 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Cavan Donohoe - Data Scientist</h1>
+<h1 class="title toc-ignore">Introduction to R</h1>
+<h4 class="author">Cavan Donohoe</h4>
 
 </div>
 
 
-<p>Welcome to my Website! I know it’s not much, but it’s all done in R
-and GitHub, so that’s pretty cool.</p>
-<div class="float">
-<img src="images/China%20Walls%20Sunset.jpg"
-alt="Reminiscing of my life on Oahu" />
-<div class="figcaption"><em>Reminiscing of my life on Oahu</em></div>
+<div id="introduction-to-r" class="section level1">
+<h1>Introduction to R</h1>
+<p>In this section, we’ll cover the basics of R, including what R is,
+how to install it, and an overview of the RStudio interface.</p>
+<div id="what-is-r" class="section level2">
+<h2>What is R?</h2>
+<p>R is a powerful and open-source programming language and software
+environment for statistical computing and graphics. It provides a wide
+range of statistical and graphical techniques and is widely used in data
+analysis, data visualization, and statistical modeling.</p>
 </div>
-<p>I thought it might be worth investing some time to make a website to
-point to an area of my life where it gets a little more professional.
-But then I thought, why <em>just</em> do that? Why not incorporate some
-other aspects of my life that makes me me. So yes, this will have my
-ever growing resume, but let’s have a little bit of fun while we’re
-here.</p>
+<div id="installing-r-and-rstudio" class="section level2">
+<h2>Installing R and RStudio</h2>
+<p>Before we can start using R, we need to install it and its integrated
+development environment, RStudio. Here are the steps to get you
+started:</p>
+<div id="step-1-installing-r" class="section level3">
+<h3>Step 1: Installing R</h3>
+<ol style="list-style-type: decimal">
+<li><p>Visit the Comprehensive R Archive Network (CRAN) website at <a
+href="https://cran.r-project.org/mirrors.html">https://cran.r-project.org/mirrors.html</a>.</p></li>
+<li><p>Choose a CRAN mirror near your location to download R.</p></li>
+<li><p>Download and install R for your operating system (Windows, macOS,
+or Linux).</p></li>
+</ol>
+</div>
+<div id="step-2-installing-rstudio" class="section level3">
+<h3>Step 2: Installing RStudio</h3>
+<ol style="list-style-type: decimal">
+<li><p>Visit the RStudio download page at <a
+href="https://www.rstudio.com/products/rstudio/download/">https://www.rstudio.com/products/rstudio/download/</a>.</p></li>
+<li><p>Download the free RStudio Desktop version that corresponds to
+your operating system.</p></li>
+<li><p>Install RStudio by following the installation instructions for
+your operating system.</p></li>
+</ol>
+<p>Once you’ve completed these steps, you’ll have R and RStudio
+installed and ready to use.</p>
+</div>
+</div>
+<div id="rstudio-interface-overview" class="section level2">
+<h2>RStudio Interface Overview</h2>
+<p>RStudio is an integrated development environment (IDE) that makes
+working with R easier and more efficient. Let’s take a quick tour of the
+RStudio interface:</p>
+<ul>
+<li><p><strong>Script Editor</strong>: This is where you can write and
+execute R code. You can create new scripts or open existing
+ones.</p></li>
+<li><p><strong>Console</strong>: The R console allows you to
+interactively execute R commands and see the results immediately. It’s
+great for testing small code snippets.</p></li>
+<li><p><strong>Environment Pane</strong>: Displays information about the
+objects (variables, data frames, functions, etc.) in your current R
+session.</p></li>
+<li><p><strong>Files, Plots, Packages, Help</strong>: These panes
+provide access to your project files, plots, installed packages, and
+documentation.</p></li>
+<li><p><strong>Toolbar</strong>: Contains shortcuts for common actions
+like running code, saving scripts, and more.</p></li>
+<li><p><strong>Markdown and Plots Tabs</strong>: Use these tabs to view
+rendered R Markdown documents and plots generated within your R Markdown
+document.</p></li>
+</ul>
+<p>That’s it for our brief introduction to R and RStudio! Now that you
+have them installed and have a basic understanding of the interface,
+you’re ready to start exploring R and writing your first R code.</p>
+</div>
+</div>
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -401,6 +537,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

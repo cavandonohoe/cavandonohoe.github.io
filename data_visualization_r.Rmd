@@ -1,0 +1,62 @@
+---
+title: "Data Visualization in R"
+author: "Cavan Donohoe"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+# Data Visualization in R
+
+In this section, we will explore the exciting world of data visualization in R. We'll cover creating basic plots, customizing plots, and diving into advanced visualization techniques using the ggplot2 package.
+
+## Creating Basic Plots
+
+R offers a variety of functions for creating basic plots, including:
+
+- `plot()`: For creating scatterplots and line plots.
+- `hist()`: For creating histograms.
+- `barplot()`: For creating bar charts.
+- `boxplot()`: For creating box plots.
+
+Here's an example of creating a simple scatterplot:
+
+```R
+# Creating a scatterplot
+x <- c(1, 2, 3, 4, 5)
+y <- c(10, 15, 7, 20, 12)
+
+plot(x, y, type = "p", main = "Scatterplot Example", xlab = "X-axis", ylab = "Y-axis")
+```
+
+## Customizing Plots
+Customizing plots allows you to make them more informative and visually appealing. You can customize various aspects of your plots, including titles, labels, colors, and more. Here's an example:
+
+```{r}
+data_example <- data.frame(
+  x = c(1, 2, 3, 4, 5, 6),
+  y = c(2, 3.5, 2, 4, 4.5, 7)
+)
+
+# Customizing a plot
+plot(data_example$x, data_example$y, type = "p", main = "Customized Scatterplot",
+     xlab = "X-axis", ylab = "Y-axis", col = "blue", pch = 19)
+```
+
+## Advanced Visualization with ggplot2
+The ggplot2 package is a powerful and versatile tool for creating a wide range of customized and complex visualizations. It follows a grammar of graphics approach, making it intuitive and flexible. Here's a basic example using ggplot2:
+
+```{r message=FALSE}
+# Load the ggplot2 library
+library(ggplot2)
+
+# Create a ggplot scatterplot
+ggplot(data = data_example, aes(x = x, y = y)) +
+  geom_point(size = 3, color = "red") +
+  labs(title = "ggplot2 Scatterplot", x = "X-axis", y = "Y-axis")
+```
+
+In this section, we've covered the fundamentals of data visualization in R, including creating basic plots, customizing them to meet your needs, and introducing you to the power of ggplot2 for advanced visualization. Data visualization is a crucial skill for exploring and communicating insights from your data effectively.
+
+Feel free to experiment with different plot types and customization options to enhance your data visualization skills.
