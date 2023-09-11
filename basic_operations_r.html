@@ -9,9 +9,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Cavan Donohoe" />
 
 
-<title>Cavan Donohoe - Data Scientist</title>
+<title>Basic Operations in R</title>
 
 <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -29,22 +30,14 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
-<html>
-  <head>
-    <link rel="apple-touch-icon" sizes="180x180" href="header/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="header/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="header/favicon-16x16.png">
-    <link rel="manifest" href="header/site.webmanifest">
-    <link rel="mask-icon" href="header/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-  </head>
-</html>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -231,6 +224,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -238,6 +294,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -348,27 +414,114 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Cavan Donohoe - Data Scientist</h1>
+<h1 class="title toc-ignore">Basic Operations in R</h1>
+<h4 class="author">Cavan Donohoe</h4>
 
 </div>
 
 
-<p>Welcome to my Website! I know it’s not much, but it’s all done in R
-and GitHub, so that’s pretty cool.</p>
-<div class="float">
-<img src="images/China%20Walls%20Sunset.jpg"
-alt="Reminiscing of my life on Oahu" />
-<div class="figcaption"><em>Reminiscing of my life on Oahu</em></div>
+<div id="basic-operations-in-r" class="section level1">
+<h1>Basic Operations in R</h1>
+<p>In this section, we will dive into the fundamental operations in R,
+including variables and data types, arithmetic operations, and working
+with vectors and matrices.</p>
+<div id="variables-and-data-types" class="section level2">
+<h2>Variables and Data Types</h2>
+<p>In R, variables are used to store data. Before we can perform
+operations on data, we need to understand different data types. Here are
+some common data types in R:</p>
+<ul>
+<li><strong>Numeric</strong>: Used for numbers with decimal points.</li>
+<li><strong>Integer</strong>: Used for whole numbers.</li>
+<li><strong>Character</strong>: Used for text and strings.</li>
+<li><strong>Logical</strong>: Used for Boolean values (TRUE or
+FALSE).</li>
+</ul>
+<p>Let’s see some examples:</p>
+<pre class="r"><code># Numeric
+num_var &lt;- 3.14
+
+# Integer
+int_var &lt;- 42L
+
+# Character
+char_var &lt;- &quot;Hello, R!&quot;
+
+# Logical
+logical_var &lt;- TRUE</code></pre>
 </div>
-<p>I thought it might be worth investing some time to make a website to
-point to an area of my life where it gets a little more professional.
-But then I thought, why <em>just</em> do that? Why not incorporate some
-other aspects of my life that makes me me. So yes, this will have my
-ever growing resume, but let’s have a little bit of fun while we’re
-here.</p>
+<div id="arithmetic-operations" class="section level2">
+<h2>Arithmetic Operations</h2>
+<p>R allows you to perform a wide range of arithmetic operations on
+numeric data. Here are some basic operations:</p>
+<ul>
+<li>Addition (+)</li>
+<li>Subtraction (-)</li>
+<li>Multiplication (*)</li>
+<li>Division (/)</li>
+<li>Exponentiation (^)</li>
+<li>Modulo (%%)</li>
+</ul>
+<pre class="r"><code># Examples of arithmetic operations
+x &lt;- 10
+y &lt;- 5
+
+addition_result &lt;- x + y
+addition_result</code></pre>
+<pre><code>## [1] 15</code></pre>
+<pre class="r"><code>subtraction_result &lt;- x - y
+subtraction_result</code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="r"><code>multiplication_result &lt;- x * y
+multiplication_result</code></pre>
+<pre><code>## [1] 50</code></pre>
+<pre class="r"><code>division_result &lt;- x / y
+division_result</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre class="r"><code>exponentiation_result &lt;- x ^ y
+exponentiation_result</code></pre>
+<pre><code>## [1] 100000</code></pre>
+<pre class="r"><code>modulo_result &lt;- x %% y
+modulo_result</code></pre>
+<pre><code>## [1] 0</code></pre>
+</div>
+<div id="working-with-vectors-and-matrices" class="section level2">
+<h2>Working with Vectors and Matrices</h2>
+<p>Vectors and matrices are fundamental data structures in R that allow
+you to work with collections of data efficiently.</p>
+<div id="vectors" class="section level3">
+<h3>Vectors</h3>
+<p>A vector is a one-dimensional array that can hold elements of the
+same data type. You can create vectors using the c() function:</p>
+<pre class="r"><code># Creating a numeric vector
+numeric_vector &lt;- c(1, 2, 3, 4, 5)
+
+# Creating a character vector
+char_vector &lt;- c(&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;)</code></pre>
+</div>
+<div id="matrices" class="section level3">
+<h3>Matrices</h3>
+<p>A matrix is a two-dimensional array that can hold elements of the
+same data type. You can create matrices using the matrix() function:</p>
+<pre class="r"><code># Creating a matrix
+matrix_data &lt;- matrix(1:6, nrow = 2, ncol = 3)
+matrix_data</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    3    5
+## [2,]    2    4    6</code></pre>
+<p>These are the basics of working with variables, data types,
+arithmetic operations, vectors, and matrices in R. In the next sections,
+we will explore more advanced topics and practical examples.</p>
+<p>Feel free to practice these concepts in your R environment to
+solidify your understanding.</p>
+</div>
+</div>
+</div>
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -401,6 +554,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

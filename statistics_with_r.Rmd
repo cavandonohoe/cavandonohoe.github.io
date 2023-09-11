@@ -1,0 +1,66 @@
+---
+title: "Statistics with R"
+author: "Cavan Donohoe"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+# Statistics with R
+
+In this section, we will explore statistical analysis in R, covering descriptive statistics, hypothesis testing, and regression analysis.
+
+## Descriptive Statistics
+
+Descriptive statistics help you summarize and understand your data. Common descriptive statistics include measures of central tendency (mean, median, mode), measures of spread (variance, standard deviation, range), and graphical representations (histograms, box plots).
+
+```{r}
+# Descriptive statistics example
+data <- c(12, 15, 18, 22, 25, 28, 31)
+
+# Mean and median
+mean_data <- mean(data)
+mean_data
+
+median_data <- median(data)
+median_data
+
+# Variance and standard deviation
+variance_data <- var(data)
+variance_data
+
+sd_data <- sd(data)
+sd_data
+
+# Histogram
+hist(data, main = "Histogram of Data", xlab = "Value", ylab = "Frequency")
+```
+
+## Hypothesis Testing
+Hypothesis testing is a crucial statistical technique to make inferences about populations based on sample data. In R, you can perform hypothesis tests for means, proportions, variances, and more. Here's an example of a t-test for comparing two sample means:
+
+```{r}
+# Hypothesis testing example (t-test)
+group1 <- c(10, 12, 14, 16, 18)
+group2 <- c(14, 15, 16, 17, 18)
+
+t_test_result <- t.test(group1, group2)
+t_test_result
+```
+
+## Regression Analysis
+Regression analysis helps you model and analyze relationships between variables. You can perform linear regression, logistic regression, and other types of regression analysis in R. Here's a simple linear regression example:
+
+```{r}
+# Linear regression example
+x <- c(1, 2, 3, 4, 5)
+y <- c(2, 4, 5, 4, 6)
+
+linear_model <- lm(y ~ x)
+summary(linear_model)
+```
+
+In this section, we've covered the essentials of statistical analysis in R, including descriptive statistics, hypothesis testing, and regression analysis. These statistical tools are invaluable for drawing insights and making data-driven decisions.
+
+Feel free to explore more advanced statistical techniques and datasets to deepen your understanding of statistics with R.

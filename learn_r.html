@@ -9,9 +9,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Cavan Donohoe" />
 
 
-<title>Cavan Donohoe - Data Scientist</title>
+<title>Learn R</title>
 
 <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -29,22 +30,14 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
-<html>
-  <head>
-    <link rel="apple-touch-icon" sizes="180x180" href="header/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="header/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="header/favicon-16x16.png">
-    <link rel="manifest" href="header/site.webmanifest">
-    <link rel="mask-icon" href="header/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-  </head>
-</html>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -231,6 +224,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -238,6 +294,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -348,27 +414,98 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Cavan Donohoe - Data Scientist</h1>
+<h1 class="title toc-ignore">Learn R</h1>
+<h4 class="author">Cavan Donohoe</h4>
 
 </div>
 
 
-<p>Welcome to my Website! I know it’s not much, but it’s all done in R
-and GitHub, so that’s pretty cool.</p>
-<div class="float">
-<img src="images/China%20Walls%20Sunset.jpg"
-alt="Reminiscing of my life on Oahu" />
-<div class="figcaption"><em>Reminiscing of my life on Oahu</em></div>
+<div id="introduction-to-r-programming" class="section level1">
+<h1>Introduction to R Programming</h1>
+<p>Welcome to the “Introduction to R” class! In this course, you will
+learn the basics of R programming and data analysis. R is a powerful and
+versatile programming language for statistical analysis, data
+visualization, and more.</p>
+<div id="course-objectives" class="section level2">
+<h2>Course Objectives</h2>
+<p>In this course, you will:</p>
+<ol style="list-style-type: decimal">
+<li>Learn the fundamentals of R programming.</li>
+<li>Explore data manipulation and analysis.</li>
+<li>Create informative data visualizations.</li>
+<li>Gain practical experience through hands-on exercises.</li>
+</ol>
 </div>
-<p>I thought it might be worth investing some time to make a website to
-point to an area of my life where it gets a little more professional.
-But then I thought, why <em>just</em> do that? Why not incorporate some
-other aspects of my life that makes me me. So yes, this will have my
-ever growing resume, but let’s have a little bit of fun while we’re
-here.</p>
+<div id="getting-started" class="section level2">
+<h2>Getting Started</h2>
+<p>Before we dive into the world of R, make sure you have R and RStudio
+installed on your computer. You can download them from the following
+links:</p>
+<ul>
+<li><a href="https://cran.r-project.org/mirrors.html">R</a></li>
+<li><a
+href="https://www.rstudio.com/products/rstudio/download/">RStudio</a></li>
+</ul>
+</div>
+<div id="what-you-will-need" class="section level2">
+<h2>What You Will Need</h2>
+<ul>
+<li>A computer with R and RStudio installed.</li>
+<li>Curiosity and enthusiasm to learn!</li>
+</ul>
+</div>
+<div id="course-outline" class="section level2">
+<h2>Course Outline</h2>
+<ol style="list-style-type: decimal">
+<li><strong>Introduction to R</strong>
+<ul>
+<li>What is R?</li>
+<li>Installing R and RStudio.</li>
+<li>RStudio interface overview.</li>
+</ul></li>
+<li><strong>Basic Operations in R</strong>
+<ul>
+<li>Variables and data types.</li>
+<li>Arithmetic operations.</li>
+<li>Working with vectors and matrices.</li>
+</ul></li>
+<li><strong>Data Manipulation</strong>
+<ul>
+<li>Importing and exporting data.</li>
+<li>Data frames and data exploration.</li>
+</ul></li>
+<li><strong>Data Visualization</strong>
+<ul>
+<li>Creating basic plots.</li>
+<li>Customizing plots.</li>
+<li>Advanced visualization with ggplot2.</li>
+</ul></li>
+<li><strong>Statistics with R</strong>
+<ul>
+<li>Descriptive statistics.</li>
+<li>Hypothesis testing.</li>
+<li>Regression analysis.</li>
+</ul></li>
+</ol>
+</div>
+<div id="contact-information" class="section level2">
+<h2>Contact Information</h2>
+<p>If you have any questions or need further assistance during the
+course, please don’t hesitate to contact me:</p>
+<ul>
+<li><strong>Email:</strong> <a href="mailto:cavandonohoe@gmail.com"
+class="email">cavandonohoe@gmail.com</a></li>
+</ul>
+<p>Feel free to reach out for clarification, additional resources, or
+any other inquiries.</p>
+<p>Let’s embark on this exciting journey of learning R together!</p>
+</div>
+</div>
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -401,6 +538,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
