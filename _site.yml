@@ -35,8 +35,9 @@ navbar:
       - text: "When Were Confederate Statues Erected?"
         href: confederate_statues.html
       - text: "Learn R"
-        href: learn_r.html
         menu:
+        - text: "R Time Is Limited, Let's Make the Most of It"
+          href: learn_r.html
         - text: "Intro to R"
           href: intro_to_r.html
         - text: "Basic Operations"

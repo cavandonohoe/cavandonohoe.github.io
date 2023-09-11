@@ -1,5 +1,5 @@
 ---
-title: "Learn R"
+title: "R Time Is Limited, Let's Make the Most of It"
 author: "Cavan Donohoe"
 output:
   html_document:
@@ -7,9 +7,7 @@ output:
     toc_float: true
 ---
 
-# Introduction to R Programming
-
-Welcome to the "Introduction to R" class! In this course, you will learn the basics of R programming and data analysis. R is a powerful and versatile programming language for statistical analysis, data visualization, and more.
+Welcome to the "R Time Is Limited, Let's Make the Most of It" class! In this course, you will learn the basics of R programming and data analysis. R is a powerful and versatile programming language for statistical analysis, data visualization, and more.
 
 ## Course Objectives
 
