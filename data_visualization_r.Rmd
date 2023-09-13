@@ -60,3 +60,15 @@ ggplot(data = data_example, aes(x = x, y = y)) +
 In this section, we've covered the fundamentals of data visualization in R, including creating basic plots, customizing them to meet your needs, and introducing you to the power of ggplot2 for advanced visualization. Data visualization is a crucial skill for exploring and communicating insights from your data effectively.
 
 Feel free to experiment with different plot types and customization options to enhance your data visualization skills.
+
+
+
+
+Free Lessons:
+- [R Time Is Limited, Let's Make the Most of It](https://cavandonohoe.github.io/learn_r.html)
+- [Introduction to R](https://cavandonohoe.github.io/intro_to_r.html)
+- [Basic Operations in R](https://cavandonohoe.github.io/basic_operations_r.html)
+- [Data Manipulation](https://cavandonohoe.github.io/data_manipulation_r.html)
+- [Data Visualization](https://cavandonohoe.github.io/data_visualization_r.html)
+- [Statistics in R](https://cavandonohoe.github.io/statistics_with_r.html)
+
