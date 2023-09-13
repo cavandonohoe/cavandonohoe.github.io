@@ -5,6 +5,8 @@ output:
   html_document:
     toc: true
     toc_float: true
+    includes:
+      in_header: header/header.html
 ---
 
 Welcome to the "R Time Is Limited, Let's Make the Most of It" class! In this course, you will learn the basics of R programming and data analysis. R is a powerful and versatile programming language for statistical analysis, data visualization, and more.
@@ -69,6 +71,7 @@ Let's embark on this exciting journey of learning R together!
 
 
 Free Lessons:
+
 - [R Time Is Limited, Let's Make the Most of It](https://cavandonohoe.github.io/learn_r.html)
 - [Introduction to R](https://cavandonohoe.github.io/intro_to_r.html)
 - [Basic Operations in R](https://cavandonohoe.github.io/basic_operations_r.html)
