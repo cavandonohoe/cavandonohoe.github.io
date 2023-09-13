@@ -5,6 +5,8 @@ output:
   html_document:
     toc: true
     toc_float: true
+    includes:
+      in_header: header/header.html
 ---
 
 # Statistics with R
@@ -67,6 +69,7 @@ Feel free to explore more advanced statistical techniques and datasets to deepen
 
 
 Free Lessons:
+
 - [R Time Is Limited, Let's Make the Most of It](https://cavandonohoe.github.io/learn_r.html)
 - [Introduction to R](https://cavandonohoe.github.io/intro_to_r.html)
 - [Basic Operations in R](https://cavandonohoe.github.io/basic_operations_r.html)
