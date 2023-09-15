@@ -7,6 +7,7 @@ output:
     toc_float: true
     includes:
       in_header: header/header.html
+      after_body: include_footer.html
 ---
 
 Welcome to the "R Time Is Limited, Let's Make the Most of It" class! In this course, you will learn the basics of R programming and data analysis. R is a powerful and versatile programming language for statistical analysis, data visualization, and more.
