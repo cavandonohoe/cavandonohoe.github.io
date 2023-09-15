@@ -6,6 +6,7 @@ output:
   html_document:
     includes:
       in_header: header/header.html
+      after_body: include_footer.html
 ---
 
 Binge watching can be extremely satisfying if done for the right show. Quite often though, it's done for the wrong show with a pretty shitty ending or a lot of filler episodes that you just get bored of. So maybe if you were to choose the right show to binge watch, that would help with choosing the right show to binge watch (or at least avoid). Nobody wants that Game of Thrones finale feeling.

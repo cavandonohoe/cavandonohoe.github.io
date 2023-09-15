@@ -7,6 +7,7 @@ output:
     toc_float: true
     includes:
       in_header: header/header.html
+      after_body: include_footer.html
 ---
 
 # Basic Operations in R

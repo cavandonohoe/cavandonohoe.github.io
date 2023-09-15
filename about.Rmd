@@ -4,6 +4,7 @@ output:
   html_document:
     includes:
       in_header: header/header.html
+      after_body: include_footer.html
 editor_options: 
   chunk_output_type: console
 ---
