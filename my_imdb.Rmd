@@ -1,0 +1,93 @@
+---
+title: "My IMDb"
+editor_options: 
+  chunk_output_type: console
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+---
+
+
+```{r setup, include=FALSE}
+# Set default chunk output
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE,
+  results = "asis"
+)
+```
+
+```{r libraries}
+library(tidyverse)
+library(DT)
+```
+
+
+```{r data_load, include=FALSE}
+my_ratings = read_csv("data/imdb_ratings.csv")
+```
+
+```{r nine_ten_movies, eval=FALSE}
+nines_and_tens = my_ratings %>%
+  filter(`Your Rating` %in% c(9, 10))
+
+nines_and_tens %>%
+  filter(`Title Type` == "movie") %>%
+  select(`My Rating` = `Your Rating`, Title, `IMDb Rating`, `Runtime (mins)`, Year, Genres, `Release Date`, Directors) %>%
+  arrange(desc(`My Rating`), desc(`IMDb Rating`)) %>%
+  datatable(filter = "top", extensions = "Buttons",
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE))
+```
+
+```{r full_list}
+my_ratings %>%
+  select(`My Rating` = `Your Rating`, Title, `Title Type`, `IMDb Rating`, `Runtime (mins)`, Year, Genres, `Release Date`, Directors) %>%
+  arrange(desc(`My Rating`), desc(`IMDb Rating`)) %>%
+  datatable(filter = "top", extensions = "Buttons",
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE))
+```
+
+
+
+```{r some_graphs}
+my_ratings %>%
+  # select(`My Rating` = `Your Rating`, Title, `Title Type`, `IMDb Rating`, `Runtime (mins)`, Year, Genres, `Release Date`, Directors) %>%
+  mutate(imdb_rating = round(`IMDb Rating`)) %>%
+  group_by(imdb_rating) %>% count %>% ungroup() %>%
+  ggplot(aes(x = imdb_rating, y = n)) +
+  geom_col() +
+  scale_x_continuous(breaks = seq(1, 10, 1)) +
+  theme_minimal() +
+  ylab("") + xlab("Imdb Rating") + ggtitle("Imdb's Rating (rounded)")
+
+my_ratings %>%
+  # select(`My Rating` = `Your Rating`, Title, `Title Type`, `IMDb Rating`, `Runtime (mins)`, Year, Genres, `Release Date`, Directors) %>%
+  # mutate(imdb_rating = round(`IMDb Rating`)) %>%
+  group_by(`Your Rating`) %>% count %>% ungroup() %>%
+  ggplot(aes(x = `Your Rating`, y = n)) +
+  geom_col() +
+  scale_x_continuous(breaks = seq(1, 10, 1)) +
+  theme_minimal() +
+  ylab("") + xlab("Imdb Rating") + ggtitle("My Rating")
+
+my_ratings %>%
+  select(my_rating = `Your Rating`, imdb_rating = `IMDb Rating`) %>%
+  ggplot(aes(y = my_rating, x = imdb_rating)) +
+  geom_point() +
+  scale_x_continuous(breaks = seq(0, 10, 1), limits = c(0, 10)) +
+  scale_y_continuous(breaks = seq(0, 10, 1), limits = c(0, 10)) +
+  coord_fixed(ratio = 1) +
+  geom_abline(intercept = 0, slope = 1, linetype = "dashed", color = "red") +
+  ylab("My Rating") + xlab("IMDb Rating") + ggtitle("My Rating vs IMDB's Rating")
+
+my_rating_vs_imdb = my_ratings %>%
+  select(my_rating = `Your Rating`, imdb_rating = `IMDb Rating`) %>%
+  mutate(diff = my_rating - imdb_rating,
+         my_rating_greater = diff >= 0) %>%
+  group_by(my_rating_greater) %>% count %>% ungroup() %>%
+  mutate(perc = n / sum(n))
+```
+
