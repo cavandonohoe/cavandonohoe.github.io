@@ -30,6 +30,8 @@ navbar:
         href: tohs_reunion.html
       - text: "Sierpinski Triangle"
         href: sierpinski_triangle.html
+      - text: "My Imdb"
+        href: my_imdb.html
       - text: "Get Bloggy With It"
         href: my_travels.html
       - text: "When Were Confederate Statues Erected?"
