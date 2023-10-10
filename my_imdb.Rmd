@@ -89,5 +89,7 @@ my_rating_vs_imdb = my_ratings %>%
          my_rating_greater = diff >= 0) %>%
   group_by(my_rating_greater) %>% count %>% ungroup() %>%
   mutate(perc = n / sum(n))
+
+
 ```
 
