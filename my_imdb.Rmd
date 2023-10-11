@@ -1,5 +1,5 @@
 ---
-title: "My IMDb"
+title: "My IMDb Watchlist"
 editor_options: 
   chunk_output_type: console
 output:
@@ -59,7 +59,7 @@ my_ratings %>%
   group_by(imdb_rating) %>% count %>% ungroup() %>%
   ggplot(aes(x = imdb_rating, y = n)) +
   geom_col() +
-  scale_x_continuous(breaks = seq(1, 10, 1)) +
+  scale_x_continuous(breaks = seq(1, 10, 1), limits = c(1, 10)) +
   theme_minimal() +
   ylab("") + xlab("Imdb Rating") + ggtitle("Imdb's Rating (rounded)")
 
