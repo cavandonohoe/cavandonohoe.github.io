@@ -73,15 +73,16 @@ imdb_rating_plot = my_ratings %>%
 imdb_rating_plot %>% plotly::ggplotly() %>%
   plotly::layout(
     margin = list(
-      b = 100 # Adjust the bottom margin to create space for the caption
+      b = 150 # Adjust the bottom margin to create space for the lower caption
     ),
     annotations = list(
       list(
-        x = 0, y = -0.15, # Adjust x and y to position the caption
+        x = 0, y = -0.3, # Adjust x and y to position the lower caption
         xref = "paper", yref = "paper",
         text = "Hovering over each bar section will provide a sample list of ratings (10 max)",
         showarrow = FALSE,
-        align = "left" # Align the text to the left
+        align = "left", # Align the text to the left
+        font = list(size = 10) # Adjust the font size (change 10 to your desired size)
       )
     )
   )
@@ -105,15 +106,16 @@ my_rating_plot = my_ratings %>%
 my_rating_plot %>% plotly::ggplotly() %>%
   plotly::layout(
     margin = list(
-      b = 100 # Adjust the bottom margin to create space for the caption
+      b = 150 # Adjust the bottom margin to create space for the lower caption
     ),
     annotations = list(
       list(
-        x = 0, y = -0.15, # Adjust x and y to position the caption
+        x = 0, y = -0.3, # Adjust x and y to position the lower caption
         xref = "paper", yref = "paper",
         text = "Hovering over each bar section will provide a sample list of ratings (10 max)",
         showarrow = FALSE,
-        align = "left" # Align the text to the left
+        align = "left", # Align the text to the left
+        font = list(size = 10) # Adjust the font size (change 10 to your desired size)
       )
     )
   )
