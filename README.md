@@ -29,4 +29,6 @@ Check out my website at <https://cavandonohoe.github.io>
 - [Blog](https://cavandonohoe.github.io/my_travels.html)
 - [Confederate Statue
   Analysis](https://github.com/cavandonohoe/confederate_statues)
+- [Learn R (Course on Learning
+  R)](https://cavandonohoe.github.io/learn_r.html)
 - [CV](https://cavandonohoe.github.io/cv.html)
