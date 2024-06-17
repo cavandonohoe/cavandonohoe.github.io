@@ -28,6 +28,8 @@ library(googlesheets4)
 
 # resume = read_excel("data/resume.xlsx")
 resume = read_sheet("https://docs.google.com/spreadsheets/d/1JD4Vqc8QDHFYzcrbEUrq6Fc0hKRcmqY0ASFdZvlMxl8")
+file_info = googledrive::drive_get("https://docs.google.com/spreadsheets/d/1JD4Vqc8QDHFYzcrbEUrq6Fc0hKRcmqY0ASFdZvlMxl8")
+last_update = file_info$drive_resource[[1]]$modifiedTime %>% ymd_hms() %>% as_date()
 
 resume_v1.1 = resume %>% mutate(start.date = as.Date(paste(start, "1", sep="-"), format="%B %Y-%d")) %>%
   mutate(section_num = row_number())
@@ -108,7 +110,7 @@ Disclaimer {#disclaimer}
 
 This resume was made with the R package [**pagedown**](https://github.com/rstudio/pagedown).
 
-Last updated on `r Sys.Date()`.
+Last updated on `r last_update`.
 
 
 
