@@ -27,8 +27,8 @@ library(googlesheets4)
 # coding in the resume
 
 # resume = read_excel("data/resume.xlsx")
-resume = read_sheet("https://docs.google.com/spreadsheets/d/1JD4Vqc8QDHFYzcrbEUrq6Fc0hKRcmqY0ASFdZvlMxl8")
-file_info = googledrive::drive_get("https://docs.google.com/spreadsheets/d/1JD4Vqc8QDHFYzcrbEUrq6Fc0hKRcmqY0ASFdZvlMxl8")
+resume = read_sheet("https://docs.google.com/spreadsheets/d/13mLROsbvwiE-djiRMQuOKfQwppOlH5mOxB43EaGna8s")
+file_info = googledrive::drive_get("https://docs.google.com/spreadsheets/d/13mLROsbvwiE-djiRMQuOKfQwppOlH5mOxB43EaGna8s")
 last_update = file_info$drive_resource[[1]]$modifiedTime %>% ymd_hms() %>% as_date()
 
 resume_v1.1 = resume %>% mutate(start.date = as.Date(paste(start, "1", sep="-"), format="%B %Y-%d")) %>%
