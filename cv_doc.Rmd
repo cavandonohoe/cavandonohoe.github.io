@@ -2,7 +2,7 @@
 title: "Cavan Donohoe"
 output:
   word_document:
-    reference_docx: "format_resume_test.dotx"
+    reference_docx: "format_resume_test2.dotx"
 editor_options: 
   chunk_output_type: console
 ---
@@ -92,9 +92,9 @@ Professional Experience {data-icon=suitcase}
 
 ```{r doc_professional experience, echo=FALSE, results='asis'}
 positions_collapsed_bullets_final %>% filter(section=="Experience") %>% glue_data("### {title}", "\n\n",
-                                                                    "{institution}",
+                                                                    "#### {institution}",
                                                                     "\n\n",
-                                                                    "{location}",
+                                                                    "#### {location}",
                                                                     "\n\n",
                                                                     "{time_period}",
                                                                     "\n\n",
@@ -109,9 +109,9 @@ Education {data-icon=graduation-cap data-concise=true}
 
 ```{r doc_education, echo=FALSE, results='asis'}
 positions_collapsed_bullets_final %>% filter(section=="Education") %>% glue_data("### {title}", "\n\n",
-                                                                    "{institution}",
+                                                                    "#### {institution}",
                                                                     "\n\n",
-                                                                    "{location}",
+                                                                    "#### {location}",
                                                                     "\n\n",
                                                                     "{time_period}",
                                                                     "\n\n",
