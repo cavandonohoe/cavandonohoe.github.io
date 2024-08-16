@@ -72,6 +72,8 @@ positions_collapsed_bullets_v1.3 = positions_collapsed_bullets_v1.2 %>%
 
 positions_collapsed_bullets_final = positions_collapsed_bullets_v1.3
 
+# adding word doc stuff too
+rmarkdown::render("cv_doc.Rmd", output_format = "word_document", quiet = TRUE)
 ```
 
 Aside
