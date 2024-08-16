@@ -1,22 +1,23 @@
 ---
-title: "Cavan Donohoe's Resume"
-author: Cavan Donohoe
-date: "`r Sys.Date()`"
+title: "Cavan Donohoe"
 output:
-  pagedown::html_resume:
-    self_contained: true
-    css:
-      - ./cv_stuff/cv_css.css
-      - resume
-knit: pagedown::chrome_print
+  word_document:
+    reference_docx: "format_resume_test.dotx"
 editor_options: 
   chunk_output_type: console
 ---
 
-```{r background code, echo=FALSE, message=FALSE, error=FALSE, warning=FALSE}
+```{r doc_background code, echo=FALSE, message=FALSE, error=FALSE, warning=FALSE}
 # note for future cavan:
 # you have to render this individually instead of just building the website
 # that way the pdf version gets updated as well
+
+
+# make this a word doc friendly resume
+# source this in other cv.Rmd later 
+# then we're golden
+# give victoria princess treatment always
+
 
 library(glue)
 library(tidyverse)
@@ -72,71 +73,41 @@ positions_collapsed_bullets_v1.3 = positions_collapsed_bullets_v1.2 %>%
 
 positions_collapsed_bullets_final = positions_collapsed_bullets_v1.3
 
-# adding word doc stuff too
-rmarkdown::render("cv_doc.Rmd", output_format = "word_document", quiet = TRUE)
-```
-
-Aside
-================================================================================
-
-
-
-[Back to Home Page](https://cavandonohoe.github.io/)
-
-[PDF version](https://github.com/cavandonohoe/cavandonohoe.github.io/raw/main/cv.pdf)
-
-
-
-
-Contact Info {#contact}
---------------------------------------------------------------------------------
-
-- <i class="fa fa-envelope"></i> cavandonohoe@gmail.com
-- <i class="fa fa-github"></i> [github.com/cavandonohoe](https://github.com/cavandonohoe)
-- <i class="fa fa-linkedin"></i> [linkedin.com/in/cavan-donohoe/](https://www.linkedin.com/in/cavan-donohoe/)
-- <i class="fa fa-phone"></i> (805) 404-3321
-
-
-Skills {#skills}
---------------------------------------------------------------------------------
-
-
-```{r skills, echo=FALSE, results='asis'}
-positions_collapsed_bullets_final %>% filter(section=="Skills") %>% glue_data("{description_section}", 
-                                                                        "\n\n")
 ```
 
 
-Disclaimer {#disclaimer}
---------------------------------------------------------------------------------
-
-This resume was made with the R package [**pagedown**](https://github.com/rstudio/pagedown).
-
-Last updated on `r last_update`.
-
-
-
-Main
-================================================================================
-
-
-
-Cavan Donohoe {#title}
---------------------------------------------------------------------------------
+cavandonohoe@gmail.com | [github.com/cavandonohoe](https://github.com/cavandonohoe) | [linkedin.com/in/cavan-donohoe](https://www.linkedin.com/in/cavan-donohoe) | (805) 404-3321
 
 ### Looking to improve your company's data workflow
 
 
-```{r summary, echo=FALSE, results='asis'}
+```{r doc_summary, echo=FALSE, results='asis'}
 positions_collapsed_bullets_final %>% filter(section=="About Me") %>% glue_data("{description_section}", "\n\n")
 ```
 
+
+Professional Experience {data-icon=suitcase}
+--------------------------------------------------------------------------------
+
+
+```{r doc_professional experience, echo=FALSE, results='asis'}
+positions_collapsed_bullets_final %>% filter(section=="Experience") %>% glue_data("### {title}", "\n\n",
+                                                                    "{institution}",
+                                                                    "\n\n",
+                                                                    "{location}",
+                                                                    "\n\n",
+                                                                    "{time_period}",
+                                                                    "\n\n",
+                                                                    "{description_section}", 
+                                                                    "\n\n",
+                                                                    .na="")
+```
 
 Education {data-icon=graduation-cap data-concise=true}
 --------------------------------------------------------------------------------
 
 
-```{r education, echo=FALSE, results='asis'}
+```{r doc_education, echo=FALSE, results='asis'}
 positions_collapsed_bullets_final %>% filter(section=="Education") %>% glue_data("### {title}", "\n\n",
                                                                     "{institution}",
                                                                     "\n\n",
@@ -151,50 +122,27 @@ positions_collapsed_bullets_final %>% filter(section=="Education") %>% glue_data
 
 
 
-Professional Experience {data-icon=suitcase}
---------------------------------------------------------------------------------
-
-
-```{r professional experience, echo=FALSE, results='asis'}
-positions_collapsed_bullets_final %>% filter(section=="Experience") %>% glue_data("### {title}", "\n\n",
-                                                                    "{institution}",
-                                                                    "\n\n",
-                                                                    "{location}",
-                                                                    "\n\n",
-                                                                    "{time_period}",
-                                                                    "\n\n",
-                                                                    "{description_section}", 
-                                                                    "\n\n",
-                                                                    .na="")
-```
-
 Awards {data-icon=medal}
 --------------------------------------------------------------------------------
 
 
-```{r awards, echo=FALSE, results='asis'}
-positions_collapsed_bullets_final %>% filter(section=="Awards") %>% glue_data("### {description_section}", 
-                                                                              "\n\n",
-                                                                              "{institution}",
-                                                                              "\n\n",
-                                                                              "{location}",
-                                                                              "\n\n",
-                                                                              "{time_period}",
-                                                                              "\n\n")
+```{r doc_awards, echo=FALSE, results='asis'}
+positions_collapsed_bullets_final %>% filter(section=="Awards") %>% glue_data("### {description_section}")
 ```
 
 Credentials {data-icon=th-list}
 --------------------------------------------------------------------------------
 
 
-```{r credentials, echo=FALSE, results='asis'}
-positions_collapsed_bullets_final %>% filter(section=="Credentials") %>% glue_data("### {description_section}", 
-                                                                              "\n\n",
-                                                                              "{institution}",
-                                                                              "\n\n",
-                                                                              "{location}",
-                                                                              "\n\n",
-                                                                              "{time_period}",
-                                                                              "\n\n")
+```{r doc_credentials, echo=FALSE, results='asis'}
+positions_collapsed_bullets_final %>% filter(section=="Credentials") %>% glue_data("### {description_section}")
 ```
 
+Skills {#skills}
+--------------------------------------------------------------------------------
+
+
+```{r doc_skills, echo=FALSE, results='asis'}
+positions_collapsed_bullets_final %>% filter(section=="Skills") %>% glue_data("{description_section}", 
+                                                                        "\n\n")
+```
