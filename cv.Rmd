@@ -134,6 +134,24 @@ positions_collapsed_bullets_final %>% filter(section=="About Me") %>% glue_data(
 ```
 
 
+
+Professional Experience {data-icon=suitcase}
+--------------------------------------------------------------------------------
+
+
+```{r professional experience, echo=FALSE, results='asis'}
+positions_collapsed_bullets_final %>% filter(section=="Experience") %>% glue_data("### {title}", "\n\n",
+                                                                    "{institution}",
+                                                                    "\n\n",
+                                                                    "{location}",
+                                                                    "\n\n",
+                                                                    "{time_period}",
+                                                                    "\n\n",
+                                                                    "{description_section}", 
+                                                                    "\n\n",
+                                                                    .na="")
+```
+
 Education {data-icon=graduation-cap data-concise=true}
 --------------------------------------------------------------------------------
 
@@ -153,22 +171,6 @@ positions_collapsed_bullets_final %>% filter(section=="Education") %>% glue_data
 
 
 
-Professional Experience {data-icon=suitcase}
---------------------------------------------------------------------------------
-
-
-```{r professional experience, echo=FALSE, results='asis'}
-positions_collapsed_bullets_final %>% filter(section=="Experience") %>% glue_data("### {title}", "\n\n",
-                                                                    "{institution}",
-                                                                    "\n\n",
-                                                                    "{location}",
-                                                                    "\n\n",
-                                                                    "{time_period}",
-                                                                    "\n\n",
-                                                                    "{description_section}", 
-                                                                    "\n\n",
-                                                                    .na="")
-```
 
 Awards {data-icon=medal}
 --------------------------------------------------------------------------------
