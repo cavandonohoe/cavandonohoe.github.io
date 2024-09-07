@@ -1,5 +1,5 @@
 ---
-title: "Jason and Wyett's Schedule"
+title: "Jason, Owen, and Wyett's Schedule"
 editor_options: 
   chunk_output_type: console
 output:
@@ -88,11 +88,11 @@ segments_and_weekends_b = jasons_work_schedule %>%
 
 ```
 
-Jason and Wyett's Work Schedule for the next `r years_till_retirement` years (Retire at 65 right?). Even though they both started in 2021 and 2022, respectively, I love being around them when someone thanks them for their service and they literally don't know what to say next. I suppose they need to legit save someone from a brush fire to start saying "you're welcome" with confidence.
+Jason, Owen, and Wyett's Work Schedule for the next `r years_till_retirement` years (Retire at 65 right?). Should be a fun journey for them! Keep battling those fires! 
 
 This is based on the Kelly Schedule.
 
-## Jason's:
+## Jason's and Owen's:
 
 ```{r}
 segments_and_weekends_b %>%
