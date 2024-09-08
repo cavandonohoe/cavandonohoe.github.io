@@ -171,3 +171,21 @@ velma = read_csv("data/velma_ep_ratings.csv")
 velma %>% create_episode_plot()
 ```
 
+## Suits
+
+```{r}
+suits = read_csv("data/suits_ep_ratings.csv")
+
+suits %>% create_episode_plot()
+```
+
+## Mad Men
+
+```{r}
+mad_men = read_csv("data/top250_imdb_series.csv") %>%
+  filter(series_name == "Mad Men") %>%
+  select(episode = season_ep, season, imdb_rating = episode_rating) %>%
+  filter(episode != 0)
+
+mad_men %>% create_episode_plot()
+```

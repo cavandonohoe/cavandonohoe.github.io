@@ -6,6 +6,45 @@ library(ggplot2)
 library(dplyr)
 library(RColorBrewer)
 library(rvest)
+library(tidyverse)
+
+# Function to extract episode details from each season
+extract_episodes <- function(season_url) {
+  season_page <- read_html(season_url)
+  
+  episodes <- season_page %>%
+    html_nodes("article") %>%
+    lapply(function(x) {
+      episode_number_raw <- html_node(x, "div.sc-ccd6e31b-4.hddQZU > div.sc-ccd6e31b-5.eEIQUx > h4 > div > a > div") %>% html_text(trim = TRUE)
+      episode_number <- str_extract(episode_number_raw, "(?<=E)\\d+") %>% as.numeric()
+      rating_raw <- html_node(x, "div.sc-ccd6e31b-4.hddQZU > div.sc-ccd6e31b-12.ldTSvW > div > span") %>% html_text(trim = TRUE)
+      rating <- str_extract(rating_raw, "^[0-9.]+") %>% as.numeric()
+      
+      tibble(
+        episode_name_number = episode_number_raw,
+        episode = episode_number,
+        imdb_rating = rating
+      )
+    }) %>%
+    bind_rows()
+  
+  season_number <- str_extract(season_url, "\\d+$")
+  episodes <- episodes %>%
+    mutate(season = as.numeric(season_number))
+  
+  return(episodes)
+}
+
+# Helper function to create the data frame for episode data
+create_episode_data <- function(season_urls) {
+  episode_data <- lapply(season_urls, extract_episodes) %>%
+    bind_rows() %>%
+    filter(episode != 0) %>%
+    filter(!is.na(imdb_rating))
+  
+  return(episode_data)
+}
+
 
 # Function to scrape IMDb series episode data
 scrape_imdb_episode_data <- function(url) {
@@ -71,3 +110,6 @@ bojack %>% write_csv("data/bojack_ep_ratings.csv")
 # velma
 velma = scrape_imdb_episode_data("https://www.imdb.com/title/tt14153790/")
 velma %>% write_csv("data/velma_ep_ratings.csv")
+# suits
+suits = scrape_imdb_episode_data("https://www.imdb.com/title/tt1632701/")
+suits %>% write_csv("data/suits_ep_ratings.csv")
