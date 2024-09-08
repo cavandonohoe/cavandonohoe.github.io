@@ -62,4 +62,6 @@ westworld %>% write_csv("data/westworld_ep_ratings.csv")
 # paris hilton bff
 paris_hilton_bff = scrape_imdb_episode_data("https://www.imdb.com/title/tt1292967/")
 paris_hilton_bff %>% write_csv("data/paris_hilton_bff_ep_ratings.csv")
-
+# stranger things
+stranger_things = scrape_imdb_episode_data("https://www.imdb.com/title/tt4574334/")
+stranger_things %>% write_csv("data/stranger_things_ep_ratings.csv")

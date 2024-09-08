@@ -146,3 +146,11 @@ paris_hilton_bff = read_csv("data/paris_hilton_bff_ep_ratings.csv")
 
 paris_hilton_bff %>% create_episode_plot()
 ```
+
+## Stranger Things
+
+```{r}
+stranger_things = read_csv("data/stranger_things_ep_ratings.csv")
+
+stranger_things %>% create_episode_plot()
+```
