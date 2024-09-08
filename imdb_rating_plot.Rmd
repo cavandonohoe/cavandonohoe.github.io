@@ -72,3 +72,37 @@ avatar = read_csv("data/top250_imdb_series.csv") %>%
 avatar %>% create_episode_plot()
 ```
 
+## Always Sunny in Philadelphia
+
+```{r}
+always_sunny = read_csv("data/always_sunny_ep_ratings.csv")
+
+always_sunny %>% create_episode_plot()
+```
+
+## The Office (US)
+
+```{r}
+office = read_csv("data/top250_imdb_series.csv") %>%
+  filter(series_name == "The Office" & imdb_id == "tt0386676") %>%
+  select(episode = season_ep, season, imdb_rating = episode_rating) %>%
+  filter(episode != 0)
+
+office %>% create_episode_plot()
+```
+
+## HIMYM
+
+```{r}
+himym = read_csv("data/himym_ep_ratings.csv")
+
+himym %>% create_episode_plot()
+```
+
+## Better Call Saul
+
+```{r}
+better_call_saul = read_csv("data/better_call_saul_ep_ratings.csv")
+
+better_call_saul %>% create_episode_plot()
+```

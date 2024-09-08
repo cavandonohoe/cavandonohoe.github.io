@@ -38,6 +38,12 @@ game_of_thrones_ratings %>% write_csv("data/game_of_thrones_ep_ratings.csv")
 # breaking bad
 breaking_bad_rating = scrape_imdb_episode_data("https://www.imdb.com/title/tt0903747/")
 breaking_bad_rating %>% write_csv("data/breaking_bad_ep_ratings.csv")
-
-
-
+# always sunny
+always_sunny = scrape_imdb_episode_data("https://www.imdb.com/title/tt0472954/")
+always_sunny %>% write_csv("data/always_sunny_ep_ratings.csv")
+# himym
+himym = scrape_imdb_episode_data("https://www.imdb.com/title/tt0460649/")
+himym %>% write_csv("data/himym_ep_ratings.csv")
+# better call saul
+better_call_saul = scrape_imdb_episode_data("https://www.imdb.com/title/tt3032476/")
+better_call_saul %>% write_csv("data/better_call_saul_ep_ratings.csv")
