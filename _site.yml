@@ -22,6 +22,8 @@ navbar:
         href: best_pic_vs_top_1000.html
       - text: "Top 250 IMDb Movies with Rotten Tomato Scores"
         href: top_250_imdb_with_rt.html
+      - text: "IMDb Rating Plot by Season and Episode"
+        href: imdb_rating_plot.html
       - text: "Best Picture Nominees"
         href: best_picture_nominees.html
       - text: "Jason, Owen, and Wyett's Firefighter Schedule"

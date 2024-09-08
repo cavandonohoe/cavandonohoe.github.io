@@ -1,0 +1,63 @@
+---
+title: "IMDb Rating Plot by Season and Episode"
+editor_options: 
+  chunk_output_type: console
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+---
+
+I'm kinda obsessed with seeing a whole map of series and where they stride well and when they just absolutely fuck different episodes. Sometimes, critics are just a little harsh. Sometimes it's hard to completely crush an entire series, but we can explore some series that figure it out and quite while they're ahead.
+
+```{r setup, include=FALSE}
+# Set default chunk output
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE,
+  results = "asis"
+)
+```
+
+
+```{r episode_plot}
+library(tidyverse)
+library(RColorBrewer)
+
+# Function to create a plot of IMDb ratings by season and episode
+create_episode_plot <- function(episode_data) {
+  episode_plot <- episode_data %>%
+    ggplot(aes(x = season, y = episode, fill = imdb_rating)) +
+    geom_tile(color = "white") +
+    geom_text(aes(label = round(imdb_rating, 1)), color = "black") +
+    scale_fill_gradientn(
+      colors = brewer.pal(9, "RdYlGn"),
+      values = scales::rescale(c(0, 4, 6, 8, 10)),
+      limits = c(0, 10),
+      name = "IMDb Rating"
+    ) +
+    scale_x_continuous(breaks = seq(min(episode_data$season), max(episode_data$season), 1), position = "top") +
+    scale_y_reverse(breaks = seq(min(episode_data$episode), max(episode_data$episode), 1)) +
+    labs(title = "IMDb Ratings by Season and Episode", x = "Season", y = "Episode") +
+    theme_minimal()
+  
+  return(episode_plot)
+}
+```
+
+## Game of Thrones
+
+```{r}
+game_of_thrones = read_csv("data/game_of_thrones_ep_ratings.csv")
+
+game_of_thrones %>% create_episode_plot()
+```
+
+## Breaking Bad
+
+```{r}
+breaking_bad = read_csv("data/breaking_bad_ep_ratings.csv")
+
+breaking_bad %>% create_episode_plot()
+```
+
