@@ -154,3 +154,11 @@ stranger_things = read_csv("data/stranger_things_ep_ratings.csv")
 
 stranger_things %>% create_episode_plot()
 ```
+
+## Bojack Horseman
+
+```{r}
+bojack = read_csv("data/bojack_ep_ratings.csv")
+
+bojack %>% create_episode_plot()
+```
