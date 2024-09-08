@@ -65,3 +65,9 @@ paris_hilton_bff %>% write_csv("data/paris_hilton_bff_ep_ratings.csv")
 # stranger things
 stranger_things = scrape_imdb_episode_data("https://www.imdb.com/title/tt4574334/")
 stranger_things %>% write_csv("data/stranger_things_ep_ratings.csv")
+# bojack
+bojack = scrape_imdb_episode_data("https://www.imdb.com/title/tt3398228/")
+bojack %>% write_csv("data/bojack_ep_ratings.csv")
+# velma
+velma = scrape_imdb_episode_data("https://www.imdb.com/title/tt14153790/")
+velma %>% write_csv("data/velma_ep_ratings.csv")

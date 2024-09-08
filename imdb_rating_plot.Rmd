@@ -162,3 +162,12 @@ bojack = read_csv("data/bojack_ep_ratings.csv")
 
 bojack %>% create_episode_plot()
 ```
+
+## Velma
+
+```{r}
+velma = read_csv("data/velma_ep_ratings.csv")
+
+velma %>% create_episode_plot()
+```
+
