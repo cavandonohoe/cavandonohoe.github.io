@@ -56,3 +56,10 @@ hotd %>% write_csv("data/hotd_ep_ratings.csv")
 # bluey
 bluey = scrape_imdb_episode_data("https://www.imdb.com/title/tt7678620/")
 bluey %>% write_csv("data/bluey_ep_ratings.csv")
+# westworld
+westworld = scrape_imdb_episode_data("https://www.imdb.com/title/tt0475784/")
+westworld %>% write_csv("data/westworld_ep_ratings.csv")
+# paris hilton bff
+paris_hilton_bff = scrape_imdb_episode_data("https://www.imdb.com/title/tt1292967/")
+paris_hilton_bff %>% write_csv("data/paris_hilton_bff_ep_ratings.csv")
+
