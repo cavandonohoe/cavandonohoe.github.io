@@ -122,3 +122,11 @@ hotd = read_csv("data/hotd_ep_ratings.csv")
 
 hotd %>% create_episode_plot()
 ```
+
+## Bluey
+
+```{r fig.height=9, fig.width=4}
+bluey = read_csv("data/bluey_ep_ratings.csv")
+
+bluey %>% create_episode_plot()
+```
