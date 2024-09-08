@@ -53,3 +53,6 @@ zerozerozero %>% write_csv("data/zerozerozero_ep_ratings.csv")
 # hotd
 hotd = scrape_imdb_episode_data("https://www.imdb.com/title/tt11198330/")
 hotd %>% write_csv("data/hotd_ep_ratings.csv")
+# bluey
+bluey = scrape_imdb_episode_data("https://www.imdb.com/title/tt7678620/")
+bluey %>% write_csv("data/bluey_ep_ratings.csv")
