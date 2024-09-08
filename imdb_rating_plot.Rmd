@@ -130,3 +130,19 @@ bluey = read_csv("data/bluey_ep_ratings.csv")
 
 bluey %>% create_episode_plot()
 ```
+
+## Westworld
+
+```{r}
+westworld = read_csv("data/westworld_ep_ratings.csv")
+
+westworld %>% create_episode_plot()
+```
+
+## Paris Hilton's My New BFF
+
+```{r}
+paris_hilton_bff = read_csv("data/paris_hilton_bff_ep_ratings.csv")
+
+paris_hilton_bff %>% create_episode_plot()
+```
