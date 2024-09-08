@@ -106,3 +106,19 @@ better_call_saul = read_csv("data/better_call_saul_ep_ratings.csv")
 
 better_call_saul %>% create_episode_plot()
 ```
+
+## ZeroZeroZero
+
+```{r}
+zerozerozero = read_csv("data/zerozerozero_ep_ratings.csv")
+
+zerozerozero %>% create_episode_plot()
+```
+
+## House of the Dragon
+
+```{r}
+hotd = read_csv("data/hotd_ep_ratings.csv")
+
+hotd %>% create_episode_plot()
+```

@@ -47,3 +47,9 @@ himym %>% write_csv("data/himym_ep_ratings.csv")
 # better call saul
 better_call_saul = scrape_imdb_episode_data("https://www.imdb.com/title/tt3032476/")
 better_call_saul %>% write_csv("data/better_call_saul_ep_ratings.csv")
+# zerozerozero
+zerozerozero = scrape_imdb_episode_data("https://www.imdb.com/title/tt8332438/")
+zerozerozero %>% write_csv("data/zerozerozero_ep_ratings.csv")
+# hotd
+hotd = scrape_imdb_episode_data("https://www.imdb.com/title/tt11198330/")
+hotd %>% write_csv("data/hotd_ep_ratings.csv")
