@@ -18,6 +18,8 @@ Check out my website at <https://cavandonohoe.github.io>
   Office](https://cavandonohoe.github.io/best_pic_vs_top_1000.html)
 - [Top 250 Rated Movies with Rotten Tomato
   Scores](https://cavandonohoe.github.io/top_250_imdb_with_rt.html)
+- [IMDb Series Rating
+  Plot](https://cavandonohoe.github.io/imdb_rating_plot.html)
 - [Best Picture
   Nominees](https://cavandonohoe.github.io/best_picture_nominees.html)
 - [Kelly
