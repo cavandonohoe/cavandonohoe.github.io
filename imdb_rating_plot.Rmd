@@ -7,6 +7,11 @@ output:
     includes:
       in_header: header/header.html
       after_body: include_footer.html
+    toc: true
+    toc_depth: 3
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
 ---
 
 I'm kinda obsessed with seeing a whole map of series and where they stride well and when they just absolutely fuck different episodes. Sometimes, critics are just a little harsh. Sometimes it's hard to completely crush an entire series, but we can explore some series that figure it out and quite while they're ahead.
@@ -192,6 +197,14 @@ suits = read_csv("data/suits_ep_ratings.csv")
 suits %>% create_episode_plot("Suits") %>% plotly::ggplotly(tooltip = "text")
 ```
 
+## Vampire Diaries
+
+```{r}
+vampire_diaries = read_csv("data/vampire_diaries_ep_ratings.csv")
+
+vampire_diaries %>% create_episode_plot("Vampire Diaries") %>% plotly::ggplotly(tooltip = "text")
+```
+
 ## Mad Men
 
 ```{r}
@@ -204,3 +217,5 @@ mad_men = read_csv("data/top250_imdb_series.csv") %>%
 
 mad_men %>% create_episode_plot("Mad Men") %>% plotly::ggplotly(tooltip = "text")
 ```
+
+[Raw pngs found here](https://github.com/cavandonohoe/cavandonohoe.github.io/tree/main/imdb_rating_plot_files)
