@@ -25,9 +25,13 @@ library(tidyverse)
 library(RColorBrewer)
 
 # Function to create a plot of IMDb ratings by season and episode
-create_episode_plot <- function(episode_data) {
+create_episode_plot <- function(episode_data, title, export_png = TRUE) {
+  file_name <- str_replace_all(tolower(title), " ", "_")
+  file_name <- paste0("imdb_rating_plot_files/", file_name, ".png")
+  
   episode_plot <- episode_data %>%
-    ggplot(aes(x = season, y = episode, fill = imdb_rating)) +
+    ggplot(aes(x = season, y = episode, fill = imdb_rating,
+               text = season_ep_name)) +
     geom_tile(color = "white") +
     geom_text(aes(label = round(imdb_rating, 1)), color = "black") +
     scale_fill_gradientn(
@@ -39,7 +43,12 @@ create_episode_plot <- function(episode_data) {
     scale_x_continuous(breaks = seq(min(episode_data$season), max(episode_data$season), 1), position = "top") +
     scale_y_reverse(breaks = seq(min(episode_data$episode), max(episode_data$episode), 1)) +
     labs(title = "IMDb Ratings by Season and Episode", x = "Season", y = "Episode") +
+    ggtitle(title) +
     theme_minimal()
+  
+  if (export_png) {
+    ggsave(file_name, plot = episode_plot, width = 8, height = 6, dpi = 300)
+  }
   
   return(episode_plot)
 }
@@ -50,7 +59,7 @@ create_episode_plot <- function(episode_data) {
 ```{r}
 game_of_thrones = read_csv("data/game_of_thrones_ep_ratings.csv")
 
-game_of_thrones %>% create_episode_plot()
+game_of_thrones %>% create_episode_plot("Game of Thrones") %>% plotly::ggplotly(tooltip = "text")
 ```
 
 ## Breaking Bad
@@ -58,7 +67,7 @@ game_of_thrones %>% create_episode_plot()
 ```{r}
 breaking_bad = read_csv("data/breaking_bad_ep_ratings.csv")
 
-breaking_bad %>% create_episode_plot()
+breaking_bad %>% create_episode_plot("Breaking Bad") %>% plotly::ggplotly(tooltip = "text")
 ```
 
 ## Avatar: The Last Airbender
@@ -66,10 +75,12 @@ breaking_bad %>% create_episode_plot()
 ```{r}
 avatar = read_csv("data/top250_imdb_series.csv") %>%
   filter(series_name == "Avatar: The Last Airbender") %>%
-  select(episode = season_ep, season, imdb_rating = episode_rating) %>%
+  mutate(season_ep_name = paste0("S", season, "E", season_ep, ": ", episode)) %>%
+  select(season_ep_name, episode = season_ep, season,
+         imdb_rating = episode_rating) %>%
   filter(episode != 0)
 
-avatar %>% create_episode_plot()
+avatar %>% create_episode_plot("Avatar: The Last Airbender") %>% plotly::ggplotly(tooltip = "text")
 ```
 
 ## Always Sunny in Philadelphia
@@ -77,7 +88,7 @@ avatar %>% create_episode_plot()
 ```{r}
 always_sunny = read_csv("data/always_sunny_ep_ratings.csv")
 
-always_sunny %>% create_episode_plot()
+always_sunny %>% create_episode_plot("Always Sunny in Philadelphia") %>% plotly::ggplotly(tooltip = "text")
 ```
 
 ## The Office (US)
@@ -85,10 +96,12 @@ always_sunny %>% create_episode_plot()
 ```{r}
 office = read_csv("data/top250_imdb_series.csv") %>%
   filter(series_name == "The Office" & imdb_id == "tt0386676") %>%
-  select(episode = season_ep, season, imdb_rating = episode_rating) %>%
+  mutate(season_ep_name = paste0("S", season, "E", season_ep, ": ", episode)) %>%
+  select(season_ep_name, episode = season_ep, season,
+         imdb_rating = episode_rating) %>%
   filter(episode != 0)
 
-office %>% create_episode_plot()
+office %>% create_episode_plot("The Office (US)") %>% plotly::ggplotly(tooltip = "text")
 ```
 
 ## HIMYM
@@ -96,7 +109,7 @@ office %>% create_episode_plot()
 ```{r}
 himym = read_csv("data/himym_ep_ratings.csv")
 
-himym %>% create_episode_plot()
+himym %>% create_episode_plot("How I Met Your Mother") %>% plotly::ggplotly(tooltip = "text")
 ```
 
 ## Better Call Saul
@@ -104,7 +117,7 @@ himym %>% create_episode_plot()
 ```{r}
 better_call_saul = read_csv("data/better_call_saul_ep_ratings.csv")
 
-better_call_saul %>% create_episode_plot()
+better_call_saul %>% create_episode_plot("Better Call Saul") %>% plotly::ggplotly(tooltip = "text")
 ```
 
 ## ZeroZeroZero
@@ -112,7 +125,7 @@ better_call_saul %>% create_episode_plot()
 ```{r}
 zerozerozero = read_csv("data/zerozerozero_ep_ratings.csv")
 
-zerozerozero %>% create_episode_plot()
+zerozerozero %>% create_episode_plot("ZeroZeroZero") %>% plotly::ggplotly(tooltip = "text")
 ```
 
 ## House of the Dragon
@@ -120,7 +133,7 @@ zerozerozero %>% create_episode_plot()
 ```{r}
 hotd = read_csv("data/hotd_ep_ratings.csv")
 
-hotd %>% create_episode_plot()
+hotd %>% create_episode_plot("House of the Dragon") %>% plotly::ggplotly(tooltip = "text")
 ```
 
 ## Bluey
@@ -128,7 +141,7 @@ hotd %>% create_episode_plot()
 ```{r fig.height=9, fig.width=4}
 bluey = read_csv("data/bluey_ep_ratings.csv")
 
-bluey %>% create_episode_plot()
+bluey %>% create_episode_plot("Bluey") %>% plotly::ggplotly(tooltip = "text")
 ```
 
 ## Westworld
@@ -136,7 +149,7 @@ bluey %>% create_episode_plot()
 ```{r}
 westworld = read_csv("data/westworld_ep_ratings.csv")
 
-westworld %>% create_episode_plot()
+westworld %>% create_episode_plot("Westworld") %>% plotly::ggplotly(tooltip = "text")
 ```
 
 ## Paris Hilton's My New BFF
@@ -144,7 +157,7 @@ westworld %>% create_episode_plot()
 ```{r}
 paris_hilton_bff = read_csv("data/paris_hilton_bff_ep_ratings.csv")
 
-paris_hilton_bff %>% create_episode_plot()
+paris_hilton_bff %>% create_episode_plot("Paris Hilton's My New BFF") %>% plotly::ggplotly(tooltip = "text")
 ```
 
 ## Stranger Things
@@ -152,7 +165,7 @@ paris_hilton_bff %>% create_episode_plot()
 ```{r}
 stranger_things = read_csv("data/stranger_things_ep_ratings.csv")
 
-stranger_things %>% create_episode_plot()
+stranger_things %>% create_episode_plot("Stranger Things") %>% plotly::ggplotly(tooltip = "text")
 ```
 
 ## Bojack Horseman
@@ -160,7 +173,7 @@ stranger_things %>% create_episode_plot()
 ```{r}
 bojack = read_csv("data/bojack_ep_ratings.csv")
 
-bojack %>% create_episode_plot()
+bojack %>% create_episode_plot("Bojack Horseman") %>% plotly::ggplotly(tooltip = "text")
 ```
 
 ## Velma
@@ -168,7 +181,7 @@ bojack %>% create_episode_plot()
 ```{r}
 velma = read_csv("data/velma_ep_ratings.csv")
 
-velma %>% create_episode_plot()
+velma %>% create_episode_plot("Velma") %>% plotly::ggplotly(tooltip = "text")
 ```
 
 ## Suits
@@ -176,7 +189,7 @@ velma %>% create_episode_plot()
 ```{r}
 suits = read_csv("data/suits_ep_ratings.csv")
 
-suits %>% create_episode_plot()
+suits %>% create_episode_plot("Suits") %>% plotly::ggplotly(tooltip = "text")
 ```
 
 ## Mad Men
@@ -184,8 +197,10 @@ suits %>% create_episode_plot()
 ```{r}
 mad_men = read_csv("data/top250_imdb_series.csv") %>%
   filter(series_name == "Mad Men") %>%
-  select(episode = season_ep, season, imdb_rating = episode_rating) %>%
+  mutate(season_ep_name = paste0("S", season, "E", season_ep, ": ", episode)) %>%
+  select(season_ep_name, episode = season_ep, season,
+         imdb_rating = episode_rating) %>%
   filter(episode != 0)
 
-mad_men %>% create_episode_plot()
+mad_men %>% create_episode_plot("Mad Men") %>% plotly::ggplotly(tooltip = "text")
 ```

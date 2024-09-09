@@ -1,77 +1,77 @@
-episode_name_number,episode,imdb_rating,season
-"S1.E1 ∙ BoJack Horseman: The BoJack Horseman Story, Chapter One",1,7.1,1
-S1.E2 ∙ BoJack Hates the Troops,2,7.6,1
-S1.E3 ∙ Prickly Muffin,3,7.3,1
-S1.E4 ∙ Zoës and Zeldas,4,7.4,1
-"S1.E5 ∙ Live Fast, Diane Nguyen",5,7.3,1
-S1.E6 ∙ Our A-Story Is a 'D' Story,6,7.8,1
-S1.E7 ∙ Say Anything,7,7.9,1
-S1.E8 ∙ The Telescope,8,8.6,1
-S1.E9 ∙ Horse Majeure,9,7.8,1
-S1.E10 ∙ One Trick Pony,10,7.6,1
-S1.E11 ∙ Downer Ending,11,9.1,1
-S1.E12 ∙ Later,12,8.3,1
-S2.E1 ∙ Brand New Couch,1,8,2
-S2.E2 ∙ Yesterdayland,2,7.7,2
-S2.E3 ∙ Still Broken,3,7.9,2
-S2.E4 ∙ After the Party,4,7.9,2
-S2.E5 ∙ Chickens,5,7.7,2
-S2.E6 ∙ Higher Love,6,7.5,2
-S2.E7 ∙ Hank After Dark,7,8.2,2
-S2.E8 ∙ Let's Find Out,8,8.8,2
-S2.E9 ∙ The Shot,9,8.2,2
-S2.E10 ∙ Yes And,10,8.4,2
-S2.E11 ∙ Escape from L.A.,11,9.3,2
-S2.E12 ∙ Out to Sea,12,8.5,2
-S3.E1 ∙ Start Spreading the News,1,7.8,3
-S3.E2 ∙ The BoJack Horseman Show,2,8,3
-S3.E3 ∙ BoJack Kills,3,7.4,3
-S3.E4 ∙ Fish Out of Water,4,9.6,3
-S3.E5 ∙ Love And/Or Marriage,5,8.1,3
-S3.E6 ∙ Brrap Brrap Pew Pew,6,8,3
-S3.E7 ∙ Stop the Presses,7,8.3,3
-S3.E8 ∙ Old Acquaintance,8,7.8,3
-S3.E9 ∙ Best Thing That Ever Happened,9,8.5,3
-S3.E10 ∙ It's You,10,8.8,3
-"S3.E11 ∙ That's Too Much, Man!",11,9.6,3
-S3.E12 ∙ That Went Well,12,9,3
-S4.E1 ∙ See Mr. Peanutbutter Run,1,7.5,4
-S4.E2 ∙ The Old Sugarman Place,2,9.3,4
-S4.E3 ∙ Hooray! Todd Episode!,3,8.4,4
-S4.E4 ∙ Commence Fracking,4,7.6,4
-S4.E5 ∙ Thoughts and Prayers,5,8.1,4
-S4.E6 ∙ Stupid Piece of Sh*t,6,9.2,4
-S4.E7 ∙ Underground,7,8.1,4
-S4.E8 ∙ The Judge,8,7.4,4
-S4.E9 ∙ Ruthie,9,8.9,4
-S4.E10 ∙ lovin that cali lifestyle!!,10,8.4,4
-S4.E11 ∙ Time's Arrow,11,9.8,4
-S4.E12 ∙ What Time Is It Right Now,12,8.9,4
-S5.E1 ∙ The Light Bulb Scene,1,8,5
-S5.E2 ∙ The Dog Days Are Over,2,9,5
-S5.E3 ∙ Planned Obsolescence,3,8,5
-S5.E4 ∙ BoJack the Feminist,4,8.1,5
-S5.E5 ∙ The Amelia Earhart Story,5,8.4,5
-S5.E6 ∙ Free Churro,6,9.8,5
-S5.E7 ∙ INT. SUB,7,8.8,5
-S5.E8 ∙ Mr. Peanutbutter's Boos,8,8.5,5
-S5.E9 ∙ Ancient History,9,8.2,5
-S5.E10 ∙ Head in the Clouds,10,9,5
-S5.E11 ∙ The Showstopper,11,9.6,5
-S5.E12 ∙ The Stopped Show,12,9,5
-S6.E1 ∙ A Horse Walks into a Rehab,1,9.1,6
-S6.E2 ∙ The New Client,2,8.5,6
-S6.E3 ∙ Feel-Good Story,3,8,6
-S6.E4 ∙ Surprise!,4,9,6
-"S6.E5 ∙ A Little Uneven, Is All",5,8,6
-S6.E6 ∙ The Kidney Stays in the Picture,6,8.1,6
-S6.E7 ∙ The Face of Depression,7,9.3,6
-"S6.E8 ∙ A Quick One, While He's Away",8,8.5,6
-S6.E9 ∙ Intermediate Scene Study w/ BoJack Horseman,9,8.3,6
-S6.E10 ∙ Good Damage,10,8.9,6
-S6.E11 ∙ Sunk Cost and All That,11,8.6,6
-S6.E12 ∙ Xerox of a Xerox,12,9.2,6
-S6.E13 ∙ The Horny Unicorn,13,8.6,6
-S6.E14 ∙ Angela,14,9,6
-S6.E15 ∙ The View from Halfway Down,15,9.9,6
-S6.E16 ∙ Nice While It Lasted,16,9.6,6
+episode_name_number,episode,imdb_rating,season,season_ep_name
+"S1.E1 ∙ BoJack Horseman: The BoJack Horseman Story, Chapter One",1,7.1,1,"S1.E1: BoJack Horseman: The BoJack Horseman Story, Chapter One"
+S1.E2 ∙ BoJack Hates the Troops,2,7.6,1,S1.E2: BoJack Hates the Troops
+S1.E3 ∙ Prickly Muffin,3,7.3,1,S1.E3: Prickly Muffin
+S1.E4 ∙ Zoës and Zeldas,4,7.4,1,S1.E4: Zoës and Zeldas
+"S1.E5 ∙ Live Fast, Diane Nguyen",5,7.3,1,"S1.E5: Live Fast, Diane Nguyen"
+S1.E6 ∙ Our A-Story Is a 'D' Story,6,7.8,1,S1.E6: Our A-Story Is a 'D' Story
+S1.E7 ∙ Say Anything,7,7.9,1,S1.E7: Say Anything
+S1.E8 ∙ The Telescope,8,8.6,1,S1.E8: The Telescope
+S1.E9 ∙ Horse Majeure,9,7.8,1,S1.E9: Horse Majeure
+S1.E10 ∙ One Trick Pony,10,7.6,1,S1.E10: One Trick Pony
+S1.E11 ∙ Downer Ending,11,9.1,1,S1.E11: Downer Ending
+S1.E12 ∙ Later,12,8.3,1,S1.E12: Later
+S2.E1 ∙ Brand New Couch,1,8,2,S2.E1: Brand New Couch
+S2.E2 ∙ Yesterdayland,2,7.7,2,S2.E2: Yesterdayland
+S2.E3 ∙ Still Broken,3,7.9,2,S2.E3: Still Broken
+S2.E4 ∙ After the Party,4,7.9,2,S2.E4: After the Party
+S2.E5 ∙ Chickens,5,7.7,2,S2.E5: Chickens
+S2.E6 ∙ Higher Love,6,7.5,2,S2.E6: Higher Love
+S2.E7 ∙ Hank After Dark,7,8.2,2,S2.E7: Hank After Dark
+S2.E8 ∙ Let's Find Out,8,8.8,2,S2.E8: Let's Find Out
+S2.E9 ∙ The Shot,9,8.2,2,S2.E9: The Shot
+S2.E10 ∙ Yes And,10,8.4,2,S2.E10: Yes And
+S2.E11 ∙ Escape from L.A.,11,9.3,2,S2.E11: Escape from L.A.
+S2.E12 ∙ Out to Sea,12,8.5,2,S2.E12: Out to Sea
+S3.E1 ∙ Start Spreading the News,1,7.8,3,S3.E1: Start Spreading the News
+S3.E2 ∙ The BoJack Horseman Show,2,8,3,S3.E2: The BoJack Horseman Show
+S3.E3 ∙ BoJack Kills,3,7.4,3,S3.E3: BoJack Kills
+S3.E4 ∙ Fish Out of Water,4,9.6,3,S3.E4: Fish Out of Water
+S3.E5 ∙ Love And/Or Marriage,5,8.1,3,S3.E5: Love And/Or Marriage
+S3.E6 ∙ Brrap Brrap Pew Pew,6,8,3,S3.E6: Brrap Brrap Pew Pew
+S3.E7 ∙ Stop the Presses,7,8.3,3,S3.E7: Stop the Presses
+S3.E8 ∙ Old Acquaintance,8,7.8,3,S3.E8: Old Acquaintance
+S3.E9 ∙ Best Thing That Ever Happened,9,8.5,3,S3.E9: Best Thing That Ever Happened
+S3.E10 ∙ It's You,10,8.8,3,S3.E10: It's You
+"S3.E11 ∙ That's Too Much, Man!",11,9.6,3,"S3.E11: That's Too Much, Man!"
+S3.E12 ∙ That Went Well,12,9,3,S3.E12: That Went Well
+S4.E1 ∙ See Mr. Peanutbutter Run,1,7.5,4,S4.E1: See Mr. Peanutbutter Run
+S4.E2 ∙ The Old Sugarman Place,2,9.3,4,S4.E2: The Old Sugarman Place
+S4.E3 ∙ Hooray! Todd Episode!,3,8.4,4,S4.E3: Hooray! Todd Episode!
+S4.E4 ∙ Commence Fracking,4,7.6,4,S4.E4: Commence Fracking
+S4.E5 ∙ Thoughts and Prayers,5,8.1,4,S4.E5: Thoughts and Prayers
+S4.E6 ∙ Stupid Piece of Sh*t,6,9.2,4,S4.E6: Stupid Piece of Sh*t
+S4.E7 ∙ Underground,7,8.1,4,S4.E7: Underground
+S4.E8 ∙ The Judge,8,7.4,4,S4.E8: The Judge
+S4.E9 ∙ Ruthie,9,8.9,4,S4.E9: Ruthie
+S4.E10 ∙ lovin that cali lifestyle!!,10,8.4,4,S4.E10: lovin that cali lifestyle!!
+S4.E11 ∙ Time's Arrow,11,9.8,4,S4.E11: Time's Arrow
+S4.E12 ∙ What Time Is It Right Now,12,8.9,4,S4.E12: What Time Is It Right Now
+S5.E1 ∙ The Light Bulb Scene,1,8,5,S5.E1: The Light Bulb Scene
+S5.E2 ∙ The Dog Days Are Over,2,9,5,S5.E2: The Dog Days Are Over
+S5.E3 ∙ Planned Obsolescence,3,8,5,S5.E3: Planned Obsolescence
+S5.E4 ∙ BoJack the Feminist,4,8.1,5,S5.E4: BoJack the Feminist
+S5.E5 ∙ The Amelia Earhart Story,5,8.4,5,S5.E5: The Amelia Earhart Story
+S5.E6 ∙ Free Churro,6,9.8,5,S5.E6: Free Churro
+S5.E7 ∙ INT. SUB,7,8.8,5,S5.E7: INT. SUB
+S5.E8 ∙ Mr. Peanutbutter's Boos,8,8.5,5,S5.E8: Mr. Peanutbutter's Boos
+S5.E9 ∙ Ancient History,9,8.2,5,S5.E9: Ancient History
+S5.E10 ∙ Head in the Clouds,10,9,5,S5.E10: Head in the Clouds
+S5.E11 ∙ The Showstopper,11,9.6,5,S5.E11: The Showstopper
+S5.E12 ∙ The Stopped Show,12,9,5,S5.E12: The Stopped Show
+S6.E1 ∙ A Horse Walks into a Rehab,1,9.1,6,S6.E1: A Horse Walks into a Rehab
+S6.E2 ∙ The New Client,2,8.5,6,S6.E2: The New Client
+S6.E3 ∙ Feel-Good Story,3,8,6,S6.E3: Feel-Good Story
+S6.E4 ∙ Surprise!,4,9,6,S6.E4: Surprise!
+"S6.E5 ∙ A Little Uneven, Is All",5,8,6,"S6.E5: A Little Uneven, Is All"
+S6.E6 ∙ The Kidney Stays in the Picture,6,8.1,6,S6.E6: The Kidney Stays in the Picture
+S6.E7 ∙ The Face of Depression,7,9.3,6,S6.E7: The Face of Depression
+"S6.E8 ∙ A Quick One, While He's Away",8,8.5,6,"S6.E8: A Quick One, While He's Away"
+S6.E9 ∙ Intermediate Scene Study w/ BoJack Horseman,9,8.3,6,S6.E9: Intermediate Scene Study w/ BoJack Horseman
+S6.E10 ∙ Good Damage,10,8.9,6,S6.E10: Good Damage
+S6.E11 ∙ Sunk Cost and All That,11,8.6,6,S6.E11: Sunk Cost and All That
+S6.E12 ∙ Xerox of a Xerox,12,9.2,6,S6.E12: Xerox of a Xerox
+S6.E13 ∙ The Horny Unicorn,13,8.6,6,S6.E13: The Horny Unicorn
+S6.E14 ∙ Angela,14,9,6,S6.E14: Angela
+S6.E15 ∙ The View from Halfway Down,15,9.9,6,S6.E15: The View from Halfway Down
+S6.E16 ∙ Nice While It Lasted,16,9.6,6,S6.E16: Nice While It Lasted
