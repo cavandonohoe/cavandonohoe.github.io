@@ -234,7 +234,7 @@ greys_anatomy %>% create_episode_plot("Grey's Anatomy") %>% interactive_plotly
 
 ## Friends
 
-```{r fig.height=9, fig.width=9}
+```{r fig.height=7, fig.width=7}
 friends = read_csv("data/friends_ep_ratings.csv")
 
 friends %>% create_episode_plot("Friends") %>% interactive_plotly
