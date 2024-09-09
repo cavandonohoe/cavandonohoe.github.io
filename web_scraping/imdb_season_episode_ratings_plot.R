@@ -117,3 +117,6 @@ suits %>% write_csv("data/suits_ep_ratings.csv")
 # vampire diaries
 vampire_diaries = scrape_imdb_episode_data("https://www.imdb.com/title/tt1405406/")
 vampire_diaries %>% write_csv("data/vampire_diaries_ep_ratings.csv")
+# greys anatomy
+greys_anatomy = scrape_imdb_episode_data("https://www.imdb.com/title/tt0413573/")
+greys_anatomy %>% write_csv("data/greys_anatomy_ep_ratings.csv")
