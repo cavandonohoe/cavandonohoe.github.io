@@ -30,7 +30,8 @@ extract_episodes <- function(season_url) {
   
   season_number <- str_extract(season_url, "\\d+$")
   episodes <- episodes %>%
-    mutate(season = as.numeric(season_number))
+    mutate(season = as.numeric(season_number),
+           season_ep_name = gsub(" ∙ ", ": ", episode_name_number))
   
   return(episodes)
 }
