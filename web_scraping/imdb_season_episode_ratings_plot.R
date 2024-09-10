@@ -135,5 +135,8 @@ pretty_little_liars %>% write_csv("data/pretty_little_liars_ep_ratings.csv")
 # the crown
 crown = scrape_imdb_episode_data("https://www.imdb.com/title/tt4786824/")
 crown %>% write_csv("data/crown_ep_ratings.csv")
+# love island (uk)
+love_island = scrape_imdb_episode_data("https://www.imdb.com/title/tt4770018/")
+love_island %>% write_csv("data/love_island_ep_ratings.csv")
 
 
