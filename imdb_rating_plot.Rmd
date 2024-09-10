@@ -275,4 +275,11 @@ crown = read_csv("data/crown_ep_ratings.csv")
 crown %>% create_episode_plot("The Crown") %>% interactive_plotly
 ```
 
+## Love Island (UK)
+
+```{r}
+love_island = read_csv("data/love_island_ep_ratings.csv")
+
+love_island %>% create_episode_plot("Love Island (UK)") %>% interactive_plotly
+```
 [Raw pngs found here](https://github.com/cavandonohoe/cavandonohoe.github.io/tree/main/imdb_rating_plot_files)
