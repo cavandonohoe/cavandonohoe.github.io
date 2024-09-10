@@ -259,4 +259,20 @@ simpsons_gg %>% interactive_plotly
 ggsave("imdb_rating_plot_files/the_simpsons.png", plot = simpsons_gg, width = 16, height = 6, dpi = 300)
 ```
 
+## Pretty Little Liars
+
+```{r}
+pretty_little_liars = read_csv("data/pretty_little_liars_ep_ratings.csv")
+
+pretty_little_liars %>% create_episode_plot("Pretty Little Liars") %>% interactive_plotly
+```
+
+## The Crown
+
+```{r}
+crown = read_csv("data/crown_ep_ratings.csv")
+
+crown %>% create_episode_plot("The Crown") %>% interactive_plotly
+```
+
 [Raw pngs found here](https://github.com/cavandonohoe/cavandonohoe.github.io/tree/main/imdb_rating_plot_files)
