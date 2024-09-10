@@ -129,3 +129,11 @@ house %>% write_csv("data/house_ep_ratings.csv")
 # simpsons
 simpsons = scrape_imdb_episode_data("https://www.imdb.com/title/tt0096697/")
 simpsons %>% write_csv("data/simpsons_ep_ratings.csv")
+# pretty little liars
+pretty_little_liars = scrape_imdb_episode_data("https://www.imdb.com/title/tt1578873/")
+pretty_little_liars %>% write_csv("data/pretty_little_liars_ep_ratings.csv")
+# the crown
+crown = scrape_imdb_episode_data("https://www.imdb.com/title/tt4786824/")
+crown %>% write_csv("data/crown_ep_ratings.csv")
+
+
