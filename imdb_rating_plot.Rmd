@@ -240,4 +240,23 @@ friends = read_csv("data/friends_ep_ratings.csv")
 friends %>% create_episode_plot("Friends") %>% interactive_plotly
 ```
 
+## House MD
+
+```{r fig.height=7, fig.width=7}
+house = read_csv("data/house_ep_ratings.csv")
+
+house %>% create_episode_plot("House MD") %>% interactive_plotly
+```
+
+## The Simpsons
+
+```{r fig.width=15}
+simpsons = read_csv("data/simpsons_ep_ratings.csv")
+
+simpsons_gg = simpsons %>% create_episode_plot("The Simpsons")
+simpsons_gg %>% interactive_plotly
+# resave here for the correct width
+ggsave("imdb_rating_plot_files/the_simpsons.png", plot = simpsons_gg, width = 16, height = 6, dpi = 300)
+```
+
 [Raw pngs found here](https://github.com/cavandonohoe/cavandonohoe.github.io/tree/main/imdb_rating_plot_files)
