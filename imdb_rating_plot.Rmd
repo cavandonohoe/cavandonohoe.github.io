@@ -277,7 +277,7 @@ crown %>% create_episode_plot("The Crown") %>% interactive_plotly
 
 ## Love Island (UK)
 
-```{r}
+```{r fig.height=11}
 love_island = read_csv("data/love_island_ep_ratings.csv")
 
 love_island %>% create_episode_plot("Love Island (UK)") %>% interactive_plotly
