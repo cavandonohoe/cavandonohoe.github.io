@@ -282,4 +282,35 @@ love_island = read_csv("data/love_island_ep_ratings.csv")
 
 love_island %>% create_episode_plot("Love Island (UK)") %>% interactive_plotly
 ```
+
+## South Park
+
+```{r fig.width=15}
+south_park = read_csv("data/south_park_ep_ratings.csv")
+
+south_park_gg = south_park %>% create_episode_plot("South Park")
+south_park_gg %>% interactive_plotly
+# resave here for the correct width
+ggsave("imdb_rating_plot_files/south_park.png", plot = south_park_gg, width = 16, height = 6, dpi = 300)
+```
+
+## Family Guy
+
+```{r fig.height=9, fig.width=15}
+family_guy = read_csv("data/family_guy_ep_ratings.csv")
+
+family_guy_gg = family_guy %>% create_episode_plot("Family Guy")
+family_guy_gg %>% interactive_plotly
+# resave here for the correct width
+ggsave("imdb_rating_plot_files/family_guy.png", plot = family_guy_gg, width = 16, height = 9, dpi = 300)
+```
+
+## Invincible
+
+```{r}
+invincible = read_csv("data/invincible_ep_ratings.csv")
+
+invincible %>% create_episode_plot("Invincible") %>% interactive_plotly
+```
+
 [Raw pngs found here](https://github.com/cavandonohoe/cavandonohoe.github.io/tree/main/imdb_rating_plot_files)
