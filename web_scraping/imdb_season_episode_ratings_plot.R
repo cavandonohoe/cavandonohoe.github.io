@@ -138,5 +138,14 @@ crown %>% write_csv("data/crown_ep_ratings.csv")
 # love island (uk)
 love_island = scrape_imdb_episode_data("https://www.imdb.com/title/tt4770018/")
 love_island %>% write_csv("data/love_island_ep_ratings.csv")
+# south park
+south_park = scrape_imdb_episode_data("https://www.imdb.com/title/tt0121955/")
+south_park %>% write_csv("data/south_park_ep_ratings.csv")
+# family guy
+family_guy = scrape_imdb_episode_data("https://www.imdb.com/title/tt0182576/")
+family_guy %>% write_csv("data/family_guy_ep_ratings.csv")
+# invincible
+invincible = scrape_imdb_episode_data("https://www.imdb.com/title/tt6741278/")
+invincible %>% write_csv("data/invincible_ep_ratings.csv")
 
 
