@@ -339,7 +339,7 @@ sparticus %>% create_episode_plot("Sparticus") %>% interactive_plotly
 
 ## Attack on Titan
 
-```{r}
+```{r fig.height=11}
 attack_on_titan = read_csv("data/attack_on_titan_ep_ratings.csv")
 
 attack_on_titan %>% create_episode_plot("Attack on Titan") %>% interactive_plotly
