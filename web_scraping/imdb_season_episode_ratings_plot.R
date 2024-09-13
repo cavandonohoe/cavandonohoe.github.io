@@ -153,3 +153,30 @@ clone_wars %>% write_csv("data/clone_wars_ep_ratings.csv")
 # mr robot
 mr_robot = scrape_imdb_episode_data("https://www.imdb.com/title/tt4158110/")
 mr_robot %>% write_csv("data/mr_robot_ep_ratings.csv")
+# sparticus
+sparticus = scrape_imdb_episode_data("https://www.imdb.com/title/tt1442449/")
+sparticus %>% write_csv("data/sparticus_ep_ratings.csv")
+# attack on titan
+attack_on_titan = scrape_imdb_episode_data("https://www.imdb.com/title/tt2560140/")
+attack_on_titan %>% write_csv("data/attack_on_titan_ep_ratings.csv")
+# blue eye samurai
+blue_eye_samurai = scrape_imdb_episode_data("https://www.imdb.com/title/tt13309742/")
+blue_eye_samurai %>% write_csv("data/blue_eye_samurai_ep_ratings.csv")
+# six feet under
+six_feet_under = scrape_imdb_episode_data("https://www.imdb.com/title/tt0248654/")
+six_feet_under %>% write_csv("data/six_feet_under_ep_ratings.csv")
+# hannibal
+hannibal = scrape_imdb_episode_data("https://www.imdb.com/title/tt2243973/")
+hannibal %>% write_csv("data/hannibal_ep_ratings.csv")
+# the wire
+the_wire = scrape_imdb_episode_data("https://www.imdb.com/title/tt0306414/")
+the_wire %>% write_csv("data/the_wire_ep_ratings.csv")
+# person of interest
+person_of_interest = scrape_imdb_episode_data("https://www.imdb.com/title/tt1839578/")
+person_of_interest %>% write_csv("data/person_of_interest_ep_ratings.csv")
+# chernobyl
+chernobyl = scrape_imdb_episode_data("https://www.imdb.com/title/tt7366338/")
+chernobyl %>% write_csv("data/chernobyl_ep_ratings.csv")
+
+
+

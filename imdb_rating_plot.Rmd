@@ -329,12 +329,68 @@ mr_robot = read_csv("data/mr_robot_ep_ratings.csv")
 mr_robot %>% create_episode_plot("Mr Robot") %>% interactive_plotly
 ```
 
-## Mr Robot
+## Sparticus
 
 ```{r}
-mr_robot = read_csv("data/mr_robot_ep_ratings.csv")
+sparticus = read_csv("data/sparticus_ep_ratings.csv")
 
-mr_robot %>% create_episode_plot("Mr Robot") %>% interactive_plotly
+sparticus %>% create_episode_plot("Sparticus") %>% interactive_plotly
+```
+
+## Attack on Titan
+
+```{r}
+attack_on_titan = read_csv("data/attack_on_titan_ep_ratings.csv")
+
+attack_on_titan %>% create_episode_plot("Attack on Titan") %>% interactive_plotly
+```
+
+## Blue Eye Samurai
+
+```{r}
+blue_eye_samurai = read_csv("data/blue_eye_samurai_ep_ratings.csv")
+
+blue_eye_samurai %>% create_episode_plot("Blue Eye Samurai") %>% interactive_plotly
+```
+
+## Six Feet Under
+
+```{r}
+six_feet_under = read_csv("data/six_feet_under_ep_ratings.csv")
+
+six_feet_under %>% create_episode_plot("Six Feet Under") %>% interactive_plotly
+```
+
+## Hannibal
+
+```{r}
+hannibal = read_csv("data/hannibal_ep_ratings.csv")
+
+hannibal %>% create_episode_plot("Hannibal") %>% interactive_plotly
+```
+
+## The Wire
+
+```{r}
+the_wire = read_csv("data/the_wire_ep_ratings.csv")
+
+the_wire %>% create_episode_plot("The Wire") %>% interactive_plotly
+```
+
+## Person of Interest
+
+```{r}
+person_of_interest = read_csv("data/person_of_interest_ep_ratings.csv")
+
+person_of_interest %>% create_episode_plot("Person of Interest") %>% interactive_plotly
+```
+
+## Chernobyl
+
+```{r}
+chernobyl = read_csv("data/chernobyl_ep_ratings.csv")
+
+chernobyl %>% create_episode_plot("Chernobyl") %>% interactive_plotly
 ```
 
 
