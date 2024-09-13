@@ -147,5 +147,9 @@ family_guy %>% write_csv("data/family_guy_ep_ratings.csv")
 # invincible
 invincible = scrape_imdb_episode_data("https://www.imdb.com/title/tt6741278/")
 invincible %>% write_csv("data/invincible_ep_ratings.csv")
-
-
+# clone wars
+clone_wars = scrape_imdb_episode_data("https://www.imdb.com/title/tt0458290/")
+clone_wars %>% write_csv("data/clone_wars_ep_ratings.csv")
+# mr robot
+mr_robot = scrape_imdb_episode_data("https://www.imdb.com/title/tt4158110/")
+mr_robot %>% write_csv("data/mr_robot_ep_ratings.csv")
