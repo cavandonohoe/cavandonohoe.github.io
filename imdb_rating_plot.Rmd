@@ -393,5 +393,20 @@ chernobyl = read_csv("data/chernobyl_ep_ratings.csv")
 chernobyl %>% create_episode_plot("Chernobyl") %>% interactive_plotly
 ```
 
+## Fleabag
+
+```{r}
+fleabag = read_csv("data/fleabag_ep_ratings.csv")
+
+fleabag %>% create_episode_plot("Fleabag") %>% interactive_plotly
+```
+
+## Parks and Recreation
+
+```{r}
+parks_and_rec = read_csv("data/parks_and_rec_ep_ratings.csv")
+
+parks_and_rec %>% create_episode_plot("Parks and Recreation") %>% interactive_plotly
+```
 
 [Raw pngs found here](https://github.com/cavandonohoe/cavandonohoe.github.io/tree/main/imdb_rating_plot_files)
