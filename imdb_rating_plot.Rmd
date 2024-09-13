@@ -313,4 +313,29 @@ invincible = read_csv("data/invincible_ep_ratings.csv")
 invincible %>% create_episode_plot("Invincible") %>% interactive_plotly
 ```
 
+## Clone Wars
+
+```{r}
+clone_wars = read_csv("data/clone_wars_ep_ratings.csv")
+
+clone_wars %>% create_episode_plot("Clone Wars") %>% interactive_plotly
+```
+
+## Mr Robot
+
+```{r}
+mr_robot = read_csv("data/mr_robot_ep_ratings.csv")
+
+mr_robot %>% create_episode_plot("Mr Robot") %>% interactive_plotly
+```
+
+## Mr Robot
+
+```{r}
+mr_robot = read_csv("data/mr_robot_ep_ratings.csv")
+
+mr_robot %>% create_episode_plot("Mr Robot") %>% interactive_plotly
+```
+
+
 [Raw pngs found here](https://github.com/cavandonohoe/cavandonohoe.github.io/tree/main/imdb_rating_plot_files)
