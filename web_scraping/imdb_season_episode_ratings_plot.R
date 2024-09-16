@@ -186,6 +186,9 @@ parks_and_rec %>% write_csv("data/parks_and_rec_ep_ratings.csv")
 # new girl
 new_girl = scrape_imdb_episode_data("https://www.imdb.com/title/tt1826940/")
 new_girl %>% write_csv("data/new_girl_ep_ratings.csv")
+# brooklyn nine-nine
+brooklyn_nine_nine = scrape_imdb_episode_data("https://www.imdb.com/title/tt2467372/")
+brooklyn_nine_nine %>% write_csv("data/brooklyn_nine_nine_ep_ratings.csv")
 
 
 
