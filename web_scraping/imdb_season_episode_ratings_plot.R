@@ -183,6 +183,9 @@ fleabag %>% write_csv("data/fleabag_ep_ratings.csv")
 # parks and recreation
 parks_and_rec = scrape_imdb_episode_data("https://www.imdb.com/title/tt1266020/")
 parks_and_rec %>% write_csv("data/parks_and_rec_ep_ratings.csv")
+# new girl
+new_girl = scrape_imdb_episode_data("https://www.imdb.com/title/tt1826940/")
+new_girl %>% write_csv("data/new_girl_ep_ratings.csv")
 
 
 
