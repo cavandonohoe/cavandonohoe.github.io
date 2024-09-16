@@ -417,4 +417,12 @@ new_girl = read_csv("data/new_girl_ep_ratings.csv")
 new_girl %>% create_episode_plot("New Girl") %>% interactive_plotly
 ```
 
+## Brooklyn Nine-Nine
+
+```{r}
+brooklyn_nine_nine = read_csv("data/brooklyn_nine_nine_ep_ratings.csv")
+
+brooklyn_nine_nine %>% create_episode_plot("Brooklyn Nine-Nine") %>% interactive_plotly
+```
+
 [Raw pngs found here](https://github.com/cavandonohoe/cavandonohoe.github.io/tree/main/imdb_rating_plot_files)
