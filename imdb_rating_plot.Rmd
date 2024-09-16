@@ -409,4 +409,12 @@ parks_and_rec = read_csv("data/parks_and_rec_ep_ratings.csv")
 parks_and_rec %>% create_episode_plot("Parks and Recreation") %>% interactive_plotly
 ```
 
+## New Girl
+
+```{r}
+new_girl = read_csv("data/new_girl_ep_ratings.csv")
+
+new_girl %>% create_episode_plot("New Girl") %>% interactive_plotly
+```
+
 [Raw pngs found here](https://github.com/cavandonohoe/cavandonohoe.github.io/tree/main/imdb_rating_plot_files)
