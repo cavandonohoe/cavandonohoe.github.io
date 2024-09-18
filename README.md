@@ -8,7 +8,8 @@
 
 The goal of my website is to display some fun side projects I have been
 working on. Movie data intrigues me, so I scraped IMDb to use some of
-their clean data. I also have my resume here too.
+their clean data. I also have my resume here too since it’s way easier
+to send out a link ratherthan to .
 
 Check out my website at <https://cavandonohoe.github.io>
 
@@ -19,7 +20,7 @@ Check out my website at <https://cavandonohoe.github.io>
 - [Top 250 Rated Movies with Rotten Tomato
   Scores](https://cavandonohoe.github.io/top_250_imdb_with_rt.html)
 - [IMDb Series Rating
-  Plot](https://cavandonohoe.github.io/imdb_rating_plot.html)
+  Plots](https://cavandonohoe.github.io/imdb_rating_plot.html)
 - [Best Picture
   Nominees](https://cavandonohoe.github.io/best_picture_nominees.html)
 - [Kelly
