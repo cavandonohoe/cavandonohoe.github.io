@@ -192,4 +192,3 @@ brooklyn_nine_nine %>% write_csv("data/brooklyn_nine_nine_ep_ratings.csv")
 
 
 
-

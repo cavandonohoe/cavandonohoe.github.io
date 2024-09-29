@@ -143,6 +143,9 @@ Skills {#skills}
 
 
 ```{r doc_skills, echo=FALSE, results='asis'}
-positions_collapsed_bullets_final %>% filter(section=="Skills") %>% glue_data("{description_section}", 
-                                                                        "\n\n")
+positions_collapsed_bullets_final %>%
+  filter(section=="Skills") %>%
+  mutate(description_section = gsub("website", "[website](https://cavandonohoe.github.io/)", description_section),
+         description_section = gsub("resume", "[resume](https://cavandonohoe.github.io/cv.html)", description_section)) %>%
+  glue_data("{description_section}", "\n\n")
 ```
