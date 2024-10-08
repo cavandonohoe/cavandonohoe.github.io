@@ -17,6 +17,7 @@ editor_options:
 # note for future cavan:
 # you have to render this individually instead of just building the website
 # that way the pdf version gets updated as well
+# another note for future cavan... this may only work on mac
 
 library(glue)
 library(tidyverse)
