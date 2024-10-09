@@ -87,10 +87,8 @@ segments_and_weekends_b = jasons_work_schedule %>%
          day_of_week = weekdays(days))
 
 # A schedule:
-# idk what's going on, but Owen said he's working B schedule, but nowhere online does it say that...
-# whatever. let's say his first day is 2024-09-08
 owens_work_schedule =
-  tibble(days = seq.Date(as.Date("2024-09-08"), by = 1, length.out = 13140),
+  tibble(days = seq.Date(as.Date("2024-10-10"), by = 1, length.out = 13140),
          bool = rep(c(1, 0, 1, 0, 1, 0, 0, 0, 0), 13140 / 9))
 
 
