@@ -153,4 +153,3 @@ segments_and_weekends_c %>%
                            pageLength = 500,
                            scrollY = "400px", scrollX = TRUE))
 ```
-
