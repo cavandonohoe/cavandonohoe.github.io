@@ -1,0 +1,126 @@
+---
+title: "IMDb Top 250 TV Series"
+editor_options: 
+  chunk_output_type: console
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+---
+
+Binge watching can be extremely satisfying if done for the right show. Quite often though, it's done for the wrong show with a pretty shitty ending or a lot of filler episodes that you just get bored of. So maybe if you were to choose the right show to binge watch, that would help with choosing the right show to binge watch (or at least avoid). Nobody wants that Game of Thrones finale feeling.
+
+```{r setup, include=FALSE}
+# Set default chunk output
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE,
+  results = "asis"
+)
+```
+
+```{r libraries}
+library(tidyverse)
+library(DT)
+```
+
+```{r data}
+all_eps_ratings_tib = read_csv("data/top250_imdb_series.csv")
+```
+
+We'll focus our attention to IMDb since they make it so easy to web scrape with their interface. And they already have a list of the top 250 tv series based on overall series rating. That list can be found [here](https://www.imdb.com/chart/toptv/).
+
+Now the time consuming part would be to click every single series, go into their episode guide, go into each season, and look at every single rating of each episode. Luckily we have **rvest**, so we can do that automatically. Check source code on my [GitHub](https://github.com/cavandonohoe/cavandonohoe.github.io) account for details.
+
+[Raw Data](data/top250_imdb_series.csv)
+[(Web Scraping Script)](https://github.com/cavandonohoe/cavandonohoe.github.io/blob/main/web_scraping/imdb_tv_series_web_scraping.R)
+
+## Best Episodes Per Series
+
+Some of them are tied and I didn't bother creating any tie breaking metrics or get into all of the detailed ratings per episode. Some may say lazy, but I say efficient on time management. 
+
+```{r best_episode}
+max_ratings_per_series = all_eps_ratings_tib %>%
+  group_by(imdb_id) %>% 
+  filter(episode_rating == max(episode_rating, na.rm = TRUE)) %>% 
+  ungroup()
+
+max_ratings_per_series %>% 
+  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = episode_rating) %>% 
+  datatable(filter = "top", extensions = "Buttons",
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE))
+```
+
+
+## Did They Close Strong?
+
+I was also wondering whether the last episode was the highest rated one. 
+
+```{r strong_closer}
+strong_closer = all_eps_ratings_tib %>% group_by(imdb_id) %>% 
+  filter(series_ep == max(series_ep, na.rm = TRUE) &
+           episode_rating == max(episode_rating, na.rm = TRUE)) %>% ungroup()
+
+strong_closer %>% 
+  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = episode_rating) %>% 
+  datatable(filter = "top", extensions = "Buttons",
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE))
+```
+
+## Did They Start Strong?
+
+Fairly rare, but did a series start with the strongest episode? 
+
+```{r strong_starter}
+strong_starter = all_eps_ratings_tib %>% group_by(imdb_id) %>% 
+  filter(series_ep == min(series_ep, na.rm = TRUE) &
+           episode_rating == max(episode_rating, na.rm = TRUE)) %>% ungroup()
+
+strong_starter %>% 
+  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = episode_rating) %>% 
+  datatable(filter = "top", extensions = "Buttons",
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE))
+```
+
+Looks like people really get wowed over these nature documentaries from the first episode, then they get used to it. 
+
+## Was the Ending Shit?
+
+Looking at you GOT... Ok maybe some of these aren't that bad. Some of these may have just had a strong story leading up and the finale missed it's mark by just a decimal point. But we will never forget Game of Thrones. 
+
+```{r shit_ending}
+shit_ending = all_eps_ratings_tib %>% group_by(imdb_id) %>% 
+  filter(series_ep == max(series_ep, na.rm = TRUE) &
+           episode_rating == min(episode_rating, na.rm = TRUE)) %>% ungroup()
+
+shit_ending %>% 
+  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = episode_rating) %>% 
+  datatable(filter = "top", extensions = "Buttons",
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE))
+```
+
+## Nowhere To Go But Up
+
+Some shows have some god-awful beginnings, and I wonder how they got picked up. But they made this top 250 list, so they must have gotten their shit together.
+
+```{r awful_pilot}
+awful_pilot = all_eps_ratings_tib %>% group_by(imdb_id) %>% 
+  filter(series_ep == min(series_ep, na.rm = TRUE) &
+           episode_rating == min(episode_rating, na.rm = TRUE)) %>% ungroup()
+
+awful_pilot %>% 
+  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = episode_rating) %>% 
+  datatable(filter = "top", extensions = "Buttons",
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE))
+```
+
+
+
+
+
+
