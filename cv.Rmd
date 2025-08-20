@@ -196,6 +196,7 @@ Credentials {data-icon=th-list}
 
 
 ```{r credentials, echo=FALSE, results='asis'}
+
 positions_collapsed_bullets_final %>% filter(section=="Credentials") %>% glue_data("### {description_section}", 
                                                                               "\n\n",
                                                                               "{institution}",
