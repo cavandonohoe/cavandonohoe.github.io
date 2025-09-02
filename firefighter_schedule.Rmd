@@ -86,13 +86,13 @@ segments_and_weekends_b = jasons_work_schedule %>%
                                  TRUE ~ "off"),
          day_of_week = weekdays(days))
 
-# A schedule:
+# County schedule:
 owens_work_schedule =
-  tibble(days = seq.Date(as.Date("2024-10-10"), by = 1, length.out = 13140),
-         bool = rep(c(1, 0, 1, 0, 1, 0, 0, 0, 0), 13140 / 9))
+  tibble(days = seq.Date(as.Date("2025-08-31"), by = 1, length.out = 12840),
+         bool = rep(c(0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1), 12840 / 12))
 
 
-segments_and_weekends_a = owens_work_schedule %>%
+segments_and_weekends_county = owens_work_schedule %>%
   mutate(type = 
            case_when(
              # first day of 'weekend'
@@ -118,10 +118,10 @@ Jason, Owen, and Wyett's Work Schedule for the next `r years_till_retirement` ye
 
 This is based on the Kelly Schedule.
 
-## Owen's:
+## Jason's:
 
 ```{r}
-segments_and_weekends_a %>%
+segments_and_weekends_b %>%
   filter(days >= as.Date(Sys.Date())) %>% 
   select(date = days, day_of_week, work_status, type) %>% 
   datatable(filter = "top", extensions = "Buttons",
@@ -130,10 +130,10 @@ segments_and_weekends_a %>%
                            scrollY = "400px", scrollX = TRUE))
 ```
 
-## Jason's:
+## Owen's:
 
 ```{r}
-segments_and_weekends_b %>%
+segments_and_weekends_county %>%
   filter(days >= as.Date(Sys.Date())) %>% 
   select(date = days, day_of_week, work_status, type) %>% 
   datatable(filter = "top", extensions = "Buttons",
