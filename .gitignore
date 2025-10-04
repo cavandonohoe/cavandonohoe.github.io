@@ -5,3 +5,9 @@
 gmail_creds
 blog/blog_entries.Rmd
 .RDataTmp
+_site/
+site_libs/
+*_files/
+*.html
+*.pdf
+.DS_Store
