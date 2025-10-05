@@ -115,8 +115,11 @@ jobs:
         with:
           name: site-preview
           path: _site
+          # optional: show a clear error if _site isn't found
+          if-no-files-found: error
 
       # For pushes to main, prepare Pages artifact for deploy
+      # Only on push to main, prep for Pages deploy
       - name: Upload Pages artifact
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         uses: actions/upload-pages-artifact@v3
