@@ -11,4 +11,5 @@ Imports:
     xml2,
     httr2,
     curl,
-    DT
+    DT,
+    RColorBrewer
