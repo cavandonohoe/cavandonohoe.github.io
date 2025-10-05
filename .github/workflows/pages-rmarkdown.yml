@@ -22,7 +22,43 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@v2
 
-      # Install EVERYTHING declared in DESCRIPTION (Imports/Depends/Suggests)
+      # 🔑 Install ONLY from DESCRIPTION (Imports/Depends/Suggests)
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           dependencies: '"all"'
+
+      # Optional: fail fast if an Rmd uses library() not listed in DESCRIPTION
+      - name: Validate DESCRIPTION vs library() calls
+        run: |
+          Rscript -e '
+            desc <- read.dcf("DESCRIPTION")
+            getfld <- function(f) if (f %in% colnames(desc)) na.omit(desc[, f]) else NA
+            declared <- unique(trimws(unlist(strsplit(
+              paste(getfld("Imports"), getfld("Depends"), getfld("Suggests"), collapse = ","),
+              ",\\s*"
+            ))))
+            declared <- declared[nzchar(declared) & !grepl("^R\\b", declared)]
+            libs_txt <- system("bash -lc \"grep -hoE 'library\\(([^)]+)\\)' *.Rmd || true\"", intern = TRUE)
+            libs <- unique(sub("^library\\(([^)]+)\\).*", "\\1", libs_txt))
+            missing <- setdiff(libs, declared)
+            if (length(missing)) {
+              cat("ERROR: Packages used in Rmd but not listed in DESCRIPTION:\\n")
+              cat(paste0("  - ", missing), sep = "\\n"); quit(status=1)
+            } else cat("All library() packages are declared in DESCRIPTION.\\n")
+          '
+
+      - name: Render site
+        run: Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/deploy-pages@v4
