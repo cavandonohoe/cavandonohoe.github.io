@@ -28,7 +28,7 @@ jobs:
           use-public-rspm: true
 
       - uses: r-lib/actions/setup-pandoc@v2
-      
+
       - name: Validate DESCRIPTION tokenization
         run: |
           Rscript - <<'RSCRIPT'
@@ -40,45 +40,31 @@ jobs:
           if (length(bad)) stop("Bad Imports tokens (contain spaces): ", paste(bad, collapse=", "))
           RSCRIPT
 
-
-      # Install EVERYTHING declared in DESCRIPTION (Imports/Depends/Suggests)
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           dependencies: '"all"'
 
-      # Fail if any library() in Rmd isn't listed in DESCRIPTION
       - name: Validate DESCRIPTION vs library() calls
         run: |
           Rscript - <<'RSCRIPT'
           desc <- read.dcf("DESCRIPTION")
-      
           get_tokens <- function(field) {
             if (!field %in% colnames(desc)) return(character())
             x <- desc[, field]
             if (length(x) == 0 || is.na(x)) return(character())
             toks <- trimws(unlist(strsplit(x, ",\\s*")))
-            toks <- gsub("\\s*\\(.*\\)$", "", toks)   # strip "(>= ...)" etc.
+            toks <- gsub("\\s*\\(.*\\)$", "", toks)
             toks <- toks[nzchar(toks) & toks != "NA"]
-            return(toks)
+            toks
           }
-      
-          declared <- unique(c(get_tokens("Imports"),
-                               get_tokens("Depends"),
-                               get_tokens("Suggests")))
-          # Drop R itself
+          declared <- unique(c(get_tokens("Imports"), get_tokens("Depends"), get_tokens("Suggests")))
           declared <- declared[declared != "R"]
-      
-          # library() usages in Rmds
           libs_txt <- system("bash -lc \"grep -hoE 'library\\(([^)]+)\\)' *.Rmd || true\"", intern = TRUE)
           libs <- unique(sub("^library\\(([^)]+)\\).*", "\\1", libs_txt))
-      
-          # whitelist tidyverse core if tidyverse is declared
           tv_core <- c("ggplot2","dplyr","tidyr","readr","purrr","tibble","stringr","forcats")
           if ("tidyverse" %in% declared) libs <- setdiff(libs, tv_core)
-      
           cat("Declared (parsed): ", paste(sort(declared), collapse=", "), "\n", sep="")
           cat("library() calls : ", paste(sort(libs),     collapse=", "), "\n", sep="")
-      
           missing <- setdiff(libs, declared)
           if (length(missing)) {
             cat("ERROR: Packages used in Rmd but not listed in DESCRIPTION:\n")
@@ -92,34 +78,27 @@ jobs:
       - name: Verify gs4 guards are present
         run: Rscript scripts/ensure_gs4_guards.R
 
+      # If you DO render PDFs on CI, keep these two lines. Otherwise, remove Setup Chrome and the env block below.
       - name: Setup Chrome
+        if: ${{ github.event_name != 'pull_request' || github.ref == 'refs/heads/main' }}
         id: chrome
         uses: browser-actions/setup-chrome@v1
         with:
           chrome-version: stable
-      
+
       - name: Render site
         env:
           CHROMOTE_CHROME: ${{ steps.chrome.outputs.chrome-path }}
         run: Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
 
-      
-      # Render (uses your CSVs; gs4_deauth already added by your script)
-      - name: Render site
-        run: Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
-
-      # Optional: save built site as PR artifact for preview
       - name: Upload preview artifact
         if: ${{ github.event_name == 'pull_request' }}
         uses: actions/upload-artifact@v4
         with:
           name: site-preview
           path: _site
-          # optional: show a clear error if _site isn't found
           if-no-files-found: error
 
-      # For pushes to main, prepare Pages artifact for deploy
-      # Only on push to main, prep for Pages deploy
       - name: Upload Pages artifact
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         uses: actions/upload-pages-artifact@v3
