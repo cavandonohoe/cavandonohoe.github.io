@@ -51,14 +51,24 @@ jobs:
         run: |
           Rscript - <<'RSCRIPT'
           desc <- read.dcf("DESCRIPTION")
-          getfld <- function(f) if (f %in% colnames(desc)) na.omit(desc[, f]) else NA
-          declared <- unique(trimws(unlist(strsplit(
-            paste(getfld("Imports"), getfld("Depends"), getfld("Suggests"), collapse = ","),
-            ",\\s*"
-          ))))
-          declared <- gsub("\\s*\\(.*\\)$", "", declared)     # strip version constraints
-          declared <- declared[nzchar(declared) & !grepl("^R\\b", declared)]
       
+          get_tokens <- function(field) {
+            if (!field %in% colnames(desc)) return(character())
+            x <- desc[, field]
+            if (length(x) == 0 || is.na(x)) return(character())
+            toks <- trimws(unlist(strsplit(x, ",\\s*")))
+            toks <- gsub("\\s*\\(.*\\)$", "", toks)   # strip "(>= ...)" etc.
+            toks <- toks[nzchar(toks) & toks != "NA"]
+            return(toks)
+          }
+      
+          declared <- unique(c(get_tokens("Imports"),
+                               get_tokens("Depends"),
+                               get_tokens("Suggests")))
+          # Drop R itself
+          declared <- declared[declared != "R"]
+      
+          # library() usages in Rmds
           libs_txt <- system("bash -lc \"grep -hoE 'library\\(([^)]+)\\)' *.Rmd || true\"", intern = TRUE)
           libs <- unique(sub("^library\\(([^)]+)\\).*", "\\1", libs_txt))
       
