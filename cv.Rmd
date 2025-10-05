@@ -12,6 +12,10 @@ knit: pagedown::chrome_print
 editor_options: 
   chunk_output_type: console
 ---
+```{r gs4-auth, include=FALSE}
+googlesheets4::gs4_deauth()
+```
+
 
 ```{r background code, echo=FALSE, message=FALSE, error=FALSE, warning=FALSE}
 # note for future cavan:
