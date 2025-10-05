@@ -90,6 +90,13 @@ jobs:
           RSCRIPT
 
 
+      # Install Google Chrome for pagedown::chrome_print
+      - name: Setup Chrome
+        id: chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+      
       # Render (uses your CSVs; gs4_deauth already added by your script)
       - name: Render site
         run: Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
