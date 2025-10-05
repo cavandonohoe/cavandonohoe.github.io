@@ -28,6 +28,18 @@ jobs:
           use-public-rspm: true
 
       - uses: r-lib/actions/setup-pandoc@v2
+      
+      - name: Validate DESCRIPTION tokenization
+        run: |
+          Rscript - <<'RSCRIPT'
+          d <- read.dcf("DESCRIPTION")
+          imp <- gsub("\\n", " ", d[,"Imports"])
+          toks <- trimws(unlist(strsplit(imp, ",\\s*")))
+          bad <- toks[grepl("\\s", toks)]
+          cat("Imports tokens:\n"); print(toks)
+          if (length(bad)) stop("Bad Imports tokens (contain spaces): ", paste(bad, collapse=", "))
+          RSCRIPT
+
 
       # Install EVERYTHING declared in DESCRIPTION (Imports/Depends/Suggests)
       - uses: r-lib/actions/setup-r-dependencies@v2
