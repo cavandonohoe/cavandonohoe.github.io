@@ -16,6 +16,17 @@ output:
 
 I'm kinda obsessed with seeing a whole map of series and where they stride well and when they just absolutely fuck different episodes. Sometimes, critics are just a little harsh. Sometimes it's hard to completely crush an entire series, but we can explore some series that figure it out and quite while they're ahead.
 
+
+```{r ci-outdir, include=FALSE}
+# ensure output dir exists in clean CI environment
+out_dir <- "imdb_rating_plot_files"
+if (!dir.exists(out_dir)) dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
+
+# optional: make knitr put figures here too
+knitr::opts_chunk$set(fig.path = paste0(out_dir, "/"))
+```
+
+
 ```{r setup, include=FALSE}
 # Set default chunk output
 knitr::opts_chunk$set(
@@ -52,7 +63,9 @@ create_episode_plot <- function(episode_data, title, export_png = TRUE) {
     theme_minimal()
   
   if (export_png) {
-    ggsave(file_name, plot = episode_plot, width = 8, height = 6, dpi = 300)
+    ggsave(file.path(out_dir, "got_episode.png"),
+           plot = episode_plot, width = 8, height = 6, dpi = 300)
+
   }
   
   return(episode_plot)

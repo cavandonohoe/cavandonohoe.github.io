@@ -6,6 +6,10 @@ output:
 editor_options: 
   chunk_output_type: console
 ---
+```{r ci-skip-gs4, include=FALSE}
+if (Sys.getenv("CI") == "true") knitr::knit_exit()
+```
+
 ```{r gs4-auth, include=FALSE}
 googlesheets4::gs4_deauth()
 ```

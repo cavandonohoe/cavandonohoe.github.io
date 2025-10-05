@@ -3,6 +3,8 @@ name: Build & Deploy R Markdown site
 on:
   push:
     branches: ["main"]
+  pull_request:
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -10,8 +12,13 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
+    name: Build site
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,27 +29,42 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@v2
 
-      # 🔑 Install ONLY from DESCRIPTION (Imports/Depends/Suggests)
+      - name: Validate DESCRIPTION tokenization
+        run: |
+          Rscript - <<'RSCRIPT'
+          d <- read.dcf("DESCRIPTION")
+          imp <- gsub("\\n", " ", d[,"Imports"])
+          toks <- trimws(unlist(strsplit(imp, ",\\s*")))
+          bad <- toks[grepl("\\s", toks)]
+          cat("Imports tokens:\n"); print(toks)
+          if (length(bad)) stop("Bad Imports tokens (contain spaces): ", paste(bad, collapse=", "))
+          RSCRIPT
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           dependencies: '"all"'
 
-      # Optional: fail fast if an Rmd uses library() not listed in DESCRIPTION
       - name: Validate DESCRIPTION vs library() calls
         run: |
           Rscript - <<'RSCRIPT'
           desc <- read.dcf("DESCRIPTION")
-          getfld <- function(f) if (f %in% colnames(desc)) na.omit(desc[, f]) else NA
-          declared <- unique(trimws(unlist(strsplit(
-            paste(getfld("Imports"), getfld("Depends"), getfld("Suggests"), collapse = ","),
-            ",\\s*"
-          ))))
-          declared <- declared[nzchar(declared) & !grepl("^R\\b", declared)]
-      
-          # grab library() calls from all Rmds (none -> empty)
+          get_tokens <- function(field) {
+            if (!field %in% colnames(desc)) return(character())
+            x <- desc[, field]
+            if (length(x) == 0 || is.na(x)) return(character())
+            toks <- trimws(unlist(strsplit(x, ",\\s*")))
+            toks <- gsub("\\s*\\(.*\\)$", "", toks)
+            toks <- toks[nzchar(toks) & toks != "NA"]
+            toks
+          }
+          declared <- unique(c(get_tokens("Imports"), get_tokens("Depends"), get_tokens("Suggests")))
+          declared <- declared[declared != "R"]
           libs_txt <- system("bash -lc \"grep -hoE 'library\\(([^)]+)\\)' *.Rmd || true\"", intern = TRUE)
           libs <- unique(sub("^library\\(([^)]+)\\).*", "\\1", libs_txt))
-      
+          tv_core <- c("ggplot2","dplyr","tidyr","readr","purrr","tibble","stringr","forcats")
+          if ("tidyverse" %in% declared) libs <- setdiff(libs, tv_core)
+          cat("Declared (parsed): ", paste(sort(declared), collapse=", "), "\n", sep="")
+          cat("library() calls : ", paste(sort(libs),     collapse=", "), "\n", sep="")
           missing <- setdiff(libs, declared)
           if (length(missing)) {
             cat("ERROR: Packages used in Rmd but not listed in DESCRIPTION:\n")
@@ -53,18 +75,41 @@ jobs:
           }
           RSCRIPT
 
+      - name: Verify gs4 guards are present
+        run: Rscript scripts/ensure_gs4_guards.R
+
+      # If you DO render PDFs on CI, keep these two lines. Otherwise, remove Setup Chrome and the env block below.
+      - name: Setup Chrome
+        if: ${{ github.event_name != 'pull_request' || github.ref == 'refs/heads/main' }}
+        id: chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
 
       - name: Render site
+        env:
+          CHROMOTE_CHROME: ${{ steps.chrome.outputs.chrome-path }}
         run: Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
 
-      - name: Upload artifact
+      - name: Upload preview artifact
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-preview
+          path: _site
+          if-no-files-found: error
+
+      - name: Upload Pages artifact
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site
 
   deploy:
+    name: Deploy to GitHub Pages
     needs: build
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     environment:
       name: github-pages
     steps:
