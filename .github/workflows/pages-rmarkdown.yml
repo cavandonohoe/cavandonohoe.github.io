@@ -26,6 +26,16 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           dependencies: '"all"'
+          extra-packages: |
+            any::rmarkdown
+            any::knitr
+            any::tidyverse
+            any::rvest
+            any::xml2
+            any::httr2
+            any::curl
+            any::DT
+
 
       # Preflight: fail if an Rmd uses library() not declared in DESCRIPTION
       - name: Validate DESCRIPTION vs library() calls
