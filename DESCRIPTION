@@ -13,3 +13,9 @@ Imports:
     curl,
     DT,
     RColorBrewer
+    scales,
+    plotly,
+    glue,
+    readxl,
+    googlesheets4,
+    ggplot2
