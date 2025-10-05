@@ -8,6 +8,5 @@ blog/blog_entries.Rmd
 _site/
 site_libs/
 *_files/
-*.html
 *.pdf
 .DS_Store
