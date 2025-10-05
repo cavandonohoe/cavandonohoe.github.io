@@ -56,9 +56,19 @@ jobs:
             paste(getfld("Imports"), getfld("Depends"), getfld("Suggests"), collapse = ","),
             ",\\s*"
           ))))
+          declared <- gsub("\\s*\\(.*\\)$", "", declared)     # strip version constraints
           declared <- declared[nzchar(declared) & !grepl("^R\\b", declared)]
+      
           libs_txt <- system("bash -lc \"grep -hoE 'library\\(([^)]+)\\)' *.Rmd || true\"", intern = TRUE)
           libs <- unique(sub("^library\\(([^)]+)\\).*", "\\1", libs_txt))
+      
+          # whitelist tidyverse core if tidyverse is declared
+          tv_core <- c("ggplot2","dplyr","tidyr","readr","purrr","tibble","stringr","forcats")
+          if ("tidyverse" %in% declared) libs <- setdiff(libs, tv_core)
+      
+          cat("Declared (parsed): ", paste(sort(declared), collapse=", "), "\n", sep="")
+          cat("library() calls : ", paste(sort(libs),     collapse=", "), "\n", sep="")
+      
           missing <- setdiff(libs, declared)
           if (length(missing)) {
             cat("ERROR: Packages used in Rmd but not listed in DESCRIPTION:\n")
@@ -68,6 +78,7 @@ jobs:
             cat("All library() packages are declared in DESCRIPTION.\n")
           }
           RSCRIPT
+
 
       # Render (uses your CSVs; gs4_deauth already added by your script)
       - name: Render site
