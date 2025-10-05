@@ -7,4 +7,7 @@ Imports:
     rmarkdown,
     knitr,
     tidyverse,
-    rvest
+    rvest,
+    xml2,
+    httr2,
+    curl
