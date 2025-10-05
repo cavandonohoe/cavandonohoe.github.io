@@ -4,12 +4,13 @@
 # Cavan’s Website
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
 The goal of my website is to display some fun side projects I have been
 working on. Movie data intrigues me, so I scraped IMDb to use some of
-their clean data. I also have my resume here too since it’s way easier
-to send out a link ratherthan to .
+their clean data. I also have my résumé here since it’s easier to share
+a link than an attachment.
 
 Check out my website at <https://cavandonohoe.github.io>
 
@@ -35,3 +36,10 @@ Check out my website at <https://cavandonohoe.github.io>
 - [Learn R (Course on Learning
   R)](https://cavandonohoe.github.io/learn_r.html)
 - [CV](https://cavandonohoe.github.io/cv.html)
+
+<figure>
+<img
+src="https://github.com/cavandonohoe/cavandonohoe.github.io/actions/workflows/pages-rmarkdown.yml/badge.svg"
+alt="Build" />
+<figcaption aria-hidden="true">Build</figcaption>
+</figure>
