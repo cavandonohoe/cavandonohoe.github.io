@@ -18,33 +18,38 @@ jobs:
 
       - uses: r-lib/actions/setup-r@v2
         with:
-          use-public-rspm: true   # use binaries to speed up and avoid compile hiccups
+          use-public-rspm: true
 
       - uses: r-lib/actions/setup-pandoc@v2
 
-      # Install deps declared in DESCRIPTION (and system libs), plus a few explicit extras
+      # Install EVERYTHING declared in DESCRIPTION (Imports/Depends/Suggests)
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: |
-            any::rmarkdown
-            any::knitr
-            any::tidyverse
-            any::rvest
-            any::xml2
-            any::httr2
-            any::curl
-          needs: rmarkdown
+          dependencies: '"all"'
 
-      # Belt-and-suspenders: if tidyverse still isn't there, install it explicitly
-      - name: Ensure tidyverse is installed
+      # Preflight: fail if an Rmd uses library() not declared in DESCRIPTION
+      - name: Validate DESCRIPTION vs library() calls
         run: |
-          Rscript -e 'if (!requireNamespace("tidyverse", quietly = TRUE)) install.packages("tidyverse", repos = "https://cloud.r-project.org")'
-
-      # Quick diagnostics so you can see it in the logs
-      - name: Session info
-        run: |
-          Rscript -e 'sessionInfo()'
-          Rscript -e 'cat("tidyverse available? ", requireNamespace("tidyverse", quietly=TRUE), "\n")'
+          Rscript -e '
+            desc <- read.dcf("DESCRIPTION")
+            getfld <- function(f) if (f %in% colnames(desc)) na.omit(desc[, f]) else NA
+            declared <- unique(trimws(unlist(strsplit(
+              paste(getfld("Imports"), getfld("Depends"), getfld("Suggests"), collapse = ","),
+              ",\\s*"
+            ))))
+            declared <- declared[nzchar(declared) & !grepl("^R\\b", declared)]
+            # grab library() calls from all Rmds (if none, libs <- character(0))
+            libs_txt <- system("bash -lc \"grep -hoE 'library\\(([^)]+)\\)' *.Rmd || true\"", intern = TRUE)
+            libs <- unique(sub("^library\\(([^)]+)\\).*", "\\1", libs_txt))
+            missing <- setdiff(libs, declared)
+            if (length(missing)) {
+              cat(\"ERROR: Packages used in Rmd but not listed in DESCRIPTION:\\n\")
+              cat(paste0(\"  - \", missing), sep = \"\\n\")
+              quit(status = 1)
+            } else {
+              cat(\"All library() packages are declared in DESCRIPTION.\\n\")
+            }
+          '
 
       - name: Render site
         run: Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
