@@ -12,4 +12,11 @@ Imports:
     httr2,
     curl,
     DT,
-    RColorBrewer
+    scales,
+    plotly,
+    glue,
+    readxl,
+    googlesheets4,
+    ggplot2,
+    RColorBrewer,
+    pagedown
