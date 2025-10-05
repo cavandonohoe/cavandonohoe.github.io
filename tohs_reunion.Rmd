@@ -8,6 +8,10 @@ output:
       in_header: header/header.html
       after_body: include_footer.html
 ---
+```{r gs4-auth, include=FALSE}
+googlesheets4::gs4_deauth()
+```
+
 
 ```{r setup, include=FALSE}
 # Set default chunk output
