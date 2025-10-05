@@ -89,13 +89,20 @@ jobs:
           }
           RSCRIPT
 
+      - name: Verify gs4 guards are present
+        run: Rscript scripts/ensure_gs4_guards.R
 
-      # Install Google Chrome for pagedown::chrome_print
       - name: Setup Chrome
         id: chrome
         uses: browser-actions/setup-chrome@v1
         with:
           chrome-version: stable
+      
+      - name: Render site
+        env:
+          CHROMOTE_CHROME: ${{ steps.chrome.outputs.chrome-path }}
+        run: Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
+
       
       # Render (uses your CSVs; gs4_deauth already added by your script)
       - name: Render site
