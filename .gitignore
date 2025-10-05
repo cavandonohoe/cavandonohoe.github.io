@@ -10,3 +10,5 @@ site_libs/
 *_files/
 *.pdf
 .DS_Store
+/*.html
+!/include_footer.html
