@@ -1,0 +1,10 @@
+Package: site
+Title: Personal Site
+Version: 0.0.1
+Description: R Markdown site for cavandonohoe.github.io
+Depends: R (>= 4.2)
+Imports:
+    rmarkdown,
+    knitr,
+    tidyverse,
+    rvest
