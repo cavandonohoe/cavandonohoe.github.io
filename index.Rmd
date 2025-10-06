@@ -3,8 +3,8 @@ title: "Cavan Donohoe - Data Scientist"
 output:
   html_document:
     includes:
-      in_header: ../header/header.html
-      after_body: ../include_footer.html
+      in_header: header/header.html
+      after_body: include_footer.html
 ---
 
 Welcome to my Website! I know it's not much, but it's all done in R and GitHub, so that's pretty cool.
