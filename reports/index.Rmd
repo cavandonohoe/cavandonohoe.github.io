@@ -3,13 +3,14 @@ title: "Cavan Donohoe - Data Scientist"
 output:
   html_document:
     includes:
-      in_header: header/header.html
-      after_body: include_footer.html
+      in_header: ../header/header.html
+      after_body: ../include_footer.html
 ---
 
 Welcome to my Website! I know it's not much, but it's all done in R and GitHub, so that's pretty cool.
 
-![*Reminiscing of my life on Oahu*](images/China Walls Sunset.jpg)
+![*Reminiscing of my life on Oahu*](../images/china-walls-sunset.jpg)
+
 
 I thought it might be worth investing some time to make a website to point to an area of my life where it gets a little more professional. But then I thought, why *just* do that? Why not incorporate some other aspects of my life that makes me me. So yes, this will have my ever growing resume, but let's have a little bit of fun while we're here.
 
