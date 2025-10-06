@@ -1,15 +1,59 @@
-.Rproj.user
+# ---------------------------------------
+# R / RStudio
+# ---------------------------------------
+.Rproj.user/
 .Rhistory
 .RData
 .Ruserdata
-gmail_creds
-blog/blog_entries.Rmd
 .RDataTmp
+.Rprofile
+.Renviron
+.Renviron.site
+.httr-oauth
+
+# renv / packrat (keep renv.lock tracked!)
+renv/library/
+renv/staging/
+packrat/
+
+# ---------------------------------------
+# R Markdown / Quarto outputs & caches
+# ---------------------------------------
 _site/
 site_libs/
+*_files/
+*_cache/
 *.utf8.md
 .knit.md
-.Rproj.user/
+*.nb.html
+
+# If you ever switch to Quarto, these help:
+.quarto/
+_freeze/
+
+# ---------------------------------------
+# Local content you called out
+# ---------------------------------------
+gmail_creds
+blog/blog_entries.Rmd
+
+# ---------------------------------------
+# OS / Editor junk
+# ---------------------------------------
 .DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ---------------------------------------
+# Root HTML produced by accidental local renders
+# (the site is built in _site/ via Actions)
+# ---------------------------------------
 /*.html
 !/include_footer.html
+
+# Optional: keep these if you add them for Pages DNS/SEO
+# (uncomment the lines if you commit these files at repo root)
+# !/CNAME
+# !/robots.txt
+# !/sitemap.xml
