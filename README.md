@@ -37,9 +37,4 @@ Check out my website at <https://cavandonohoe.github.io>
   R)](https://cavandonohoe.github.io/learn_r.html)
 - [CV](https://cavandonohoe.github.io/cv.html)
 
-<figure>
-<img
-src="https://github.com/cavandonohoe/cavandonohoe.github.io/actions/workflows/pages-rmarkdown.yml/badge.svg"
-alt="Build" />
-<figcaption aria-hidden="true">Build</figcaption>
-</figure>
+![](https://github.com/cavandonohoe/cavandonohoe.github.io/actions/workflows/pages-rmarkdown.yml/badge.svg)
