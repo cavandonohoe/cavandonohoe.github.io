@@ -9,6 +9,11 @@ output:
       in_header: ../header/header.html
       after_body: ../include_footer.html
 ---
+```{r setup-paths, include=FALSE}
+# Use the project root for knitting; no library() calls needed
+knitr::opts_knit$set(root.dir = here::here())
+```
+
 
 Welcome to the "R Time Is Limited, Let's Make the Most of It" class! In this course, you will learn the basics of R programming and data analysis. R is a powerful and versatile programming language for statistical analysis, data visualization, and more.
 

@@ -12,6 +12,11 @@ knit: pagedown::chrome_print
 editor_options: 
   chunk_output_type: console
 ---
+```{r setup-paths, include=FALSE}
+# Use the project root for knitting; no library() calls needed
+knitr::opts_knit$set(root.dir = here::here())
+```
+
 ```{r ci-skip-gs4, include=FALSE}
 if (Sys.getenv("CI") == "true") knitr::knit_exit()
 ```

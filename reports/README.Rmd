@@ -1,6 +1,11 @@
 ---
 output: github_document
 ---
+```{r setup-paths, include=FALSE}
+# Use the project root for knitting; no library() calls needed
+knitr::opts_knit$set(root.dir = here::here())
+```
+
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 

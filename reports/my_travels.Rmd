@@ -14,6 +14,11 @@ output:
 editor_options: 
   chunk_output_type: console
 ---
+```{r setup-paths, include=FALSE}
+# Use the project root for knitting; no library() calls needed
+knitr::opts_knit$set(root.dir = here::here())
+```
+
 
 Please note, I have pictures on my Instagram so I won't have any pictures on this blog. Give me a follow 😊
 
