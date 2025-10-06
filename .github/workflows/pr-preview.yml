@@ -1,4 +1,5 @@
 name: PR Preview (R Markdown → GitHub Pages)
+
 on:
   pull_request:
 
@@ -11,11 +12,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: r-lib/actions/setup-r@v2
       - uses: r-lib/actions/setup-pandoc@v2
-      - name: Install R packages
-        run: |
-          Rscript -e 'install.packages(c("rmarkdown","here","rprojroot","knitr","readr"))'
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: rmarkdown, knitr, rprojroot, here, readr
+
       - name: Render site
         run: Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
 
@@ -25,20 +29,14 @@ jobs:
           find _site -maxdepth 3 -type f | sed 's|^|_site/|'
           echo "--- end tree ---"
 
-      # ensure there's an entry page and fail fast if no HTML
       - name: Ensure preview has an entry page
         run: |
-          # create redirect if your entry is under reports/
           if [ -f _site/reports/index.html ]; then
             echo '<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=reports/index.html">' > _site/index.html
           fi
-          # hard fail if the build produced no HTML
+          # hard fail if no HTML was produced
           test "$(find _site -name '*.html' | wc -l)" -gt 0
-      
-            - name: Add index.html that redirects to reports/
-              run: |
-                # ensure preview root has an index
-                echo '<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=reports/index.html">' > _site/index.html
+
       - name: Deploy PR preview to gh-pages
         uses: rossjrw/pr-preview-action@v1
         with:
