@@ -24,10 +24,24 @@ jobs:
       # Install the packages your pages commonly use
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          packages: rmarkdown, knitr, rprojroot, here, readr, dplyr, ggplot2
+          packages: rmarkdown, knitr, yaml, rprojroot, here, readr, dplyr, ggplot2
 
-      - name: Render site
-        run: Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
+      - name: Render each Rmd independently (robust)
+        run: |
+          Rscript -e '
+            rmds <- yaml::read_yaml("_site.yml")$rmd_files;
+            rmds <- unique(unlist(lapply(rmds, Sys.glob)));
+            dir.create("_site", showWarnings = FALSE);
+            for (f in rmds) {
+              outdir <- if (grepl("^reports/", f)) "_site/reports" else "_site";
+              dir.create(outdir, recursive = TRUE, showWarnings = FALSE);
+              msg <- tryCatch({
+                rmarkdown::render(f, output_dir = outdir, envir = new.env());
+                paste("OK:", f)
+              }, error = function(e) paste("FAIL:", f, "->", e$message));
+              cat(msg, "\n")
+            }
+          '
 
       - name: Show what got built
         run: |

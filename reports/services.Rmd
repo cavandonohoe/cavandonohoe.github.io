@@ -7,7 +7,7 @@ output:
       after_body: ../include_footer.html
 ---
 
-If you have read the [*About Me*](https://cavandonohoe.github.io/about.html) section, you know of my passion for Data Science and making people's work easier. I have realized some older systems need improving. Sometimes Microsoft Excel (even when you have formulas), can bog down the run time given all the lingering manual work.
+If you have read the [*About Me*](about.html) section, you know of my passion for Data Science and making people's work easier. I have realized some older systems need improving. Sometimes Microsoft Excel (even when you have formulas), can bog down the run time given all the lingering manual work.
 
 R and RStudio have made my automation goals extremely achievable. I have helped with tasks such as:
 
