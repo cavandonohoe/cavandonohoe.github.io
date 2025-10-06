@@ -18,6 +18,10 @@ jobs:
           Rscript -e 'install.packages(c("rmarkdown","here","rprojroot","knitr","readr"))'
       - name: Render site
         run: Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
+      - name: Add index.html that redirects to reports/
+        run: |
+          # ensure preview root has an index
+          echo '<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=reports/index.html">' > _site/index.html
       - name: Deploy PR preview to gh-pages
         uses: rossjrw/pr-preview-action@v1
         with:
