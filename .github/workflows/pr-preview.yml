@@ -46,7 +46,9 @@ jobs:
                 > reports/index.Rmd
             fi
             mkdir -p _site/reports
-            Rscript -e 'rmarkdown::render("reports/index.Rmd", output_dir = "_site/reports")'
+            Rscript -e 'rmarkdown::render("reports/index.Rmd",
+              output_format = rmarkdown::html_document(includes = NULL),
+              output_dir = "_site/reports")'
           fi
 
       - name: Prepare preview folder
