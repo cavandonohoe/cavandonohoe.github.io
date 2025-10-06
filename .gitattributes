@@ -1,0 +1,8 @@
+# Exclude tracked HTML from language stats
+_archive/*.html     linguist-generated
+header/*.html       linguist-generated
+include_footer.html linguist-generated
+
+# (Optional) Count Rmd/Qmd as R so your work shows up
+*.Rmd linguist-language=R
+*.qmd linguist-language=R
