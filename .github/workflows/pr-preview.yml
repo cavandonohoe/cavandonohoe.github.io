@@ -7,6 +7,7 @@ permissions:
   contents: write
   pull-requests: write
 
+# prevent overlapping publishes for the same PR
 concurrency:
   group: pr-preview-${{ github.event.pull_request.number }}
   cancel-in-progress: true
@@ -20,51 +21,31 @@ jobs:
       - uses: r-lib/actions/setup-r@v2
       - uses: r-lib/actions/setup-pandoc@v2
 
+      # Install the packages your pages commonly use
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           packages: rmarkdown, knitr, rprojroot, here, readr, dplyr, ggplot2
 
-      - name: Render site (best-effort)
-        run: |
-          set -e
-          Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")' || true
-
-      - name: Ensure reports/index.html exists
-        run: |
-          set -e
-          if [ ! -f _site/reports/index.html ]; then
-            if [ ! -f reports/index.Rmd ]; then
-              mkdir -p reports
-              printf '%s\n' \
-                '---' \
-                'title: "Reports"' \
-                'output: html_document' \
-                '---' \
-                '' \
-                '# Hello!' \
-                'This is a temporary preview index. Replace me with your real content in reports/index.Rmd.' \
-                > reports/index.Rmd
-            fi
-            mkdir -p _site/reports
-            Rscript -e 'rmarkdown::render("reports/index.Rmd",
-              output_format = rmarkdown::html_document(includes = NULL),
-              output_dir = "_site/reports")'
-          fi
-
-      - name: Prepare preview folder
-        run: |
-          set -e
-          # redirect /pr-XX/ -> /pr-XX/reports/index.html
-          echo '<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=reports/index.html">' > _site/index.html
-          echo 'ok' > _site/hello.html
-          touch _site/.nojekyll
-          test "$(find _site -name '*.html' | wc -l)" -gt 0
+      - name: Render site
+        run: Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
 
       - name: Show what got built
         run: |
           echo '--- _site tree (first 200 files) ---'
           find _site -type f | head -n 200
           echo '--- end tree ---'
+
+      - name: Prepare preview folder
+        run: |
+          set -e
+          # Ensure entry exists (root index.html since index.Rmd is at repo root)
+          test -f _site/index.html
+          # Make sure Pages treats this as static content
+          touch _site/.nojekyll
+          # Optional debug file (uncomment if you want to sanity-check via /hello.html)
+          # echo 'ok' > _site/hello.html
+          # Fail fast if no HTML at all
+          test "$(find _site -name '*.html' | wc -l)" -gt 0
 
       - name: Deploy PR preview to gh-pages
         uses: rossjrw/pr-preview-action@v1
