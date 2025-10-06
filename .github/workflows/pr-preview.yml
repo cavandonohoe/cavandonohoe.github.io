@@ -24,47 +24,38 @@ jobs:
         with:
           packages: rmarkdown, knitr, rprojroot, here, readr, dplyr, ggplot2
 
-      # 1) Try full site render (uses _site.yml -> reports/*.Rmd)
       - name: Render site (best-effort)
         run: |
           set -e
           Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")' || true
 
-      # 2) Explicitly render reports/index.Rmd if the site didn't produce it
       - name: Ensure reports/index.html exists
         run: |
           set -e
-          if [ ! -f reports/index.Rmd ] && [ ! -f _site/reports/index.html ]; then
-            echo "No reports/index.Rmd found. Creating a minimal one for preview..."
-            mkdir -p reports
-            cat > reports/index.Rmd <<'RMD'
----
-title: "Reports"
-output: html_document
----
-
-# Hello!
-This is a temporary preview index. Replace me with your real content in reports/index.Rmd.
-RMD
-          fi
-
-          # If the HTML still doesn't exist, render it directly
           if [ ! -f _site/reports/index.html ]; then
+            if [ ! -f reports/index.Rmd ]; then
+              mkdir -p reports
+              printf '%s\n' \
+                '---' \
+                'title: "Reports"' \
+                'output: html_document' \
+                '---' \
+                '' \
+                '# Hello!' \
+                'This is a temporary preview index. Replace me with your real content in reports/index.Rmd.' \
+                > reports/index.Rmd
+            fi
             mkdir -p _site/reports
             Rscript -e 'rmarkdown::render("reports/index.Rmd", output_dir = "_site/reports")'
           fi
 
-      # 3) Add redirect at preview root and basic safety checks
       - name: Prepare preview folder
         run: |
           set -e
-          # Redirect /pr-XX/ -> /pr-XX/reports/index.html
+          # redirect /pr-XX/ -> /pr-XX/reports/index.html
           echo '<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=reports/index.html">' > _site/index.html
-          # Add a tiny debug file (optional)
           echo 'ok' > _site/hello.html
-          # Ensure Pages treats as static site
           touch _site/.nojekyll
-          # Sanity: fail if no HTML at all
           test "$(find _site -name '*.html' | wc -l)" -gt 0
 
       - name: Show what got built
