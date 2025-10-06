@@ -58,7 +58,6 @@ navbar:
 
 # Render exactly (and only) the pages inside reports/
 rmd_files:
-  - index.Rmd
   - "reports/*.Rmd"
 
 
