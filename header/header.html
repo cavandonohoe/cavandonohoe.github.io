@@ -1,21 +1,74 @@
-<!-- Head-only include: NO <html>, <body>, or visible markup -->
+<!-- Universal header + navbar (works at / and /reports/) -->
+<style>
+  .cd-nav{background:#111;color:#fff;margin:0 0 20px 0;font:16px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  .cd-nav .wrap{max-width:1000px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:18px}
+  .cd-brand{font-weight:700;font-size:18px;white-space:nowrap}
+  .cd-links{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .cd-links a{color:#cbd5e1;text-decoration:none;padding:6px 8px;border-radius:8px}
+  .cd-links a:hover,.cd-links a[aria-current="page"]{background:#1f2937;color:#fff}
+  .cd-grow{flex:1 1 auto}
+  /* dropdown */
+  .cd-dd{position:relative}
+  .cd-dd>button{background:#1f2937;color:#e5e7eb;border:0;padding:6px 10px;border-radius:8px;cursor:pointer}
+  .cd-dd>button:hover{background:#374151}
+  .cd-menu{position:absolute;top:36px;left:0;background:#1f2937;border:1px solid #374151;border-radius:10px;padding:6px;display:none;min-width:240px;z-index:10}
+  .cd-menu a{display:block;padding:8px 10px;border-radius:6px}
+  .cd-dd:hover .cd-menu{display:block}
+  @media (max-width:720px){.cd-links{gap:8px}}
+</style>
 
-<!-- Analytics (optional) -->
+<div class="cd-nav" role="navigation">
+  <div class="wrap">
+    <div class="cd-brand">Cavan Donohoe <span style="opacity:.7;font-weight:400">· Data Scientist</span></div>
+    <div class="cd-grow"></div>
+    <nav class="cd-links" aria-label="Primary">
+      <!-- Use data-href; script below prefixes ../ when inside /reports/ -->
+      <a data-href="index.html">Home</a>
+      <a data-href="reports/about.html">About</a>
+      <a data-href="reports/services.html">Services</a>
+
+      <div class="cd-dd">
+        <button type="button" aria-haspopup="true" aria-expanded="false">Projects ▾</button>
+        <div class="cd-menu" role="menu">
+          <a data-href="reports/imdb_top_250_tv_series.html">IMDb TV Series</a>
+          <a data-href="reports/best_pic_vs_top_1000.html">Best Picture vs Top 1000</a>
+          <a data-href="reports/top_250_imdb_with_rt.html">Top 250 w/ RT</a>
+          <a data-href="reports/imdb_rating_plot.html">IMDb Rating Plot</a>
+          <a data-href="reports/best_picture_nominees.html">Best Picture Nominees</a>
+          <a data-href="reports/firefighter_schedule.html">Firefighter Schedule</a>
+          <a data-href="reports/tohs_reunion.html">TOHS Reunion</a>
+          <a data-href="reports/sierpinski_triangle.html">Sierpinski Triangle</a>
+          <a data-href="reports/my_imdb.html">My IMDb Ratings</a>
+          <a data-href="reports/my_travels.html">Get Bloggy With It</a>
+          <a data-href="reports/learn_r.html">Learn R</a>
+          <a data-href="reports/cv.html">CV</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<script>
+  (function(){
+    // If we're inside /reports/, prefix links with ../
+    var isReports = /\/reports\//.test(location.pathname);
+    var base = isReports ? '../' : '';
+    document.querySelectorAll('[data-href]').forEach(function(a){
+      a.setAttribute('href', base + a.getAttribute('data-href'));
+      // Mark active
+      var target = a.getAttribute('href').replace(/index\.html$/, '');
+      if (location.pathname.endsWith(a.getAttribute('data-href')) ||
+          location.pathname.endsWith(target)) {
+        a.setAttribute('aria-current', 'page');
+      }
+    });
+  })();
+</script>
+
+<!-- (Optional) GA; safe to keep -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-P51TN2DWZM"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-P51TN2DWZM');
+  gtag('js', new Date()); gtag('config', 'G-P51TN2DWZM');
 </script>
-
-<!-- Theme + PWA bits (optional; keep relative if you add files later) -->
-<!-- <link rel="mask-icon" href="header/safari-pinned-tab.svg" color="#5bbad5"> -->
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
-
-<!-- Font Awesome (for footer/social icons etc.) -->
-<link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-      integrity="sha512-SfZ6S2mU5rjHn6KkK3G3h4JzVQk8M0p3KXnJ/5q7u1A5Evv9UjZ1c2bGP8HcGUBSxq1dBS+eV+7Gk7+3H0kxwA=="
-      crossorigin="anonymous" referrerpolicy="no-referrer">

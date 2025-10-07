@@ -1,6 +1,10 @@
 ---
 title: "Cavan Donohoe"
 output:
+  html_document:
+    includes:
+      in_header: ../header/header.html
+      after_body: ../include_footer.html
   word_document:
     reference_docx: "format_resume_test2.dotx"
 editor_options: 
