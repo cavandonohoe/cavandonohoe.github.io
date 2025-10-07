@@ -1,2 +1,5 @@
 name: "Cavan Donohoe"
 output_dir: "_site"
+rmd_files:
+  - index.Rmd
+  - "reports/*.Rmd"
