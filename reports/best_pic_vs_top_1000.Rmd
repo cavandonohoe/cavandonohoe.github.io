@@ -6,3 +6,162 @@ output:
   html_document:
     includes:
       in_header: ../header/header.html
+      after_body: ../include_footer.html
+---
+```{r setup-paths, include=FALSE}
+# Use the project root for knitting; no library() calls needed
+knitr::opts_knit$set(root.dir = here::here())
+```
+
+
+```{r setup, include=FALSE}
+# Set default chunk output
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE,
+  results = "asis"
+)
+```
+
+```{r libraries}
+library(tidyverse)
+library(DT)
+library(scales)
+library(plotly)
+```
+
+
+
+```{r data}
+oscar_winners_clean = read_csv("data/best_picture_winners.csv")
+
+imdb_rank_ratings_clean = read_csv("data/top1000_box_office.csv")
+```
+
+```{r clean}
+box_office = imdb_rank_ratings_clean %>%
+  select(id, box_office_rank, title = Title,
+         life_time_gross = `Lifetime Gross`, year = Year, imdb_rating) %>% 
+  mutate(box_office_top_1000_flag = TRUE)
+
+oscars = oscar_winners_clean %>%
+  select(id = tconst, oscar_titles, year = movie_year, oscar_year,
+         imdb_rating = oscar_imdb_ratings, life_time_gross_oscars = life_time_gross) %>% 
+  mutate(oscar_winner_flag = TRUE,
+         life_time_gross_oscars = as.numeric(gsub('\\$|,', '', life_time_gross_oscars)),
+         imdb_rating = as.numeric(imdb_rating))
+
+box_office_oscars = box_office %>% full_join(oscars) %>% 
+  mutate(oscar_winner_flag = ifelse(is.na(oscar_winner_flag), FALSE, oscar_winner_flag),
+         box_office_top_1000_flag = ifelse(is.na(box_office_top_1000_flag), FALSE, box_office_top_1000_flag),
+         oscar_titles = gsub(x=oscar_titles, pattern=" \\(I\\)", replacement = ""),
+         title_final = ifelse(!is.na(title), title, oscar_titles),
+         lifetime_gross = ifelse(!is.na(life_time_gross), life_time_gross, life_time_gross_oscars))
+
+
+box_office_oscars_clean = box_office_oscars %>% 
+  select(title_final, lifetime_gross, imdb_rating, year,
+         box_office_top_1000_flag, oscar_winner_flag, year) %>% 
+  mutate(legend = case_when(box_office_top_1000_flag & oscar_winner_flag ~ "Both Oscar Winning and Top 1000 Box Office",
+                            box_office_top_1000_flag & !oscar_winner_flag ~ "Top 1000 Box Office",
+                            !box_office_top_1000_flag & oscar_winner_flag ~ "Best Picture Winner"))
+
+box_office_oscars_clean_split =
+  list(box_office_oscars_clean %>%
+         filter(box_office_top_1000_flag) %>% 
+         mutate(legend = "Top 1000 Box Office"),
+       box_office_oscars_clean %>%
+         filter(oscar_winner_flag) %>% 
+         mutate(legend = "Best Picture Winner"))
+
+
+overlap = box_office_oscars_clean_split %>% bind_rows() %>% 
+  filter(oscar_winner_flag & box_office_top_1000_flag) %>% 
+  distinct(title_final) %>% 
+  mutate(list = paste0(row_number(), ". ", title_final, "\n"))
+
+no_box_lifetime_gross = 
+  box_office_oscars_clean_split %>% bind_rows() %>% 
+  filter(is.na(lifetime_gross)) %>% 
+  mutate(list = paste0(row_number(), ". ", title_final, "\n"))
+```
+
+If a lot of people go to the movies, does that mean it's a good movie? Maybe. If a movie wins Best Picture, does that mean the movie is actually good or performed well in the Box Office? Maybe. Let's take a look at the data. 
+
+One of the fun parts of this project is just getting the data. There isn't a nice "export" button on IMDb. So I needed to webscrape with rvest and after doing that, I put all the data in a nice little table. Look at my [GitHub](https://github.com/cavandonohoe/cavandonohoe.github.io) for more information on my strategy of web scraping. The major benefit of webscraping is allowing easier reproducibility. Rather than copy pasting a table into Excel and then cleaning it by hand and taking that time to make human error, webscraping will bypass all of that as long as the website stays in the same format.
+
+[Best Pictures](https://www.imdb.com/search/title/?groups=best_picture_winner&sort=year,desc&count=100&view=advanced)
+[(Web Scraping Script)](https://github.com/cavandonohoe/cavandonohoe.github.io/blob/main/web_scraping/best_picture_winners.R)
+
+
+[Top 1000 Box Office Movies](https://www.boxofficemojo.com/chart/top_lifetime_gross/?area=XWW)
+[(Web Scraping Script)](https://github.com/cavandonohoe/cavandonohoe.github.io/blob/main/web_scraping/top1000_box_office.R)
+
+## Lifetime Gross for Best Picture vs Top 1000 Box Office
+
+Hover over with your mouse or tap some of the points to view some info! 
+
+```{r lifetime gross violin}
+best_pic_top_box_boxplot = box_office_oscars_clean_split %>% bind_rows() %>%
+  filter(!is.na(lifetime_gross)) %>% 
+  mutate(label = paste(legend,
+                      paste0("$", formatC(as.numeric(lifetime_gross), format = "f",
+                                          big.mark = ",", drop0trailing = TRUE)),
+                      title_final, year, sep = "\n")) %>%
+  ggplot(aes(x = legend, y = lifetime_gross, fill = legend,
+             label = label)) +
+  geom_violin() +
+  geom_point() +
+  scale_fill_brewer(palette = "Dark2")+
+  scale_y_continuous(labels = dollar_format(), breaks = pretty_breaks(n = 10)) +
+  ylab("Lifetime Gross") +
+  ggtitle("Lifetime Gross for Best Picture vs Top 1000 Box Office") +
+  theme(axis.title.x = element_blank(),
+        legend.position = "none")
+
+
+best_pic_top_box_boxplot %>% ggplotly(tooltip = "label")
+
+```
+
+Please note there are `r nrow(overlap)` movies which are both Best Picture winners and are in the Top 1000 Box Office Movies of All Time. Those include:
+
+```{r overlap}
+cat(overlap %>% pull(list))
+```
+
+Also note, there are `r nrow(no_box_lifetime_gross)` movies without a lifetime gross listed in IMDb. I know a lot of these are listed in Wikipedia, but I'm only concentrating on data from IMDb. Feeling lazy right now.
+
+```{r no_box_office}
+cat(no_box_lifetime_gross %>% pull(list)) 
+```
+
+Very obviously, on average Best Picture Winners are a lagging a little bit at the box office (Best Pictures: `r dollar(mean(oscars$life_time_gross_oscars, na.rm = TRUE))` vs Top Box Office: `r dollar(mean(box_office$life_time_gross, na.rm = TRUE))`). 
+
+## IMDb Rating for Best Picture vs Top 1000 Box Office
+
+```{r imdb_rating violin}
+best_pic_top_box_boxplot = box_office_oscars_clean_split %>% bind_rows() %>%
+  filter(!is.na(imdb_rating)) %>%
+  mutate(label = paste(legend,
+                       paste("IMDb Rating:", sprintf(imdb_rating, fmt = "%#.1f")),
+                       title_final, year, sep = "\n")) %>%
+  ggplot(aes(x = legend, y = imdb_rating, fill = legend,
+             label = label)) +
+  geom_violin() +
+  geom_point() +
+  scale_fill_brewer(palette = "Dark2")+
+  scale_y_continuous(breaks = pretty_breaks(n = 10)) +
+  ylab("IMDb Rating") +
+  ggtitle("IMDb Rating for Best Picture vs Top 1000 Box Office") +
+  theme(axis.title.x = element_blank(),
+        legend.position = "none")
+
+
+best_pic_top_box_boxplot %>% ggplotly(tooltip = "label")
+
+```
+
+How fun! It looks like a manta ray!
+
+Also notice how IMDb rates Best Picture Winners higher on average than the Top 1000 Box Office Movies (Best Picture: `r round(mean(oscars$imdb_rating, na.rm = TRUE), digits = 1)` vs Top Box Office: `r round(mean(box_office$imdb_rating, na.rm = TRUE), digits = 1)`).
+

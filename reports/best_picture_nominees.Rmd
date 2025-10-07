@@ -6,3 +6,177 @@ output:
   html_document:
     includes:
       in_header: ../header/header.html
+      after_body: ../include_footer.html
+---
+```{r setup-paths, include=FALSE}
+# Use the project root for knitting; no library() calls needed
+knitr::opts_knit$set(root.dir = here::here())
+```
+
+
+```{r setup, include=FALSE}
+# Set default chunk output
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE,
+  results = "asis"
+)
+```
+
+```{r libraries}
+library(tidyverse)
+library(DT)
+library(scales)
+library(plotly)
+```
+
+
+
+```{r data}
+best_pic_noms_final = read_csv("data/best_picture_nominees.csv")
+
+```
+
+Best Picture Nominees are cool too. Incredibly difficult to scrape though... IMDb sometimes implores JavaScript in their html, so I had to parse through even more noise than usual to get to my info. 
+
+But now, I have all the Best Picture nominees since the first Academy Awards!
+
+
+## Distributors
+
+IMDb has a section called "Production companies" in their Details section of each movie homepage. I will define a Distributor as the first listed Production Company.
+
+```{r distibutor_leaderboards}
+
+only_winners = function(x) {
+  no_noms = gsub(x = x, pattern = ".*(%)", replacement = "") 
+  
+  no_noms[no_noms != ""] %>%
+    paste0(collapse = "\n")
+}
+
+
+distributors_plot_nominees = best_pic_noms_final %>%
+  separate_rows(producers, sep = "\\|") %>%
+  group_by(id) %>% 
+  slice(1) %>% 
+  group_by(distributor = producers) %>% 
+  summarise(n = n(),
+            all_titles = paste0(title, ifelse(nominees_or_winner == "winner", " *", "%"),
+                               collapse = "\n"),
+            n_winners = sum(nominees_or_winner == "winner")) %>% 
+  ungroup() %>%
+  mutate(check = strsplit(all_titles, split = "\\\n"),
+         winners = check %>% lapply(only_winners) %>% unlist,
+         all_titles = gsub(x = all_titles, pattern = "\\%", replacement = "")) %>% 
+  arrange(desc(n)) %>%
+  slice(1:15) %>% 
+  ggplot(aes(x = n, y= reorder(distributor, -n), text = all_titles, fill = distributor)) +
+  geom_col()+
+  # labs(caption = "* = winners")+
+  theme(axis.title.y=element_blank(),
+        axis.title.x=element_blank(),
+        plot.caption = element_text(colour = "gold"),
+        legend.position = "none") +
+  ggtitle("Number of Nominees per Distributor (Top 15)") +
+  geom_text(aes(label = n), hjust = 0, position = position_dodge(width = 1)) +
+  geom_col(aes(x = n_winners, y = reorder(distributor, -n)), fill = "gold")
+
+
+distributors_plot_nominees %>% ggplotly(tooltip = c("x", "text", "fill"), height = 800) %>% 
+  layout(annotations = 
+           list(x = 1, y = -0.1, text = "* = winners", 
+                showarrow = F, xref='paper', yref='paper', 
+                xanchor='right', yanchor='auto', xshift=0, yshift=0,
+                font=list(size=15, color="gold")))
+
+```
+
+For more detail, please look at this table:
+
+```{r distributor_table}
+best_pic_noms_final %>%
+  separate_rows(producers, sep = "\\|") %>%
+  group_by(id) %>% 
+  slice(1) %>% 
+  group_by(distributor = producers) %>% 
+  summarise(n = n(), all_titles = paste(title, collapse = "<br>")) %>%
+  ungroup() %>% 
+  arrange(desc(n)) %>% 
+  datatable(filter = "top", extensions = "Buttons",
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE),
+            escape = FALSE)
+```
+
+## Producers
+
+```{r producer_leaderboards}
+
+producers_plot_nominees = best_pic_noms_final %>%
+  separate_rows(producers, sep = "\\|") %>%
+  # group_by(id) %>% 
+  # slice(1) %>% 
+  group_by(producers) %>%
+  summarise(n = n(),
+            all_titles = paste0(title, ifelse(nominees_or_winner == "winner", " *", "%"),
+                               collapse = "\n"),
+            n_winners = sum(nominees_or_winner == "winner")) %>% 
+  ungroup() %>%
+  mutate(check = strsplit(all_titles, split = "\\\n"),
+         winners = check %>% lapply(only_winners) %>% unlist,
+         all_titles = gsub(x = all_titles, pattern = "\\%", replacement = "")) %>% 
+  arrange(desc(n)) %>%
+  slice(1:15) %>% 
+  ggplot(aes(x = n, y= reorder(producers, -n), text = all_titles, fill = producers)) +
+  geom_col()+
+  # labs(caption = "* = winners")+
+  theme(axis.title.y=element_blank(),
+        axis.title.x=element_blank(),
+        plot.caption = element_text(colour = "gold"),
+        legend.position = "none") +
+  ggtitle("Number of Nominees per producers (Top 15)") +
+  geom_text(aes(label = n), hjust = 0, position = position_dodge(width = 1)) +
+  geom_col(aes(x = n_winners, y = reorder(producers, -n)), fill = "gold")
+
+
+producers_plot_nominees %>% ggplotly(tooltip = c("x", "text", "fill"), height = 800) %>% 
+  layout(annotations = 
+           list(x = 1, y = -0.1, text = "* = winners", 
+                showarrow = F, xref='paper', yref='paper', 
+                xanchor='right', yanchor='auto', xshift=0, yshift=0,
+                font=list(size=15, color="gold")))
+
+```
+
+For more detail, please look at this table:
+
+```{r producer_table}
+best_pic_noms_final %>%
+  separate_rows(producers, sep = "\\|") %>%
+  # group_by(id) %>% 
+  # slice(1) %>% 
+  group_by(producers) %>% 
+  summarise(n = n(), all_titles = paste(title, collapse = "<br>")) %>%
+  ungroup() %>% 
+  arrange(desc(n)) %>% 
+  datatable(filter = "top", extensions = "Buttons",
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE),
+            escape = FALSE)
+```
+
+
+
+## All Nominees
+
+```{r full_table}
+best_pic_noms_final %>%
+  select(year, title, nominees_or_winner, producers, imdb_url) %>% 
+  datatable(filter = "top", extensions = "Buttons",
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE))
+
+
+```
+
+
