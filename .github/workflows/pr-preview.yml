@@ -1,13 +1,12 @@
 name: PR Preview (R Markdown → GitHub Pages)
-
 on:
   pull_request:
+    types: [opened, synchronize, reopened]
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: write        # push preview branch
+  pull-requests: write   # comment link on PR
 
-# prevent overlapping publishes for the same PR
 concurrency:
   group: pr-preview-${{ github.event.pull_request.number }}
   cancel-in-progress: true
@@ -15,70 +14,35 @@ concurrency:
 jobs:
   build-and-preview:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
       - uses: r-lib/actions/setup-r@v2
       - uses: r-lib/actions/setup-pandoc@v2
 
-      # Install the packages your pages commonly use
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          packages: rmarkdown, knitr, yaml, rprojroot, here, readr, dplyr, ggplot2
+          packages: rmarkdown, knitr, yaml
+          # add your usuals here if specific Rmds need them:
+          # packages: rmarkdown, knitr, yaml, readr, dplyr, ggplot2
 
-      - name: Render each Rmd independently (robust)
-        run: |
-          Rscript -e '
-            rmds <- yaml::read_yaml("_site.yml")$rmd_files;
-            rmds <- unique(unlist(lapply(rmds, Sys.glob)));
-            dir.create("_site", showWarnings = FALSE);
-            for (f in rmds) {
-              outdir <- if (grepl("^reports/", f)) "_site/reports" else "_site";
-              dir.create(outdir, recursive = TRUE, showWarnings = FALSE);
-              msg <- tryCatch({
-                rmarkdown::render(f, output_dir = outdir, envir = new.env());
-                paste("OK:", f)
-              }, error = function(e) paste("FAIL:", f, "->", e$message));
-              cat(msg, "\n")
-            }
-          '
-
-      - name: Build site (robust)
+      - name: Render site (from _site.yml)
         run: |
           Rscript - <<'RS'
           options(error=function(e){message("BUILD-ERROR: ", e$message); q(status=1)})
-          if (file.exists("_site.yml")) {
-            try(rmarkdown::render_site(encoding="UTF-8"), silent=TRUE)
-          }
-          dir.create("_site", showWarnings = FALSE)
-          if (!file.exists("_site/index.html") && file.exists("index.Rmd")) {
-            try(rmarkdown::render("index.Rmd", output_dir = "_site", envir = new.env()), silent=TRUE)
-          }
-          if (!file.exists("_site/index.html") && file.exists("_site/reports/index.html")) {
-            cat('<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=reports/index.html">', file="_site/index.html")
-          }
+          if (!file.exists("_site.yml")) stop("_site.yml not found")
+          rmarkdown::render_site(encoding = "UTF-8")
+          # sanity: require at least one HTML
           if (length(list.files("_site", pattern="\\.html$", recursive=TRUE)) == 0) {
             stop("No HTML was generated in _site/")
           }
           RS
 
-      - name: Show what got built
-        run: |
-          echo '--- _site tree (first 200 files) ---'
-          find _site -type f | head -n 200
-          echo '--- end tree ---'
-
       - name: Prepare preview folder
         run: |
-          set -e
-          # Ensure entry exists (root index.html since index.Rmd is at repo root)
-          test -f _site/index.html
-          # Make sure Pages treats this as static content
+          test -f _site/index.html || exit 1
           touch _site/.nojekyll
-          # Optional debug file (uncomment if you want to sanity-check via /hello.html)
-          # echo 'ok' > _site/hello.html
-          # Fail fast if no HTML at all
-          test "$(find _site -name '*.html' | wc -l)" -gt 0
 
       - name: Deploy PR preview to gh-pages
         uses: rossjrw/pr-preview-action@v1
