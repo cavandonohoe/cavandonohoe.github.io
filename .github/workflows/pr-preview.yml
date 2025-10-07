@@ -43,6 +43,25 @@ jobs:
             }
           '
 
+      - name: Build site (robust)
+        run: |
+          Rscript - <<'RS'
+          options(error=function(e){message("BUILD-ERROR: ", e$message); q(status=1)})
+          if (file.exists("_site.yml")) {
+            try(rmarkdown::render_site(encoding="UTF-8"), silent=TRUE)
+          }
+          dir.create("_site", showWarnings = FALSE)
+          if (!file.exists("_site/index.html") && file.exists("index.Rmd")) {
+            try(rmarkdown::render("index.Rmd", output_dir = "_site", envir = new.env()), silent=TRUE)
+          }
+          if (!file.exists("_site/index.html") && file.exists("_site/reports/index.html")) {
+            cat('<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=reports/index.html">', file="_site/index.html")
+          }
+          if (length(list.files("_site", pattern="\\.html$", recursive=TRUE)) == 0) {
+            stop("No HTML was generated in _site/")
+          }
+          RS
+
       - name: Show what got built
         run: |
           echo '--- _site tree (first 200 files) ---'
