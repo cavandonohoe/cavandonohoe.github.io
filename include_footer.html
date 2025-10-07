@@ -1,31 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    #footer_stuff {
-      text-align: left; /* Set text alignment to left */
-      margin: 100px auto; /* Adjust the margin value as needed for the desired space */
-      color: #ccc; /* Set your desired grey font color */
-    }
-
-    .bandContent {
-      /* Add any additional styling for the content here */
-    }
-  </style>
-</head>
-<body>
-  <div id="footer_stuff" class="band full">
-    <div class="bandContent">
-      <div id="full_send">Feel free to contact me:</div>
-      <div id="logos">
-        <a href="cavandonohoe@gmail.com"><i class="fa fa-envelope" style="font-size:22px"></i></a>
-        <a href="https://www.instagram.com/cavandonohoe"><i class="fa fa-instagram" style="font-size:22px"></i></a>
-        <a href="https://www.facebook.com/cavandonohoe"><i class="fa fa-facebook" style="font-size:22px"></i></a>
-        <a href="https://github.com/cavandonohoe"><i class="fa fa-github" style="font-size:22px"></i></a>
-        <a href="https://www.linkedin.com/in/cavan-donohoe/"><i class="fa fa-linkedin" style="font-size:22px"></i></a>
-        <a href="tel:+8054043321"><i class="fa fa-phone" style="font-size:22px"></i></a>
-      </div>
+<footer style="border-top:1px solid #e5e7eb;margin-top:48px;padding:16px 0;color:#6b7280;">
+  <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+    <div>© <span id="copy-year"></span> Cavan Donohoe</div>
+    <div style="margin-left:auto;display:flex;gap:12px;font-size:18px;">
+      <a href="mailto:cavandonohoe@gmail.com" title="Email"><i class="fa fa-envelope"></i></a>
+      <a href="https://github.com/cavandonohoe" title="GitHub"><i class="fa fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/cavan-donohoe/" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+      <a href="tel:+18054043321" title="Phone"><i class="fa fa-phone"></i></a>
     </div>
   </div>
-</body>
-</html>
+</footer>
+<script>(function(){var el=document.getElementById('copy-year'); if(el){el.textContent=new Date().getFullYear();}})();</script>
