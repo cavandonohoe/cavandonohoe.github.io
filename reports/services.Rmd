@@ -3,6 +3,4 @@ title: "Services"
 output:
   html_document:
     includes:
-      in_header: ../header/header.html
-      after_body: ../include_footer.html
----
+       in_header: ../header/header.html
