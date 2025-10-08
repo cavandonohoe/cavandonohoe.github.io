@@ -99,8 +99,8 @@ jobs:
         with:
           chrome-version: stable
 
-       - name: Render site
-         env:
+      - name: Render site
+        env:
           CHROMOTE_CHROME: ${{ steps.chrome.outputs.chrome-path }}
         run: |
           Rscript -e 'googledrive::drive_auth(path="sa.json", cache=FALSE); googlesheets4::gs4_auth(path="sa.json", cache=FALSE); rmarkdown::render_site(encoding="UTF-8")'
