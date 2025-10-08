@@ -11,7 +11,7 @@ editor_options:
 ```
 
 ```{r gs4-auth, include=FALSE}
-googlesheets4::gs4_deauth()
+# googlesheets4::gs4_deauth()
 ```
 
 
