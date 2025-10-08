@@ -102,12 +102,12 @@ jobs:
       - name: Render site
         env:
           CHROMOTE_CHROME: ${{ steps.chrome.outputs.chrome-path }}
-        run: |
+          run: |
           Rscript -e 'googledrive::drive_auth(path="sa.json", cache=FALSE); googlesheets4::gs4_auth(path="sa.json", cache=FALSE); rmarkdown::render_site(encoding="UTF-8")'
 
-      - name: Upload preview artifact
+      - name: Upload Pages artifact (PR)
         if: ${{ github.event_name == 'pull_request' }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
           name: site-preview
           path: _site
@@ -123,8 +123,10 @@ jobs:
     name: Deploy to GitHub Pages
     needs: build
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'pull_request' }}
     environment:
       name: github-pages
+      # take a look at this for later if there is an error
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/deploy-pages@v4
