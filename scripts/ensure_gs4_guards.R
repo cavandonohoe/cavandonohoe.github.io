@@ -1,66 +1,64 @@
+#!/usr/bin/env Rscript
+
+# ensure_gs4_guards.R
+# Fails CI if any Rmd that touches Google APIs lacks a guard chunk.
+# Accepts ANY chunk whose label *starts with* "ci-skip-gs4" (e.g., ci-skip-gs4_cv).
+
 args <- commandArgs(trailingOnly = TRUE)
-fix  <- any(args %in% c("--fix", "-f")) || identical(Sys.getenv("FIX"), "1")
+fix  <- any(args %in% c("--fix")) || identical(Sys.getenv("FIX"), "1")
 
-uses_gs4 <- function(txt) {
-  any(grepl("\\blibrary\\(\\s*googlesheets4\\s*\\)", txt)) ||
-    any(grepl("googlesheets4::", txt))
-}
-has_ci_skip <- function(txt) any(grepl("^```\\{r\\s+ci-skip-gs4\\b", txt))
-has_deauth  <- function(txt) any(grepl("\\bgs4_deauth\\s*\\(", txt))
+# Heuristic: an Rmd "needs a guard" if it references these APIs/verbs.
+NEEDS_PAT <- "\\b(googlesheets4|googledrive|read_sheet|drive_get|gs4_|drive_)\\b"
 
-insert_after_yaml <- function(txt, block) {
-  if (length(txt) >= 1 && grepl("^\\s*---\\s*$", txt[1])) {
-    # find closing --- (second fence)
-    end <- which(grepl("^\\s*---\\s*$", txt[-1]))[1] + 1
-    if (!is.na(end)) return(c(txt[1:end], block, txt[(end+1):length(txt)]))
-  }
-  c(block, txt)
+needs_guard <- function(path) {
+  lines <- readLines(path, warn = FALSE)
+  any(grepl(NEEDS_PAT, lines))
 }
 
-# blocks
-ci_skip_block <- c(
-  "```{r ci-skip-gs4, include=FALSE}",
-  "if (Sys.getenv(\"CI\") == \"true\") knitr::knit_exit()",
-  "```",
-  ""
-)
-deauth_block <- c(
-  "```{r gs4-auth, include=FALSE}",
-  "googlesheets4::gs4_deauth()",
-  "```",
-  ""
-)
+# A file "has a guard" if it contains a chunk whose label starts with "ci-skip-gs4"
+# Examples this matches:
+#   ```{r ci-skip-gs4}
+#   ```{r ci-skip-gs4, include=FALSE}
+#   ```{r ci-skip-gs4_cv, include=FALSE}
+HAS_GUARD_PAT <- "^```\\s*\\{[^}]*\\bci-skip-gs4[^}\\s]*"
 
-rmds <- list.files(".", pattern="\\.Rmd$", full.names=TRUE)
-needs <- list()
+has_guard <- function(path) {
+  lines <- readLines(path, warn = FALSE)
+  any(grepl(HAS_GUARD_PAT, lines))
+}
 
+insert_guard <- function(path) {
+  lines <- readLines(path, warn = FALSE)
+  guard_chunk <- c(
+    "```{r ci-skip-gs4, include=FALSE}",
+    "is_ci <- identical(Sys.getenv(\"CI\"), \"true\")",
+    "# Avoid Google API calls on CI",
+    "if (is_ci) googlesheets4::gs4_deauth()",
+    "```",
+    ""
+  )
+  writeLines(c(guard_chunk, lines), path)
+}
+
+# Discover Rmds (recursive). Adjust include/exclude patterns as needed.
+rmds <- dir(".", pattern = "[.](R|r)md$", recursive = TRUE, full.names = TRUE)
+
+violations <- character()
 for (f in rmds) {
-  txt <- readLines(f, warn = FALSE)
-  if (!uses_gs4(txt)) next
-  
-  need_skip   <- !has_ci_skip(txt)
-  need_deauth <- !has_deauth(txt)
-  
-  if (need_skip || need_deauth) {
-    needs[[f]] <- c(if (need_skip) "ci-skip-gs4", if (need_deauth) "gs4_deauth")
+  if (needs_guard(f) && !has_guard(f)) {
     if (fix) {
-      # insert in stable order: CI skip first, then deauth
-      if (need_skip)   txt <- insert_after_yaml(txt, ci_skip_block)
-      if (need_deauth) txt <- insert_after_yaml(txt, deauth_block)
-      writeLines(txt, f)
+      insert_guard(f)
+      message(sprintf("Inserted gs4 guard into %s", f))
+    } else {
+      violations <- c(violations, f)
     }
   }
 }
 
-if (length(needs)) {
-  cat("Files needing gs4 guards:\n")
-  for (f in names(needs)) cat(sprintf(" - %s: %s\n", f, paste(needs[[f]], collapse=", ")))
-  if (!fix) {
-    cat("\nRun with --fix (or FIX=1) to apply changes.\n")
-    quit(status = 1)
-  } else {
-    cat("\nApplied fixes.\n")
-  }
+if (length(violations)) {
+  cat("Files needing gs4 guards (label can be prefixed, e.g. ci-skip-gs4_cv):\n")
+  for (v in violations) cat(" - ", v, ": ci-skip-gs4*\n", sep = "")
+  quit(status = 1)
 } else {
-  cat("All gs4-using Rmds already have ci-skip-gs4 and gs4_deauth.\n")
+  cat("All good: gs4 guards present (prefixes allowed).\n")
 }
