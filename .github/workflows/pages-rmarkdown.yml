@@ -102,7 +102,7 @@ jobs:
       - name: Render site
         env:
           CHROMOTE_CHROME: ${{ steps.chrome.outputs.chrome-path }}
-          run: |
+        run: |
           Rscript -e 'googledrive::drive_auth(path="sa.json", cache=FALSE); googlesheets4::gs4_auth(path="sa.json", cache=FALSE); rmarkdown::render_site(encoding="UTF-8")'
 
       - name: Upload Pages artifact (PR)
