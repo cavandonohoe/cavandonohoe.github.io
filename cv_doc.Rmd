@@ -11,7 +11,7 @@ if (Sys.getenv("CI") == "true") knitr::knit_exit()
 ```
 
 ```{r gs4-auth, include=FALSE}
-googlesheets4::gs4_deauth()
+# googlesheets4::gs4_deauth()
 ```
 
 
