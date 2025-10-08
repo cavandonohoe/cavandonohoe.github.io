@@ -23,47 +23,30 @@
     <div class="cd-grow"></div>
     <nav class="cd-links" aria-label="Primary">
       <!-- Use data-href; script below prefixes ../ when inside /reports/ -->
-      <a data-href="index.html">Home</a>
-      <a data-href="reports/about.html">About</a>
-      <a data-href="reports/services.html">Services</a>
+      <a href="/index.html">Home</a>
+      <a href="/reports/about.html">About</a>
+      <a href="/reports/services.html">Services</a>
 
       <div class="cd-dd">
         <button type="button" aria-haspopup="true" aria-expanded="false">Projects ▾</button>
         <div class="cd-menu" role="menu">
-          <a data-href="reports/imdb_top_250_tv_series.html">IMDb TV Series</a>
-          <a data-href="reports/best_pic_vs_top_1000.html">Best Picture vs Top 1000</a>
-          <a data-href="reports/top_250_imdb_with_rt.html">Top 250 w/ RT</a>
-          <a data-href="reports/imdb_rating_plot.html">IMDb Rating Plot</a>
-          <a data-href="reports/best_picture_nominees.html">Best Picture Nominees</a>
-          <a data-href="reports/firefighter_schedule.html">Firefighter Schedule</a>
-          <a data-href="reports/tohs_reunion.html">TOHS Reunion</a>
-          <a data-href="reports/sierpinski_triangle.html">Sierpinski Triangle</a>
-          <a data-href="reports/my_imdb.html">My IMDb Ratings</a>
-          <a data-href="reports/my_travels.html">Get Bloggy With It</a>
-          <a data-href="reports/learn_r.html">Learn R</a>
-          <a data-href="reports/cv.html">CV</a>
+          <a href="/reports/imdb_top_250_tv_series.html">IMDb TV Series</a>
+          <a href="/reports/best_pic_vs_top_1000.html">Best Picture vs Top 1000</a>
+          <a href="/reports/top_250_imdb_with_rt.html">Top 250 w/ RT</a>
+          <a href="/reports/imdb_rating_plot.html">IMDb Rating Plot</a>
+          <a href="/reports/best_picture_nominees.html">Best Picture Nominees</a>
+          <a href="/reports/firefighter_schedule.html">Firefighter Schedule</a>
+          <a href="/reports/tohs_reunion.html">TOHS Reunion</a>
+          <a href="/reports/sierpinski_triangle.html">Sierpinski Triangle</a>
+          <a href="/reports/my_imdb.html">My IMDb Ratings</a>
+          <a href="/reports/my_travels.html">Get Bloggy With It</a>
+          <a href="/reports/learn_r.html">Learn R</a>
+          <a href="/reports/cv.html">CV</a>
         </div>
       </div>
     </nav>
   </div>
 </div>
-
-<script>
-  (function(){
-    // If we're inside /reports/, prefix links with ../
-    var isReports = /\/reports\//.test(location.pathname);
-    var base = isReports ? '../' : '';
-    document.querySelectorAll('[data-href]').forEach(function(a){
-      a.setAttribute('href', base + a.getAttribute('data-href'));
-      // Mark active
-      var target = a.getAttribute('href').replace(/index\.html$/, '');
-      if (location.pathname.endsWith(a.getAttribute('data-href')) ||
-          location.pathname.endsWith(target)) {
-        a.setAttribute('aria-current', 'page');
-      }
-    });
-  })();
-</script>
 
 <!-- (Optional) GA; safe to keep -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-P51TN2DWZM"></script>
