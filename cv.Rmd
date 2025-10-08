@@ -13,7 +13,7 @@ editor_options:
   chunk_output_type: console
 ---
 ```{r ci-skip-gs4, include=FALSE}
-if (Sys.getenv("CI") == "true") knitr::knit_exit()
+# if (Sys.getenv("CI") == "true") knitr::knit_exit()
 ```
 
 ```{r gs4-auth_cv, include=FALSE}
