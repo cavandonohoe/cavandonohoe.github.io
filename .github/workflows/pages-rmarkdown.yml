@@ -20,6 +20,9 @@ jobs:
   build:
     name: Build site
     runs-on: ubuntu-latest
+    env:
+      # lets gargle/google libraries auto-detect the key path if you use _common.R
+      GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/sa.json
     steps:
       - uses: actions/checkout@v4
 
@@ -43,6 +46,16 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           dependencies: '"all"'
+      # --- NEW: write your service account key from repo secret ---
+      - name: Write GCP key
+        run: |
+          echo '${{ secrets.GCP_SA_KEY }}' > sa.json
+
+      # --- OPTIONAL but recommended: quick auth sanity check (fails fast if share is missing) ---
+      - name: Google auth (sanity check)
+        run: |
+          Rscript -e 'googledrive::drive_auth(path="sa.json", cache=FALSE); googlesheets4::gs4_auth(path="sa.json", cache=FALSE); googledrive::drive_user()'
+
 
       - name: Validate DESCRIPTION vs library() calls
         run: |
@@ -86,10 +99,11 @@ jobs:
         with:
           chrome-version: stable
 
-      - name: Render site
-        env:
+       - name: Render site
+         env:
           CHROMOTE_CHROME: ${{ steps.chrome.outputs.chrome-path }}
-        run: Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
+        run: |
+          Rscript -e 'googledrive::drive_auth(path="sa.json", cache=FALSE); googlesheets4::gs4_auth(path="sa.json", cache=FALSE); rmarkdown::render_site(encoding="UTF-8")'
 
       - name: Upload preview artifact
         if: ${{ github.event_name == 'pull_request' }}
