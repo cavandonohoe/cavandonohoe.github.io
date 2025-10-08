@@ -109,7 +109,6 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         uses: actions/upload-pages-artifact@v3
         with:
-          name: site-preview
           path: _site
           if-no-files-found: error
 
@@ -126,7 +125,11 @@ jobs:
     if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'pull_request' }}
     environment:
       name: github-pages
-      # take a look at this for later if there is an error
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}   # shows the preview URL in the job UI
+    permissions:
+      pages: write
+      id-token: write
     steps:
-      - uses: actions/deploy-pages@v4
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
