@@ -2,7 +2,9 @@ name: Build site + deploy prod & PR previews (branch-based Pages)
 
 on:
   push:
-    branches: [ main ]
+    branches-ignore:
+      - main
+      - gh-pages
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review, closed]
   workflow_dispatch:
@@ -126,7 +128,9 @@ jobs:
   # PREVIEW: publish to gh-pages/pr-<PR#>/ for PRs
   deploy_preview:
     name: Deploy PR preview (gh-pages/pr-<num>/)
-    if: ${{ github.event_name == 'pull_request' && github.event.action != 'closed' }}
+    if: |
+      (github.event_name == 'pull_request' && github.event.action != 'closed') ||
+      (github.event_name == 'push' && startsWith(github.ref, 'refs/heads/pr-'))
     needs: build
     runs-on: ubuntu-latest
     permissions:
