@@ -116,8 +116,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     permissions:
-      contents: write        # ✅ can push to gh-pages
-      pull-requests: write   # for the comment step
+      contents: write
+      pull-requests: write
     steps:
       - uses: actions/download-artifact@v4
         with:
