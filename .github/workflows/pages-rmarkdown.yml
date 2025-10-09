@@ -139,7 +139,7 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         uses: thollander/actions-comment-pull-request@v2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           message: "🚀 Preview: ${{ steps.deployment.outputs.page_url }}"
           mode: upsert
           create_if_not_exists: true
