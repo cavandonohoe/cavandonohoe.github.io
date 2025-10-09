@@ -94,6 +94,8 @@ jobs:
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     needs: build
     runs-on: ubuntu-latest
+      permissions:
+      contents: write        # ✅ can push to gh-pages
     steps:
       - uses: actions/download-artifact@v4
         with:
@@ -113,6 +115,9 @@ jobs:
     if: ${{ github.event_name == 'pull_request' && github.event.action != 'closed' }}
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: write        # ✅ can push to gh-pages
+      pull-requests: write   # for the comment step
     steps:
       - uses: actions/download-artifact@v4
         with:
