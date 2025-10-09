@@ -9,8 +9,8 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write      # push to gh-pages
-  pull-requests: write # optional: to comment preview links
+  contents: write          # push to gh-pages
+  pull-requests: write
 
 concurrency:
   group: pages-${{ github.ref }}
@@ -20,41 +20,65 @@ jobs:
   build:
     name: Build site
     runs-on: ubuntu-latest
-    outputs:
-      is_pr: ${{ github.event_name == 'pull_request' }}
+    env:
+      GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/sa.json
     steps:
       - uses: actions/checkout@v4
 
-      # --- R / Pandoc setup (tweak if needed) ---
-      - name: Setup R
-        uses: r-lib/actions/setup-r@v2
+      # --- R / Pandoc like your working workflow ---
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
 
-      - name: Setup Pandoc
-        uses: r-lib/actions/setup-pandoc@v2
+      - uses: r-lib/actions/setup-pandoc@v2
         with:
           pandoc-version: "3.1.11"
 
-      - name: Install R dependencies
-        uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          extra-packages: |
-            local::.
-            any::rmarkdown
-            any::knitr
-            any::lubridate
-            any::pagedown
-          needs: website
-          use-public-rspm: true
+      # Optional: keep your DESCRIPTION tokenization & library checks
+      - name: Validate DESCRIPTION tokenization
+        run: |
+          Rscript - <<'RSCRIPT'
+          d <- read.dcf("DESCRIPTION")
+          imp <- gsub("\\n", " ", d[,"Imports"])
+          toks <- trimws(unlist(strsplit(imp, ",\\s*")))
+          bad <- toks[grepl("\\s", toks)]
+          cat("Imports tokens:\n"); print(toks)
+          if (length(bad)) stop("Bad Imports tokens (contain spaces): ", paste(bad, collapse=", "))
+          RSCRIPT
 
-      # If some Rmds try to PDF on CI, you can guard or install TinyTeX.
-      # - name: Setup TinyTeX (optional)
-      #   uses: r-lib/actions/setup-tinytex@v2
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          dependencies: '"all"'
+
+      # ✅ write the SA key (same-repo PRs have secrets; forks won't)
+      - name: Write GCP key
+        if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+        run: echo '${{ secrets.GCP_SA_KEY }}' > sa.json
+
+      # Optional: fast-fail auth sanity check (will no-op on forks)
+      - name: Google auth (sanity check)
+        if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+        run: |
+          Rscript -e 'suppressPackageStartupMessages({library(googledrive);library(googlesheets4)}); drive_auth(path="sa.json", cache=FALSE); gs4_auth(path="sa.json", cache=FALSE); drive_user()'
+
+      # Optional: ensure gs4 guards (matches your other workflow)
+      - name: Verify gs4 guards are present
+        run: Rscript scripts/ensure_gs4_guards.R
+
+      # Chrome only needed if any Rmd PDF/Chrome printing happens; keep your guard
+      - name: Setup Chrome
+        if: ${{ github.event_name != 'pull_request' || github.ref == 'refs/heads/main' }}
+        id: chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
 
       - name: Render site
         env:
+          CHROMOTE_CHROME: ${{ steps.chrome.outputs.chrome-path }}
           CI: "true"
         run: |
-          R -q -e 'rmarkdown::render_site(".", encoding = "UTF-8")'
+          Rscript -e 'suppressPackageStartupMessages({library(googledrive);library(googlesheets4)}); if (file.exists("sa.json")) { drive_auth(path="sa.json", cache=FALSE); gs4_auth(path="sa.json", cache=FALSE) } else { gs4_deauth() }; rmarkdown::render_site(encoding="UTF-8")'
           test -d _site || (echo "No _site dir found"; exit 1)
 
       - name: Upload built site
@@ -63,39 +87,36 @@ jobs:
           name: site
           path: _site
 
+  # PROD: update gh-pages root only when main changes
   deploy_prod:
     name: Deploy production (gh-pages root)
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Download site
-        uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v4
         with:
           name: site
           path: _site
-
       - name: Publish to gh-pages root
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: _site
-          keep_files: true      # keep any pr-*/ folders
-          # cname: your.domain.com  # only if you use a custom domain
+          keep_files: true        # keep pr-*/ folders
 
+  # PREVIEW: publish to gh-pages/pr-<PR#>/ for PRs
   deploy_preview:
     name: Deploy PR preview (gh-pages/pr-<num>/)
     if: ${{ github.event_name == 'pull_request' && github.event.action != 'closed' }}
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Download site
-        uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v4
         with:
           name: site
           path: _site
-
       - name: Publish PR preview folder
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -104,7 +125,6 @@ jobs:
           publish_dir: _site
           destination_dir: pr-${{ github.event.pull_request.number }}
           keep_files: true
-
       - name: Comment preview URL
         if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
         uses: thollander/actions-comment-pull-request@v2
@@ -114,6 +134,7 @@ jobs:
           mode: upsert
           create_if_not_exists: true
 
+  # CLEANUP: delete subfolder when PR closes
   cleanup_preview:
     name: Remove PR preview on close
     if: ${{ github.event_name == 'pull_request' && github.event.action == 'closed' }}
@@ -124,7 +145,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: gh-pages
-
       - name: Delete folder and push
         run: |
           set -e
