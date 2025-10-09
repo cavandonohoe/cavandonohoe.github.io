@@ -11,6 +11,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  pull-requests: write
 
 concurrency:
   group: pages-${{ github.ref }}
@@ -110,7 +111,8 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site
-          if-no-files-found: error
+          name: pr-preview
+          retention-days: 7
 
       - name: Upload Pages artifact
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
@@ -139,4 +141,6 @@ jobs:
         uses: thollander/actions-comment-pull-request@v2
         with:
           message: "🚀 Preview: ${{ steps.deployment.outputs.page_url }}"
+          mode: upsert
+          create_if_not_exists: true
 
