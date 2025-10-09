@@ -21,7 +21,8 @@ jobs:
     name: Build site
     runs-on: ubuntu-latest
     env:
-      GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/sa.json
+      # where we will write the SA key; never inside the repo/_site
+      GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/sa.json
     steps:
       - uses: actions/checkout@v4
 
@@ -50,6 +51,23 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           dependencies: '"all"'
+      
+      # ✅ Write SA key to runner temp for same-repo PRs & pushes (forks won't get secrets)
+      - name: Write Google SA JSON
+        if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+        run: |
+          cat > "${{ runner.temp }}/sa.json" <<'JSON'
+          ${{ secrets.GCP_SA_KEY }}
+          JSON
+          # restrict perms just in case
+          chmod 600 "${{ runner.temp }}/sa.json"
+
+      # Optional: sanity check auth when key exists (no-op on forks)
+      - name: Google auth check
+        if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+        run: |
+          Rscript -e 'suppressPackageStartupMessages({library(googledrive);library(googlesheets4)}); drive_auth(path=Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"), cache=FALSE); gs4_auth(path=Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"), cache=FALSE); invisible(drive_user())'
+
 
       # ✅ write the SA key (same-repo PRs have secrets; forks won't)
       - name: Write GCP key
@@ -76,11 +94,20 @@ jobs:
 
       - name: Render site
         env:
-          CHROMOTE_CHROME: ${{ steps.chrome.outputs.chrome-path }}
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/sa.json
           CI: "true"
         run: |
-          Rscript -e 'suppressPackageStartupMessages({library(googledrive);library(googlesheets4)}); if (file.exists("sa.json")) { drive_auth(path="sa.json", cache=FALSE); gs4_auth(path="sa.json", cache=FALSE) } else { gs4_deauth() }; rmarkdown::render_site(encoding="UTF-8")'
+          Rscript -e 'suppressPackageStartupMessages({library(googlesheets4)}); if (file.exists(Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"))) { gs4_auth(path=Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"), cache=FALSE) } else { gs4_deauth() }; rmarkdown::render_site(encoding="UTF-8")'
           test -d _site || (echo "No _site dir found"; exit 1)
+
+      # 🚫 Guard: ensure no secrets are inside the built site
+      - name: Preflight: block secret files in _site
+        run: |
+          set -e
+          if find _site -type f -iname 'sa.json' | grep .; then
+            echo "ERROR: Secret file(s) ended up in _site; refusing to publish."
+            exit 1
+          fi
 
       - name: Upload built site
         uses: actions/upload-artifact@v4
