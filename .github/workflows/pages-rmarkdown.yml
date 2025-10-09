@@ -111,7 +111,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site
-          name: pr-preview
           retention-days: 7
 
       - name: Upload Pages artifact
