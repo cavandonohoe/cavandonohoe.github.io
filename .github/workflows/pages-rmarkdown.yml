@@ -129,13 +129,14 @@ jobs:
     permissions:
       pages: write
       id-token: write
-    - name: Deploy
-      id: deployment
-      uses: actions/deploy-pages@v4
-    
-    - name: Comment preview URL
-      if: ${{ github.event_name == 'pull_request' }}
-      uses: thollander/actions-comment-pull-request@v2
-      with:
-        message: "🚀 Preview: ${{ steps.deployment.outputs.page_url }}"
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
+      
+      - name: Comment preview URL
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          message: "🚀 Preview: ${{ steps.deployment.outputs.page_url }}"
 
