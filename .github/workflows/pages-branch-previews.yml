@@ -5,7 +5,7 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-    types: [opened, synchronize, reopened, closed]
+    types: [opened, synchronize, reopened, ready_for_review, closed]
   workflow_dispatch:
 
 permissions:
@@ -67,18 +67,6 @@ jobs:
         if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
         run: |
           Rscript -e 'suppressPackageStartupMessages({library(googledrive);library(googlesheets4)}); drive_auth(path=Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"), cache=FALSE); gs4_auth(path=Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"), cache=FALSE); invisible(drive_user())'
-
-
-      # ✅ write the SA key (same-repo PRs have secrets; forks won't)
-      - name: Write GCP key
-        if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
-        run: echo '${{ secrets.GCP_SA_KEY }}' > sa.json
-
-      # Optional: fast-fail auth sanity check (will no-op on forks)
-      - name: Google auth (sanity check)
-        if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
-        run: |
-          Rscript -e 'suppressPackageStartupMessages({library(googledrive);library(googlesheets4)}); drive_auth(path="sa.json", cache=FALSE); gs4_auth(path="sa.json", cache=FALSE); drive_user()'
 
       # Optional: ensure gs4 guards (matches your other workflow)
       - name: Verify gs4 guards are present
