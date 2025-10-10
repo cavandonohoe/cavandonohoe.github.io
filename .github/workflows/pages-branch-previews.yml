@@ -3,7 +3,7 @@ name: Build site + deploy prod & PR previews (branch-based Pages)
 on:
   push:
     branches: [ main ]
-  pull_request:
+  pull_request_target:
     types: [opened, synchronize, reopened, ready_for_review, closed]
   workflow_dispatch:
 
@@ -24,6 +24,8 @@ jobs:
       GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/sa.json
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
       # --- R / Pandoc like your working workflow ---
       # here's a quick comment
@@ -126,9 +128,7 @@ jobs:
   # PREVIEW: publish to gh-pages/pr-<PR#>/ for PRs
   deploy_preview:
     name: Deploy PR preview (gh-pages/pr-<num>/)
-    if: |
-      (github.event_name == 'pull_request' && github.event.action != 'closed') ||
-      (github.event_name == 'push' && startsWith(github.ref, 'refs/heads/pr-'))
+      if: ${{ github.event_name == 'pull_request_target' && github.event.action != 'closed' }}
     needs: build
     runs-on: ubuntu-latest
     permissions:
