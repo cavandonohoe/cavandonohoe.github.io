@@ -2,9 +2,7 @@ name: Build site + deploy prod & PR previews (branch-based Pages)
 
 on:
   push:
-    branches-ignore:
-      - main
-      - gh-pages
+    branches: [ main ]
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review, closed]
   workflow_dispatch:
