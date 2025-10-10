@@ -128,7 +128,7 @@ jobs:
   # PREVIEW: publish to gh-pages/pr-<PR#>/ for PRs
   deploy_preview:
     name: Deploy PR preview (gh-pages/pr-<num>/)
-      if: ${{ github.event_name == 'pull_request_target' && github.event.action != 'closed' }}
+    if: ${{ github.event_name == 'pull_request_target' && github.event.action != 'closed' }}
     needs: build
     runs-on: ubuntu-latest
     permissions:
