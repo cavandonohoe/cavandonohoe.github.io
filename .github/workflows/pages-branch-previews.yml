@@ -3,7 +3,7 @@ name: Build site + deploy prod & PR previews (branch-based Pages)
 on:
   push:
     branches: [ main ]
-  pull_request_target:
+  pull_request:
     types: [opened, synchronize, reopened, ready_for_review, closed]
   workflow_dispatch:
 
@@ -23,9 +23,10 @@ jobs:
       # where we will write the SA key; never inside the repo/_site
       GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/sa.json
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout (PR SHA or current SHA)
+        uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.sha }}
 
       # --- R / Pandoc like your working workflow ---
       # here's a quick comment
@@ -55,7 +56,7 @@ jobs:
       
       # ✅ Write SA key to runner temp for same-repo PRs & pushes (forks won't get secrets)
       - name: Write Google SA JSON
-        if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+        if: ${{ (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
         run: |
           cat > "${{ runner.temp }}/sa.json" <<'JSON'
           ${{ secrets.GCP_SA_KEY }}
@@ -128,7 +129,7 @@ jobs:
   # PREVIEW: publish to gh-pages/pr-<PR#>/ for PRs
   deploy_preview:
     name: Deploy PR preview (gh-pages/pr-<num>/)
-    if: ${{ github.event_name == 'pull_request_target' && github.event.action != 'closed' }}
+    if: ${{ github.event_name == 'pull_request' && github.event.action != 'closed' }}
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -147,6 +148,7 @@ jobs:
           publish_dir: _site
           destination_dir: pr-${{ github.event.pull_request.number }}
           keep_files: true
+          exclude_assets: 'sa.json'
       - name: Comment preview URL
         if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
         uses: thollander/actions-comment-pull-request@v2
@@ -160,7 +162,6 @@ jobs:
   cleanup_preview:
     name: Remove PR preview on close
     if: ${{ github.event_name == 'pull_request' && github.event.action == 'closed' }}
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout gh-pages
