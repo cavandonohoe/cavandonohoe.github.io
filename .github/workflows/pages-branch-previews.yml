@@ -91,7 +91,7 @@ jobs:
           test -d _site || (echo "No _site dir found"; exit 1)
 
       # 🚫 Guard: ensure no secrets are inside the built site
-      - name: Preflight: block secret files in _site
+      - name: "Preflight: block secret files in _site"
         run: |
           set -e
           if find _site -type f -iname 'sa.json' | grep .; then
