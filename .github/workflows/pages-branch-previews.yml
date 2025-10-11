@@ -54,18 +54,17 @@ jobs:
       - name: Write Google SA JSON
         if: ${{ (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
         run: |
-          cat > "${GITHUB_WORKSPACE}/sa.json" <<'JSON'
-          ${{ secrets.GCP_SA_KEY }}
-          JSON
-          chmod 600 "${GITHUB_WORKSPACE}/sa.json"
+          printf '%s' '${{ secrets.GCP_SA_KEY }}' > "$RUNNER_TEMP/sa.json"
+          chmod 600 "$RUNNER_TEMP/sa.json"
 
       # Optional: sanity check auth when key exists (no-op on forks)
       - name: Google auth check
         if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
         env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/sa.json
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/sa.json
         run: |
-          Rscript -e 'suppressPackageStartupMessages({library(googledrive);library(googlesheets4)}); drive_auth(path=Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"), cache=FALSE); gs4_auth(path=Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"), cache=FALSE); invisible(drive_user())'
+          Rscript -e 'suppressPackageStartupMessages({library(googledrive);library(googlesheets4)}); drive_auth(path=Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"), cache=FALSE); gs4_auth(path=Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"), cache=FALSE)'
+
 
       # Optional: ensure gs4 guards (matches your other workflow)
       - name: Verify gs4 guards are present
@@ -82,10 +81,11 @@ jobs:
       - name: Render site
         env:
           CI: "true"
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/sa.json
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/sa.json
         run: |
           Rscript -e 'suppressPackageStartupMessages({library(googlesheets4)}); if (file.exists(Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"))) { gs4_auth(path=Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"), cache=FALSE) } else { gs4_deauth() }; rmarkdown::render_site(encoding="UTF-8")'
           test -d _site || (echo "No _site dir found"; exit 1)
+
 
       # 🚫 Guard: ensure no secrets are inside the built site
       - name: "Preflight: block secret files in _site"
