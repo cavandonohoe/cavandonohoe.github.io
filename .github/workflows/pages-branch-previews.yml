@@ -1,0 +1,178 @@
+name: Build site + deploy prod & PR previews (branch-based Pages)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review, closed]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (PR SHA or current SHA)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+
+      # --- R / Pandoc like your working workflow ---
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-pandoc@v2
+        with:
+          pandoc-version: "3.1.11"
+
+      # Optional: keep your DESCRIPTION tokenization & library checks
+      - name: Validate DESCRIPTION tokenization
+        run: |
+          Rscript - <<'RSCRIPT'
+          d <- read.dcf("DESCRIPTION")
+          imp <- gsub("\\n", " ", d[,"Imports"])
+          toks <- trimws(unlist(strsplit(imp, ",\\s*")))
+          bad <- toks[grepl("\\s", toks)]
+          cat("Imports tokens:\n"); print(toks)
+          if (length(bad)) stop("Bad Imports tokens (contain spaces): ", paste(bad, collapse=", "))
+          RSCRIPT
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          dependencies: '"all"'
+      
+      # ✅ Write SA key to runner temp for same-repo PRs & pushes (forks won't get secrets)
+      - name: Write Google SA JSON
+        if: ${{ (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+        run: |
+          printf '%s' '${{ secrets.GCP_SA_KEY }}' > "$RUNNER_TEMP/sa.json"
+          chmod 600 "$RUNNER_TEMP/sa.json"
+
+      # Optional: sanity check auth when key exists (no-op on forks)
+      - name: Google auth check
+        if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/sa.json
+        run: |
+          Rscript -e 'suppressPackageStartupMessages({library(googledrive);library(googlesheets4)}); drive_auth(path=Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"), cache=FALSE); gs4_auth(path=Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"), cache=FALSE)'
+
+
+      # Optional: ensure gs4 guards (matches your other workflow)
+      - name: Verify gs4 guards are present
+        run: Rscript scripts/ensure_gs4_guards.R
+
+      # Chrome only needed if any Rmd PDF/Chrome printing happens; keep your guard
+      - name: Setup Chrome
+        if: ${{ github.event_name != 'pull_request' || github.ref == 'refs/heads/main' }}
+        id: chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+
+      - name: Render site
+        env:
+          CI: "true"
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/sa.json
+        run: |
+          Rscript -e 'suppressPackageStartupMessages({library(googlesheets4)}); if (file.exists(Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"))) { gs4_auth(path=Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"), cache=FALSE) } else { gs4_deauth() }; rmarkdown::render_site(encoding="UTF-8")'
+          test -d _site || (echo "No _site dir found"; exit 1)
+
+
+      # 🚫 Guard: ensure no secrets are inside the built site
+      - name: "Preflight: block secret files in _site"
+        run: |
+          set -e
+          if find _site -type f -iname 'sa.json' | grep .; then
+            echo "ERROR: sa.json ended up in _site; refusing to publish."
+            exit 1
+          fi
+
+      - name: Upload built site
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: _site
+
+  # PROD: update gh-pages root only when main changes
+  deploy_prod:
+    name: Deploy production (gh-pages root)
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: _site
+      - name: Publish to gh-pages root
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: _site
+          keep_files: true        # keep pr-*/ folders
+
+  # PREVIEW: publish to gh-pages/pr-<PR#>/ for PRs
+  deploy_preview:
+    name: Deploy PR preview (gh-pages/pr-<num>/)
+    if: |
+      (github.event_name == 'pull_request' && github.event.action != 'closed') ||
+      (github.event_name == 'workflow_dispatch')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: _site
+      - name: Publish PR preview folder
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: _site
+          destination_dir: pr-${{ github.event.pull_request.number }}
+          keep_files: true
+          exclude_assets: 'sa.json'
+      - name: Comment preview URL
+        if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          message: "🚀 Preview: https://cavandonohoe.github.io/pr-${{ github.event.pull_request.number }}/"
+          mode: upsert
+          create_if_not_exists: true
+
+  # CLEANUP: delete subfolder when PR closes
+  cleanup_preview:
+    name: Remove PR preview on close
+    if: ${{ github.event_name == 'pull_request' && github.event.action == 'closed' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+      - name: Delete folder and push
+        run: |
+          set -e
+          rm -rf "pr-${{ github.event.pull_request.number }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: remove preview for PR #${{ github.event.pull_request.number }}" || echo "No changes"
+          git push

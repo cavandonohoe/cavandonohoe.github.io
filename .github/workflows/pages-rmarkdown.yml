@@ -106,12 +106,6 @@ jobs:
         run: |
           Rscript -e 'googledrive::drive_auth(path="sa.json", cache=FALSE); googlesheets4::gs4_auth(path="sa.json", cache=FALSE); rmarkdown::render_site(encoding="UTF-8")'
 
-      - name: Upload Pages artifact (PR)
-        if: ${{ github.event_name == 'pull_request' }}
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-          retention-days: 7
 
       - name: Upload Pages artifact
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
@@ -123,7 +117,7 @@ jobs:
     name: Deploy to GitHub Pages
     needs: build
     runs-on: ubuntu-latest
-    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'pull_request' }}
+    if: ${{ github.ref == 'refs/heads/main' }}   # ✅ main only
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}   # shows the preview URL in the job UI
