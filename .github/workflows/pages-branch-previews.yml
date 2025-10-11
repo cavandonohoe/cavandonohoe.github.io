@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write          # push to gh-pages
+  contents: write
   pull-requests: write
 
 concurrency:
@@ -29,7 +29,6 @@ jobs:
           ref: ${{ github.sha }}
 
       # --- R / Pandoc like your working workflow ---
-      # here's a quick comment
       - uses: r-lib/actions/setup-r@v2
         with:
           use-public-rspm: true
@@ -61,7 +60,6 @@ jobs:
           cat > "${{ runner.temp }}/sa.json" <<'JSON'
           ${{ secrets.GCP_SA_KEY }}
           JSON
-          # restrict perms just in case
           chmod 600 "${{ runner.temp }}/sa.json"
 
       # Optional: sanity check auth when key exists (no-op on forks)
@@ -112,7 +110,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     permissions:
-      contents: write        # ✅ can push to gh-pages
+      contents: write
     steps:
       - uses: actions/download-artifact@v4
         with:
