@@ -6,7 +6,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review, closed]
   workflow_dispatch:
-  inputs:
+    inputs:
       deploy_root:
         description: "Deploy _site to gh-pages root"
         required: false
