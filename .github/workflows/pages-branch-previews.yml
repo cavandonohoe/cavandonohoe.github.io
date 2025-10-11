@@ -70,7 +70,6 @@ jobs:
         run: |
           Rscript -e 'suppressPackageStartupMessages({library(googledrive);library(googlesheets4)}); drive_auth(path=Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"), cache=FALSE); gs4_auth(path=Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"), cache=FALSE)'
 
-
       # Optional: ensure gs4 guards (matches your other workflow)
       - name: Verify gs4 guards are present
         run: Rscript scripts/ensure_gs4_guards.R
