@@ -1,0 +1,117 @@
+---
+title: "When Were Confederate Statues Created?"
+editor_options: 
+  chunk_output_type: console
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+---
+
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE
+)
+```
+
+# When were Confederate Statues made?
+
+
+R Project for web scraping Wikipedia looking for dates when confederate statues were erected
+
+
+```{r prep, include=FALSE}
+# Set default chunk output
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE,
+  tidy = FALSE, results = "asis"
+)
+
+library(tidyverse)
+library(plotly)
+```
+
+This is so wild. Let this sink in.
+
+This was motivated by my recent trip to South Carolina and seeing my first confederate statue. I am not sure why we glorify these people who fought for people to be enslaved.
+
+Check these out btw:
+
+* https://www.youtube.com/watch?v=dOkFXPblLpU
+  - how the United Daughters of the Confederacy brainwashed the youth by pretending slavery wasn't the cause of the Civil War
+* https://www.youtube.com/watch?v=WClgR6Q0aPE
+  - the reason why each peek of confederate statues were created
+* https://www.theguardian.com/us-news/2017/aug/16/confederate-monuments-civil-war-history-trump
+  - how each peek and why these statues were created
+
+
+```{r}
+all_dates = readr::read_csv("https://raw.githubusercontent.com/cavandonohoe/confederate_statues/main/data/confederate_statue_dates.csv")
+
+# find mode
+max_statues = all_dates %>% group_by(value3) %>%
+  count %>%
+  ungroup() %>%
+  arrange(desc(n)) %>%
+  filter(n == max(n))
+
+mode = max_statues %>% 
+  pull(value3)
+
+with_max = max_statues %>% 
+  pull(n)
+```
+
+Also, we witness the most statues being built in a single year in `r mode` with `r with_max` statues.
+
+These bins are of width = 5 years.
+
+```{r graph1, fig.width=10, fig.height=7.5}
+all_dates_clean <- all_dates %>% group_by(value3) %>%
+  count %>%
+  ungroup() %>%
+  mutate(date_bins = cut(value3, breaks = seq(min(value3), max(value3)+5, by = 5), right = FALSE),
+         text = paste0(value3, ": ", n)) %>%
+  group_by(date_bins) %>%
+  summarise(n = sum(n),
+            text = paste(text, collapse = "\n")) %>%
+  ungroup() %>%
+  mutate(date_min = as.numeric(gsub("\\[(\\d+),.*", "\\1", date_bins))) %>%
+  rename(date = date_min)
+
+confederate_statue_hist = all_dates_clean %>%
+  ggplot(aes(x = date, text = text, y = n)) +
+  geom_col(fill = "red") +
+  scale_x_continuous(breaks = seq(min(all_dates_clean$date), max(all_dates_clean$date), by = 5)) +
+  theme(axis.title.x = element_blank(),
+        axis.text.x = element_text(size=12, angle = 90),
+        axis.text.y = element_text(size=15),
+        title = element_text(size=15)) +
+  ylab("# of Statues") +
+  ggtitle("Number of Confederate Statues Over Time")
+
+confederate_statue_hist %>% ggplotly()
+```
+
+It's just something to think about...
+
+Also web scraping is fun
+
+
+
+sources:  
+https://en.wikipedia.org/wiki/List_of_Confederate_monuments_and_memorials_in_Alabama
+https://en.wikipedia.org/wiki/List_of_Confederate_monuments_and_memorials_in_Georgia
+https://en.wikipedia.org/wiki/List_of_Confederate_monuments_and_memorials_in_Mississippi
+https://en.wikipedia.org/wiki/List_of_Confederate_monuments_and_memorials_in_North_Carolina
+https://en.wikipedia.org/wiki/List_of_Confederate_monuments_and_memorials_in_South_Carolina
+https://en.wikipedia.org/wiki/List_of_Confederate_monuments_and_memorials
+
+
+
+To view web scraping methodology, please view: https://github.com/cavandonohoe/confederate_statues
+
+
+
