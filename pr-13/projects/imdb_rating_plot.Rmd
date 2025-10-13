@@ -4,9 +4,6 @@ editor_options:
   chunk_output_type: console
 output:
   html_document:
-    includes:
-      in_header: header/header.html
-      after_body: include_footer.html
     toc: true
     toc_depth: 3
     toc_float:
