@@ -2,9 +2,6 @@
 title: "Blog"
 output:
   html_document:
-    includes:
-      in_header: header/header.html
-      after_body: include_footer.html
     number_sections: no
     toc: yes
     toc_depth: 4
