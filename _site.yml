@@ -50,17 +50,17 @@ navbar:
       - text: "When Were Confederate Statues Erected?"
         href: projects/confederate_statues.html
     - text: "Learn R"
-        menu:
-        - text: "R Time Is Limited, Let's Make the Most of It"
-          href: learn_r/learn_r.html
-        - text: "Intro to R"
-          href: learn_r/intro_to_r.html
-        - text: "Basic Operations"
-          href: learn_r/basic_operations_r.html
-        - text: "Data Manipulations"
-          href: learn_r/data_manipulation_r.html
-        - text: "Data Visualization"
-          href: learn_r/data_visualization_r.html
-        - text: "Statistics with R"
-          href: learn_r/statistics_with_r.html
+      menu:
+      - text: "R Time Is Limited, Let's Make the Most of It"
+        href: learn_r/learn_r.html
+      - text: "Intro to R"
+        href: learn_r/intro_to_r.html
+      - text: "Basic Operations"
+        href: learn_r/basic_operations_r.html
+      - text: "Data Manipulations"
+        href: learn_r/data_manipulation_r.html
+      - text: "Data Visualization"
+        href: learn_r/data_visualization_r.html
+      - text: "Statistics with R"
+        href: learn_r/statistics_with_r.html
     
