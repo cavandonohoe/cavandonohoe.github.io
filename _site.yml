@@ -52,15 +52,15 @@ navbar:
       - text: "Learn R"
         menu:
         - text: "R Time Is Limited, Let's Make the Most of It"
-          href: projects/learn_r.html
+          href: projects/learn_r/learn_r.html
         - text: "Intro to R"
-          href: projects/intro_to_r.html
+          href: projects/learn_r/intro_to_r.html
         - text: "Basic Operations"
-          href: projects/basic_operations_r.html
+          href: projects/learn_r/basic_operations_r.html
         - text: "Data Manipulations"
-          href: projects/data_manipulation_r.html
+          href: projects/learn_r/data_manipulation_r.html
         - text: "Data Visualization"
-          href: projects/data_visualization_r.html
+          href: projects/learn_r/data_visualization_r.html
         - text: "Statistics with R"
-          href: projects/statistics_with_r.html
+          href: projects/learn_r/statistics_with_r.html
     
