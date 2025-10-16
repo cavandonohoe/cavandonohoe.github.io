@@ -119,6 +119,9 @@ jobs:
         with:
           name: site
           path: _site
+      - name: Clean stale Rmds from publish dir
+        run: |
+          find _site -type f -name '*.Rmd' -delete || true
       - name: Publish to gh-pages root
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -143,6 +146,9 @@ jobs:
         with:
           name: site
           path: _site
+      - name: Clean stale Rmds from publish dir
+        run: |
+          find _site -type f -name '*.Rmd' -delete || true
       - name: Publish PR preview folder
         uses: peaceiris/actions-gh-pages@v3
         with:
