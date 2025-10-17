@@ -181,46 +181,49 @@ jobs:
   deploy_preview:
     name: Deploy PR preview (gh-pages/pr-<num>/)
     if: |
-      (github.event_name == 'pull_request' && github.event.action != 'closed') ||
-      (github.event_name == 'workflow_dispatch')
+      github.event_name == 'pull_request' && github.event.action != 'closed'
     needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: write
       pull-requests: write
     steps:
-      # ... inside deploy_preview: steps:
       - uses: actions/download-artifact@v4
         with:
           name: site
           path: _site
-    
+
       - name: List built HTML (debug)
         run: |
           echo "Built HTML:"
           find _site -maxdepth 3 -type f -name '*.html' | sed 's#^_site/##' | sort
-    
+
+      - name: Add .nojekyll
+        run: touch _site/.nojekyll
+
       # ✅ checkout gh-pages so the reset commands have a git repo
       - name: Checkout gh-pages
         uses: actions/checkout@v4
         with:
           ref: gh-pages
           fetch-depth: 0
-    
-      - name: Reset PR preview folder
-        run: |
-          set -e
-          rm -rf "pr-${{ github.event.pull_request.number }}"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "chore: reset preview folder pr-${{ github.event.pull_request.number }}" || echo "No changes"
-          git push origin gh-pages
-    
+
+      # 1) Wipe PR folder by publishing an empty dir to that destination
+      - name: Wipe PR preview folder
+        run: mkdir -p _wipe
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: _wipe
+          destination_dir: pr-${{ github.event.pull_request.number }}
+          keep_files: true
+
+      # 2) Clean + Publish fresh site
       - name: Clean stale Rmds from publish dir
         run: |
           find _site -type f -name '*.Rmd' -delete || true
-    
+
       - name: Publish PR preview folder
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -231,7 +234,6 @@ jobs:
           keep_files: true
           exclude_assets: 'sa.json'
 
-          
       - name: Comment preview URL
         if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
         uses: thollander/actions-comment-pull-request@v2
@@ -240,6 +242,7 @@ jobs:
           message: "🚀 Preview: https://cavandonohoe.github.io/pr-${{ github.event.pull_request.number }}/"
           mode: upsert
           create_if_not_exists: true
+
 
   # CLEANUP: delete subfolder when PR closes
   cleanup_preview:
