@@ -142,13 +142,38 @@ jobs:
       contents: write
       pull-requests: write
     steps:
+      # ... inside deploy_preview: steps:
       - uses: actions/download-artifact@v4
         with:
           name: site
           path: _site
+    
+      - name: List built HTML (debug)
+        run: |
+          echo "Built HTML:"
+          find _site -maxdepth 3 -type f -name '*.html' | sed 's#^_site/##' | sort
+    
+      # ✅ checkout gh-pages so the reset commands have a git repo
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          fetch-depth: 0
+    
+      - name: Reset PR preview folder
+        run: |
+          set -e
+          rm -rf "pr-${{ github.event.pull_request.number }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: reset preview folder pr-${{ github.event.pull_request.number }}" || echo "No changes"
+          git push origin gh-pages
+    
       - name: Clean stale Rmds from publish dir
         run: |
           find _site -type f -name '*.Rmd' -delete || true
+    
       - name: Publish PR preview folder
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -158,6 +183,8 @@ jobs:
           destination_dir: pr-${{ github.event.pull_request.number }}
           keep_files: true
           exclude_assets: 'sa.json'
+
+          
       - name: Comment preview URL
         if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
         uses: thollander/actions-comment-pull-request@v2
