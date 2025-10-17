@@ -82,13 +82,60 @@ jobs:
         with:
           chrome-version: stable
 
-      - name: Render site
+      - name: Render site (diagnostic)
         env:
           CI: "true"
           GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/sa.json
         run: |
-          Rscript -e 'suppressPackageStartupMessages({library(googlesheets4)}); if (file.exists(Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"))) { gs4_auth(path=Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"), cache=FALSE) } else { gs4_deauth() }; rmarkdown::render_site(encoding="UTF-8")'
+          Rscript - <<'RSCRIPT'
+          suppressPackageStartupMessages({
+            library(yaml); library(rmarkdown); library(googlesheets4)
+          })
+          if (file.exists(Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"))) {
+            gs4_auth(path = Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"), cache = FALSE)
+          } else {
+            gs4_deauth()
+          }
+      
+          # 1) Show rmd_files from _site.yml
+          cfg <- yaml.load_file("_site.yml")
+          cat("\n[rmd_files from _site.yml]\n"); print(cfg$rmd_files)
+      
+          # 2) Expand globs to concrete file lists
+          expand_glob <- function(p) unique(Sys.glob(p))
+          files <- unlist(lapply(cfg$rmd_files, expand_glob), use.names = FALSE)
+          cat("\n[Expanded file list]\n"); print(files)
+      
+          # 3) Ensure folder-level _output.yml will be used (don’t set includes per-file)
+          # 4) Render each file individually so one failure doesn't stop the rest
+          dir.create("_site", showWarnings = FALSE)
+          failures <- list()
+          for (f in files) {
+            cat(sprintf("\n[Rendering] %s\n", f))
+            ok <- tryCatch({
+              render(input = f, encoding = "UTF-8")   # lets the website machinery place output under _site/...
+              TRUE
+            }, error = function(e) {
+              cat("!! ERROR rendering ", f, ":\n", conditionMessage(e), "\n", sep = "")
+              failures[[length(failures) + 1]] <<- list(file = f, error = conditionMessage(e))
+              FALSE
+            })
+          }
+      
+          # 5) List outputs that actually exist
+          cat("\n[Built HTML under _site]\n")
+          htmls <- list.files("_site", pattern = "[.]html$", recursive = TRUE, full.names = TRUE)
+          print(htmls)
+      
+          if (length(failures)) {
+            cat("\n[Failures]\n"); print(failures)
+            # Do not stop the job — we want partial site to publish. Uncomment to hard-fail:
+            # stop("Some Rmds failed to render")
+          }
+          RSCRIPT
+      
           test -d _site || (echo "No _site dir found"; exit 1)
+
 
 
       # 🚫 Guard: ensure no secrets are inside the built site
