@@ -2,11 +2,6 @@
 title: "Sierpinski Triangle"
 editor_options: 
   chunk_output_type: console
-output:
-  html_document:
-    includes:
-      in_header: header/header.html
-      after_body: include_footer.html
 ---
 
 So I saw [this video](https://www.youtube.com/watch?v=Fgu5-3ihVVI) the other day while strolling through my feed. It was a video of the demonstration of the Sierpinski Triangle and how you can make it with a bunch of points. The idea is to draw 3 vertices of an equilateral triangle, and then choose a random point. Then take the midpoint between a random vertex and that point, then plot that point. Then for the new point take a random vertex and plot the midpoint again. Then keep doing that over and over again until something beautiful appears.
