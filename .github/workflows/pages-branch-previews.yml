@@ -87,6 +87,8 @@ jobs:
           CI: "true"
           GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/sa.json
         run: |
+          set -euo pipefail
+          
           Rscript - <<'RSCRIPT'
           suppressPackageStartupMessages({
             library(yaml); library(rmarkdown); library(googlesheets4)
@@ -146,6 +148,15 @@ jobs:
             echo "ERROR: sa.json ended up in _site; refusing to publish."
             exit 1
           fi
+
+      - name: Verify built site exists
+        run: |
+          set -euo pipefail
+          if [ ! -d "_site" ] || [ -z "$(ls -A _site 2>/dev/null)" ]; then
+            echo "ERROR: _site is missing or empty — nothing to upload"
+            exit 1
+          fi
+          ls -la _site
 
       - name: Upload built site
         uses: actions/upload-artifact@v4
