@@ -20,7 +20,7 @@ library(plotly)
 ```
 
 ```{r get_data}
-top_250_imdb_rot_tom = read_csv("data/top250_movies_with_rt.csv")
+top_250_imdb_rot_tom = read_csv(here::here("data", "top250_movies_with_rt.csv"))
 
 ```
 
@@ -94,9 +94,4 @@ resid_plot = top_250_imdb_rot_tom %>%
 resid_plot %>% ggplotly
 
 ```
-
-
-
-
-
 

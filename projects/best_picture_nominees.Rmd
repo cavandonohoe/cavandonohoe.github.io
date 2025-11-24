@@ -22,7 +22,7 @@ library(plotly)
 
 
 ```{r data}
-best_pic_noms_final = read_csv("data/best_picture_nominees.csv")
+best_pic_noms_final = read_csv(here::here("data", "best_picture_nominees.csv"))
 
 ```
 
