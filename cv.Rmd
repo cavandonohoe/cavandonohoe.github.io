@@ -35,7 +35,7 @@ library(readxl)
 library(googlesheets4)
 # coding in the resume
 
-# resume = read_excel("data/resume.xlsx")
+# resume = read_excel(here::here("data", "resume.xlsx")
 resume = read_sheet("https://docs.google.com/spreadsheets/d/13mLROsbvwiE-djiRMQuOKfQwppOlH5mOxB43EaGna8s")
 file_info = googledrive::drive_get("https://docs.google.com/spreadsheets/d/13mLROsbvwiE-djiRMQuOKfQwppOlH5mOxB43EaGna8s")
 last_update = file_info$drive_resource[[1]]$modifiedTime %>% ymd_hms() %>% as_date()

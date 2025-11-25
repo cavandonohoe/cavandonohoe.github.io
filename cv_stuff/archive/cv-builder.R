@@ -8,7 +8,7 @@ library(rmarkdown)
 library(readxl)
 # coding in the resume
 
-resume = read_excel("data/resume.xlsx")
+resume = read_excel(here::here("data", "resume.xlsx")
 # shell.exec("T:/Cavan/Test Folder/Resume.xlsx")
 resume_v1.1 = resume %>% mutate(start.date = as.Date(paste(start, "1", sep="-"), format="%B %Y-%d")) %>%
   mutate(section_num = row_number())

@@ -350,5 +350,5 @@ top_250_imdb_rot_tom = top_250_tib_clean %>%
   left_join(producers_imdb)
 
 
-# top_250_imdb_rot_tom %>% write.csv("data/top250_movies_with_rt.csv")
+# top_250_imdb_rot_tom %>% write.csv(here::here("data", "top250_movies_with_rt.csv"))
 

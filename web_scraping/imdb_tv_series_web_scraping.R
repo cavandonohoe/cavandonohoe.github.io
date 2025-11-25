@@ -64,7 +64,7 @@ all_eps_ratings_tib = all_eps_ratings %>%
          episode_url = url)
 
 # uncomment to override csv
-# all_eps_ratings_tib %>% write.csv("data/top250_imdb_series.csv")
+# all_eps_ratings_tib %>% write.csv(here::here("data", "top250_imdb_series.csv"))
 
 
 
