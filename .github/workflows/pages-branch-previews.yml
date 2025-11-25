@@ -112,12 +112,22 @@ jobs:
           # 4) Render each file individually so one failure doesn't stop the rest
           dir.create("_site", showWarnings = FALSE)
           failures <- list()
+          
           for (f in files) {
             cat(sprintf("\n[Rendering] %s\n", f))
+          
+            rel_dir <- dirname(f)
+            if (rel_dir == "." || rel_dir == "") {
+              out_dir <- "_site"
+            } else {
+              out_dir <- file.path("_site", rel_dir)
+              dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
+            }
+          
             ok <- tryCatch({
               rmarkdown::render(
                 input = f,
-                output_dir = "_site",   # <- add this
+                output_dir = out_dir,
                 encoding = "UTF-8"
               )
               TRUE
@@ -127,6 +137,7 @@ jobs:
               FALSE
             })
           }
+
 
       
           # 5) List outputs that actually exist
