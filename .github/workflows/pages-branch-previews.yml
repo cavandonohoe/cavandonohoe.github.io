@@ -82,13 +82,78 @@ jobs:
         with:
           chrome-version: stable
 
-      - name: Render site
+      - name: Render site (diagnostic)
         env:
           CI: "true"
           GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/sa.json
         run: |
-          Rscript -e 'suppressPackageStartupMessages({library(googlesheets4)}); if (file.exists(Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"))) { gs4_auth(path=Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"), cache=FALSE) } else { gs4_deauth() }; rmarkdown::render_site(encoding="UTF-8")'
+          set -euo pipefail
+          
+          Rscript - <<'RSCRIPT'
+          suppressPackageStartupMessages({
+            library(yaml); library(rmarkdown); library(googlesheets4)
+          })
+          if (file.exists(Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"))) {
+            gs4_auth(path = Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"), cache = FALSE)
+          } else {
+            gs4_deauth()
+          }
+      
+          # 1) Show rmd_files from _site.yml
+          cfg <- yaml.load_file("_site.yml")
+          cat("\n[rmd_files from _site.yml]\n"); print(cfg$rmd_files)
+      
+          # 2) Expand globs to concrete file lists
+          expand_glob <- function(p) unique(Sys.glob(p))
+          files <- unlist(lapply(cfg$rmd_files, expand_glob), use.names = FALSE)
+          cat("\n[Expanded file list]\n"); print(files)
+      
+          # 3) Ensure folder-level _output.yml will be used (don’t set includes per-file)
+          # 4) Render each file individually so one failure doesn't stop the rest
+          dir.create("_site", showWarnings = FALSE)
+          failures <- list()
+          
+          for (f in files) {
+            cat(sprintf("\n[Rendering] %s\n", f))
+          
+            rel_dir <- dirname(f)
+            if (rel_dir == "." || rel_dir == "") {
+              out_dir <- "_site"
+            } else {
+              out_dir <- file.path("_site", rel_dir)
+              dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
+            }
+          
+            ok <- tryCatch({
+              rmarkdown::render(
+                input = f,
+                output_dir = out_dir,
+                encoding = "UTF-8"
+              )
+              TRUE
+            }, error = function(e) {
+              cat("!! ERROR rendering ", f, ":\n", conditionMessage(e), "\n", sep = "")
+              failures[[length(failures) + 1]] <<- list(file = f, error = conditionMessage(e))
+              FALSE
+            })
+          }
+
+
+      
+          # 5) List outputs that actually exist
+          cat("\n[Built HTML under _site]\n")
+          htmls <- list.files("_site", pattern = "[.]html$", recursive = TRUE, full.names = TRUE)
+          print(htmls)
+      
+          if (length(failures)) {
+            cat("\n[Failures]\n"); print(failures)
+            # Do not stop the job — we want partial site to publish. Uncomment to hard-fail:
+            # stop("Some Rmds failed to render")
+          }
+          RSCRIPT
+      
           test -d _site || (echo "No _site dir found"; exit 1)
+
 
 
       # 🚫 Guard: ensure no secrets are inside the built site
@@ -99,6 +164,15 @@ jobs:
             echo "ERROR: sa.json ended up in _site; refusing to publish."
             exit 1
           fi
+
+      - name: Verify built site exists
+        run: |
+          set -euo pipefail
+          if [ ! -d "_site" ] || [ -z "$(ls -A _site 2>/dev/null)" ]; then
+            echo "ERROR: _site is missing or empty — nothing to upload"
+            exit 1
+          fi
+          ls -la _site
 
       - name: Upload built site
         uses: actions/upload-artifact@v4
@@ -119,6 +193,9 @@ jobs:
         with:
           name: site
           path: _site
+      - name: Clean stale Rmds from publish dir
+        run: |
+          find _site -type f -name '*.Rmd' -delete || true
       - name: Publish to gh-pages root
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -130,9 +207,7 @@ jobs:
   # PREVIEW: publish to gh-pages/pr-<PR#>/ for PRs
   deploy_preview:
     name: Deploy PR preview (gh-pages/pr-<num>/)
-    if: |
-      (github.event_name == 'pull_request' && github.event.action != 'closed') ||
-      (github.event_name == 'workflow_dispatch')
+    if: ${{ github.event_name == 'pull_request' && github.event.action != 'closed' }}
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -160,6 +235,7 @@ jobs:
           message: "🚀 Preview: https://cavandonohoe.github.io/pr-${{ github.event.pull_request.number }}/"
           mode: upsert
           create_if_not_exists: true
+
 
   # CLEANUP: delete subfolder when PR closes
   cleanup_preview:

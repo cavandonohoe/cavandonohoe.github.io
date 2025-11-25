@@ -2,11 +2,6 @@
 title: "IMDb Top 250 TV Series"
 editor_options: 
   chunk_output_type: console
-output:
-  html_document:
-    includes:
-      in_header: header/header.html
-      after_body: include_footer.html
 ---
 
 Binge watching can be extremely satisfying if done for the right show. Quite often though, it's done for the wrong show with a pretty shitty ending or a lot of filler episodes that you just get bored of. So maybe if you were to choose the right show to binge watch, that would help with choosing the right show to binge watch (or at least avoid). Nobody wants that Game of Thrones finale feeling.
@@ -25,7 +20,7 @@ library(DT)
 ```
 
 ```{r data}
-all_eps_ratings_tib = read_csv("data/top250_imdb_series.csv")
+all_eps_ratings_tib = read_csv(here::here("data", "top250_imdb_series.csv"))
 ```
 
 We'll focus our attention to IMDb since they make it so easy to web scrape with their interface. And they already have a list of the top 250 tv series based on overall series rating. That list can be found [here](https://www.imdb.com/chart/toptv/).
