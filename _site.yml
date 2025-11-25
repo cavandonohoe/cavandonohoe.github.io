@@ -1,6 +1,9 @@
 name: "Cavan Donohoe"
 output_dir: "_site"
 
+resource_files:
+  - "header/*"
+
 rmd_files:
   - index.Rmd
   - about.Rmd
@@ -67,6 +70,8 @@ navbar:
 output:
   html_document:
     self_contained: false
+    pandoc_args:
+      - "--resource-path=.:.."
     includes:
       in_header: header/header.html
       after_body: include_footer.html
