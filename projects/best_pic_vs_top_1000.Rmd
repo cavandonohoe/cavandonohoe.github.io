@@ -91,7 +91,7 @@ Hover over with your mouse or tap some of the points to view some info!
 
 ```{r lifetime gross violin}
 best_pic_top_box_boxplot = box_office_oscars_clean_split %>% bind_rows() %>%
-  filter(!is.na(lifetime_gross)) %>% 
+  filter(!is.na(lifetime_gross)) %>%
   mutate(label = paste(legend,
                       paste0("$", formatC(as.numeric(lifetime_gross), format = "f",
                                           big.mark = ",", drop0trailing = TRUE)),

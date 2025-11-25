@@ -64,3 +64,9 @@ navbar:
       - text: "Statistics with R"
         href: learn_r/statistics_with_r.html
     
+output:
+  html_document:
+    self_contained: false
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
