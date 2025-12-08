@@ -210,4 +210,4 @@ get_top250_tv_episodes <- function() {
 top250_episodes <- get_top250_tv_episodes()
 
 # uncomment to override csv
-# top250_episodes %>% readr::write_csv("data/top250_imdb_series.csv")
+# top250_episodes %>% write.csv(here::here("data", "top250_imdb_series.csv"))
