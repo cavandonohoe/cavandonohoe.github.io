@@ -298,7 +298,7 @@ vaccines_usa = vaccines %>%
   ungroup() %>% mutate(per_fully_vaxxed = people_fully_vaccinated / usa_pop)
 
 # voting preference
-voting_pref = read_csv("data/president_1976_2020.csv")
+voting_pref = read_csv(here::here("data", "president_1976_2020.csv"))
 
 voting_pref2 = voting_pref %>% filter(year == 2020 & party_detailed %in% c("DEMOCRAT", "REPUBLICAN")) %>% 
   mutate(per_votes = candidatevotes / totalvotes) %>%

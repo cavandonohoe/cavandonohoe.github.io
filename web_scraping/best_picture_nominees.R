@@ -155,7 +155,7 @@ best_pic_noms_final = best_pic_noms %>% mutate(producers = producers) %>%
   # idk why 1930 got copied twice
   distinct()
 
-# best_pic_noms_final %>% write.csv("data/best_picture_nominees.csv")
+# best_pic_noms_final %>% write.csv(here::here("data", "best_picture_nominees.csv"))
 
 
 

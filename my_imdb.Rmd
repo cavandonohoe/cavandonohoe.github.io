@@ -25,7 +25,7 @@ library(DT)
 
 
 ```{r data_load, include=FALSE}
-my_ratings = read_csv("data/imdb_ratings.csv")
+my_ratings = read_csv(here::here("data", "imdb_ratings.csv"))
 ```
 
 ```{r nine_ten_movies, eval=FALSE}
