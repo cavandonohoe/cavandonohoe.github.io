@@ -50,6 +50,7 @@ Thumbs.db
 # (the site is built in _site/ via Actions)
 # ---------------------------------------
 /*.html
+*.html
 !/include_footer.html
 
 # Optional: keep these if you add them for Pages DNS/SEO

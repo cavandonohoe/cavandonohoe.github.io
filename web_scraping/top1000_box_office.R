@@ -88,6 +88,6 @@ imdb_rank_ratings_clean = imdb_rank_ratings %>%
          imdb_rating = as.numeric(imdb_rating)) %>% 
   rename(box_office_rank = Rank)
 
-# imdb_rank_ratings_clean %>% write.csv("data/top1000_box_office.csv")
+# imdb_rank_ratings_clean %>% write.csv(here::here("data", "top1000_box_office.csv"))
 
 

@@ -27,9 +27,9 @@ library(plotly)
 
 
 ```{r data}
-oscar_winners_clean = read_csv("data/best_picture_winners.csv")
+oscar_winners_clean = read_csv(here::here("data", "best_picture_winners.csv"))
 
-imdb_rank_ratings_clean = read_csv("data/top1000_box_office.csv")
+imdb_rank_ratings_clean = read_csv(here::here("data", "top1000_box_office.csv"))
 ```
 
 ```{r clean}
