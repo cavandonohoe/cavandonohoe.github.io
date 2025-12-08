@@ -83,7 +83,7 @@ oscar_winners_clean = oscar_winners_tib %>%
   mutate(tconst = gsub(x=oscar_imdb_id, pattern = "https://www.imdb.com/title/|/\\?ref_=adv_li_tt",
                        replacement = ""))
 
-# oscar_winners_clean %>% write.csv("data/best_picture_winners.csv")
+# oscar_winners_clean %>% write.csv(here::here("data", "best_picture_winners.csv"))
 
 # oscar_winners_clean %>% ggplot(aes(x=oscar_year, y = oscar_imdb_ratings)) +
 #   geom_point()
