@@ -42,11 +42,12 @@ Some of them are tied and I didn't bother creating any tie breaking metrics or g
 ```{r best_episode}
 max_ratings_per_series = all_eps_ratings_tib %>%
   group_by(imdb_id) %>% 
-  filter(episode_rating == max(episode_rating, na.rm = TRUE)) %>% 
+  filter(rating == max(rating, na.rm = TRUE)) %>% 
   ungroup()
 
 max_ratings_per_series %>% 
-  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = episode_rating) %>% 
+  select(series_title, year = release_year, episode_name = title,
+         season, episode, rating) %>% 
   datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
@@ -58,12 +59,14 @@ max_ratings_per_series %>%
 I was also wondering whether the last episode was the highest rated one. 
 
 ```{r strong_closer}
-strong_closer = all_eps_ratings_tib %>% group_by(imdb_id) %>% 
-  filter(series_ep == max(series_ep, na.rm = TRUE) &
-           episode_rating == max(episode_rating, na.rm = TRUE)) %>% ungroup()
+strong_closer = all_eps_ratings_tib %>%
+  group_by(imdb_id) %>%
+  filter(row_number() == max(row_number(), na.rm = TRUE) &
+           rating == max(rating, na.rm = TRUE)) %>% ungroup()
 
 strong_closer %>% 
-  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = episode_rating) %>% 
+  select(series_title, year = release_year, episode_name = title, season,
+         episode, rating) %>% 
   datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
@@ -74,12 +77,14 @@ strong_closer %>%
 Fairly rare, but did a series start with the strongest episode? 
 
 ```{r strong_starter}
-strong_starter = all_eps_ratings_tib %>% group_by(imdb_id) %>% 
-  filter(series_ep == min(series_ep, na.rm = TRUE) &
-           episode_rating == max(episode_rating, na.rm = TRUE)) %>% ungroup()
+strong_starter = all_eps_ratings_tib %>%
+  group_by(imdb_id) %>% 
+  filter(row_number() == min(row_number(), na.rm = TRUE) &
+           rating == max(rating, na.rm = TRUE)) %>% ungroup()
 
 strong_starter %>% 
-  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = episode_rating) %>% 
+  select(series_title, year = release_year, episode_name = title,
+         season, episode, rating) %>% 
   datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
@@ -92,12 +97,14 @@ Looks like people really get wowed over these nature documentaries from the firs
 Looking at you GOT... Ok maybe some of these aren't that bad. Some of these may have just had a strong story leading up and the finale missed it's mark by just a decimal point. But we will never forget Game of Thrones. 
 
 ```{r shit_ending}
-shit_ending = all_eps_ratings_tib %>% group_by(imdb_id) %>% 
-  filter(series_ep == max(series_ep, na.rm = TRUE) &
-           episode_rating == min(episode_rating, na.rm = TRUE)) %>% ungroup()
+shit_ending = all_eps_ratings_tib %>%
+  group_by(imdb_id) %>% 
+  filter(row_number() == max(row_number(), na.rm = TRUE) &
+           rating == min(rating, na.rm = TRUE)) %>% ungroup()
 
 shit_ending %>% 
-  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = episode_rating) %>% 
+  select(series_title, year = release_year, episode_name = title,
+         season, episode, rating) %>% 
   datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
@@ -108,18 +115,38 @@ shit_ending %>%
 Some shows have some god-awful beginnings, and I wonder how they got picked up. But they made this top 250 list, so they must have gotten their shit together.
 
 ```{r awful_pilot}
-awful_pilot = all_eps_ratings_tib %>% group_by(imdb_id) %>% 
-  filter(series_ep == min(series_ep, na.rm = TRUE) &
-           episode_rating == min(episode_rating, na.rm = TRUE)) %>% ungroup()
+awful_pilot = all_eps_ratings_tib %>%
+  group_by(imdb_id) %>% 
+  filter(row_number() == min(row_number(), na.rm = TRUE) &
+           rating == min(rating, na.rm = TRUE)) %>% ungroup()
 
 awful_pilot %>% 
-  select(series_name, year, episode_name = episode, season, episode = season_ep, rating = episode_rating) %>% 
+  select(series_title, year = release_year, episode_name = title,
+         season, episode, rating) %>% 
   datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
 ```
 
 
+## Top Tier Shows
+
+Let's see which shows have a minimum rating of any show as an 8.0
+
+```{r top_tier}
+top_tier = all_eps_ratings_tib %>%
+  group_by(imdb_id) %>% 
+  filter(min(rating) >= 8) %>%
+  dplyr::filter(rating == min(rating, na.rm = TRUE)) %>%
+  ungroup()
+
+top_tier %>%
+  select(series_title, year = release_year, episode_name = title,
+         season, episode, rating) %>% 
+  datatable(filter = "top", extensions = "Buttons",
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE))
+```
 
 
 
