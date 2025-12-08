@@ -58,6 +58,7 @@ create_episode_plot <- function(episode_data, title, export_png = TRUE) {
 
   file_name <- title %>%
     tolower() %>%
+    stringr::str_remove_all(":") %>%
     stringr::str_replace_all(" ", "_") %>%
     paste0("imdb_rating_plot_files/", ., ".png")
 
