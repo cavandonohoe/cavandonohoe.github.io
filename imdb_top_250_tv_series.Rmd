@@ -149,5 +149,146 @@ top_tier %>%
 ```
 
 
+## Best Streaks
 
+```{r best_streaks}
+runs_over_9_formatted <- all_eps_ratings_tib %>%
+  dplyr::arrange(series_title, imdb_id, season, episode) %>%
+  dplyr::group_by(series_title, imdb_id) %>%
+  dplyr::mutate(
+    over9 = rating > 9,
+    run_id = cumsum(over9 != dplyr::lag(over9, default = FALSE))
+  ) %>%
+  dplyr::filter(over9) %>%
+  dplyr::group_by(series_title, imdb_id, run_id) %>%
+  dplyr::summarise(
+    start_season  = dplyr::first(season),
+    start_episode = dplyr::first(episode),
+    end_season    = dplyr::last(season),
+    end_episode   = dplyr::last(episode),
+    run_length    = dplyr::n(),
+    run_label = glue::glue(
+      "S{start_season}E{start_episode} – S{end_season}E{end_episode} ({run_length} episodes)"
+    ),
+    .groups = "drop"
+  ) %>%
+  dplyr::select(series_title, imdb_id, run_length, run_label)
+
+runs_over_9_formatted %>%
+  dplyr::select(series_title, run_length, run_label) %>%
+  datatable(filter = "top", extensions = "Buttons",
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE))
+```
+
+```{r plotly_runs}
+runs_episode_level <- all_eps_ratings_tib %>%
+  dplyr::arrange(series_title, imdb_id, season, episode) %>%
+  dplyr::group_by(series_title, imdb_id) %>%
+  dplyr::mutate(
+    over9 = rating > 9,
+    run_id = cumsum(over9 != dplyr::lag(over9, default = FALSE))
+  ) %>%
+  dplyr::filter(over9) %>%
+  dplyr::ungroup()
+
+runs_over_9_full <- runs_episode_level %>%
+  dplyr::group_by(series_title, imdb_id, run_id) %>%
+  dplyr::summarise(
+    start_season  = dplyr::first(season),
+    start_episode = dplyr::first(episode),
+    end_season    = dplyr::last(season),
+    end_episode   = dplyr::last(episode),
+    run_length    = dplyr::n(),
+    run_label = glue::glue(
+      "S{start_season}E{start_episode} – ",
+      "S{end_season}E{end_episode} ({run_length} episodes)"
+    ),
+    .groups = "drop"
+  )
+
+max_runs <- runs_over_9_full %>%
+  dplyr::group_by(series_title, imdb_id) %>%
+  dplyr::slice_max(run_length, n = 1, with_ties = FALSE) %>%
+  dplyr::ungroup()
+
+max_runs_top20 <- max_runs %>%
+  dplyr::arrange(dplyr::desc(run_length)) %>%
+  dplyr::slice_head(n = 20)
+
+
+episodes_for_hover <- runs_episode_level %>%
+  dplyr::select(
+    series_title,
+    imdb_id,
+    run_id,
+    season,
+    episode,
+    title,
+    rating
+  )
+
+max_runs_hover <- max_runs_top20 %>%
+  dplyr::inner_join(
+    episodes_for_hover,
+    by = c("series_title", "imdb_id", "run_id")
+  ) %>%
+  dplyr::arrange(series_title, season, episode)
+
+max_runs_hover_summarised <- max_runs_hover %>%
+  dplyr::group_by(series_title, imdb_id, run_id, run_length, run_label) %>%
+  dplyr::reframe(
+    hover_text = paste0(
+      run_label, "\n",
+      paste0(
+        "• S", season, "E", episode, " – ", title,
+        " (", rating, ")",
+        collapse = "\n"
+      )
+    )
+  ) %>%
+  dplyr::distinct()
+
+
+plot_data <- max_runs_top20 %>%
+  dplyr::left_join(
+    max_runs_hover_summarised,
+    by = c("series_title", "imdb_id", "run_id", "run_length", "run_label")
+  )
+
+
+p <- max_runs_hover_summarised %>%
+  dplyr::arrange(run_length) %>%
+  ggplot2::ggplot(
+    ggplot2::aes(
+      x = run_length,
+      y = stats::reorder(series_title, run_length),
+      text = hover_text    # used ONLY for plotly tooltip
+    )
+  ) +
+  ggplot2::geom_col() +
+  
+  # --- your numeric label stays here ---
+  ggplot2::geom_text(
+    ggplot2::aes(
+      label = run_length,
+      x = run_length + 1   # push text slightly outside the bar
+    ),
+    hjust = 0,
+    size = 3.5
+  ) +
+  # -------------------------------------
+
+ggplot2::labs(
+  title = "Top 20 longest streaks of IMDb ratings > 9",
+  x = "Streak length (episodes)",
+  y = "Series"
+) +
+  ggplot2::scale_x_continuous(
+    expand = ggplot2::expansion(mult = c(0, 0.15))  # ensure text isn't cut off
+  )
+
+
+plotly::ggplotly(p, tooltip = "text")
+```
 
