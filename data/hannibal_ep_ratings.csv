@@ -1,40 +1,40 @@
-episode_name_number,episode,imdb_rating,season,season_ep_name
-S1.E1 ∙ Apéritif,1,8.3,1,S1.E1: Apéritif
-S1.E2 ∙ Amuse-Bouche,2,8.2,1,S1.E2: Amuse-Bouche
-S1.E3 ∙ Potage,3,8.1,1,S1.E3: Potage
-S1.E4 ∙ Oeuf,4,7.7,1,S1.E4: Oeuf
-S1.E5 ∙ Coquilles,5,7.9,1,S1.E5: Coquilles
-S1.E6 ∙ Entrée,6,8.5,1,S1.E6: Entrée
-S1.E7 ∙ Sorbet,7,8.6,1,S1.E7: Sorbet
-S1.E8 ∙ Fromage,8,8.9,1,S1.E8: Fromage
-S1.E9 ∙ Trou Normand,9,8.2,1,S1.E9: Trou Normand
-S1.E10 ∙ Buffet Froid,10,8.7,1,S1.E10: Buffet Froid
-S1.E11 ∙ Rôti,11,8.5,1,S1.E11: Rôti
-S1.E12 ∙ Relevés,12,8.8,1,S1.E12: Relevés
-S1.E13 ∙ Savoureux,13,9.2,1,S1.E13: Savoureux
-S2.E1 ∙ Kaiseki,1,8.8,2,S2.E1: Kaiseki
-S2.E2 ∙ Sakizuke,2,9,2,S2.E2: Sakizuke
-S2.E3 ∙ Hassun,3,8.6,2,S2.E3: Hassun
-S2.E4 ∙ Takiawase,4,9.2,2,S2.E4: Takiawase
-S2.E5 ∙ Mukozuke,5,9.2,2,S2.E5: Mukozuke
-S2.E6 ∙ Futamono,6,9.2,2,S2.E6: Futamono
-S2.E7 ∙ Yakimono,7,9.2,2,S2.E7: Yakimono
-S2.E8 ∙ Su-zakana,8,8.4,2,S2.E8: Su-zakana
-S2.E9 ∙ Shiizakana,9,8.5,2,S2.E9: Shiizakana
-S2.E10 ∙ Naka-Choko,10,8.9,2,S2.E10: Naka-Choko
-S2.E11 ∙ Ko no Mono,11,8.9,2,S2.E11: Ko no Mono
-S2.E12 ∙ Tome-wan,12,9.2,2,S2.E12: Tome-wan
-S2.E13 ∙ Mizumono,13,9.8,2,S2.E13: Mizumono
-S3.E1 ∙ Antipasto,1,8.2,3,S3.E1: Antipasto
-S3.E2 ∙ Primavera,2,8,3,S3.E2: Primavera
-S3.E3 ∙ Secondo,3,8,3,S3.E3: Secondo
-S3.E4 ∙ Aperitivo,4,7.9,3,S3.E4: Aperitivo
-S3.E5 ∙ Contorno,5,9,3,S3.E5: Contorno
-S3.E6 ∙ Dolce,6,8.7,3,S3.E6: Dolce
-S3.E7 ∙ Digestivo,7,9.3,3,S3.E7: Digestivo
-S3.E8 ∙ The Great Red Dragon,8,8.5,3,S3.E8: The Great Red Dragon
-S3.E9 ∙ ...And the Woman Clothed with the Sun,9,8.3,3,S3.E9: ...And the Woman Clothed with the Sun
-S3.E10 ∙ ...And the Woman Clothed in Sun,10,8.5,3,S3.E10: ...And the Woman Clothed in Sun
-S3.E11 ∙ ...And the Beast from the Sea,11,8.6,3,S3.E11: ...And the Beast from the Sea
-S3.E12 ∙ The Number of the Beast Is 666,12,8.9,3,S3.E12: The Number of the Beast Is 666
-S3.E13 ∙ The Wrath of the Lamb,13,9.7,3,S3.E13: The Wrath of the Lamb
+season,episode,title,rating,votes
+1,1,Apéritif,8.3,10841
+1,2,Amuse-Bouche,8.1,9139
+1,3,Potage,8.1,8517
+1,4,Oeuf,7.7,7704
+1,5,Coquilles,7.9,7862
+1,6,Entrée,8.5,7717
+1,7,Sorbet,8.6,7903
+1,8,Fromage,9,8293
+1,9,Trou Normand,8.2,7302
+1,10,Buffet Froid,8.7,7632
+1,11,Rôti,8.5,7228
+1,12,Relevés,8.8,7356
+1,13,Savoureux,9.2,8922
+2,1,Kaiseki,8.8,7993
+2,2,Sakizuke,9,7731
+2,3,Hassun,8.6,7151
+2,4,Takiawase,9.2,7921
+2,5,Mukozuke,9.2,7985
+2,6,Futamono,9.2,7845
+2,7,Yakimono,9.2,7663
+2,8,Su-zakana,8.4,6882
+2,9,Shiizakana,8.5,6801
+2,10,Naka-Choko,8.8,7163
+2,11,Ko no Mono,8.9,7039
+2,12,Tome-wan,9.2,7827
+2,13,Mizumono,9.8,25345
+3,1,Antipasto,8.1,7765
+3,2,Primavera,7.9,6712
+3,3,Secondo,7.9,6203
+3,4,Aperitivo,7.8,6070
+3,5,Contorno,9,7044
+3,6,Dolce,8.7,6228
+3,7,Digestivo,9.3,7862
+3,8,The Great Red Dragon,8.5,5592
+3,9,...And the Woman Clothed with the Sun,8.2,5262
+3,10,...And the Woman Clothed in Sun,8.4,5322
+3,11,...And the Beast from the Sea,8.5,5313
+3,12,The Number of the Beast Is 666,8.8,5796
+3,13,The Wrath of the Lamb,9.7,17003

@@ -42,33 +42,72 @@ library(RColorBrewer)
 
 # Function to create a plot of IMDb ratings by season and episode
 create_episode_plot <- function(episode_data, title, export_png = TRUE) {
-  file_name <- str_replace_all(tolower(title), " ", "_")
-  file_name <- paste0("imdb_rating_plot_files/", file_name, ".png")
-  
+  # make sure we have imdb_rating + hover text
+  episode_data <- episode_data %>%
+    dplyr::mutate(
+      imdb_rating = rating,
+      hover_text = paste0(
+        "S", stringr::str_pad(season, 2, pad = "0"),
+        "E", stringr::str_pad(episode, 2, pad = "0"),
+        " — ", title,
+        "\nRating: ", sprintf("%.1f", imdb_rating),
+        if (!"votes" %in% names(episode_data)) "" else
+          paste0("\nVotes: ", scales::comma(votes))
+      )
+    )
+
+  file_name <- title %>%
+    tolower() %>%
+    stringr::str_remove_all(":") %>%
+    stringr::str_replace_all(" ", "_") %>%
+    paste0("imdb_rating_plot_files/", ., ".png")
+
   episode_plot <- episode_data %>%
-    ggplot(aes(x = season, y = episode, fill = imdb_rating,
-               text = season_ep_name)) +
-    geom_tile(color = "white") +
-    geom_text(aes(label = round(imdb_rating, 1)), color = "black") +
-    scale_fill_gradientn(
-      colors = brewer.pal(9, "RdYlGn"),
+    ggplot2::ggplot(
+      ggplot2::aes(
+        x = season,
+        y = episode,
+        fill = imdb_rating,
+        text = hover_text
+      )
+    ) +
+    ggplot2::geom_tile(color = "white") +
+    ggplot2::geom_text(
+      ggplot2::aes(label = round(imdb_rating, 1)),
+      color = "black"
+    ) +
+    ggplot2::scale_fill_gradientn(
+      colors = RColorBrewer::brewer.pal(9, "RdYlGn"),
       values = scales::rescale(c(0, 4, 6, 8, 10)),
       limits = c(0, 10),
       name = "IMDb Rating"
     ) +
-    scale_x_continuous(breaks = seq(min(episode_data$season), max(episode_data$season), 1), position = "top") +
-    scale_y_reverse(breaks = seq(min(episode_data$episode), max(episode_data$episode), 1)) +
-    labs(title = "IMDb Ratings by Season and Episode", x = "Season", y = "Episode") +
-    ggtitle(title) +
-    theme_minimal()
-  
-  if (export_png) {
-    ggsave(file.path(out_dir, "got_episode.png"),
-           plot = episode_plot, width = 8, height = 6, dpi = 300)
+    ggplot2::scale_x_continuous(
+      breaks = seq(min(episode_data$season), max(episode_data$season), 1),
+      position = "top"
+    ) +
+    ggplot2::scale_y_reverse(
+      breaks = seq(min(episode_data$episode), max(episode_data$episode), 1)
+    ) +
+    ggplot2::labs(
+      title = "IMDb Ratings by Season and Episode",
+      x = "Season",
+      y = "Episode"
+    ) +
+    ggplot2::ggtitle(title) +
+    ggplot2::theme_minimal()
 
+  if (export_png) {
+    ggplot2::ggsave(
+      filename = file_name,
+      plot = episode_plot,
+      width = 8,
+      height = 6,
+      dpi = 300
+    )
   }
-  
-  return(episode_plot)
+
+  episode_plot
 }
 
 interactive_plotly = function(gg_object) {
@@ -97,12 +136,7 @@ breaking_bad %>% create_episode_plot("Breaking Bad") %>% interactive_plotly
 ## Avatar: The Last Airbender
 
 ```{r}
-avatar = read_csv(here::here("data", "top250_imdb_series.csv")) %>%
-  filter(series_name == "Avatar: The Last Airbender") %>%
-  mutate(season_ep_name = paste0("S", season, "E", season_ep, ": ", episode)) %>%
-  select(season_ep_name, episode = season_ep, season,
-         imdb_rating = episode_rating) %>%
-  filter(episode != 0)
+avatar = read_csv(here::here("data", "avatar_ep_ratings.csv"))
 
 avatar %>% create_episode_plot("Avatar: The Last Airbender") %>% interactive_plotly
 ```
@@ -118,14 +152,9 @@ always_sunny %>% create_episode_plot("Always Sunny in Philadelphia") %>% interac
 ## The Office (US)
 
 ```{r}
-office = read_csv(here::here("data", "top250_imdb_series.csv")) %>%
-  filter(series_name == "The Office" & imdb_id == "tt0386676") %>%
-  mutate(season_ep_name = paste0("S", season, "E", season_ep, ": ", episode)) %>%
-  select(season_ep_name, episode = season_ep, season,
-         imdb_rating = episode_rating) %>%
-  filter(episode != 0)
+the_office = read_csv(here::here("data", "the_office_ep_ratings.csv"))
 
-office %>% create_episode_plot("The Office (US)") %>% interactive_plotly
+the_office %>% create_episode_plot("The Office (US)") %>% interactive_plotly
 ```
 
 ## HIMYM
@@ -227,12 +256,7 @@ vampire_diaries %>% create_episode_plot("Vampire Diaries") %>% interactive_plotl
 ## Mad Men
 
 ```{r}
-mad_men = read_csv(here::here("data", "top250_imdb_series.csv")) %>%
-  filter(series_name == "Mad Men") %>%
-  mutate(season_ep_name = paste0("S", season, "E", season_ep, ": ", episode)) %>%
-  select(season_ep_name, episode = season_ep, season,
-         imdb_rating = episode_rating) %>%
-  filter(episode != 0)
+mad_men = read_csv(here::here("data", "mad_men_ep_ratings.csv"))
 
 mad_men %>% create_episode_plot("Mad Men") %>% interactive_plotly
 ```
@@ -436,6 +460,14 @@ new_girl %>% create_episode_plot("New Girl") %>% interactive_plotly
 brooklyn_nine_nine = read_csv(here::here("data", "brooklyn_nine_nine_ep_ratings.csv"))
 
 brooklyn_nine_nine %>% create_episode_plot("Brooklyn Nine-Nine") %>% interactive_plotly
+```
+
+## Death Note
+
+```{r fig.height=12}
+death_note = read_csv("data/death_note_ep_ratings.csv")
+
+death_note %>% create_episode_plot("Death Note") %>% interactive_plotly
 ```
 
 [Raw pngs found here](https://github.com/cavandonohoe/cavandonohoe.github.io/tree/main/imdb_rating_plot_files)
