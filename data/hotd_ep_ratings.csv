@@ -1,19 +1,28 @@
-episode_name_number,episode,imdb_rating,season,season_ep_name
-S1.E1 ∙ The Heirs of the Dragon,1,8.7,1,S1.E1: The Heirs of the Dragon
-S1.E2 ∙ The Rogue Prince,2,8.3,1,S1.E2: The Rogue Prince
-S1.E3 ∙ Second of His Name,3,8.7,1,S1.E3: Second of His Name
-S1.E4 ∙ King of the Narrow Sea,4,8.4,1,S1.E4: King of the Narrow Sea
-S1.E5 ∙ We Light the Way,5,8.8,1,S1.E5: We Light the Way
-S1.E6 ∙ The Princess and the Queen,6,8,1,S1.E6: The Princess and the Queen
-S1.E7 ∙ Driftmark,7,9.1,1,S1.E7: Driftmark
-S1.E8 ∙ The Lord of the Tides,8,9.3,1,S1.E8: The Lord of the Tides
-S1.E9 ∙ The Green Council,9,8.7,1,S1.E9: The Green Council
-S1.E10 ∙ The Black Queen,10,9.3,1,S1.E10: The Black Queen
-S2.E1 ∙ A Son for a Son,1,8.2,2,S2.E1: A Son for a Son
-S2.E2 ∙ Rhaenyra the Cruel,2,8.2,2,S2.E2: Rhaenyra the Cruel
-S2.E3 ∙ The Burning Mill,3,7.6,2,S2.E3: The Burning Mill
-S2.E4 ∙ The Red Dragon and the Gold,4,9.5,2,S2.E4: The Red Dragon and the Gold
-S2.E5 ∙ Regent,5,7.3,2,S2.E5: Regent
-S2.E6 ∙ Smallfolk,6,6.2,2,S2.E6: Smallfolk
-S2.E7 ∙ The Red Sowing,7,8.8,2,S2.E7: The Red Sowing
-S2.E8 ∙ The Queen Who Ever Was,8,6.4,2,S2.E8: The Queen Who Ever Was
+season,episode,title,rating,votes
+1,1,The Heirs of the Dragon,8.7,80049
+1,2,The Rogue Prince,8.3,63885
+1,3,Second of His Name,8.7,65171
+1,4,King of the Narrow Sea,8.4,54726
+1,5,We Light the Way,8.8,55387
+1,6,The Princess and the Queen,8,48996
+1,7,Driftmark,9.1,54867
+1,8,The Lord of the Tides,9.3,60625
+1,9,The Green Council,8.7,47443
+1,10,The Black Queen,9.3,47976
+2,1,A Son for a Son,8.2,41075
+2,2,Rhaenyra the Cruel,8.2,35656
+2,3,The Burning Mill,7.6,33827
+2,4,The Red Dragon and the Gold,9.4,60110
+2,5,Regent,7.3,32379
+2,6,Smallfolk,6.3,52997
+2,7,The Red Sowing,8.8,38626
+2,8,The Queen Who Ever Was,6.4,44724
+3,1,Episode #3.1,NA,0
+3,2,Episode #3.2,NA,0
+3,3,Episode #3.3,NA,0
+3,4,Episode #3.4,NA,0
+3,5,Episode #3.5,NA,0
+3,6,Episode #3.6,NA,0
+3,7,Episode #3.7,NA,0
+3,8,Episode #3.8,NA,0
+4,1,Episode #4.1,NA,0

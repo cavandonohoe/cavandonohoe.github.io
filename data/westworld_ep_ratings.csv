@@ -1,37 +1,37 @@
-episode_name_number,episode,imdb_rating,season,season_ep_name
-S1.E1 ∙ The Original,1,8.8,1,S1.E1: The Original
-S1.E2 ∙ Chestnut,2,8.5,1,S1.E2: Chestnut
-S1.E3 ∙ The Stray,3,8.2,1,S1.E3: The Stray
-S1.E4 ∙ Dissonance Theory,4,8.6,1,S1.E4: Dissonance Theory
-S1.E5 ∙ Contrapasso,5,8.6,1,S1.E5: Contrapasso
-S1.E6 ∙ The Adversary,6,8.8,1,S1.E6: The Adversary
-S1.E7 ∙ Trompe L'Oeil,7,9.4,1,S1.E7: Trompe L'Oeil
-S1.E8 ∙ Trace Decay,8,8.7,1,S1.E8: Trace Decay
-S1.E9 ∙ The Well-Tempered Clavier,9,9.3,1,S1.E9: The Well-Tempered Clavier
-S1.E10 ∙ The Bicameral Mind,10,9.7,1,S1.E10: The Bicameral Mind
-S2.E1 ∙ Journey into Night,1,8.1,2,S2.E1: Journey into Night
-S2.E2 ∙ Reunion,2,8,2,S2.E2: Reunion
-S2.E3 ∙ Virtù e Fortuna,3,7.9,2,S2.E3: Virtù e Fortuna
-S2.E4 ∙ The Riddle of the Sphinx,4,8.9,2,S2.E4: The Riddle of the Sphinx
-S2.E5 ∙ Akane No Mai,5,7.8,2,S2.E5: Akane No Mai
-S2.E6 ∙ Phase Space,6,8,2,S2.E6: Phase Space
-S2.E7 ∙ Les Écorchés,7,8.5,2,S2.E7: Les Écorchés
-S2.E8 ∙ Kiksuya,8,9.2,2,S2.E8: Kiksuya
-S2.E9 ∙ Vanishing Point,9,8.7,2,S2.E9: Vanishing Point
-S2.E10 ∙ The Passenger,10,8.7,2,S2.E10: The Passenger
-S3.E1 ∙ Parce Domine,1,8.2,3,S3.E1: Parce Domine
-S3.E2 ∙ The Winter Line,2,8.1,3,S3.E2: The Winter Line
-S3.E3 ∙ The Absence of Field,3,8.1,3,S3.E3: The Absence of Field
-S3.E4 ∙ The Mother of Exiles,4,8.7,3,S3.E4: The Mother of Exiles
-S3.E5 ∙ Genre,5,7.9,3,S3.E5: Genre
-S3.E6 ∙ Decoherence,6,8.2,3,S3.E6: Decoherence
-S3.E7 ∙ Passed Pawn,7,7.8,3,S3.E7: Passed Pawn
-S3.E8 ∙ Crisis Theory,8,7.2,3,S3.E8: Crisis Theory
-S4.E1 ∙ The Auguries,1,7.2,4,S4.E1: The Auguries
-S4.E2 ∙ Well Enough Alone,2,7.6,4,S4.E2: Well Enough Alone
-S4.E3 ∙ Années Folles,3,8.1,4,S4.E3: Années Folles
-S4.E4 ∙ Generation Loss,4,8.7,4,S4.E4: Generation Loss
-S4.E5 ∙ Zhuangzi,5,8.6,4,S4.E5: Zhuangzi
-S4.E6 ∙ Fidelity,6,8.1,4,S4.E6: Fidelity
-S4.E7 ∙ Metanoia,7,8.2,4,S4.E7: Metanoia
-"S4.E8 ∙ Que Será, Será",8,6.9,4,"S4.E8: Que Será, Será"
+season,episode,title,rating,votes
+1,1,The Original,8.8,24663
+1,2,Chestnut,8.5,18758
+1,3,The Stray,8.2,17157
+1,4,Dissonance Theory,8.6,17098
+1,5,Contrapasso,8.6,16320
+1,6,The Adversary,8.8,16518
+1,7,Trompe L'Oeil,9.4,22069
+1,8,Trace Decay,8.7,15591
+1,9,The Well-Tempered Clavier,9.3,20239
+1,10,The Bicameral Mind,9.7,32618
+2,1,Journey into Night,8.1,13996
+2,2,Reunion,8,12015
+2,3,Virtù e Fortuna,7.9,11267
+2,4,The Riddle of the Sphinx,8.9,14609
+2,5,Akane no Mai,7.8,12243
+2,6,Phase Space,8,10553
+2,7,Les Écorchés,8.5,11591
+2,8,Kiksuya,9.2,19220
+2,9,Vanishing Point,8.7,11552
+2,10,The Passenger,8.7,13056
+3,1,Parce Domine,8.2,11881
+3,2,The Winter Line,8.1,9715
+3,3,The Absence of Field,8.1,9199
+3,4,The Mother of Exiles,8.7,10516
+3,5,Genre,7.9,9934
+3,6,Decoherence,8.2,8741
+3,7,Passed Pawn,7.8,8265
+3,8,Crisis Theory,7.2,10101
+4,1,The Auguries,7.2,5652
+4,2,Well Enough Alone,7.6,4770
+4,3,Années Folles,8.1,4915
+4,4,Generation Loss,8.7,6137
+4,5,Zhuangzi,8.5,5233
+4,6,Fidelity,8.1,4495
+4,7,Metanoia,8.2,4509
+4,8,"Que Será, Será",6.9,5243
