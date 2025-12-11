@@ -1,135 +1,135 @@
-episode_name_number,episode,imdb_rating,season,season_ep_name
-S1.E1 ∙ Pilot,1,8.7,1,S1.E1: Pilot
-S1.E2 ∙ Errors and Omissions,2,8.2,1,S1.E2: Errors and Omissions
-S1.E3 ∙ Inside Track,3,8,1,S1.E3: Inside Track
-S1.E4 ∙ Dirty Little Secrets,4,8,1,S1.E4: Dirty Little Secrets
-S1.E5 ∙ Bail Out,5,8.1,1,S1.E5: Bail Out
-S1.E6 ∙ Tricks of the Trade,6,8,1,S1.E6: Tricks of the Trade
-S1.E7 ∙ Play the Man,7,8.5,1,S1.E7: Play the Man
-S1.E8 ∙ Identity Crisis,8,8.1,1,S1.E8: Identity Crisis
-S1.E9 ∙ Undefeated,9,8.3,1,S1.E9: Undefeated
-S1.E10 ∙ The Shelf Life,10,8.3,1,S1.E10: The Shelf Life
-S1.E11 ∙ Rules of the Game,11,8.4,1,S1.E11: Rules of the Game
-S1.E12 ∙ Dog Fight,12,8.8,1,S1.E12: Dog Fight
-S2.E1 ∙ She Knows,1,8.9,2,S2.E1: She Knows
-S2.E2 ∙ The Choice,2,8.2,2,S2.E2: The Choice
-S2.E3 ∙ Meet the New Boss,3,8.2,2,S2.E3: Meet the New Boss
-S2.E4 ∙ Discovery,4,8.4,2,S2.E4: Discovery
-S2.E5 ∙ Break Point,5,8.7,2,S2.E5: Break Point
-S2.E6 ∙ All In,6,8.4,2,S2.E6: All In
-S2.E7 ∙ Sucker Punch,7,9,2,S2.E7: Sucker Punch
-S2.E8 ∙ Rewind,8,8.5,2,S2.E8: Rewind
-S2.E9 ∙ Asterisk,9,8.7,2,S2.E9: Asterisk
-S2.E10 ∙ High Noon,10,9.1,2,S2.E10: High Noon
-S2.E11 ∙ Blind-Sided,11,8,2,S2.E11: Blind-Sided
-S2.E12 ∙ Blood in the Water,12,8.4,2,S2.E12: Blood in the Water
-S2.E13 ∙ Zane vs. Zane,13,8.2,2,S2.E13: Zane vs. Zane
-S2.E14 ∙ He's Back,14,8.4,2,S2.E14: He's Back
-S2.E15 ∙ Normandy,15,8.3,2,S2.E15: Normandy
-S2.E16 ∙ War,16,8.6,2,S2.E16: War
-S3.E1 ∙ The Arrangement,1,8.3,3,S3.E1: The Arrangement
-S3.E2 ∙ I Want You to Want Me,2,8.3,3,S3.E2: I Want You to Want Me
-S3.E3 ∙ Unfinished Business,3,8.2,3,S3.E3: Unfinished Business
-S3.E4 ∙ Conflict of Interest,4,8.2,3,S3.E4: Conflict of Interest
-S3.E5 ∙ Shadow of a Doubt,5,8,3,S3.E5: Shadow of a Doubt
-S3.E6 ∙ The Other Time,6,8.6,3,S3.E6: The Other Time
-S3.E7 ∙ She's Mine,7,8.6,3,S3.E7: She's Mine
-S3.E8 ∙ Endgame,8,8.5,3,S3.E8: Endgame
-S3.E9 ∙ Bad Faith,9,8.2,3,S3.E9: Bad Faith
-S3.E10 ∙ Stay,10,8.4,3,S3.E10: Stay
-S3.E11 ∙ Buried Secrets,11,8.3,3,S3.E11: Buried Secrets
-S3.E12 ∙ Yesterday's Gone,12,8.9,3,S3.E12: Yesterday's Gone
-S3.E13 ∙ Moot Point,13,8.3,3,S3.E13: Moot Point
-S3.E14 ∙ Heartburn,14,8.8,3,S3.E14: Heartburn
-S3.E15 ∙ Know When to Fold 'Em,15,8.7,3,S3.E15: Know When to Fold 'Em
-S3.E16 ∙ No Way Out,16,9.2,3,S3.E16: No Way Out
-S4.E1 ∙ One-Two-Three Go...,1,8.4,4,S4.E1: One-Two-Three Go...
-"S4.E2 ∙ Breakfast, Lunch and Dinner",2,8.2,4,"S4.E2: Breakfast, Lunch and Dinner"
-S4.E3 ∙ Two in the Knees,3,8.3,4,S4.E3: Two in the Knees
-S4.E4 ∙ Leveraged,4,8.1,4,S4.E4: Leveraged
-S4.E5 ∙ Pound of Flesh,5,8.2,4,S4.E5: Pound of Flesh
-S4.E6 ∙ Litt the Hell Up,6,8.7,4,S4.E6: Litt the Hell Up
-S4.E7 ∙ We're Done,7,8.7,4,S4.E7: We're Done
-S4.E8 ∙ Exposure,8,8.8,4,S4.E8: Exposure
-S4.E9 ∙ Gone,9,9.2,4,S4.E9: Gone
-S4.E10 ∙ This Is Rome,10,9.4,4,S4.E10: This Is Rome
-S4.E11 ∙ Enough Is Enough,11,8.8,4,S4.E11: Enough Is Enough
-S4.E12 ∙ Respect,12,8.2,4,S4.E12: Respect
-S4.E13 ∙ Fork in the Road,13,8.7,4,S4.E13: Fork in the Road
-S4.E14 ∙ Derailed,14,8.4,4,S4.E14: Derailed
-S4.E15 ∙ Intent,15,9.1,4,S4.E15: Intent
-S4.E16 ∙ Not Just a Pretty Face,16,9,4,S4.E16: Not Just a Pretty Face
-S5.E1 ∙ Denial,1,8.8,5,S5.E1: Denial
-S5.E2 ∙ Compensation,2,8.4,5,S5.E2: Compensation
-S5.E3 ∙ No Refills,3,8.7,5,S5.E3: No Refills
-S5.E4 ∙ No Puedo Hacerlo,4,8.8,5,S5.E4: No Puedo Hacerlo
-S5.E5 ∙ Toe to Toe,5,8.5,5,S5.E5: Toe to Toe
-S5.E6 ∙ Privilege,6,8.5,5,S5.E6: Privilege
-S5.E7 ∙ Hitting Home,7,9.2,5,S5.E7: Hitting Home
-S5.E8 ∙ Mea Culpa,8,8.9,5,S5.E8: Mea Culpa
-S5.E9 ∙ Uninvited Guests,9,8.8,5,S5.E9: Uninvited Guests
-S5.E10 ∙ Faith,10,9.7,5,S5.E10: Faith
-S5.E11 ∙ Blowback,11,9.2,5,S5.E11: Blowback
-S5.E12 ∙ Live to Fight...,12,8.9,5,S5.E12: Live to Fight...
-S5.E13 ∙ God's Green Earth,13,8.7,5,S5.E13: God's Green Earth
-S5.E14 ∙ Self Defense,14,9.3,5,S5.E14: Self Defense
-S5.E15 ∙ Tick Tock,15,9.5,5,S5.E15: Tick Tock
-S5.E16 ∙ 25th Hour,16,9.3,5,S5.E16: 25th Hour
-S6.E1 ∙ To Trouble,1,8.1,6,S6.E1: To Trouble
-S6.E2 ∙ Accounts Payable,2,8,6,S6.E2: Accounts Payable
-S6.E3 ∙ Back on the Map,3,8.2,6,S6.E3: Back on the Map
-S6.E4 ∙ Turn,4,8.1,6,S6.E4: Turn
-S6.E5 ∙ Trust,5,8,6,S6.E5: Trust
-S6.E6 ∙ Spain,6,7.9,6,S6.E6: Spain
-S6.E7 ∙ Shake the Trees,7,8,6,S6.E7: Shake the Trees
-S6.E8 ∙ Borrowed Time,8,8.4,6,S6.E8: Borrowed Time
-S6.E9 ∙ The Hand That Feeds You,9,9,6,S6.E9: The Hand That Feeds You
-S6.E10 ∙ P.S.L.,10,9.4,6,S6.E10: P.S.L.
-S6.E11 ∙ She's Gone,11,8.1,6,S6.E11: She's Gone
-S6.E12 ∙ The Painting,12,8.6,6,S6.E12: The Painting
-"S6.E13 ∙ Teeth, Nose, Teeth",13,8.2,6,"S6.E13: Teeth, Nose, Teeth"
-S6.E14 ∙ Admission of Guilt,14,8.1,6,S6.E14: Admission of Guilt
-S6.E15 ∙ Quid Pro Quo,15,8.1,6,S6.E15: Quid Pro Quo
-S6.E16 ∙ Character and Fitness,16,9.5,6,S6.E16: Character and Fitness
-S7.E1 ∙ Skin in the Game,1,8.5,7,S7.E1: Skin in the Game
-S7.E2 ∙ The Statue,2,8.1,7,S7.E2: The Statue
-S7.E3 ∙ Mudmare,3,7.7,7,S7.E3: Mudmare
-S7.E4 ∙ Divide and Conquer,4,7.9,7,S7.E4: Divide and Conquer
-S7.E5 ∙ Brooklyn Housing,5,7.7,7,S7.E5: Brooklyn Housing
-S7.E6 ∙ Home to Roost,6,8.1,7,S7.E6: Home to Roost
-S7.E7 ∙ Full Disclosure,7,8.2,7,S7.E7: Full Disclosure
-S7.E8 ∙ 100,8,8.5,7,S7.E8: 100
-S7.E9 ∙ Shame,9,7.8,7,S7.E9: Shame
-S7.E10 ∙ Donna,10,8.8,7,S7.E10: Donna
-S7.E11 ∙ Hard Truths,11,8,7,S7.E11: Hard Truths
-S7.E12 ∙ Bad Man,12,7.6,7,S7.E12: Bad Man
-S7.E13 ∙ Inevitable,13,8.4,7,S7.E13: Inevitable
-S7.E14 ∙ Pulling the Goalie,14,8.2,7,S7.E14: Pulling the Goalie
-S7.E15 ∙ Tiny Violin,15,8.3,7,S7.E15: Tiny Violin
-S7.E16 ∙ Good-Bye,16,7.8,7,S7.E16: Good-Bye
-S8.E1 ∙ Right-Hand Man,1,7.2,8,S8.E1: Right-Hand Man
-S8.E2 ∙ Pecking Order,2,7.3,8,S8.E2: Pecking Order
-"S8.E3 ∙ Promises, Promises",3,7.5,8,"S8.E3: Promises, Promises"
-S8.E4 ∙ Revenue Per Square Foot,4,7.5,8,S8.E4: Revenue Per Square Foot
-S8.E5 ∙ Good Mudding,5,7.6,8,S8.E5: Good Mudding
-"S8.E6 ∙ Cats, Ballet, Harvey Specter",6,7.9,8,"S8.E6: Cats, Ballet, Harvey Specter"
-S8.E7 ∙ Sour Grapes,7,7.5,8,S8.E7: Sour Grapes
-S8.E8 ∙ Coral Gables,8,7.2,8,S8.E8: Coral Gables
-S8.E9 ∙ Motion to Delay,9,7.4,8,S8.E9: Motion to Delay
-S8.E10 ∙ Managing Partner,10,8.7,8,S8.E10: Managing Partner
-S8.E11 ∙ Rocky 8,11,7.6,8,S8.E11: Rocky 8
-S8.E12 ∙ Whale Hunt,12,7.6,8,S8.E12: Whale Hunt
-S8.E13 ∙ The Greater Good,13,7.6,8,S8.E13: The Greater Good
-S8.E14 ∙ Peas in a Pod,14,8,8,S8.E14: Peas in a Pod
-S8.E15 ∙ Stalking Horse,15,7.9,8,S8.E15: Stalking Horse
-S8.E16 ∙ Harvey,16,8.7,8,S8.E16: Harvey
-S9.E1 ∙ Everything's Changed,1,8,9,S9.E1: Everything's Changed
-S9.E2 ∙ Special Master,2,7.6,9,S9.E2: Special Master
-S9.E3 ∙ Windmills,3,7.5,9,S9.E3: Windmills
-S9.E4 ∙ Cairo,4,7.8,9,S9.E4: Cairo
-S9.E5 ∙ If the Shoe Fits,5,8.3,9,S9.E5: If the Shoe Fits
-S9.E6 ∙ Whatever It Takes,6,7.6,9,S9.E6: Whatever It Takes
-S9.E7 ∙ Scenic Route,7,7.5,9,S9.E7: Scenic Route
-S9.E8 ∙ Prisoner's Dilemma,8,8.7,9,S9.E8: Prisoner's Dilemma
-S9.E9 ∙ Thunder Away,9,9.1,9,S9.E9: Thunder Away
-S9.E10 ∙ One Last Con,10,9.4,9,S9.E10: One Last Con
+season,episode,title,rating,votes
+1,1,Pilot,8.7,7970
+1,2,Errors and Omissions,8.2,5061
+1,3,Inside Track,8,4598
+1,4,Dirty Little Secrets,8,4366
+1,5,Bail Out,8,4223
+1,6,Tricks of the Trade,8,4136
+1,7,Play the Man,8.4,4318
+1,8,Identity Crisis,8,3994
+1,9,Undefeated,8.3,3898
+1,10,The Shelf Life,8.3,3821
+1,11,Rules of the Game,8.4,3813
+1,12,Dog Fight,8.8,4280
+2,1,She Knows,8.9,4476
+2,2,The Choice,8.2,3640
+2,3,Meet the New Boss,8.2,3518
+2,4,Discovery,8.4,3530
+2,5,Break Point,8.7,3774
+2,6,All In,8.3,3496
+2,7,Sucker Punch,9,4182
+2,8,Rewind,8.5,3718
+2,9,Asterisk,8.7,3573
+2,10,High Noon,9.1,4712
+2,11,Blind-Sided,8,3494
+2,12,Blood in the Water,8.4,3360
+2,13,Zane vs. Zane,8.2,3277
+2,14,He's Back,8.4,3239
+2,15,Normandy,8.3,3240
+2,16,War,8.6,3844
+3,1,The Arrangement,8.3,3761
+3,2,I Want You to Want Me,8.3,3225
+3,3,Unfinished Business,8.2,3133
+3,4,Conflict of Interest,8.2,3061
+3,5,Shadow of a Doubt,8,2963
+3,6,The Other Time,8.5,3210
+3,7,She's Mine,8.6,3320
+3,8,Endgame,8.5,3035
+3,9,Bad Faith,8.2,2940
+3,10,Stay,8.3,3079
+3,11,Buried Secrets,8.2,2881
+3,12,Yesterday's Gone,8.9,3384
+3,13,Moot Point,8.2,2727
+3,14,Heartburn,8.8,3025
+3,15,Know When to Fold 'Em,8.6,2877
+3,16,No Way Out,9.2,4334
+4,1,One-Two-Three Go...,8.3,3315
+4,2,"Breakfast, Lunch and Dinner",8.2,2801
+4,3,Two in the Knees,8.2,2781
+4,4,Leveraged,8,2700
+4,5,Pound of Flesh,8.2,2684
+4,6,Litt the Hell Up,8.7,2980
+4,7,We're Done,8.7,3063
+4,8,Exposure,8.8,2941
+4,9,Gone,9.2,3457
+4,10,This Is Rome,9.4,4823
+4,11,Enough Is Enough,8.8,3131
+4,12,Respect,8.2,2599
+4,13,Fork in the Road,8.7,2918
+4,14,Derailed,8.4,2720
+4,15,Intent,9.1,3468
+4,16,Not Just a Pretty Face,9,3178
+5,1,Denial,8.7,3617
+5,2,Compensation,8.4,2938
+5,3,No Refills,8.7,2897
+5,4,No Puedo Hacerlo,8.8,3123
+5,5,Toe to Toe,8.4,2687
+5,6,Privilege,8.5,2692
+5,7,Hitting Home,9.2,3682
+5,8,Mea Culpa,8.9,3059
+5,9,Uninvited Guests,8.7,2944
+5,10,Faith,9.7,11225
+5,11,Blowback,9.2,3931
+5,12,Live to Fight...,8.9,2923
+5,13,God's Green Earth,8.7,2789
+5,14,Self Defense,9.2,3481
+5,15,Tick Tock,9.5,4868
+5,16,25th Hour,9.3,4700
+6,1,To Trouble,8.1,3190
+6,2,Accounts Payable,8,2540
+6,3,Back on the Map,8.2,2400
+6,4,Turn,8.1,2356
+6,5,Trust,8,2202
+6,6,Spain,7.8,2215
+6,7,Shake the Trees,7.9,2202
+6,8,Borrowed Time,8.4,2350
+6,9,The Hand That Feeds You,9,3210
+6,10,P.S.L.,9.4,4957
+6,11,She's Gone,8.1,2450
+6,12,The Painting,8.6,2414
+6,13,"Teeth, Nose, Teeth",8.2,2150
+6,14,Admission of Guilt,8.1,2013
+6,15,Quid Pro Quo,8.1,2030
+6,16,Character and Fitness,9.5,5889
+7,1,Skin in the Game,8.5,2859
+7,2,The Statue,8.1,2101
+7,3,Mudmare,7.7,1964
+7,4,Divide and Conquer,7.8,1885
+7,5,Brooklyn Housing,7.7,1809
+7,6,Home to Roost,8.1,1882
+7,7,Full Disclosure,8.2,1902
+7,8,100,8.5,1982
+7,9,Shame,7.8,1780
+7,10,Donna,8.8,2585
+7,11,Hard Truths,8,1906
+7,12,Bad Man,7.6,1726
+7,13,Inevitable,8.4,2018
+7,14,Pulling the Goalie,8.2,1773
+7,15,Tiny Violin,8.2,1707
+7,16,Good-Bye,7.8,2311
+8,1,Right-Hand Man,7.2,2019
+8,2,Pecking Order,7.2,1693
+8,3,"Promises, Promises",7.5,1647
+8,4,Revenue Per Square Foot,7.5,1642
+8,5,Good Mudding,7.6,1607
+8,6,"Cats, Ballet, Harvey Specter",7.9,1676
+8,7,Sour Grapes,7.5,1544
+8,8,Coral Gables,7.2,1494
+8,9,Motion to Delay,7.4,1459
+8,10,Managing Partner,8.6,2008
+8,11,Rocky 8,7.6,1466
+8,12,Whale Hunt,7.5,1402
+8,13,The Greater Good,7.6,1366
+8,14,Peas in a Pod,8,1420
+8,15,Stalking Horse,7.9,1379
+8,16,Harvey,8.7,2081
+9,1,Everything's Changed,7.9,1709
+9,2,Special Master,7.6,1471
+9,3,Windmills,7.5,1432
+9,4,Cairo,7.7,1431
+9,5,If the Shoe Fits,8.3,1631
+9,6,Whatever It Takes,7.6,1422
+9,7,Scenic Route,7.5,1609
+9,8,Prisoner's Dilemma,8.6,1805
+9,9,Thunder Away,9.1,2166
+9,10,One Last Con,9.4,4503

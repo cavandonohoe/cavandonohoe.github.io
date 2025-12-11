@@ -1,13 +1,13 @@
-episode_name_number,episode,imdb_rating,season,season_ep_name
-S1.E1 ∙ Episode #1.1,1,7.7,1,S1.E1: Episode #1.1
-S1.E2 ∙ Episode #1.2,2,7.6,1,S1.E2: Episode #1.2
-S1.E3 ∙ Episode #1.3,3,7.5,1,S1.E3: Episode #1.3
-S1.E4 ∙ Episode #1.4,4,8,1,S1.E4: Episode #1.4
-S1.E5 ∙ Episode #1.5,5,8.2,1,S1.E5: Episode #1.5
-S1.E6 ∙ Episode #1.6,6,8.8,1,S1.E6: Episode #1.6
-S2.E1 ∙ Episode #2.1,1,9.2,2,S2.E1: Episode #2.1
-S2.E2 ∙ Episode #2.2,2,8.3,2,S2.E2: Episode #2.2
-S2.E3 ∙ Episode #2.3,3,8.8,2,S2.E3: Episode #2.3
-S2.E4 ∙ Episode #2.4,4,8.8,2,S2.E4: Episode #2.4
-S2.E5 ∙ Episode #2.5,5,8.6,2,S2.E5: Episode #2.5
-S2.E6 ∙ Episode #2.6,6,9.3,2,S2.E6: Episode #2.6
+season,episode,title,rating,votes
+1,1,Episode #1.1,7.7,6291
+1,2,Episode #1.2,7.6,5431
+1,3,Episode #1.3,7.5,5108
+1,4,Episode #1.4,8,5183
+1,5,Episode #1.5,8.2,5011
+1,6,Episode #1.6,8.8,5625
+2,1,Episode #2.1,9.2,7347
+2,2,Episode #2.2,8.3,5012
+2,3,Episode #2.3,8.8,5400
+2,4,Episode #2.4,8.8,5444
+2,5,Episode #2.5,8.6,4944
+2,6,Episode #2.6,9.3,7044
