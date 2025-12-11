@@ -1,9 +1,9 @@
-episode_name_number,episode,imdb_rating,season,season_ep_name
-S1.E1 ∙ The Shipment,1,7.9,1,S1.E1: The Shipment
-S1.E2 ∙ Tampico Skies,2,8.1,1,S1.E2: Tampico Skies
-S1.E3 ∙ Miranda,3,8.2,1,S1.E3: Miranda
-S1.E4 ∙ Transshipment,4,8.1,1,S1.E4: Transshipment
-S1.E5 ∙ Sharia,5,7.9,1,S1.E5: Sharia
-S1.E6 ∙ En el Mismo Camino,6,7.7,1,S1.E6: En el Mismo Camino
-S1.E7 ∙ Family,7,8,1,S1.E7: Family
-S1.E8 ∙ Same Blood,8,8.6,1,S1.E8: Same Blood
+season,episode,title,rating,votes
+1,1,The Shipment,7.9,1182
+1,2,Tampico Skies,8.1,1016
+1,3,Miranda,8.2,939
+1,4,Transshipment,8.1,877
+1,5,Sharia,7.9,875
+1,6,En el Mismo Camino,7.7,841
+1,7,Family,8,816
+1,8,Same Blood,8.6,951

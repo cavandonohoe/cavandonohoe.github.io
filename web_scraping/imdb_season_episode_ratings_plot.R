@@ -8,187 +8,225 @@ library(RColorBrewer)
 library(rvest)
 library(tidyverse)
 
-# Function to extract episode details from each season
-extract_episodes <- function(season_url) {
-  season_page <- read_html(season_url)
+extract_imdb_id <- function(input) {
+  # If user already gives "tt1234567"
+  if (grepl("^tt\\d+$", input)) {
+    return(input)
+  }
   
-  episodes <- season_page %>%
-    html_nodes("article") %>%
-    lapply(function(x) {
-      episode_number_raw <- html_node(x, "div.sc-ccd6e31b-4.hddQZU > div.sc-ccd6e31b-5.eEIQUx > h4 > div > a > div") %>% html_text(trim = TRUE)
-      episode_number <- str_extract(episode_number_raw, "(?<=E)\\d+") %>% as.numeric()
-      rating_raw <- html_node(x, "div.sc-ccd6e31b-4.hddQZU > div.sc-ccd6e31b-12.ldTSvW > div > span") %>% html_text(trim = TRUE)
-      rating <- str_extract(rating_raw, "^[0-9.]+") %>% as.numeric()
-      
-      tibble(
-        episode_name_number = episode_number_raw,
-        episode = episode_number,
-        imdb_rating = rating
+  # If input is a URL, extract ttXXXXXXX
+  id <- stringr::str_match(input, "tt\\d+")[, 1]
+  
+  if (is.na(id)) {
+    stop("Could not extract IMDb ID from input: ", input)
+  }
+  
+  return(id)
+}
+
+get_imdb_season_episodes <- function(imdb_input, season) {
+  imdb_id <- extract_imdb_id(imdb_input)
+  
+  url <- paste0(
+    "https://www.imdb.com/title/",
+    imdb_id,
+    "/episodes/?season=",
+    season
+  )
+  
+  page <- rvest::read_html(url)
+  
+  next_data_txt <- page %>%
+    rvest::html_element("script#__NEXT_DATA__") %>%
+    rvest::html_text2()
+  
+  next_data <- jsonlite::fromJSON(next_data_txt, simplifyVector = FALSE)
+  
+  episodes_items <- next_data$props$pageProps$contentData$section$episodes$items
+  
+  # if this season doesn't exist or has no episodes
+  if (is.null(episodes_items) || length(episodes_items) == 0) {
+    return(
+      tibble::tibble(
+        season  = integer(),
+        episode = integer(),
+        title   = character(),
+        rating  = numeric(),
+        votes   = integer()
       )
-    }) %>%
-    bind_rows()
+    )
+  }
   
-  season_number <- str_extract(season_url, "\\d+$")
-  episodes <- episodes %>%
-    mutate(season = as.numeric(season_number),
-           season_ep_name = gsub(" ∙ ", ": ", episode_name_number))
-  
-  return(episodes)
+  purrr::map_dfr(episodes_items, function(item) {
+    tibble::tibble(
+      season  = as.integer(item$season),
+      episode = as.integer(item$episode),
+      title   = item$titleText,
+      rating  = item$aggregateRating,
+      votes   = item$voteCount
+    )
+  })
 }
 
-# Helper function to create the data frame for episode data
-create_episode_data <- function(season_urls) {
-  episode_data <- lapply(season_urls, extract_episodes) %>%
-    bind_rows() %>%
-    filter(episode != 0) %>%
-    filter(!is.na(imdb_rating))
+get_imdb_all_episodes <- function(imdb_id, max_seasons = 50) {
+  out <- list()
   
-  return(episode_data)
-}
-
-
-# Function to scrape IMDb series episode data
-scrape_imdb_episode_data <- function(url) {
-  url <- url %>% stringr::str_remove_all("/$") %>% file.path("episodes")
-  webpage <- read_html(url)
+  for (s in seq_len(max_seasons)) {
+    df <- get_imdb_season_episodes(imdb_id, s)
+    
+    if (nrow(df) == 0) {
+      # we've gone past the last real season
+      break
+    }
+    
+    out[[length(out) + 1]] <- df
+  }
   
-  seasons <- webpage %>%
-    html_node("main > div > section > div > section > div > div.sc-4b498b6e-1.jDpRYv.ipc-page-grid__item.ipc-page-grid__item--span-2 > section:nth-child(2) > section.sc-6d19272a-0.bUgwdr > div.ipc-tabs.ipc-tabs--base.ipc-tabs--align-left.ipc-tabs--display-chip.ipc-tabs--inherit > ul") %>%
-    html_nodes("a") %>%
-    html_text()
+  if (length(out) == 0) {
+    return(
+      tibble::tibble(
+        season  = integer(),
+        episode = integer(),
+        title   = character(),
+        rating  = numeric(),
+        votes   = integer()
+      )
+    )
+  }
   
-  season_urls <- webpage %>%
-    html_node("#__next") %>%
-    html_node("main > div > section > div > section > div > div.sc-4b498b6e-1.jDpRYv.ipc-page-grid__item.ipc-page-grid__item--span-2 > section:nth-child(2) > section.sc-6d19272a-0.bUgwdr > div.ipc-tabs.ipc-tabs--base.ipc-tabs--align-left.ipc-tabs--display-chip.ipc-tabs--inherit > ul") %>%
-    html_nodes("a") %>%
-    html_attr("href") %>%
-    paste0("https://www.imdb.com", .)
-  
-  # Create the episode data frame
-  episode_data <- create_episode_data(season_urls)
-  
-  return(episode_data)
+  dplyr::bind_rows(out)
 }
 
 
 
 # game of thrones
-game_of_thrones_ratings = scrape_imdb_episode_data("https://www.imdb.com/title/tt0944947/")
+game_of_thrones_ratings = get_imdb_all_episodes("https://www.imdb.com/title/tt0944947/")
 game_of_thrones_ratings %>% write_csv(here::here("data", "game_of_thrones_ep_ratings.csv"))
 # breaking bad
-breaking_bad_rating = scrape_imdb_episode_data("https://www.imdb.com/title/tt0903747/")
+breaking_bad_rating = get_imdb_all_episodes("https://www.imdb.com/title/tt0903747/")
 breaking_bad_rating %>% write_csv(here::here("data", "breaking_bad_ep_ratings.csv"))
 # always sunny
-always_sunny = scrape_imdb_episode_data("https://www.imdb.com/title/tt0472954/")
+always_sunny = get_imdb_all_episodes("https://www.imdb.com/title/tt0472954/")
 always_sunny %>% write_csv(here::here("data", "always_sunny_ep_ratings.csv"))
 # himym
-himym = scrape_imdb_episode_data("https://www.imdb.com/title/tt0460649/")
+himym = get_imdb_all_episodes("https://www.imdb.com/title/tt0460649/")
 himym %>% write_csv(here::here("data", "himym_ep_ratings.csv"))
 # better call saul
-better_call_saul = scrape_imdb_episode_data("https://www.imdb.com/title/tt3032476/")
+better_call_saul = get_imdb_all_episodes("https://www.imdb.com/title/tt3032476/")
 better_call_saul %>% write_csv(here::here("data", "better_call_saul_ep_ratings.csv"))
 # zerozerozero
-zerozerozero = scrape_imdb_episode_data("https://www.imdb.com/title/tt8332438/")
+zerozerozero = get_imdb_all_episodes("https://www.imdb.com/title/tt8332438/")
 zerozerozero %>% write_csv(here::here("data", "zerozerozero_ep_ratings.csv"))
 # hotd
-hotd = scrape_imdb_episode_data("https://www.imdb.com/title/tt11198330/")
+hotd = get_imdb_all_episodes("https://www.imdb.com/title/tt11198330/")
 hotd %>% write_csv(here::here("data", "hotd_ep_ratings.csv"))
 # bluey
-bluey = scrape_imdb_episode_data("https://www.imdb.com/title/tt7678620/")
+bluey = get_imdb_all_episodes("https://www.imdb.com/title/tt7678620/")
 bluey %>% write_csv(here::here("data", "bluey_ep_ratings.csv"))
 # westworld
-westworld = scrape_imdb_episode_data("https://www.imdb.com/title/tt0475784/")
+westworld = get_imdb_all_episodes("https://www.imdb.com/title/tt0475784/")
 westworld %>% write_csv(here::here("data", "westworld_ep_ratings.csv"))
 # paris hilton bff
-paris_hilton_bff = scrape_imdb_episode_data("https://www.imdb.com/title/tt1292967/")
+paris_hilton_bff = get_imdb_all_episodes("https://www.imdb.com/title/tt1292967/")
 paris_hilton_bff %>% write_csv(here::here("data", "paris_hilton_bff_ep_ratings.csv"))
 # stranger things
-stranger_things = scrape_imdb_episode_data("https://www.imdb.com/title/tt4574334/")
+stranger_things = get_imdb_all_episodes("https://www.imdb.com/title/tt4574334/")
 stranger_things %>% write_csv(here::here("data", "stranger_things_ep_ratings.csv"))
 # bojack
-bojack = scrape_imdb_episode_data("https://www.imdb.com/title/tt3398228/")
+bojack = get_imdb_all_episodes("https://www.imdb.com/title/tt3398228/")
 bojack %>% write_csv(here::here("data", "bojack_ep_ratings.csv"))
 # velma
-velma = scrape_imdb_episode_data("https://www.imdb.com/title/tt14153790/")
+velma = get_imdb_all_episodes("https://www.imdb.com/title/tt14153790/")
 velma %>% write_csv(here::here("data", "velma_ep_ratings.csv"))
 # suits
-suits = scrape_imdb_episode_data("https://www.imdb.com/title/tt1632701/")
+suits = get_imdb_all_episodes("https://www.imdb.com/title/tt1632701/")
 suits %>% write_csv(here::here("data", "suits_ep_ratings.csv"))
 # vampire diaries
-vampire_diaries = scrape_imdb_episode_data("https://www.imdb.com/title/tt1405406/")
+vampire_diaries = get_imdb_all_episodes("https://www.imdb.com/title/tt1405406/")
 vampire_diaries %>% write_csv(here::here("data", "vampire_diaries_ep_ratings.csv"))
 # greys anatomy
-greys_anatomy = scrape_imdb_episode_data("https://www.imdb.com/title/tt0413573/")
+greys_anatomy = get_imdb_all_episodes("https://www.imdb.com/title/tt0413573/")
 greys_anatomy %>% write_csv(here::here("data", "greys_anatomy_ep_ratings.csv"))
 # friends
-friends = scrape_imdb_episode_data("https://www.imdb.com/title/tt0108778/")
+friends = get_imdb_all_episodes("https://www.imdb.com/title/tt0108778/")
 friends %>% write_csv(here::here("data", "friends_ep_ratings.csv"))
 # house
-house = scrape_imdb_episode_data("https://www.imdb.com/title/tt0412142/")
+house = get_imdb_all_episodes("https://www.imdb.com/title/tt0412142/")
 house %>% write_csv(here::here("data", "house_ep_ratings.csv"))
 # simpsons
-simpsons = scrape_imdb_episode_data("https://www.imdb.com/title/tt0096697/")
+simpsons = get_imdb_all_episodes("https://www.imdb.com/title/tt0096697/")
 simpsons %>% write_csv(here::here("data", "simpsons_ep_ratings.csv"))
 # pretty little liars
-pretty_little_liars = scrape_imdb_episode_data("https://www.imdb.com/title/tt1578873/")
+pretty_little_liars = get_imdb_all_episodes("https://www.imdb.com/title/tt1578873/")
 pretty_little_liars %>% write_csv(here::here("data", "pretty_little_liars_ep_ratings.csv"))
 # the crown
-crown = scrape_imdb_episode_data("https://www.imdb.com/title/tt4786824/")
+crown = get_imdb_all_episodes("https://www.imdb.com/title/tt4786824/")
 crown %>% write_csv(here::here("data", "crown_ep_ratings.csv"))
 # love island (uk)
-love_island = scrape_imdb_episode_data("https://www.imdb.com/title/tt4770018/")
+love_island = get_imdb_all_episodes("https://www.imdb.com/title/tt4770018/")
 love_island %>% write_csv(here::here("data", "love_island_ep_ratings.csv"))
 # south park
-south_park = scrape_imdb_episode_data("https://www.imdb.com/title/tt0121955/")
+south_park = get_imdb_all_episodes("https://www.imdb.com/title/tt0121955/")
 south_park %>% write_csv(here::here("data", "south_park_ep_ratings.csv"))
 # family guy
-family_guy = scrape_imdb_episode_data("https://www.imdb.com/title/tt0182576/")
+family_guy = get_imdb_all_episodes("https://www.imdb.com/title/tt0182576/")
 family_guy %>% write_csv(here::here("data", "family_guy_ep_ratings.csv"))
 # invincible
-invincible = scrape_imdb_episode_data("https://www.imdb.com/title/tt6741278/")
+invincible = get_imdb_all_episodes("https://www.imdb.com/title/tt6741278/")
 invincible %>% write_csv(here::here("data", "invincible_ep_ratings.csv"))
 # clone wars
-clone_wars = scrape_imdb_episode_data("https://www.imdb.com/title/tt0458290/")
+clone_wars = get_imdb_all_episodes("https://www.imdb.com/title/tt0458290/")
 clone_wars %>% write_csv(here::here("data", "clone_wars_ep_ratings.csv"))
 # mr robot
-mr_robot = scrape_imdb_episode_data("https://www.imdb.com/title/tt4158110/")
+mr_robot = get_imdb_all_episodes("https://www.imdb.com/title/tt4158110/")
 mr_robot %>% write_csv(here::here("data", "mr_robot_ep_ratings.csv"))
 # sparticus
-sparticus = scrape_imdb_episode_data("https://www.imdb.com/title/tt1442449/")
+sparticus = get_imdb_all_episodes("https://www.imdb.com/title/tt1442449/")
 sparticus %>% write_csv(here::here("data", "sparticus_ep_ratings.csv"))
 # attack on titan
-attack_on_titan = scrape_imdb_episode_data("https://www.imdb.com/title/tt2560140/")
+attack_on_titan = get_imdb_all_episodes("https://www.imdb.com/title/tt2560140/")
 attack_on_titan %>% write_csv(here::here("data", "attack_on_titan_ep_ratings.csv"))
+# mad men
+mad_men = get_imdb_all_episodes("https://www.imdb.com/title/tt0804503/")
+mad_men %>% write_csv(here::here("data", "mad_men_ep_ratings.csv"))
 # blue eye samurai
-blue_eye_samurai = scrape_imdb_episode_data("https://www.imdb.com/title/tt13309742/")
+blue_eye_samurai = get_imdb_all_episodes("https://www.imdb.com/title/tt13309742/")
 blue_eye_samurai %>% write_csv(here::here("data", "blue_eye_samurai_ep_ratings.csv"))
 # six feet under
-six_feet_under = scrape_imdb_episode_data("https://www.imdb.com/title/tt0248654/")
+six_feet_under = get_imdb_all_episodes("https://www.imdb.com/title/tt0248654/")
 six_feet_under %>% write_csv(here::here("data", "six_feet_under_ep_ratings.csv"))
 # hannibal
-hannibal = scrape_imdb_episode_data("https://www.imdb.com/title/tt2243973/")
+hannibal = get_imdb_all_episodes("https://www.imdb.com/title/tt2243973/")
 hannibal %>% write_csv(here::here("data", "hannibal_ep_ratings.csv"))
 # the wire
-the_wire = scrape_imdb_episode_data("https://www.imdb.com/title/tt0306414/")
+the_wire = get_imdb_all_episodes("https://www.imdb.com/title/tt0306414/")
 the_wire %>% write_csv(here::here("data", "the_wire_ep_ratings.csv"))
 # person of interest
-person_of_interest = scrape_imdb_episode_data("https://www.imdb.com/title/tt1839578/")
+person_of_interest = get_imdb_all_episodes("https://www.imdb.com/title/tt1839578/")
 person_of_interest %>% write_csv(here::here("data", "person_of_interest_ep_ratings.csv"))
 # chernobyl
-chernobyl = scrape_imdb_episode_data("https://www.imdb.com/title/tt7366338/")
+chernobyl = get_imdb_all_episodes("https://www.imdb.com/title/tt7366338/")
 chernobyl %>% write_csv(here::here("data", "chernobyl_ep_ratings.csv"))
 # fleabag
-fleabag = scrape_imdb_episode_data("https://www.imdb.com/title/tt5687612/")
+fleabag = get_imdb_all_episodes("https://www.imdb.com/title/tt5687612/")
 fleabag %>% write_csv(here::here("data", "fleabag_ep_ratings.csv"))
 # parks and recreation
-parks_and_rec = scrape_imdb_episode_data("https://www.imdb.com/title/tt1266020/")
+parks_and_rec = get_imdb_all_episodes("https://www.imdb.com/title/tt1266020/")
 parks_and_rec %>% write_csv(here::here("data", "parks_and_rec_ep_ratings.csv"))
 # new girl
-new_girl = scrape_imdb_episode_data("https://www.imdb.com/title/tt1826940/")
+new_girl = get_imdb_all_episodes("https://www.imdb.com/title/tt1826940/")
 new_girl %>% write_csv(here::here("data", "new_girl_ep_ratings.csv"))
 # brooklyn nine-nine
-brooklyn_nine_nine = scrape_imdb_episode_data("https://www.imdb.com/title/tt2467372/")
+brooklyn_nine_nine = get_imdb_all_episodes("https://www.imdb.com/title/tt2467372/")
 brooklyn_nine_nine %>% write_csv(here::here("data", "brooklyn_nine_nine_ep_ratings.csv"))
-
+# avatar
+avatar = get_imdb_all_episodes("https://www.imdb.com/title/tt0417299/")
+avatar %>% write_csv(here::here("data", "avatar_ep_ratings.csv"))
+# the office us
+the_office = get_imdb_all_episodes("https://www.imdb.com/title/tt0386676/")
+the_office %>% write_csv(here::here("data", "the_office_ep_ratings.csv"))
+# death note
+death_note = get_imdb_all_episodes("https://www.imdb.com/title/tt0877057/")
+death_note %>% write_csv(here::here("data", "death_note_ep_ratings.csv"))
 
 

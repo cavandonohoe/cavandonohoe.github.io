@@ -1,16 +1,22 @@
-episode_name_number,episode,imdb_rating,season,season_ep_name
-S1.E1 ∙ Welcome to the Dollhouse,1,4.5,1,S1.E1: Welcome to the Dollhouse
-S1.E2 ∙ 24 Hour Party Challenge,2,3.3,1,S1.E2: 24 Hour Party Challenge
-S1.E3 ∙ Sayonara!,3,3,1,S1.E3: Sayonara!
-S1.E4 ∙ Who's the Fakest?,4,2.8,1,S1.E4: Who's the Fakest?
-S1.E5 ∙ You Gotta Have Class,5,3.3,1,S1.E5: You Gotta Have Class
-"S1.E6 ∙ Vegas, Baby!",6,3.5,1,"S1.E6: Vegas, Baby!"
-S1.E7 ∙ My Kind of People,7,4.3,1,S1.E7: My Kind of People
-S1.E8 ∙ Keep Your Frenemies Closer,8,4.3,1,S1.E8: Keep Your Frenemies Closer
-S1.E9 ∙ Our Friendship Is Over,9,5,1,S1.E9: Our Friendship Is Over
-S2.E1 ∙ No More Hungry Tigers,1,4.7,2,S2.E1: No More Hungry Tigers
-S2.E2 ∙ Sisters Before Misters,2,6.4,2,S2.E2: Sisters Before Misters
-S2.E3 ∙ What's on the Inside and Outside Counts,3,6.4,2,S2.E3: What's on the Inside and Outside Counts
-S2.E8 ∙ Episode #2.8,8,5,2,S2.E8: Episode #2.8
-S2.E9 ∙ Episode #2.9,9,5.2,2,S2.E9: Episode #2.9
-S2.E10 ∙ Episode #2.10,10,6.6,2,S2.E10: Episode #2.10
+season,episode,title,votes,rating
+1,0,Casting Special,0,NA
+1,1,Welcome to the Dollhouse,15,4.5
+1,2,24 Hour Party Challenge,15,3.3
+1,3,Sayonara!,20,3
+1,4,Who's the Fakest?,17,2.8
+1,5,You Gotta Have Class,17,3.3
+1,6,"Vegas, Baby!",13,3.5
+1,7,My Kind of People,10,4.3
+1,8,Keep Your Frenemies Closer,10,4.3
+1,9,Our Friendship Is Over,15,5
+1,10,Episode #1.10,0,NA
+2,1,No More Hungry Tigers,9,4.7
+2,2,Sisters Before Misters,8,6.4
+2,3,What's on the Inside and Outside Counts,8,6.4
+2,4,Can You Hang with My Friends?,0,NA
+2,5,Learn from Your Mistakes,0,NA
+2,6,Have My Back,0,NA
+2,7,Paris' Break Up,0,NA
+2,8,Episode #2.8,7,5
+2,9,Episode #2.9,7,5.2
+2,10,Episode #2.10,9,6.6
