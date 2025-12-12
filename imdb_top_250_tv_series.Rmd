@@ -156,7 +156,7 @@ runs_over_9_formatted <- all_eps_ratings_tib %>%
   dplyr::arrange(series_title, imdb_id, season, episode) %>%
   dplyr::group_by(series_title, imdb_id) %>%
   dplyr::mutate(
-    over9 = rating > 9,
+    over9 = rating >= 9,
     run_id = cumsum(over9 != dplyr::lag(over9, default = FALSE))
   ) %>%
   dplyr::filter(over9) %>%
