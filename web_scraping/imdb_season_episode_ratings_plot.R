@@ -228,5 +228,8 @@ the_office %>% write_csv(here::here("data", "the_office_ep_ratings.csv"))
 # death note
 death_note = get_imdb_all_episodes("https://www.imdb.com/title/tt0877057/")
 death_note %>% write_csv(here::here("data", "death_note_ep_ratings.csv"))
+# andor
+andor = get_imdb_all_episodes("https://www.imdb.com/title/tt9253284/")
+andor %>% write_csv(here::here("data", "andor_ep_ratings.csv"))
 
 
