@@ -470,4 +470,12 @@ death_note = read_csv("data/death_note_ep_ratings.csv")
 death_note %>% create_episode_plot("Death Note") %>% interactive_plotly
 ```
 
+## Andor
+
+```{r}
+andor = read_csv("data/andor_ep_ratings.csv")
+
+andor %>% create_episode_plot("Andor") %>% interactive_plotly
+```
+
 [Raw pngs found here](https://github.com/cavandonohoe/cavandonohoe.github.io/tree/main/imdb_rating_plot_files)
