@@ -231,5 +231,7 @@ death_note %>% write_csv(here::here("data", "death_note_ep_ratings.csv"))
 # andor
 andor = get_imdb_all_episodes("https://www.imdb.com/title/tt9253284/")
 andor %>% write_csv(here::here("data", "andor_ep_ratings.csv"))
-
+# modern love
+modern_love = get_imdb_all_episodes("https://www.imdb.com/title/tt8543390/")
+modern_love %>% write_csv(here::here("data", "modern_love_ep_ratings.csv"))
 
