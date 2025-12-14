@@ -162,17 +162,20 @@ runs_over_9_formatted <- all_eps_ratings_tib %>%
   dplyr::filter(over9) %>%
   dplyr::group_by(series_title, imdb_id, run_id) %>%
   dplyr::summarise(
-    start_season  = dplyr::first(season),
+    start_season = dplyr::first(season),
     start_episode = dplyr::first(episode),
-    end_season    = dplyr::last(season),
-    end_episode   = dplyr::last(episode),
-    run_length    = dplyr::n(),
+    end_season = dplyr::last(season),
+    end_episode = dplyr::last(episode),
+    run_length = dplyr::n(),
+    streaks_of_3 = run_length %/% 3,
     run_label = glue::glue(
-      "S{start_season}E{start_episode} – S{end_season}E{end_episode} ({run_length} episodes)"
+      "S{start_season}E{start_episode} – ",
+      "S{end_season}E{end_episode} ({run_length} episodes)"
     ),
     .groups = "drop"
   ) %>%
-  dplyr::select(series_title, imdb_id, run_length, run_label)
+  dplyr::filter(streaks_of_3 > 0) %>%
+  dplyr::select(series_title, imdb_id, run_length, streaks_of_3, run_label)
 
 runs_over_9_formatted %>%
   dplyr::select(series_title, run_length, run_label) %>%
@@ -180,6 +183,7 @@ runs_over_9_formatted %>%
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
 ```
+
 
 ```{r plotly_runs}
 runs_episode_level <- all_eps_ratings_tib %>%
@@ -280,7 +284,7 @@ p <- max_runs_hover_summarised %>%
   # -------------------------------------
 
 ggplot2::labs(
-  title = "Top 20 longest streaks of IMDb ratings > 9",
+  title = "Top 20 longest streaks of IMDb ratings ≥ 9",
   x = "Streak length (episodes)",
   y = "Series"
 ) +
@@ -290,5 +294,88 @@ ggplot2::labs(
 
 
 plotly::ggplotly(p, tooltip = "text")
+```
+
+## Streaks of 3 ≥ 9.0 IMDb Episodes in a Row
+
+```{r streaks_of_3}
+runs_over_9_streaks <- all_eps_ratings_tib %>%
+  dplyr::arrange(series_title, imdb_id, season, episode) %>%
+  dplyr::group_by(series_title, imdb_id) %>%
+  dplyr::mutate(
+    over9 = rating >= 9,
+    run_id = cumsum(over9 != dplyr::lag(over9, default = FALSE))
+  ) %>%
+  dplyr::filter(over9) %>%
+  dplyr::group_by(series_title, imdb_id, run_id) %>%
+  dplyr::mutate(
+    run_length = dplyr::n()
+  ) %>%
+  dplyr::filter(run_length >= 3) %>% # drop runs of 1 or 2 completely
+  dplyr::mutate(
+    run_pos = dplyr::row_number(),
+    base_streak_id = (run_pos - 1) %/% 3 + 1,
+    n_full = run_length %/% 3,
+    remainder = run_length %% 3,
+    streak_id = dplyr::if_else(
+      base_streak_id > n_full & remainder > 0,
+      n_full,
+      base_streak_id
+    )
+  ) %>%
+  dplyr::group_by(series_title, imdb_id, run_id, streak_id) %>%
+  dplyr::summarise(
+    streak_len = dplyr::n(),
+    start_season = dplyr::first(season),
+    start_episode = dplyr::first(episode),
+    end_season = dplyr::last(season),
+    end_episode = dplyr::last(episode),
+    streak_label = glue::glue(
+      "S{start_season}E{start_episode}-S{end_season}E{end_episode} ({streak_len})"
+    ),
+    .groups = "drop"
+  )
+
+streaks_over_9_concat <- runs_over_9_streaks %>%
+  dplyr::group_by(series_title, imdb_id) %>%
+  dplyr::summarise(
+    streaks = paste(streak_label, collapse = "; "),
+    n_streaks = dplyr::n(),
+    .groups = "drop"
+  )
+
+streaks_over_9_concat %>%
+  dplyr::select(series_title, streaks, n_streaks) %>%
+  datatable(filter = "top", extensions = "Buttons",
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE))
+```
+
+```{r fig.height=14}
+p <- ggplot2::ggplot(
+  streaks_over_9_concat,
+  ggplot2::aes(
+    x = reorder(series_title, n_streaks),
+    y = n_streaks,
+    text = paste(
+      "Series:", series_title,
+      "\nNumber of streaks:", n_streaks,
+      "\nStreaks:\n",
+      stringr::str_replace_all(streaks, ";\\s*", "\n")
+    )
+  )
+) +
+  ggplot2::geom_col(fill = "steelblue") +
+  ggplot2::coord_flip() +
+  ggplot2::labs(
+    title = "IMDb ≥9 Episode Streaks (Grouped by 3, Remainder Absorbed)",
+    x = NULL,
+    y = "Number of streaks"
+  ) +
+  ggplot2::theme_minimal(base_size = 13)
+
+plotly::ggplotly(p, tooltip = "text")
+
+
 ```
 
