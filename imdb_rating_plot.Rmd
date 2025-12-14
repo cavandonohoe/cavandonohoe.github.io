@@ -478,4 +478,12 @@ andor = read_csv("data/andor_ep_ratings.csv")
 andor %>% create_episode_plot("Andor") %>% interactive_plotly
 ```
 
+## Modern Love
+
+```{r}
+modern_love = read_csv("data/modern_love_ep_ratings.csv")
+
+modern_love %>% create_episode_plot("Modern Love") %>% interactive_plotly
+```
+
 [Raw pngs found here](https://github.com/cavandonohoe/cavandonohoe.github.io/tree/main/imdb_rating_plot_files)
