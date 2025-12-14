@@ -1,5 +1,7 @@
 name: "Cavan Donohoe"
 output_dir: "_site"
+include:
+  - imdb_rating_plot_files
 navbar:
   title: "Cavan Donohoe"
   type: inverse
