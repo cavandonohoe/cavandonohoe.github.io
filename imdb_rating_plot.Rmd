@@ -99,7 +99,7 @@ create_episode_plot <- function(episode_data, title, export_png = TRUE) {
 
   if (export_png) {
     ggplot2::ggsave(
-      filename = file_name,
+      filename = here::here(dirname(file_name), basename(file_name)),
       plot = episode_plot,
       width = 8,
       height = 6,
@@ -484,6 +484,14 @@ andor %>% create_episode_plot("Andor") %>% interactive_plotly
 modern_love = read_csv("data/modern_love_ep_ratings.csv")
 
 modern_love %>% create_episode_plot("Modern Love") %>% interactive_plotly
+```
+
+## My Hero Academia
+
+```{r}
+my_hero_academia = read_csv("data/my_hero_academia_ep_ratings.csv")
+
+my_hero_academia %>% create_episode_plot("My Hero Academia") %>% interactive_plotly
 ```
 
 [Raw pngs found here](https://github.com/cavandonohoe/cavandonohoe.github.io/tree/main/imdb_rating_plot_files)

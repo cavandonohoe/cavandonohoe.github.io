@@ -234,4 +234,7 @@ andor %>% write_csv(here::here("data", "andor_ep_ratings.csv"))
 # modern love
 modern_love = get_imdb_all_episodes("https://www.imdb.com/title/tt8543390/")
 modern_love %>% write_csv(here::here("data", "modern_love_ep_ratings.csv"))
+# my hero academia
+my_hero_academia = get_imdb_all_episodes("https://www.imdb.com/title/tt5626028/")
+my_hero_academia %>% write_csv(here::here("data", "my_hero_academia_ep_ratings.csv"))
 
