@@ -1,0 +1,71 @@
+---
+title: "Introduction to R"
+author: "Cavan Donohoe"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    includes:
+      in_header: ../header/header.html
+      after_body: ../include_footer.html
+output_file: "learn_r/intro_to_r.html"
+---
+
+# Introduction to R
+
+In this section, we'll cover the basics of R, including what R is, how to install it, and an overview of the RStudio interface.
+
+## What is R?
+
+R is a powerful and open-source programming language and software environment for statistical computing and graphics. It provides a wide range of statistical and graphical techniques and is widely used in data analysis, data visualization, and statistical modeling.
+
+## Installing R and RStudio
+
+Before we can start using R, we need to install it and its integrated development environment, RStudio. Here are the steps to get you started:
+
+### Step 1: Installing R
+
+1. Visit the Comprehensive R Archive Network (CRAN) website at [https://cran.r-project.org/mirrors.html](https://cran.r-project.org/mirrors.html).
+
+2. Choose a CRAN mirror near your location to download R.
+
+3. Download and install R for your operating system (Windows, macOS, or Linux).
+
+### Step 2: Installing RStudio
+
+1. Visit the RStudio download page at [https://www.rstudio.com/products/rstudio/download/](https://www.rstudio.com/products/rstudio/download/).
+
+2. Download the free RStudio Desktop version that corresponds to your operating system.
+
+3. Install RStudio by following the installation instructions for your operating system.
+
+Once you've completed these steps, you'll have R and RStudio installed and ready to use.
+
+## RStudio Interface Overview
+
+RStudio is an integrated development environment (IDE) that makes working with R easier and more efficient. Let's take a quick tour of the RStudio interface:
+
+- **Script Editor**: This is where you can write and execute R code. You can create new scripts or open existing ones.
+
+- **Console**: The R console allows you to interactively execute R commands and see the results immediately. It's great for testing small code snippets.
+
+- **Environment Pane**: Displays information about the objects (variables, data frames, functions, etc.) in your current R session.
+
+- **Files, Plots, Packages, Help**: These panes provide access to your project files, plots, installed packages, and documentation.
+
+- **Toolbar**: Contains shortcuts for common actions like running code, saving scripts, and more.
+
+- **Markdown and Plots Tabs**: Use these tabs to view rendered R Markdown documents and plots generated within your R Markdown document.
+
+That's it for our brief introduction to R and RStudio! Now that you have them installed and have a basic understanding of the interface, you're ready to start exploring R and writing your first R code.
+
+
+
+Free Lessons:
+
+- [R Time Is Limited, Let's Make the Most of It](https://cavandonohoe.github.io/learn_r.html)
+- [Introduction to R](https://cavandonohoe.github.io/intro_to_r.html)
+- [Basic Operations in R](https://cavandonohoe.github.io/basic_operations_r.html)
+- [Data Manipulation](https://cavandonohoe.github.io/data_manipulation_r.html)
+- [Data Visualization](https://cavandonohoe.github.io/data_visualization_r.html)
+- [Statistics in R](https://cavandonohoe.github.io/statistics_with_r.html)
