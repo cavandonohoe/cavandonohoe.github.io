@@ -7,7 +7,6 @@ output:
     includes:
       in_header: ../header/header.html
       after_body: ../include_footer.html
-output_file: "projects/best_pic_vs_top_1000.html"
 ---
 
 ```{r setup, include=FALSE}
