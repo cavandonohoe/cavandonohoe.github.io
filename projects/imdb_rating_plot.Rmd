@@ -291,7 +291,7 @@ simpsons = read_csv(here::here("data", "simpsons_ep_ratings.csv"))
 simpsons_gg = simpsons %>% create_episode_plot("The Simpsons")
 simpsons_gg %>% interactive_plotly
 # resave here for the correct width
-ggsave("imdb_rating_plot_files/the_simpsons.png", plot = simpsons_gg, width = 16, height = 6, dpi = 300)
+ggsave(file.path(out_dir, "the_simpsons.png"), plot = simpsons_gg, width = 16, height = 6, dpi = 300)
 ```
 
 ## Pretty Little Liars
@@ -326,7 +326,7 @@ south_park = read_csv(here::here("data", "south_park_ep_ratings.csv"))
 south_park_gg = south_park %>% create_episode_plot("South Park")
 south_park_gg %>% interactive_plotly
 # resave here for the correct width
-ggsave("imdb_rating_plot_files/south_park.png", plot = south_park_gg, width = 16, height = 6, dpi = 300)
+ggsave(file.path(out_dir, "south_park.png"), plot = south_park_gg, width = 16, height = 6, dpi = 300)
 ```
 
 ## Family Guy
@@ -337,7 +337,7 @@ family_guy = read_csv(here::here("data", "family_guy_ep_ratings.csv"))
 family_guy_gg = family_guy %>% create_episode_plot("Family Guy")
 family_guy_gg %>% interactive_plotly
 # resave here for the correct width
-ggsave("imdb_rating_plot_files/family_guy.png", plot = family_guy_gg, width = 16, height = 9, dpi = 300)
+ggsave(file.path(out_dir, "family_guy.png"), plot = family_guy_gg, width = 16, height = 9, dpi = 300)
 ```
 
 ## Invincible
