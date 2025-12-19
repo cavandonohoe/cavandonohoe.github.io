@@ -12,7 +12,7 @@ render_subdir <- function(dir, encoding = "UTF-8") {
   files <- list.files(dir, pattern = "\\.Rmd$", full.names = TRUE)
   if (!length(files)) return(invisible(NULL))
 
-  out_root <- "_site"
+  out_root <- normalizePath("_site", mustWork = FALSE)
   out_dir <- file.path(out_root, dir)
   dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
@@ -27,7 +27,7 @@ render_subdir <- function(dir, encoding = "UTF-8") {
       output_file = out_file,
       encoding = encoding,
       output_options = list(
-        lib_dir = "site_libs",
+        lib_dir = file.path(out_root, "site_libs"),
         self_contained = FALSE
       )
     )
