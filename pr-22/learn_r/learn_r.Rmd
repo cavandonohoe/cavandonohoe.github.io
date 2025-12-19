@@ -3,6 +3,7 @@ title: "R Time Is Limited, Let's Make the Most of It"
 author: "Cavan Donohoe"
 output:
   html_document:
+    self_contained: false
     toc: true
     toc_float: true
     includes:

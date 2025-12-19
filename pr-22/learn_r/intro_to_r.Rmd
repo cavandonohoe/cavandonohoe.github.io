@@ -3,6 +3,7 @@ title: "Introduction to R"
 author: "Cavan Donohoe"
 output:
   html_document:
+    self_contained: false
     toc: true
     toc_float: true
     includes:
