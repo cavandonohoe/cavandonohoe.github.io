@@ -7,7 +7,6 @@ output:
     includes:
       in_header: ../header/header.html
       after_body: ../include_footer.html
-output_file: "projects/firefighter_schedule.html"
 ---
 
 ```{r setup, include=FALSE}

@@ -8,7 +8,6 @@ output:
     includes:
       in_header: ../header/header.html
       after_body: ../include_footer.html
-output_file: "learn_r/statistics_with_r.html"
 ---
 
 # Statistics with R
