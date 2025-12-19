@@ -20,11 +20,8 @@ I'm kinda obsessed with seeing a whole map of series and where they stride well 
 
 ```{r ci-outdir, include=FALSE}
 # ensure output dir exists in clean CI environment
-out_dir <- "imdb_rating_plot_files"
+out_dir <- here::here("imdb_rating_plot_files")
 if (!dir.exists(out_dir)) dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
-
-# optional: make knitr put figures here too
-knitr::opts_chunk$set(fig.path = paste0(out_dir, "/"))
 ```
 
 
@@ -61,7 +58,7 @@ create_episode_plot <- function(episode_data, title, export_png = TRUE) {
     tolower() %>%
     stringr::str_remove_all(":") %>%
     stringr::str_replace_all(" ", "_") %>%
-    paste0("imdb_rating_plot_files/", ., ".png")
+    paste0(., ".png")
 
   episode_plot <- episode_data %>%
     ggplot2::ggplot(
@@ -100,7 +97,7 @@ create_episode_plot <- function(episode_data, title, export_png = TRUE) {
 
   if (export_png) {
     ggplot2::ggsave(
-      filename = here::here(dirname(file_name), basename(file_name)),
+      filename = file.path(out_dir, file_name),
       plot = episode_plot,
       width = 8,
       height = 6,
