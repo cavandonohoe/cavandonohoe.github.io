@@ -3,8 +3,8 @@ title: "About Me"
 output:
   html_document:
     includes:
-      in_header: header/header.html
-      after_body: include_footer.html
+      in_header: ../header/header.html
+      after_body: ../include_footer.html
 editor_options: 
   chunk_output_type: console
 ---
@@ -30,13 +30,13 @@ I use that principle throughout my work life and make sure I explain everything 
 
 I have been playing beach volleyball for the past `r lubridate::year(Sys.Date()) - 2009` years. I knew my body would probably combust if I lived anywhere not close to a beach. So naturally out of university I moved to Oahu to work as an Actuarial Analyst.
 
-![](images/Volleyball silhouette.jpg)
+![](../images/Volleyball silhouette.jpg)
 
 Oahu was incredible. Every single weekend was a vacation. I got to go on hikes, go in the warm waters and look at fish, surf, and spend some quality time with good friends. I didn't have a car and I honestly didn't need one. Some days I did get a little carried away and just kept biking. Some days I just needed that escape and that warm wind in my face. 
 
 I took a lot of pictures when I was in Hawaii, but this is my favorite:
   
-![*Out of the sea, Wish I could be, Part of that world*](images/little mermaid.jpg)
+![*Out of the sea, Wish I could be, Part of that world*](../images/little mermaid.jpg)
 
 Working as an actuary was my goal throughout university. And then when I finally became an actuary and started taking those exams while working, my fears came into reality. I didn't enjoy taking those exams. They were difficult and took a lot of work and a lot of time away from what I enjoyed doing in life. I am not one to shy away from a challenge, but I also enjoy my work life balance and would not sacrifice that over months with little benefit to my overall career growth.
 

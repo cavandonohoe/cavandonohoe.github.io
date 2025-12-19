@@ -1,59 +1,59 @@
 name: "Cavan Donohoe"
 output_dir: "_site"
 include:
-  - imdb_rating_plot_files
+  - analyses/imdb_rating_plot_files
 navbar:
   title: "Cavan Donohoe"
   type: inverse
   left:
     - text: "Home"
       icon: fa-home
-      href: index.html
+      href: analyses/index.html
     - text: "About Me"
       icon: fa-info
-      href: about.html
+      href: analyses/about.html
     - text: "Services"
       icon: fa-wrench
-      href: services.html
+      href: analyses/services.html
     - text: "Projects"
       icon: fa-laptop
       menu:
       - text: "IMDb TV Series"
-        href: imdb_top_250_tv_series.html
+        href: analyses/imdb_top_250_tv_series.html
       - text: "Best Picture and Top 1000 Box Office"
-        href: best_pic_vs_top_1000.html
+        href: analyses/best_pic_vs_top_1000.html
       - text: "Top 250 IMDb Movies with Rotten Tomato Scores"
-        href: top_250_imdb_with_rt.html
+        href: analyses/top_250_imdb_with_rt.html
       - text: "IMDb Rating Plot by Season and Episode"
-        href: imdb_rating_plot.html
+        href: analyses/imdb_rating_plot.html
       - text: "Best Picture Nominees"
-        href: best_picture_nominees.html
+        href: analyses/best_picture_nominees.html
       - text: "Jason, Owen, and Wyett's Firefighter Schedule"
-        href: firefighter_schedule.html
+        href: analyses/firefighter_schedule.html
       - text: "TOHS Class of 2012 Reunion"
-        href: tohs_reunion.html
+        href: analyses/tohs_reunion.html
       - text: "Sierpinski Triangle"
-        href: sierpinski_triangle.html
+        href: analyses/sierpinski_triangle.html
       - text: "My IMDb Ratings"
-        href: my_imdb.html
+        href: analyses/my_imdb.html
       - text: "Get Bloggy With It"
-        href: my_travels.html
+        href: analyses/my_travels.html
       - text: "When Were Confederate Statues Erected?"
-        href: confederate_statues.html
+        href: analyses/confederate_statues.html
       - text: "Learn R"
         menu:
         - text: "R Time Is Limited, Let's Make the Most of It"
-          href: learn_r.html
+          href: analyses/learn_r.html
         - text: "Intro to R"
-          href: intro_to_r.html
+          href: analyses/intro_to_r.html
         - text: "Basic Operations"
-          href: basic_operations_r.html
+          href: analyses/basic_operations_r.html
         - text: "Data Manipulations"
-          href: data_manipulation_r.html
+          href: analyses/data_manipulation_r.html
         - text: "Data Visualization"
-          href: data_visualization_r.html
+          href: analyses/data_visualization_r.html
         - text: "Statistics with R"
-          href: statistics_with_r.html
+          href: analyses/statistics_with_r.html
       - text: "CV"
-        href: cv.html
+        href: analyses/cv.html
     
