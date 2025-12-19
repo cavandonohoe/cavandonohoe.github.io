@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Blog</title>
+
+<script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P51TN2DWZM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P51TN2DWZM');
+</script>
+<html>
+  <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/header/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/header/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/header/favicon-16x16.png">
+    <link rel="manifest" href="/header/site.webmanifest">
+    <link rel="mask-icon" href="/header/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+  </head>
+</html>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Cavan Donohoe</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="fa fa-info"></span>
+     
+    About Me
+  </a>
+</li>
+<li>
+  <a href="services.html">
+    <span class="fa fa-wrench"></span>
+     
+    Services
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-laptop"></span>
+     
+    Projects
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="imdb_top_250_tv_series.html">IMDb TV Series</a>
+    </li>
+    <li>
+      <a href="best_pic_vs_top_1000.html">Best Picture and Top 1000 Box Office</a>
+    </li>
+    <li>
+      <a href="top_250_imdb_with_rt.html">Top 250 IMDb Movies with Rotten Tomato Scores</a>
+    </li>
+    <li>
+      <a href="imdb_rating_plot.html">IMDb Rating Plot by Season and Episode</a>
+    </li>
+    <li>
+      <a href="best_picture_nominees.html">Best Picture Nominees</a>
+    </li>
+    <li>
+      <a href="firefighter_schedule.html">Jason, Owen, and Wyett's Firefighter Schedule</a>
+    </li>
+    <li>
+      <a href="tohs_reunion.html">TOHS Class of 2012 Reunion</a>
+    </li>
+    <li>
+      <a href="sierpinski_triangle.html">Sierpinski Triangle</a>
+    </li>
+    <li>
+      <a href="my_imdb.html">My IMDb Ratings</a>
+    </li>
+    <li>
+      <a href="my_travels.html">Get Bloggy With It</a>
+    </li>
+    <li>
+      <a href="confederate_statues.html">When Were Confederate Statues Erected?</a>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Learn R</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="learn_r.html">R Time Is Limited, Let's Make the Most of It</a>
+        </li>
+        <li>
+          <a href="intro_to_r.html">Intro to R</a>
+        </li>
+        <li>
+          <a href="basic_operations_r.html">Basic Operations</a>
+        </li>
+        <li>
+          <a href="data_manipulation_r.html">Data Manipulations</a>
+        </li>
+        <li>
+          <a href="data_visualization_r.html">Data Visualization</a>
+        </li>
+        <li>
+          <a href="statistics_with_r.html">Statistics with R</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="cv.html">CV</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Blog</h1>
+
+</div>
+
+
+<p>Please note, I have pictures on my Instagram so I won’t have any
+pictures on this blog. Give me a follow 😊</p>
+<p><a href="https://www.instagram.com/cavandonohoe"><i class="fa fa-instagram" style="font-size:36px"></i></a></p>
+<div id="section" class="section level2">
+<h2>2022</h2>
+<div id="week-of-may-16th-2022" class="section level3">
+<h3>Week of May 16th, 2022</h3>
+<p>Travelling to a new place for the first time can be both exhilarating
+and nerve-wracking. Especially when it’s outside of your comfort zone. I
+recently had the opportunity to travel to Madrid, Spain for a week,
+which marked my first international trip outside of North America. And
+let me tell you, it was an experience I will never forget.</p>
+<p>Madrid is a vibrant city filled with history, art, culture, and
+amazing food. The city is a mix of old and new, with beautiful
+architecture that has stood the test of time. One of the first things
+that struck me about Madrid was the warmth of the people. From the
+airport to the streets, everyone was friendly and welcoming, making me
+feel right at home.</p>
+<p>As I explored the city, I found myself constantly in awe of the
+stunning buildings, monuments, and parks. The Royal Palace of Madrid,
+with its intricate details and grandeur, was one of my favorite sights.
+Walking through the Puerta del Sol, one of the busiest squares in
+Madrid, I felt like I was part of the hustle and bustle of city
+life.</p>
+<p>But what I enjoyed most about Madrid was its food culture. From tapas
+to paella, Spanish cuisine is world-renowned for its bold flavors and
+deliciousness. I visited many local restaurants and cafes, trying
+everything from traditional Spanish dishes to fusion cuisine. My
+personal favorite was a small tapas bar in the Malasaña neighborhood
+that served the most amazing patatas bravas I have ever tasted. And some
+dank sangria!</p>
+<p>One of the biggest challenges I faced during my trip was the language
+barrier. Although many people in Madrid speak English, it was still
+difficult at times to communicate effectively. However, I quickly
+learned that a smile and a willingness to try to speak Spanish went a
+long way in breaking down barriers and building connections with the
+locals. Plus, Google Translate was super effective with ordering food
+and what not. Also, in a lot of places in Europe, they won’t come around
+with the bill, so you’ll actually have to get the courage to ask
+them.</p>
+<p>In conclusion, my first international trip to Madrid was a
+life-changing experience. It opened my eyes to a new culture, language,
+and way of life. It taught me to be more adventurous and open-minded,
+and to embrace new experiences with enthusiasm. I can’t wait to plan my
+next international adventure and see what other exciting opportunities
+await.</p>
+<p>Also, I just thought of a little bit more to add to this…</p>
+<p>Certainly, working remotely while traveling can be a unique
+experience, and Madrid was no exception. Despite the time difference, I
+was able to maintain my work schedule in the Pacific Time Zone while
+enjoying everything the city had to offer. So my schedule ended up being
+a fun period of exploring whichever city I was in from 10am - 6pm, work
+from 6pm - 2am, then sleep from 2am - 10am. Then repeat :D</p>
+<p>One of the perks of working remotely while traveling is the
+flexibility it provides. I could explore the city during the day, try
+different foods, and visit museums and landmarks, all while still being
+able to attend virtual meetings and complete my work tasks.</p>
+<p>Working remotely also allowed me to immerse myself more fully in the
+local culture. I visited local cafes and co-working spaces, where I had
+the opportunity to meet locals and other travelers who were also working
+remotely. It was interesting to learn about their experiences and how
+they balanced work and travel.</p>
+<p>Overall, working remotely in Madrid was a great experience. It gave
+me the freedom to travel and explore a new city while also staying on
+top of my work responsibilities. I would highly recommend it to anyone
+who has the opportunity to do so.</p>
+<p>To get real for a sec: This was a good start to the trip. I started
+walking a bunch and really enjoyed seeing everyone else there. It was
+pretty warm there and there wasn’t great water in the Airbnb butttt it
+was really awesome going to the nearby square (plaza) to get more water.
+And people were there till I was done working at 2am. I should have
+struck up a conversation with some random people over there. Oh well,
+missed opportunity.</p>
+</div>
+<div id="week-of-may-23rd-2022" class="section level3">
+<h3>Week of May 23rd, 2022</h3>
+<p>Biking the Amalfi Coast is one of the most iconic experiences in
+Italy. The stunning coastal views, charming towns, and delicious food
+make it a must-see destination for any traveler. But what happens when
+you rent an electric bike and are too proud to use the electric part?
+That’s exactly what happened to me during my trip to Naples, Italy.</p>
+<p>After spending a week in Madrid, I was ready for my next adventure. I
+decided to visit Naples and rent an electric bike to explore the Amalfi
+Coast. However, when I picked up the bike, I forgot to turn on the
+electric assist. As a result, I was left with a heavy bike that was
+difficult to pedal, especially on the steep hills of the Amalfi
+Coast.</p>
+<p>Despite the challenging start, I decided to embrace the experience
+and set off on my adventure. I took a train to Salerno, a town at the
+southern end of the Amalfi Coast, and started my bike ride along the
+winding roads that hug the coastline.</p>
+<p>The views were breathtaking. The turquoise waters of the Tyrrhenian
+Sea sparkled in the sunlight, and the colorful houses perched on the
+hillsides added to the charm of the towns. However, as the day went on,
+I began to feel the strain of pedaling a heavy bike uphill.</p>
+<p>At times, I had to slow down and catch my breath but never ever push
+my bike. It was actually impossible to walk with a bike on the windy
+streets of the Amalfi Coast just because the streets were so narrow. It
+was exhausting though. But with each turn, the stunning views made it
+all worth it. I passed through charming towns like Vietri sul Mare,
+Amalfi, and Positano, each with its unique character and beauty.</p>
+<p>As the sun began to set, I reached the end of my bike ride and
+arrived back in Sorrento. However, the adventure wasn’t quite over. When
+I tried to take the bike on the train back to Naples, I was told that I
+couldn’t because of the size of the bike. I had to pedal the entire way
+back to Naples, which was challenging, but also a fitting end to the
+day’s adventure.</p>
+<p>In conclusion, biking the Amalfi Coast on a heavy bike was a unique
+experience. While it was challenging at times, it was also incredibly
+rewarding. The stunning views, charming towns, and sense of
+accomplishment made it a trip I will never forget. It reminded me that
+sometimes, the most memorable experiences come from stepping out of your
+comfort zone and embracing the journey, even if it doesn’t go as
+planned.</p>
+<p>This trip also featured Janella and Becky who made the trip so much
+better. I realized how nice it was to have a balance of seeing friends
+and also doing my own thing. It does get lonely if it’s just me doing my
+own thing days on end. But then again, you’d think I’d get lonely on
+that massive 75 mile bike ride along the Amalfi Coast. But for some
+reason, that felt great. This form of long term traveling seems to get
+me to learn more and more about myself.</p>
+</div>
+<div id="may-30th---june-19th-2022" class="section level3">
+<h3>May 30th - June 19th 2022</h3>
+<p>Rome is one of the most vibrant and historic cities in the world, and
+I had the opportunity to explore it for three weeks. During my trip, I
+stayed at my friend Mauro’s place, watched the 2022 FIVB World Tour
+Finals tournament, and had an amazing time. I also got to hangout with
+Shannon Costa and got to meet some of my favorite volleyball players in
+the world! Mauro was only there for one week too! It’s very funny
+because he was only there for one week, while I was there for 3…</p>
+<p>One of the best things about staying with a local is that you get a
+unique perspective on the city. Mauro was a great host, showing me the
+hidden gems of Rome that are often overlooked by tourists. We had some
+truly authentic Italian food and he showed me things my tongue only
+dreamed about. Like in a non sexual way. It was a great way to immerse
+myself in the local culture and get a true taste of Rome.</p>
+<p>One of the highlights of my trip was attending the 2022 FIVB World
+Tour Finals tournament. The tournament featured some of the best
+volleyball players in the world, and the matches were intense and
+exciting. I got to see top teams from around the world compete, and the
+atmosphere in the stadium was electric. I got to meet a bunch of
+Norwegians who offered me to let them stay with them up in Oslo! So I’ll
+be going in the summer of 2023 to see if they’re still down for
+that.</p>
+<p>Apart from the volleyball tournament, there was so much to see and do
+in Rome. I visited famous landmarks like the Colosseum, the Vatican, and
+the Pantheon, and each one was more impressive than the last. The
+history and art in Rome are breathtaking, and it’s incredible to think
+about the stories that each monument and building holds.</p>
+<p>I also enjoyed wandering around the city, getting lost in the narrow
+streets and stumbling upon hidden treasures. Rome is a city that rewards
+exploration, and I loved discovering new places and experiences.</p>
+<p>Of course, no trip to Rome is complete without trying the food. From
+pizza and pasta to gelato and espresso, every meal was a culinary
+adventure. Mauro took me to his favorite local spots, where we indulged
+in delicious dishes and soaked up the atmosphere. And let me tell you
+the carbonara was so so so good!! I still dream of that pasta dish to
+this day.</p>
+<p>Overall, my three weeks in Rome were a fantastic experience. Staying
+with a local gave me a unique perspective on the city, and the FIVB
+tournament added an extra layer of excitement. Rome is a city that has
+so much to offer, from its history and culture to its food and
+nightlife. It’s a place that I will always hold dear to my heart, and I
+can’t wait to go back and explore more.</p>
+<p>One last thing btw… There is a spot in Rome called Yellow Door Hostel
+Bar that was so incredible! I went only twice, but I had the best time
+ever! If I wasn’t staying on the other side of town, I would have gone
+more often. I met so many friendly faces there! And every time I went,
+there were hardly any outdoor spots to sit, so you would have to share a
+table with other people there. Which ends up building some long term
+relationships with these people. And everyone spoke English too which
+was huge!</p>
+</div>
+<div id="week-of-june-20th" class="section level3">
+<h3>Week of June 20th</h3>
+<p>Dubrovnik is a picturesque city located on the Adriatic coast of
+Croatia. It’s known for its stunning medieval architecture, charming
+streets, and crystal-clear waters. I had the opportunity to explore this
+beautiful city for a week, and it was an unforgettable experience.</p>
+<p>One of the things that stood out to me about Dubrovnik was its
+history. The city has been around for centuries and has gone through
+many transformations over the years. I had the chance to walk along the
+ancient city walls and admire the stunning views of the red-tiled roofs
+and the sparkling sea. It was fascinating to see how the city has
+evolved over the centuries, and I felt like I was stepping back in
+time.</p>
+<p>Another highlight of my trip was exploring the Old Town. The
+cobblestone streets, stone buildings, and charming squares were like
+something out of a fairy tale. I spent hours wandering through the
+narrow alleys and admiring the architecture. The city is so well
+preserved that it’s easy to imagine what life was like in the past. I
+felt like Hulk in Endgame… SO MANY STAIRS. I got a nice butt workout
+from this experience. It was really hot there too, so I was a sweaty
+mess.</p>
+<p>Of course, no trip to Dubrovnik is complete without spending time by
+the sea. The beaches and coves in Dubrovnik are some of the most
+beautiful I’ve ever seen. I spent several afternoons swimming in the
+clear water and sunbathing on the rocky beaches. It was a wonderful way
+to relax and take in the natural beauty of the city.</p>
+<p>Overall, my week in Dubrovnik was an amazing adventure. The city is
+full of history, culture, and natural beauty. I loved exploring the Old
+Town, swimming in the sea, and trying the delicious food. It’s a place
+that I would highly recommend to anyone looking for a unique and
+unforgettable travel experience.</p>
+<p>I mean and living in King’s Landing for a week was dope too. I was
+just listing to the theme music for hours on end. I recommend walking
+along the wall in the Old City. Best walk around the city I’ve had! Plus
+you’re up so high without any railings, so that’s a thrill too.</p>
+<p>I stayed in an Airbnb in the Port of Dubrovnik, so I got to see a
+beautiful view from my pad every day while I worked over there.</p>
+</div>
+<div id="weekend-of-june-25th" class="section level3">
+<h3>Weekend of June 25th</h3>
+<p>Zagreb is the capital of Croatia and a vibrant city with a rich
+history and culture. I had the opportunity to explore this charming city
+for a weekend and it was a fantastic experience. I also took a quick
+visit to Plitvice Lakes National Park, which was a highlight of my
+trip.</p>
+<p>Zagreb has a fascinating history that’s reflected in its architecture
+and culture. The city is a blend of medieval and modern, with colorful
+buildings, narrow streets, and spacious parks. I spent most of my time
+wandering around the streets and exploring the local markets. The city
+has a lively atmosphere with street musicians, cafes, and bars. It was a
+great place to soak up the local culture.</p>
+<p>One of the highlights of my trip was visiting the Plitvice Lakes
+National Park. The park is a UNESCO World Heritage Site and one of the
+most beautiful natural wonders of Croatia. The park features a series of
+cascading waterfalls, crystal-clear lakes, and lush green forests. I
+spent several hours hiking around the park and admiring the stunning
+scenery. It was a peaceful and magical experience that left me in awe. I
+took a picture of a waterfall while I was on a waterfall!!</p>
+<p>Back in Zagreb, I enjoyed trying the local cuisine. Croatian food is
+delicious and diverse, with influences from Italy, Austria, and the
+Balkans. I tried traditional dishes like grilled meats, seafood, and
+pasta, and I also enjoyed the local wines and spirits. The local markets
+are also a great place to sample fresh fruits, vegetables, and
+cheeses.</p>
+<p>Overall, my weekend trip to Zagreb with a quick visit to Plitvice was
+a wonderful adventure. The city is full of history, culture, and great
+food. Plitvice Lakes National Park was a stunning natural wonder that
+left me breathless. It’s a place that I would highly recommend to anyone
+looking for a unique and unforgettable travel experience.</p>
+<p>Also, I got to hostel with Janella! And that was a blast! What a fun
+time with a fun person! And I stayed in my very first hostel and got to
+experience that type of craziness and cool people!</p>
+<p>Oh btw, on my way to Plitvice I missed my bus stop so I got off and
+started walking back towards Plitvice and ended up getting a ride from a
+nice stranger. And I didn’t get murdered! Hurray!</p>
+</div>
+<div id="week-of-june-27th" class="section level3">
+<h3>Week of June 27th</h3>
+<p>Split is a charming coastal city located in southern Croatia. It’s
+known for its beautiful beaches, stunning architecture, and vibrant
+nightlife (of which I didn’t partake since I am not huge into loud
+clubs). I had the opportunity to explore this wonderful city for a week,
+and it was an amazing experience.</p>
+<p>One of the highlights of my trip to Split was exploring the historic
+Old Town. The city is over 1,700 years old, and it’s packed with
+incredible sights and sounds. I spent hours wandering through the narrow
+streets, admiring the beautiful architecture, and exploring the local
+markets. One of the must-see sights in Split is the Diocletian’s Palace,
+which was built in the 4th century and is now a UNESCO World Heritage
+Site.</p>
+<p>Another highlight of my trip was the local cuisine. Croatian food is
+delicious and diverse, and Split is a great place to sample it. I tried
+traditional dishes like grilled fish and meat, fresh seafood, and pasta.
+I also enjoyed the local wines and spirits, which added to the
+experience.</p>
+<p>Overall, my week in Split was a fantastic adventure. The city is full
+of history, culture, and natural beauty. I loved exploring the Old Town,
+trying the delicious food, and spending time by the sea. The vibrant
+nightlife was also a highlight of my trip. It’s a place that I would
+highly recommend to anyone looking for a fun and unforgettable travel
+experience.</p>
+<p>Another round of hitting the hostel in this town too! I had a fun
+little time over there exploring the city on the last few days with
+Janella again!</p>
+</div>
+<div id="weekend-of-july-1st" class="section level3">
+<h3>Weekend of July 1st</h3>
+<p>So this was a crazy weekend. It started on a delayed flight from
+Split to Milan. Then I took a train over to Como to see how beautiful
+the lake was over there and also to go to that mansion where Attack of
+the Clones was filmed. Butttt I didn’t have time because I needed to
+make a bus from Milan to Nice. And I ended up missing my bus anyways
+because of train delays! I was so close to making it too! Oh well. I
+payed for an overpriced bus ticket to get from Milan to Nice with a stop
+in Lyon. But the stop in Lyon was excellent! I had an amazing macaron
+and an amazing croissant! I dream about that! Omg!</p>
+<p>Anyways, I ended up making it to Nice with very little sleep on that
+bus ride, but hey… I made it.</p>
+<p>Nice is a beautiful coastal city located in the south of France. It’s
+known for its stunning beaches, colorful buildings, and vibrant culture.
+I had the opportunity to explore this charming city for a weekend with
+Daphney, and it was an incredible experience. I also had the chance to
+meet two fun guys from Miami who offered to take me on a day trip to
+Monaco since. Part of the fun of these trips is getting to meet new
+people and it is so easy to meet new people when I am with a fun person
+on that trip. So thank you, Daphney for making it easy to make friends
+with these people.</p>
+<p>The first thing that struck me about Nice was the beautiful
+architecture. The city is full of colorful buildings, narrow streets,
+and quaint cafes. I spent most of my time exploring the local markets,
+trying the delicious food, and soaking up the local culture. Nice has a
+lively atmosphere with street performers, musicians, and artists. It was
+a great place to relax and take in the local scenery.</p>
+<p>One of the highlights of my trip was meeting the two guys at my
+Airbnb who invited me to join them on a day trip to Monaco. They had a
+cabana at this club overlooking the sea on one side and the speedway
+track on the other and offered to take me along for free. It was an
+incredible experience. We spent the day swimming in the pool and
+pretending to be rich. We met other people who were probably doing the
+same exact thing. Monaco is a stunning city with luxurious buildings and
+beautiful scenery. We visited the famous Monte Carlo casino and enjoyed
+the local shops and restaurants. It was a great day and one that I will
+never forget.</p>
+<p>Back in Nice, I also spent the evening hiking up to the castle at the
+top of the hill. I find all of France just has an atmosphere of
+romanticism. I loved seeing the lights at night and all of the beauty of
+the city from above.</p>
+<p>Sidenote: I’m an idiot for not having ratatouille in France…</p>
+<p>Overall, my weekend trip to Nice with a day trip to Monaco was a
+fantastic adventure. The city is full of history, culture, and natural
+beauty. The local cuisine was delicious, and the beaches were stunning.
+The chance encounter with the two fun guys from Miami who took me to
+Monaco was a highlight of my trip. It’s a place that I would highly
+recommend to anyone looking for a unique and unforgettable travel
+experience.</p>
+<p>Also, the beaches are pebbly beaches, so I recommend sandals or
+shoes. So watch out for that.</p>
+</div>
+<div id="week-of-july-4th" class="section level3">
+<h3>Week of July 4th</h3>
+<p>Happy Independence Day! First one I have experienced being away from
+the US.</p>
+<p>Marseille is a beautiful city located in the south of France. It’s
+known for its stunning coastline, historic landmarks, and vibrant
+culture. I had the opportunity to spend a week exploring this charming
+city and even took a day trip to Paris.</p>
+<p>Marseille has a rich history and a unique culture. The city is full
+of historic landmarks, including the Basilique Notre-Dame de la Garde, a
+beautiful basilica perched on a hill overlooking the city. I also
+visited the Old Port, a bustling area filled with restaurants, cafes,
+and shops. The locals are friendly and welcoming, and I enjoyed chatting
+with them and learning more about their way of life.</p>
+<p>One of the highlights of my trip was a day trip to Paris. It’s only a
+three-hour train ride from Marseille, so it was easy to take a day trip.
+I visited some of the most famous landmarks in Paris, including the
+Eiffel Tower, the Louvre Museum, and Notre-Dame Cathedral. It was a busy
+day, but I managed to see a lot of the city in a short amount of time.
+And Phoebe Hung let me stay at her place and also play tour guide to the
+city she was living in for the summer! Crazy enough was I never actually
+had a real conversation with Phoebe until Paris and then we ended up
+talking for 8 hours! That was crazy!</p>
+<p>Back in Marseille, I spent time exploring the local beaches. But
+really just one beach in particular. I am too lazy right now to look it
+up, but I played so much volleyball with the locals over there! Just by
+saying I played volleyball in California, they automatically took me in
+and saw me as an expert (even though I have been playing for 18 years, I
+still don’t consider myself an expert). But hey, I played with some
+French people and that was a fun time!</p>
+<p>The local cuisine was another highlight of my trip. Marseille is
+famous for its seafood, and I enjoyed some of the freshest and most
+delicious seafood I’ve ever had. I also tried traditional dishes like
+bouillabaisse, a fish stew that originated in the area, and enjoyed
+local wines and spirits.</p>
+<p>Overall, my week in Marseille with a day trip to Paris was a
+fantastic adventure. The city is full of history, culture, and natural
+beauty. The locals are friendly and welcoming, and the food is
+delicious. The day trip to Paris was a great way to see some of the most
+famous landmarks in the world, and I’m glad I took the time to explore
+this beautiful city. It’s a trip that I will never forget and one that I
+would highly recommend to anyone looking for a unique and unforgettable
+travel experience.</p>
+<p>I also hungout with some people at the local hostel bar! Which I
+should remember to do that sooner in my travels so I can make friends
+earlier. But whatever, still a fun time!</p>
+</div>
+<div id="week-of-july-11th" class="section level3">
+<h3>Week of July 11th</h3>
+<p>Barcelona is a vibrant city located on the northeastern coast of
+Spain. It’s known for its stunning architecture, delicious food, and
+lively culture. I had the opportunity to spend a week exploring this
+incredible city, and it was an experience I will never forget.</p>
+<p>One of the highlights of my trip was visiting the iconic Sagrada
+Familia, a massive basilica that has been under construction since 1882.
+The intricate details and stunning design of the basilica were truly
+breathtaking, and it was amazing to see the progress that has been made
+on this incredible structure.</p>
+<p>I walked along La Rambla, a bustling street lined with shops,
+restaurants, and street performers, and explored the Gothic Quarter, a
+historic area filled with narrow streets, beautiful buildings, and
+fascinating history.</p>
+<p>The food in Barcelona was another highlight of my trip. I indulged in
+traditional dishes like paella and patatas bravas. I also enjoyed
+delicious tapas and local wines, and explored the city’s vibrant food
+scene. Of course I had sangria… I mean come on.</p>
+<p>Aside from the city’s attractions, I also spent time relaxing on the
+beach and taking in the beautiful Mediterranean Sea. Barcelona has some
+of the best beaches in Europe, and it was a great way to unwind and soak
+up the sun.</p>
+<p>And of course there was so much volleyball every single day! That
+place was awesome!!! I’ve never been welcomed by so many people before!
+Seriously the nicest people to ever play the sport and just welcome in
+strangers like no problem. That would never happen in the US to
+strangers. But hey, Europeans are nicer I suppose.</p>
+<p>Overall, my week in Barcelona was an incredible experience. The city
+is full of history, culture, and natural beauty. The architecture is
+stunning, the food is delicious, and the people are friendly and
+welcoming. It’s a trip that I will never forget and one that I would
+highly recommend to anyone looking for a unique and unforgettable travel
+experience.</p>
+<p>And hey that was the end of my 2022 Euro Trip. Come back shortly for
+my 2023 Euro Trip…</p>
+</div>
+<div id="my-first-autumn-october-30th---november-13th"
+class="section level3">
+<h3>My First Autumn (October 30th - November 13th)</h3>
+<p>Autumn is a beautiful season in the northeastern United States, with
+the changing leaves creating a stunning display of colors. I had the
+opportunity to spend two weeks in November exploring the area around New
+Brunswick, New York City, and Philadelphia, and it was an incredible
+trip.</p>
+<p>I started my trip with New York City, which was bustling with energy
+and excitement. And it was warm! It was like 72 degrees as the high when
+I was there. I thought I needed to bring more sweats and sweatshirts on
+my trip, but surprisingly, I didn’t need them! The city was also filled
+with beautiful autumn leaves, especially in Central Park. I spent a day
+exploring the park, taking in the colorful foliage and enjoying the
+crisp fall air. I spent a lot of time playing volleyball and walking as
+much as I could! When I was able to wander and spend more time around
+the city, I skipped the subway and chose to walk the 10 miles. It was
+beautiful as a California native! I got to see Alex Morris for the 4th
+time this year! Truly the nicest person I have ever met and it was
+lovely seeing her! I hope she and Max get engaged!</p>
+<p>Also, I got to stay in the Lower East Side with a friend and she had
+an incredible high rise apartment with an awesome view! Such a cool
+experience being there!</p>
+<p>Next, I headed to New Brunswick, NJ, where I stayed with friends
+(Mina and Ted - who are moving to California in March 2023!) who showed
+me around the area. They live next to this beautiful tree filled with
+reds, oranges, and yellows in their leaves and my eyes were truly seeing
+some true beauty for the first time.</p>
+<p>From there, I took a short train ride to Philadelphia, which was also
+full of autumn beauty. I explored the historic Old City neighborhood,
+where I saw the Liberty Bell and Independence Hall, and visited the
+beautiful Fairmount Park, which was full of colorful trees and peaceful
+trails. I got to see my cousin, Blake, and met his son, Wesley, for the
+first time! Such a fun time over there!</p>
+<p>Throughout my trip, I always try some tasty foods and I will always
+go to Joe’s Pizza whenever I’m in NYC. I also went to a club in NYC
+where they played ‘Empire State of Mind’ which everyone lost their shit
+over. Also had Philly cheesesteak for the first time. In Philadelphia!
+Crazy stuff, I know.</p>
+<p>Overall, my two-week trip to New Brunswick, NJ, NYC, and Philly to
+see autumn leaves was a beautiful and memorable experience. I highly
+recommend this trip to anyone who wants to explore the natural beauty
+and vibrant culture of the northeastern United States in the fall.</p>
+</div>
+</div>
+<div id="section-1" class="section level2">
+<h2>2023</h2>
+<div id="week-of-may-22nd" class="section level3">
+<h3>Week of May 22nd</h3>
+<p>EUROPE ROUND 2 YO!</p>
+<p>So I went to Porto! I had the pleasure of immersing myself in the
+charm of Porto for a week, and every moment felt like a step back in
+time. One of the city’s standout attractions is the awe-inspiring Dom
+Luís I Bridge, an iconic double-deck iron bridge that spans the river
+and offers panoramic views of the city. As I strolled across its upper
+level, I couldn’t help but be mesmerized by the intricate architecture
+and the breathtaking vistas that unfolded before me. I mean it was the
+same guy who did the Eiffel Tower so should I be surprised?</p>
+<p>A visit to Porto wouldn’t be complete without exploring the historic
+Ribeira district. This UNESCO World Heritage site is a maze of narrow
+alleyways, colorful facades, and charming cafes. I found myself
+wandering through the winding streets, soaking in the atmosphere and
+discovering hidden gems at every turn. The medieval buildings and tiled
+façades exude a sense of old-world charm that is truly captivating.</p>
+<p>No trip to Porto would be complete without indulging in its most
+famous export: port wine. The city is renowned for its port wine
+cellars, where you can take guided tours and learn about the fascinating
+history and production process of this sweet elixir. I had the pleasure
+of savoring a variety of port wines, from the rich and velvety vintage
+ports to the fruity and aromatic tawnies. Each sip was a celebration of
+the city’s rich winemaking heritage.</p>
+<p>In addition to its architectural and culinary delights, Porto offers
+a vibrant cultural scene. I explored the Livraria Lello, a breathtaking
+bookstore that is said to have inspired J.K. Rowling in the creation of
+Hogwarts. Its magnificent wooden staircase and ornate art nouveau design
+make it a true bibliophile’s paradise. I also visited the contemporary
+art museum, the Serralves Foundation, where I was captivated by the
+thought-provoking exhibitions and the stunning surrounding gardens.</p>
+<p>Porto is not just a city of cultural and historical significance; it
+is also a city of warmth and hospitality. The locals, known as
+“tripeiros,” greeted me with open arms and made me feel right at home.
+Whether it was engaging in lively conversations at a local café or
+receiving recommendations for the best traditional dishes, the warmth
+and friendliness of the people added an extra layer of magic to my Porto
+experience.</p>
+<p>Of course, no visit to Porto would be complete without savoring the
+delectable local cuisine. I savored the iconic Francesinha, a hearty
+sandwich layered with ham, sausage, steak, and melted cheese, topped
+with a rich tomato sauce. Damn it was heavy! And let’s not forget the
+pastel de nata, the creamy custard tart that is a true Portuguese
+delight. Each meal was a celebration of the city’s culinary heritage,
+and I found myself falling in love with the flavors and aromas of
+Porto.</p>
+<p>As I bid farewell to this charming city, I couldn’t help but feel a
+sense of nostalgia already. Porto had welcomed me with open arms, and I
+was leaving with a heart full of memories and a newfound appreciation
+for its rich history, cultural treasures, and warm-hearted people. Porto
+is a city that leaves an indelible mark on your soul, and I can
+wholeheartedly recommend it to anyone seeking an unforgettable travel
+experience.</p>
+</div>
+<div id="week-of-may-29th" class="section level3">
+<h3>Week of May 29th</h3>
+<p>Wedding week in Barcelona! Not too much more to say about Barcelona
+though. I have already been there, but now I am a part of a morning
+volleyball group on WhatsApp. So I can always expect to get games in the
+morning whenever I am in town, so that’s awesome.</p>
+<p>Also, I could not get a lick of sleep in that hostel. I have never
+heard of anyone snore so damn loud. I mean I snore pretty loud
+sometimes, and I wish whoever I am sleeping with the best, but god
+damn…</p>
+</div>
+<div id="week-of-june-4th" class="section level3">
+<h3>Week of June 4th</h3>
+<p>In my recent week-long adventure on the captivating island of Crete,
+I immersed myself in its rich culture, indulged in delightful culinary
+experiences, and explored the island’s natural wonders. This
+unforgettable journey took me from savoring mouthwatering gyros to
+lounging on the sandy shores of Matala Beach and conquering the
+challenging trails of the Samaria Gorge.</p>
+<p>One highlight of my trip was the daily ritual of relishing a gyro.
+These delicious wraps filled with succulent meat, fresh vegetables, and
+flavorful tzatziki sauce quickly became my go-to meal. Whether it was
+for lunch or a quick snack, I couldn’t resist the temptation of these
+Greek delights.</p>
+<p>Matala Beach offered a tranquil escape, where I basked in the warm
+Mediterranean sun and listened to the soothing sound of the waves. The
+breathtaking beauty of the clear turquoise waters and the distinctive
+cliffside caves added a touch of magic to my beach experience.</p>
+<p>However, the ultimate test of endurance awaited me at the famous
+Samaria Gorge. Embarking on a six-hour hike, starting from the village
+and making my way back, was a physically demanding yet rewarding
+endeavor. As I ventured through the majestic cliffs and lush vegetation,
+the sheer scale and untouched beauty of the gorge left me awestruck.
+Though exhausting, the experience was a testament to the natural wonders
+that Crete has to offer.</p>
+<p>Crete’s charm extends beyond its culinary delights and picturesque
+beaches. The island’s rich history, warm hospitality, and diverse
+landscapes create a captivating tapestry that leaves an indelible mark
+on visitors.</p>
+<p>As I reminisce about my time in Crete, I am filled with gratitude for
+the incredible experiences I had, from savoring gyros to exploring
+Matala Beach and conquering the Samaria Gorge. This Mediterranean gem
+truly offers a vibrant and memorable travel experience for those seeking
+a blend of adventure, relaxation, and cultural immersion.</p>
+<p>Also, Makenna and Caitlin were there and that was awesome! It has
+been weird not being alone at all on this trip so far… But hey, I can
+get behind it for the most part. I do enjoy my alone time and that
+includes a lot of time to self reflect. But sometimes it’s lonely being
+alone for too long. I’ll find that balance someday in life.</p>
+<p>Also, also, I went to Athens for 7 hours and had a blast! I saw the
+freaking Acropolis! Athens is awesome, and I would love to explore more
+of Greece to see where each god gets their legends from. So thank you
+Athena for your beautiful city.</p>
+</div>
+<div id="week-of-june-11th" class="section level3">
+<h3>Week of June 11th</h3>
+<p>The week started with a rush of adrenaline as I found myself
+sprinting through the Athens airport. Can you believe I almost missed my
+flight? Yes, it sounds like a scene from an action movie, but it
+happened! As I navigated my way through the bustling terminals, I
+couldn’t help but wonder how my journey would unfold.</p>
+<p>My first fun stop was in Belgrade, where I spent a night exploring
+the city’s hidden treasures. What caught my eye the most was the
+impressive wall art scattered across the streets. Each mural told a
+different story, and I found myself lost in the creativity and
+expression of the artists. It’s incredible how art can transcend
+boundaries and connect people from different cultures.</p>
+<p>But the real adventure began when I arrived in Kotor, a dreamy town
+nestled in the heart of a picturesque fjord. The moment I set foot in
+Kotor, it felt like stepping into a fairytale. The town’s charm was
+undeniable, and the warm welcome from the resident feline friends—yes,
+adorable cats.</p>
+<p>I embarked on a hike that took me up the hills, and the effort was
+more than rewarded by breathtaking views that left me in awe of nature’s
+majesty. Plus, I hiked up an interesting trail that had me hug the wall
+and look down towards a potential early grave. But still a fun time! The
+rugged mountains juxtaposed with the calm waters below created a sight
+I’ll carry in my heart forever. And let me tell you, if you ever visit
+Kotor, don’t forget to rent a bike! Pedaling through the quaint streets
+and exploring every nook and cranny was a delightful experience.</p>
+<p>As if all of this wasn’t magical enough, fate had yet another
+surprise in store for me. Can you imagine waking up to the sound of an
+orchestra rehearsing the enchanting score of “Pirates of the Caribbean”
+just outside your Airbnb? It felt like being part of a cinematic
+adventure, and I couldn’t help but smile at the serendipity of the
+moment.</p>
+<p>Reflecting on this week, I’m reminded of the beauty of embracing
+spontaneity and the joy of being open to new experiences. Life has its
+twists and turns, and sometimes the best memories are created when we
+veer off the beaten path. The mishaps and surprises along the way only
+added to the richness of my journey.</p>
+<p>Remember that life’s adventures await in unexpected places. Embrace
+the detours, appreciate the art around you, immerse yourself in nature’s
+wonders, and be open to the symphony of life playing just outside your
+door.</p>
+</div>
+<div id="week-of-june-18th" class="section level3">
+<h3>Week of June 18th</h3>
+<p>Wedding week!</p>
+<p>The past week has been an unforgettable adventure filled with love,
+celebrations, and mouthwatering treats. It all began in the romantic
+city of Paris, where I had the pleasure of spending time with my best
+friend, Sumedh. Together, we explored the enchanting streets, admired
+iconic landmarks, and indulged in the heavenly taste of freshly baked
+croissants.</p>
+<p>But the true highlight of the week was the joyous occasion in
+Normandy, where I attended Sumedh’s brother’s (Supreet) wedding. The
+two-day Indian wedding was a mesmerizing blend of traditions, colors,
+and festivities. Witnessing the couple’s love story unfold through
+traditional rituals, vibrant dances, and heartwarming speeches left me
+with an overwhelming feeling of happiness and gratitude.</p>
+<p>The fusion of Indian, Jewish, and French cultures at the wedding was
+a beautiful testament to the power of love and the coming together of
+two families. The celebration served as a reminder that love knows no
+boundaries and that it can be celebrated in many ways, transcending
+cultural differences.</p>
+<p>As the wedding celebrations came to an end, I bid farewell to
+Normandy and returned to Paris. There, I embraced the vibrant energy of
+the city and had a blast playing volleyball. And let’s not forget the
+delicious croissants that I couldn’t resist enjoying throughout my stay
+in the city of gastronomy.</p>
+<p>This week has been a rollercoaster of emotions, from the excitement
+of exploring Paris to the warmth and joy of celebrating love in
+Normandy. It has reminded me of the importance of cherishing every
+moment, treasuring the company of loved ones, and savoring the
+experiences that life gifts us.</p>
+<p>As I reflect on the memories of this unforgettable week, I’m filled
+with gratitude for the moments that made me smile, the love that
+surrounded me, and the delicious croissants that added a touch of
+sweetness to each day.</p>
+<p>Dancing is always fun too.</p>
+</div>
+<div id="week-of-june-25th" class="section level3">
+<h3>Week of June 25th</h3>
+<p>As I continue to traverse the picturesque landscapes of Northern
+Europe, I’m thrilled to share the memories of a unique adventure that
+took me from the serene charm of Aalborg, Denmark, to the dynamic energy
+of Hamburg, Germany.</p>
+<p>My journey commenced in the enchanting city of Aalborg, where I was
+immediately captivated by its cozy atmosphere and welcoming locals.
+Strolling through cobbled streets, I soaked in the city’s rich history,
+passing by landmarks such as the Aalborghus Castle and the imposing
+Budolfi Church. Aalborg’s picturesque waterfront, adorned with charming
+cafes, made for the perfect spot to relax and savor traditional Danish
+pastries.</p>
+<p>As the sun painted the sky with hues of gold and pink, I found myself
+on the Limfjord Bridge, watching in awe as the day transitioned into a
+mesmerizing sunset. The beauty of nature’s wonders unfolded before my
+eyes, leaving an indelible mark on my soul. It was so cool seeing such a
+late sunset! It was the furthest north I’ve ever been.</p>
+<p>Three days in Aalborg passed by in a flash, but my thirst for
+exploration was far from quenched. I bid farewell to the charming Danish
+city and set my sights on the vibrant metropolis of Hamburg,
+Germany.</p>
+<p>As I arrived in Hamburg, the city’s dynamic energy immediately drew
+me in. The juxtaposition of modern architecture with historical
+landmarks was a sight to behold. The Rathaus, Hamburg’s iconic City
+Hall, stood tall and proud, reflecting the city’s rich history.</p>
+<p>In Hamburg, I couldn’t resist indulging in the city’s most famous
+culinary creation - the hamburger. The delicious flavors of a classic
+hamburger tantalized my taste buds, leaving me wanting more.</p>
+<p>The heartbeat of Hamburg’s culture lies in its people, and I found
+myself forming beautiful connections with fellow travelers and locals
+alike. One shared passion united us - volleyball. Days were filled with
+friendly matches, and the camaraderie we built over the sandy courts
+added a special touch to my Hamburg experience.</p>
+<p>Beyond the city’s vibrant center, I explored the serene beauty along
+the Elbe River, where tranquility enveloped me like a warm embrace.
+These moments of peace were the perfect balance to the city’s lively
+atmosphere.</p>
+<p>My time in Hamburg was a beautiful amalgamation of exploration,
+gastronomic delights, and unforgettable connections. I couldn’t have
+asked for a more fulfilling journey.</p>
+<p>Hamburg people were so nice. So glad I beat their butts in volleyball
+just like we did in WW2.</p>
+</div>
+<div id="week-of-july-2nd" class="section level3">
+<h3>Week of July 2nd</h3>
+<p>Prepare to be whisked away on a journey of epic bike rides,
+delectable pasta, and awe-inspiring Swiss landscapes. Join me as I
+recount the memories of an unforgettable summer filled with exploration
+and beauty.</p>
+<p>My adventure commenced in Zurich, Switzerland, where I embarked on a
+daring 100-mile bike ride through the rolling hills of this picturesque
+country. The journey to Thun was nothing short of a cycling paradise, as
+I pedaled my way through lush green fields, charming villages, and
+scenic countryside. With every turn of the pedal, Switzerland’s natural
+splendor unfolded before my eyes, leaving me in awe of its breathtaking
+beauty. I also got crazy sore and so tired on this bike ride. It was
+cool biking through these hills and essentially hearing windchimes
+because of all the cows and goats with bells on their necks</p>
+<p>Oh also I almost got arrested by the Swiss for biking on the
+autobahn. Oops.</p>
+<p>The challenge of the long ride was rewarded by the stunning views of
+Lake Thun as I finally arrived at my destination. The shimmering blue
+waters against the backdrop of majestic mountains were a sight to
+behold, a reward for my perseverance and determination. Also, omg
+Interlaken was crazy beautiful too. That small city is nestled between
+two beautiful lakes and a river you can put your water bottle in and get
+fresh water.</p>
+<p>After the exhilarating bike ride, I hopped on a train to Bologna,
+Italy, to indulge in the ultimate comfort food - pasta! Bologna is
+renowned for its culinary delights, and I eagerly embraced the
+opportunity to savor traditional Italian dishes. From rich and creamy
+carbonara to comforting plates of lasagna, every bite was a celebration
+of flavors that delighted my taste buds. Of course I had their
+Bolognese.</p>
+<p>With my energy replenished, I ventured back to Switzerland to
+experience another delightful event - a volleyball tournament in Gstaad.
+The picturesque alpine setting of Gstaad served as the backdrop for
+thrilling volleyball matches, adding an exciting twist to my summer
+adventure.</p>
+<p>But the journey didn’t end there. In the enchanting region of
+Lauterbrunnen, I hopped on my bike again and embarked on a scenic ride
+to Grindelwald. The beauty of this summer day was magnified by the
+lingering snow on the mountain peaks, creating a stunning contrast
+between the warmth of the season and the remnants of winter’s embrace.
+The sight was truly mesmerizing, and I couldn’t help but be in awe of
+nature’s ever-changing canvas.</p>
+<p>As I pedaled along, I felt a profound sense of appreciation for the
+beauty that surrounded me. The Swiss landscapes seemed to have leaped
+straight out of a postcard, and every moment was a reminder of the
+wonders that await us when we venture into the great outdoors.</p>
+<p>This summer has been a true celebration of adventure, culture, and
+the simple pleasures of life. From the breathtaking Swiss landscapes to
+the tantalizing tastes of Italy, every experience has left an indelible
+mark on my heart.</p>
+<p>Switzerland is expensive though. Can’t wait to go back when I’m
+rich.</p>
+</div>
+<div id="week-of-july-9th" class="section level3">
+<h3>Week of July 9th</h3>
+<p>Prepare to join me on a thrilling journey through the vibrant cities
+of Ireland, where I immersed myself in the lively Irish culture, made
+new friends, and celebrated my namesake in a place close to my
+heart.</p>
+<p>The week began in the bustling city of Dublin, where I was instantly
+enchanted by its lively atmosphere and warm hospitality. Dublin’s
+legendary pubs provided the perfect setting for an unforgettable night
+of drinks, laughter, and live music. I found myself tapping my feet and
+singing along to my favorite covers of music, surrounded by like-minded
+souls. The camaraderie was palpable, and I couldn’t have asked for a
+better night to kickstart my Irish adventure.</p>
+<p>The next day, I set off on a short but meaningful detour to Cavan, a
+town with special significance to me. As my namesake, I couldn’t resist
+the opportunity to embrace my connection to this place. I proudly donned
+a Cavan hat and shirt, wearing my love for this charming town on my
+sleeve.</p>
+<p>With cherished memories of Cavan in my heart, I continued my journey
+to Galway for the rest of the week. Galway’s bohemian vibe and lively
+streets beckoned, promising an adventure of its own.</p>
+<p>As I wandered through Galway’s vibrant markets and colorful streets,
+I was captivated by its artistic flair. The city’s love for art and
+culture was evident in every corner, from street performances to
+captivating galleries.</p>
+<p>But my true heart was won by the enchanting sounds of traditional
+Irish music that filled the air. I couldn’t resist the urge to join in
+the festivities, dancing and clapping along to the infectious beats.</p>
+<p>Galway also introduced me to new friends with whom I shared laughter,
+stories, and the joy of discovering Ireland’s hidden gems. We explored
+quaint villages, hiked through lush green valleys, and relished every
+moment of our time together.</p>
+<p>As the week drew to a close, I reflected on the whirlwind of
+experiences that had filled my heart with joy. Ireland had gifted me
+with the best of music, new connections, and cherished memories. Each
+city had a unique charm, but it was the warmth of the Irish people that
+truly made this adventure unforgettable.</p>
+</div>
+<div id="week-of-july-16th" class="section level3">
+<h3>Week of July 16th</h3>
+<p>Another week of everyone speaking English! It’s pretty refreshing
+honestly.</p>
+<p>My journey in London began with the excitement of exploring this
+iconic city on foot. I strolled through its charming streets, soaking in
+the grandeur of its historical landmarks and the pulsating energy of the
+bustling metropolis. With every step, I marveled at the fusion of the
+old and the new that gave London its unique charm.</p>
+<p>London’s renowned theater scene beckoned me, but alas, I didn’t get a
+chance to see a show. However, the vibrant atmosphere of the West End
+and the captivating marquees only heightened my desire to experience the
+magic of London’s live performances on my next visit.</p>
+<p>Being a food enthusiast, I was eager to savor the diverse culinary
+delights that London had to offer. My taste buds were treated to a
+delightful journey through various cuisines. Indian food, with its
+aromatic spices and rich flavors, stole my heart. I relished every bite
+of delectable curries, naans, and samosas, immersing myself in the
+diverse and mouthwatering tastes.</p>
+<p>A stroll through London’s Chinatown introduced me to the tantalizing
+world of Chinese cuisine. From mouthwatering dim sum to sizzling
+stir-fries, every dish was a celebration of flavors and textures. The
+vibrant and bustling atmosphere of Chinatown made the experience all the
+more memorable.</p>
+<p>And, of course, no visit to London would be complete without
+indulging in the classic British dish - fish and chips. I savored the
+crispy batter and tender fish, enjoying this quintessential meal as I
+sat by the River Thames, watching the world go by.</p>
+<p>London’s iconic sights were an integral part of my adventure. I stood
+in awe of the majestic Buckingham Palace, marveled at the architectural
+splendor of Westminster Abbey, and crossed the historic Tower Bridge
+with a sense of wonder.</p>
+<p>Of course visited the British Museum of stolen art and graverobbing.
+But hey the Brits preserve their stuff well at least.</p>
+</div>
+<div id="week-of-july-23rd" class="section level3">
+<h3>Week of July 23rd</h3>
+<p>Allow me to take you on a mesmerizing journey through the enchanting
+city of Prague, where I was captivated by its breathtaking spires and
+endless beauty.</p>
+<p>From the moment I arrived in Prague, I knew I was in for a treat. The
+city’s skyline was adorned with a plethora of majestic spires, each one
+reaching towards the heavens, as if trying to touch the clouds. I
+couldn’t help but be in awe of their grandeur and elegance, which seemed
+to tell stories of centuries gone by.</p>
+<p>Walking through the historic streets, I found myself surrounded by a
+rich tapestry of medieval buildings, each one more beautiful than the
+last. The architecture was a harmonious blend of Gothic, Baroque, and
+Romanesque styles, creating a dreamlike landscape that felt straight out
+of a fairy tale.</p>
+<p>The iconic Prague Castle, standing tall and proud atop a hill, was an
+awe-inspiring sight. Its intricate details and imposing presence left me
+with a sense of reverence for the history and culture that it
+symbolized.</p>
+<p>The Charles Bridge, a masterpiece of medieval engineering, provided a
+stunning vantage point to take in the city’s charm. As I walked along
+the bridge, I marveled at the statues lining its edges, each one adding
+to the bridge’s allure.</p>
+<p>But it wasn’t just the landmarks that made Prague unforgettable; it
+was the spirit of the city and its warm and welcoming people. Exploring
+the charming neighborhoods, I felt a sense of belonging as I immersed
+myself in the local culture and traditions.</p>
+<p>The city’s vibrant arts scene was a delight to experience. I spent
+hours wandering through art galleries, soaking in the creativity of
+local artists, and enjoying live performances that filled the streets
+with music and joy.</p>
+</div>
+<div id="week-of-july-30th" class="section level3">
+<h3>Week of July 30th</h3>
+<p>I felt like I needed some tasty food. So here is me making up for
+this.</p>
+<p>My week of indulgence began with a delightful stopover in Vienna, a
+city known for its rich history and elegant charm. However, this time,
+my focus was on reuniting with friends I had met during a previous
+adventure. The joy of rekindling old connections was simply
+heartwarming, and we spent the night catching up over delicious Viennese
+delicacies. From savory schnitzels to heavenly Sachertorte, every bite
+was a celebration of friendship and culinary delights.</p>
+<p>With my spirits high and my appetite thoroughly whetted, I continued
+my culinary expedition to Budapest, a city renowned for its vibrant food
+scene. As I wandered through the bustling streets, the aroma of
+mouthwatering Hungarian dishes filled the air. I couldn’t resist the
+temptation to savor the flavors of traditional goulash, hearty langos,
+and sweet chimney cakes. Each meal was an enchanting journey through the
+rich tapestry of Hungarian cuisine.</p>
+<p>Apart from the delectable food, Budapest’s charm was undeniable. The
+stunning architecture, thermal baths, and scenic Danube River provided a
+perfect backdrop for my gastronomic adventures.</p>
+<p>Next on my list was the city of Napoli, Italy, famous for its
+authentic pizza and scrumptious pasta dishes. As I arrived in Napoli, I
+was immediately embraced by the warm and lively atmosphere of the city.
+The streets were alive with the sounds of laughter, the aroma of freshly
+baked pizzas, and the joyous spirit of Italian culture.</p>
+<p>In Napoli, I feasted on a myriad of pizza varieties, each one a
+culinary masterpiece in its own right. The simplicity of the ingredients
+combined with the skill of the pizzaiolos created a burst of flavors
+that danced on my palate.</p>
+<p>But Napoli’s culinary delights didn’t end with pizza; I also relished
+the opportunity to indulge in the city’s renowned pasta dishes. From
+comforting bowls of spaghetti alle vongole to velvety plates of gnocchi,
+each dish was a revelation of Italian culinary artistry.</p>
+<p>As the week came to a close, I couldn’t help but reflect on the
+incredible journey I had undertaken in pursuit of good food and great
+company. This week reminded me Italy has conquered the food world of
+Europe. Can anyone step up to claim that title?</p>
+</div>
+<div id="week-of-august-6th" class="section level3">
+<h3>Week of August 6th</h3>
+<p>Back in the USA!!</p>
+</div>
+</div>
+<div id="section-2" class="section level2">
+<h2>2024</h2>
+<div id="week-of-april-14th" class="section level3">
+<h3>Week of April 14th</h3>
+<p>Wow do I enjoy traveling with Victoria! She’s a great time and I can
+comfortably laugh and explore the world with. We landed in Tokyo, the
+bustling heart of Japan, was an exhilarating start to our adventure. We
+were immediately struck by the vibrant energy of the city. Our first
+couple of days were a whirlwind of neon lights, towering skyscrapers,
+and hidden shrines. And my goodness, the best wagyu we could have
+possibly had. And we had a Japanese omelette that had salt and sugar in
+it which I was absolutely addicted to. And it was $1!</p>
+<p>After Toyko, we boarded the Shinkansen bullet train to Kyoto. The
+journey itself was an experience – smooth, fast, and offering scenic
+views of the Japanese countryside. Victoria and I were joined by our
+friends Janella, Dan, and Becky, which made our adventure even more
+enjoyable as we shared stories and laughter.</p>
+<p>We all visited the Arashiyama Bamboo Grove, where we felt like we had
+stepped into another world. The towering bamboo stalks swayed gently in
+the breeze, creating a tranquil and mystical ambiance. With a great
+overlook to the river and a lot of steps that ended with very good
+matcha drinks and ended the day with sushi where the sushi chef with a
+big personality showed us that it’s important to slap the scallops
+before eating it.</p>
+<p>Victoria and I ended up losing ourselves in the early morning to beat
+the crowd at the Fushimi Inari Shrine, famous for its thousands of red
+torii gates. We spent hours wandering through the paths, taking in the
+serene atmosphere and snapping countless photos.</p>
+<p>We embarked on a beautiful hike from Kurama to Ninose train stations.
+The trail led us through lush forests, over gentle streams, and past
+quaint villages. The natural beauty of the area was captivating, and we
+took our time to enjoy the peaceful surroundings. The hike was a
+wonderful way to experience the serene side of Kyoto and provided us
+with stunning photo opportunities.</p>
+<p>Victoria and I on our last day in Kyoto took a nighttime stroll
+throughout Kyoto and went over to the Hōkan-ji Temple. We went there
+earlier, but the crowds made it so hard to walk through, but we ended up
+seeing the pagoda even better at night when there were hardly any people
+there. It was so peaceful and just thinking of how these temples were
+meant to be appreciated. It’s interesting when people all gather in
+certain areas and end up loving the physical structures of peace, but
+they become too popular to even enjoy in peace.</p>
+</div>
+<div id="week-of-april-21st" class="section level3">
+<h3>Week of April 21st</h3>
+<p>Victoria and I took the bullet train back to Tokyo to enjoy our last
+week in Japan. But not before going to Fuji to search for some
+watefalls. And oh my, the waterfalls were gorgeous! The cascading waters
+of Shiraito Falls were mesmerizing, and the lush greenery surrounding
+the falls added to the enchanting atmosphere. We spent a peaceful
+afternoon there, taking in the natural beauty and snapping photos. The
+sound of the water and the cool mist provided a refreshing break from
+our travels.</p>
+<p>On a long walk, we visited the Tokyo Skytree and admired the
+nighttime vibes looking up at the magical skyscraper. We also enjoyed
+walking the Shibuya Crossing and observing the chaos. Soon afterwards,
+we gorged ourselves on converyor belt sushi and both got full after just
+$13 of sushi.</p>
+<p>Victoria and I also did a little bit of hiking with the chance to see
+Fuji, but it was being shy. No matter, the hike was still incredible
+just because any amount of time with Victoria is a fun amount of time.
+Yes, I am simping.</p>
+<p>Lastly to add, Victoria and I had some udon noodles at the top of a
+building, and it was so damn good. Some of the best food we had on the
+trip!</p>
+</div>
+<div id="week-of-april-28th" class="section level3">
+<h3>Week of April 28th</h3>
+<p>Next, I went to Seoul, South Korea! Seoul is a city that seamlessly
+blends tradition and modernity, offering travelers an unforgettable mix
+of rich culture, vibrant street life, and incredible food. My journey
+began in Myeongdong, where the bustling streets are lined with food
+stalls serving up everything from spicy tteokbokki (rice cakes) to sweet
+hotteok pancakes filled with cinnamon and sugar. The culinary adventure
+continued at Gwangjang Market, a paradise for food lovers where I
+indulged in crispy bindaetteok (mung bean pancakes) and bite-sized mayak
+gimbap. Of course, no trip would be complete without experiencing Korean
+BBQ; grilling succulent pork belly and wrapping it in fresh lettuce with
+garlic and ssamjang sauce was a highlight. Beyond the food, Seoul’s
+lively energy is felt in every neighborhood, from the young, artistic
+vibes of Hongdae to the traditional tea houses and craft shops in
+Insadong.</p>
+<p>While the food was unforgettable, exploring Seoul’s iconic landmarks
+was equally captivating. I wandered through the grand courtyards of
+Gyeongbokgung Palace and then got lost in the winding alleys of Bukchon
+Hanok Village, home to traditional Korean houses. A peaceful stroll
+through Jogyesa Temple, with its vibrant lanterns and serene ambiance,
+provided a perfect contrast to the city’s buzz. Whether you’re taking in
+panoramic views, savoring street food, or diving into history, Seoul is
+a destination that leaves a lasting impression with its dynamic blend of
+old and new.</p>
+</div>
+<div id="week-of-may-5th" class="section level3">
+<h3>Week of May 5th</h3>
+<p>I went to Taiwan after that. Taipei is a city that effortlessly
+combines modern energy with deep cultural roots, offering travelers an
+exciting mix of night markets, historic temples, and stunning nature. My
+trip began with a dive into the city’s legendary food scene at Shilin
+Night Market, where I sampled everything from savory stinky tofu to
+crispy oyster omelets. The variety and bold flavors of Taiwanese street
+food are truly unmatched. Another culinary highlight was indulging in
+xiao long bao (soup dumplings) at the famous Din Tai Fung, where each
+bite-sized dumpling burst with rich, savory broth. As I explored more of
+the city, I found local breakfast joints serving danbing (egg crepes)
+and soymilk, a perfect way to start the day. Taipei is a foodie’s dream,
+with every corner offering something delicious to try.</p>
+<p>Beyond the food, Taipei’s mix of tradition and modernity makes it a
+fascinating city to explore. I visited Longshan Temple, a serene and
+beautifully ornate space where locals still come to pray, surrounded by
+the aroma of incense and the sounds of chanting. Taipei’s vibrant street
+life, historic sites, and delicious food left me with an unforgettable
+impression of this dynamic city, where tradition and innovation coexist
+in perfect harmony. Also, I hiked Elephant Mountain and got to see a
+beautiful view of the city!</p>
+</div>
+<div id="week-of-june-30th" class="section level3">
+<h3>Week of June 30th</h3>
+<p>Now I’m finding myself in Portugal. My four days in Madeira were a
+mix of breathtaking landscapes, delicious food, and laid-back island
+vibes. I started in Funchal, the capital, where I wandered through the
+colorful Mercado dos Lavradores, sampling fresh tropical fruits and
+tasting the famous Madeiran wine. The highlight of my trip was exploring
+the island’s dramatic natural beauty. I hiked the Levada das 25 Fontes
+trail, winding through lush forests and discovering hidden waterfalls,
+and took in panoramic views from Pico do Arieiro, where the sunrise
+above the clouds was truly magical. I also visited the picturesque
+village of Câmara de Lobos, known for its charming bay and as a favorite
+spot of Winston Churchill. Of course, no visit to Madeira would be
+complete without indulging in espetada (skewered beef) and bolo do caco
+(garlic bread), local delicacies that capture the island’s rich
+flavors.</p>
+<p>After the serenity of Madeira, I spent three days in Lisbon, where
+the city’s lively atmosphere and historic charm immediately drew me in.
+I explored the narrow, winding streets of Alfama, the city’s oldest
+neighborhood, where fado music fills the air as you pass by traditional
+taverns. From the iconic Belém Tower to the ornate Jerónimos Monastery,
+the city’s history is evident at every turn. One of my favorite
+experiences was riding Tram 28 through the city’s hilly streets,
+offering stunning views of colorful facades and tiled buildings.
+Lisbon’s food scene is equally enticing – I savored pastéis de nata
+(custard tarts) in Belém, enjoyed fresh seafood in a local tasca.
+Whether taking in sweeping views from the Miradouros or soaking up the
+vibrant nightlife in Bairro Alto, Lisbon’s mix of old-world charm and
+modern energy made it a perfect end to my trip.</p>
+</div>
+</div>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #footer_stuff {
+      text-align: left; /* Set text alignment to left */
+      margin: 100px auto; /* Adjust the margin value as needed for the desired space */
+      color: #ccc; /* Set your desired grey font color */
+    }
+
+    .bandContent {
+      /* Add any additional styling for the content here */
+    }
+  </style>
+</head>
+<body>
+  <div id="footer_stuff" class="band full">
+    <div class="bandContent">
+      <div id="full_send">Feel free to contact me:</div>
+      <div id="logos">
+        <a href="cavandonohoe@gmail.com"><i class="fa fa-envelope" style="font-size:22px"></i></a>
+        <a href="https://www.instagram.com/cavandonohoe"><i class="fa fa-instagram" style="font-size:22px"></i></a>
+        <a href="https://www.facebook.com/cavandonohoe"><i class="fa fa-facebook" style="font-size:22px"></i></a>
+        <a href="https://github.com/cavandonohoe"><i class="fa fa-github" style="font-size:22px"></i></a>
+        <a href="https://www.linkedin.com/in/cavan-donohoe/"><i class="fa fa-linkedin" style="font-size:22px"></i></a>
+        <a href="tel:+8054043321"><i class="fa fa-phone" style="font-size:22px"></i></a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
