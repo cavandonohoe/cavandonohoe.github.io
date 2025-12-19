@@ -87,7 +87,8 @@ jobs:
           CI: "true"
           GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/sa.json
         run: |
-          Rscript -e 'suppressPackageStartupMessages({library(googlesheets4)}); if (file.exists(Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"))) { gs4_auth(path=Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"), cache=FALSE) } else { gs4_deauth() }; rmarkdown::render_site(encoding="UTF-8")'
+          Rscript -e 'suppressPackageStartupMessages({library(googlesheets4)}); if (file.exists(Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"))) { gs4_auth(path=Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"), cache=FALSE) } else { gs4_deauth() }'
+          Rscript scripts/render_site.R
           test -d _site || (echo "No _site dir found"; exit 1)
 
 

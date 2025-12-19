@@ -104,7 +104,8 @@ jobs:
         env:
           CHROMOTE_CHROME: ${{ steps.chrome.outputs.chrome-path }}
         run: |
-          Rscript -e 'googledrive::drive_auth(path="sa.json", cache=FALSE); googlesheets4::gs4_auth(path="sa.json", cache=FALSE); rmarkdown::render_site(encoding="UTF-8")'
+          Rscript -e 'googledrive::drive_auth(path="sa.json", cache=FALSE); googlesheets4::gs4_auth(path="sa.json", cache=FALSE)'
+          Rscript scripts/render_site.R
 
 
       - name: Upload Pages artifact
@@ -138,4 +139,3 @@ jobs:
           message: "🚀 Preview: ${{ steps.deployment.outputs.page_url }}"
           mode: upsert
           create_if_not_exists: true
-

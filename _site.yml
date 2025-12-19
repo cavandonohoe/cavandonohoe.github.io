@@ -1,28 +1,5 @@
 name: "Cavan Donohoe"
 output_dir: "_site"
-render:
-  - index.Rmd
-  - about.Rmd
-  - services.Rmd
-  - cv.Rmd
-  - cv_doc.Rmd
-  - projects/imdb_top_250_tv_series.Rmd
-  - projects/best_pic_vs_top_1000.Rmd
-  - projects/top_250_imdb_with_rt.Rmd
-  - projects/imdb_rating_plot.Rmd
-  - projects/best_picture_nominees.Rmd
-  - projects/firefighter_schedule.Rmd
-  - projects/tohs_reunion.Rmd
-  - projects/sierpinski_triangle.Rmd
-  - projects/my_imdb.Rmd
-  - projects/my_travels.Rmd
-  - projects/confederate_statues.Rmd
-  - learn_r/learn_r.Rmd
-  - learn_r/intro_to_r.Rmd
-  - learn_r/basic_operations_r.Rmd
-  - learn_r/data_manipulation_r.Rmd
-  - learn_r/data_visualization_r.Rmd
-  - learn_r/statistics_with_r.Rmd
 include:
   - imdb_rating_plot_files
 navbar:
