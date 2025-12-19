@@ -3,11 +3,12 @@ title: "Basic Operations in R"
 author: "Cavan Donohoe"
 output:
   html_document:
+    self_contained: false
     toc: true
     toc_float: true
     includes:
-      in_header: header/header.html
-      after_body: include_footer.html
+      in_header: ../header/header.html
+      after_body: ../include_footer.html
 ---
 
 # Basic Operations in R

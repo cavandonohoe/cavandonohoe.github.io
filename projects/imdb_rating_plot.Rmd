@@ -4,9 +4,10 @@ editor_options:
   chunk_output_type: console
 output:
   html_document:
+    self_contained: false
     includes:
-      in_header: header/header.html
-      after_body: include_footer.html
+      in_header: ../header/header.html
+      after_body: ../include_footer.html
     toc: true
     toc_depth: 3
     toc_float:
@@ -19,11 +20,8 @@ I'm kinda obsessed with seeing a whole map of series and where they stride well 
 
 ```{r ci-outdir, include=FALSE}
 # ensure output dir exists in clean CI environment
-out_dir <- "imdb_rating_plot_files"
+out_dir <- here::here("imdb_rating_plot_files")
 if (!dir.exists(out_dir)) dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
-
-# optional: make knitr put figures here too
-knitr::opts_chunk$set(fig.path = paste0(out_dir, "/"))
 ```
 
 
@@ -60,7 +58,7 @@ create_episode_plot <- function(episode_data, title, export_png = TRUE) {
     tolower() %>%
     stringr::str_remove_all(":") %>%
     stringr::str_replace_all(" ", "_") %>%
-    paste0("imdb_rating_plot_files/", ., ".png")
+    paste0(., ".png")
 
   episode_plot <- episode_data %>%
     ggplot2::ggplot(
@@ -99,7 +97,7 @@ create_episode_plot <- function(episode_data, title, export_png = TRUE) {
 
   if (export_png) {
     ggplot2::ggsave(
-      filename = here::here(dirname(file_name), basename(file_name)),
+      filename = file.path(out_dir, file_name),
       plot = episode_plot,
       width = 8,
       height = 6,
@@ -293,7 +291,7 @@ simpsons = read_csv(here::here("data", "simpsons_ep_ratings.csv"))
 simpsons_gg = simpsons %>% create_episode_plot("The Simpsons")
 simpsons_gg %>% interactive_plotly
 # resave here for the correct width
-ggsave("imdb_rating_plot_files/the_simpsons.png", plot = simpsons_gg, width = 16, height = 6, dpi = 300)
+ggsave(file.path(out_dir, "the_simpsons.png"), plot = simpsons_gg, width = 16, height = 6, dpi = 300)
 ```
 
 ## Pretty Little Liars
@@ -328,7 +326,7 @@ south_park = read_csv(here::here("data", "south_park_ep_ratings.csv"))
 south_park_gg = south_park %>% create_episode_plot("South Park")
 south_park_gg %>% interactive_plotly
 # resave here for the correct width
-ggsave("imdb_rating_plot_files/south_park.png", plot = south_park_gg, width = 16, height = 6, dpi = 300)
+ggsave(file.path(out_dir, "south_park.png"), plot = south_park_gg, width = 16, height = 6, dpi = 300)
 ```
 
 ## Family Guy
@@ -339,7 +337,7 @@ family_guy = read_csv(here::here("data", "family_guy_ep_ratings.csv"))
 family_guy_gg = family_guy %>% create_episode_plot("Family Guy")
 family_guy_gg %>% interactive_plotly
 # resave here for the correct width
-ggsave("imdb_rating_plot_files/family_guy.png", plot = family_guy_gg, width = 16, height = 9, dpi = 300)
+ggsave(file.path(out_dir, "family_guy.png"), plot = family_guy_gg, width = 16, height = 9, dpi = 300)
 ```
 
 ## Invincible
