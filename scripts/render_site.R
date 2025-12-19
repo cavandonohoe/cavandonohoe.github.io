@@ -12,16 +12,22 @@ render_subdir <- function(dir, encoding = "UTF-8") {
   files <- list.files(dir, pattern = "\\.Rmd$", full.names = TRUE)
   if (!length(files)) return(invisible(NULL))
 
-  out_dir <- file.path("_site", dir)
+  out_root <- "_site"
+  out_dir <- file.path(out_root, dir)
   dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
   for (file in files) {
+    out_file <- file.path(
+      dir,
+      paste0(tools::file_path_sans_ext(basename(file)), ".html")
+    )
     render(
       input = file,
-      output_dir = out_dir,
+      output_dir = out_root,
+      output_file = out_file,
       encoding = encoding,
       output_options = list(
-        lib_dir = "../site_libs",
+        lib_dir = "site_libs",
         self_contained = FALSE
       )
     )
