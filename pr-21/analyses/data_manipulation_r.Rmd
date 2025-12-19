@@ -1,0 +1,79 @@
+---
+title: "Data Manipulation in R"
+author: "Cavan Donohoe"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    includes:
+      in_header: ../header/header.html
+      after_body: ../include_footer.html
+---
+
+# Data Manipulation in R
+
+In this section, we will explore essential data manipulation tasks in R, including importing and exporting data, working with data frames, and performing data exploration.
+
+## Importing and Exporting Data
+
+### Importing Data
+
+R provides various functions to import data from different file formats, such as CSV, Excel, and databases. Some common functions include:
+
+- `read.csv()` for reading CSV files.
+- `read.xlsx()` for reading Excel files.
+- `readRDS()` for reading R data files.
+
+Here's an example of importing a CSV file:
+
+```R
+# Importing data from a CSV file
+data <- read.csv("data.csv")
+```
+
+### Exporting Data
+To save your data or results, R offers functions like write.csv() for CSV files, write.xlsx() for Excel files, and saveRDS() for saving R data objects.
+
+```R
+# Exporting data to a CSV file
+write.csv(data, "output.csv")
+```
+
+## Data Frames and Data Exploration
+Data frames are a common data structure in R for storing tabular data. They are like spreadsheets with rows and columns, and each column can have a different data type. You can create, manipulate, and explore data frames in R.
+
+```{r}
+# Creating a data frame
+df <- data.frame(
+  Name = c("Alice", "Bob", "Charlie"),
+  Age = c(25, 30, 22),
+  Score = c(95, 88, 75)
+)
+df
+```
+
+
+Data exploration involves understanding your data's characteristics, such as summary statistics, distribution, and relationships between variables. You can use functions like summary(), str(), and data visualization libraries like ggplot2 for this purpose.
+
+
+```{r}
+# Summary statistics
+summary(df)
+
+# Structure of the data frame
+str(df)
+```
+
+In this section, we've covered the basics of importing and exporting data and introduced data frames and data exploration. These skills are crucial for working with real-world data and performing meaningful analyses.
+
+Feel free to practice these concepts with your own datasets to gain hands-on experience.
+
+
+Free Lessons:
+
+- [R Time Is Limited, Let's Make the Most of It](https://cavandonohoe.github.io/learn_r.html)
+- [Introduction to R](https://cavandonohoe.github.io/intro_to_r.html)
+- [Basic Operations in R](https://cavandonohoe.github.io/basic_operations_r.html)
+- [Data Manipulation](https://cavandonohoe.github.io/data_manipulation_r.html)
+- [Data Visualization](https://cavandonohoe.github.io/data_visualization_r.html)
+- [Statistics in R](https://cavandonohoe.github.io/statistics_with_r.html)
