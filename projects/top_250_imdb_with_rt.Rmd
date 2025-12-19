@@ -1,0 +1,107 @@
+---
+title: "Top 250 IMDb Movies with Rotten Tomato Scores"
+editor_options: 
+  chunk_output_type: console
+output:
+  html_document:
+    includes:
+      in_header: ../header/header.html
+      after_body: ../include_footer.html
+output_file: "projects/top_250_imdb_with_rt.html"
+---
+
+```{r setup, include=FALSE}
+# Set default chunk output
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE,
+  results = "asis"
+)
+```
+
+```{r libraries}
+library(tidyverse)
+library(DT)
+library(scales)
+library(plotly)
+```
+
+```{r get_data}
+top_250_imdb_rot_tom = read_csv(here::here("data", "top250_movies_with_rt.csv"))
+
+```
+
+I love looking through the Top 250 Movies IMDb list to see which movie I should watch tonight. Some movies really resonate with me and this list contains some of my favorite movies of all time (The Dark Knight, Good Will Hunting, Shawshank Redemption).
+
+This list is missing Baby Driver though, so it's not perfect. 
+
+[Raw Data](/data/top250_movies_with_rt.csv)
+
+
+## Producers
+
+
+Here are our current Top 15 Producer Leaderboards for the IMDb Top 250 Movies. 
+
+
+```{r producers_leaderboard}
+producer_leaders_plot = top_250_imdb_rot_tom %>% separate_rows(producers_imdb, sep = "\\|") %>%
+  group_by(producers_imdb) %>%
+  summarise(n = n(), all_titles = paste(title, collapse = "\n")) %>%
+  arrange(desc(n)) %>%
+  ungroup() %>%
+  slice(1:15) %>%
+  ggplot(aes(y = reorder(producers_imdb, -n), x = n, text = all_titles, fill = producers_imdb))+
+  geom_col() +
+  theme(axis.title.y=element_blank(),
+        axis.title.x=element_blank(),
+        legend.position = "none") +
+  ggtitle("Producer Leaderboard") +
+  geom_text(aes(label = n), hjust = 0, position = position_dodge(width = 1))
+  
+
+producer_leaders_plot %>% ggplotly(tooltip = c("x", "text", "fill"))
+
+# add a section for actors and producers dude!
+
+# also just out of curiosity
+# top_250_imdb_rot_tom %>%
+#   filter(grepl(x=producers_imdb, pattern = "focus", ignore.case = TRUE))
+```
+
+
+## Rotten Tomatoes
+
+### Top 250 Sorted By Tomatometer
+
+```{r rt_table}
+top_250_imdb_rot_tom %>%
+  arrange(desc(tomato_meter_scores), rank) %>% 
+  select(title, year, tomato_meter_scores, audience_scores, imdb_rating) %>%
+  datatable(filter = "top", extensions = "Buttons",
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE))
+```
+
+
+### Residuals
+
+Turns out, you may know the IMDb score based on the Rotten Tomatoes Score. The residuals point us in the right direction. 
+
+```{r resid_plot_rt_imdb}
+resid_plot = top_250_imdb_rot_tom %>%
+  mutate(rot_imdb_residual = tomato_meter_scores - imdb_rating * 10,
+         label = paste0(title, "\n", "IMDb Rating: ", imdb_rating)) %>%
+  ggplot(aes(x = tomato_meter_scores, y = rot_imdb_residual, label = label)) +
+  geom_point() + geom_smooth() +
+  ggtitle("Residual Predictor") +
+  ylab("TomatoMeter - 10 * IMDB Score") +
+  xlab("TomatoMeter")
+
+resid_plot %>% ggplotly
+
+```
+
+
+
+
+
