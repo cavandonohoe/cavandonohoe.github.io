@@ -17,17 +17,14 @@ render_subdir <- function(dir, root, encoding = "UTF-8") {
   dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
   for (file in files) {
-    out_file <- file.path(
-      dir,
-      paste0(tools::file_path_sans_ext(basename(file)), ".html")
-    )
+    out_file <- paste0(tools::file_path_sans_ext(basename(file)), ".html")
     render(
       input = file,
-      output_dir = out_root,
+      output_dir = out_dir,
       output_file = out_file,
       encoding = encoding,
       output_options = list(
-        lib_dir = file.path(out_root, "site_libs"),
+        lib_dir = file.path(out_dir, "site_libs"),
         self_contained = FALSE
       )
     )
