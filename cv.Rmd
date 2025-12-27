@@ -124,15 +124,6 @@ positions_collapsed_bullets_final %>%
 ```
 
 
-Disclaimer {#disclaimer}
---------------------------------------------------------------------------------
-
-This resume was made with the R package [**pagedown**](https://github.com/rstudio/pagedown).
-
-Last updated on<br>`r last_update`.
-
-
-
 Main
 ================================================================================
 
@@ -217,3 +208,12 @@ positions_collapsed_bullets_final %>% filter(section=="Credentials") %>% glue_da
                                                                               "{time_period}",
                                                                               "\n\n")
 ```
+
+<div class="pagebreak"></div>
+
+Disclaimer {#disclaimer}
+--------------------------------------------------------------------------------
+
+This resume was made with the R package [**pagedown**](https://github.com/rstudio/pagedown).
+
+Last updated on<br>`r last_update`.
