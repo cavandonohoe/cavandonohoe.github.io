@@ -25,7 +25,7 @@ body{
 
 }
 
-/* Let the disclaimer sit at the bottom of the sidebar without overlap. */
+/* Sidebar layout spacing. */
 .aside{
   display: flex;
   flex-direction: column;
@@ -35,5 +35,5 @@ body{
 
 #disclaimer{
   position: static;
-  margin-top: auto;
+  margin-top: 0.2in;
 }
