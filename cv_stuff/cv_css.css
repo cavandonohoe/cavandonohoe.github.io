@@ -24,3 +24,16 @@ body{
   font-family: "Roboto", sans-serif;
 
 }
+
+/* Let the disclaimer sit at the bottom of the sidebar without overlap. */
+.aside{
+  display: flex;
+  flex-direction: column;
+  height: var(--content-area-height);
+  padding-bottom: 0.35in;
+}
+
+#disclaimer{
+  position: static;
+  margin-top: auto;
+}

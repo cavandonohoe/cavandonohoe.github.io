@@ -31,7 +31,6 @@ library(glue)
 library(tidyverse)
 library(readxl)
 library(rmarkdown)
-library(readxl)
 library(googlesheets4)
 # coding in the resume
 
@@ -39,12 +38,16 @@ library(googlesheets4)
 resume = read_sheet("https://docs.google.com/spreadsheets/d/13mLROsbvwiE-djiRMQuOKfQwppOlH5mOxB43EaGna8s")
 resume %>% write.csv(here::here("data", "cv.csv"))
 file_info = googledrive::drive_get("https://docs.google.com/spreadsheets/d/13mLROsbvwiE-djiRMQuOKfQwppOlH5mOxB43EaGna8s")
-last_update = file_info$drive_resource[[1]]$modifiedTime %>% ymd_hms() %>% as_date()
+last_update = file_info$drive_resource[[1]]$modifiedTime %>%
+  lubridate::ymd_hms() %>%
+  lubridate::as_date()
 
-resume_v1.1 = resume %>% mutate(start.date = as.Date(paste(start, "1", sep="-"), format="%B %Y-%d")) %>%
+resume_v1_1 = resume %>%
+  mutate(start.date = as.Date(paste(start, "1", sep="-"),
+                              format="%B %Y-%d")) %>%
   mutate(section_num = row_number())
 
-resume_v2 = resume_v1.1 %>% pivot_longer(starts_with('description'),
+resume_v2 = resume_v1_1 %>% pivot_longer(starts_with('description'),
                                          names_to = 'description_num',
                                          values_to = 'description',
                                          values_drop_na = TRUE)
@@ -57,7 +60,6 @@ resume_v3 = resume_v2 %>% mutate(start = ifelse(is.na(start), "", start), end=if
   filter(in_resume)
 
 positions_collapsed_bullets = resume_v3 %>%
-  mutate(group_num = cur_group_id()) %>%
   group_by(section, title, location, institution, time_period, section_num) %>% 
   summarise(description_section = paste(description_paste, collapse = "\n")) %>% arrange(section_num)
 
@@ -127,7 +129,7 @@ Disclaimer {#disclaimer}
 
 This resume was made with the R package [**pagedown**](https://github.com/rstudio/pagedown).
 
-Last updated on `r last_update`.
+Last updated on<br>`r last_update`.
 
 
 
@@ -215,4 +217,3 @@ positions_collapsed_bullets_final %>% filter(section=="Credentials") %>% glue_da
                                                                               "{time_period}",
                                                                               "\n\n")
 ```
-
