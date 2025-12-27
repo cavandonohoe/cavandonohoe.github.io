@@ -24,3 +24,16 @@ body{
   font-family: "Roboto", sans-serif;
 
 }
+
+/* Sidebar layout spacing. */
+.aside{
+  display: flex;
+  flex-direction: column;
+  height: var(--content-area-height);
+  padding-bottom: 0.35in;
+}
+
+#disclaimer{
+  position: static;
+  margin-top: 0.2in;
+}
