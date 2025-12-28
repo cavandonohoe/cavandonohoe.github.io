@@ -55,7 +55,7 @@ producer_leaders_plot = top_250_imdb_rot_tom %>% tidyr::separate_rows(producers_
         axis.title.x=ggplot2::element_blank(),
         legend.position = "none") +
   ggplot2::ggtitle("Producer Leaderboard") +
-  ggplot2::geom_text(ggplot2::aes(label = n), hjust = 0, position = position_dodge(width = 1))
+  ggplot2::geom_text(ggplot2::aes(label = n), hjust = 0, position = ggplot2::position_dodge(width = 1))
   
 
 producer_leaders_plot %>% plotly::ggplotly(tooltip = c("x", "text", "fill"))
