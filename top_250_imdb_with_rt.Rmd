@@ -43,7 +43,7 @@ Here are our current Top 15 Producer Leaderboards for the IMDb Top 250 Movies.
 
 
 ```{r producers_leaderboard}
-producer_leaders_plot = top_250_imdb_rot_tom %>% separate_rows(producers_imdb, sep = "\\|") %>%
+producer_leaders_plot = top_250_imdb_rot_tom %>% tidyr::separate_rows(producers_imdb, sep = "\\|") %>%
   dplyr::group_by(producers_imdb) %>%
   dplyr::summarise(n = dplyr::n(), all_titles = paste(title, collapse = "\n")) %>%
   dplyr::arrange(dplyr::desc(n)) %>%

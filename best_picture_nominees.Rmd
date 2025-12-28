@@ -51,7 +51,7 @@ only_winners = function(x) {
 
 
 distributors_plot_nominees = best_pic_noms_final %>%
-  separate_rows(producers, sep = "\\|") %>%
+  tidyr::separate_rows(producers, sep = "\\|") %>%
   dplyr::group_by(id) %>% 
   dplyr::slice(1) %>% 
   dplyr::group_by(distributor = producers) %>% 
@@ -90,7 +90,7 @@ For more detail, please look at this table:
 
 ```{r distributor_table}
 best_pic_noms_final %>%
-  separate_rows(producers, sep = "\\|") %>%
+  tidyr::separate_rows(producers, sep = "\\|") %>%
   dplyr::group_by(id) %>% 
   dplyr::slice(1) %>% 
   dplyr::group_by(distributor = producers) %>% 
@@ -108,7 +108,7 @@ best_pic_noms_final %>%
 ```{r producer_leaderboards}
 
 producers_plot_nominees = best_pic_noms_final %>%
-  separate_rows(producers, sep = "\\|") %>%
+  tidyr::separate_rows(producers, sep = "\\|") %>%
   # dplyr::group_by(id) %>% 
   # dplyr::slice(1) %>% 
   dplyr::group_by(producers) %>%
@@ -147,7 +147,7 @@ For more detail, please look at this table:
 
 ```{r producer_table}
 best_pic_noms_final %>%
-  separate_rows(producers, sep = "\\|") %>%
+  tidyr::separate_rows(producers, sep = "\\|") %>%
   # dplyr::group_by(id) %>% 
   # dplyr::slice(1) %>% 
   dplyr::group_by(producers) %>% 
