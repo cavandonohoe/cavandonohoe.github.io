@@ -123,6 +123,15 @@ positions_collapsed_bullets_final %>%
   glue_data("{description_section}", "\n\n")
 ```
 
+<div class="pagebreak"></div>
+
+Disclaimer {#disclaimer}
+--------------------------------------------------------------------------------
+
+This resume was made with the R package [**pagedown**](https://github.com/rstudio/pagedown).
+
+Last updated on<br>`r last_update`.
+
 
 Main
 ================================================================================
@@ -209,15 +218,4 @@ positions_collapsed_bullets_final %>% filter(section=="Credentials") %>% glue_da
                                                                               "\n\n")
 ```
 
-<div class="pagebreak"></div>
-
-<div class="aside">
-
-Disclaimer {#disclaimer}
---------------------------------------------------------------------------------
-
-This resume was made with the R package [**pagedown**](https://github.com/rstudio/pagedown).
-
-Last updated on<br>`r last_update`.
-
-</div>
+ 
