@@ -30,10 +30,15 @@ body{
   display: flex;
   flex-direction: column;
   height: var(--content-area-height);
-  padding-bottom: 0.35in;
+  padding-bottom: 0.3in;
 }
 
 #disclaimer{
   position: static;
-  margin-top: 0.2in;
+  margin-top: 0.25in;
+}
+
+/* Tighten sidebar section spacing so the disclaimer fits on page 1. */
+.aside .level2{
+  margin-top: 0.35in;
 }
