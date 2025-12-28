@@ -42,3 +42,10 @@ body{
 .aside .level2{
   margin-top: 0.35in;
 }
+
+@media screen {
+  /* Extra breathing room in HTML view to prevent clipping. */
+  .aside{
+    padding-bottom: 0.6in;
+  }
+}
