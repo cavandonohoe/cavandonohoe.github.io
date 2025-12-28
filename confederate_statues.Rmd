@@ -53,7 +53,7 @@ all_dates = readr::read_csv("https://raw.githubusercontent.com/cavandonohoe/conf
 
 # find mode
 max_statues = all_dates %>% dplyr::group_by(value3) %>%
-  dplyr::count %>%
+  dplyr::count() %>%
   dplyr::ungroup() %>%
   dplyr::arrange(dplyr::desc(n)) %>%
   dplyr::filter(n == max(n))
@@ -71,7 +71,7 @@ These bins are of width = 5 years.
 
 ```{r graph1, fig.width=10, fig.height=7.5}
 all_dates_clean <- all_dates %>% dplyr::group_by(value3) %>%
-  dplyr::count %>%
+  dplyr::count() %>%
   dplyr::ungroup() %>%
   dplyr::mutate(date_bins = cut(value3, breaks = seq(min(value3), max(value3)+5, by = 5), right = FALSE),
          text = paste0(value3, ": ", n)) %>%
@@ -113,6 +113,5 @@ https://en.wikipedia.org/wiki/List_of_Confederate_monuments_and_memorials
 
 
 To view web scraping methodology, please view: https://github.com/cavandonohoe/confederate_statues
-
 
 
