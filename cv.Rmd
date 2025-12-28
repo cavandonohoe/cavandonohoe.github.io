@@ -90,17 +90,9 @@ rmarkdown::render("cv_doc.Rmd", output_format = "word_document", quiet = TRUE)
 
 Aside
 ================================================================================
-
-
-
-[Back to Home Page](https://cavandonohoe.github.io/)
-
-[PDF version](https://github.com/cavandonohoe/cavandonohoe.github.io/raw/main/cv.pdf)
-
+[Back to Home Page](https://cavandonohoe.github.io/)<br>
+[PDF version](https://github.com/cavandonohoe/cavandonohoe.github.io/raw/main/cv.pdf)<br>
 [Word version](https://github.com/cavandonohoe/cavandonohoe.github.io/raw/main/cv_doc.docx)
-
-
-
 
 Contact Info {#contact}
 --------------------------------------------------------------------------------
@@ -122,8 +114,6 @@ positions_collapsed_bullets_final %>%
          description_section = gsub("resume", "[resume](https://cavandonohoe.github.io/cv.html)", description_section)) %>%
   glue_data("{description_section}", "\n\n")
 ```
-
-<div class="pagebreak"></div>
 
 Disclaimer {#disclaimer}
 --------------------------------------------------------------------------------
