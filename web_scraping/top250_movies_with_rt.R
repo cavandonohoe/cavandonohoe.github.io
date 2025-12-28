@@ -1,24 +1,22 @@
+`%>%` <- magrittr::`%>%`
 
 
 # alright working on imdb top 250 movies now
 # maybe I can get the rotten tomatoes as well
 # I think check the director(s) and that might be your unique identifier
 
-library(tidyverse)
-library(rvest)
-
 url = "https://www.imdb.com/chart/top/"
 
-top_250_html = url %>% read_html()
+top_250_html = url %>% rvest::read_html()
 
 top_250_tib = top_250_html %>% 
-  html_node("#main > div > span > div > div > div.lister > table") %>% 
-  html_table() %>% as_tibble(.name_repair = "universal")
+  rvest::html_node("#main > div > span > div > div > div.lister > table") %>% 
+  rvest::html_table() %>% tibble::as_tibble(.name_repair = "universal")
 
 top_250_ids = top_250_html %>% 
-  html_nodes("#main > div > span > div > div > div.lister > table > tbody") %>% 
-  html_nodes("td.titleColumn > a") %>% 
-  html_attr("href") %>%
+  rvest::html_nodes("#main > div > span > div > div > div.lister > table > tbody") %>% 
+  rvest::html_nodes("td.titleColumn > a") %>% 
+  rvest::html_attr("href") %>%
   gsub(pattern = "/title/", replacement = "") %>%
   gsub(pattern = "/.*", replacement = "")
 
@@ -28,15 +26,15 @@ top_250_ids = top_250_html %>%
 # our qc (quality check) will set our control group as the imdb group since I trust imdb more
 
 directors = top_250_html %>% 
-  html_nodes("#main > div > span > div > div > div.lister > table > tbody") %>% 
-  html_nodes("td.titleColumn > a") %>%
-  html_attr("title") %>%
+  rvest::html_nodes("#main > div > span > div > div > div.lister > table > tbody") %>% 
+  rvest::html_nodes("td.titleColumn > a") %>%
+  rvest::html_attr("title") %>%
   gsub(pattern = " \\(dir\\.\\).*", replacement = "")
 
 
 top_250_tib_clean = top_250_tib %>% 
-  mutate(id = top_250_ids,
-         rank = row_number(),
+  dplyr::mutate(id = top_250_ids,
+         rank = dplyr::row_number(),
          # extract text between last set of parentheses
          year = gsub(x = Rank...Title, pattern = ".*\\((.*)\\).*", replacement = "\\1") %>%
            as.numeric(),
@@ -44,8 +42,8 @@ top_250_tib_clean = top_250_tib %>%
          title = gsub(x = Rank...Title, pattern = "^\\S+\\s+|\\s+[^ ]+$", replacement = ""),
          site = paste0("https://www.imdb.com/title/", id),
          director = directors) %>%
-  select(rank, title, director, year, imdb_rating = IMDb.Rating, id, site) %>%
-  mutate(producer_site = file.path(site, "companycredits?ref_=ttfc_sa_3"))
+  dplyr::select(rank, title, director, year, imdb_rating = IMDb.Rating, id, site) %>%
+  dplyr::mutate(producer_site = file.path(site, "companycredits?ref_=ttfc_sa_3"))
 
 
 # next step is to grab each rotten tomato section
@@ -59,9 +57,9 @@ top_250_tib_clean = top_250_tib %>%
 
 
 rotten_tomatoes_url = top_250_tib_clean %>% 
-  select(title, imdb_director = director) %>%
-  mutate(rotten_tomatoes_title = 
-           case_when((title == "The Dark Knight" & imdb_director == "Christopher Nolan") |
+  dplyr::select(title, imdb_director = director) %>%
+  dplyr::mutate(rotten_tomatoes_title = 
+           dplyr::case_when((title == "The Dark Knight" & imdb_director == "Christopher Nolan") |
                        (title == "The Dark Knight Rises" & imdb_director == "Christopher Nolan") |
                        (title == "The Gold Rush" & imdb_director == "Charles Chaplin") |
                        (title == "The Grand Budapest Hotel" & imdb_director == "Wes Anderson") ~ 
@@ -211,10 +209,10 @@ rotten_tomatoes_url = top_250_tib_clean %>%
 html_list_rot = list()
 index = 1
 for (rot_url in rotten_tomatoes_url$rotten_tomatoes_url) {
-  html_list_rot[[index]] = read_html(rot_url)
+  html_list_rot[[index]] = rvest::read_html(rot_url)
   index = index + 1
 }
-# rotten_tomatoes_url %>% filter(row_number() == index)
+# rotten_tomatoes_url %>% dplyr::filter(dplyr::row_number() == index)
 
 # let's go again
 # let's grab the imdb html data
@@ -223,7 +221,7 @@ for (rot_url in rotten_tomatoes_url$rotten_tomatoes_url) {
 html_imdb_list = list()
 index = 1
 for (imdb_url in top_250_tib_clean$site) {
-  html_imdb_list[[index]] = read_html(imdb_url)
+  html_imdb_list[[index]] = rvest::read_html(imdb_url)
   index = index + 1
 }
 
@@ -239,59 +237,59 @@ for (imdb_url in top_250_tib_clean$site) {
 html_imdb_prod_list = list()
 index = 1
 for (imdb_url in top_250_tib_clean$producer_site) {
-  html_imdb_prod_list[[index]] = read_html(imdb_url)
+  html_imdb_prod_list[[index]] = rvest::read_html(imdb_url)
   index = index + 1
 }
 
 
 imdb_producers <- function(html_object) {
   html_object %>%
-    html_nodes("#company_credits_content > ul") %>%
-    html_text() %>%
+    rvest::html_nodes("#company_credits_content > ul") %>%
+    rvest::html_text() %>%
     .[1] %>%
-    str_split(pattern = "\n") %>%
-    unlist %>% str_trim() %>% str_squish() %>%
+    stringr::str_split(pattern = "\n") %>%
+    unlist %>% stringr::str_trim() %>% stringr::str_squish() %>%
     `[` (.!="") %>%
     paste(collapse = "|")
 }
 
 # production_companies_imdb_fun = function(html_object) {
 #   html_object %>%
-#     html_nodes("#__next > main > div") %>% 
-#     html_nodes("section.ipc-page-background.ipc-page-background--base.TitlePage__StyledPageBackground-wzlr49-0.dDUGgO") %>% 
-#     html_nodes("div > section > div") %>% 
-#     html_nodes("div.TitleMainBelowTheFoldGroup__TitleMainPrimaryGroup-sc-1vpywau-1.btXiqv.ipc-page-grid__item.ipc-page-grid__item--span-2") %>% 
-#     # html_nodes("section:nth-child(44) > div.styles__MetaDataContainer-sc-12uhu9s-0.cgqHBf > ul > li:nth-child(7)")
-#     html_nodes("section") %>%
-#     # html_attr("data-testid")
-#     html_nodes(xpath = "//*[@data-testid='Details']") %>%
-#     html_nodes("div") %>% 
-#     html_nodes(xpath = "//*[@data-testid='title-details-companies']") %>%
-#     html_nodes("div > ul > li > a") %>% 
-#     html_text() %>% 
+#     rvest::html_nodes("#__next > main > div") %>% 
+#     rvest::html_nodes("section.ipc-page-background.ipc-page-background--base.TitlePage__StyledPageBackground-wzlr49-0.dDUGgO") %>% 
+#     rvest::html_nodes("div > section > div") %>% 
+#     rvest::html_nodes("div.TitleMainBelowTheFoldGroup__TitleMainPrimaryGroup-sc-1vpywau-1.btXiqv.ipc-page-grid__item.ipc-page-grid__item--span-2") %>% 
+#     # rvest::html_nodes("section:nth-child(44) > div.styles__MetaDataContainer-sc-12uhu9s-0.cgqHBf > ul > li:nth-child(7)")
+#     rvest::html_nodes("section") %>%
+#     # rvest::html_attr("data-testid")
+#     rvest::html_nodes(xpath = "//*[@data-testid='Details']") %>%
+#     rvest::html_nodes("div") %>% 
+#     rvest::html_nodes(xpath = "//*[@data-testid='title-details-companies']") %>%
+#     rvest::html_nodes("div > ul > li > a") %>% 
+#     rvest::html_text() %>% 
 #     paste(collapse = "|")
 # }
 
 
 
 audience_score_fun = function(html_object){
-  html_object %>% html_nodes("#topSection > div.thumbnail-scoreboard-wrap > score-board") %>%
-    html_attr("audiencescore")
+  html_object %>% rvest::html_nodes("#topSection > div.thumbnail-scoreboard-wrap > score-board") %>%
+    rvest::html_attr("audiencescore")
 }
 
 tomato_meter_score_fun = function(html_object){
-  html_object %>% html_nodes("#topSection > div.thumbnail-scoreboard-wrap > score-board") %>%
-    html_attr("tomatometerscore")
+  html_object %>% rvest::html_nodes("#topSection > div.thumbnail-scoreboard-wrap > score-board") %>%
+    rvest::html_attr("tomatometerscore")
 }
 
 directors_rot = function(html_object){
   director = html_object %>%
-    html_nodes("section.panel.panel-rt.panel-box.movie_info.media > div > div > ul >li") %>% 
-    html_text() %>%
-    str_squish() %>% 
-    as_tibble() %>%
-    separate(col = value, sep = ": ", into = c("title", "name")) %>% 
-    filter(title == "Director") %>% pull(name)
+    rvest::html_nodes("section.panel.panel-rt.panel-box.movie_info.media > div > div > ul >li") %>% 
+    rvest::html_text() %>%
+    stringr::str_squish() %>% 
+    tibble::as_tibble() %>%
+    tidyr::separate(col = value, sep = ": ", into = c("title", "name")) %>% 
+    dplyr::filter(title == "Director") %>% dplyr::pull(name)
   
   if (length(director) < 1) {
     director = NA
@@ -301,11 +299,11 @@ directors_rot = function(html_object){
 
 movie_info_rot = function(html_object){
   movie_info = html_object %>%
-    html_nodes("section.panel.panel-rt.panel-box.movie_info.media > div > div > ul >li") %>% 
-    html_text() %>%
-    str_squish() %>% 
-    as_tibble() %>%
-    separate(col = value, sep = ": ", into = c("category", "name"))
+    rvest::html_nodes("section.panel.panel-rt.panel-box.movie_info.media > div > div > ul >li") %>% 
+    rvest::html_text() %>%
+    stringr::str_squish() %>% 
+    tibble::as_tibble() %>%
+    tidyr::separate(col = value, sep = ": ", into = c("category", "name"))
   
   return(movie_info)
   
@@ -327,7 +325,7 @@ movie_info = html_list_rot %>%
   lapply(movie_info_rot)
 names(movie_info) = top_250_tib_clean$title
 
-movie_info_tib = movie_info %>% bind_rows(.id = "title")
+movie_info_tib = movie_info %>% dplyr::bind_rows(.id = "title")
 
 producers_imdb = html_imdb_prod_list %>% 
   lapply(imdb_producers) %>% 
@@ -335,19 +333,19 @@ producers_imdb = html_imdb_prod_list %>%
 
 producers_imdb <- producers_imdb %>%
   # remove all parentheses and insides of parentheses
-  str_remove_all("\\s*\\([^\\)]+\\)")
+  stringr::str_remove_all("\\s*\\([^\\)]+\\)")
 
-producers_imdb = tibble(id = top_250_tib_clean$id, producers_imdb)
+producers_imdb = tibble::tibble(id = top_250_tib_clean$id, producers_imdb)
 
 top_250_imdb_rot_tom = top_250_tib_clean %>% 
-  mutate(audience_scores = as.numeric(audience_scores),
+  dplyr::mutate(audience_scores = as.numeric(audience_scores),
          tomato_meter_scores = as.numeric(tomato_meter_scores),
          director_rot_tom = director_rot_tom) %>% 
-  left_join(movie_info_tib %>% filter(category == "Director") %>% select(title, director = name)) %>% 
-  left_join(movie_info_tib %>% filter(category == "Distributor") %>% select(title, distributor = name)) %>%
-  left_join(movie_info_tib %>% filter(category == "Production Co") %>% select(title, production_co = name)) %>% 
-  mutate(produced_by = ifelse(is.na(distributor), production_co, distributor)) %>% 
-  left_join(producers_imdb)
+  dplyr::left_join(movie_info_tib %>% dplyr::filter(category == "Director") %>% dplyr::select(title, director = name)) %>% 
+  dplyr::left_join(movie_info_tib %>% dplyr::filter(category == "Distributor") %>% dplyr::select(title, distributor = name)) %>%
+  dplyr::left_join(movie_info_tib %>% dplyr::filter(category == "Production Co") %>% dplyr::select(title, production_co = name)) %>% 
+  dplyr::mutate(produced_by = ifelse(is.na(distributor), production_co, distributor)) %>% 
+  dplyr::left_join(producers_imdb)
 
 
 # top_250_imdb_rot_tom %>% write.csv(here::here("data", "top250_movies_with_rt.csv"))

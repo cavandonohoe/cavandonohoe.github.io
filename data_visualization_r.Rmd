@@ -52,12 +52,11 @@ The ggplot2 package is a powerful and versatile tool for creating a wide range o
 
 ```{r message=FALSE}
 # Load the ggplot2 library
-library(ggplot2)
 
 # Create a ggplot scatterplot
-ggplot(data = data_example, aes(x = x, y = y)) +
-  geom_point(size = 3, color = "red") +
-  labs(title = "ggplot2 Scatterplot", x = "X-axis", y = "Y-axis")
+ggplot2::ggplot(data = data_example, ggplot2::aes(x = x, y = y)) +
+  ggplot2::geom_point(size = 3, color = "red") +
+  ggplot2::labs(title = "ggplot2 Scatterplot", x = "X-axis", y = "Y-axis")
 ```
 
 In this section, we've covered the fundamentals of data visualization in R, including creating basic plots, customizing them to meet your needs, and introducing you to the power of ggplot2 for advanced visualization. Data visualization is a crucial skill for exploring and communicating insights from your data effectively.

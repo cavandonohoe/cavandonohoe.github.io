@@ -9,6 +9,10 @@ output:
       after_body: include_footer.html
 ---
 
+```{r pipe, include=FALSE}
+`%>%` <- magrittr::`%>%`
+```
+
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -28,9 +32,6 @@ knitr::opts_chunk$set(
   echo = FALSE, message = FALSE, warning = FALSE,
   tidy = FALSE, results = "asis"
 )
-
-library(tidyverse)
-library(plotly)
 ```
 
 This is so wild. Let this sink in.
@@ -51,17 +52,17 @@ Check these out btw:
 all_dates = readr::read_csv("https://raw.githubusercontent.com/cavandonohoe/confederate_statues/main/data/confederate_statue_dates.csv")
 
 # find mode
-max_statues = all_dates %>% group_by(value3) %>%
-  count %>%
-  ungroup() %>%
-  arrange(desc(n)) %>%
-  filter(n == max(n))
+max_statues = all_dates %>% dplyr::group_by(value3) %>%
+  dplyr::count %>%
+  dplyr::ungroup() %>%
+  dplyr::arrange(dplyr::desc(n)) %>%
+  dplyr::filter(n == max(n))
 
 mode = max_statues %>% 
-  pull(value3)
+  dplyr::pull(value3)
 
 with_max = max_statues %>% 
-  pull(n)
+  dplyr::pull(n)
 ```
 
 Also, we witness the most statues being built in a single year in `r mode` with `r with_max` statues.
@@ -69,30 +70,30 @@ Also, we witness the most statues being built in a single year in `r mode` with 
 These bins are of width = 5 years.
 
 ```{r graph1, fig.width=10, fig.height=7.5}
-all_dates_clean <- all_dates %>% group_by(value3) %>%
-  count %>%
-  ungroup() %>%
-  mutate(date_bins = cut(value3, breaks = seq(min(value3), max(value3)+5, by = 5), right = FALSE),
+all_dates_clean <- all_dates %>% dplyr::group_by(value3) %>%
+  dplyr::count %>%
+  dplyr::ungroup() %>%
+  dplyr::mutate(date_bins = cut(value3, breaks = seq(min(value3), max(value3)+5, by = 5), right = FALSE),
          text = paste0(value3, ": ", n)) %>%
-  group_by(date_bins) %>%
-  summarise(n = sum(n),
+  dplyr::group_by(date_bins) %>%
+  dplyr::summarise(n = sum(n),
             text = paste(text, collapse = "\n")) %>%
-  ungroup() %>%
-  mutate(date_min = as.numeric(gsub("\\[(\\d+),.*", "\\1", date_bins))) %>%
-  rename(date = date_min)
+  dplyr::ungroup() %>%
+  dplyr::mutate(date_min = as.numeric(gsub("\\[(\\d+),.*", "\\1", date_bins))) %>%
+  dplyr::rename(date = date_min)
 
 confederate_statue_hist = all_dates_clean %>%
-  ggplot(aes(x = date, text = text, y = n)) +
-  geom_col(fill = "red") +
-  scale_x_continuous(breaks = seq(min(all_dates_clean$date), max(all_dates_clean$date), by = 5)) +
-  theme(axis.title.x = element_blank(),
-        axis.text.x = element_text(size=12, angle = 90),
-        axis.text.y = element_text(size=15),
-        title = element_text(size=15)) +
-  ylab("# of Statues") +
-  ggtitle("Number of Confederate Statues Over Time")
+  ggplot2::ggplot(ggplot2::aes(x = date, text = text, y = n)) +
+  ggplot2::geom_col(fill = "red") +
+  ggplot2::scale_x_continuous(breaks = seq(min(all_dates_clean$date), max(all_dates_clean$date), by = 5)) +
+  ggplot2::theme(axis.title.x = ggplot2::element_blank(),
+        axis.text.x = ggplot2::element_text(size=12, angle = 90),
+        axis.text.y = ggplot2::element_text(size=15),
+        title = ggplot2::element_text(size=15)) +
+  ggplot2::ylab("# of Statues") +
+  ggplot2::ggtitle("Number of Confederate Statues Over Time")
 
-confederate_statue_hist %>% ggplotly()
+confederate_statue_hist %>% plotly::ggplotly()
 ```
 
 It's just something to think about...
