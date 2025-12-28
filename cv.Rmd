@@ -211,9 +211,13 @@ positions_collapsed_bullets_final %>% filter(section=="Credentials") %>% glue_da
 
 <div class="pagebreak"></div>
 
+<div class="aside">
+
 Disclaimer {#disclaimer}
 --------------------------------------------------------------------------------
 
 This resume was made with the R package [**pagedown**](https://github.com/rstudio/pagedown).
 
 Last updated on<br>`r last_update`.
+
+</div>
