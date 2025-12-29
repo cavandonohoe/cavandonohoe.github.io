@@ -9,6 +9,10 @@ output:
       after_body: include_footer.html
 ---
 
+```{r pipe, include=FALSE}
+`%>%` <- magrittr::`%>%`
+```
+
 ```{r setup, include=FALSE}
 # Set default chunk output
 knitr::opts_chunk$set(
@@ -18,98 +22,96 @@ knitr::opts_chunk$set(
 ```
 
 ```{r libraries}
-library(tidyverse)
-library(DT)
 ```
 
 
 ```{r}
 
 # C schedule
-wyetts_work_schedule =
-  tibble(days = seq.Date(as.Date("2022-01-18"), by = 1, length.out = 13509),
+wyetts_work_schedule <-
+  tibble::tibble(days = seq.Date(as.Date("2022-01-18"), by = 1, length.out = 13509),
          bool = rep(c(1, 0, 1, 0, 1, 0, 0, 0, 0), 13509 / 9))
 
 
-segments_and_weekends_c = wyetts_work_schedule %>%
-  mutate(type = 
-           case_when(
+segments_and_weekends_c <- wyetts_work_schedule %>%
+  dplyr::mutate(type =
+           dplyr::case_when(
              # first day of 'weekend'
-             (lead(bool, n = 1) == lead(bool, n = 2) &
-                lead(bool, n = 2) == lead(bool, n = 3) |
+             (dplyr::lead(bool, n = 1) == dplyr::lead(bool, n = 2) &
+                dplyr::lead(bool, n = 2) == dplyr::lead(bool, n = 3) |
                 # second day of 'weekend'
-                lag(bool, n = 1) == lead(bool, n = 1) &
-                lead(bool, n = 1) == lead(bool, n = 2) |
+                dplyr::lag(bool, n = 1) == dplyr::lead(bool, n = 1) &
+                dplyr::lead(bool, n = 1) == dplyr::lead(bool, n = 2) |
                 # third day of 'weekend'
-                lag(bool, n = 2) == lag(bool, n = 1) &
-                lag(bool, n = 1) == lead(bool, n = 1) |
+                dplyr::lag(bool, n = 2) == dplyr::lag(bool, n = 1) &
+                dplyr::lag(bool, n = 1) == dplyr::lead(bool, n = 1) |
                 # fourth day of 'weekend'
-                lag(bool, n = 1) == lag(bool, n = 2) &
-                lag(bool, n = 2) == lag(bool, n = 3)) &
+                dplyr::lag(bool, n = 1) == dplyr::lag(bool, n = 2) &
+                dplyr::lag(bool, n = 2) == dplyr::lag(bool, n = 3)) &
                bool == 0 ~ "weekend",
              TRUE ~ "segment"),
-         work_status = case_when(bool == 1 ~ "working",
+         work_status = dplyr::case_when(bool == 1 ~ "working",
                                  TRUE ~ "off"),
          day_of_week = weekdays(days))
 
-years_till_retirement = 65 - (lubridate::year(Sys.Date()) - 1994)
+years_till_retirement <- 65 - (lubridate::year(Sys.Date()) - 1994)
 
 # fun code to check our overlap
 # segments_and_weekends_c %>% 
-#   filter(day_of_week %in% c("Saturday", "Sunday") &
+#   dplyr::filter(day_of_week %in% c("Saturday", "Sunday") &
 #            type == "weekend")
 
 # B Schedule
-jasons_work_schedule =
-  tibble(days = seq.Date(as.Date("2022-12-29"), by = 1, length.out = 13509),
+jasons_work_schedule <-
+  tibble::tibble(days = seq.Date(as.Date("2022-12-29"), by = 1, length.out = 13509),
          bool = rep(c(1, 0, 1, 0, 1, 0, 0, 0, 0), 13509 / 9))
 
 
-segments_and_weekends_b = jasons_work_schedule %>%
-  mutate(type = 
-           case_when(
+segments_and_weekends_b <- jasons_work_schedule %>%
+  dplyr::mutate(type =
+           dplyr::case_when(
              # first day of 'weekend'
-             (lead(bool, n = 1) == lead(bool, n = 2) &
-                lead(bool, n = 2) == lead(bool, n = 3) |
+             (dplyr::lead(bool, n = 1) == dplyr::lead(bool, n = 2) &
+                dplyr::lead(bool, n = 2) == dplyr::lead(bool, n = 3) |
                 # second day of 'weekend'
-                lag(bool, n = 1) == lead(bool, n = 1) &
-                lead(bool, n = 1) == lead(bool, n = 2) |
+                dplyr::lag(bool, n = 1) == dplyr::lead(bool, n = 1) &
+                dplyr::lead(bool, n = 1) == dplyr::lead(bool, n = 2) |
                 # third day of 'weekend'
-                lag(bool, n = 2) == lag(bool, n = 1) &
-                lag(bool, n = 1) == lead(bool, n = 1) |
+                dplyr::lag(bool, n = 2) == dplyr::lag(bool, n = 1) &
+                dplyr::lag(bool, n = 1) == dplyr::lead(bool, n = 1) |
                 # fourth day of 'weekend'
-                lag(bool, n = 1) == lag(bool, n = 2) &
-                lag(bool, n = 2) == lag(bool, n = 3)) &
+                dplyr::lag(bool, n = 1) == dplyr::lag(bool, n = 2) &
+                dplyr::lag(bool, n = 2) == dplyr::lag(bool, n = 3)) &
                bool == 0 ~ "weekend",
              TRUE ~ "segment"),
-         work_status = case_when(bool == 1 ~ "working",
+         work_status = dplyr::case_when(bool == 1 ~ "working",
                                  TRUE ~ "off"),
          day_of_week = weekdays(days))
 
 # County schedule:
-owens_work_schedule =
-  tibble(days = seq.Date(as.Date("2025-08-31"), by = 1, length.out = 12840),
+owens_work_schedule <-
+  tibble::tibble(days = seq.Date(as.Date("2025-08-31"), by = 1, length.out = 12840),
          bool = rep(c(0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1), 12840 / 12))
 
 
-segments_and_weekends_county = owens_work_schedule %>%
-  mutate(type = 
-           case_when(
+segments_and_weekends_county <- owens_work_schedule %>%
+  dplyr::mutate(type =
+           dplyr::case_when(
              # first day of 'weekend'
-             (lead(bool, n = 1) == lead(bool, n = 2) &
-                lead(bool, n = 2) == lead(bool, n = 3) |
+             (dplyr::lead(bool, n = 1) == dplyr::lead(bool, n = 2) &
+                dplyr::lead(bool, n = 2) == dplyr::lead(bool, n = 3) |
                 # second day of 'weekend'
-                lag(bool, n = 1) == lead(bool, n = 1) &
-                lead(bool, n = 1) == lead(bool, n = 2) |
+                dplyr::lag(bool, n = 1) == dplyr::lead(bool, n = 1) &
+                dplyr::lead(bool, n = 1) == dplyr::lead(bool, n = 2) |
                 # third day of 'weekend'
-                lag(bool, n = 2) == lag(bool, n = 1) &
-                lag(bool, n = 1) == lead(bool, n = 1) |
+                dplyr::lag(bool, n = 2) == dplyr::lag(bool, n = 1) &
+                dplyr::lag(bool, n = 1) == dplyr::lead(bool, n = 1) |
                 # fourth day of 'weekend'
-                lag(bool, n = 1) == lag(bool, n = 2) &
-                lag(bool, n = 2) == lag(bool, n = 3)) &
+                dplyr::lag(bool, n = 1) == dplyr::lag(bool, n = 2) &
+                dplyr::lag(bool, n = 2) == dplyr::lag(bool, n = 3)) &
                bool == 0 ~ "weekend",
              TRUE ~ "segment"),
-         work_status = case_when(bool == 1 ~ "working",
+         work_status = dplyr::case_when(bool == 1 ~ "working",
                                  TRUE ~ "off"),
          day_of_week = weekdays(days))
 ```
@@ -122,9 +124,9 @@ This is based on the Kelly Schedule.
 
 ```{r}
 segments_and_weekends_b %>%
-  filter(days >= as.Date(Sys.Date())) %>% 
-  select(date = days, day_of_week, work_status, type) %>% 
-  datatable(filter = "top", extensions = "Buttons",
+  dplyr::filter(days >= as.Date(Sys.Date())) %>%
+  dplyr::select(date = days, day_of_week, work_status, type) %>%
+  DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = TRUE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            pageLength = 500,
                            scrollY = "400px", scrollX = TRUE))
@@ -134,9 +136,9 @@ segments_and_weekends_b %>%
 
 ```{r}
 segments_and_weekends_county %>%
-  filter(days >= as.Date(Sys.Date())) %>% 
-  select(date = days, day_of_week, work_status, type) %>% 
-  datatable(filter = "top", extensions = "Buttons",
+  dplyr::filter(days >= as.Date(Sys.Date())) %>%
+  dplyr::select(date = days, day_of_week, work_status, type) %>%
+  DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = TRUE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            pageLength = 500,
                            scrollY = "400px", scrollX = TRUE))
@@ -146,9 +148,9 @@ segments_and_weekends_county %>%
 
 ```{r}
 segments_and_weekends_c %>%
-  filter(days >= as.Date(Sys.Date())) %>% 
-  select(date = days, day_of_week, work_status, type) %>% 
-  datatable(filter = "top", extensions = "Buttons",
+  dplyr::filter(days >= as.Date(Sys.Date())) %>%
+  dplyr::select(date = days, day_of_week, work_status, type) %>%
+  DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = TRUE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            pageLength = 500,
                            scrollY = "400px", scrollX = TRUE))

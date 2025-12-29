@@ -14,6 +14,10 @@ output:
       in_header: header/header.html
 ---
 
+```{r pipe, include=FALSE}
+`%>%` <- magrittr::`%>%`
+```
+
 ```{r setup, include=FALSE}
 # Set default chunk output
 knitr::opts_chunk$set(
@@ -23,44 +27,42 @@ knitr::opts_chunk$set(
 ```
 
 ```{r libraries}
-library(tidyverse)
-library(DT)
-library(scales)
-library(plotly)
-library(zoo)
-library(lubridate)
-library(ggrepel)
 
 ```
 
 
 
 ```{r grab_data}
-covid.cases = read_csv(paste0("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/",
-                              "csse_covid_19_data/csse_covid_19_time_series/",
-                              "time_series_covid19_confirmed_global.csv"))
+covid.cases <- readr::read_csv(paste0(
+  "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/",
+  "csse_covid_19_data/csse_covid_19_time_series/",
+  "time_series_covid19_confirmed_global.csv"
+))
 ```
 
 ## United States
 
 ```{r united_states_data}
-covid.cases_v2 = covid.cases %>%
-  gather(key="Date", value="confirmed", -c(`Country/Region`, `Province/State`, Lat, Long)) %>% 
-  mutate(Date = as.Date(Date, format="%m/%d/%y"))
+covid.cases_v2 <- covid.cases %>%
+  tidyr::gather(key="Date", value="confirmed", -c(`Country/Region`, `Province/State`, Lat,
+    Long)) %>%
+  dplyr::mutate(Date = as.Date(Date, format="%m/%d/%y"))
 
 
-covid.cases_v3 = covid.cases_v2 %>% filter(grepl(x=`Country/Region`, pattern= "US")) %>%
-  mutate(confirmed.previous.day = lag(confirmed)) %>% 
-  mutate(New.Cases = confirmed - confirmed.previous.day)
+covid.cases_v3 <- covid.cases_v2 %>%
+  dplyr::filter(grepl(x=`Country/Region`, pattern= "US")) %>%
+  dplyr::mutate(confirmed.previous.day = dplyr::lag(confirmed)) %>%
+  dplyr::mutate(New.Cases = confirmed - confirmed.previous.day)
 
-covid.cases_v4 = covid.cases_v3 %>%
-  mutate(Seven.Day.Average = rollmean(New.Cases, 7, na.pad = TRUE, align = "right"))
+covid.cases_v4 <- covid.cases_v3 %>%
+  dplyr::mutate(Seven.Day.Average = zoo::rollmean(New.Cases, 7, na.pad = TRUE, align = "right"))
 
 
-covid.cases_v5 = covid.cases_v4 %>% filter(!is.na(Seven.Day.Average)) %>% 
-  mutate(Seven.Day.Average_lag = lag(Seven.Day.Average)) %>%
-  mutate(Change = Seven.Day.Average - Seven.Day.Average_lag) %>% 
-  mutate(Change = ifelse(Change >= 0, paste0("+", round(Change, 0)), 
+covid.cases_v5 <- covid.cases_v4 %>%
+  dplyr::filter(!is.na(Seven.Day.Average)) %>%
+  dplyr::mutate(Seven.Day.Average_lag = dplyr::lag(Seven.Day.Average)) %>%
+  dplyr::mutate(Change = Seven.Day.Average - Seven.Day.Average_lag) %>%
+  dplyr::mutate(Change = ifelse(Change >= 0, paste0("+", round(Change, 0)),
                          paste0(round(Change, 0))))
 ```
 
@@ -73,33 +75,35 @@ Same source as Johns Hopkins, so I hope it's legit.
 [Git Repo](https://github.com/CSSEGISandData/COVID-19)
 
 ```{r us_plots}
-us_cases_plot = covid.cases_v5 %>% ggplot(aes(x=Date, y=Seven.Day.Average)) +
-  geom_line() + ggtitle("Seven Day Average Across the US") + 
-  scale_y_continuous(labels = scales::comma) +
-  scale_x_date(date_labels = "%b %y", breaks = pretty_breaks(n=7))+
-  geom_hline(yintercept = covid.cases_v5$Seven.Day.Average[covid.cases_v5$Date ==
+us_cases_plot <- covid.cases_v5 %>%
+  ggplot2::ggplot(ggplot2::aes(x=Date, y=Seven.Day.Average)) +
+  ggplot2::geom_line() + ggplot2::ggtitle("Seven Day Average Across the US") +
+  ggplot2::scale_y_continuous(labels = scales::comma) +
+  ggplot2::scale_x_date(date_labels = "%b %y", breaks = scales::pretty_breaks(n=7))+
+  ggplot2::geom_hline(yintercept = covid.cases_v5$Seven.Day.Average[covid.cases_v5$Date ==
                                                              max(covid.cases_v5$Date)],
              linetype=2, colour="red")+
-  ylab("Seven Day Average") +
-  theme(axis.title.x=element_blank())
+  ggplot2::ylab("Seven Day Average") +
+  ggplot2::theme(axis.title.x=ggplot2::element_blank())
 
-us_cases_plot %>% ggplotly()
+us_cases_plot %>%
+  plotly::ggplotly()
 
 ```
 
 The red dashed line helps us visualize where our cases used to be. The following table provides the actual days and seven day average cases of those intersections.
 
 ```{r intersection_points_us}
-covid.cases_v5 %>% 
-  mutate(Intersection = Seven.Day.Average >= 
-           covid.cases_v5$Seven.Day.Average[covid.cases_v5$Date == 
-                                              max(covid.cases_v5$Date, na.rm = TRUE)]) %>% 
-  mutate(Intersection_lead = lead(Intersection)) %>% 
-  filter(Intersection_lead != Intersection | Date == max(Date)) %>% 
-  select(-Lat, -Long) %>% 
-  select(Date, seven_day_average = Seven.Day.Average) %>% 
-  mutate(seven_day_average = round(seven_day_average)) %>%
-  datatable(filter = "top", extensions = "Buttons",
+covid.cases_v5 %>%
+  dplyr::mutate(Intersection = Seven.Day.Average >=
+           covid.cases_v5$Seven.Day.Average[covid.cases_v5$Date ==
+                                              max(covid.cases_v5$Date, na.rm = TRUE)]) %>%
+  dplyr::mutate(Intersection_lead = dplyr::lead(Intersection)) %>%
+  dplyr::filter(Intersection_lead != Intersection | Date == max(Date)) %>%
+  dplyr::select(-Lat, -Long) %>%
+  dplyr::select(Date, seven_day_average = Seven.Day.Average) %>%
+  dplyr::mutate(seven_day_average = round(seven_day_average)) %>%
+  DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
 
@@ -116,58 +120,72 @@ Same as NY Times.
 [Git Repo](https://github.com/nytimes/covid-19-data)
 
 ```{r  grab_data_california}
-covid.cases_state = read_csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv")
+covid.cases_state <- readr::read_csv(paste0(
+  "https://raw.githubusercontent.com/nytimes/covid-19-data/master/",
+  "us-states.csv"
+))
 
 ```
 
 ```{r clean_ca_data}
-covid.cases_state_v2 = covid.cases_state %>% select(date, state, cases) %>% arrange(date) %>% 
-  rename(Date = date, confirmed = cases, NAME = state) %>% 
-  left_join(tibble(NAME = state.name, state = state.abb))
-  
-
-covid.cases_state_v3 = covid.cases_state_v2 %>% filter(state == "CA") %>%
-  mutate(confirmed = replace_na(confirmed, 0)) %>% 
-  mutate(confirmed.previous.day = lag(confirmed)) %>%
-  mutate(New.Cases = confirmed - confirmed.previous.day)
-
-covid.cases_state_v4 = covid.cases_state_v3 %>%
-  mutate(Seven.Day.Average = rollmean(New.Cases, 7, na.pad = TRUE, align = "right"))
+covid.cases_state_v2 <- covid.cases_state %>%
+  dplyr::select(date, state, cases) %>%
+  dplyr::arrange(date) %>%
+  dplyr::rename(Date = date, confirmed = cases, NAME = state) %>%
+  dplyr::left_join(tibble::tibble(NAME = state.name, state = state.abb))
 
 
-covid.cases_state_v5 = covid.cases_state_v4 %>% filter(!is.na(Seven.Day.Average)) %>% 
-  mutate(Seven.Day.Average_lag = lag(Seven.Day.Average)) %>%
-  mutate(Change = Seven.Day.Average - Seven.Day.Average_lag) %>% 
-  mutate(Change_format = ifelse(Change >= 0, paste0("+", round(Change, 0)), 
+covid.cases_state_v3 <- covid.cases_state_v2 %>%
+  dplyr::filter(state == "CA") %>%
+  dplyr::mutate(confirmed = tidyr::replace_na(confirmed, 0)) %>%
+  dplyr::mutate(confirmed.previous.day = dplyr::lag(confirmed)) %>%
+  dplyr::mutate(New.Cases = confirmed - confirmed.previous.day)
+
+covid.cases_state_v4 <- covid.cases_state_v3 %>%
+  dplyr::mutate(Seven.Day.Average = zoo::rollmean(New.Cases, 7, na.pad = TRUE, align = "right"))
+
+
+covid.cases_state_v5 <- covid.cases_state_v4 %>%
+  dplyr::filter(!is.na(Seven.Day.Average)) %>%
+  dplyr::mutate(Seven.Day.Average_lag = dplyr::lag(Seven.Day.Average)) %>%
+  dplyr::mutate(Change = Seven.Day.Average - Seven.Day.Average_lag) %>%
+  dplyr::mutate(Change_format = ifelse(Change >= 0, paste0("+", round(Change, 0)),
                          paste0(round(Change, 0))))
 ```
 
 
 ```{r ca_plot}
-ca_plot = covid.cases_state_v5 %>% ggplot(aes(x=Date, y=Seven.Day.Average, label=Change_format)) + geom_line() + 
-  ggtitle(paste("New", unique(covid.cases_state_v5$NAME), "Covid Cases")) + 
-  scale_y_continuous(labels = scales::comma) +
-  scale_x_date(breaks = pretty_breaks(7), date_labels = "%b %y")+
-  geom_hline(yintercept = covid.cases_state_v5$Seven.Day.Average[covid.cases_state_v5$Date ==
-                                                                   max(covid.cases_state_v5$Date)],
-             linetype=2, colour="red") +
-  ylab("Seven Day Average")
+ca_plot <- covid.cases_state_v5 %>%
+  ggplot2::ggplot(ggplot2::aes(x=Date, y=Seven.Day.Average, label=Change_format)) +
+    ggplot2::geom_line() +
+  ggplot2::ggtitle(paste("New", unique(covid.cases_state_v5$NAME), "Covid Cases")) +
+  ggplot2::scale_y_continuous(labels = scales::comma) +
+  ggplot2::scale_x_date(breaks = scales::pretty_breaks(7), date_labels = "%b %y")+
+  ggplot2::geom_hline(
+    yintercept = covid.cases_state_v5$Seven.Day.Average[
+      covid.cases_state_v5$Date == max(covid.cases_state_v5$Date)
+    ],
+    linetype = 2,
+    colour = "red"
+  ) +
+  ggplot2::ylab("Seven Day Average")
 
-ca_plot %>% ggplotly()
+ca_plot %>%
+  plotly::ggplotly()
 ```
 
 Just like the US chart, the red dashed line can help us visualize the last times we were at today's COVID cases. Below is a table of the exact dates of intersection between today's cases vs previous cases. 
 
 ```{r ca_intersections}
-covid.cases_state_v5 %>% 
-  mutate(Intersection = Seven.Day.Average >= 
-           covid.cases_state_v5$Seven.Day.Average[covid.cases_state_v5$Date == 
-                                              max(covid.cases_state_v5$Date, na.rm = TRUE)]) %>% 
-  mutate(Intersection_lead = lead(Intersection)) %>% 
-  filter(Intersection_lead != Intersection | Date == max(Date)) %>% 
-  select(Date, seven_day_average = Seven.Day.Average) %>% 
-  mutate(seven_day_average = round(seven_day_average)) %>% 
-  datatable(filter = "top", extensions = "Buttons",
+covid.cases_state_v5 %>%
+  dplyr::mutate(Intersection = Seven.Day.Average >=
+           covid.cases_state_v5$Seven.Day.Average[covid.cases_state_v5$Date ==
+                                              max(covid.cases_state_v5$Date, na.rm = TRUE)]) %>%
+  dplyr::mutate(Intersection_lead = dplyr::lead(Intersection)) %>%
+  dplyr::filter(Intersection_lead != Intersection | Date == max(Date)) %>%
+  dplyr::select(Date, seven_day_average = Seven.Day.Average) %>%
+  dplyr::mutate(seven_day_average = round(seven_day_average)) %>%
+  DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
 
@@ -181,56 +199,71 @@ State populations are coming from here: [http://www2.census.gov/programs-surveys
 
 ```{r grab_statewide_data}
 # luckily we already have this in the script
-# covid.cases_state = read_csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv")
+# covid.cases_state <- readr::read_csv(paste0(
+#   "https://raw.githubusercontent.com/nytimes/covid-19-data/master/",
+#   "us-states.csv"
+# ))
 
 # need to normalize everything to the same standard
-state_pop = read_csv("http://www2.census.gov/programs-surveys/popest/datasets/2010-2019/national/totals/nst-est2019-alldata.csv")
+state_pop <- readr::read_csv(paste0(
+  "http://www2.census.gov/programs-surveys/popest/datasets/2010-2019/",
+  "national/totals/nst-est2019-alldata.csv"
+))
 
 ```
 
 ```{r clean_statewide_data}
-state_pop_v2 = state_pop %>% select(NAME, POPESTIMATE2019) %>%
-  left_join(tibble(NAME = state.name, state = state.abb)) %>% 
-  rename(population = POPESTIMATE2019)
+state_pop_v2 <- state_pop %>%
+  dplyr::select(NAME, POPESTIMATE2019) %>%
+  dplyr::left_join(tibble::tibble(NAME = state.name, state = state.abb)) %>%
+  dplyr::rename(population = POPESTIMATE2019)
 
-covid.cases_state_v2 = covid.cases_state %>%
-  select(date, state, cases, deaths) %>% arrange(date) %>% 
-  rename(Date = date, confirmed = cases, NAME = state) %>% left_join(state_pop_v2) %>%
-  select(Date, state, confirmed, population, deaths) %>%
-  arrange(Date) %>% 
-  mutate(confirmed = confirmed / population,
-         death_per_cap = deaths / population) %>% 
-  filter(state %in% state.abb)
+covid.cases_state_v2 <- covid.cases_state %>%
+  dplyr::select(date, state, cases, deaths) %>%
+    dplyr::arrange(date) %>%
+  dplyr::rename(Date = date, confirmed = cases, NAME = state) %>%
+    dplyr::left_join(state_pop_v2) %>%
+  dplyr::select(Date, state, confirmed, population, deaths) %>%
+  dplyr::arrange(Date) %>%
+  dplyr::mutate(confirmed = confirmed / population,
+         death_per_cap = deaths / population) %>%
+  dplyr::filter(state %in% state.abb)
 
 
-covid.cases_state_v3 = covid.cases_state_v2 %>% group_by(state) %>%
-  mutate(confirmed = replace_na(confirmed, 0),
-         death_per_cap = replace_na(death_per_cap, 0)) %>% 
-  mutate(confirmed.previous.day = lag(confirmed),
-         death_per_cap_previous_day = lag(death_per_cap)) %>% 
-  mutate(New.Cases = confirmed - confirmed.previous.day,
+covid.cases_state_v3 <- covid.cases_state_v2 %>%
+  dplyr::group_by(state) %>%
+  dplyr::mutate(confirmed = tidyr::replace_na(confirmed, 0),
+         death_per_cap = tidyr::replace_na(death_per_cap, 0)) %>%
+  dplyr::mutate(confirmed.previous.day = dplyr::lag(confirmed),
+         death_per_cap_previous_day = dplyr::lag(death_per_cap)) %>%
+  dplyr::mutate(New.Cases = confirmed - confirmed.previous.day,
          new_deaths = death_per_cap - death_per_cap_previous_day)
 
-covid.cases_state_v4 = covid.cases_state_v3 %>%
-  mutate(Seven.Day.Average = rollmean(New.Cases, 7, na.pad = TRUE, align = "right"),
-         seven_day_average_deaths = rollmean(new_deaths, 7, na.pad = TRUE, align = "right")) %>% 
-  ungroup()
+covid.cases_state_v4 <- covid.cases_state_v3 %>%
+  dplyr::mutate(Seven.Day.Average = zoo::rollmean(New.Cases, 7, na.pad = TRUE, align = "right"),
+         seven_day_average_deaths = zoo::rollmean(new_deaths, 7, na.pad = TRUE,
+           align = "right")) %>%
+  dplyr::ungroup()
 
 
-covid.cases_state_v5 = covid.cases_state_v4 %>%
-  filter(!is.na(Seven.Day.Average))
+covid.cases_state_v5 <- covid.cases_state_v4 %>%
+  dplyr::filter(!is.na(Seven.Day.Average))
 
 
 ```
 
 
 ```{r state_by_state_plot}
-covid.cases_state_plot = covid.cases_state_v5 %>% ggplot(aes(x=Date, y=Seven.Day.Average, colour = state)) + geom_line() + 
-  ggtitle("New Covid Cases per Capita") + 
-  scale_y_continuous(labels = scales::comma) + scale_x_date(breaks = pretty_breaks(7), date_labels = "%b %y") +
-  ylab("Seven Day Average per Capita")
+covid.cases_state_plot <- covid.cases_state_v5 %>%
+  ggplot2::ggplot(ggplot2::aes(x=Date, y=Seven.Day.Average, colour = state)) +
+    ggplot2::geom_line() +
+  ggplot2::ggtitle("New Covid Cases per Capita") +
+  ggplot2::scale_y_continuous(labels = scales::comma) +
+    ggplot2::scale_x_date(breaks = scales::pretty_breaks(7), date_labels = "%b %y") +
+  ggplot2::ylab("Seven Day Average per Capita")
 
-covid.cases_state_plot %>% ggplotly()
+covid.cases_state_plot %>%
+  plotly::ggplotly()
 
 ```
 
@@ -243,30 +276,36 @@ Now, I'm no public health expert, but it does seem like the higher vaccine rate 
 Vaccination data from here: [https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/us_state_vaccinations.csv](https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/us_state_vaccinations.csv)
 
 ```{r vaccine_data}
-vaccines = read_csv("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/us_state_vaccinations.csv")
+vaccines <- readr::read_csv(paste0(
+  "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/",
+  "vaccinations/us_state_vaccinations.csv"
+))
 
-state_tib = tibble(location = state.name, state = state.abb)
+state_tib <- tibble::tibble(location = state.name, state = state.abb)
 
-vaccines_current_rate = vaccines %>%
-  mutate(location = ifelse(location == "New York State", "New York", location)) %>% 
-  filter(date == max(date)) %>% 
-  filter(location %in% state.name) %>% 
-  select(location, people_fully_vaccinated_per_hundred) %>% 
-  arrange(desc(people_fully_vaccinated_per_hundred))
+vaccines_current_rate <- vaccines %>%
+  dplyr::mutate(location = ifelse(location == "New York State", "New York", location)) %>%
+  dplyr::filter(date == max(date)) %>%
+  dplyr::filter(location %in% state.name) %>%
+  dplyr::select(location, people_fully_vaccinated_per_hundred) %>%
+  dplyr::arrange(dplyr::desc(people_fully_vaccinated_per_hundred))
 
-covid_current = covid.cases_state_v5 %>% ungroup() %>% filter(Date == max(Date, na.rm = TRUE)) %>% 
-  arrange(Seven.Day.Average) %>%
-  mutate(new_cases_actual = New.Cases * population) %>% 
-  select(state, Seven.Day.Average) %>% 
-  left_join(state_tib)
+covid_current <- covid.cases_state_v5 %>%
+  dplyr::ungroup() %>%
+  dplyr::filter(Date == max(Date, na.rm = TRUE)) %>%
+  dplyr::arrange(Seven.Day.Average) %>%
+  dplyr::mutate(new_cases_actual = New.Cases * population) %>%
+  dplyr::select(state, Seven.Day.Average) %>%
+  dplyr::left_join(state_tib)
 
-covid_cases_w_vaccines = covid_current %>% full_join(vaccines_current_rate)
+covid_cases_w_vaccines <- covid_current %>%
+  dplyr::full_join(vaccines_current_rate)
 
-vaccines_historic_rate = vaccines %>%
-  mutate(location = ifelse(location == "New York State", "New York", location)) %>% 
-  filter(location %in% state.name) %>% 
-  select(date, location, people_fully_vaccinated_per_hundred, people_fully_vaccinated) %>% 
-  arrange(desc(people_fully_vaccinated_per_hundred))
+vaccines_historic_rate <- vaccines %>%
+  dplyr::mutate(location = ifelse(location == "New York State", "New York", location)) %>%
+  dplyr::filter(location %in% state.name) %>%
+  dplyr::select(date, location, people_fully_vaccinated_per_hundred, people_fully_vaccinated) %>%
+  dplyr::arrange(dplyr::desc(people_fully_vaccinated_per_hundred))
 
 ```
 
@@ -274,95 +313,105 @@ vaccines_historic_rate = vaccines %>%
 
 ```{r vaccines_by_state}
 
-vaccines_historic_rate_plot = vaccines_historic_rate %>%
-  ggplot(aes(x=date, y= people_fully_vaccinated_per_hundred, colour = location)) +
-  geom_point() +
-  scale_x_date(date_labels = "%h %d", breaks = scales::pretty_breaks(7)) +
-  ylab("% fully vaxxed") +
-  ggtitle("vax rate per state")
+vaccines_historic_rate_plot <- vaccines_historic_rate %>%
+  ggplot2::ggplot(ggplot2::aes(x=date, y= people_fully_vaccinated_per_hundred, colour = location)) +
+  ggplot2::geom_point() +
+  ggplot2::scale_x_date(date_labels = "%h %d", breaks = scales::pretty_breaks(7)) +
+  ggplot2::ylab("% fully vaxxed") +
+  ggplot2::ggtitle("vax rate per state")
 
-vaccines_historic_rate_plot %>% ggplotly()
+vaccines_historic_rate_plot %>%
+  plotly::ggplotly()
 
 ```
 
 Now if that is a little too noisy, I'll break it down between red and blue.
 
 ```{r vaccine_party_plot}
-usa_pop = state_pop_v2 %>% filter(NAME == "United States") %>% pull(population)
+usa_pop <- state_pop_v2 %>%
+  dplyr::filter(NAME == "United States") %>%
+  dplyr::pull(population)
 
-vaccines_usa = vaccines %>%
-  mutate(location = ifelse(location == "New York State", "New York", location)) %>% 
-  filter(location %in% state.name) %>% 
-  group_by(date) %>% 
-  summarise(people_fully_vaccinated = sum(people_fully_vaccinated, na.rm = TRUE)) %>% 
-  ungroup() %>% mutate(per_fully_vaxxed = people_fully_vaccinated / usa_pop)
+vaccines_usa <- vaccines %>%
+  dplyr::mutate(location = ifelse(location == "New York State", "New York", location)) %>%
+  dplyr::filter(location %in% state.name) %>%
+  dplyr::group_by(date) %>%
+  dplyr::summarise(people_fully_vaccinated = sum(people_fully_vaccinated, na.rm = TRUE)) %>%
+  dplyr::ungroup() %>%
+    dplyr::mutate(per_fully_vaxxed = people_fully_vaccinated / usa_pop)
 
 # voting preference
-voting_pref = read_csv(here::here("data", "president_1976_2020.csv"))
+voting_pref <- readr::read_csv(here::here("data", "president_1976_2020.csv"))
 
-voting_pref2 = voting_pref %>% filter(year == 2020 & party_detailed %in% c("DEMOCRAT", "REPUBLICAN")) %>% 
-  mutate(per_votes = candidatevotes / totalvotes) %>%
-  group_by(state) %>% 
-  filter(candidatevotes == max(candidatevotes)) %>%
-  ungroup() %>% 
-  select(state, state_po, party_detailed, per_votes) %>% 
-  mutate(party_simp = ifelse(party_detailed == "REPUBLICAN", "R", "D"),
+voting_pref2 <- voting_pref %>%
+  dplyr::filter(year == 2020 & party_detailed %in% c("DEMOCRAT", "REPUBLICAN")) %>%
+  dplyr::mutate(per_votes = candidatevotes / totalvotes) %>%
+  dplyr::group_by(state) %>%
+  dplyr::filter(candidatevotes == max(candidatevotes)) %>%
+  dplyr::ungroup() %>%
+  dplyr::select(state, state_po, party_detailed, per_votes) %>%
+  dplyr::mutate(party_simp = ifelse(party_detailed == "REPUBLICAN", "R", "D"),
          party_color = ifelse(party_simp == "R", "red", "blue"),
          STATE = state,
          location = snakecase::to_any_case(string = tolower(STATE), case = "title"),
-         per_votes_sign = ifelse(party_simp == "D", per_votes, -per_votes)) 
-  
-vaccine_party = vaccines_historic_rate %>% left_join(voting_pref2)
+         per_votes_sign = ifelse(party_simp == "D", per_votes, -per_votes))
+
+vaccine_party <- vaccines_historic_rate %>%
+  dplyr::left_join(voting_pref2)
 
 
-vaccine_party_plot = vaccine_party %>%
-  ggplot(aes(x=date, y=people_fully_vaccinated_per_hundred, colour = per_votes_sign,
+vaccine_party_plot <- vaccine_party %>%
+  ggplot2::ggplot(ggplot2::aes(x=date, y=people_fully_vaccinated_per_hundred,
+    colour = per_votes_sign,
              label = location)) +
-  geom_point() +
-  scale_colour_gradient(low = ("red"),
+  ggplot2::geom_point() +
+  ggplot2::scale_colour_gradient(low = ("red"),
                         high = ("blue")) +
-  scale_x_date(date_labels = "%h %d", breaks = pretty_breaks(7)) +
-  ylab("% fully vaxxed") +
-  ggtitle("vax rate per state per party")
+  ggplot2::scale_x_date(date_labels = "%h %d", breaks = scales::pretty_breaks(7)) +
+  ggplot2::ylab("% fully vaxxed") +
+  ggplot2::ggtitle("vax rate per state per party")
 
-vaccine_party_plot %>% ggplotly()
+vaccine_party_plot %>%
+  plotly::ggplotly()
 
 ```
 
 ## Deaths since July 2021
 
 ```{r deaths}
-deaths_since_july = covid.cases_state %>%
-  group_by(date) %>% summarise(total_deaths = sum(deaths)) %>% 
-  ungroup() %>% 
-  mutate(death_change = total_deaths - lag(total_deaths)) %>% 
-  mutate(seven_day_average_death = rollmean(death_change, 7, na.pad = TRUE)) %>%
-  filter(date >= as.Date("2021-07-01")) %>%
-  ggplot(aes(x=date, y=seven_day_average_death)) +
-  geom_path()+
-  scale_y_continuous(breaks = scales::pretty_breaks(n = 20))+
-  ggtitle("Covid Deaths per Day after 7/1/2021")+
-  ylab("Seven Day Average Deaths")
+deaths_since_july <- covid.cases_state %>%
+  dplyr::group_by(date) %>%
+    dplyr::summarise(total_deaths = sum(deaths)) %>%
+  dplyr::ungroup() %>%
+  dplyr::mutate(death_change = total_deaths - dplyr::lag(total_deaths)) %>%
+  dplyr::mutate(seven_day_average_death = zoo::rollmean(death_change, 7, na.pad = TRUE)) %>%
+  dplyr::filter(date >= as.Date("2021-07-01")) %>%
+  ggplot2::ggplot(ggplot2::aes(x=date, y=seven_day_average_death)) +
+  ggplot2::geom_path()+
+  ggplot2::scale_y_continuous(breaks = scales::pretty_breaks(n = 20))+
+  ggplot2::ggtitle("Covid Deaths per Day after 7/1/2021")+
+  ggplot2::ylab("Seven Day Average Deaths")
 
-deaths_since_july %>% ggplotly()
+deaths_since_july %>%
+  plotly::ggplotly()
 
-july2021_deaths = covid.cases_state %>%
-  group_by(date) %>% summarise(total_deaths = sum(deaths)) %>% 
-  ungroup() %>% 
-  mutate(death_change = total_deaths - lag(total_deaths)) %>% 
-  mutate(seven_day_average_death = rollmean(death_change, 7, na.pad = TRUE)) %>% 
-  filter(date >= as.Date("2021-07-01")) %>% 
-  filter(!is.na(seven_day_average_death))
+july2021_deaths <- covid.cases_state %>%
+  dplyr::group_by(date) %>%
+    dplyr::summarise(total_deaths = sum(deaths)) %>%
+  dplyr::ungroup() %>%
+  dplyr::mutate(death_change = total_deaths - dplyr::lag(total_deaths)) %>%
+  dplyr::mutate(seven_day_average_death = zoo::rollmean(death_change, 7, na.pad = TRUE)) %>%
+  dplyr::filter(date >= as.Date("2021-07-01")) %>%
+  dplyr::filter(!is.na(seven_day_average_death))
 
-perc_change =
+perc_change <-
   july2021_deaths$seven_day_average_death[july2021_deaths$date == max(july2021_deaths$date)] /
-  min(july2021_deaths$seven_day_average_death,na.rm = TRUE)
+  min(july2021_deaths$seven_day_average_death, na.rm = TRUE)
 
 
 ```
 
 This is `r round(perc_change, digits = 1)` times the amount we had at the lowest 7 day average death count in July.
-
 
 
 
