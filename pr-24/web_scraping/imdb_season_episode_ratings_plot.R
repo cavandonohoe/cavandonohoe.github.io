@@ -30,9 +30,7 @@ get_imdb_season_episodes <- function(imdb_input, season) {
   page <- rvest::read_html(url)
 
   next_data_txt <- page %>%
-    
     rvest::html_element("script#__NEXT_DATA__") %>%
-      
     rvest::html_text2()
 
   next_data <- jsonlite::fromJSON(next_data_txt, simplifyVector = FALSE)

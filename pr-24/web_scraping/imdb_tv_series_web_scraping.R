@@ -28,9 +28,7 @@ get_imdb_season_episodes <- function(imdb_input, season) {
   page <- rvest::read_html(url)
 
   next_data_txt <- page %>%
-    
     rvest::html_element("script#__NEXT_DATA__") %>%
-      
     rvest::html_text2()
 
   next_data <- jsonlite::fromJSON(next_data_txt, simplifyVector = FALSE)
@@ -92,7 +90,6 @@ get_imdb_all_episodes <- function(imdb_input, max_seasons = 50) {
   }
 
   dplyr::bind_rows(out) %>%
-    
     dplyr::mutate(imdb_id = imdb_id, .before = 1)
 }
 
@@ -153,9 +150,7 @@ get_top250_tv_shows <- function() {
   page <- rvest::read_html(url)
 
   next_data_txt <- page %>%
-    
     rvest::html_element("script#__NEXT_DATA__") %>%
-      
     rvest::html_text2()
 
   next_data <- jsonlite::fromJSON(next_data_txt, simplifyVector = FALSE)
@@ -163,13 +158,9 @@ get_top250_tv_shows <- function() {
   nodes <- collect_title_nodes(next_data)
 
   titles_df <- nodes %>%
-    
     dplyr::bind_rows() %>%
-      
     dplyr::filter(type %in% c("tvSeries", "tvMiniSeries")) %>%
-      
     dplyr::distinct(imdb_id, .keep_all = TRUE) %>%
-      
     dplyr::slice_head(n = 250)
 
   titles_df
@@ -201,7 +192,6 @@ get_top250_tv_episodes <- function() {
       }
 
       eps <- eps %>%
-        
         dplyr::mutate(
           series_title = show_title,
           .before = 2
