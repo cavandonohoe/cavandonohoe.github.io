@@ -60,7 +60,7 @@ imdb_rating_plot = my_ratings %>%
   dplyr::mutate(imdb_rating = round(`IMDb Rating`)) %>%
   dplyr::group_by(imdb_rating, `Title Type`) %>%
   dplyr::mutate(title_sample = ifelse(
-    n_distinct(Title) < 10,
+    dplyr::n_distinct(Title) < 10,
     paste(Title, collapse = "\n"),
     paste(sample(Title, 10, replace = FALSE), collapse = "\n"))) %>%
   dplyr::group_by(title_sample, .add = TRUE) %>%
@@ -94,7 +94,7 @@ my_rating_plot = my_ratings %>%
   # dplyr::mutate(imdb_rating = round(`IMDb Rating`)) %>%
   dplyr::group_by(`Your Rating`, `Title Type`) %>%
   dplyr::mutate(title_sample = ifelse(
-    n_distinct(Title) < 10,
+    dplyr::n_distinct(Title) < 10,
     paste(Title, collapse = "\n"),
     paste(sample(Title, 10, replace = FALSE), collapse = "\n"))) %>%
   dplyr::group_by(title_sample, .add = TRUE) %>%
