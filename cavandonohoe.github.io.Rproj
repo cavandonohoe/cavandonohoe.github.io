@@ -14,3 +14,4 @@ RnwWeave: Sweave
 LaTeX: pdfLaTeX
 
 BuildType: Website
+WebsiteBuildCommand: Rscript scripts/build_site.R
