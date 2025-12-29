@@ -10,7 +10,9 @@ output:
 ---
 
 ```{r pipe, include=FALSE}
-`%>%` <- magrittr::`%>%`
+` %>%
+  ` <- magrittr::` %>%
+  `
 ```
 
 ```{r setup, include=FALSE}
@@ -28,13 +30,14 @@ knitr::opts_chunk$set(
 ```{r}
 
 # C schedule
-wyetts_work_schedule =
+wyetts_work_schedule <-
   tibble::tibble(days = seq.Date(as.Date("2022-01-18"), by = 1, length.out = 13509),
          bool = rep(c(1, 0, 1, 0, 1, 0, 0, 0, 0), 13509 / 9))
 
 
-segments_and_weekends_c = wyetts_work_schedule %>%
-  dplyr::mutate(type = 
+segments_and_weekends_c <- wyetts_work_schedule %>%
+  
+  dplyr::mutate(type =
            dplyr::case_when(
              # first day of 'weekend'
              (dplyr::lead(bool, n = 1) == dplyr::lead(bool, n = 2) &
@@ -54,7 +57,7 @@ segments_and_weekends_c = wyetts_work_schedule %>%
                                  TRUE ~ "off"),
          day_of_week = weekdays(days))
 
-years_till_retirement = 65 - (lubridate::year(Sys.Date()) - 1994)
+years_till_retirement <- 65 - (lubridate::year(Sys.Date()) - 1994)
 
 # fun code to check our overlap
 # segments_and_weekends_c %>% 
@@ -62,13 +65,14 @@ years_till_retirement = 65 - (lubridate::year(Sys.Date()) - 1994)
 #            type == "weekend")
 
 # B Schedule
-jasons_work_schedule =
+jasons_work_schedule <-
   tibble::tibble(days = seq.Date(as.Date("2022-12-29"), by = 1, length.out = 13509),
          bool = rep(c(1, 0, 1, 0, 1, 0, 0, 0, 0), 13509 / 9))
 
 
-segments_and_weekends_b = jasons_work_schedule %>%
-  dplyr::mutate(type = 
+segments_and_weekends_b <- jasons_work_schedule %>%
+  
+  dplyr::mutate(type =
            dplyr::case_when(
              # first day of 'weekend'
              (dplyr::lead(bool, n = 1) == dplyr::lead(bool, n = 2) &
@@ -89,13 +93,14 @@ segments_and_weekends_b = jasons_work_schedule %>%
          day_of_week = weekdays(days))
 
 # County schedule:
-owens_work_schedule =
+owens_work_schedule <-
   tibble::tibble(days = seq.Date(as.Date("2025-08-31"), by = 1, length.out = 12840),
          bool = rep(c(0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1), 12840 / 12))
 
 
-segments_and_weekends_county = owens_work_schedule %>%
-  dplyr::mutate(type = 
+segments_and_weekends_county <- owens_work_schedule %>%
+  
+  dplyr::mutate(type =
            dplyr::case_when(
              # first day of 'weekend'
              (dplyr::lead(bool, n = 1) == dplyr::lead(bool, n = 2) &
@@ -124,8 +129,11 @@ This is based on the Kelly Schedule.
 
 ```{r}
 segments_and_weekends_b %>%
-  dplyr::filter(days >= as.Date(Sys.Date())) %>% 
-  dplyr::select(date = days, day_of_week, work_status, type) %>% 
+  
+  dplyr::filter(days >= as.Date(Sys.Date())) %>%
+    
+  dplyr::select(date = days, day_of_week, work_status, type) %>%
+    
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = TRUE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            pageLength = 500,
@@ -136,8 +144,11 @@ segments_and_weekends_b %>%
 
 ```{r}
 segments_and_weekends_county %>%
-  dplyr::filter(days >= as.Date(Sys.Date())) %>% 
-  dplyr::select(date = days, day_of_week, work_status, type) %>% 
+  
+  dplyr::filter(days >= as.Date(Sys.Date())) %>%
+    
+  dplyr::select(date = days, day_of_week, work_status, type) %>%
+    
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = TRUE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            pageLength = 500,
@@ -148,8 +159,11 @@ segments_and_weekends_county %>%
 
 ```{r}
 segments_and_weekends_c %>%
-  dplyr::filter(days >= as.Date(Sys.Date())) %>% 
-  dplyr::select(date = days, day_of_week, work_status, type) %>% 
+  
+  dplyr::filter(days >= as.Date(Sys.Date())) %>%
+    
+  dplyr::select(date = days, day_of_week, work_status, type) %>%
+    
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = TRUE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            pageLength = 500,

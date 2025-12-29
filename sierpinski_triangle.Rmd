@@ -10,7 +10,9 @@ output:
 ---
 
 ```{r pipe, include=FALSE}
-`%>%` <- magrittr::`%>%`
+` %>%
+  ` <- magrittr::` %>%
+  `
 ```
 
 So I saw [this video](https://www.youtube.com/watch?v=Fgu5-3ihVVI) the other day while strolling through my feed. It was a video of the demonstration of the Sierpinski Triangle and how you can make it with a bunch of points. The idea is to draw 3 vertices of an equilateral triangle, and then choose a random point. Then take the midpoint between a random vertex and that point, then plot that point. Then for the new point take a random vertex and plot the midpoint again. Then keep doing that over and over again until something beautiful appears.
@@ -30,27 +32,33 @@ knitr::opts_chunk$set(
 ```{r include=FALSE}
 set.seed(12)
 
-triangle_list = list(x1 = c(0,0), x2 = c(.5, 1), x3 = c(1,0))
+triangle_list <- list(x1 = c(0, 0), x2 = c(.5, 1), x3 = c(1, 0))
 
-midpoint = function(x,y) {
+midpoint <- function(x, y) {
   c((x[1] + y[1]) / 2, (x[2] + y[2]) / 2)
 }
 
-test_list = list()
-starting_point = c(.5,.25)
+test_list <- list()
+starting_point <- c(.5, .25)
 for (i in 1:20000) {
   if (i == 1) {
-    middle_point = starting_point
+    middle_point <- starting_point
   } else {
-    random_point = sample(triangle_list, 1) %>% unlist
-    middle_point = midpoint(test_list[[i-1]], random_point)
+    random_point <- sample(triangle_list, 1) %>%
+      unlist
+    middle_point <- midpoint(test_list[[i-1]], random_point)
   }
   test_list[[i]] = middle_point
 }
 
-starting_triangle = triangle_list %>% lapply(function(z) tibble::tibble(x = z[1], y = z[2])) %>% dplyr::bind_rows()
+starting_triangle <- triangle_list %>%
+  lapply(function(z) tibble::tibble(x = z[1], y = z[2])) %>%
+  dplyr::bind_rows()
 
-zap_triangle = test_list %>% lapply(function(z) tibble::tibble(x = z[1], y = z[2])) %>% dplyr::bind_rows() %>% dplyr::bind_rows(starting_triangle, .)
+zap_triangle <- test_list %>%
+  lapply(function(z) tibble::tibble(x = z[1], y = z[2])) %>%
+  dplyr::bind_rows() %>%
+  dplyr::bind_rows(starting_triangle, .)
 ```
 
 The first 3 points
@@ -59,8 +67,11 @@ The first 3 points
 
 ```{r}
 zap_triangle %>%
+  
   dplyr::mutate(time = dplyr::row_number()) %>%
+    
   dplyr::filter(time <= 3) %>%
+    
   ggplot2::ggplot(ggplot2::aes(x, y)) + ggplot2::geom_point() +
   ggplot2::theme_void()
 ```
@@ -69,8 +80,11 @@ zap_triangle %>%
 
 ```{r}
 zap_triangle %>%
+  
   dplyr::mutate(time = dplyr::row_number()) %>%
+    
   dplyr::filter(time <= 10) %>%
+    
   ggplot2::ggplot(ggplot2::aes(x, y)) + ggplot2::geom_point() +
   ggplot2::theme_void()
 ```
@@ -79,8 +93,11 @@ zap_triangle %>%
 
 ```{r}
 zap_triangle %>%
+  
   dplyr::mutate(time = dplyr::row_number()) %>%
+    
   dplyr::filter(time <= 100) %>%
+    
   ggplot2::ggplot(ggplot2::aes(x, y)) + ggplot2::geom_point() +
   ggplot2::theme_void()
 ```
@@ -89,8 +106,11 @@ zap_triangle %>%
 
 ```{r}
 zap_triangle %>%
+  
   dplyr::mutate(time = dplyr::row_number()) %>%
+    
   dplyr::filter(time <= 1000) %>%
+    
   ggplot2::ggplot(ggplot2::aes(x, y)) + ggplot2::geom_point() +
   ggplot2::theme_void()
 ```
@@ -99,8 +119,11 @@ zap_triangle %>%
 
 ```{r}
 zap_triangle %>%
+  
   dplyr::mutate(time = dplyr::row_number()) %>%
+    
   dplyr::filter(time <= 20000) %>%
+    
   ggplot2::ggplot(ggplot2::aes(x, y)) + ggplot2::geom_point() +
   ggplot2::theme_void()
 ```

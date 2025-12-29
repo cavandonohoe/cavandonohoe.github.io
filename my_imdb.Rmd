@@ -10,7 +10,9 @@ output:
 ---
 
 ```{r pipe, include=FALSE}
-`%>%` <- magrittr::`%>%`
+` %>%
+  ` <- magrittr::` %>%
+  `
 ```
 
 
@@ -27,17 +29,23 @@ knitr::opts_chunk$set(
 
 
 ```{r data_load, include=FALSE}
-my_ratings = readr::read_csv(here::here("data", "imdb_ratings.csv"))
+my_ratings <- readr::read_csv(here::here("data", "imdb_ratings.csv"))
 ```
 
 ```{r nine_ten_movies, eval=FALSE}
-nines_and_tens = my_ratings %>%
+nines_and_tens <- my_ratings %>%
+  
   dplyr::filter(`Your Rating` %in% c(9, 10))
 
 nines_and_tens %>%
+  
   dplyr::filter(`Title Type` == "movie") %>%
-  dplyr::select(`My Rating` = `Your Rating`, Title, `IMDb Rating`, `Runtime (mins)`, Year, Genres, `Release Date`, Directors) %>%
+    
+  dplyr::select(`My Rating` = `Your Rating`, Title, `IMDb Rating`, `Runtime (mins)`, Year, Genres,
+    `Release Date`, Directors) %>%
+    
   dplyr::arrange(dplyr::desc(`My Rating`), dplyr::desc(`IMDb Rating`)) %>%
+    
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
@@ -45,8 +53,12 @@ nines_and_tens %>%
 
 ```{r full_list}
 my_ratings %>%
-  dplyr::select(`My Rating` = `Your Rating`, Title, `Title Type`, `IMDb Rating`, `Runtime (mins)`, Year, Genres, `Release Date`, Directors) %>%
+  
+  dplyr::select(`My Rating` = `Your Rating`, Title, `Title Type`, `IMDb Rating`, `Runtime (mins)`,
+    Year, Genres, `Release Date`, Directors) %>%
+    
   dplyr::arrange(dplyr::desc(`My Rating`), dplyr::desc(`IMDb Rating`)) %>%
+    
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
@@ -55,16 +67,25 @@ my_ratings %>%
 
 
 ```{r some_graphs}
-imdb_rating_plot = my_ratings %>%
-  # dplyr::select(`My Rating` = `Your Rating`, Title, `Title Type`, `IMDb Rating`, `Runtime (mins)`, Year, Genres, `Release Date`, Directors) %>%
+imdb_rating_plot <- my_ratings %>%
+  
+  # dplyr::select(`My Rating` = `Your Rating`, Title, `Title Type`,
+  #              `IMDb Rating`, `Runtime (mins)`, Year, Genres,
+  #              `Release Date`, Directors) %>%
   dplyr::mutate(imdb_rating = round(`IMDb Rating`)) %>%
+    
   dplyr::group_by(imdb_rating, `Title Type`) %>%
+    
   dplyr::mutate(title_sample = ifelse(
     dplyr::n_distinct(Title) < 10,
     paste(Title, collapse = "\n"),
     paste(sample(Title, 10, replace = FALSE), collapse = "\n"))) %>%
+      
   dplyr::group_by(title_sample, .add = TRUE) %>%
-  dplyr::count() %>% dplyr::ungroup() %>%
+    
+  dplyr::count() %>%
+    dplyr::ungroup() %>%
+    
   ggplot2::ggplot(ggplot2::aes(x = imdb_rating, y = n, fill = `Title Type`, text = title_sample)) +
   ggplot2::geom_col() +
   ggplot2::scale_x_continuous(breaks = seq(1, 10, 1), limits = c(0.5, 10.5)) +
@@ -72,7 +93,9 @@ imdb_rating_plot = my_ratings %>%
   ggplot2::labs(caption = "hi") +
   ggplot2::ylab("") + ggplot2::xlab("Imdb Rating") + ggplot2::ggtitle("Imdb's Rating (rounded)")
 
-imdb_rating_plot %>% plotly::ggplotly() %>%
+imdb_rating_plot %>%
+  plotly::ggplotly() %>%
+  
   plotly::layout(
     margin = list(
       b = 150 # Adjust the bottom margin to create space for the lower caption
@@ -89,23 +112,34 @@ imdb_rating_plot %>% plotly::ggplotly() %>%
     )
   )
 
-my_rating_plot = my_ratings %>%
-  # dplyr::select(`My Rating` = `Your Rating`, Title, `Title Type`, `IMDb Rating`, `Runtime (mins)`, Year, Genres, `Release Date`, Directors) %>%
+my_rating_plot <- my_ratings %>%
+  
+  # dplyr::select(`My Rating` = `Your Rating`, Title, `Title Type`,
+  #              `IMDb Rating`, `Runtime (mins)`, Year, Genres,
+  #              `Release Date`, Directors) %>%
   # dplyr::mutate(imdb_rating = round(`IMDb Rating`)) %>%
   dplyr::group_by(`Your Rating`, `Title Type`) %>%
+    
   dplyr::mutate(title_sample = ifelse(
     dplyr::n_distinct(Title) < 10,
     paste(Title, collapse = "\n"),
     paste(sample(Title, 10, replace = FALSE), collapse = "\n"))) %>%
+      
   dplyr::group_by(title_sample, .add = TRUE) %>%
-  dplyr::count() %>% dplyr::ungroup() %>%
-  ggplot2::ggplot(ggplot2::aes(x = `Your Rating`, y = n, fill = `Title Type`, text = title_sample)) +
+    
+  dplyr::count() %>%
+    dplyr::ungroup() %>%
+    
+  ggplot2::ggplot(ggplot2::aes(x = `Your Rating`, y = n, fill = `Title Type`,
+    text = title_sample)) +
   ggplot2::geom_col() +
   ggplot2::scale_x_continuous(breaks = seq(1, 10, 1), limits = c(0.5, 10.5)) +
   ggplot2::theme_minimal() +
   ggplot2::ylab("") + ggplot2::xlab("Imdb Rating") + ggplot2::ggtitle("My Rating")
 
-my_rating_plot %>% plotly::ggplotly() %>%
+my_rating_plot %>%
+  plotly::ggplotly() %>%
+  
   plotly::layout(
     margin = list(
       b = 150 # Adjust the bottom margin to create space for the lower caption
@@ -123,20 +157,30 @@ my_rating_plot %>% plotly::ggplotly() %>%
   )
 
 my_ratings %>%
-  dplyr::select(my_rating = `Your Rating`, imdb_rating = `IMDb Rating`, title_type = `Title Type`) %>%
+  
+  dplyr::select(my_rating = `Your Rating`, imdb_rating = `IMDb Rating`,
+    title_type = `Title Type`) %>%
+    
   ggplot2::ggplot(ggplot2::aes(y = my_rating, x = imdb_rating, colour = title_type)) +
   ggplot2::geom_point() +
   ggplot2::scale_x_continuous(breaks = seq(0, 10, 1), limits = c(1, 10)) +
   ggplot2::scale_y_continuous(breaks = seq(0, 10, 1), limits = c(1, 10)) +
   ggplot2::coord_fixed(ratio = 1) +
   ggplot2::geom_abline(intercept = 0, slope = 1, linetype = "dashed", color = "black") +
-  ggplot2::ylab("My Rating") + ggplot2::xlab("IMDb Rating") + ggplot2::ggtitle("My Rating vs IMDB's Rating")
+  ggplot2::ylab("My Rating") + ggplot2::xlab("IMDb Rating") +
+    ggplot2::ggtitle("My Rating vs IMDB's Rating")
 
-my_rating_vs_imdb = my_ratings %>%
+my_rating_vs_imdb <- my_ratings %>%
+  
   dplyr::select(my_rating = `Your Rating`, imdb_rating = `IMDb Rating`) %>%
+    
   dplyr::mutate(diff = my_rating - imdb_rating,
          my_rating_greater = diff >= 0) %>%
-  dplyr::group_by(my_rating_greater) %>% dplyr::count() %>% dplyr::ungroup() %>%
+           
+  dplyr::group_by(my_rating_greater) %>%
+    dplyr::count() %>%
+    dplyr::ungroup() %>%
+    
   dplyr::mutate(perc = n / sum(n))
 
 ```
