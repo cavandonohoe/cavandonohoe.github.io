@@ -8,7 +8,6 @@ random_number <- c(rep(.5, 30000),
 
 random_sample_tib %>%
   dplyr::filter(sample %in% 1:5) %>%
-  
   ggplot2::ggplot(ggplot2::aes(x = position, y = random_number, color = sample)) +
   ggplot2::geom_point() +
   ggplot2::geom_hline(yintercept = 0) +
@@ -16,32 +15,23 @@ random_sample_tib %>%
   ggplot2::ggtitle("Sumedh's Million Dollar Graph")
 
 random_sample_tib <- tibble::tibble(random_number) %>%
-  
   dplyr::mutate(sample = rep(seq(1, length(random_number) / 6), 6),
          # sample = (dplyr::row_number() - 1) %/% 6 + 1,
          position = (dplyr::row_number() - 1) %/% (length(random_number) / 6) + 1
          # position = rep(1:6, times = length(random_number) / 6)
          ) %>%
-           
   dplyr::arrange(sample, position) %>%
-    
   dplyr::group_by(sample) %>%
-    
   dplyr::mutate(sample_sum = sum(random_number)) %>%
-    
   dplyr::ungroup() %>%
-    
   dplyr::group_by(sample) %>%
-    
   dplyr::mutate(theta = REdaS::rad2deg(tan((random_number - dplyr::lag(random_number)) /
                                       (position - dplyr::lag(position))))) %>%
-                                        
   dplyr::ungroup()
 
 # average slope
 random_sample_tib %>%
   dplyr::group_by(position) %>%
-  
   dplyr::summarise(ave_theta = mean(theta, na.rm = TRUE))
 
 random_sample_tib %>%

@@ -34,24 +34,19 @@ imdb_rank_ratings_clean <- readr::read_csv(here::here("data", "top1000_box_offic
 
 ```{r clean}
 box_office <- imdb_rank_ratings_clean %>%
-  
   dplyr::select(id, box_office_rank, title = Title,
          life_time_gross = `Lifetime Gross`, year = Year, imdb_rating) %>%
-           
   dplyr::mutate(box_office_top_1000_flag = TRUE)
 
 oscars <- oscar_winners_clean %>%
-  
   dplyr::select(id = tconst, oscar_titles, year = movie_year, oscar_year,
          imdb_rating = oscar_imdb_ratings, life_time_gross_oscars = life_time_gross) %>%
-           
   dplyr::mutate(oscar_winner_flag = TRUE,
          life_time_gross_oscars = as.numeric(gsub('\\$|,', '', life_time_gross_oscars)),
          imdb_rating = as.numeric(imdb_rating))
 
 box_office_oscars <- box_office %>%
   dplyr::full_join(oscars) %>%
-  
   dplyr::mutate(oscar_winner_flag = ifelse(is.na(oscar_winner_flag), FALSE, oscar_winner_flag),
          box_office_top_1000_flag = ifelse(is.na(box_office_top_1000_flag), FALSE,
            box_office_top_1000_flag),
@@ -61,10 +56,8 @@ box_office_oscars <- box_office %>%
 
 
 box_office_oscars_clean <- box_office_oscars %>%
-  
   dplyr::select(title_final, lifetime_gross, imdb_rating, year,
          box_office_top_1000_flag, oscar_winner_flag, year) %>%
-           
   dplyr::mutate(legend = dplyr::case_when(
     box_office_top_1000_flag & oscar_winner_flag ~
       "Both Oscar Winning and Top 1000 Box Office",
@@ -74,32 +67,23 @@ box_office_oscars_clean <- box_office_oscars %>%
 
 box_office_oscars_clean_split <-
   list(box_office_oscars_clean %>%
-    
          dplyr::filter(box_office_top_1000_flag) %>%
-           
          dplyr::mutate(legend = "Top 1000 Box Office"),
        box_office_oscars_clean %>%
-         
          dplyr::filter(oscar_winner_flag) %>%
-           
          dplyr::mutate(legend = "Best Picture Winner"))
 
 
 overlap <- box_office_oscars_clean_split %>%
   dplyr::bind_rows() %>%
-  
   dplyr::filter(oscar_winner_flag & box_office_top_1000_flag) %>%
-    
   dplyr::distinct(title_final) %>%
-    
   dplyr::mutate(list = paste0(dplyr::row_number(), ". ", title_final, "\n"))
 
 no_box_lifetime_gross <-
   box_office_oscars_clean_split %>%
     dplyr::bind_rows() %>%
-    
   dplyr::filter(is.na(lifetime_gross)) %>%
-    
   dplyr::mutate(list = paste0(dplyr::row_number(), ". ", title_final, "\n"))
 ```
 
@@ -121,14 +105,11 @@ Hover over with your mouse or tap some of the points to view some info!
 ```{r lifetime gross violin}
 best_pic_top_box_boxplot <- box_office_oscars_clean_split %>%
   dplyr::bind_rows() %>%
-  
   dplyr::filter(!is.na(lifetime_gross)) %>%
-    
   dplyr::mutate(label = paste(legend,
                       paste0("$", formatC(as.numeric(lifetime_gross), format = "f",
                                           big.mark = ",", drop0trailing = TRUE)),
                       title_final, year, sep = "\n")) %>%
-                        
   ggplot2::ggplot(ggplot2::aes(x = legend, y = lifetime_gross, fill = legend,
              label = label)) +
   ggplot2::geom_violin() +
@@ -168,13 +149,10 @@ Very obviously, on average Best Picture Winners are a lagging a little bit at th
 ```{r imdb_rating violin}
 best_pic_top_box_boxplot <- box_office_oscars_clean_split %>%
   dplyr::bind_rows() %>%
-  
   dplyr::filter(!is.na(imdb_rating)) %>%
-    
   dplyr::mutate(label = paste(legend,
                        paste("IMDb Rating:", sprintf(imdb_rating, fmt = "%#.1f")),
                        title_final, year, sep = "\n")) %>%
-                         
   ggplot2::ggplot(ggplot2::aes(x = legend, y = imdb_rating, fill = legend,
              label = label)) +
   ggplot2::geom_violin() +

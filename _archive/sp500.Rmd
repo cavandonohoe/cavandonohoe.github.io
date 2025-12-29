@@ -32,7 +32,6 @@ price_data <- tidyquant::tq_get(x = "VOO", from = "2010-01-01", to = as.characte
 # buy the dip
 max_change <- price_data %>%
   dplyr::mutate(day_change = dplyr::lead(close) / close) %>%
-  
   dplyr::filter(day_change == max(day_change, na.rm = TRUE))
 max_date <- max_change %>%
   dplyr::slice(1) %>%
@@ -42,7 +41,6 @@ max_change_perc <- max_change %>%
   dplyr::pull(day_change)
 # scales::percent(max_change_perc - 1, accuracy = .1)
 min_date <- price_data %>%
-  
   dplyr::filter(date == min(date, na.rm = TRUE)) %>%
     dplyr::pull(date)
 
@@ -52,34 +50,23 @@ url <- "https://finance.yahoo.com/quote/VOO/history?p=VOO"
 voo_history_html <- rvest::read_html(url)
 # //*[@id="Col1-1-HistoricalDataTable-Proxy"]/section/div[2]/table
 voo_history <- voo_history_html %>%
-  
   # rvest::html_nodes("#Col1-1-HistoricalDataTable-Proxy > section") %>% 
   rvest::html_nodes(xpath = "//*[@id='Col1-1-HistoricalDataTable-Proxy']/section/div[2]/table") %>%
-    
   # html_name()
   rvest::html_table()
 
 voo_history_close <- voo_history[[1]] %>%
-  
   dplyr::filter(!grepl(x = Open, pattern = "Dividend|Close")) %>%
-    
   dplyr::mutate(date = as.Date(Date, format = "%b %d, %Y"),
          `Close*` = as.numeric(`Close*`)) %>%
-           
   dplyr::select(date, close_yahoo = `Close*`) %>%
-    
   dplyr::mutate(symbol = "VOO")
 
 voo_full <- price_data %>%
-  
   dplyr::select(symbol, date, close) %>%
-    
   dplyr::full_join(voo_history_close) %>%
-    
   dplyr::mutate(close_official = ifelse(is.na(close), close_yahoo, close)) %>%
-    
   dplyr::select(symbol, date, close_official) %>%
-    
   dplyr::filter(!is.na(close_official))
 
 
@@ -89,16 +76,13 @@ for (i in 1:nrow(voo_full)) {
 }
 
 voo_maxes <- voo_full %>%
-  
   dplyr::filter(close_official == rolling_max)
 
 
 intersections_voo <- voo_full %>%
-  
   # dplyr::arrange(dplyr::desc(date)) %>% 
   dplyr::mutate(intersection = close_official >= close_official[date == max(date)],
          intersection_lead = dplyr::lead(intersection)) %>%
-           
   dplyr::filter(intersection != intersection_lead & !intersection)
 
 
@@ -111,7 +95,6 @@ Omg did the stock market just crash? 1% down in a day is a crash right? Well may
 
 ```{r sp500_last_2_years}
 sp500_2018_pres_plot <- voo_full %>%
-  
   ggplot2::ggplot(ggplot2::aes(x = date, y = close_official)) +
   ggplot2::geom_line() +
   ggplot2::geom_point(data = voo_maxes, ggplot2::aes(x = date, y = rolling_max), color = "red",
@@ -131,9 +114,7 @@ Let's zoom in on just the last three months.
 
 ```{r sp500_intersections}
 sp_intersections_plot <- voo_full %>%
-  
   dplyr::filter(date >= min(intersections_voo$date %m-% months(2))) %>%
-    
   ggplot2::ggplot(ggplot2::aes(x = date, y = close_official)) +
   ggplot2::geom_line() +
   ggplot2::ggtitle("S&P 500")+
@@ -147,15 +128,12 @@ sp_intersections_plot <- voo_full %>%
                            hjust = 1,
                            xlim =
                              c(voo_full %>%
-                               
                                  dplyr::filter(
                                    date >= min(intersections_voo$date %m-% months(2))
                                  ) %>%
-                                   
                                  dplyr::pull(date) %>%
                                    min,
                                voo_full %>%
-                                 
                                  dplyr::pull(date) %>%
                                    max)) +
   ggplot2::geom_hline(yintercept = voo_full$close_official[voo_full$date ==

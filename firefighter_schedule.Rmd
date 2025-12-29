@@ -34,7 +34,6 @@ wyetts_work_schedule <-
 
 
 segments_and_weekends_c <- wyetts_work_schedule %>%
-  
   dplyr::mutate(type =
            dplyr::case_when(
              # first day of 'weekend'
@@ -69,7 +68,6 @@ jasons_work_schedule <-
 
 
 segments_and_weekends_b <- jasons_work_schedule %>%
-  
   dplyr::mutate(type =
            dplyr::case_when(
              # first day of 'weekend'
@@ -97,7 +95,6 @@ owens_work_schedule <-
 
 
 segments_and_weekends_county <- owens_work_schedule %>%
-  
   dplyr::mutate(type =
            dplyr::case_when(
              # first day of 'weekend'
@@ -127,11 +124,8 @@ This is based on the Kelly Schedule.
 
 ```{r}
 segments_and_weekends_b %>%
-  
   dplyr::filter(days >= as.Date(Sys.Date())) %>%
-    
   dplyr::select(date = days, day_of_week, work_status, type) %>%
-    
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = TRUE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            pageLength = 500,
@@ -142,11 +136,8 @@ segments_and_weekends_b %>%
 
 ```{r}
 segments_and_weekends_county %>%
-  
   dplyr::filter(days >= as.Date(Sys.Date())) %>%
-    
   dplyr::select(date = days, day_of_week, work_status, type) %>%
-    
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = TRUE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            pageLength = 500,
@@ -157,11 +148,8 @@ segments_and_weekends_county %>%
 
 ```{r}
 segments_and_weekends_c %>%
-  
   dplyr::filter(days >= as.Date(Sys.Date())) %>%
-    
   dplyr::select(date = days, day_of_week, work_status, type) %>%
-    
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = TRUE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            pageLength = 500,

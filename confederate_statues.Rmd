@@ -57,21 +57,15 @@ all_dates <- readr::read_csv(paste0(
 # find mode
 max_statues <- all_dates %>%
   dplyr::group_by(value3) %>%
-  
   dplyr::count() %>%
-    
   dplyr::ungroup() %>%
-    
   dplyr::arrange(dplyr::desc(n)) %>%
-    
   dplyr::filter(n == max(n))
 
 mode <- max_statues %>%
-  
   dplyr::pull(value3)
 
 with_max <- max_statues %>%
-  
   dplyr::pull(n)
 ```
 
@@ -82,28 +76,19 @@ These bins are of width = 5 years.
 ```{r graph1, fig.width=10, fig.height=7.5}
 all_dates_clean <- all_dates %>%
   dplyr::group_by(value3) %>%
-  
   dplyr::count() %>%
-    
   dplyr::ungroup() %>%
-    
   dplyr::mutate(date_bins = cut(value3, breaks = seq(min(value3), max(value3)+5, by = 5),
     right = FALSE),
          text = paste0(value3, ": ", n)) %>%
-           
   dplyr::group_by(date_bins) %>%
-    
   dplyr::summarise(n = sum(n),
             text = paste(text, collapse = "\n")) %>%
-              
   dplyr::ungroup() %>%
-    
   dplyr::mutate(date_min = as.numeric(gsub("\\[(\\d+),.*", "\\1", date_bins))) %>%
-    
   dplyr::rename(date = date_min)
 
 confederate_statue_hist <- all_dates_clean %>%
-  
   ggplot2::ggplot(ggplot2::aes(x = date, text = text, y = n)) +
   ggplot2::geom_col(fill = "red") +
   ggplot2::scale_x_continuous(breaks = seq(min(all_dates_clean$date), max(all_dates_clean$date),

@@ -65,11 +65,8 @@ The first 3 points
 
 ```{r}
 zap_triangle %>%
-  
   dplyr::mutate(time = dplyr::row_number()) %>%
-    
   dplyr::filter(time <= 3) %>%
-    
   ggplot2::ggplot(ggplot2::aes(x, y)) + ggplot2::geom_point() +
   ggplot2::theme_void()
 ```
@@ -78,11 +75,8 @@ zap_triangle %>%
 
 ```{r}
 zap_triangle %>%
-  
   dplyr::mutate(time = dplyr::row_number()) %>%
-    
   dplyr::filter(time <= 10) %>%
-    
   ggplot2::ggplot(ggplot2::aes(x, y)) + ggplot2::geom_point() +
   ggplot2::theme_void()
 ```
@@ -91,11 +85,8 @@ zap_triangle %>%
 
 ```{r}
 zap_triangle %>%
-  
   dplyr::mutate(time = dplyr::row_number()) %>%
-    
   dplyr::filter(time <= 100) %>%
-    
   ggplot2::ggplot(ggplot2::aes(x, y)) + ggplot2::geom_point() +
   ggplot2::theme_void()
 ```
@@ -104,11 +95,8 @@ zap_triangle %>%
 
 ```{r}
 zap_triangle %>%
-  
   dplyr::mutate(time = dplyr::row_number()) %>%
-    
   dplyr::filter(time <= 1000) %>%
-    
   ggplot2::ggplot(ggplot2::aes(x, y)) + ggplot2::geom_point() +
   ggplot2::theme_void()
 ```
@@ -117,11 +105,8 @@ zap_triangle %>%
 
 ```{r}
 zap_triangle %>%
-  
   dplyr::mutate(time = dplyr::row_number()) %>%
-    
   dplyr::filter(time <= 20000) %>%
-    
   ggplot2::ggplot(ggplot2::aes(x, y)) + ggplot2::geom_point() +
   ggplot2::theme_void()
 ```

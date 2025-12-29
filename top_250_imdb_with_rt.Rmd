@@ -45,17 +45,11 @@ Here are our current Top 15 Producer Leaderboards for the IMDb Top 250 Movies.
 ```{r producers_leaderboard}
 producer_leaders_plot <- top_250_imdb_rot_tom %>%
   tidyr::separate_rows(producers_imdb, sep = "\\|") %>%
-  
   dplyr::group_by(producers_imdb) %>%
-    
   dplyr::summarise(n = dplyr::n(), all_titles = paste(title, collapse = "\n")) %>%
-    
   dplyr::arrange(dplyr::desc(n)) %>%
-    
   dplyr::ungroup() %>%
-    
   dplyr::slice(1:15) %>%
-    
   ggplot2::ggplot(ggplot2::aes(y = reorder(producers_imdb, -n), x = n, text = all_titles,
     fill = producers_imdb))+
   ggplot2::geom_col() +
@@ -84,11 +78,8 @@ producer_leaders_plot %>%
 
 ```{r rt_table}
 top_250_imdb_rot_tom %>%
-  
   dplyr::arrange(dplyr::desc(tomato_meter_scores), rank) %>%
-    
   dplyr::select(title, year, tomato_meter_scores, audience_scores, imdb_rating) %>%
-    
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
@@ -101,10 +92,8 @@ Turns out, you may know the IMDb score based on the Rotten Tomatoes Score. The r
 
 ```{r resid_plot_rt_imdb}
 resid_plot <- top_250_imdb_rot_tom %>%
-  
   dplyr::mutate(rot_imdb_residual = tomato_meter_scores - imdb_rating * 10,
          label = paste0(title, "\n", "IMDb Rating: ", imdb_rating)) %>%
-           
   ggplot2::ggplot(ggplot2::aes(x = tomato_meter_scores, y = rot_imdb_residual, label = label)) +
   ggplot2::geom_point() + ggplot2::geom_smooth() +
   ggplot2::ggtitle("Residual Predictor") +

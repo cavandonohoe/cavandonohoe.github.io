@@ -46,7 +46,6 @@ knitr::opts_chunk$set(
 create_episode_plot <- function(episode_data, title, export_png = TRUE) {
   # make sure we have imdb_rating + hover text
   episode_data <- episode_data %>%
-    
     dplyr::mutate(
       imdb_rating = rating,
       hover_text = paste0(
@@ -60,17 +59,12 @@ create_episode_plot <- function(episode_data, title, export_png = TRUE) {
     )
 
   file_name <- title %>%
-    
     tolower() %>%
-      
     stringr::str_remove_all(":") %>%
-      
     stringr::str_replace_all(" ", "_") %>%
-      
     paste0("imdb_rating_plot_files/", ., ".png")
 
   episode_plot <- episode_data %>%
-    
     ggplot2::ggplot(
       ggplot2::aes(
         x = season,
@@ -120,9 +114,7 @@ create_episode_plot <- function(episode_data, title, export_png = TRUE) {
 
 interactive_plotly <- function(gg_object) {
   gg_object %>%
-    
     plotly::ggplotly(tooltip = "text") %>%
-      
     plotly::layout(xaxis = list(side = "top"))
 }
 ```

@@ -43,18 +43,13 @@ Some of them are tied and I didn't bother creating any tie breaking metrics or g
 
 ```{r best_episode}
 max_ratings_per_series <- all_eps_ratings_tib %>%
-  
   dplyr::group_by(imdb_id) %>%
-    
   dplyr::filter(rating == max(rating, na.rm = TRUE)) %>%
-    
   dplyr::ungroup()
 
 max_ratings_per_series %>%
-  
   dplyr::select(series_title, year = release_year, episode_name = title,
          season, episode, rating) %>%
-           
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
@@ -67,18 +62,14 @@ I was also wondering whether the last episode was the highest rated one.
 
 ```{r strong_closer}
 strong_closer <- all_eps_ratings_tib %>%
-  
   dplyr::group_by(imdb_id) %>%
-    
   dplyr::filter(dplyr::row_number() == max(dplyr::row_number(), na.rm = TRUE) &
            rating == max(rating, na.rm = TRUE)) %>%
              dplyr::ungroup()
 
 strong_closer %>%
-  
   dplyr::select(series_title, year = release_year, episode_name = title, season,
          episode, rating) %>%
-           
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
@@ -90,18 +81,14 @@ Fairly rare, but did a series start with the strongest episode?
 
 ```{r strong_starter}
 strong_starter <- all_eps_ratings_tib %>%
-  
   dplyr::group_by(imdb_id) %>%
-    
   dplyr::filter(dplyr::row_number() == min(dplyr::row_number(), na.rm = TRUE) &
            rating == max(rating, na.rm = TRUE)) %>%
              dplyr::ungroup()
 
 strong_starter %>%
-  
   dplyr::select(series_title, year = release_year, episode_name = title,
          season, episode, rating) %>%
-           
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
@@ -115,18 +102,14 @@ Looking at you GOT... Ok maybe some of these aren't that bad. Some of these may 
 
 ```{r shit_ending}
 shit_ending <- all_eps_ratings_tib %>%
-  
   dplyr::group_by(imdb_id) %>%
-    
   dplyr::filter(dplyr::row_number() == max(dplyr::row_number(), na.rm = TRUE) &
            rating == min(rating, na.rm = TRUE)) %>%
              dplyr::ungroup()
 
 shit_ending %>%
-  
   dplyr::select(series_title, year = release_year, episode_name = title,
          season, episode, rating) %>%
-           
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
@@ -138,18 +121,14 @@ Some shows have some god-awful beginnings, and I wonder how they got picked up. 
 
 ```{r awful_pilot}
 awful_pilot <- all_eps_ratings_tib %>%
-  
   dplyr::group_by(imdb_id) %>%
-    
   dplyr::filter(dplyr::row_number() == min(dplyr::row_number(), na.rm = TRUE) &
            rating == min(rating, na.rm = TRUE)) %>%
              dplyr::ungroup()
 
 awful_pilot %>%
-  
   dplyr::select(series_title, year = release_year, episode_name = title,
          season, episode, rating) %>%
-           
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
@@ -162,20 +141,14 @@ Let's see which shows have a minimum rating of any show as an 8.0
 
 ```{r top_tier}
 top_tier <- all_eps_ratings_tib %>%
-  
   dplyr::group_by(imdb_id) %>%
-    
   dplyr::filter(min(rating) >= 8) %>%
-    
   dplyr::filter(rating == min(rating, na.rm = TRUE)) %>%
-    
   dplyr::ungroup()
 
 top_tier %>%
-  
   dplyr::select(series_title, year = release_year, episode_name = title,
          season, episode, rating) %>%
-           
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
@@ -186,20 +159,14 @@ top_tier %>%
 
 ```{r best_streaks}
 runs_over_9_formatted <- all_eps_ratings_tib %>%
-  
   dplyr::arrange(series_title, imdb_id, season, episode) %>%
-    
   dplyr::group_by(series_title, imdb_id) %>%
-    
   dplyr::mutate(
     over9 = rating >= 9,
     run_id = cumsum(over9 != dplyr::lag(over9, default = FALSE))
   ) %>%
-    
   dplyr::filter(over9) %>%
-    
   dplyr::group_by(series_title, imdb_id, run_id) %>%
-    
   dplyr::summarise(
     start_season = dplyr::first(season),
     start_episode = dplyr::first(episode),
@@ -213,15 +180,11 @@ runs_over_9_formatted <- all_eps_ratings_tib %>%
     ),
     .groups = "drop"
   ) %>%
-    
   dplyr::filter(streaks_of_3 > 0) %>%
-    
   dplyr::select(series_title, imdb_id, run_length, streaks_of_3, run_label)
 
 runs_over_9_formatted %>%
-  
   dplyr::select(series_title, run_length, run_label) %>%
-    
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
@@ -230,24 +193,17 @@ runs_over_9_formatted %>%
 
 ```{r plotly_runs}
 runs_episode_level <- all_eps_ratings_tib %>%
-  
   dplyr::arrange(series_title, imdb_id, season, episode) %>%
-    
   dplyr::group_by(series_title, imdb_id) %>%
-    
   dplyr::mutate(
     over9 = rating >= 9,
     run_id = cumsum(over9 != dplyr::lag(over9, default = FALSE))
   ) %>%
-    
   dplyr::filter(over9) %>%
-    
   dplyr::ungroup()
 
 runs_over_9_full <- runs_episode_level %>%
-  
   dplyr::group_by(series_title, imdb_id, run_id) %>%
-    
   dplyr::summarise(
     start_season  = dplyr::first(season),
     start_episode = dplyr::first(episode),
@@ -262,22 +218,16 @@ runs_over_9_full <- runs_episode_level %>%
   )
 
 max_runs <- runs_over_9_full %>%
-  
   dplyr::group_by(series_title, imdb_id) %>%
-    
   dplyr::slice_max(run_length, n = 1, with_ties = FALSE) %>%
-    
   dplyr::ungroup()
 
 max_runs_top20 <- max_runs %>%
-  
   dplyr::arrange(dplyr::desc(run_length)) %>%
-    
   dplyr::slice_head(n = 20)
 
 
 episodes_for_hover <- runs_episode_level %>%
-  
   dplyr::select(
     series_title,
     imdb_id,
@@ -289,18 +239,14 @@ episodes_for_hover <- runs_episode_level %>%
   )
 
 max_runs_hover <- max_runs_top20 %>%
-  
   dplyr::inner_join(
     episodes_for_hover,
     by = c("series_title", "imdb_id", "run_id")
   ) %>%
-    
   dplyr::arrange(series_title, season, episode)
 
 max_runs_hover_summarised <- max_runs_hover %>%
-  
   dplyr::group_by(series_title, imdb_id, run_id, run_length, run_label) %>%
-    
   dplyr::reframe(
     hover_text = paste0(
       run_label, "\n",
@@ -311,12 +257,10 @@ max_runs_hover_summarised <- max_runs_hover %>%
       )
     )
   ) %>%
-    
   dplyr::distinct()
 
 
 plot_data <- max_runs_top20 %>%
-  
   dplyr::left_join(
     max_runs_hover_summarised,
     by = c("series_title", "imdb_id", "run_id", "run_length", "run_label")
@@ -324,9 +268,7 @@ plot_data <- max_runs_top20 %>%
 
 
 p <- max_runs_hover_summarised %>%
-  
   dplyr::arrange(run_length) %>%
-    
   ggplot2::ggplot(
     ggplot2::aes(
       x = run_length,
@@ -364,24 +306,17 @@ plotly::ggplotly(p, tooltip = "text")
 
 ```{r streaks_of_3}
 runs_over_9_streaks <- all_eps_ratings_tib %>%
-  
   dplyr::arrange(series_title, imdb_id, season, episode) %>%
-    
   dplyr::group_by(series_title, imdb_id) %>%
-    
   dplyr::mutate(
     over9 = rating >= 9,
     run_id = cumsum(over9 != dplyr::lag(over9, default = FALSE))
   ) %>%
-    
   dplyr::filter(over9) %>%
-    
   dplyr::group_by(series_title, imdb_id, run_id) %>%
-    
   dplyr::mutate(
     run_length = dplyr::n()
   ) %>%
-    
   dplyr::filter(run_length >= 3) %>%
  # drop runs of 1 or 2 completely
   dplyr::mutate(
@@ -395,9 +330,7 @@ runs_over_9_streaks <- all_eps_ratings_tib %>%
       base_streak_id
     )
   ) %>%
-    
   dplyr::group_by(series_title, imdb_id, run_id, streak_id) %>%
-    
   dplyr::summarise(
     streak_len = dplyr::n(),
     start_season = dplyr::first(season),
@@ -411,9 +344,7 @@ runs_over_9_streaks <- all_eps_ratings_tib %>%
   )
 
 streaks_over_9_concat <- runs_over_9_streaks %>%
-  
   dplyr::group_by(series_title, imdb_id) %>%
-    
   dplyr::summarise(
     streaks = paste(streak_label, collapse = "; "),
     n_streaks = dplyr::n(),
@@ -421,9 +352,7 @@ streaks_over_9_concat <- runs_over_9_streaks %>%
   )
 
 streaks_over_9_concat %>%
-  
   dplyr::select(series_title, streaks, n_streaks) %>%
-    
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))

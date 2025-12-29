@@ -32,7 +32,6 @@ check3 <- check2 %>%
 
 check4 <- check3 %>%
   tidyr::gather(key = rented_or_selling, value = amount, -n) %>%
-  
   dplyr::arrange(n)
 
 check4 %>%

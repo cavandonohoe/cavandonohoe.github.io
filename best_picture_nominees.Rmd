@@ -46,38 +46,27 @@ only_winners <- function(x) {
   no_noms <- gsub(x = x, pattern = ".*(%)", replacement = "")
 
   no_noms[no_noms != ""] %>%
-    
     paste0(collapse = "\n")
 }
 
 
 distributors_plot_nominees <- best_pic_noms_final %>%
-  
   tidyr::separate_rows(producers, sep = "\\|") %>%
-    
   dplyr::group_by(id) %>%
-    
   dplyr::slice(1) %>%
-    
   dplyr::group_by(distributor = producers) %>%
-    
   dplyr::summarise(n = dplyr::n(),
             all_titles = paste0(title, ifelse(nominees_or_winner == "winner", " *", "%"),
                                collapse = "\n"),
             n_winners = sum(nominees_or_winner == "winner")) %>%
-              
   dplyr::ungroup() %>%
-    
   dplyr::mutate(check = strsplit(all_titles, split = "\\\n"),
          winners = check %>%
            lapply(only_winners) %>%
            unlist,
          all_titles = gsub(x = all_titles, pattern = "\\%", replacement = "")) %>%
-           
   dplyr::arrange(dplyr::desc(n)) %>%
-    
   dplyr::slice(1:15) %>%
-    
   ggplot2::ggplot(ggplot2::aes(x = n, y= reorder(distributor, -n), text = all_titles,
     fill = distributor)) +
   ggplot2::geom_col()+
@@ -94,7 +83,6 @@ distributors_plot_nominees <- best_pic_noms_final %>%
 
 distributors_plot_nominees %>%
   plotly::ggplotly(tooltip = c("x", "text", "fill"), height = 800) %>%
-  
   plotly::layout(annotations =
            list(x = 1, y = -0.1, text = "* = winners",
                 showarrow = F, xref='paper', yref='paper',
@@ -107,21 +95,13 @@ For more detail, please look at this table:
 
 ```{r distributor_table}
 best_pic_noms_final %>%
-  
   tidyr::separate_rows(producers, sep = "\\|") %>%
-    
   dplyr::group_by(id) %>%
-    
   dplyr::slice(1) %>%
-    
   dplyr::group_by(distributor = producers) %>%
-    
   dplyr::summarise(n = dplyr::n(), all_titles = paste(title, collapse = "<br>")) %>%
-    
   dplyr::ungroup() %>%
-    
   dplyr::arrange(dplyr::desc(n)) %>%
-    
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE),
@@ -133,30 +113,22 @@ best_pic_noms_final %>%
 ```{r producer_leaderboards}
 
 producers_plot_nominees <- best_pic_noms_final %>%
-  
   tidyr::separate_rows(producers, sep = "\\|") %>%
-    
   # dplyr::group_by(id) %>% 
   # dplyr::slice(1) %>% 
   dplyr::group_by(producers) %>%
-    
   dplyr::summarise(n = dplyr::n(),
             all_titles = paste0(title, ifelse(nominees_or_winner == "winner", " *", "%"),
                                collapse = "\n"),
             n_winners = sum(nominees_or_winner == "winner")) %>%
-              
   dplyr::ungroup() %>%
-    
   dplyr::mutate(check = strsplit(all_titles, split = "\\\n"),
          winners = check %>%
            lapply(only_winners) %>%
            unlist,
          all_titles = gsub(x = all_titles, pattern = "\\%", replacement = "")) %>%
-           
   dplyr::arrange(dplyr::desc(n)) %>%
-    
   dplyr::slice(1:15) %>%
-    
   ggplot2::ggplot(ggplot2::aes(x = n, y= reorder(producers, -n), text = all_titles,
     fill = producers)) +
   ggplot2::geom_col()+
@@ -173,7 +145,6 @@ producers_plot_nominees <- best_pic_noms_final %>%
 
 producers_plot_nominees %>%
   plotly::ggplotly(tooltip = c("x", "text", "fill"), height = 800) %>%
-  
   plotly::layout(annotations =
            list(x = 1, y = -0.1, text = "* = winners",
                 showarrow = F, xref='paper', yref='paper',
@@ -186,19 +157,13 @@ For more detail, please look at this table:
 
 ```{r producer_table}
 best_pic_noms_final %>%
-  
   tidyr::separate_rows(producers, sep = "\\|") %>%
-    
   # dplyr::group_by(id) %>% 
   # dplyr::slice(1) %>% 
   dplyr::group_by(producers) %>%
-    
   dplyr::summarise(n = dplyr::n(), all_titles = paste(title, collapse = "<br>")) %>%
-    
   dplyr::ungroup() %>%
-    
   dplyr::arrange(dplyr::desc(n)) %>%
-    
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE),
@@ -211,9 +176,7 @@ best_pic_noms_final %>%
 
 ```{r full_table}
 best_pic_noms_final %>%
-  
   dplyr::select(year, title, nominees_or_winner, producers, imdb_url) %>%
-    
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
