@@ -64,7 +64,7 @@ imdb_rating_plot = my_ratings %>%
     paste(Title, collapse = "\n"),
     paste(sample(Title, 10, replace = FALSE), collapse = "\n"))) %>%
   dplyr::group_by(title_sample, .add = TRUE) %>%
-  dplyr::count %>% dplyr::ungroup() %>%
+  dplyr::count() %>% dplyr::ungroup() %>%
   ggplot2::ggplot(ggplot2::aes(x = imdb_rating, y = n, fill = `Title Type`, text = title_sample)) +
   ggplot2::geom_col() +
   ggplot2::scale_x_continuous(breaks = seq(1, 10, 1), limits = c(0.5, 10.5)) +
@@ -98,7 +98,7 @@ my_rating_plot = my_ratings %>%
     paste(Title, collapse = "\n"),
     paste(sample(Title, 10, replace = FALSE), collapse = "\n"))) %>%
   dplyr::group_by(title_sample, .add = TRUE) %>%
-  dplyr::count %>% dplyr::ungroup() %>%
+  dplyr::count() %>% dplyr::ungroup() %>%
   ggplot2::ggplot(ggplot2::aes(x = `Your Rating`, y = n, fill = `Title Type`, text = title_sample)) +
   ggplot2::geom_col() +
   ggplot2::scale_x_continuous(breaks = seq(1, 10, 1), limits = c(0.5, 10.5)) +
@@ -136,8 +136,7 @@ my_rating_vs_imdb = my_ratings %>%
   dplyr::select(my_rating = `Your Rating`, imdb_rating = `IMDb Rating`) %>%
   dplyr::mutate(diff = my_rating - imdb_rating,
          my_rating_greater = diff >= 0) %>%
-  dplyr::group_by(my_rating_greater) %>% dplyr::count %>% dplyr::ungroup() %>%
+  dplyr::group_by(my_rating_greater) %>% dplyr::count() %>% dplyr::ungroup() %>%
   dplyr::mutate(perc = n / sum(n))
 
 ```
-
