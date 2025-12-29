@@ -13,7 +13,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r pipe, include=FALSE}
+```{r pipe_cv, include=FALSE}
 `%>%` <- magrittr::`%>%`
 ```
 ```{r ci-skip-gs4_cv, include=FALSE}
