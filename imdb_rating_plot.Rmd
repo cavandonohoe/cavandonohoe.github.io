@@ -169,7 +169,7 @@ the_office %>%
   interactive_plotly
 ```
 
-## HIMYM
+## How I Met Your Mother
 
 ```{r}
 himym <- readr::read_csv(here::here("data", "himym_ep_ratings.csv"))
