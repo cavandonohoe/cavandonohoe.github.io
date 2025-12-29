@@ -10,9 +10,7 @@ output:
 ---
 
 ```{r pipe, include=FALSE}
-` %>%
-  ` <- magrittr::` %>%
-  `
+`%>%` <- magrittr::`%>%`
 ```
 ```{r ci-skip-gs4, include=FALSE}
 # if (Sys.getenv("CI") == "true") knitr::knit_exit()

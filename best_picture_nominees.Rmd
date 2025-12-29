@@ -10,9 +10,7 @@ output:
 ---
 
 ```{r pipe, include=FALSE}
-` %>%
-  ` <- magrittr::` %>%
-  `
+`%>%` <- magrittr::`%>%`
 ```
 
 ```{r setup, include=FALSE}
