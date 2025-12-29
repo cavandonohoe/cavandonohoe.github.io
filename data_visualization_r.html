@@ -495,12 +495,11 @@ wide range of customized and complex visualizations. It follows a
 grammar of graphics approach, making it intuitive and flexible. Here’s a
 basic example using ggplot2:</p>
 <pre class="r"><code># Load the ggplot2 library
-library(ggplot2)
 
 # Create a ggplot scatterplot
-ggplot(data = data_example, aes(x = x, y = y)) +
-  geom_point(size = 3, color = &quot;red&quot;) +
-  labs(title = &quot;ggplot2 Scatterplot&quot;, x = &quot;X-axis&quot;, y = &quot;Y-axis&quot;)</code></pre>
+ggplot2::ggplot(data = data_example, ggplot2::aes(x = x, y = y)) +
+  ggplot2::geom_point(size = 3, color = &quot;red&quot;) +
+  ggplot2::labs(title = &quot;ggplot2 Scatterplot&quot;, x = &quot;X-axis&quot;, y = &quot;Y-axis&quot;)</code></pre>
 <p><img src="data_visualization_r_files/figure-html/unnamed-chunk-2-1.png" alt="" width="672" /></p>
 <p>In this section, we’ve covered the fundamentals of data visualization
 in R, including creating basic plots, customizing them to meet your

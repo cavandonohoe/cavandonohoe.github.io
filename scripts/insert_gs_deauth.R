@@ -33,7 +33,7 @@ for (f in rmds) {
 }
 
 if (length(changed)) {
-  cat("Inserted gs4_deauth() in:\n", paste0(" - ", changed), sep = "\n")
+  cat("Inserted googlesheets4::gs4_deauth() in:\n", paste0(" - ", changed), sep = "\n")
 } else {
-  cat("No files needed gs4_deauth() (either not using gs4 or already present).\n")
+  cat("No files needed googlesheets4::gs4_deauth() (either not using gs4 or already present).\n")
 }
