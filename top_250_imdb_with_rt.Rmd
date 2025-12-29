@@ -96,10 +96,9 @@ resid_plot = top_250_imdb_rot_tom %>%
   ggplot2::ylab("TomatoMeter - 10 * IMDB Score") +
   ggplot2::xlab("TomatoMeter")
 
-resid_plot %>% ggplotly
+resid_plot %>% plotly::ggplotly()
 
 ```
-
 
 
 
