@@ -1,6 +1,5 @@
 name: "Cavan Donohoe"
 output_dir: "_site"
-after_build: "scripts/after_build.R"
 include:
   - imdb_rating_plot_files
 navbar:
