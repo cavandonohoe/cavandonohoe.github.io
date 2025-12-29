@@ -45,7 +45,7 @@ grad_list_clean = grad_list %>% dplyr::slice(-1) %>%
   dplyr::mutate(email_bool = !is.na(Email))
 
 percent_accounted = grad_list_clean %>%
-  dplyr::group_by(email_bool) %>% dplyr::count %>%
+  dplyr::group_by(email_bool) %>% dplyr::count() %>%
   dplyr::ungroup() %>%
   dplyr::mutate(total = sum(n)) %>%
   dplyr::mutate(percent = scales::percent(n / sum(n))) %>%
@@ -72,4 +72,3 @@ As of `r format(Sys.time(), "%B %d, %Y at %H:%M")`, we have the following missin
 ```{r}
 cat(missing_list)
 ```
-
