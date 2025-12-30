@@ -15,6 +15,9 @@ navbar:
     - text: "Services"
       icon: fa-wrench
       href: services.html
+    - text: "CV"
+      icon: fa-id-card
+      href: cv.html
     - text: "Projects"
       icon: fa-laptop
       menu:
@@ -54,6 +57,4 @@ navbar:
           href: data_visualization_r.html
         - text: "Statistics with R"
           href: statistics_with_r.html
-      - text: "CV"
-        href: cv.html
     
