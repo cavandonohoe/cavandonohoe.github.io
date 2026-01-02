@@ -5,6 +5,7 @@
 
 <!-- badges: start -->
 
+![](https://github.com/cavandonohoe/cavandonohoe.github.io/actions/workflows/pages-rmarkdown.yml/badge.svg)
 <!-- badges: end -->
 
 The goal of my website is to display some fun side projects I have been
@@ -14,7 +15,15 @@ a link than an attachment.
 
 Check out my website at <https://cavandonohoe.github.io>
 
-- [IDMb TV
+Highlights:
+
+- Data projects and visualizations (IMDb, box office, ratings)
+- Personal pages (blog, reunion, schedule)
+- CV and learning resources
+
+Movies & data:
+
+- [IMDb TV
   Series](https://cavandonohoe.github.io/imdb_top_250_tv_series.html)
 - [Best Picture vs Top 1000 Box
   Office](https://cavandonohoe.github.io/best_pic_vs_top_1000.html)
@@ -24,17 +33,24 @@ Check out my website at <https://cavandonohoe.github.io>
   Plots](https://cavandonohoe.github.io/imdb_rating_plot.html)
 - [Best Picture
   Nominees](https://cavandonohoe.github.io/best_picture_nominees.html)
+- [Confederate Statue
+  Analysis](https://github.com/cavandonohoe/confederate_statues)
+- [Sierpinski
+  Triangle](https://cavandonohoe.github.io/sierpinski_triangle.html)
+
+Personal:
+
 - [Kelly
   Schedule](https://cavandonohoe.github.io/firefighter_schedule.html)
 - [TOHS Class of 2012
   Reunion](https://cavandonohoe.github.io/tohs_reunion.html)
-- [Sierpinski
-  Triangle](https://cavandonohoe.github.io/sierpinski_triangle.html)
 - [Blog](https://cavandonohoe.github.io/my_travels.html)
-- [Confederate Statue
-  Analysis](https://github.com/cavandonohoe/confederate_statues)
+
+Learning:
+
 - [Learn R (Course on Learning
   R)](https://cavandonohoe.github.io/learn_r.html)
-- [CV](https://cavandonohoe.github.io/cv.html)
 
-![](https://github.com/cavandonohoe/cavandonohoe.github.io/actions/workflows/pages-rmarkdown.yml/badge.svg)
+CV:
+
+- [CV](https://cavandonohoe.github.io/cv.html)
