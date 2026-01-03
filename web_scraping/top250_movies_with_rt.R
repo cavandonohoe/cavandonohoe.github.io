@@ -5,45 +5,364 @@
 
 url <- "https://www.imdb.com/chart/top/"
 
-top_250_html <- url %>%
-  rvest::read_html()
+imdb_user_agent <- paste(
+  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
+  "AppleWebKit/537.36 (KHTML, like Gecko)",
+  "Chrome/123.0.0.0 Safari/537.36"
+)
 
-top_250_tib <- top_250_html %>%
-  rvest::html_node("#main > div > span > div > div > div.lister > table") %>%
-  rvest::html_table() %>%
-    tibble::as_tibble(.name_repair = "universal")
+cache_dir <- here::here("web_scraping", "cache")
+dir.create(cache_dir, recursive = TRUE, showWarnings = FALSE)
 
-top_250_ids <- top_250_html %>%
-  rvest::html_nodes("#main > div > span > div > div > div.lister > table > tbody") %>%
-  rvest::html_nodes("td.titleColumn > a") %>%
-  rvest::html_attr("href") %>%
-  gsub(pattern = "/title/", replacement = "") %>%
-  gsub(pattern = "/.*", replacement = "")
+make_cache_key <- function(text) {
+  tmp <- tempfile()
+  writeLines(text, tmp)
+  key <- as.character(tools::md5sum(tmp))
+  unlink(tmp)
+  key
+}
 
+safe_fetch_html <- function(page_url, label = "page", max_attempts = 3, use_cache = TRUE) {
+  cache_path <- file.path(cache_dir, paste0(make_cache_key(page_url), ".html"))
+  if (use_cache && file.exists(cache_path)) {
+    return(rvest::read_html(cache_path))
+  }
 
-# the nice thing about this imdb list, is that it shows the director
-# so we can check if the rotten tomatoes directors match up with the imdb directors
-# our qc (quality check) will set our control group as the imdb group since I trust imdb more
+  for (attempt in seq_len(max_attempts)) {
+    resp <- tryCatch(
+      httr::GET(
+        page_url,
+        httr::user_agent(imdb_user_agent),
+        httr::add_headers(`Accept-Language` = "en-US,en;q=0.9"),
+        httr::timeout(60)
+      ),
+      error = function(e) e
+    )
 
-directors <- top_250_html %>%
-  rvest::html_nodes("#main > div > span > div > div > div.lister > table > tbody") %>%
-  rvest::html_nodes("td.titleColumn > a") %>%
-  rvest::html_attr("title") %>%
-  gsub(pattern = " \\(dir\\.\\).*", replacement = "")
+    if (!inherits(resp, "error") && !httr::http_error(resp)) {
+      html <- httr::content(resp, as = "text", encoding = "UTF-8")
+      if (use_cache) {
+        writeLines(html, cache_path)
+      }
+      return(rvest::read_html(html))
+    }
 
+    if (attempt < max_attempts) {
+      Sys.sleep(2 ^ attempt)
+    }
+  }
 
-top_250_tib_clean <- top_250_tib %>%
-  dplyr::mutate(id = top_250_ids,
-         rank = dplyr::row_number(),
-         # extract text between last set of parentheses
-         year = gsub(x = Rank...Title, pattern = ".*\\((.*)\\).*", replacement = "\\1") %>%
-           as.numeric(),
-         # extract text from first and last space
-         title = gsub(x = Rank...Title, pattern = "^\\S+\\s+|\\s+[^ ]+$", replacement = ""),
-         site = paste0("https://www.imdb.com/title/", id),
-         director = directors) %>%
-  dplyr::select(rank, title, director, year, imdb_rating = IMDb.Rating, id, site) %>%
-  dplyr::mutate(producer_site = file.path(site, "companycredits?ref_=ttfc_sa_3"))
+  message("Failed to fetch ", label, ": ", page_url)
+  NULL
+}
+
+fetch_imdb_html <- function(page_url) {
+  html <- safe_fetch_html(page_url, label = "IMDb")
+  if (is.null(html)) {
+    stop("Failed to fetch IMDb page: ", page_url)
+  }
+  html
+}
+
+parse_json_ld <- function(html, type) {
+  scripts <- html %>%
+    rvest::html_nodes("script[type='application/ld+json']") %>%
+    rvest::html_text()
+  parsed <- lapply(
+    scripts,
+    function(text) tryCatch(jsonlite::fromJSON(text), error = function(e) NULL)
+  )
+  matches <- Filter(
+    function(x) !is.null(x) && !is.null(x[["@type"]]) && x[["@type"]] == type,
+    parsed
+  )
+  if (length(matches) == 0) {
+    return(NULL)
+  }
+  matches[[1]]
+}
+
+parse_imdb_next_data <- function(html) {
+  node <- rvest::html_node(html, "script#__NEXT_DATA__")
+  if (is.null(node)) {
+    return(NULL)
+  }
+  text <- rvest::html_text(node)
+  tryCatch(jsonlite::fromJSON(text, simplifyVector = FALSE), error = function(e) NULL)
+}
+
+extract_director_name <- function(director) {
+  if (is.null(director)) {
+    return(NA_character_)
+  }
+  if (is.data.frame(director)) {
+    return(director$name[1])
+  }
+  if (is.list(director)) {
+    return(director[[1]]$name %||% NA_character_)
+  }
+  if (is.character(director)) {
+    return(director[1])
+  }
+  NA_character_
+}
+
+`%||%` <- function(a, b) {
+  if (is.null(a)) b else a
+}
+
+top_250_html <- fetch_imdb_html(url)
+
+item_list <- parse_json_ld(top_250_html, "ItemList")
+if (is.null(item_list)) {
+  stop("Could not find the IMDb Top 250 list on the chart page.")
+}
+
+items <- item_list$itemListElement
+item_df <- items$item
+if (is.null(item_df) || !is.data.frame(item_df)) {
+  stop("Unexpected IMDb schema: item list does not include a data.frame of items.")
+}
+
+top_250_base <- tibble::tibble(
+  rank = seq_len(nrow(items)),
+  title = ifelse(
+    !is.na(item_df$alternateName) & item_df$alternateName != "",
+    item_df$alternateName,
+    item_df$name
+  ),
+  site = item_df$url,
+  imdb_rating = as.numeric(item_df$aggregateRating$ratingValue),
+  id = sub(".*/title/(tt\\d+)/.*", "\\1", item_df$url)
+)
+
+top_250_base <- top_250_base %>%
+  dplyr::mutate(title = gsub("&apos;|&#39;", "'", title))
+
+safe_post_json <- function(url, body, headers, label = "request", max_attempts = 3) {
+  cache_key <- make_cache_key(paste0(url, jsonlite::toJSON(body, auto_unbox = TRUE)))
+  cache_path <- file.path(cache_dir, paste0(cache_key, ".json"))
+  if (file.exists(cache_path)) {
+    return(jsonlite::fromJSON(readChar(cache_path, file.info(cache_path)$size), simplifyVector = FALSE))
+  }
+
+  for (attempt in seq_len(max_attempts)) {
+    resp <- tryCatch(
+      httr::POST(url, headers, encode = "json", body = body, httr::timeout(60)),
+      error = function(e) e
+    )
+
+    if (!inherits(resp, "error") && !httr::http_error(resp)) {
+      txt <- httr::content(resp, as = "text", encoding = "UTF-8")
+      writeLines(txt, cache_path)
+      return(jsonlite::fromJSON(txt, simplifyVector = FALSE))
+    }
+
+    if (attempt < max_attempts) {
+      Sys.sleep(2 ^ attempt)
+    }
+  }
+
+  message("Failed to fetch ", label)
+  NULL
+}
+
+extract_credit_names <- function(items) {
+  if (is.null(items) || length(items) == 0) {
+    return(NA_character_)
+  }
+  names <- vapply(items, function(x) x$rowTitle %||% NA_character_, character(1))
+  names <- names[!is.na(names) & names != ""]
+  if (length(names) == 0) {
+    return(NA_character_)
+  }
+  paste(unique(names), collapse = "|")
+}
+
+get_company_names <- function(html_object, section_id) {
+  if (is.null(html_object)) {
+    return(NA_character_)
+  }
+  section <- rvest::html_node(
+    html_object,
+    xpath = paste0("//*[@id='", section_id, "']/ancestor::section[1]")
+  )
+  if (is.null(section)) {
+    return(NA_character_)
+  }
+  names <- rvest::html_nodes(section, "a.ipc-metadata-list-item__label") %>%
+    rvest::html_text(trim = TRUE)
+  names <- names[names != ""]
+  if (length(names) == 0) {
+    return(NA_character_)
+  }
+  paste(unique(names), collapse = "|")
+}
+
+get_rt_algolia_config <- function() {
+  search_html <- safe_fetch_html(
+    "https://www.rottentomatoes.com/search?search=shawshank",
+    label = "Rotten Tomatoes search"
+  )
+  if (is.null(search_html)) {
+    return(NULL)
+  }
+
+  scripts <- search_html %>%
+    rvest::html_nodes("script") %>%
+    rvest::html_text()
+  script <- scripts[stringr::str_detect(scripts, "root.RottenTomatoes.thirdParty")]
+  if (length(script) == 0) {
+    return(NULL)
+  }
+
+  json <- stringr::str_match(script[1], "root.RottenTomatoes.thirdParty = (\\{.*\\});")[, 2]
+  if (is.na(json) || json == "") {
+    return(NULL)
+  }
+
+  jsonlite::fromJSON(json)
+}
+
+rt_algolia_search <- function(query, config) {
+  if (is.null(config) || is.null(config$algoliaSearch)) {
+    return(list())
+  }
+
+  app_id <- config$algoliaSearch$aId
+  api_key <- config$algoliaSearch$sId
+  url <- paste0("https://", app_id, "-dsn.algolia.net/1/indexes/*/queries")
+  body <- list(requests = list(list(
+    indexName = "content_rt",
+    params = paste0("query=", URLencode(query, reserved = TRUE), "&hitsPerPage=5")
+  )))
+
+  resp <- safe_post_json(
+    url,
+    body,
+    httr::add_headers(
+      `X-Algolia-API-Key` = api_key,
+      `X-Algolia-Application-Id` = app_id
+    ),
+    label = "Rotten Tomatoes search"
+  )
+
+  if (is.null(resp) || length(resp$results) == 0) {
+    return(list())
+  }
+
+  resp$results[[1]]$hits
+}
+
+pick_rt_hit <- function(hits, year = NA_real_) {
+  if (length(hits) == 0) {
+    return(NULL)
+  }
+  movie_hits <- Filter(function(h) !is.null(h$type) && h$type == "movie", hits)
+  if (length(movie_hits) == 0) {
+    return(NULL)
+  }
+  if (!is.na(year)) {
+    year_hits <- Filter(function(h) !is.null(h$releaseYear) && h$releaseYear == year, movie_hits)
+    if (length(year_hits) > 0) {
+      return(year_hits[[1]])
+    }
+  }
+  movie_hits[[1]]
+}
+
+rt_lookup_movie <- function(title, year, config) {
+  hits <- rt_algolia_search(title, config)
+  hit <- pick_rt_hit(hits, year)
+  if (is.null(hit)) {
+    return(list(
+      vanity = NA_character_,
+      audience_score = NA_real_,
+      critics_score = NA_real_,
+      director = NA_character_,
+      studios = NA_character_,
+      producers = NA_character_
+    ))
+  }
+
+  director <- NA_character_
+  if (!is.null(hit$crew)) {
+    director_hit <- Filter(function(x) !is.null(x$role) && x$role == "Director", hit$crew)
+    if (length(director_hit) > 0) {
+      director <- director_hit[[1]]$name %||% NA_character_
+    }
+  }
+
+  producer <- NA_character_
+  if (!is.null(hit$crew)) {
+    producer_hit <- Filter(function(x) !is.null(x$role) && x$role == "Producer", hit$crew)
+    if (length(producer_hit) > 0) {
+      producer <- paste(
+        unique(vapply(producer_hit, function(x) x$name %||% NA_character_, character(1))),
+        collapse = "|"
+      )
+    }
+  }
+
+  studios <- NA_character_
+  if (!is.null(hit$studios)) {
+    studios <- paste(unique(unlist(hit$studios)), collapse = "|")
+  }
+
+  list(
+    vanity = hit$vanity %||% NA_character_,
+    audience_score = hit$rottenTomatoes$audienceScore %||% NA_real_,
+    critics_score = hit$rottenTomatoes$criticsScore %||% NA_real_,
+    director = director,
+    studios = studios,
+    producers = producer
+  )
+}
+
+get_imdb_title_meta <- function(page_url) {
+  html <- safe_fetch_html(page_url, label = "IMDb title")
+  if (is.null(html)) {
+    return(list(year = NA_real_, director = NA_character_))
+  }
+  movie_ld <- parse_json_ld(html, "Movie")
+  date_published <- movie_ld$datePublished
+  year <- if (!is.null(date_published)) {
+    suppressWarnings(as.numeric(substr(date_published, 1, 4)))
+  } else {
+    NA_real_
+  }
+
+  imdb_director <- NA_character_
+  next_data <- parse_imdb_next_data(html)
+  if (!is.null(next_data)) {
+    credits <- next_data$props$pageProps$aboveTheFoldData$principalCreditsV2
+    if (!is.null(credits)) {
+      groups <- vapply(credits, function(x) x$grouping$text %||% NA_character_, character(1))
+      idx <- which(groups == "Director")
+      if (length(idx) > 0) {
+        credit_list <- credits[[idx[1]]]$credits
+        if (!is.null(credit_list) && length(credit_list) > 0) {
+          imdb_director <- credit_list[[1]]$name$nameText$text %||% NA_character_
+        }
+      }
+    }
+  }
+  if (is.na(imdb_director)) {
+    imdb_director <- extract_director_name(movie_ld$director)
+  }
+  list(year = year, director = imdb_director)
+}
+
+title_meta <- lapply(top_250_base$site, get_imdb_title_meta)
+
+top_250_tib_clean <- top_250_base %>%
+  dplyr::mutate(
+    year = vapply(title_meta, function(x) x$year, numeric(1)),
+    director = vapply(title_meta, function(x) x$director, character(1)),
+    producer_site = paste0(site, "companycredits?ref_=ttfc_sa_3"),
+    fullcredits_site = paste0(site, "fullcredits")
+  ) %>%
+  dplyr::select(rank, title, director, year, imdb_rating, id, site, producer_site, fullcredits_site)
 
 
 # next step is to grab each rotten tomato section
@@ -55,6 +374,22 @@ top_250_tib_clean <- top_250_tib %>%
 # so we'll do some error handling when that happens
 # also, I said they drop the 'the', but I mean... not always
 
+
+rt_config <- get_rt_algolia_config()
+rt_lookup <- mapply(
+  rt_lookup_movie,
+  title = top_250_tib_clean$title,
+  year = top_250_tib_clean$year,
+  MoreArgs = list(config = rt_config),
+  SIMPLIFY = FALSE
+)
+
+rt_vanity <- vapply(rt_lookup, function(x) x$vanity, character(1))
+rt_audience_scores <- vapply(rt_lookup, function(x) x$audience_score, numeric(1))
+rt_critics_scores <- vapply(rt_lookup, function(x) x$critics_score, numeric(1))
+rt_directors <- vapply(rt_lookup, function(x) x$director, character(1))
+rt_studios <- vapply(rt_lookup, function(x) x$studios, character(1))
+rt_producers <- vapply(rt_lookup, function(x) x$producers, character(1))
 
 rotten_tomatoes_url <- top_250_tib_clean %>%
   dplyr::select(title, imdb_director = director) %>%
@@ -210,13 +545,18 @@ rotten_tomatoes_url <- top_250_tib_clean %>%
                        case = "snake"),
                        pattern = "^the_|^a_", replacement = "")),
          rotten_tomatoes_title = stringi::stri_trans_general(rotten_tomatoes_title, "Latin-ASCII"),
-         rotten_tomatoes_url = paste0("https://www.rottentomatoes.com/m/", rotten_tomatoes_title))
+         rotten_tomatoes_url_guess = paste0("https://www.rottentomatoes.com/m/", rotten_tomatoes_title),
+         rotten_tomatoes_url = ifelse(
+           !is.na(rt_vanity) & rt_vanity != "",
+           paste0("https://www.rottentomatoes.com/m/", rt_vanity),
+           rotten_tomatoes_url_guess
+         ))
 
 
 html_list_rot <- list()
 index <- 1
 for (rot_url in rotten_tomatoes_url$rotten_tomatoes_url) {
-  html_list_rot[[index]] = rvest::read_html(rot_url)
+  html_list_rot[index] <- list(safe_fetch_html(rot_url, label = "Rotten Tomatoes"))
   index <- index + 1
 }
 # rotten_tomatoes_url %>% dplyr::filter(dplyr::row_number() == index)
@@ -228,7 +568,7 @@ for (rot_url in rotten_tomatoes_url$rotten_tomatoes_url) {
 html_imdb_list <- list()
 index <- 1
 for (imdb_url in top_250_tib_clean$site) {
-  html_imdb_list[[index]] = rvest::read_html(imdb_url)
+  html_imdb_list[index] <- list(safe_fetch_html(imdb_url, label = "IMDb title"))
   index <- index + 1
 }
 
@@ -244,22 +584,36 @@ for (imdb_url in top_250_tib_clean$site) {
 html_imdb_prod_list <- list()
 index <- 1
 for (imdb_url in top_250_tib_clean$producer_site) {
-  html_imdb_prod_list[[index]] = rvest::read_html(imdb_url)
+  html_imdb_prod_list[index] <- list(safe_fetch_html(imdb_url, label = "IMDb company credits"))
   index <- index + 1
 }
 
+html_imdb_fullcredits_list <- list()
+index <- 1
+for (imdb_url in top_250_tib_clean$fullcredits_site) {
+  html_imdb_fullcredits_list[index] <- list(safe_fetch_html(imdb_url, label = "IMDb full credits"))
+  index <- index + 1
+}
 
 imdb_producers <- function(html_object) {
-  html_object %>%
-    rvest::html_nodes("#company_credits_content > ul") %>%
-    rvest::html_text() %>%
-    .[1] %>%
-    stringr::str_split(pattern = "\n") %>%
-    unlist %>%
-      stringr::str_trim() %>%
-      stringr::str_squish() %>%
-    `[` (.!="") %>%
-    paste(collapse = "|")
+  if (is.null(html_object)) {
+    return(NA_character_)
+  }
+  next_data <- parse_imdb_next_data(html_object)
+  if (is.null(next_data)) {
+    return(NA_character_)
+  }
+  categories <- next_data$props$pageProps$contentData$categories
+  if (is.null(categories)) {
+    return(NA_character_)
+  }
+  names_vec <- vapply(categories, function(x) x$name %||% NA_character_, character(1))
+  idx <- which(names_vec == "Producers")
+  if (length(idx) == 0) {
+    return(NA_character_)
+  }
+  items <- categories[[idx[1]]]$section$items
+  extract_credit_names(items)
 }
 
 # production_companies_imdb_fun = function(html_object) {
@@ -291,18 +645,35 @@ imdb_producers <- function(html_object) {
 
 
 audience_score_fun <- function(html_object){
-  html_object %>%
+  if (is.null(html_object)) {
+    return(NA_character_)
+  }
+  score <- html_object %>%
     rvest::html_nodes("#topSection > div.thumbnail-scoreboard-wrap > score-board") %>%
     rvest::html_attr("audiencescore")
+  if (length(score) < 1) {
+    return(NA_character_)
+  }
+  score[1]
 }
 
 tomato_meter_score_fun <- function(html_object){
-  html_object %>%
+  if (is.null(html_object)) {
+    return(NA_character_)
+  }
+  score <- html_object %>%
     rvest::html_nodes("#topSection > div.thumbnail-scoreboard-wrap > score-board") %>%
     rvest::html_attr("tomatometerscore")
+  if (length(score) < 1) {
+    return(NA_character_)
+  }
+  score[1]
 }
 
 directors_rot <- function(html_object){
+  if (is.null(html_object)) {
+    return(NA_character_)
+  }
   director <- html_object %>%
     rvest::html_nodes("section.panel.panel-rt.panel-box.movie_info.media > div > div > ul >li") %>%
     rvest::html_text() %>%
@@ -313,12 +684,15 @@ directors_rot <- function(html_object){
       dplyr::pull(name)
 
   if (length(director) < 1) {
-    director <- NA
+    director <- NA_character_
   }
-  return(director)
+  return(as.character(director))
 }
 
 movie_info_rot <- function(html_object){
+  if (is.null(html_object)) {
+    return(tibble::tibble(category = NA_character_, name = NA_character_))
+  }
   movie_info <- html_object %>%
     rvest::html_nodes("section.panel.panel-rt.panel-box.movie_info.media > div > div > ul >li") %>%
     rvest::html_text() %>%
@@ -332,18 +706,27 @@ movie_info_rot <- function(html_object){
 
 # run html node functions
 
-audience_scores <- html_list_rot %>%
-  lapply(audience_score_fun) %>%
-    unlist()
+audience_scores_html <- vapply(
+  html_list_rot,
+  audience_score_fun,
+  character(1)
+)
 
+tomato_meter_scores_html <- vapply(
+  html_list_rot,
+  tomato_meter_score_fun,
+  character(1)
+)
 
-tomato_meter_scores <- html_list_rot %>%
-  lapply(tomato_meter_score_fun) %>%
-    unlist()
+director_rot_tom_html <- vapply(
+  html_list_rot,
+  directors_rot,
+  character(1)
+)
 
-director_rot_tom <- html_list_rot %>%
-  lapply(directors_rot) %>%
-    unlist()
+audience_scores <- ifelse(is.na(audience_scores_html), rt_audience_scores, audience_scores_html)
+tomato_meter_scores <- ifelse(is.na(tomato_meter_scores_html), rt_critics_scores, tomato_meter_scores_html)
+director_rot_tom <- ifelse(is.na(director_rot_tom_html), rt_directors, director_rot_tom_html)
 
 movie_info <- html_list_rot %>%
   lapply(movie_info_rot)
@@ -352,12 +735,27 @@ names(movie_info) = top_250_tib_clean$title
 movie_info_tib <- movie_info %>%
   dplyr::bind_rows(.id = "title")
 
-producers_imdb <- html_imdb_prod_list %>%
-  lapply(imdb_producers) %>%
-  unlist()
+imdb_production_co <- vapply(
+  html_imdb_prod_list,
+  get_company_names,
+  character(1),
+  section_id = "production"
+)
+
+imdb_distributor <- vapply(
+  html_imdb_prod_list,
+  get_company_names,
+  character(1),
+  section_id = "distribution"
+)
+
+producers_imdb <- vapply(
+  html_imdb_fullcredits_list,
+  imdb_producers,
+  character(1)
+)
 
 producers_imdb <- producers_imdb %>%
-  # remove all parentheses and insides of parentheses
   stringr::str_remove_all("\\s*\\([^\\)]+\\)")
 
 producers_imdb <- tibble::tibble(id = top_250_tib_clean$id, producers_imdb)
@@ -365,18 +763,34 @@ producers_imdb <- tibble::tibble(id = top_250_tib_clean$id, producers_imdb)
 top_250_imdb_rot_tom <- top_250_tib_clean %>%
   dplyr::mutate(audience_scores = as.numeric(audience_scores),
          tomato_meter_scores = as.numeric(tomato_meter_scores),
-         director_rot_tom = director_rot_tom) %>%
-  dplyr::left_join(movie_info_tib %>%
-    dplyr::filter(category == "Director") %>%
-    dplyr::select(title, director = name)) %>%
-  dplyr::left_join(movie_info_tib %>%
-    dplyr::filter(category == "Distributor") %>%
-    dplyr::select(title, distributor = name)) %>%
-  dplyr::left_join(movie_info_tib %>%
-    dplyr::filter(category == "Production Co") %>%
-    dplyr::select(title, production_co = name)) %>%
-  dplyr::mutate(produced_by = ifelse(is.na(distributor), production_co, distributor)) %>%
-  dplyr::left_join(producers_imdb)
+         director_rot_tom = director_rot_tom,
+         director = ifelse(is.na(director), rt_directors, director),
+         distributor = ifelse(is.na(imdb_distributor), rt_studios, imdb_distributor),
+         production_co = ifelse(is.na(imdb_production_co), rt_studios, imdb_production_co),
+         produced_by = ifelse(is.na(distributor), production_co, distributor)) %>%
+  dplyr::left_join(producers_imdb) %>%
+  dplyr::mutate(producers_imdb = ifelse(is.na(producers_imdb), rt_producers, producers_imdb))
+
+top_250_imdb_rot_tom <- top_250_imdb_rot_tom %>%
+  dplyr::select(-fullcredits_site)
+
+top_250_imdb_rot_tom <- top_250_imdb_rot_tom %>%
+  dplyr::mutate(
+    production_company = dplyr::coalesce(production_co, distributor)
+  )
 
 
-# top_250_imdb_rot_tom %>% write.csv(here::here("data", "top250_movies_with_rt.csv"))
+write_output <- TRUE
+send_email_notification <- TRUE
+if (write_output) {
+  readr::write_csv(top_250_imdb_rot_tom, here::here("data", "top250_movies_with_rt.csv"))
+}
+
+if (send_email_notification) {
+  source(here::here("scripts", "gmail_notify.R"))
+  send_gmail_notification(
+    to = "cavandonohoe@gmail.com",
+    subject = "Top 250 with RT: refresh complete",
+    body = "Finished generating data/top250_movies_with_rt.csv."
+  )
+}
