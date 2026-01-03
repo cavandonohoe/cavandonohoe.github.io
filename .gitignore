@@ -27,6 +27,8 @@ site_libs/
 .knit.md
 *.nb.html
 web_scraping/cache/
+logs/
+data/top1000_imdb_ratings_cache.rds
 
 # If you ever switch to Quarto, these help:
 .quarto/

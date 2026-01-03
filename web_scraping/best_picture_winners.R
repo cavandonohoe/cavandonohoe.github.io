@@ -76,9 +76,15 @@ box_office_from_imdb_page <- function(url, retries = 3, pause_seconds = 1) {
 }
 
 # grab box office data for each best picture winner
-refresh_box_office <- FALSE
-cache_ttl_days <- 365
-box_office_cache_path <- file.path("data", "best_picture_box_office_cache.rds")
+if (!exists("refresh_box_office")) {
+  refresh_box_office <- FALSE
+}
+if (!exists("cache_ttl_days")) {
+  cache_ttl_days <- 365
+}
+if (!exists("box_office_cache_path")) {
+  box_office_cache_path <- file.path("data", "best_picture_box_office_cache.rds")
+}
 
 use_cache <- FALSE
 if (file.exists(box_office_cache_path) && !refresh_box_office) {
