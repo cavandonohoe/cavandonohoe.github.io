@@ -26,6 +26,7 @@ site_libs/
 *.utf8.md
 .knit.md
 *.nb.html
+web_scraping/cache/
 
 # If you ever switch to Quarto, these help:
 .quarto/
