@@ -47,13 +47,33 @@ Here are our current Top 15 Production Company Leaderboards for the IMDb Top 250
 
 
 ```{r producers_leaderboard}
-producer_leaders_plot <- top_250_imdb_rot_tom %>%
+max_hover_titles <- 20
+
+producer_leaders_data <- top_250_imdb_rot_tom %>%
   tidyr::separate_rows(production_company, sep = "\\|") %>%
   dplyr::group_by(production_company) %>%
   dplyr::summarise(n = dplyr::n(), all_titles = paste(title, collapse = "\n")) %>%
   dplyr::arrange(dplyr::desc(n)) %>%
   dplyr::ungroup() %>%
   dplyr::slice(1:15) %>%
+  dplyr::mutate(
+    production_company = stats::reorder(production_company, -n),
+    hover_titles = vapply(
+      strsplit(all_titles, "\n", fixed = TRUE),
+      function(titles) {
+        if (length(titles) > max_hover_titles) {
+          titles <- c(
+            titles[1:max_hover_titles],
+            paste0("...and ", length(titles) - max_hover_titles, " more")
+          )
+        }
+        paste(titles, collapse = "<br>")
+      },
+      character(1)
+    )
+  )
+
+producer_leaders_plot <- producer_leaders_data %>%
   ggplot2::ggplot(ggplot2::aes(y = reorder(production_company, -n), x = n, text = all_titles,
     fill = production_company))+
   ggplot2::geom_col() +
@@ -61,12 +81,33 @@ producer_leaders_plot <- top_250_imdb_rot_tom %>%
         axis.title.x=ggplot2::element_blank(),
         legend.position = "none") +
   ggplot2::ggtitle("Production Company Leaderboard") +
-  ggplot2::geom_text(ggplot2::aes(label = n), hjust = 0,
-    position = ggplot2::position_dodge(width = 1))
+  ggplot2::geom_text(
+    ggplot2::aes(label = n),
+    hjust = -0.4,
+    position = ggplot2::position_dodge(width = 1)
+  ) +
+  ggplot2::scale_x_continuous(expand = ggplot2::expansion(mult = c(0, 0.12)))
 
 
-producer_leaders_plot %>%
-  plotly::ggplotly(tooltip = c("x", "text", "fill"))
+plotly::plot_ly(
+  producer_leaders_data,
+  x = ~n,
+  y = ~production_company,
+  type = "bar",
+  orientation = "h",
+  color = ~production_company,
+  text = ~n,
+  textposition = "outside",
+  hovertext = ~hover_titles,
+  hoverinfo = "text"
+) %>%
+  plotly::layout(
+    xaxis = list(automargin = TRUE, range = c(0, max(producer_leaders_data$n) * 1.15)),
+    yaxis = list(automargin = TRUE, title = "Production Company"),
+    showlegend = FALSE,
+    margin = list(r = 40),
+    hoverlabel = list(align = "left")
+  )
 
 # add a section for actors and producers dude!
 
@@ -108,6 +149,3 @@ resid_plot %>%
   plotly::ggplotly()
 
 ```
-
-
-
