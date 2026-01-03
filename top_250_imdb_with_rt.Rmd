@@ -25,7 +25,11 @@ knitr::opts_chunk$set(
 ```
 
 ```{r get_data}
-top_250_imdb_rot_tom <- readr::read_csv(here::here("data", "top250_movies_with_rt.csv"))
+top_250_imdb_rot_tom <- readr::read_csv(
+  here::here("data", "top250_movies_with_rt.csv"),
+  show_col_types = FALSE
+) %>%
+  dplyr::select(-dplyr::any_of("...1"))
 
 ```
 
@@ -36,27 +40,27 @@ This list is missing Baby Driver though, so it's not perfect.
 [Raw Data](data/top250_movies_with_rt.csv)
 
 
-## Producers
+## Production Companies
 
 
-Here are our current Top 15 Producer Leaderboards for the IMDb Top 250 Movies. 
+Here are our current Top 15 Production Company Leaderboards for the IMDb Top 250 Movies. 
 
 
 ```{r producers_leaderboard}
 producer_leaders_plot <- top_250_imdb_rot_tom %>%
-  tidyr::separate_rows(producers_imdb, sep = "\\|") %>%
-  dplyr::group_by(producers_imdb) %>%
+  tidyr::separate_rows(production_company, sep = "\\|") %>%
+  dplyr::group_by(production_company) %>%
   dplyr::summarise(n = dplyr::n(), all_titles = paste(title, collapse = "\n")) %>%
   dplyr::arrange(dplyr::desc(n)) %>%
   dplyr::ungroup() %>%
   dplyr::slice(1:15) %>%
-  ggplot2::ggplot(ggplot2::aes(y = reorder(producers_imdb, -n), x = n, text = all_titles,
-    fill = producers_imdb))+
+  ggplot2::ggplot(ggplot2::aes(y = reorder(production_company, -n), x = n, text = all_titles,
+    fill = production_company))+
   ggplot2::geom_col() +
   ggplot2::theme(axis.title.y=ggplot2::element_blank(),
         axis.title.x=ggplot2::element_blank(),
         legend.position = "none") +
-  ggplot2::ggtitle("Producer Leaderboard") +
+  ggplot2::ggtitle("Production Company Leaderboard") +
   ggplot2::geom_text(ggplot2::aes(label = n), hjust = 0,
     position = ggplot2::position_dodge(width = 1))
 
@@ -104,8 +108,6 @@ resid_plot %>%
   plotly::ggplotly()
 
 ```
-
-
 
 
 
