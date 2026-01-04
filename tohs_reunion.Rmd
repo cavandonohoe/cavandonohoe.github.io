@@ -29,11 +29,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r libraries}
-```
-
-
-
 ```{r}
 grad_list <- googlesheets4::read_sheet(
   paste0(

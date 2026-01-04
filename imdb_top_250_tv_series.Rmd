@@ -23,9 +23,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r libraries}
-```
-
 ```{r data}
 all_eps_ratings_tib <- readr::read_csv(here::here("data", "top250_imdb_series.csv"))
 ```
