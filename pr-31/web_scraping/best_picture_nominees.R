@@ -250,13 +250,6 @@ send_done_email <- function(status, error_message = NULL, log_path = log_file) {
     return(invisible(FALSE))
   }
 
-  mail_cmd <- Sys.getenv("SCRAPE_MAIL_CMD", "mail")
-  mail_path <- Sys.which(mail_cmd)
-  if (!nzchar(mail_path)) {
-    log_warn(sprintf("Mail command '%s' not found; skipping email notification.", mail_cmd))
-    return(invisible(FALSE))
-  }
-
   subject <- sprintf("Best Picture nominees scrape %s", status)
   body <- paste0(
     "Best Picture nominees scrape ", status, ".\n",
@@ -265,6 +258,42 @@ send_done_email <- function(status, error_message = NULL, log_path = log_file) {
     "Log: ", normalizePath(log_path, winslash = "/", mustWork = FALSE), "\n"
   )
 
+  gmail_notify_path <- here::here("scripts", "gmail_notify.R")
+  if (file.exists(gmail_notify_path)) {
+    log_info("Sending completion email via gmailr.")
+    from <- Sys.getenv("SCRAPE_EMAIL_FROM", email_to)
+    client_secret <- Sys.getenv("SCRAPE_GMAIL_CLIENT_SECRET", "~/.R/gmailr/client_secret.json")
+    cache <- Sys.getenv("SCRAPE_GMAIL_CACHE", "~/.R/gmailr")
+
+    result <- tryCatch({
+      source(gmail_notify_path)
+      send_gmail_notification(
+        to = email_to,
+        subject = subject,
+        body = body,
+        from = from,
+        client_secret = client_secret,
+        cache = cache
+      )
+      TRUE
+    }, error = function(e) {
+      log_warn(sprintf("gmailr notification failed: %s", conditionMessage(e)))
+      FALSE
+    })
+
+    if (isTRUE(result)) {
+      log_info(sprintf("Sent completion email to %s via gmailr.", email_to))
+      return(invisible(TRUE))
+    }
+  }
+
+  mail_cmd <- Sys.getenv("SCRAPE_MAIL_CMD", "mail")
+  mail_path <- Sys.which(mail_cmd)
+  if (!nzchar(mail_path)) {
+    log_warn(sprintf("Mail command '%s' not found; skipping email notification.", mail_cmd))
+    return(invisible(FALSE))
+  }
+
   result <- suppressWarnings(system2(mail_path, c("-s", subject, email_to), input = body))
   status_code <- attr(result, "status")
   if (!is.null(status_code) && status_code != 0) {
@@ -272,7 +301,7 @@ send_done_email <- function(status, error_message = NULL, log_path = log_file) {
     return(invisible(FALSE))
   }
 
-  log_info(sprintf("Sent completion email to %s.", email_to))
+  log_info(sprintf("Sent completion email to %s via mail.", email_to))
   invisible(TRUE)
 }
 
