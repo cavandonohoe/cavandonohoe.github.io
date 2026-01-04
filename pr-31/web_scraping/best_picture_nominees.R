@@ -340,19 +340,35 @@ run_scrape <- function() {
   log_info(sprintf("Found %s Best Picture nominees.", nrow(best_pic_noms)))
 
   imdb_production_companies <- function(html_object) {
-    nodes <- html_object %>%
-      rvest::html_nodes("#company_credits_content > ul")
-    if (!length(nodes)) {
+    production_nodes <- html_object %>%
+      rvest::html_nodes("[data-testid='sub-section-production'] a.ipc-metadata-list-item__label")
+
+    if (!length(production_nodes)) {
+      production_nodes <- html_object %>%
+        rvest::html_nodes("#company_credits_content > ul")
+    }
+
+    if (!length(production_nodes)) {
       return(NA_character_)
     }
 
-    nodes %>%
-      rvest::html_text() %>%
-      .[1] %>%
-      stringr::str_split(pattern = "\n") %>%
-      unlist() %>%
-      stringr::str_trim() %>%
-      stringr::str_squish() %>%
+    if (inherits(production_nodes, "xml_nodeset")) {
+      companies <- production_nodes %>%
+        rvest::html_text() %>%
+        stringr::str_trim() %>%
+        stringr::str_squish()
+    } else {
+      companies <- production_nodes %>%
+        rvest::html_text() %>%
+        .[1] %>%
+        stringr::str_split(pattern = "\n") %>%
+        unlist() %>%
+        stringr::str_trim() %>%
+        stringr::str_squish() %>%
+        `[`(. != "")
+    }
+
+    companies %>%
       `[`(. != "") %>%
       paste(collapse = "|") %>%
       stringr::str_remove_all("\\s*\\([^\\)]+\\)")
@@ -376,6 +392,10 @@ run_scrape <- function() {
   best_pic_noms_final <- best_pic_noms %>%
     dplyr::mutate(producers = production_companies) %>%
     dplyr::distinct()
+
+  csv_path <- here::here("data", "best_picture_nominees.csv")
+  readr::write_csv(best_pic_noms_final, csv_path)
+  log_info(sprintf("Wrote CSV to %s.", csv_path))
 
   log_info(sprintf("Built final dataset with %s rows.", nrow(best_pic_noms_final)))
   best_pic_noms_final
