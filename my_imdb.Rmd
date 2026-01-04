@@ -22,10 +22,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r libraries}
-```
-
-
 ```{r data_load, include=FALSE}
 my_ratings <- readr::read_csv(here::here("data", "imdb_ratings.csv"))
 ```
