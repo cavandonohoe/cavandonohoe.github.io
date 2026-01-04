@@ -71,8 +71,11 @@ distributors_plot_nominees <- best_pic_noms_final %>%
         plot.caption = ggplot2::element_text(colour = "gold"),
         legend.position = "none") +
   ggplot2::ggtitle("Number of Nominees per Distributor (Top 15)") +
-  ggplot2::geom_text(ggplot2::aes(label = n), hjust = 0,
-    position = ggplot2::position_dodge(width = 1)) +
+  ggplot2::geom_text(
+    ggplot2::aes(label = n),
+    hjust = 0,
+    nudge_x = 0.2
+  ) +
   ggplot2::geom_col(ggplot2::aes(x = n_winners, y = reorder(distributor, -n)), fill = "gold")
 
 
@@ -133,8 +136,11 @@ producers_plot_nominees <- best_pic_noms_final %>%
         plot.caption = ggplot2::element_text(colour = "gold"),
         legend.position = "none") +
   ggplot2::ggtitle("Number of Nominees per producers (Top 15)") +
-  ggplot2::geom_text(ggplot2::aes(label = n), hjust = 0,
-    position = ggplot2::position_dodge(width = 1)) +
+  ggplot2::geom_text(
+    ggplot2::aes(label = n),
+    hjust = 0,
+    nudge_x = 0.2
+  ) +
   ggplot2::geom_col(ggplot2::aes(x = n_winners, y = reorder(producers, -n)), fill = "gold")
 
 
@@ -178,4 +184,3 @@ best_pic_noms_final %>%
 
 
 ```
-
