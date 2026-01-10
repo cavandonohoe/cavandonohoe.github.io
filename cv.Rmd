@@ -31,14 +31,45 @@ library(glue)
 library(tidyverse)
 library(readxl)
 library(rmarkdown)
-library(readxl)
 library(googlesheets4)
+library(lubridate)
 # coding in the resume
 
 # resume = read_excel(here::here("data", "resume.xlsx")
-resume = read_sheet("https://docs.google.com/spreadsheets/d/13mLROsbvwiE-djiRMQuOKfQwppOlH5mOxB43EaGna8s")
-file_info = googledrive::drive_get("https://docs.google.com/spreadsheets/d/13mLROsbvwiE-djiRMQuOKfQwppOlH5mOxB43EaGna8s")
-last_update = file_info$drive_resource[[1]]$modifiedTime %>% ymd_hms() %>% as_date()
+resume_url <- "https://docs.google.com/spreadsheets/d/13mLROsbvwiE-djiRMQuOKfQwppOlH5mOxB43EaGna8s"
+
+# Error handling for Google Sheets API calls
+resume <- tryCatch({
+  googlesheets4::read_sheet(resume_url)
+}, error = function(e) {
+  warning("Failed to read resume from Google Sheets: ", e$message)
+  # Fallback: try to read from local file if available
+  if (file.exists(here::here("data", "resume.xlsx"))) {
+    readxl::read_excel(here::here("data", "resume.xlsx"))
+  } else {
+    stop("Could not load resume data from Google Sheets or local file")
+  }
+})
+
+file_info <- tryCatch({
+  googledrive::drive_get(resume_url)
+}, error = function(e) {
+  warning("Failed to get file info from Google Drive: ", e$message)
+  NULL
+})
+
+last_update <- if (!is.null(file_info) && length(file_info$drive_resource) > 0) {
+  tryCatch({
+    file_info$drive_resource[[1]]$modifiedTime %>% 
+      lubridate::ymd_hms() %>% 
+      lubridate::as_date()
+  }, error = function(e) {
+    warning("Failed to parse last update date: ", e$message)
+    Sys.Date()
+  })
+} else {
+  Sys.Date()
+}
 
 resume_v1.1 = resume %>% mutate(start.date = as.Date(paste(start, "1", sep="-"), format="%B %Y-%d")) %>%
   mutate(section_num = row_number())
