@@ -24,3 +24,28 @@ body{
   font-family: "Roboto", sans-serif;
 
 }
+
+/* Sidebar layout spacing. */
+.aside{
+  display: flex;
+  flex-direction: column;
+  height: var(--content-area-height);
+  padding-bottom: 0.3in;
+}
+
+#disclaimer{
+  position: static;
+  margin-top: 0.25in;
+}
+
+/* Tighten sidebar section spacing so the disclaimer fits on page 1. */
+.aside .level2{
+  margin-top: 0.35in;
+}
+
+@media screen {
+  /* Extra breathing room in HTML view to prevent clipping. */
+  .aside{
+    padding-bottom: 0.6in;
+  }
+}

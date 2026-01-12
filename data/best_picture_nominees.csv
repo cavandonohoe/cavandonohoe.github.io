@@ -1,580 +1,615 @@
-"","year","title","id","nominees_or_winner","imdb_url","producers"
-"1","2022","CODA","tt10366460","winner","https://www.imdb.com/title/tt10366460","Apple Original Films|Vendôme Pictures|Pathé Films|Picture Perfect Federation"
-"2","2022","Belfast","tt12789558","nominee","https://www.imdb.com/title/tt12789558","TKBC|Northern Ireland Screen"
-"3","2022","Don't Look Up","tt11286314","nominee","https://www.imdb.com/title/tt11286314","Hyperobject Industries|Province of British Columbia Production Services Tax Credit|Bluegrass Films"
-"4","2022","Drive My Car","tt14039582","nominee","https://www.imdb.com/title/tt14039582","Bitters End|Bungeishunju|C&I Entertainment|Culture Entertainment|Drive My Car Production Committee|Japan Arts Council|Japanese Agency for Cultural Affairs|L'espace Vision|Nekojarashi|Nippon Shuppan Hanbai K.K.|Quaras|The Asahi Shimbun Company"
-"5","2022","Dune","tt1160419","nominee","https://www.imdb.com/title/tt1160419","Warner Bros.|Legendary Entertainment|Villeneuve Films"
-"6","2022","King Richard","tt9620288","nominee","https://www.imdb.com/title/tt9620288","Warner Bros.|Star Thrower Entertainment|Westbrook Studios|Keepin' It Reel"
-"7","2022","Licorice Pizza","tt11271038","nominee","https://www.imdb.com/title/tt11271038","Metro-Goldwyn-Mayer|Focus Features|Bron Creative|Ghoulardi Film Company"
-"8","2022","Nightmare Alley","tt7740496","nominee","https://www.imdb.com/title/tt7740496","Fox Searchlight Pictures|Searchlight Pictures|Double Dare You|Ontario Creates|TSG Entertainment"
-"9","2022","The Power of the Dog","tt10293406","nominee","https://www.imdb.com/title/tt10293406","New Zealand Film Commission|Cross City Films|BBC Films|See-Saw Films|Bad Girl Creek|Max Films International|Brightstar"
-"10","2022","West Side Story","tt3581652","nominee","https://www.imdb.com/title/tt3581652","20th Century Studios|Amblin Entertainment|Amblin Partners|TSG Entertainment"
-"11","2021","Nomadland","tt9770150","winner","https://www.imdb.com/title/tt9770150","Cor Cordium Productions|Hear/Say Productions|Highwayman Films"
-"12","2021","Judas and the Black Messiah","tt9784798","nominee","https://www.imdb.com/title/tt9784798","BRON Studios|Bron Creative|MACRO|Participant|Proximity Media"
-"13","2021","Mank","tt10618286","nominee","https://www.imdb.com/title/tt10618286","Blue Light|Flying Studio|Netflix Studios|Netflix|Panic Pictures"
-"14","2021","Minari","tt10633456","nominee","https://www.imdb.com/title/tt10633456","Plan B Entertainment"
-"15","2021","Promising Young Woman","tt9620292","nominee","https://www.imdb.com/title/tt9620292","FilmNation Entertainment|Focus Features|LuckyChap Entertainment"
-"16","2021","Sound of Metal","tt5363618","nominee","https://www.imdb.com/title/tt5363618","Caviar|Flat 7 Productions|Ward Four"
-"17","2021","The Father","tt10272386","nominee","https://www.imdb.com/title/tt10272386","Les Films du Cru|Film4|Orange Studio|Canal+|Ciné+|Embankment Films|F Comme Film|Trademark Films|Ciné@|AG Studios NYC|Simon Friend Entertainment|Viewfinder"
-"18","2021","The Trial of the Chicago 7","tt1070874","nominee","https://www.imdb.com/title/tt1070874","Dreamworks Pictures|Amblin Partners|Aperture Media Partners|CAA Media Finance|Cross Creek Pictures|Double Infinity Productions|Kodiak Pictures|MadRiver Pictures|Marc Platt Productions|Paramount Pictures|Reliance Entertainment|Rocket Science|ShivHans Pictures"
-"19","2020","Parasite","tt6751668","winner","https://www.imdb.com/title/tt6751668","CJ Entertainment|Barunson E&A"
-"20","2020","1917","tt8579674","nominee","https://www.imdb.com/title/tt8579674","Dreamworks Pictures|Reliance Entertainment|New Republic Pictures|Neal Street Productions|Mogambo|Amblin Partners"
-"21","2020","Ford v Ferrari","tt1950186","nominee","https://www.imdb.com/title/tt1950186","Chernin Entertainment|TSG Entertainment|Turnpike Films|Twentieth Century Fox"
-"22","2020","Jojo Rabbit","tt2584384","nominee","https://www.imdb.com/title/tt2584384","Fox Searchlight Pictures|TSG Entertainment|Defender Films|Piki Films|Czech Anglo Productions"
-"23","2020","Joker","tt7286456","nominee","https://www.imdb.com/title/tt7286456","Warner Bros.|Village Roadshow Pictures|Village Roadshow Pictures|BRON Studios|Joint Effort|DC Comics|Creative Wealth Media Finance"
-"24","2020","Little Women","tt3281548","nominee","https://www.imdb.com/title/tt3281548","Columbia Pictures|New Regency Productions|Pascal Pictures|Sony Pictures Entertainment"
-"25","2020","Marriage Story","tt7653254","nominee","https://www.imdb.com/title/tt7653254","Heyday Films|Netflix"
-"26","2020","Once Upon a Time... in Hollywood","tt7131622","nominee","https://www.imdb.com/title/tt7131622","Columbia Pictures|Bona Film Group|Heyday Films"
-"27","2020","The Irishman","tt1302006","nominee","https://www.imdb.com/title/tt1302006","Tribeca Productions|Sikelia Productions|Winkler Films"
-"28","2019","Green Book","tt6966692","winner","https://www.imdb.com/title/tt6966692","Participant|Dreamworks Pictures|Innisfree Pictures|Cinetic Media|Alibaba Pictures|Louisiana Entertainment|Wessler Entertainment"
-"29","2019","A Star Is Born","tt1517451","nominee","https://www.imdb.com/title/tt1517451","Warner Bros. Pictures|Live Nation Productions|Metro-Goldwyn-Mayer|Peters Entertainment|Gerber Pictures|Joint Effort|Malpaso Productions"
-"30","2019","BlacKkKlansman","tt7349662","nominee","https://www.imdb.com/title/tt7349662","Focus Features|Legendary Entertainment|Perfect World Pictures|QC Entertainment|Blumhouse Productions|Monkeypaw Productions|40 Acres & A Mule Filmworks"
-"31","2019","Black Panther","tt1825683","nominee","https://www.imdb.com/title/tt1825683","Marvel Studios|Walt Disney Pictures"
-"32","2019","Bohemian Rhapsody","tt1727824","nominee","https://www.imdb.com/title/tt1727824","Twentieth Century Fox|New Regency Productions|GK Films|TSG Entertainment|Queen Films Ltd.|Tribeca Productions"
-"33","2019","Roma","tt6155172","nominee","https://www.imdb.com/title/tt6155172","Esperanto Filmoj|Participant|Pimienta Films"
-"34","2019","The Favourite","tt5083738","nominee","https://www.imdb.com/title/tt5083738","Fox Searchlight Pictures|Film4|Waypoint Entertainment|Element Pictures|Scarlet Films|TSG Entertainment|Investment Incentives for the Irish Film Industry Provided by the Government of Ireland|BFI Film Fund|Bord Scannán na hÉireann / The Irish Film Board"
-"35","2019","Vice","tt6266538","nominee","https://www.imdb.com/title/tt6266538","Annapurna Pictures|Gary Sanchez Productions|Plan B Entertainment|The Third Floor"
-"36","2018","The Shape of Water","tt5580390","winner","https://www.imdb.com/title/tt5580390","Double Dare You|Fox Searchlight Pictures|TSG Entertainment"
-"37","2018","Call Me by Your Name","tt5726616","nominee","https://www.imdb.com/title/tt5726616","Frenesy Film Company|La Cinéfacture|RT Features|Water's End Productions|M.Y.R.A. Entertainment|Ministero dei Beni e delle Attività Culturali e del Turismo|Lombardia Film Commission"
-"38","2018","Darkest Hour","tt4555426","nominee","https://www.imdb.com/title/tt4555426","Focus Features|Perfect World Pictures|Working Title Films"
-"39","2018","Dunkirk","tt5013056","nominee","https://www.imdb.com/title/tt5013056","Syncopy|Warner Bros.|Dombey Street Productions|Kaap Holland Film|Canal+|Ciné+|RatPac-Dune Entertainment"
-"40","2018","Get Out","tt5052448","nominee","https://www.imdb.com/title/tt5052448","Universal Pictures|Blumhouse Productions|QC Entertainment|Monkeypaw Productions|Dentsu|Fuji Television Network"
-"41","2018","Lady Bird","tt4925292","nominee","https://www.imdb.com/title/tt4925292","IAC Films|Scott Rudin Productions|Entertainment 360"
-"42","2018","Phantom Thread","tt5776858","nominee","https://www.imdb.com/title/tt5776858","Focus Features|Annapurna Pictures|Perfect World Pictures|JoAnne Sellar Productions|Ghoulardi Film Company"
-"43","2018","The Post","tt6294822","nominee","https://www.imdb.com/title/tt6294822","Twentieth Century Fox|Dreamworks Pictures|Reliance Entertainment|TSG Entertainment|Participant|Amblin Entertainment|Pascal Pictures|Star Thrower Entertainment"
-"44","2018","Three Billboards Outside Ebbing, Missouri","tt5027774","nominee","https://www.imdb.com/title/tt5027774","Blueprint Pictures|Film 4|Fox Searchlight Pictures"
-"45","2017","Moonlight","tt4975722","winner","https://www.imdb.com/title/tt4975722","A24|PASTEL|Plan B Entertainment"
-"46","2017","Arrival","tt2543164","nominee","https://www.imdb.com/title/tt2543164","Lava Bear Films|FilmNation Entertainment|21 Laps Entertainment|Xenolinguistics"
-"47","2017","Fences","tt2671706","nominee","https://www.imdb.com/title/tt2671706","BRON Studios|Escape Artists|MACRO|Paramount Pictures|Scott Rudin Productions"
-"48","2017","Hacksaw Ridge","tt2119532","nominee","https://www.imdb.com/title/tt2119532","Summit Entertainment|Cross Creek Pictures|Demarest Films|Pandemonium|Argent Pictures|Bliss Media|Vendian Entertainment|IM Global|AI-Film|Creative Artists Agency|Kylin Pictures|Icon Productions|Permut Presentations|Screen Australia|Screen NSW"
-"49","2017","Hell or High Water","tt2582782","nominee","https://www.imdb.com/title/tt2582782","CBS Films|Sidney Kimmel Entertainment|MWM Studios|Film 44|LBI Productions|Oddlot Entertainment"
-"50","2017","Hidden Figures","tt4846340","nominee","https://www.imdb.com/title/tt4846340","Fox 2000 Pictures|Chernin Entertainment|Levantine Films|TSG Entertainment"
-"51","2017","La La Land","tt3783958","nominee","https://www.imdb.com/title/tt3783958","Summit Entertainment|Black Label Media|TIK Films|Impostor Pictures|Gilbert Films|Marc Platt Productions"
-"52","2017","Lion","tt3741834","nominee","https://www.imdb.com/title/tt3741834","The Weinstein Company|Screen Australia|See-Saw Films|Aquarius Films|Sunstar Entertainment|One Film at a Time|Screen Tasmania"
-"53","2017","Manchester by the Sea","tt4034228","nominee","https://www.imdb.com/title/tt4034228","Amazon Studios|K Period Media|Pearl Street Films|The Media Farm|The Affleck/Middleton Project|B Story|Big Indie Pictures|MWM Studios"
-"54","2016","Spotlight","tt1895587","winner","https://www.imdb.com/title/tt1895587","Participant|First Look Media|Anonymous Content|Rocklin/Faust|Open Road Films|Entertainment One|Topic Studios"
-"55","2016","Bridge of Spies","tt3682448","nominee","https://www.imdb.com/title/tt3682448","Dreamworks Pictures|Fox 2000 Pictures|Reliance Entertainment|Participant|TSG Entertainment|Amblin Entertainment|Marc Platt Productions|Studio Babelsberg"
-"56","2016","Brooklyn","tt2381111","nominee","https://www.imdb.com/title/tt2381111","Wildgaze Films|BBC Films|Parallel Film Productions|BAI|BBC Films|BFI Film Fund|Broadcasting Authority of Ireland|Bun and Ham Productions|Crédit d'Impôt Cinéma et Télévision|Finola Dwyer Productions|HanWay Films|Ingenious Productions|Item 7|Quebec Film and Television Tax Credit|Raidió Teilifís Éireann|Screen Ireland|Société de Développement des Entreprises Culturelles|The Government of Ireland|Téléfilm Canada"
-"57","2016","Mad Max: Fury Road","tt1392190","nominee","https://www.imdb.com/title/tt1392190","Village Roadshow Pictures|Kennedy Miller Productions"
-"58","2016","Room","tt3170832","nominee","https://www.imdb.com/title/tt3170832","Element Pictures|Film 4|FilmNation Entertainment|No Trace Camping|Ontario Media Development Corporation|Screen Ireland|Téléfilm Canada"
-"59","2016","The Big Short","tt1596363","nominee","https://www.imdb.com/title/tt1596363","Paramount Pictures|New Regency Productions|Plan B Entertainment"
-"60","2016","The Martian","tt3659388","nominee","https://www.imdb.com/title/tt3659388","Twentieth Century Fox|TSG Entertainment|Scott Free Productions|Genre Films|International Traders|Kinberg Genre|Mid Atlantic Films"
-"61","2016","The Revenant","tt1663202","nominee","https://www.imdb.com/title/tt1663202","New Regency Productions|RatPac Entertainment|New Regency Productions|Anonymous Content|M Productions|Appian Way|Alpha Pictures|CatchPlay|Taiwanese Revenant"
-"62","2015","Birdman or (The Unexpected Virtue of Ignorance)","tt2562232","winner","https://www.imdb.com/title/tt2562232","New Regency Productions|M Productions|Grisbi Productions, Le|TSG Entertainment|Worldview Entertainment"
-"63","2015","American Sniper","tt2179136","nominee","https://www.imdb.com/title/tt2179136","Warner Bros.|Village Roadshow Pictures|RatPac-Dune Entertainment|Mad Chance|Joint Effort|Malpaso Productions|Zak Productions"
-"64","2015","Boyhood","tt1065073","nominee","https://www.imdb.com/title/tt1065073","IFC Productions|Detour Filmproduction"
-"65","2015","Selma","tt1020072","nominee","https://www.imdb.com/title/tt1020072","Pathé|Harpo Films|Plan B Entertainment|Cloud Eight Films|Ingenious Media|Celador Films|Pathe UK"
-"66","2015","The Grand Budapest Hotel","tt2278388","nominee","https://www.imdb.com/title/tt2278388","Fox Searchlight Pictures|Indian Paintbrush|Studio Babelsberg|American Empirical Pictures|TSG Entertainment|Scott Rudin Productions"
-"67","2015","The Imitation Game","tt2084970","nominee","https://www.imdb.com/title/tt2084970","Black Bear Pictures|FilmNation Entertainment|Bristol Automotive|Orange Corp|The Weinstein Company|Hishow Entertainment|West London Films"
-"68","2015","The Theory of Everything","tt2980516","nominee","https://www.imdb.com/title/tt2980516","Working Title Films|Dentsu Motion Pictures|Fuji Television Network"
-"69","2015","Whiplash","tt2582802","nominee","https://www.imdb.com/title/tt2582802","Bold Films|Blumhouse Productions|Right of Way Films|Sierra / Affinity"
-"70","2014","12 Years a Slave","tt2024544","winner","https://www.imdb.com/title/tt2024544","New Regency Productions|River Road Entertainment|Plan B Entertainment|New Regency Productions|Film4|Fox Searchlight Pictures|Summit Entertainment"
-"71","2014","American Hustle","tt1800241","nominee","https://www.imdb.com/title/tt1800241","Columbia Pictures|Annapurna Pictures|Atlas Entertainment|Fundamental Films"
-"72","2014","Captain Phillips","tt1535109","nominee","https://www.imdb.com/title/tt1535109","Scott Rudin Productions|Michael De Luca Productions|Trigger Street Productions"
-"73","2014","Dallas Buyers Club","tt0790636","nominee","https://www.imdb.com/title/tt0790636","Truth Entertainment|Voltage Pictures|r2 films|Evolution Independent|CE|RainMaker Films"
-"74","2014","Gravity","tt1454468","nominee","https://www.imdb.com/title/tt1454468","Warner Bros.|Esperanto Filmoj|Heyday Films"
-"75","2014","Her","tt1798709","nominee","https://www.imdb.com/title/tt1798709","Annapurna Pictures|Stage 6 Films"
-"76","2014","Nebraska","tt1821549","nominee","https://www.imdb.com/title/tt1821549","Paramount Vantage|FilmNation Entertainment|Blue Lake Media Fund|Echo Lake Entertainment|Bona Fide Productions|Paramount Pictures"
-"77","2014","Philomena","tt2431286","nominee","https://www.imdb.com/title/tt2431286","The Weinstein Company|Yucaipa Films|Pathé|BBC Films|British Film Institute|Canal+|Ciné+|Baby Cow Productions|Magnolia Mae Films|Philomena Lee"
-"78","2014","The Wolf of Wall Street","tt0993846","nominee","https://www.imdb.com/title/tt0993846","Red Granite Pictures|Appian Way|Sikelia Productions|EMJAG Productions"
-"79","2013","Argo","tt1024648","winner","https://www.imdb.com/title/tt1024648","Warner Bros.|GK Films|Smokehouse Pictures"
-"80","2013","Amour","tt1602620","nominee","https://www.imdb.com/title/tt1602620","Les Films du Losange|X-Filme Creative Pool|Wega Film|France 3 Cinéma|ARD Degeto Film|Bayerischer Rundfunk|Westdeutscher Rundfunk"
-"81","2013","Beasts of the Southern Wild","tt2125435","nominee","https://www.imdb.com/title/tt2125435","Cinereach|Department of Motion Pictures|Court 13 Pictures|Journeyman Pictures"
-"82","2013","Django Unchained","tt1853728","nominee","https://www.imdb.com/title/tt1853728","The Weinstein Company|Columbia Pictures"
-"83","2013","Les Misérables","tt1707386","nominee","https://www.imdb.com/title/tt1707386","Universal Pictures|Working Title Films|Cameron Mackintosh Ltd.|Relativity Media"
-"84","2013","Life of Pi","tt0454876","nominee","https://www.imdb.com/title/tt0454876","Fox 2000 Pictures|Dune Entertainment|Ingenious Media|Haishang Films|Netter Productions|Big Screen Productions|Ingenious Film Partners"
-"85","2013","Lincoln","tt0443272","nominee","https://www.imdb.com/title/tt0443272","Dreamworks Pictures|Twentieth Century Fox|Reliance Entertainment|Participant|Dune Entertainment|Amblin Entertainment|The Kennedy/Marshall Company|Touchstone Pictures|Walt Disney Pictures"
-"86","2013","Silver Linings Playbook","tt1045658","nominee","https://www.imdb.com/title/tt1045658","The Weinstein Company"
-"87","2013","Zero Dark Thirty","tt1790885","nominee","https://www.imdb.com/title/tt1790885","Columbia Pictures|Annapurna Pictures|First Light Production"
-"88","2012","The Artist","tt1655442","winner","https://www.imdb.com/title/tt1655442","Studio 37|La Petite Reine|La Classe Américaine|JD Prod|France 3 Cinéma|Jouror Productions|uFilm|Canal+|CinéCinéma|France Télévisions|Tax Shelter du Gouvernement Fédéral Belge"
-"89","2012","Extremely Loud & Incredibly Close","tt0477302","nominee","https://www.imdb.com/title/tt0477302","Warner Bros.|Scott Rudin Productions|Paramount Pictures"
-"90","2012","Hugo","tt0970179","nominee","https://www.imdb.com/title/tt0970179","Paramount Pictures|GK Films|Infinitum Nihil|Janimation"
-"91","2012","Midnight in Paris","tt1605783","nominee","https://www.imdb.com/title/tt1605783","Mediapro|Versátil Cinema|Gravier Productions|Pontchartrain Productions|Televisió de Catalunya|Catalan Films & TV"
-"92","2012","Moneyball","tt1210166","nominee","https://www.imdb.com/title/tt1210166","Columbia Pictures|Scott Rudin Productions|Michael De Luca Productions|Film Rites|Sidney Kimmel Entertainment|Specialty Films"
-"93","2012","The Descendants","tt1033575","nominee","https://www.imdb.com/title/tt1033575","Fox Searchlight Pictures|Ad Hominem Enterprises|Dune Entertainment"
-"94","2012","The Help","tt1454029","nominee","https://www.imdb.com/title/tt1454029","DreamWorks|Dreamworks Pictures|Reliance Film & Entertainment|Participant|Imagenation|1492 Pictures|Harbinger Pictures"
-"95","2012","The Tree of Life","tt0478304","nominee","https://www.imdb.com/title/tt0478304","Cottonwood Pictures|River Road Entertainment|Fox Searchlight Pictures|Brace Cove Productions|Plan B Entertainment|Summit Entertainment"
-"96","2012","War Horse","tt1568911","nominee","https://www.imdb.com/title/tt1568911","Dreamworks Pictures|Touchstone Pictures|Reliance Entertainment|Amblin Entertainment|The Kennedy/Marshall Company"
-"97","2011","The King's Speech","tt1504320","winner","https://www.imdb.com/title/tt1504320","The Weinstein Company|UK Film Council|Momentum Pictures|Aegis Film Fund|Molinare Investment|FilmNation Entertainment|See-Saw Films|Bedlam Productions"
-"98","2011","127 Hours","tt1542344","nominee","https://www.imdb.com/title/tt1542344","Fox Searchlight Pictures|Pathé|Everest Entertainment|Cloud Eight Films|Decibel Films|Darlow Smithson Productions|Dune Entertainment|Film4|Big Screen Productions"
-"99","2011","Black Swan","tt0947798","nominee","https://www.imdb.com/title/tt0947798","Fox Searchlight Pictures|Cross Creek Pictures|Protozoa Pictures|Phoenix Pictures|Dune Entertainment"
-"100","2011","Inception","tt1375666","nominee","https://www.imdb.com/title/tt1375666","Warner Bros.|Legendary Entertainment|Syncopy"
-"101","2011","The Fighter","tt0964517","nominee","https://www.imdb.com/title/tt0964517","Closest to the Hole Productions|Fighter|Mandeville Films|Relativity Media|The Park Entertainment|The Weinstein Company"
-"102","2011","The Kids Are All Right","tt0842926","nominee","https://www.imdb.com/title/tt0842926","Focus Features|Gilbert Films|Saint Aire Production|10th Hole Productions|Antidote Films|Mandalay Vision|UGC PH"
-"103","2011","The Social Network","tt1285016","nominee","https://www.imdb.com/title/tt1285016","Columbia Pictures|Relativity Media|Scott Rudin Productions|Michael De Luca Productions|Trigger Street Productions"
-"104","2011","Toy Story 3","tt0435761","nominee","https://www.imdb.com/title/tt0435761","Walt Disney Pictures|Pixar Animation Studios"
-"105","2011","True Grit","tt1403865","nominee","https://www.imdb.com/title/tt1403865","Paramount Pictures|Skydance Media|Scott Rudin Productions|Mike Zoss Productions"
-"106","2011","Winter's Bone","tt1399683","nominee","https://www.imdb.com/title/tt1399683","Anonymous Content|Winter's Bone Productions"
-"107","2010","The Hurt Locker","tt0887912","winner","https://www.imdb.com/title/tt0887912","Voltage Pictures|Grosvenor Park Media|Film Capital Europe Funds|First Light Production|Kingsgate Films|Summit Entertainment"
-"108","2010","A Serious Man","tt1019452","nominee","https://www.imdb.com/title/tt1019452","Focus Features|StudioCanal|Relativity Media|Mike Zoss Productions|Working Title Films"
-"109","2010","An Education","tt1174732","nominee","https://www.imdb.com/title/tt1174732","BBC Films|Finola Dwyer Productions|Wildgaze Films|Endgame Entertainment|An Education Distribution|Odyssey Entertainment"
-"110","2010","Avatar","tt0499549","nominee","https://www.imdb.com/title/tt0499549","Twentieth Century Fox|Dune Entertainment|Lightstorm Entertainment"
-"111","2010","District 9","tt1136608","nominee","https://www.imdb.com/title/tt1136608","TriStar Pictures|Block / Hanson|WingNut Films|Canadian Film or Video Production Tax Credit|Covert Media|Department of Trade and Industry of South Africa|District 9|Key Creatives|Majority Entertainment|New Zealand Post Digital and Visual Effects Grant|Province of British Columbia Production Services Tax Credit|QED International"
-"112","2010","Inglourious Basterds","tt0361748","nominee","https://www.imdb.com/title/tt0361748","Universal Pictures|The Weinstein Company|A Band Apart|Studio Babelsberg|Visiona Romantica"
-"113","2010","Precious","tt0929632","nominee","https://www.imdb.com/title/tt0929632","Lionsgate|Lee Daniels Entertainment|Smokewood Entertainment Group"
-"114","2010","The Blind Side","tt0878804","nominee","https://www.imdb.com/title/tt0878804","Alcon Entertainment|3 Arts Entertainment|Left Tackle Pictures|Netter Productions|Zucker/Netter Productions"
-"115","2010","Up","tt1049413","nominee","https://www.imdb.com/title/tt1049413","Pixar Animation Studios|Walt Disney Pictures"
-"116","2010","Up in the Air","tt1193138","nominee","https://www.imdb.com/title/tt1193138","Paramount Pictures|Cold Spring Pictures|DreamWorks|The Montecito Picture Company|Rickshaw Productions|Right of Way Films"
-"117","2009","Slumdog Millionaire","tt1010048","winner","https://www.imdb.com/title/tt1010048","Celador Films|Film4|Fox Searchlight Pictures|Warner Bros.|Pathé"
-"118","2009","Frost/Nixon","tt0870111","nominee","https://www.imdb.com/title/tt0870111","Universal Pictures|Imagine Entertainment|Working Title Films|StudioCanal|Relativity Media|Digital Image Associates"
-"119","2009","Milk","tt1013753","nominee","https://www.imdb.com/title/tt1013753","Focus Features|Axon Films|Groundswell Productions|Jinks/Cohen Company|Cinema Vehicles"
-"120","2009","The Curious Case of Benjamin Button","tt0421715","nominee","https://www.imdb.com/title/tt0421715","Warner Bros.|Paramount Pictures|The Kennedy/Marshall Company"
-"121","2009","The Reader","tt0976051","nominee","https://www.imdb.com/title/tt0976051","The Weinstein Company|Mirage Enterprises|Studio Babelsberg|Filmförderungsanstalt|Deutscher Filmförderfonds|Medienboard Berlin-Brandenburg|Mitteldeutsche Medienförderung|Filmstiftung Nordrhein-Westfalen"
-"122","2008","No Country for Old Men","tt0477348","winner","https://www.imdb.com/title/tt0477348","Paramount Vantage|Miramax|Scott Rudin Productions|Mike Zoss Productions"
-"123","2008","Atonement","tt0783233","nominee","https://www.imdb.com/title/tt0783233","Universal Pictures|StudioCanal|Relativity Media|Working Title Films"
-"124","2008","Juno","tt0467406","nominee","https://www.imdb.com/title/tt0467406","Fox Searchlight Pictures|Mandate Pictures|Mr. Mudd"
-"125","2008","Michael Clayton","tt0465538","nominee","https://www.imdb.com/title/tt0465538","Samuels Media|Castle Rock Entertainment|Mirage Enterprises|Section Eight|Clayton Productions"
-"126","2008","There Will Be Blood","tt0469494","nominee","https://www.imdb.com/title/tt0469494","Paramount Vantage|Miramax|Ghoulardi Film Company"
-"127","2007","The Departed","tt0407887","winner","https://www.imdb.com/title/tt0407887","Warner Bros.|Plan B Entertainment|Initial Entertainment Group|Vertigo Entertainment|Media Asia Films"
-"128","2007","Babel","tt0449467","nominee","https://www.imdb.com/title/tt0449467","Paramount Pictures|Paramount Vantage|Anonymous Content|Zeta Film|Central Films|StudioCanal|Media Rights Capital"
-"129","2007","Letters from Iwo Jima","tt0498380","nominee","https://www.imdb.com/title/tt0498380","Dreamworks Pictures|Warner Bros.|Malpaso Productions|Amblin Entertainment"
-"130","2007","Little Miss Sunshine","tt0449059","nominee","https://www.imdb.com/title/tt0449059","Fox Searchlight Pictures|Big Beach Films|Bona Fide Productions|Deep River Productions|Third Gear Productions|Major Studio Partners"
-"131","2007","The Queen","tt0436697","nominee","https://www.imdb.com/title/tt0436697","Pathé Pictures International|Pathé|Granada Film Productions|Pathé Renn Productions|BIM Distribuzione|BIM Production|France 3 Cinéma|Canal+|Future Films|Scott Rudin Productions"
-"132","2006","Crash","tt0375679","winner","https://www.imdb.com/title/tt0375679","Bob Yari Productions|DEJ Productions|Blackfriars Bridge Films|Harris Company|ApolloProScreen Filmproduktion|Bull's Eye Entertainment|Incognito Pictures"
-"133","2006","Brokeback Mountain","tt0388795","nominee","https://www.imdb.com/title/tt0388795","Focus Features|River Road Entertainment|Alberta Film Entertainment|Good Machine"
-"134","2006","Capote","tt0379725","nominee","https://www.imdb.com/title/tt0379725","United Artists|Sony Pictures Classics|A-Line Pictures|Cooper's Town Productions|Infinity Media|Eagle Vision|Capote Productions|United Artists"
-"135","2006","Good Night, and Good Luck.","tt0433383","nominee","https://www.imdb.com/title/tt0433383","Warner Independent Pictures|2929 Productions|Participant|Davis-Films|Redbus Pictures|Tohokushinsha Film Corporation|Section Eight|Metropolitan Talent Agency"
-"136","2006","Munich","tt0408306","nominee","https://www.imdb.com/title/tt0408306","Dreamworks Pictures|Universal Pictures|Amblin Entertainment|The Kennedy/Marshall Company|Barry Mendel Productions|Alliance Atlantis Communications|Peninsula Films"
-"137","2005","Million Dollar Baby","tt0405159","winner","https://www.imdb.com/title/tt0405159","Warner Bros.|Lakeshore Entertainment|Malpaso Productions|Ruddy Productions|Epsilon Motion Pictures|StudioCanal"
-"138","2005","Finding Neverland","tt0308644","nominee","https://www.imdb.com/title/tt0308644","Miramax|FilmColony|Keylight Productions"
-"139","2005","Ray","tt0350258","nominee","https://www.imdb.com/title/tt0350258","Universal Pictures|Bristol Bay Productions|Anvil Films|Baldwin Entertainment Group|Walden Media"
-"140","2005","Sideways","tt0375063","nominee","https://www.imdb.com/title/tt0375063","Fox Searchlight Pictures|Michael London Productions|Sideways Productions Inc."
-"141","2005","The Aviator","tt0338751","nominee","https://www.imdb.com/title/tt0338751","Forward Pass|Appian Way|IMF Internationale Medien und Film GmbH & Co. 3. Produktions KG|Initial Entertainment Group|Warner Bros.|Miramax|Cappa Productions|Mel's Cite du Cinema"
-"142","2004","The Lord of the Rings: The Return of the King","tt0167260","winner","https://www.imdb.com/title/tt0167260","New Line Cinema|WingNut Films|The Saul Zaentz Company"
-"143","2004","Lost in Translation","tt0335266","nominee","https://www.imdb.com/title/tt0335266","Focus Features|Tohokushinsha Film Corporation|American Zoetrope|Elemental Films"
-"144","2004","Master and Commander: The Far Side of the World","tt0311113","nominee","https://www.imdb.com/title/tt0311113","Twentieth Century Fox|Miramax|Universal Pictures|Samuel Goldwyn Films"
-"145","2004","Mystic River","tt0327056","nominee","https://www.imdb.com/title/tt0327056","Warner Bros.|Village Roadshow Pictures|NPV Entertainment|Malpaso Productions"
-"146","2004","Seabiscuit","tt0329575","nominee","https://www.imdb.com/title/tt0329575","Universal Pictures|Dreamworks Pictures|Spyglass Entertainment|Larger Than Life Productions|The Kennedy/Marshall Company|Touchstone Pictures"
-"147","2003","Chicago","tt0299658","winner","https://www.imdb.com/title/tt0299658","Miramax|Producers Circle|Storyline Entertainment|Kalis Productions GmbH & Co. KG"
-"148","2003","Gangs of New York","tt0217505","nominee","https://www.imdb.com/title/tt0217505","Miramax|Initial Entertainment Group|Alberto Grimaldi Productions"
-"149","2003","The Hours","tt0274558","nominee","https://www.imdb.com/title/tt0274558","Paramount Pictures|Miramax|Scott Rudin Productions"
-"150","2003","The Lord of the Rings: The Two Towers","tt0167261","nominee","https://www.imdb.com/title/tt0167261","New Line Cinema|WingNut Films|The Saul Zaentz Company"
-"151","2003","The Pianist","tt0253474","nominee","https://www.imdb.com/title/tt0253474","R.P. Productions|Heritage Films|Studio Babelsberg|Runteam|Canal+|StudioCanal|Bac Films|Canal+ Polska|Telewizja Polska|Agencja Produkcji Filmowej|Filmboard Berlin-Brandenburg|FilmFernsehFonds Bayern|Filmförderungsanstalt|Beverly Detroit|Interscope Communications|Mainstream S.A."
-"152","2002","A Beautiful Mind","tt0268978","winner","https://www.imdb.com/title/tt0268978","Universal Pictures|Dreamworks Pictures|Imagine Entertainment"
-"153","2002","Gosford Park","tt0280707","nominee","https://www.imdb.com/title/tt0280707","USA Films|Capitol Films|Film Council|Sandcastle 5 Productions|Chicagofilms|Medusa Film"
-"154","2002","In the Bedroom","tt0247425","nominee","https://www.imdb.com/title/tt0247425","Good Machine|Standard Film Company|GreeneStreet Films"
-"155","2002","Moulin Rouge!","tt0203009","nominee","https://www.imdb.com/title/tt0203009","Twentieth Century Fox|Bazmark Films"
-"156","2002","The Lord of the Rings: The Fellowship of the Ring","tt0120737","nominee","https://www.imdb.com/title/tt0120737","New Line Cinema|WingNut Films|The Saul Zaentz Company"
-"157","2001","Gladiator","tt0172495","winner","https://www.imdb.com/title/tt0172495","Dreamworks Pictures|Universal Pictures|Scott Free Productions|Mill Film|C & L|Dawliz|Red Wagon Entertainment"
-"158","2001","Chocolat","tt0241303","nominee","https://www.imdb.com/title/tt0241303","Miramax|David Brown Productions|Fat Free|Miramax"
-"159","2001","Crouching Tiger, Hidden Dragon","tt0190332","nominee","https://www.imdb.com/title/tt0190332","Asia Union Film & Entertainment Ltd.|China Film Co-Production Corporation|Columbia Pictures Film Production Asia|Edko Films|Good Machine|Prosperity Pictures|Sony Pictures Classics|United China Vision|Zoom Hunt International Productions"
-"160","2001","Erin Brockovich","tt0195685","nominee","https://www.imdb.com/title/tt0195685","Universal Pictures|Columbia Pictures|Jersey Films"
-"161","2001","Traffic","tt0181865","nominee","https://www.imdb.com/title/tt0181865","Compulsion Inc.|Initial Entertainment Group|Splendid Medien AG|The Bedford Falls Company|USA Films"
-"162","2000","American Beauty","tt0169547","winner","https://www.imdb.com/title/tt0169547","Dreamworks Pictures|Jinks/Cohen Company"
-"163","2000","The Cider House Rules","tt0124315","nominee","https://www.imdb.com/title/tt0124315","FilmColony|Miramax|Nina Saxon Film Design"
-"164","2000","The Green Mile","tt0120689","nominee","https://www.imdb.com/title/tt0120689","Castle Rock Entertainment|Darkwoods Productions|Warner Bros."
-"165","2000","The Insider","tt0140352","nominee","https://www.imdb.com/title/tt0140352","Touchstone Pictures|Forward Pass|Blue Lion Entertainment|Digital Image Associates|Kaitz Productions|Mann/Roth Productions|Spyglass Entertainment"
-"166","2000","The Sixth Sense","tt0167404","nominee","https://www.imdb.com/title/tt0167404","Hollywood Pictures|Spyglass Entertainment|The Kennedy/Marshall Company|Barry Mendel Productions"
-"167","1999","Shakespeare in Love","tt0138097","winner","https://www.imdb.com/title/tt0138097","Universal Pictures|Miramax|The Bedford Falls Company"
-"168","1999","Elizabeth","tt0127536","nominee","https://www.imdb.com/title/tt0127536","PolyGram Filmed Entertainment|Working Title Films|Channel Four Films"
-"169","1999","Life Is Beautiful","tt0118799","nominee","https://www.imdb.com/title/tt0118799","Melampo Cinematografica|Cecchi Gori Group Tiger Cinematografica"
-"170","1999","Saving Private Ryan","tt0120815","nominee","https://www.imdb.com/title/tt0120815","Dreamworks Pictures|Paramount Pictures|Amblin Entertainment|Mutual Film Company|H2L Media Group|Mark Gordon Productions"
-"171","1999","The Thin Red Line","tt0120863","nominee","https://www.imdb.com/title/tt0120863","Fox 2000 Pictures|Geisler-Roberdeau|Phoenix Pictures"
-"172","1998","Titanic","tt0120338","winner","https://www.imdb.com/title/tt0120338","Twentieth Century Fox|Paramount Pictures|Lightstorm Entertainment|Baja Studios"
-"173","1998","As Good as It Gets","tt0119822","nominee","https://www.imdb.com/title/tt0119822","TriStar Pictures|Gracie Films"
-"174","1998","Good Will Hunting","tt0119217","nominee","https://www.imdb.com/title/tt0119217","Miramax|Be Gentlemen Limited Partnership|Lawrence Bender Productions"
-"175","1998","L.A. Confidential","tt0119488","nominee","https://www.imdb.com/title/tt0119488","New Regency Productions|The Wolper Organization|Warner Bros."
-"176","1998","The Full Monty","tt0119164","nominee","https://www.imdb.com/title/tt0119164","Redwave Films|Channel Four Films|Twentieth Century Fox"
-"177","1997","The English Patient","tt0116209","winner","https://www.imdb.com/title/tt0116209","Miramax|Tiger Moth Productions"
-"178","1997","Fargo","tt0116282","nominee","https://www.imdb.com/title/tt0116282","PolyGram Filmed Entertainment|Working Title Films"
-"179","1997","Jerry Maguire","tt0116695","nominee","https://www.imdb.com/title/tt0116695","TriStar Pictures|Gracie Films"
-"180","1997","Secrets & Lies","tt0117589","nominee","https://www.imdb.com/title/tt0117589","Channel Four Films|CiBy 2000|Thin Man Films"
-"181","1997","Shine","tt0117631","nominee","https://www.imdb.com/title/tt0117631","Australian Film Finance Corporation|Film Victoria|Momentum Films|The South Australian Film Corporation"
-"182","1996","Braveheart","tt0112573","winner","https://www.imdb.com/title/tt0112573","Icon Entertainment International|The Ladd Company|B.H. Finance C.V.|Icon Productions"
-"183","1996","Apollo 13","tt0112384","nominee","https://www.imdb.com/title/tt0112384","Universal Pictures|Imagine Entertainment"
-"184","1996","Babe","tt0112431","nominee","https://www.imdb.com/title/tt0112431","Universal Pictures|Kennedy Miller Productions"
-"185","1996","Sense and Sensibility","tt0114388","nominee","https://www.imdb.com/title/tt0114388","Columbia Pictures|Mirage Enterprises"
-"186","1996","The Postman","tt0110877","nominee","https://www.imdb.com/title/tt0110877","Cecchi Gori Group Tiger Cinematografica|Penta Distribuzione|Esterno Mediterraneo Film|Blue Dahlia Productions|K2 Two|Canal+"
-"187","1995","Forrest Gump","tt0109830","winner","https://www.imdb.com/title/tt0109830","Paramount Pictures|The Steve Tisch Company|Wendy Finerman Productions"
-"188","1995","Four Weddings and a Funeral","tt0109831","nominee","https://www.imdb.com/title/tt0109831","PolyGram Filmed Entertainment|Channel Four Films|Working Title Films"
-"189","1995","Pulp Fiction","tt0110912","nominee","https://www.imdb.com/title/tt0110912","Miramax|A Band Apart|Jersey Films"
-"190","1995","Quiz Show","tt0110932","nominee","https://www.imdb.com/title/tt0110932","Baltimore Pictures|Hollywood Pictures|Ricardo Mestres Productions|Wildwood Enterprises"
-"191","1995","The Shawshank Redemption","tt0111161","nominee","https://www.imdb.com/title/tt0111161","Castle Rock Entertainment"
-"192","1994","Schindler's List","tt0108052","winner","https://www.imdb.com/title/tt0108052","Universal Pictures|Amblin Entertainment"
-"193","1994","In the Name of the Father","tt0107207","nominee","https://www.imdb.com/title/tt0107207","Hell's Kitchen Films|Universal Pictures"
-"194","1994","The Fugitive","tt0106977","nominee","https://www.imdb.com/title/tt0106977","Warner Bros.|Kopelson Entertainment"
-"195","1994","The Piano","tt0107822","nominee","https://www.imdb.com/title/tt0107822","CiBy 2000|Jan Chapman Productions|The Australian Film Commission|New South Wales Film & Television Office"
-"196","1994","The Remains of the Day","tt0107943","nominee","https://www.imdb.com/title/tt0107943","Columbia Pictures|Merchant Ivory Productions"
-"197","1993","Unforgiven","tt0105695","winner","https://www.imdb.com/title/tt0105695","Warner Bros.|Malpaso Productions"
-"198","1993","A Few Good Men","tt0104257","nominee","https://www.imdb.com/title/tt0104257","Columbia Pictures|Castle Rock Entertainment|David Brown Productions"
-"199","1993","Howards End","tt0104454","nominee","https://www.imdb.com/title/tt0104454","Merchant Ivory Productions|Sumitomo Corporation|Imagica|Cinema Ten|Japan Satellite Broadcasting|Ide Productions|Film Four International"
-"200","1993","Scent of a Woman","tt0105323","nominee","https://www.imdb.com/title/tt0105323","Universal Pictures|City Light Films"
-"201","1993","The Crying Game","tt0104036","nominee","https://www.imdb.com/title/tt0104036","Palace Pictures|Channel Four Films|Eurotrustees|Nippon Film Development and Finance|British Screen Productions"
-"202","1992","The Silence of the Lambs","tt0102926","winner","https://www.imdb.com/title/tt0102926","Strong Heart/Demme Production|Orion Pictures"
-"203","1992","Beauty and the Beast","tt0101414","nominee","https://www.imdb.com/title/tt0101414","Walt Disney Pictures|Silver Screen Partners IV|Walt Disney Animation Studios"
-"204","1992","Bugsy","tt0101516","nominee","https://www.imdb.com/title/tt0101516","TriStar Pictures|Mulholland Productions|Baltimore Pictures"
-"205","1992","JFK","tt0102138","nominee","https://www.imdb.com/title/tt0102138","Warner Bros.|Canal+|New Regency Productions|Alcor Films|Ixtlan|Camelot"
-"206","1992","The Prince of Tides","tt0102713","nominee","https://www.imdb.com/title/tt0102713","Columbia Pictures|Barwood Films|Longfellow Pictures"
-"207","1991","Dances with Wolves","tt0099348","winner","https://www.imdb.com/title/tt0099348","Tig Productions|Majestic Films International|Allied Filmmakers"
-"208","1991","Awakenings","tt0099077","nominee","https://www.imdb.com/title/tt0099077","Columbia Pictures|Parkes/Lasker productions"
-"209","1991","Ghost","tt0099653","nominee","https://www.imdb.com/title/tt0099653","Paramount Pictures|Howard W. Koch Productions"
-"210","1991","Goodfellas","tt0099685","nominee","https://www.imdb.com/title/tt0099685","Warner Bros."
-"211","1991","The Godfather Part III","tt0099674","nominee","https://www.imdb.com/title/tt0099674","Paramount Pictures|Zoetrope Studios"
-"212","1990","Driving Miss Daisy","tt0097239","winner","https://www.imdb.com/title/tt0097239","The Zanuck Company|Allied Filmmakers|Majestic Films International"
-"213","1990","Born on the Fourth of July","tt0096969","nominee","https://www.imdb.com/title/tt0096969","Ixtlan"
-"214","1990","Dead Poets Society","tt0097165","nominee","https://www.imdb.com/title/tt0097165","Touchstone Pictures|Silver Screen Partners IV|A Steven Haft Production|Witt/Thomas Productions"
-"215","1990","Field of Dreams","tt0097351","nominee","https://www.imdb.com/title/tt0097351","Gordon Company"
-"216","1990","My Left Foot","tt0097937","nominee","https://www.imdb.com/title/tt0097937","Ferndale Films|Granada Television|Hell's Kitchen Films|Raidió Teilifís Éireann"
-"217","1989","Rain Man","tt0095953","winner","https://www.imdb.com/title/tt0095953","United Artists|The Guber-Peters Company|Star Partners II Ltd.|Mirage Enterprises"
-"218","1989","Dangerous Liaisons","tt0094947","nominee","https://www.imdb.com/title/tt0094947","Lorimar Film Entertainment|NFH Productions|Warner Bros."
-"219","1989","Mississippi Burning","tt0095647","nominee","https://www.imdb.com/title/tt0095647","Orion Pictures"
-"220","1989","The Accidental Tourist","tt0094606","nominee","https://www.imdb.com/title/tt0094606","Warner Bros."
-"221","1989","Working Girl","tt0096463","nominee","https://www.imdb.com/title/tt0096463","Twentieth Century Fox"
-"222","1988","The Last Emperor","tt0093389","winner","https://www.imdb.com/title/tt0093389","Yanco Films Limited|TAO Film|Recorded Picture Company|Screenframe|AAA Soprofilms|Hemdale"
-"223","1988","Broadcast News","tt0092699","nominee","https://www.imdb.com/title/tt0092699","Amercent Films|American Entertainment Partners L.P.|Gracie Films"
-"224","1988","Fatal Attraction","tt0093010","nominee","https://www.imdb.com/title/tt0093010","Paramount Pictures"
-"225","1988","Hope and Glory","tt0093209","nominee","https://www.imdb.com/title/tt0093209","Columbia Pictures|Nelson Entertainment|Goldcrest Films International|Allied Filmmakers|Davros Films|Nelson Entertainment"
-"226","1988","Moonstruck","tt0093565","nominee","https://www.imdb.com/title/tt0093565","Metro-Goldwyn-Mayer|Star Partners"
-"227","1987","Platoon","tt0091763","winner","https://www.imdb.com/title/tt0091763","Hemdale|Cinema '84|Cinema 86"
-"228","1987","A Room with a View","tt0091867","nominee","https://www.imdb.com/title/tt0091867","Goldcrest Films International|National Film Finance Corporation|Curzon Film Distributors|Film Four International|Merchant Ivory Productions"
-"229","1987","Children of a Lesser God","tt0090830","nominee","https://www.imdb.com/title/tt0090830","Paramount Pictures"
-"230","1987","Hannah and Her Sisters","tt0091167","nominee","https://www.imdb.com/title/tt0091167","Orion Pictures|Jack Rollins & Charles H. Joffe Productions"
-"231","1987","The Mission","tt0091530","nominee","https://www.imdb.com/title/tt0091530","Warner Bros.|Goldcrest Films International|Kingsmere Productions Ltd.|Enigma Productions|AMLF"
-"232","1986","Out of Africa","tt0089755","winner","https://www.imdb.com/title/tt0089755","Mirage Enterprises"
-"233","1986","Kiss of the Spider Woman","tt0089424","nominee","https://www.imdb.com/title/tt0089424","HB Filmes|FilmDallas Pictures"
-"234","1986","Prizzi's Honor","tt0089841","nominee","https://www.imdb.com/title/tt0089841","ABC Motion Pictures|Filmax"
-"235","1986","The Color Purple","tt0088939","nominee","https://www.imdb.com/title/tt0088939","Warner Bros.|Amblin Entertainment|The Guber-Peters Company"
-"236","1986","Witness","tt0090329","nominee","https://www.imdb.com/title/tt0090329","Paramount Pictures|Edward S. Feldman Production"
-"237","1985","Amadeus","tt0086879","winner","https://www.imdb.com/title/tt0086879","AMLF|The Saul Zaentz Company"
-"238","1985","A Passage to India","tt0087892","nominee","https://www.imdb.com/title/tt0087892","EMI Films|Home Box Office"
-"239","1985","A Soldier's Story","tt0088146","nominee","https://www.imdb.com/title/tt0088146","Columbia Pictures|Caldix"
-"240","1985","Places in the Heart","tt0087921","nominee","https://www.imdb.com/title/tt0087921","Delphi II Productions|TriStar Pictures"
-"241","1985","The Killing Fields","tt0087553","nominee","https://www.imdb.com/title/tt0087553","Goldcrest Films International|International Film Investors|Enigma Productions Ltd)"
-"242","1984","Terms of Endearment","tt0086425","winner","https://www.imdb.com/title/tt0086425","Paramount Pictures"
-"243","1984","Tender Mercies","tt0086423","nominee","https://www.imdb.com/title/tt0086423","Antron Media Production|EMI Films"
-"244","1984","The Big Chill","tt0085244","nominee","https://www.imdb.com/title/tt0085244","Columbia Pictures|Carson Productions|Delphi Films"
-"245","1984","The Dresser","tt0085461","nominee","https://www.imdb.com/title/tt0085461","Columbia Pictures|Goldcrest Films International|World Film Services"
-"246","1984","The Right Stuff","tt0086197","nominee","https://www.imdb.com/title/tt0086197","The Ladd Company"
-"247","1983","Gandhi","tt0083987","winner","https://www.imdb.com/title/tt0083987","International Film Investors|National Film Development Corporation of India|Goldcrest Films International|Indo-British|Indo-British Films"
-"248","1983","E.T. the Extra-Terrestrial","tt0083866","nominee","https://www.imdb.com/title/tt0083866","Universal Pictures|Amblin Entertainment"
-"249","1983","Missing","tt0084335","nominee","https://www.imdb.com/title/tt0084335","PolyGram Filmed Entertainment|Universal Pictures|Estudios Churubusco Azteca S.A."
-"250","1983","The Verdict","tt0084855","nominee","https://www.imdb.com/title/tt0084855","Twentieth Century Fox"
-"251","1983","Tootsie","tt0084805","nominee","https://www.imdb.com/title/tt0084805","Columbia Pictures|Mirage Enterprises|Punch Productions|Delphi Films"
-"252","1982","Chariots of Fire","tt0082158","winner","https://www.imdb.com/title/tt0082158","Enigma Productions|Allied Stars Ltd."
-"253","1982","Atlantic City","tt0080388","nominee","https://www.imdb.com/title/tt0080388","International Cinema Corporation|Selta Films|Canadian Film Development Corporation|Cine-Neighbor|Selta Films|Famous Players Limited"
-"254","1982","Indiana Jones and the Raiders of the Lost Ark","tt0082971","nominee","https://www.imdb.com/title/tt0082971","Paramount Pictures|Lucasfilm"
-"255","1982","On Golden Pond","tt0082846","nominee","https://www.imdb.com/title/tt0082846","IPC Films|Incorporated Television Company"
-"256","1982","Reds","tt0082979","nominee","https://www.imdb.com/title/tt0082979","Barclays Mercantile Industrial Finance|JRS Productions"
-"257","1981","Ordinary People","tt0081283","winner","https://www.imdb.com/title/tt0081283","Paramount Pictures|Wildwood Enterprises"
-"258","1981","Coal Miner's Daughter","tt0080549","nominee","https://www.imdb.com/title/tt0080549","Universal Pictures"
-"259","1981","Raging Bull","tt0081398","nominee","https://www.imdb.com/title/tt0081398","Chartoff-Winkler Productions"
-"260","1981","Tess","tt0080009","nominee","https://www.imdb.com/title/tt0080009","Renn Productions|Timothy Burrill Productions|Société Française de Production"
-"261","1981","The Elephant Man","tt0080678","nominee","https://www.imdb.com/title/tt0080678","Brooksfilms"
-"262","1980","Kramer vs. Kramer","tt0079417","winner","https://www.imdb.com/title/tt0079417","Columbia Pictures|Stanley Jaffe Production"
-"263","1980","All That Jazz","tt0078754","nominee","https://www.imdb.com/title/tt0078754","Columbia Pictures|Twentieth Century Fox"
-"264","1980","Apocalypse Now","tt0078788","nominee","https://www.imdb.com/title/tt0078788","American Zoetrope|Zoetrope Studios"
-"265","1980","Breaking Away","tt0078902","nominee","https://www.imdb.com/title/tt0078902","Twentieth Century Fox"
-"266","1980","Norma Rae","tt0079638","nominee","https://www.imdb.com/title/tt0079638","Twentieth Century Fox"
-"267","1979","The Deer Hunter","tt0077416","winner","https://www.imdb.com/title/tt0077416","EMI Films|Universal Pictures"
-"268","1979","An Unmarried Woman","tt0078444","nominee","https://www.imdb.com/title/tt0078444","Major Studio Partners|Twentieth Century Fox"
-"269","1979","Coming Home","tt0077362","nominee","https://www.imdb.com/title/tt0077362","Jerome Hellman Productions|Jayne Productions Inc."
-"270","1979","Heaven Can Wait","tt0077663","nominee","https://www.imdb.com/title/tt0077663","Paramount Pictures"
-"271","1979","Midnight Express","tt0077928","nominee","https://www.imdb.com/title/tt0077928","Columbia Pictures|Casablanca Filmworks"
-"272","1978","Annie Hall","tt0075686","winner","https://www.imdb.com/title/tt0075686","Jack Rollins & Charles H. Joffe Productions|Rollins-Joffe Productions"
-"273","1978","Julia","tt0076245","nominee","https://www.imdb.com/title/tt0076245","Twentieth Century Fox"
-"274","1978","Star Wars","tt0076759","nominee","https://www.imdb.com/title/tt0076759","Lucasfilm|Twentieth Century Fox"
-"275","1978","The Goodbye Girl","tt0076095","nominee","https://www.imdb.com/title/tt0076095","Warner Bros.|Metro-Goldwyn-Mayer|Rastar Pictures"
-"276","1978","The Turning Point","tt0076843","nominee","https://www.imdb.com/title/tt0076843","Hera Productions|Major Studio Partners|Twentieth Century Fox"
-"277","1977","Rocky","tt0075148","winner","https://www.imdb.com/title/tt0075148","Chartoff-Winkler Productions"
-"278","1977","All the President's Men","tt0074119","nominee","https://www.imdb.com/title/tt0074119","Wildwood Enterprises"
-"279","1977","Bound for Glory","tt0074235","nominee","https://www.imdb.com/title/tt0074235","Bound for Glory"
-"280","1977","Network","tt0074958","nominee","https://www.imdb.com/title/tt0074958","Metro-Goldwyn-Mayer"
-"281","1977","Taxi Driver","tt0075314","nominee","https://www.imdb.com/title/tt0075314","Columbia Pictures|Columbia Pictures|Bill/Phillips|Italo/Judeo Productions"
-"282","1976","One Flew Over the Cuckoo's Nest","tt0073486","winner","https://www.imdb.com/title/tt0073486","Fantasy Films|Bryna Productions|N.V. Zvaluw"
-"283","1976","Barry Lyndon","tt0072684","nominee","https://www.imdb.com/title/tt0072684","Peregrine|Hawk Films|Warner Bros."
-"284","1976","Dog Day Afternoon","tt0072890","nominee","https://www.imdb.com/title/tt0072890","Warner Bros.|Artists Entertainment Complex"
-"285","1976","Jaws","tt0073195","nominee","https://www.imdb.com/title/tt0073195","Zanuck/Brown Productions|Universal Pictures"
-"286","1976","Nashville","tt0073440","nominee","https://www.imdb.com/title/tt0073440","ABC Entertainment|American Broadcasting Company|Paramount Pictures"
-"287","1975","The Godfather Part II","tt0071562","winner","https://www.imdb.com/title/tt0071562","Paramount Pictures|The Coppola Company|American Zoetrope"
-"288","1975","Chinatown","tt0071315","nominee","https://www.imdb.com/title/tt0071315","Paramount Pictures|Penthouse Video|Long Road Productions|Robert Evans Company"
-"289","1975","Lenny","tt0071746","nominee","https://www.imdb.com/title/tt0071746","Marvin Worth Productions"
-"290","1975","The Conversation","tt0071360","nominee","https://www.imdb.com/title/tt0071360","The Directors Company|The Coppola Company|American Zoetrope|Paramount Pictures"
-"291","1975","The Towering Inferno","tt0072308","nominee","https://www.imdb.com/title/tt0072308","Twentieth Century Fox|Warner Bros.|Irwin Allen Productions|United Films"
-"292","1974","The Sting","tt0070735","winner","https://www.imdb.com/title/tt0070735","Zanuck/Brown Productions|Universal Pictures"
-"293","1974","A Touch of Class","tt0070819","nominee","https://www.imdb.com/title/tt0070819","Brut Productions|Gordon Film Productions|Joseph E. Levine Productions"
-"294","1974","American Graffiti","tt0069704","nominee","https://www.imdb.com/title/tt0069704","Universal Pictures|Lucasfilm|The Coppola Company"
-"295","1974","Cries & Whispers","tt0069467","nominee","https://www.imdb.com/title/tt0069467","Cinematograph AB|Svenska Filminstitutet"
-"296","1974","The Exorcist","tt0070047","nominee","https://www.imdb.com/title/tt0070047","Warner Bros.|Hoya Productions"
-"297","1973","The Godfather","tt0068646","winner","https://www.imdb.com/title/tt0068646","Paramount Pictures|Albert S. Ruddy Productions|Alfran Productions"
-"298","1973","Cabaret","tt0068327","nominee","https://www.imdb.com/title/tt0068327","Allied Artists Pictures|ABC Pictures|A Feuer and Martin Production|Bavaria Film"
-"299","1973","Deliverance","tt0068473","nominee","https://www.imdb.com/title/tt0068473","Warner Bros.|Elmer Enterprises"
-"300","1973","Sounder","tt0069303","nominee","https://www.imdb.com/title/tt0069303","Radnitz/Mattel Productions|Rainbow Group"
-"301","1973","The Emigrants","tt0067919","nominee","https://www.imdb.com/title/tt0067919","Svensk Filmindustri"
-"302","1972","The French Connection","tt0067116","winner","https://www.imdb.com/title/tt0067116","Twentieth Century Fox|Philip D'Antoni Productions|Schine-Moore Productions|D'Antoni Productions"
-"303","1972","A Clockwork Orange","tt0066921","nominee","https://www.imdb.com/title/tt0066921","Warner Bros.|Polaris Productions|Hawk Films|Max L. Raab Productions|Si Litvinoff Film Production"
-"304","1972","Fiddler on the Roof","tt0067093","nominee","https://www.imdb.com/title/tt0067093","The Mirisch Production Company|Cartier Productions"
-"305","1972","Nicholas and Alexandra","tt0067483","nominee","https://www.imdb.com/title/tt0067483","Horizon Pictures"
-"306","1972","The Last Picture Show","tt0067328","nominee","https://www.imdb.com/title/tt0067328","Columbia Pictures|BBS Productions|Last Picture Show Productions"
-"307","1971","Patton","tt0066206","winner","https://www.imdb.com/title/tt0066206","Twentieth Century Fox"
-"308","1971","Airport","tt0065377","nominee","https://www.imdb.com/title/tt0065377","Ross Hunter Productions"
-"309","1971","Five Easy Pieces","tt0065724","nominee","https://www.imdb.com/title/tt0065724","BBS Productions|Columbia Pictures|Five Easy Pieces Productions|Raybert Productions"
-"310","1971","Love Story","tt0066011","nominee","https://www.imdb.com/title/tt0066011","Paramount Pictures|Love Story Company"
-"311","1971","MASH","tt0066026","nominee","https://www.imdb.com/title/tt0066026","Aspen Productions|Ingo Preminger Productions"
-"312","1970","Midnight Cowboy","tt0064665","winner","https://www.imdb.com/title/tt0064665","Jerome Hellman Productions|Florin Productions"
-"313","1970","Anne of the Thousand Days","tt0064030","nominee","https://www.imdb.com/title/tt0064030","Hal Wallis Productions"
-"314","1970","Butch Cassidy and the Sundance Kid","tt0064115","nominee","https://www.imdb.com/title/tt0064115","Campanile Productions|George Roy Hill-Paul Monash Production|Newman-Foreman Company|Estudios Churubusco Azteca S.A."
-"315","1970","Hello, Dolly!","tt0064418","nominee","https://www.imdb.com/title/tt0064418","Chenault Productions|Twentieth Century Fox"
-"316","1970","Z","tt0065234","nominee","https://www.imdb.com/title/tt0065234","Valoria Films|Reggane Films|Office National pour le Commerce et l'Industrie Cinématographique"
-"317","1969","Oliver!","tt0063385","winner","https://www.imdb.com/title/tt0063385","Romulus Films|Warwick Film Productions"
-"318","1969","Funny Girl","tt0062994","nominee","https://www.imdb.com/title/tt0062994","Columbia Pictures|Rastar Productions"
-"319","1969","Rachel, Rachel","tt0063483","nominee","https://www.imdb.com/title/tt0063483","Kayos Productions"
-"320","1969","Romeo and Juliet","tt0063518","nominee","https://www.imdb.com/title/tt0063518","BHE Films|Verona Produzione|Dino de Laurentiis Cinematografica"
-"321","1969","The Lion in Winter","tt0063227","nominee","https://www.imdb.com/title/tt0063227","Haworth Productions"
-"322","1968","In the Heat of the Night","tt0061811","winner","https://www.imdb.com/title/tt0061811","The Mirisch Corporation"
-"323","1968","Bonnie and Clyde","tt0061418","nominee","https://www.imdb.com/title/tt0061418","Warner Bros./Seven Arts|Tatira-Hiller Productions"
-"324","1968","Doctor Dolittle","tt0061584","nominee","https://www.imdb.com/title/tt0061584","APJAC Productions|Twentieth Century Fox"
-"325","1968","Guess Who's Coming to Dinner","tt0061735","nominee","https://www.imdb.com/title/tt0061735","Columbia Pictures|Stanley Kramer Productions"
-"326","1968","The Graduate","tt0061722","nominee","https://www.imdb.com/title/tt0061722","Lawrence Truman Productions"
-"327","1967","A Man for All Seasons","tt0060665","winner","https://www.imdb.com/title/tt0060665","Highland Films"
-"328","1967","Alfie","tt0060086","nominee","https://www.imdb.com/title/tt0060086","Lewis Gilbert|Sheldrake Films"
-"329","1967","The Russians Are Coming the Russians Are Coming","tt0060921","nominee","https://www.imdb.com/title/tt0060921","The Mirisch Corporation"
-"330","1967","The Sand Pebbles","tt0060934","nominee","https://www.imdb.com/title/tt0060934","Argyle Enterprises|Solar Productions|Robert Wise Productions|Twentieth Century Fox"
-"331","1967","Who's Afraid of Virginia Woolf?","tt0061184","nominee","https://www.imdb.com/title/tt0061184","Warner Bros.|Chenault Productions"
-"332","1966","The Sound of Music","tt0059742","winner","https://www.imdb.com/title/tt0059742","Robert Wise Productions|Argyle Enterprises"
-"333","1966","A Thousand Clowns","tt0059798","nominee","https://www.imdb.com/title/tt0059798","Harrell"
-"334","1966","Darling","tt0059084","nominee","https://www.imdb.com/title/tt0059084","Joseph Janni Production|Vic Films Productions|Appia Films Ltd."
-"335","1966","Doctor Zhivago","tt0059113","nominee","https://www.imdb.com/title/tt0059113","Metro-Goldwyn-Mayer|Carlo Ponti Production|Sostar S.A."
-"336","1966","Ship of Fools","tt0059712","nominee","https://www.imdb.com/title/tt0059712","Stanley Kramer Productions"
-"337","1965","My Fair Lady","tt0058385","winner","https://www.imdb.com/title/tt0058385","Warner Bros."
-"338","1965","Becket","tt0057877","nominee","https://www.imdb.com/title/tt0057877","Wallis-Hazen|Keep Films"
-"339","1965","Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb","tt0057012","nominee","https://www.imdb.com/title/tt0057012","Stanley Kubrick Productions"
-"340","1965","Mary Poppins","tt0058331","nominee","https://www.imdb.com/title/tt0058331","Walt Disney Productions"
-"341","1965","Zorba the Greek","tt0057831","nominee","https://www.imdb.com/title/tt0057831","Twentieth Century Fox"
-"342","1964","Tom Jones","tt0057590","winner","https://www.imdb.com/title/tt0057590","Woodfall Film Productions"
-"343","1964","America America","tt0056825","nominee","https://www.imdb.com/title/tt0056825","Athena Enterprises|Warner Bros."
-"344","1964","Cleopatra","tt0056937","nominee","https://www.imdb.com/title/tt0056937","Twentieth Century Fox|MCL Films S.A.|Walwa Films S.A."
-"345","1964","How the West Was Won","tt0056085","nominee","https://www.imdb.com/title/tt0056085","Metro-Goldwyn-Mayer|Cinerama Productions Corp."
-"346","1964","Lilies of the Field","tt0057251","nominee","https://www.imdb.com/title/tt0057251","Rainbow Productions"
-"347","1963","Lawrence of Arabia","tt0056172","winner","https://www.imdb.com/title/tt0056172","Horizon Pictures"
-"348","1963","Mutiny on the Bounty","tt0056264","nominee","https://www.imdb.com/title/tt0056264","Arcola Pictures"
-"349","1963","The Longest Day","tt0056197","nominee","https://www.imdb.com/title/tt0056197","Darryl F. Zanuck Productions"
-"350","1963","The Music Man","tt0056262","nominee","https://www.imdb.com/title/tt0056262","Warner Bros."
-"351","1963","To Kill a Mockingbird","tt0056592","nominee","https://www.imdb.com/title/tt0056592","Pakula-Mulligan|Brentwood Productions"
-"352","1962","West Side Story","tt0055614","winner","https://www.imdb.com/title/tt0055614","The Mirisch Corporation|Seven Arts Productions"
-"353","1962","Fanny","tt0054866","nominee","https://www.imdb.com/title/tt0054866","Warner Bros.|Mansfield Productions"
-"354","1962","Judgment at Nuremberg","tt0055031","nominee","https://www.imdb.com/title/tt0055031","Roxlom Films Inc."
-"355","1962","The Guns of Navarone","tt0054953","nominee","https://www.imdb.com/title/tt0054953","Highroad Productions"
-"356","1962","The Hustler","tt0054997","nominee","https://www.imdb.com/title/tt0054997","Rossen Films"
-"357","1961","The Apartment","tt0053604","winner","https://www.imdb.com/title/tt0053604","The Mirisch Corporation"
-"358","1961","Elmer Gantry","tt0053793","nominee","https://www.imdb.com/title/tt0053793","Elmer Gantry Productions"
-"359","1961","Sons and Lovers","tt0054326","nominee","https://www.imdb.com/title/tt0054326","Jerry Wald Productions"
-"360","1961","The Alamo","tt0053580","nominee","https://www.imdb.com/title/tt0053580","Batjac Productions|The Alamo Company"
-"361","1961","The Sundowners","tt0054353","nominee","https://www.imdb.com/title/tt0054353","Warner Bros. Productions"
-"362","1960","Ben-Hur","tt0052618","winner","https://www.imdb.com/title/tt0052618","Metro-Goldwyn-Mayer"
-"363","1960","Anatomy of a Murder","tt0052561","nominee","https://www.imdb.com/title/tt0052561","Otto Preminger Films"
-"364","1960","Room at the Top","tt0053226","nominee","https://www.imdb.com/title/tt0053226","Romulus Films|Remus"
-"365","1960","The Diary of Anne Frank","tt0052738","nominee","https://www.imdb.com/title/tt0052738","George Stevens Productions"
-"366","1960","The Nun's Story","tt0053131","nominee","https://www.imdb.com/title/tt0053131","Warner Bros."
-"367","1959","Gigi","tt0051658","winner","https://www.imdb.com/title/tt0051658","Metro-Goldwyn-Mayer"
-"368","1959","Auntie Mame","tt0051383","nominee","https://www.imdb.com/title/tt0051383","Warner Bros."
-"369","1959","Cat on a Hot Tin Roof","tt0051459","nominee","https://www.imdb.com/title/tt0051459","Avon Productions"
-"370","1959","Separate Tables","tt0052182","nominee","https://www.imdb.com/title/tt0052182","Hecht-Hill-Lancaster Productions|Clifton Productions"
-"371","1959","The Defiant Ones","tt0051525","nominee","https://www.imdb.com/title/tt0051525","Lomitas Productions|Curtleigh Productions"
-"372","1958","The Bridge on the River Kwai","tt0050212","winner","https://www.imdb.com/title/tt0050212","Horizon Pictures"
-"373","1958","12 Angry Men","tt0050083","nominee","https://www.imdb.com/title/tt0050083","Orion-Nova Productions"
-"374","1958","Peyton Place","tt0050839","nominee","https://www.imdb.com/title/tt0050839","Twentieth Century Fox|Jerry Wald Productions"
-"375","1958","Sayonara","tt0050933","nominee","https://www.imdb.com/title/tt0050933","Pennebaker Productions|William Goetz Productions"
-"376","1958","Witness for the Prosecution","tt0051201","nominee","https://www.imdb.com/title/tt0051201","Edward Small Productions"
-"377","1957","Around the World in 80 Days","tt0048960","winner","https://www.imdb.com/title/tt0048960","Michael Todd Company"
-"378","1957","Friendly Persuasion","tt0049233","nominee","https://www.imdb.com/title/tt0049233","Allied Artists Pictures|B-M Productions"
-"379","1957","Giant","tt0049261","nominee","https://www.imdb.com/title/tt0049261","George Stevens Productions"
-"380","1957","The King and I","tt0049408","nominee","https://www.imdb.com/title/tt0049408","Twentieth Century Fox"
-"381","1957","The Ten Commandments","tt0049833","nominee","https://www.imdb.com/title/tt0049833","Motion Picture Associates"
-"382","1956","Marty","tt0048356","winner","https://www.imdb.com/title/tt0048356","Hecht-Lancaster Productions|Steven Productions"
-"383","1956","Love Is a Many-Splendored Thing","tt0048316","nominee","https://www.imdb.com/title/tt0048316","Twentieth Century Fox"
-"384","1956","Mister Roberts","tt0048380","nominee","https://www.imdb.com/title/tt0048380","Orange Productions"
-"385","1956","Picnic","tt0048491","nominee","https://www.imdb.com/title/tt0048491","Columbia Pictures"
-"386","1956","The Rose Tattoo","tt0048563","nominee","https://www.imdb.com/title/tt0048563","Hal Wallis Productions"
-"387","1955","On the Waterfront","tt0047296","winner","https://www.imdb.com/title/tt0047296","Horizon Pictures"
-"388","1955","Seven Brides for Seven Brothers","tt0047472","nominee","https://www.imdb.com/title/tt0047472","Metro-Goldwyn-Mayer"
-"389","1955","The Caine Mutiny","tt0046816","nominee","https://www.imdb.com/title/tt0046816","Columbia Pictures"
-"390","1955","The Country Girl","tt0046874","nominee","https://www.imdb.com/title/tt0046874","Perlberg-Seaton Productions"
-"391","1955","Three Coins in the Fountain","tt0047580","nominee","https://www.imdb.com/title/tt0047580","Twentieth Century Fox"
-"392","1954","From Here to Eternity","tt0045793","winner","https://www.imdb.com/title/tt0045793","Columbia Pictures"
-"393","1954","Julius Caesar","tt0045943","nominee","https://www.imdb.com/title/tt0045943","Metro-Goldwyn-Mayer"
-"394","1954","Roman Holiday","tt0046250","nominee","https://www.imdb.com/title/tt0046250","Paramount Pictures"
-"395","1954","Shane","tt0046303","nominee","https://www.imdb.com/title/tt0046303","Paramount Pictures"
-"396","1954","The Robe","tt0046247","nominee","https://www.imdb.com/title/tt0046247","Twentieth Century Fox"
-"397","1953","The Greatest Show on Earth","tt0044672","winner","https://www.imdb.com/title/tt0044672","Paramount Pictures"
-"398","1953","High Noon","tt0044706","nominee","https://www.imdb.com/title/tt0044706","Stanley Kramer Productions"
-"399","1953","Ivanhoe","tt0044760","nominee","https://www.imdb.com/title/tt0044760","Metro-Goldwyn-Mayer"
-"400","1953","Moulin Rouge","tt0044926","nominee","https://www.imdb.com/title/tt0044926","Romulus Films|Moulin Productions Inc."
-"401","1953","The Quiet Man","tt0045061","nominee","https://www.imdb.com/title/tt0045061","Argosy Pictures"
-"402","1952","An American in Paris","tt0043278","winner","https://www.imdb.com/title/tt0043278","Metro-Goldwyn-Mayer"
-"403","1952","A Place in the Sun","tt0043924","nominee","https://www.imdb.com/title/tt0043924","Paramount Pictures"
-"404","1952","A Streetcar Named Desire","tt0044081","nominee","https://www.imdb.com/title/tt0044081","Charles K. Feldman Group|Warner Bros."
-"405","1952","Decision Before Dawn","tt0043459","nominee","https://www.imdb.com/title/tt0043459","Twentieth Century Fox|Bavaria Film"
-"406","1952","Quo Vadis","tt0043949","nominee","https://www.imdb.com/title/tt0043949","Metro-Goldwyn-Mayer"
-"407","1951","All About Eve","tt0042192","winner","https://www.imdb.com/title/tt0042192","Twentieth Century Fox"
-"408","1951","Born Yesterday","tt0042276","nominee","https://www.imdb.com/title/tt0042276","Columbia Pictures"
-"409","1951","Father of the Bride","tt0042451","nominee","https://www.imdb.com/title/tt0042451","Metro-Goldwyn-Mayer"
-"410","1951","King Solomon's Mines","tt0042646","nominee","https://www.imdb.com/title/tt0042646","Metro-Goldwyn-Mayer"
-"411","1951","Sunset Blvd.","tt0043014","nominee","https://www.imdb.com/title/tt0043014","Paramount Pictures"
-"412","1950","All the King's Men","tt0041113","winner","https://www.imdb.com/title/tt0041113","Columbia Pictures"
-"413","1950","A Letter to Three Wives","tt0041587","nominee","https://www.imdb.com/title/tt0041587","Twentieth Century Fox"
-"414","1950","Battleground","tt0041163","nominee","https://www.imdb.com/title/tt0041163","Metro-Goldwyn-Mayer"
-"415","1950","The Heiress","tt0041452","nominee","https://www.imdb.com/title/tt0041452","Paramount Pictures"
-"416","1950","Twelve O'Clock High","tt0041996","nominee","https://www.imdb.com/title/tt0041996","Twentieth Century Fox"
-"417","1949","Hamlet","tt0040416","winner","https://www.imdb.com/title/tt0040416","Two Cities Films"
-"418","1949","Johnny Belinda","tt0040495","nominee","https://www.imdb.com/title/tt0040495","Warner Bros."
-"419","1949","The Red Shoes","tt0040725","nominee","https://www.imdb.com/title/tt0040725","The Archers|Independent Producers"
-"420","1949","The Snake Pit","tt0040806","nominee","https://www.imdb.com/title/tt0040806","Twentieth Century Fox"
-"421","1949","The Treasure of the Sierra Madre","tt0040897","nominee","https://www.imdb.com/title/tt0040897","Warner Bros."
-"422","1948","Gentleman's Agreement","tt0039416","winner","https://www.imdb.com/title/tt0039416","Twentieth Century Fox"
-"423","1948","Crossfire","tt0039286","nominee","https://www.imdb.com/title/tt0039286","RKO Radio Pictures"
-"424","1948","Great Expectations","tt0038574","nominee","https://www.imdb.com/title/tt0038574","Cineguild"
-"425","1948","Miracle on 34th Street","tt0039628","nominee","https://www.imdb.com/title/tt0039628","Twentieth Century Fox"
-"426","1948","The Bishop's Wife","tt0039190","nominee","https://www.imdb.com/title/tt0039190","The Samuel Goldwyn Company"
-"427","1947","The Best Years of Our Lives","tt0036868","winner","https://www.imdb.com/title/tt0036868","The Samuel Goldwyn Company"
-"428","1947","Henry V","tt0036910","nominee","https://www.imdb.com/title/tt0036910","Two Cities Films"
-"429","1947","It's a Wonderful Life","tt0038650","nominee","https://www.imdb.com/title/tt0038650","Liberty Films"
-"430","1947","The Razor's Edge","tt0038873","nominee","https://www.imdb.com/title/tt0038873","Twentieth Century Fox"
-"431","1947","The Yearling","tt0039111","nominee","https://www.imdb.com/title/tt0039111","Metro-Goldwyn-Mayer"
-"432","1946","The Lost Weekend","tt0037884","winner","https://www.imdb.com/title/tt0037884","Paramount Pictures"
-"433","1946","Anchors Aweigh","tt0037514","nominee","https://www.imdb.com/title/tt0037514","Metro-Goldwyn-Mayer"
-"434","1946","Mildred Pierce","tt0037913","nominee","https://www.imdb.com/title/tt0037913","Warner Bros."
-"435","1946","Spellbound","tt0038109","nominee","https://www.imdb.com/title/tt0038109","Selznick International Pictures|Vanguard Films"
-"436","1946","The Bells of St. Mary's","tt0037536","nominee","https://www.imdb.com/title/tt0037536","Rainbow Productions"
-"437","1945","Going My Way","tt0036872","winner","https://www.imdb.com/title/tt0036872","Paramount Pictures"
-"438","1945","Double Indemnity","tt0036775","nominee","https://www.imdb.com/title/tt0036775","Paramount Pictures"
-"439","1945","Gaslight","tt0036855","nominee","https://www.imdb.com/title/tt0036855","Metro-Goldwyn-Mayer"
-"440","1945","Since You Went Away","tt0037280","nominee","https://www.imdb.com/title/tt0037280","Selznick International Pictures|Vanguard Films"
-"441","1945","Wilson","tt0037465","nominee","https://www.imdb.com/title/tt0037465","Twentieth Century Fox"
-"442","1944","Casablanca","tt0034583","winner","https://www.imdb.com/title/tt0034583","Warner Bros."
-"443","1944","For Whom the Bell Tolls","tt0035896","nominee","https://www.imdb.com/title/tt0035896","Paramount Pictures"
-"444","1944","Heaven Can Wait","tt0035979","nominee","https://www.imdb.com/title/tt0035979","Twentieth Century Fox"
-"445","1944","In Which We Serve","tt0034891","nominee","https://www.imdb.com/title/tt0034891","Two Cities Films|The London Symphony Orchestra"
-"446","1944","Madame Curie","tt0036126","nominee","https://www.imdb.com/title/tt0036126","Metro-Goldwyn-Mayer"
-"447","1944","The Human Comedy","tt0036022","nominee","https://www.imdb.com/title/tt0036022","Metro-Goldwyn-Mayer"
-"448","1944","The More the Merrier","tt0036172","nominee","https://www.imdb.com/title/tt0036172","Columbia Pictures"
-"449","1944","The Ox-Bow Incident","tt0036244","nominee","https://www.imdb.com/title/tt0036244","Twentieth Century Fox"
-"450","1944","The Song of Bernadette","tt0036377","nominee","https://www.imdb.com/title/tt0036377","Twentieth Century Fox"
-"451","1944","Watch on the Rhine","tt0036515","nominee","https://www.imdb.com/title/tt0036515","Warner Bros."
-"452","1943","Mrs. Miniver","tt0035093","winner","https://www.imdb.com/title/tt0035093","Metro-Goldwyn-Mayer"
-"453","1943","49th Parallel","tt0033627","nominee","https://www.imdb.com/title/tt0033627","Ortus Films"
-"454","1943","Kings Row","tt0034946","nominee","https://www.imdb.com/title/tt0034946","Warner Bros."
-"455","1943","Random Harvest","tt0035238","nominee","https://www.imdb.com/title/tt0035238","Metro-Goldwyn-Mayer"
-"456","1943","The Magnificent Ambersons","tt0035015","nominee","https://www.imdb.com/title/tt0035015","Mercury Productions"
-"457","1943","The Pied Piper","tt0035189","nominee","https://www.imdb.com/title/tt0035189","Twentieth Century Fox"
-"458","1943","The Pride of the Yankees","tt0035211","nominee","https://www.imdb.com/title/tt0035211","The Samuel Goldwyn Company"
-"459","1943","The Talk of the Town","tt0035417","nominee","https://www.imdb.com/title/tt0035417","Columbia Pictures"
-"460","1943","Wake Island","tt0035530","nominee","https://www.imdb.com/title/tt0035530","Paramount Pictures"
-"461","1943","Yankee Doodle Dandy","tt0035575","nominee","https://www.imdb.com/title/tt0035575","Warner Bros."
-"462","1942","How Green Was My Valley","tt0033729","winner","https://www.imdb.com/title/tt0033729","Twentieth Century Fox"
-"463","1942","Blossoms in the Dust","tt0033407","nominee","https://www.imdb.com/title/tt0033407","Metro-Goldwyn-Mayer|Mervyn LeRoy Productions Inc."
-"464","1942","Citizen Kane","tt0033467","nominee","https://www.imdb.com/title/tt0033467","RKO Radio Pictures|Mercury Productions"
-"465","1942","Here Comes Mr. Jordan","tt0033712","nominee","https://www.imdb.com/title/tt0033712","Columbia Pictures"
-"466","1942","Hold Back the Dawn","tt0033722","nominee","https://www.imdb.com/title/tt0033722","Paramount Pictures"
-"467","1942","One Foot in Heaven","tt0033980","nominee","https://www.imdb.com/title/tt0033980","Warner Bros."
-"468","1942","Sergeant York","tt0034167","nominee","https://www.imdb.com/title/tt0034167","Warner Bros."
-"469","1942","Suspicion","tt0034248","nominee","https://www.imdb.com/title/tt0034248","RKO Radio Pictures"
-"470","1942","The Little Foxes","tt0033836","nominee","https://www.imdb.com/title/tt0033836","The Samuel Goldwyn Company"
-"471","1942","The Maltese Falcon","tt0033870","nominee","https://www.imdb.com/title/tt0033870","Warner Bros."
-"472","1941","Rebecca","tt0032976","winner","https://www.imdb.com/title/tt0032976","Selznick International Pictures"
-"473","1941","All This, and Heaven Too","tt0032194","nominee","https://www.imdb.com/title/tt0032194","Warner Bros."
-"474","1941","Foreign Correspondent","tt0032484","nominee","https://www.imdb.com/title/tt0032484","Walter Wanger Productions"
-"475","1941","Kitty Foyle","tt0032671","nominee","https://www.imdb.com/title/tt0032671","RKO Radio Pictures"
-"476","1941","Our Town","tt0032881","nominee","https://www.imdb.com/title/tt0032881","Sol Lesser Productions"
-"477","1941","The Grapes of Wrath","tt0032551","nominee","https://www.imdb.com/title/tt0032551","Twentieth Century Fox"
-"478","1941","The Great Dictator","tt0032553","nominee","https://www.imdb.com/title/tt0032553","Charles Chaplin Productions"
-"479","1941","The Letter","tt0032701","nominee","https://www.imdb.com/title/tt0032701","Warner Bros."
-"480","1941","The Long Voyage Home","tt0032728","nominee","https://www.imdb.com/title/tt0032728","Argosy Pictures|Walter Wanger Productions"
-"481","1941","The Philadelphia Story","tt0032904","nominee","https://www.imdb.com/title/tt0032904","Metro-Goldwyn-Mayer"
-"482","1940","Gone with the Wind","tt0031381","winner","https://www.imdb.com/title/tt0031381","Selznick International Pictures|Metro-Goldwyn-Mayer"
-"483","1940","Dark Victory","tt0031210","nominee","https://www.imdb.com/title/tt0031210","Warner Bros."
-"484","1940","Goodbye, Mr. Chips","tt0031385","nominee","https://www.imdb.com/title/tt0031385","Metro-Goldwyn-Mayer British Studios"
-"485","1940","Love Affair","tt0031593","nominee","https://www.imdb.com/title/tt0031593","RKO Radio Pictures"
-"486","1940","Mr. Smith Goes to Washington","tt0031679","nominee","https://www.imdb.com/title/tt0031679","Columbia Pictures"
-"487","1940","Ninotchka","tt0031725","nominee","https://www.imdb.com/title/tt0031725","Metro-Goldwyn-Mayer"
-"488","1940","Of Mice and Men","tt0031742","nominee","https://www.imdb.com/title/tt0031742","Hal Roach Studios"
-"489","1940","Stagecoach","tt0031971","nominee","https://www.imdb.com/title/tt0031971","Walter Wanger Productions"
-"490","1940","The Wizard of Oz","tt0032138","nominee","https://www.imdb.com/title/tt0032138","Metro-Goldwyn-Mayer"
-"491","1940","Wuthering Heights","tt0032145","nominee","https://www.imdb.com/title/tt0032145","The Samuel Goldwyn Company"
-"492","1939","You Can't Take It with You","tt0030993","winner","https://www.imdb.com/title/tt0030993","Columbia Pictures"
-"493","1939","Alexander's Ragtime Band","tt0029852","nominee","https://www.imdb.com/title/tt0029852","Twentieth Century Fox"
-"494","1939","Boys Town","tt0029942","nominee","https://www.imdb.com/title/tt0029942","Metro-Goldwyn-Mayer"
-"495","1939","Four Daughters","tt0030149","nominee","https://www.imdb.com/title/tt0030149","Warner Bros."
-"496","1939","Jezebel","tt0030287","nominee","https://www.imdb.com/title/tt0030287","Warner Bros."
-"497","1939","Pygmalion","tt0030637","nominee","https://www.imdb.com/title/tt0030637","Pascal Film Productions"
-"498","1939","Test Pilot","tt0030848","nominee","https://www.imdb.com/title/tt0030848","Metro-Goldwyn-Mayer"
-"499","1939","The Adventures of Robin Hood","tt0029843","nominee","https://www.imdb.com/title/tt0029843","Warner Bros."
-"500","1939","The Citadel","tt0029995","nominee","https://www.imdb.com/title/tt0029995","Metro-Goldwyn-Mayer British Studios"
-"501","1939","The Grand Illusion","tt0028950","nominee","https://www.imdb.com/title/tt0028950","Réalisation d'art cinématographique"
-"502","1938","The Life of Emile Zola","tt0029146","winner","https://www.imdb.com/title/tt0029146","Warner Bros."
-"503","1938","A Star Is Born","tt0029606","nominee","https://www.imdb.com/title/tt0029606","Selznick International Pictures|Entertain Me Productions"
-"504","1938","Captains Courageous","tt0028691","nominee","https://www.imdb.com/title/tt0028691","Metro-Goldwyn-Mayer"
-"505","1938","Dead End","tt0028773","nominee","https://www.imdb.com/title/tt0028773","The Samuel Goldwyn Company"
-"506","1938","In Old Chicago","tt0029047","nominee","https://www.imdb.com/title/tt0029047","Twentieth Century Fox"
-"507","1938","Lost Horizon","tt0029162","nominee","https://www.imdb.com/title/tt0029162","Columbia Pictures"
-"508","1938","One Hundred Men and a Girl","tt0029347","nominee","https://www.imdb.com/title/tt0029347","Universal Pictures"
-"509","1938","Stage Door","tt0029604","nominee","https://www.imdb.com/title/tt0029604","RKO Radio Pictures"
-"510","1938","The Awful Truth","tt0028597","nominee","https://www.imdb.com/title/tt0028597","Columbia Pictures"
-"511","1938","The Good Earth","tt0028944","nominee","https://www.imdb.com/title/tt0028944","Metro-Goldwyn-Mayer"
-"512","1937","The Great Ziegfeld","tt0027698","winner","https://www.imdb.com/title/tt0027698","Metro-Goldwyn-Mayer"
-"513","1937","A Tale of Two Cities","tt0027075","nominee","https://www.imdb.com/title/tt0027075","Metro-Goldwyn-Mayer"
-"514","1937","Anthony Adverse","tt0027300","nominee","https://www.imdb.com/title/tt0027300","Warner Bros."
-"515","1937","Dodsworth","tt0027532","nominee","https://www.imdb.com/title/tt0027532","The Samuel Goldwyn Company"
-"516","1937","Libeled Lady","tt0027884","nominee","https://www.imdb.com/title/tt0027884","Metro-Goldwyn-Mayer"
-"517","1937","Mr. Deeds Goes to Town","tt0027996","nominee","https://www.imdb.com/title/tt0027996","Columbia Pictures"
-"518","1937","Romeo and Juliet","tt0028203","nominee","https://www.imdb.com/title/tt0028203","Metro-Goldwyn-Mayer"
-"519","1937","San Francisco","tt0028216","nominee","https://www.imdb.com/title/tt0028216","Metro-Goldwyn-Mayer"
-"520","1937","The Story of Louis Pasteur","tt0028313","nominee","https://www.imdb.com/title/tt0028313","Cosmopolitan Productions|Warner Bros."
-"521","1937","Three Smart Girls","tt0028373","nominee","https://www.imdb.com/title/tt0028373","Universal Pictures"
-"522","1936","Mutiny on the Bounty","tt0026752","winner","https://www.imdb.com/title/tt0026752","Metro-Goldwyn-Mayer"
-"523","1936","A Midsummer Night's Dream","tt0026714","nominee","https://www.imdb.com/title/tt0026714","Warner Bros."
-"524","1936","Alice Adams","tt0026056","nominee","https://www.imdb.com/title/tt0026056","RKO Radio Pictures"
-"525","1936","Broadway Melody of 1936","tt0026144","nominee","https://www.imdb.com/title/tt0026144","Metro-Goldwyn-Mayer"
-"526","1936","Captain Blood","tt0026174","nominee","https://www.imdb.com/title/tt0026174","Cosmopolitan Productions|First National Pictures|Warner Bros."
-"527","1936","David Copperfield","tt0026266","nominee","https://www.imdb.com/title/tt0026266","Metro-Goldwyn-Mayer"
-"528","1936","Les Misérables","tt0026725","nominee","https://www.imdb.com/title/tt0026725","20th Century Pictures"
-"529","1936","Naughty Marietta","tt0026768","nominee","https://www.imdb.com/title/tt0026768","Metro-Goldwyn-Mayer"
-"530","1936","Ruggles of Red Gap","tt0026955","nominee","https://www.imdb.com/title/tt0026955","Paramount Pictures"
-"531","1936","The Informer","tt0026529","nominee","https://www.imdb.com/title/tt0026529","RKO Radio Pictures"
-"532","1936","The Lives of a Bengal Lancer","tt0026643","nominee","https://www.imdb.com/title/tt0026643","Paramount Pictures"
-"533","1936","Top Hat","tt0027125","nominee","https://www.imdb.com/title/tt0027125","RKO Radio Pictures"
-"534","1935","It Happened One Night","tt0025316","winner","https://www.imdb.com/title/tt0025316","Columbia Pictures"
-"535","1935","Cleopatra","tt0024991","nominee","https://www.imdb.com/title/tt0024991","Paramount Pictures"
-"536","1935","Flirtation Walk","tt0025124","nominee","https://www.imdb.com/title/tt0025124","First National Pictures"
-"537","1935","Here Comes the Navy","tt0025238","nominee","https://www.imdb.com/title/tt0025238","Warner Bros."
-"538","1935","Imitation of Life","tt0025301","nominee","https://www.imdb.com/title/tt0025301","Universal Pictures"
-"539","1935","One Night of Love","tt0025601","nominee","https://www.imdb.com/title/tt0025601","Columbia Pictures"
-"540","1935","The Barretts of Wimpole Street","tt0024865","nominee","https://www.imdb.com/title/tt0024865","Metro-Goldwyn-Mayer"
-"541","1935","The Gay Divorcee","tt0025164","nominee","https://www.imdb.com/title/tt0025164","RKO Radio Pictures"
-"542","1935","The House of Rothschild","tt0025272","nominee","https://www.imdb.com/title/tt0025272","20th Century Pictures"
-"543","1935","The Thin Man","tt0025878","nominee","https://www.imdb.com/title/tt0025878","Cosmopolitan Productions|Metro-Goldwyn-Mayer"
-"544","1935","The White Parade","tt0025986","nominee","https://www.imdb.com/title/tt0025986","Fox Film Corporation"
-"545","1935","Viva Villa!","tt0025948","nominee","https://www.imdb.com/title/tt0025948","Metro-Goldwyn-Mayer"
-"546","1934","Cavalcade","tt0023876","winner","https://www.imdb.com/title/tt0023876","Fox Film Corporation"
-"547","1934","42nd Street","tt0024034","nominee","https://www.imdb.com/title/tt0024034","Warner Bros."
-"548","1934","A Farewell to Arms","tt0022879","nominee","https://www.imdb.com/title/tt0022879","Paramount Pictures"
-"549","1934","I Am a Fugitive from a Chain Gang","tt0023042","nominee","https://www.imdb.com/title/tt0023042","Warner Bros."
-"550","1934","Lady for a Day","tt0024240","nominee","https://www.imdb.com/title/tt0024240","Columbia Pictures"
-"551","1934","Little Women","tt0024264","nominee","https://www.imdb.com/title/tt0024264","RKO Radio Pictures"
-"552","1934","She Done Him Wrong","tt0024548","nominee","https://www.imdb.com/title/tt0024548","Paramount Pictures"
-"553","1934","Smilin' Through","tt0023488","nominee","https://www.imdb.com/title/tt0023488","Metro-Goldwyn-Mayer"
-"554","1934","State Fair","tt0024610","nominee","https://www.imdb.com/title/tt0024610","Fox Film Corporation"
-"555","1934","The Private Life of Henry VIII","tt0024473","nominee","https://www.imdb.com/title/tt0024473","London Film Productions"
-"556","1932","Grand Hotel","tt0022958","winner","https://www.imdb.com/title/tt0022958","Metro-Goldwyn-Mayer|Polyphony Digital"
-"557","1932","Arrowsmith","tt0021622","nominee","https://www.imdb.com/title/tt0021622","John Ford Productions|The Samuel Goldwyn Company"
-"558","1932","Bad Girl","tt0021635","nominee","https://www.imdb.com/title/tt0021635","Frank Borzage Production"
-"559","1932","Five Star Final","tt0021873","nominee","https://www.imdb.com/title/tt0021873","First National Pictures"
-"560","1932","One Hour with You","tt0023303","nominee","https://www.imdb.com/title/tt0023303","Paramount Pictures"
-"561","1932","Shanghai Express","tt0023458","nominee","https://www.imdb.com/title/tt0023458","Paramount Pictures"
-"562","1932","The Champ","tt0021730","nominee","https://www.imdb.com/title/tt0021730","Metro-Goldwyn-Mayer"
-"563","1932","The Smiling Lieutenant","tt0022074","nominee","https://www.imdb.com/title/tt0022074","Paramount Pictures"
-"564","1931","Cimarron","tt0021746","winner","https://www.imdb.com/title/tt0021746","RKO Radio Pictures"
-"565","1931","East Lynne","tt0021826","nominee","https://www.imdb.com/title/tt0021826","Fox Film Corporation"
-"566","1931","Skippy","tt0022397","nominee","https://www.imdb.com/title/tt0022397","Paramount Pictures"
-"567","1931","The Front Page","tt0021890","nominee","https://www.imdb.com/title/tt0021890","The Caddo Company"
-"568","1931","Trader Horn","tt0022495","nominee","https://www.imdb.com/title/tt0022495","Metro-Goldwyn-Mayer"
-"569","1930","The Broadway Melody","tt0019729","winner","https://www.imdb.com/title/tt0019729","Metro-Goldwyn-Mayer"
-"570","1930","Alibi","tt0019630","nominee","https://www.imdb.com/title/tt0019630","Feature Productions"
-"571","1930","In Old Arizona","tt0020018","nominee","https://www.imdb.com/title/tt0020018","Fox Film Corporation"
-"572","1930","The Hollywood Revue of 1929","tt0019993","nominee","https://www.imdb.com/title/tt0019993","Metro-Goldwyn-Mayer"
-"573","1930","The Patriot","tt0019257","nominee","https://www.imdb.com/title/tt0019257","Paramount Pictures"
-"574","1929","Wings","tt0018578","winner","https://www.imdb.com/title/tt0018578","Paramount Famous Lasky Corporation"
-"575","1929","7th Heaven","tt0018379","nominee","https://www.imdb.com/title/tt0018379","Frank Borzage Production|Fox Film Corporation"
-"576","1929","The Racket","tt0019304","nominee","https://www.imdb.com/title/tt0019304","The Caddo Company"
-"577","1929","Sunrise","tt0018455","nominee","https://www.imdb.com/title/tt0018455","Fox Film Corporation"
-"578","1929","Chang: A Drama of the Wilderness","tt0017743","nominee","https://www.imdb.com/title/tt0017743","Famous Players-Lasky Corporation|Paramount Famous Lasky Corporation"
-"579","1929","The Crowd","tt0018806","nominee","https://www.imdb.com/title/tt0018806","Metro-Goldwyn-Mayer"
+year,title,id,nominees_or_winner,imdb_url,producers
+2025,Anora,tt28607951,winner,https://www.imdb.com/title/tt28607951/,Cre Film|FilmNation Entertainment
+2025,Wicked,tt1262426,nominee,https://www.imdb.com/title/tt1262426/,Universal Pictures|Marc Platt Productions|Moving Pictures|SKY Studios|Québec Production Services Tax Credit
+2025,The Substance,tt17526714,nominee,https://www.imdb.com/title/tt17526714/,Working Title Films|Blacksmith|A Good Story
+2025,Conclave,tt20215234,nominee,https://www.imdb.com/title/tt20215234/,Indian Paintbrush|Access Entertainment|FilmNation Entertainment|House Productions|Small Forward Productions
+2025,The Brutalist,tt8999762,nominee,https://www.imdb.com/title/tt8999762/,Brookstreet Pictures|Kaplan Morrison|Intake Films|Andrew Lauren Productions|Lip Sync
+2025,Dune: Part Two,tt15239678,nominee,https://www.imdb.com/title/tt15239678/,Warner Bros.|Legendary Pictures|Villeneuve Films|Eagle Pictures|New Zealand Film Commission
+2025,Emilia Pérez,tt20221436,nominee,https://www.imdb.com/title/tt20221436/,Why Not Productions|Page 114|Pathé|France 2 Cinéma|Saint Laurent
+2025,Nickel Boys,tt23055660,nominee,https://www.imdb.com/title/tt23055660/,Orion Pictures|Plan B Entertainment|Louverture Films|Anonymous Content
+2025,A Complete Unknown,tt11563598,nominee,https://www.imdb.com/title/tt11563598/,Searchlight Pictures|Veritas Entertainment|White Water|Range Media Partners|The Picture Company
+2025,I'm Still Here,tt14961016,nominee,https://www.imdb.com/title/tt14961016/,VideoFilmes|RT Features|MACT Productions|Arte France Cinéma|Conspiração Filmes
+2024,Oppenheimer,tt15398776,winner,https://www.imdb.com/title/tt15398776/,Universal Pictures|Syncopy|Atlas Entertainment|Gadget Films
+2024,Barbie,tt1517268,nominee,https://www.imdb.com/title/tt1517268/,Warner Bros.|Mattel Films|Heyday Films|LuckyChap|NBGG Pictures
+2024,Killers of the Flower Moon,tt5537002,nominee,https://www.imdb.com/title/tt5537002/,Apple Studios|Imperative Entertainment|Sikelia Productions|Appian Way
+2024,Poor Things,tt14230458,nominee,https://www.imdb.com/title/tt14230458/,Element Pictures|Film4|Fruit Tree|Hungarian Tax Credit|Searchlight Pictures
+2024,The Holdovers,tt14849194,nominee,https://www.imdb.com/title/tt14849194/,Focus Features|Miramax|Gran Via Productions|CAA Media Finance
+2024,Anatomy of a Fall,tt17009710,nominee,https://www.imdb.com/title/tt17009710/,Les Films Pelléas|Les Films de Pierre|France 2 Cinéma|Auvergne Rhône-Alpes Cinéma|Canal+
+2024,Past Lives,tt13238346,nominee,https://www.imdb.com/title/tt13238346/,A24|CJ ENM Co.|Killer Films|2AM
+2024,Maestro,tt5535276,nominee,https://www.imdb.com/title/tt5535276/,Sikelia Productions|Amblin Entertainment|Lea Pictures|Fred Berner Films|Netflix
+2024,The Zone of Interest,tt7160372,nominee,https://www.imdb.com/title/tt7160372/,A24|Access Entertainment|Film4|JW Films|Extreme Emotions
+2024,American Fiction,tt23561236,nominee,https://www.imdb.com/title/tt23561236/,3 Arts Entertainment|MRC Film|Media Rights Capital|Metro-Goldwyn-Mayer|Orion Pictures
+2023,Everything Everywhere All at Once,tt6710474,winner,https://www.imdb.com/title/tt6710474/,A24|IAC Films|AGBO|Year of The Rat|Ley Line Entertainment
+2023,Elvis,tt3704428,nominee,https://www.imdb.com/title/tt3704428/,Warner Bros.|Bazmark Films|Roadshow Entertainment|The Jackal Group|Whalerock Industries
+2023,Top Gun: Maverick,tt1745960,nominee,https://www.imdb.com/title/tt1745960/,Paramount Pictures|Skydance Media|Jerry Bruckheimer Films|Don Simpson/Jerry Bruckheimer Films|New Republic Pictures
+2023,The Banshees of Inisherin,tt11813216,nominee,https://www.imdb.com/title/tt11813216/,Searchlight Pictures|Film4|Blueprint Pictures|TSG Entertainment|Metropolitan Films International
+2023,The Fabelmans,tt14208870,nominee,https://www.imdb.com/title/tt14208870/,Amblin Entertainment|Amblin Partners|Reliance Entertainment|Universal Pictures
+2023,Tár,tt14444726,nominee,https://www.imdb.com/title/tt14444726/,Focus Features|Standard Film Company|EMJAG Productions
+2023,Avatar: The Way of Water,tt1630029,nominee,https://www.imdb.com/title/tt1630029/,20th Century Studios|TSG Entertainment|Lightstorm Entertainment
+2023,Women Talking,tt13669038,nominee,https://www.imdb.com/title/tt13669038/,Orion Pictures|Hear/Say Productions|Plan B Entertainment
+2023,Triangle of Sadness,tt7322224,nominee,https://www.imdb.com/title/tt7322224/,Imperative Entertainment|Plattform Produktion|Neon|Film i Väst|BBC Film
+2023,All Quiet on the Western Front,tt1016150,nominee,https://www.imdb.com/title/tt1016150/,Amusement Park Films|Gunpowder Films|Sliding Down Rainbows Entertainment|Anima Pictures
+2022,CODA,tt10366460,winner,https://www.imdb.com/title/tt10366460/,Apple Original Films|Vendôme Pictures|Pathé Films|Picture Perfect Federation
+2022,Belfast,tt12789558,nominee,https://www.imdb.com/title/tt12789558/,TKBC|Northern Ireland Screen
+2022,West Side Story,tt3581652,nominee,https://www.imdb.com/title/tt3581652/,20th Century Studios|TSG Entertainment|Amblin Entertainment
+2022,Licorice Pizza,tt11271038,nominee,https://www.imdb.com/title/tt11271038/,Metro-Goldwyn-Mayer|Focus Features|Bron Creative|Ghoulardi Film Company
+2022,Dune: Part One,tt1160419,nominee,https://www.imdb.com/title/tt1160419/,Warner Bros.|Legendary Pictures|Villeneuve Films|Legendary Entertainment
+2022,The Power of the Dog,tt10293406,nominee,https://www.imdb.com/title/tt10293406/,See-Saw Films|New Zealand Film Commission|Cross City Films|BBC Film|Bad Girl Creek
+2022,King Richard,tt9620288,nominee,https://www.imdb.com/title/tt9620288/,Warner Bros.|Star Thrower Entertainment|Westbrook Studios|Keepin' It Reel
+2022,Drive My Car,tt14039582,nominee,https://www.imdb.com/title/tt14039582/,Bitters End|Bungeishunju|C&I Entertainment|Culture Entertainment|Drive My Car Production Committee
+2022,Don't Look Up,tt11286314,nominee,https://www.imdb.com/title/tt11286314/,Hyperobject Industries
+2022,Nightmare Alley,tt7740496,nominee,https://www.imdb.com/title/tt7740496/,Searchlight Pictures|Searchlight Pictures|Double Dare You|Ontario Creates|Demilo Films
+2021,Nomadland,tt9770150,winner,https://www.imdb.com/title/tt9770150/,Searchlight Pictures|Highwayman Films|Hear/Say Productions|Cor Cordium
+2021,Mank,tt10618286,nominee,https://www.imdb.com/title/tt10618286/,Blue Light|Flying Studio|Netflix Studios|Netflix|Panic Pictures
+2021,The Trial of the Chicago 7,tt1070874,nominee,https://www.imdb.com/title/tt1070874/,DreamWorks Pictures|Amblin Partners|Aperture Media Partners|CAA Media Finance|Cross Creek Pictures
+2021,Promising Young Woman,tt9620292,nominee,https://www.imdb.com/title/tt9620292/,Focus Features|FilmNation Entertainment|LuckyChap
+2021,Minari,tt10633456,nominee,https://www.imdb.com/title/tt10633456/,A24|Plan B Entertainment
+2021,Sound of Metal,tt5363618,nominee,https://www.imdb.com/title/tt5363618/,Caviar|Flat 7 Productions|Ward Four
+2021,Judas and the Black Messiah,tt9784798,nominee,https://www.imdb.com/title/tt9784798/,BRON Studios|Bron Creative|Macro|Participant|Proximity Media
+2021,The Father,tt10272386,nominee,https://www.imdb.com/title/tt10272386/,Les Films du Cru|Film4|Orange Studio|Canal+|Ciné+
+2020,Parasite,tt6751668,winner,https://www.imdb.com/title/tt6751668/,Barunson E&A
+2020,Once Upon a Time... in Hollywood,tt7131622,nominee,https://www.imdb.com/title/tt7131622/,Columbia Pictures|Bona Film Group|Heyday Films
+2020,1917,tt8579674,nominee,https://www.imdb.com/title/tt8579674/,DreamWorks Pictures|Reliance Entertainment|New Republic Pictures|Neal Street Productions|Mogambo
+2020,Marriage Story,tt7653254,nominee,https://www.imdb.com/title/tt7653254/,Heyday Films|Netflix
+2020,Joker,tt7286456,nominee,https://www.imdb.com/title/tt7286456/,Warner Bros.|Village Roadshow Pictures|BRON Studios|Joint Effort|Creative Wealth Media Finance
+2020,Jojo Rabbit,tt2584384,nominee,https://www.imdb.com/title/tt2584384/,Searchlight Pictures|TSG Entertainment|Defender Films|Piki Films|Czech Anglo Productions
+2020,Little Women,tt3281548,nominee,https://www.imdb.com/title/tt3281548/,Columbia Pictures|Regency Enterprises|DiNovi Pictures|New Regency Productions|Pascal Pictures
+2020,Ford v Ferrari,tt1950186,nominee,https://www.imdb.com/title/tt1950186/,Twentieth Century Fox|Chernin Entertainment|TSG Entertainment|Turnpike Films
+2020,The Irishman,tt1302006,nominee,https://www.imdb.com/title/tt1302006/,Tribeca Productions|Sikelia Productions|Winkler Films
+2019,Green Book,tt6966692,winner,https://www.imdb.com/title/tt6966692/,Participant|DreamWorks Pictures|Innisfree Pictures|Cinetic Media|Alibaba Pictures Group
+2019,BlacKkKlansman,tt7349662,nominee,https://www.imdb.com/title/tt7349662/,Focus Features|Legendary Pictures|Perfect World Pictures|QC Entertainment|Blumhouse Productions
+2019,Black Panther,tt1825683,nominee,https://www.imdb.com/title/tt1825683/,Marvel Studios
+2019,Bohemian Rhapsody,tt1727824,nominee,https://www.imdb.com/title/tt1727824/,Twentieth Century Fox|Regency Enterprises|GK Films|TSG Entertainment|New Regency Productions
+2019,The Favourite,tt5083738,nominee,https://www.imdb.com/title/tt5083738/,Fox Searchlight Pictures|Film4|Waypoint Entertainment|Element Pictures|Scarlet Films
+2019,Roma,tt6155172,nominee,https://www.imdb.com/title/tt6155172/,Esperanto Filmoj|Participant|Pimienta Films
+2019,A Star Is Born,tt1517451,nominee,https://www.imdb.com/title/tt1517451/,Warner Bros.|Live Nation Productions|Metro-Goldwyn-Mayer|Peters Entertainment|Gerber Pictures
+2019,Vice,tt6266538,nominee,https://www.imdb.com/title/tt6266538/,Annapurna Pictures|Gary Sanchez Productions|Plan B Entertainment|The Third Floor
+2018,The Shape of Water,tt5580390,winner,https://www.imdb.com/title/tt5580390/,Double Dare You|Fox Searchlight Pictures|TSG Entertainment
+2018,Call Me by Your Name,tt5726616,nominee,https://www.imdb.com/title/tt5726616/,Frenesy Film Company|La Cinéfacture|RT Features|Water's End Productions|M.Y.R.A. Entertainment
+2018,Darkest Hour,tt4555426,nominee,https://www.imdb.com/title/tt4555426/,Focus Features|Perfect World Pictures|Pin3hot|Working Title Films
+2018,Dunkirk,tt5013056,nominee,https://www.imdb.com/title/tt5013056/,Warner Bros.|Syncopy|Dombey Street Productions|Kaap Holland Film|Canal+
+2018,Get Out,tt5052448,nominee,https://www.imdb.com/title/tt5052448/,Universal Pictures|Blumhouse Productions|QC Entertainment|Monkeypaw Productions|Dentsu
+2018,Lady Bird,tt4925292,nominee,https://www.imdb.com/title/tt4925292/,IAC Films|Scott Rudin Productions|Entertainment 360|Mission Films
+2018,The Post,tt6294822,nominee,https://www.imdb.com/title/tt6294822/,Twentieth Century Fox|DreamWorks Pictures|Reliance Entertainment|TSG Entertainment|Participant
+2018,"Three Billboards Outside Ebbing, Missouri",tt5027774,nominee,https://www.imdb.com/title/tt5027774/,Blueprint Pictures|Film4|Searchlight Pictures
+2018,Phantom Thread,tt5776858,nominee,https://www.imdb.com/title/tt5776858/,Focus Features|Annapurna Pictures|Perfect World Pictures|JoAnne Sellar Productions|Ghoulardi Film Company
+2017,Moonlight,tt4975722,winner,https://www.imdb.com/title/tt4975722/,A24|Plan B Entertainment|PASTEL
+2017,Arrival,tt2543164,nominee,https://www.imdb.com/title/tt2543164/,Lava Bear Films|FilmNation Entertainment|21 Laps Entertainment|Xenolinguistics
+2017,Fences,tt2671706,nominee,https://www.imdb.com/title/tt2671706/,BRON Studios|Escape Artists|Macro|Paramount Pictures|Scott Rudin Productions
+2017,Hacksaw Ridge,tt2119532,nominee,https://www.imdb.com/title/tt2119532/,Summit Entertainment|Cross Creek Pictures|Demarest Films|Pandemonium|Permut Presentations
+2017,Hell or High Water,tt2582782,nominee,https://www.imdb.com/title/tt2582782/,CBS Films|Sidney Kimmel Entertainment|Madison Wells|Film 44|LBI Productions
+2017,Hidden Figures,tt4846340,nominee,https://www.imdb.com/title/tt4846340/,Fox 2000 Pictures|Chernin Entertainment|Levantine Films|TSG Entertainment
+2017,La La Land,tt3783958,nominee,https://www.imdb.com/title/tt3783958/,Summit Entertainment|Black Label Media|TIK Films|Impostor Pictures|Gilbert Films
+2017,Lion,tt3741834,nominee,https://www.imdb.com/title/tt3741834/,See-Saw Films|The Weinstein Company|Screen Australia|Aquarius Films|Sunstar Entertainment
+2017,Manchester by the Sea,tt4034228,nominee,https://www.imdb.com/title/tt4034228/,Amazon Studios|K Period Media|Pearl Street Films|The Media Farm|The Affleck/Middleton Project
+2016,Spotlight,tt1895587,winner,https://www.imdb.com/title/tt1895587/,Participant|First Look Media|Anonymous Content|Rocklin/Faust|Open Road Films
+2016,The Revenant,tt1663202,nominee,https://www.imdb.com/title/tt1663202/,New Regency Productions|RatPac Entertainment|New Regency Productions|Anonymous Content|M Productions
+2016,Room,tt3170832,nominee,https://www.imdb.com/title/tt3170832/,Element Pictures|Bord Scannán na hÉireann / The Irish Film Board|Film4|FilmNation Entertainment|No Trace Camping
+2016,Brooklyn,tt2381111,nominee,https://www.imdb.com/title/tt2381111/,Wildgaze Films|BBC Film|Parallel Film Productions|BAI|BBC Film
+2016,Bridge of Spies,tt3682448,nominee,https://www.imdb.com/title/tt3682448/,DreamWorks Pictures|Fox 2000 Pictures|Reliance Entertainment|Participant|TSG Entertainment
+2016,The Martian,tt3659388,nominee,https://www.imdb.com/title/tt3659388/,Twentieth Century Fox|TSG Entertainment|Scott Free Productions|Genre Films|International Traders
+2016,Mad Max: Fury Road,tt1392190,nominee,https://www.imdb.com/title/tt1392190/,Warner Bros.|Village Roadshow Pictures|Kennedy Miller Mitchell
+2016,The Big Short,tt1596363,nominee,https://www.imdb.com/title/tt1596363/,Paramount Pictures|New Regency Productions|Plan B Entertainment
+2015,Birdman or (The Unexpected Virtue of Ignorance),tt2562232,winner,https://www.imdb.com/title/tt2562232/,New Regency Productions|M Productions|Le Grisbi Productions|TSG Entertainment|Worldview Entertainment
+2015,American Sniper,tt2179136,nominee,https://www.imdb.com/title/tt2179136/,Warner Bros.|Village Roadshow Pictures|RatPac-Dune Entertainment|Mad Chance|Joint Effort
+2015,Boyhood,tt1065073,nominee,https://www.imdb.com/title/tt1065073/,IFC Productions|Detour Filmproduction
+2015,The Imitation Game,tt2084970,nominee,https://www.imdb.com/title/tt2084970/,Black Bear|Bristol Automotive
+2015,The Grand Budapest Hotel,tt2278388,nominee,https://www.imdb.com/title/tt2278388/,Fox Searchlight Pictures|Indian Paintbrush|Studio Babelsberg|American Empirical Pictures|TSG Entertainment
+2015,Selma,tt1020072,nominee,https://www.imdb.com/title/tt1020072/,Pathé|Harpo Films|Plan B Entertainment|Cloud Eight Films|Ingenious Media
+2015,The Theory of Everything,tt2980516,nominee,https://www.imdb.com/title/tt2980516/,Working Title Films|Dentsu Motion Pictures|Fuji Television Network|Universal Pictures
+2015,Whiplash,tt2582802,nominee,https://www.imdb.com/title/tt2582802/,Bold Films|Blumhouse Productions|Right of Way Films|Sierra / Affinity
+2014,12 Years a Slave,tt2024544,winner,https://www.imdb.com/title/tt2024544/,New Regency Productions|River Road Entertainment|Plan B Entertainment|New Regency Productions|Film4
+2014,The Wolf of Wall Street,tt0993846,nominee,https://www.imdb.com/title/tt0993846/,Red Granite Pictures|Appian Way|Sikelia Productions|EMJAG Productions
+2014,American Hustle,tt1800241,nominee,https://www.imdb.com/title/tt1800241/,Columbia Pictures|Annapurna Pictures|Atlas Entertainment|Fundamental Films
+2014,Nebraska,tt1821549,nominee,https://www.imdb.com/title/tt1821549/,Paramount Vantage|FilmNation Entertainment|Blue Lake Media Fund|Echo Lake Entertainment|Bona Fide Productions
+2014,Captain Phillips,tt1535109,nominee,https://www.imdb.com/title/tt1535109/,Columbia Pictures|Scott Rudin Productions|Michael De Luca Productions|Trigger Street Productions
+2014,Philomena,tt2431286,nominee,https://www.imdb.com/title/tt2431286/,The Weinstein Company|Yucaipa Films|Pathé|BBC Film|British Film Institute
+2014,Dallas Buyers Club,tt0790636,nominee,https://www.imdb.com/title/tt0790636/,Truth Entertainment|Voltage Pictures|r2 films|Evolution Independent|CE
+2014,Gravity,tt1454468,nominee,https://www.imdb.com/title/tt1454468/,Warner Bros.|Esperanto Filmoj|Heyday Films
+2014,Her,tt1798709,nominee,https://www.imdb.com/title/tt1798709/,Annapurna Pictures|Stage 6 Films
+2013,Argo,tt1024648,winner,https://www.imdb.com/title/tt1024648/,Warner Bros.|GK Films|Smokehouse Pictures
+2013,Amour,tt1602620,nominee,https://www.imdb.com/title/tt1602620/,Les Films du Losange|X-Filme Creative Pool|Wega Film|France 3 Cinéma|ARD Degeto Film
+2013,Beasts of the Southern Wild,tt2125435,nominee,https://www.imdb.com/title/tt2125435/,Cinereach|Department of Motion Pictures|Court 13 Pictures|Journeyman Pictures
+2013,Django Unchained,tt1853728,nominee,https://www.imdb.com/title/tt1853728/,The Weinstein Company|Columbia Pictures|Visiona Romantica
+2013,Les Misérables,tt1707386,nominee,https://www.imdb.com/title/tt1707386/,Universal Pictures|Working Title Films|Cameron Mackintosh Ltd.|Relativity Media
+2013,Life of Pi,tt0454876,nominee,https://www.imdb.com/title/tt0454876/,Fox 2000 Pictures|Dune Entertainment|Ingenious Media|Haishang Films|Netter Productions
+2013,Lincoln,tt0443272,nominee,https://www.imdb.com/title/tt0443272/,DreamWorks Pictures|Twentieth Century Fox|Reliance Entertainment|Participant|Dune Entertainment
+2013,Silver Linings Playbook,tt1045658,nominee,https://www.imdb.com/title/tt1045658/,The Weinstein Company
+2013,Zero Dark Thirty,tt1790885,nominee,https://www.imdb.com/title/tt1790885/,Columbia Pictures|Annapurna Pictures|First Light Production
+2012,The Artist,tt1655442,winner,https://www.imdb.com/title/tt1655442/,Studio 37|La Petite Reine|La Classe Américaine|JD Prod|France 3 Cinéma
+2012,The Tree of Life,tt0478304,nominee,https://www.imdb.com/title/tt0478304/,Cottonwood Pictures|River Road Entertainment|Fox Searchlight Pictures|Brace Cove Productions|Plan B Entertainment
+2012,The Descendants,tt1033575,nominee,https://www.imdb.com/title/tt1033575/,Fox Searchlight Pictures|Ad Hominem Enterprises|Dune Entertainment
+2012,Extremely Loud & Incredibly Close,tt0477302,nominee,https://www.imdb.com/title/tt0477302/,Warner Bros.|Scott Rudin Productions|Paramount Pictures
+2012,The Help,tt1454029,nominee,https://www.imdb.com/title/tt1454029/,DreamWorks Pictures|Reliance Film & Entertainment|Participant|Imagenation|1492 Pictures
+2012,Hugo,tt0970179,nominee,https://www.imdb.com/title/tt0970179/,Paramount Pictures|GK Films|Infinitum Nihil|Janimation
+2012,Midnight in Paris,tt1605783,nominee,https://www.imdb.com/title/tt1605783/,Mediapro|Versátil Cinema|Gravier Productions|Pontchartrain Productions|Televisió de Catalunya
+2012,Moneyball,tt1210166,nominee,https://www.imdb.com/title/tt1210166/,Columbia Pictures|Scott Rudin Productions|Michael De Luca Productions|Film Rites|Sidney Kimmel Entertainment
+2012,War Horse,tt1568911,nominee,https://www.imdb.com/title/tt1568911/,DreamWorks Pictures|Touchstone Pictures|Reliance Entertainment|Amblin Entertainment|The Kennedy/Marshall Company
+2011,The King's Speech,tt1504320,winner,https://www.imdb.com/title/tt1504320/,See-Saw Films|The Weinstein Company|UK Film Council|Momentum Pictures|Aegis Film Fund
+2011,127 Hours,tt1542344,nominee,https://www.imdb.com/title/tt1542344/,Searchlight Pictures|Pathé|Everest Entertainment|Cloud Eight Films|Decibel Films
+2011,Black Swan,tt0947798,nominee,https://www.imdb.com/title/tt0947798/,Searchlight Pictures|Cross Creek Pictures|Protozoa Pictures|Phoenix Pictures|Dune Entertainment
+2011,The Fighter,tt0964517,nominee,https://www.imdb.com/title/tt0964517/,Closest to the Hole Productions|Fighter|Mandeville Films|Relativity Media|The Park Entertainment
+2011,Inception,tt1375666,nominee,https://www.imdb.com/title/tt1375666/,Warner Bros.|Legendary Pictures|Syncopy|Legendary Entertainment
+2011,The Kids Are All Right,tt0842926,nominee,https://www.imdb.com/title/tt0842926/,Focus Features|Gilbert Films|Saint Aire Production|10th Hole Productions|Antidote Films
+2011,The Social Network,tt1285016,nominee,https://www.imdb.com/title/tt1285016/,Columbia Pictures|Relativity Media|Scott Rudin Productions|Michael De Luca Productions|Trigger Street Productions
+2011,Toy Story 3,tt0435761,nominee,https://www.imdb.com/title/tt0435761/,Walt Disney Pictures|Pixar Animation Studios
+2011,True Grit,tt1403865,nominee,https://www.imdb.com/title/tt1403865/,Paramount Pictures|Skydance Media|Scott Rudin Productions|Mike Zoss Productions
+2011,Winter's Bone,tt1399683,nominee,https://www.imdb.com/title/tt1399683/,Anonymous Content|Winter's Bone Productions
+2010,The Hurt Locker,tt0887912,winner,https://www.imdb.com/title/tt0887912/,Voltage Pictures|Grosvenor Park Media|Film Capital Europe Funds|First Light Production|Kingsgate Films
+2010,A Serious Man,tt1019452,nominee,https://www.imdb.com/title/tt1019452/,Focus Features|StudioCanal|Relativity Media|Mike Zoss Productions|Working Title Films
+2010,An Education,tt1174732,nominee,https://www.imdb.com/title/tt1174732/,BBC Film|Finola Dwyer Productions|Wildgaze Films|Endgame Entertainment|An Education Distribution
+2010,Avatar,tt0499549,nominee,https://www.imdb.com/title/tt0499549/,Twentieth Century Fox|Dune Entertainment|Lightstorm Entertainment
+2010,District 9,tt1136608,nominee,https://www.imdb.com/title/tt1136608/,TriStar Pictures|Block / Hanson|WingNut Films|Canadian Film or Video Production Tax Credit|Covert Media
+2010,Inglourious Basterds,tt0361748,nominee,https://www.imdb.com/title/tt0361748/,Universal Pictures|The Weinstein Company|A Band Apart|Studio Babelsberg|Visiona Romantica
+2010,Precious,tt0929632,nominee,https://www.imdb.com/title/tt0929632/,Lee Daniels Entertainment|Smokewood Entertainment Group|Lionsgate
+2010,The Blind Side,tt0878804,nominee,https://www.imdb.com/title/tt0878804/,Alcon Entertainment|3 Arts Entertainment|Left Tackle Pictures|Netter Productions|Zucker/Netter Productions
+2010,Up,tt1049413,nominee,https://www.imdb.com/title/tt1049413/,Walt Disney Pictures|Pixar Animation Studios
+2010,Up in the Air,tt1193138,nominee,https://www.imdb.com/title/tt1193138/,Paramount Pictures|Cold Spring Pictures|DW Studios|The Montecito Picture Company|Rickshaw Productions
+2009,Slumdog Millionaire,tt1010048,winner,https://www.imdb.com/title/tt1010048/,Searchlight Pictures|Warner Bros.|Film4|Pathé|Celador Films
+2009,The Curious Case of Benjamin Button,tt0421715,nominee,https://www.imdb.com/title/tt0421715/,Warner Bros.|Paramount Pictures|The Kennedy/Marshall Company
+2009,Frost/Nixon,tt0870111,nominee,https://www.imdb.com/title/tt0870111/,Universal Pictures|Imagine Entertainment|Working Title Films|StudioCanal|Relativity Media
+2009,Milk,tt1013753,nominee,https://www.imdb.com/title/tt1013753/,Focus Features|Axon Films|Groundswell Productions|Jinks/Cohen Company|Cinema Vehicles
+2009,The Reader,tt0976051,nominee,https://www.imdb.com/title/tt0976051/,The Weinstein Company|Mirage Enterprises|Studio Babelsberg|Filmförderungsanstalt|Deutscher Filmförderfonds
+2008,No Country for Old Men,tt0477348,winner,https://www.imdb.com/title/tt0477348/,Paramount Vantage|Miramax|Scott Rudin Productions|Mike Zoss Productions
+2008,Atonement,tt0783233,nominee,https://www.imdb.com/title/tt0783233/,Universal Pictures|StudioCanal|Relativity Media|Working Title Films
+2008,Juno,tt0467406,nominee,https://www.imdb.com/title/tt0467406/,Fox Searchlight Pictures|Mandate Pictures|Mr. Mudd
+2008,Michael Clayton,tt0465538,nominee,https://www.imdb.com/title/tt0465538/,Samuels Media|Castle Rock Entertainment|Mirage Enterprises|Section Eight
+2008,There Will Be Blood,tt0469494,nominee,https://www.imdb.com/title/tt0469494/,Paramount Vantage|Miramax|Ghoulardi Film Company
+2007,The Departed,tt0407887,winner,https://www.imdb.com/title/tt0407887/,Warner Bros.|Plan B Entertainment|Initial Entertainment Group|Vertigo Entertainment|Media Asia Films
+2007,Babel,tt0449467,nominee,https://www.imdb.com/title/tt0449467/,Paramount Pictures|Paramount Vantage|Anonymous Content|Zeta Film|Central Films
+2007,Letters from Iwo Jima,tt0498380,nominee,https://www.imdb.com/title/tt0498380/,DreamWorks Pictures|Warner Bros.|Malpaso Productions|Amblin Entertainment
+2007,Little Miss Sunshine,tt0449059,nominee,https://www.imdb.com/title/tt0449059/,Searchlight Pictures|Big Beach|Bona Fide Productions|Deep River Productions|Third Gear Productions
+2007,The Queen,tt0436697,nominee,https://www.imdb.com/title/tt0436697/,Pathé International|Pathé|Granada Film Productions|Pathé Renn Productions|BIM Distribuzione
+2006,Crash,tt0375679,winner,https://www.imdb.com/title/tt0375679/,Bob Yari Productions|DEJ Productions|Blackfriars Bridge Films|Harris Company|ApolloProScreen Filmproduktion
+2006,Brokeback Mountain,tt0388795,nominee,https://www.imdb.com/title/tt0388795/,Focus Features|River Road Entertainment|Alberta Film Entertainment
+2006,Capote,tt0379725,nominee,https://www.imdb.com/title/tt0379725/,United Artists|Sony Pictures Classics|A-Line Pictures|Cooper's Town Productions|Infinity Media
+2006,"Good Night, and Good Luck.",tt0433383,nominee,https://www.imdb.com/title/tt0433383/,Warner Independent Pictures|2929 Productions|Participant|Davis Films|Redbus Pictures
+2006,Munich,tt0408306,nominee,https://www.imdb.com/title/tt0408306/,DreamWorks Pictures|Universal Pictures|Amblin Entertainment|The Kennedy/Marshall Company|Barry Mendel Productions
+2005,Million Dollar Baby,tt0405159,winner,https://www.imdb.com/title/tt0405159/,Warner Bros.|Lakeshore Entertainment|Malpaso Productions|Ruddy Productions|Epsilon Motion Pictures
+2005,The Aviator,tt0338751,nominee,https://www.imdb.com/title/tt0338751/,Forward Pass|Appian Way|IMF Internationale Medien und Film GmbH & Co. 3. Produktions KG|Initial Entertainment Group|Warner Bros.
+2005,Finding Neverland,tt0308644,nominee,https://www.imdb.com/title/tt0308644/,Miramax|FilmColony|Keylight Productions
+2005,Ray,tt0350258,nominee,https://www.imdb.com/title/tt0350258/,Universal Pictures|Bristol Bay Productions|Anvil Films|Baldwin Entertainment Group|Walden Media
+2005,Sideways,tt0375063,nominee,https://www.imdb.com/title/tt0375063/,Fox Searchlight Pictures|Michael London Productions|Sideways Productions Inc.
+2004,The Lord of the Rings: The Return of the King,tt0167260,winner,https://www.imdb.com/title/tt0167260/,New Line Cinema|WingNut Films|The Saul Zaentz Company
+2004,Lost in Translation,tt0335266,nominee,https://www.imdb.com/title/tt0335266/,Focus Features|Tohokushinsha Film Corporation|American Zoetrope|Elemental Films
+2004,Master and Commander: The Far Side of the World,tt0311113,nominee,https://www.imdb.com/title/tt0311113/,Twentieth Century Fox|Miramax|Universal Pictures|Samuel Goldwyn Films
+2004,Mystic River,tt0327056,nominee,https://www.imdb.com/title/tt0327056/,Warner Bros.|Village Roadshow Pictures|NPV Entertainment|Malpaso Productions
+2004,Seabiscuit,tt0329575,nominee,https://www.imdb.com/title/tt0329575/,Universal Pictures|DreamWorks Pictures|Spyglass Entertainment|Larger Than Life Productions|The Kennedy/Marshall Company
+2003,Chicago,tt0299658,winner,https://www.imdb.com/title/tt0299658/,Miramax|Producers Circle|Storyline Entertainment|Kalis Productions GmbH & Co. KG
+2003,Gangs of New York,tt0217505,nominee,https://www.imdb.com/title/tt0217505/,Miramax|Initial Entertainment Group|Touchstone Pictures|Alberto Grimaldi Productions
+2003,The Hours,tt0274558,nominee,https://www.imdb.com/title/tt0274558/,Paramount Pictures|Miramax|Scott Rudin Productions
+2003,The Lord of the Rings: The Two Towers,tt0167261,nominee,https://www.imdb.com/title/tt0167261/,New Line Cinema|WingNut Films|The Saul Zaentz Company
+2003,The Pianist,tt0253474,nominee,https://www.imdb.com/title/tt0253474/,R.P. Productions|Heritage Films|Studio Babelsberg|Runteam|Canal+
+2002,A Beautiful Mind,tt0268978,winner,https://www.imdb.com/title/tt0268978/,Universal Pictures|DreamWorks Pictures|Imagine Entertainment
+2002,Gosford Park,tt0280707,nominee,https://www.imdb.com/title/tt0280707/,USA Films|Capitol Films|UK Film Council|Sandcastle 5 Productions|Chicagofilms
+2002,In the Bedroom,tt0247425,nominee,https://www.imdb.com/title/tt0247425/,Good Machine|Standard Film Company|GreeneStreet Films
+2002,The Lord of the Rings: The Fellowship of the Ring,tt0120737,nominee,https://www.imdb.com/title/tt0120737/,New Line Cinema|WingNut Films|Marzano Films|The Saul Zaentz Company
+2002,Moulin Rouge!,tt0203009,nominee,https://www.imdb.com/title/tt0203009/,Twentieth Century Fox|Bazmark Films
+2001,Gladiator,tt0172495,winner,https://www.imdb.com/title/tt0172495/,DreamWorks Pictures|Universal Pictures|Scott Free Productions|Mill Film|C & L
+2001,Chocolat,tt0241303,nominee,https://www.imdb.com/title/tt0241303/,Miramax|David Brown Productions|Fat Free
+2001,"Crouching Tiger, Hidden Dragon",tt0190332,nominee,https://www.imdb.com/title/tt0190332/,Sony Pictures Classics|Columbia Pictures Film Production Asia|Good Machine|Edko Films|Zoom Hunt International Productions
+2001,Erin Brockovich,tt0195685,nominee,https://www.imdb.com/title/tt0195685/,Universal Pictures|Columbia Pictures|Jersey Films
+2001,Traffic,tt0181865,nominee,https://www.imdb.com/title/tt0181865/,The Bedford Falls Company|Initial Entertainment Group|USA Films|Compulsion Inc.|Splendid Medien AG
+2000,American Beauty,tt0169547,winner,https://www.imdb.com/title/tt0169547/,DreamWorks Pictures|Jinks/Cohen Company
+2000,The Cider House Rules,tt0124315,nominee,https://www.imdb.com/title/tt0124315/,FilmColony|Miramax|Nina Saxon Film Design
+2000,The Green Mile,tt0120689,nominee,https://www.imdb.com/title/tt0120689/,Castle Rock Entertainment|Darkwoods Productions|Warner Bros.
+2000,The Insider,tt0140352,nominee,https://www.imdb.com/title/tt0140352/,Touchstone Pictures|Forward Pass|Blue Lion Entertainment|Digital Image Associates|Kaitz Productions
+2000,The Sixth Sense,tt0167404,nominee,https://www.imdb.com/title/tt0167404/,Hollywood Pictures|Spyglass Entertainment|The Kennedy/Marshall Company|Barry Mendel Productions
+1999,Shakespeare in Love,tt0138097,winner,https://www.imdb.com/title/tt0138097/,Universal Pictures|Miramax|The Bedford Falls Company
+1999,Elizabeth,tt0127536,nominee,https://www.imdb.com/title/tt0127536/,Polygram Filmed Entertainment|Working Title Films|Channel Four Films
+1999,Life Is Beautiful,tt0118799,nominee,https://www.imdb.com/title/tt0118799/,Melampo Cinematografica|Cecchi Gori Group Tiger Cinematografica
+1999,Saving Private Ryan,tt0120815,nominee,https://www.imdb.com/title/tt0120815/,DreamWorks Pictures|Paramount Pictures|Amblin Entertainment|Mutual Film Company|H2L Media Group
+1999,The Thin Red Line,tt0120863,nominee,https://www.imdb.com/title/tt0120863/,Fox 2000 Pictures|Geisler-Roberdeau|Phoenix Pictures
+1998,Titanic,tt0120338,winner,https://www.imdb.com/title/tt0120338/,Twentieth Century Fox|Paramount Pictures|Lightstorm Entertainment|LCI Seguros
+1998,As Good as It Gets,tt0119822,nominee,https://www.imdb.com/title/tt0119822/,TriStar Pictures|Gracie Films
+1998,The Full Monty,tt0119164,nominee,https://www.imdb.com/title/tt0119164/,Redwave Films|Channel Four Films|Twentieth Century Fox
+1998,Good Will Hunting,tt0119217,nominee,https://www.imdb.com/title/tt0119217/,Miramax|Lawrence Bender Productions|Be Gentlemen Limited Partnership|A Band Apart
+1998,L.A. Confidential,tt0119488,nominee,https://www.imdb.com/title/tt0119488/,Regency Enterprises|New Regency Productions|The Wolper Organization|Warner Bros.
+1997,The English Patient,tt0116209,winner,https://www.imdb.com/title/tt0116209/,Miramax|Tiger Moth Productions|The Saul Zaentz Company
+1997,Fargo,tt0116282,nominee,https://www.imdb.com/title/tt0116282/,Polygram Filmed Entertainment|Working Title Films
+1997,Jerry Maguire,tt0116695,nominee,https://www.imdb.com/title/tt0116695/,TriStar Pictures|Gracie Films
+1997,Secrets & Lies,tt0117589,nominee,https://www.imdb.com/title/tt0117589/,CiBy 2000|Channel Four Films|Thin Man Films
+1997,Shine,tt0117631,nominee,https://www.imdb.com/title/tt0117631/,Australian Film Finance Corporation|Film Victoria|Momentum Films|Soundfirm|The South Australian Film Corporation
+1996,Braveheart,tt0112573,winner,https://www.imdb.com/title/tt0112573/,Icon Entertainment International|The Ladd Company|B.H. Finance C.V.|Icon Productions
+1996,Apollo 13,tt0112384,nominee,https://www.imdb.com/title/tt0112384/,Imagine Entertainment|Universal City Studios
+1996,Babe,tt0112431,nominee,https://www.imdb.com/title/tt0112431/,Universal Pictures|Kennedy Miller Productions
+1996,The Postman,tt0110877,nominee,https://www.imdb.com/title/tt0110877/,Cecchi Gori Group Tiger Cinematografica|Penta Film|Esterno Mediterraneo Film|Blue Dahlia Productions|K2 Two
+1996,Sense and Sensibility,tt0114388,nominee,https://www.imdb.com/title/tt0114388/,Columbia Pictures|Mirage Enterprises
+1995,Forrest Gump,tt0109830,winner,https://www.imdb.com/title/tt0109830/,Paramount Pictures|The Steve Tisch Company|Wendy Finerman Productions
+1995,Four Weddings and a Funeral,tt0109831,nominee,https://www.imdb.com/title/tt0109831/,Polygram Filmed Entertainment|Channel Four Films|Working Title Films
+1995,Pulp Fiction,tt0110912,nominee,https://www.imdb.com/title/tt0110912/,Miramax|A Band Apart|Jersey Films
+1995,Quiz Show,tt0110932,nominee,https://www.imdb.com/title/tt0110932/,Hollywood Pictures|Baltimore Pictures|Michael Jacobs Productions|Ricardo Mestres Productions|Wildwood Enterprises
+1995,The Shawshank Redemption,tt0111161,nominee,https://www.imdb.com/title/tt0111161/,Castle Rock Entertainment
+1994,Schindler's List,tt0108052,winner,https://www.imdb.com/title/tt0108052/,Universal Pictures|Amblin Entertainment
+1994,The Fugitive,tt0106977,nominee,https://www.imdb.com/title/tt0106977/,Warner Bros.|Kopelson Entertainment
+1994,In the Name of the Father,tt0107207,nominee,https://www.imdb.com/title/tt0107207/,Hell's Kitchen Films|Universal Pictures
+1994,The Piano,tt0107822,nominee,https://www.imdb.com/title/tt0107822/,CiBy 2000|Jan Chapman Productions|The Australian Film Commission|New South Wales Film & Television Office
+1994,The Remains of the Day,tt0107943,nominee,https://www.imdb.com/title/tt0107943/,Columbia Pictures|Merchant Ivory Productions
+1993,Unforgiven,tt0105695,winner,https://www.imdb.com/title/tt0105695/,Warner Bros.|Malpaso Productions
+1993,The Crying Game,tt0104036,nominee,https://www.imdb.com/title/tt0104036/,Palace Pictures|Channel Four Films|Eurotrustees|Nippon Film Development and Finance|British Screen Productions
+1993,A Few Good Men,tt0104257,nominee,https://www.imdb.com/title/tt0104257/,Columbia Pictures|Castle Rock Entertainment|David Brown Productions
+1993,Howards End,tt0104454,nominee,https://www.imdb.com/title/tt0104454/,Merchant Ivory Productions|Sumitomo Corporation|Imagica|Cinema Ten|Japan Satellite Broadcasting
+1993,Scent of a Woman,tt0105323,nominee,https://www.imdb.com/title/tt0105323/,Universal Pictures|City Light Films
+1992,The Silence of the Lambs,tt0102926,winner,https://www.imdb.com/title/tt0102926/,Strong Heart/Demme Production|Orion Pictures
+1992,Beauty and the Beast,tt0101414,nominee,https://www.imdb.com/title/tt0101414/,Walt Disney Pictures|Silver Screen Partners IV|Walt Disney Animation Studios|Walt Disney Feature Animation
+1992,Bugsy,tt0101516,nominee,https://www.imdb.com/title/tt0101516/,Mulholland Productions|TriStar Pictures|Baltimore Pictures
+1992,JFK,tt0102138,nominee,https://www.imdb.com/title/tt0102138/,Warner Bros.|Le Studio Canal+|Regency Enterprises|Alcor Films|Ixtlan
+1992,The Prince of Tides,tt0102713,nominee,https://www.imdb.com/title/tt0102713/,Columbia Pictures|Barwood Films|Longfellow Pictures
+1991,Dances with Wolves,tt0099348,winner,https://www.imdb.com/title/tt0099348/,Tig Productions|Majestic Films International|Allied Filmmakers
+1991,Awakenings,tt0099077,nominee,https://www.imdb.com/title/tt0099077/,Columbia Pictures|Parkes/Lasker productions
+1991,Ghost,tt0099653,nominee,https://www.imdb.com/title/tt0099653/,Paramount Pictures|Howard W. Koch Productions
+1991,The Godfather Part III,tt0099674,nominee,https://www.imdb.com/title/tt0099674/,Paramount Pictures|Zoetrope Studios
+1991,Goodfellas,tt0099685,nominee,https://www.imdb.com/title/tt0099685/,Warner Bros.
+1990,Driving Miss Daisy,tt0097239,winner,https://www.imdb.com/title/tt0097239/,The Zanuck Company|Allied Filmmakers|Majestic Films International
+1990,Born on the Fourth of July,tt0096969,nominee,https://www.imdb.com/title/tt0096969/,Ixtlan
+1990,Dead Poets Society,tt0097165,nominee,https://www.imdb.com/title/tt0097165/,Touchstone Pictures|Silver Screen Partners IV|A Steven Haft Production|Witt/Thomas Productions
+1990,Field of Dreams,tt0097351,nominee,https://www.imdb.com/title/tt0097351/,Gordon Company
+1990,My Left Foot,tt0097937,nominee,https://www.imdb.com/title/tt0097937/,Ferndale Films|Granada Television|Hell's Kitchen Films|Raidió Teilifís Éireann
+1989,Rain Man,tt0095953,winner,https://www.imdb.com/title/tt0095953/,United Artists|The Guber-Peters Company|Star Partners II Ltd.|Mirage Enterprises
+1989,The Accidental Tourist,tt0094606,nominee,https://www.imdb.com/title/tt0094606/,Warner Bros.
+1989,Dangerous Liaisons,tt0094947,nominee,https://www.imdb.com/title/tt0094947/,Lorimar Film Entertainment|NFH Productions|Warner Bros.
+1989,Mississippi Burning,tt0095647,nominee,https://www.imdb.com/title/tt0095647/,Orion Pictures
+1989,Working Girl,tt0096463,nominee,https://www.imdb.com/title/tt0096463/,Twentieth Century Fox
+1988,The Last Emperor,tt0093389,winner,https://www.imdb.com/title/tt0093389/,Yanco Films Limited|TAO Film|Recorded Picture Company|Screenframe|AAA Soprofilms
+1988,Broadcast News,tt0092699,nominee,https://www.imdb.com/title/tt0092699/,Amercent Films|American Entertainment Partners L.P.|Gracie Films|The Criterion Collection|Twentieth Century Fox
+1988,Fatal Attraction,tt0093010,nominee,https://www.imdb.com/title/tt0093010/,Paramount Pictures
+1988,Hope and Glory,tt0093209,nominee,https://www.imdb.com/title/tt0093209/,Columbia Pictures|Nelson Entertainment|Goldcrest Films International|Allied Filmmakers|Davros Films
+1988,Moonstruck,tt0093565,nominee,https://www.imdb.com/title/tt0093565/,Metro-Goldwyn-Mayer|Star Partners
+1987,Platoon,tt0091763,winner,https://www.imdb.com/title/tt0091763/,Hemdale|Cinema '84|Cinema 86
+1987,Children of a Lesser God,tt0090830,nominee,https://www.imdb.com/title/tt0090830/,Paramount Pictures
+1987,Hannah and Her Sisters,tt0091167,nominee,https://www.imdb.com/title/tt0091167/,Orion Pictures|Jack Rollins & Charles H. Joffe Productions
+1987,The Mission,tt0091530,nominee,https://www.imdb.com/title/tt0091530/,Warner Bros.|Goldcrest Films International|Kingsmere Productions Ltd.|Enigma Productions|AMLF
+1987,A Room with a View,tt0091867,nominee,https://www.imdb.com/title/tt0091867/,Goldcrest Films International|National Film Finance Corporation|Curzon Film Distributors|Film Four International|Merchant Ivory Productions
+1986,Out of Africa,tt0089755,winner,https://www.imdb.com/title/tt0089755/,Mirage Enterprises
+1986,The Color Purple,tt0088939,nominee,https://www.imdb.com/title/tt0088939/,Warner Bros.|Amblin Entertainment|The Guber-Peters Company
+1986,Kiss of the Spider Woman,tt0089424,nominee,https://www.imdb.com/title/tt0089424/,HB Filmes|FilmDallas Pictures
+1986,Prizzi's Honor,tt0089841,nominee,https://www.imdb.com/title/tt0089841/,ABC Motion Pictures
+1986,Witness,tt0090329,nominee,https://www.imdb.com/title/tt0090329/,Paramount Pictures|Edward S. Feldman Production
+1985,Amadeus,tt0086879,winner,https://www.imdb.com/title/tt0086879/,The Saul Zaentz Company|AMLF
+1985,The Killing Fields,tt0087553,nominee,https://www.imdb.com/title/tt0087553/,Goldcrest Films International|International Film Investors|Enigma Productions
+1985,A Passage to India,tt0087892,nominee,https://www.imdb.com/title/tt0087892/,EMI Films|Home Box Office
+1985,Places in the Heart,tt0087921,nominee,https://www.imdb.com/title/tt0087921/,Delphi II Productions|Tri-Star Pictures
+1985,A Soldier's Story,tt0088146,nominee,https://www.imdb.com/title/tt0088146/,Columbia Pictures|Caldix
+1984,Terms of Endearment,tt0086425,winner,https://www.imdb.com/title/tt0086425/,Paramount Pictures
+1984,The Big Chill,tt0085244,nominee,https://www.imdb.com/title/tt0085244/,Columbia Pictures|Carson Productions|Delphi Films
+1984,The Dresser,tt0085461,nominee,https://www.imdb.com/title/tt0085461/,Columbia Pictures|Columbia Pictures|World Film Services|Goldcrest|Peter Yates
+1984,The Right Stuff,tt0086197,nominee,https://www.imdb.com/title/tt0086197/,The Ladd Company|Chartoff-Winkler Productions
+1984,Tender Mercies,tt0086423,nominee,https://www.imdb.com/title/tt0086423/,Antron Media Production|EMI Films
+1983,Gandhi,tt0083987,winner,https://www.imdb.com/title/tt0083987/,International Film Investors|National Film Development Corporation of India|Goldcrest Films International|Indo-British Films
+1983,E.T. the Extra-Terrestrial,tt0083866,nominee,https://www.imdb.com/title/tt0083866/,Universal Pictures|Amblin Entertainment
+1983,Missing,tt0084335,nominee,https://www.imdb.com/title/tt0084335/,Polygram Filmed Entertainment|Universal Pictures|Estudios Churubusco Azteca S.A.
+1983,Tootsie,tt0084805,nominee,https://www.imdb.com/title/tt0084805/,Columbia Pictures|Mirage Enterprises|Punch Productions|Delphi Films
+1983,The Verdict,tt0084855,nominee,https://www.imdb.com/title/tt0084855/,Twentieth Century Fox
+1982,Chariots of Fire,tt0082158,winner,https://www.imdb.com/title/tt0082158/,Enigma Productions|Allied Stars Ltd.
+1982,Atlantic City,tt0080388,nominee,https://www.imdb.com/title/tt0080388/,International Cinema Corporation|Selta Films|Canadian Film Development Corporation|Cine-Neighbor|Selta Films
+1982,On Golden Pond,tt0082846,nominee,https://www.imdb.com/title/tt0082846/,Incorporated Television Company|IPC Films
+1982,Raiders of the Lost Ark,tt0082971,nominee,https://www.imdb.com/title/tt0082971/,Paramount Pictures|Lucasfilm
+1982,Reds,tt0082979,nominee,https://www.imdb.com/title/tt0082979/,Barclays Mercantile Industrial Finance|JRS Productions
+1981,Ordinary People,tt0081283,winner,https://www.imdb.com/title/tt0081283/,Paramount Pictures|Wildwood Enterprises
+1981,Coal Miner's Daughter,tt0080549,nominee,https://www.imdb.com/title/tt0080549/,Universal Pictures
+1981,The Elephant Man,tt0080678,nominee,https://www.imdb.com/title/tt0080678/,Brooksfilms
+1981,Raging Bull,tt0081398,nominee,https://www.imdb.com/title/tt0081398/,Chartoff-Winkler Productions
+1981,Tess,tt0080009,nominee,https://www.imdb.com/title/tt0080009/,Renn Productions|Timothy Burrill Productions|Société Française de Production
+1980,Kramer vs. Kramer,tt0079417,winner,https://www.imdb.com/title/tt0079417/,Columbia Pictures|Stanley Jaffe Production
+1980,All That Jazz,tt0078754,nominee,https://www.imdb.com/title/tt0078754/,Columbia Pictures|Twentieth Century Fox
+1980,Apocalypse Now,tt0078788,nominee,https://www.imdb.com/title/tt0078788/,American Zoetrope|Zoetrope Studios
+1980,Breaking Away,tt0078902,nominee,https://www.imdb.com/title/tt0078902/,Twentieth Century Fox
+1980,Norma Rae,tt0079638,nominee,https://www.imdb.com/title/tt0079638/,Twentieth Century Fox
+1979,The Deer Hunter,tt0077416,winner,https://www.imdb.com/title/tt0077416/,EMI Films
+1979,Coming Home,tt0077362,nominee,https://www.imdb.com/title/tt0077362/,Jerome Hellman Productions|Jayne Productions Inc.
+1979,Heaven Can Wait,tt0077663,nominee,https://www.imdb.com/title/tt0077663/,Paramount Pictures
+1979,Midnight Express,tt0077928,nominee,https://www.imdb.com/title/tt0077928/,Columbia Pictures|Casablanca Filmworks
+1979,An Unmarried Woman,tt0078444,nominee,https://www.imdb.com/title/tt0078444/,Major Studio Partners|Twentieth Century Fox
+1978,Annie Hall,tt0075686,winner,https://www.imdb.com/title/tt0075686/,Jack Rollins & Charles H. Joffe Productions|Rollins-Joffe Productions
+1978,The Goodbye Girl,tt0076095,nominee,https://www.imdb.com/title/tt0076095/,Metro-Goldwyn-Mayer|Warner Bros.|Rastar Pictures
+1978,Julia,tt0076245,nominee,https://www.imdb.com/title/tt0076245/,Twentieth Century Fox
+1978,Star Wars: Episode IV - A New Hope,tt0076759,nominee,https://www.imdb.com/title/tt0076759/,Lucasfilm|Twentieth Century Fox
+1978,The Turning Point,tt0076843,nominee,https://www.imdb.com/title/tt0076843/,Hera Productions|Major Studio Partners|Twentieth Century Fox
+1977,Rocky,tt0075148,winner,https://www.imdb.com/title/tt0075148/,Chartoff-Winkler Productions
+1977,All the President's Men,tt0074119,nominee,https://www.imdb.com/title/tt0074119/,Wildwood Enterprises
+1977,Bound for Glory,tt0074235,nominee,https://www.imdb.com/title/tt0074235/,Bound for Glory
+1977,Network,tt0074958,nominee,https://www.imdb.com/title/tt0074958/,Metro-Goldwyn-Mayer
+1977,Taxi Driver,tt0075314,nominee,https://www.imdb.com/title/tt0075314/,Columbia Pictures|Bill/Phillips|Italo/Judeo Productions
+1976,One Flew Over the Cuckoo's Nest,tt0073486,winner,https://www.imdb.com/title/tt0073486/,Fantasy Films|N.V. Zvaluw
+1976,Barry Lyndon,tt0072684,nominee,https://www.imdb.com/title/tt0072684/,Peregrine|Hawk Films|Warner Bros.
+1976,Dog Day Afternoon,tt0072890,nominee,https://www.imdb.com/title/tt0072890/,Warner Bros.|Artists Entertainment Complex
+1976,Jaws,tt0073195,nominee,https://www.imdb.com/title/tt0073195/,Zanuck/Brown Productions|Universal Pictures
+1976,Nashville,tt0073440,nominee,https://www.imdb.com/title/tt0073440/,ABC Entertainment|American Broadcasting Company|Paramount Pictures
+1975,The Godfather Part II,tt0071562,winner,https://www.imdb.com/title/tt0071562/,Paramount Pictures|The Coppola Company|American Zoetrope
+1975,Chinatown,tt0071315,nominee,https://www.imdb.com/title/tt0071315/,Paramount Pictures|Penthouse Video|Long Road Productions|Robert Evans Company
+1975,The Conversation,tt0071360,nominee,https://www.imdb.com/title/tt0071360/,The Directors Company|The Coppola Company|American Zoetrope
+1975,Lenny,tt0071746,nominee,https://www.imdb.com/title/tt0071746/,Marvin Worth Productions|Tribe Entertainment Group
+1975,The Towering Inferno,tt0072308,nominee,https://www.imdb.com/title/tt0072308/,Twentieth Century Fox|Warner Bros.|Irwin Allen Productions|United Films
+1974,The Sting,tt0070735,winner,https://www.imdb.com/title/tt0070735/,Zanuck/Brown Productions|Universal Pictures
+1974,American Graffiti,tt0069704,nominee,https://www.imdb.com/title/tt0069704/,Universal Pictures|Lucasfilm|The Coppola Company
+1974,Cries & Whispers,tt0069467,nominee,https://www.imdb.com/title/tt0069467/,Cinematograph AB|Svenska Filminstitutet
+1974,The Exorcist,tt0070047,nominee,https://www.imdb.com/title/tt0070047/,Warner Bros.|Hoya Productions
+1974,A Touch of Class,tt0070819,nominee,https://www.imdb.com/title/tt0070819/,Brut Productions|Gordon Film Productions|Joseph E. Levine Productions
+1973,The Godfather,tt0068646,winner,https://www.imdb.com/title/tt0068646/,Paramount Pictures|Albert S. Ruddy Productions|Alfran Productions
+1973,Cabaret,tt0068327,nominee,https://www.imdb.com/title/tt0068327/,Allied Artists Pictures|ABC Pictures|A Feuer and Martin Production|Bavaria Film
+1973,Deliverance,tt0068473,nominee,https://www.imdb.com/title/tt0068473/,Warner Bros.|Elmer Enterprises
+1973,The Emigrants,tt0067919,nominee,https://www.imdb.com/title/tt0067919/,Svensk Filmindustri
+1973,Sounder,tt0069303,nominee,https://www.imdb.com/title/tt0069303/,Radnitz/Mattel Productions|Rainbow Group
+1972,The French Connection,tt0067116,winner,https://www.imdb.com/title/tt0067116/,Twentieth Century Fox|Philip D'Antoni Productions|Schine-Moore Productions
+1972,A Clockwork Orange,tt0066921,nominee,https://www.imdb.com/title/tt0066921/,Warner Bros.|Polaris Productions|Hawk Films|Max L. Raab Productions|Si Litvinoff Film Production
+1972,Fiddler on the Roof,tt0067093,nominee,https://www.imdb.com/title/tt0067093/,The Mirisch Production Company|Cartier Productions
+1972,The Last Picture Show,tt0067328,nominee,https://www.imdb.com/title/tt0067328/,Columbia Pictures|BBS Productions|Last Picture Show Productions
+1972,Nicholas and Alexandra,tt0067483,nominee,https://www.imdb.com/title/tt0067483/,Horizon Pictures
+1971,Patton,tt0066206,winner,https://www.imdb.com/title/tt0066206/,Twentieth Century Fox
+1971,Airport,tt0065377,nominee,https://www.imdb.com/title/tt0065377/,Ross Hunter Productions
+1971,Five Easy Pieces,tt0065724,nominee,https://www.imdb.com/title/tt0065724/,BBS Productions|Columbia Pictures|Five Easy Pieces Productions|Raybert Productions
+1971,Love Story,tt0066011,nominee,https://www.imdb.com/title/tt0066011/,Paramount Pictures|Love Story Company
+1971,M*A*S*H,tt0066026,nominee,https://www.imdb.com/title/tt0066026/,Aspen Productions|Ingo Preminger Productions
+1970,Midnight Cowboy,tt0064665,winner,https://www.imdb.com/title/tt0064665/,Jerome Hellman Productions|Florin Productions
+1970,Anne of the Thousand Days,tt0064030,nominee,https://www.imdb.com/title/tt0064030/,Hal Wallis Productions
+1970,Butch Cassidy and the Sundance Kid,tt0064115,nominee,https://www.imdb.com/title/tt0064115/,Campanile Productions|Twentieth Century Fox|Estudios Churubusco Azteca S.A.
+1970,"Hello, Dolly!",tt0064418,nominee,https://www.imdb.com/title/tt0064418/,Chenault Productions|Twentieth Century Fox
+1970,Z,tt0065234,nominee,https://www.imdb.com/title/tt0065234/,Valoria Films|Reggane Films|Office National pour le Commerce et l'Industrie Cinématographique
+1969,Oliver!,tt0063385,winner,https://www.imdb.com/title/tt0063385/,Romulus Films|Warwick Film Productions
+1969,Funny Girl,tt0062994,nominee,https://www.imdb.com/title/tt0062994/,Columbia Pictures|Rastar Productions
+1969,The Lion in Winter,tt0063227,nominee,https://www.imdb.com/title/tt0063227/,Haworth Productions
+1969,"Rachel, Rachel",tt0063483,nominee,https://www.imdb.com/title/tt0063483/,Kayos Productions
+1969,Romeo and Juliet,tt0063518,nominee,https://www.imdb.com/title/tt0063518/,BHE Films|Verona Produzione|Dino de Laurentiis Cinematografica
+1968,In the Heat of the Night,tt0061811,winner,https://www.imdb.com/title/tt0061811/,The Mirisch Corporation
+1968,Bonnie and Clyde,tt0061418,nominee,https://www.imdb.com/title/tt0061418/,Warner Bros./Seven Arts|Tatira-Hiller Productions
+1968,Doctor Dolittle,tt0061584,nominee,https://www.imdb.com/title/tt0061584/,APJAC Productions|Twentieth Century Fox
+1968,The Graduate,tt0061722,nominee,https://www.imdb.com/title/tt0061722/,Lawrence Turman
+1968,Guess Who's Coming to Dinner,tt0061735,nominee,https://www.imdb.com/title/tt0061735/,Columbia Pictures|Stanley Kramer Productions
+1967,A Man for All Seasons,tt0060665,winner,https://www.imdb.com/title/tt0060665/,Highland Films
+1967,Alfie,tt0060086,nominee,https://www.imdb.com/title/tt0060086/,Lewis Gilbert|Sheldrake Films
+1967,The Russians Are Coming the Russians Are Coming,tt0060921,nominee,https://www.imdb.com/title/tt0060921/,The Mirisch Corporation
+1967,The Sand Pebbles,tt0060934,nominee,https://www.imdb.com/title/tt0060934/,Argyle Enterprises|Solar Productions|Robert Wise Productions|Twentieth Century Fox
+1967,Who's Afraid of Virginia Woolf?,tt0061184,nominee,https://www.imdb.com/title/tt0061184/,Warner Bros.|Chenault Productions
+1966,The Sound of Music,tt0059742,winner,https://www.imdb.com/title/tt0059742/,Robert Wise Productions|Argyle Enterprises
+1966,Darling,tt0059084,nominee,https://www.imdb.com/title/tt0059084/,Joseph Janni Production|Vic Films Productions|Appia Films Ltd.
+1966,Doctor Zhivago,tt0059113,nominee,https://www.imdb.com/title/tt0059113/,Metro-Goldwyn-Mayer|Carlo Ponti Production|Sostar S.A.
+1966,Ship of Fools,tt0059712,nominee,https://www.imdb.com/title/tt0059712/,Stanley Kramer Productions
+1966,A Thousand Clowns,tt0059798,nominee,https://www.imdb.com/title/tt0059798/,Harrell
+1965,My Fair Lady,tt0058385,winner,https://www.imdb.com/title/tt0058385/,Warner Bros.
+1965,Becket,tt0057877,nominee,https://www.imdb.com/title/tt0057877/,Wallis-Hazen|Keep Films
+1965,Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb,tt0057012,nominee,https://www.imdb.com/title/tt0057012/,Stanley Kubrick Productions|Columbia Pictures Corporation
+1965,Mary Poppins,tt0058331,nominee,https://www.imdb.com/title/tt0058331/,Walt Disney Productions
+1965,Zorba the Greek,tt0057831,nominee,https://www.imdb.com/title/tt0057831/,Twentieth Century Fox
+1964,Tom Jones,tt0057590,winner,https://www.imdb.com/title/tt0057590/,Woodfall Film Productions
+1964,America America,tt0056825,nominee,https://www.imdb.com/title/tt0056825/,Athena Enterprises|Warner Bros.
+1964,Cleopatra,tt0056937,nominee,https://www.imdb.com/title/tt0056937/,Twentieth Century Fox|MCL Films S.A.|Walwa Films S.A.
+1964,How the West Was Won,tt0056085,nominee,https://www.imdb.com/title/tt0056085/,Metro-Goldwyn-Mayer|Cinerama Productions Corp.
+1964,Lilies of the Field,tt0057251,nominee,https://www.imdb.com/title/tt0057251/,Rainbow Productions
+1963,Lawrence of Arabia,tt0056172,winner,https://www.imdb.com/title/tt0056172/,Horizon Pictures
+1963,The Longest Day,tt0056197,nominee,https://www.imdb.com/title/tt0056197/,Darryl F. Zanuck Productions
+1963,The Music Man,tt0056262,nominee,https://www.imdb.com/title/tt0056262/,Warner Bros.
+1963,Mutiny on the Bounty,tt0056264,nominee,https://www.imdb.com/title/tt0056264/,Arcola Pictures
+1963,To Kill a Mockingbird,tt0056592,nominee,https://www.imdb.com/title/tt0056592/,Pakula-Mulligan|Brentwood Productions
+1962,West Side Story,tt0055614,winner,https://www.imdb.com/title/tt0055614/,The Mirisch Corporation|Seven Arts Productions
+1962,Fanny,tt0054866,nominee,https://www.imdb.com/title/tt0054866/,Warner Bros.|Mansfield Productions
+1962,The Guns of Navarone,tt0054953,nominee,https://www.imdb.com/title/tt0054953/,Columbia Pictures|Highroad Productions
+1962,The Hustler,tt0054997,nominee,https://www.imdb.com/title/tt0054997/,Rossen Films
+1962,Judgment at Nuremberg,tt0055031,nominee,https://www.imdb.com/title/tt0055031/,Roxlom Films Inc.
+1961,The Apartment,tt0053604,winner,https://www.imdb.com/title/tt0053604/,The Mirisch Corporation
+1961,The Alamo,tt0053580,nominee,https://www.imdb.com/title/tt0053580/,Batjac Productions|The Alamo Company
+1961,Elmer Gantry,tt0053793,nominee,https://www.imdb.com/title/tt0053793/,Elmer Gantry Productions
+1961,Sons and Lovers,tt0054326,nominee,https://www.imdb.com/title/tt0054326/,Jerry Wald Productions
+1961,The Sundowners,tt0054353,nominee,https://www.imdb.com/title/tt0054353/,Warner Bros. Productions
+1960,Ben-Hur,tt0052618,winner,https://www.imdb.com/title/tt0052618/,Metro-Goldwyn-Mayer
+1960,Anatomy of a Murder,tt0052561,nominee,https://www.imdb.com/title/tt0052561/,Otto Preminger Films
+1960,The Diary of Anne Frank,tt0052738,nominee,https://www.imdb.com/title/tt0052738/,George Stevens Productions
+1960,The Nun's Story,tt0053131,nominee,https://www.imdb.com/title/tt0053131/,Warner Bros.
+1960,Room at the Top,tt0053226,nominee,https://www.imdb.com/title/tt0053226/,Romulus Films|Remus
+1959,Gigi,tt0051658,winner,https://www.imdb.com/title/tt0051658/,Metro-Goldwyn-Mayer
+1959,Auntie Mame,tt0051383,nominee,https://www.imdb.com/title/tt0051383/,Warner Bros.
+1959,Cat on a Hot Tin Roof,tt0051459,nominee,https://www.imdb.com/title/tt0051459/,Avon Productions
+1959,The Defiant Ones,tt0051525,nominee,https://www.imdb.com/title/tt0051525/,Lomitas Productions|Curtleigh Productions
+1959,Separate Tables,tt0052182,nominee,https://www.imdb.com/title/tt0052182/,Hecht-Hill-Lancaster Productions|Clifton Productions
+1958,The Bridge on the River Kwai,tt0050212,winner,https://www.imdb.com/title/tt0050212/,Horizon Pictures
+1958,Peyton Place,tt0050839,nominee,https://www.imdb.com/title/tt0050839/,Twentieth Century Fox|Jerry Wald Productions
+1958,Sayonara,tt0050933,nominee,https://www.imdb.com/title/tt0050933/,Pennebaker Productions|William Goetz Productions
+1958,12 Angry Men,tt0050083,nominee,https://www.imdb.com/title/tt0050083/,Orion-Nova Productions
+1958,Witness for the Prosecution,tt0051201,nominee,https://www.imdb.com/title/tt0051201/,Edward Small Productions
+1957,Around the World in 80 Days,tt0048960,winner,https://www.imdb.com/title/tt0048960/,Michael Todd Company
+1957,Friendly Persuasion,tt0049233,nominee,https://www.imdb.com/title/tt0049233/,Allied Artists Pictures|B-M Productions
+1957,Giant,tt0049261,nominee,https://www.imdb.com/title/tt0049261/,George Stevens Productions
+1957,The King and I,tt0049408,nominee,https://www.imdb.com/title/tt0049408/,Twentieth Century Fox
+1957,The Ten Commandments,tt0049833,nominee,https://www.imdb.com/title/tt0049833/,Motion Picture Associates|Paramount Pictures
+1956,Marty,tt0048356,winner,https://www.imdb.com/title/tt0048356/,Hecht-Lancaster Productions|Steven Productions
+1956,Love Is a Many-Splendored Thing,tt0048316,nominee,https://www.imdb.com/title/tt0048316/,Twentieth Century Fox
+1956,Mister Roberts,tt0048380,nominee,https://www.imdb.com/title/tt0048380/,Orange Productions
+1956,Picnic,tt0048491,nominee,https://www.imdb.com/title/tt0048491/,Columbia Pictures
+1956,The Rose Tattoo,tt0048563,nominee,https://www.imdb.com/title/tt0048563/,Hal Wallis Productions
+1955,On the Waterfront,tt0047296,winner,https://www.imdb.com/title/tt0047296/,Horizon Pictures
+1955,The Caine Mutiny,tt0046816,nominee,https://www.imdb.com/title/tt0046816/,Columbia Pictures
+1955,The Country Girl,tt0046874,nominee,https://www.imdb.com/title/tt0046874/,Perlberg-Seaton Productions
+1955,Seven Brides for Seven Brothers,tt0047472,nominee,https://www.imdb.com/title/tt0047472/,Metro-Goldwyn-Mayer
+1955,Three Coins in the Fountain,tt0047580,nominee,https://www.imdb.com/title/tt0047580/,Twentieth Century Fox
+1954,From Here to Eternity,tt0045793,winner,https://www.imdb.com/title/tt0045793/,Columbia Pictures
+1954,Julius Caesar,tt0045943,nominee,https://www.imdb.com/title/tt0045943/,Metro-Goldwyn-Mayer
+1954,The Robe,tt0046247,nominee,https://www.imdb.com/title/tt0046247/,Twentieth Century Fox
+1954,Roman Holiday,tt0046250,nominee,https://www.imdb.com/title/tt0046250/,Paramount Pictures
+1954,Shane,tt0046303,nominee,https://www.imdb.com/title/tt0046303/,Paramount Pictures
+1953,The Greatest Show on Earth,tt0044672,winner,https://www.imdb.com/title/tt0044672/,Paramount Pictures
+1953,High Noon,tt0044706,nominee,https://www.imdb.com/title/tt0044706/,Stanley Kramer Productions
+1953,Ivanhoe,tt0044760,nominee,https://www.imdb.com/title/tt0044760/,Metro-Goldwyn-Mayer
+1953,Moulin Rouge,tt0044926,nominee,https://www.imdb.com/title/tt0044926/,Romulus Films|Moulin Productions Inc.
+1953,The Quiet Man,tt0045061,nominee,https://www.imdb.com/title/tt0045061/,Argosy Pictures
+1952,An American in Paris,tt0043278,winner,https://www.imdb.com/title/tt0043278/,Metro-Goldwyn-Mayer
+1952,Decision Before Dawn,tt0043459,nominee,https://www.imdb.com/title/tt0043459/,Twentieth Century Fox|Bavaria Film
+1952,A Place in the Sun,tt0043924,nominee,https://www.imdb.com/title/tt0043924/,Paramount Pictures
+1952,Quo Vadis,tt0043949,nominee,https://www.imdb.com/title/tt0043949/,Metro-Goldwyn-Mayer
+1952,A Streetcar Named Desire,tt0044081,nominee,https://www.imdb.com/title/tt0044081/,Charles K. Feldman Group|Warner Bros.
+1951,All About Eve,tt0042192,winner,https://www.imdb.com/title/tt0042192/,Twentieth Century Fox
+1951,Born Yesterday,tt0042276,nominee,https://www.imdb.com/title/tt0042276/,Columbia Pictures
+1951,Father of the Bride,tt0042451,nominee,https://www.imdb.com/title/tt0042451/,Loew's
+1951,King Solomon's Mines,tt0042646,nominee,https://www.imdb.com/title/tt0042646/,Metro-Goldwyn-Mayer
+1951,Sunset Boulevard,tt0043014,nominee,https://www.imdb.com/title/tt0043014/,Paramount Pictures
+1950,All the King's Men,tt0041113,winner,https://www.imdb.com/title/tt0041113/,Columbia Pictures
+1950,Battleground,tt0041163,nominee,https://www.imdb.com/title/tt0041163/,Loew's
+1950,The Heiress,tt0041452,nominee,https://www.imdb.com/title/tt0041452/,Paramount Pictures
+1950,A Letter to Three Wives,tt0041587,nominee,https://www.imdb.com/title/tt0041587/,Twentieth Century Fox
+1950,Twelve O'Clock High,tt0041996,nominee,https://www.imdb.com/title/tt0041996/,Twentieth Century Fox
+1949,Hamlet,tt0040416,winner,https://www.imdb.com/title/tt0040416/,Two Cities Films
+1949,Johnny Belinda,tt0040495,nominee,https://www.imdb.com/title/tt0040495/,Warner Bros.
+1949,The Red Shoes,tt0040725,nominee,https://www.imdb.com/title/tt0040725/,The Archers|Independent Producers
+1949,The Snake Pit,tt0040806,nominee,https://www.imdb.com/title/tt0040806/,Twentieth Century Fox
+1949,The Treasure of the Sierra Madre,tt0040897,nominee,https://www.imdb.com/title/tt0040897/,Warner Bros.
+1948,Gentleman's Agreement,tt0039416,winner,https://www.imdb.com/title/tt0039416/,Twentieth Century Fox
+1948,Miracle on 34th Street,tt0039628,nominee,https://www.imdb.com/title/tt0039628/,Twentieth Century Fox
+1948,The Bishop's Wife,tt0039190,nominee,https://www.imdb.com/title/tt0039190/,Samuel Goldwyn Productions
+1948,Crossfire,tt0039286,nominee,https://www.imdb.com/title/tt0039286/,RKO Radio Pictures
+1948,Great Expectations,tt0038574,nominee,https://www.imdb.com/title/tt0038574/,Cineguild
+1947,The Best Years of Our Lives,tt0036868,winner,https://www.imdb.com/title/tt0036868/,Samuel Goldwyn Productions
+1947,Henry V,tt0036910,nominee,https://www.imdb.com/title/tt0036910/,Two Cities Films
+1947,It's a Wonderful Life,tt0038650,nominee,https://www.imdb.com/title/tt0038650/,Liberty Films
+1947,The Razor's Edge,tt0038873,nominee,https://www.imdb.com/title/tt0038873/,Twentieth Century Fox
+1947,The Yearling,tt0039111,nominee,https://www.imdb.com/title/tt0039111/,Loew's
+1946,The Lost Weekend,tt0037884,winner,https://www.imdb.com/title/tt0037884/,Paramount Pictures
+1946,Anchors Aweigh,tt0037514,nominee,https://www.imdb.com/title/tt0037514/,Loew's
+1946,The Bells of St. Mary's,tt0037536,nominee,https://www.imdb.com/title/tt0037536/,Rainbow Productions
+1946,Mildred Pierce,tt0037913,nominee,https://www.imdb.com/title/tt0037913/,Warner Bros.
+1946,Spellbound,tt0038109,nominee,https://www.imdb.com/title/tt0038109/,Selznick International Pictures|Vanguard Films
+1945,Going My Way,tt0036872,winner,https://www.imdb.com/title/tt0036872/,Paramount Pictures
+1945,Double Indemnity,tt0036775,nominee,https://www.imdb.com/title/tt0036775/,Paramount Pictures
+1945,Gaslight,tt0036855,nominee,https://www.imdb.com/title/tt0036855/,Loew's
+1945,Since You Went Away,tt0037280,nominee,https://www.imdb.com/title/tt0037280/,Selznick International Pictures|Vanguard Films
+1945,Wilson,tt0037465,nominee,https://www.imdb.com/title/tt0037465/,Twentieth Century Fox
+1944,Casablanca,tt0034583,winner,https://www.imdb.com/title/tt0034583/,Warner Bros.
+1944,For Whom the Bell Tolls,tt0035896,nominee,https://www.imdb.com/title/tt0035896/,Paramount Pictures
+1944,Heaven Can Wait,tt0035979,nominee,https://www.imdb.com/title/tt0035979/,Twentieth Century Fox
+1944,The Human Comedy,tt0036022,nominee,https://www.imdb.com/title/tt0036022/,Loew's
+1944,In Which We Serve,tt0034891,nominee,https://www.imdb.com/title/tt0034891/,Two Cities Films
+1944,Madame Curie,tt0036126,nominee,https://www.imdb.com/title/tt0036126/,Metro-Goldwyn-Mayer
+1944,The More the Merrier,tt0036172,nominee,https://www.imdb.com/title/tt0036172/,Columbia Pictures
+1944,The Ox-Bow Incident,tt0036244,nominee,https://www.imdb.com/title/tt0036244/,Twentieth Century Fox
+1944,The Song of Bernadette,tt0036377,nominee,https://www.imdb.com/title/tt0036377/,Twentieth Century Fox
+1944,Watch on the Rhine,tt0036515,nominee,https://www.imdb.com/title/tt0036515/,Warner Bros.
+1943,Mrs. Miniver,tt0035093,winner,https://www.imdb.com/title/tt0035093/,Metro-Goldwyn-Mayer
+1943,The Invaders,tt0033627,nominee,https://www.imdb.com/title/tt0033627/,Ortus Films
+1943,Kings Row,tt0034946,nominee,https://www.imdb.com/title/tt0034946/,Warner Bros.
+1943,The Magnificent Ambersons,tt0035015,nominee,https://www.imdb.com/title/tt0035015/,Mercury Productions
+1943,The Pied Piper,tt0035189,nominee,https://www.imdb.com/title/tt0035189/,Twentieth Century Fox
+1943,The Pride of the Yankees,tt0035211,nominee,https://www.imdb.com/title/tt0035211/,The Samuel Goldwyn Company
+1943,Random Harvest,tt0035238,nominee,https://www.imdb.com/title/tt0035238/,Loew's
+1943,The Talk of the Town,tt0035417,nominee,https://www.imdb.com/title/tt0035417/,Columbia Pictures
+1943,Wake Island,tt0035530,nominee,https://www.imdb.com/title/tt0035530/,Paramount Pictures
+1943,Yankee Doodle Dandy,tt0035575,nominee,https://www.imdb.com/title/tt0035575/,Warner Bros.
+1942,How Green Was My Valley,tt0033729,winner,https://www.imdb.com/title/tt0033729/,Twentieth Century Fox
+1942,Blossoms in the Dust,tt0033407,nominee,https://www.imdb.com/title/tt0033407/,Metro-Goldwyn-Mayer|Mervyn LeRoy Productions Inc.
+1942,Citizen Kane,tt0033467,nominee,https://www.imdb.com/title/tt0033467/,RKO Radio Pictures|Mercury Productions
+1942,Here Comes Mr. Jordan,tt0033712,nominee,https://www.imdb.com/title/tt0033712/,Columbia Pictures
+1942,Hold Back the Dawn,tt0033722,nominee,https://www.imdb.com/title/tt0033722/,Paramount Pictures
+1942,The Little Foxes,tt0033836,nominee,https://www.imdb.com/title/tt0033836/,The Samuel Goldwyn Company
+1942,The Maltese Falcon,tt0033870,nominee,https://www.imdb.com/title/tt0033870/,Warner Bros.
+1942,One Foot in Heaven,tt0033980,nominee,https://www.imdb.com/title/tt0033980/,Warner Bros.
+1942,Sergeant York,tt0034167,nominee,https://www.imdb.com/title/tt0034167/,Warner Bros.
+1942,Suspicion,tt0034248,nominee,https://www.imdb.com/title/tt0034248/,RKO Radio Pictures
+1941,Rebecca,tt0032976,winner,https://www.imdb.com/title/tt0032976/,Selznick International Pictures
+1941,"All This, and Heaven Too",tt0032194,nominee,https://www.imdb.com/title/tt0032194/,Warner Bros.
+1941,Foreign Correspondent,tt0032484,nominee,https://www.imdb.com/title/tt0032484/,Walter Wanger Productions
+1941,The Grapes of Wrath,tt0032551,nominee,https://www.imdb.com/title/tt0032551/,Twentieth Century Fox
+1941,The Great Dictator,tt0032553,nominee,https://www.imdb.com/title/tt0032553/,Charles Chaplin Productions
+1941,Kitty Foyle,tt0032671,nominee,https://www.imdb.com/title/tt0032671/,RKO Radio Pictures
+1941,The Letter,tt0032701,nominee,https://www.imdb.com/title/tt0032701/,Warner Bros.
+1941,The Long Voyage Home,tt0032728,nominee,https://www.imdb.com/title/tt0032728/,Argosy Pictures|Walter Wanger Productions
+1941,Our Town,tt0032881,nominee,https://www.imdb.com/title/tt0032881/,Sol Lesser Productions
+1941,The Philadelphia Story,tt0032904,nominee,https://www.imdb.com/title/tt0032904/,Metro-Goldwyn-Mayer
+1940,Gone with the Wind,tt0031381,winner,https://www.imdb.com/title/tt0031381/,Selznick International Pictures|Metro-Goldwyn-Mayer
+1940,Dark Victory,tt0031210,nominee,https://www.imdb.com/title/tt0031210/,Warner Bros.
+1940,"Goodbye, Mr. Chips",tt0031385,nominee,https://www.imdb.com/title/tt0031385/,Metro-Goldwyn-Mayer British Studios
+1940,Love Affair,tt0031593,nominee,https://www.imdb.com/title/tt0031593/,RKO Radio Pictures
+1940,Mr. Smith Goes to Washington,tt0031679,nominee,https://www.imdb.com/title/tt0031679/,Columbia Pictures
+1940,Ninotchka,tt0031725,nominee,https://www.imdb.com/title/tt0031725/,Loew's
+1940,Of Mice and Men,tt0031742,nominee,https://www.imdb.com/title/tt0031742/,Hal Roach Studios
+1940,Stagecoach,tt0031971,nominee,https://www.imdb.com/title/tt0031971/,Walter Wanger Productions
+1940,The Wizard of Oz,tt0032138,nominee,https://www.imdb.com/title/tt0032138/,Loew's
+1940,Wuthering Heights,tt0032145,nominee,https://www.imdb.com/title/tt0032145/,Samuel Goldwyn Productions
+1939,You Can't Take It with You,tt0030993,winner,https://www.imdb.com/title/tt0030993/,Columbia Pictures
+1939,The Adventures of Robin Hood,tt0029843,nominee,https://www.imdb.com/title/tt0029843/,Warner Bros.
+1939,Alexander's Ragtime Band,tt0029852,nominee,https://www.imdb.com/title/tt0029852/,Twentieth Century Fox
+1939,Boys Town,tt0029942,nominee,https://www.imdb.com/title/tt0029942/,Metro-Goldwyn-Mayer
+1939,The Citadel,tt0029995,nominee,https://www.imdb.com/title/tt0029995/,Metro-Goldwyn-Mayer British Studios
+1939,Four Daughters,tt0030149,nominee,https://www.imdb.com/title/tt0030149/,Warner Bros.
+1939,La grande illusion,tt0028950,nominee,https://www.imdb.com/title/tt0028950/,Réalisation d'art cinématographique
+1939,Jezebel,tt0030287,nominee,https://www.imdb.com/title/tt0030287/,Warner Bros.
+1939,Pygmalion,tt0030637,nominee,https://www.imdb.com/title/tt0030637/,Pascal Film Productions
+1939,Test Pilot,tt0030848,nominee,https://www.imdb.com/title/tt0030848/,Metro-Goldwyn-Mayer
+1938,The Life of Emile Zola,tt0029146,winner,https://www.imdb.com/title/tt0029146/,Warner Bros.
+1938,The Awful Truth,tt0028597,nominee,https://www.imdb.com/title/tt0028597/,Columbia Pictures
+1938,Captains Courageous,tt0028691,nominee,https://www.imdb.com/title/tt0028691/,Metro-Goldwyn-Mayer
+1938,Dead End,tt0028773,nominee,https://www.imdb.com/title/tt0028773/,The Samuel Goldwyn Company
+1938,The Good Earth,tt0028944,nominee,https://www.imdb.com/title/tt0028944/,Metro-Goldwyn-Mayer
+1938,In Old Chicago,tt0029047,nominee,https://www.imdb.com/title/tt0029047/,Twentieth Century Fox
+1938,Lost Horizon,tt0029162,nominee,https://www.imdb.com/title/tt0029162/,Columbia Pictures
+1938,One Hundred Men and a Girl,tt0029347,nominee,https://www.imdb.com/title/tt0029347/,Universal Pictures
+1938,Stage Door,tt0029604,nominee,https://www.imdb.com/title/tt0029604/,RKO Radio Pictures
+1938,A Star Is Born,tt0029606,nominee,https://www.imdb.com/title/tt0029606/,Selznick International Pictures|Entertain Me Productions
+1937,The Great Ziegfeld,tt0027698,winner,https://www.imdb.com/title/tt0027698/,Metro-Goldwyn-Mayer
+1937,Anthony Adverse,tt0027300,nominee,https://www.imdb.com/title/tt0027300/,Warner Bros.
+1937,Dodsworth,tt0027532,nominee,https://www.imdb.com/title/tt0027532/,The Samuel Goldwyn Company
+1937,Libeled Lady,tt0027884,nominee,https://www.imdb.com/title/tt0027884/,Metro-Goldwyn-Mayer
+1937,Mr. Deeds Goes to Town,tt0027996,nominee,https://www.imdb.com/title/tt0027996/,Columbia Pictures
+1937,Romeo and Juliet,tt0028203,nominee,https://www.imdb.com/title/tt0028203/,Metro-Goldwyn-Mayer
+1937,San Francisco,tt0028216,nominee,https://www.imdb.com/title/tt0028216/,Metro-Goldwyn-Mayer
+1937,The Story of Louis Pasteur,tt0028313,nominee,https://www.imdb.com/title/tt0028313/,Cosmopolitan Productions|Warner Bros.
+1937,A Tale of Two Cities,tt0027075,nominee,https://www.imdb.com/title/tt0027075/,Metro-Goldwyn-Mayer
+1937,Three Smart Girls,tt0028373,nominee,https://www.imdb.com/title/tt0028373/,Universal Pictures
+1936,Mutiny on the Bounty,tt0026752,winner,https://www.imdb.com/title/tt0026752/,Metro-Goldwyn-Mayer
+1936,Alice Adams,tt0026056,nominee,https://www.imdb.com/title/tt0026056/,RKO Radio Pictures
+1936,Broadway Melody of 1936,tt0026144,nominee,https://www.imdb.com/title/tt0026144/,Metro-Goldwyn-Mayer
+1936,Captain Blood,tt0026174,nominee,https://www.imdb.com/title/tt0026174/,Cosmopolitan Productions|First National Pictures
+1936,David Copperfield,tt0026266,nominee,https://www.imdb.com/title/tt0026266/,Metro-Goldwyn-Mayer
+1936,The Informer,tt0026529,nominee,https://www.imdb.com/title/tt0026529/,RKO Radio Pictures
+1936,Les Misérables,tt0026725,nominee,https://www.imdb.com/title/tt0026725/,20th Century Pictures
+1936,The Lives of a Bengal Lancer,tt0026643,nominee,https://www.imdb.com/title/tt0026643/,Paramount Pictures
+1936,A Midsummer Night's Dream,tt0026714,nominee,https://www.imdb.com/title/tt0026714/,Warner Bros.|Max Reinhardt Productions
+1936,Naughty Marietta,tt0026768,nominee,https://www.imdb.com/title/tt0026768/,Metro-Goldwyn-Mayer
+1936,Ruggles of Red Gap,tt0026955,nominee,https://www.imdb.com/title/tt0026955/,Paramount Pictures
+1936,Top Hat,tt0027125,nominee,https://www.imdb.com/title/tt0027125/,RKO Radio Pictures
+1935,It Happened One Night,tt0025316,winner,https://www.imdb.com/title/tt0025316/,Columbia Pictures|Frank Capra Productions
+1935,The Barretts of Wimpole Street,tt0024865,nominee,https://www.imdb.com/title/tt0024865/,Metro-Goldwyn-Mayer
+1935,Cleopatra,tt0024991,nominee,https://www.imdb.com/title/tt0024991/,Paramount Pictures
+1935,Flirtation Walk,tt0025124,nominee,https://www.imdb.com/title/tt0025124/,First National Pictures
+1935,The Gay Divorcee,tt0025164,nominee,https://www.imdb.com/title/tt0025164/,RKO Radio Pictures
+1935,Here Comes the Navy,tt0025238,nominee,https://www.imdb.com/title/tt0025238/,Warner Bros.
+1935,The House of Rothschild,tt0025272,nominee,https://www.imdb.com/title/tt0025272/,20th Century Pictures
+1935,Imitation of Life,tt0025301,nominee,https://www.imdb.com/title/tt0025301/,Universal Pictures
+1935,One Night of Love,tt0025601,nominee,https://www.imdb.com/title/tt0025601/,Columbia Pictures
+1935,The Thin Man,tt0025878,nominee,https://www.imdb.com/title/tt0025878/,Metro-Goldwyn-Mayer|Cosmopolitan Productions
+1935,Viva Villa!,tt0025948,nominee,https://www.imdb.com/title/tt0025948/,Metro-Goldwyn-Mayer
+1935,The White Parade,tt0025986,nominee,https://www.imdb.com/title/tt0025986/,Fox Film Corporation
+1934,Cavalcade,tt0023876,winner,https://www.imdb.com/title/tt0023876/,Fox Film Corporation
+1934,42nd Street,tt0024034,nominee,https://www.imdb.com/title/tt0024034/,Warner Bros.
+1934,A Farewell to Arms,tt0022879,nominee,https://www.imdb.com/title/tt0022879/,Paramount Pictures
+1934,I Am a Fugitive from a Chain Gang,tt0023042,nominee,https://www.imdb.com/title/tt0023042/,Warner Bros.
+1934,Lady for a Day,tt0024240,nominee,https://www.imdb.com/title/tt0024240/,Columbia Pictures
+1934,Little Women,tt0024264,nominee,https://www.imdb.com/title/tt0024264/,RKO Radio Pictures
+1934,The Private Life of Henry VIII,tt0024473,nominee,https://www.imdb.com/title/tt0024473/,London Film Productions
+1934,She Done Him Wrong,tt0024548,nominee,https://www.imdb.com/title/tt0024548/,Paramount Pictures
+1934,Smilin' Through,tt0023488,nominee,https://www.imdb.com/title/tt0023488/,Metro-Goldwyn-Mayer
+1934,State Fair,tt0024610,nominee,https://www.imdb.com/title/tt0024610/,Fox Film Corporation
+1932,Grand Hotel,tt0022958,winner,https://www.imdb.com/title/tt0022958/,Metro-Goldwyn-Mayer
+1932,Arrowsmith,tt0021622,nominee,https://www.imdb.com/title/tt0021622/,John Ford Productions|The Samuel Goldwyn Company
+1932,Bad Girl,tt0021635,nominee,https://www.imdb.com/title/tt0021635/,Frank Borzage Production
+1932,The Champ,tt0021730,nominee,https://www.imdb.com/title/tt0021730/,Metro-Goldwyn-Mayer
+1932,Five Star Final,tt0021873,nominee,https://www.imdb.com/title/tt0021873/,First National Pictures
+1932,One Hour with You,tt0023303,nominee,https://www.imdb.com/title/tt0023303/,Paramount Pictures
+1932,Shanghai Express,tt0023458,nominee,https://www.imdb.com/title/tt0023458/,Paramount Pictures
+1932,The Smiling Lieutenant,tt0022074,nominee,https://www.imdb.com/title/tt0022074/,Paramount Pictures
+1931,Cimarron,tt0021746,winner,https://www.imdb.com/title/tt0021746/,RKO Radio Pictures
+1931,East Lynne,tt0021826,nominee,https://www.imdb.com/title/tt0021826/,Fox Film Corporation
+1931,The Front Page,tt0021890,nominee,https://www.imdb.com/title/tt0021890/,The Caddo Company
+1931,Skippy,tt0022397,nominee,https://www.imdb.com/title/tt0022397/,Paramount Pictures
+1931,Trader Horn,tt0022495,nominee,https://www.imdb.com/title/tt0022495/,Metro-Goldwyn-Mayer
+1930,All Quiet on the Western Front,tt0020629,winner,https://www.imdb.com/title/tt0020629/,Universal Pictures
+1930,The Big House,tt0020686,nominee,https://www.imdb.com/title/tt0020686/,Metro-Goldwyn-Mayer|Cosmopolitan Productions
+1930,Disraeli,tt0019823,nominee,https://www.imdb.com/title/tt0019823/,Warner Bros.
+1930,The Divorcee,tt0020827,nominee,https://www.imdb.com/title/tt0020827/,Metro-Goldwyn-Mayer
+1930,The Love Parade,tt0020112,nominee,https://www.imdb.com/title/tt0020112/,Paramount Pictures
+1930,The Broadway Melody,tt0019729,winner,https://www.imdb.com/title/tt0019729/,Metro-Goldwyn-Mayer
+1930,Alibi,tt0019630,nominee,https://www.imdb.com/title/tt0019630/,Feature Productions
+1930,The Hollywood Revue of 1929,tt0019993,nominee,https://www.imdb.com/title/tt0019993/,Metro-Goldwyn-Mayer
+1930,In Old Arizona,tt0020018,nominee,https://www.imdb.com/title/tt0020018/,Fox Film Corporation
+1930,The Patriot,tt0019257,nominee,https://www.imdb.com/title/tt0019257/,Paramount Pictures
+1929,Wings,tt0018578,winner,https://www.imdb.com/title/tt0018578/,Paramount Pictures|Paramount Famous Lasky Corporation
+1929,The Racket,tt0019304,nominee,https://www.imdb.com/title/tt0019304/,The Caddo Company
+1929,7th Heaven,tt0018379,nominee,https://www.imdb.com/title/tt0018379/,Frank Borzage Production|Fox Film Corporation
+1929,Sunrise,tt0018455,winner,https://www.imdb.com/title/tt0018455/,Fox Film Corporation
+1929,Chang: A Drama of the Wilderness,tt0017743,nominee,https://www.imdb.com/title/tt0017743/,Merian C. Cooper and Ernest Schoedsack
+1929,The Crowd,tt0018806,nominee,https://www.imdb.com/title/tt0018806/,Metro-Goldwyn-Mayer

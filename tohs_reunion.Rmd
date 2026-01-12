@@ -8,6 +8,10 @@ output:
       in_header: header/header.html
       after_body: include_footer.html
 ---
+
+```{r pipe, include=FALSE}
+`%>%` <- magrittr::`%>%`
+```
 ```{r ci-skip-gs4, include=FALSE}
 # if (Sys.getenv("CI") == "true") knitr::knit_exit()
 ```
@@ -25,39 +29,40 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r libraries}
-library(tidyverse)
-library(DT)
-library(googlesheets4)
-```
-
-
-
 ```{r}
-grad_list = read_sheet("https://docs.google.com/spreadsheets/d/1JwWeBjwwQHzmGgh8HPuO_0pghzemC3ikpLx_pXlQvsI/edit#gid=1184195844",
-                       sheet = "Full Grad Class")
+grad_list <- googlesheets4::read_sheet(
+  paste0(
+    "https://docs.google.com/spreadsheets/d/",
+    "1JwWeBjwwQHzmGgh8HPuO_0pghzemC3ikpLx_pXlQvsI",
+    "/edit#gid=1184195844"
+  ),
+  sheet = "Full Grad Class"
+)
 
-grad_list_clean = grad_list %>% slice(-1) %>%
-  mutate(`First Name` = unlist(`First Name`),
+grad_list_clean <- grad_list %>%
+  dplyr::slice(-1) %>%
+  dplyr::mutate(`First Name` = unlist(`First Name`),
          Email = lapply(Email, function(x) ifelse(is.null(x), NA, x)),
          Email = unlist(Email)) %>%
-  mutate(email_bool = !is.na(Email))
+  dplyr::mutate(email_bool = !is.na(Email))
 
-percent_accounted = grad_list_clean %>%
-  group_by(email_bool) %>% count %>%
-  ungroup() %>%
-  mutate(total = sum(n)) %>%
-  mutate(percent = scales::percent(n / sum(n))) %>%
-  mutate(text = paste0(percent, " (", n, "/", total, ")")) %>%
-  filter(email_bool)
+percent_accounted <- grad_list_clean %>%
+  dplyr::group_by(email_bool) %>%
+    dplyr::count() %>%
+  dplyr::ungroup() %>%
+  dplyr::mutate(total = sum(n)) %>%
+  dplyr::mutate(percent = scales::percent(n / sum(n))) %>%
+  dplyr::mutate(text = paste0(percent, " (", n, "/", total, ")")) %>%
+  dplyr::filter(email_bool)
 
 
-percent_accounted_text = percent_accounted$text
+percent_accounted_text <- percent_accounted$text
 
-missing_list = grad_list_clean %>% filter(!email_bool) %>%
-  select(`First Name`, `Last Name`) %>%
-  mutate(text = paste0(row_number(), ". ", `First Name`, " ", `Last Name`)) %>%
-  pull(text) %>% 
+missing_list <- grad_list_clean %>%
+  dplyr::filter(!email_bool) %>%
+  dplyr::select(`First Name`, `Last Name`) %>%
+  dplyr::mutate(text = paste0(dplyr::row_number(), ". ", `First Name`, " ", `Last Name`)) %>%
+  dplyr::pull(text) %>%
   paste(collapse = "\n")
 
 ```
@@ -71,4 +76,3 @@ As of `r format(Sys.time(), "%B %d, %Y at %H:%M")`, we have the following missin
 ```{r}
 cat(missing_list)
 ```
-

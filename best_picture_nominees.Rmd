@@ -9,6 +9,10 @@ output:
       after_body: include_footer.html
 ---
 
+```{r pipe, include=FALSE}
+`%>%` <- magrittr::`%>%`
+```
+
 ```{r setup, include=FALSE}
 # Set default chunk output
 knitr::opts_chunk$set(
@@ -17,17 +21,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r libraries}
-library(tidyverse)
-library(DT)
-library(scales)
-library(plotly)
-```
-
-
-
 ```{r data}
-best_pic_noms_final = read_csv(here::here("data", "best_picture_nominees.csv"))
+best_pic_noms_final <- readr::read_csv(here::here("data", "best_picture_nominees.csv"))
 
 ```
 
@@ -42,45 +37,53 @@ IMDb has a section called "Production companies" in their Details section of eac
 
 ```{r distibutor_leaderboards}
 
-only_winners = function(x) {
-  no_noms = gsub(x = x, pattern = ".*(%)", replacement = "") 
-  
+only_winners <- function(x) {
+  no_noms <- gsub(x = x, pattern = ".*(%)", replacement = "")
+
   no_noms[no_noms != ""] %>%
     paste0(collapse = "\n")
 }
 
 
-distributors_plot_nominees = best_pic_noms_final %>%
-  separate_rows(producers, sep = "\\|") %>%
-  group_by(id) %>% 
-  slice(1) %>% 
-  group_by(distributor = producers) %>% 
-  summarise(n = n(),
+distributors_plot_nominees <- best_pic_noms_final %>%
+  tidyr::separate_rows(producers, sep = "\\|") %>%
+  dplyr::group_by(id) %>%
+  dplyr::slice(1) %>%
+  dplyr::group_by(distributor = producers) %>%
+  dplyr::summarise(n = dplyr::n(),
             all_titles = paste0(title, ifelse(nominees_or_winner == "winner", " *", "%"),
                                collapse = "\n"),
-            n_winners = sum(nominees_or_winner == "winner")) %>% 
-  ungroup() %>%
-  mutate(check = strsplit(all_titles, split = "\\\n"),
-         winners = check %>% lapply(only_winners) %>% unlist,
-         all_titles = gsub(x = all_titles, pattern = "\\%", replacement = "")) %>% 
-  arrange(desc(n)) %>%
-  slice(1:15) %>% 
-  ggplot(aes(x = n, y= reorder(distributor, -n), text = all_titles, fill = distributor)) +
-  geom_col()+
-  # labs(caption = "* = winners")+
-  theme(axis.title.y=element_blank(),
-        axis.title.x=element_blank(),
-        plot.caption = element_text(colour = "gold"),
+            n_winners = sum(nominees_or_winner == "winner")) %>%
+  dplyr::ungroup() %>%
+  dplyr::mutate(check = strsplit(all_titles, split = "\\\n"),
+         winners = check %>%
+           lapply(only_winners) %>%
+           unlist,
+         all_titles = gsub(x = all_titles, pattern = "\\%", replacement = "")) %>%
+  dplyr::arrange(dplyr::desc(n)) %>%
+  dplyr::slice(1:15) %>%
+  ggplot2::ggplot(ggplot2::aes(x = n, y= reorder(distributor, -n), text = all_titles,
+    fill = distributor)) +
+  ggplot2::geom_col()+
+  # ggplot2::labs(caption = "* = winners")+
+  ggplot2::theme(axis.title.y=ggplot2::element_blank(),
+        axis.title.x=ggplot2::element_blank(),
+        plot.caption = ggplot2::element_text(colour = "gold"),
         legend.position = "none") +
-  ggtitle("Number of Nominees per Distributor (Top 15)") +
-  geom_text(aes(label = n), hjust = 0, position = position_dodge(width = 1)) +
-  geom_col(aes(x = n_winners, y = reorder(distributor, -n)), fill = "gold")
+  ggplot2::ggtitle("Number of Nominees per Distributor (Top 15)") +
+  ggplot2::geom_text(
+    ggplot2::aes(label = n),
+    hjust = 0,
+    nudge_x = 0.2
+  ) +
+  ggplot2::geom_col(ggplot2::aes(x = n_winners, y = reorder(distributor, -n)), fill = "gold")
 
 
-distributors_plot_nominees %>% ggplotly(tooltip = c("x", "text", "fill"), height = 800) %>% 
-  layout(annotations = 
-           list(x = 1, y = -0.1, text = "* = winners", 
-                showarrow = F, xref='paper', yref='paper', 
+distributors_plot_nominees %>%
+  plotly::ggplotly(tooltip = c("x", "text", "fill"), height = 800) %>%
+  plotly::layout(annotations =
+           list(x = 1, y = -0.1, text = "* = winners",
+                showarrow = F, xref='paper', yref='paper',
                 xanchor='right', yanchor='auto', xshift=0, yshift=0,
                 font=list(size=15, color="gold")))
 
@@ -90,14 +93,14 @@ For more detail, please look at this table:
 
 ```{r distributor_table}
 best_pic_noms_final %>%
-  separate_rows(producers, sep = "\\|") %>%
-  group_by(id) %>% 
-  slice(1) %>% 
-  group_by(distributor = producers) %>% 
-  summarise(n = n(), all_titles = paste(title, collapse = "<br>")) %>%
-  ungroup() %>% 
-  arrange(desc(n)) %>% 
-  datatable(filter = "top", extensions = "Buttons",
+  tidyr::separate_rows(producers, sep = "\\|") %>%
+  dplyr::group_by(id) %>%
+  dplyr::slice(1) %>%
+  dplyr::group_by(distributor = producers) %>%
+  dplyr::summarise(n = dplyr::n(), all_titles = paste(title, collapse = "<br>")) %>%
+  dplyr::ungroup() %>%
+  dplyr::arrange(dplyr::desc(n)) %>%
+  DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE),
             escape = FALSE)
@@ -107,37 +110,45 @@ best_pic_noms_final %>%
 
 ```{r producer_leaderboards}
 
-producers_plot_nominees = best_pic_noms_final %>%
-  separate_rows(producers, sep = "\\|") %>%
-  # group_by(id) %>% 
-  # slice(1) %>% 
-  group_by(producers) %>%
-  summarise(n = n(),
+producers_plot_nominees <- best_pic_noms_final %>%
+  tidyr::separate_rows(producers, sep = "\\|") %>%
+  # dplyr::group_by(id) %>% 
+  # dplyr::slice(1) %>% 
+  dplyr::group_by(producers) %>%
+  dplyr::summarise(n = dplyr::n(),
             all_titles = paste0(title, ifelse(nominees_or_winner == "winner", " *", "%"),
                                collapse = "\n"),
-            n_winners = sum(nominees_or_winner == "winner")) %>% 
-  ungroup() %>%
-  mutate(check = strsplit(all_titles, split = "\\\n"),
-         winners = check %>% lapply(only_winners) %>% unlist,
-         all_titles = gsub(x = all_titles, pattern = "\\%", replacement = "")) %>% 
-  arrange(desc(n)) %>%
-  slice(1:15) %>% 
-  ggplot(aes(x = n, y= reorder(producers, -n), text = all_titles, fill = producers)) +
-  geom_col()+
-  # labs(caption = "* = winners")+
-  theme(axis.title.y=element_blank(),
-        axis.title.x=element_blank(),
-        plot.caption = element_text(colour = "gold"),
+            n_winners = sum(nominees_or_winner == "winner")) %>%
+  dplyr::ungroup() %>%
+  dplyr::mutate(check = strsplit(all_titles, split = "\\\n"),
+         winners = check %>%
+           lapply(only_winners) %>%
+           unlist,
+         all_titles = gsub(x = all_titles, pattern = "\\%", replacement = "")) %>%
+  dplyr::arrange(dplyr::desc(n)) %>%
+  dplyr::slice(1:15) %>%
+  ggplot2::ggplot(ggplot2::aes(x = n, y= reorder(producers, -n), text = all_titles,
+    fill = producers)) +
+  ggplot2::geom_col()+
+  # ggplot2::labs(caption = "* = winners")+
+  ggplot2::theme(axis.title.y=ggplot2::element_blank(),
+        axis.title.x=ggplot2::element_blank(),
+        plot.caption = ggplot2::element_text(colour = "gold"),
         legend.position = "none") +
-  ggtitle("Number of Nominees per producers (Top 15)") +
-  geom_text(aes(label = n), hjust = 0, position = position_dodge(width = 1)) +
-  geom_col(aes(x = n_winners, y = reorder(producers, -n)), fill = "gold")
+  ggplot2::ggtitle("Number of Nominees per producers (Top 15)") +
+  ggplot2::geom_text(
+    ggplot2::aes(label = n),
+    hjust = 0,
+    nudge_x = 0.2
+  ) +
+  ggplot2::geom_col(ggplot2::aes(x = n_winners, y = reorder(producers, -n)), fill = "gold")
 
 
-producers_plot_nominees %>% ggplotly(tooltip = c("x", "text", "fill"), height = 800) %>% 
-  layout(annotations = 
-           list(x = 1, y = -0.1, text = "* = winners", 
-                showarrow = F, xref='paper', yref='paper', 
+producers_plot_nominees %>%
+  plotly::ggplotly(tooltip = c("x", "text", "fill"), height = 800) %>%
+  plotly::layout(annotations =
+           list(x = 1, y = -0.1, text = "* = winners",
+                showarrow = F, xref='paper', yref='paper',
                 xanchor='right', yanchor='auto', xshift=0, yshift=0,
                 font=list(size=15, color="gold")))
 
@@ -147,14 +158,14 @@ For more detail, please look at this table:
 
 ```{r producer_table}
 best_pic_noms_final %>%
-  separate_rows(producers, sep = "\\|") %>%
-  # group_by(id) %>% 
-  # slice(1) %>% 
-  group_by(producers) %>% 
-  summarise(n = n(), all_titles = paste(title, collapse = "<br>")) %>%
-  ungroup() %>% 
-  arrange(desc(n)) %>% 
-  datatable(filter = "top", extensions = "Buttons",
+  tidyr::separate_rows(producers, sep = "\\|") %>%
+  # dplyr::group_by(id) %>% 
+  # dplyr::slice(1) %>% 
+  dplyr::group_by(producers) %>%
+  dplyr::summarise(n = dplyr::n(), all_titles = paste(title, collapse = "<br>")) %>%
+  dplyr::ungroup() %>%
+  dplyr::arrange(dplyr::desc(n)) %>%
+  DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE),
             escape = FALSE)
@@ -166,12 +177,10 @@ best_pic_noms_final %>%
 
 ```{r full_table}
 best_pic_noms_final %>%
-  select(year, title, nominees_or_winner, producers, imdb_url) %>% 
-  datatable(filter = "top", extensions = "Buttons",
+  dplyr::select(year, title, nominees_or_winner, producers, imdb_url) %>%
+  DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
 
 
 ```
-
-
