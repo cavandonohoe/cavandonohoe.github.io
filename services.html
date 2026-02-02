@@ -41,15 +41,34 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-P51TN2DWZM');
+  gtag('config', 'G-P51TN2DWZM', {
+    'anonymize_ip': true
+  });
 </script>
-<link rel="apple-touch-icon" sizes="180x180" href="header/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="header/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="header/favicon-16x16.png">
-<link rel="manifest" href="header/site.webmanifest">
-<link rel="mask-icon" href="header/safari-pinned-tab.svg" color="#5bbad5">
+<!-- Favicons and app icons -->
+<link rel="apple-touch-icon" sizes="180x180" href="/header/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/header/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/header/favicon-16x16.png">
+<link rel="manifest" href="/header/site.webmanifest">
+<link rel="mask-icon" href="/header/safari-pinned-tab.svg" color="#5bbad5">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
+<!-- Meta tags for SEO and social sharing -->
+<meta name="description" content="Cavan Donohoe - Data Scientist. Personal website showcasing data science projects, R tutorials, and professional experience.">
+<meta name="keywords" content="data science, R programming, data analysis, R Markdown, Cavan Donohoe">
+<meta name="author" content="Cavan Donohoe">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cavandonohoe.github.io/">
+<meta property="og:title" content="Cavan Donohoe - Data Scientist">
+<meta property="og:description" content="Data Scientist passionate about making workflows easier through automation and reproducible analysis.">
+<meta property="og:image" content="https://cavandonohoe.github.io/header/android-chrome-512x512.png">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://cavandonohoe.github.io/">
+<meta property="twitter:title" content="Cavan Donohoe - Data Scientist">
+<meta property="twitter:description" content="Data Scientist passionate about making workflows easier through automation and reproducible analysis.">
+<meta property="twitter:image" content="https://cavandonohoe.github.io/header/android-chrome-512x512.png">
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -393,42 +412,20 @@ analyses</li>
 <p>Let’s have a conversation so I can help improve your team’s
 workflow.</p>
 
-<style>
-  #footer_stuff {
-    text-align: left; /* Set text alignment to left */
-    margin: 100px auto; /* Adjust the margin value as needed for the desired space */
-    color: #ccc; /* Set your desired grey font color */
-  }
-
-  .bandContent {
-    /* Add any additional styling for the content here */
-  }
-</style>
-<div id="footer_stuff" class="band full">
+<link rel="stylesheet" href="/css/footer.css">
+<footer id="footer_stuff" class="band full" role="contentinfo">
   <div class="bandContent">
-    <div id="full_send">Feel free to contact me:</div>
-    <div id="logos">
-      <a href="mailto:cavandonohoe@gmail.com" aria-label="Email">
-        <i class="fa fa-envelope" style="font-size:22px"></i>
-      </a>
-      <a href="https://www.instagram.com/cavandonohoe" target="_blank" rel="noopener" aria-label="Instagram">
-        <i class="fa fa-instagram" style="font-size:22px"></i>
-      </a>
-      <a href="https://www.facebook.com/cavandonohoe" target="_blank" rel="noopener" aria-label="Facebook">
-        <i class="fa fa-facebook" style="font-size:22px"></i>
-      </a>
-      <a href="https://github.com/cavandonohoe" target="_blank" rel="noopener" aria-label="GitHub">
-        <i class="fa fa-github" style="font-size:22px"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/cavan-donohoe/" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <i class="fa fa-linkedin" style="font-size:22px"></i>
-      </a>
-      <a href="tel:+8054043321" aria-label="Phone">
-        <i class="fa fa-phone" style="font-size:22px"></i>
-      </a>
-    </div>
+    <p id="full_send">Feel free to contact me:</p>
+    <nav id="logos" aria-label="Social media and contact links">
+      <a href="mailto:cavandonohoe@gmail.com" aria-label="Email Cavan Donohoe"><i class="fa fa-envelope" style="font-size:22px"></i></a>
+      <a href="https://www.instagram.com/cavandonohoe" aria-label="Instagram profile" rel="noopener noreferrer"><i class="fa fa-instagram" style="font-size:22px"></i></a>
+      <a href="https://www.facebook.com/cavandonohoe" aria-label="Facebook profile" rel="noopener noreferrer"><i class="fa fa-facebook" style="font-size:22px"></i></a>
+      <a href="https://github.com/cavandonohoe" aria-label="GitHub profile" rel="noopener noreferrer"><i class="fa fa-github" style="font-size:22px"></i></a>
+      <a href="https://www.linkedin.com/in/cavan-donohoe/" aria-label="LinkedIn profile" rel="noopener noreferrer"><i class="fa fa-linkedin" style="font-size:22px"></i></a>
+      <a href="tel:+8054043321" aria-label="Phone number"><i class="fa fa-phone" style="font-size:22px"></i></a>
+    </nav>
   </div>
-</div>
+</footer>
 
 
 
