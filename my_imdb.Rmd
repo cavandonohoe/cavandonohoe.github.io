@@ -9,6 +9,16 @@ output:
       after_body: include_footer.html
 ---
 
+<style>
+.main-container {
+  max-width: 1200px;
+}
+
+#imdb-watchlist-table {
+  width: 100% !important;
+}
+</style>
+
 ```{r pipe, include=FALSE}
 `%>%` <- magrittr::`%>%`
 ```
@@ -46,8 +56,10 @@ my_ratings %>%
     Year, Genres, `Release Date`, Directors) %>%
   dplyr::arrange(dplyr::desc(`My Rating`), dplyr::desc(`IMDb Rating`)) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
+            elementId = "imdb-watchlist-table",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollY = "400px", scrollX = TRUE))
+                           scrollY = "400px", scrollX = TRUE, autoWidth = TRUE),
+            width = "100%")
 ```
 
 
@@ -76,6 +88,7 @@ imdb_rating_plot <- my_ratings %>%
 imdb_rating_plot %>%
   plotly::ggplotly() %>%
   plotly::layout(
+    height = 900,
     margin = list(
       b = 150 # Adjust the bottom margin to create space for the lower caption
     ),
@@ -114,6 +127,7 @@ my_rating_plot <- my_ratings %>%
 my_rating_plot %>%
   plotly::ggplotly() %>%
   plotly::layout(
+    height = 900,
     margin = list(
       b = 150 # Adjust the bottom margin to create space for the lower caption
     ),
