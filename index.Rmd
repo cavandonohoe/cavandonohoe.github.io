@@ -7,9 +7,32 @@ output:
       after_body: include_footer.html
 ---
 
+```{r structured-data, echo=FALSE, results='asis'}
+# Add structured data (JSON-LD) for better SEO
+cat('
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Cavan Donohoe",
+  "jobTitle": "Data Scientist",
+  "url": "https://cavandonohoe.github.io",
+  "sameAs": [
+    "https://github.com/cavandonohoe",
+    "https://www.linkedin.com/in/cavan-donohoe/",
+    "https://www.instagram.com/cavandonohoe",
+    "https://www.facebook.com/cavandonohoe"
+  ],
+  "email": "cavandonohoe@gmail.com",
+  "description": "Data Scientist passionate about making workflows easier through automation and reproducible analysis."
+}
+</script>
+')
+```
+
 Welcome to my Website! I know it's not much, but it's all done in R and GitHub, so that's pretty cool.
 
-![*Reminiscing of my life on Oahu*](images/China Walls Sunset.jpg)
+![Sunset at China Walls on Oahu, Hawaii - Reminiscing of my life on Oahu](images/China Walls Sunset.jpg)
 
 I thought it might be worth investing some time to make a website to point to an area of my life where it gets a little more professional. But then I thought, why *just* do that? Why not incorporate some other aspects of my life that makes me me. So yes, this will have my ever growing resume, but let's have a little bit of fun while we're here.
 

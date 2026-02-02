@@ -56,8 +56,8 @@ Thumbs.db
 *.html
 !/include_footer.html
 
-# Optional: keep these if you add them for Pages DNS/SEO
-# (uncomment the lines if you commit these files at repo root)
+# SEO files (keep these tracked)
+!/robots.txt
+!/sitemap.xml
+# Optional: keep CNAME if you add it for Pages DNS
 # !/CNAME
-# !/robots.txt
-# !/sitemap.xml
