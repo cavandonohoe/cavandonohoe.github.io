@@ -10,7 +10,7 @@ editor_options:
 ---
 
 
-<a href="mailto:cavandonohoe@gmail.com"><i class="fa fa-envelope" style="font-size:36px"></i></a> <a href="https://www.instagram.com/cavandonohoe"><i class="fa fa-instagram" style="font-size:36px"></i></a> <a href="https://www.facebook.com/cavandonohoe"><i class="fa fa-facebook" style="font-size:36px"></i></a> <a href="https://github.com/cavandonohoe"><i class="fa fa-github" style="font-size:36px"></i></a> <a href="https://www.linkedin.com/in/cavan-donohoe/"><i class="fa fa-linkedin" style="font-size:36px"></i></a> <a href="tel:+8054043321"><i class="fa fa-phone" style="font-size:36px"></i></a>
+<a href="mailto:cavandonohoe@gmail.com" aria-label="Email Cavan Donohoe"><i class="fa fa-envelope" style="font-size:36px"></i></a> <a href="https://www.instagram.com/cavandonohoe" aria-label="Instagram profile" rel="noopener noreferrer"><i class="fa fa-instagram" style="font-size:36px"></i></a> <a href="https://www.facebook.com/cavandonohoe" aria-label="Facebook profile" rel="noopener noreferrer"><i class="fa fa-facebook" style="font-size:36px"></i></a> <a href="https://github.com/cavandonohoe" aria-label="GitHub profile" rel="noopener noreferrer"><i class="fa fa-github" style="font-size:36px"></i></a> <a href="https://www.linkedin.com/in/cavan-donohoe/" aria-label="LinkedIn profile" rel="noopener noreferrer"><i class="fa fa-linkedin" style="font-size:36px"></i></a> <a href="tel:+8054043321" aria-label="Phone number"><i class="fa fa-phone" style="font-size:36px"></i></a>
 
 
 *What do we live for, if not to make life less difficult for each other?*
@@ -30,13 +30,13 @@ I use that principle throughout my work life and make sure I explain everything 
 
 I have been playing beach volleyball for the past `r lubridate::year(Sys.Date()) - 2009` years. I knew my body would probably combust if I lived anywhere not close to a beach. So naturally out of university I moved to Oahu to work as an Actuarial Analyst.
 
-![](images/Volleyball silhouette.jpg)
+![Beach volleyball silhouette - representing years of playing beach volleyball](images/Volleyball silhouette.jpg)
 
 Oahu was incredible. Every single weekend was a vacation. I got to go on hikes, go in the warm waters and look at fish, surf, and spend some quality time with good friends. I didn't have a car and I honestly didn't need one. Some days I did get a little carried away and just kept biking. Some days I just needed that escape and that warm wind in my face. 
 
 I took a lot of pictures when I was in Hawaii, but this is my favorite:
   
-![*Out of the sea, Wish I could be, Part of that world*](images/little mermaid.jpg)
+![Underwater photo in Hawaii - Out of the sea, Wish I could be, Part of that world](images/little mermaid.jpg)
 
 Working as an actuary was my goal throughout university. And then when I finally became an actuary and started taking those exams while working, my fears came into reality. I didn't enjoy taking those exams. They were difficult and took a lot of work and a lot of time away from what I enjoyed doing in life. I am not one to shy away from a challenge, but I also enjoy my work life balance and would not sacrifice that over months with little benefit to my overall career growth.
 
@@ -64,8 +64,7 @@ I ended up working abroad! I worked from Spain, Italy, France, and Croatia! And 
 
 
 ```{r echo=FALSE}
-knitr::include_url("https://www.linkedin.com/embed/feed/update/urn:li:share:6956906897379590144",
-  height = 570)
+knitr::include_url("https://www.linkedin.com/embed/feed/update/urn:li:share:6956906897379590144", height = 570)
 
 ```
 
