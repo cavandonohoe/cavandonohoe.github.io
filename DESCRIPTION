@@ -20,4 +20,5 @@ Imports:
     googlesheets4,
     ggplot2,
     RColorBrewer,
-    pagedown
+    pagedown,
+    lubridate
