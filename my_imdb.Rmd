@@ -88,6 +88,7 @@ imdb_rating_plot <- my_ratings %>%
 imdb_rating_plot %>%
   plotly::ggplotly() %>%
   plotly::layout(
+    height = 700,
     margin = list(
       b = 150 # Adjust the bottom margin to create space for the lower caption
     ),
@@ -126,6 +127,7 @@ my_rating_plot <- my_ratings %>%
 my_rating_plot %>%
   plotly::ggplotly() %>%
   plotly::layout(
+    height = 700,
     margin = list(
       b = 150 # Adjust the bottom margin to create space for the lower caption
     ),
