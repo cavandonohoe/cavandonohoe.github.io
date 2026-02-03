@@ -281,6 +281,55 @@ if (has_core && "date" %in% names(ads) && any(!is.na(ads$date))) {
 }
 ```
 
+```{r campaign_timeseries}
+if (has_core && "date" %in% names(ads) && "campaign" %in% names(ads) && any(!is.na(ads$date))) {
+  daily_campaign <- ads %>%
+    dplyr::group_by(date, campaign) %>%
+    dplyr::summarise(
+      spend = sum(cost, na.rm = TRUE),
+      clicks = sum(clicks, na.rm = TRUE),
+      conversions = sum(conversions, na.rm = TRUE),
+      .groups = "drop"
+    )
+
+  p_campaign_spend <- ggplot(
+    daily_campaign,
+    aes(x = date, y = spend, color = campaign, group = campaign,
+        text = paste0(
+          "Campaign: ", campaign, "<br>",
+          "Date: ", date, "<br>",
+          "Spend: ", scales::dollar(spend)
+        ))
+  ) +
+    geom_line(linewidth = 0.9) +
+    geom_point(size = 1.5) +
+    scale_y_continuous(labels = dollar) +
+    labs(title = "Daily Spend by Campaign", x = NULL, y = NULL, color = "Campaign") +
+    theme(legend.position = "bottom")
+
+  plotly::ggplotly(p_campaign_spend, tooltip = "text") %>%
+    plotly::layout(legend = list(orientation = "h", y = -0.2))
+
+  p_campaign_clicks <- ggplot(
+    daily_campaign,
+    aes(x = date, y = clicks, color = campaign, group = campaign,
+        text = paste0(
+          "Campaign: ", campaign, "<br>",
+          "Date: ", date, "<br>",
+          "Clicks: ", scales::comma(clicks)
+        ))
+  ) +
+    geom_line(linewidth = 0.9) +
+    geom_point(size = 1.5) +
+    scale_y_continuous(labels = comma) +
+    labs(title = "Daily Clicks by Campaign", x = NULL, y = NULL, color = "Campaign") +
+    theme(legend.position = "bottom")
+
+  plotly::ggplotly(p_campaign_clicks, tooltip = "text") %>%
+    plotly::layout(legend = list(orientation = "h", y = -0.2))
+}
+```
+
 ```{r campaign_table}
 if (has_core && "campaign" %in% names(ads)) {
   campaign_summary <- ads %>%
