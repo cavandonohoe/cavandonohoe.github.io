@@ -11,20 +11,12 @@ output:
 
 ```{r pipe, include=FALSE}
 `%>%` <- magrittr::`%>%`
-is_ci <- Sys.getenv("CI") == "true"
 ```
 
-```{r ci-skip-gs4, echo=FALSE, results='asis'}
-if (is_ci) {
-  knitr::asis_output("
-## Dashboard Unavailable
-
-This dashboard requires Google Sheets authentication and is not available in the deployed version.
-
-To view this dashboard, please run it locally with proper Google authentication configured.
-")
-  knitr::knit_exit()
-}
+```{r ci-skip-gs4, include=FALSE}
+is_ci <- identical(Sys.getenv("CI"), "true")
+# Avoid Google API calls on CI without service account
+if (is_ci) googlesheets4::gs4_deauth()
 ```
 
 ```{r gs4-auth, include=FALSE}
@@ -50,11 +42,31 @@ sheet_url <- "https://docs.google.com/spreadsheets/d/16409Uk3TV5Vb_bfMi6P0bEd9bF
 sheet_name <- "Test-Report"
 sheet_range <- "A3:Z"
 
-ads_raw <- googlesheets4::read_sheet(
-  sheet_url,
-  sheet = sheet_name,
-  range = sheet_range
-)
+ads_raw <- tryCatch({
+  googlesheets4::read_sheet(
+    sheet_url,
+    sheet = sheet_name,
+    range = sheet_range
+  )
+}, error = function(e) {
+  warning("Failed to read Google Ads data from Google Sheets: ", e$message)
+  NULL
+})
+
+# If data failed to load, show message and exit
+if (is.null(ads_raw)) {
+  knitr::asis_output("
+## Data Unavailable
+
+Unable to load Google Ads data. This may be because:
+
+- The Google Sheet is not accessible (check sharing permissions)
+- Authentication failed in CI environment
+
+Please ensure the Google Sheet is shared with the service account or made public.
+")
+  knitr::knit_exit()
+}
 
 clean_names <- function(x) {
   x %>%
