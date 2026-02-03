@@ -330,6 +330,46 @@ if (has_core && "date" %in% names(ads) && "campaign" %in% names(ads) && any(!is.
 }
 ```
 
+```{r cpc_timeseries}
+if (has_core && "date" %in% names(ads) && "campaign" %in% names(ads) && any(!is.na(ads$date))) {
+  daily_campaign_cpc <- ads %>%
+    dplyr::group_by(date, campaign) %>%
+    dplyr::summarise(
+      spend = sum(cost, na.rm = TRUE),
+      clicks = sum(clicks, na.rm = TRUE),
+      .groups = "drop"
+    ) %>%
+    dplyr::mutate(
+      cpc = dplyr::if_else(clicks > 0, spend / clicks, NA_real_)
+    ) %>%
+    dplyr::filter(!is.na(cpc))
+
+  p_campaign_cpc <- ggplot(
+    daily_campaign_cpc,
+    aes(x = date, y = cpc, color = campaign, group = campaign,
+        text = paste0(
+          "Campaign: ", campaign, "<br>",
+          "Date: ", date, "<br>",
+          "CPC: ", scales::dollar(cpc), "<br>",
+          "Clicks: ", scales::comma(clicks), "<br>",
+          "Spend: ", scales::dollar(spend)
+        ))
+  ) +
+    geom_line(linewidth = 0.9) +
+    geom_point(size = 1.5) +
+    scale_y_continuous(labels = dollar) +
+    labs(
+      title = "Daily CPC by Campaign",
+      subtitle = "CPC (Cost Per Click) = Total Spend / Total Clicks. Lower is better.",
+      x = NULL, y = NULL, color = "Campaign"
+    ) +
+    theme(legend.position = "bottom")
+
+  plotly::ggplotly(p_campaign_cpc, tooltip = "text") %>%
+    plotly::layout(legend = list(orientation = "h", y = -0.2))
+}
+```
+
 ```{r campaign_table}
 if (has_core && "campaign" %in% names(ads)) {
   campaign_summary <- ads %>%
