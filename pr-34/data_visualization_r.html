@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Cavan Donohoe" />
+
+
+<title>Data Visualization in R</title>
+
+<script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P51TN2DWZM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P51TN2DWZM', {
+    'anonymize_ip': true
+  });
+</script>
+<!-- Favicons and app icons -->
+<link rel="apple-touch-icon" sizes="180x180" href="header/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="header/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="header/favicon-16x16.png">
+<link rel="manifest" href="header/site.webmanifest">
+<link rel="mask-icon" href="header/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<!-- Meta tags for SEO and social sharing -->
+<meta name="description" content="Cavan Donohoe - Data Scientist. Personal website showcasing data science projects, R tutorials, and professional experience.">
+<meta name="keywords" content="data science, R programming, data analysis, R Markdown, Cavan Donohoe">
+<meta name="author" content="Cavan Donohoe">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cavandonohoe.github.io/">
+<meta property="og:title" content="Cavan Donohoe - Data Scientist">
+<meta property="og:description" content="Data Scientist passionate about making workflows easier through automation and reproducible analysis.">
+<meta property="og:image" content="https://cavandonohoe.github.io/header/android-chrome-512x512.png">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://cavandonohoe.github.io/">
+<meta property="twitter:title" content="Cavan Donohoe - Data Scientist">
+<meta property="twitter:description" content="Data Scientist passionate about making workflows easier through automation and reproducible analysis.">
+<meta property="twitter:image" content="https://cavandonohoe.github.io/header/android-chrome-512x512.png">
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Cavan Donohoe</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="fa fa-info"></span>
+     
+    About Me
+  </a>
+</li>
+<li>
+  <a href="services.html">
+    <span class="fa fa-wrench"></span>
+     
+    Services
+  </a>
+</li>
+<li>
+  <a href="cv.html">
+    <span class="fa fa-id-card"></span>
+     
+    CV
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-laptop"></span>
+     
+    Projects
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="imdb_top_250_tv_series.html">IMDb TV Series</a>
+    </li>
+    <li>
+      <a href="best_pic_vs_top_1000.html">Best Picture and Top 1000 Box Office</a>
+    </li>
+    <li>
+      <a href="top_250_imdb_with_rt.html">Top 250 IMDb Movies with Rotten Tomato Scores</a>
+    </li>
+    <li>
+      <a href="imdb_rating_plot.html">IMDb Rating Plot by Season and Episode</a>
+    </li>
+    <li>
+      <a href="best_picture_nominees.html">Best Picture Nominees</a>
+    </li>
+    <li>
+      <a href="firefighter_schedule.html">Jason, Owen, and Wyett's Firefighter Schedule</a>
+    </li>
+    <li>
+      <a href="tohs_reunion.html">TOHS Class of 2012 Reunion</a>
+    </li>
+    <li>
+      <a href="sierpinski_triangle.html">Sierpinski Triangle</a>
+    </li>
+    <li>
+      <a href="my_imdb.html">My IMDb Ratings</a>
+    </li>
+    <li>
+      <a href="my_travels.html">Get Bloggy With It</a>
+    </li>
+    <li>
+      <a href="confederate_statues.html">When Were Confederate Statues Erected?</a>
+    </li>
+    <li>
+      <a href="google_ads_dashboard.html">Google Ads Overview</a>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Learn R</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="learn_r.html">R Time Is Limited, Let's Make the Most of It</a>
+        </li>
+        <li>
+          <a href="intro_to_r.html">Intro to R</a>
+        </li>
+        <li>
+          <a href="basic_operations_r.html">Basic Operations</a>
+        </li>
+        <li>
+          <a href="data_manipulation_r.html">Data Manipulations</a>
+        </li>
+        <li>
+          <a href="data_visualization_r.html">Data Visualization</a>
+        </li>
+        <li>
+          <a href="statistics_with_r.html">Statistics with R</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Data Visualization in R</h1>
+<h4 class="author">Cavan Donohoe</h4>
+
+</div>
+
+
+<div id="data-visualization-in-r" class="section level1">
+<h1>Data Visualization in R</h1>
+<p>In this section, we will explore the exciting world of data
+visualization in R. We’ll cover creating basic plots, customizing plots,
+and diving into advanced visualization techniques using the ggplot2
+package.</p>
+<div id="creating-basic-plots" class="section level2">
+<h2>Creating Basic Plots</h2>
+<p>R offers a variety of functions for creating basic plots,
+including:</p>
+<ul>
+<li><code>plot()</code>: For creating scatterplots and line plots.</li>
+<li><code>hist()</code>: For creating histograms.</li>
+<li><code>barplot()</code>: For creating bar charts.</li>
+<li><code>boxplot()</code>: For creating box plots.</li>
+</ul>
+<p>Here’s an example of creating a simple scatterplot:</p>
+<pre class="r"><code># Creating a scatterplot
+x &lt;- c(1, 2, 3, 4, 5)
+y &lt;- c(10, 15, 7, 20, 12)
+
+plot(x, y, type = &quot;p&quot;, main = &quot;Scatterplot Example&quot;, xlab = &quot;X-axis&quot;, ylab = &quot;Y-axis&quot;)</code></pre>
+</div>
+<div id="customizing-plots" class="section level2">
+<h2>Customizing Plots</h2>
+<p>Customizing plots allows you to make them more informative and
+visually appealing. You can customize various aspects of your plots,
+including titles, labels, colors, and more. Here’s an example:</p>
+<pre class="r"><code>data_example &lt;- data.frame(
+  x = c(1, 2, 3, 4, 5, 6),
+  y = c(2, 3.5, 2, 4, 4.5, 7)
+)
+
+# Customizing a plot
+plot(data_example$x, data_example$y, type = &quot;p&quot;, main = &quot;Customized Scatterplot&quot;,
+     xlab = &quot;X-axis&quot;, ylab = &quot;Y-axis&quot;, col = &quot;blue&quot;, pch = 19)</code></pre>
+<p><img src="data_visualization_r_files/figure-html/unnamed-chunk-1-1.png" alt="" width="672" /></p>
+</div>
+<div id="advanced-visualization-with-ggplot2" class="section level2">
+<h2>Advanced Visualization with ggplot2</h2>
+<p>The ggplot2 package is a powerful and versatile tool for creating a
+wide range of customized and complex visualizations. It follows a
+grammar of graphics approach, making it intuitive and flexible. Here’s a
+basic example using ggplot2:</p>
+<pre class="r"><code># Load the ggplot2 library
+
+# Create a ggplot scatterplot
+ggplot2::ggplot(data = data_example, ggplot2::aes(x = x, y = y)) +
+  ggplot2::geom_point(size = 3, color = &quot;red&quot;) +
+  ggplot2::labs(title = &quot;ggplot2 Scatterplot&quot;, x = &quot;X-axis&quot;, y = &quot;Y-axis&quot;)</code></pre>
+<p><img src="data_visualization_r_files/figure-html/unnamed-chunk-2-1.png" alt="" width="672" /></p>
+<p>In this section, we’ve covered the fundamentals of data visualization
+in R, including creating basic plots, customizing them to meet your
+needs, and introducing you to the power of ggplot2 for advanced
+visualization. Data visualization is a crucial skill for exploring and
+communicating insights from your data effectively.</p>
+<p>Feel free to experiment with different plot types and customization
+options to enhance your data visualization skills.</p>
+<p>Free Lessons:</p>
+<ul>
+<li><a href="https://cavandonohoe.github.io/learn_r.html">R Time Is
+Limited, Let’s Make the Most of It</a></li>
+<li><a
+href="https://cavandonohoe.github.io/intro_to_r.html">Introduction to
+R</a></li>
+<li><a
+href="https://cavandonohoe.github.io/basic_operations_r.html">Basic
+Operations in R</a></li>
+<li><a
+href="https://cavandonohoe.github.io/data_manipulation_r.html">Data
+Manipulation</a></li>
+<li><a
+href="https://cavandonohoe.github.io/data_visualization_r.html">Data
+Visualization</a></li>
+<li><a
+href="https://cavandonohoe.github.io/statistics_with_r.html">Statistics
+in R</a></li>
+</ul>
+</div>
+</div>
+
+<link rel="stylesheet" href="css/footer.css">
+<footer id="footer_stuff" class="band full" role="contentinfo">
+  <div class="bandContent">
+    <p id="full_send">Feel free to contact me:</p>
+    <nav id="logos" aria-label="Social media and contact links">
+      <a href="mailto:cavandonohoe@gmail.com" aria-label="Email Cavan Donohoe"><i class="fa fa-envelope" style="font-size:22px"></i></a>
+      <a href="https://www.instagram.com/cavandonohoe" aria-label="Instagram profile" rel="noopener noreferrer"><i class="fa fa-instagram" style="font-size:22px"></i></a>
+      <a href="https://www.facebook.com/cavandonohoe" aria-label="Facebook profile" rel="noopener noreferrer"><i class="fa fa-facebook" style="font-size:22px"></i></a>
+      <a href="https://github.com/cavandonohoe" aria-label="GitHub profile" rel="noopener noreferrer"><i class="fa fa-github" style="font-size:22px"></i></a>
+      <a href="https://www.linkedin.com/in/cavan-donohoe/" aria-label="LinkedIn profile" rel="noopener noreferrer"><i class="fa fa-linkedin" style="font-size:22px"></i></a>
+      <a href="tel:+8054043321" aria-label="Phone number"><i class="fa fa-phone" style="font-size:22px"></i></a>
+    </nav>
+  </div>
+</footer>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
