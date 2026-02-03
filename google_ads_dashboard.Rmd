@@ -11,11 +11,14 @@ output:
 
 ```{r pipe, include=FALSE}
 `%>%` <- magrittr::`%>%`
+is_ci <- Sys.getenv("CI") == "true"
 ```
 
 ```{r ci-skip-gs4, echo=FALSE, results='asis'}
-if (Sys.getenv("CI") == "true") {
-  cat("
+if (is_ci) {
+  knitr::asis_output("
+## Dashboard Unavailable
+
 This dashboard requires Google Sheets authentication and is not available in the deployed version.
 
 To view this dashboard, please run it locally with proper Google authentication configured.
