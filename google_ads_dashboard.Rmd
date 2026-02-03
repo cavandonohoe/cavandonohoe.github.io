@@ -30,12 +30,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r load}
-library(tidyverse)
-library(googlesheets4)
-library(lubridate)
-library(scales)
-library(DT)
-library(glue)
+library(ggplot2)
 
 sheet_url <- "https://docs.google.com/spreadsheets/d/16409Uk3TV5Vb_bfMi6P0bEd9bFjpET823KKvBr6Ibqs/edit#gid=1159393973"
 sheet_name <- "Test-Report"
@@ -239,17 +234,17 @@ if (!has_core) {
       cpl = spend / conversions
     )
 
-  cat(glue(
+  cat(glue::glue(
     "### Overview\n",
     "{date_range_text}",
-    "- Spend: {dollar(kpis$spend)}\n",
-    "- Impressions: {comma(kpis$impressions)}\n",
-    "- Clicks: {comma(kpis$clicks)}\n",
-    "- CTR: {percent(kpis$ctr, accuracy = 0.1)}\n",
-    "- Avg CPC: {dollar(kpis$cpc)}\n",
-    "- Conversions: {comma(kpis$conversions)}\n",
-    "- CVR: {percent(kpis$cvr, accuracy = 0.1)}\n",
-    "- CPL: {dollar(kpis$cpl)}\n"
+    "- Spend: {scales::dollar(kpis$spend)}\n",
+    "- Impressions: {scales::comma(kpis$impressions)}\n",
+    "- Clicks: {scales::comma(kpis$clicks)}\n",
+    "- CTR: {scales::percent(kpis$ctr, accuracy = 0.1)}\n",
+    "- Avg CPC: {scales::dollar(kpis$cpc)}\n",
+    "- Conversions: {scales::comma(kpis$conversions)}\n",
+    "- CVR: {scales::percent(kpis$cvr, accuracy = 0.1)}\n",
+    "- CPL: {scales::dollar(kpis$cpl)}\n"
   ))
 }
 ```
@@ -268,13 +263,13 @@ if (has_core && "date" %in% names(ads) && any(!is.na(ads$date))) {
   p_spend <- ggplot(daily, aes(x = date, y = spend)) +
     geom_line(color = "#2c3e50", linewidth = 0.9) +
     geom_point(color = "#2c3e50", size = 1.2) +
-    scale_y_continuous(labels = dollar) +
+    scale_y_continuous(labels = scales::dollar) +
     labs(title = "Daily Spend", x = NULL, y = NULL)
 
   p_clicks <- ggplot(daily, aes(x = date, y = clicks)) +
     geom_line(color = "#1f77b4", linewidth = 0.9) +
     geom_point(color = "#1f77b4", size = 1.2) +
-    scale_y_continuous(labels = comma) +
+    scale_y_continuous(labels = scales::comma) +
     labs(title = "Daily Clicks", x = NULL, y = NULL)
 
   plotly::ggplotly(p_spend)
@@ -284,7 +279,7 @@ if (has_core && "date" %in% names(ads) && any(!is.na(ads$date))) {
     p_conversions <- ggplot(daily, aes(x = date, y = conversions)) +
       geom_line(color = "#16a085", linewidth = 0.9) +
       geom_point(color = "#16a085", size = 1.2) +
-      scale_y_continuous(labels = comma) +
+      scale_y_continuous(labels = scales::comma) +
       labs(title = "Daily Conversions", x = NULL, y = NULL)
     plotly::ggplotly(p_conversions)
   }
@@ -313,7 +308,7 @@ if (has_core && "date" %in% names(ads) && "campaign" %in% names(ads) && any(!is.
   ) +
     geom_line(linewidth = 0.5) +
     geom_point(size = 1.2) +
-    scale_y_continuous(labels = dollar) +
+    scale_y_continuous(labels = scales::dollar) +
     labs(title = "Daily Spend by Campaign", x = NULL, y = NULL, color = "Campaign") +
     theme(legend.position = "bottom")
 
@@ -331,7 +326,7 @@ if (has_core && "date" %in% names(ads) && "campaign" %in% names(ads) && any(!is.
   ) +
     geom_line(linewidth = 0.5) +
     geom_point(size = 1.2) +
-    scale_y_continuous(labels = comma) +
+    scale_y_continuous(labels = scales::comma) +
     labs(title = "Daily Clicks by Campaign", x = NULL, y = NULL, color = "Campaign") +
     theme(legend.position = "bottom")
 
@@ -369,7 +364,7 @@ if (has_core && "date" %in% names(ads) && "campaign" %in% names(ads) && any(!is.
   ) +
     geom_line(linewidth = 0.5) +
     geom_point(size = 1.2) +
-    scale_y_continuous(labels = dollar) +
+    scale_y_continuous(labels = scales::dollar) +
     labs(
       title = "Daily CPC by Campaign",
       x = NULL, y = NULL, color = "Campaign"
@@ -401,11 +396,11 @@ if (has_core && "campaign" %in% names(ads)) {
   DT::datatable(
     campaign_summary %>%
       dplyr::mutate(
-        spend = dollar(spend),
-        ctr = percent(ctr, accuracy = 0.1),
-        cpc = dollar(cpc),
-        cvr = percent(cvr, accuracy = 0.1),
-        cpl = dollar(cpl)
+        spend = scales::dollar(spend),
+        ctr = scales::percent(ctr, accuracy = 0.1),
+        cpc = scales::dollar(cpc),
+        cvr = scales::percent(cvr, accuracy = 0.1),
+        cpl = scales::dollar(cpl)
       ),
     rownames = FALSE,
     options = list(pageLength = 10)
