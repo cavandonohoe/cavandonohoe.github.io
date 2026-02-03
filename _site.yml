@@ -69,6 +69,8 @@ navbar:
       - text: "--- Data Science & Clinical ---"
       - text: "SDTM with R"
         href: sdtm_with_r.html
+      - text: "Google Ads Overview"
+        href: google_ads_dashboard.html
       - text: "--- Archive ---"
       - text: "S&P 500 Perspective"
         href: sp500.html
