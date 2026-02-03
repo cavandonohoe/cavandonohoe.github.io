@@ -14,9 +14,8 @@ output:
 ```
 
 ```{r ci-skip-gs4, include=FALSE}
-is_ci <- identical(Sys.getenv("CI"), "true")
-# Avoid Google API calls on CI without service account
-if (is_ci) googlesheets4::gs4_deauth()
+# CI workflow handles authentication via GOOGLE_APPLICATION_CREDENTIALS
+# Do not call gs4_deauth() here as it would override the service account auth
 ```
 
 ```{r gs4-auth, include=FALSE}
