@@ -13,8 +13,15 @@ output:
 `%>%` <- magrittr::`%>%`
 ```
 
-```{r ci-skip-gs4, include=FALSE}
-if (Sys.getenv("CI") == "true") knitr::knit_exit()
+```{r ci-skip-gs4, echo=FALSE, results='asis'}
+if (Sys.getenv("CI") == "true") {
+  cat("
+This dashboard requires Google Sheets authentication and is not available in the deployed version.
+
+To view this dashboard, please run it locally with proper Google authentication configured.
+")
+  knitr::knit_exit()
+}
 ```
 
 ```{r gs4-auth, include=FALSE}
