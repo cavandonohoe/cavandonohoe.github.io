@@ -311,8 +311,8 @@ if (has_core && "date" %in% names(ads) && "campaign" %in% names(ads) && any(!is.
           "Spend: ", scales::dollar(spend)
         ))
   ) +
-    geom_line(linewidth = 0.9) +
-    geom_point(size = 1.5) +
+    geom_line(linewidth = 0.5) +
+    geom_point(size = 1.2) +
     scale_y_continuous(labels = dollar) +
     labs(title = "Daily Spend by Campaign", x = NULL, y = NULL, color = "Campaign") +
     theme(legend.position = "bottom")
@@ -329,8 +329,8 @@ if (has_core && "date" %in% names(ads) && "campaign" %in% names(ads) && any(!is.
           "Clicks: ", scales::comma(clicks)
         ))
   ) +
-    geom_line(linewidth = 0.9) +
-    geom_point(size = 1.5) +
+    geom_line(linewidth = 0.5) +
+    geom_point(size = 1.2) +
     scale_y_continuous(labels = comma) +
     labs(title = "Daily Clicks by Campaign", x = NULL, y = NULL, color = "Campaign") +
     theme(legend.position = "bottom")
@@ -367,8 +367,8 @@ if (has_core && "date" %in% names(ads) && "campaign" %in% names(ads) && any(!is.
           "Spend: ", scales::dollar(spend)
         ))
   ) +
-    geom_line(linewidth = 0.9) +
-    geom_point(size = 1.5) +
+    geom_line(linewidth = 0.5) +
+    geom_point(size = 1.2) +
     scale_y_continuous(labels = dollar) +
     labs(
       title = "Daily CPC by Campaign",
