@@ -18,16 +18,7 @@ output:
 ```
 
 ```{r gs4-auth, include=FALSE}
-# Private sheets via service account JSON or user OAuth.
-options(gargle_oauth_cache = "~/.secrets/gargle")
-# Set GOOGLE_SHEETS_SA_JSON in your .Renviron to the JSON path if using a service account.
-sa_path <- Sys.getenv("GOOGLE_SHEETS_SA_JSON")
-if (nzchar(sa_path) && file.exists(sa_path)) {
-  googlesheets4::gs4_auth(path = sa_path, cache = FALSE)
-} else {
-  # User OAuth (cached in ~/.secrets/gargle).
-  googlesheets4::gs4_auth()
-}
+# googlesheets4::gs4_deauth()
 ```
 
 ```{r setup, include=FALSE}
