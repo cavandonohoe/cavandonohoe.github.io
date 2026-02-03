@@ -52,12 +52,14 @@ ads_raw <- tryCatch({
   warning("Failed to read Google Ads data from Google Sheets: ", e$message)
   NULL
 })
+```
 
+```{r check-data, echo=FALSE, results='asis'}
 # If data failed to load, show message and exit
 if (is.null(ads_raw)) {
-  knitr::asis_output("
+  cat("
 ## Data Unavailable
-
+ 
 Unable to load Google Ads data. This may be because:
 
 - The Google Sheet is not accessible (check sharing permissions)
@@ -67,7 +69,9 @@ Please ensure the Google Sheet is shared with the service account or made public
 ")
   knitr::knit_exit()
 }
+```
 
+```{r process-data}
 clean_names <- function(x) {
   x %>%
     stringr::str_trim() %>%
