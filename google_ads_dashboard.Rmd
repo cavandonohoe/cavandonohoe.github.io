@@ -1,0 +1,409 @@
+---
+title: "Google Ads Overview"
+editor_options:
+  chunk_output_type: console
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+---
+
+```{r pipe, include=FALSE}
+`%>%` <- magrittr::`%>%`
+```
+
+```{r ci-skip-gs4, include=FALSE}
+# CI workflow handles authentication via GOOGLE_APPLICATION_CREDENTIALS
+# Do not call gs4_deauth() here as it would override the service account auth
+```
+
+```{r gs4-auth, include=FALSE}
+# googlesheets4::gs4_deauth()
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE,
+  results = "asis"
+)
+```
+
+```{r load}
+library(ggplot2)
+
+sheet_url <- "https://docs.google.com/spreadsheets/d/16409Uk3TV5Vb_bfMi6P0bEd9bFjpET823KKvBr6Ibqs/edit#gid=1159393973"
+sheet_name <- "Test-Report"
+sheet_range <- "A3:Z"
+
+ads_raw <- tryCatch({
+  googlesheets4::read_sheet(
+    sheet_url,
+    sheet = sheet_name,
+    range = sheet_range
+  )
+}, error = function(e) {
+  warning("Failed to read Google Ads data from Google Sheets: ", e$message)
+  NULL
+})
+```
+
+```{r check-data, echo=FALSE, results='asis'}
+# If data failed to load, show message and exit
+if (is.null(ads_raw)) {
+  cat("
+## Data Unavailable
+ 
+Unable to load Google Ads data. This may be because:
+
+- The Google Sheet is not accessible (check sharing permissions)
+- Authentication failed in CI environment
+
+Please ensure the Google Sheet is shared with the service account or made public.
+")
+  knitr::knit_exit()
+}
+```
+
+```{r process-data}
+clean_names <- function(x) {
+  x %>%
+    stringr::str_trim() %>%
+    stringr::str_to_lower() %>%
+    stringr::str_replace_all("[^a-z0-9]+", "_") %>%
+    stringr::str_replace_all("^_|_$", "")
+}
+
+drop_all_na <- function(x) {
+  if (is.list(x)) {
+    all(vapply(x, function(v) length(v) == 0 || all(is.na(v)), logical(1)))
+  } else {
+    all(is.na(x))
+  }
+}
+
+ads_raw <- ads_raw %>% dplyr::select(where(~!drop_all_na(.x)))
+names(ads_raw) <- clean_names(names(ads_raw))
+
+pick_col <- function(patterns, cols) {
+  for (pat in patterns) {
+    hit <- cols[grepl(pat, cols)]
+    if (length(hit) > 0) return(hit[1])
+  }
+  NA_character_
+}
+
+cols <- names(ads_raw)
+col_map <- list(
+  date = c("^date$", "segments_date", "^day$"),
+  campaign = c("^campaign$", "campaign_name"),
+  ad_group = c("^ad_group$", "adgroup"),
+  clicks = c("^clicks$"),
+  impressions = c("^impressions$", "^impr$", "^impr_$"),
+  cost = c("^cost$", "cost_micros", "amount_spent", "spend"),
+  conversions = c("^conversions$", "all_conversions", "total_conversions"),
+  conversion_value = c("^conversion_value$", "all_conversions_value"),
+  ctr = c("^ctr$", "click_through_rate"),
+  cpc = c("^avg_cpc$", "^average_cpc$", "^cpc$")
+)
+
+picked <- lapply(col_map, pick_col, cols = cols)
+picked <- unlist(picked)
+picked <- picked[!is.na(picked)]
+names(picked) <- names(col_map)[names(col_map) %in% names(picked)]
+
+ads <- ads_raw
+if (length(picked) > 0) {
+  ads <- dplyr::rename(ads, !!!picked)
+}
+
+numeric_cols <- intersect(
+  c("clicks", "impressions", "cost", "conversions", "conversion_value", "ctr", "cpc"),
+  names(ads)
+)
+
+ads <- ads %>%
+  dplyr::mutate(
+    dplyr::across(
+      dplyr::all_of(numeric_cols),
+      ~ if (is.character(.x)) readr::parse_number(.x) else .x
+    )
+  )
+
+cost_source <- if ("cost" %in% names(picked)) picked[["cost"]] else NULL
+if (!is.null(cost_source) && grepl("micros", cost_source)) {
+  ads <- ads %>% dplyr::mutate(cost = cost / 1e6)
+}
+
+if ("date" %in% names(ads)) {
+  ads <- ads %>%
+    dplyr::mutate(
+      date = suppressWarnings(as.Date(date)),
+      date = dplyr::if_else(is.na(date), suppressWarnings(lubridate::ymd(date)), date)
+    )
+}
+
+ads <- ads %>% dplyr::mutate(
+  ctr_calc = NA_real_,
+  cvr = NA_real_,
+  cpc_calc = NA_real_,
+  cpm = NA_real_,
+  cpl = NA_real_
+)
+
+if (all(c("impressions", "clicks") %in% names(ads))) {
+  ads <- ads %>%
+    dplyr::mutate(
+      ctr_calc = dplyr::if_else(
+        .data$impressions > 0,
+        .data$clicks / .data$impressions,
+        NA_real_
+      )
+    )
+}
+
+if (all(c("clicks", "conversions") %in% names(ads))) {
+  ads <- ads %>%
+    dplyr::mutate(
+      cvr = dplyr::if_else(
+        .data$clicks > 0,
+        .data$conversions / .data$clicks,
+        NA_real_
+      )
+    )
+}
+
+if (all(c("clicks", "cost") %in% names(ads))) {
+  ads <- ads %>%
+    dplyr::mutate(
+      cpc_calc = dplyr::if_else(
+        .data$clicks > 0,
+        .data$cost / .data$clicks,
+        NA_real_
+      )
+    )
+}
+
+if (all(c("impressions", "cost") %in% names(ads))) {
+  ads <- ads %>%
+    dplyr::mutate(
+      cpm = dplyr::if_else(
+        .data$impressions > 0,
+        .data$cost / .data$impressions * 1000,
+        NA_real_
+      )
+    )
+}
+
+if (all(c("conversions", "cost") %in% names(ads))) {
+  ads <- ads %>%
+    dplyr::mutate(
+      cpl = dplyr::if_else(
+        .data$conversions > 0,
+        .data$cost / .data$conversions,
+        NA_real_
+      )
+    )
+}
+
+has_core <- all(c("clicks", "impressions", "cost") %in% names(ads))
+```
+
+```{r kpis}
+if (!has_core) {
+  cat("Missing required columns. Expecting at least `clicks`, `impressions`, and `cost`.")
+} else {
+  # Calculate date range if available
+  date_range_text <- if ("date" %in% names(ads) && any(!is.na(ads$date))) {
+    min_date <- min(ads$date, na.rm = TRUE)
+    max_date <- max(ads$date, na.rm = TRUE)
+    paste0("- Date Range: ", format(min_date, "%b %d, %Y"), " to ", format(max_date, "%b %d, %Y"), "\n")
+  } else {
+    ""
+  }
+
+  kpis <- ads %>%
+    dplyr::summarise(
+      spend = sum(cost, na.rm = TRUE),
+      impressions = sum(impressions, na.rm = TRUE),
+      clicks = sum(clicks, na.rm = TRUE),
+      conversions = sum(conversions, na.rm = TRUE),
+      ctr = clicks / impressions,
+      cpc = spend / clicks,
+      cvr = conversions / clicks,
+      cpl = spend / conversions
+    )
+
+  cat(glue::glue(
+    "### Overview\n",
+    "{date_range_text}",
+    "- Spend: {scales::dollar(kpis$spend)}\n",
+    "- Impressions: {scales::comma(kpis$impressions)}\n",
+    "- Clicks: {scales::comma(kpis$clicks)}\n",
+    "- CTR: {scales::percent(kpis$ctr, accuracy = 0.1)}\n",
+    "- Avg CPC: {scales::dollar(kpis$cpc)}\n",
+    "- Conversions: {scales::comma(kpis$conversions)}\n",
+    "- CVR: {scales::percent(kpis$cvr, accuracy = 0.1)}\n",
+    "- CPL: {scales::dollar(kpis$cpl)}\n"
+  ))
+}
+```
+
+```{r timeseries}
+if (has_core && "date" %in% names(ads) && any(!is.na(ads$date))) {
+  daily <- ads %>%
+    dplyr::group_by(date) %>%
+    dplyr::summarise(
+      spend = sum(cost, na.rm = TRUE),
+      clicks = sum(clicks, na.rm = TRUE),
+      conversions = sum(conversions, na.rm = TRUE)
+    ) %>%
+    dplyr::ungroup()
+
+  p_spend <- ggplot(daily, aes(x = date, y = spend)) +
+    geom_line(color = "#2c3e50", linewidth = 0.9) +
+    geom_point(color = "#2c3e50", size = 1.2) +
+    scale_y_continuous(labels = scales::dollar) +
+    labs(title = "Daily Spend", x = NULL, y = NULL)
+
+  p_clicks <- ggplot(daily, aes(x = date, y = clicks)) +
+    geom_line(color = "#1f77b4", linewidth = 0.9) +
+    geom_point(color = "#1f77b4", size = 1.2) +
+    scale_y_continuous(labels = scales::comma) +
+    labs(title = "Daily Clicks", x = NULL, y = NULL)
+
+  plotly::ggplotly(p_spend)
+  plotly::ggplotly(p_clicks)
+
+  if ("conversions" %in% names(ads)) {
+    p_conversions <- ggplot(daily, aes(x = date, y = conversions)) +
+      geom_line(color = "#16a085", linewidth = 0.9) +
+      geom_point(color = "#16a085", size = 1.2) +
+      scale_y_continuous(labels = scales::comma) +
+      labs(title = "Daily Conversions", x = NULL, y = NULL)
+    plotly::ggplotly(p_conversions)
+  }
+}
+```
+
+```{r campaign_timeseries}
+if (has_core && "date" %in% names(ads) && "campaign" %in% names(ads) && any(!is.na(ads$date))) {
+  daily_campaign <- ads %>%
+    dplyr::group_by(date, campaign) %>%
+    dplyr::summarise(
+      spend = sum(cost, na.rm = TRUE),
+      clicks = sum(clicks, na.rm = TRUE),
+      conversions = sum(conversions, na.rm = TRUE),
+      .groups = "drop"
+    )
+
+  p_campaign_spend <- ggplot(
+    daily_campaign,
+    aes(x = date, y = spend, color = campaign, group = campaign,
+        text = paste0(
+          "Campaign: ", campaign, "<br>",
+          "Date: ", date, "<br>",
+          "Spend: ", scales::dollar(spend)
+        ))
+  ) +
+    geom_line(linewidth = 0.5) +
+    geom_point(size = 1.2) +
+    scale_y_continuous(labels = scales::dollar) +
+    labs(title = "Daily Spend by Campaign", x = NULL, y = NULL, color = "Campaign") +
+    theme(legend.position = "bottom")
+
+  plotly::ggplotly(p_campaign_spend, tooltip = "text") %>%
+    plotly::layout(legend = list(orientation = "h", y = -0.2))
+
+  p_campaign_clicks <- ggplot(
+    daily_campaign,
+    aes(x = date, y = clicks, color = campaign, group = campaign,
+        text = paste0(
+          "Campaign: ", campaign, "<br>",
+          "Date: ", date, "<br>",
+          "Clicks: ", scales::comma(clicks)
+        ))
+  ) +
+    geom_line(linewidth = 0.5) +
+    geom_point(size = 1.2) +
+    scale_y_continuous(labels = scales::comma) +
+    labs(title = "Daily Clicks by Campaign", x = NULL, y = NULL, color = "Campaign") +
+    theme(legend.position = "bottom")
+
+  plotly::ggplotly(p_campaign_clicks, tooltip = "text") %>%
+    plotly::layout(legend = list(orientation = "h", y = -0.2))
+}
+```
+
+```{r cpc_timeseries, results='asis'}
+if (has_core && "date" %in% names(ads) && "campaign" %in% names(ads) && any(!is.na(ads$date))) {
+  cat("\n\n**CPC (Cost Per Click)** = Total Spend / Total Clicks. Lower is better.\n\n")
+  
+  daily_campaign_cpc <- ads %>%
+    dplyr::group_by(date, campaign) %>%
+    dplyr::summarise(
+      spend = sum(cost, na.rm = TRUE),
+      clicks = sum(clicks, na.rm = TRUE),
+      .groups = "drop"
+    ) %>%
+    dplyr::mutate(
+      cpc = dplyr::if_else(clicks > 0, spend / clicks, NA_real_)
+    ) %>%
+    dplyr::filter(!is.na(cpc))
+
+  p_campaign_cpc <- ggplot(
+    daily_campaign_cpc,
+    aes(x = date, y = cpc, color = campaign, group = campaign,
+        text = paste0(
+          "Campaign: ", campaign, "<br>",
+          "Date: ", date, "<br>",
+          "CPC: ", scales::dollar(cpc), "<br>",
+          "Clicks: ", scales::comma(clicks), "<br>",
+          "Spend: ", scales::dollar(spend)
+        ))
+  ) +
+    geom_line(linewidth = 0.5) +
+    geom_point(size = 1.2) +
+    scale_y_continuous(labels = scales::dollar) +
+    labs(
+      title = "Daily CPC by Campaign",
+      x = NULL, y = NULL, color = "Campaign"
+    ) +
+    theme(legend.position = "bottom")
+
+  plotly::ggplotly(p_campaign_cpc, tooltip = "text") %>%
+    plotly::layout(legend = list(orientation = "h", y = -0.2))
+}
+```
+
+```{r campaign_table}
+if (has_core && "campaign" %in% names(ads)) {
+  campaign_summary <- ads %>%
+    dplyr::group_by(campaign) %>%
+    dplyr::summarise(
+      spend = sum(cost, na.rm = TRUE),
+      impressions = sum(impressions, na.rm = TRUE),
+      clicks = sum(clicks, na.rm = TRUE),
+      conversions = sum(conversions, na.rm = TRUE),
+      ctr = clicks / impressions,
+      cpc = spend / clicks,
+      cvr = conversions / clicks,
+      cpl = spend / conversions
+    ) %>%
+    dplyr::ungroup() %>%
+    dplyr::arrange(desc(spend))
+
+  DT::datatable(
+    campaign_summary %>%
+      dplyr::mutate(
+        spend = scales::dollar(spend),
+        ctr = scales::percent(ctr, accuracy = 0.1),
+        cpc = scales::dollar(cpc),
+        cvr = scales::percent(cvr, accuracy = 0.1),
+        cpl = scales::dollar(cpl)
+      ),
+    rownames = FALSE,
+    options = list(pageLength = 10)
+  )
+}
+```
