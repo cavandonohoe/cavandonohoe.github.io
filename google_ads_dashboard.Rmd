@@ -218,6 +218,15 @@ has_core <- all(c("clicks", "impressions", "cost") %in% names(ads))
 if (!has_core) {
   cat("Missing required columns. Expecting at least `clicks`, `impressions`, and `cost`.")
 } else {
+  # Calculate date range if available
+  date_range_text <- if ("date" %in% names(ads) && any(!is.na(ads$date))) {
+    min_date <- min(ads$date, na.rm = TRUE)
+    max_date <- max(ads$date, na.rm = TRUE)
+    paste0("- Date Range: ", format(min_date, "%b %d, %Y"), " to ", format(max_date, "%b %d, %Y"), "\n")
+  } else {
+    ""
+  }
+
   kpis <- ads %>%
     dplyr::summarise(
       spend = sum(cost, na.rm = TRUE),
@@ -232,6 +241,7 @@ if (!has_core) {
 
   cat(glue(
     "### Overview\n",
+    "{date_range_text}",
     "- Spend: {dollar(kpis$spend)}\n",
     "- Impressions: {comma(kpis$impressions)}\n",
     "- Clicks: {comma(kpis$clicks)}\n",
