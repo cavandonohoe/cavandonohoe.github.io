@@ -340,8 +340,10 @@ if (has_core && "date" %in% names(ads) && "campaign" %in% names(ads) && any(!is.
 }
 ```
 
-```{r cpc_timeseries}
+```{r cpc_timeseries, results='asis'}
 if (has_core && "date" %in% names(ads) && "campaign" %in% names(ads) && any(!is.na(ads$date))) {
+  cat("\n\n**CPC (Cost Per Click)** = Total Spend / Total Clicks. Lower is better.\n\n")
+  
   daily_campaign_cpc <- ads %>%
     dplyr::group_by(date, campaign) %>%
     dplyr::summarise(
@@ -370,7 +372,6 @@ if (has_core && "date" %in% names(ads) && "campaign" %in% names(ads) && any(!is.
     scale_y_continuous(labels = dollar) +
     labs(
       title = "Daily CPC by Campaign",
-      subtitle = "CPC (Cost Per Click) = Total Spend / Total Clicks. Lower is better.",
       x = NULL, y = NULL, color = "Campaign"
     ) +
     theme(legend.position = "bottom")
