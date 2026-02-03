@@ -44,6 +44,8 @@ navbar:
         href: my_travels.html
       - text: "When Were Confederate Statues Erected?"
         href: confederate_statues.html
+      - text: "Google Ads Overview"
+        href: google_ads_dashboard.html
       - text: "Learn R"
         menu:
         - text: "R Time Is Limited, Let's Make the Most of It"
