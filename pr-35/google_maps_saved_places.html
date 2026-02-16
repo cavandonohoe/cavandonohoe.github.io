@@ -400,8 +400,8 @@ exported CSV data from the repo.</p>
 <h2>Saved Places</h2>
 <iframe
   src="https://www.google.com/maps/d/embed?mid=1aSjDN50VR8qKu40GyIE2UsF6C8WzhGU&ehbc=2E312F"
-  width="640"
-  height="480"
+  width="100%"
+  height="650"
   style="border:0;"
   loading="lazy">
 </iframe>
@@ -415,6 +415,14 @@ whenever <code>data/*.csv</code> changes.</p>
 <h3>Saved Places (CSV)</h3>
 <div id="saved-places-status">Loading...</div>
 <div id="saved-places-table"></div>
+
+<h3>Want to go (CSV)</h3>
+<div id="want-to-go-status">Loading...</div>
+<div id="want-to-go-table"></div>
+
+<h3>Favorites (CSV)</h3>
+<div id="favorites-status">Loading...</div>
+<div id="favorites-table"></div>
 
 <script>
 function escapeHtml(value) {
@@ -468,6 +476,8 @@ function renderCsvTable(targetId, statusId, csvPath) {
 }
 
 renderCsvTable("saved-places-table", "saved-places-status", "data/saved_places.csv");
+renderCsvTable("want-to-go-table", "want-to-go-status", "data/want_to_go.csv");
+renderCsvTable("favorites-table", "favorites-status", "data/favorites.csv");
 </script>
 </div>
 <div id="setup-notes" class="section level2">
