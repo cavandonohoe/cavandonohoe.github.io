@@ -28,7 +28,7 @@ This page embeds my Google My Maps layer and shows the latest exported CSV data 
 
 ## Latest CSV Export
 
-```{r exported-data}
+```{r exported-data, results='asis'}
 want_to_go_path <- here::here("data", "want_to_go.csv")
 favorites_path <- here::here("data", "favorites.csv")
 
