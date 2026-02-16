@@ -1,0 +1,36 @@
+/* Footer Styles */
+#footer_stuff {
+  text-align: left;
+  margin: 100px auto;
+  color: #ccc;
+}
+
+.bandContent {
+  /* Additional styling for the content */
+}
+
+#full_send {
+  margin-bottom: 1em;
+}
+
+#logos {
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+#logos a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+#logos a:hover {
+  color: #fff;
+}
+
+#logos a:focus {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
