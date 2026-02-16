@@ -1,0 +1,39 @@
+name: Update My Maps exports
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 10 * * 1" # Mondays 10:17 UTC
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download KML files
+        run: |
+          set -euo pipefail
+          mkdir -p data
+          curl -fL "https://www.google.com/maps/d/kml?mid=${{ secrets.MYMAPS_WANT_TO_GO_MID }}&forcekml=1" -o data/want_to_go.kml
+          curl -fL "https://www.google.com/maps/d/kml?mid=${{ secrets.MYMAPS_FAVORITES_MID }}&forcekml=1" -o data/favorites.kml
+
+      - name: Convert KML to CSV
+        run: |
+          python3 scripts/kml_to_csv.py data/want_to_go.kml data/want_to_go.csv
+          python3 scripts/kml_to_csv.py data/favorites.kml data/favorites.csv
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/want_to_go.kml data/want_to_go.csv data/favorites.kml data/favorites.csv
+          git commit -m "Auto-update My Maps exports"
+          git push
