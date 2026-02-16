@@ -1,0 +1,92 @@
+---
+title: "Google Maps Saved Places"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+This page embeds my Google My Maps layer and shows the latest exported CSV data from the repo.
+
+## Saved Places
+
+```{=html}
+<iframe
+  src="https://www.google.com/maps/d/embed?mid=1aSjDN50VR8qKu40GyIE2UsF6C8WzhGU&ehbc=2E312F"
+  width="100%"
+  height="650"
+  style="border:0;"
+  loading="lazy">
+</iframe>
+```
+
+## Latest CSV Export
+
+```{r table-config, include=FALSE}
+want_to_go_path <- here::here("data", "want_to_go.csv")
+favorites_path <- here::here("data", "favorites.csv")
+
+datatable_options <- list(
+  paging = FALSE,
+  dom = "Bfrtip",
+  buttons = c("copy", "csv", "excel"),
+  scrollY = "400px",
+  scrollCollapse = TRUE,
+  scrollX = TRUE,
+  autoWidth = TRUE
+)
+```
+
+```{r last-imported, results='asis'}
+csv_paths <- c(want_to_go_path, favorites_path)
+existing_csvs <- csv_paths[file.exists(csv_paths)]
+
+if (length(existing_csvs) == 0) {
+  cat("Last imported: CSV files not found yet.\n\n")
+} else {
+  last_imported <- max(file.info(existing_csvs)$mtime)
+  last_imported_fmt <- format(last_imported, "%Y-%m-%d %H:%M:%S %Z")
+  cat(paste0("Last imported: ", last_imported_fmt, "\n\n"))
+}
+```
+
+### Want to go
+
+```{r want-to-go-table, results='asis'}
+if (!file.exists(want_to_go_path)) {
+  cat("`data/want_to_go.csv` not found.\n\n")
+} else {
+  readr::read_csv(want_to_go_path, show_col_types = FALSE) |>
+    DT::datatable(
+      filter = "top",
+      extensions = "Buttons",
+      options = datatable_options,
+      width = "100%",
+      rownames = FALSE
+    )
+}
+```
+
+### Favorites
+
+```{r favorites-table, results='asis'}
+if (!file.exists(favorites_path)) {
+  cat("`data/favorites.csv` not found.\n\n")
+} else {
+  readr::read_csv(favorites_path, show_col_types = FALSE) |>
+    DT::datatable(
+      filter = "top",
+      extensions = "Buttons",
+      options = datatable_options,
+      width = "100%",
+      rownames = FALSE
+    )
+}
+```
