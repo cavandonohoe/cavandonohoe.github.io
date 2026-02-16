@@ -90,10 +90,3 @@ if (!file.exists(favorites_path)) {
     )
 }
 ```
-
-## Setup Notes
-
-- Add repo secret `MYMAPS_MID` with your My Maps `mid`.
-- The weekly workflow updates these files:
-  - `data/saved_places.kml`
-  - `data/saved_places.csv`
