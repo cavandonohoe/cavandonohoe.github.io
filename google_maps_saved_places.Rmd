@@ -11,35 +11,19 @@ output:
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 ```
 
-This page embeds my Google Maps lists and shows the latest exported CSV data from the repo.
+This page embeds my Google My Maps layer and shows the latest exported CSV data from the repo.
 
-## Want To Go
+## Saved Places
 
 ```{=html}
 <iframe
-  src="https://www.google.com/maps/d/embed?mid=YOUR_WANT_TO_GO_MID"
+  src="https://www.google.com/maps/d/embed?mid=1aSjDN50VR8qKu40GyIE2UsF6C8WzhGU&ehbc=2E312F"
   width="100%"
-  height="600"
+  height="650"
   style="border:0;"
   loading="lazy">
 </iframe>
 ```
-
-Source link: <https://maps.app.goo.gl/h3zRvZ1pWLJYHoSN8>
-
-## Favorites
-
-```{=html}
-<iframe
-  src="https://www.google.com/maps/d/embed?mid=YOUR_FAVORITES_MID"
-  width="100%"
-  height="600"
-  style="border:0;"
-  loading="lazy">
-</iframe>
-```
-
-Source link: <https://maps.app.goo.gl/x5XvtUVNLGtgWFG7A>
 
 ## Latest CSV Export
 
@@ -48,13 +32,9 @@ This section loads CSV files in the browser, so table content updates whenever `
 ```{=html}
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
-<h3>Want To Go (CSV)</h3>
-<div id="want-to-go-status">Loading...</div>
-<div id="want-to-go-table"></div>
-
-<h3>Favorites (CSV)</h3>
-<div id="favorites-status">Loading...</div>
-<div id="favorites-table"></div>
+<h3>Saved Places (CSV)</h3>
+<div id="saved-places-status">Loading...</div>
+<div id="saved-places-table"></div>
 
 <script>
 function escapeHtml(value) {
@@ -107,17 +87,13 @@ function renderCsvTable(targetId, statusId, csvPath) {
   });
 }
 
-renderCsvTable("want-to-go-table", "want-to-go-status", "data/want_to_go.csv");
-renderCsvTable("favorites-table", "favorites-status", "data/favorites.csv");
+renderCsvTable("saved-places-table", "saved-places-status", "data/saved_places.csv");
 </script>
 ```
 
 ## Setup Notes
 
-- Add repo secret `MYMAPS_WANT_TO_GO_MID` with your Want To Go My Maps `mid`.
-- Add repo secret `MYMAPS_FAVORITES_MID` with your Favorites My Maps `mid`.
+- Add repo secret `MYMAPS_MID` with your My Maps `mid`.
 - The weekly workflow updates these files:
-  - `data/want_to_go.kml`
-  - `data/want_to_go.csv`
-  - `data/favorites.kml`
-  - `data/favorites.csv`
+  - `data/saved_places.kml`
+  - `data/saved_places.csv`
