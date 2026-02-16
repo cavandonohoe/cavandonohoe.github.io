@@ -18,8 +18,8 @@ This page embeds my Google My Maps layer and shows the latest exported CSV data 
 ```{=html}
 <iframe
   src="https://www.google.com/maps/d/embed?mid=1aSjDN50VR8qKu40GyIE2UsF6C8WzhGU&ehbc=2E312F"
-  width="100%"
-  height="650"
+  width="640"
+  height="480"
   style="border:0;"
   loading="lazy">
 </iframe>
