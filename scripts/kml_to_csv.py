@@ -15,31 +15,39 @@ def main(kml_path, csv_path):
     root = tree.getroot()
 
     rows = []
-    for pm in root.findall(".//kml:Placemark", KML_NS):
-        name = text_or_empty(pm, "kml:name")
-        description = text_or_empty(pm, "kml:description")
 
-        coord_text = text_or_empty(pm, ".//kml:Point/kml:coordinates")
-        lon, lat = "", ""
-        if coord_text:
-            parts = coord_text.split(",")
-            if len(parts) >= 2:
-                lon = parts[0].strip()
-                lat = parts[1].strip()
+    # In My Maps KML, layers typically appear as <Folder><name>Layer</name>...<Placemark>...</Placemark></Folder>
+    for folder in root.findall(".//kml:Folder", KML_NS):
+        layer_name = text_or_empty(folder, "kml:name")
+        for pm in folder.findall(".//kml:Placemark", KML_NS):
+            name = text_or_empty(pm, "kml:name")
+            description = text_or_empty(pm, "kml:description")
+            coord_text = text_or_empty(pm, ".//kml:Point/kml:coordinates")
 
-        rows.append(
-            {
-                "name": name,
-                "description": description,
-                "latitude": lat,
-                "longitude": lon,
-            }
-        )
+            lon, lat = "", ""
+            if coord_text:
+                parts = coord_text.split(",")
+                if len(parts) >= 2:
+                    lon = parts[0].strip()
+                    lat = parts[1].strip()
+
+            if not (name or lat or lon):
+                continue
+
+            rows.append(
+                {
+                    "layer": layer_name,
+                    "name": name,
+                    "description": description,
+                    "latitude": lat,
+                    "longitude": lon,
+                }
+            )
 
     with open(csv_path, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(
             f,
-            fieldnames=["name", "description", "latitude", "longitude"],
+            fieldnames=["layer", "name", "description", "latitude", "longitude"],
         )
         w.writeheader()
         w.writerows(rows)
