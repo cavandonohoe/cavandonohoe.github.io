@@ -44,6 +44,19 @@ datatable_options <- list(
 )
 ```
 
+```{r last-imported, results='asis'}
+csv_paths <- c(want_to_go_path, favorites_path)
+existing_csvs <- csv_paths[file.exists(csv_paths)]
+
+if (length(existing_csvs) == 0) {
+  cat("Last imported: CSV files not found yet.\n\n")
+} else {
+  last_imported <- max(file.info(existing_csvs)$mtime)
+  last_imported_fmt <- format(last_imported, "%Y-%m-%d %H:%M:%S %Z")
+  cat(paste0("Last imported: ", last_imported_fmt, "\n\n"))
+}
+```
+
 ### Want to go
 
 ```{r want-to-go-table, results='asis'}
