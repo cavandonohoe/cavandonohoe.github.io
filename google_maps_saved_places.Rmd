@@ -28,51 +28,41 @@ This page embeds my Google My Maps layer and shows the latest exported CSV data 
 ## Latest CSV Export
 
 ```{r exported-data}
-saved_places_path <- here::here("data", "saved_places.csv")
+want_to_go_path <- here::here("data", "want_to_go.csv")
+favorites_path <- here::here("data", "favorites.csv")
 
-if (!file.exists(saved_places_path)) {
-  cat("`data/saved_places.csv` not found.")
+datatable_options <- list(
+  paging = FALSE,
+  dom = "Bfrtip",
+  buttons = c("copy", "csv", "excel"),
+  scrollY = "400px",
+  scrollX = TRUE,
+  autoWidth = TRUE
+)
+
+cat("### Want to go\n\n")
+if (!file.exists(want_to_go_path)) {
+  cat("`data/want_to_go.csv` not found.\n\n")
 } else {
-  saved_places <- readr::read_csv(saved_places_path, show_col_types = FALSE)
-
-  want_to_go <- saved_places |>
-    dplyr::filter(layer == "Want to go") |>
-    dplyr::select(name, note, url, tags, comment)
-
-  favorites <- saved_places |>
-    dplyr::filter(layer == "Favorite places") |>
-    dplyr::select(name, note, url, tags, comment)
-
-  cat("### Want to go\n\n")
-  want_to_go |>
+  readr::read_csv(want_to_go_path, show_col_types = FALSE) |>
     DT::datatable(
       filter = "top",
       extensions = "Buttons",
-      options = list(
-        paging = FALSE,
-        dom = "Bfrtip",
-        buttons = c("copy", "csv", "excel"),
-        scrollY = "400px",
-        scrollX = TRUE,
-        autoWidth = TRUE
-      ),
+      options = datatable_options,
       width = "100%",
       rownames = FALSE
     )
+}
 
-  cat("\n\n### Favorites\n\n")
-  favorites |>
+cat("\n\n### Favorites\n\n")
+if (!file.exists(favorites_path)) {
+  cat("`data/favorites.csv` not found.\n\n")
+} else {
+  readr::read_csv(favorites_path, show_col_types = FALSE) |>
     DT::datatable(
       filter = "top",
       extensions = "Buttons",
-      options = list(
-        paging = FALSE,
-        dom = "Bfrtip",
-        buttons = c("copy", "csv", "excel"),
-        scrollY = "400px",
-        scrollX = TRUE,
-        autoWidth = TRUE
-      ),
+      options = datatable_options,
       width = "100%",
       rownames = FALSE
     )
