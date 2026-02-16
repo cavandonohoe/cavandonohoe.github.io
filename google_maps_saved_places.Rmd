@@ -28,7 +28,7 @@ This page embeds my Google My Maps layer and shows the latest exported CSV data 
 
 ## Latest CSV Export
 
-```{r exported-data, results='asis'}
+```{r table-config, include=FALSE}
 want_to_go_path <- here::here("data", "want_to_go.csv")
 favorites_path <- here::here("data", "favorites.csv")
 
@@ -40,8 +40,11 @@ datatable_options <- list(
   scrollX = TRUE,
   autoWidth = TRUE
 )
+```
 
-cat("### Want to go\n\n")
+### Want to go
+
+```{r want-to-go-table, results='asis'}
 if (!file.exists(want_to_go_path)) {
   cat("`data/want_to_go.csv` not found.\n\n")
 } else {
@@ -54,8 +57,11 @@ if (!file.exists(want_to_go_path)) {
       rownames = FALSE
     )
 }
+```
 
-cat("\n\n### Favorites\n\n")
+### Favorites
+
+```{r favorites-table, results='asis'}
 if (!file.exists(favorites_path)) {
   cat("`data/favorites.csv` not found.\n\n")
 } else {
