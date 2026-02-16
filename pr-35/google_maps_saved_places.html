@@ -394,31 +394,17 @@ $(document).ready(function () {
 </div>
 
 
-<p>This page embeds my Google Maps lists and shows the latest exported
-CSV data from the repo.</p>
-<div id="want-to-go" class="section level2">
-<h2>Want To Go</h2>
+<p>This page embeds my Google My Maps layer and shows the latest
+exported CSV data from the repo.</p>
+<div id="saved-places" class="section level2">
+<h2>Saved Places</h2>
 <iframe
-  src="https://www.google.com/maps/d/embed?mid=YOUR_WANT_TO_GO_MID"
+  src="https://www.google.com/maps/d/embed?mid=1aSjDN50VR8qKu40GyIE2UsF6C8WzhGU&ehbc=2E312F"
   width="100%"
-  height="600"
+  height="650"
   style="border:0;"
   loading="lazy">
 </iframe>
-<p>Source link: <a href="https://maps.app.goo.gl/h3zRvZ1pWLJYHoSN8"
-class="uri">https://maps.app.goo.gl/h3zRvZ1pWLJYHoSN8</a></p>
-</div>
-<div id="favorites" class="section level2">
-<h2>Favorites</h2>
-<iframe
-  src="https://www.google.com/maps/d/embed?mid=YOUR_FAVORITES_MID"
-  width="100%"
-  height="600"
-  style="border:0;"
-  loading="lazy">
-</iframe>
-<p>Source link: <a href="https://maps.app.goo.gl/x5XvtUVNLGtgWFG7A"
-class="uri">https://maps.app.goo.gl/x5XvtUVNLGtgWFG7A</a></p>
 </div>
 <div id="latest-csv-export" class="section level2">
 <h2>Latest CSV Export</h2>
@@ -426,13 +412,9 @@ class="uri">https://maps.app.goo.gl/x5XvtUVNLGtgWFG7A</a></p>
 whenever <code>data/*.csv</code> changes.</p>
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
-<h3>Want To Go (CSV)</h3>
-<div id="want-to-go-status">Loading...</div>
-<div id="want-to-go-table"></div>
-
-<h3>Favorites (CSV)</h3>
-<div id="favorites-status">Loading...</div>
-<div id="favorites-table"></div>
+<h3>Saved Places (CSV)</h3>
+<div id="saved-places-status">Loading...</div>
+<div id="saved-places-table"></div>
 
 <script>
 function escapeHtml(value) {
@@ -485,23 +467,18 @@ function renderCsvTable(targetId, statusId, csvPath) {
   });
 }
 
-renderCsvTable("want-to-go-table", "want-to-go-status", "data/want_to_go.csv");
-renderCsvTable("favorites-table", "favorites-status", "data/favorites.csv");
+renderCsvTable("saved-places-table", "saved-places-status", "data/saved_places.csv");
 </script>
 </div>
 <div id="setup-notes" class="section level2">
 <h2>Setup Notes</h2>
 <ul>
-<li>Add repo secret <code>MYMAPS_WANT_TO_GO_MID</code> with your Want To
-Go My Maps <code>mid</code>.</li>
-<li>Add repo secret <code>MYMAPS_FAVORITES_MID</code> with your
-Favorites My Maps <code>mid</code>.</li>
+<li>Add repo secret <code>MYMAPS_MID</code> with your My Maps
+<code>mid</code>.</li>
 <li>The weekly workflow updates these files:
 <ul>
-<li><code>data/want_to_go.kml</code></li>
-<li><code>data/want_to_go.csv</code></li>
-<li><code>data/favorites.kml</code></li>
-<li><code>data/favorites.csv</code></li>
+<li><code>data/saved_places.kml</code></li>
+<li><code>data/saved_places.csv</code></li>
 </ul></li>
 </ul>
 </div>
