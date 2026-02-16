@@ -27,78 +27,38 @@ This page embeds my Google My Maps layer and shows the latest exported CSV data 
 
 ## Latest CSV Export
 
-This section loads CSV files in the browser, so table content updates whenever `data/*.csv` changes.
+```{r exported-data}
+saved_places_path <- here::here("data", "saved_places.csv")
 
-```{=html}
-<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+if (!file.exists(saved_places_path)) {
+  cat("`data/saved_places.csv` not found.")
+} else {
+  saved_places <- readr::read_csv(saved_places_path, show_col_types = FALSE)
 
-<h3>Saved Places (CSV)</h3>
-<div id="saved-places-status">Loading...</div>
-<div id="saved-places-table"></div>
+  want_to_go <- saved_places |>
+    dplyr::filter(layer == "Want to go") |>
+    dplyr::select(name, note, url, tags, comment)
 
-<h3>Want to go (CSV)</h3>
-<div id="want-to-go-status">Loading...</div>
-<div id="want-to-go-table"></div>
+  favorites <- saved_places |>
+    dplyr::filter(layer == "Favorite places") |>
+    dplyr::select(name, note, url, tags, comment)
 
-<h3>Favorites (CSV)</h3>
-<div id="favorites-status">Loading...</div>
-<div id="favorites-table"></div>
+  cat("### Want to go\n\n")
+  want_to_go |>
+    DT::datatable(
+      filter = "top",
+      options = list(pageLength = 10, scrollX = TRUE),
+      rownames = FALSE
+    )
 
-<script>
-function escapeHtml(value) {
-  return String(value ?? "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
+  cat("\n\n### Favorites\n\n")
+  favorites |>
+    DT::datatable(
+      filter = "top",
+      options = list(pageLength = 10, scrollX = TRUE),
+      rownames = FALSE
+    )
 }
-
-function renderCsvTable(targetId, statusId, csvPath) {
-  const statusEl = document.getElementById(statusId);
-  const targetEl = document.getElementById(targetId);
-  const cacheBuster = Date.now();
-
-  Papa.parse(`${csvPath}?v=${cacheBuster}`, {
-    download: true,
-    header: true,
-    skipEmptyLines: true,
-    complete: function(results) {
-      const rows = results.data || [];
-      if (!rows.length) {
-        statusEl.textContent = "No rows found.";
-        targetEl.innerHTML = "";
-        return;
-      }
-
-      const headers = Object.keys(rows[0]);
-      const headHtml = headers.map(h => `<th>${escapeHtml(h)}</th>`).join("");
-      const bodyHtml = rows.map(row => {
-        const cells = headers.map(h => `<td>${escapeHtml(row[h])}</td>`).join("");
-        return `<tr>${cells}</tr>`;
-      }).join("");
-
-      targetEl.innerHTML = `
-        <div style="overflow-x:auto;">
-          <table class="table table-striped table-condensed" style="width:100%;">
-            <thead><tr>${headHtml}</tr></thead>
-            <tbody>${bodyHtml}</tbody>
-          </table>
-        </div>
-      `;
-      statusEl.textContent = `Loaded ${rows.length} rows from ${csvPath}.`;
-    },
-    error: function(err) {
-      statusEl.textContent = `Could not load ${csvPath}: ${err.message || err}`;
-      targetEl.innerHTML = "";
-    }
-  });
-}
-
-renderCsvTable("saved-places-table", "saved-places-status", "data/saved_places.csv");
-renderCsvTable("want-to-go-table", "want-to-go-status", "data/want_to_go.csv");
-renderCsvTable("favorites-table", "favorites-status", "data/favorites.csv");
-</script>
 ```
 
 ## Setup Notes
