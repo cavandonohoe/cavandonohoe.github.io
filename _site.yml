@@ -24,8 +24,6 @@ navbar:
       menu:
       - text: "IMDb TV Series"
         href: imdb_top_250_tv_series.html
-      - text: "Google Maps: Want To Go + Favorites"
-        href: google_maps_saved_places.html
       - text: "Best Picture and Top 1000 Box Office"
         href: best_pic_vs_top_1000.html
       - text: "Top 250 IMDb Movies with Rotten Tomato Scores"
@@ -38,6 +36,8 @@ navbar:
         href: firefighter_schedule.html
       - text: "TOHS Class of 2012 Reunion"
         href: tohs_reunion.html
+      - text: "Google Maps: Want To Go + Favorites"
+        href: google_maps_saved_places.html
       - text: "Sierpinski Triangle"
         href: sierpinski_triangle.html
       - text: "My IMDb Ratings"
