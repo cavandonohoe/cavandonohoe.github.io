@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>My saved spots</name>
+    <description><![CDATA[Want to go's and Favorites]]></description>
+    <Folder>
+      <name>Want to go</name>
+    </Folder>
+    <Folder>
+      <name>Favorites</name>
+    </Folder>
+  </Document>
+</kml>
