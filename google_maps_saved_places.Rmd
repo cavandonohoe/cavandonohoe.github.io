@@ -47,7 +47,16 @@ if (!file.exists(saved_places_path)) {
   want_to_go |>
     DT::datatable(
       filter = "top",
-      options = list(pageLength = 10, scrollX = TRUE),
+      extensions = "Buttons",
+      options = list(
+        paging = FALSE,
+        dom = "Bfrtip",
+        buttons = c("copy", "csv", "excel"),
+        scrollY = "400px",
+        scrollX = TRUE,
+        autoWidth = TRUE
+      ),
+      width = "100%",
       rownames = FALSE
     )
 
@@ -55,7 +64,16 @@ if (!file.exists(saved_places_path)) {
   favorites |>
     DT::datatable(
       filter = "top",
-      options = list(pageLength = 10, scrollX = TRUE),
+      extensions = "Buttons",
+      options = list(
+        paging = FALSE,
+        dom = "Bfrtip",
+        buttons = c("copy", "csv", "excel"),
+        scrollY = "400px",
+        scrollX = TRUE,
+        autoWidth = TRUE
+      ),
+      width = "100%",
       rownames = FALSE
     )
 }
