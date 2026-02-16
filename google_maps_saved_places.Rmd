@@ -33,7 +33,8 @@ want_to_go_path <- here::here("data", "want_to_go.csv")
 favorites_path <- here::here("data", "favorites.csv")
 
 datatable_options <- list(
-  paging = FALSE,
+  paging = TRUE,
+  pageLength = 10,
   dom = "Bfrtip",
   buttons = c("copy", "csv", "excel"),
   scrollX = TRUE,
