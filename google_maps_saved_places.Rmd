@@ -2,6 +2,7 @@
 title: "Google Maps Saved Places"
 output:
   html_document:
+    toc: true
     includes:
       in_header: header/header.html
       after_body: include_footer.html
