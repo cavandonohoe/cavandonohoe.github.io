@@ -25,8 +25,8 @@ knitr::opts_chunk$set(
 
 # C schedule
 wyetts_work_schedule <-
-  tibble::tibble(days = seq.Date(as.Date("2022-01-18"), by = 1, length.out = 13509),
-         bool = rep(c(1, 0, 1, 0, 1, 0, 0, 0, 0), 13509 / 9))
+  tibble::tibble(days = seq.Date(as.Date("2025-01-12"), by = 1, length.out = 13203),
+         bool = rep(c(1, 0, 1, 0, 1, 0, 0, 0, 0), 13203 / 9))
 
 
 segments_and_weekends_c <- wyetts_work_schedule %>%
