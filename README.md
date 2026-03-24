@@ -33,6 +33,9 @@ Movies & data:
   Plots](https://cavandonohoe.github.io/imdb_rating_plot.html)
 - [Best Picture
   Nominees](https://cavandonohoe.github.io/best_picture_nominees.html)
+- [Rent vs. Buy
+  Calculator](https://cavandonohoe.shinyapps.io/rent-vs-buy/)
+  ([source](https://github.com/cavandonohoe/rent-vs-buy))
 - [Confederate Statue
   Analysis](https://github.com/cavandonohoe/confederate_statues)
 - [Sierpinski
@@ -54,3 +57,80 @@ Learning:
 CV:
 
 - [CV](https://cavandonohoe.github.io/cv.html)
+
+## Setup and Local Development
+
+This website is built using R Markdown and deployed via GitHub Actions
+to GitHub Pages.
+
+### Prerequisites
+
+- R (\>= 4.2)
+- R packages listed in `DESCRIPTION`
+- Pandoc (installed automatically by GitHub Actions, or via RStudio)
+
+### Local Development
+
+1.  Clone the repository:
+
+    ``` bash
+    git clone https://github.com/cavandonohoe/cavandonohoe.github.io.git
+    cd cavandonohoe.github.io
+    ```
+
+2.  Install R dependencies:
+
+    ``` r
+    install.packages(c("rmarkdown", "knitr", "tidyverse", "rvest", "xml2", 
+                      "httr2", "curl", "DT", "scales", "plotly", "glue", 
+                      "here", "readxl", "googlesheets4", "ggplot2", 
+                      "RColorBrewer", "pagedown", "lubridate"))
+    ```
+
+3.  Set up Google Sheets authentication (for CV):
+
+    - The site uses Google Sheets API for the CV
+    - For local development, authenticate using
+      `googlesheets4::gs4_auth()`
+    - For CI/CD, a service account key is used (stored as GitHub secret)
+
+4.  Build the site locally:
+
+    ``` r
+    rmarkdown::render_site()
+    ```
+
+    The site will be built in the `_site/` directory.
+
+5.  Preview locally:
+
+    - Open `_site/index.html` in a browser, or
+    - Use RStudio’s “Preview” feature
+
+### Project Structure
+
+- `*.Rmd` files: Individual pages of the website
+- `_site.yml`: Site configuration and navigation
+- `_common.R`: Common R code (Google auth setup for CI)
+- `header/header.html`: HTML header with meta tags and favicons
+- `include_footer.html`: Footer with contact links
+- `css/footer.css`: Footer styling
+- `.github/workflows/`: GitHub Actions workflows for CI/CD
+- `data/`: Data files used by various pages
+- `scripts/`: Utility scripts (e.g., ensuring gs4 guards)
+
+### Deployment
+
+The site is automatically deployed to GitHub Pages via GitHub Actions
+when changes are pushed to the `main` branch. The workflow:
+
+1.  Sets up R and dependencies
+2.  Validates package dependencies
+3.  Authenticates with Google APIs using service account
+4.  Renders the R Markdown site
+5.  Deploys to GitHub Pages
+
+### Contributing
+
+If you find issues or have suggestions, please open an issue or submit a
+pull request!

@@ -44,6 +44,8 @@ navbar:
         href: my_imdb.html
       - text: "Get Bloggy With It"
         href: my_travels.html
+      - text: "Rent vs. Buy Calculator"
+        href: https://cavandonohoe.shinyapps.io/rent-vs-buy/
       - text: "When Were Confederate Statues Erected?"
         href: confederate_statues.html
       - text: "Learn R"
