@@ -46,6 +46,8 @@ navbar:
         href: my_travels.html
       - text: "Rent vs. Buy Calculator"
         href: https://cavandonohoe.shinyapps.io/rent-vs-buy/
+      - text: "AVCA Men's Volleyball All-Americans"
+        href: avca_all_americans.html
       - text: "When Were Confederate Statues Erected?"
         href: confederate_statues.html
       - text: "Learn R"

@@ -1,0 +1,81 @@
+---
+title: "AVCA Men's Volleyball First-Team All-Americans"
+editor_options:
+  chunk_output_type: console
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+---
+
+```{r pipe, include=FALSE}
+`%>%` <- magrittr::`%>%`
+```
+
+The [American Volleyball Coaches Association (AVCA)](https://www.avca.org/) selects All-America teams for National Collegiate (Division I-II) men's volleyball each year. This page tracks every **first-team** selection from 2016 to 2025 --- 108 players across 10 seasons.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE,
+  results = "asis"
+)
+```
+
+```{r data}
+all_americans <- readr::read_csv(here::here("data", "avca_first_team_all_americans.csv"))
+```
+
+[Raw Data](data/avca_first_team_all_americans.csv)
+
+## All First-Team Selections (2016--2025)
+
+```{r all_table}
+all_americans %>%
+  dplyr::select(Year = year, Name = name, School = school,
+                Position = position, Class = class) %>%
+  DT::datatable(filter = "top", extensions = "Buttons",
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE))
+```
+
+## Multi-Year First-Team Selections
+
+Players who made the first team more than once during this window.
+
+```{r repeat_table}
+repeats <- all_americans %>%
+  dplyr::group_by(name) %>%
+  dplyr::filter(dplyr::n() > 1) %>%
+  dplyr::summarise(
+    times = dplyr::n(),
+    years = paste(year, collapse = ", "),
+    schools = paste(unique(school), collapse = "; "),
+    positions = paste(unique(position), collapse = "/"),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(dplyr::desc(times), name)
+
+repeats %>%
+  dplyr::select(Name = name, `Times Selected` = times, Years = years,
+                School = schools, Position = positions) %>%
+  DT::datatable(filter = "top", extensions = "Buttons",
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE))
+```
+
+## Selections by School
+
+```{r school_table}
+all_americans %>%
+  dplyr::count(school, name = "selections") %>%
+  dplyr::arrange(dplyr::desc(selections)) %>%
+  dplyr::rename(School = school, `First-Team Selections` = selections) %>%
+  DT::datatable(filter = "top", extensions = "Buttons",
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE))
+```
+
+---
+
+**Sources:** [AVCA All-America Teams by Year (1991--2024)](https://www.avca.org/wp-content/uploads/2024/05/AVCA-NCAA-National-Collegiate-MVB-All-America-Teams-Year-by-Year.xlsx) and [2025 AVCA All-Americans](https://www.avca.org/award/2025-avca-national-collegiate-mens-all-america-teams/).
