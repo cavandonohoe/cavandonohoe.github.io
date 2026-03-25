@@ -34,6 +34,7 @@ all_americans <- readr::read_csv(here::here("data", "avca_first_team_all_america
 all_americans %>%
   dplyr::select(Year = year, Name = name, School = school,
                 Position = position, Class = class) %>%
+  dplyr::mutate(Position = factor(Position), Class = factor(Class)) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
