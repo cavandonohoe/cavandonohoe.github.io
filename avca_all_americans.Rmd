@@ -13,8 +13,6 @@ output:
 `%>%` <- magrittr::`%>%`
 ```
 
-The [American Volleyball Coaches Association (AVCA)](https://www.avca.org/) selects All-America teams for National Collegiate (Division I-II) men's volleyball each year. This page tracks every **first-team** selection from 2016 to 2025 --- 108 players across 10 seasons.
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
   echo = FALSE, message = FALSE, warning = FALSE,
@@ -25,11 +23,16 @@ knitr::opts_chunk$set(
 ```{r data}
 all_americans <- readr::read_csv(here::here("data", "avca_first_team_all_americans.csv")) %>%
   dplyr::mutate(school = stringr::str_replace_all(school, "\u2018|\u2019", "'"))
+
+champions <- readr::read_csv(here::here("data", "avca_champions.csv"))
 ```
 
-[Raw Data](data/avca_first_team_all_americans.csv)
+The [American Volleyball Coaches Association (AVCA)](https://www.avca.org/) selects All-America teams for National Collegiate (Division I-II) men's volleyball each year. This page tracks every **first-team** selection from `r min(all_americans$year)` to `r max(all_americans$year)` --- `r nrow(all_americans)` players across `r length(unique(all_americans$year))` seasons.
 
-## All First-Team Selections (2016--2025)
+[Raw Data](data/avca_first_team_all_americans.csv)
+[(Data Update Script)](https://github.com/cavandonohoe/cavandonohoe.github.io/blob/main/web_scraping/avca_all_americans.R)
+
+## All First-Team Selections (`r min(all_americans$year)`--`r max(all_americans$year)`)
 
 ```{r all_table}
 all_americans %>%
@@ -83,26 +86,6 @@ all_americans %>%
 The setter runs the offense. How often does the national champion have their setter recognized as one of the best in the country?
 
 ```{r champ_setter}
-champions <- tibble::tibble(
-  year = 2016:2025,
-  champion = c(
-    "Ohio State University", "Ohio State University",
-    "Long Beach State University", "Long Beach State University",
-    NA_character_,
-    "University of Hawai'i", "University of Hawai'i",
-    "UCLA", "UCLA",
-    "Long Beach State University"
-  ),
-  champion_short = c(
-    "Ohio State", "Ohio State",
-    "Long Beach State", "Long Beach State",
-    "Canceled (COVID-19)",
-    "Hawai'i", "Hawai'i",
-    "UCLA", "UCLA",
-    "Long Beach State"
-  )
-)
-
 setter_positions <- c("S", "S/H")
 
 first_team_setters <- all_americans %>%
