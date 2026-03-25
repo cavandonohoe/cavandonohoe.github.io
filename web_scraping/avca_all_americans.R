@@ -21,11 +21,22 @@ excel_url <- paste0(
   "AVCA-NCAA-National-Collegiate-MVB-All-America-Teams-Year-by-Year.xlsx"
 )
 
-first_year <- 2016
+first_year <- 2005
 
 champions <- tibble::tibble(
-  year = c(2016L, 2017L, 2018L, 2019L, 2020L, 2021L, 2022L, 2023L, 2024L, 2025L),
+  year = 2005:2025,
   champion = c(
+    "Pepperdine University",
+    "UCLA",
+    "UC Irvine",
+    "Penn State University",
+    "UC Irvine",
+    "Stanford University",
+    "Ohio State University",
+    "UC Irvine",
+    "UC Irvine",
+    "Loyola University Chicago",
+    "Loyola University Chicago",
     "Ohio State University",
     "Ohio State University",
     "Long Beach State University",
@@ -38,6 +49,17 @@ champions <- tibble::tibble(
     "Long Beach State University"
   ),
   champion_short = c(
+    "Pepperdine",
+    "UCLA",
+    "UC Irvine",
+    "Penn State",
+    "UC Irvine",
+    "Stanford",
+    "Ohio State",
+    "UC Irvine",
+    "UC Irvine",
+    "Loyola Chicago",
+    "Loyola Chicago",
     "Ohio State",
     "Ohio State",
     "Long Beach State",
@@ -49,6 +71,14 @@ champions <- tibble::tibble(
     "UCLA",
     "Long Beach State"
   )
+)
+
+# School name aliases: the AVCA Excel uses different names across years.
+# Map all variants to a single canonical name for consistent matching.
+school_aliases <- c(
+  "University of California, Irvine" = "UC Irvine",
+  "Long Beach State" = "Long Beach State University",
+  "Cal State Northridge" = "California State University Northridge"
 )
 
 # Manual additions for years not yet in the AVCA Excel file.
@@ -133,7 +163,10 @@ if (nrow(manual_new) > 0) {
 }
 
 all_americans <- dplyr::bind_rows(excel_data, manual_new) %>%
-  dplyr::mutate(school = stringr::str_replace_all(school, "\u2018|\u2019", "'")) %>%
+  dplyr::mutate(
+    school = stringr::str_replace_all(school, "\u2018|\u2019", "'"),
+    school = dplyr::recode(school, !!!school_aliases)
+  ) %>%
   dplyr::arrange(year, name)
 
 # --- SAVE --------------------------------------------------------------------
