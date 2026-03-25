@@ -23,7 +23,8 @@ knitr::opts_chunk$set(
 ```
 
 ```{r data}
-all_americans <- readr::read_csv(here::here("data", "avca_first_team_all_americans.csv"))
+all_americans <- readr::read_csv(here::here("data", "avca_first_team_all_americans.csv")) %>%
+  dplyr::mutate(school = stringr::str_replace_all(school, "\u2018|\u2019", "'"))
 ```
 
 [Raw Data](data/avca_first_team_all_americans.csv)
@@ -75,6 +76,80 @@ all_americans %>%
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
+```
+
+## Did the National Champion Have a First-Team All-American Setter?
+
+The setter runs the offense. How often does the national champion have their setter recognized as one of the best in the country?
+
+```{r champ_setter}
+champions <- tibble::tibble(
+  year = 2016:2025,
+  champion = c(
+    "Ohio State University", "Ohio State University",
+    "Long Beach State University", "Long Beach State University",
+    NA_character_,
+    "University of Hawai'i", "University of Hawai'i",
+    "UCLA", "UCLA",
+    "Long Beach State University"
+  ),
+  champion_short = c(
+    "Ohio State", "Ohio State",
+    "Long Beach State", "Long Beach State",
+    "Canceled (COVID-19)",
+    "Hawai'i", "Hawai'i",
+    "UCLA", "UCLA",
+    "Long Beach State"
+  )
+)
+
+setter_positions <- c("S", "S/H")
+
+first_team_setters <- all_americans %>%
+  dplyr::filter(position %in% setter_positions) %>%
+  dplyr::select(year, setter = name, school, position)
+
+champ_setter <- champions %>%
+  dplyr::left_join(first_team_setters, by = c("year", "champion" = "school")) %>%
+  dplyr::mutate(
+    had_first_team_setter = dplyr::case_when(
+      is.na(champion) ~ NA_character_,
+      !is.na(setter) ~ paste0("\u2705 Yes (", setter, ")"),
+      TRUE ~ "\u274C No"
+    )
+  )
+
+all_setters_by_year <- first_team_setters %>%
+  dplyr::group_by(year) %>%
+  dplyr::summarise(
+    all_first_team_setters = paste0(setter, " (", school, ")", collapse = ", "),
+    .groups = "drop"
+  )
+
+champ_display <- champ_setter %>%
+  dplyr::left_join(all_setters_by_year, by = "year") %>%
+  dplyr::select(
+    Year = year,
+    Champion = champion_short,
+    `Champion Had 1st-Team AA Setter?` = had_first_team_setter,
+    `First-Team AA Setters That Year` = all_first_team_setters
+  )
+
+champ_display %>%
+  DT::datatable(filter = "top", extensions = "Buttons",
+            escape = FALSE,
+            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollY = "400px", scrollX = TRUE))
+```
+
+```{r champ_setter_summary, results='asis'}
+valid_years <- champ_setter %>% dplyr::filter(!is.na(champion))
+n_with <- sum(!is.na(valid_years$setter))
+n_total <- nrow(valid_years)
+cat(sprintf(
+  "\n\n**Result:** In %d of %d championship seasons (%.0f%%), the national champion had a first-team All-American setter.\n\n",
+  n_with, n_total, 100 * n_with / n_total
+))
 ```
 
 ---
