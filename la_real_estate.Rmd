@@ -1,0 +1,212 @@
+---
+title: "LA Neighborhoods: Price per Square Foot"
+editor_options:
+  chunk_output_type: console
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+---
+
+```{r pipe, include=FALSE}
+`%>%` <- magrittr::`%>%`
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE,
+  fig.width = 10, fig.height = 8
+)
+```
+
+```{r data}
+la_raw <- readr::read_csv(here::here("data", "la_neighborhoods.csv"), show_col_types = FALSE)
+
+la_neighborhoods <- la_raw %>%
+  dplyr::filter(!is.na(price_per_sqft)) %>%
+  dplyr::mutate(
+    tier = factor(tier, levels = c(
+      "Ultra-Luxury", "Luxury", "Upper-Mid", "Mid-Range", "Affordable"
+    )),
+    sqft_per_million = round(1e6 / price_per_sqft)
+  )
+
+tier_colors <- c(
+  "Ultra-Luxury" = "#8B0000",
+  "Luxury"       = "#D4760A",
+  "Upper-Mid"    = "#2E86C1",
+  "Mid-Range"    = "#27AE60",
+  "Affordable"   = "#7D3C98"
+)
+
+zhvi_date <- unique(la_raw$zhvi_date[!is.na(la_raw$zhvi_date)])[1]
+zori_date <- unique(la_raw$zori_date[!is.na(la_raw$zori_date)])[1]
+```
+
+How much space does your dollar buy across Los Angeles? This page compares `r nrow(la_neighborhoods)` neighborhoods by **price per square foot** --- the ratio of median home price to typical home size. Neighborhoods are grouped into five tiers based on median home price:
+
+- **Ultra-Luxury** (>$3M): Bel Air, Beverly Hills, Holmby Hills, Malibu
+- **Luxury** ($2M--$3M): Brentwood, Santa Monica, Pacific Palisades
+- **Upper-Mid** ($1.3M--$2M): Venice, Silver Lake, Sherman Oaks
+- **Mid-Range** ($900K--$1.3M): Highland Park, Pasadena, Eagle Rock
+- **Affordable** (<$900K): Boyle Heights, North Hollywood, Koreatown
+
+### Data Sources
+
+All data is traceable and reproducible. Run `Rscript scripts/la_real_estate_data.R` to refresh.
+
+| Source | What | Updated |
+|--------|------|---------|
+| [Zillow ZHVI](https://www.zillow.com/research/data/) | Typical home values (neighborhood & city level) | `r zhvi_date` |
+| [Zillow ZORI](https://www.zillow.com/research/data/) | Typical observed rents (zip-code level) | `r zori_date` |
+| [Redfin](https://www.redfin.com/city/11203/CA/Los-Angeles/housing-market) | Median sale prices, $/sqft | Manual; see [source CSV](data/la_neighborhoods_redfin.csv) |
+| [American Home Field](https://americanhomefield.com/) | $/sqft study | 2025 |
+
+Raw data files: [la_neighborhoods.csv](data/la_neighborhoods.csv) | [Redfin sources](data/la_neighborhoods_redfin.csv) | [Zillow ZHVI extract](data/la_zhvi_raw.csv) | [Zillow ZORI extract](data/la_zori_raw.csv)
+
+## Price per Square Foot by Neighborhood {.tabset}
+
+### Bar Chart
+
+```{r bar_chart, fig.height=10}
+la_neighborhoods %>%
+  dplyr::mutate(neighborhood = forcats::fct_reorder(neighborhood, price_per_sqft)) %>%
+  ggplot2::ggplot(ggplot2::aes(x = neighborhood, y = price_per_sqft, fill = tier)) +
+  ggplot2::geom_col(width = 0.7) +
+  ggplot2::geom_text(
+    ggplot2::aes(label = scales::dollar(price_per_sqft, accuracy = 1)),
+    hjust = -0.1, size = 3, color = "grey30"
+  ) +
+  ggplot2::coord_flip(ylim = c(0, max(la_neighborhoods$price_per_sqft) * 1.15)) +
+  ggplot2::scale_fill_manual(values = tier_colors) +
+  ggplot2::scale_y_continuous(labels = scales::label_dollar()) +
+  ggplot2::labs(
+    x = NULL, y = "Median Price per Sq Ft", fill = "Price Tier"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(
+    legend.position = "top",
+    panel.grid.major.y = ggplot2::element_blank()
+  )
+```
+
+### Interactive Table
+
+```{r table}
+la_neighborhoods %>%
+  dplyr::arrange(dplyr::desc(price_per_sqft)) %>%
+  dplyr::transmute(
+    Neighborhood = neighborhood,
+    Tier = tier,
+    `Median Price` = scales::dollar(median_price),
+    `Price Source` = price_source,
+    `$/sqft` = scales::dollar(price_per_sqft),
+    `Typical sqft` = scales::comma(typical_sqft),
+    `$1M Buys (sqft)` = scales::comma(sqft_per_million),
+    `Rent (ZORI)` = dplyr::if_else(
+      is.na(median_rent), "---", scales::dollar(median_rent, accuracy = 1)
+    ),
+    `ZHVI` = dplyr::if_else(
+      is.na(zhvi), "---", scales::dollar(zhvi)
+    )
+  ) %>%
+  DT::datatable(
+    filter = "top", extensions = "Buttons",
+    options = list(
+      paging = FALSE, dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel"),
+      scrollY = "500px", scrollX = TRUE
+    )
+  )
+```
+
+## What Does $1 Million Buy You? {.tabset}
+
+### Bar Chart
+
+```{r million_chart, fig.height=10}
+la_neighborhoods %>%
+  dplyr::mutate(neighborhood = forcats::fct_reorder(neighborhood, sqft_per_million)) %>%
+  ggplot2::ggplot(ggplot2::aes(x = neighborhood, y = sqft_per_million, fill = tier)) +
+  ggplot2::geom_col(width = 0.7) +
+  ggplot2::geom_text(
+    ggplot2::aes(label = paste0(scales::comma(sqft_per_million), " sqft")),
+    hjust = -0.1, size = 3, color = "grey30"
+  ) +
+  ggplot2::coord_flip(ylim = c(0, max(la_neighborhoods$sqft_per_million) * 1.15)) +
+  ggplot2::scale_fill_manual(values = tier_colors) +
+  ggplot2::scale_y_continuous(labels = scales::label_comma(suffix = " sqft")) +
+  ggplot2::labs(
+    x = NULL, y = "Square Feet per $1M", fill = "Price Tier"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(
+    legend.position = "top",
+    panel.grid.major.y = ggplot2::element_blank()
+  )
+```
+
+### Scatter: Price vs Size
+
+```{r scatter, fig.height=7}
+la_neighborhoods %>%
+  ggplot2::ggplot(ggplot2::aes(x = typical_sqft, y = median_price, color = tier)) +
+  ggplot2::geom_point(size = 4, alpha = 0.85) +
+  ggrepel::geom_text_repel(
+    ggplot2::aes(label = neighborhood),
+    size = 3, max.overlaps = 25, segment.color = "grey70"
+  ) +
+  ggplot2::scale_x_continuous(labels = scales::label_comma(suffix = " sqft")) +
+  ggplot2::scale_y_continuous(labels = scales::label_dollar(scale_cut = scales::cut_short_scale())) +
+  ggplot2::scale_color_manual(values = tier_colors) +
+  ggplot2::labs(
+    x = "Typical Home Size (sq ft)", y = "Median Sale Price", color = "Price Tier"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(legend.position = "top")
+```
+
+## Price-to-Rent Ratio
+
+The price-to-rent ratio divides median home price by annual rent. Under 15 favors buying; 15--20 is a toss-up; over 20 favors renting.
+
+```{r rent_ratio, fig.height=10}
+rent_data <- la_neighborhoods %>%
+  dplyr::filter(!is.na(median_rent), median_rent > 0) %>%
+  dplyr::mutate(
+    annual_rent = median_rent * 12,
+    price_to_rent = median_price / annual_rent,
+    neighborhood = forcats::fct_reorder(neighborhood, price_to_rent)
+  )
+
+ggplot2::ggplot(rent_data, ggplot2::aes(x = neighborhood, y = price_to_rent, fill = tier)) +
+  ggplot2::geom_col(width = 0.7) +
+  ggplot2::geom_text(
+    ggplot2::aes(label = round(price_to_rent, 1)),
+    hjust = -0.1, size = 3, color = "grey30"
+  ) +
+  ggplot2::geom_hline(yintercept = 15, linetype = "dashed", color = "#27AE60", linewidth = 0.6) +
+  ggplot2::geom_hline(yintercept = 20, linetype = "dashed", color = "#E74C3C", linewidth = 0.6) +
+  ggplot2::coord_flip(ylim = c(0, max(rent_data$price_to_rent) * 1.12), clip = "off") +
+  ggplot2::scale_fill_manual(values = tier_colors) +
+  ggplot2::scale_x_discrete(expand = ggplot2::expansion(add = c(1.5, 0.5))) +
+  ggplot2::annotate("text", y = 15, x = 0, label = "Buy favors (<15)",
+                    hjust = 1.1, size = 3, color = "#27AE60") +
+  ggplot2::annotate("text", y = 20, x = 0, label = "Rent favors (>20)",
+                    hjust = -0.1, size = 3, color = "#E74C3C") +
+  ggplot2::labs(
+    x = NULL,
+    y = "Price-to-Rent Ratio (median price / annual rent)",
+    fill = "Price Tier"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(
+    legend.position = "top",
+    panel.grid.major.y = ggplot2::element_blank()
+  )
+```
+
+---
+
+**How to update this data:** Run `Rscript scripts/la_real_estate_data.R` to refresh Zillow ZHVI/ZORI. For Redfin $/sqft and median sale prices, update `data/la_neighborhoods_redfin.csv` with the latest values from each neighborhood's Redfin page (URLs are in the CSV). Then re-render this page.

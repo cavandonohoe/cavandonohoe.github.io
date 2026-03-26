@@ -19,6 +19,7 @@ Imports:
     readxl,
     googlesheets4,
     ggplot2,
+    ggrepel,
     RColorBrewer,
     pagedown,
     lubridate
