@@ -48,6 +48,8 @@ navbar:
         href: https://cavandonohoe.shinyapps.io/rent-vs-buy/
       - text: "AVCA Men's Volleyball All-Americans"
         href: avca_all_americans.html
+      - text: "LA Neighborhoods: Price per Sq Ft"
+        href: la_real_estate.html
       - text: "When Were Confederate Statues Erected?"
         href: confederate_statues.html
       - text: "Learn R"
