@@ -21,44 +21,10 @@ knitr::opts_chunk$set(
 ```
 
 ```{r data}
-la_neighborhoods <- tibble::tribble(
-  ~neighborhood,           ~tier,             ~median_price, ~price_per_sqft, ~typical_sqft, ~median_rent,
-  "Bel Air",               "Ultra-Luxury",     4021000,       1318,            3050,          NA,
-  "Beverly Crest",         "Ultra-Luxury",     2695000,       1310,            2060,          NA,
-  "Beverly Hills",         "Ultra-Luxury",     3581000,       1250,            2865,          NA,
-  "Holmby Hills",          "Ultra-Luxury",     7000000,       1200,            5835,          NA,
-  "Malibu (Point Dume)",   "Ultra-Luxury",     5600000,       1100,            5090,          NA,
-  "Hollywood Hills West",  "Luxury",           2300000,       1209,            1905,          NA,
-  "Pacific Palisades",     "Luxury",           3200000,       1050,            3050,          12225,
-  "Manhattan Beach",       "Luxury",           3000000,       1150,            2610,          3500,
-  "Brentwood",             "Luxury",           2648000,       1040,            2545,          4995,
-  "Santa Monica",          "Luxury",           2500000,        950,            2630,          4330,
-  "Los Feliz",             "Luxury",           2275000,        867,            2625,          3500,
-  "Venice",                "Upper-Mid",        1851000,       1213,            1525,          3200,
-  "Cheviot Hills",         "Upper-Mid",        2200000,       1145,            1920,          NA,
-  "Silver Lake",           "Upper-Mid",        1675000,        848,            1975,          3500,
-  "West Hollywood",        "Upper-Mid",        1400000,        800,            1750,          2700,
-  "Hancock Park",          "Upper-Mid",        1900000,        780,            2435,          2500,
-  "Studio City",           "Upper-Mid",        1567000,        720,            2175,          4750,
-  "Sherman Oaks",          "Upper-Mid",        1450000,        680,            2130,          3600,
-  "Culver City",           "Upper-Mid",        1303000,        750,            1735,          2600,
-  "Pasadena",              "Mid-Range",        1200000,        680,            1765,          2200,
-  "Echo Park",             "Mid-Range",        1100000,        720,            1530,          2400,
-  "Atwater Village",       "Mid-Range",        1150000,        700,            1645,          2200,
-  "Highland Park",         "Mid-Range",        1199000,        936,            1280,          2100,
-  "Eagle Rock",            "Mid-Range",        1050000,        700,            1500,          2000,
-  "Encino",                "Mid-Range",        1300000,        580,            2240,          5495,
-  "Westchester",           "Mid-Range",        1200000,        650,            1845,          2300,
-  "North Hollywood",       "Affordable",        850000,        550,            1545,          2997,
-  "Boyle Heights",         "Affordable",        742000,        471,            1575,          1500,
-  "El Sereno",             "Affordable",        750000,        520,            1440,          1600,
-  "Koreatown",             "Affordable",        680000,        580,            1170,          2200,
-  "Eastside LA",           "Affordable",        749000,        624,            1200,          1700,
-  "South Los Angeles",     "Affordable",        682000,        456,            1495,          1400,
-  "Pico-Union",            "Affordable",        650000,        453,            1435,          1500,
-  "Historic South Central","Affordable",        550000,        425,            1295,          1300,
-  "South Park (DTLA)",     "Affordable",        500000,        419,            1195,          1400
-) %>%
+la_raw <- readr::read_csv(here::here("data", "la_neighborhoods.csv"), show_col_types = FALSE)
+
+la_neighborhoods <- la_raw %>%
+  dplyr::filter(!is.na(price_per_sqft)) %>%
   dplyr::mutate(
     tier = factor(tier, levels = c(
       "Ultra-Luxury", "Luxury", "Upper-Mid", "Mid-Range", "Affordable"
@@ -73,9 +39,12 @@ tier_colors <- c(
   "Mid-Range"    = "#27AE60",
   "Affordable"   = "#7D3C98"
 )
+
+zhvi_date <- unique(la_raw$zhvi_date[!is.na(la_raw$zhvi_date)])[1]
+zori_date <- unique(la_raw$zori_date[!is.na(la_raw$zori_date)])[1]
 ```
 
-How much space does your dollar buy across Los Angeles? This page compares 35 neighborhoods by **price per square foot** --- the ratio of median home price to typical home size. Neighborhoods are grouped into five tiers based on median home price:
+How much space does your dollar buy across Los Angeles? This page compares `r nrow(la_neighborhoods)` neighborhoods by **price per square foot** --- the ratio of median home price to typical home size. Neighborhoods are grouped into five tiers based on median home price:
 
 - **Ultra-Luxury** (>$3M): Bel Air, Beverly Hills, Holmby Hills, Malibu
 - **Luxury** ($2M--$3M): Brentwood, Santa Monica, Pacific Palisades
@@ -83,7 +52,18 @@ How much space does your dollar buy across Los Angeles? This page compares 35 ne
 - **Mid-Range** ($900K--$1.3M): Highland Park, Pasadena, Eagle Rock
 - **Affordable** (<$900K): Boyle Heights, North Hollywood, Koreatown
 
-Data cross-referenced from [Zillow ZHVI](https://www.zillow.com/research/data/) (Feb 2026), [Redfin](https://www.redfin.com/city/11203/CA/Los-Angeles/housing-market) median sale prices (Feb 2026), and [American Home Field](https://americanhomefield.com/) $/sqft study.
+### Data Sources
+
+All data is traceable and reproducible. Run `Rscript scripts/la_real_estate_data.R` to refresh.
+
+| Source | What | Updated |
+|--------|------|---------|
+| [Zillow ZHVI](https://www.zillow.com/research/data/) | Typical home values (neighborhood & city level) | `r zhvi_date` |
+| [Zillow ZORI](https://www.zillow.com/research/data/) | Typical observed rents (zip-code level) | `r zori_date` |
+| [Redfin](https://www.redfin.com/city/11203/CA/Los-Angeles/housing-market) | Median sale prices, $/sqft | Manual; see [source CSV](data/la_neighborhoods_redfin.csv) |
+| [American Home Field](https://americanhomefield.com/) | $/sqft study | 2025 |
+
+Raw data files: [la_neighborhoods.csv](data/la_neighborhoods.csv) | [Redfin sources](data/la_neighborhoods_redfin.csv) | [Zillow ZHVI extract](data/la_zhvi_raw.csv) | [Zillow ZORI extract](data/la_zori_raw.csv)
 
 ## Price per Square Foot by Neighborhood {.tabset}
 
@@ -120,11 +100,15 @@ la_neighborhoods %>%
     Neighborhood = neighborhood,
     Tier = tier,
     `Median Price` = scales::dollar(median_price),
+    `Price Source` = price_source,
     `$/sqft` = scales::dollar(price_per_sqft),
     `Typical sqft` = scales::comma(typical_sqft),
     `$1M Buys (sqft)` = scales::comma(sqft_per_million),
-    `Median Rent` = dplyr::if_else(
-      is.na(median_rent), "---", scales::dollar(median_rent)
+    `Rent (ZORI)` = dplyr::if_else(
+      is.na(median_rent), "---", scales::dollar(median_rent, accuracy = 1)
+    ),
+    `ZHVI` = dplyr::if_else(
+      is.na(zhvi), "---", scales::dollar(zhvi)
     )
   ) %>%
   DT::datatable(
@@ -185,11 +169,11 @@ la_neighborhoods %>%
 
 ## Price-to-Rent Ratio
 
-The price-to-rent ratio divides median home price by annual rent. Under 15 favors buying; 15--20 is a toss-up; over 20 favors renting. Every LA neighborhood lands above 20.
+The price-to-rent ratio divides median home price by annual rent. Under 15 favors buying; 15--20 is a toss-up; over 20 favors renting.
 
-```{r rent_ratio, fig.height=8}
+```{r rent_ratio, fig.height=10}
 la_neighborhoods %>%
-  dplyr::filter(!is.na(median_rent)) %>%
+  dplyr::filter(!is.na(median_rent), median_rent > 0) %>%
   dplyr::mutate(
     annual_rent = median_rent * 12,
     price_to_rent = median_price / annual_rent,
@@ -223,4 +207,4 @@ la_neighborhoods %>%
 
 ---
 
-**Sources:** [Zillow Home Value Index](https://www.zillow.com/research/data/) (Feb 2026), [Redfin Housing Market](https://www.redfin.com/city/11203/CA/Los-Angeles/housing-market) (Feb 2026), [American Home Field](https://americanhomefield.com/) $/sqft study, [Redfin Rental Market](https://www.redfin.com/city/11203/CA/Los-Angeles/rental-market) (Aug 2025). LA citywide median: $1.01M, $633/sqft per Redfin.
+**How to update this data:** Run `Rscript scripts/la_real_estate_data.R` to refresh Zillow ZHVI/ZORI. For Redfin $/sqft and median sale prices, update `data/la_neighborhoods_redfin.csv` with the latest values from each neighborhood's Redfin page (URLs are in the CSV). Then re-render this page.
