@@ -1,0 +1,226 @@
+---
+title: "LA Neighborhoods: Price per Square Foot"
+editor_options:
+  chunk_output_type: console
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+---
+
+```{r pipe, include=FALSE}
+`%>%` <- magrittr::`%>%`
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE,
+  fig.width = 10, fig.height = 8
+)
+```
+
+```{r data}
+la_neighborhoods <- tibble::tribble(
+  ~neighborhood,           ~tier,             ~median_price, ~price_per_sqft, ~typical_sqft, ~median_rent,
+  "Bel Air",               "Ultra-Luxury",     4021000,       1318,            3050,          NA,
+  "Beverly Crest",         "Ultra-Luxury",     2695000,       1310,            2060,          NA,
+  "Beverly Hills",         "Ultra-Luxury",     3581000,       1250,            2865,          NA,
+  "Holmby Hills",          "Ultra-Luxury",     7000000,       1200,            5835,          NA,
+  "Malibu (Point Dume)",   "Ultra-Luxury",     5600000,       1100,            5090,          NA,
+  "Hollywood Hills West",  "Luxury",           2300000,       1209,            1905,          NA,
+  "Pacific Palisades",     "Luxury",           3200000,       1050,            3050,          12225,
+  "Manhattan Beach",       "Luxury",           3000000,       1150,            2610,          3500,
+  "Brentwood",             "Luxury",           2648000,       1040,            2545,          4995,
+  "Santa Monica",          "Luxury",           2500000,        950,            2630,          4330,
+  "Los Feliz",             "Luxury",           2275000,        867,            2625,          3500,
+  "Venice",                "Upper-Mid",        1851000,       1213,            1525,          3200,
+  "Cheviot Hills",         "Upper-Mid",        2200000,       1145,            1920,          NA,
+  "Silver Lake",           "Upper-Mid",        1675000,        848,            1975,          3500,
+  "West Hollywood",        "Upper-Mid",        1400000,        800,            1750,          2700,
+  "Hancock Park",          "Upper-Mid",        1900000,        780,            2435,          2500,
+  "Studio City",           "Upper-Mid",        1567000,        720,            2175,          4750,
+  "Sherman Oaks",          "Upper-Mid",        1450000,        680,            2130,          3600,
+  "Culver City",           "Upper-Mid",        1303000,        750,            1735,          2600,
+  "Pasadena",              "Mid-Range",        1200000,        680,            1765,          2200,
+  "Echo Park",             "Mid-Range",        1100000,        720,            1530,          2400,
+  "Atwater Village",       "Mid-Range",        1150000,        700,            1645,          2200,
+  "Highland Park",         "Mid-Range",        1199000,        936,            1280,          2100,
+  "Eagle Rock",            "Mid-Range",        1050000,        700,            1500,          2000,
+  "Encino",                "Mid-Range",        1300000,        580,            2240,          5495,
+  "Westchester",           "Mid-Range",        1200000,        650,            1845,          2300,
+  "North Hollywood",       "Affordable",        850000,        550,            1545,          2997,
+  "Boyle Heights",         "Affordable",        742000,        471,            1575,          1500,
+  "El Sereno",             "Affordable",        750000,        520,            1440,          1600,
+  "Koreatown",             "Affordable",        680000,        580,            1170,          2200,
+  "Eastside LA",           "Affordable",        749000,        624,            1200,          1700,
+  "South Los Angeles",     "Affordable",        682000,        456,            1495,          1400,
+  "Pico-Union",            "Affordable",        650000,        453,            1435,          1500,
+  "Historic South Central","Affordable",        550000,        425,            1295,          1300,
+  "South Park (DTLA)",     "Affordable",        500000,        419,            1195,          1400
+) %>%
+  dplyr::mutate(
+    tier = factor(tier, levels = c(
+      "Ultra-Luxury", "Luxury", "Upper-Mid", "Mid-Range", "Affordable"
+    )),
+    sqft_per_million = round(1e6 / price_per_sqft)
+  )
+
+tier_colors <- c(
+  "Ultra-Luxury" = "#8B0000",
+  "Luxury"       = "#D4760A",
+  "Upper-Mid"    = "#2E86C1",
+  "Mid-Range"    = "#27AE60",
+  "Affordable"   = "#7D3C98"
+)
+```
+
+How much space does your dollar buy across Los Angeles? This page compares 35 neighborhoods by **price per square foot** --- the ratio of median home price to typical home size. Neighborhoods are grouped into five tiers based on median home price:
+
+- **Ultra-Luxury** (>$3M): Bel Air, Beverly Hills, Holmby Hills, Malibu
+- **Luxury** ($2M--$3M): Brentwood, Santa Monica, Pacific Palisades
+- **Upper-Mid** ($1.3M--$2M): Venice, Silver Lake, Sherman Oaks
+- **Mid-Range** ($900K--$1.3M): Highland Park, Pasadena, Eagle Rock
+- **Affordable** (<$900K): Boyle Heights, North Hollywood, Koreatown
+
+Data cross-referenced from [Zillow ZHVI](https://www.zillow.com/research/data/) (Feb 2026), [Redfin](https://www.redfin.com/city/11203/CA/Los-Angeles/housing-market) median sale prices (Feb 2026), and [American Home Field](https://americanhomefield.com/) $/sqft study.
+
+## Price per Square Foot by Neighborhood {.tabset}
+
+### Bar Chart
+
+```{r bar_chart, fig.height=10}
+la_neighborhoods %>%
+  dplyr::mutate(neighborhood = forcats::fct_reorder(neighborhood, price_per_sqft)) %>%
+  ggplot2::ggplot(ggplot2::aes(x = neighborhood, y = price_per_sqft, fill = tier)) +
+  ggplot2::geom_col(width = 0.7) +
+  ggplot2::geom_text(
+    ggplot2::aes(label = scales::dollar(price_per_sqft, accuracy = 1)),
+    hjust = -0.1, size = 3, color = "grey30"
+  ) +
+  ggplot2::coord_flip(ylim = c(0, max(la_neighborhoods$price_per_sqft) * 1.15)) +
+  ggplot2::scale_fill_manual(values = tier_colors) +
+  ggplot2::scale_y_continuous(labels = scales::label_dollar()) +
+  ggplot2::labs(
+    x = NULL, y = "Median Price per Sq Ft", fill = "Price Tier"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(
+    legend.position = "top",
+    panel.grid.major.y = ggplot2::element_blank()
+  )
+```
+
+### Interactive Table
+
+```{r table}
+la_neighborhoods %>%
+  dplyr::arrange(dplyr::desc(price_per_sqft)) %>%
+  dplyr::transmute(
+    Neighborhood = neighborhood,
+    Tier = tier,
+    `Median Price` = scales::dollar(median_price),
+    `$/sqft` = scales::dollar(price_per_sqft),
+    `Typical sqft` = scales::comma(typical_sqft),
+    `$1M Buys (sqft)` = scales::comma(sqft_per_million),
+    `Median Rent` = dplyr::if_else(
+      is.na(median_rent), "---", scales::dollar(median_rent)
+    )
+  ) %>%
+  DT::datatable(
+    filter = "top", extensions = "Buttons",
+    options = list(
+      paging = FALSE, dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel"),
+      scrollY = "500px", scrollX = TRUE
+    )
+  )
+```
+
+## What Does $1 Million Buy You? {.tabset}
+
+### Bar Chart
+
+```{r million_chart, fig.height=10}
+la_neighborhoods %>%
+  dplyr::mutate(neighborhood = forcats::fct_reorder(neighborhood, sqft_per_million)) %>%
+  ggplot2::ggplot(ggplot2::aes(x = neighborhood, y = sqft_per_million, fill = tier)) +
+  ggplot2::geom_col(width = 0.7) +
+  ggplot2::geom_text(
+    ggplot2::aes(label = paste0(scales::comma(sqft_per_million), " sqft")),
+    hjust = -0.1, size = 3, color = "grey30"
+  ) +
+  ggplot2::coord_flip(ylim = c(0, max(la_neighborhoods$sqft_per_million) * 1.15)) +
+  ggplot2::scale_fill_manual(values = tier_colors) +
+  ggplot2::scale_y_continuous(labels = scales::label_comma(suffix = " sqft")) +
+  ggplot2::labs(
+    x = NULL, y = "Square Feet per $1M", fill = "Price Tier"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(
+    legend.position = "top",
+    panel.grid.major.y = ggplot2::element_blank()
+  )
+```
+
+### Scatter: Price vs Size
+
+```{r scatter, fig.height=7}
+la_neighborhoods %>%
+  ggplot2::ggplot(ggplot2::aes(x = typical_sqft, y = median_price, color = tier)) +
+  ggplot2::geom_point(size = 4, alpha = 0.85) +
+  ggrepel::geom_text_repel(
+    ggplot2::aes(label = neighborhood),
+    size = 3, max.overlaps = 25, segment.color = "grey70"
+  ) +
+  ggplot2::scale_x_continuous(labels = scales::label_comma(suffix = " sqft")) +
+  ggplot2::scale_y_continuous(labels = scales::label_dollar(scale_cut = scales::cut_short_scale())) +
+  ggplot2::scale_color_manual(values = tier_colors) +
+  ggplot2::labs(
+    x = "Typical Home Size (sq ft)", y = "Median Sale Price", color = "Price Tier"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(legend.position = "top")
+```
+
+## Price-to-Rent Ratio
+
+The price-to-rent ratio divides median home price by annual rent. Under 15 favors buying; 15--20 is a toss-up; over 20 favors renting. Every LA neighborhood lands above 20.
+
+```{r rent_ratio, fig.height=8}
+la_neighborhoods %>%
+  dplyr::filter(!is.na(median_rent)) %>%
+  dplyr::mutate(
+    annual_rent = median_rent * 12,
+    price_to_rent = median_price / annual_rent,
+    neighborhood = forcats::fct_reorder(neighborhood, price_to_rent)
+  ) %>%
+  ggplot2::ggplot(ggplot2::aes(x = neighborhood, y = price_to_rent, fill = tier)) +
+  ggplot2::geom_col(width = 0.7) +
+  ggplot2::geom_text(
+    ggplot2::aes(label = round(price_to_rent, 1)),
+    hjust = -0.1, size = 3, color = "grey30"
+  ) +
+  ggplot2::geom_hline(yintercept = 15, linetype = "dashed", color = "#27AE60", linewidth = 0.6) +
+  ggplot2::geom_hline(yintercept = 20, linetype = "dashed", color = "#E74C3C", linewidth = 0.6) +
+  ggplot2::coord_flip(ylim = c(0, 80)) +
+  ggplot2::scale_fill_manual(values = tier_colors) +
+  ggplot2::annotate("text", y = 15, x = 0.5, label = "Buy favors (<15)",
+                    hjust = 1.1, size = 3, color = "#27AE60") +
+  ggplot2::annotate("text", y = 20, x = 0.5, label = "Rent favors (>20)",
+                    hjust = -0.1, size = 3, color = "#E74C3C") +
+  ggplot2::labs(
+    x = NULL,
+    y = "Price-to-Rent Ratio (median price / annual rent)",
+    fill = "Price Tier"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(
+    legend.position = "top",
+    panel.grid.major.y = ggplot2::element_blank()
+  )
+```
+
+---
+
+**Sources:** [Zillow Home Value Index](https://www.zillow.com/research/data/) (Feb 2026), [Redfin Housing Market](https://www.redfin.com/city/11203/CA/Los-Angeles/housing-market) (Feb 2026), [American Home Field](https://americanhomefield.com/) $/sqft study, [Redfin Rental Market](https://www.redfin.com/city/11203/CA/Los-Angeles/rental-market) (Aug 2025). LA citywide median: $1.01M, $633/sqft per Redfin.
