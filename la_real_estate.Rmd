@@ -188,13 +188,17 @@ ggplot2::ggplot(rent_data, ggplot2::aes(x = neighborhood, y = price_to_rent, fil
   ) +
   ggplot2::geom_hline(yintercept = 15, linetype = "dashed", color = "#27AE60", linewidth = 0.6) +
   ggplot2::geom_hline(yintercept = 20, linetype = "dashed", color = "#E74C3C", linewidth = 0.6) +
-  ggplot2::coord_flip(ylim = c(0, max(rent_data$price_to_rent) * 1.12)) +
+  ggplot2::coord_flip(ylim = c(0, max(rent_data$price_to_rent) * 1.12), clip = "off") +
   ggplot2::scale_fill_manual(values = tier_colors) +
+  ggplot2::scale_x_discrete(expand = ggplot2::expansion(add = c(1.5, 0.5))) +
+  ggplot2::annotate("text", y = 15, x = 0, label = "Buy favors (<15)",
+                    hjust = 1.1, size = 3, color = "#27AE60") +
+  ggplot2::annotate("text", y = 20, x = 0, label = "Rent favors (>20)",
+                    hjust = -0.1, size = 3, color = "#E74C3C") +
   ggplot2::labs(
     x = NULL,
     y = "Price-to-Rent Ratio (median price / annual rent)",
-    fill = "Price Tier",
-    subtitle = "Green dashed = 15 (buy favors below) | Red dashed = 20 (rent favors above)"
+    fill = "Price Tier"
   ) +
   ggplot2::theme_minimal(base_size = 12) +
   ggplot2::theme(
