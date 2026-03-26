@@ -172,14 +172,15 @@ la_neighborhoods %>%
 The price-to-rent ratio divides median home price by annual rent. Under 15 favors buying; 15--20 is a toss-up; over 20 favors renting.
 
 ```{r rent_ratio, fig.height=10}
-la_neighborhoods %>%
+rent_data <- la_neighborhoods %>%
   dplyr::filter(!is.na(median_rent), median_rent > 0) %>%
   dplyr::mutate(
     annual_rent = median_rent * 12,
     price_to_rent = median_price / annual_rent,
     neighborhood = forcats::fct_reorder(neighborhood, price_to_rent)
-  ) %>%
-  ggplot2::ggplot(ggplot2::aes(x = neighborhood, y = price_to_rent, fill = tier)) +
+  )
+
+ggplot2::ggplot(rent_data, ggplot2::aes(x = neighborhood, y = price_to_rent, fill = tier)) +
   ggplot2::geom_col(width = 0.7) +
   ggplot2::geom_text(
     ggplot2::aes(label = round(price_to_rent, 1)),
@@ -187,7 +188,7 @@ la_neighborhoods %>%
   ) +
   ggplot2::geom_hline(yintercept = 15, linetype = "dashed", color = "#27AE60", linewidth = 0.6) +
   ggplot2::geom_hline(yintercept = 20, linetype = "dashed", color = "#E74C3C", linewidth = 0.6) +
-  ggplot2::coord_flip(ylim = c(0, 80)) +
+  ggplot2::coord_flip(ylim = c(0, max(rent_data$price_to_rent) * 1.12)) +
   ggplot2::scale_fill_manual(values = tier_colors) +
   ggplot2::annotate("text", y = 15, x = 0.5, label = "Buy favors (<15)",
                     hjust = 1.1, size = 3, color = "#27AE60") +
