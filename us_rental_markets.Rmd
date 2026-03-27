@@ -1,0 +1,243 @@
+---
+title: "US Rental Investment Markets"
+editor_options:
+  chunk_output_type: console
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+---
+
+```{r pipe, include=FALSE}
+`%>%` <- magrittr::`%>%`
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE,
+  fig.width = 10, fig.height = 8
+)
+```
+
+```{r data}
+raw <- readr::read_csv(here::here("data", "us_rental_markets.csv"), show_col_types = FALSE)
+
+# Filter out noise: seasonal vacation rentals and extremely low-value markets
+markets <- raw %>%
+  dplyr::filter(
+    zhvi >= 50000,
+    zori <= 5000,
+    zori >= 500,
+    gross_yield_pct <= 20
+  ) %>%
+  dplyr::mutate(
+    tier = factor(tier, levels = c("Strong Buy", "Moderate", "Lean Rent", "Rent Favored")),
+    city_state = paste0(city, ", ", state)
+  )
+
+zhvi_date <- unique(raw$zhvi_date)[1]
+zori_date <- unique(raw$zori_date)[1]
+
+tier_colors <- c(
+  "Strong Buy"   = "#27AE60",
+  "Moderate"     = "#2E86C1",
+  "Lean Rent"    = "#D4760A",
+  "Rent Favored" = "#8B0000"
+)
+```
+
+Where should you buy rental property in the US? This page ranks **`r nrow(markets)` cities** by investment metrics derived from Zillow's public home value and rent indices. The price-to-rent ratio is the standard benchmark:
+
+- **Strong Buy** (P/R < 15): Cash flow positive from day one
+- **Moderate** (P/R 15--20): Reasonable returns, some appreciation upside
+- **Lean Rent** (P/R 20--25): Marginal; depends on appreciation
+- **Rent Favored** (P/R > 25): Buy only if you're betting on price growth
+
+### Data Sources
+
+All data is traceable and reproducible. Run `Rscript scripts/us_rental_markets_data.R` to refresh.
+
+| Source | What | Updated |
+|--------|------|---------|
+| [Zillow ZHVI](https://www.zillow.com/research/data/) | Typical home values (city level, SFR+condo, 35th--65th percentile) | `r zhvi_date` |
+| [Zillow ZORI](https://www.zillow.com/research/data/) | Typical observed rents (city level, SFR+condo+MFR) | `r zori_date` |
+
+Estimated cap rate assumes 35% expense ratio (taxes, insurance, vacancy, maintenance, management). Raw data: [us_rental_markets.csv](data/us_rental_markets.csv)
+
+## Top 40 Cities by Cap Rate {.tabset}
+
+```{r top_markets}
+top40 <- markets %>%
+  dplyr::slice_head(n = 40)
+```
+
+### Bar Chart
+
+```{r cap_rate_bar, fig.height=12}
+top40 %>%
+  dplyr::mutate(city_state = forcats::fct_reorder(city_state, est_cap_rate_pct)) %>%
+  ggplot2::ggplot(ggplot2::aes(x = city_state, y = est_cap_rate_pct, fill = tier)) +
+  ggplot2::geom_col(width = 0.7) +
+  ggplot2::geom_text(
+    ggplot2::aes(label = paste0(est_cap_rate_pct, "%")),
+    hjust = -0.1, size = 3, color = "grey30"
+  ) +
+  ggplot2::coord_flip(ylim = c(0, max(top40$est_cap_rate_pct) * 1.15)) +
+  ggplot2::scale_fill_manual(values = tier_colors) +
+  ggplot2::labs(
+    title = "Estimated Cap Rate (Top 40 Cities)",
+    subtitle = "Gross yield minus 35% expense ratio",
+    x = NULL, y = "Estimated Cap Rate (%)", fill = "Tier"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(
+    legend.position = "top",
+    panel.grid.major.y = ggplot2::element_blank()
+  )
+```
+
+### Interactive Table
+
+```{r top_table}
+top40 %>%
+  dplyr::transmute(
+    `#` = dplyr::row_number(),
+    City = city, State = state, Metro = metro,
+    `Home Value` = scales::dollar(zhvi),
+    `Rent/Mo` = scales::dollar(zori, accuracy = 1),
+    `Gross Yield` = paste0(gross_yield_pct, "%"),
+    `Est Cap Rate` = paste0(est_cap_rate_pct, "%"),
+    `P/R Ratio` = price_to_rent,
+    `ZHVI YoY` = paste0(zhvi_yoy_pct, "%"),
+    `ZORI YoY` = dplyr::if_else(is.na(zori_yoy_pct), "---", paste0(zori_yoy_pct, "%")),
+    Tier = tier
+  ) %>%
+  DT::datatable(
+    filter = "top", extensions = "Buttons",
+    options = list(
+      paging = FALSE, dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel"),
+      scrollY = "500px", scrollX = TRUE
+    )
+  )
+```
+
+## Gross Yield vs Home Value
+
+```{r scatter_yield, fig.height=8}
+top100 <- markets %>% dplyr::slice_head(n = 100)
+
+ggplot2::ggplot(top100, ggplot2::aes(x = zhvi, y = gross_yield_pct, color = tier)) +
+  ggplot2::geom_point(size = 3, alpha = 0.8) +
+  ggrepel::geom_text_repel(
+    ggplot2::aes(label = city_state),
+    size = 2.5, max.overlaps = 20, segment.color = "grey70"
+  ) +
+  ggplot2::scale_x_continuous(labels = scales::label_dollar(scale_cut = scales::cut_short_scale())) +
+  ggplot2::scale_color_manual(values = tier_colors) +
+  ggplot2::labs(
+    title = "Gross Yield vs Home Value (Top 100 Cities)",
+    subtitle = "Higher yield + lower price = better cash flow market",
+    x = "Zillow Home Value Index", y = "Gross Yield (%)", color = "Tier"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(legend.position = "top")
+```
+
+## Full US Market Explorer
+
+Search, filter, and sort all `r nrow(markets)` cities.
+
+```{r full_table}
+markets %>%
+  dplyr::transmute(
+    City = city, State = state, Metro = metro,
+    `Home Value` = scales::dollar(zhvi),
+    `ZHVI YoY` = paste0(zhvi_yoy_pct, "%"),
+    `Rent/Mo` = scales::dollar(zori, accuracy = 1),
+    `ZORI YoY` = dplyr::if_else(is.na(zori_yoy_pct), "---", paste0(zori_yoy_pct, "%")),
+    `Gross Yield` = gross_yield_pct,
+    `Est Cap Rate` = est_cap_rate_pct,
+    `P/R Ratio` = price_to_rent,
+    `Rent/Price %` = rent_to_price_pct,
+    Tier = tier
+  ) %>%
+  DT::datatable(
+    filter = "top", extensions = "Buttons",
+    options = list(
+      pageLength = 50, dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel"),
+      scrollX = TRUE,
+      order = list(list(8, "desc"))
+    )
+  )
+```
+
+## Tier Distribution
+
+```{r tier_dist, fig.height=5, fig.width=8}
+tier_counts <- markets %>%
+  dplyr::count(tier) %>%
+  dplyr::mutate(pct = round(100 * n / sum(n), 1))
+
+ggplot2::ggplot(tier_counts, ggplot2::aes(x = tier, y = n, fill = tier)) +
+  ggplot2::geom_col(width = 0.6) +
+  ggplot2::geom_text(
+    ggplot2::aes(label = paste0(n, " (", pct, "%)")),
+    vjust = -0.3, size = 4
+  ) +
+  ggplot2::scale_fill_manual(values = tier_colors) +
+  ggplot2::scale_y_continuous(expand = ggplot2::expansion(mult = c(0, 0.15))) +
+  ggplot2::labs(
+    title = "How Many US Cities Fall Into Each Investment Tier?",
+    x = NULL, y = "Number of Cities"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(legend.position = "none")
+```
+
+## Metro-Level Comparison
+
+Average metrics across cities within each metro area (metros with 5+ cities).
+
+```{r metro_table}
+metro_summary <- markets %>%
+  dplyr::filter(!is.na(metro)) %>%
+  dplyr::group_by(metro) %>%
+  dplyr::summarise(
+    n_cities = dplyr::n(),
+    avg_zhvi = mean(zhvi, na.rm = TRUE),
+    avg_zori = mean(zori, na.rm = TRUE),
+    avg_gross_yield = mean(gross_yield_pct, na.rm = TRUE),
+    avg_cap_rate = mean(est_cap_rate_pct, na.rm = TRUE),
+    avg_ptr = mean(price_to_rent, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::filter(n_cities >= 5) %>%
+  dplyr::arrange(dplyr::desc(avg_cap_rate))
+
+metro_summary %>%
+  dplyr::transmute(
+    Metro = metro,
+    Cities = n_cities,
+    `Avg Home Value` = scales::dollar(avg_zhvi),
+    `Avg Rent/Mo` = scales::dollar(avg_zori, accuracy = 1),
+    `Avg Gross Yield` = paste0(round(avg_gross_yield, 2), "%"),
+    `Avg Cap Rate` = paste0(round(avg_cap_rate, 2), "%"),
+    `Avg P/R Ratio` = round(avg_ptr, 1)
+  ) %>%
+  DT::datatable(
+    filter = "top", extensions = "Buttons",
+    options = list(
+      pageLength = 30, dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel"),
+      scrollX = TRUE,
+      order = list(list(5, "desc"))
+    )
+  )
+```
+
+---
+
+**How to update this data:** Run `Rscript scripts/us_rental_markets_data.R` to download the latest Zillow ZHVI + ZORI and recompute all metrics. Then re-render this page.
