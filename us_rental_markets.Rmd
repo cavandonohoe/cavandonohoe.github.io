@@ -58,12 +58,49 @@ Where should you buy rental property in the US? This page ranks **`r nrow(market
 
 All data is traceable and reproducible. Run `Rscript scripts/us_rental_markets_data.R` to refresh.
 
-| Source | What | Updated |
-|--------|------|---------|
-| [Zillow ZHVI](https://www.zillow.com/research/data/) | Typical home values (city level, SFR+condo, 35th--65th percentile) | `r zhvi_date` |
-| [Zillow ZORI](https://www.zillow.com/research/data/) | Typical observed rents (city level, SFR+condo+MFR) | `r zori_date` |
-
-Estimated cap rate assumes 35% expense ratio (taxes, insurance, vacancy, maintenance, management). Raw data: [us_rental_markets.csv](data/us_rental_markets.csv)
+```{r sources_table}
+tibble::tribble(
+  ~Source, ~Description, ~Updated,
+  "Zillow ZHVI", "Typical home values (city level, SFR+condo, 35th\u201365th percentile)", zhvi_date,
+  "Zillow ZORI", "Typical observed rents (city level, SFR+condo+MFR)", zori_date
+) %>%
+  gt::gt() %>%
+  gt::tab_header(
+    title = gt::md("**Data Sources**"),
+    subtitle = "Zillow Research public CSVs, updated monthly"
+  ) %>%
+  gt::fmt_markdown(columns = Source) %>%
+  gt::cols_width(
+    Source ~ gt::px(160),
+    Description ~ gt::px(420),
+    Updated ~ gt::px(130)
+  ) %>%
+  gt::cols_align(align = "left") %>%
+  gt::tab_source_note(
+    gt::md("Estimated cap rate assumes **35% expense ratio** (taxes, insurance, vacancy, maintenance, management)")
+  ) %>%
+  gt::tab_source_note(
+    gt::md("Raw data: [us_rental_markets.csv](data/us_rental_markets.csv)")
+  ) %>%
+  gt::tab_style(
+    style = gt::cell_fill(color = "#f8f9fa"),
+    locations = gt::cells_body(rows = seq(1, 2, by = 2))
+  ) %>%
+  gt::tab_options(
+    table.font.size = gt::px(14),
+    heading.title.font.size = gt::px(16),
+    heading.subtitle.font.size = gt::px(13),
+    column_labels.font.weight = "bold",
+    column_labels.background.color = "#2C3E50",
+    table.border.top.color = "#2C3E50",
+    table.border.bottom.color = "#2C3E50",
+    source_notes.font.size = gt::px(12)
+  ) %>%
+  gt::tab_style(
+    style = gt::cell_text(color = "white"),
+    locations = gt::cells_column_labels()
+  )
+```
 
 ## Top 40 Cities by Cap Rate {.tabset}
 
