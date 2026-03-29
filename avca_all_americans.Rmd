@@ -9,6 +9,15 @@ output:
       after_body: include_footer.html
 ---
 
+```{r og-meta, echo=FALSE, results='asis'}
+cat('
+<meta property="og:title" content="AVCA Men&#39;s Volleyball All-Americans">
+<meta property="og:description" content="Complete history of NCAA men&#39;s volleyball First-Team All-American selections and national champions.">
+<meta property="og:url" content="https://cavandonohoe.github.io/avca_all_americans.html">
+<meta property="og:type" content="article">
+')
+```
+
 ```{r pipe, include=FALSE}
 `%>%` <- magrittr::`%>%`
 ```
@@ -25,6 +34,13 @@ all_americans <- readr::read_csv(here::here("data", "avca_first_team_all_america
   dplyr::mutate(school = stringr::str_replace_all(school, "\u2018|\u2019", "'"))
 
 champions <- readr::read_csv(here::here("data", "avca_champions.csv"))
+```
+
+```{r timestamp, results='asis'}
+cat(sprintf(
+  '<span class="data-timestamp">Data last updated: %s</span>\n',
+  format(file.mtime(here::here("data", "avca_first_team_all_americans.csv")), "%B %d, %Y")
+))
 ```
 
 The [American Volleyball Coaches Association (AVCA)](https://www.avca.org/) selects All-America teams for National Collegiate (Division I-II) men's volleyball each year. This page tracks every **first-team** selection from `r min(all_americans$year)` to `r max(all_americans$year)` --- `r nrow(all_americans)` players across `r length(unique(all_americans$year))` seasons.

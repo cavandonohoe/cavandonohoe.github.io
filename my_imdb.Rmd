@@ -9,6 +9,15 @@ output:
       after_body: include_footer.html
 ---
 
+```{r og-meta, echo=FALSE, results='asis'}
+cat('
+<meta property="og:title" content="My IMDb Ratings">
+<meta property="og:description" content="Personal movie ratings and watchlist exported from my IMDb account.">
+<meta property="og:url" content="https://cavandonohoe.github.io/my_imdb.html">
+<meta property="og:type" content="article">
+')
+```
+
 <style>
 .main-container {
   max-width: 1200px;
@@ -34,6 +43,13 @@ knitr::opts_chunk$set(
 
 ```{r data_load, include=FALSE}
 my_ratings <- readr::read_csv(here::here("data", "imdb_ratings.csv"))
+```
+
+```{r timestamp, results='asis'}
+cat(sprintf(
+  '<span class="data-timestamp">Data last updated: %s</span>\n',
+  format(file.mtime(here::here("data", "imdb_ratings.csv")), "%B %d, %Y")
+))
 ```
 
 ```{r nine_ten_movies, eval=FALSE}

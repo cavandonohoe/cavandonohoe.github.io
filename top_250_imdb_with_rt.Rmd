@@ -9,6 +9,15 @@ output:
       after_body: include_footer.html
 ---
 
+```{r og-meta, echo=FALSE, results='asis'}
+cat('
+<meta property="og:title" content="Top 250 IMDb Movies with Rotten Tomatoes">
+<meta property="og:description" content="Cross-referencing IMDb&#39;s top 250 movies with Rotten Tomatoes scores.">
+<meta property="og:url" content="https://cavandonohoe.github.io/top_250_imdb_with_rt.html">
+<meta property="og:type" content="article">
+')
+```
+
 ```{r pipe, include=FALSE}
 `%>%` <- magrittr::`%>%`
 ```
@@ -28,6 +37,13 @@ top_250_imdb_rot_tom <- readr::read_csv(
 ) %>%
   dplyr::select(-dplyr::any_of("...1"))
 
+```
+
+```{r timestamp, results='asis'}
+cat(sprintf(
+  '<span class="data-timestamp">Data last updated: %s</span>\n',
+  format(file.mtime(here::here("data", "top250_movies_with_rt.csv")), "%B %d, %Y")
+))
 ```
 
 I love looking through the Top 250 Movies IMDb list to see which movie I should watch tonight. Some movies really resonate with me and this list contains some of my favorite movies of all time (The Dark Knight, Good Will Hunting, Shawshank Redemption).

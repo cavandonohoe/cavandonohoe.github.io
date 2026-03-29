@@ -9,6 +9,15 @@ output:
       after_body: include_footer.html
 ---
 
+```{r og-meta, echo=FALSE, results='asis'}
+cat('
+<meta property="og:title" content="US Rental Investment Markets">
+<meta property="og:description" content="Cap rates, vacancy rates, and demand signals for 3,800+ US cities using Zillow and Census data.">
+<meta property="og:url" content="https://cavandonohoe.github.io/us_rental_markets.html">
+<meta property="og:type" content="article">
+')
+```
+
 ```{r pipe, include=FALSE}
 `%>%` <- magrittr::`%>%`
 ```
@@ -22,7 +31,16 @@ knitr::opts_chunk$set(
 
 ```{r data}
 raw <- readr::read_csv(here::here("data", "us_rental_markets.csv"), show_col_types = FALSE)
+```
 
+```{r timestamp, results='asis'}
+cat(sprintf(
+  '<span class="data-timestamp">Data last updated: %s</span>\n',
+  format(file.mtime(here::here("data", "us_rental_markets.csv")), "%B %d, %Y")
+))
+```
+
+```{r filter}
 # Filter out noise: seasonal vacation rentals and extremely low-value markets
 markets <- raw %>%
   dplyr::filter(

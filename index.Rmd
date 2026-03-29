@@ -38,3 +38,88 @@ I thought it might be worth investing some time to make a website to point to an
 
 Check out my latest project: a [Rent vs. Buy Calculator](https://cavandonohoe.shinyapps.io/rent-vs-buy/) — an interactive Shiny app that runs a side-by-side financial simulation to help you decide whether to buy a home or keep renting and investing. Source code on [GitHub](https://github.com/cavandonohoe/rent-vs-buy).
 
+## Projects
+
+<div class="project-grid">
+<a class="project-card" href="us_rental_markets.html">
+<div class="card-icon">🏘️</div>
+<h3>US Rental Investment Markets</h3>
+<p>Cap rates, vacancy, and demand signals for 3,800+ cities using Zillow and Census data.</p>
+</a>
+<a class="project-card" href="la_real_estate.html">
+<div class="card-icon">🏡</div>
+<h3>LA Neighborhoods: Price per Sq Ft</h3>
+<p>Zillow + Redfin data for LA neighborhoods — median prices, rent, and what $1M buys you.</p>
+</a>
+<a class="project-card" href="https://cavandonohoe.shinyapps.io/rent-vs-buy/">
+<div class="card-icon">🧮</div>
+<h3>Rent vs. Buy Calculator</h3>
+<p>Interactive Shiny app for side-by-side financial simulation of renting vs. buying.</p>
+</a>
+<a class="project-card" href="imdb_top_250_tv_series.html">
+<div class="card-icon">📺</div>
+<h3>IMDb Top 250 TV Series</h3>
+<p>Scraped ratings, seasons, and trends for the top 250 TV shows on IMDb.</p>
+</a>
+<a class="project-card" href="best_picture_nominees.html">
+<div class="card-icon">🎬</div>
+<h3>Best Picture Nominees</h3>
+<p>Oscar Best Picture data — distributors, producers, and historical nominee analysis.</p>
+</a>
+<a class="project-card" href="top_250_imdb_with_rt.html">
+<div class="card-icon">🍿</div>
+<h3>Top 250 IMDb + Rotten Tomatoes</h3>
+<p>Cross-referencing IMDb's top 250 movies with Rotten Tomatoes scores.</p>
+</a>
+<a class="project-card" href="imdb_rating_plot.html">
+<div class="card-icon">📈</div>
+<h3>IMDb Rating Plot</h3>
+<p>Interactive episode-by-episode rating visualization for any TV series.</p>
+</a>
+<a class="project-card" href="avca_all_americans.html">
+<div class="card-icon">🏐</div>
+<h3>AVCA Volleyball All-Americans</h3>
+<p>Web-scraped history of men's volleyball All-American selections and champions.</p>
+</a>
+<a class="project-card" href="firefighter_schedule.html">
+<div class="card-icon">🚒</div>
+<h3>Firefighter Schedule</h3>
+<p>Shift calendar generator for firefighter 48/96 schedules.</p>
+</a>
+<a class="project-card" href="google_maps_saved_places.html">
+<div class="card-icon">📍</div>
+<h3>Google Maps Saved Places</h3>
+<p>My "Want to Go" and "Favorites" lists exported and visualized.</p>
+</a>
+<a class="project-card" href="my_imdb.html">
+<div class="card-icon">⭐</div>
+<h3>My IMDb Ratings</h3>
+<p>Personal movie ratings and watchlist from my IMDb account.</p>
+</a>
+<a class="project-card" href="my_travels.html">
+<div class="card-icon">✈️</div>
+<h3>Get Bloggy With It</h3>
+<p>Travel blog entries from my adventures around the world.</p>
+</a>
+<a class="project-card" href="best_pic_vs_top_1000.html">
+<div class="card-icon">🎞️</div>
+<h3>Best Picture vs Top 1000 Box Office</h3>
+<p>Do Oscar winners also dominate the box office? An interactive comparison.</p>
+</a>
+<a class="project-card" href="sierpinski_triangle.html">
+<div class="card-icon">🔺</div>
+<h3>Sierpinski Triangle</h3>
+<p>Fractal geometry generated in R — the classic chaos game visualization.</p>
+</a>
+<a class="project-card" href="confederate_statues.html">
+<div class="card-icon">🗽</div>
+<h3>Confederate Statues Timeline</h3>
+<p>When were Confederate monuments erected? A data-driven look at the timeline.</p>
+</a>
+<a class="project-card" href="learn_r.html">
+<div class="card-icon">📚</div>
+<h3>Learn R</h3>
+<p>Tutorial series: intro, data manipulation, visualization, and statistics in R.</p>
+</a>
+</div>
+
