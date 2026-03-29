@@ -38,6 +38,7 @@ datatable_options <- list(
   dom = "Bfrtip",
   buttons = c("copy", "csv", "excel"),
   scrollCollapse = TRUE,
+  scrollY = "400px",
   scrollX = TRUE,
   autoWidth = TRUE
 )

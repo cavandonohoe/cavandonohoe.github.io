@@ -127,7 +127,7 @@ segments_and_weekends_b %>%
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = TRUE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            pageLength = 500,
-                           scrollX = TRUE))
+                           scrollY = "400px", scrollX = TRUE))
 ```
 
 </details>
@@ -143,7 +143,7 @@ segments_and_weekends_county %>%
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = TRUE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            pageLength = 500,
-                           scrollX = TRUE))
+                           scrollY = "400px", scrollX = TRUE))
 ```
 
 </details>
@@ -159,7 +159,7 @@ segments_and_weekends_c %>%
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(paging = TRUE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            pageLength = 500,
-                           scrollX = TRUE))
+                           scrollY = "400px", scrollX = TRUE))
 ```
 
 </details>

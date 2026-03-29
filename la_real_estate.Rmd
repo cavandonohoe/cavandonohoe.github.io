@@ -118,7 +118,7 @@ la_neighborhoods %>%
     options = list(
       pageLength = 500, dom = "Bfrtip",
       buttons = c("copy", "csv", "excel"),
-      scrollX = TRUE
+      scrollY = "400px", scrollX = TRUE
     )
   )
 ```

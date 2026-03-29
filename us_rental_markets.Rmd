@@ -159,7 +159,7 @@ top40 %>%
     options = list(
       pageLength = 500, dom = "Bfrtip",
       buttons = c("copy", "csv", "excel"),
-      scrollX = TRUE
+      scrollY = "400px", scrollX = TRUE
     )
   )
 ```
@@ -292,8 +292,7 @@ markets %>%
     options = list(
       pageLength = 500, dom = "Bfrtip",
       buttons = c("copy", "csv", "excel"),
-      scrollX = TRUE,
-      scrollX = TRUE,
+      scrollY = "400px", scrollX = TRUE,
       order = list(list(5, "desc"))
     )
   )
@@ -365,8 +364,7 @@ metro_summary %>%
     options = list(
       pageLength = 500, dom = "Bfrtip",
       buttons = c("copy", "csv", "excel"),
-      scrollX = TRUE,
-      scrollX = TRUE,
+      scrollY = "400px", scrollX = TRUE,
       order = list(list(4, "desc"))
     )
   )

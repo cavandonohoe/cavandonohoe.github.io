@@ -51,7 +51,7 @@ max_ratings_per_series %>%
          season, episode, rating) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollX = TRUE))
+                           scrollY = "400px", scrollX = TRUE))
 ```
 
 </details>
@@ -75,7 +75,7 @@ strong_closer %>%
          episode, rating) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollX = TRUE))
+                           scrollY = "400px", scrollX = TRUE))
 ```
 
 </details>
@@ -98,7 +98,7 @@ strong_starter %>%
          season, episode, rating) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollX = TRUE))
+                           scrollY = "400px", scrollX = TRUE))
 ```
 
 </details>
@@ -123,7 +123,7 @@ shit_ending %>%
          season, episode, rating) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollX = TRUE))
+                           scrollY = "400px", scrollX = TRUE))
 ```
 
 </details>
@@ -146,7 +146,7 @@ awful_pilot %>%
          season, episode, rating) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollX = TRUE))
+                           scrollY = "400px", scrollX = TRUE))
 ```
 
 </details>
@@ -170,7 +170,7 @@ top_tier %>%
          season, episode, rating) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollX = TRUE))
+                           scrollY = "400px", scrollX = TRUE))
 ```
 
 </details>
@@ -210,7 +210,7 @@ runs_over_9_formatted %>%
   dplyr::select(series_title, run_length, run_label) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollX = TRUE))
+                           scrollY = "400px", scrollX = TRUE))
 ```
 
 </details>
@@ -382,7 +382,7 @@ streaks_over_9_concat %>%
   dplyr::select(series_title, streaks, n_streaks) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollX = TRUE))
+                           scrollY = "400px", scrollX = TRUE))
 ```
 
 </details>

@@ -43,7 +43,7 @@ all_americans %>%
   dplyr::mutate(Position = factor(Position), Class = factor(Class)) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollX = TRUE))
+                           scrollY = "400px", scrollX = TRUE))
 ```
 
 </details>
@@ -72,7 +72,7 @@ repeats %>%
                 School = schools, Position = positions) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollX = TRUE))
+                           scrollY = "400px", scrollX = TRUE))
 ```
 
 </details>
@@ -88,7 +88,7 @@ all_americans %>%
   dplyr::rename(School = school, `First-Team Selections` = selections) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
             options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollX = TRUE))
+                           scrollY = "400px", scrollX = TRUE))
 ```
 
 </details>
@@ -136,7 +136,7 @@ champ_display %>%
   DT::datatable(filter = "top", extensions = "Buttons",
             escape = FALSE,
             options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollX = TRUE))
+                           scrollY = "400px", scrollX = TRUE))
 ```
 
 </details>
