@@ -125,8 +125,8 @@ top_250_imdb_rot_tom %>%
   dplyr::arrange(dplyr::desc(tomato_meter_scores), rank) %>%
   dplyr::select(title, year, tomato_meter_scores, audience_scores, imdb_rating) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollY = "400px", scrollX = TRUE))
+            options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollX = TRUE))
 ```
 
 </details>

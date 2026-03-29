@@ -50,8 +50,8 @@ max_ratings_per_series %>%
   dplyr::select(series_title, year = release_year, episode_name = title,
          season, episode, rating) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollY = "400px", scrollX = TRUE))
+            options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollX = TRUE))
 ```
 
 </details>
@@ -74,8 +74,8 @@ strong_closer %>%
   dplyr::select(series_title, year = release_year, episode_name = title, season,
          episode, rating) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollY = "400px", scrollX = TRUE))
+            options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollX = TRUE))
 ```
 
 </details>
@@ -97,8 +97,8 @@ strong_starter %>%
   dplyr::select(series_title, year = release_year, episode_name = title,
          season, episode, rating) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollY = "400px", scrollX = TRUE))
+            options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollX = TRUE))
 ```
 
 </details>
@@ -122,8 +122,8 @@ shit_ending %>%
   dplyr::select(series_title, year = release_year, episode_name = title,
          season, episode, rating) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollY = "400px", scrollX = TRUE))
+            options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollX = TRUE))
 ```
 
 </details>
@@ -145,8 +145,8 @@ awful_pilot %>%
   dplyr::select(series_title, year = release_year, episode_name = title,
          season, episode, rating) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollY = "400px", scrollX = TRUE))
+            options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollX = TRUE))
 ```
 
 </details>
@@ -169,8 +169,8 @@ top_tier %>%
   dplyr::select(series_title, year = release_year, episode_name = title,
          season, episode, rating) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollY = "400px", scrollX = TRUE))
+            options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollX = TRUE))
 ```
 
 </details>
@@ -209,8 +209,8 @@ runs_over_9_formatted <- all_eps_ratings_tib %>%
 runs_over_9_formatted %>%
   dplyr::select(series_title, run_length, run_label) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollY = "400px", scrollX = TRUE))
+            options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollX = TRUE))
 ```
 
 </details>
@@ -381,8 +381,8 @@ streaks_over_9_concat <- runs_over_9_streaks %>%
 streaks_over_9_concat %>%
   dplyr::select(series_title, streaks, n_streaks) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollY = "400px", scrollX = TRUE))
+            options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollX = TRUE))
 ```
 
 </details>

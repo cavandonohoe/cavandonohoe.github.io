@@ -42,8 +42,8 @@ all_americans %>%
                 Position = position, Class = class) %>%
   dplyr::mutate(Position = factor(Position), Class = factor(Class)) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollY = "400px", scrollX = TRUE))
+            options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollX = TRUE))
 ```
 
 </details>
@@ -71,8 +71,8 @@ repeats %>%
   dplyr::select(Name = name, `Times Selected` = times, Years = years,
                 School = schools, Position = positions) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollY = "400px", scrollX = TRUE))
+            options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollX = TRUE))
 ```
 
 </details>
@@ -87,8 +87,8 @@ all_americans %>%
   dplyr::arrange(dplyr::desc(selections)) %>%
   dplyr::rename(School = school, `First-Team Selections` = selections) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollY = "400px", scrollX = TRUE))
+            options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollX = TRUE))
 ```
 
 </details>
@@ -135,8 +135,8 @@ champ_display <- champ_setter %>%
 champ_display %>%
   DT::datatable(filter = "top", extensions = "Buttons",
             escape = FALSE,
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollY = "400px", scrollX = TRUE))
+            options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollX = TRUE))
 ```
 
 </details>

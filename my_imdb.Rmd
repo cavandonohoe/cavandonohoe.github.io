@@ -46,8 +46,8 @@ nines_and_tens %>%
     `Release Date`, Directors) %>%
   dplyr::arrange(dplyr::desc(`My Rating`), dplyr::desc(`IMDb Rating`)) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollY = "400px", scrollX = TRUE))
+            options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollX = TRUE))
 ```
 
 <details><summary>Show full watchlist table</summary>
@@ -59,8 +59,8 @@ my_ratings %>%
   dplyr::arrange(dplyr::desc(`My Rating`), dplyr::desc(`IMDb Rating`)) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
             elementId = "imdb-watchlist-table",
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
-                           scrollY = "400px", scrollX = TRUE, autoWidth = TRUE),
+            options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+                           scrollX = TRUE, autoWidth = TRUE),
             width = "100%")
 ```
 

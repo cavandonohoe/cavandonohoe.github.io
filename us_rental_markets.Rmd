@@ -157,9 +157,9 @@ top40 %>%
   DT::datatable(
     filter = "top", extensions = "Buttons",
     options = list(
-      paging = FALSE, dom = "Bfrtip",
+      pageLength = 500, dom = "Bfrtip",
       buttons = c("copy", "csv", "excel"),
-      scrollY = "500px", scrollX = TRUE
+      scrollX = TRUE
     )
   )
 ```
@@ -290,10 +290,10 @@ markets %>%
   DT::datatable(
     filter = "top", extensions = "Buttons",
     options = list(
-      paging = FALSE, dom = "Bfrtip",
+      pageLength = 500, dom = "Bfrtip",
       buttons = c("copy", "csv", "excel"),
       scrollX = TRUE,
-      scrollY = "400px",
+      scrollX = TRUE,
       order = list(list(5, "desc"))
     )
   )
@@ -363,10 +363,10 @@ metro_summary %>%
   DT::datatable(
     filter = "top", extensions = "Buttons",
     options = list(
-      paging = FALSE, dom = "Bfrtip",
+      pageLength = 500, dom = "Bfrtip",
       buttons = c("copy", "csv", "excel"),
       scrollX = TRUE,
-      scrollY = "400px",
+      scrollX = TRUE,
       order = list(list(4, "desc"))
     )
   )
