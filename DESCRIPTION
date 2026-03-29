@@ -21,6 +21,9 @@ Imports:
     ggplot2,
     ggrepel,
     gt,
+    zoo,
+    tidyquant,
+    snakecase,
     RColorBrewer,
     pagedown,
     lubridate
