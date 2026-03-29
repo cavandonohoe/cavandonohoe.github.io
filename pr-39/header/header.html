@@ -17,6 +17,42 @@
 <link rel="mask-icon" href="/header/safari-pinned-tab.svg" color="#5bbad5">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
+<!-- Collapsible table accordion styling -->
+<style>
+details.table-accordion {
+  margin: 1em 0;
+}
+details.table-accordion > summary {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #fff;
+  background: #337ab7;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  list-style: none;
+  text-align: center;
+  transition: background 0.2s ease;
+}
+details.table-accordion > summary::-webkit-details-marker { display: none; }
+details.table-accordion > summary::before {
+  content: "▶  ";
+  font-size: 0.85em;
+}
+details.table-accordion[open] > summary {
+  border-radius: 6px 6px 0 0;
+  background: #286090;
+}
+details.table-accordion[open] > summary::before {
+  content: "▼  ";
+}
+details.table-accordion > summary:hover {
+  background: #286090;
+}
+</style>
 <!-- Meta tags for SEO and social sharing -->
 <meta name="description" content="Cavan Donohoe - Data Scientist. Personal website showcasing data science projects, R tutorials, and professional experience.">
 <meta name="keywords" content="data science, R programming, data analysis, R Markdown, Cavan Donohoe">
