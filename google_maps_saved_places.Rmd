@@ -34,11 +34,11 @@ want_to_go_path <- here::here("data", "want_to_go.csv")
 favorites_path <- here::here("data", "favorites.csv")
 
 datatable_options <- list(
-  paging = FALSE,
+  pageLength = 500,
   dom = "Bfrtip",
   buttons = c("copy", "csv", "excel"),
-  scrollY = "400px",
   scrollCollapse = TRUE,
+  scrollY = "400px",
   scrollX = TRUE,
   autoWidth = TRUE
 )
@@ -59,6 +59,8 @@ if (length(existing_csvs) == 0) {
 
 ### Want to go
 
+<details class="table-accordion"><summary>Show table</summary>
+
 ```{r want-to-go-table, results='asis'}
 if (!file.exists(want_to_go_path)) {
   cat("`data/want_to_go.csv` not found.\n\n")
@@ -74,7 +76,11 @@ if (!file.exists(want_to_go_path)) {
 }
 ```
 
+</details>
+
 ### Favorites
+
+<details class="table-accordion"><summary>Show table</summary>
 
 ```{r favorites-table, results='asis'}
 if (!file.exists(favorites_path)) {
@@ -90,3 +96,5 @@ if (!file.exists(favorites_path)) {
     )
 }
 ```
+
+</details>

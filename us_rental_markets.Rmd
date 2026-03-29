@@ -1,0 +1,377 @@
+---
+title: "US Rental Investment Markets"
+editor_options:
+  chunk_output_type: console
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+---
+
+```{r pipe, include=FALSE}
+`%>%` <- magrittr::`%>%`
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE,
+  fig.width = 10, fig.height = 8
+)
+```
+
+```{r data}
+raw <- readr::read_csv(here::here("data", "us_rental_markets.csv"), show_col_types = FALSE)
+
+# Filter out noise: seasonal vacation rentals and extremely low-value markets
+markets <- raw %>%
+  dplyr::filter(
+    zhvi >= 50000,
+    zori <= 5000,
+    zori >= 500,
+    gross_yield_pct <= 20
+  ) %>%
+  dplyr::mutate(
+    tier = factor(tier, levels = c("Strong Buy", "Moderate", "Lean Rent", "Rent Favored")),
+    city_state = paste0(city, ", ", state)
+  )
+
+zhvi_date <- unique(raw$zhvi_date)[1]
+zori_date <- unique(raw$zori_date)[1]
+
+tier_colors <- c(
+  "Strong Buy"   = "#27AE60",
+  "Moderate"     = "#2E86C1",
+  "Lean Rent"    = "#D4760A",
+  "Rent Favored" = "#8B0000"
+)
+```
+
+Where should you buy rental property in the US? This page ranks **`r nrow(markets)` cities** by investment metrics derived from Zillow's public home value and rent indices. The price-to-rent ratio is the standard benchmark:
+
+- **Strong Buy** (P/R < 15): Cash flow positive from day one
+- **Moderate** (P/R 15--20): Reasonable returns, some appreciation upside
+- **Lean Rent** (P/R 20--25): Marginal; depends on appreciation
+- **Rent Favored** (P/R > 25): Buy only if you're betting on price growth
+
+### Data Sources
+
+All data is traceable and reproducible. Run `Rscript scripts/us_rental_markets_data.R` to refresh.
+
+```{r sources_table}
+tibble::tribble(
+  ~Source, ~Description, ~Updated,
+  "Zillow ZHVI", "Typical home values (city level, SFR+condo, 35th\u201365th percentile)", as.character(zhvi_date),
+  "Zillow ZORI", "Typical observed rents (city level, SFR+condo+MFR)", as.character(zori_date),
+  "Census Pop Estimates", "City + county population (2020\u20132024), net migration", "V2024",
+  "Census ACS 5-Year", "Vacancy rates, renter %, housing counts (county level)", "2019\u20132023"
+) %>%
+  gt::gt() %>%
+  gt::tab_header(
+    title = gt::md("**Data Sources**"),
+    subtitle = "All public, no API key required"
+  ) %>%
+  gt::fmt_markdown(columns = Source) %>%
+  gt::cols_width(
+    Source ~ gt::px(180),
+    Description ~ gt::px(400),
+    Updated ~ gt::px(130)
+  ) %>%
+  gt::cols_align(align = "left") %>%
+  gt::tab_source_note(
+    gt::md("Cap rate = gross yield \u00d7 (1 \u2212 35% expense ratio). Raw data: [us_rental_markets.csv](data/us_rental_markets.csv)")
+  ) %>%
+  gt::tab_style(
+    style = gt::cell_fill(color = "#f8f9fa"),
+    locations = gt::cells_body(rows = seq(1, 4, by = 2))
+  ) %>%
+  gt::tab_options(
+    table.font.size = gt::px(14),
+    heading.title.font.size = gt::px(16),
+    heading.subtitle.font.size = gt::px(13),
+    column_labels.font.weight = "bold",
+    column_labels.background.color = "#2C3E50",
+    table.border.top.color = "#2C3E50",
+    table.border.bottom.color = "#2C3E50",
+    source_notes.font.size = gt::px(12)
+  ) %>%
+  gt::tab_style(
+    style = gt::cell_text(color = "white"),
+    locations = gt::cells_column_labels()
+  )
+```
+
+## Top 40 Cities by Cap Rate {.tabset}
+
+```{r top_markets}
+top40 <- markets %>%
+  dplyr::slice_head(n = 40)
+```
+
+### Bar Chart
+
+```{r cap_rate_bar, fig.height=12}
+top40 %>%
+  dplyr::mutate(city_state = forcats::fct_reorder(city_state, est_cap_rate_pct)) %>%
+  ggplot2::ggplot(ggplot2::aes(x = city_state, y = est_cap_rate_pct, fill = tier)) +
+  ggplot2::geom_col(width = 0.7) +
+  ggplot2::geom_text(
+    ggplot2::aes(label = paste0(est_cap_rate_pct, "%")),
+    hjust = -0.1, size = 3, color = "grey30"
+  ) +
+  ggplot2::coord_flip(ylim = c(0, max(top40$est_cap_rate_pct) * 1.15)) +
+  ggplot2::scale_fill_manual(values = tier_colors) +
+  ggplot2::labs(
+    title = "Estimated Cap Rate (Top 40 Cities)",
+    subtitle = "Gross yield minus 35% expense ratio",
+    x = NULL, y = "Estimated Cap Rate (%)", fill = "Tier"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(
+    legend.position = "top",
+    panel.grid.major.y = ggplot2::element_blank()
+  )
+```
+
+### Interactive Table
+
+<details class="table-accordion"><summary>Show table</summary>
+
+```{r top_table}
+top40 %>%
+  dplyr::transmute(
+    `#` = dplyr::row_number(),
+    City = city, State = state, Metro = metro,
+    `Home Value` = scales::dollar(zhvi),
+    `Rent/Mo` = scales::dollar(zori, accuracy = 1),
+    `Est Cap Rate` = paste0(est_cap_rate_pct, "%"),
+    `P/R Ratio` = price_to_rent,
+    Population = dplyr::if_else(is.na(pop_2024), "---", scales::comma(pop_2024)),
+    `Pop Growth` = dplyr::if_else(is.na(pop_growth_pct), "---", paste0(pop_growth_pct, "%")),
+    `Vacancy` = dplyr::if_else(is.na(vacancy_rate_pct), "---", paste0(vacancy_rate_pct, "%")),
+    `Rental Vac` = dplyr::if_else(is.na(rental_vacancy_pct), "---", paste0(rental_vacancy_pct, "%")),
+    `Net Mig/1K` = dplyr::if_else(is.na(net_mig_rate_per1k), "---", as.character(net_mig_rate_per1k)),
+    `% Renter` = dplyr::if_else(is.na(renter_pct), "---", paste0(renter_pct, "%")),
+    Tier = tier
+  ) %>%
+  DT::datatable(
+    filter = "top", extensions = "Buttons",
+    options = list(
+      pageLength = 500, dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel"),
+      scrollY = "400px", scrollX = TRUE
+    )
+  )
+```
+
+</details>
+
+## Gross Yield vs Home Value
+
+```{r scatter_yield, fig.height=8}
+top100 <- markets %>% dplyr::slice_head(n = 100)
+
+ggplot2::ggplot(top100, ggplot2::aes(x = zhvi, y = gross_yield_pct, color = tier)) +
+  ggplot2::geom_point(size = 3, alpha = 0.8) +
+  ggrepel::geom_text_repel(
+    ggplot2::aes(label = city_state),
+    size = 2.5, max.overlaps = 20, segment.color = "grey70"
+  ) +
+  ggplot2::scale_x_continuous(labels = scales::label_dollar(scale_cut = scales::cut_short_scale())) +
+  ggplot2::scale_color_manual(values = tier_colors) +
+  ggplot2::labs(
+    title = "Gross Yield vs Home Value (Top 100 Cities)",
+    subtitle = "Higher yield + lower price = better cash flow market",
+    x = "Zillow Home Value Index", y = "Gross Yield (%)", color = "Tier"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(legend.position = "top")
+```
+
+## Demand Health Check: Cap Rate vs Population Growth
+
+High cap rate means nothing if the town is emptying out. This chart cross-references cap rate with population growth -- the sweet spot is the upper-right quadrant: strong cash flow **and** growing population.
+
+```{r demand_scatter, fig.height=9, fig.width=10}
+demand_data <- markets %>%
+  dplyr::filter(
+    !is.na(pop_growth_pct), !is.na(est_cap_rate_pct), !is.na(pop_2024),
+    pop_2024 >= 10000
+  )
+
+ggplot2::ggplot(
+  demand_data,
+  ggplot2::aes(x = pop_growth_pct, y = est_cap_rate_pct, color = tier, size = pop_2024)
+) +
+  ggplot2::geom_point(alpha = 0.6) +
+  ggrepel::geom_text_repel(
+    data = demand_data %>%
+      dplyr::filter(est_cap_rate_pct >= 5 | pop_growth_pct >= 15 | pop_growth_pct <= -10 |
+                    (est_cap_rate_pct >= 4 & pop_growth_pct >= 5)),
+    ggplot2::aes(label = city_state),
+    size = 2.5, max.overlaps = 25, segment.color = "grey70"
+  ) +
+  ggplot2::geom_vline(xintercept = 0, linetype = "dashed", color = "grey50") +
+  ggplot2::geom_hline(yintercept = 0, linetype = "dashed", color = "grey50") +
+  ggplot2::annotate("rect", xmin = 0, xmax = Inf, ymin = 3, ymax = Inf,
+                    fill = "#27AE60", alpha = 0.05) +
+  ggplot2::annotate("text", x = max(demand_data$pop_growth_pct) * 0.7, y = max(demand_data$est_cap_rate_pct) * 0.95,
+                    label = "Sweet spot:\ngrowth + cash flow", size = 3.5, color = "#27AE60", fontface = "bold") +
+  ggplot2::scale_color_manual(values = tier_colors) +
+  ggplot2::scale_size_continuous(range = c(1, 8), labels = scales::label_comma(), guide = "none") +
+  ggplot2::labs(
+    title = "Cap Rate vs Population Growth (Cities 10K+ pop)",
+    subtitle = "Bubble size = city population. Upper-right = cash flow + demand.",
+    x = "Population Growth 2020\u20132024 (%)", y = "Estimated Cap Rate (%)", color = "Tier"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(legend.position = "top")
+```
+
+## Vacancy Rate vs Cap Rate
+
+Markets with high vacancy rates are risky -- your rental sits empty longer. Cities in the lower-right have strong cap rates **and** low vacancy.
+
+```{r vacancy_scatter, fig.height=8}
+vacancy_data <- markets %>%
+  dplyr::filter(!is.na(vacancy_rate_pct), !is.na(est_cap_rate_pct), !is.na(pop_2024),
+                pop_2024 >= 10000)
+
+ggplot2::ggplot(
+  vacancy_data,
+  ggplot2::aes(x = est_cap_rate_pct, y = vacancy_rate_pct, color = tier, size = pop_2024)
+) +
+  ggplot2::geom_point(alpha = 0.6) +
+  ggrepel::geom_text_repel(
+    data = vacancy_data %>%
+      dplyr::filter(est_cap_rate_pct >= 5 | vacancy_rate_pct >= 20 |
+                    (est_cap_rate_pct >= 4 & vacancy_rate_pct <= 6)),
+    ggplot2::aes(label = city_state),
+    size = 2.5, max.overlaps = 20, segment.color = "grey70"
+  ) +
+  ggplot2::geom_hline(yintercept = 10, linetype = "dashed", color = "#E74C3C", linewidth = 0.5) +
+  ggplot2::annotate("text", x = max(vacancy_data$est_cap_rate_pct) * 0.9,
+                    y = 10.5, label = "10% vacancy threshold", size = 3, color = "#E74C3C") +
+  ggplot2::scale_color_manual(values = tier_colors) +
+  ggplot2::scale_size_continuous(range = c(1, 8), labels = scales::label_comma(), guide = "none") +
+  ggplot2::labs(
+    title = "Vacancy Rate vs Cap Rate (Cities 10K+ pop)",
+    subtitle = "Lower-right = strong returns + low vacancy. Above the red line = risky.",
+    x = "Estimated Cap Rate (%)", y = "County Vacancy Rate (%)", color = "Tier"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(legend.position = "top")
+```
+
+## Full US Market Explorer
+
+Search, filter, and sort all `r nrow(markets)` cities.
+
+<details class="table-accordion"><summary>Show full table</summary>
+
+```{r full_table}
+markets %>%
+  dplyr::transmute(
+    City = city, State = state, Metro = metro,
+    `Home Value` = scales::dollar(zhvi),
+    `Rent/Mo` = scales::dollar(zori, accuracy = 1),
+    `Cap Rate` = est_cap_rate_pct,
+    `P/R Ratio` = price_to_rent,
+    `Gross Yield` = gross_yield_pct,
+    Population = dplyr::if_else(is.na(pop_2024), NA_real_, pop_2024),
+    `Pop Gr %` = pop_growth_pct,
+    `County Pop Gr %` = county_pop_growth_pct,
+    `Net Mig/1K` = net_mig_rate_per1k,
+    `Vacancy %` = vacancy_rate_pct,
+    `Rental Vac %` = rental_vacancy_pct,
+    `Renter %` = renter_pct,
+    Tier = tier
+  ) %>%
+  DT::datatable(
+    filter = "top", extensions = "Buttons",
+    options = list(
+      pageLength = 500, dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel"),
+      scrollY = "400px", scrollX = TRUE,
+      order = list(list(5, "desc"))
+    )
+  )
+```
+
+</details>
+
+## Tier Distribution
+
+```{r tier_dist, fig.height=5, fig.width=8}
+tier_counts <- markets %>%
+  dplyr::count(tier) %>%
+  dplyr::mutate(pct = round(100 * n / sum(n), 1))
+
+ggplot2::ggplot(tier_counts, ggplot2::aes(x = tier, y = n, fill = tier)) +
+  ggplot2::geom_col(width = 0.6) +
+  ggplot2::geom_text(
+    ggplot2::aes(label = paste0(n, " (", pct, "%)")),
+    vjust = -0.3, size = 4
+  ) +
+  ggplot2::scale_fill_manual(values = tier_colors) +
+  ggplot2::scale_y_continuous(expand = ggplot2::expansion(mult = c(0, 0.15))) +
+  ggplot2::labs(
+    title = "How Many US Cities Fall Into Each Investment Tier?",
+    x = NULL, y = "Number of Cities"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(legend.position = "none")
+```
+
+## Metro-Level Comparison
+
+Average metrics across cities within each metro area (metros with 5+ cities).
+
+<details class="table-accordion"><summary>Show metro table</summary>
+
+```{r metro_table}
+metro_summary <- markets %>%
+  dplyr::filter(!is.na(metro)) %>%
+  dplyr::group_by(metro) %>%
+  dplyr::summarise(
+    n_cities = dplyr::n(),
+    avg_zhvi = mean(zhvi, na.rm = TRUE),
+    avg_zori = mean(zori, na.rm = TRUE),
+    avg_cap_rate = mean(est_cap_rate_pct, na.rm = TRUE),
+    avg_ptr = mean(price_to_rent, na.rm = TRUE),
+    avg_pop_growth = mean(county_pop_growth_pct, na.rm = TRUE),
+    avg_vacancy = mean(vacancy_rate_pct, na.rm = TRUE),
+    avg_net_mig = mean(net_mig_rate_per1k, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::filter(n_cities >= 5) %>%
+  dplyr::arrange(dplyr::desc(avg_cap_rate))
+
+metro_summary %>%
+  dplyr::transmute(
+    Metro = metro,
+    Cities = n_cities,
+    `Avg Home Value` = scales::dollar(avg_zhvi),
+    `Avg Rent/Mo` = scales::dollar(avg_zori, accuracy = 1),
+    `Avg Cap Rate` = paste0(round(avg_cap_rate, 2), "%"),
+    `Avg P/R` = round(avg_ptr, 1),
+    `County Pop Gr %` = round(avg_pop_growth, 2),
+    `Avg Vacancy %` = round(avg_vacancy, 2),
+    `Avg Net Mig/1K` = round(avg_net_mig, 2)
+  ) %>%
+  DT::datatable(
+    filter = "top", extensions = "Buttons",
+    options = list(
+      pageLength = 500, dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel"),
+      scrollY = "400px", scrollX = TRUE,
+      order = list(list(4, "desc"))
+    )
+  )
+```
+
+</details>
+
+---
+
+**How to update this data:** Run `Rscript scripts/us_rental_markets_data.R` to download Zillow ZHVI + ZORI. Then run `Rscript scripts/us_rental_demand_data.R` to merge Census population, vacancy, and migration data. Then re-render this page.

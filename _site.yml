@@ -50,6 +50,8 @@ navbar:
         href: avca_all_americans.html
       - text: "LA Neighborhoods: Price per Sq Ft"
         href: la_real_estate.html
+      - text: "US Rental Investment Markets"
+        href: us_rental_markets.html
       - text: "When Were Confederate Statues Erected?"
         href: confederate_statues.html
       - text: "Learn R"
