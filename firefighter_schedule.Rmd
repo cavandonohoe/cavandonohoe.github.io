@@ -118,7 +118,7 @@ This is based on the Kelly Schedule.
 
 ## Jason's:
 
-<details><summary>Show schedule</summary>
+<details class="table-accordion"><summary>Show schedule</summary>
 
 ```{r}
 segments_and_weekends_b %>%
@@ -134,7 +134,7 @@ segments_and_weekends_b %>%
 
 ## Owen's:
 
-<details><summary>Show schedule</summary>
+<details class="table-accordion"><summary>Show schedule</summary>
 
 ```{r}
 segments_and_weekends_county %>%
@@ -150,7 +150,7 @@ segments_and_weekends_county %>%
 
 ## Wyett's:
 
-<details><summary>Show schedule</summary>
+<details class="table-accordion"><summary>Show schedule</summary>
 
 ```{r}
 segments_and_weekends_c %>%

@@ -34,7 +34,7 @@ The [American Volleyball Coaches Association (AVCA)](https://www.avca.org/) sele
 
 ## All First-Team Selections (`r min(all_americans$year)`--`r max(all_americans$year)`)
 
-<details><summary>Show table</summary>
+<details class="table-accordion"><summary>Show table</summary>
 
 ```{r all_table}
 all_americans %>%
@@ -52,7 +52,7 @@ all_americans %>%
 
 Players who made the first team more than once during this window.
 
-<details><summary>Show table</summary>
+<details class="table-accordion"><summary>Show table</summary>
 
 ```{r repeat_table}
 repeats <- all_americans %>%
@@ -79,7 +79,7 @@ repeats %>%
 
 ## Selections by School
 
-<details><summary>Show table</summary>
+<details class="table-accordion"><summary>Show table</summary>
 
 ```{r school_table}
 all_americans %>%
@@ -97,7 +97,7 @@ all_americans %>%
 
 The setter runs the offense. How often does the national champion have their setter recognized as one of the best in the country?
 
-<details><summary>Show table</summary>
+<details class="table-accordion"><summary>Show table</summary>
 
 ```{r champ_setter}
 setter_positions <- c("S", "S/H")

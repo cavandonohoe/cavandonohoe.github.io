@@ -38,7 +38,7 @@ Now the time consuming part would be to click every single series, go into their
 
 Some of them are tied and I didn't bother creating any tie breaking metrics or get into all of the detailed ratings per episode. Some may say lazy, but I say efficient on time management. 
 
-<details><summary>Show table</summary>
+<details class="table-accordion"><summary>Show table</summary>
 
 ```{r best_episode}
 max_ratings_per_series <- all_eps_ratings_tib %>%
@@ -61,7 +61,7 @@ max_ratings_per_series %>%
 
 I was also wondering whether the last episode was the highest rated one. 
 
-<details><summary>Show table</summary>
+<details class="table-accordion"><summary>Show table</summary>
 
 ```{r strong_closer}
 strong_closer <- all_eps_ratings_tib %>%
@@ -84,7 +84,7 @@ strong_closer %>%
 
 Fairly rare, but did a series start with the strongest episode? 
 
-<details><summary>Show table</summary>
+<details class="table-accordion"><summary>Show table</summary>
 
 ```{r strong_starter}
 strong_starter <- all_eps_ratings_tib %>%
@@ -109,7 +109,7 @@ Looks like people really get wowed over these nature documentaries from the firs
 
 Looking at you GOT... Ok maybe some of these aren't that bad. Some of these may have just had a strong story leading up and the finale missed it's mark by just a decimal point. But we will never forget Game of Thrones. 
 
-<details><summary>Show table</summary>
+<details class="table-accordion"><summary>Show table</summary>
 
 ```{r shit_ending}
 shit_ending <- all_eps_ratings_tib %>%
@@ -132,7 +132,7 @@ shit_ending %>%
 
 Some shows have some god-awful beginnings, and I wonder how they got picked up. But they made this top 250 list, so they must have gotten their shit together.
 
-<details><summary>Show table</summary>
+<details class="table-accordion"><summary>Show table</summary>
 
 ```{r awful_pilot}
 awful_pilot <- all_eps_ratings_tib %>%
@@ -156,7 +156,7 @@ awful_pilot %>%
 
 Let's see which shows have a minimum rating of any show as an 8.0
 
-<details><summary>Show table</summary>
+<details class="table-accordion"><summary>Show table</summary>
 
 ```{r top_tier}
 top_tier <- all_eps_ratings_tib %>%
@@ -178,7 +178,7 @@ top_tier %>%
 
 ## Best Streaks
 
-<details><summary>Show table</summary>
+<details class="table-accordion"><summary>Show table</summary>
 
 ```{r best_streaks}
 runs_over_9_formatted <- all_eps_ratings_tib %>%
@@ -329,7 +329,7 @@ plotly::ggplotly(p, tooltip = "text")
 
 ## Streaks of 3 ≥ 9.0 IMDb Episodes in a Row
 
-<details><summary>Show table</summary>
+<details class="table-accordion"><summary>Show table</summary>
 
 ```{r streaks_of_3}
 runs_over_9_streaks <- all_eps_ratings_tib %>%

@@ -135,7 +135,7 @@ top40 %>%
 
 ### Interactive Table
 
-<details><summary>Show table</summary>
+<details class="table-accordion"><summary>Show table</summary>
 
 ```{r top_table}
 top40 %>%
@@ -267,7 +267,7 @@ ggplot2::ggplot(
 
 Search, filter, and sort all `r nrow(markets)` cities.
 
-<details><summary>Show full table</summary>
+<details class="table-accordion"><summary>Show full table</summary>
 
 ```{r full_table}
 markets %>%
@@ -328,7 +328,7 @@ ggplot2::ggplot(tier_counts, ggplot2::aes(x = tier, y = n, fill = tier)) +
 
 Average metrics across cities within each metro area (metros with 5+ cities).
 
-<details><summary>Show metro table</summary>
+<details class="table-accordion"><summary>Show metro table</summary>
 
 ```{r metro_table}
 metro_summary <- markets %>%

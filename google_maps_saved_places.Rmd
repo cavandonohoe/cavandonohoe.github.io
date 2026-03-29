@@ -58,7 +58,7 @@ if (length(existing_csvs) == 0) {
 
 ### Want to go
 
-<details><summary>Show table</summary>
+<details class="table-accordion"><summary>Show table</summary>
 
 ```{r want-to-go-table, results='asis'}
 if (!file.exists(want_to_go_path)) {
@@ -79,7 +79,7 @@ if (!file.exists(want_to_go_path)) {
 
 ### Favorites
 
-<details><summary>Show table</summary>
+<details class="table-accordion"><summary>Show table</summary>
 
 ```{r favorites-table, results='asis'}
 if (!file.exists(favorites_path)) {

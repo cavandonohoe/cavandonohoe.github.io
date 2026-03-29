@@ -93,7 +93,7 @@ la_neighborhoods %>%
 
 ### Interactive Table
 
-<details><summary>Show table</summary>
+<details class="table-accordion"><summary>Show table</summary>
 
 ```{r table}
 la_neighborhoods %>%
