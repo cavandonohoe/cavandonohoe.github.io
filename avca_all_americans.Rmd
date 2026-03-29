@@ -34,19 +34,25 @@ The [American Volleyball Coaches Association (AVCA)](https://www.avca.org/) sele
 
 ## All First-Team Selections (`r min(all_americans$year)`--`r max(all_americans$year)`)
 
+<details class="table-accordion"><summary>Show table</summary>
+
 ```{r all_table}
 all_americans %>%
   dplyr::select(Year = year, Name = name, School = school,
                 Position = position, Class = class) %>%
   dplyr::mutate(Position = factor(Position), Class = factor(Class)) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+            options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
 ```
+
+</details>
 
 ## Multi-Year First-Team Selections
 
 Players who made the first team more than once during this window.
+
+<details class="table-accordion"><summary>Show table</summary>
 
 ```{r repeat_table}
 repeats <- all_americans %>%
@@ -65,11 +71,15 @@ repeats %>%
   dplyr::select(Name = name, `Times Selected` = times, Years = years,
                 School = schools, Position = positions) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+            options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
 ```
 
+</details>
+
 ## Selections by School
+
+<details class="table-accordion"><summary>Show table</summary>
 
 ```{r school_table}
 all_americans %>%
@@ -77,13 +87,17 @@ all_americans %>%
   dplyr::arrange(dplyr::desc(selections)) %>%
   dplyr::rename(School = school, `First-Team Selections` = selections) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+            options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
 ```
+
+</details>
 
 ## Did the National Champion Have a First-Team All-American Setter?
 
 The setter runs the offense. How often does the national champion have their setter recognized as one of the best in the country?
+
+<details class="table-accordion"><summary>Show table</summary>
 
 ```{r champ_setter}
 setter_positions <- c("S", "S/H")
@@ -121,9 +135,11 @@ champ_display <- champ_setter %>%
 champ_display %>%
   DT::datatable(filter = "top", extensions = "Buttons",
             escape = FALSE,
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+            options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
 ```
+
+</details>
 
 ```{r champ_setter_summary, results='asis'}
 valid_years <- champ_setter %>% dplyr::filter(!is.na(champion))

@@ -93,6 +93,8 @@ la_neighborhoods %>%
 
 ### Interactive Table
 
+<details class="table-accordion"><summary>Show table</summary>
+
 ```{r table}
 la_neighborhoods %>%
   dplyr::arrange(dplyr::desc(price_per_sqft)) %>%
@@ -114,12 +116,14 @@ la_neighborhoods %>%
   DT::datatable(
     filter = "top", extensions = "Buttons",
     options = list(
-      paging = FALSE, dom = "Bfrtip",
+      pageLength = 500, dom = "Bfrtip",
       buttons = c("copy", "csv", "excel"),
-      scrollY = "500px", scrollX = TRUE
+      scrollY = "400px", scrollX = TRUE
     )
   )
 ```
+
+</details>
 
 ## What Does $1 Million Buy You? {.tabset}
 

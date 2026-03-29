@@ -91,6 +91,8 @@ distributors_plot_nominees %>%
 
 For more detail, please look at this table:
 
+<details class="table-accordion"><summary>Show distributors table</summary>
+
 ```{r distributor_table}
 best_pic_noms_final %>%
   tidyr::separate_rows(producers, sep = "\\|") %>%
@@ -101,10 +103,12 @@ best_pic_noms_final %>%
   dplyr::ungroup() %>%
   dplyr::arrange(dplyr::desc(n)) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+            options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE),
             escape = FALSE)
 ```
+
+</details>
 
 ## Producers
 
@@ -156,6 +160,8 @@ producers_plot_nominees %>%
 
 For more detail, please look at this table:
 
+<details class="table-accordion"><summary>Show producers table</summary>
+
 ```{r producer_table}
 best_pic_noms_final %>%
   tidyr::separate_rows(producers, sep = "\\|") %>%
@@ -166,21 +172,27 @@ best_pic_noms_final %>%
   dplyr::ungroup() %>%
   dplyr::arrange(dplyr::desc(n)) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+            options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE),
             escape = FALSE)
 ```
+
+</details>
 
 
 
 ## All Nominees
 
+<details class="table-accordion"><summary>Show all nominees table</summary>
+
 ```{r full_table}
 best_pic_noms_final %>%
   dplyr::select(year, title, nominees_or_winner, producers, imdb_url) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
-            options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
+            options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
 
 
 ```
+
+</details>
