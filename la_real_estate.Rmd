@@ -93,6 +93,8 @@ la_neighborhoods %>%
 
 ### Interactive Table
 
+<details><summary>Show table</summary>
+
 ```{r table}
 la_neighborhoods %>%
   dplyr::arrange(dplyr::desc(price_per_sqft)) %>%
@@ -120,6 +122,8 @@ la_neighborhoods %>%
     )
   )
 ```
+
+</details>
 
 ## What Does $1 Million Buy You? {.tabset}
 

@@ -135,6 +135,8 @@ top40 %>%
 
 ### Interactive Table
 
+<details><summary>Show table</summary>
+
 ```{r top_table}
 top40 %>%
   dplyr::transmute(
@@ -161,6 +163,8 @@ top40 %>%
     )
   )
 ```
+
+</details>
 
 ## Gross Yield vs Home Value
 
@@ -263,6 +267,8 @@ ggplot2::ggplot(
 
 Search, filter, and sort all `r nrow(markets)` cities.
 
+<details><summary>Show full table</summary>
+
 ```{r full_table}
 markets %>%
   dplyr::transmute(
@@ -292,6 +298,8 @@ markets %>%
   )
 ```
 
+</details>
+
 ## Tier Distribution
 
 ```{r tier_dist, fig.height=5, fig.width=8}
@@ -318,6 +326,8 @@ ggplot2::ggplot(tier_counts, ggplot2::aes(x = tier, y = n, fill = tier)) +
 ## Metro-Level Comparison
 
 Average metrics across cities within each metro area (metros with 5+ cities).
+
+<details><summary>Show metro table</summary>
 
 ```{r metro_table}
 metro_summary <- markets %>%
@@ -359,6 +369,8 @@ metro_summary %>%
     )
   )
 ```
+
+</details>
 
 ---
 

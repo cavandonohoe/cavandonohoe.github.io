@@ -50,6 +50,8 @@ nines_and_tens %>%
                            scrollY = "400px", scrollX = TRUE))
 ```
 
+<details><summary>Show full watchlist table</summary>
+
 ```{r full_list}
 my_ratings %>%
   dplyr::select(`My Rating` = `Your Rating`, Title, `Title Type`, `IMDb Rating`, `Runtime (mins)`,
@@ -61,6 +63,8 @@ my_ratings %>%
                            scrollY = "400px", scrollX = TRUE, autoWidth = TRUE),
             width = "100%")
 ```
+
+</details>
 
 
 

@@ -118,6 +118,8 @@ plotly::plot_ly(
 
 ### Top 250 Sorted By Tomatometer
 
+<details><summary>Show table</summary>
+
 ```{r rt_table}
 top_250_imdb_rot_tom %>%
   dplyr::arrange(dplyr::desc(tomato_meter_scores), rank) %>%
@@ -126,6 +128,8 @@ top_250_imdb_rot_tom %>%
             options = list(paging = FALSE, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
                            scrollY = "400px", scrollX = TRUE))
 ```
+
+</details>
 
 
 ### Residuals

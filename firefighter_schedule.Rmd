@@ -118,6 +118,8 @@ This is based on the Kelly Schedule.
 
 ## Jason's:
 
+<details><summary>Show schedule</summary>
+
 ```{r}
 segments_and_weekends_b %>%
   dplyr::filter(days >= as.Date(Sys.Date())) %>%
@@ -128,7 +130,11 @@ segments_and_weekends_b %>%
                            scrollY = "400px", scrollX = TRUE))
 ```
 
+</details>
+
 ## Owen's:
+
+<details><summary>Show schedule</summary>
 
 ```{r}
 segments_and_weekends_county %>%
@@ -140,7 +146,11 @@ segments_and_weekends_county %>%
                            scrollY = "400px", scrollX = TRUE))
 ```
 
+</details>
+
 ## Wyett's:
+
+<details><summary>Show schedule</summary>
 
 ```{r}
 segments_and_weekends_c %>%
@@ -151,3 +161,5 @@ segments_and_weekends_c %>%
                            pageLength = 500,
                            scrollY = "400px", scrollX = TRUE))
 ```
+
+</details>

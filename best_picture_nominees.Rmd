@@ -91,6 +91,8 @@ distributors_plot_nominees %>%
 
 For more detail, please look at this table:
 
+<details><summary>Show distributors table</summary>
+
 ```{r distributor_table}
 best_pic_noms_final %>%
   tidyr::separate_rows(producers, sep = "\\|") %>%
@@ -105,6 +107,8 @@ best_pic_noms_final %>%
                            scrollY = "400px", scrollX = TRUE),
             escape = FALSE)
 ```
+
+</details>
 
 ## Producers
 
@@ -156,6 +160,8 @@ producers_plot_nominees %>%
 
 For more detail, please look at this table:
 
+<details><summary>Show producers table</summary>
+
 ```{r producer_table}
 best_pic_noms_final %>%
   tidyr::separate_rows(producers, sep = "\\|") %>%
@@ -171,9 +177,13 @@ best_pic_noms_final %>%
             escape = FALSE)
 ```
 
+</details>
+
 
 
 ## All Nominees
+
+<details><summary>Show all nominees table</summary>
 
 ```{r full_table}
 best_pic_noms_final %>%
@@ -184,3 +194,5 @@ best_pic_noms_final %>%
 
 
 ```
+
+</details>
