@@ -9,6 +9,15 @@ output:
       after_body: include_footer.html
 ---
 
+```{r og-meta, echo=FALSE, results='asis'}
+cat('
+<meta property="og:title" content="When Were Confederate Statues Erected?">
+<meta property="og:description" content="A data-driven timeline of Confederate monument construction in the United States.">
+<meta property="og:url" content="https://cavandonohoe.github.io/confederate_statues.html">
+<meta property="og:type" content="article">
+')
+```
+
 ```{r pipe, include=FALSE}
 `%>%` <- magrittr::`%>%`
 ```

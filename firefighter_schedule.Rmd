@@ -9,6 +9,15 @@ output:
       after_body: include_footer.html
 ---
 
+```{r og-meta, echo=FALSE, results='asis'}
+cat('
+<meta property="og:title" content="Firefighter Schedule Generator">
+<meta property="og:description" content="48/96 Kelly shift schedule calculator for firefighters — projected schedules through retirement.">
+<meta property="og:url" content="https://cavandonohoe.github.io/firefighter_schedule.html">
+<meta property="og:type" content="article">
+')
+```
+
 ```{r pipe, include=FALSE}
 `%>%` <- magrittr::`%>%`
 ```

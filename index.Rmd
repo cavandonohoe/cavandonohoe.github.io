@@ -38,3 +38,52 @@ I thought it might be worth investing some time to make a website to point to an
 
 Check out my latest project: a [Rent vs. Buy Calculator](https://cavandonohoe.shinyapps.io/rent-vs-buy/) — an interactive Shiny app that runs a side-by-side financial simulation to help you decide whether to buy a home or keep renting and investing. Source code on [GitHub](https://github.com/cavandonohoe/rent-vs-buy).
 
+## Projects
+
+```{r project-cards, echo=FALSE, results='asis'}
+cards <- list(
+  list("us_rental_markets.html", "\U0001F3D8\UFE0F", "US Rental Investment Markets",
+    "Cap rates, vacancy, and demand signals for 3,800+ cities using Zillow and Census data."),
+  list("la_real_estate.html", "\U0001F3E1", "LA Neighborhoods: Price per Sq Ft",
+    "Zillow + Redfin data for LA neighborhoods — median prices, rent, and what $1M buys you."),
+  list("https://cavandonohoe.shinyapps.io/rent-vs-buy/", "\U0001F9EE", "Rent vs. Buy Calculator",
+    "Interactive Shiny app for side-by-side financial simulation of renting vs. buying."),
+  list("imdb_top_250_tv_series.html", "\U0001F4FA", "IMDb Top 250 TV Series",
+    "Scraped ratings, seasons, and trends for the top 250 TV shows on IMDb."),
+  list("best_picture_nominees.html", "\U0001F3AC", "Best Picture Nominees",
+    "Oscar Best Picture data — distributors, producers, and historical nominee analysis."),
+  list("top_250_imdb_with_rt.html", "\U0001F37F", "Top 250 IMDb + Rotten Tomatoes",
+    "Cross-referencing IMDb's top 250 movies with Rotten Tomatoes scores."),
+  list("imdb_rating_plot.html", "\U0001F4C8", "IMDb Rating Plot",
+    "Interactive episode-by-episode rating visualization for any TV series."),
+  list("avca_all_americans.html", "\U0001F3D0", "AVCA Volleyball All-Americans",
+    "Web-scraped history of men's volleyball All-American selections and champions."),
+  list("firefighter_schedule.html", "\U0001F692", "Firefighter Schedule",
+    "Shift calendar generator for firefighter 48/96 schedules."),
+  list("google_maps_saved_places.html", "\U0001F4CD", "Google Maps Saved Places",
+    'My "Want to Go" and "Favorites" lists exported and visualized.'),
+  list("my_imdb.html", "\U2B50", "My IMDb Ratings",
+    "Personal movie ratings and watchlist from my IMDb account."),
+  list("my_travels.html", "\U2708\UFE0F", "Get Bloggy With It",
+    "Travel blog entries from my adventures around the world."),
+  list("best_pic_vs_top_1000.html", "\U0001F39E\UFE0F", "Best Picture vs Top 1000 Box Office",
+    "Do Oscar winners also dominate the box office? An interactive comparison."),
+  list("sierpinski_triangle.html", "\U0001F53A", "Sierpinski Triangle",
+    "Fractal geometry generated in R — the classic chaos game visualization."),
+  list("confederate_statues.html", "\U0001F5FD", "Confederate Statues Timeline",
+    "When were Confederate monuments erected? A data-driven look at the timeline."),
+  list("learn_r.html", "\U0001F4DA", "Learn R",
+    "Tutorial series: intro, data manipulation, visualization, and statistics in R.")
+)
+
+html <- '<div class="project-grid">'
+for (card in cards) {
+  html <- paste0(html, sprintf(
+    '<a class="project-card" href="%s"><div class="card-icon">%s</div><h3>%s</h3><p>%s</p></a>',
+    card[[1]], card[[2]], card[[3]], card[[4]]
+  ))
+}
+html <- paste0(html, '</div>')
+cat(html)
+```
+

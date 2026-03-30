@@ -9,6 +9,15 @@ output:
       after_body: include_footer.html
 ---
 
+```{r og-meta, echo=FALSE, results='asis'}
+cat('
+<meta property="og:title" content="Google Maps Saved Places">
+<meta property="og:description" content="Exported &#39;Want to Go&#39; and &#39;Favorites&#39; lists from Google Maps, visualized.">
+<meta property="og:url" content="https://cavandonohoe.github.io/google_maps_saved_places.html">
+<meta property="og:type" content="article">
+')
+```
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 ```
@@ -53,7 +62,7 @@ if (length(existing_csvs) == 0) {
 } else {
   last_imported <- max(file.info(existing_csvs)$mtime)
   last_imported_fmt <- format(last_imported, "%Y-%m-%d %H:%M:%S %Z")
-  cat(paste0("Last imported: ", last_imported_fmt, "\n\n"))
+  cat(paste0('<span class="data-timestamp">Last imported: ', last_imported_fmt, '</span>\n\n'))
 }
 ```
 

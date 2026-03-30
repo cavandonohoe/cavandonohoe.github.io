@@ -9,6 +9,15 @@ output:
       after_body: include_footer.html
 ---
 
+```{r og-meta, echo=FALSE, results='asis'}
+cat('
+<meta property="og:title" content="LA Neighborhoods: Price per Square Foot">
+<meta property="og:description" content="Zillow and Redfin data for LA neighborhoods — median prices, rent, and what $1M buys you.">
+<meta property="og:url" content="https://cavandonohoe.github.io/la_real_estate.html">
+<meta property="og:type" content="article">
+')
+```
+
 ```{r pipe, include=FALSE}
 `%>%` <- magrittr::`%>%`
 ```
@@ -22,7 +31,17 @@ knitr::opts_chunk$set(
 
 ```{r data}
 la_raw <- readr::read_csv(here::here("data", "la_neighborhoods.csv"), show_col_types = FALSE)
+```
 
+```{r timestamp, results='asis'}
+data_date <- max(la_raw$zhvi_date, la_raw$zori_date, na.rm = TRUE)
+cat(sprintf(
+  '<span class="data-timestamp">Zillow data as of: %s</span>\n',
+  format(data_date, "%B %d, %Y")
+))
+```
+
+```{r filter}
 la_neighborhoods <- la_raw %>%
   dplyr::filter(!is.na(price_per_sqft)) %>%
   dplyr::mutate(

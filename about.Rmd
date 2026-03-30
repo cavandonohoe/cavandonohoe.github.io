@@ -10,7 +10,14 @@ editor_options:
 ---
 
 
-<a href="mailto:cavandonohoe@gmail.com" aria-label="Email Cavan Donohoe"><i class="fa fa-envelope" style="font-size:36px"></i></a> <a href="https://www.instagram.com/cavandonohoe" aria-label="Instagram profile" rel="noopener noreferrer"><i class="fa fa-instagram" style="font-size:36px"></i></a> <a href="https://www.facebook.com/cavandonohoe" aria-label="Facebook profile" rel="noopener noreferrer"><i class="fa fa-facebook" style="font-size:36px"></i></a> <a href="https://github.com/cavandonohoe" aria-label="GitHub profile" rel="noopener noreferrer"><i class="fa fa-github" style="font-size:36px"></i></a> <a href="https://www.linkedin.com/in/cavan-donohoe/" aria-label="LinkedIn profile" rel="noopener noreferrer"><i class="fa fa-linkedin" style="font-size:36px"></i></a> <a href="tel:+8054043321" aria-label="Phone number"><i class="fa fa-phone" style="font-size:36px"></i></a>
+<div style="display:flex; gap:1.2em; flex-wrap:wrap; margin-bottom:1.5em;">
+<a href="mailto:cavandonohoe@gmail.com" aria-label="Email" style="color:var(--muted-text,#777); font-size:22px; transition:color 0.2s;"><i class="fa fa-envelope"></i></a>
+<a href="https://www.instagram.com/cavandonohoe" aria-label="Instagram" rel="noopener noreferrer" style="color:var(--muted-text,#777); font-size:22px; transition:color 0.2s;"><i class="fa fa-instagram"></i></a>
+<a href="https://www.facebook.com/cavandonohoe" aria-label="Facebook" rel="noopener noreferrer" style="color:var(--muted-text,#777); font-size:22px; transition:color 0.2s;"><i class="fa fa-facebook"></i></a>
+<a href="https://github.com/cavandonohoe" aria-label="GitHub" rel="noopener noreferrer" style="color:var(--muted-text,#777); font-size:22px; transition:color 0.2s;"><i class="fa fa-github"></i></a>
+<a href="https://www.linkedin.com/in/cavan-donohoe/" aria-label="LinkedIn" rel="noopener noreferrer" style="color:var(--muted-text,#777); font-size:22px; transition:color 0.2s;"><i class="fa fa-linkedin"></i></a>
+<a href="tel:+8054043321" aria-label="Phone" style="color:var(--muted-text,#777); font-size:22px; transition:color 0.2s;"><i class="fa fa-phone"></i></a>
+</div>
 
 
 *What do we live for, if not to make life less difficult for each other?*
