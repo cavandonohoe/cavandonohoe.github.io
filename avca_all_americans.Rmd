@@ -39,7 +39,8 @@ champions <- readr::read_csv(here::here("data", "avca_champions.csv"))
 ```{r timestamp, results='asis'}
 cat(sprintf(
   '<span class="data-timestamp">Data last updated: %s</span>\n',
-  format(file.mtime(here::here("data", "avca_first_team_all_americans.csv")), "%B %d, %Y")
+  format(as.Date(system(paste("git log -1 --format=%ai --",
+    here::here("data", "avca_first_team_all_americans.csv")), intern = TRUE)), "%B %d, %Y")
 ))
 ```
 

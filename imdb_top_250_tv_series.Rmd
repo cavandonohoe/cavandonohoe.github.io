@@ -39,7 +39,8 @@ all_eps_ratings_tib <- readr::read_csv(here::here("data", "top250_imdb_series.cs
 ```{r timestamp, results='asis'}
 cat(sprintf(
   '<span class="data-timestamp">Data last updated: %s</span>\n',
-  format(file.mtime(here::here("data", "top250_imdb_series.csv")), "%B %d, %Y")
+  format(as.Date(system(paste("git log -1 --format=%ai --",
+    here::here("data", "top250_imdb_series.csv")), intern = TRUE)), "%B %d, %Y")
 ))
 ```
 

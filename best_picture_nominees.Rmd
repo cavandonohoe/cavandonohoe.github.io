@@ -38,7 +38,8 @@ best_pic_noms_final <- readr::read_csv(here::here("data", "best_picture_nominees
 ```{r timestamp, results='asis'}
 cat(sprintf(
   '<span class="data-timestamp">Data last updated: %s</span>\n',
-  format(file.mtime(here::here("data", "best_picture_nominees.csv")), "%B %d, %Y")
+  format(as.Date(system(paste("git log -1 --format=%ai --",
+    here::here("data", "best_picture_nominees.csv")), intern = TRUE)), "%B %d, %Y")
 ))
 ```
 

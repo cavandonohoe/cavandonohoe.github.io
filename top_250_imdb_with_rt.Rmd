@@ -42,7 +42,8 @@ top_250_imdb_rot_tom <- readr::read_csv(
 ```{r timestamp, results='asis'}
 cat(sprintf(
   '<span class="data-timestamp">Data last updated: %s</span>\n',
-  format(file.mtime(here::here("data", "top250_movies_with_rt.csv")), "%B %d, %Y")
+  format(as.Date(system(paste("git log -1 --format=%ai --",
+    here::here("data", "top250_movies_with_rt.csv")), intern = TRUE)), "%B %d, %Y")
 ))
 ```
 

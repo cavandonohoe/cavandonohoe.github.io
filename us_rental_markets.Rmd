@@ -34,9 +34,10 @@ raw <- readr::read_csv(here::here("data", "us_rental_markets.csv"), show_col_typ
 ```
 
 ```{r timestamp, results='asis'}
+data_date <- max(raw$zhvi_date, raw$zori_date, na.rm = TRUE)
 cat(sprintf(
-  '<span class="data-timestamp">Data last updated: %s</span>\n',
-  format(file.mtime(here::here("data", "us_rental_markets.csv")), "%B %d, %Y")
+  '<span class="data-timestamp">Zillow data as of: %s</span>\n',
+  format(data_date, "%B %d, %Y")
 ))
 ```
 
