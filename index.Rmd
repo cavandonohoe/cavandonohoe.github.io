@@ -40,81 +40,49 @@ Check out my latest project: a [Rent vs. Buy Calculator](https://cavandonohoe.sh
 
 ## Projects
 
-<div class="project-grid">
-<a class="project-card" href="us_rental_markets.html">
-<div class="card-icon">🏘️</div>
-<h3>US Rental Investment Markets</h3>
-<p>Cap rates, vacancy, and demand signals for 3,800+ cities using Zillow and Census data.</p>
-</a>
-<a class="project-card" href="la_real_estate.html">
-<div class="card-icon">🏡</div>
-<h3>LA Neighborhoods: Price per Sq Ft</h3>
-<p>Zillow + Redfin data for LA neighborhoods — median prices, rent, and what $1M buys you.</p>
-</a>
-<a class="project-card" href="https://cavandonohoe.shinyapps.io/rent-vs-buy/">
-<div class="card-icon">🧮</div>
-<h3>Rent vs. Buy Calculator</h3>
-<p>Interactive Shiny app for side-by-side financial simulation of renting vs. buying.</p>
-</a>
-<a class="project-card" href="imdb_top_250_tv_series.html">
-<div class="card-icon">📺</div>
-<h3>IMDb Top 250 TV Series</h3>
-<p>Scraped ratings, seasons, and trends for the top 250 TV shows on IMDb.</p>
-</a>
-<a class="project-card" href="best_picture_nominees.html">
-<div class="card-icon">🎬</div>
-<h3>Best Picture Nominees</h3>
-<p>Oscar Best Picture data — distributors, producers, and historical nominee analysis.</p>
-</a>
-<a class="project-card" href="top_250_imdb_with_rt.html">
-<div class="card-icon">🍿</div>
-<h3>Top 250 IMDb + Rotten Tomatoes</h3>
-<p>Cross-referencing IMDb's top 250 movies with Rotten Tomatoes scores.</p>
-</a>
-<a class="project-card" href="imdb_rating_plot.html">
-<div class="card-icon">📈</div>
-<h3>IMDb Rating Plot</h3>
-<p>Interactive episode-by-episode rating visualization for any TV series.</p>
-</a>
-<a class="project-card" href="avca_all_americans.html">
-<div class="card-icon">🏐</div>
-<h3>AVCA Volleyball All-Americans</h3>
-<p>Web-scraped history of men's volleyball All-American selections and champions.</p>
-</a>
-<a class="project-card" href="firefighter_schedule.html">
-<div class="card-icon">🚒</div>
-<h3>Firefighter Schedule</h3>
-<p>Shift calendar generator for firefighter 48/96 schedules.</p>
-</a>
-<a class="project-card" href="google_maps_saved_places.html">
-<div class="card-icon">📍</div>
-<h3>Google Maps Saved Places</h3>
-<p>My "Want to Go" and "Favorites" lists exported and visualized.</p>
-</a>
-<a class="project-card" href="my_imdb.html">
-<div class="card-icon">⭐</div>
-<h3>My IMDb Ratings</h3>
-<p>Personal movie ratings and watchlist from my IMDb account.</p>
-</a>
-<a class="project-card" href="my_travels.html">
-<div class="card-icon">✈️</div>
-<h3>Get Bloggy With It</h3>
-<p>Travel blog entries from my adventures around the world.</p>
-</a>
-<a class="project-card" href="best_pic_vs_top_1000.html">
-<div class="card-icon">🎞️</div>
-<h3>Best Picture vs Top 1000 Box Office</h3>
-<p>Do Oscar winners also dominate the box office? An interactive comparison.</p>
-</a>
-<a class="project-card" href="sierpinski_triangle.html">
-<div class="card-icon">🔺</div>
-<h3>Sierpinski Triangle</h3>
-<p>Fractal geometry generated in R — the classic chaos game visualization.</p>
-</a>
-<a class="project-card" href="confederate_statues.html">
-<div class="card-icon">🗽</div>
-<h3>Confederate Statues Timeline</h3>
-<p>When were Confederate monuments erected? A data-driven look at the timeline.</p>
-</a>
-</div>
+```{r project-cards, echo=FALSE, results='asis'}
+cards <- list(
+  list("us_rental_markets.html", "\U0001F3D8\UFE0F", "US Rental Investment Markets",
+    "Cap rates, vacancy, and demand signals for 3,800+ cities using Zillow and Census data."),
+  list("la_real_estate.html", "\U0001F3E1", "LA Neighborhoods: Price per Sq Ft",
+    "Zillow + Redfin data for LA neighborhoods — median prices, rent, and what $1M buys you."),
+  list("https://cavandonohoe.shinyapps.io/rent-vs-buy/", "\U0001F9EE", "Rent vs. Buy Calculator",
+    "Interactive Shiny app for side-by-side financial simulation of renting vs. buying."),
+  list("imdb_top_250_tv_series.html", "\U0001F4FA", "IMDb Top 250 TV Series",
+    "Scraped ratings, seasons, and trends for the top 250 TV shows on IMDb."),
+  list("best_picture_nominees.html", "\U0001F3AC", "Best Picture Nominees",
+    "Oscar Best Picture data — distributors, producers, and historical nominee analysis."),
+  list("top_250_imdb_with_rt.html", "\U0001F37F", "Top 250 IMDb + Rotten Tomatoes",
+    "Cross-referencing IMDb's top 250 movies with Rotten Tomatoes scores."),
+  list("imdb_rating_plot.html", "\U0001F4C8", "IMDb Rating Plot",
+    "Interactive episode-by-episode rating visualization for any TV series."),
+  list("avca_all_americans.html", "\U0001F3D0", "AVCA Volleyball All-Americans",
+    "Web-scraped history of men's volleyball All-American selections and champions."),
+  list("firefighter_schedule.html", "\U0001F692", "Firefighter Schedule",
+    "Shift calendar generator for firefighter 48/96 schedules."),
+  list("google_maps_saved_places.html", "\U0001F4CD", "Google Maps Saved Places",
+    'My "Want to Go" and "Favorites" lists exported and visualized.'),
+  list("my_imdb.html", "\U2B50", "My IMDb Ratings",
+    "Personal movie ratings and watchlist from my IMDb account."),
+  list("my_travels.html", "\U2708\UFE0F", "Get Bloggy With It",
+    "Travel blog entries from my adventures around the world."),
+  list("best_pic_vs_top_1000.html", "\U0001F39E\UFE0F", "Best Picture vs Top 1000 Box Office",
+    "Do Oscar winners also dominate the box office? An interactive comparison."),
+  list("sierpinski_triangle.html", "\U0001F53A", "Sierpinski Triangle",
+    "Fractal geometry generated in R — the classic chaos game visualization."),
+  list("confederate_statues.html", "\U0001F5FD", "Confederate Statues Timeline",
+    "When were Confederate monuments erected? A data-driven look at the timeline."),
+  list("learn_r.html", "\U0001F4DA", "Learn R",
+    "Tutorial series: intro, data manipulation, visualization, and statistics in R.")
+)
+
+cat('<div class="project-grid">\n')
+for (card in cards) {
+  cat(sprintf(
+    '<a class="project-card" href="%s"><div class="card-icon">%s</div><h3>%s</h3><p>%s</p></a>\n',
+    card[[1]], card[[2]], card[[3]], card[[4]]
+  ))
+}
+cat('</div>\n')
+```
 
