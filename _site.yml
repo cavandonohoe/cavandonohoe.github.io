@@ -58,6 +58,11 @@ navbar:
         href: confederate_statues.html
       - text: "Sierpinski Triangle"
         href: sierpinski_triangle.html
+      - text: "--- Archive ---"
+      - text: "S&P 500 Perspective"
+        href: sp500.html
+      - text: "Covid Cases: Then & Now"
+        href: covid_cases_nostalgia.html
       - text: "Learn R"
         menu:
         - text: "R Time Is Limited, Let's Make the Most of It"
