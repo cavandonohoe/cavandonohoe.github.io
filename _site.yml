@@ -22,13 +22,6 @@ navbar:
     - text: "Projects"
       icon: fa-laptop
       menu:
-      - text: "--- Real Estate & Finance ---"
-      - text: "US Rental Investment Markets"
-        href: us_rental_markets.html
-      - text: "LA Neighborhoods: Price per Sq Ft"
-        href: la_real_estate.html
-      - text: "Rent vs. Buy Calculator"
-        href: https://cavandonohoe.shinyapps.io/rent-vs-buy/
       - text: "--- Movies & TV ---"
       - text: "IMDb TV Series"
         href: imdb_top_250_tv_series.html
@@ -58,6 +51,13 @@ navbar:
         href: confederate_statues.html
       - text: "Sierpinski Triangle"
         href: sierpinski_triangle.html
+      - text: "--- Real Estate & Finance ---"
+      - text: "US Rental Investment Markets"
+        href: us_rental_markets.html
+      - text: "LA Neighborhoods: Price per Sq Ft"
+        href: la_real_estate.html
+      - text: "Rent vs. Buy Calculator"
+        href: https://cavandonohoe.shinyapps.io/rent-vs-buy/
       - text: "--- Archive ---"
       - text: "S&P 500 Perspective"
         href: sp500.html
