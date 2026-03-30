@@ -76,13 +76,14 @@ cards <- list(
     "Tutorial series: intro, data manipulation, visualization, and statistics in R.")
 )
 
-cat('<div class="project-grid">\n')
+html <- '<div class="project-grid">'
 for (card in cards) {
-  cat(sprintf(
-    '<a class="project-card" href="%s"><div class="card-icon">%s</div><h3>%s</h3><p>%s</p></a>\n',
+  html <- paste0(html, sprintf(
+    '<a class="project-card" href="%s"><div class="card-icon">%s</div><h3>%s</h3><p>%s</p></a>',
     card[[1]], card[[2]], card[[3]], card[[4]]
   ))
 }
-cat('</div>\n')
+html <- paste0(html, '</div>')
+cat(html)
 ```
 
