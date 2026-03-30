@@ -53,8 +53,118 @@
 <link rel="mask-icon" href="/header/safari-pinned-tab.svg" color="#5bbad5">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
-<!-- Collapsible table accordion styling -->
+<!-- Dark mode + site-wide styling -->
 <style>
+:root {
+  --bg-color: #fff;
+  --text-color: #333;
+  --card-bg: #f8f9fa;
+  --card-border: #dee2e6;
+  --card-shadow: rgba(0,0,0,0.08);
+  --link-color: #337ab7;
+  --code-bg: #f5f5f5;
+  --table-stripe: #f9f9f9;
+  --accordion-bg: #337ab7;
+  --accordion-hover: #286090;
+  --muted-text: #777;
+  --footer-text: #ccc;
+  --well-bg: #f5f5f5;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a2e;
+  --text-color: #e0e0e0;
+  --card-bg: #16213e;
+  --card-border: #0f3460;
+  --card-shadow: rgba(0,0,0,0.3);
+  --link-color: #64b5f6;
+  --code-bg: #16213e;
+  --table-stripe: #16213e;
+  --accordion-bg: #0f3460;
+  --accordion-hover: #1a4a8a;
+  --muted-text: #aaa;
+  --footer-text: #999;
+  --well-bg: #16213e;
+}
+
+body {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] .container-fluid,
+[data-theme="dark"] .container {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] h1, [data-theme="dark"] h2,
+[data-theme="dark"] h3, [data-theme="dark"] h4 {
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] a { color: var(--link-color); }
+[data-theme="dark"] code { background-color: var(--code-bg); color: #e0e0e0; }
+[data-theme="dark"] pre { background-color: var(--code-bg); border-color: var(--card-border); }
+[data-theme="dark"] .well { background-color: var(--well-bg); border-color: var(--card-border); }
+[data-theme="dark"] .table-striped > tbody > tr:nth-of-type(odd) { background-color: var(--table-stripe); }
+[data-theme="dark"] .table { color: var(--text-color); }
+[data-theme="dark"] img { opacity: 0.9; }
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px 12px;
+  margin-top: 8px;
+  color: #9d9d9d;
+  transition: color 0.2s;
+}
+.dark-mode-toggle:hover { color: #fff; }
+
+/* Project cards */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2em;
+  margin: 1.5em 0;
+}
+.project-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 1.4em;
+  text-decoration: none !important;
+  color: var(--text-color) !important;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: block;
+  box-shadow: 0 2px 8px var(--card-shadow);
+}
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px var(--card-shadow);
+  text-decoration: none !important;
+}
+.project-card .card-icon { font-size: 2em; margin-bottom: 0.4em; }
+.project-card h3 { font-size: 1.05em; margin: 0 0 0.4em 0; color: var(--link-color) !important; }
+.project-card p { font-size: 0.88em; color: var(--muted-text); margin: 0; line-height: 1.4; }
+
+/* Timestamp badges */
+.data-timestamp {
+  display: inline-block;
+  background: var(--well-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-size: 0.82em;
+  color: var(--muted-text);
+  margin-bottom: 1em;
+}
+
+/* Collapsible table accordion styling */
 details.table-accordion {
   margin: 1em 0;
 }
@@ -65,7 +175,7 @@ details.table-accordion > summary {
   font-size: 1.1em;
   font-weight: 600;
   color: #fff;
-  background: #337ab7;
+  background: var(--accordion-bg);
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -75,19 +185,26 @@ details.table-accordion > summary {
 }
 details.table-accordion > summary::-webkit-details-marker { display: none; }
 details.table-accordion > summary::before {
-  content: "▶  ";
+  content: "\25B6\00a0\00a0";
   font-size: 0.85em;
 }
 details.table-accordion[open] > summary {
   border-radius: 6px 6px 0 0;
-  background: #286090;
+  background: var(--accordion-hover);
 }
 details.table-accordion[open] > summary::before {
-  content: "▼  ";
+  content: "\25BC\00a0\00a0";
 }
 details.table-accordion > summary:hover {
-  background: #286090;
+  background: var(--accordion-hover);
 }
+</style>
+<script>
+(function() {
+  var saved = localStorage.getItem('theme') || 'light';
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+})();
+</script>
 </style>
 <!-- Meta tags for SEO and social sharing -->
 <meta name="description" content="Cavan Donohoe - Data Scientist. Personal website showcasing data science projects, R tutorials, and professional experience.">
@@ -352,53 +469,64 @@ $(document).ready(function () {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">--- Movies &amp; TV ---</li>
     <li>
       <a href="imdb_top_250_tv_series.html">IMDb TV Series</a>
-    </li>
-    <li>
-      <a href="best_pic_vs_top_1000.html">Best Picture and Top 1000 Box Office</a>
-    </li>
-    <li>
-      <a href="top_250_imdb_with_rt.html">Top 250 IMDb Movies with Rotten Tomato Scores</a>
     </li>
     <li>
       <a href="imdb_rating_plot.html">IMDb Rating Plot by Season and Episode</a>
     </li>
     <li>
+      <a href="top_250_imdb_with_rt.html">Top 250 IMDb Movies with Rotten Tomato Scores</a>
+    </li>
+    <li>
       <a href="best_picture_nominees.html">Best Picture Nominees</a>
+    </li>
+    <li>
+      <a href="best_pic_vs_top_1000.html">Best Picture and Top 1000 Box Office</a>
+    </li>
+    <li>
+      <a href="my_imdb.html">My IMDb Ratings</a>
+    </li>
+    <li class="dropdown-header">--- Sports &amp; Personal ---</li>
+    <li>
+      <a href="avca_all_americans.html">AVCA Men's Volleyball All-Americans</a>
     </li>
     <li>
       <a href="firefighter_schedule.html">Jason, Owen, and Wyett's Firefighter Schedule</a>
     </li>
     <li>
-      <a href="tohs_reunion.html">TOHS Class of 2012 Reunion</a>
-    </li>
-    <li>
       <a href="google_maps_saved_places.html">Google Maps: Want To Go + Favorites</a>
-    </li>
-    <li>
-      <a href="sierpinski_triangle.html">Sierpinski Triangle</a>
-    </li>
-    <li>
-      <a href="my_imdb.html">My IMDb Ratings</a>
     </li>
     <li>
       <a href="my_travels.html">Get Bloggy With It</a>
     </li>
     <li>
-      <a href="https://cavandonohoe.shinyapps.io/rent-vs-buy/">Rent vs. Buy Calculator</a>
+      <a href="tohs_reunion.html">TOHS Class of 2012 Reunion</a>
+    </li>
+    <li class="dropdown-header">--- Visualizations ---</li>
+    <li>
+      <a href="confederate_statues.html">When Were Confederate Statues Erected?</a>
     </li>
     <li>
-      <a href="avca_all_americans.html">AVCA Men's Volleyball All-Americans</a>
+      <a href="sierpinski_triangle.html">Sierpinski Triangle</a>
+    </li>
+    <li class="dropdown-header">--- Real Estate &amp; Finance ---</li>
+    <li>
+      <a href="us_rental_markets.html">US Rental Investment Markets</a>
     </li>
     <li>
       <a href="la_real_estate.html">LA Neighborhoods: Price per Sq Ft</a>
     </li>
     <li>
-      <a href="us_rental_markets.html">US Rental Investment Markets</a>
+      <a href="https://cavandonohoe.shinyapps.io/rent-vs-buy/">Rent vs. Buy Calculator</a>
+    </li>
+    <li class="dropdown-header">--- Archive ---</li>
+    <li>
+      <a href="sp500.html">S&amp;P 500 Perspective</a>
     </li>
     <li>
-      <a href="confederate_statues.html">When Were Confederate Statues Erected?</a>
+      <a href="covid_cases_nostalgia.html">Covid Cases: Then &amp; Now</a>
     </li>
     <li class="dropdown-submenu">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Learn R</a>
@@ -477,6 +605,27 @@ workflow.</p>
     </nav>
   </div>
 </footer>
+<script>
+(function() {
+  var btn = document.createElement('button');
+  btn.className = 'dark-mode-toggle';
+  btn.setAttribute('aria-label', 'Toggle dark mode');
+  btn.innerHTML = localStorage.getItem('theme') === 'dark' ? '☀️' : '🌙';
+  btn.onclick = function() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    btn.innerHTML = next === 'dark' ? '☀️' : '🌙';
+  };
+  var navbar = document.querySelector('.navbar-right') || document.querySelector('.navbar-nav');
+  if (navbar) {
+    var li = document.createElement('li');
+    li.appendChild(btn);
+    navbar.appendChild(li);
+  }
+})();
+</script>
 
 
 

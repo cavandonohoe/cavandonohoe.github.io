@@ -12,3 +12,24 @@
     </nav>
   </div>
 </footer>
+<script>
+(function() {
+  var btn = document.createElement('button');
+  btn.className = 'dark-mode-toggle';
+  btn.setAttribute('aria-label', 'Toggle dark mode');
+  btn.innerHTML = localStorage.getItem('theme') === 'dark' ? '☀️' : '🌙';
+  btn.onclick = function() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    btn.innerHTML = next === 'dark' ? '☀️' : '🌙';
+  };
+  var navbar = document.querySelector('.navbar-right') || document.querySelector('.navbar-nav');
+  if (navbar) {
+    var li = document.createElement('li');
+    li.appendChild(btn);
+    navbar.appendChild(li);
+  }
+})();
+</script>
