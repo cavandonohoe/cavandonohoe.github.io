@@ -390,44 +390,50 @@ ahman_wins <- sum(mol_ahman_h2h$winner == "Åhman/Hellvig")
 cat(sprintf("Record: Mol/Sorum %d - %d Åhman/Hellvig\n", mol_wins, ahman_wins))
 
 # ---------------------------------------------------------------------------
-# 10. Partain/Benesh vs Crabb/Sander verified head-to-head record (AVP)
+# 10. Partain vs Taylor Crabb h2h data (all partner combinations)
 # ---------------------------------------------------------------------------
-# Sourced from bvbinfo.com match preview pages. These teams only meet on the
-# AVP domestic tour (Heritage Series and AVP League), not on the BPT/FIVB
-# circuit where both compete as separate US entries.
+# Verified from bvbinfo.com tournament brackets and match records.
+# This covers ALL times Miles Partain and Taylor Crabb faced each other
+# on the AVP tour, regardless of partner.
 #
-# bvbinfo match preview URL pattern:
-#   http://bvbinfo.info/AVPLeagueMatchPreview.aspx?MatchID=<id>
-#   http://bvbinfo.com/Tournament.asp?ID=<tourney_id>&Process=Matches
+# Sources:
+#   - bvbinfo.com tournament ID 3947 (AVP Chicago 2021) winner's bracket
+#   - bvbinfo.com tournament ID 4030 (AVP Fort Lauderdale 2022) winner's bracket
+#   - bvbinfo.info/AVPLeagueMatchPreview.aspx?MatchID=173836
+#   - bvbinfo.com tournament ID 4411 (AVP Chicago 2024) bracket
 #
 # To find new matches:
 #   1. Go to http://bvbinfo.com/player.asp?ID=17561 (Partain)
 #   2. Click on the relevant season page
-#   3. Search for matches against Crabb (ID: 13454) / Sander (ID: 11645)
+#   3. Search for matches against Crabb (ID: 13454)
 #   4. Cross-reference scores with AVP brackets at https://avp.com/brackets/
 #
-# All scores listed from Partain/Benesh's perspective.
+# All scores listed from Partain's perspective.
 
 partain_crabb_h2h <- tibble::tribble(
-  ~date,         ~tournament,                   ~round,    ~partain_score,
-  ~sets_result,  ~winner,
-  "2024-08-17",  "Manhattan Beach Heritage",    "Round 4", "21-16, 27-25",
-  "2-0",         "Partain/Benesh",
-  "2024-09-01",  "Chicago Heritage",            "Final",   "21-15, 21-15",
-  "2-0",         "Partain/Benesh",
-  "2024-09-29",  "AVP League Wk 3 (SDSU)",     "Match",   "15-11, 17-15",
-  "2-0",         "Partain/Benesh",
-  "2025-06-22",  "AVP League Wk 4 (New York)",  "Match",  "15-13, 11-15, 12-15",
-  "1-2",         "Crabb/Sander"
+  ~date,         ~tournament,                   ~round,      ~partain_score,
+  ~sets_result,  ~winner,   ~partain_partner, ~crabb_partner,
+  "2021-09-04",  "AVP Chicago",                 "Contender", "21-15, 14-21, 15-11",
+  "2-1",         "Partain",  "Lotman",         "Gibb",
+  "2022-07-30",  "AVP Fort Lauderdale",         "Round 2",   "21-19, 12-21, 15-17",
+  "1-2",         "Crabb",    "Lotman",         "Sander",
+  "2024-08-17",  "Manhattan Beach Heritage",    "Round 4",   "21-16, 27-25",
+  "2-0",         "Partain",  "Benesh",         "Sander",
+  "2024-09-01",  "Chicago Heritage",            "Final",     "21-15, 21-15",
+  "2-0",         "Partain",  "Benesh",         "Sander",
+  "2024-09-29",  "AVP League Wk 3 (SDSU)",     "Match",     "15-11, 17-15",
+  "2-0",         "Partain",  "Benesh",         "Sander",
+  "2025-06-22",  "AVP League Wk 4 (New York)",  "Match",    "15-13, 11-15, 12-15",
+  "1-2",         "Crabb",    "Benesh",         "Sander"
 )
 
 pc_h2h_path <- file.path(data_dir, "partain_crabb_h2h.csv")
 readr::write_csv(partain_crabb_h2h, pc_h2h_path)
 cat(sprintf("\nWrote %d h2h matches to %s\n", nrow(partain_crabb_h2h), pc_h2h_path))
 
-partain_wins <- sum(partain_crabb_h2h$winner == "Partain/Benesh")
-crabb_wins <- sum(partain_crabb_h2h$winner == "Crabb/Sander")
-cat(sprintf("Record: Partain/Benesh %d - %d Crabb/Sander\n", partain_wins, crabb_wins))
+partain_wins <- sum(partain_crabb_h2h$winner == "Partain")
+crabb_wins <- sum(partain_crabb_h2h$winner == "Crabb")
+cat(sprintf("Record: Partain %d - %d Crabb\n", partain_wins, crabb_wins))
 
 # ---------------------------------------------------------------------------
 # 11. Scrape AVP h2h from bvbinfo match preview pages
@@ -487,7 +493,7 @@ if (!is.null(bvb_h2h)) {
   cat("  Scraped h2h table with", nrow(bvb_h2h), "rows\n")
   print(bvb_h2h)
 } else {
-  cat("  Using verified fallback data (4 matches, Partain leads 3-1)\n")
+  cat("  Using verified fallback data (6 matches, Partain leads 4-2)\n")
 }
 
 cat("\nDone!\n")
