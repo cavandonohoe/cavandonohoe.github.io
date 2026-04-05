@@ -33,27 +33,77 @@ dir.create(data_dir, showWarnings = FALSE)
 # ---------------------------------------------------------------------------
 # Find IDs at http://bvbinfo.com/player.asp (search by name)
 player_roster <- tibble::tribble(
-  ~player_id, ~player,            ~country,
-  14741,      "Anders Mol",       "Norway",
-  13274,      "Christian Sorum",  "Norway",
-  17928,      "David Åhman",      "Sweden",
-  18278,      "Jonatan Hellvig",  "Sweden",
-  17561,      "Miles Partain",    "USA",
-  13454,      "Taylor Crabb",     "USA",
-  18352,      "Andy Benesh",      "USA",
-  13453,      "Trevor Crabb",     "USA",
-  13393,      "Ondrej Perusic",   "Czechia",
-  16538,      "David Schweiner",  "Czechia",
-  17592,      "Nils Ehlers",      "Germany",
-  13767,      "Clemens Wickler",  "Germany",
-  15097,      "Cherif Younousse", "Qatar",
-  15096,      "Ahmed Tijan",      "Qatar",
-  18616,      "Stefan Boermans",  "Netherlands",
-  17881,      "Yorick de Groot",  "Netherlands",
-  11854,      "Evandro Goncalves","Brazil",
-  15323,      "Arthur Lanci",     "Brazil",
-  20306,      "Elmer Andersson",  "Sweden",
-  5214,       "Phil Dalhausser",  "USA"
+  ~player_id, ~player,                ~country,
+  # --- Current elite ---
+  14741,      "Anders Mol",           "Norway",
+  13274,      "Christian Sorum",      "Norway",
+  17928,      "David Åhman",          "Sweden",
+  18278,      "Jonatan Hellvig",      "Sweden",
+  17561,      "Miles Partain",        "USA",
+  13454,      "Taylor Crabb",         "USA",
+  18352,      "Andy Benesh",          "USA",
+  13453,      "Trevor Crabb",         "USA",
+  13393,      "Ondrej Perusic",       "Czechia",
+  16538,      "David Schweiner",      "Czechia",
+  17592,      "Nils Ehlers",          "Germany",
+  13767,      "Clemens Wickler",      "Germany",
+  15097,      "Cherif Younousse",     "Qatar",
+  15096,      "Ahmed Tijan",          "Qatar",
+  18616,      "Stefan Boermans",      "Netherlands",
+  17881,      "Yorick de Groot",      "Netherlands",
+  11854,      "Evandro Goncalves",    "Brazil",
+  15323,      "Arthur Lanci",         "Brazil",
+  20306,      "Elmer Andersson",      "Sweden",
+  # --- US Olympians (all-time men's) ---
+  69,         "Karch Kiraly",         "USA",
+  151,        "Sinjin Smith",         "USA",
+  125,        "Kent Steffes",         "USA",
+  128,        "Randy Stoklos",        "USA",
+  31,         "Mike Dodd",            "USA",
+  138,        "Mike Whitmarsh",       "USA",
+  5214,       "Phil Dalhausser",      "USA",
+  111,        "Todd Rogers",          "USA",
+  190,        "Jake Gibb",            "USA",
+  1163,       "Sean Rosenthal",       "USA",
+  1931,       "Nick Lucena",          "USA",
+  5327,       "Casey Patterson",      "USA",
+  13699,      "Tri Bourne",           "USA",
+  13452,      "Chase Budinger",       "USA",
+  13467,      "Miles Evans",          "USA",
+  12,         "Dain Blanton",         "USA",
+  38,         "Eric Fonoimoana",      "USA",
+  141,        "Kevin Wong",           "USA",
+  1922,       "Jeff Nygaard",         "USA",
+  60,         "Dax Holdren",          "USA",
+  90,         "Stein Metzger",        "USA",
+  11645,      "Taylor Sander",        "USA",
+  16101,      "Evan Cory",            "USA",
+  8338,       "Adrian Carambula",     "USA",
+  # --- Brazil legends ---
+  148,        "Emanuel Rego",         "Brazil",
+  525,        "Ricardo Santos",       "Brazil",
+  7998,       "Alison Cerutti",       "Brazil",
+  8539,       "Bruno Oscar Schmidt",  "Brazil",
+  14454,      "George Wanderley",     "Brazil",
+  # --- Germany ---
+  1901,       "Julius Brink",         "Germany",
+  2134,       "Jonas Reckermann",     "Germany",
+  # --- Italy ---
+  9059,       "Paolo Nicolai",        "Italy",
+  9422,       "Daniele Lupo",         "Italy",
+  # --- Netherlands ---
+  9129,       "Alexander Brouwer",    "Netherlands",
+  9130,       "Robert Meeuwsen",      "Netherlands",
+  # --- Spain ---
+  2077,       "Pablo Herrera",        "Spain",
+  # --- Latvia ---
+  6874,       "Janis Smedins",        "Latvia",
+  6769,       "Martins Plavins",      "Latvia",
+  # --- Russia ---
+  10745,      "Viacheslav Krasilnikov","Russia",
+  14263,      "Oleg Stoyanovskiy",    "Russia",
+  # --- Canada ---
+  1530,       "Mark Heese",           "Canada"
 )
 
 # ---------------------------------------------------------------------------
@@ -62,6 +112,7 @@ player_roster <- tibble::tribble(
 career_data <- tibble::tribble(
   ~player_id, ~default_age, ~fivb_played, ~fivb_1st, ~fivb_2nd, ~fivb_3rd,
   ~fivb_4th, ~fivb_5th, ~fivb_9th, ~fivb_other, ~fivb_money,
+  # --- Current elite ---
   14741, 28L, 81L, 30L, 7L, 11L, 3L, 12L, 9L, 9L, 937085,
   13274, 30L, 97L, 29L, 7L, 11L, 3L, 14L, 11L, 22L, 945782,
   17928, 24L, 56L, 17L, 6L, 4L, 3L, 9L, 6L, 11L, 421401,
@@ -80,8 +131,58 @@ career_data <- tibble::tribble(
   17881, 25L, 35L, 3L, 2L, 8L, 3L, 7L, 5L, 7L, 201138,
   11854, 35L, 141L, 11L, 8L, 12L, 8L, 26L, 30L, 46L, 790900,
   15323, 30L, 63L, 6L, 4L, 5L, 4L, 12L, 15L, 17L, 203219,
-  20306, 19L, 21L, 6L, 3L, 1L, 0L, 4L, 1L, 6L, 105431,
-  5214,  46L, 200L, 38L, 20L, 18L, 12L, 30L, 30L, 52L, 1800000
+  20306, 21L, 21L, 6L, 3L, 1L, 0L, 4L, 1L, 6L, 105431,
+  # --- US Olympians: old school ---
+  69,   65L, 22L, 3L, 3L, 1L, 1L, 5L, 5L, 4L, 83750,
+  151,  68L, 105L, 10L, 7L, 3L, 6L, 8L, 15L, 56L, 435938,
+  125,  57L, 13L, 3L, 2L, 2L, 0L, 0L, 5L, 1L, 73525,
+  128,  65L, 14L, 10L, 0L, 1L, 1L, 0L, 0L, 2L, 150250,
+  31,   58L, 18L, 0L, 3L, 2L, 1L, 3L, 3L, 6L, 70000,
+  138,  55L, 18L, 3L, 6L, 1L, 0L, 1L, 2L, 5L, 158275,
+  # --- US Olympians: modern ---
+  5214, 46L, 200L, 38L, 20L, 18L, 12L, 30L, 30L, 52L, 1800000,
+  111,  52L, 124L, 24L, 7L, 11L, 9L, 12L, 23L, 38L, 911100,
+  190,  50L, 149L, 7L, 8L, 8L, 8L, 34L, 44L, 40L, 825688,
+  1163, 45L, 109L, 10L, 6L, 4L, 3L, 18L, 21L, 47L, 630300,
+  1931, 42L, 121L, 9L, 11L, 6L, 6L, 25L, 18L, 46L, 697500,
+  5327, 45L, 85L, 2L, 2L, 3L, 4L, 17L, 24L, 33L, 362713,
+  13699, 36L, 90L, 2L, 1L, 4L, 4L, 21L, 24L, 34L, 307463,
+  13452, 37L, 67L, 1L, 4L, 1L, 3L, 11L, 14L, 33L, 115225,
+  13467, 36L, 80L, 2L, 6L, 2L, 4L, 9L, 19L, 38L, 117439,
+  12,   54L, 68L, 2L, 1L, 3L, 4L, 5L, 17L, 36L, 207485,
+  38,   56L, 63L, 1L, 2L, 1L, 4L, 7L, 20L, 28L, 184875,
+  141,  54L, 18L, 0L, 0L, 0L, 0L, 3L, 5L, 10L, 20000,
+  1922, 50L, 36L, 2L, 1L, 1L, 1L, 4L, 10L, 17L, 90000,
+  60,   50L, 50L, 4L, 3L, 2L, 2L, 6L, 12L, 21L, 175000,
+  90,   53L, 54L, 2L, 2L, 3L, 1L, 6L, 14L, 26L, 150000,
+  11645, 34L, 11L, 0L, 0L, 0L, 0L, 0L, 3L, 8L, 9250,
+  16101, 28L, 22L, 0L, 0L, 1L, 0L, 2L, 5L, 14L, 25000,
+  8338, 35L, 95L, 3L, 3L, 4L, 4L, 13L, 18L, 50L, 275000,
+  # --- Brazil legends ---
+  148,  52L, 256L, 77L, 37L, 41L, 16L, 32L, 36L, 17L, 2562273,
+  525,  51L, 238L, 56L, 31L, 23L, 18L, 33L, 34L, 43L, 1921183,
+  7998, 40L, 152L, 28L, 18L, 15L, 9L, 27L, 28L, 27L, 1264550,
+  8539, 39L, 149L, 17L, 10L, 7L, 11L, 26L, 43L, 35L, 958775,
+  14454, 29L, 94L, 9L, 5L, 9L, 4L, 8L, 22L, 37L, 324763,
+  # --- Germany ---
+  1901, 43L, 109L, 9L, 11L, 14L, 9L, 12L, 13L, 41L, 671335,
+  2134, 46L, 104L, 7L, 18L, 11L, 8L, 14L, 17L, 29L, 691428,
+  # --- Italy ---
+  9059, 37L, 154L, 6L, 13L, 13L, 6L, 29L, 38L, 49L, 705038,
+  9422, 34L, 127L, 4L, 9L, 10L, 5L, 24L, 36L, 39L, 545238,
+  # --- Netherlands ---
+  9129, 36L, 150L, 7L, 11L, 8L, 9L, 31L, 37L, 47L, 648800,
+  9130, 38L, 134L, 7L, 10L, 8L, 7L, 26L, 34L, 42L, 609838,
+  # --- Spain ---
+  2077, 43L, 225L, 7L, 12L, 12L, 8L, 50L, 58L, 78L, 908814,
+  # --- Latvia ---
+  6874, 38L, 170L, 14L, 7L, 10L, 8L, 17L, 44L, 70L, 695068,
+  6769, 40L, 196L, 7L, 4L, 6L, 6L, 17L, 45L, 111L, 461582,
+  # --- Russia ---
+  10745, 34L, 112L, 12L, 7L, 8L, 5L, 18L, 24L, 38L, 520000,
+  14263, 28L, 68L, 5L, 4L, 3L, 4L, 10L, 16L, 26L, 280000,
+  # --- Canada ---
+  1530, 55L, 109L, 2L, 4L, 5L, 5L, 13L, 25L, 55L, 350000
 )
 
 # ---------------------------------------------------------------------------
