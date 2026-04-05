@@ -95,6 +95,8 @@ Each tournament finish earns weighted points:
 
 A player's **rating** is their average points per FIVB event. This rewards both consistency and peak performance while normalizing for career length.
 
+The data comes from each player's [bvbinfo.com](http://bvbinfo.com) career page. Event counts are based on the **FIVB World Tour** (the top tier of international beach volleyball), which includes World Championships, Olympic qualifiers, and elite-level tour stops. Lower-tier events like the FIVB Challenger Series or age-group championships are excluded for most players, though the International Total on bvbinfo may include a small number of FIVB AGWC (age-group) events for players who competed as juniors.
+
 ```{r rating-table}
 rating_system %>%
   dplyr::select(player, country, age, fivb_played, fivb_1st, podium_rate, gold_rate, rating) %>%
