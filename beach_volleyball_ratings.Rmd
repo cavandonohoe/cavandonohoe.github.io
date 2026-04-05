@@ -178,6 +178,46 @@ Despite Crabb's incredible AVP dominance (14 domestic titles!), his FIVB career 
 
 Interestingly, in 2026 Crabb and Benesh (Partain's former partner) have teamed up — making the Partain-Crabb comparison even more of a proxy war.
 
+## Head to Head: Partain/Benesh vs. Crabb/Sander (AVP)
+
+The domestic side of this rivalry plays out on the AVP Tour. Partain teams with Andy Benesh (his 2024 Paris Olympics partner), while Taylor Crabb plays with Taylor Sander — two of the most electric teams in American beach volleyball.
+
+```{r partain-crabb-h2h}
+pc_h2h <- tibble::tribble(
+  ~date,         ~tournament,                  ~round,     ~partain_score,        ~sets,  ~winner,
+  "2024-08-17",  "Manhattan Beach Heritage",   "Round 4",  "21-16, 27-25",        "2-0",  "Partain/Benesh",
+  "2024-09-01",  "Chicago Heritage",           "Final",    "21-15, 21-15",        "2-0",  "Partain/Benesh",
+  "2024-09-29",  "AVP League Wk 3 (SDSU)",    "Match",    "15-11, 17-15",        "2-0",  "Partain/Benesh",
+  "2025-06-22",  "AVP League Wk 4 (New York)", "Match",   "15-13, 11-15, 12-15", "1-2",  "Crabb/Sander"
+)
+
+pc_mol_wins <- sum(pc_h2h$winner == "Partain/Benesh")
+pc_ahman_wins <- sum(pc_h2h$winner == "Crabb/Sander")
+
+pc_h2h_display <- pc_h2h %>%
+  dplyr::mutate(
+    date = as.Date(date),
+    result = dplyr::if_else(
+      winner == "Partain/Benesh",
+      paste0("**W** ", partain_score),
+      paste0("L ", partain_score)
+    )
+  ) %>%
+  dplyr::select(date, tournament, round, result, winner)
+
+knitr::kable(
+  pc_h2h_display,
+  col.names = c("Date", "Tournament", "Round", "Result (Partain POV)", "Winner"),
+  align = c("l", "l", "l", "l", "l"),
+  caption = sprintf(
+    "Partain/Benesh vs. Crabb/Sander: %d-%d (%d matches on AVP, sourced from bvbinfo.com)",
+    pc_mol_wins, pc_ahman_wins, nrow(pc_h2h)
+  )
+)
+```
+
+Partain/Benesh lead the AVP series **`r pc_mol_wins`-`r pc_ahman_wins`** with dominant straight-set wins in the two biggest AVP events of 2024 — Manhattan Beach and Chicago. Crabb/Sander's lone win came in a 2025 AVP League regular-season match in New York. The rivalry is still young but fierce — these teams represent the future of American men's beach volleyball.
+
 ## Head to Head: Mol/Sorum vs. Åhman/Hellvig
 
 The defining rivalry in modern beach volleyball. Norway's Mol & Sorum (Tokyo 2020 gold medalists) vs. Sweden's Åhman & Hellvig (Paris 2024 gold medalists) — two Nordic teams trading the #1 world ranking back and forth.
