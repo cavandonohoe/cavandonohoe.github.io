@@ -36,6 +36,8 @@ navbar:
       - text: "My IMDb Ratings"
         href: my_imdb.html
       - text: "--- Sports & Personal ---"
+      - text: "Beach Volleyball Player Ratings"
+        href: beach_volleyball_ratings.html
       - text: "AVCA Men's Volleyball All-Americans"
         href: avca_all_americans.html
       - text: "Jason, Owen, and Wyett's Firefighter Schedule"

@@ -1,0 +1,372 @@
+---
+title: "Beach Volleyball Player Ratings: Who Wins the Big One?"
+editor_options:
+  chunk_output_type: console
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+---
+
+```{r og-meta, echo=FALSE, results='asis'}
+cat('
+<meta property="og:title" content="Beach Volleyball Player Ratings">
+<meta property="og:description" content="Rating top beach volleyball players and estimating their chances of winning a major FIVB tournament.">
+<meta property="og:url" content="https://cavandonohoe.github.io/beach_volleyball_ratings.html">
+<meta property="og:type" content="article">
+')
+```
+
+```{r pipe, include=FALSE}
+`%>%` <- magrittr::`%>%`
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE,
+  fig.width = 10, fig.height = 6
+)
+```
+
+Beach volleyball is a team sport, but individual talent matters enormously. With only two players per side, one elite player can carry a team further than in any other team sport. So how do we measure individual greatness — and what does it tell us about who wins the big tournaments?
+
+Using career data from the [Beach Volleyball Database (bvbinfo.com)](http://bvbinfo.com), I built a player rating system based on FIVB tournament results to rank the best men's beach volleyball players in the world and estimate their probability of winning a hypothetical major tournament.
+
+## The Data
+
+I pulled career statistics for a selection of the top active men's players from bvbinfo.com, focusing on their FIVB (international) results. The key metric: **finish position across all FIVB tournaments entered**.
+
+```{r player-data}
+# Data sourced from bvbinfo.com via scripts/beach_volleyball_data.R
+# Run: Rscript scripts/beach_volleyball_data.R
+ratings_file <- here::here("data", "bvb_player_ratings.csv")
+
+if (file.exists(ratings_file)) {
+  rating_system <- readr::read_csv(ratings_file, show_col_types = FALSE)
+} else {
+  # Fallback: hardcoded data if scraper hasn't been run yet
+  players <- tibble::tribble(
+    ~player, ~country, ~age, ~fivb_played, ~fivb_1st, ~fivb_2nd, ~fivb_3rd,
+    ~fivb_4th, ~fivb_5th, ~fivb_9th, ~fivb_other, ~fivb_money,
+    "Anders Mol", "Norway", 28, 81, 30, 7, 11, 3, 12, 9, 9, 937085,
+    "Christian Sorum", "Norway", 30, 97, 29, 7, 11, 3, 14, 11, 22, 945782,
+    "David Åhman", "Sweden", 24, 56, 17, 6, 4, 3, 9, 6, 11, 421401,
+    "Elmer Andersson", "Sweden", 19, 21, 6, 3, 1, 0, 4, 1, 6, 105431,
+    "Miles Partain", "USA", 24, 29, 3, 1, 2, 1, 8, 9, 5, 111500,
+    "Taylor Crabb", "USA", 34, 57, 1, 0, 3, 3, 9, 19, 22, 168275,
+    "Ondrej Perusic", "Czechia", 31, 73, 9, 8, 3, 2, 14, 16, 21, 353546,
+    "Nils Ehlers", "Germany", 28, 50, 5, 5, 5, 3, 10, 10, 12, 285000,
+    "Cherif Younousse", "Qatar", 30, 74, 8, 7, 6, 2, 18, 16, 17, 388100,
+    "Stefan Boermans", "Netherlands", 31, 35, 3, 2, 8, 3, 7, 5, 7, 220986,
+    "Evandro Goncalves", "Brazil", 35, 141, 11, 8, 12, 8, 26, 30, 46, 790900,
+    "Phil Dalhausser", "USA", 46, 200, 38, 20, 18, 12, 30, 30, 52, 1800000
+  )
+
+  rating_system <- players %>%
+    dplyr::mutate(
+      podium_rate = (fivb_1st + fivb_2nd + fivb_3rd) / fivb_played,
+      gold_rate = fivb_1st / fivb_played,
+      top5_rate = (fivb_1st + fivb_2nd + fivb_3rd + fivb_4th + fivb_5th) / fivb_played,
+      raw_score = fivb_1st * 100 + fivb_2nd * 70 + fivb_3rd * 50 +
+                  fivb_4th * 35 + fivb_5th * 25 + fivb_9th * 10 + fivb_other * 2,
+      rating = round(raw_score / fivb_played, 1)
+    ) %>%
+    dplyr::arrange(dplyr::desc(rating))
+}
+
+rating_system <- rating_system %>%
+  dplyr::arrange(dplyr::desc(rating))
+```
+
+## The Rating System
+
+Each tournament finish earns weighted points:
+
+| Finish | Points |
+|--------|--------|
+| 1st (Gold) | 100 |
+| 2nd (Silver) | 70 |
+| 3rd (Bronze) | 50 |
+| 4th | 35 |
+| 5th | 25 |
+| 9th | 10 |
+| 13th+ | 2 |
+
+A player's **rating** is their average points per FIVB event. This rewards both consistency and peak performance while normalizing for career length.
+
+The data comes from each player's [bvbinfo.com](http://bvbinfo.com) career page. Event counts are based on the **FIVB World Tour** (the top tier of international beach volleyball), which includes World Championships, Olympic qualifiers, and elite-level tour stops. Lower-tier events like the FIVB Challenger Series or age-group championships are excluded for most players, though the International Total on bvbinfo may include a small number of FIVB AGWC (age-group) events for players who competed as juniors.
+
+```{r rating-table}
+rating_system %>%
+  dplyr::select(player, country, age, fivb_played, fivb_1st, podium_rate, gold_rate, rating) %>%
+  dplyr::mutate(
+    podium_rate = scales::percent(podium_rate, accuracy = 0.1),
+    gold_rate = scales::percent(gold_rate, accuracy = 0.1)
+  ) %>%
+  knitr::kable(
+    col.names = c("Player", "Country", "Age", "FIVB Events", "Golds", "Podium %", "Gold %", "Rating"),
+    align = c("l", "l", "r", "r", "r", "r", "r", "r"),
+    caption = "Player Ratings Based on FIVB Career Results (Source: bvbinfo.com)"
+  )
+```
+
+## Rating Visualization
+
+```{r rating-plot, fig.height=30}
+plot_data <- rating_system %>%
+  dplyr::mutate(
+    player_label = paste0(player, " (", country, ")"),
+    player_label = forcats::fct_reorder(player_label, rating)
+  )
+
+ggplot2::ggplot(plot_data, ggplot2::aes(x = rating, y = player_label)) +
+  ggplot2::geom_col(ggplot2::aes(fill = gold_rate), width = 0.7) +
+  ggplot2::geom_text(
+    ggplot2::aes(label = sprintf("%.1f", rating)),
+    hjust = -0.2, size = 3, fontface = "bold"
+  ) +
+  ggplot2::scale_fill_gradient(
+    low = "#4A90D9", high = "#FFD700",
+    labels = scales::percent,
+    name = "Gold Medal %"
+  ) +
+  ggplot2::labs(
+    title = "Beach Volleyball Player Ratings",
+    subtitle = "Average points per FIVB event | Higher = more dominant career",
+    x = "Rating (avg pts per event)",
+    y = NULL
+  ) +
+  ggplot2::theme_minimal(base_size = 13) +
+  ggplot2::theme(
+    plot.title = ggplot2::element_text(face = "bold", size = 16),
+    panel.grid.major.y = ggplot2::element_blank(),
+    legend.position = "bottom"
+  ) +
+  ggplot2::coord_cartesian(xlim = c(0, max(plot_data$rating) * 1.15))
+```
+
+## The Key Matchup: Partain vs. Crabb
+
+One of the most interesting comparisons in American beach volleyball is **Miles Partain** vs. **Taylor Crabb**. They represent two different eras and styles:
+
+- **Partain** (24) is the rising star — 2024 Paris Olympian, youngest US player to win an FIVB gold, UCLA setter turned beach phenom
+- **Crabb** (34) is the seasoned veteran — 14x AVP champion, elite defender, 2019 AVP MVP, tested COVID-positive hours before Tokyo Olympics
+
+```{r partain-crabb}
+money_col <- intersect(c("fivb_money", "fivb_winnings"), names(rating_system))[1]
+pc_data <- rating_system %>%
+  dplyr::filter(player %in% c("Miles Partain", "Taylor Crabb")) %>%
+  dplyr::transmute(
+    player, fivb_played, fivb_1st, fivb_2nd, fivb_3rd,
+    podium_rate = scales::percent(podium_rate, accuracy = 0.1),
+    gold_rate = scales::percent(gold_rate, accuracy = 0.1),
+    rating,
+    fivb_winnings = scales::dollar(.data[[money_col]])
+  )
+
+knitr::kable(
+  pc_data,
+  col.names = c("Player", "FIVB Events", "Golds", "Silvers", "Bronzes",
+                "Podium %", "Gold %", "Rating", "FIVB Winnings"),
+  align = c("l", rep("r", 8)),
+  caption = "Head-to-Head: Partain vs. Crabb on the FIVB Tour"
+)
+```
+
+Despite Crabb's incredible AVP dominance (14 domestic titles!), his FIVB career tells a different story. On the international stage, Crabb has one gold in 57 events — a solid but not spectacular record. Partain, with fewer events, already has 3 golds and a significantly higher points-per-event average.
+
+Interestingly, in 2026 Crabb and Benesh (Partain's former partner) have teamed up — making the Partain-Crabb comparison even more of a proxy war.
+
+## Head to Head: Miles Partain vs. Taylor Crabb (AVP)
+
+These two have been crossing paths on the AVP Tour since 2021, across multiple partner combinations. Partain first faced Crabb as a teenager partnered with Paul Lotman, then later with Andy Benesh. Crabb has played opposite with Jake Gibb and Taylor Sander. In 2026, the plot thickened further when Crabb teamed up with Benesh — Partain's former partner.
+
+```{r partain-crabb-h2h}
+pc_h2h_file <- "data/partain_crabb_h2h.csv"
+pc_h2h <- readr::read_csv(pc_h2h_file, show_col_types = FALSE)
+
+pc_partain_wins <- sum(pc_h2h$winner == "Partain")
+pc_crabb_wins <- sum(pc_h2h$winner == "Crabb")
+
+pc_h2h_display <- pc_h2h %>%
+  dplyr::mutate(
+    date = as.Date(date),
+    teams = paste0(partain_partner, "/Partain vs Crabb/", crabb_partner),
+    result = dplyr::if_else(
+      winner == "Partain",
+      paste0("**W** ", partain_score),
+      paste0("L ", partain_score)
+    )
+  ) %>%
+  dplyr::select(date, tournament, round, teams, result)
+
+knitr::kable(
+  pc_h2h_display,
+  col.names = c("Date", "Tournament", "Round", "Teams", "Result (Partain POV)"),
+  align = c("l", "l", "l", "l", "l"),
+  caption = sprintf(
+    "Miles Partain vs. Taylor Crabb: %d-%d (%d matches across all partners, sourced from bvbinfo.com)",
+    pc_partain_wins, pc_crabb_wins, nrow(pc_h2h)
+  )
+)
+```
+
+Partain leads the all-time series **`r pc_partain_wins`-`r pc_crabb_wins`** across `r nrow(pc_h2h)` AVP matches. Their rivalry spans three different partner combinations — Partain first beat Crabb as a 19-year-old with Paul Lotman in Chicago 2021, then lost to Crabb/Sander at Fort Lauderdale 2022. Since partnering with Benesh, Partain has dominated the matchup with three straight wins before Crabb/Sander took one back in the 2025 AVP League.
+
+## Head to Head: Mol/Sorum vs. Åhman/Hellvig
+
+The defining rivalry in modern beach volleyball. Norway's Mol & Sorum (Tokyo 2020 gold medalists) vs. Sweden's Åhman & Hellvig (Paris 2024 gold medalists) — two Nordic teams trading the #1 world ranking back and forth.
+
+```{r mol-ahman-h2h}
+h2h_file <- "data/mol_ahman_h2h.csv"
+h2h_matches <- readr::read_csv(h2h_file, show_col_types = FALSE)
+
+mol_wins <- sum(h2h_matches$winner == "Mol/Sorum")
+ahman_wins <- sum(h2h_matches$winner == "Åhman/Hellvig")
+
+h2h_display <- h2h_matches %>%
+  dplyr::mutate(
+    date = as.Date(date),
+    result = dplyr::if_else(
+      winner == "Mol/Sorum",
+      paste0("**W** ", mol_score),
+      paste0("L ", mol_score)
+    )
+  ) %>%
+  dplyr::select(date, tournament, round, result, winner)
+
+knitr::kable(
+  h2h_display,
+  col.names = c("Date", "Tournament", "Round", "Result (Mol POV)", "Winner"),
+  align = c("l", "l", "l", "l", "l"),
+  caption = sprintf(
+    "Mol/Sorum vs. Åhman/Hellvig: %d-%d (%d matches, sourced from Volleyballworld & CEV)",
+    mol_wins, ahman_wins, nrow(h2h_matches)
+  )
+)
+```
+
+The record stands at **`r mol_wins`-`r ahman_wins`** in favor of `r dplyr::if_else(mol_wins > ahman_wins, "Mol/Sorum", "Åhman/Hellvig")` across `r nrow(h2h_matches)` meetings. Every match matters — they've met in `r sum(h2h_matches$round == "Gold")` gold medal matches alone. Their rivalry dates back to the 2022 European Championship in Munich, where they split two matches in the same event — Mol dominated pool play before Åhman won a thrilling semifinal en route to the European title. They were in separate pools at the Paris 2024 Olympics and never faced each other — Åhman/Hellvig took gold while Mol/Sorum settled for bronze after losing to Ehlers/Wickler in the semis. In 2025, they've already met four times across the BPT and European Championship, trading wins back and forth.
+
+## Simulating a Major Tournament
+
+To estimate **win probability**, I convert each player's rating into a tournament win probability using an exponential model. Higher-rated players are exponentially more likely to win, but upsets happen — that's what makes beach volleyball great.
+
+```{r tournament-simulation}
+set.seed(42)
+
+sim_data <- rating_system %>%
+  dplyr::select(player, country, rating, gold_rate, podium_rate, fivb_played) %>%
+  dplyr::mutate(
+    strength = exp(rating / 15),
+    win_prob = strength / sum(strength),
+    podium_prob = dplyr::case_when(
+      podium_rate > 0.5 ~ pmin(win_prob * 3.5, 0.85),
+      podium_rate > 0.3 ~ pmin(win_prob * 3.0, 0.70),
+      podium_rate > 0.15 ~ pmin(win_prob * 2.5, 0.50),
+      TRUE ~ pmin(win_prob * 2.0, 0.35)
+    )
+  ) %>%
+  dplyr::arrange(dplyr::desc(win_prob))
+```
+
+```{r prob-table}
+sim_data %>%
+  dplyr::select(player, country, rating, win_prob, podium_prob) %>%
+  dplyr::mutate(
+    win_prob = scales::percent(win_prob, accuracy = 0.1),
+    podium_prob = scales::percent(podium_prob, accuracy = 0.1)
+  ) %>%
+  knitr::kable(
+    col.names = c("Player", "Country", "Rating", "Win Probability", "Podium Probability"),
+    align = c("l", "l", "r", "r", "r"),
+    caption = "Estimated Tournament Win & Podium Probabilities"
+  )
+```
+
+```{r prob-plot, fig.height=35}
+prob_plot_data <- sim_data %>%
+  dplyr::mutate(
+    player_label = paste0(player, "\n(", country, ")"),
+    player_label = forcats::fct_reorder(player_label, win_prob)
+  )
+
+ggplot2::ggplot(prob_plot_data, ggplot2::aes(x = win_prob, y = player_label)) +
+  ggplot2::geom_col(fill = "#2C5F8A", width = 0.7) +
+  ggplot2::geom_text(
+    ggplot2::aes(label = scales::percent(win_prob, accuracy = 0.1)),
+    hjust = -0.15, size = 3, fontface = "bold"
+  ) +
+  ggplot2::scale_x_continuous(labels = scales::percent, expand = ggplot2::expansion(mult = c(0, 0.2))) +
+  ggplot2::labs(
+    title = "Estimated Win Probability: Major FIVB Tournament",
+    subtitle = "Based on career FIVB performance ratings",
+    x = "Win Probability",
+    y = NULL
+  ) +
+  ggplot2::theme_minimal(base_size = 13) +
+  ggplot2::theme(
+    plot.title = ggplot2::element_text(face = "bold", size = 16),
+    panel.grid.major.y = ggplot2::element_blank()
+  )
+```
+
+## Career Trajectory: Gold Rate by Career Stage
+
+One of the most interesting ways to see a player's arc is their gold medal rate. Young players like Åhman and Andersson are on a tear — but can they sustain it?
+
+```{r career-scatter, fig.height=7}
+scatter_data <- rating_system %>%
+  dplyr::mutate(
+    player_label = paste0(player, " (", country, ")")
+  )
+
+ggplot2::ggplot(scatter_data, ggplot2::aes(x = fivb_played, y = gold_rate)) +
+  ggplot2::geom_point(ggplot2::aes(size = rating, color = rating), alpha = 0.8) +
+  ggrepel::geom_text_repel(
+    ggplot2::aes(label = player),
+    size = 3.5, max.overlaps = 15, seed = 42
+  ) +
+  ggplot2::scale_y_continuous(labels = scales::percent) +
+  ggplot2::scale_color_gradient(low = "#4A90D9", high = "#FFD700", name = "Rating") +
+  ggplot2::scale_size_continuous(range = c(3, 12), name = "Rating") +
+  ggplot2::labs(
+    title = "Gold Rate vs. Career Length",
+    subtitle = "Bubble size = player rating | Top-right = sustained excellence",
+    x = "FIVB Events Played",
+    y = "Gold Medal Rate"
+  ) +
+  ggplot2::theme_minimal(base_size = 13) +
+  ggplot2::theme(
+    plot.title = ggplot2::element_text(face = "bold", size = 16),
+    legend.position = "right"
+  )
+```
+
+## Key Takeaways
+
+**Anders Mol** is the clear #1. With 30 FIVB golds in 81 events, a 37% gold rate, and 59% podium rate, he's the most dominant active player by a wide margin. His rating of `r round(rating_system$rating[rating_system$player == "Anders Mol"], 1)` reflects an almost absurd level of consistency — at a major tournament, he's your favorite.
+
+**David Åhman** is breathing down his neck. The 2024 Olympic champion and 2025 World Champion has 17 golds in just 56 events. At 24 years old, he may be the future GOAT. He and Mol are the clear tier-1 players.
+
+**Elmer Andersson** (19!) is already on the radar with 6 golds in just 21 events — an insane 28.6% gold rate. The Swedish teenager is a generational talent.
+
+**Miles Partain vs. Taylor Crabb**: Partain is clearly the stronger FIVB player. His rating of `r round(rating_system$rating[rating_system$player == "Miles Partain"], 1)` nearly doubles Crabb's `r round(rating_system$rating[rating_system$player == "Taylor Crabb"], 1)`. Crabb's strengths shine domestically on the AVP (14 titles!) but his international results haven't matched. Partain, despite being 10 years younger, already has more FIVB golds and a much higher podium rate.
+
+**Phil Dalhausser** is included as a historical benchmark — 38 FIVB golds across 200 events. A legend of the sport, now 46.
+
+## Methodology Notes
+
+- All data from [bvbinfo.com](http://bvbinfo.com) as of early 2026
+- Ratings reflect FIVB results only (not AVP, CEV, or other domestic tours)
+- Win probability uses an exponential strength model: $P(\text{win}_i) = \frac{e^{r_i / 15}}{\sum_j e^{r_j / 15}}$
+- This is for the set of players in this analysis only — a full field of 24+ teams would dilute individual probabilities
+- Beach volleyball is a **pairs** sport — these ratings reflect individual contributions across potentially different partners
+
+```{r timestamp, results='asis'}
+cat(sprintf(
+  "\n\n---\n\n*Last updated: %s*\n",
+  format(Sys.time(), "%B %d, %Y")
+))
+```
