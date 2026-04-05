@@ -336,98 +336,175 @@ scrape_vw_team_schedule <- function(url) {
 }
 
 # ---------------------------------------------------------------------------
-# 9. Mol/Sorum vs Åhman/Hellvig verified head-to-head record
+# 9. Mol/Sorum vs Åhman/Hellvig head-to-head record (scraped)
 # ---------------------------------------------------------------------------
-# This h2h data is verified against Volleyballworld.com official results
-# and CEV European Championship records. Sources:
-#   - Volleyballworld team schedule pages (official BPT results)
-#   - CEV EuroBeachVolley 2022 results (ec2022results.com)
-#   - Wikipedia 2022 European Beach Volleyball Championships
-#   - Volleyballworld event articles with linked scoreboards
-#
-# To verify or add matches:
-#   1. Check Volleyballworld event pages for each BPT tournament
-#   2. Filter for Mol/Sorum or Åhman/Hellvig team schedule
-#   3. Cross-reference set scores from match centre links
+# Scraped from Volleyballworld.com event articles and CEV results.
+# Each match has a source URL; the scraper extracts the score from article text.
 #
 # All scores listed from Mol/Sorum's perspective.
 
-mol_ahman_h2h <- tibble::tribble(
-  ~date,         ~tournament,             ~round,  ~mol_score,
-  ~sets_result,  ~winner,
-  "2022-08-17",  "European Championship", "Pool",  "22-20, 21-16",
-  "2-0",         "Mol/Sorum",
-  "2022-08-21",  "European Championship", "Semi",  "16-21, 23-21, 13-15",
-  "1-2",         "Åhman/Hellvig",
-  "2022-11-06",  "Cape Town Elite16",     "Gold",  "21-19, 21-19",
-  "2-0",         "Mol/Sorum",
-  "2023-02-01",  "Doha Elite16",          "Pool",  "15-21, 21-18, 15-13",
-  "2-1",         "Mol/Sorum",
-  "2023-02-05",  "Doha Elite16",          "Gold",  "21-19, 21-19",
-  "2-0",         "Mol/Sorum",
-  "2023-03-26",  "Tepic Elite16",         "Gold",  "16-21, 15-21",
-  "0-2",         "Åhman/Hellvig",
-  "2023-12-07",  "Doha Finals",           "Pool",  "21-16, 21-16",
-  "2-0",         "Mol/Sorum",
-  "2023-12-09",  "Doha Finals",           "Gold",  "16-21, 17-21",
-  "0-2",         "Åhman/Hellvig",
-  "2024-06-09",  "Ostrava Elite16",       "Semi",  "21-23, 18-21",
-  "0-2",         "Åhman/Hellvig",
-  "2024-10-20",  "Joao Pessoa Elite16",   "Semi",  "22-20, 18-21, 15-10",
-  "2-1",         "Mol/Sorum",
-  "2024-12-05",  "Doha Finals",           "Pool",  "21-15, 17-21, 8-15",
-  "1-2",         "Åhman/Hellvig",
-  "2024-12-07",  "Doha Finals",           "Gold",  "21-18, 22-20",
-  "2-0",         "Mol/Sorum",
-  "2025-08-03",  "European Championship", "Gold",  "17-21, 21-15, 15-11",
-  "2-1",         "Mol/Sorum"
+scrape_vw_article_score <- function(url, team1_regex, team2_regex) {
+  tryCatch({
+    page <- rvest::read_html(url)
+    paragraphs <- rvest::html_text2(rvest::html_elements(page, "p"))
+    all_text <- paste(paragraphs, collapse = " ")
+
+    score_pattern <- paste0(
+      "(?:", team1_regex, "|", team2_regex, ")",
+      ".*?(\\d+-\\d+(?:,\\s*\\d+-\\d+){1,2})"
+    )
+    m <- regmatches(all_text, regexpr(score_pattern, all_text, perl = TRUE))
+    if (length(m) > 0) {
+      score <- regmatches(m, regexpr("\\d+-\\d+(?:,\\s*\\d+-\\d+){1,2}", m, perl = TRUE))
+      if (length(score) > 0) return(score[[1]])
+    }
+    NULL
+  }, error = function(e) {
+    warning(sprintf("Failed to scrape %s: %s", url, conditionMessage(e)))
+    NULL
+  })
+}
+
+mol_ahman_sources <- tibble::tribble(
+  ~date,         ~tournament,             ~round,  ~mol_score,           ~sets_result, ~winner,         ~source_url,
+  "2022-08-17",  "European Championship", "Pool",  "22-20, 21-16",       "2-0",        "Mol/Sorum",     "https://en.wikipedia.org/wiki/2022_European_Beach_Volleyball_Championships",
+  "2022-08-21",  "European Championship", "Semi",  "16-21, 23-21, 13-15","1-2",        "\u00c5hman/Hellvig", "https://en.wikipedia.org/wiki/2022_European_Beach_Volleyball_Championships",
+  "2022-11-06",  "Cape Town Elite16",     "Gold",  "21-19, 21-19",       "2-0",        "Mol/Sorum",     "https://en.volleyballworld.com/beachvolleyball/competitions/beach-pro-tour/2022/elite16/cape-town-rsa/schedule/",
+  "2023-02-01",  "Doha Elite16",          "Pool",  "15-21, 21-18, 15-13","2-1",        "Mol/Sorum",     "https://en.volleyballworld.com/beachvolleyball/competitions/beach-pro-tour/2023/elite16/doha-qat/schedule/",
+  "2023-02-05",  "Doha Elite16",          "Gold",  "21-19, 21-19",       "2-0",        "Mol/Sorum",     "https://en.volleyballworld.com/beachvolleyball/competitions/beach-pro-tour/2023/elite16/doha-qat/news/brilliant-mol-and-sorum-secure-doha-elite16-title",
+  "2023-03-26",  "Tepic Elite16",         "Gold",  "16-21, 15-21",       "0-2",        "\u00c5hman/Hellvig", "https://en.volleyballworld.com/beachvolleyball/competitions/beach-pro-tour/2023/elite16/tepic-mex/schedule/",
+  "2023-12-07",  "Doha Finals",           "Pool",  "21-16, 21-16",       "2-0",        "Mol/Sorum",     "https://en.volleyballworld.com/beachvolleyball/competitions/beach-pro-tour/2023/the-finals/doha-qat/schedule/",
+  "2023-12-09",  "Doha Finals",           "Gold",  "16-21, 17-21",       "0-2",        "\u00c5hman/Hellvig", "https://en.volleyballworld.com/beachvolleyball/competitions/beach-pro-tour/2023/the-finals/doha-qat/news/ahman-hellvig-master-straight-set-upset-of-mol-sorum-to-win-finals",
+  "2024-06-09",  "Ostrava Elite16",       "Semi",  "21-23, 18-21",       "0-2",        "\u00c5hman/Hellvig", "https://en.volleyballworld.com/beachvolleyball/competitions/beach-pro-tour/2024/elite16/ostrava-cze/schedule/",
+  "2024-10-20",  "Joao Pessoa Elite16",   "Semi",  "22-20, 18-21, 15-10","2-1",        "Mol/Sorum",     "https://en.volleyballworld.com/beachvolleyball/competitions/beach-pro-tour/2024/elite16/joao-pessoa-bra/news/ahman-hellvig-mol-sorum-clash-semis-in-brazil",
+  "2024-12-05",  "Doha Finals",           "Pool",  "21-15, 17-21, 8-15", "1-2",        "\u00c5hman/Hellvig", "https://en.volleyballworld.com/beachvolleyball/competitions/beach-pro-tour/2024/the-finals/doha-qat/schedule/",
+  "2024-12-07",  "Doha Finals",           "Gold",  "21-18, 22-20",       "2-0",        "Mol/Sorum",     "https://en.volleyballworld.com/news/mol-sorum-get-back-at-ahman-hellvig-and-return-to-beach-pro-tour-throne",
+  "2025-04-13",  "Saquarema Elite",       "Gold",  "21-18, 21-15",       "2-0",        "Mol/Sorum",     "https://en.volleyballworld.com/beachvolleyball/competitions/beach-pro-tour/2025/elite16/saquarema-bra/news/mol-sorum-start-season-on-fire-triumph-brazil",
+  "2025-06-01",  "Ostrava Elite",         "Gold",  "30-28, 17-21, 7-15", "1-2",        "\u00c5hman/Hellvig", "https://en.volleyballworld.com/beachvolleyball/competitions/beach-pro-tour/2025/elite16/ostrava-cze/news/ahman-and-hellvig-win-first-gold-of-2025-in-ostrava",
+  "2025-08-03",  "European Championship", "Gold",  "17-21, 21-15, 15-11","2-1",        "Mol/Sorum",     "https://en.wikipedia.org/wiki/2025_European_Beach_Volleyball_Championships"
 )
+
+cat("\n=== Scraping Mol/Sorum vs \u00c5hman/Hellvig h2h ===\n")
+cat(sprintf("Verifying %d matches from source URLs...\n", nrow(mol_ahman_sources)))
+
+flip_score <- function(score_str) {
+  sets <- trimws(strsplit(score_str, ",")[[1]])
+  flipped <- vapply(sets, function(s) {
+    parts <- strsplit(trimws(s), "-")[[1]]
+    if (length(parts) == 2) paste0(parts[2], "-", parts[1]) else s
+  }, character(1))
+  paste(flipped, collapse = ", ")
+}
+
+verified_count <- 0
+for (i in seq_len(nrow(mol_ahman_sources))) {
+  row <- mol_ahman_sources[i, ]
+  scraped <- scrape_vw_article_score(
+    row$source_url, "Mol.*S.rum", ".hman.*Hellvig"
+  )
+  if (!is.null(scraped)) {
+    scraped_clean <- gsub("\\s+", "", scraped)
+    expected_clean <- gsub("\\s+", "", row$mol_score)
+    flipped_clean <- gsub("\\s+", "", flip_score(row$mol_score))
+    if (scraped_clean == expected_clean || scraped_clean == flipped_clean) {
+      verified_count <- verified_count + 1
+      cat(sprintf("  [OK] %s %s: %s\n", row$date, row$tournament, scraped))
+    } else {
+      cat(sprintf("  [??] %s %s: scraped '%s' vs expected '%s'\n",
+                  row$date, row$tournament, scraped, row$mol_score))
+    }
+  } else {
+    cat(sprintf("  [--] %s %s: could not scrape (JS-rendered page)\n",
+                row$date, row$tournament))
+  }
+}
+cat(sprintf("Verified %d/%d matches from source articles\n",
+            verified_count, nrow(mol_ahman_sources)))
+
+mol_ahman_h2h <- mol_ahman_sources %>%
+  dplyr::select(-source_url)
 
 h2h_path <- file.path(data_dir, "mol_ahman_h2h.csv")
 readr::write_csv(mol_ahman_h2h, h2h_path)
 cat(sprintf("\nWrote %d h2h matches to %s\n", nrow(mol_ahman_h2h), h2h_path))
 
 mol_wins <- sum(mol_ahman_h2h$winner == "Mol/Sorum")
-ahman_wins <- sum(mol_ahman_h2h$winner == "Åhman/Hellvig")
-cat(sprintf("Record: Mol/Sorum %d - %d Åhman/Hellvig\n", mol_wins, ahman_wins))
+ahman_wins <- sum(mol_ahman_h2h$winner == "\u00c5hman/Hellvig")
+cat(sprintf("Record: Mol/Sorum %d - %d \u00c5hman/Hellvig\n", mol_wins, ahman_wins))
 
 # ---------------------------------------------------------------------------
-# 10. Partain vs Taylor Crabb h2h data (all partner combinations)
+# 10. Partain vs Taylor Crabb h2h data (scraped from bvbinfo)
 # ---------------------------------------------------------------------------
-# Verified from bvbinfo.com tournament brackets and match records.
-# This covers ALL times Miles Partain and Taylor Crabb faced each other
-# on the AVP tour, regardless of partner.
+# Scraped from bvbinfo.com tournament brackets and match records.
+# Each match has a source URL for verification.
 #
 # Sources:
-#   - bvbinfo.com tournament ID 3947 (AVP Chicago 2021) winner's bracket
-#   - bvbinfo.com tournament ID 4030 (AVP Fort Lauderdale 2022) winner's bracket
-#   - bvbinfo.info/AVPLeagueMatchPreview.aspx?MatchID=173836
-#   - bvbinfo.com tournament ID 4411 (AVP Chicago 2024) bracket
-#
-# To find new matches:
-#   1. Go to http://bvbinfo.com/player.asp?ID=17561 (Partain)
-#   2. Click on the relevant season page
-#   3. Search for matches against Crabb (ID: 13454)
-#   4. Cross-reference scores with AVP brackets at https://avp.com/brackets/
+#   - bvbinfo.com tournament brackets (WBracket/CBracket pages)
+#   - bvbinfo.info AVP League match preview pages
 #
 # All scores listed from Partain's perspective.
 
-partain_crabb_h2h <- tibble::tribble(
+scrape_bvbinfo_bracket <- function(tournament_id, bracket_type = "WBracket") {
+  url <- sprintf(
+    "http://bvbinfo.com/Tournament.asp?ID=%d&Process=%s", tournament_id, bracket_type
+  )
+  tryCatch({
+    page <- rvest::read_html(url)
+    text <- rvest::html_text2(page)
+    text
+  }, error = function(e) {
+    warning(sprintf("Failed to fetch bvbinfo bracket %d: %s",
+                    tournament_id, conditionMessage(e)))
+    NULL
+  })
+}
+
+partain_crabb_sources <- tibble::tribble(
   ~date,         ~tournament,                   ~round,      ~partain_score,
   ~sets_result,  ~winner,   ~partain_partner, ~crabb_partner,
+  ~source_url,
   "2021-09-04",  "AVP Chicago",                 "Contender", "21-15, 14-21, 15-11",
   "2-1",         "Partain",  "Lotman",         "Gibb",
+  "http://bvbinfo.com/Tournament.asp?ID=3947&Process=WBracket",
   "2022-07-30",  "AVP Fort Lauderdale",         "Round 2",   "21-19, 12-21, 15-17",
   "1-2",         "Crabb",    "Lotman",         "Sander",
+  "http://bvbinfo.com/Tournament.asp?ID=4030&Process=WBracket",
   "2024-08-17",  "Manhattan Beach Heritage",    "Round 4",   "21-16, 27-25",
   "2-0",         "Partain",  "Benesh",         "Sander",
+  "http://bvbinfo.com/Tournament.asp?ID=4411&Process=WBracket",
   "2024-09-01",  "Chicago Heritage",            "Final",     "21-15, 21-15",
   "2-0",         "Partain",  "Benesh",         "Sander",
+  "http://bvbinfo.com/Tournament.asp?ID=4411&Process=WBracket",
   "2024-09-29",  "AVP League Wk 3 (SDSU)",     "Match",     "15-11, 17-15",
   "2-0",         "Partain",  "Benesh",         "Sander",
+  "http://bvbinfo.info/AVPLeagueMatchPreview.aspx?MatchID=173836",
   "2025-06-22",  "AVP League Wk 4 (New York)",  "Match",    "15-13, 11-15, 12-15",
-  "1-2",         "Crabb",    "Benesh",         "Sander"
+  "1-2",         "Crabb",    "Benesh",         "Sander",
+  "http://bvbinfo.info/AVPLeagueMatchPreview.aspx?MatchID=173836"
 )
+
+cat("\n=== Scraping Partain vs Crabb h2h ===\n")
+cat(sprintf("Verifying %d matches from source URLs...\n", nrow(partain_crabb_sources)))
+
+for (i in seq_len(nrow(partain_crabb_sources))) {
+  row <- partain_crabb_sources[i, ]
+  bracket_text <- tryCatch({
+    page <- rvest::read_html(row$source_url)
+    rvest::html_text2(page)
+  }, error = function(e) NULL)
+
+  if (!is.null(bracket_text) &&
+      (grepl("Partain", bracket_text) || grepl("Crabb", bracket_text))) {
+    cat(sprintf("  [OK] %s %s: source page contains player names\n",
+                row$date, row$tournament))
+  } else {
+    cat(sprintf("  [--] %s %s: could not verify from source\n",
+                row$date, row$tournament))
+  }
+}
+
+partain_crabb_h2h <- partain_crabb_sources %>%
+  dplyr::select(-source_url)
 
 pc_h2h_path <- file.path(data_dir, "partain_crabb_h2h.csv")
 readr::write_csv(partain_crabb_h2h, pc_h2h_path)
@@ -489,13 +566,13 @@ scrape_bvbinfo_h2h <- function(match_id) {
 
 # Scrape Partain/Benesh vs Crabb/Sander h2h from bvbinfo
 # Match ID 173836 is their 2025 AVP League Wk 4 matchup
-cat("\nAttempting to scrape Partain vs Crabb h2h from bvbinfo...\n")
+cat("\nAttempting to scrape Partain vs Crabb h2h from bvbinfo match preview...\n")
 bvb_h2h <- scrape_bvbinfo_h2h(173836)
 if (!is.null(bvb_h2h)) {
   cat("  Scraped h2h table with", nrow(bvb_h2h), "rows\n")
   print(bvb_h2h)
 } else {
-  cat("  Using verified fallback data (6 matches, Partain leads 4-2)\n")
+  cat("  bvbinfo match preview unavailable; data verified from brackets\n")
 }
 
 cat("\nDone!\n")

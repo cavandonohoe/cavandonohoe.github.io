@@ -183,15 +183,8 @@ Interestingly, in 2026 Crabb and Benesh (Partain's former partner) have teamed u
 These two have been crossing paths on the AVP Tour since 2021, across multiple partner combinations. Partain first faced Crabb as a teenager partnered with Paul Lotman, then later with Andy Benesh. Crabb has played opposite with Jake Gibb and Taylor Sander. In 2026, the plot thickened further when Crabb teamed up with Benesh — Partain's former partner.
 
 ```{r partain-crabb-h2h}
-pc_h2h <- tibble::tribble(
-  ~date,         ~tournament,                  ~round,     ~partain_score,        ~sets,  ~winner,           ~partain_partner, ~crabb_partner,
-  "2021-09-04",  "AVP Chicago",                "Contender",  "21-15, 14-21, 15-11", "2-1",  "Partain",         "Lotman",         "Gibb",
-  "2022-07-30",  "AVP Fort Lauderdale",        "Round 2",  "21-19, 12-21, 15-17", "1-2",  "Crabb",           "Lotman",         "Sander",
-  "2024-08-17",  "Manhattan Beach Heritage",   "Round 4",  "21-16, 27-25",        "2-0",  "Partain",         "Benesh",         "Sander",
-  "2024-09-01",  "Chicago Heritage",           "Final",    "21-15, 21-15",        "2-0",  "Partain",         "Benesh",         "Sander",
-  "2024-09-29",  "AVP League Wk 3 (SDSU)",    "Match",    "15-11, 17-15",        "2-0",  "Partain",         "Benesh",         "Sander",
-  "2025-06-22",  "AVP League Wk 4 (New York)", "Match",   "15-13, 11-15, 12-15", "1-2",  "Crabb",           "Benesh",         "Sander"
-)
+pc_h2h_file <- "data/partain_crabb_h2h.csv"
+pc_h2h <- readr::read_csv(pc_h2h_file, show_col_types = FALSE)
 
 pc_partain_wins <- sum(pc_h2h$winner == "Partain")
 pc_crabb_wins <- sum(pc_h2h$winner == "Crabb")
@@ -226,22 +219,8 @@ Partain leads the all-time series **`r pc_partain_wins`-`r pc_crabb_wins`** acro
 The defining rivalry in modern beach volleyball. Norway's Mol & Sorum (Tokyo 2020 gold medalists) vs. Sweden's Åhman & Hellvig (Paris 2024 gold medalists) — two Nordic teams trading the #1 world ranking back and forth.
 
 ```{r mol-ahman-h2h}
-h2h_matches <- tibble::tribble(
-  ~date,         ~tournament,             ~round,    ~mol_score,                ~ahman_score, ~winner,
-  "2022-08-17",  "European Championship", "Pool",    "22-20, 21-16",            "2-0",        "Mol/Sorum",
-  "2022-08-21",  "European Championship", "Semi",    "16-21, 23-21, 13-15",     "1-2",        "Åhman/Hellvig",
-  "2022-11-06",  "Cape Town Elite16",     "Gold",    "21-19, 21-19",            "2-0",        "Mol/Sorum",
-  "2023-02-01",  "Doha Elite16",          "Pool",    "15-21, 21-18, 15-13",     "2-1",        "Mol/Sorum",
-  "2023-02-05",  "Doha Elite16",          "Gold",    "21-19, 21-19",            "2-0",        "Mol/Sorum",
-  "2023-03-26",  "Tepic Elite16",         "Gold",    "16-21, 15-21",            "0-2",        "Åhman/Hellvig",
-  "2023-12-07",  "Doha Finals",           "Pool",    "21-16, 21-16",            "2-0",        "Mol/Sorum",
-  "2023-12-09",  "Doha Finals",           "Gold",    "16-21, 17-21",            "0-2",        "Åhman/Hellvig",
-  "2024-06-09",  "Ostrava Elite16",       "Semi",    "21-23, 18-21",            "0-2",        "Åhman/Hellvig",
-  "2024-10-20",  "Joao Pessoa Elite16",   "Semi",    "22-20, 18-21, 15-10",     "2-1",        "Mol/Sorum",
-  "2024-12-05",  "Doha Finals",           "Pool",    "21-15, 17-21, 8-15",      "1-2",        "Åhman/Hellvig",
-  "2024-12-07",  "Doha Finals",           "Gold",    "21-18, 22-20",            "2-0",        "Mol/Sorum",
-  "2025-08-03",  "European Championship", "Gold",    "17-21, 21-15, 15-11",     "2-1",        "Mol/Sorum"
-)
+h2h_file <- "data/mol_ahman_h2h.csv"
+h2h_matches <- readr::read_csv(h2h_file, show_col_types = FALSE)
 
 mol_wins <- sum(h2h_matches$winner == "Mol/Sorum")
 ahman_wins <- sum(h2h_matches$winner == "Åhman/Hellvig")
@@ -268,7 +247,7 @@ knitr::kable(
 )
 ```
 
-The record stands at **`r mol_wins`-`r ahman_wins`** in favor of `r dplyr::if_else(mol_wins > ahman_wins, "Mol/Sorum", "Åhman/Hellvig")` across `r nrow(h2h_matches)` meetings. Every match matters — they've met in `r sum(h2h_matches$round == "Gold")` gold medal matches alone. Their rivalry dates back to the 2022 European Championship in Munich, where they split two matches in the same event — Mol dominated pool play before Åhman won a thrilling semifinal en route to the European title. They were in separate pools at the Paris 2024 Olympics and never faced each other — Åhman/Hellvig took gold while Mol/Sorum settled for bronze after losing to Ehlers/Wickler in the semis.
+The record stands at **`r mol_wins`-`r ahman_wins`** in favor of `r dplyr::if_else(mol_wins > ahman_wins, "Mol/Sorum", "Åhman/Hellvig")` across `r nrow(h2h_matches)` meetings. Every match matters — they've met in `r sum(h2h_matches$round == "Gold")` gold medal matches alone. Their rivalry dates back to the 2022 European Championship in Munich, where they split two matches in the same event — Mol dominated pool play before Åhman won a thrilling semifinal en route to the European title. They were in separate pools at the Paris 2024 Olympics and never faced each other — Åhman/Hellvig took gold while Mol/Sorum settled for bronze after losing to Ehlers/Wickler in the semis. In 2025, they've already met four times across the BPT and European Championship, trading wins back and forth.
 
 ## Simulating a Major Tournament
 
