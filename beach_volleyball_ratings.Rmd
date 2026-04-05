@@ -178,45 +178,48 @@ Despite Crabb's incredible AVP dominance (14 domestic titles!), his FIVB career 
 
 Interestingly, in 2026 Crabb and Benesh (Partain's former partner) have teamed up — making the Partain-Crabb comparison even more of a proxy war.
 
-## Head to Head: Partain/Benesh vs. Crabb/Sander (AVP)
+## Head to Head: Miles Partain vs. Taylor Crabb (AVP)
 
-The domestic side of this rivalry plays out on the AVP Tour. Partain teams with Andy Benesh (his 2024 Paris Olympics partner), while Taylor Crabb plays with Taylor Sander — two of the most electric teams in American beach volleyball.
+These two have been crossing paths on the AVP Tour since 2021, across multiple partner combinations. Partain first faced Crabb as a teenager partnered with Paul Lotman, then later with Andy Benesh. Crabb has played opposite with Jake Gibb and Taylor Sander. In 2026, the plot thickened further when Crabb teamed up with Benesh — Partain's former partner.
 
 ```{r partain-crabb-h2h}
 pc_h2h <- tibble::tribble(
-  ~date,         ~tournament,                  ~round,     ~partain_score,        ~sets,  ~winner,
-  "2024-08-17",  "Manhattan Beach Heritage",   "Round 4",  "21-16, 27-25",        "2-0",  "Partain/Benesh",
-  "2024-09-01",  "Chicago Heritage",           "Final",    "21-15, 21-15",        "2-0",  "Partain/Benesh",
-  "2024-09-29",  "AVP League Wk 3 (SDSU)",    "Match",    "15-11, 17-15",        "2-0",  "Partain/Benesh",
-  "2025-06-22",  "AVP League Wk 4 (New York)", "Match",   "15-13, 11-15, 12-15", "1-2",  "Crabb/Sander"
+  ~date,         ~tournament,                  ~round,     ~partain_score,        ~sets,  ~winner,           ~partain_partner, ~crabb_partner,
+  "2021-09-04",  "AVP Chicago",                "Contender",  "21-15, 14-21, 15-11", "2-1",  "Partain",         "Lotman",         "Gibb",
+  "2022-07-30",  "AVP Fort Lauderdale",        "Round 2",  "21-19, 12-21, 15-17", "1-2",  "Crabb",           "Lotman",         "Sander",
+  "2024-08-17",  "Manhattan Beach Heritage",   "Round 4",  "21-16, 27-25",        "2-0",  "Partain",         "Benesh",         "Sander",
+  "2024-09-01",  "Chicago Heritage",           "Final",    "21-15, 21-15",        "2-0",  "Partain",         "Benesh",         "Sander",
+  "2024-09-29",  "AVP League Wk 3 (SDSU)",    "Match",    "15-11, 17-15",        "2-0",  "Partain",         "Benesh",         "Sander",
+  "2025-06-22",  "AVP League Wk 4 (New York)", "Match",   "15-13, 11-15, 12-15", "1-2",  "Crabb",           "Benesh",         "Sander"
 )
 
-pc_mol_wins <- sum(pc_h2h$winner == "Partain/Benesh")
-pc_ahman_wins <- sum(pc_h2h$winner == "Crabb/Sander")
+pc_partain_wins <- sum(pc_h2h$winner == "Partain")
+pc_crabb_wins <- sum(pc_h2h$winner == "Crabb")
 
 pc_h2h_display <- pc_h2h %>%
   dplyr::mutate(
     date = as.Date(date),
+    teams = paste0(partain_partner, "/Partain vs Crabb/", crabb_partner),
     result = dplyr::if_else(
-      winner == "Partain/Benesh",
+      winner == "Partain",
       paste0("**W** ", partain_score),
       paste0("L ", partain_score)
     )
   ) %>%
-  dplyr::select(date, tournament, round, result, winner)
+  dplyr::select(date, tournament, round, teams, result)
 
 knitr::kable(
   pc_h2h_display,
-  col.names = c("Date", "Tournament", "Round", "Result (Partain POV)", "Winner"),
+  col.names = c("Date", "Tournament", "Round", "Teams", "Result (Partain POV)"),
   align = c("l", "l", "l", "l", "l"),
   caption = sprintf(
-    "Partain/Benesh vs. Crabb/Sander: %d-%d (%d matches on AVP, sourced from bvbinfo.com)",
-    pc_mol_wins, pc_ahman_wins, nrow(pc_h2h)
+    "Miles Partain vs. Taylor Crabb: %d-%d (%d matches across all partners, sourced from bvbinfo.com)",
+    pc_partain_wins, pc_crabb_wins, nrow(pc_h2h)
   )
 )
 ```
 
-Partain/Benesh lead the AVP series **`r pc_mol_wins`-`r pc_ahman_wins`** with dominant straight-set wins in the two biggest AVP events of 2024 — Manhattan Beach and Chicago. Crabb/Sander's lone win came in a 2025 AVP League regular-season match in New York. The rivalry is still young but fierce — these teams represent the future of American men's beach volleyball.
+Partain leads the all-time series **`r pc_partain_wins`-`r pc_crabb_wins`** across `r nrow(pc_h2h)` AVP matches. Their rivalry spans three different partner combinations — Partain first beat Crabb as a 19-year-old with Paul Lotman in Chicago 2021, then lost to Crabb/Sander at Fort Lauderdale 2022. Since partnering with Benesh, Partain has dominated the matchup with three straight wins before Crabb/Sander took one back in the 2025 AVP League.
 
 ## Head to Head: Mol/Sorum vs. Åhman/Hellvig
 
