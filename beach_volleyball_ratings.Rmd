@@ -113,7 +113,7 @@ rating_system %>%
 
 ## Rating Visualization
 
-```{r rating-plot, fig.height=20}
+```{r rating-plot, fig.height=30}
 plot_data <- rating_system %>%
   dplyr::mutate(
     player_label = paste0(player, " (", country, ")"),
@@ -262,7 +262,7 @@ sim_data %>%
   )
 ```
 
-```{r prob-plot, fig.height=28}
+```{r prob-plot, fig.height=35}
 prob_plot_data <- sim_data %>%
   dplyr::mutate(
     player_label = paste0(player, "\n(", country, ")"),
