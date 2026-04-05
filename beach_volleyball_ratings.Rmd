@@ -212,7 +212,7 @@ sim_data %>%
   )
 ```
 
-```{r prob-plot, fig.height=20}
+```{r prob-plot, fig.height=28}
 prob_plot_data <- sim_data %>%
   dplyr::mutate(
     player_label = paste0(player, "\n(", country, ")"),
