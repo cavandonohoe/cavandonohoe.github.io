@@ -190,8 +190,6 @@ h2h_matches <- tibble::tribble(
   "2023-03-26",  "Tepic Elite16",         "Gold",    "16-21, 15-21",        "0-2",   "Åhman/Hellvig",
   "2023-12-09",  "Doha Finals",           "Gold",    "16-21, 17-21",        "0-2",   "Åhman/Hellvig",
   "2024-06-09",  "Ostrava Elite16",       "Semi",    "21-23, 18-21",        "0-2",   "Åhman/Hellvig",
-  "2024-07-28",  "Paris Olympics",        "Pool",    "17-21, 21-19, 12-15", "1-2",   "Åhman/Hellvig",
-  "2024-08-09",  "Paris Olympics",        "Gold",    "19-21, 19-21",        "0-2",   "Åhman/Hellvig",
   "2024-10-20",  "Joao Pessoa Elite16",   "Semi",    "22-20, 18-21, 15-10", "2-1",   "Mol/Sorum",
   "2024-12-05",  "Doha Finals",           "Pool",    "21-16, 21-16",        "2-0",   "Mol/Sorum",
   "2024-12-07",  "Doha Finals",           "Gold",    "21-18, 22-20",        "2-0",   "Mol/Sorum"
@@ -222,7 +220,7 @@ knitr::kable(
 )
 ```
 
-The record stands at **`r mol_wins`-`r ahman_wins`** in favor of `r dplyr::if_else(mol_wins > ahman_wins, "Mol/Sorum", "Åhman/Hellvig")` across `r nrow(h2h_matches)` FIVB meetings. Every match matters — they've met in 5 gold medal matches alone, with `r sum(h2h_matches$round == "Gold" & h2h_matches$winner == "Mol/Sorum")` going to Norway and `r sum(h2h_matches$round == "Gold" & h2h_matches$winner == "Åhman/Hellvig")` to Sweden. The Olympic finals split perfectly: Tokyo 2020 gold to Mol/Sorum, Paris 2024 gold to Åhman/Hellvig.
+The record stands at **`r mol_wins`-`r ahman_wins`** in favor of `r dplyr::if_else(mol_wins > ahman_wins, "Mol/Sorum", "Åhman/Hellvig")` across `r nrow(h2h_matches)` FIVB meetings. Every match matters — they've met in `r sum(h2h_matches$round == "Gold")` gold medal matches alone. Notably, they were in separate pools at the Paris 2024 Olympics and never faced each other — Åhman/Hellvig took gold while Mol/Sorum settled for bronze after losing to Ehlers/Wickler in the semis.
 
 ## Simulating a Major Tournament
 
