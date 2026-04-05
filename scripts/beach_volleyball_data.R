@@ -378,7 +378,9 @@ mol_ahman_h2h <- tibble::tribble(
   "2024-12-05",  "Doha Finals",           "Pool",  "21-15, 17-21, 8-15",
   "1-2",         "Åhman/Hellvig",
   "2024-12-07",  "Doha Finals",           "Gold",  "21-18, 22-20",
-  "2-0",         "Mol/Sorum"
+  "2-0",         "Mol/Sorum",
+  "2025-08-03",  "European Championship", "Gold",  "17-21, 21-15, 15-11",
+  "2-1",         "Mol/Sorum"
 )
 
 h2h_path <- file.path(data_dir, "mol_ahman_h2h.csv")

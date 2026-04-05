@@ -239,7 +239,8 @@ h2h_matches <- tibble::tribble(
   "2024-06-09",  "Ostrava Elite16",       "Semi",    "21-23, 18-21",            "0-2",        "Åhman/Hellvig",
   "2024-10-20",  "Joao Pessoa Elite16",   "Semi",    "22-20, 18-21, 15-10",     "2-1",        "Mol/Sorum",
   "2024-12-05",  "Doha Finals",           "Pool",    "21-15, 17-21, 8-15",      "1-2",        "Åhman/Hellvig",
-  "2024-12-07",  "Doha Finals",           "Gold",    "21-18, 22-20",            "2-0",        "Mol/Sorum"
+  "2024-12-07",  "Doha Finals",           "Gold",    "21-18, 22-20",            "2-0",        "Mol/Sorum",
+  "2025-08-03",  "European Championship", "Gold",    "17-21, 21-15, 15-11",     "2-1",        "Mol/Sorum"
 )
 
 mol_wins <- sum(h2h_matches$winner == "Mol/Sorum")
