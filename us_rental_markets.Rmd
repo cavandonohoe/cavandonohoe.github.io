@@ -58,6 +58,13 @@ markets <- raw %>%
 zhvi_date <- unique(raw$zhvi_date)[1]
 zori_date <- unique(raw$zori_date)[1]
 
+# Default leverage assumptions (match scripts/us_rental_demand_data.R)
+DEFAULT_DOWN_PCT <- 25
+DEFAULT_MORTGAGE_RATE <- 7.25
+DEFAULT_TERM_YEARS <- 30
+DEFAULT_EXPENSE_RATIO <- 35
+DEFAULT_CLOSING_PCT <- 3
+
 tier_colors <- c(
   "Strong Buy"   = "#27AE60",
   "Moderate"     = "#2E86C1",
@@ -66,7 +73,11 @@ tier_colors <- c(
 )
 ```
 
-Where should you buy rental property in the US? This page ranks **`r nrow(markets)` cities** by investment metrics derived from Zillow's public home value and rent indices. The price-to-rent ratio is the standard benchmark:
+Where should you buy rental property in the US? This page ranks **`r nrow(markets)` cities** by investment metrics derived from Zillow's public home value and rent indices plus Census demand signals.
+
+Jump to: [Cash Flow Calculator](#interactive-cash-flow-calculator) · [Leveraged Returns](#leveraged-returns-at-25-down-7.25-30yr) · [Hidden Gems](#hidden-gems-small-towns-with-big-cash-flow) · [Investor Rules](#investor-rules-of-thumb) · [Composite Score](#composite-investment-score) · [State Explorer](#state-leaderboard) · [Price vs Rent Growth](#price-vs-rent-growth-yoy) · [City Lookup](#per-city-detail-lookup)
+
+The price-to-rent ratio is the standard cash-flow benchmark:
 
 - **Strong Buy** (P/R < 15): Cash flow positive from day one
 - **Moderate** (P/R 15--20): Reasonable returns, some appreciation upside
@@ -185,6 +196,197 @@ top40 %>%
 
 </details>
 
+## Interactive Cash Flow Calculator
+
+Plug in **your** financing assumptions and rerank every market by monthly cash flow, cash-on-cash return, and whether it actually clears the mortgage. Defaults are 25% down, 7.25% 30-yr fixed, 35% operating expenses, 3% closing costs.
+
+<div class="calc-box">
+<div class="calc-inputs">
+  <label>Down payment (%) <input id="calc-down" type="number" value="25" min="0" max="100" step="1"></label>
+  <label>Mortgage rate (%) <input id="calc-rate" type="number" value="7.25" min="0" max="20" step="0.125"></label>
+  <label>Term (years) <input id="calc-term" type="number" value="30" min="5" max="40" step="1"></label>
+  <label>Operating expense (%) <input id="calc-opex" type="number" value="35" min="0" max="80" step="1"></label>
+  <label>Closing costs (%) <input id="calc-closing" type="number" value="3" min="0" max="10" step="0.5"></label>
+  <label>Min population <input id="calc-minpop" type="number" value="10000" min="0" step="1000"></label>
+  <label>Max home value ($) <input id="calc-maxprice" type="number" value="500000" min="50000" step="25000"></label>
+  <label>Rows to show <input id="calc-rows" type="number" value="40" min="5" max="500" step="5"></label>
+  <label>Sort by
+    <select id="calc-sort">
+      <option value="monthly_cash_flow">Monthly cash flow</option>
+      <option value="cash_on_cash_pct">Cash-on-cash return</option>
+      <option value="est_cap_rate_pct">Cap rate</option>
+      <option value="investment_score">Composite score</option>
+    </select>
+  </label>
+</div>
+<div id="calc-summary" class="calc-summary"></div>
+<div class="calc-table-wrap"><table id="calc-table"><thead><tr>
+  <th>#</th><th>City</th><th>State</th>
+  <th class="num">Price</th><th class="num">Rent/mo</th>
+  <th class="num">Mortgage</th><th class="num">Cash flow/mo</th>
+  <th class="num">CoC %</th><th class="num">Cap rate</th>
+  <th class="num">Pop</th><th class="num">Pop growth</th>
+  <th class="num">Vacancy</th><th>Tier</th>
+</tr></thead><tbody></tbody></table></div>
+</div>
+
+```{r calc_data, results='asis'}
+# Embed a compact JSON blob so the calculator can rerun on every keystroke.
+calc_rows <- markets %>%
+  dplyr::filter(!is.na(zhvi), !is.na(zori)) %>%
+  dplyr::transmute(
+    city, state, metro,
+    zhvi = round(zhvi, 0),
+    zori = round(zori, 0),
+    cap = est_cap_rate_pct,
+    ptr = price_to_rent,
+    pop = tidyr::replace_na(pop_2024, -1),
+    pop_gr = tidyr::replace_na(pop_growth_pct, NA_real_),
+    vac = tidyr::replace_na(vacancy_rate_pct, NA_real_),
+    score = tidyr::replace_na(investment_score, NA_real_),
+    tier = as.character(tier)
+  )
+
+calc_json <- jsonlite::toJSON(calc_rows, dataframe = "rows", na = "null", auto_unbox = TRUE)
+cat(sprintf('<script id="calc-data" type="application/json">%s</script>\n', calc_json))
+```
+
+<style>
+.calc-box { border: 1px solid var(--card-border); background: var(--card-bg);
+  border-radius: 8px; padding: 16px; margin: 1em 0; }
+.calc-inputs { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px 16px; margin-bottom: 12px; }
+.calc-inputs label { font-size: 0.82em; color: var(--muted-text); display: flex;
+  flex-direction: column; gap: 3px; }
+.calc-inputs input, .calc-inputs select {
+  padding: 5px 8px; border: 1px solid var(--card-border);
+  border-radius: 4px; background: var(--bg-color); color: var(--text-color);
+  font-size: 0.95em;
+}
+.calc-summary { padding: 8px 10px; margin-bottom: 10px; font-size: 0.92em;
+  background: var(--well-bg); border-radius: 4px; color: var(--text-color); }
+.calc-summary strong { color: var(--link-color); }
+.calc-table-wrap { overflow-x: auto; max-height: 520px; overflow-y: auto; }
+#calc-table { width: 100%; border-collapse: collapse; font-size: 0.88em; }
+#calc-table th, #calc-table td { padding: 6px 10px; border-bottom: 1px solid var(--card-border); }
+#calc-table thead th { position: sticky; top: 0; background: var(--card-bg);
+  text-align: left; font-weight: 600; }
+#calc-table td.num, #calc-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+#calc-table tr:hover td { background: var(--well-bg); }
+.cf-pos { color: #27AE60; font-weight: 600; }
+.cf-neg { color: #C0392B; font-weight: 600; }
+.tier-pill { display: inline-block; padding: 1px 7px; border-radius: 10px;
+  font-size: 0.78em; color: #fff; }
+</style>
+
+<script>
+(function() {
+  var data = JSON.parse(document.getElementById('calc-data').textContent);
+  var tierColors = {
+    "Strong Buy": "#27AE60",
+    "Moderate": "#2E86C1",
+    "Lean Rent": "#D4760A",
+    "Rent Favored": "#8B0000"
+  };
+
+  function dollar(x) {
+    if (x === null || isNaN(x)) return "---";
+    var sign = x < 0 ? "-" : "";
+    return sign + "$" + Math.abs(Math.round(x)).toLocaleString();
+  }
+  function pct(x, d) {
+    if (x === null || isNaN(x)) return "---";
+    return x.toFixed(d === undefined ? 2 : d) + "%";
+  }
+  function comma(x) {
+    if (x === null || isNaN(x) || x < 0) return "---";
+    return Math.round(x).toLocaleString();
+  }
+  function pmt(loan, annualRate, years) {
+    var r = annualRate / 100 / 12;
+    var n = years * 12;
+    if (r === 0) return loan / n;
+    return loan * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+  }
+
+  function recompute() {
+    var dp = +document.getElementById('calc-down').value;
+    var rate = +document.getElementById('calc-rate').value;
+    var term = +document.getElementById('calc-term').value;
+    var opex = +document.getElementById('calc-opex').value / 100;
+    var closing = +document.getElementById('calc-closing').value / 100;
+    var minPop = +document.getElementById('calc-minpop').value;
+    var maxPrice = +document.getElementById('calc-maxprice').value;
+    var nRows = +document.getElementById('calc-rows').value;
+    var sortKey = document.getElementById('calc-sort').value;
+
+    var rows = data
+      .filter(function(r) {
+        if (r.zhvi > maxPrice) return false;
+        if (minPop > 0 && (r.pop === null || r.pop < minPop)) return false;
+        return true;
+      })
+      .map(function(r) {
+        var loan = r.zhvi * (1 - dp / 100);
+        var mort = pmt(loan, rate, term);
+        var cashInv = r.zhvi * (dp / 100) + r.zhvi * closing;
+        var cf = r.zori - mort - r.zori * opex;
+        var coc = cashInv > 0 ? (cf * 12 / cashInv) * 100 : null;
+        return Object.assign({}, r, {
+          monthly_mortgage: mort,
+          monthly_cash_flow: cf,
+          cash_on_cash_pct: coc,
+          est_cap_rate_pct: r.cap
+        });
+      });
+
+    rows.sort(function(a, b) {
+      var av = a[sortKey], bv = b[sortKey];
+      if (av === null || isNaN(av)) return 1;
+      if (bv === null || isNaN(bv)) return -1;
+      return bv - av;
+    });
+
+    var pos = rows.filter(function(r) { return r.monthly_cash_flow > 0; }).length;
+    var summary = document.getElementById('calc-summary');
+    summary.innerHTML =
+      "<strong>" + rows.length.toLocaleString() + "</strong> cities match your filters. " +
+      "<strong>" + pos.toLocaleString() + "</strong> (" +
+      (rows.length ? (100 * pos / rows.length).toFixed(1) : "0") +
+      "%) cash flow positive at " + dp + "% down / " + rate + "% rate.";
+
+    var tbody = document.querySelector('#calc-table tbody');
+    tbody.innerHTML = "";
+    rows.slice(0, nRows).forEach(function(r, i) {
+      var cfClass = r.monthly_cash_flow >= 0 ? "cf-pos" : "cf-neg";
+      var tierHtml = r.tier
+        ? '<span class="tier-pill" style="background:' + (tierColors[r.tier] || "#555") + '">' + r.tier + '</span>'
+        : "";
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        "<td>" + (i + 1) + "</td>" +
+        "<td>" + r.city + "</td>" +
+        "<td>" + r.state + "</td>" +
+        '<td class="num">' + dollar(r.zhvi) + "</td>" +
+        '<td class="num">' + dollar(r.zori) + "</td>" +
+        '<td class="num">' + dollar(r.monthly_mortgage) + "</td>" +
+        '<td class="num ' + cfClass + '">' + dollar(r.monthly_cash_flow) + "</td>" +
+        '<td class="num">' + pct(r.cash_on_cash_pct, 2) + "</td>" +
+        '<td class="num">' + pct(r.cap, 2) + "</td>" +
+        '<td class="num">' + comma(r.pop) + "</td>" +
+        '<td class="num">' + pct(r.pop_gr, 1) + "</td>" +
+        '<td class="num">' + pct(r.vac, 1) + "</td>" +
+        "<td>" + tierHtml + "</td>";
+      tbody.appendChild(tr);
+    });
+  }
+
+  var inputs = document.querySelectorAll('#calc-down, #calc-rate, #calc-term, #calc-opex, #calc-closing, #calc-minpop, #calc-maxprice, #calc-rows, #calc-sort');
+  inputs.forEach(function(el) { el.addEventListener('input', recompute); });
+  recompute();
+})();
+</script>
+
 ## Gross Yield vs Home Value
 
 ```{r scatter_yield, fig.height=8}
@@ -205,6 +407,67 @@ ggplot2::ggplot(top100, ggplot2::aes(x = zhvi, y = gross_yield_pct, color = tier
   ) +
   ggplot2::theme_minimal(base_size = 12) +
   ggplot2::theme(legend.position = "top")
+```
+
+## Leveraged Returns (at 25% Down, 7.25% 30yr)
+
+Cap rate ignores financing. For the leveraged buyer the two numbers that matter are **monthly cash flow** (does the tenant cover the mortgage?) and **cash-on-cash return** (what does my out-of-pocket cash actually earn?). Both are computed at the default assumptions printed above -- use the calculator for your own numbers.
+
+```{r leverage_bar, fig.height=11}
+top_cf <- markets %>%
+  dplyr::filter(!is.na(monthly_cash_flow)) %>%
+  dplyr::arrange(dplyr::desc(monthly_cash_flow)) %>%
+  dplyr::slice_head(n = 30)
+
+top_cf %>%
+  dplyr::mutate(city_state = forcats::fct_reorder(city_state, monthly_cash_flow)) %>%
+  ggplot2::ggplot(ggplot2::aes(x = city_state, y = monthly_cash_flow, fill = tier)) +
+  ggplot2::geom_col(width = 0.7) +
+  ggplot2::geom_text(
+    ggplot2::aes(label = scales::dollar(monthly_cash_flow)),
+    hjust = -0.1, size = 3, color = "grey30"
+  ) +
+  ggplot2::coord_flip(ylim = c(0, max(top_cf$monthly_cash_flow) * 1.15)) +
+  ggplot2::scale_fill_manual(values = tier_colors) +
+  ggplot2::scale_y_continuous(labels = scales::label_dollar()) +
+  ggplot2::labs(
+    title = "Top 30 Cities by Monthly Cash Flow",
+    subtitle = "25% down, 7.25% mortgage, 30yr, 35% opex. Rent minus PITI minus opex.",
+    x = NULL, y = "Monthly Cash Flow ($)", fill = "Tier"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(
+    legend.position = "top",
+    panel.grid.major.y = ggplot2::element_blank()
+  )
+```
+
+```{r coc_bar, fig.height=11}
+top_coc <- markets %>%
+  dplyr::filter(!is.na(cash_on_cash_pct), cash_on_cash_pct <= 100) %>%
+  dplyr::arrange(dplyr::desc(cash_on_cash_pct)) %>%
+  dplyr::slice_head(n = 30)
+
+top_coc %>%
+  dplyr::mutate(city_state = forcats::fct_reorder(city_state, cash_on_cash_pct)) %>%
+  ggplot2::ggplot(ggplot2::aes(x = city_state, y = cash_on_cash_pct, fill = tier)) +
+  ggplot2::geom_col(width = 0.7) +
+  ggplot2::geom_text(
+    ggplot2::aes(label = paste0(cash_on_cash_pct, "%")),
+    hjust = -0.1, size = 3, color = "grey30"
+  ) +
+  ggplot2::coord_flip(ylim = c(0, max(top_coc$cash_on_cash_pct) * 1.15)) +
+  ggplot2::scale_fill_manual(values = tier_colors) +
+  ggplot2::labs(
+    title = "Top 30 Cities by Cash-on-Cash Return",
+    subtitle = "Annual cash flow divided by initial out-of-pocket (down payment + closing).",
+    x = NULL, y = "Cash-on-Cash Return (%)", fill = "Tier"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(
+    legend.position = "top",
+    panel.grid.major.y = ggplot2::element_blank()
+  )
 ```
 
 ## Demand Health Check: Cap Rate vs Population Growth
@@ -245,6 +508,87 @@ ggplot2::ggplot(
   ) +
   ggplot2::theme_minimal(base_size = 12) +
   ggplot2::theme(legend.position = "top")
+```
+
+## Hidden Gems: Small Towns with Big Cash Flow
+
+A common investor strategy is to buy in smaller markets where price is low but rent holds up. The **Hidden Gem** flag filters for:
+
+- Population 5K--50K
+- Estimated cap rate ≥ 5%
+- Non-negative population growth
+- County vacancy rate ≤ 12%
+
+```{r hidden_gems}
+gems <- markets %>%
+  dplyr::filter(hidden_gem) %>%
+  dplyr::arrange(dplyr::desc(investment_score))
+
+cat("**", nrow(gems), "cities** match the Hidden Gem criteria.\n")
+```
+
+<details class="table-accordion" open><summary>Show hidden gems</summary>
+
+```{r hidden_gem_table}
+gems %>%
+  dplyr::transmute(
+    City = city, State = state, Metro = metro,
+    Score = investment_score,
+    `Home Value` = scales::dollar(zhvi),
+    `Rent/Mo` = scales::dollar(zori, accuracy = 1),
+    `Cash Flow/Mo` = scales::dollar(monthly_cash_flow),
+    `CoC %` = cash_on_cash_pct,
+    `Cap Rate` = est_cap_rate_pct,
+    Population = scales::comma(pop_2024),
+    `Pop Gr %` = pop_growth_pct,
+    `Vacancy %` = vacancy_rate_pct,
+    Tier = tier
+  ) %>%
+  DT::datatable(
+    filter = "top", extensions = "Buttons",
+    options = list(
+      pageLength = 500, dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel"),
+      scrollY = "400px", scrollX = TRUE,
+      order = list(list(4, "desc"))
+    )
+  )
+```
+
+</details>
+
+## Investor Rules of Thumb
+
+Two rent-to-price benchmarks investors use as a quick smell test:
+
+- **1% rule**: Monthly rent ≥ 1% of purchase price. A pass usually means cash flow is plausible.
+- **2% rule**: Monthly rent ≥ 2% of purchase price. Rare; typically only in distressed or low-priced markets.
+
+```{r rules_summary, fig.height=4.5, fig.width=9}
+rules_data <- markets %>%
+  dplyr::summarise(
+    `1% rule` = mean(one_pct_rule, na.rm = TRUE),
+    `2% rule` = mean(two_pct_rule, na.rm = TRUE),
+    `Positive cash flow` = mean(monthly_cash_flow > 0, na.rm = TRUE),
+    `Cap rate >= 6%` = mean(est_cap_rate_pct >= 6, na.rm = TRUE)
+  ) %>%
+  tidyr::pivot_longer(dplyr::everything(), names_to = "rule", values_to = "pct") %>%
+  dplyr::mutate(pct = 100 * pct)
+
+ggplot2::ggplot(rules_data, ggplot2::aes(x = reorder(rule, pct), y = pct, fill = pct)) +
+  ggplot2::geom_col(width = 0.7) +
+  ggplot2::geom_text(
+    ggplot2::aes(label = paste0(round(pct, 1), "%")),
+    hjust = -0.15, size = 4.2, color = "grey25"
+  ) +
+  ggplot2::coord_flip(ylim = c(0, 100)) +
+  ggplot2::scale_fill_gradient(low = "#D4760A", high = "#27AE60", guide = "none") +
+  ggplot2::labs(
+    title = "What % of US Cities Clear Each Bar?",
+    subtitle = paste0("Out of ", nrow(markets), " cities with Zillow data."),
+    x = NULL, y = "Cities meeting threshold (%)"
+  ) +
+  ggplot2::theme_minimal(base_size = 12)
 ```
 
 ## Vacancy Rate vs Cap Rate
@@ -292,11 +636,16 @@ Search, filter, and sort all `r nrow(markets)` cities.
 markets %>%
   dplyr::transmute(
     City = city, State = state, Metro = metro,
+    Score = investment_score,
     `Home Value` = scales::dollar(zhvi),
     `Rent/Mo` = scales::dollar(zori, accuracy = 1),
+    `Cash Flow/Mo` = scales::dollar(monthly_cash_flow),
+    `CoC %` = cash_on_cash_pct,
     `Cap Rate` = est_cap_rate_pct,
     `P/R Ratio` = price_to_rent,
     `Gross Yield` = gross_yield_pct,
+    `Price YoY %` = zhvi_yoy_pct,
+    `Rent YoY %` = zori_yoy_pct,
     Population = dplyr::if_else(is.na(pop_2024), NA_real_, pop_2024),
     `Pop Gr %` = pop_growth_pct,
     `County Pop Gr %` = county_pop_growth_pct,
@@ -312,7 +661,238 @@ markets %>%
       pageLength = 500, dom = "Bfrtip",
       buttons = c("copy", "csv", "excel"),
       scrollY = "400px", scrollX = TRUE,
-      order = list(list(5, "desc"))
+      order = list(list(4, "desc"))
+    )
+  )
+```
+
+</details>
+
+## Composite Investment Score
+
+A rank-based composite (0--100) that blends the signals investors actually care about: cap rate (35%), population growth (20%), net migration (15%), low vacancy (15%), and YoY price appreciation (15%). Each factor is converted to a percentile so outliers can't dominate.
+
+```{r score_dist, fig.height=4.5}
+ggplot2::ggplot(markets, ggplot2::aes(x = investment_score, fill = tier)) +
+  ggplot2::geom_histogram(binwidth = 2, color = "white", linewidth = 0.2) +
+  ggplot2::scale_fill_manual(values = tier_colors) +
+  ggplot2::labs(
+    title = "Distribution of Composite Scores",
+    subtitle = "Higher is better. Most cities cluster in the middle.",
+    x = "Investment Score", y = "Cities", fill = "Tier"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(legend.position = "top")
+```
+
+<details class="table-accordion"><summary>Top 50 by composite score</summary>
+
+```{r score_table}
+markets %>%
+  dplyr::arrange(dplyr::desc(investment_score)) %>%
+  dplyr::slice_head(n = 50) %>%
+  dplyr::transmute(
+    `#` = dplyr::row_number(),
+    City = city, State = state, Metro = metro,
+    Score = investment_score,
+    `Cap Rate` = paste0(est_cap_rate_pct, "%"),
+    `Cash/Mo` = scales::dollar(monthly_cash_flow),
+    `CoC %` = paste0(cash_on_cash_pct, "%"),
+    `Home Value` = scales::dollar(zhvi),
+    `Pop Gr %` = pop_growth_pct,
+    `Price YoY` = paste0(zhvi_yoy_pct, "%"),
+    `Vacancy %` = vacancy_rate_pct,
+    Tier = tier
+  ) %>%
+  DT::datatable(
+    filter = "top", extensions = "Buttons",
+    options = list(
+      pageLength = 50, dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel"),
+      scrollY = "400px", scrollX = TRUE
+    )
+  )
+```
+
+</details>
+
+## State Leaderboard
+
+Best cash-flow city per state (highest monthly cash flow at default assumptions), plus state-level medians.
+
+```{r state_leaderboard}
+best_per_state <- markets %>%
+  dplyr::filter(!is.na(monthly_cash_flow)) %>%
+  dplyr::group_by(state) %>%
+  dplyr::slice_max(monthly_cash_flow, n = 1, with_ties = FALSE) %>%
+  dplyr::ungroup() %>%
+  dplyr::arrange(dplyr::desc(monthly_cash_flow))
+
+state_summary <- markets %>%
+  dplyr::group_by(state) %>%
+  dplyr::summarise(
+    n_cities = dplyr::n(),
+    med_cap = round(median(est_cap_rate_pct, na.rm = TRUE), 2),
+    med_cf = round(median(monthly_cash_flow, na.rm = TRUE), 0),
+    med_coc = round(median(cash_on_cash_pct, na.rm = TRUE), 2),
+    pct_positive = round(100 * mean(monthly_cash_flow > 0, na.rm = TRUE), 1),
+    med_score = round(median(investment_score, na.rm = TRUE), 1),
+    .groups = "drop"
+  )
+
+best_per_state %>%
+  dplyr::left_join(state_summary, by = "state") %>%
+  dplyr::transmute(
+    State = state,
+    `Cities in Data` = n_cities,
+    `Best City` = city,
+    `Best City Cash/Mo` = scales::dollar(monthly_cash_flow),
+    `Best City CoC` = paste0(cash_on_cash_pct, "%"),
+    `Best City Cap` = paste0(est_cap_rate_pct, "%"),
+    `State Med Cap` = paste0(med_cap, "%"),
+    `State Med Cash/Mo` = scales::dollar(med_cf),
+    `% Cash Flow+` = paste0(pct_positive, "%"),
+    `State Med Score` = med_score
+  ) %>%
+  DT::datatable(
+    filter = "top", extensions = "Buttons",
+    options = list(
+      pageLength = 50, dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel"),
+      scrollY = "400px", scrollX = TRUE,
+      order = list(list(7, "desc"))
+    )
+  )
+```
+
+```{r state_boxplot, fig.height=9}
+# Show states where rent covers debt service worst -> best
+state_order <- markets %>%
+  dplyr::filter(!is.na(monthly_cash_flow)) %>%
+  dplyr::group_by(state) %>%
+  dplyr::summarise(med_cf = median(monthly_cash_flow, na.rm = TRUE), n = dplyr::n()) %>%
+  dplyr::filter(n >= 5) %>%
+  dplyr::arrange(med_cf)
+
+box_data <- markets %>%
+  dplyr::filter(state %in% state_order$state, !is.na(monthly_cash_flow)) %>%
+  dplyr::mutate(state = factor(state, levels = state_order$state))
+
+ggplot2::ggplot(box_data, ggplot2::aes(x = state, y = monthly_cash_flow)) +
+  ggplot2::geom_hline(yintercept = 0, linetype = "dashed", color = "#C0392B", linewidth = 0.6) +
+  ggplot2::geom_boxplot(fill = "#2E86C1", color = "#1B4F72", alpha = 0.6, outlier.size = 0.6) +
+  ggplot2::coord_flip() +
+  ggplot2::scale_y_continuous(labels = scales::label_dollar(), limits = c(-3000, 3000)) +
+  ggplot2::labs(
+    title = "Monthly Cash Flow Distribution by State (states with 5+ cities)",
+    subtitle = "Red line = $0 / mo (break-even). States below = appreciation plays only.",
+    x = NULL, y = "Monthly Cash Flow ($)"
+  ) +
+  ggplot2::theme_minimal(base_size = 11)
+```
+
+## Yield Minus Mortgage Rate Spread
+
+Gross rental yield minus the current mortgage rate (7.25%). Positive spread means the rent covers debt service with room to spare; negative means you're subsidizing the mortgage and relying on appreciation.
+
+```{r spread_chart, fig.height=6}
+spread_data <- markets %>%
+  dplyr::filter(!is.na(yield_spread_pct), !is.na(pop_2024), pop_2024 >= 20000)
+
+ggplot2::ggplot(spread_data, ggplot2::aes(x = yield_spread_pct, fill = tier)) +
+  ggplot2::geom_histogram(binwidth = 0.5, color = "white", linewidth = 0.2) +
+  ggplot2::geom_vline(xintercept = 0, linetype = "dashed", color = "grey30") +
+  ggplot2::scale_fill_manual(values = tier_colors) +
+  ggplot2::labs(
+    title = "Gross Yield Minus Mortgage Rate",
+    subtitle = paste0(
+      "Cities with 20K+ population. ",
+      round(100 * mean(spread_data$yield_spread_pct > 0, na.rm = TRUE), 1),
+      "% have positive spread vs ",
+      DEFAULT_MORTGAGE_RATE,
+      "% mortgage."
+    ),
+    x = "Yield - Mortgage Rate (percentage points)", y = "Cities", fill = "Tier"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(legend.position = "top")
+```
+
+## Price vs Rent Growth (YoY)
+
+Home value growth and rent growth tell different stories. When home prices outrun rents, cap rates compress (bad for investors); when rents outrun prices, cap rates expand.
+
+```{r yoy_scatter, fig.height=7}
+yoy_data <- markets %>%
+  dplyr::filter(!is.na(zhvi_yoy_pct), !is.na(zori_yoy_pct), !is.na(pop_2024),
+                pop_2024 >= 20000,
+                abs(zori_yoy_pct) <= 30, abs(zhvi_yoy_pct) <= 30)
+
+ggplot2::ggplot(
+  yoy_data,
+  ggplot2::aes(x = zhvi_yoy_pct, y = zori_yoy_pct, color = tier, size = pop_2024)
+) +
+  ggplot2::geom_point(alpha = 0.6) +
+  ggplot2::geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "grey40") +
+  ggrepel::geom_text_repel(
+    data = yoy_data %>%
+      dplyr::filter(abs(zori_yoy_pct) >= 8 | abs(zhvi_yoy_pct) >= 12 |
+                    (zori_yoy_pct >= 5 & zhvi_yoy_pct <= 0)),
+    ggplot2::aes(label = city_state),
+    size = 2.6, max.overlaps = 25, segment.color = "grey70"
+  ) +
+  ggplot2::scale_color_manual(values = tier_colors) +
+  ggplot2::scale_size_continuous(range = c(1, 8), labels = scales::label_comma(), guide = "none") +
+  ggplot2::labs(
+    title = "Home Price Growth vs Rent Growth (YoY)",
+    subtitle = "Above diagonal = rent growing faster than price (cap rate expanding). Cities 20K+ pop.",
+    x = "ZHVI YoY (%)", y = "ZORI YoY (%)", color = "Tier"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(legend.position = "top")
+```
+
+## Per-City Detail Lookup
+
+Search for any city to see the full investor profile in one place.
+
+<details class="table-accordion"><summary>Show full detail table</summary>
+
+```{r detail_table}
+markets %>%
+  dplyr::arrange(dplyr::desc(investment_score)) %>%
+  dplyr::transmute(
+    City = city, State = state, Metro = metro, County = county,
+    Score = investment_score,
+    Tier = tier,
+    `Home Value` = scales::dollar(zhvi),
+    `Price YoY %` = zhvi_yoy_pct,
+    `Rent/Mo` = scales::dollar(zori, accuracy = 1),
+    `Rent YoY %` = zori_yoy_pct,
+    `Cap Rate %` = est_cap_rate_pct,
+    `P/R Ratio` = price_to_rent,
+    `Mortgage/Mo` = scales::dollar(monthly_mortgage, accuracy = 1),
+    `Cash Flow/Mo` = scales::dollar(monthly_cash_flow),
+    `Cash-on-Cash %` = cash_on_cash_pct,
+    `Break-even Rent` = scales::dollar(break_even_rent, accuracy = 1),
+    `Yield Spread %` = yield_spread_pct,
+    `1% Rule` = dplyr::if_else(one_pct_rule, "Yes", "No"),
+    `2% Rule` = dplyr::if_else(two_pct_rule, "Yes", "No"),
+    `Hidden Gem` = dplyr::if_else(hidden_gem, "Yes", "No"),
+    Population = dplyr::if_else(is.na(pop_2024), NA_real_, as.numeric(pop_2024)),
+    `Pop Gr %` = pop_growth_pct,
+    `County Pop Gr %` = county_pop_growth_pct,
+    `Net Mig/1K` = net_mig_rate_per1k,
+    `Vacancy %` = vacancy_rate_pct,
+    `Rental Vac %` = rental_vacancy_pct,
+    `% Renter` = renter_pct
+  ) %>%
+  DT::datatable(
+    filter = "top", extensions = "Buttons",
+    options = list(
+      pageLength = 25, dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel"),
+      scrollY = "500px", scrollX = TRUE
     )
   )
 ```
@@ -393,4 +973,4 @@ metro_summary %>%
 
 ---
 
-**How to update this data:** Run `Rscript scripts/us_rental_markets_data.R` to download Zillow ZHVI + ZORI. Then run `Rscript scripts/us_rental_demand_data.R` to merge Census population, vacancy, and migration data. Then re-render this page.
+**How to update this data:** Run `Rscript scripts/us_rental_markets_data.R` to download Zillow ZHVI + ZORI. Then run `Rscript scripts/us_rental_demand_data.R` to merge Census population / vacancy / migration and compute leverage metrics (mortgage payment, cash flow, cash-on-cash, composite score). Then re-render this page.
