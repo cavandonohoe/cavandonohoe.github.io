@@ -35,7 +35,25 @@ demand_cols <- c(
   "city_lat", "city_lon",
   "tj_miles", "nearest_tj_city", "nearest_tj_state",
   "tj_within_2mi", "tj_within_5mi", "tj_within_10mi", "tj_within_25mi",
-  "investment_score", "hidden_gem", "tj_unicorn"
+  "investment_score", "hidden_gem", "tj_unicorn",
+  "fips",
+  # Redfin
+  "redfin_median_sale", "redfin_median_list", "redfin_sale_yoy_pct",
+  "redfin_list_yoy_pct", "redfin_dom", "redfin_dom_yoy", "redfin_inventory",
+  "redfin_inventory_yoy", "redfin_new_listings", "redfin_homes_sold",
+  "redfin_months_supply", "redfin_sale_to_list", "redfin_sold_above_list",
+  "redfin_price_drops", "redfin_off_market_2wk",
+  # HUD FMR
+  "fmr_0br", "fmr_1br", "fmr_2br", "fmr_3br", "fmr_4br",
+  "zori_vs_fmr_pct", "fmr_flag_outlier",
+  # BLS
+  "bls_unemp_rate", "bls_unemp_yoy_pp", "bls_date",
+  # Realtor.com
+  "rdc_median_list", "rdc_median_list_yoy", "rdc_dom",
+  "rdc_active_listings", "rdc_new_listings", "rdc_pending_listings",
+  "rdc_price_reduced_share", "rdc_pending_ratio",
+  "rdc_hotness_score", "rdc_supply_score", "rdc_demand_score",
+  "rdc_hotness_rank"
 )
 markets <- markets %>% dplyr::select(-dplyr::any_of(demand_cols))
 
@@ -209,6 +227,90 @@ markets_demand <- markets_demand %>%
 
 pop_matched <- sum(!is.na(markets_demand$pop_2024))
 cat("  City population matched:", pop_matched, "of", nrow(markets), "\n")
+
+# ---------------------------------------------------------------------------
+# 5b. Listing activity (Redfin) + rent ground-truth (HUD FMR) +
+#     job market (BLS) + realtor.com inventory
+# ---------------------------------------------------------------------------
+# Each of these is a county-FIPS-keyed table produced by a sibling script.
+# Treat any missing file as optional so the pipeline still runs headless.
+cat("\nMerging Redfin + HUD + BLS + Realtor.com signals...\n")
+
+maybe_read <- function(path) {
+  if (!file.exists(path)) {
+    cat("  SKIP (missing):", path, "\n")
+    return(NULL)
+  }
+  readr::read_csv(path, show_col_types = FALSE, col_types = readr::cols(
+    fips = readr::col_character(), .default = readr::col_guess()
+  ))
+}
+
+redfin_county <- maybe_read(file.path(data_dir, "redfin_county.csv"))
+hud_county    <- maybe_read(file.path(data_dir, "hud_fmr_county.csv"))
+bls_county    <- maybe_read(file.path(data_dir, "bls_laus_county.csv"))
+rdc_county    <- maybe_read(file.path(data_dir, "realtor_com_county.csv"))
+
+if (!is.null(redfin_county)) {
+  markets_demand <- markets_demand %>%
+    dplyr::left_join(
+      redfin_county %>% dplyr::select(
+        fips, redfin_median_sale, redfin_median_list, redfin_sale_yoy_pct,
+        redfin_list_yoy_pct, redfin_dom, redfin_dom_yoy, redfin_inventory,
+        redfin_inventory_yoy, redfin_new_listings, redfin_homes_sold,
+        redfin_months_supply, redfin_sale_to_list, redfin_sold_above_list,
+        redfin_price_drops, redfin_off_market_2wk
+      ),
+      by = "fips"
+    )
+  cat(sprintf("  Redfin matched: %d of %d cities\n",
+              sum(!is.na(markets_demand$redfin_median_sale)), nrow(markets_demand)))
+}
+
+if (!is.null(hud_county)) {
+  markets_demand <- markets_demand %>%
+    dplyr::left_join(
+      hud_county %>% dplyr::select(fips, fmr_0br, fmr_1br, fmr_2br, fmr_3br, fmr_4br),
+      by = "fips"
+    ) %>%
+    dplyr::mutate(
+      # ZORI is a blended index; FMR 2BR is HUD's official "moderately priced"
+      # rent at 40th percentile. If ZORI exceeds FMR by > 100%, that's either
+      # a glitch or a genuine luxury market. Flag as outlier.
+      zori_vs_fmr_pct = dplyr::if_else(
+        is.na(fmr_2br) | is.na(zori), NA_real_,
+        round(100 * (zori - fmr_2br) / fmr_2br, 1)
+      ),
+      fmr_flag_outlier = !is.na(zori_vs_fmr_pct) & zori_vs_fmr_pct >= 100
+    )
+  cat(sprintf("  HUD FMR matched: %d of %d cities\n",
+              sum(!is.na(markets_demand$fmr_2br)), nrow(markets_demand)))
+}
+
+if (!is.null(bls_county)) {
+  markets_demand <- markets_demand %>%
+    dplyr::left_join(
+      bls_county %>% dplyr::select(fips, bls_unemp_rate, bls_unemp_yoy_pp, bls_date),
+      by = "fips"
+    )
+  cat(sprintf("  BLS LAUS matched: %d of %d cities\n",
+              sum(!is.na(markets_demand$bls_unemp_rate)), nrow(markets_demand)))
+}
+
+if (!is.null(rdc_county)) {
+  markets_demand <- markets_demand %>%
+    dplyr::left_join(
+      rdc_county %>% dplyr::select(
+        fips, rdc_median_list, rdc_median_list_yoy, rdc_dom,
+        rdc_active_listings, rdc_new_listings, rdc_pending_listings,
+        rdc_price_reduced_share, rdc_pending_ratio,
+        rdc_hotness_score, rdc_supply_score, rdc_demand_score, rdc_hotness_rank
+      ),
+      by = "fips"
+    )
+  cat(sprintf("  Realtor.com matched: %d of %d cities\n",
+              sum(!is.na(markets_demand$rdc_median_list)), nrow(markets_demand)))
+}
 
 # ---------------------------------------------------------------------------
 # 6. Trader Joe's proximity
@@ -388,14 +490,27 @@ markets_scored <- markets_leverage %>%
       TRUE ~ tj_miles
     ),
     s_tj = score_rank(tj_score_distance, FALSE),
+    # New signals (fall back to 0.5 neutral if the source didn't match).
+    # Redfin days on market: lower = faster market = stronger demand
+    s_dom = score_rank(redfin_dom, FALSE),
+    # Redfin sale-to-list ratio: >1.0 means bidding wars; higher = stronger demand
+    s_sale_to_list = score_rank(redfin_sale_to_list, TRUE),
+    # BLS unemployment: lower = better
+    s_unemployment = score_rank(bls_unemp_rate, FALSE),
+    # Realtor.com hotness score (already 0-100 composite)
+    s_hotness = score_rank(rdc_hotness_score, TRUE),
     investment_score = round(
       100 * (
-        0.32 * s_cap_rate +
-        0.20 * s_pop_growth +
-        0.13 * s_net_mig +
-        0.13 * s_vacancy +
-        0.14 * s_appreciation +
-        0.08 * s_tj
+        0.25 * s_cap_rate +
+        0.15 * s_pop_growth +
+        0.10 * s_net_mig +
+        0.10 * s_vacancy +
+        0.10 * s_appreciation +
+        0.07 * s_tj +
+        0.08 * s_dom +
+        0.05 * s_sale_to_list +
+        0.05 * s_unemployment +
+        0.05 * s_hotness
       ),
       1
     ),
@@ -406,7 +521,15 @@ markets_scored <- markets_leverage %>%
       dplyr::coalesce(vacancy_rate_pct, 0) <= 12,
     # "Unicorn": cash flow positive AND within 10 miles of a Trader Joe's
     tj_unicorn = !is.na(monthly_cash_flow) & monthly_cash_flow > 0 &
-      !is.na(tj_within_10mi) & tj_within_10mi
+      !is.na(tj_within_10mi) & tj_within_10mi,
+    # "Fast market": cash-flow-positive, listings move fast, bids over asking
+    fast_market = !is.na(monthly_cash_flow) & monthly_cash_flow > 0 &
+      !is.na(redfin_dom) & redfin_dom <= 25 &
+      !is.na(redfin_sale_to_list) & redfin_sale_to_list >= 1.00,
+    # "Cheap and stable": cash-flow-positive, low unemployment, low price drops
+    cheap_and_stable = !is.na(monthly_cash_flow) & monthly_cash_flow > 0 &
+      !is.na(bls_unemp_rate) & bls_unemp_rate <= 4.5 &
+      !is.na(redfin_price_drops) & redfin_price_drops <= 0.10
   )
 
 # ---------------------------------------------------------------------------
@@ -414,7 +537,7 @@ markets_scored <- markets_leverage %>%
 # ---------------------------------------------------------------------------
 output <- markets_scored %>%
   dplyr::select(
-    city, state, metro, county,
+    city, state, metro, county, fips,
     zhvi, zhvi_yoy_pct, zori, zori_yoy_pct,
     annual_rent, rent_to_price_pct, price_to_rent, gross_yield_pct, est_cap_rate_pct,
     tier,
@@ -429,7 +552,31 @@ output <- markets_scored %>%
     city_lat, city_lon,
     tj_miles, nearest_tj_city, nearest_tj_state,
     tj_within_2mi, tj_within_5mi, tj_within_10mi, tj_within_25mi,
-    investment_score, hidden_gem, tj_unicorn,
+    # Redfin listing activity
+    dplyr::any_of(c(
+      "redfin_median_sale", "redfin_median_list", "redfin_sale_yoy_pct",
+      "redfin_list_yoy_pct", "redfin_dom", "redfin_dom_yoy",
+      "redfin_inventory", "redfin_inventory_yoy",
+      "redfin_new_listings", "redfin_homes_sold", "redfin_months_supply",
+      "redfin_sale_to_list", "redfin_sold_above_list",
+      "redfin_price_drops", "redfin_off_market_2wk"
+    )),
+    # HUD FMR ground truth
+    dplyr::any_of(c(
+      "fmr_0br", "fmr_1br", "fmr_2br", "fmr_3br", "fmr_4br",
+      "zori_vs_fmr_pct", "fmr_flag_outlier"
+    )),
+    # BLS unemployment
+    dplyr::any_of(c("bls_unemp_rate", "bls_unemp_yoy_pp", "bls_date")),
+    # Realtor.com inventory + hotness
+    dplyr::any_of(c(
+      "rdc_median_list", "rdc_median_list_yoy", "rdc_dom",
+      "rdc_active_listings", "rdc_new_listings", "rdc_pending_listings",
+      "rdc_price_reduced_share", "rdc_pending_ratio",
+      "rdc_hotness_score", "rdc_supply_score", "rdc_demand_score",
+      "rdc_hotness_rank"
+    )),
+    investment_score, hidden_gem, tj_unicorn, fast_market, cheap_and_stable,
     zhvi_date, zori_date
   )
 

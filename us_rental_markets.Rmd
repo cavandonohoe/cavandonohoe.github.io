@@ -75,7 +75,7 @@ tier_colors <- c(
 
 Where should you buy rental property in the US? This page ranks **`r nrow(markets)` cities** by investment metrics derived from Zillow's public home value and rent indices plus Census demand signals -- and a few unconventional ones like **Trader Joe's adjacency**, a classic real-estate proxy for walkable, amenity-rich neighborhoods with strong demographics.
 
-Jump to: [Cash Flow Calculator](#interactive-cash-flow-calculator) · [Trader Joe's Adjacency](#the-trader-joes-adjacency-premium) · [Unicorn Leaderboard](#unicorn-leaderboard-cash-flow-trader-joes) · [TJ Map](#trader-joes-investment-map) · [Leveraged Returns](#leveraged-returns-at-25-down-7.25-30yr) · [Hidden Gems](#hidden-gems-small-towns-with-big-cash-flow) · [Investor Rules](#investor-rules-of-thumb) · [Composite Score](#composite-investment-score) · [State Explorer](#state-leaderboard) · [Price vs Rent Growth](#price-vs-rent-growth-yoy) · [City Lookup](#per-city-detail-lookup)
+Jump to: [Cash Flow Calculator](#interactive-cash-flow-calculator) · [Trader Joe's Adjacency](#the-trader-joes-adjacency-premium) · [Unicorn Leaderboard](#unicorn-leaderboard-cash-flow-trader-joes) · [TJ Map](#trader-joes-investment-map) · [Listing Activity](#listing-activity-how-fast-are-homes-moving) · [Rent vs FMR Reality Check](#rent-vs-hud-fmr-reality-check) · [Job Market](#job-market-vs-rental-yield) · [Hottest Counties](#hottest-markets-realtor-com) · [ZIP Drill-Down](#zip-level-neighborhood-drill-down) · [Leveraged Returns](#leveraged-returns-at-25-down-7.25-30yr) · [Hidden Gems](#hidden-gems-small-towns-with-big-cash-flow) · [Composite Score](#composite-investment-score)
 
 The price-to-rent ratio is the standard cash-flow benchmark:
 
@@ -93,9 +93,14 @@ tibble::tribble(
   ~Source, ~Description, ~Updated,
   "Zillow ZHVI", "Typical home values (city level, SFR+condo, 35th\u201365th percentile)", as.character(zhvi_date),
   "Zillow ZORI", "Typical observed rents (city level, SFR+condo+MFR)", as.character(zori_date),
+  "Zillow ZIP ZHVI+ZORI", "Same indices at ZIP granularity for neighborhood drill-down", as.character(zhvi_date),
   "Census Pop Estimates", "City + county population (2020\u20132024), net migration", "V2024",
   "Census ACS 5-Year", "Vacancy rates, renter %, housing counts (county level)", "2019\u20132023",
-  "Census Places Gazetteer", "Lat/lon for every incorporated place (for distance calcs)", "2024",
+  "Census Places + ZCTA Gazetteer", "Lat/lon for every incorporated place + ZIP (distance calcs)", "2024",
+  "Redfin Data Center", "Listing activity: DOM, price drops, sale-to-list, new listings (county)", "Monthly",
+  "HUD Fair Market Rents (FY26)", "Government rent benchmark by bedroom count; flags ZORI outliers", "FY2026",
+  "BLS LAUS", "Monthly metro + county unemployment rate and 12-month change", "Latest month",
+  "Realtor.com RDC", "Active/new/pending listings, hotness score, median DOM (county + ZIP)", "Monthly",
   "Trader Joe's Store Locator", paste0("All ", sum(!is.na(unique(raw$nearest_tj_city))), " US stores, scraped from locations.traderjoes.com"), format(Sys.Date(), "%Y")
 ) %>%
   gt::gt() %>%
@@ -105,17 +110,17 @@ tibble::tribble(
   ) %>%
   gt::fmt_markdown(columns = Source) %>%
   gt::cols_width(
-    Source ~ gt::px(180),
+    Source ~ gt::px(200),
     Description ~ gt::px(400),
     Updated ~ gt::px(130)
   ) %>%
   gt::cols_align(align = "left") %>%
   gt::tab_source_note(
-    gt::md("Cap rate = gross yield \u00d7 (1 \u2212 35% expense ratio). Raw data: [us_rental_markets.csv](data/us_rental_markets.csv)")
+    gt::md("Cap rate = gross yield \u00d7 (1 \u2212 35% expense ratio). Raw data: [us_rental_markets.csv](data/us_rental_markets.csv) \u00b7 [us_rental_markets_zip.csv](data/us_rental_markets_zip.csv)")
   ) %>%
   gt::tab_style(
     style = gt::cell_fill(color = "#f8f9fa"),
-    locations = gt::cells_body(rows = seq(1, 6, by = 2))
+    locations = gt::cells_body(rows = seq(1, 11, by = 2))
   ) %>%
   gt::tab_options(
     table.font.size = gt::px(14),
@@ -623,6 +628,366 @@ if (!is.null(tj_stores) && nrow(map_cities) > 0) {
     )
 } else {
   cat("Map data unavailable. Run `Rscript scripts/trader_joes_data.R` to populate.")
+}
+```
+
+## Listing Activity: How Fast Are Homes Moving? {#listing-activity-how-fast-are-homes-moving}
+
+ZHVI and ZORI are **index** values — smoothed, interpolated estimates of what a typical home is worth. But actual buyers face an **actual market**: listings with actual days-on-market, actual bidding activity, actual price drops. [Redfin's Data Center](https://www.redfin.com/news/data-center/) publishes county-level statistics for every listed home in the US. That tells us whether a given market is hot or cold independent of the index level.
+
+```{r redfin_summary, fig.height=7}
+redfin_summary <- markets %>%
+  dplyr::filter(!is.na(redfin_dom), !is.na(redfin_sale_to_list)) %>%
+  dplyr::mutate(
+    dom_bucket = dplyr::case_when(
+      redfin_dom <= 15 ~ "<= 15 days",
+      redfin_dom <= 30 ~ "16-30 days",
+      redfin_dom <= 45 ~ "31-45 days",
+      redfin_dom <= 60 ~ "46-60 days",
+      redfin_dom <= 90 ~ "61-90 days",
+      TRUE ~ "> 90 days"
+    ) %>% factor(levels = c("<= 15 days", "16-30 days", "31-45 days",
+                             "46-60 days", "61-90 days", "> 90 days"))
+  )
+
+redfin_by_bucket <- redfin_summary %>%
+  dplyr::group_by(dom_bucket) %>%
+  dplyr::summarise(
+    cities = dplyr::n(),
+    median_cap = round(median(est_cap_rate_pct, na.rm = TRUE), 2),
+    median_sale_to_list = round(100 * median(redfin_sale_to_list, na.rm = TRUE), 1),
+    median_above_list = round(100 * median(redfin_sold_above_list, na.rm = TRUE), 1),
+    median_price_drops = round(100 * median(redfin_price_drops, na.rm = TRUE), 1),
+    .groups = "drop"
+  )
+
+ggplot2::ggplot(redfin_summary,
+                ggplot2::aes(x = dom_bucket, y = est_cap_rate_pct)) +
+  ggplot2::geom_boxplot(ggplot2::aes(fill = dom_bucket),
+                        outlier.alpha = 0.3, outlier.size = 0.8) +
+  ggplot2::scale_fill_brewer(palette = "RdYlGn", direction = -1) +
+  ggplot2::labs(
+    title = "Cap Rate by Days-on-Market Bucket",
+    subtitle = "Faster markets skew expensive; slower markets skew cash-flow-positive",
+    x = "Median days on market (Redfin, county)",
+    y = "Estimated cap rate (%)"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(legend.position = "none",
+                 axis.text.x = ggplot2::element_text(angle = 15, hjust = 1))
+```
+
+```{r redfin_table}
+redfin_by_bucket %>%
+  dplyr::rename(
+    `DOM bucket` = dom_bucket, `Cities` = cities,
+    `Median cap %` = median_cap,
+    `Sale / list %` = median_sale_to_list,
+    `Sold above list %` = median_above_list,
+    `With price drops %` = median_price_drops
+  ) %>%
+  gt::gt() %>%
+  gt::tab_header(title = "Summary by days-on-market bucket") %>%
+  gt::opt_row_striping() %>%
+  gt::fmt_number(columns = c(`Cities`), decimals = 0, use_seps = TRUE)
+```
+
+**Reading this**: higher DOM bucket = slower market = more price drops, fewer bids over ask. The tradeoff for the investor is that slower markets also tend to have higher cap rates — because cash flow is what saves you when there's no easy flip. Fast markets are often appreciation plays where you're buying momentum.
+
+### Hot markets: cash-flow-positive AND moving fast
+
+These meet three conditions simultaneously: **cash-flow positive** at our default assumptions, **median DOM <= 25 days**, and **sale-to-list ratio >= 1.0** (bidding wars). That's rare — most hot markets are overpriced. When they coexist, it's a signal worth a second look.
+
+```{r fast_market_table}
+fast <- markets %>%
+  dplyr::filter(fast_market) %>%
+  dplyr::arrange(dplyr::desc(monthly_cash_flow))
+
+if (nrow(fast) > 0) {
+  fast %>%
+    dplyr::transmute(
+      City = city, State = state, County = county,
+      Score = investment_score,
+      `Price (ZHVI)` = zhvi,
+      `Rent (ZORI)` = zori,
+      `Cap %` = est_cap_rate_pct,
+      `Cash/mo` = monthly_cash_flow,
+      `Redfin DOM` = redfin_dom,
+      `Sale/list` = round(100 * redfin_sale_to_list, 1),
+      `Above list %` = round(100 * redfin_sold_above_list, 1)
+    ) %>%
+    DT::datatable(
+      options = list(pageLength = 15, order = list(list(6, "desc"))),
+      rownames = FALSE, filter = "top"
+    ) %>%
+    DT::formatCurrency(columns = c("Price (ZHVI)", "Rent (ZORI)", "Cash/mo"),
+                       digits = 0) %>%
+    DT::formatRound(columns = c("Cap %", "Sale/list", "Above list %"), digits = 1)
+} else {
+  cat("No cities currently qualify.")
+}
+```
+
+## Rent vs HUD FMR Reality Check {#rent-vs-hud-fmr-reality-check}
+
+[HUD Fair Market Rents](https://www.huduser.gov/portal/datasets/fmr.html) are the **government-published benchmark rent** used for Section 8 vouchers and affordable-housing programs. HUD sets them at roughly the **40th percentile** of standard-quality rentals in each county. That makes them a useful **ground-truth check on Zillow's ZORI**: if the index disagrees with HUD by a huge margin, it's often either a data glitch or a signal that your city has a genuine luxury market (think: Napa, Aspen, parts of the Hamptons).
+
+```{r fmr_compare, fig.height=7}
+fmr_data <- markets %>%
+  dplyr::filter(!is.na(fmr_2br), !is.na(zori))
+
+ggplot2::ggplot(fmr_data, ggplot2::aes(x = fmr_2br, y = zori, color = tier)) +
+  ggplot2::geom_abline(slope = 1, intercept = 0,
+                       linetype = "dashed", color = "grey50") +
+  ggplot2::geom_abline(slope = 2, intercept = 0,
+                       linetype = "dotted", color = "firebrick",
+                       linewidth = 0.6) +
+  ggplot2::geom_point(alpha = 0.5, size = 1.5) +
+  ggplot2::scale_color_manual(values = tier_colors) +
+  ggplot2::scale_x_continuous(labels = scales::label_dollar(),
+                              limits = c(500, 5000)) +
+  ggplot2::scale_y_continuous(labels = scales::label_dollar(),
+                              limits = c(500, 5000)) +
+  ggplot2::labs(
+    title = "Zillow ZORI vs HUD FY26 Fair Market Rent (2BR)",
+    subtitle = paste0(
+      "Dashed line = parity (ZORI = FMR). Red dotted line = 2x FMR ",
+      "(above this, flag as outlier / luxury market)."
+    ),
+    x = "HUD FMR (2-bedroom, FY26)", y = "Zillow ZORI",
+    color = "Tier"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(legend.position = "top")
+```
+
+Most cities cluster slightly above the parity line — ZORI's typical-rent is higher than HUD's 40th-percentile FMR, as expected. Cities that shoot above the 2x FMR line are either (a) legitimately upscale rental markets or (b) index glitches.
+
+### Top FMR Outliers
+
+```{r fmr_outliers}
+markets %>%
+  dplyr::filter(!is.na(zori_vs_fmr_pct)) %>%
+  dplyr::arrange(dplyr::desc(zori_vs_fmr_pct)) %>%
+  dplyr::slice_head(n = 25) %>%
+  dplyr::transmute(
+    City = city, State = state, County = county,
+    `Population` = pop_2024,
+    `HUD FMR 2BR` = fmr_2br,
+    `Zillow ZORI` = zori,
+    `ZORI vs FMR %` = zori_vs_fmr_pct,
+    `Outlier?` = ifelse(fmr_flag_outlier, "Yes", "No")
+  ) %>%
+  DT::datatable(
+    options = list(pageLength = 10, order = list(list(6, "desc"))),
+    rownames = FALSE
+  ) %>%
+  DT::formatCurrency(columns = c("HUD FMR 2BR", "Zillow ZORI"), digits = 0) %>%
+  DT::formatRound(columns = "ZORI vs FMR %", digits = 1)
+```
+
+### When ZORI is *below* FMR (undervalued rental markets)
+
+If Zillow's ZORI is meaningfully below the HUD 40th-percentile benchmark, that's either a new listing with room to raise rent or a market where tenants are under-paying for the property quality. Either way it's an interesting signal.
+
+```{r fmr_under}
+markets %>%
+  dplyr::filter(!is.na(zori_vs_fmr_pct), zori_vs_fmr_pct <= -10,
+                !is.na(monthly_cash_flow)) %>%
+  dplyr::arrange(zori_vs_fmr_pct) %>%
+  dplyr::slice_head(n = 25) %>%
+  dplyr::transmute(
+    City = city, State = state,
+    `Population` = pop_2024,
+    `HUD FMR 2BR` = fmr_2br,
+    `Zillow ZORI` = zori,
+    `ZORI vs FMR %` = zori_vs_fmr_pct,
+    `Cap %` = est_cap_rate_pct,
+    `Cash/mo @ FMR rent` = round(fmr_2br - monthly_mortgage - 0.35 * fmr_2br, 0)
+  ) %>%
+  DT::datatable(
+    options = list(pageLength = 10, order = list(list(5, "asc"))),
+    rownames = FALSE
+  ) %>%
+  DT::formatCurrency(columns = c("HUD FMR 2BR", "Zillow ZORI",
+                                  "Cash/mo @ FMR rent"), digits = 0) %>%
+  DT::formatRound(columns = c("ZORI vs FMR %", "Cap %"), digits = 1)
+```
+
+## Job Market vs Rental Yield {#job-market-vs-rental-yield}
+
+Rental demand ultimately depends on **jobs** — tenants need income to pay rent. [BLS Local Area Unemployment Statistics](https://www.bls.gov/lau/) publishes monthly unemployment rates for every US metro and county. Low unemployment = strong local economy = reliable tenant base, but usually also = expensive real estate. The sweet spot is a market with **below-average unemployment** and **above-average cap rate**.
+
+```{r bls_scatter, fig.height=7}
+bls_plot <- markets %>%
+  dplyr::filter(!is.na(bls_unemp_rate), !is.na(est_cap_rate_pct),
+                bls_unemp_rate <= 12, est_cap_rate_pct <= 15)
+
+median_unemp <- median(bls_plot$bls_unemp_rate, na.rm = TRUE)
+median_cap <- median(bls_plot$est_cap_rate_pct, na.rm = TRUE)
+
+ggplot2::ggplot(bls_plot,
+                ggplot2::aes(x = bls_unemp_rate, y = est_cap_rate_pct,
+                             color = tier)) +
+  ggplot2::geom_hline(yintercept = median_cap, linetype = "dashed",
+                      color = "grey60") +
+  ggplot2::geom_vline(xintercept = median_unemp, linetype = "dashed",
+                      color = "grey60") +
+  ggplot2::geom_point(alpha = 0.45, size = 1.6) +
+  ggplot2::scale_color_manual(values = tier_colors) +
+  ggplot2::annotate("label", x = median_unemp * 0.5, y = max(bls_plot$est_cap_rate_pct) * 0.92,
+                    label = "SWEET SPOT\n(low unemp, high cap)",
+                    color = "#1B5E20", fill = "#E8F5E9", size = 3.4, fontface = "bold") +
+  ggplot2::labs(
+    title = "Cap Rate vs County Unemployment Rate",
+    subtitle = "Dashed lines = medians. Upper-left quadrant is where the cheap deals with solid jobs live.",
+    x = "BLS unemployment rate (latest month, %)",
+    y = "Estimated cap rate (%)",
+    color = "Tier"
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(legend.position = "top")
+```
+
+### Sweet-spot: low unemployment AND above-median cap rate
+
+```{r bls_sweet_spot}
+bls_plot %>%
+  dplyr::filter(bls_unemp_rate <= 4.0,
+                est_cap_rate_pct >= median_cap,
+                !is.na(monthly_cash_flow)) %>%
+  dplyr::arrange(dplyr::desc(est_cap_rate_pct)) %>%
+  dplyr::slice_head(n = 25) %>%
+  dplyr::transmute(
+    City = city, State = state, County = county,
+    `Population` = pop_2024,
+    `Unemp %` = bls_unemp_rate,
+    `Unemp YoY (pp)` = bls_unemp_yoy_pp,
+    `Cap %` = est_cap_rate_pct,
+    `Cash/mo` = monthly_cash_flow,
+    Score = investment_score
+  ) %>%
+  DT::datatable(
+    options = list(pageLength = 10, order = list(list(7, "desc"))),
+    rownames = FALSE, filter = "top"
+  ) %>%
+  DT::formatCurrency(columns = "Cash/mo", digits = 0) %>%
+  DT::formatRound(columns = c("Unemp %", "Unemp YoY (pp)", "Cap %"), digits = 1)
+```
+
+## Hottest Markets (Realtor.com) {#hottest-markets-realtor-com}
+
+[Realtor.com's hotness score](https://www.realtor.com/research/data/) is a composite of **supply** (how quickly listings sell) and **demand** (how many unique shoppers view each listing). It's computed at the county level, monthly, and ranks every US county from 1 (hottest) to ~1,600. Independent from price — a hot market can be cheap. Combined with our composite score, it surfaces counties where listing velocity agrees with the fundamentals.
+
+```{r hotness_table}
+markets %>%
+  dplyr::filter(!is.na(rdc_hotness_rank)) %>%
+  dplyr::arrange(rdc_hotness_rank) %>%
+  dplyr::distinct(fips, .keep_all = TRUE) %>%
+  dplyr::slice_head(n = 30) %>%
+  dplyr::transmute(
+    `Hot rank` = rdc_hotness_rank,
+    County = county, State = state,
+    `Hot score` = round(rdc_hotness_score, 1),
+    `Median list` = rdc_median_list,
+    `DOM` = rdc_dom,
+    `Active` = rdc_active_listings,
+    `New` = rdc_new_listings,
+    `Pending/Active` = round(rdc_pending_ratio, 2),
+    `Price drops %` = round(100 * rdc_price_reduced_share, 1),
+    `Cap %` = est_cap_rate_pct
+  ) %>%
+  DT::datatable(
+    options = list(pageLength = 15, order = list(list(0, "asc"))),
+    rownames = FALSE, filter = "top"
+  ) %>%
+  DT::formatCurrency(columns = "Median list", digits = 0) %>%
+  DT::formatRound(columns = c("Hot score", "Pending/Active",
+                               "Price drops %", "Cap %"), digits = 1)
+```
+
+## ZIP-Level Neighborhood Drill-Down {#zip-level-neighborhood-drill-down}
+
+City-level Zillow data averages the whole city — great for comparing **Austin** to **Nashville**, useless for comparing **East Austin** to **West Austin**. This drill-down uses Zillow's ZIP-level ZHVI + ZORI (~8,100 ZIPs with both), re-runs the same leverage math, and attaches each ZIP's nearest Trader Joe's distance.
+
+```{r zip_data}
+zip_path <- here::here("data", "us_rental_markets_zip.csv")
+if (file.exists(zip_path)) {
+  zip_raw <- readr::read_csv(zip_path, show_col_types = FALSE,
+                             col_types = readr::cols(zip = readr::col_character()))
+  zip_markets <- zip_raw %>%
+    dplyr::filter(zhvi_latest >= 50000, zori_latest <= 10000, zori_latest >= 500,
+                  gross_yield_pct <= 20) %>%
+    dplyr::mutate(tier = dplyr::case_when(
+      zhvi_latest / (zori_latest * 12) < 15 ~ "Strong Buy",
+      zhvi_latest / (zori_latest * 12) < 20 ~ "Moderate",
+      zhvi_latest / (zori_latest * 12) < 25 ~ "Lean Rent",
+      TRUE ~ "Rent Favored"
+    ) %>% factor(levels = c("Strong Buy", "Moderate", "Lean Rent", "Rent Favored")))
+} else {
+  zip_markets <- NULL
+}
+```
+
+```{r zip_table}
+if (!is.null(zip_markets)) {
+  zip_markets %>%
+    dplyr::arrange(dplyr::desc(cash_on_cash_pct)) %>%
+    dplyr::slice_head(n = 300) %>%
+    dplyr::transmute(
+      ZIP = zip, City = city, State = state, Metro = metro, County = county,
+      Tier = tier,
+      `Price (ZHVI)` = zhvi_latest,
+      `Rent (ZORI)` = zori_latest,
+      `YoY %` = zhvi_yoy_pct,
+      `Cap %` = cap_rate_pct,
+      `CoC %` = cash_on_cash_pct,
+      `Cash/mo` = cash_flow_monthly,
+      `TJ mi` = tj_miles
+    ) %>%
+    DT::datatable(
+      options = list(pageLength = 20, order = list(list(10, "desc"))),
+      rownames = FALSE, filter = "top",
+      caption = paste0(
+        "Top 300 ZIPs by cash-on-cash return (out of ",
+        scales::comma(nrow(zip_markets)), " ZIPs with both ZHVI + ZORI)"
+      )
+    ) %>%
+    DT::formatCurrency(columns = c("Price (ZHVI)", "Rent (ZORI)", "Cash/mo"),
+                       digits = 0) %>%
+    DT::formatRound(columns = c("YoY %", "Cap %", "CoC %", "TJ mi"), digits = 2)
+} else {
+  cat("ZIP-level data unavailable. Run `Rscript scripts/zillow_zip_data.R` to populate.")
+}
+```
+
+### Tightest clusters: ZIPs with both TJ access AND cash flow
+
+ZIPs within 5 miles of a Trader Joe's **and** cash-flow positive — the ZIP-level version of the "unicorn" leaderboard.
+
+```{r zip_unicorn}
+if (!is.null(zip_markets)) {
+  zip_markets %>%
+    dplyr::filter(!is.na(tj_miles), tj_miles <= 5, cash_flow_monthly > 0) %>%
+    dplyr::arrange(dplyr::desc(cash_on_cash_pct)) %>%
+    dplyr::slice_head(n = 100) %>%
+    dplyr::transmute(
+      ZIP = zip, City = city, State = state, Metro = metro,
+      Tier = tier,
+      `Price` = zhvi_latest,
+      `Rent` = zori_latest,
+      `Cap %` = cap_rate_pct,
+      `CoC %` = cash_on_cash_pct,
+      `Cash/mo` = cash_flow_monthly,
+      `TJ mi` = tj_miles,
+      `Nearest TJ` = paste0(nearest_tj_city, ", ", nearest_tj_state)
+    ) %>%
+    DT::datatable(
+      options = list(pageLength = 15, order = list(list(8, "desc"))),
+      rownames = FALSE, filter = "top"
+    ) %>%
+    DT::formatCurrency(columns = c("Price", "Rent", "Cash/mo"), digits = 0) %>%
+    DT::formatRound(columns = c("Cap %", "CoC %", "TJ mi"), digits = 2)
 }
 ```
 
