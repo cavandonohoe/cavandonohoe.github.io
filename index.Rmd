@@ -32,7 +32,7 @@ cat('
 
 ## Hi, I’m Cavan 👋
 
-I’m a **Data Scientist** focused on turning messy data into clear decisions through automation, reproducible analysis, and polished storytelling.
+I’m a **Data Scientist** who likes turning messy data into clear decisions — through automation, reproducible analysis, and the occasional weekend side project. This site is part resume, part playground: everything here is built in R and deployed through GitHub, because why not have a little fun while we're here.
 
 <div class="hero-cta">
   <a class="hero-btn" href="cv.pdf">View Resume</a>
@@ -44,17 +44,13 @@ I’m a **Data Scientist** focused on turning messy data into clear decisions th
 
 My work ranges from housing market intelligence and finance calculators to entertainment analytics and educational R content.
 
-Check out my latest project: a [Rent vs. Buy Calculator](https://cavandonohoe.shinyapps.io/rent-vs-buy/) — an interactive Shiny app that runs a side-by-side financial simulation to help you decide whether to buy a home or keep renting and investing. Source code on [GitHub](https://github.com/cavandonohoe/rent-vs-buy).
+## Featured Project: Rent vs. Buy Calculator
 
-## Featured Project Template
-
-Use this structure for every featured write-up:
-
-1. **Problem**: What decision or question does this solve?
-2. **Data**: Source, size, and freshness of the dataset.
-3. **Method**: Models, assumptions, and workflow.
-4. **Result**: 2–3 quantified outcomes.
-5. **Reproducibility**: Link to source code and app/report.
+- **Problem**: Should you buy a home or keep renting and investing the difference?
+- **Data**: User-supplied inputs for price, rent, down payment, mortgage rate, taxes, maintenance, and expected market returns.
+- **Method**: Year-by-year simulation of two parallel financial paths (owner vs. renter-investor), with an amortization schedule, tax treatment, and compounding investment returns.
+- **Result**: Side-by-side net worth curves and a break-even year, so the answer stops being vibes-based.
+- **Reproducibility**: [Live Shiny app](https://cavandonohoe.shinyapps.io/rent-vs-buy/) · [Source on GitHub](https://github.com/cavandonohoe/rent-vs-buy).
 
 ## Projects {#projects}
 
@@ -144,13 +140,19 @@ cards <- data.frame(
 all_tags <- unique(unlist(strsplit(cards$tags, ",")))
 all_tags <- sort(trimws(all_tags))
 
+esc <- function(x) htmltools::htmlEscape(x, attribute = TRUE)
+
 controls <- '<div class="project-controls">'
 controls <- paste0(controls, '<input id="project-search" type="search" placeholder="Search projects..." aria-label="Search projects">')
 controls <- paste0(controls, '<select id="project-type" aria-label="Filter by project type"><option value="all">All Types</option><option value="analysis">Analysis</option><option value="app">App</option><option value="tool">Tool</option><option value="blog">Blog</option><option value="tutorial">Tutorial</option></select>')
-controls <- paste0(controls, '<div class="project-filter-buttons">')
-controls <- paste0(controls, '<button class="filter-btn active" data-tag="all">All</button>')
+controls <- paste0(controls, '<div class="project-filter-buttons" role="group" aria-label="Filter projects by tag">')
+controls <- paste0(controls, '<button type="button" class="filter-btn active" data-tag="all" aria-pressed="true">All</button>')
 for (tag in all_tags) {
-  controls <- paste0(controls, sprintf('<button class="filter-btn" data-tag="%s">%s</button>', tag, gsub("-", " ", tools::toTitleCase(tag))))
+  label <- tools::toTitleCase(gsub("-", " ", tag))
+  controls <- paste0(controls, sprintf(
+    '<button type="button" class="filter-btn" data-tag="%s" aria-pressed="false">%s</button>',
+    esc(tag), esc(label)
+  ))
 }
 controls <- paste0(controls, '</div></div>')
 
@@ -159,7 +161,10 @@ for (i in seq_len(nrow(cards))) {
   tag_label <- gsub(",", " • ", cards$tags[i])
   html <- paste0(html, sprintf(
     '<a class="project-card" href="%s" data-tags="%s" data-type="%s" data-title="%s" data-desc="%s"><div class="card-icon">%s</div><h3>%s</h3><p>%s</p><div class="project-meta">%s • %s</div></a>',
-    cards$href[i], cards$tags[i], cards$project_type[i], tolower(cards$title[i]), tolower(cards$description[i]), cards$icon[i], cards$title[i], cards$description[i], cards$project_type[i], tag_label
+    esc(cards$href[i]), esc(cards$tags[i]), esc(cards$project_type[i]),
+    esc(tolower(cards$title[i])), esc(tolower(cards$description[i])),
+    cards$icon[i], esc(cards$title[i]), esc(cards$description[i]),
+    esc(cards$project_type[i]), esc(tag_label)
   ))
 }
 html <- paste0(html, '</div>')
@@ -196,8 +201,12 @@ html <- paste0(html, '
 
   buttons.forEach(function(btn) {
     btn.addEventListener("click", function() {
-      buttons.forEach(function(b) { b.classList.remove("active"); });
+      buttons.forEach(function(b) {
+        b.classList.remove("active");
+        b.setAttribute("aria-pressed", "false");
+      });
       btn.classList.add("active");
+      btn.setAttribute("aria-pressed", "true");
       activeTag = btn.getAttribute("data-tag");
       applyFilters();
     });
