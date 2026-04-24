@@ -61,3 +61,6 @@ Thumbs.db
 !/sitemap.xml
 # Optional: keep CNAME if you add it for Pages DNS
 # !/CNAME
+
+# Large Census cache files (auto-downloaded by scripts)
+data/2024_Gaz_place_national.txt

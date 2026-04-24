@@ -73,9 +73,9 @@ tier_colors <- c(
 )
 ```
 
-Where should you buy rental property in the US? This page ranks **`r nrow(markets)` cities** by investment metrics derived from Zillow's public home value and rent indices plus Census demand signals.
+Where should you buy rental property in the US? This page ranks **`r nrow(markets)` cities** by investment metrics derived from Zillow's public home value and rent indices plus Census demand signals -- and a few unconventional ones like **Trader Joe's adjacency**, a classic real-estate proxy for walkable, amenity-rich neighborhoods with strong demographics.
 
-Jump to: [Cash Flow Calculator](#interactive-cash-flow-calculator) · [Leveraged Returns](#leveraged-returns-at-25-down-7.25-30yr) · [Hidden Gems](#hidden-gems-small-towns-with-big-cash-flow) · [Investor Rules](#investor-rules-of-thumb) · [Composite Score](#composite-investment-score) · [State Explorer](#state-leaderboard) · [Price vs Rent Growth](#price-vs-rent-growth-yoy) · [City Lookup](#per-city-detail-lookup)
+Jump to: [Cash Flow Calculator](#interactive-cash-flow-calculator) · [Trader Joe's Adjacency](#the-trader-joes-adjacency-premium) · [Unicorn Leaderboard](#unicorn-leaderboard-cash-flow-trader-joes) · [TJ Map](#trader-joes-investment-map) · [Leveraged Returns](#leveraged-returns-at-25-down-7.25-30yr) · [Hidden Gems](#hidden-gems-small-towns-with-big-cash-flow) · [Investor Rules](#investor-rules-of-thumb) · [Composite Score](#composite-investment-score) · [State Explorer](#state-leaderboard) · [Price vs Rent Growth](#price-vs-rent-growth-yoy) · [City Lookup](#per-city-detail-lookup)
 
 The price-to-rent ratio is the standard cash-flow benchmark:
 
@@ -94,7 +94,9 @@ tibble::tribble(
   "Zillow ZHVI", "Typical home values (city level, SFR+condo, 35th\u201365th percentile)", as.character(zhvi_date),
   "Zillow ZORI", "Typical observed rents (city level, SFR+condo+MFR)", as.character(zori_date),
   "Census Pop Estimates", "City + county population (2020\u20132024), net migration", "V2024",
-  "Census ACS 5-Year", "Vacancy rates, renter %, housing counts (county level)", "2019\u20132023"
+  "Census ACS 5-Year", "Vacancy rates, renter %, housing counts (county level)", "2019\u20132023",
+  "Census Places Gazetteer", "Lat/lon for every incorporated place (for distance calcs)", "2024",
+  "Trader Joe's Store Locator", paste0("All ", sum(!is.na(unique(raw$nearest_tj_city))), " US stores, scraped from locations.traderjoes.com"), format(Sys.Date(), "%Y")
 ) %>%
   gt::gt() %>%
   gt::tab_header(
@@ -113,7 +115,7 @@ tibble::tribble(
   ) %>%
   gt::tab_style(
     style = gt::cell_fill(color = "#f8f9fa"),
-    locations = gt::cells_body(rows = seq(1, 4, by = 2))
+    locations = gt::cells_body(rows = seq(1, 6, by = 2))
   ) %>%
   gt::tab_options(
     table.font.size = gt::px(14),
@@ -209,6 +211,7 @@ Plug in **your** financing assumptions and rerank every market by monthly cash f
   <label>Closing costs (%) <input id="calc-closing" type="number" value="3" min="0" max="10" step="0.5"></label>
   <label>Min population <input id="calc-minpop" type="number" value="10000" min="0" step="1000"></label>
   <label>Max home value ($) <input id="calc-maxprice" type="number" value="500000" min="50000" step="25000"></label>
+  <label>Max miles to TJ's <input id="calc-tjmiles" type="number" value="9999" min="0" max="9999" step="1" title="Set to 9999 to disable the TJ proximity filter"></label>
   <label>Rows to show <input id="calc-rows" type="number" value="40" min="5" max="500" step="5"></label>
   <label>Sort by
     <select id="calc-sort">
@@ -216,6 +219,7 @@ Plug in **your** financing assumptions and rerank every market by monthly cash f
       <option value="cash_on_cash_pct">Cash-on-cash return</option>
       <option value="est_cap_rate_pct">Cap rate</option>
       <option value="investment_score">Composite score</option>
+      <option value="tj_miles_sort">Distance to Trader Joe's</option>
     </select>
   </label>
 </div>
@@ -225,7 +229,7 @@ Plug in **your** financing assumptions and rerank every market by monthly cash f
   <th class="num">Price</th><th class="num">Rent/mo</th>
   <th class="num">Mortgage</th><th class="num">Cash flow/mo</th>
   <th class="num">CoC %</th><th class="num">Cap rate</th>
-  <th class="num">Pop</th><th class="num">Pop growth</th>
+  <th class="num">Pop</th><th class="num">TJ mi</th>
   <th class="num">Vacancy</th><th>Tier</th>
 </tr></thead><tbody></tbody></table></div>
 </div>
@@ -244,6 +248,8 @@ calc_rows <- markets %>%
     pop_gr = tidyr::replace_na(pop_growth_pct, NA_real_),
     vac = tidyr::replace_na(vacancy_rate_pct, NA_real_),
     score = tidyr::replace_na(investment_score, NA_real_),
+    tj_miles = tidyr::replace_na(tj_miles, NA_real_),
+    nearest_tj = tidyr::replace_na(nearest_tj_city, "---"),
     tier = as.character(tier)
   )
 
@@ -317,6 +323,7 @@ cat(sprintf('<script id="calc-data" type="application/json">%s</script>\n', calc
     var closing = +document.getElementById('calc-closing').value / 100;
     var minPop = +document.getElementById('calc-minpop').value;
     var maxPrice = +document.getElementById('calc-maxprice').value;
+    var maxTjMi = +document.getElementById('calc-tjmiles').value;
     var nRows = +document.getElementById('calc-rows').value;
     var sortKey = document.getElementById('calc-sort').value;
 
@@ -324,6 +331,7 @@ cat(sprintf('<script id="calc-data" type="application/json">%s</script>\n', calc
       .filter(function(r) {
         if (r.zhvi > maxPrice) return false;
         if (minPop > 0 && (r.pop === null || r.pop < minPop)) return false;
+        if (maxTjMi < 9999 && (r.tj_miles === null || r.tj_miles > maxTjMi)) return false;
         return true;
       })
       .map(function(r) {
@@ -336,7 +344,10 @@ cat(sprintf('<script id="calc-data" type="application/json">%s</script>\n', calc
           monthly_mortgage: mort,
           monthly_cash_flow: cf,
           cash_on_cash_pct: coc,
-          est_cap_rate_pct: r.cap
+          est_cap_rate_pct: r.cap,
+          investment_score: r.score,
+          // For sorting: lower is better, so we invert (so bigger-is-better rule still works).
+          tj_miles_sort: (r.tj_miles === null || isNaN(r.tj_miles)) ? null : -r.tj_miles
         });
       });
 
@@ -362,6 +373,10 @@ cat(sprintf('<script id="calc-data" type="application/json">%s</script>\n', calc
       var tierHtml = r.tier
         ? '<span class="tier-pill" style="background:' + (tierColors[r.tier] || "#555") + '">' + r.tier + '</span>'
         : "";
+      var tjDisp = (r.tj_miles === null || isNaN(r.tj_miles)) ? "---" : r.tj_miles.toFixed(1);
+      var tjTitle = (r.nearest_tj && r.nearest_tj !== "---")
+        ? "Nearest TJ: " + r.nearest_tj
+        : "";
       var tr = document.createElement('tr');
       tr.innerHTML =
         "<td>" + (i + 1) + "</td>" +
@@ -374,18 +389,242 @@ cat(sprintf('<script id="calc-data" type="application/json">%s</script>\n', calc
         '<td class="num">' + pct(r.cash_on_cash_pct, 2) + "</td>" +
         '<td class="num">' + pct(r.cap, 2) + "</td>" +
         '<td class="num">' + comma(r.pop) + "</td>" +
-        '<td class="num">' + pct(r.pop_gr, 1) + "</td>" +
+        '<td class="num" title="' + tjTitle + '">' + tjDisp + "</td>" +
         '<td class="num">' + pct(r.vac, 1) + "</td>" +
         "<td>" + tierHtml + "</td>";
       tbody.appendChild(tr);
     });
   }
 
-  var inputs = document.querySelectorAll('#calc-down, #calc-rate, #calc-term, #calc-opex, #calc-closing, #calc-minpop, #calc-maxprice, #calc-rows, #calc-sort');
+  var inputs = document.querySelectorAll('#calc-down, #calc-rate, #calc-term, #calc-opex, #calc-closing, #calc-minpop, #calc-maxprice, #calc-tjmiles, #calc-rows, #calc-sort');
   inputs.forEach(function(el) { el.addEventListener('input', recompute); });
   recompute();
 })();
 </script>
+
+## The Trader Joe's Adjacency Premium
+
+Real-estate folks have long used Trader Joe's as a proxy for walkable, amenity-rich, demographically-solid neighborhoods. Every one of the **`r length(unique(markets$nearest_tj_city[markets$tj_within_25mi]))` TJ store cities** on this page lives near one of **`r sum(!is.na(unique(markets$nearest_tj_city)))`** US Trader Joe's, scraped fresh from the official store locator.
+
+Here's how TJ-adjacent cities (within 10 miles of a store) compare to everyone else on the metrics investors care about:
+
+```{r tj_premium_overall, fig.height=5, fig.width=10}
+tj_premium <- markets %>%
+  dplyr::filter(!is.na(tj_miles)) %>%
+  dplyr::mutate(
+    tj_group = dplyr::case_when(
+      tj_within_2mi ~ "< 2 miles",
+      tj_within_5mi ~ "2-5 miles",
+      tj_within_10mi ~ "5-10 miles",
+      tj_within_25mi ~ "10-25 miles",
+      TRUE ~ "> 25 miles"
+    ),
+    tj_group = factor(
+      tj_group,
+      levels = c("< 2 miles", "2-5 miles", "5-10 miles", "10-25 miles", "> 25 miles")
+    )
+  )
+
+summary_tbl <- tj_premium %>%
+  dplyr::group_by(tj_group) %>%
+  dplyr::summarise(
+    n_cities = dplyr::n(),
+    median_price = median(zhvi, na.rm = TRUE),
+    median_rent = median(zori, na.rm = TRUE),
+    median_yield = median(gross_yield_pct, na.rm = TRUE),
+    median_cap = median(est_cap_rate_pct, na.rm = TRUE),
+    median_price_yoy = median(zhvi_yoy_pct, na.rm = TRUE),
+    median_rent_yoy = median(zori_yoy_pct, na.rm = TRUE),
+    median_pop_growth = median(pop_growth_pct, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+summary_long <- summary_tbl %>%
+  dplyr::select(tj_group, `Median home value ($)` = median_price,
+                `Median rent ($/mo)` = median_rent,
+                `Home price YoY (%)` = median_price_yoy,
+                `Rent YoY (%)` = median_rent_yoy) %>%
+  tidyr::pivot_longer(-tj_group, names_to = "metric", values_to = "value")
+
+ggplot2::ggplot(summary_long, ggplot2::aes(x = tj_group, y = value, fill = tj_group)) +
+  ggplot2::geom_col(show.legend = FALSE) +
+  ggplot2::geom_text(
+    ggplot2::aes(label = ifelse(grepl("\\$", metric),
+                                scales::dollar(round(value, 0)),
+                                paste0(round(value, 1), "%"))),
+    vjust = -0.3, size = 3
+  ) +
+  ggplot2::facet_wrap(~ metric, scales = "free_y", nrow = 1) +
+  ggplot2::scale_fill_manual(
+    values = c("< 2 miles" = "#D4760A", "2-5 miles" = "#E8894B", "5-10 miles" = "#F2B181",
+               "10-25 miles" = "#A6A6A6", "> 25 miles" = "#555555")
+  ) +
+  ggplot2::scale_y_continuous(expand = ggplot2::expansion(mult = c(0, 0.15))) +
+  ggplot2::labs(
+    title = "Cities closer to a Trader Joe's have higher prices, higher rents, and faster growth",
+    subtitle = "Median across all cities in each distance bucket",
+    x = NULL, y = NULL
+  ) +
+  ggplot2::theme_minimal(base_size = 11) +
+  ggplot2::theme(
+    axis.text.x = ggplot2::element_text(angle = 25, hjust = 1),
+    strip.text = ggplot2::element_text(face = "bold")
+  )
+```
+
+The premium is real: cities within 2 miles of a TJ carry substantially higher prices and rents, with stronger YoY growth, than far-flung markets. That's not surprising -- **TJ picks its own locations carefully**, favoring areas with median income, education, and density profiles that are already strong.
+
+The practical implication for an investor: **proximity to a TJ is a useful check on whether a cash-flow market is also demographically durable**. Cheap cap rates in dying small towns are a trap; cheap cap rates in neighborhoods near a Trader Joe's are usually worth a closer look.
+
+```{r tj_premium_table}
+summary_tbl %>%
+  dplyr::mutate(
+    `N cities` = scales::comma(n_cities),
+    `Median price` = scales::dollar(round(median_price, 0)),
+    `Median rent` = scales::dollar(round(median_rent, 0)),
+    `Median cap rate` = paste0(round(median_cap, 2), "%"),
+    `Price YoY` = paste0(round(median_price_yoy, 1), "%"),
+    `Rent YoY` = paste0(round(median_rent_yoy, 1), "%"),
+    `Pop growth` = paste0(round(median_pop_growth, 1), "%")
+  ) %>%
+  dplyr::select(`TJ distance` = tj_group, `N cities`, `Median price`, `Median rent`,
+                `Median cap rate`, `Price YoY`, `Rent YoY`, `Pop growth`) %>%
+  DT::datatable(
+    rownames = FALSE,
+    options = list(dom = "t", ordering = FALSE),
+    caption = htmltools::tags$caption(
+      style = "caption-side: top; text-align: left; font-weight: bold; font-size: 1.1em;",
+      "Market metrics by distance to nearest Trader Joe's"
+    )
+  )
+```
+
+## Unicorn Leaderboard: Cash Flow + Trader Joe's
+
+The holy grail: a rental market that's **cash-flow positive at 25% down and 7.25% rates AND within 10 miles of a Trader Joe's**. These are rare because TJ tends to pick areas where home prices have already outrun rents. But they exist.
+
+```{r unicorn_table}
+unicorns <- markets %>%
+  dplyr::filter(tj_unicorn, !is.na(monthly_cash_flow)) %>%
+  dplyr::arrange(dplyr::desc(investment_score)) %>%
+  dplyr::transmute(
+    City = city, State = state, Metro = metro,
+    `Home Value` = zhvi,
+    `Rent/mo` = zori,
+    `Cash flow/mo` = monthly_cash_flow,
+    `CoC %` = cash_on_cash_pct,
+    `Cap Rate %` = est_cap_rate_pct,
+    `TJ mi` = tj_miles,
+    `Nearest TJ` = paste0(nearest_tj_city, ", ", nearest_tj_state),
+    Score = investment_score,
+    Tier = as.character(tier)
+  )
+
+cat("**", nrow(unicorns), "unicorn cities** found across ",
+    dplyr::n_distinct(unicorns$State), " states, ",
+    dplyr::n_distinct(unicorns$Metro), " metros.\n\n", sep = "")
+
+DT::datatable(
+  unicorns,
+  rownames = FALSE,
+  filter = "top",
+  options = list(
+    pageLength = 25,
+    order = list(list(10, "desc")),
+    dom = "Bfrtip"
+  )
+) %>%
+  DT::formatCurrency(c("Home Value", "Rent/mo", "Cash flow/mo"), digits = 0) %>%
+  DT::formatRound(c("CoC %", "Cap Rate %", "TJ mi"), digits = 2) %>%
+  DT::formatStyle(
+    "Cash flow/mo",
+    color = DT::styleInterval(0, c("#C0392B", "#27AE60")),
+    fontWeight = "bold"
+  )
+```
+
+## Trader Joe's Investment Map
+
+Every US Trader Joe's (purple dots) with the top rental-investment cities overlaid, colored by composite score. Click a marker for the full stats. The map loads live tiles, so it'll only render online.
+
+```{r tj_map, fig.height=7}
+tj_stores <- tryCatch(
+  readr::read_csv(here::here("data/trader_joes_locations.csv"), show_col_types = FALSE),
+  error = function(e) NULL
+)
+
+map_cities <- markets %>%
+  dplyr::filter(!is.na(tj_miles), !is.na(investment_score),
+                !is.na(city_lat), !is.na(city_lon)) %>%
+  dplyr::arrange(dplyr::desc(investment_score)) %>%
+  dplyr::slice_head(n = 400)
+
+if (!is.null(tj_stores) && nrow(map_cities) > 0) {
+  pal <- leaflet::colorNumeric(
+    palette = c("#8B0000", "#D4760A", "#2E86C1", "#27AE60"),
+    domain = map_cities$investment_score
+  )
+
+  city_popup <- sprintf(
+    paste0(
+      "<b>%s, %s</b><br>",
+      "Score: <b>%.1f</b> | Cap rate: %.2f%% | CoC: %.2f%%<br>",
+      "Price: $%s | Rent: $%s/mo<br>",
+      "Cash flow: <b>$%s/mo</b><br>",
+      "Nearest TJ: %s, %s (%.1f mi)"
+    ),
+    map_cities$city, map_cities$state,
+    map_cities$investment_score, map_cities$est_cap_rate_pct,
+    tidyr::replace_na(map_cities$cash_on_cash_pct, 0),
+    scales::comma(map_cities$zhvi), scales::comma(map_cities$zori),
+    scales::comma(round(tidyr::replace_na(map_cities$monthly_cash_flow, 0))),
+    map_cities$nearest_tj_city, map_cities$nearest_tj_state, map_cities$tj_miles
+  )
+
+  tj_popup <- sprintf(
+    "<b>Trader Joe's</b><br>%s<br>%s, %s %s",
+    tj_stores$street, tj_stores$city, tj_stores$state, tj_stores$postal_code
+  )
+
+  leaflet::leaflet() %>%
+    leaflet::addProviderTiles("CartoDB.Positron") %>%
+    leaflet::setView(lng = -96, lat = 38.5, zoom = 4) %>%
+    leaflet::addCircleMarkers(
+      data = tj_stores,
+      lng = ~lon, lat = ~lat,
+      radius = 3,
+      color = "#6A0DAD",
+      fillOpacity = 0.5,
+      stroke = FALSE,
+      popup = tj_popup,
+      group = "Trader Joe's stores"
+    ) %>%
+    leaflet::addCircleMarkers(
+      data = map_cities,
+      lng = ~city_lon, lat = ~city_lat,
+      radius = 6,
+      color = ~pal(investment_score),
+      fillOpacity = 0.85,
+      stroke = TRUE,
+      weight = 1,
+      popup = city_popup,
+      group = "Top investment cities"
+    ) %>%
+    leaflet::addLegend(
+      position = "bottomright",
+      pal = pal,
+      values = map_cities$investment_score,
+      title = "Investment score",
+      opacity = 0.9
+    ) %>%
+    leaflet::addLayersControl(
+      overlayGroups = c("Trader Joe's stores", "Top investment cities"),
+      options = leaflet::layersControlOptions(collapsed = FALSE)
+    )
+} else {
+  cat("Map data unavailable. Run `Rscript scripts/trader_joes_data.R` to populate.")
+}
+```
 
 ## Gross Yield vs Home Value
 
