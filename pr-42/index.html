@@ -667,9 +667,11 @@ $(document).ready(function () {
 </script>
 <div id="hi-im-cavan" class="section level2">
 <h2>Hi, I’m Cavan 👋</h2>
-<p>I’m a <strong>Data Scientist</strong> focused on turning messy data
-into clear decisions through automation, reproducible analysis, and
-polished storytelling.</p>
+<p>I’m a <strong>Data Scientist</strong> who likes turning messy data
+into clear decisions — through automation, reproducible analysis, and
+the occasional weekend side project. This site is part resume, part
+playground: everything here is built in R and deployed through GitHub,
+because why not have a little fun while we’re here.</p>
 <div class="hero-cta">
 <p><a class="hero-btn" href="cv.pdf">View Resume</a>
 <a class="hero-btn" href="#projects">Explore Projects</a>
@@ -684,70 +686,71 @@ Reminiscing of my life on Oahu</div>
 </div>
 <p>My work ranges from housing market intelligence and finance
 calculators to entertainment analytics and educational R content.</p>
-<p>Check out my latest project: a <a
-href="https://cavandonohoe.shinyapps.io/rent-vs-buy/">Rent vs. Buy
-Calculator</a> — an interactive Shiny app that runs a side-by-side
-financial simulation to help you decide whether to buy a home or keep
-renting and investing. Source code on <a
-href="https://github.com/cavandonohoe/rent-vs-buy">GitHub</a>.</p>
 </div>
-<div id="featured-project-template" class="section level2">
-<h2>Featured Project Template</h2>
-<p>Use this structure for every featured write-up:</p>
-<ol style="list-style-type: decimal">
-<li><strong>Problem</strong>: What decision or question does this
-solve?</li>
-<li><strong>Data</strong>: Source, size, and freshness of the
-dataset.</li>
-<li><strong>Method</strong>: Models, assumptions, and workflow.</li>
-<li><strong>Result</strong>: 2–3 quantified outcomes.</li>
-<li><strong>Reproducibility</strong>: Link to source code and
-app/report.</li>
-</ol>
+<div id="featured-project-rent-vs.-buy-calculator"
+class="section level2">
+<h2>Featured Project: Rent vs. Buy Calculator</h2>
+<ul>
+<li><strong>Problem</strong>: Should you buy a home or keep renting and
+investing the difference?</li>
+<li><strong>Data</strong>: User-supplied inputs for price, rent, down
+payment, mortgage rate, taxes, maintenance, and expected market
+returns.</li>
+<li><strong>Method</strong>: Year-by-year simulation of two parallel
+financial paths (owner vs. renter-investor), with an amortization
+schedule, tax treatment, and compounding investment returns.</li>
+<li><strong>Result</strong>: Side-by-side net worth curves and a
+break-even year, so the answer stops being vibes-based.</li>
+<li><strong>Reproducibility</strong>: <a
+href="https://cavandonohoe.shinyapps.io/rent-vs-buy/">Live Shiny app</a>
+· <a href="https://github.com/cavandonohoe/rent-vs-buy">Source on
+GitHub</a>.</li>
+</ul>
 </div>
 <div id="projects" class="section level2">
 <h2>Projects</h2>
 <div class="project-controls">
 <input id="project-search" type="search" placeholder="Search projects..." aria-label="Search projects"><select id="project-type" aria-label="Filter by project type"><option value="all">All
 Types</option><option value="analysis">Analysis</option><option value="app">App</option><option value="tool">Tool</option><option value="blog">Blog</option><option value="tutorial">Tutorial</option></select>
-<div class="project-filter-buttons">
-<button class="filter-btn active" data-tag="all">
+<div class="project-filter-buttons" role="group"
+aria-label="Filter projects by tag">
+<button type="button" class="filter-btn active" data-tag="all" aria-pressed="true">
 All
 </button>
-<button class="filter-btn" data-tag="blog">
+<button type="button" class="filter-btn" data-tag="blog" aria-pressed="false">
 Blog
 </button>
-<button class="filter-btn" data-tag="education">
+<button type="button" class="filter-btn" data-tag="education" aria-pressed="false">
 Education
 </button>
-<button class="filter-btn" data-tag="entertainment">
+<button type="button" class="filter-btn" data-tag="entertainment" aria-pressed="false">
 Entertainment
 </button>
-<button class="filter-btn" data-tag="finance">
+<button type="button" class="filter-btn" data-tag="finance" aria-pressed="false">
 Finance
 </button>
-<button class="filter-btn" data-tag="history">
+<button type="button" class="filter-btn" data-tag="history" aria-pressed="false">
 History
 </button>
-<button class="filter-btn" data-tag="maps">
+<button type="button" class="filter-btn" data-tag="maps" aria-pressed="false">
 Maps
 </button>
-<button class="filter-btn" data-tag="real-estate">
+<button type="button" class="filter-btn" data-tag="real-estate" aria-pressed="false">
 Real Estate
 </button>
-<button class="filter-btn" data-tag="scraping">
+<button type="button" class="filter-btn" data-tag="scraping" aria-pressed="false">
 Scraping
 </button>
-<button class="filter-btn" data-tag="sports">
+<button type="button" class="filter-btn" data-tag="sports" aria-pressed="false">
 Sports
 </button>
-<button class="filter-btn" data-tag="tools">
+<button type="button" class="filter-btn" data-tag="tools" aria-pressed="false">
 Tools
 </button>
-<button class="filter-btn" data-tag="travel">
+<button type="button" class="filter-btn" data-tag="travel" aria-pressed="false">
 Travel
 </button>
-<button class="filter-btn" data-tag="visualization">
+<button type="button" class="filter-btn" data-tag="visualization" aria-pressed="false">
 Visualization
 </button>
 </div>
@@ -822,7 +825,7 @@ nominee analysis.
 <div class="project-meta">
 analysis • entertainment
 </div>
-</a><a class="project-card" href="top_250_imdb_with_rt.html" data-tags="entertainment" data-type="analysis" data-title="top 250 imdb + rotten tomatoes" data-desc="cross-referencing imdb's top 250 movies with rotten tomatoes scores.">
+</a><a class="project-card" href="top_250_imdb_with_rt.html" data-tags="entertainment" data-type="analysis" data-title="top 250 imdb + rotten tomatoes" data-desc="cross-referencing imdb&#39;s top 250 movies with rotten tomatoes scores.">
 <div class="card-icon">
 🍿
 </div>
@@ -830,7 +833,7 @@ analysis • entertainment
 Top 250 IMDb + Rotten Tomatoes
 </h3>
 <p>
-Cross-referencing IMDb’s top 250 movies with Rotten Tomatoes scores.
+Cross-referencing IMDb's top 250 movies with Rotten Tomatoes scores.
 </p>
 <div class="project-meta">
 analysis • entertainment
@@ -848,7 +851,7 @@ Interactive episode-by-episode rating visualization for any TV series.
 <div class="project-meta">
 app • entertainment • tools
 </div>
-</a><a class="project-card" href="avca_all_americans.html" data-tags="sports,scraping" data-type="analysis" data-title="avca volleyball all-americans" data-desc="web-scraped history of men's volleyball all-american selections and champions.">
+</a><a class="project-card" href="avca_all_americans.html" data-tags="sports,scraping" data-type="analysis" data-title="avca volleyball all-americans" data-desc="web-scraped history of men&#39;s volleyball all-american selections and champions.">
 <div class="card-icon">
 🏐
 </div>
@@ -856,7 +859,7 @@ app • entertainment • tools
 AVCA Volleyball All-Americans
 </h3>
 <p>
-Web-scraped history of men’s volleyball All-American selections and
+Web-scraped history of men's volleyball All-American selections and
 champions.
 </p>
 <div class="project-meta">
@@ -875,7 +878,7 @@ Shift calendar generator for firefighter 48/96 schedules.
 <div class="project-meta">
 tool • tools
 </div>
-</a><a class="project-card" href="google_maps_saved_places.html" data-tags="maps,travel" data-type="analysis" data-title="google maps saved places" data-desc="my 'want to go' and 'favorites' lists exported and visualized.">
+</a><a class="project-card" href="google_maps_saved_places.html" data-tags="maps,travel" data-type="analysis" data-title="google maps saved places" data-desc="my &#39;want to go&#39; and &#39;favorites&#39; lists exported and visualized.">
 <div class="card-icon">
 📍
 </div>
@@ -883,7 +886,7 @@ tool • tools
 Google Maps Saved Places
 </h3>
 <p>
-My ‘Want to Go’ and ‘Favorites’ lists exported and visualized.
+My 'Want to Go' and 'Favorites' lists exported and visualized.
 </p>
 <div class="project-meta">
 analysis • maps • travel
@@ -1004,8 +1007,12 @@ No projects match your current filters.
 
   buttons.forEach(function(btn) {
     btn.addEventListener("click", function() {
-      buttons.forEach(function(b) { b.classList.remove("active"); });
+      buttons.forEach(function(b) {
+        b.classList.remove("active");
+        b.setAttribute("aria-pressed", "false");
+      });
       btn.classList.add("active");
+      btn.setAttribute("aria-pressed", "true");
       activeTag = btn.getAttribute("data-tag");
       applyFilters();
     });
