@@ -76,3 +76,6 @@ Thumbs.db
 .positai
 .claude
 food-ranker/
+
+# Large Census cache files (auto-downloaded by scripts)
+data/2024_Gaz_place_national.txt

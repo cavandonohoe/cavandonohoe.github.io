@@ -32,7 +32,10 @@ demand_cols <- c(
   "monthly_cash_flow", "annual_cash_flow", "cash_on_cash_pct",
   "break_even_rent", "yield_spread_pct",
   "one_pct_rule", "two_pct_rule",
-  "investment_score", "hidden_gem"
+  "city_lat", "city_lon",
+  "tj_miles", "nearest_tj_city", "nearest_tj_state",
+  "tj_within_2mi", "tj_within_5mi", "tj_within_10mi", "tj_within_25mi",
+  "investment_score", "hidden_gem", "tj_unicorn"
 )
 markets <- markets %>% dplyr::select(-dplyr::any_of(demand_cols))
 
@@ -208,7 +211,119 @@ pop_matched <- sum(!is.na(markets_demand$pop_2024))
 cat("  City population matched:", pop_matched, "of", nrow(markets), "\n")
 
 # ---------------------------------------------------------------------------
-# 6. Leverage / cash-flow metrics (default investor scenario)
+# 6. Trader Joe's proximity
+# ---------------------------------------------------------------------------
+# Load TJ store locations and the Census 2024 Places Gazetteer (so every
+# incorporated place has a lat/lon). For each city, compute distance to the
+# nearest TJ in miles.
+cat("\nLoading Trader Joe's locations + Census Gazetteer...\n")
+
+tj_path <- file.path(data_dir, "trader_joes_locations.csv")
+if (!file.exists(tj_path)) {
+  stop("Missing data/trader_joes_locations.csv. Run scripts/trader_joes_data.R first.")
+}
+tj <- readr::read_csv(tj_path, show_col_types = FALSE)
+cat("  Trader Joe's stores:", nrow(tj), "\n")
+
+gaz_url <- paste0(
+  "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/",
+  "2024_Gazetteer/2024_Gaz_place_national.zip"
+)
+gaz_cache <- file.path(data_dir, "2024_Gaz_place_national.txt")
+if (!file.exists(gaz_cache)) {
+  tmp_zip <- tempfile(fileext = ".zip")
+  utils::download.file(gaz_url, tmp_zip, quiet = TRUE, mode = "wb")
+  tmp_dir <- tempfile()
+  dir.create(tmp_dir)
+  utils::unzip(tmp_zip, exdir = tmp_dir)
+  extracted <- list.files(tmp_dir, pattern = "\\.txt$", full.names = TRUE)[1]
+  file.copy(extracted, gaz_cache, overwrite = TRUE)
+}
+gaz <- readr::read_tsv(
+  gaz_cache, show_col_types = FALSE, trim_ws = TRUE,
+  name_repair = ~ stringr::str_trim(.x)
+)
+
+gaz_clean <- gaz %>%
+  dplyr::transmute(
+    gaz_state = USPS,
+    gaz_name = NAME,
+    gaz_lat = as.numeric(INTPTLAT),
+    gaz_lon = as.numeric(INTPTLONG),
+    # Strip "city", "town", "village", "CDP", "borough" suffixes
+    gaz_name_clean = gaz_name %>%
+      stringr::str_remove(
+        "\\s+(city|town|village|CDP|borough|municipality|township)$"
+      ) %>%
+      stringr::str_trim()
+  ) %>%
+  dplyr::filter(!is.na(gaz_lat), !is.na(gaz_lon))
+
+# Collapse duplicates by state + clean name (keep the largest / first match)
+gaz_lookup <- gaz_clean %>%
+  dplyr::group_by(gaz_state, gaz_name_clean) %>%
+  dplyr::slice_head(n = 1) %>%
+  dplyr::ungroup()
+
+markets_geo <- markets_demand %>%
+  dplyr::left_join(
+    gaz_lookup %>% dplyr::select(gaz_state, gaz_name_clean, city_lat = gaz_lat, city_lon = gaz_lon),
+    by = c("state" = "gaz_state", "city" = "gaz_name_clean")
+  )
+
+n_geo <- sum(!is.na(markets_geo$city_lat))
+cat(sprintf("  Geocoded %d of %d cities via Gazetteer\n", n_geo, nrow(markets_geo)))
+
+# Haversine distance, vectorized against TJ stores
+haversine_miles <- function(lat1, lon1, lat2, lon2) {
+  R <- 3958.7613
+  to_rad <- pi / 180
+  dlat <- (lat2 - lat1) * to_rad
+  dlon <- (lon2 - lon1) * to_rad
+  a <- sin(dlat / 2)^2 + cos(lat1 * to_rad) * cos(lat2 * to_rad) * sin(dlon / 2)^2
+  2 * R * asin(pmin(1, sqrt(a)))
+}
+
+# For each city with a lat/lon, find the minimum distance to any TJ store.
+tj_lat <- tj$lat
+tj_lon <- tj$lon
+nearest_tj <- function(lat, lon) {
+  if (is.na(lat) || is.na(lon)) return(c(NA_real_, NA_character_, NA_character_))
+  d <- haversine_miles(lat, lon, tj_lat, tj_lon)
+  i <- which.min(d)
+  c(round(d[i], 2), tj$city[i], tj$state[i])
+}
+
+cat("  Computing nearest TJ distance per city...\n")
+tj_out <- mapply(
+  nearest_tj,
+  markets_geo$city_lat,
+  markets_geo$city_lon,
+  SIMPLIFY = TRUE
+)
+# tj_out is a 3 x n character matrix when any NAs; coerce carefully
+markets_geo$tj_miles <- suppressWarnings(as.numeric(tj_out[1, ]))
+markets_geo$nearest_tj_city <- tj_out[2, ]
+markets_geo$nearest_tj_state <- tj_out[3, ]
+
+# Proximity flags
+markets_geo <- markets_geo %>%
+  dplyr::mutate(
+    tj_within_2mi = !is.na(tj_miles) & tj_miles <= 2,
+    tj_within_5mi = !is.na(tj_miles) & tj_miles <= 5,
+    tj_within_10mi = !is.na(tj_miles) & tj_miles <= 10,
+    tj_within_25mi = !is.na(tj_miles) & tj_miles <= 25
+  )
+
+cat(sprintf(
+  "  TJ-adjacent cities: within 5mi=%d, within 10mi=%d, within 25mi=%d\n",
+  sum(markets_geo$tj_within_5mi, na.rm = TRUE),
+  sum(markets_geo$tj_within_10mi, na.rm = TRUE),
+  sum(markets_geo$tj_within_25mi, na.rm = TRUE)
+))
+
+# ---------------------------------------------------------------------------
+# 7. Leverage / cash-flow metrics (default investor scenario)
 # ---------------------------------------------------------------------------
 # Default assumptions used for the baseline columns. The HTML page exposes
 # an interactive calculator that lets users override these; this just gives
@@ -226,7 +341,7 @@ mortgage_payment <- function(loan_amount, annual_rate, years) {
   loan_amount * (r * (1 + r)^n) / ((1 + r)^n - 1)
 }
 
-markets_leverage <- markets_demand %>%
+markets_leverage <- markets_geo %>%
   dplyr::mutate(
     down_payment = zhvi * DOWN_PCT,
     closing_costs = zhvi * CLOSING_PCT,
@@ -264,13 +379,23 @@ markets_scored <- markets_leverage %>%
     s_net_mig = score_rank(net_mig_rate_per1k, TRUE),
     s_vacancy = score_rank(vacancy_rate_pct, FALSE),
     s_appreciation = score_rank(zhvi_yoy_pct, TRUE),
+    # Trader Joe's proximity: a classic realtor proxy for walkable, amenity-rich,
+    # demographically-strong neighborhoods. Score is rank-based on inverse distance,
+    # capped at 25 miles (beyond that it's noise).
+    tj_score_distance = dplyr::case_when(
+      is.na(tj_miles) ~ NA_real_,
+      tj_miles > 25 ~ 25,
+      TRUE ~ tj_miles
+    ),
+    s_tj = score_rank(tj_score_distance, FALSE),
     investment_score = round(
       100 * (
-        0.35 * s_cap_rate +
+        0.32 * s_cap_rate +
         0.20 * s_pop_growth +
-        0.15 * s_net_mig +
-        0.15 * s_vacancy +
-        0.15 * s_appreciation
+        0.13 * s_net_mig +
+        0.13 * s_vacancy +
+        0.14 * s_appreciation +
+        0.08 * s_tj
       ),
       1
     ),
@@ -278,7 +403,10 @@ markets_scored <- markets_leverage %>%
     hidden_gem = !is.na(pop_2024) & pop_2024 >= 5000 & pop_2024 <= 50000 &
       est_cap_rate_pct >= 5 &
       dplyr::coalesce(pop_growth_pct, county_pop_growth_pct, 0) >= 0 &
-      dplyr::coalesce(vacancy_rate_pct, 0) <= 12
+      dplyr::coalesce(vacancy_rate_pct, 0) <= 12,
+    # "Unicorn": cash flow positive AND within 10 miles of a Trader Joe's
+    tj_unicorn = !is.na(monthly_cash_flow) & monthly_cash_flow > 0 &
+      !is.na(tj_within_10mi) & tj_within_10mi
   )
 
 # ---------------------------------------------------------------------------
@@ -298,28 +426,30 @@ output <- markets_scored %>%
     monthly_cash_flow, annual_cash_flow, cash_on_cash_pct,
     break_even_rent, yield_spread_pct,
     one_pct_rule, two_pct_rule,
-    investment_score, hidden_gem,
+    city_lat, city_lon,
+    tj_miles, nearest_tj_city, nearest_tj_state,
+    tj_within_2mi, tj_within_5mi, tj_within_10mi, tj_within_25mi,
+    investment_score, hidden_gem, tj_unicorn,
     zhvi_date, zori_date
   )
 
 readr::write_csv(output, file.path(data_dir, "us_rental_markets.csv"))
 
-cat("\n=== Demand + Leverage Summary for Top 30 Cap Rate Cities ===\n")
+cat("\n=== Demand + Leverage + TJ Summary for Top 30 by Score ===\n")
 output %>%
-  dplyr::filter(zhvi >= 50000, zori <= 5000, zori >= 500, gross_yield_pct <= 20) %>%
+  dplyr::filter(zhvi >= 50000, zori <= 5000, zori >= 500, gross_yield_pct <= 20,
+                !is.na(investment_score)) %>%
+  dplyr::arrange(dplyr::desc(investment_score)) %>%
   dplyr::slice_head(n = 30) %>%
   dplyr::transmute(
     City = city, State = state,
+    Score = investment_score,
     `Cap Rate` = paste0(est_cap_rate_pct, "%"),
     `Cash/Mo` = scales::dollar(monthly_cash_flow),
     `CoC %` = paste0(cash_on_cash_pct, "%"),
-    Score = investment_score,
-    `Population` = scales::comma(pop_2024),
-    `Pop Gr` = dplyr::if_else(
-      is.na(pop_growth_pct), "---", paste0(pop_growth_pct, "%")
-    ),
-    `Vacancy` = paste0(vacancy_rate_pct, "%"),
-    Gem = hidden_gem
+    `TJ mi` = dplyr::if_else(is.na(tj_miles), "---", as.character(tj_miles)),
+    Unicorn = tj_unicorn,
+    `Population` = scales::comma(pop_2024)
   ) %>%
   print(n = 30, width = 250)
 
@@ -331,5 +461,7 @@ cat("  Leverage (25% down, 7.25% 30yr, 35% opex):\n")
 cat("          down_payment, loan_amount, monthly_mortgage,\n")
 cat("          monthly_cash_flow, annual_cash_flow, cash_on_cash_pct,\n")
 cat("          break_even_rent, yield_spread_pct, one_pct_rule, two_pct_rule\n")
-cat("  Score: investment_score (0-100, rank-weighted), hidden_gem\n")
-cat("Sources: Census Pop Estimates V2024 + ACS 5-Year 2023\n")
+cat("  Trader Joe's: tj_miles, nearest_tj_city/state,\n")
+cat("          tj_within_2mi/5mi/10mi/25mi, tj_unicorn\n")
+cat("  Score: investment_score (0-100, now includes 8% TJ proximity), hidden_gem\n")
+cat("Sources: Census Pop Estimates V2024 + ACS 5-Year 2023 + TJ store locator\n")
