@@ -24,6 +24,18 @@ data_dir <- here::here("data")
 markets <- readr::read_csv(file.path(data_dir, "us_rental_markets.csv"), show_col_types = FALSE)
 cat("Loaded", nrow(markets), "cities from us_rental_markets.csv\n\n")
 
+# Drop any demand / leverage columns from a prior run so joins don't create .x/.y suffixes.
+demand_cols <- c(
+  "pop_2024", "pop_growth_pct", "county_pop_2024", "county_pop_growth_pct",
+  "net_mig_rate_per1k", "vacancy_rate_pct", "rental_vacancy_pct", "renter_pct",
+  "down_payment", "loan_amount", "monthly_mortgage",
+  "monthly_cash_flow", "annual_cash_flow", "cash_on_cash_pct",
+  "break_even_rent", "yield_spread_pct",
+  "one_pct_rule", "two_pct_rule",
+  "investment_score", "hidden_gem"
+)
+markets <- markets %>% dplyr::select(-dplyr::any_of(demand_cols))
+
 # ---------------------------------------------------------------------------
 # 1. Census city/town population estimates (2020-2024)
 # ---------------------------------------------------------------------------
@@ -196,9 +208,83 @@ pop_matched <- sum(!is.na(markets_demand$pop_2024))
 cat("  City population matched:", pop_matched, "of", nrow(markets), "\n")
 
 # ---------------------------------------------------------------------------
-# 6. Output
+# 6. Leverage / cash-flow metrics (default investor scenario)
 # ---------------------------------------------------------------------------
-output <- markets_demand %>%
+# Default assumptions used for the baseline columns. The HTML page exposes
+# an interactive calculator that lets users override these; this just gives
+# a ranked "out of the box" view for the static tables.
+DOWN_PCT <- 0.25
+MORTGAGE_RATE <- 0.0725
+TERM_YEARS <- 30
+EXPENSE_RATIO <- 0.35      # taxes, insurance, vacancy, maintenance, mgmt
+CLOSING_PCT <- 0.03        # closing costs as % of price
+
+mortgage_payment <- function(loan_amount, annual_rate, years) {
+  r <- annual_rate / 12
+  n <- years * 12
+  if (r == 0) return(loan_amount / n)
+  loan_amount * (r * (1 + r)^n) / ((1 + r)^n - 1)
+}
+
+markets_leverage <- markets_demand %>%
+  dplyr::mutate(
+    down_payment = zhvi * DOWN_PCT,
+    closing_costs = zhvi * CLOSING_PCT,
+    cash_invested = down_payment + closing_costs,
+    loan_amount = zhvi * (1 - DOWN_PCT),
+    monthly_mortgage = mortgage_payment(loan_amount, MORTGAGE_RATE, TERM_YEARS),
+    monthly_opex = zori * EXPENSE_RATIO,
+    monthly_cash_flow = round(zori - monthly_mortgage - monthly_opex, 0),
+    annual_cash_flow = monthly_cash_flow * 12,
+    cash_on_cash_pct = round(100 * annual_cash_flow / cash_invested, 2),
+    # Rent a unit would need to hit $0/mo cash flow at default assumptions
+    break_even_rent = round((monthly_mortgage) / (1 - EXPENSE_RATIO), 0),
+    # Classic investor rules of thumb
+    one_pct_rule = zori >= 0.01 * zhvi,
+    two_pct_rule = zori >= 0.02 * zhvi,
+    # Spread between gross yield and current mortgage rate
+    yield_spread_pct = round(gross_yield_pct - MORTGAGE_RATE * 100, 2)
+  )
+
+# ---------------------------------------------------------------------------
+# 7. Composite investment score
+# ---------------------------------------------------------------------------
+# Rank-based composite so outliers don't dominate. Each factor is converted
+# to a 0-1 percentile and weighted; higher = better rental investment.
+score_rank <- function(x, higher_is_better = TRUE) {
+  r <- dplyr::percent_rank(x)
+  if (!higher_is_better) r <- 1 - r
+  tidyr::replace_na(r, 0.5)
+}
+
+markets_scored <- markets_leverage %>%
+  dplyr::mutate(
+    s_cap_rate = score_rank(est_cap_rate_pct, TRUE),
+    s_pop_growth = score_rank(dplyr::coalesce(pop_growth_pct, county_pop_growth_pct), TRUE),
+    s_net_mig = score_rank(net_mig_rate_per1k, TRUE),
+    s_vacancy = score_rank(vacancy_rate_pct, FALSE),
+    s_appreciation = score_rank(zhvi_yoy_pct, TRUE),
+    investment_score = round(
+      100 * (
+        0.35 * s_cap_rate +
+        0.20 * s_pop_growth +
+        0.15 * s_net_mig +
+        0.15 * s_vacancy +
+        0.15 * s_appreciation
+      ),
+      1
+    ),
+    # Flag "hidden gems": small population, high cap rate, growing, low vacancy
+    hidden_gem = !is.na(pop_2024) & pop_2024 >= 5000 & pop_2024 <= 50000 &
+      est_cap_rate_pct >= 5 &
+      dplyr::coalesce(pop_growth_pct, county_pop_growth_pct, 0) >= 0 &
+      dplyr::coalesce(vacancy_rate_pct, 0) <= 12
+  )
+
+# ---------------------------------------------------------------------------
+# 8. Output
+# ---------------------------------------------------------------------------
+output <- markets_scored %>%
   dplyr::select(
     city, state, metro, county,
     zhvi, zhvi_yoy_pct, zori, zori_yoy_pct,
@@ -208,33 +294,42 @@ output <- markets_demand %>%
     county_pop_2024, county_pop_growth_pct,
     net_mig_rate_per1k,
     vacancy_rate_pct, rental_vacancy_pct, renter_pct,
+    down_payment, loan_amount, monthly_mortgage,
+    monthly_cash_flow, annual_cash_flow, cash_on_cash_pct,
+    break_even_rent, yield_spread_pct,
+    one_pct_rule, two_pct_rule,
+    investment_score, hidden_gem,
     zhvi_date, zori_date
   )
 
 readr::write_csv(output, file.path(data_dir, "us_rental_markets.csv"))
 
-cat("\n=== Demand Summary for Top 30 Cap Rate Cities ===\n")
+cat("\n=== Demand + Leverage Summary for Top 30 Cap Rate Cities ===\n")
 output %>%
   dplyr::filter(zhvi >= 50000, zori <= 5000, zori >= 500, gross_yield_pct <= 20) %>%
   dplyr::slice_head(n = 30) %>%
   dplyr::transmute(
     City = city, State = state,
     `Cap Rate` = paste0(est_cap_rate_pct, "%"),
+    `Cash/Mo` = scales::dollar(monthly_cash_flow),
+    `CoC %` = paste0(cash_on_cash_pct, "%"),
+    Score = investment_score,
     `Population` = scales::comma(pop_2024),
-    `Pop Growth` = dplyr::if_else(
+    `Pop Gr` = dplyr::if_else(
       is.na(pop_growth_pct), "---", paste0(pop_growth_pct, "%")
     ),
-    `County Pop Gr` = paste0(county_pop_growth_pct, "%"),
-    `Net Mig/1K` = net_mig_rate_per1k,
     `Vacancy` = paste0(vacancy_rate_pct, "%"),
-    `Rental Vac` = dplyr::if_else(
-      is.na(rental_vacancy_pct), "---", paste0(rental_vacancy_pct, "%")
-    ),
-    `% Renter` = paste0(renter_pct, "%")
+    Gem = hidden_gem
   ) %>%
   print(n = 30, width = 250)
 
 cat("\nOutput: data/us_rental_markets.csv (", nrow(output), " cities)\n")
-cat("New columns: pop_2024, pop_growth_pct, county_pop_2024, county_pop_growth_pct,\n")
-cat("             net_mig_rate_per1k, vacancy_rate_pct, rental_vacancy_pct, renter_pct\n")
+cat("Columns added in this update:\n")
+cat("  Demand: pop_2024, pop_growth_pct, county_pop_growth_pct,\n")
+cat("          net_mig_rate_per1k, vacancy_rate_pct, rental_vacancy_pct, renter_pct\n")
+cat("  Leverage (25% down, 7.25% 30yr, 35% opex):\n")
+cat("          down_payment, loan_amount, monthly_mortgage,\n")
+cat("          monthly_cash_flow, annual_cash_flow, cash_on_cash_pct,\n")
+cat("          break_even_rent, yield_spread_pct, one_pct_rule, two_pct_rule\n")
+cat("  Score: investment_score (0-100, rank-weighted), hidden_gem\n")
 cat("Sources: Census Pop Estimates V2024 + ACS 5-Year 2023\n")
