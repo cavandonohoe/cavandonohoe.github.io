@@ -30,60 +30,193 @@ cat('
 ')
 ```
 
-Welcome to my Website! I know it's not much, but it's all done in R and GitHub, so that's pretty cool.
+## Hi, I’m Cavan 👋
+
+I’m a **Data Scientist** who likes turning messy data into clear decisions — through automation, reproducible analysis, and the occasional weekend side project. This site is part resume, part playground: everything here is built in R and deployed through GitHub, because why not have a little fun while we're here.
+
+<div class="hero-cta">
+  <a class="hero-btn" href="cv.pdf">View Resume</a>
+  <a class="hero-btn" href="#projects">Explore Projects</a>
+  <a class="hero-btn" href="mailto:cavandonohoe@gmail.com">Contact Me</a>
+</div>
 
 ![Sunset at China Walls on Oahu, Hawaii - Reminiscing of my life on Oahu](images/China Walls Sunset.jpg)
 
-I thought it might be worth investing some time to make a website to point to an area of my life where it gets a little more professional. But then I thought, why *just* do that? Why not incorporate some other aspects of my life that makes me me. So yes, this will have my ever growing resume, but let's have a little bit of fun while we're here.
+My work ranges from housing market intelligence and finance calculators to entertainment analytics and educational R content.
 
-Check out my latest project: a [Rent vs. Buy Calculator](https://cavandonohoe.shinyapps.io/rent-vs-buy/) — an interactive Shiny app that runs a side-by-side financial simulation to help you decide whether to buy a home or keep renting and investing. Source code on [GitHub](https://github.com/cavandonohoe/rent-vs-buy).
+## Featured Project: Rent vs. Buy Calculator
 
-## Projects
+- **Problem**: Should you buy a home or keep renting and investing the difference?
+- **Data**: User-supplied inputs for price, rent, down payment, mortgage rate, taxes, maintenance, and expected market returns.
+- **Method**: Year-by-year simulation of two parallel financial paths (owner vs. renter-investor), with an amortization schedule, tax treatment, and compounding investment returns.
+- **Result**: Side-by-side net worth curves and a break-even year, so the answer stops being vibes-based.
+- **Reproducibility**: [Live Shiny app](https://cavandonohoe.shinyapps.io/rent-vs-buy/) · [Source on GitHub](https://github.com/cavandonohoe/rent-vs-buy).
+
+## Projects {#projects}
 
 ```{r project-cards, echo=FALSE, results='asis'}
-cards <- list(
-  list("us_rental_markets.html", "\U0001F3D8\UFE0F", "US Rental Investment Markets",
-    "Cap rates, vacancy, and demand signals for 3,800+ cities using Zillow and Census data."),
-  list("la_real_estate.html", "\U0001F3E1", "LA Neighborhoods: Price per Sq Ft",
-    "Zillow + Redfin data for LA neighborhoods — median prices, rent, and what $1M buys you."),
-  list("https://cavandonohoe.shinyapps.io/rent-vs-buy/", "\U0001F9EE", "Rent vs. Buy Calculator",
-    "Interactive Shiny app for side-by-side financial simulation of renting vs. buying."),
-  list("imdb_top_250_tv_series.html", "\U0001F4FA", "IMDb Top 250 TV Series",
-    "Scraped ratings, seasons, and trends for the top 250 TV shows on IMDb."),
-  list("best_picture_nominees.html", "\U0001F3AC", "Best Picture Nominees",
-    "Oscar Best Picture data — distributors, producers, and historical nominee analysis."),
-  list("top_250_imdb_with_rt.html", "\U0001F37F", "Top 250 IMDb + Rotten Tomatoes",
-    "Cross-referencing IMDb's top 250 movies with Rotten Tomatoes scores."),
-  list("imdb_rating_plot.html", "\U0001F4C8", "IMDb Rating Plot",
-    "Interactive episode-by-episode rating visualization for any TV series."),
-  list("avca_all_americans.html", "\U0001F3D0", "AVCA Volleyball All-Americans",
-    "Web-scraped history of men's volleyball All-American selections and champions."),
-  list("firefighter_schedule.html", "\U0001F692", "Firefighter Schedule",
-    "Shift calendar generator for firefighter 48/96 schedules."),
-  list("google_maps_saved_places.html", "\U0001F4CD", "Google Maps Saved Places",
-    'My "Want to Go" and "Favorites" lists exported and visualized.'),
-  list("my_imdb.html", "\U2B50", "My IMDb Ratings",
-    "Personal movie ratings and watchlist from my IMDb account."),
-  list("my_travels.html", "\U2708\UFE0F", "Get Bloggy With It",
-    "Travel blog entries from my adventures around the world."),
-  list("best_pic_vs_top_1000.html", "\U0001F39E\UFE0F", "Best Picture vs Top 1000 Box Office",
-    "Do Oscar winners also dominate the box office? An interactive comparison."),
-  list("sierpinski_triangle.html", "\U0001F53A", "Sierpinski Triangle",
-    "Fractal geometry generated in R — the classic chaos game visualization."),
-  list("confederate_statues.html", "\U0001F5FD", "Confederate Statues Timeline",
-    "When were Confederate monuments erected? A data-driven look at the timeline."),
-  list("learn_r.html", "\U0001F4DA", "Learn R",
-    "Tutorial series: intro, data manipulation, visualization, and statistics in R.")
+cards <- data.frame(
+  href = c(
+    "us_rental_markets.html",
+    "la_real_estate.html",
+    "https://cavandonohoe.shinyapps.io/rent-vs-buy/",
+    "imdb_top_250_tv_series.html",
+    "best_picture_nominees.html",
+    "top_250_imdb_with_rt.html",
+    "imdb_rating_plot.html",
+    "avca_all_americans.html",
+    "firefighter_schedule.html",
+    "google_maps_saved_places.html",
+    "my_imdb.html",
+    "my_travels.html",
+    "best_pic_vs_top_1000.html",
+    "sierpinski_triangle.html",
+    "confederate_statues.html",
+    "learn_r.html"
+  ),
+  icon = c(
+    "🏘️","🏡","🧮","📺","🎬","🍿","📈","🏐","🚒","📍","⭐","✈️","🎞️","🔺","🗽","📚"
+  ),
+  title = c(
+    "US Rental Investment Markets",
+    "LA Neighborhoods: Price per Sq Ft",
+    "Rent vs. Buy Calculator",
+    "IMDb Top 250 TV Series",
+    "Best Picture Nominees",
+    "Top 250 IMDb + Rotten Tomatoes",
+    "IMDb Rating Plot",
+    "AVCA Volleyball All-Americans",
+    "Firefighter Schedule",
+    "Google Maps Saved Places",
+    "My IMDb Ratings",
+    "Get Bloggy With It",
+    "Best Picture vs Top 1000 Box Office",
+    "Sierpinski Triangle",
+    "Confederate Statues Timeline",
+    "Learn R"
+  ),
+  description = c(
+    "Cap rates, vacancy, and demand signals for 3,800+ cities using Zillow and Census data.",
+    "Zillow + Redfin data for LA neighborhoods — median prices, rent, and what $1M buys you.",
+    "Interactive Shiny app for side-by-side financial simulation of renting vs. buying.",
+    "Scraped ratings, seasons, and trends for the top 250 TV shows on IMDb.",
+    "Oscar Best Picture data — distributors, producers, and historical nominee analysis.",
+    "Cross-referencing IMDb's top 250 movies with Rotten Tomatoes scores.",
+    "Interactive episode-by-episode rating visualization for any TV series.",
+    "Web-scraped history of men's volleyball All-American selections and champions.",
+    "Shift calendar generator for firefighter 48/96 schedules.",
+    "My 'Want to Go' and 'Favorites' lists exported and visualized.",
+    "Personal movie ratings and watchlist from my IMDb account.",
+    "Travel blog entries from my adventures around the world.",
+    "Do Oscar winners also dominate the box office? An interactive comparison.",
+    "Fractal geometry generated in R — the classic chaos game visualization.",
+    "When were Confederate monuments erected? A data-driven look at the timeline.",
+    "Tutorial series: intro, data manipulation, visualization, and statistics in R."
+  ),
+  tags = c(
+    "real-estate,finance",
+    "real-estate,finance",
+    "finance,tools",
+    "entertainment",
+    "entertainment",
+    "entertainment",
+    "entertainment,tools",
+    "sports,scraping",
+    "tools",
+    "maps,travel",
+    "entertainment",
+    "travel,blog",
+    "entertainment,finance",
+    "education,visualization",
+    "history,visualization",
+    "education"
+  ),
+  project_type = c(
+    "analysis","analysis","app","analysis","analysis","analysis","app","analysis","tool","analysis","analysis","blog","analysis","analysis","analysis","tutorial"
+  ),
+  stringsAsFactors = FALSE
 )
 
-html <- '<div class="project-grid">'
-for (card in cards) {
+all_tags <- unique(unlist(strsplit(cards$tags, ",")))
+all_tags <- sort(trimws(all_tags))
+
+esc <- function(x) htmltools::htmlEscape(x, attribute = TRUE)
+
+controls <- '<div class="project-controls">'
+controls <- paste0(controls, '<input id="project-search" type="search" placeholder="Search projects..." aria-label="Search projects">')
+controls <- paste0(controls, '<select id="project-type" aria-label="Filter by project type"><option value="all">All Types</option><option value="analysis">Analysis</option><option value="app">App</option><option value="tool">Tool</option><option value="blog">Blog</option><option value="tutorial">Tutorial</option></select>')
+controls <- paste0(controls, '<div class="project-filter-buttons" role="group" aria-label="Filter projects by tag">')
+controls <- paste0(controls, '<button type="button" class="filter-btn active" data-tag="all" aria-pressed="true">All</button>')
+for (tag in all_tags) {
+  label <- tools::toTitleCase(gsub("-", " ", tag))
+  controls <- paste0(controls, sprintf(
+    '<button type="button" class="filter-btn" data-tag="%s" aria-pressed="false">%s</button>',
+    esc(tag), esc(label)
+  ))
+}
+controls <- paste0(controls, '</div></div>')
+
+html <- paste0(controls, '<div class="project-grid" id="project-grid">')
+for (i in seq_len(nrow(cards))) {
+  tag_label <- gsub(",", " • ", cards$tags[i])
   html <- paste0(html, sprintf(
-    '<a class="project-card" href="%s"><div class="card-icon">%s</div><h3>%s</h3><p>%s</p></a>',
-    card[[1]], card[[2]], card[[3]], card[[4]]
+    '<a class="project-card" href="%s" data-tags="%s" data-type="%s" data-title="%s" data-desc="%s"><div class="card-icon">%s</div><h3>%s</h3><p>%s</p><div class="project-meta">%s • %s</div></a>',
+    esc(cards$href[i]), esc(cards$tags[i]), esc(cards$project_type[i]),
+    esc(tolower(cards$title[i])), esc(tolower(cards$description[i])),
+    cards$icon[i], esc(cards$title[i]), esc(cards$description[i]),
+    esc(cards$project_type[i]), esc(tag_label)
   ))
 }
 html <- paste0(html, '</div>')
+html <- paste0(html, '<p id="project-empty-state" class="project-empty-state" style="display:none;">No projects match your current filters.</p>')
+
+html <- paste0(html, '
+<script>
+(function () {
+  var activeTag = "all";
+  var searchInput = document.getElementById("project-search");
+  var typeInput = document.getElementById("project-type");
+  var buttons = document.querySelectorAll(".filter-btn");
+  var cards = document.querySelectorAll("#project-grid .project-card");
+  var emptyState = document.getElementById("project-empty-state");
+
+  function applyFilters() {
+    var query = (searchInput.value || "").toLowerCase().trim();
+    var activeType = typeInput.value || "all";
+    var visibleCount = 0;
+
+    cards.forEach(function(card) {
+      var tags = card.getAttribute("data-tags") || "";
+      var cardType = card.getAttribute("data-type") || "";
+      var haystack = (card.getAttribute("data-title") + " " + card.getAttribute("data-desc") + " " + tags).toLowerCase();
+      var tagMatch = activeTag === "all" || tags.split(",").indexOf(activeTag) >= 0;
+      var typeMatch = activeType === "all" || cardType === activeType;
+      var searchMatch = !query || haystack.indexOf(query) >= 0;
+      var visible = tagMatch && typeMatch && searchMatch;
+      card.style.display = visible ? "block" : "none";
+      if (visible) visibleCount += 1;
+    });
+    emptyState.style.display = visibleCount === 0 ? "block" : "none";
+  }
+
+  buttons.forEach(function(btn) {
+    btn.addEventListener("click", function() {
+      buttons.forEach(function(b) {
+        b.classList.remove("active");
+        b.setAttribute("aria-pressed", "false");
+      });
+      btn.classList.add("active");
+      btn.setAttribute("aria-pressed", "true");
+      activeTag = btn.getAttribute("data-tag");
+      applyFilters();
+    });
+  });
+
+  searchInput.addEventListener("input", applyFilters);
+  typeInput.addEventListener("change", applyFilters);
+  applyFilters();
+})();
+</script>')
+
 cat(html)
 ```
-
