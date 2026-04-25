@@ -1,0 +1,648 @@
+store_id,state,city,street,postal_code,phone,lat,lon,url,scraped_at
+737,AL,Birmingham,"205 Summit Blvd, Suite 100",35243,205-969-7801,33.44651,-86.72929,https://locations.traderjoes.com/al/birmingham/737/,2026-04-24
+838,AL,Hoover,1769 Montgomery Hwy,35244,205-202-7715,33.3783,-86.80402,https://locations.traderjoes.com/al/hoover/838/,2026-04-24
+785,AL,Huntsville,1100 Mid City Dr NW,35806,256-890-7156,34.74014,-86.66557,https://locations.traderjoes.com/al/huntsville/785/,2026-04-24
+756,AR,Little Rock,11500 Financial Centre Pky,72211,501-954-7659,34.74829,-92.40185,https://locations.traderjoes.com/ar/little-rock/756/,2026-04-24
+287,AZ,Chandler,3961 S Arizona Ave,85248,520-453-3452,33.24914,-111.83819,https://locations.traderjoes.com/az/chandler/287/,2026-04-24
+285,AZ,Gilbert,1779 E. Williams Field Rd.,85295,480-857-9878,33.30605,-111.75164,https://locations.traderjoes.com/az/gilbert/285/,2026-04-24
+85,AZ,Glendale,8078 W Bell Rd,85308,928-397-9921,33.64006,-112.23115,https://locations.traderjoes.com/az/glendale/85/,2026-04-24
+289,AZ,Goodyear,N Bullard Ave & McDowell Rd,85395,480-712-6645,33.46454,-112.37541,https://locations.traderjoes.com/az/goodyear/289/,2026-04-24
+89,AZ,Mesa,2050 E Baseline Rd,85204,480-632-0951,33.38097,-111.78708,https://locations.traderjoes.com/az/mesa/89/,2026-04-24
+96,AZ,Oro Valley,7912 N Oracle,85704,520-797-4207,32.35051,-110.97318,https://locations.traderjoes.com/az/oro-valley/96/,2026-04-24
+177,AZ,Phoenix,"4025 E Chandler Blvd, Ste 38",85048,480-759-2293,33.30313,-111.99487,https://locations.traderjoes.com/az/phoenix/177/,2026-04-24
+282,AZ,Phoenix,4726 East Shea Blvd,85028,602-485-7788,33.58331,-111.97903,https://locations.traderjoes.com/az/phoenix/282/,2026-04-24
+90,AZ,Phoenix,4821 N 20th St,85016,602-912-9022,33.50712,-112.03781,https://locations.traderjoes.com/az/phoenix/90/,2026-04-24
+283,AZ,Prescott,252 N Lee Blvd,86303,928-443-9075,34.54866,-112.40535,https://locations.traderjoes.com/az/prescott/283/,2026-04-24
+286,AZ,Queen Creek,21186 S. Ellsworth Loop Rd,85142,480-877-7213,33.25605,-111.64026,https://locations.traderjoes.com/az/queen-creek/286/,2026-04-24
+87,AZ,Scottsdale,7555 E Frank Lloyd Wright,85260,480-367-8920,33.63586,-111.91713,https://locations.traderjoes.com/az/scottsdale/87/,2026-04-24
+94,AZ,Scottsdale,6202 N Scottsdale Rd,85253,480-948-9886,33.52944,-111.92758,https://locations.traderjoes.com/az/scottsdale/94/,2026-04-24
+92,AZ,Surprise,14095 W Grand Ave,85374,623-546-1640,33.65138,-112.3674,https://locations.traderjoes.com/az/surprise/92/,2026-04-24
+91,AZ,Tempe,940 E. University Drive,85281,480-303-9974,33.42239,-111.92502,https://locations.traderjoes.com/az/tempe/91/,2026-04-24
+93,AZ,Tempe,6460 S McClintock Dr,85283,480-838-4142,33.36181,-111.91225,https://locations.traderjoes.com/az/tempe/93/,2026-04-24
+191,AZ,Tucson,4209 N Campbell Ave,85719,520-325-0069,32.2835,-110.9448,https://locations.traderjoes.com/az/tucson/191/,2026-04-24
+288,AZ,Tucson,2150 E Broadway Blvd,85719,NA,32.22113,-110.94,https://locations.traderjoes.com/az/tucson/288/,2026-04-24
+88,AZ,Tucson,4766 E Grant Rd,85712,520-323-4500,32.24978,-110.89094,https://locations.traderjoes.com/az/tucson/88/,2026-04-24
+95,AZ,Tucson,"1101 N Wilmot Rd, Ste 147",85712,520-733-1313,32.23717,-110.85892,https://locations.traderjoes.com/az/tucson/95/,2026-04-24
+247,CA,Agoura Hills,28941 Canwood St,91301,818-865-8217,34.14644,-118.75665,https://locations.traderjoes.com/ca/agoura-hills/247/,2026-04-24
+109,CA,Alameda,2217 South Shore Ctr,94501,510-769-5450,37.75778,-122.25148,https://locations.traderjoes.com/ca/alameda/109/,2026-04-24
+195,CA,Aliso Viejo,26541 Aliso Creek Rd,92656,949-643-5531,33.57749,-117.72478,https://locations.traderjoes.com/ca/aliso-viejo/195/,2026-04-24
+295,CA,Anaheim Hills,6336 E Santa Ana Canyon Rd,92807,NA,33.85617,-117.77096,https://locations.traderjoes.com/ca/anaheim-hills/295/,2026-04-24
+117,CA,Arroyo Grande,955 Rancho Pkwy,93420,805-474-6114,35.1257,-120.59405,https://locations.traderjoes.com/ca/arroyo-grande/117/,2026-04-24
+14,CA,Bakersfield,8200 Stockdale Hwy,93311,661-837-8863,35.35702,-119.09353,https://locations.traderjoes.com/ca/bakersfield/14/,2026-04-24
+186,CA,Berkeley,1885 University Ave,94703,510-204-9074,37.87193,-122.27331,https://locations.traderjoes.com/ca/berkeley/186/,2026-04-24
+11,CA,Brea,2500 E Imperial Hwy,92821,714-257-1180,33.91057,-117.87002,https://locations.traderjoes.com/ca/brea/11/,2026-04-24
+201,CA,Brentwood,5451 Lone Tree Way,94513,925-516-3044,37.96115,-121.75011,https://locations.traderjoes.com/ca/brentwood/201/,2026-04-24
+124,CA,Burbank,214 E Alameda Ave,91502,818-848-4299,34.17496,-118.29886,https://locations.traderjoes.com/ca/burbank/124/,2026-04-24
+254,CA,Calabasas,23741 Calabasas Rd.,91302,818-591-6758,34.15567,-118.64498,https://locations.traderjoes.com/ca/calabasas/254/,2026-04-24
+114,CA,Camarillo,363 Carmen Dr,93010,805-388-1925,34.21985,-119.05322,https://locations.traderjoes.com/ca/camarillo/114/,2026-04-24
+73,CA,Campbell,1875 Bascom Ave,95008,408-369-7823,37.28796,-121.93328,https://locations.traderjoes.com/ca/campbell/73/,2026-04-24
+64,CA,Capitola,"3555 Clares St, #D",95010,831-464-0115,36.97854,-121.97015,https://locations.traderjoes.com/ca/capitola/64/,2026-04-24
+220,CA,Carlsbad,2629 Gateway Rd,92009,760-603-8473,33.12659,-117.25307,https://locations.traderjoes.com/ca/carlsbad/220/,2026-04-24
+84,CA,Castro Valley,22224 Redwood Road,94546,510-538-2738,37.68536,-122.073,https://locations.traderjoes.com/ca/castro-valley/84/,2026-04-24
+118,CA,Cathedral City,67720 E Palm Canyon Dr,92234,760-202-0090,33.7892,-116.48305,https://locations.traderjoes.com/ca/cathedral-city/118/,2026-04-24
+104,CA,Cerritos,12861 Towne Center Dr,90703,562-402-5148,33.86924,-118.05813,https://locations.traderjoes.com/ca/cerritos/104/,2026-04-24
+184,CA,Chatsworth,10330 Mason Ave,91311,818-341-3010,34.25826,-118.5788,https://locations.traderjoes.com/ca/chatsworth/184/,2026-04-24
+199,CA,Chico,"801 East Ave, Ste 110",95926,530-343-9920,39.75933,-121.84651,https://locations.traderjoes.com/ca/chico/199/,2026-04-24
+216,CA,Chino Hills,13911 Peyton Drive,91709,909-627-1404,34.00054,-117.73211,https://locations.traderjoes.com/ca/chino-hills/216/,2026-04-24
+120,CA,Chula Vista,"878 Eastlake Pkwy, Ste 810",91914,619-656-5370,32.65132,-116.97039,https://locations.traderjoes.com/ca/chula-vista/120/,2026-04-24
+214,CA,Claremont,475 W Foothill Blvd,91711,909-625-8784,34.10739,-117.72203,https://locations.traderjoes.com/ca/claremont/214/,2026-04-24
+180,CA,Clovis,1077 N Willow Ave,93611,559-325-3120,36.84933,-119.72804,https://locations.traderjoes.com/ca/clovis/180/,2026-04-24
+60,CA,Concord,1150 Concord Ave,94520,925-689-2990,37.97922,-122.0564,https://locations.traderjoes.com/ca/concord/60/,2026-04-24
+83,CA,Concord,785 Oak Grove Rd,94518,925-521-1134,37.93683,-122.02474,https://locations.traderjoes.com/ca/concord/83/,2026-04-24
+213,CA,Corona,2790 Cabot Dr,92883,951-603-0299,33.81149,-117.50656,https://locations.traderjoes.com/ca/corona/213/,2026-04-24
+290,CA,Costa Mesa,"2170 Harbor Blvd, Ste 100",92627,949-208-7420,33.65326,-117.9191,https://locations.traderjoes.com/ca/costa-mesa/290/,2026-04-24
+35,CA,Costa Mesa,640 W 17th St,92627,949-642-5134,33.63679,-117.92458,https://locations.traderjoes.com/ca/costa-mesa/35/,2026-04-24
+251,CA,Culver City,6150 Slauson Ave,90230,310-313-0441,33.98801,-118.39285,https://locations.traderjoes.com/ca/culver-city/251/,2026-04-24
+36,CA,Culver City,9290 Culver Blvd,90232,310-202-1108,34.02523,-118.39299,https://locations.traderjoes.com/ca/culver-city/36/,2026-04-24
+242,CA,Cypress,5245 Katella Ave.,90720,714-220-4930,33.80321,-118.04149,https://locations.traderjoes.com/ca/cypress/242/,2026-04-24
+74,CA,Daly City,417 Westlake Center,94015,650-755-3825,37.7,-122.48224,https://locations.traderjoes.com/ca/daly-city/74/,2026-04-24
+65,CA,Danville,85 Railroad Ave,94526,925-838-5757,37.8231,-122.00323,https://locations.traderjoes.com/ca/danville/65/,2026-04-24
+182,CA,Davis,885 Russell Blvd,95616,530-757-2693,38.54673,-121.76149,https://locations.traderjoes.com/ca/davis/182/,2026-04-24
+55,CA,Eagle Rock,1566 Colorado Blvd,90041,323-257-6422,34.13926,-118.20044,https://locations.traderjoes.com/ca/eagle-rock/55/,2026-04-24
+108,CA,El Cerrito,225 El Cerrito Plaza,94530,510-524-7609,37.89891,-122.29982,https://locations.traderjoes.com/ca/el-cerrito/108/,2026-04-24
+190,CA,Elk Grove,9670 Bruceville Road,95757,916-686-9980,38.4066,-121.42053,https://locations.traderjoes.com/ca/elk-grove/190/,2026-04-24
+72,CA,Emeryville,5700 Christie Ave,94608,510-658-8091,37.83698,-122.29423,https://locations.traderjoes.com/ca/emeryville/72/,2026-04-24
+25,CA,Encinitas,"115 N El Camino Real, Ste A",92024,760-634-2114,33.0471,-117.25581,https://locations.traderjoes.com/ca/encinitas/25/,2026-04-24
+56,CA,Encino,17640 Burbank Blvd,91316,818-990-7751,34.17179,-118.51777,https://locations.traderjoes.com/ca/encino/56/,2026-04-24
+105,CA,Escondido,1885 S Centre City Pkwy,92025,760-233-4020,33.10002,-117.07483,https://locations.traderjoes.com/ca/escondido/105/,2026-04-24
+71,CA,Fair Oaks,5309 Sunrise Blvd,95628,916-863-1744,38.66207,-121.27387,https://locations.traderjoes.com/ca/fair-oaks/71/,2026-04-24
+101,CA,Fairfield,"1350 Gateway Blvd, Ste A1-A7",94533,707-434-0144,38.26415,-122.05223,https://locations.traderjoes.com/ca/fairfield/101/,2026-04-24
+172,CA,Folsom,850 East Bidwell,95630,916-817-8820,38.67244,-121.15591,https://locations.traderjoes.com/ca/folsom/172/,2026-04-24
+77,CA,Fremont,39324 Argonaut Way,94538,510-794-1386,37.54347,-121.98615,https://locations.traderjoes.com/ca/fremont/77/,2026-04-24
+8,CA,Fresno,8478 N. Friant Road,93720,559-433-6478,36.8588,-119.78265,https://locations.traderjoes.com/ca/fresno/8/,2026-04-24
+53,CA,Glendale,103 E Glenoaks Blvd,91207,818-507-8192,34.15984,-118.25454,https://locations.traderjoes.com/ca/glendale/53/,2026-04-24
+110,CA,Goleta,5767 Calle Real,93117,805-692-2234,34.44069,-119.82524,https://locations.traderjoes.com/ca/goleta/110/,2026-04-24
+44,CA,Granada Hills,11114 Balboa Blvd,91344,818-368-6461,34.27266,-118.50161,https://locations.traderjoes.com/ca/granada-hills/44/,2026-04-24
+235,CA,Greenbrae,2052 Redwood Hwy,94904,415-945-7955,37.93786,-122.51496,https://locations.traderjoes.com/ca/greenbrae/235/,2026-04-24
+248,CA,Hermosa Beach,1100 Pacific Coast Hwy,90254,310-318-1767,33.86388,-118.39157,https://locations.traderjoes.com/ca/hermosa-beach/248/,2026-04-24
+241,CA,Huntington Beach,21431 Brookhurst St,92646,714-968-4070,33.65184,-117.95413,https://locations.traderjoes.com/ca/huntington-beach/241/,2026-04-24
+244,CA,Huntington Beach,16821 Algonquin St,92649,714-846-7307,33.71752,-118.05145,https://locations.traderjoes.com/ca/huntington-beach/244/,2026-04-24
+47,CA,Huntington Beach,18681 Main St,92648,714-848-9640,33.69253,-117.99272,https://locations.traderjoes.com/ca/huntington-beach/47/,2026-04-24
+111,CA,Irvine,4225 Campus Dr,92612,949-509-6138,33.65047,-117.83751,https://locations.traderjoes.com/ca/irvine/111/,2026-04-24
+210,CA,Irvine,6222 Irvine Blvd,92620,949-551-6402,33.69987,-117.74186,https://locations.traderjoes.com/ca/irvine/210/,2026-04-24
+37,CA,Irvine,14443 Culver Dr,92604,949-857-8108,33.70616,-117.78842,https://locations.traderjoes.com/ca/irvine/37/,2026-04-24
+42,CA,La Canada,475 Foothill Blvd,91011,818-790-6373,34.20004,-118.18842,https://locations.traderjoes.com/ca/la-canada/42/,2026-04-24
+5,CA,La Habra,"2101 W. Imperial Hwy, Suite A",90631,562-266-1428,33.91869,-117.96902,https://locations.traderjoes.com/ca/la-habra/5/,2026-04-24
+20,CA,La Jolla,8657 Villa la Jolla Dr,92037,858-546-8629,32.86575,-117.23173,https://locations.traderjoes.com/ca/la-jolla/20/,2026-04-24
+24,CA,La Mesa,5495 Grossmont Center Dr,91942,619-466-0105,32.7793,-117.00561,https://locations.traderjoes.com/ca/la-mesa/24/,2026-04-24
+189,CA,La Quinta,46400 Washington St,92253,760-777-1553,33.71199,-116.29427,https://locations.traderjoes.com/ca/la-quinta/189/,2026-04-24
+277,CA,La Verne,2330 Foothill Blvd,91750,909-901-4568,34.11054,-117.76157,https://locations.traderjoes.com/ca/la-verne/277/,2026-04-24
+257,CA,Ladera Ranch,27542 Antonio Pkwy,92694,949-239-6429,33.56288,-117.62755,https://locations.traderjoes.com/ca/ladera-ranch/257/,2026-04-24
+115,CA,Lafayette,3649 Mt Diablo Blvd,94549,925-299-9344,37.89024,-122.12697,https://locations.traderjoes.com/ca/lafayette/115/,2026-04-24
+39,CA,Laguna Hills,"24231 Avenida De La Carlota, Suite 100",92653,949-461-0927,33.60986,-117.703,https://locations.traderjoes.com/ca/laguna-hills/39/,2026-04-24
+103,CA,Laguna Niguel,32351 Street of the Golden Lantern,92677,949-493-8599,33.49297,-117.69665,https://locations.traderjoes.com/ca/laguna-niguel/103/,2026-04-24
+208,CA,Livermore,1122 A East Stanley Blvd,94550,925-243-1947,37.68035,-121.78169,https://locations.traderjoes.com/ca/livermore/208/,2026-04-24
+116,CA,Long Beach,4210 Long Beach Blvd,90807,562-422-1020,33.83554,-118.18844,https://locations.traderjoes.com/ca/long-beach/116/,2026-04-24
+194,CA,Long Beach,2222 North Bellflower Blvd,90815,562-596-2514,33.79678,-118.1229,https://locations.traderjoes.com/ca/long-beach/194/,2026-04-24
+43,CA,Long Beach,6451 E Pacific Coast  Hwy,90803,562-596-4388,33.75766,-118.10893,https://locations.traderjoes.com/ca/long-beach/43/,2026-04-24
+127,CA,Los Altos,2310 Homestead Rd,94024,408-245-1917,37.33671,-122.06705,https://locations.traderjoes.com/ca/los-altos/127/,2026-04-24
+119,CA,Los Angeles,3456 S Sepulveda Blvd,90034,310-836-2458,34.02048,-118.42211,https://locations.traderjoes.com/ca/los-angeles/119/,2026-04-24
+17,CA,Los Angeles,2738 Hyperion Ave,90027,323-665-6774,34.10764,-118.27157,https://locations.traderjoes.com/ca/los-angeles/17/,2026-04-24
+192,CA,Los Angeles,8000 W Sunset Blvd,90046,323-822-7663,34.0976,-118.36523,https://locations.traderjoes.com/ca/los-angeles/192/,2026-04-24
+206,CA,Los Angeles,1600 N Vine St,90028,323-856-0689,34.10038,-118.32606,https://locations.traderjoes.com/ca/los-angeles/206/,2026-04-24
+215,CA,Los Angeles,11755 Olympic Blvd,90064,310-477-5949,34.03372,-118.44931,https://locations.traderjoes.com/ca/los-angeles/215/,2026-04-24
+234,CA,Los Angeles,1000 Glendon Ave,90024,310-824-1495,34.06227,-118.44377,https://locations.traderjoes.com/ca/los-angeles/234/,2026-04-24
+237,CA,Los Angeles,8500 Burton Way,90048,310-248-2984,34.07117,-118.37707,https://locations.traderjoes.com/ca/los-angeles/237/,2026-04-24
+240,CA,Los Angeles,175 South Fairfax Ave,90036,323-931-4012,34.07221,-118.36178,https://locations.traderjoes.com/ca/los-angeles/240/,2026-04-24
+250,CA,Los Angeles,"3131 S Hoover Street, Suite 1920",90089,213-749-1497,34.02608,-118.28466,https://locations.traderjoes.com/ca/los-angeles/250/,2026-04-24
+31,CA,Los Angeles,263 S La Brea Ave,90036,323-965-1989,34.06915,-118.34442,https://locations.traderjoes.com/ca/los-angeles/31/,2026-04-24
+7,CA,Los Angeles,10850 National Blvd,90064,310-470-1917,34.03006,-118.42148,https://locations.traderjoes.com/ca/los-angeles/7/,2026-04-24
+181,CA,Los Gatos,15466 Los Gatos Blvd,95032,408-356-2324,37.24412,-121.95793,https://locations.traderjoes.com/ca/los-gatos/181/,2026-04-24
+106,CA,Manhattan Beach,1800 Rosecrans Blvd,90266,310-725-9800,33.90047,-118.38043,https://locations.traderjoes.com/ca/manhattan-beach/106/,2026-04-24
+34,CA,Manhattan Beach,1821 Manhattan Beach Blvd,90266,310-372-1274,33.88764,-118.37989,https://locations.traderjoes.com/ca/manhattan-beach/34/,2026-04-24
+261,CA,Marina,150 10th St,93933,831-281-7247,36.66459,-121.81169,https://locations.traderjoes.com/ca/marina/261/,2026-04-24
+205,CA,Marina Del Rey,4675 Admiralty Way,90292,310-301-4461,33.97956,-118.44123,https://locations.traderjoes.com/ca/marina-del-rey/205/,2026-04-24
+69,CA,Menlo Park,720 Menlo Ave,94025,650-323-2134,37.45122,-122.18352,https://locations.traderjoes.com/ca/menlo-park/69/,2026-04-24
+170,CA,Millbrae,765 Broadway,94030,650-259-9142,37.60365,-122.39603,https://locations.traderjoes.com/ca/millbrae/170/,2026-04-24
+229,CA,Milpitas,1306 Great Mall Pkwy,95035,408-942-6957,37.41241,-121.89969,https://locations.traderjoes.com/ca/milpitas/229/,2026-04-24
+126,CA,Mission Viejo,25410 Marguerite Pkwy,92692,949-581-5638,33.59305,-117.65843,https://locations.traderjoes.com/ca/mission-viejo/126/,2026-04-24
+9,CA,Modesto,3250 Dale Road,95356,209-491-0445,37.68717,-121.04941,https://locations.traderjoes.com/ca/modesto/9/,2026-04-24
+112,CA,Monrovia,604 W Huntington Dr,91016,626-358-8884,34.13985,-118.01223,https://locations.traderjoes.com/ca/monrovia/112/,2026-04-24
+204,CA,Monterey,"570 Munras Ave, Ste 20",93940,831-372-2010,36.59656,-121.89435,https://locations.traderjoes.com/ca/monterey/204/,2026-04-24
+52,CA,Montrose,2462 Honolulu Ave,91020,818-957-3613,34.20699,-118.23315,https://locations.traderjoes.com/ca/montrose/52/,2026-04-24
+202,CA,Morgan Hill,17035 Laurel Rd,95037,408-778-6409,37.13114,-121.6382,https://locations.traderjoes.com/ca/morgan-hill/202/,2026-04-24
+81,CA,Mountain View,590 Showers Dr,94040,650-917-1013,37.40208,-122.11076,https://locations.traderjoes.com/ca/mountain-view/81/,2026-04-24
+258,CA,Murrieta,40388 Murrieta Hot Springs Rd,92563,951-528-5115,33.55393,-117.17601,https://locations.traderjoes.com/ca/murrieta/258/,2026-04-24
+128,CA,Napa,3654 Bel Aire Plaza,94558,707-256-0806,38.3228,-122.30584,https://locations.traderjoes.com/ca/napa/128/,2026-04-24
+125,CA,Newport Beach,8086 E Pacific Coast Hwy,92657,949-494-7404,33.56818,-117.83242,https://locations.traderjoes.com/ca/newport-beach/125/,2026-04-24
+252,CA,North Hollywood,"6130 Laurel Canyon Bl, Suite 100",91606,818-762-2963,34.18217,-118.39578,https://locations.traderjoes.com/ca/north-hollywood/252/,2026-04-24
+312,CA,Northridge,9224 Reseda Blvd,91325,747-245-4766,34.23803,-118.5357,https://locations.traderjoes.com/ca/northridge/312/,2026-04-24
+198,CA,Novato,7514 Redwood Blvd,94945,415-898-9359,38.11185,-122.56812,https://locations.traderjoes.com/ca/novato/198/,2026-04-24
+203,CA,Oakland,3250 Lakeshore Ave,94610,510-238-9076,37.80974,-122.24425,https://locations.traderjoes.com/ca/oakland/203/,2026-04-24
+231,CA,Oakland,5727 College Ave,94618,510-923-9428,37.84556,-122.25281,https://locations.traderjoes.com/ca/oakland/231/,2026-04-24
+22,CA,Oceanside,2570 Vista Way,92054,760-433-9994,33.18411,-117.33194,https://locations.traderjoes.com/ca/oceanside/22/,2026-04-24
+46,CA,Orange,2114 N Tustin St,92865,714-283-5697,33.82344,-117.83655,https://locations.traderjoes.com/ca/orange/46/,2026-04-24
+79,CA,Pacific Grove,1170 Forest Ave,93950,831-656-0180,36.60558,-121.92193,https://locations.traderjoes.com/ca/pacific-grove/79/,2026-04-24
+3,CA,Palm Desert,44250 Town Center Way,92260,760-340-2291,33.72746,-116.39661,https://locations.traderjoes.com/ca/palm-desert/3/,2026-04-24
+185,CA,Palmdale,39507 10th St W,93551,661-947-2890,34.60031,-118.1493,https://locations.traderjoes.com/ca/palmdale/185/,2026-04-24
+207,CA,Palo Alto,855 El Camino Real,94301,650-327-7018,37.43843,-122.15775,https://locations.traderjoes.com/ca/palo-alto/207/,2026-04-24
+171,CA,Pasadena,467 N Rosemead Blvd,91107,626-351-3399,34.1537,-118.0782,https://locations.traderjoes.com/ca/pasadena/171/,2026-04-24
+179,CA,Pasadena,345 S Lake Ave,91101,626-395-9553,34.14005,-118.13291,https://locations.traderjoes.com/ca/pasadena/179/,2026-04-24
+32,CA,Pasadena,3035 E Huntington Dr,91107,626-356-2963,34.12789,-118.08948,https://locations.traderjoes.com/ca/pasadena/32/,2026-04-24
+51,CA,Pasadena,610 S Arroyo Pkwy,91105,626-568-9254,34.13514,-118.14687,https://locations.traderjoes.com/ca/pasadena/51/,2026-04-24
+291,CA,Paso Robles,2457 Golden Hill Rd,93446,NA,35.63546,-120.6581,https://locations.traderjoes.com/ca/paso-robles/291/,2026-04-24
+107,CA,Petaluma,169 N McDowell Blvd,94954,707-769-2782,38.24804,-122.62801,https://locations.traderjoes.com/ca/petaluma/107/,2026-04-24
+230,CA,Pinole,2742 Pinole Valley Rd,94564,510-222-3501,37.99527,-122.28674,https://locations.traderjoes.com/ca/pinole/230/,2026-04-24
+66,CA,Pleasanton,3903 Santa Rita Road,94588,925-468-0763,37.69679,-121.87689,https://locations.traderjoes.com/ca/pleasanton/66/,2026-04-24
+265,CA,Poway,13644 Poway Rd,92064,858-294-6131,32.95795,-117.03546,https://locations.traderjoes.com/ca/poway/265/,2026-04-24
+217,CA,Rancho Cucamonga,6401 Haven Ave,91737,909-476-1410,34.13774,-117.57414,https://locations.traderjoes.com/ca/rancho-cucamonga/217/,2026-04-24
+233,CA,Rancho Palos Verdes,31176 Hawthorne Blvd,90275,310-544-1727,33.74933,-118.40668,https://locations.traderjoes.com/ca/rancho-palos-verdes/233/,2026-04-24
+57,CA,Rancho Palos Verdes,28901 S Western Ave,90275,310-832-1241,33.75595,-118.31076,https://locations.traderjoes.com/ca/rancho-palos-verdes/57/,2026-04-24
+27,CA,Rancho Santa Margarita,30652 Santa Margarita Pkwy,92688,949-888-3640,33.6425,-117.59535,https://locations.traderjoes.com/ca/rancho-santa-margarita/27/,2026-04-24
+219,CA,Redding,845 Browning St,96003,530-223-4875,40.5917,-122.35711,https://locations.traderjoes.com/ca/redding/219/,2026-04-24
+99,CA,Redlands,552 Orange St,92374,909-798-3888,34.06063,-117.18117,https://locations.traderjoes.com/ca/redlands/99/,2026-04-24
+38,CA,Redondo Bch.,1761 S Elena Ave,90277,310-316-1745,33.81856,-118.38614,https://locations.traderjoes.com/ca/redondo-bch-/38/,2026-04-24
+15,CA,Riverside,6225 Riverside Plaza,92506,951-781-2378,33.95593,-117.38848,https://locations.traderjoes.com/ca/riverside/15/,2026-04-24
+228,CA,Rocklin,"5116 Commons Dr., #103",95677,916-660-9820,38.80287,-121.20924,https://locations.traderjoes.com/ca/rocklin/228/,2026-04-24
+266,CA,Roseville,10261 Fairway Dr,95678,279-217-4579,38.78762,-121.28168,https://locations.traderjoes.com/ca/roseville/266/,2026-04-24
+80,CA,Roseville,1117 Roseville Square,95678,916-784-9084,38.74629,-121.27489,https://locations.traderjoes.com/ca/roseville/80/,2026-04-24
+18,CA,S. Pasadena,613 Mission St,91030,626-441-6263,34.1153,-118.16297,https://locations.traderjoes.com/ca/s-pasadena/18/,2026-04-24
+175,CA,Sacramento,5000 Folsom Blvd,95819,916-456-1853,38.5604,-121.44481,https://locations.traderjoes.com/ca/sacramento/175/,2026-04-24
+70,CA,Sacramento,2625 Marconi Ave,95821,916-481-8797,38.6186,-121.40017,https://locations.traderjoes.com/ca/sacramento/70/,2026-04-24
+174,CA,San Carlos,1482 El Camino Real,94070,650-594-2138,37.49639,-122.24857,https://locations.traderjoes.com/ca/san-carlos/174/,2026-04-24
+16,CA,San Clemente,638 Camino de Los Mares,92673,949-240-9996,33.45743,-117.65174,https://locations.traderjoes.com/ca/san-clemente/16/,2026-04-24
+188,CA,San Diego,2401 Truxtun Rd,92106,619-758-9272,32.73596,-117.21729,https://locations.traderjoes.com/ca/san-diego/188/,2026-04-24
+21,CA,San Diego,1640 Garnet Ave,92109,858-581-9101,32.80054,-117.24065,https://locations.traderjoes.com/ca/san-diego/21/,2026-04-24
+221,CA,San Diego,9850 Hibert St,92131,858-549-9185,32.91449,-117.11517,https://locations.traderjoes.com/ca/san-diego/221/,2026-04-24
+222,CA,San Diego,1072 Camino Del Rio North,92108,619-297-0749,32.76616,-117.15517,https://locations.traderjoes.com/ca/san-diego/222/,2026-04-24
+223,CA,San Diego,13480 Highlands Place,92130,858-755-7130,32.96114,-117.1914,https://locations.traderjoes.com/ca/san-diego/223/,2026-04-24
+224,CA,San Diego,"5140 College Ave, Ste 119",92115,619-229-9092,32.77202,-117.07035,https://locations.traderjoes.com/ca/san-diego/224/,2026-04-24
+23,CA,San Diego,11955 Carmel Mountain Rd,92128,858-673-0526,32.98211,-117.07505,https://locations.traderjoes.com/ca/san-diego/23/,2026-04-24
+26,CA,San Diego,"1090 University Avenue, Ste G100-107",92103,619-296-3122,32.74988,-117.15382,https://locations.traderjoes.com/ca/san-diego/26/,2026-04-24
+28,CA,San Dimas,856 W Arrow Hwy,91773,909-305-4757,34.10349,-117.82121,https://locations.traderjoes.com/ca/san-dimas/28/,2026-04-24
+100,CA,San Francisco,3 Masonic Ave,94118,415-346-9964,37.78337,-122.44787,https://locations.traderjoes.com/ca/san-francisco/100/,2026-04-24
+19,CA,San Francisco,401 Bay St,94133,415-351-1013,37.80552,-122.41374,https://locations.traderjoes.com/ca/san-francisco/19/,2026-04-24
+200,CA,San Francisco,1095 Hyde St,94109,415-292-7665,37.79065,-122.41799,https://locations.traderjoes.com/ca/san-francisco/200/,2026-04-24
+225,CA,San Francisco,10 4th Street,94103,415-536-7801,37.78533,-122.40567,https://locations.traderjoes.com/ca/san-francisco/225/,2026-04-24
+226,CA,San Francisco,788 Laguna St,94102,415-718-0175,37.77811,-122.42626,https://locations.traderjoes.com/ca/san-francisco/226/,2026-04-24
+236,CA,San Francisco,265 Winston Dr,94132,415-665-1835,37.72665,-122.47631,https://locations.traderjoes.com/ca/san-francisco/236/,2026-04-24
+78,CA,San Francisco,555 9th St,94103,415-863-1292,37.77111,-122.40738,https://locations.traderjoes.com/ca/san-francisco/78/,2026-04-24
+212,CA,San Jose,635 Coleman Ave,95110,408-298-9731,37.34087,-121.90918,https://locations.traderjoes.com/ca/san-jose/212/,2026-04-24
+232,CA,San Jose,7250 Bollinger Rd,95129,408-873-7384,37.31179,-122.03091,https://locations.traderjoes.com/ca/san-jose/232/,2026-04-24
+62,CA,San Jose,5269 Prospect,95129,408-446-5055,37.29297,-121.99415,https://locations.traderjoes.com/ca/san-jose/62/,2026-04-24
+63,CA,San Jose,5353 Almaden Expressway #J-38,95118,408-264-8120,37.25156,-121.87923,https://locations.traderjoes.com/ca/san-jose/63/,2026-04-24
+249,CA,San Juan Capistrano,32151 Camino Capistrano,92675,949-496-4150,33.49605,-117.66362,https://locations.traderjoes.com/ca/san-juan-capistrano/249/,2026-04-24
+41,CA,San Luis Obispo,3977 Higuera Street,93401,805-783-2780,35.27891,-120.6645,https://locations.traderjoes.com/ca/san-luis-obispo/41/,2026-04-24
+245,CA,San Mateo,45 W Hillsdale Blvd,94403,650-286-1509,37.53543,-122.29828,https://locations.traderjoes.com/ca/san-mateo/245/,2026-04-24
+67,CA,San Mateo,1820-22 S Grant Street,94402,650-570-6140,37.55454,-122.30251,https://locations.traderjoes.com/ca/san-mateo/67/,2026-04-24
+61,CA,San Rafael,337 3rd St,94901,415-454-9530,37.96954,-122.51647,https://locations.traderjoes.com/ca/san-rafael/61/,2026-04-24
+246,CA,San Ramon,300 Market Place,94583,925-275-8140,37.76416,-121.95211,https://locations.traderjoes.com/ca/san-ramon/246/,2026-04-24
+113,CA,Santa Ana,3329 S Bristol St,92704,714-424-9304,33.70118,-117.88421,https://locations.traderjoes.com/ca/santa-ana/113/,2026-04-24
+183,CA,Santa Barbara,3025 De La Vina St,93105,805-563-7383,34.43896,-119.72895,https://locations.traderjoes.com/ca/santa-barbara/183/,2026-04-24
+59,CA,Santa Barbara,222 North Milpas Street,93103,805-560-1182,34.42503,-119.68151,https://locations.traderjoes.com/ca/santa-barbara/59/,2026-04-24
+13,CA,Santa Clarita,26517 Bouquet Canyon Rd,91350,661-263-3796,34.42857,-118.53828,https://locations.traderjoes.com/ca/santa-clarita/13/,2026-04-24
+263,CA,Santa Clarita,19037 Golden Valley Rd,91387,661-276-1430,34.39565,-118.46222,https://locations.traderjoes.com/ca/santa-clarita/263/,2026-04-24
+193,CA,Santa Cruz,700 Front St,95060,831-425-0140,36.97454,-122.0247,https://locations.traderjoes.com/ca/santa-cruz/193/,2026-04-24
+239,CA,Santa Maria,1303 S Bradley Rd,93454,805-925-1657,34.93802,-120.42133,https://locations.traderjoes.com/ca/santa-maria/239/,2026-04-24
+253,CA,Santa Monica,"2300 Wilshire Blvd, Ste 101",90403,310-264-2223,34.03337,-118.48047,https://locations.traderjoes.com/ca/santa-monica/253/,2026-04-24
+256,CA,Santa Monica,500 Broadway,90401,310-912-6877,34.01577,-118.49197,https://locations.traderjoes.com/ca/santa-monica/256/,2026-04-24
+6,CA,Santa Monica,3212 Pico Blvd,90405,310-581-0253,34.02636,-118.45577,https://locations.traderjoes.com/ca/santa-monica/6/,2026-04-24
+178,CA,Santa Rosa,2100 Santa Rosa Ave,95407,707-535-0788,38.41752,-122.71205,https://locations.traderjoes.com/ca/santa-rosa/178/,2026-04-24
+75,CA,Santa Rosa,3225 Cleveland Ave,95403,707-525-1406,38.47355,-122.7323,https://locations.traderjoes.com/ca/santa-rosa/75/,2026-04-24
+260,CA,Santee,9680 Mission Gorge Rd,92071,619-812-3705,32.83978,-116.98621,https://locations.traderjoes.com/ca/santee/260/,2026-04-24
+267,CA,Sherman Oaks,14140 Riverside Dr,91423,747-245-6608,34.15733,-118.44132,https://locations.traderjoes.com/ca/sherman-oaks/267/,2026-04-24
+49,CA,Sherman Oaks,14119 Riverside Dr,91423,818-789-2771,34.15797,-118.44081,https://locations.traderjoes.com/ca/sherman-oaks/49/,2026-04-24
+30,CA,Simi Valley,2975-A Cochran St,93065,805-520-3135,34.2809,-118.73848,https://locations.traderjoes.com/ca/simi-valley/30/,2026-04-24
+4,CA,South Pasadena,1129 Fair Oaks Ave,91030,323-784-1840,34.1129,-118.15149,https://locations.traderjoes.com/ca/south-pasadena/4/,2026-04-24
+187,CA,South San Francisco,301 MC Lellan Dr,94080,650-583-6401,37.66474,-122.4461,https://locations.traderjoes.com/ca/south-san-francisco/187/,2026-04-24
+76,CA,Stockton,6535 Pacific Ave,95207,209-951-7597,38.00913,-121.32282,https://locations.traderjoes.com/ca/stockton/76/,2026-04-24
+122,CA,Studio City,11976 Ventura Blvd,91604,818-509-0168,34.14294,-118.39303,https://locations.traderjoes.com/ca/studio-city/122/,2026-04-24
+68,CA,Sunnyvale,316 West El Camino Real,94087,408-736-7573,37.36789,-122.03588,https://locations.traderjoes.com/ca/sunnyvale/68/,2026-04-24
+264,CA,Tarzana,18700 Ventura Blvd,91356,747-212-1646,34.17034,-118.54105,https://locations.traderjoes.com/ca/tarzana/264/,2026-04-24
+102,CA,Temecula,40665 Winchester Rd,92591,951-296-9964,33.52882,-117.15615,https://locations.traderjoes.com/ca/temecula/102/,2026-04-24
+211,CA,Templeton,1111 Rossi Road,93465,805-434-9562,35.54193,-120.71519,https://locations.traderjoes.com/ca/templeton/211/,2026-04-24
+196,CA,Thousand Oaks,451 Avenida De Los Arboles,91360,805-492-7107,34.21899,-118.86907,https://locations.traderjoes.com/ca/thousand-oaks/196/,2026-04-24
+243,CA,Thousand Oaks,125 N Reino Road,91320,805-375-1984,34.18009,-118.95383,https://locations.traderjoes.com/ca/thousand-oaks/243/,2026-04-24
+54,CA,Toluca Lake,10130 Riverside Dr,91602,818-762-2787,34.15191,-118.35193,https://locations.traderjoes.com/ca/toluca-lake/54/,2026-04-24
+121,CA,Torrance,19720 Hawthorne Blvd,90503,310-793-8585,33.85225,-118.35329,https://locations.traderjoes.com/ca/torrance/121/,2026-04-24
+29,CA,Torrance,2545 Pacific Coast Hwy,90505,310-326-9520,33.79064,-118.33019,https://locations.traderjoes.com/ca/torrance/29/,2026-04-24
+269,CA,Tracy,2530 Naglee Rd,95304,209-913-5511,37.75636,-121.46023,https://locations.traderjoes.com/ca/tracy/269/,2026-04-24
+197,CA,Tustin,1198 Irvine Blvd.,92780,714-505-3289,33.74647,-117.80962,https://locations.traderjoes.com/ca/tustin/197/,2026-04-24
+218,CA,Ventura,"103 S Mills Rd, Ste 104",93003,805-658-2664,34.27167,-119.24918,https://locations.traderjoes.com/ca/ventura/218/,2026-04-24
+45,CA,Ventura,1795 S. Victoria Ave,93003,805-650-9977,34.2572,-119.21183,https://locations.traderjoes.com/ca/ventura/45/,2026-04-24
+259,CA,Vista,1861 University Dr,92083,760-502-9816,33.17016,-117.21837,https://locations.traderjoes.com/ca/vista/259/,2026-04-24
+123,CA,Walnut Creek,1372 S California Blvd,94596,925-945-1674,37.89314,-122.06057,https://locations.traderjoes.com/ca/walnut-creek/123/,2026-04-24
+50,CA,West Hills,6751 Fallbrook Ave,91307,818-347-2591,34.19221,-118.62581,https://locations.traderjoes.com/ca/west-hills/50/,2026-04-24
+173,CA,West Hollywood,8611 Santa Monica Blvd,90069,310-657-0152,34.08799,-118.37956,https://locations.traderjoes.com/ca/west-hollywood/173/,2026-04-24
+40,CA,West Hollywood,7310 Santa Monica Blvd,90046,323-969-8048,34.09059,-118.34921,https://locations.traderjoes.com/ca/west-hollywood/40/,2026-04-24
+33,CA,Westchester,8645 S Sepulveda,90045,310-338-9238,33.95874,-118.39666,https://locations.traderjoes.com/ca/westchester/33/,2026-04-24
+58,CA,Westlake Village,3835 E Thousand Oaks Blvd,91362,805-494-5040,34.16391,-118.82587,https://locations.traderjoes.com/ca/westlake-village/58/,2026-04-24
+48,CA,Whittier,15025 E Whittier Blvd,90603,562-698-1642,33.94936,-118.00539,https://locations.traderjoes.com/ca/whittier/48/,2026-04-24
+209,CA,Woodland Hills,21055 Ventura Blvd,91364,818-712-9475,34.16726,-118.59231,https://locations.traderjoes.com/ca/woodland-hills/209/,2026-04-24
+176,CA,Yorba Linda,19655 Yorba Linda Blvd,92886,714-970-0116,33.88973,-117.79217,https://locations.traderjoes.com/ca/yorba-linda/176/,2026-04-24
+268,CA,Yucaipa,31545 Yucaipa Boulevard,92399,909-951-6154,34.02802,-117.11844,https://locations.traderjoes.com/ca/yucaipa/268/,2026-04-24
+301,CO,Boulder,1906 28th St,80301,303-443-0160,40.02027,-105.25784,https://locations.traderjoes.com/co/boulder/301/,2026-04-24
+305,CO,Colorado Springs,5342 N Nevada Ave,80918,719-264-0123,38.90728,-104.81728,https://locations.traderjoes.com/co/colorado-springs/305/,2026-04-24
+315,CO,Colorado Springs,5338 N Nevada Avenue,80918,719-266-6838,38.90716,-104.8169,https://locations.traderjoes.com/co/colorado-springs/315/,2026-04-24
+300,CO,Denver,750 N Colorado Blvd,80206,303-321-1003,39.72883,-104.94025,https://locations.traderjoes.com/co/denver/300/,2026-04-24
+302,CO,Denver,661 Logan Street,80203,303-318-7112,39.72686,-104.98279,https://locations.traderjoes.com/co/denver/302/,2026-04-24
+310,CO,Denver,790 N Colorado Blvd,80206,303-321-3245,39.72904,-104.94029,https://locations.traderjoes.com/co/denver/310/,2026-04-24
+304,CO,Fort Collins,"3500 S College Ave, Ste 110",80525,970-223-3560,40.53934,-105.07529,https://locations.traderjoes.com/co/fort-collins/304/,2026-04-24
+303,CO,Greenwood Village,"5910 S University Blvd, Suite E1",80121,303-730-3848,39.6092,-104.95735,https://locations.traderjoes.com/co/greenwood-village/303/,2026-04-24
+306,CO,Littleton,"8055 West Bowles Ave, Unit 3A",80123,720-981-4563,39.61172,-105.08881,https://locations.traderjoes.com/co/littleton/306/,2026-04-24
+309,CO,Parker,"18374 Cottonwood Drive, #150",80138,720-851-0549,39.55632,-104.77762,https://locations.traderjoes.com/co/parker/309/,2026-04-24
+308,CO,Westminster,9350 Sheridan Blvd,80031,720-710-5391,39.86678,-105.05118,https://locations.traderjoes.com/co/westminster/308/,2026-04-24
+525,CT,Danbury,113 Mill Plain Rd,06811,203-739-0098,41.39321,-73.5215,https://locations.traderjoes.com/ct/danbury/525/,2026-04-24
+522,CT,Darien,436 Boston Post Rd,06820,203-656-1414,41.08446,-73.46171,https://locations.traderjoes.com/ct/darien/522/,2026-04-24
+523,CT,Fairfield,2258 Black Rock Turnpike,06825,203-330-8301,41.18314,-73.25317,https://locations.traderjoes.com/ct/fairfield/523/,2026-04-24
+586,CT,Glastonbury,400 Hebron Ave,06033,860-633-9270,41.71347,-72.59982,https://locations.traderjoes.com/ct/glastonbury/586/,2026-04-24
+597,CT,Hamden,46 Skiff St,06517,475-293-3774,41.3752,-72.91363,https://locations.traderjoes.com/ct/hamden/597/,2026-04-24
+563,CT,Manchester,1510 Pleasant Valley Road,06042,860-644-3182,41.80675,-72.55765,https://locations.traderjoes.com/ct/manchester/563/,2026-04-24
+524,CT,Orange,560 Boston Post Rd,06477,203-795-5505,41.25081,-73.01887,https://locations.traderjoes.com/ct/orange/524/,2026-04-24
+587,CT,Shelton,775 Bridgeport Ave,06484,475-325-6306,41.27166,-73.12726,https://locations.traderjoes.com/ct/shelton/587/,2026-04-24
+529,CT,Stamford,1041 High Ridge Rd,06905,203-321-8440,41.1069,-73.54731,https://locations.traderjoes.com/ct/stamford/529/,2026-04-24
+526,CT,West Hartford,1489 New Britain Ave,06110,860-561-4771,41.72347,-72.75805,https://locations.traderjoes.com/ct/west-hartford/526/,2026-04-24
+521,CT,Westport,400 Post Road E,06880,203-226-8966,41.13984,-73.35194,https://locations.traderjoes.com/ct/westport/521/,2026-04-24
+620,DC,Washington,"2101 Wisconsin Ave NW, Suite A",20007,202-944-8403,38.91771,-77.06833,https://locations.traderjoes.com/dc/washington/620/,2026-04-24
+621,DC,Washington,350 Florida Ave. NE,20002,202-608-1023,38.90757,-77.0008,https://locations.traderjoes.com/dc/washington/621/,2026-04-24
+622,DC,Washington,750 Pennsylvania Ave SE,20003,202-698-0190,38.88529,-76.99523,https://locations.traderjoes.com/dc/washington/622/,2026-04-24
+653,DC,Washington,1101 25th Street NW,20037,202-296-1921,38.90409,-77.05302,https://locations.traderjoes.com/dc/washington/653/,2026-04-24
+662,DC,Washington,1914 14th St NW,20009,202-986-1591,38.91605,-77.03219,https://locations.traderjoes.com/dc/washington/662/,2026-04-24
+819,DC,Washington,5335 Wisconsin Ave NW,20015,227-229-0636,38.96015,-77.08512,https://locations.traderjoes.com/dc/washington/819/,2026-04-24
+820,DC,Washington,701 Monroe St NE,20017,202-677-7460,38.93217,-76.99591,https://locations.traderjoes.com/dc/washington/820/,2026-04-24
+759,DE,Newark,2500 Fashion Center Blvd.,19702,302-292-6825,39.67101,-75.64727,https://locations.traderjoes.com/de/newark/759/,2026-04-24
+636,DE,Wilmington,5605 Concord Pike,19803,302-478-8494,39.83383,-75.54173,https://locations.traderjoes.com/de/wilmington/636/,2026-04-24
+773,FL,Boca Raton,855 S Federal Hwy,33432,561-338-5031,26.34225,-80.08658,https://locations.traderjoes.com/fl/boca-raton/773/,2026-04-24
+780,FL,Bradenton,8111 Cooper Creek Blvd,34201,941-355-2394,27.39126,-82.45387,https://locations.traderjoes.com/fl/bradenton/780/,2026-04-24
+781,FL,Coral Gables,211 S. Dixie Highway,33133,305-442-5402,25.72926,-80.25809,https://locations.traderjoes.com/fl/coral-gables/781/,2026-04-24
+782,FL,Coral Springs,2796 N. University Drive,33065,954-227-3407,26.26505,-80.25016,https://locations.traderjoes.com/fl/coral-springs/782/,2026-04-24
+778,FL,Davie,2296 S University Dr,33324,954-512-2968,26.09284,-80.252,https://locations.traderjoes.com/fl/davie/778/,2026-04-24
+797,FL,Daytona Beach,1511 Cornerstone Blvd,32117,386-308-1218,29.21986,-81.09539,https://locations.traderjoes.com/fl/daytona-beach/797/,2026-04-24
+771,FL,Delray Beach,"1851 S Federal Hwy, Ste 500",33483,561-278-1493,26.43892,-80.0701,https://locations.traderjoes.com/fl/delray-beach/771/,2026-04-24
+776,FL,Fort Lauderdale,1560 N Federal Hwy,33304,954-537-3585,26.14812,-80.119,https://locations.traderjoes.com/fl/fort-lauderdale/776/,2026-04-24
+784,FL,Fort Myers,4983 S. Cleveland Avenue,33907,239-275-1712,26.58717,-81.86964,https://locations.traderjoes.com/fl/fort-myers/784/,2026-04-24
+764,FL,Gainesville,3724 SW Archer Rd,32608,352-378-9321,29.62328,-82.37998,https://locations.traderjoes.com/fl/gainesville/764/,2026-04-24
+769,FL,Jacksonville,11112 San Jose Blvd,32223,904-880-0582,30.17393,-81.6302,https://locations.traderjoes.com/fl/jacksonville/769/,2026-04-24
+760,FL,Jacksonville Beach,4180 S 3rd St,32250,904-241-1770,30.25699,-81.38981,https://locations.traderjoes.com/fl/jacksonville-beach/760/,2026-04-24
+848,FL,Melbourne,"2221 Town Center Ave, Ste 101",32940,321-338-3418,28.2413,-80.72811,https://locations.traderjoes.com/fl/melbourne/848/,2026-04-24
+770,FL,Miami,9205 S Dixie Hwy,33156,305-661-1432,25.68441,-80.31256,https://locations.traderjoes.com/fl/miami/770/,2026-04-24
+794,FL,Miami,3191 NE 1st Ave,33137,786-422-0606,25.80688,-80.19266,https://locations.traderjoes.com/fl/miami/794/,2026-04-24
+779,FL,Miami Beach,1683 West Ave,33139,305-534-4951,25.79179,-80.14216,https://locations.traderjoes.com/fl/miami-beach/779/,2026-04-24
+762,FL,Naples,10600 Tamiami Trail N,34108,239-596-5631,26.26813,-81.80053,https://locations.traderjoes.com/fl/naples/762/,2026-04-24
+768,FL,Orlando,8323 Sand Lake Rd,32819,407-345-0611,28.4503,-81.49659,https://locations.traderjoes.com/fl/orlando/768/,2026-04-24
+876,FL,Orlando,1444 North Alafaya Trail,32828,NA,28.56443,-81.20987,https://locations.traderjoes.com/fl/orlando/876/,2026-04-24
+772,FL,Palm Beach Gardens,2560 PGA Blvd,33410,561-514-6770,26.84378,-80.07418,https://locations.traderjoes.com/fl/palm-beach-gardens/772/,2026-04-24
+795,FL,Palm Harbor,33597 US Hwy 19 N,34684,727-436-4019,28.07817,-82.73845,https://locations.traderjoes.com/fl/palm-harbor/795/,2026-04-24
+775,FL,Pembroke Pines,11960 Pines Blvd,33026,954-432-0405,26.00585,-80.31078,https://locations.traderjoes.com/fl/pembroke-pines/775/,2026-04-24
+761,FL,Sarasota,4101 S Tamiami Trail,34231,941-922-5727,27.29476,-82.53002,https://locations.traderjoes.com/fl/sarasota/761/,2026-04-24
+767,FL,St. Petersburg,2742 4th St N,33704,727-824-0907,27.7974,-82.63883,https://locations.traderjoes.com/fl/st-petersburg/767/,2026-04-24
+763,FL,Tallahassee,"3425 Thomasville Rd, Unit 19",32309,850-894-2538,30.50323,-84.24986,https://locations.traderjoes.com/fl/tallahassee/763/,2026-04-24
+766,FL,Tampa,3808 W Swann Ave,33609,813-872-6846,27.93727,-82.50633,https://locations.traderjoes.com/fl/tampa/766/,2026-04-24
+774,FL,Wellington,2877 South State Rd 7,33414,561-656-1067,26.63776,-80.20411,https://locations.traderjoes.com/fl/wellington/774/,2026-04-24
+796,FL,West Palm Beach,8111 S Dixie Highway,33405,NA,26.64507,-80.05661,https://locations.traderjoes.com/fl/west-palm-beach/796/,2026-04-24
+765,FL,Winter Park,131 Orlando Ave.,32789,407-622-0874,28.59831,-81.36556,https://locations.traderjoes.com/fl/winter-park/765/,2026-04-24
+798,GA,Alpharetta,1605 Halcyon Days Trail,30005,470-762-3171,34.10897,-84.21863,https://locations.traderjoes.com/ga/alpharetta/798/,2026-04-24
+736,GA,Athens,"1850 Epps Bridge Pkwy, Ste 331",30606,706-583-8934,33.9156,-83.44368,https://locations.traderjoes.com/ga/athens/736/,2026-04-24
+730,GA,Atlanta,931 Monroe Dr,30308,404-815-9210,33.77875,-84.36702,https://locations.traderjoes.com/ga/atlanta/730/,2026-04-24
+735,GA,Atlanta,3183 Peachtree Rd,30305,404-842-0907,33.84095,-84.37499,https://locations.traderjoes.com/ga/atlanta/735/,2026-04-24
+806,GA,Johns Creek,1000 Medley Blvd,30097,NA,34.06499,-84.16222,https://locations.traderjoes.com/ga/johns-creek/806/,2026-04-24
+732,GA,Marietta,4250 Roswell Road,30062,678-560-3585,33.9833,-84.42633,https://locations.traderjoes.com/ga/marietta/732/,2026-04-24
+734,GA,Norcross,"5185 Peachtree Pkwy, Ste 101",30092,678-966-9236,33.97918,-84.21956,https://locations.traderjoes.com/ga/norcross/734/,2026-04-24
+800,GA,Peachtree City,258 City Circle,30269,404-907-2283,33.3958,-84.59379,https://locations.traderjoes.com/ga/peachtree-city/800/,2026-04-24
+733,GA,Roswell,635 W Crossville Rd,30075,770-645-8505,34.05934,-84.37963,https://locations.traderjoes.com/ga/roswell/733/,2026-04-24
+731,GA,Sandy Springs,6277 Roswell Road NE,30328,404-236-2414,33.92624,-84.3781,https://locations.traderjoes.com/ga/sandy-springs/731/,2026-04-24
+799,GA,Sandy Springs,4600 Roswell Rd,30342,770-678-7294,33.87969,-84.38159,https://locations.traderjoes.com/ga/sandy-springs/799/,2026-04-24
+728,IA,Coralville,920 Ponseti Way,52241,319-351-7223,41.68332,-91.56472,https://locations.traderjoes.com/ia/coralville/728/,2026-04-24
+721,IA,West Des Moines,"6305 Mills Civic Pkwy, Ste 2111",50266,515-225-3820,41.56156,-93.79336,https://locations.traderjoes.com/ia/west-des-moines/721/,2026-04-24
+360,ID,Boise,300 S Capitol Blvd,83702,208-336-7282,43.61303,-116.20371,https://locations.traderjoes.com/id/boise/360/,2026-04-24
+362,ID,Coeur d&#x27;Alene,303 E Spokane Ave,83814,208-214-8293,47.6879,-116.78145,https://locations.traderjoes.com/id/coeur-d-alene/362/,2026-04-24
+361,ID,Meridian,2986 N. Eagle RD.,83646,208-506-2978,43.6321,-116.35189,https://locations.traderjoes.com/id/meridian/361/,2026-04-24
+699,IL,Algonquin,1800 S Randall Rd,60102,847-854-4886,42.15344,-88.33983,https://locations.traderjoes.com/il/algonquin/699/,2026-04-24
+687,IL,Arlington Heights,17 W Rand Rd,60004,847-506-0752,42.11293,-87.98267,https://locations.traderjoes.com/il/arlington-heights/687/,2026-04-24
+689,IL,Batavia,1942 W Fabyan Pkwy,60510,630-879-3234,41.86387,-88.33849,https://locations.traderjoes.com/il/batavia/689/,2026-04-24
+688,IL,Chicago,3745 N Lincoln Ave,60613,773-248-4920,41.94989,-87.67514,https://locations.traderjoes.com/il/chicago/688/,2026-04-24
+691,IL,Chicago,1840 N Clybourn Ave,60614,312-274-9733,41.91449,-87.65498,https://locations.traderjoes.com/il/chicago/691/,2026-04-24
+696,IL,Chicago,44 E Ontario St,60611,312-951-6369,41.89343,-87.62631,https://locations.traderjoes.com/il/chicago/696/,2026-04-24
+701,IL,Chicago,1147 S Wabash Ave,60605,312-588-0489,41.86775,-87.62539,https://locations.traderjoes.com/il/chicago/701/,2026-04-24
+703,IL,Chicago,667 W Diversey Pkwy,60614,773-935-7255,41.93242,-87.64626,https://locations.traderjoes.com/il/chicago/703/,2026-04-24
+706,IL,Chicago,1528 E 55th Street,60615,773-363-8831,41.7964,-87.58838,https://locations.traderjoes.com/il/chicago/706/,2026-04-24
+683,IL,Downers Grove,122 Ogden Ave,60515,630-241-1662,41.81106,-87.98909,https://locations.traderjoes.com/il/downers-grove/683/,2026-04-24
+702,IL,Evanston,1211 Chicago Avenue,60202,847-733-0690,42.03978,-87.68003,https://locations.traderjoes.com/il/evanston/702/,2026-04-24
+680,IL,Glen Ellyn,680 Roosevelt Rd,60137,630-858-5077,41.86053,-88.05866,https://locations.traderjoes.com/il/glen-ellyn/680/,2026-04-24
+681,IL,Glenview,1407 Waukegan Rd,60025,847-657-7821,42.08097,-87.79719,https://locations.traderjoes.com/il/glenview/681/,2026-04-24
+685,IL,La Grange,25 N La Grange Rd,60525,708-579-0838,41.81732,-87.86936,https://locations.traderjoes.com/il/la-grange/685/,2026-04-24
+684,IL,Lake Zurich,735 W Route 22,60047,847-550-7827,42.18877,-88.10901,https://locations.traderjoes.com/il/lake-zurich/684/,2026-04-24
+704,IL,Libertyville,1600 S Milwaukee Ave,60048,847-680-1739,42.25504,-87.94672,https://locations.traderjoes.com/il/libertyville/704/,2026-04-24
+690,IL,Naperville,44 W Gartner Rd,60540,630-355-4389,41.75454,-88.1405,https://locations.traderjoes.com/il/naperville/690/,2026-04-24
+682,IL,Northbrook,127 Skokie Blvd,60062,847-480-9280,42.15026,-87.79831,https://locations.traderjoes.com/il/northbrook/682/,2026-04-24
+697,IL,Oak Park,483 N Harlem Ave,60301,708-386-1169,41.89028,-87.80479,https://locations.traderjoes.com/il/oak-park/697/,2026-04-24
+686,IL,Orland Park,14924 S La Grange Rd,60462,708-349-9021,41.61804,-87.85462,https://locations.traderjoes.com/il/orland-park/686/,2026-04-24
+861,IL,Oswego,1930 US-34,60543,NA,41.70879,-88.29804,https://locations.traderjoes.com/il/oswego/861/,2026-04-24
+698,IL,Park Ridge,190 N NW Highway,60068,847-292-1108,42.01272,-87.83236,https://locations.traderjoes.com/il/park-ridge/698/,2026-04-24
+705,IL,Schaumburg,1426 E Golf Rd,60173,847-619-0095,42.0511,-88.04189,https://locations.traderjoes.com/il/schaumburg/705/,2026-04-24
+757,IN,Fort Wayne,"4110 W. Jefferson Blvd., Suite D-2",46804,260-432-5828,41.07174,-85.19536,https://locations.traderjoes.com/in/fort-wayne/757/,2026-04-24
+670,IN,Indianapolis,2902 W 86th St,46268,317-337-1880,39.91257,-86.2118,https://locations.traderjoes.com/in/indianapolis/670/,2026-04-24
+671,IN,Indianapolis,5473 E 82nd St,46250,317-595-8950,39.90371,-86.07518,https://locations.traderjoes.com/in/indianapolis/671/,2026-04-24
+600,IN,South Bend,1140 East Howard,46617,574-472-8744,41.68811,-86.23352,https://locations.traderjoes.com/in/south-bend/600/,2026-04-24
+723,KS,Leawood,4201 W 119th St,66209,913-327-7209,38.91243,-94.63575,https://locations.traderjoes.com/ks/leawood/723/,2026-04-24
+821,KS,Merriam,8700 Shawnee Mission Pkwy,66202,NA,39.0155,-94.68678,https://locations.traderjoes.com/ks/merriam/821/,2026-04-24
+729,KS,Wichita,"1800 N. Rock Road, Suite 120",67206,316-634-1846,37.71637,-97.24341,https://locations.traderjoes.com/ks/wichita/729/,2026-04-24
+788,KY,Crestview Hills,2780 Dixie Highway,41017,859-331-0034,39.0288,-84.57711,https://locations.traderjoes.com/ky/crestview-hills/788/,2026-04-24
+789,KY,Crestview Hills,2785 Dixie Highway,41017,859-331-1472,39.02611,-84.57732,https://locations.traderjoes.com/ky/crestview-hills/789/,2026-04-24
+626,KY,Lexington,2320 Nicholasville Road,40503,859-277-0144,38.00493,-84.51851,https://locations.traderjoes.com/ky/lexington/626/,2026-04-24
+627,KY,Lexington,2326 Nicholasville Rd,40503,859-313-5030,38.00493,-84.51836,https://locations.traderjoes.com/ky/lexington/627/,2026-04-24
+625,KY,Louisville,"4600 Shelbyville Rd Ste 112, Ste 112",40207,502-895-7872,38.24927,-85.63,https://locations.traderjoes.com/ky/louisville/625/,2026-04-24
+628,KY,Louisville,"4600 Shelbyville Rd, Ste 111",40207,502-895-1361,38.25009,-85.63137,https://locations.traderjoes.com/ky/louisville/628/,2026-04-24
+754,LA,Baton Rouge,3535 Perkins Rd,70808,225-382-0588,30.42241,-91.1536,https://locations.traderjoes.com/la/baton-rouge/754/,2026-04-24
+807,LA,Lafayette,1710 Camellia Blvd,70508,NA,30.16218,-92.02843,https://locations.traderjoes.com/la/lafayette/807/,2026-04-24
+863,LA,Mandeville,3377 U.S. Hwy 190,70471,NA,30.39333,-90.08395,https://locations.traderjoes.com/la/mandeville/863/,2026-04-24
+755,LA,Metairie,2949 Veterans Blvd,70002,504-831-0253,30.00441,-90.15206,https://locations.traderjoes.com/la/metairie/755/,2026-04-24
+793,LA,New Orleans,2428 Napoleon Ave,70115,NA,29.9349,-90.10395,https://locations.traderjoes.com/la/new-orleans/793/,2026-04-24
+811,LA,New Orleans,2501 Tulane Ave,70119,504-229-9973,29.96095,-90.08787,https://locations.traderjoes.com/la/new-orleans/811/,2026-04-24
+511,MA,Acton,145 Great Rd,01720,978-266-8908,42.48321,-71.41528,https://locations.traderjoes.com/ma/acton/511/,2026-04-24
+561,MA,Allston,199 N Harvard St,02134,617-787-1238,42.36352,-71.12984,https://locations.traderjoes.com/ma/allston/561/,2026-04-24
+505,MA,Arlington,1427 Massachusetts Ave,02476,781-646-9138,42.42542,-71.18882,https://locations.traderjoes.com/ma/arlington/505/,2026-04-24
+500,MA,Boston,500 Boylston St,02116,617-693-6302,42.35037,-71.07447,https://locations.traderjoes.com/ma/boston/500/,2026-04-24
+510,MA,Boston,899 Boylston St,02115,617-262-6505,42.34846,-71.08409,https://locations.traderjoes.com/ma/boston/510/,2026-04-24
+566,MA,Boston,44 Thomson Place,02210,617-941-3714,42.35186,-71.04727,https://locations.traderjoes.com/ma/boston/566/,2026-04-24
+588,MA,Boston,1999 Centre St,02132,617-682-7600,42.28203,-71.15783,https://locations.traderjoes.com/ma/boston/588/,2026-04-24
+501,MA,Brookline,1317 Beacon St,02446,617-278-9997,42.342,-71.12054,https://locations.traderjoes.com/ma/brookline/501/,2026-04-24
+515,MA,Burlington,51 Middlesex Turnpike,01803,781-273-2310,42.47343,-71.21067,https://locations.traderjoes.com/ma/burlington/515/,2026-04-24
+502,MA,Cambridge,748 Memorial Dr,02139,617-491-8582,42.35826,-71.11417,https://locations.traderjoes.com/ma/cambridge/502/,2026-04-24
+517,MA,Cambridge,211 Alewife Brook Pkwy,02138,617-498-3201,42.39002,-71.14359,https://locations.traderjoes.com/ma/cambridge/517/,2026-04-24
+528,MA,Foxborough,350 Patriot Place,02035,508-543-1978,42.08662,-71.26927,https://locations.traderjoes.com/ma/foxborough/528/,2026-04-24
+503,MA,Framingham,659 Worcester Rd,01701,508-935-2931,42.29912,-71.42523,https://locations.traderjoes.com/ma/framingham/503/,2026-04-24
+512,MA,Hadley,375 Russell St,01035,413-587-3260,42.35776,-72.54937,https://locations.traderjoes.com/ma/hadley/512/,2026-04-24
+513,MA,Hanover,1775 Washington St,02339,339-298-1530,42.1225,-70.83161,https://locations.traderjoes.com/ma/hanover/513/,2026-04-24
+530,MA,Hingham,5 Essington Drive,02043,781-740-2038,42.24907,-70.9238,https://locations.traderjoes.com/ma/hingham/530/,2026-04-24
+514,MA,Hyannis,"655 Iyannough Road Rt 132, Unit 4-A",02601,508-790-3008,41.65955,-70.27501,https://locations.traderjoes.com/ma/hyannis/514/,2026-04-24
+582,MA,Milford,230 Fortune Blvd,01757,508-318-9234,42.16055,-71.50191,https://locations.traderjoes.com/ma/milford/582/,2026-04-24
+504,MA,Needham,958 Highland Ave,02494,781-449-6993,42.29274,-71.23489,https://locations.traderjoes.com/ma/needham/504/,2026-04-24
+583,MA,Newton,165 Needham St,02464,617-340-5765,42.31215,-71.21382,https://locations.traderjoes.com/ma/newton/583/,2026-04-24
+516,MA,Peabody,300 Andover St,01960,978-977-5316,42.54975,-70.95654,https://locations.traderjoes.com/ma/peabody/516/,2026-04-24
+873,MA,Reading,34 Walkers Brook Drive,01867,NA,42.51998,-71.09309,https://locations.traderjoes.com/ma/reading/873/,2026-04-24
+506,MA,Saugus,358 Broadway,01906,781-231-0848,42.48349,-71.01755,https://locations.traderjoes.com/ma/saugus/506/,2026-04-24
+508,MA,Shrewsbury,77 Boston Turnpike,01545,508-755-9560,42.27535,-71.75122,https://locations.traderjoes.com/ma/shrewsbury/508/,2026-04-24
+560,MA,Somerville,145 Middlesex Ave,02145,617-591-0124,42.39562,-71.08282,https://locations.traderjoes.com/ma/somerville/560/,2026-04-24
+509,MA,West Newton,1121 Washington St,02465,617-244-1620,42.349850000000004,-71.21944,https://locations.traderjoes.com/ma/west-newton/509/,2026-04-24
+650,MD,Annapolis,"160 F Jennifer Rd, Ste F",21401,410-573-0505,38.98892,-76.54024,https://locations.traderjoes.com/md/annapolis/650/,2026-04-24
+623,MD,Bethesda,7900 Wisconsin Ave,20814,301-215-7913,38.98962,-77.0957,https://locations.traderjoes.com/md/bethesda/623/,2026-04-24
+645,MD,Bethesda,6831 Wisconsin Ave,20815,301-907-0982,38.97826,-77.09053,https://locations.traderjoes.com/md/bethesda/645/,2026-04-24
+758,MD,College Park,4429 Calvert Road,20740,301-985-3704,38.97844,-76.93753,https://locations.traderjoes.com/md/college-park/758/,2026-04-24
+658,MD,Elkridge,6610 Marie Curie Dr,21075,410-953-8139,39.18832,-76.79564,https://locations.traderjoes.com/md/elkridge/658/,2026-04-24
+655,MD,Pikesville,1809 Reisterstown Rd,21208,410-484-8373,39.38813,-76.73609,https://locations.traderjoes.com/md/pikesville/655/,2026-04-24
+589,MD,Rockville,225 N Washington St,20850,240-219-2398,39.08646,-77.15256,https://locations.traderjoes.com/md/rockville/589/,2026-04-24
+642,MD,Rockville,12268-H Rockville Pike,20852,301-468-6656,39.05705,-77.12235,https://locations.traderjoes.com/md/rockville/642/,2026-04-24
+648,MD,Rockville,10076 Darnestown Rd,20850,301-762-0782,39.09654,-77.20679,https://locations.traderjoes.com/md/rockville/648/,2026-04-24
+652,MD,Silver Spring,10741 Columbia Pike,20901,301-681-1675,39.03133,-77.0035,https://locations.traderjoes.com/md/silver-spring/652/,2026-04-24
+649,MD,Towson,800 Kenilworth Drive,21204,410-321-0276,39.41146,-76.61923,https://locations.traderjoes.com/md/towson/649/,2026-04-24
+519,ME,Portland,87 Marginal Way,04101,207-699-3799,43.66181,-70.26462,https://locations.traderjoes.com/me/portland/519/,2026-04-24
+678,MI,Ann Arbor,2398 East Stadium Blvd,48104,734-975-2455,42.25841,-83.71302,https://locations.traderjoes.com/mi/ann-arbor/678/,2026-04-24
+675,MI,Bloomfield Hills,6536 Telegraph Rd,48301,248-855-2283,42.54413,-83.28676,https://locations.traderjoes.com/mi/bloomfield-hills/675/,2026-04-24
+804,MI,East Lansing,2755 E Grand River Ave,48823,517-274-8581,42.72622,-84.45256,https://locations.traderjoes.com/mi/east-lansing/804/,2026-04-24
+665,MI,Grosse Pointe,17028 Kercheval Ave,48230,313-640-7794,42.38977,-82.91589,https://locations.traderjoes.com/mi/grosse-pointe/665/,2026-04-24
+708,MI,Kalamazoo,5099 Century Ave,49006,269-372-2049,42.27013,-85.64999,https://locations.traderjoes.com/mi/kalamazoo/708/,2026-04-24
+707,MI,Kentwood,3684 28th St SE,49512,616-977-1819,42.91197,-85.57669,https://locations.traderjoes.com/mi/kentwood/707/,2026-04-24
+667,MI,Northville,18771 Traditions Drive,48167,248-349-4909,42.42277,-83.43376,https://locations.traderjoes.com/mi/northville/667/,2026-04-24
+668,MI,Rochester Hills,3044 Walton Blvd,48309,248-375-2190,42.6807,-83.19411,https://locations.traderjoes.com/mi/rochester-hills/668/,2026-04-24
+674,MI,Royal Oak,27880 Woodward Ave,48067,248-582-9002,42.49541,-83.16369,https://locations.traderjoes.com/mi/royal-oak/674/,2026-04-24
+724,MN,Bloomington,4270 W 78th St,55435,952-835-8640,44.85924,-93.33277,https://locations.traderjoes.com/mn/bloomington/724/,2026-04-24
+717,MN,Eagan,2065 Cliff Road,55122,651-362-4841,44.79023,-93.21282,https://locations.traderjoes.com/mn/eagan/717/,2026-04-24
+713,MN,Maple Grove,12105 Elm Creek Blvd N,55369,763-315-1739,45.09219,-93.43409,https://locations.traderjoes.com/mn/maple-grove/713/,2026-04-24
+725,MN,Minneapolis,"721 Washington Ave S, Suite 101",55415,612-339-2110,44.97646,-93.2582,https://locations.traderjoes.com/mn/minneapolis/725/,2026-04-24
+714,MN,Minnetonka,11220 Wayzata Blvd,55305,952-417-9080,44.97349,-93.42276,https://locations.traderjoes.com/mn/minnetonka/714/,2026-04-24
+718,MN,Rochester,1200 16th St SW,55902,507-281-4411,44.00036,-92.48126,https://locations.traderjoes.com/mn/rochester/718/,2026-04-24
+727,MN,Shoreview,1041 Red Fox Rd,55126,651-765-1398,45.05799,-93.14473,https://locations.traderjoes.com/mn/shoreview/727/,2026-04-24
+710,MN,St. Louis Park,4500 Excelsior Blvd,55416,952-285-1053,44.93459,-93.3374,https://locations.traderjoes.com/mn/st-louis-park/710/,2026-04-24
+716,MN,St. Paul,484 Lexington Pkwy S,55105,651-698-3119,44.9267,-93.14589,https://locations.traderjoes.com/mn/st-paul/716/,2026-04-24
+715,MN,Woodbury,"8960 Hudson Rd., Ste. 801",55125,651-735-0269,44.94573,-92.92267,https://locations.traderjoes.com/mn/woodbury/715/,2026-04-24
+692,MO,Brentwood,48 Brentwood Promenade Court,63144,314-963-0253,38.62733,-90.34123,https://locations.traderjoes.com/mo/brentwood/692/,2026-04-24
+693,MO,Chesterfield,1679 Clarkson Rd,63017,636-536-7846,38.6449,-90.56656,https://locations.traderjoes.com/mo/chesterfield/693/,2026-04-24
+808,MO,Columbia,201 N Stadium Blvd,65203,573-370-7203,38.95826,-92.37319,https://locations.traderjoes.com/mo/columbia/808/,2026-04-24
+694,MO,Creve Coeur,11505 Olive Blvd,63141,314-569-0432,38.67195,-90.43642,https://locations.traderjoes.com/mo/creve-coeur/694/,2026-04-24
+695,MO,Des Peres,13343 Manchester Rd,63131,314-984-5051,38.60104,-90.46716,https://locations.traderjoes.com/mo/des-peres/695/,2026-04-24
+720,MO,Kansas City,8600 Ward Pkwy,64114,816-333-5322,38.97067,-94.60684,https://locations.traderjoes.com/mo/kansas-city/720/,2026-04-24
+740,NC,Asheville,120 Merrimon Ave,28801,828-232-5078,35.60305,-82.55357,https://locations.traderjoes.com/nc/asheville/740/,2026-04-24
+741,NC,Cary,1393 Kildaire Farm Rd,27511,919-465-5985,35.7589,-78.78154,https://locations.traderjoes.com/nc/cary/741/,2026-04-24
+745,NC,Chapel Hill,1800 E Franklin St,27514,919-918-7871,35.93693,-79.02508,https://locations.traderjoes.com/nc/chapel-hill/745/,2026-04-24
+742,NC,Charlotte,6418 Rea Rd,28277,704-543-5249,35.07886,-80.81793,https://locations.traderjoes.com/nc/charlotte/742/,2026-04-24
+743,NC,Charlotte,1820 E Arbors Dr,28262,704-688-9578,35.33681,-80.75453,https://locations.traderjoes.com/nc/charlotte/743/,2026-04-24
+744,NC,Charlotte,1133 Metropolitan Ave,28204,704-334-0737,35.21178,-80.83563,https://locations.traderjoes.com/nc/charlotte/744/,2026-04-24
+750,NC,Greensboro,3721 Battleground Ave.,27410,336-286-7859,36.13129,-79.85777,https://locations.traderjoes.com/nc/greensboro/750/,2026-04-24
+790,NC,Greenville,3160 B Evans St,27834,252-374-8457,35.57266,-77.38394,https://locations.traderjoes.com/nc/greenville/790/,2026-04-24
+791,NC,Morrisville,951 Morrisville Parkway,27560,919-460-4449,35.80947,-78.81765,https://locations.traderjoes.com/nc/morrisville/791/,2026-04-24
+746,NC,Raleigh,3000 Wake Forest Rd,27609,919-981-7422,35.82324,-78.62171,https://locations.traderjoes.com/nc/raleigh/746/,2026-04-24
+748,NC,Raleigh,8111 Creedmoor Rd,27613,984-252-3344,35.89795,-78.68279,https://locations.traderjoes.com/nc/raleigh/748/,2026-04-24
+747,NC,Wilmington,1437 S College Rd,28403,910-507-8870,34.21077,-77.88576,https://locations.traderjoes.com/nc/wilmington/747/,2026-04-24
+749,NC,Winston Salem,252 South Stratford Road,27103,336-721-1744,36.09276,-80.2816,https://locations.traderjoes.com/nc/winston-salem/749/,2026-04-24
+722,NE,Lincoln,"3120 Pine Lake Rd, Ste R",68516,402-328-0120,40.7426,-96.67455,https://locations.traderjoes.com/ne/lincoln/722/,2026-04-24
+719,NE,Omaha,10305 Pacific St,68114,402-391-3698,41.24829,-96.07397,https://locations.traderjoes.com/ne/omaha/719/,2026-04-24
+562,NH,Bedford,2 Market Street,03110,603-222-3074,42.95373,-71.47722,https://locations.traderjoes.com/nh/bedford/562/,2026-04-24
+507,NH,Nashua,262 Daniel Webster HWY,03060,603-888-5460,42.70801,-71.43842,https://locations.traderjoes.com/nh/nashua/507/,2026-04-24
+520,NH,Portsmouth,45 Gosling Rd,03801,603-431-2654,43.09451,-70.79955,https://locations.traderjoes.com/nh/portsmouth/520/,2026-04-24
+615,NJ,Brick,110 Brick Plaza,08723,732-477-4781,40.05724,-74.14088,https://locations.traderjoes.com/nj/brick/615/,2026-04-24
+614,NJ,Bridgewater,315 Promenade Blvd,08807,732-805-0268,40.56437,-74.55543,https://locations.traderjoes.com/nj/bridgewater/614/,2026-04-24
+613,NJ,Cherry Hill,775 Haddonfield Rd,08002,856-488-0801,39.92896,-75.03218,https://locations.traderjoes.com/nj/cherry-hill/613/,2026-04-24
+610,NJ,Clifton,259 Allwood Road,07012,973-777-5020,40.83653,-74.15131,https://locations.traderjoes.com/nj/clifton/610/,2026-04-24
+617,NJ,Denville,3056 State Route 10 West,07834,973-537-3672,40.86618,-74.50632,https://locations.traderjoes.com/nj/denville/617/,2026-04-24
+606,NJ,Edgewater,715 River Rd,07020,201-945-5932,40.81967,-73.97759,https://locations.traderjoes.com/nj/edgewater/606/,2026-04-24
+604,NJ,Florham Park,176 Columbia Turnpike,07932,973-377-0679,40.78913,-74.39137,https://locations.traderjoes.com/nj/florham-park/604/,2026-04-24
+590,NJ,Freehold,"4331 Route 9, Unit 3",07728,732-462-1539,40.28181,-74.29222,https://locations.traderjoes.com/nj/freehold/590/,2026-04-24
+611,NJ,Hoboken,1350 Willow Ave.,07030,201-714-4790,40.75367,-74.02995,https://locations.traderjoes.com/nj/hoboken/611/,2026-04-24
+593,NJ,Iselin,675 US-1,08830,848-306-5497,40.55978,-74.3076,https://locations.traderjoes.com/nj/iselin/593/,2026-04-24
+631,NJ,Marlton,300 P Route 73 S,08053,856-988-3323,39.89038,-74.92417,https://locations.traderjoes.com/nj/marlton/631/,2026-04-24
+591,NJ,Middletown Township,1447 NJ-35,07748,732-808-3237,40.40305,-74.12248,https://locations.traderjoes.com/nj/middletown-township/591/,2026-04-24
+609,NJ,Millburn,187 Millburn Ave,07041,973-218-0912,40.723,-74.29615,https://locations.traderjoes.com/nj/millburn/609/,2026-04-24
+612,NJ,North Brunswick,869 US-1,08902,732-993-1403,40.46286,-74.45925,https://locations.traderjoes.com/nj/north-brunswick/612/,2026-04-24
+605,NJ,Paramus,404 Rt 17 N,07652,201-265-9624,40.94832,-74.07059,https://locations.traderjoes.com/nj/paramus/605/,2026-04-24
+607,NJ,Princeton,3528 Brunswick Pike,08540,609-897-0581,40.3106,-74.66118,https://locations.traderjoes.com/nj/princeton/607/,2026-04-24
+608,NJ,Shrewsbury,1031 Broad St,07702,732-389-2535,40.31679,-74.06159,https://locations.traderjoes.com/nj/shrewsbury/608/,2026-04-24
+603,NJ,Wayne,910 Hamburg Turnpike,07470,973-872-4604,40.95928,-74.23041,https://locations.traderjoes.com/nj/wayne/603/,2026-04-24
+592,NJ,West Orange,471 Mt Pleasant Ave,07052,NA,40.79302,-74.26813,https://locations.traderjoes.com/nj/west-orange/592/,2026-04-24
+601,NJ,Westfield,155 Elm St,07090,908-301-0910,40.65222,-74.35,https://locations.traderjoes.com/nj/westfield/601/,2026-04-24
+602,NJ,Westwood,20 Irvington St,07675,201-263-0134,40.99317,-74.03598,https://locations.traderjoes.com/nj/westwood/602/,2026-04-24
+166,NM,Albuquerque,8928 Holly Ave NE,87122,505-796-0311,35.17513,-106.54266,https://locations.traderjoes.com/nm/albuquerque/166/,2026-04-24
+167,NM,Albuquerque,2200 Uptown Lp NE,87110,505-883-3662,35.10224,-106.56546,https://locations.traderjoes.com/nm/albuquerque/167/,2026-04-24
+165,NM,Santa Fe,530 W Cordova Rd,87505,505-995-8145,35.67297,-105.95337,https://locations.traderjoes.com/nm/santa-fe/165/,2026-04-24
+281,NV,Carson City,3790 US Hwy 395 S,89705,775-267-2486,39.11176,-119.77663,https://locations.traderjoes.com/nv/carson-city/281/,2026-04-24
+280,NV,Henderson,10345 S Eastern Ave,89052,702-407-8673,36.00087,-115.10933,https://locations.traderjoes.com/nv/henderson/280/,2026-04-24
+97,NV,Henderson,2716 N Green Valley Pkwy,89014,702-433-6773,36.06958,-115.08112,https://locations.traderjoes.com/nv/henderson/97/,2026-04-24
+284,NV,Las Vegas,"2315 Summa Dr, Ste 100",89135,702-242-0597,36.14553,-115.33549,https://locations.traderjoes.com/nv/las-vegas/284/,2026-04-24
+86,NV,Las Vegas,7575 W Washington,89128,702-242-8240,36.1806,-115.2579,https://locations.traderjoes.com/nv/las-vegas/86/,2026-04-24
+98,NV,Las Vegas,5639 Centennial Ctr Blvd,89149,702-396-3372,36.26311,-115.25674,https://locations.traderjoes.com/nv/las-vegas/98/,2026-04-24
+278,NV,Reno,"13945 S Virginia St, Suite 640",89511,775-249-6301,39.40245,-119.75224,https://locations.traderjoes.com/nv/reno/278/,2026-04-24
+82,NV,Reno,5035 S McCarran Blvd,89502,775-826-1621,39.47879,-119.78399,https://locations.traderjoes.com/nv/reno/82/,2026-04-24
+279,NV,Sparks,185 Los Altos Pkwy,89436,775-259-1634,39.58091,-119.74125,https://locations.traderjoes.com/nv/sparks/279/,2026-04-24
+547,NY,Brooklyn,445 Gold St,11201,718-243-0107,40.69099,-73.98292,https://locations.traderjoes.com/ny/brooklyn/547/,2026-04-24
+548,NY,Brooklyn,200 Kent Ave,11249,718-218-7315,40.71772,-73.96468,https://locations.traderjoes.com/ny/brooklyn/548/,2026-04-24
+558,NY,Brooklyn,130 Court St,11201,718-246-8460,40.68958,-73.99287,https://locations.traderjoes.com/ny/brooklyn/558/,2026-04-24
+536,NY,Buffalo,1565 Niagara Falls Blvd,14228,716-833-4687,42.99805,-78.82126,https://locations.traderjoes.com/ny/buffalo/536/,2026-04-24
+535,NY,Colonie,79 Wolf Rd,12205,518-482-4538,42.71416,-73.81204,https://locations.traderjoes.com/ny/colonie/535/,2026-04-24
+551,NY,Commack,5900 Jericho Turnpike,11725,631-499-0898,40.84033,-73.30749,https://locations.traderjoes.com/ny/commack/551/,2026-04-24
+550,NY,Garden City,910 Old Country Rd,11530,516-794-0174,40.74439,-73.6039,https://locations.traderjoes.com/ny/garden-city/550/,2026-04-24
+579,NY,Glenmont,388 Feura Bush Rd,12077,518-363-4927,42.59989,-73.7943,https://locations.traderjoes.com/ny/glenmont/579/,2026-04-24
+574,NY,Halfmoon,3 Halfmoon Crossing Blvd,12065,518-383-5015,42.85915,-73.76531,https://locations.traderjoes.com/ny/halfmoon/574/,2026-04-24
+533,NY,Hartsdale,215 N Central Ave,10530,914-997-1960,41.02554,-73.79347,https://locations.traderjoes.com/ny/hartsdale/533/,2026-04-24
+554,NY,Hewlett,1280 West Broadway,11557,516-569-7191,40.6392,-73.70172,https://locations.traderjoes.com/ny/hewlett/554/,2026-04-24
+568,NY,Ithaca,744 S Meadow Street,14850,607-272-1420,42.42878,-76.51047,https://locations.traderjoes.com/ny/ithaca/568/,2026-04-24
+556,NY,Lake Grove,2085 Smith Haven Plaza,11755,631-366-2094,40.86864,-73.1281,https://locations.traderjoes.com/ny/lake-grove/556/,2026-04-24
+532,NY,Larchmont,1260 Boston Post Rd,10538,914-833-9112,40.93836,-73.74645,https://locations.traderjoes.com/ny/larchmont/532/,2026-04-24
+553,NY,Merrick,1714 Merrick Rd,11566,516-771-1012,40.65336,-73.55877,https://locations.traderjoes.com/ny/merrick/553/,2026-04-24
+577,NY,Miller Place,300 Rte 25A,11764,934-225-8061,40.94095,-72.99024,https://locations.traderjoes.com/ny/miller-place/577/,2026-04-24
+538,NY,New York,400 Grand St. (Cellar),10002,212-477-8340,40.71614,-73.98677,https://locations.traderjoes.com/ny/new-york/538/,2026-04-24
+539,NY,New York,233 Spring Street,10013,212-691-2721,40.72567,-74.00473,https://locations.traderjoes.com/ny/new-york/539/,2026-04-24
+540,NY,New York,142 E 14th St,10003,212-529-4612,40.73337,-73.9879,https://locations.traderjoes.com/ny/new-york/540/,2026-04-24
+542,NY,New York,2073 Broadway,10023,212-799-0028,40.77855,-73.98226,https://locations.traderjoes.com/ny/new-york/542/,2026-04-24
+543,NY,New York,675 6th Ave,10010,212-255-2106,40.74209,-73.99412,https://locations.traderjoes.com/ny/new-york/543/,2026-04-24
+544,NY,New York,200 E 32nd St,10016,212-889-3279,40.74399,-73.97908,https://locations.traderjoes.com/ny/new-york/544/,2026-04-24
+545,NY,New York,670 Columbus Ave,10025,212-678-1680,40.79071,-73.96951,https://locations.traderjoes.com/ny/new-york/545/,2026-04-24
+546,NY,New York,436 East 14th St,10009,212-777-9412,40.73045,-73.981,https://locations.traderjoes.com/ny/new-york/546/,2026-04-24
+571,NY,New York,405 E. 59th Street,10022,212-935-3870,40.75966,-73.96154,https://locations.traderjoes.com/ny/new-york/571/,2026-04-24
+576,NY,New York,123 W 125th St,10027,646-337-1986,40.81389,-73.96243,https://locations.traderjoes.com/ny/new-york/576/,2026-04-24
+552,NY,Oceanside,3418 Long Beach Rd,11572,516-536-9163,40.62681,-73.6411,https://locations.traderjoes.com/ny/oceanside/552/,2026-04-24
+555,NY,Plainview,425 S Oyster Bay Rd,11803,516-933-6900,40.78171,-73.5015,https://locations.traderjoes.com/ny/plainview/555/,2026-04-24
+557,NY,Queens,9030 Metropolitan Ave,11374,718-275-1791,40.71092,-73.85826,https://locations.traderjoes.com/ny/queens/557/,2026-04-24
+565,NY,Queens,22-43 Jackson Ave,11101,718-472-2672,40.74584,-73.9462,https://locations.traderjoes.com/ny/queens/565/,2026-04-24
+578,NY,Queens,69-65 Yellowstone Blvd,11375,718-544-8589,40.73004,-73.85037,https://locations.traderjoes.com/ny/queens/578/,2026-04-24
+534,NY,Rochester,3349 Monroe Ave,14618,585-248-5011,43.10221,-77.5417,https://locations.traderjoes.com/ny/rochester/534/,2026-04-24
+531,NY,Scarsdale,727 White Plains Rd,10583,914-472-2988,40.97234,-73.80487,https://locations.traderjoes.com/ny/scarsdale/531/,2026-04-24
+559,NY,Staten Island,2385 Richmond Ave,10314,718-370-1085,40.58966,-74.16574,https://locations.traderjoes.com/ny/staten-island/559/,2026-04-24
+580,NY,Staten Island,6400 Amboy Rd,10309,329-208-1571,40.52211,-74.21529,https://locations.traderjoes.com/ny/staten-island/580/,2026-04-24
+537,NY,Syracuse,3422 Erie Blvd E,13214,315-446-1629,43.04624,-76.07065,https://locations.traderjoes.com/ny/syracuse/537/,2026-04-24
+575,NY,Williamsville,5017 Transit Rd,14221,716-415-3179,42.98387,-78.69628,https://locations.traderjoes.com/ny/williamsville/575/,2026-04-24
+567,NY,Yorktown,3240 Crompond Road,10598,914-737-1460,41.29172,-73.82481,https://locations.traderjoes.com/ny/yorktown/567/,2026-04-24
+669,OH,Cincinnati,7788 Montgomery Rd,45236,513-984-3452,39.19733,-84.3817,https://locations.traderjoes.com/oh/cincinnati/669/,2026-04-24
+679,OH,Columbus,3888 Townsfair Way,43219,614-473-0794,40.0493,-82.91801,https://locations.traderjoes.com/oh/columbus/679/,2026-04-24
+672,OH,Dublin,6355 Sawmill Rd,43017,614-793-8505,40.0965,-83.09309,https://locations.traderjoes.com/oh/dublin/672/,2026-04-24
+673,OH,Kettering,328 East Stroop Rd,45429,937-294-5411,39.68844,-84.16628,https://locations.traderjoes.com/oh/kettering/673/,2026-04-24
+709,OH,Mentor,9474 Mentor Ave,44060,440-350-7216,41.68046,-81.29961,https://locations.traderjoes.com/oh/mentor/709/,2026-04-24
+677,OH,Westlake,175 Market St,44145,440-250-1592,41.45679,-81.9513,https://locations.traderjoes.com/oh/westlake/677/,2026-04-24
+676,OH,Woodmere,28425 Chagrin Blvd,44122,216-591-9457,41.46331,-81.47913,https://locations.traderjoes.com/oh/woodmere/676/,2026-04-24
+462,OK,Broken Arrow,1525 E Hillside Dr,74012,539-207-0023,36.06436,-95.77303,https://locations.traderjoes.com/ok/broken-arrow/462/,2026-04-24
+461,OK,Nichols Hills,6409 Avondale Dr,73116,405-843-5655,35.53769,-97.53106,https://locations.traderjoes.com/ok/nichols-hills/461/,2026-04-24
+463,OK,Oklahoma City,6920 Northwest Expy,73132,405-357-0298,35.55552,-97.63617,https://locations.traderjoes.com/ok/oklahoma-city/463/,2026-04-24
+460,OK,Tulsa,3702 S Peoria Ave,74105,918-712-9768,36.109610000000004,-95.97593,https://locations.traderjoes.com/ok/tulsa/460/,2026-04-24
+141,OR,Beaverton,11753 SW Beaverton Hillsdale Hwy,97005,503-626-7398,45.48797,-122.7976,https://locations.traderjoes.com/or/beaverton/141/,2026-04-24
+150,OR,Bend,63455 N Hwy 97,97701,541-312-4198,44.10115,-121.30225,https://locations.traderjoes.com/or/bend/150/,2026-04-24
+152,OR,Clackamas,9345 SE 82nd Ave,97086,503-771-6300,45.45586,-122.58074,https://locations.traderjoes.com/or/clackamas/152/,2026-04-24
+154,OR,Corvallis,"1550 NW 9th St, Ste 100",97330,541-753-0048,44.58226,-123.25997,https://locations.traderjoes.com/or/corvallis/154/,2026-04-24
+145,OR,Eugene,85 Oakway Center,97401,541-485-1744,44.06627,-123.07526,https://locations.traderjoes.com/or/eugene/145/,2026-04-24
+276,OR,Gresham,2083 NE Burnside Rd,97030,971-253-0535,45.50046,-122.40989,https://locations.traderjoes.com/or/gresham/276/,2026-04-24
+149,OR,Hillsboro,2285 NW 185th Ave,97124,503-645-8321,45.53662,-122.86961,https://locations.traderjoes.com/or/hillsboro/149/,2026-04-24
+142,OR,Lake Oswego,15391 SW Bangy Rd,97035,503-639-3238,45.41381,-122.74329,https://locations.traderjoes.com/or/lake-oswego/142/,2026-04-24
+155,OR,Medford,55 Rossanley Dr,97501,541-608-4993,42.34349,-122.88224,https://locations.traderjoes.com/or/medford/155/,2026-04-24
+275,OR,Milwaukie,15574 SE McLoughlin Blvd,97267,971-365-7604,45.41129,-122.62667,https://locations.traderjoes.com/or/milwaukie/275/,2026-04-24
+143,OR,Portland,4715 SE Cesar E. Chavez Blvd,97202,503-777-1601,45.48882,-122.62355,https://locations.traderjoes.com/or/portland/143/,2026-04-24
+144,OR,Portland,4121 NE Halsey St,97232,503-284-4232,45.53472,-122.62082,https://locations.traderjoes.com/or/portland/144/,2026-04-24
+146,OR,Portland,2122 NW Glisan St,97210,971-544-0788,45.5261,-122.69516,https://locations.traderjoes.com/or/portland/146/,2026-04-24
+168,OR,Portland,7215 SW Garden Home Road,97223,503-244-4625,45.46617,-122.75088,https://locations.traderjoes.com/or/portland/168/,2026-04-24
+153,OR,Salem,4450 Commercial St SE,97302,503-378-9042,44.88961,-123.03255,https://locations.traderjoes.com/or/salem/153/,2026-04-24
+169,OR,Tigard,16200 SW Pacific Hwy,97224,503-443-6713,45.40366,-122.79657,https://locations.traderjoes.com/or/tigard/169/,2026-04-24
+635,PA,Ardmore,112 Coulter Ave,19003,610-658-0645,40.00728,-75.2866,https://locations.traderjoes.com/pa/ardmore/635/,2026-04-24
+584,PA,Berwyn,550 Lancaster Ave,19312,610-920-0029,40.04716,-75.43734,https://locations.traderjoes.com/pa/berwyn/584/,2026-04-24
+569,PA,Camp Hill,3545 Gettysburg Road,17011,717-730-6025,40.22452,-76.93716,https://locations.traderjoes.com/pa/camp-hill/569/,2026-04-24
+594,PA,Exton,125 West Lincoln Hwy,19341,267-267-2910,40.02825,-75.62922,https://locations.traderjoes.com/pa/exton/594/,2026-04-24
+633,PA,Jenkintown,933 Old York Rd,19046,215-885-5240,40.10841,-75.1222,https://locations.traderjoes.com/pa/jenkintown/633/,2026-04-24
+585,PA,King of Prussia,224 W Dekalb Pike,19406,484-261-7509,40.09457,-75.36752,https://locations.traderjoes.com/pa/king-of-prussia/585/,2026-04-24
+637,PA,Media,12 E State St,19063,610-891-2752,39.91756,-75.3889,https://locations.traderjoes.com/pa/media/637/,2026-04-24
+639,PA,North Wales,1460 Bethlehem Pike,19454,215-646-5870,40.20784,-75.22357,https://locations.traderjoes.com/pa/north-wales/639/,2026-04-24
+618,PA,Philadelphia,1324 Arch St.,19107,215-563-2170,39.95419,-75.16243,https://locations.traderjoes.com/pa/philadelphia/618/,2026-04-24
+634,PA,Philadelphia,2121 Market St,19103,215-569-9282,39.95418,-75.17597,https://locations.traderjoes.com/pa/philadelphia/634/,2026-04-24
+624,PA,Pittsburgh,9020 Covenant Ave,15237,412-366-1131,40.57041,-80.02231,https://locations.traderjoes.com/pa/pittsburgh/624/,2026-04-24
+630,PA,Pittsburgh,1630 Washington Rd,15241,412-835-2212,40.35135,-80.05172,https://locations.traderjoes.com/pa/pittsburgh/630/,2026-04-24
+638,PA,Pittsburgh,6343 Penn Ave,15206,412-363-5748,40.45924,-79.91918,https://locations.traderjoes.com/pa/pittsburgh/638/,2026-04-24
+629,PA,State College,243 Patriot Lane,16803,814-234-2224,40.81034,-77.90224,https://locations.traderjoes.com/pa/state-college/629/,2026-04-24
+632,PA,Wayne,171 E Swedesford Rd,19087,610-225-0925,40.07343,-75.43364,https://locations.traderjoes.com/pa/wayne/632/,2026-04-24
+572,RI,Providence,425 S Main St,02903,401-459-4090,41.82044,-71.4036,https://locations.traderjoes.com/ri/providence/572/,2026-04-24
+518,RI,Warwick,1000 Bald Hill Rd,02886,401-821-5368,41.71242,-71.48717,https://locations.traderjoes.com/ri/warwick/518/,2026-04-24
+753,SC,Columbia,4516 Forest Drive,29206,803-790-2404,34.02003,-80.97268,https://locations.traderjoes.com/sc/columbia/753/,2026-04-24
+856,SC,Columbia,275 Harbison Blvd,29212,803-574-8020,34.07316,-81.16045,https://locations.traderjoes.com/sc/columbia/856/,2026-04-24
+751,SC,Greenville,59 Woodruff Industrial Ln,29607,864-286-0231,34.82905,-82.30567,https://locations.traderjoes.com/sc/greenville/751/,2026-04-24
+752,SC,Mt. Pleasant,401 Johnnie Dodds Blvd,29464,843-884-4037,32.80479,-79.88717,https://locations.traderjoes.com/sc/mt-pleasant/752/,2026-04-24
+812,SC,Mt. Pleasant,1909 Hwy 17 N,29464,854-223-5830,32.83043,-79.82584,https://locations.traderjoes.com/sc/mt-pleasant/812/,2026-04-24
+828,SC,Myrtle Beach,115 SayeBrook Pkwy,29588,843-630-6282,33.65238,-78.98399,https://locations.traderjoes.com/sc/myrtle-beach/828/,2026-04-24
+787,TN,Chattanooga,2111 Gunbarrel Road,37421,423-855-1310,35.03285,-85.1547,https://locations.traderjoes.com/tn/chattanooga/787/,2026-04-24
+792,TN,Franklin,545 Cool Springs Blvd,37067,615-771-3697,35.94974,-86.82148,https://locations.traderjoes.com/tn/franklin/792/,2026-04-24
+738,TN,Germantown,"2130 Exeter Rd., Suite 101",38138,901-759-2803,35.09078,-89.80117,https://locations.traderjoes.com/tn/germantown/738/,2026-04-24
+663,TN,Knoxville,8001 Kingston Pike,37919,865-670-4088,35.92718,-84.04598,https://locations.traderjoes.com/tn/knoxville/663/,2026-04-24
+815,TN,Murfreesboro,2305 Medical Center Parkway,37129,629-260-7432,35.85786,-86.43702,https://locations.traderjoes.com/tn/murfreesboro/815/,2026-04-24
+664,TN,Nashville,3909 Hillsboro Pike,37215,615-297-6560,36.10508,-86.81563,https://locations.traderjoes.com/tn/nashville/664/,2026-04-24
+739,TN,Nashville,90 White Bridge Rd,37205,615-356-1066,36.13073,-86.85223,https://locations.traderjoes.com/tn/nashville/739/,2026-04-24
+452,TX,Austin,"211 Walter Seaholm Dr, Ste 100",78701,512-474-2263,30.2675,-97.75279,https://locations.traderjoes.com/tx/austin/452/,2026-04-24
+453,TX,Austin,2805 Bee Cave Rd,78746,512-306-1032,30.27013,-97.78981,https://locations.traderjoes.com/tx/austin/453/,2026-04-24
+454,TX,Austin,"9722 Great Hills Trail, Ste 200",78759,512-241-1248,30.39558,-97.75177,https://locations.traderjoes.com/tx/austin/454/,2026-04-24
+450,TX,Bee Cave,"12812 Shops Pkwy, Ste 300",78738,737-379-1680,30.30663,-97.94218,https://locations.traderjoes.com/tx/bee-cave/450/,2026-04-24
+456,TX,Coppell,120 S Denton Tap Rd.,75019,945-202-7413,32.96822,-96.99223,https://locations.traderjoes.com/tx/coppell/456/,2026-04-24
+432,TX,Cypress,9715 Towne Lake Pkwy,77433,281-290-4216,29.91862,-95.69083,https://locations.traderjoes.com/tx/cypress/432/,2026-04-24
+400,TX,Dallas,4525 Cole Ave,75205,214-599-2155,32.82254,-96.78975,https://locations.traderjoes.com/tx/dallas/400/,2026-04-24
+401,TX,Dallas,7939 Walnut Hill Lane,75230,214-346-6579,32.88057,-96.77228,https://locations.traderjoes.com/tx/dallas/401/,2026-04-24
+403,TX,Dallas,2001 Greenville Ave,75206,469-334-0614,32.81483,-96.77056,https://locations.traderjoes.com/tx/dallas/403/,2026-04-24
+405,TX,Dallas,"5550 W Lovers Lane, Ste 168",75209,214-366-0205,32.84955,-96.81944,https://locations.traderjoes.com/tx/dallas/405/,2026-04-24
+407,TX,Dallas,14856 Preston Rd,75254,972-239-3901,32.95087,-96.80282,https://locations.traderjoes.com/tx/dallas/407/,2026-04-24
+404,TX,Fort Worth,2701 S Hulen St,76109,817-922-9107,32.71198,-97.38513,https://locations.traderjoes.com/tx/fort-worth/404/,2026-04-24
+426,TX,Houston,2922 S Shepherd Drive,77098,713-526-4034,29.73921,-95.41132,https://locations.traderjoes.com/tx/houston/426/,2026-04-24
+427,TX,Houston,1440 South Voss Road,77057,713-266-2377,29.75272,-95.50167,https://locations.traderjoes.com/tx/houston/427/,2026-04-24
+431,TX,Houston,11683 Westheimer Rd,77077,281-496-2488,29.73541,-95.58249,https://locations.traderjoes.com/tx/houston/431/,2026-04-24
+429,TX,Katy,2717 Commercial Center Blvd,77494,281-392-4200,29.74034,-95.77484,https://locations.traderjoes.com/tx/katy/429/,2026-04-24
+433,TX,Kingwood,600 Kingwood Dr,77339,281-453-6996,30.0498,-95.246,https://locations.traderjoes.com/tx/kingwood/433/,2026-04-24
+408,TX,McKinney,"2851 Craig Dr, Ste 100",75070,214-491-1893,33.1737,-96.64287,https://locations.traderjoes.com/tx/mckinney/408/,2026-04-24
+410,TX,McKinney,8101 Eldorado Pkwy,75070,NA,33.17542,-96.72329,https://locations.traderjoes.com/tx/mckinney/410/,2026-04-24
+402,TX,Plano,"2400 Preston Rd, Ste 200",75093,972-312-9538,33.02923,-96.79282,https://locations.traderjoes.com/tx/plano/402/,2026-04-24
+451,TX,San Antonio,350 East Basse Road,78209,210-826-1110,29.4967,-98.47803,https://locations.traderjoes.com/tx/san-antonio/451/,2026-04-24
+455,TX,San Antonio,403 N Loop 1604 W,78232,210-939-5789,29.60945,-98.4991,https://locations.traderjoes.com/tx/san-antonio/455/,2026-04-24
+457,TX,San Antonio,11745 I-10 W,78230,210-607-6510,29.54915,-98.58351,https://locations.traderjoes.com/tx/san-antonio/457/,2026-04-24
+406,TX,Southlake,1492 E Southlake Blvd,76092,817-251-0360,32.94133,-97.12942,https://locations.traderjoes.com/tx/southlake/406/,2026-04-24
+430,TX,Sugar Land,13550 University Blvd,77479,281-805-3021,29.58443,-95.64842,https://locations.traderjoes.com/tx/sugar-land/430/,2026-04-24
+428,TX,The Woodlands,10868 Kuykendahl Road,77381,281-465-0254,30.1756,-95.5354,https://locations.traderjoes.com/tx/the-woodlands/428/,2026-04-24
+351,UT,Cottonwood Heights,6989 S 1300 E,84047,801-562-3024,40.62411,-111.85373,https://locations.traderjoes.com/ut/cottonwood-heights/351/,2026-04-24
+353,UT,Draper,11477 S. State St.,84020,801-571-0987,40.54288,-111.89005,https://locations.traderjoes.com/ut/draper/353/,2026-04-24
+356,UT,Herriman,4850 W 13400 South,84096,NA,40.51076,-112.00724,https://locations.traderjoes.com/ut/herriman/356/,2026-04-24
+357,UT,Holladay,1895 East Rodeo Walk Dr,84117,385-324-2911,40.66455,-111.83728,https://locations.traderjoes.com/ut/holladay/357/,2026-04-24
+352,UT,Orem,440 East Park Avenue,84097,801-224-1453,40.27625,-111.68526,https://locations.traderjoes.com/ut/orem/352/,2026-04-24
+355,UT,Riverdale,"4060 Riverdale Rd, Suite B",84405,385-298-4276,41.18937,-111.97964,https://locations.traderjoes.com/ut/riverdale/355/,2026-04-24
+350,UT,Salt Lake City,634 East 400 South,84102,801-359-2462,40.75967,-111.8726,https://locations.traderjoes.com/ut/salt-lake-city/350/,2026-04-24
+354,UT,Salt Lake City,2160 S 700 E,84106,801-720-8834,40.72395,-111.87223,https://locations.traderjoes.com/ut/salt-lake-city/354/,2026-04-24
+647,VA,Alexandria,612 N Saint Asaph St,22314,703-548-0611,38.81078,-77.04479,https://locations.traderjoes.com/va/alexandria/647/,2026-04-24
+640,VA,Arlington,1109 N Highland St,22201,703-351-8015,38.88668,-77.09464,https://locations.traderjoes.com/va/arlington/640/,2026-04-24
+619,VA,Ashburn,44755 Brimfield Dr,20147,703-858-5993,39.05038,-77.45273,https://locations.traderjoes.com/va/ashburn/619/,2026-04-24
+644,VA,Bailey&#x27;s Crossroads,5847 Leesburg Pike,22041,703-379-5883,38.85103,-77.13279,https://locations.traderjoes.com/va/bailey-s-crossroads/644/,2026-04-24
+654,VA,Centreville,14100 Lee Hwy,20120,703-815-0697,38.84042,-77.43277,https://locations.traderjoes.com/va/centreville/654/,2026-04-24
+661,VA,Charlottesville,2025 Bond St.,22901,434-974-1466,38.06298,-78.49149,https://locations.traderjoes.com/va/charlottesville/661/,2026-04-24
+643,VA,Fairfax,9464 Main St,22031,703-764-8550,38.84272,-77.27037,https://locations.traderjoes.com/va/fairfax/643/,2026-04-24
+641,VA,Falls Church,7514 Leesburg Turnpike,22043,703-288-0566,38.90435,-77.20369,https://locations.traderjoes.com/va/falls-church/641/,2026-04-24
+659,VA,Glen Allen,11331 W Broad St,23060,804-360-4098,37.64889,-77.6068,https://locations.traderjoes.com/va/glen-allen/659/,2026-04-24
+817,VA,Leesburg,504 Fort Evans Rd NE,20176,571-582-2209,39.10788,-77.53001,https://locations.traderjoes.com/va/leesburg/817/,2026-04-24
+656,VA,Newport News,12551 Jefferson Ave,23602,757-890-0235,37.13094,-76.51648,https://locations.traderjoes.com/va/newport-news/656/,2026-04-24
+646,VA,Reston,11958 Killingsworth Ave,20194,703-689-0865,38.96724,-77.35905,https://locations.traderjoes.com/va/reston/646/,2026-04-24
+786,VA,Richmond,3000 Stony Point Rd,23235,804-323-4292,37.5389,-77.56427,https://locations.traderjoes.com/va/richmond/786/,2026-04-24
+651,VA,Springfield,6394 Springfield Plaza,22150,703-569-9301,38.78164,-77.18945,https://locations.traderjoes.com/va/springfield/651/,2026-04-24
+660,VA,Virginia Beach,503 Hilltop Plaza,23454,757-422-4840,36.84861,-76.02478,https://locations.traderjoes.com/va/virginia-beach/660/,2026-04-24
+823,VA,Virginia Beach,220 Constitution Drive,23462,757-863-7406,36.84158,-76.12964,https://locations.traderjoes.com/va/virginia-beach/823/,2026-04-24
+809,VA,West Springfield,8402 Old Keene Mill Rd,22152,703-202-8770,38.77964,-77.23425,https://locations.traderjoes.com/va/west-springfield/809/,2026-04-24
+657,VA,Williamsburg,5000 Settlers Market Blvd,23188,757-259-2135,37.27713,-76.74778,https://locations.traderjoes.com/va/williamsburg/657/,2026-04-24
+527,VT,South Burlington,200 Dorset St,05403,802-658-4500,44.46364,-73.1804,https://locations.traderjoes.com/vt/south-burlington/527/,2026-04-24
+131,WA,Bellevue,15563 NE 24th St,98007,425-641-5069,47.63076,-122.13343,https://locations.traderjoes.com/wa/bellevue/131/,2026-04-24
+162,WA,Bellevue,416 116th Ave NE,98004,425-454-9799,47.61373,-122.18482,https://locations.traderjoes.com/wa/bellevue/162/,2026-04-24
+151,WA,Bellingham,2410 James St,98225,360-734-5166,48.76213,-122.46392,https://locations.traderjoes.com/wa/bellingham/151/,2026-04-24
+274,WA,Bellingham,"4255 Meridian St, Suite 200",98226,360-217-2007,48.79556,-122.4878,https://locations.traderjoes.com/wa/bellingham/274/,2026-04-24
+133,WA,Burien,15868 1st Ave S,98148,206-901-9339,47.46007,-122.33139,https://locations.traderjoes.com/wa/burien/133/,2026-04-24
+139,WA,Everett,1302 SE Everett Mall Way,98208,425-464-5485,47.91072,-122.22139,https://locations.traderjoes.com/wa/everett/139/,2026-04-24
+134,WA,Federal Way,1758 S 320th St,98003,253-941-6138,47.31693,-122.31094,https://locations.traderjoes.com/wa/federal-way/134/,2026-04-24
+138,WA,Issaquah,975 NW Gilman Blvd,98027,425-557-6420,47.54398,-122.05224,https://locations.traderjoes.com/wa/issaquah/138/,2026-04-24
+163,WA,Kent,12966 SE Kent-Kangley Rd,98030,253-639-3419,47.35959,-122.16694,https://locations.traderjoes.com/wa/kent/163/,2026-04-24
+132,WA,Kirkland,"12520 Totem Lake Blvd NE, Suite 116",98034,425-814-9181,47.71145,-122.17999,https://locations.traderjoes.com/wa/kirkland/132/,2026-04-24
+292,WA,Lacey,691 Sleater Kinney Rd SE,98503,360-858-5284,47.04156,-122.83437,https://locations.traderjoes.com/wa/lacey/292/,2026-04-24
+129,WA,Lynnwood,"19715 Highway 99, Suite 101",98036,425-670-0623,47.81963,-122.31377,https://locations.traderjoes.com/wa/lynnwood/129/,2026-04-24
+156,WA,Olympia,1530 Black Lake Blvd SW,98502,360-352-7440,47.03353,-122.93723,https://locations.traderjoes.com/wa/olympia/156/,2026-04-24
+140,WA,Redmond,15932 Redmond Way,98052,425-883-1624,47.67582,-122.12799,https://locations.traderjoes.com/wa/redmond/140/,2026-04-24
+160,WA,Sammamish,490 228th Ave NE,98074,425-836-0837,47.61385,-122.03388,https://locations.traderjoes.com/wa/sammamish/160/,2026-04-24
+130,WA,Seattle,1700 Madison St,98122,206-322-7268,47.61601,-122.3097,https://locations.traderjoes.com/wa/seattle/130/,2026-04-24
+135,WA,Seattle,1916 Queen Anne Ave N,98109,206-284-2546,47.63698,-122.35667,https://locations.traderjoes.com/wa/seattle/135/,2026-04-24
+137,WA,Seattle,4555 Roosevelt Way NE,98105,206-547-6299,47.66269,-122.31774,https://locations.traderjoes.com/wa/seattle/137/,2026-04-24
+147,WA,Seattle,4609 14th Ave NW,98107,206-783-0498,47.66261,-122.37425,https://locations.traderjoes.com/wa/seattle/147/,2026-04-24
+157,WA,Seattle,4545 Fauntleroy Way SW,98116,206-913-0013,47.56193,-122.38103,https://locations.traderjoes.com/wa/seattle/157/,2026-04-24
+273,WA,Seattle,8726 Greenwood Ave,98103,206-414-6379,47.69313,-122.35535,https://locations.traderjoes.com/wa/seattle/273/,2026-04-24
+297,WA,Seattle,401 NE Northgate Way,98125,NA,47.70575,-122.32584,https://locations.traderjoes.com/wa/seattle/297/,2026-04-24
+270,WA,Shoreline,1201 N 175th St,98133,206-542-5336,47.75491,-122.34331,https://locations.traderjoes.com/wa/shoreline/270/,2026-04-24
+158,WA,Silverdale,9991 Mickelberry Rd,98383,360-307-7224,47.65543,-122.68316,https://locations.traderjoes.com/wa/silverdale/158/,2026-04-24
+159,WA,Spokane,2975 East 29th Ave,99223,509-534-1077,47.62897,-117.36664,https://locations.traderjoes.com/wa/spokane/159/,2026-04-24
+164,WA,Spokane,5520 N Division St,99208,509-487-4188,47.7089,-117.4093,https://locations.traderjoes.com/wa/spokane/164/,2026-04-24
+296,WA,Spokane Valley,13414 E Sprague Ave,99216,NA,47.65687,-117.22383,https://locations.traderjoes.com/wa/spokane-valley/296/,2026-04-24
+148,WA,University Place,3800 Bridgeport Way W,98466,253-460-2672,47.22306,-122.53818,https://locations.traderjoes.com/wa/university-place/148/,2026-04-24
+136,WA,Vancouver,305 SE Chkalov Dr,98683,360-883-9000,45.61953,-122.5532,https://locations.traderjoes.com/wa/vancouver/136/,2026-04-24
+271,WA,Vancouver,14007 NE 10th Ave,98685,360-512-2792,45.7229,-122.66074,https://locations.traderjoes.com/wa/vancouver/271/,2026-04-24
+272,WA,Vancouver,16701 Mill Plain Blvd,98683,360-322-3554,45.61625,-122.50002,https://locations.traderjoes.com/wa/vancouver/272/,2026-04-24
+293,WA,Woodinville,14035 NE Woodinville Duvall Rd,98072,NA,47.75331,-122.15048,https://locations.traderjoes.com/wa/woodinville/293/,2026-04-24
+726,WI,Brookfield,12665 W. Bluemound Rd,53005,262-784-4806,43.03568,-88.07015,https://locations.traderjoes.com/wi/brookfield/726/,2026-04-24
+712,WI,Madison,1810 Monroe St,53711,608-257-1916,43.06499,-89.41754,https://locations.traderjoes.com/wi/madison/712/,2026-04-24
+711,WI,Milwaukee,5600 N Port Washington Rd,53217,414-962-3382,43.11893,-87.91629,https://locations.traderjoes.com/wi/milwaukee/711/,2026-04-24
