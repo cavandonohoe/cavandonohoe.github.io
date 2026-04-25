@@ -61,3 +61,17 @@ Thumbs.db
 !/sitemap.xml
 # Optional: keep CNAME if you add it for Pages DNS
 # !/CNAME
+
+# Large Census cache files (auto-downloaded by scripts)
+data/2024_Gaz_place_national.txt
+data/2024_Gaz_zcta_national.txt
+data/national_county2024.txt
+
+# Raw source caches (auto-downloaded by scripts/*.R; large)
+data/redfin_county_market_tracker.tsv.gz
+data/bls_la_area.tsv
+data/bls_la_county.tsv
+data/bls_la_metro.tsv
+data/bls_la_series.tsv
+data/hud_fy26_fmr_county.xlsx
+data/hud_fy26_safmr.xlsx
