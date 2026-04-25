@@ -75,7 +75,7 @@ tier_colors <- c(
 
 Where should you buy rental property in the US? This page ranks **`r nrow(markets)` cities** by investment metrics derived from Zillow's public home value and rent indices plus Census demand signals -- and a few unconventional ones like **Trader Joe's adjacency**, a classic real-estate proxy for walkable, amenity-rich neighborhoods with strong demographics.
 
-Jump to: [Cash Flow Calculator](#interactive-cash-flow-calculator) · [Trader Joe's Adjacency](#the-trader-joes-adjacency-premium) · [Unicorn Leaderboard](#unicorn-leaderboard-cash-flow-trader-joes) · [TJ Map](#trader-joes-investment-map) · [Listing Activity](#listing-activity-how-fast-are-homes-moving) · [Rent vs FMR Reality Check](#rent-vs-hud-fmr-reality-check) · [Job Market](#job-market-vs-rental-yield) · [Hottest Counties](#hottest-markets-realtor-com) · [ZIP Drill-Down](#zip-level-neighborhood-drill-down) · [Leveraged Returns](#leveraged-returns-at-25-down-7.25-30yr) · [Hidden Gems](#hidden-gems-small-towns-with-big-cash-flow) · [Composite Score](#composite-investment-score)
+Jump to: [Glossary](#plain-english-glossary) · [Cash Flow Calculator](#interactive-cash-flow-calculator) · [Trader Joe's Adjacency](#the-trader-joes-adjacency-premium) · [Unicorn Leaderboard](#unicorn-leaderboard-cash-flow-trader-joes) · [TJ Map](#trader-joes-investment-map) · [Listing Activity](#listing-activity-how-fast-are-homes-moving) · [Rent vs FMR Reality Check](#rent-vs-hud-fmr-reality-check) · [Job Market](#job-market-vs-rental-yield) · [Hottest Counties](#hottest-markets-realtor-com) · [ZIP Drill-Down](#zip-level-neighborhood-drill-down) · [Leveraged Returns](#leveraged-returns-at-25-down-7.25-30yr) · [Hidden Gems](#hidden-gems-small-towns-with-big-cash-flow) · [Composite Score](#composite-investment-score)
 
 The price-to-rent ratio is the standard cash-flow benchmark:
 
@@ -83,6 +83,118 @@ The price-to-rent ratio is the standard cash-flow benchmark:
 - **Moderate** (P/R 15--20): Reasonable returns, some appreciation upside
 - **Lean Rent** (P/R 20--25): Marginal; depends on appreciation
 - **Rent Favored** (P/R > 25): Buy only if you're betting on price growth
+
+### Plain-English Glossary
+
+Every term used on this page, translated. If you only read one section, read this one.
+
+```{r glossary_table}
+tibble::tribble(
+  ~Category, ~Term, ~`What it means`,
+  # --- Prices & rents ---
+  "Prices & rents", "ZHVI (home value)",
+    "Zillow's estimate of the typical home price in a city. Think \"middle of the market\" -- not the cheapest, not a mansion.",
+  "Prices & rents", "ZORI (rent index)",
+    "Zillow's estimate of the typical asking rent for a new lease in a city. Similar to a Zestimate but for rent.",
+  "Prices & rents", "YoY (year-over-year)",
+    "How much a number has changed vs the same month one year ago. +5% YoY = 5% higher than last year.",
+  "Prices & rents", "Price-to-rent ratio (P/R)",
+    "Home price \u00f7 annual rent. Low P/R (under 15) means rent is high relative to the price -- good for landlords. High P/R (over 25) means the home is expensive relative to the rent it earns.",
+
+  # --- Returns ---
+  "Returns", "Gross yield",
+    "Annual rent \u00f7 home price, as a percent. Ignores costs and financing. Quick first-pass return number.",
+  "Returns", "Cap rate",
+    "Gross yield after subtracting 35% for expected operating expenses (taxes, insurance, maintenance, vacancy, property management). On this page: cap rate = gross yield \u00d7 0.65.",
+  "Returns", "Operating expenses (opex)",
+    "Ongoing costs of owning the rental: property taxes, insurance, repairs, vacancy losses, property management. Rule of thumb: ~35% of rent.",
+
+  # --- Leverage & financing ---
+  "Leverage", "Leverage",
+    "Using borrowed money (a mortgage) to buy the property. Amplifies returns both up and down.",
+  "Leverage", "PITI",
+    "Principal + Interest + Taxes + Insurance. The four pieces of a typical monthly mortgage payment.",
+  "Leverage", "Monthly cash flow",
+    "Rent received minus PITI minus operating expenses, per month. Positive = the tenant covers the mortgage and you pocket the difference.",
+  "Leverage", "Cash-on-cash return (CoC)",
+    "Annual cash flow \u00f7 the cash you actually put in (down payment + closing costs). Tells you what your own money is earning.",
+  "Leverage", "1% rule / 2% rule",
+    "Quick sanity checks. 1% rule: monthly rent is at least 1% of the purchase price. 2% is twice that bar -- rare, mostly distressed markets.",
+  "Leverage", "Yield spread",
+    "Gross yield minus the current mortgage rate. Positive spread = rent covers the loan with room to spare. Negative = you're subsidizing the mortgage and betting on price growth.",
+
+  # --- Demand & supply ---
+  "Demand", "Vacancy rate",
+    "Share of rental units sitting empty. High vacancy = harder to find tenants and more rent concessions. Under 10% is generally healthy.",
+  "Demand", "Net migration",
+    "People moving in minus people moving out. Positive = growing demand; negative = shrinking.",
+  "Demand", "Population growth",
+    "Total population change over a period, as a percent. Includes births, deaths, and migration.",
+  "Demand", "Unemployment rate (BLS LAUS)",
+    "Share of the local workforce that's unemployed. Low + falling = healthy job market = tenants who can pay rent.",
+
+  # --- Listing-market health ---
+  "Listing health", "DOM (days on market)",
+    "Median days it takes a listing to go under contract. Low DOM = hot market; high DOM = stale.",
+  "Listing health", "Sale-to-list ratio",
+    "Final sale price \u00f7 original list price. Above 100% = bidding wars; below 100% = buyers have leverage.",
+  "Listing health", "Price drops",
+    "Share of listings that had at least one price reduction. High = sellers are chasing the market down.",
+  "Listing health", "Hotness score (Realtor.com)",
+    "Realtor.com's 0--100 composite ranking demand vs supply. Higher = more competitive for buyers.",
+
+  # --- Government benchmarks ---
+  "Benchmarks", "HUD FMR (Fair Market Rent)",
+    "The government's official rent benchmark per bedroom count per metro/county. Used to set housing voucher caps; we use it to flag cities where market rent (ZORI) looks off.",
+  "Benchmarks", "SAFMR",
+    "Small-Area FMR -- same concept as FMR but at the ZIP level. Lets you spot neighborhood-level outliers.",
+
+  # --- Proximity & composite ---
+  "Proximity", "Trader Joe's adjacency",
+    "Distance (in miles) from the city center to the nearest Trader Joe's. Used as a quick proxy for walkable, amenity-rich neighborhoods with strong demographics -- places where demand tends to be durable.",
+  "Proximity", "Unicorn",
+    "A market that clears multiple bars at once -- positive cash flow, strong yield, and close to a Trader Joe's. Rare on purpose.",
+  "Composite", "Composite investment score",
+    "A 0--100 rank-based score blending cap rate, population growth, net migration, vacancy, YoY price appreciation, and the new listing-market and job-market signals. Each factor is converted to a percentile so one extreme number can't dominate.",
+  "Composite", "Tier (Strong Buy / Moderate / Lean Rent / Rent Favored)",
+    "Bucket assigned by price-to-rent ratio. Strong Buy = cheap relative to rent; Rent Favored = expensive, only works if prices keep rising."
+) %>%
+  gt::gt(groupname_col = "Category") %>%
+  gt::tab_header(
+    title = gt::md("**Plain-English Glossary**"),
+    subtitle = "Every metric and acronym on this page, in normal words"
+  ) %>%
+  gt::cols_width(
+    Term ~ gt::px(230),
+    `What it means` ~ gt::px(620)
+  ) %>%
+  gt::cols_align(align = "left") %>%
+  gt::tab_style(
+    style = gt::cell_text(weight = "bold"),
+    locations = gt::cells_body(columns = Term)
+  ) %>%
+  gt::tab_style(
+    style = gt::cell_text(weight = "bold", color = "white"),
+    locations = gt::cells_row_groups()
+  ) %>%
+  gt::tab_style(
+    style = gt::cell_fill(color = "#2C3E50"),
+    locations = gt::cells_row_groups()
+  ) %>%
+  gt::tab_options(
+    table.font.size = gt::px(14),
+    heading.title.font.size = gt::px(16),
+    heading.subtitle.font.size = gt::px(13),
+    column_labels.font.weight = "bold",
+    column_labels.background.color = "#2C3E50",
+    column_labels.font.size = gt::px(13),
+    row_group.font.size = gt::px(13)
+  ) %>%
+  gt::tab_style(
+    style = gt::cell_text(color = "white"),
+    locations = gt::cells_column_labels()
+  )
+```
 
 ### Data Sources
 
@@ -1036,7 +1148,7 @@ top_cf %>%
   ggplot2::scale_y_continuous(labels = scales::label_dollar()) +
   ggplot2::labs(
     title = "Top 30 Cities by Monthly Cash Flow",
-    subtitle = "25% down, 7.25% mortgage, 30yr, 35% opex. Rent minus PITI minus opex.",
+    subtitle = "25% down, 7.25% mortgage, 30yr, 35% opex. Rent minus mortgage (principal + interest + taxes + insurance) minus operating expenses.",
     x = NULL, y = "Monthly Cash Flow ($)", fill = "Tier"
   ) +
   ggplot2::theme_minimal(base_size = 12) +
