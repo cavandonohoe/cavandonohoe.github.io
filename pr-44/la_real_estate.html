@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>LA Neighborhoods: Price per Square Foot</title>
+
+<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="site_libs/datatables-binding-0.34.0/datatables.js"></script>
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="site_libs/jszip-1.13.6/jszip.min.js"></script>
+<link href="site_libs/dt-ext-buttons-1.13.6/css/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="site_libs/dt-ext-buttons-1.13.6/js/dataTables.buttons.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.13.6/js/buttons.html5.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.13.6/js/buttons.colVis.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.13.6/js/buttons.print.min.js"></script>
+<link href="site_libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+<script src="site_libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="site_libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="site_libs/selectize-0.12.0/selectize.min.js"></script>
+<link href="site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P51TN2DWZM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P51TN2DWZM', {
+    'anonymize_ip': true
+  });
+</script>
+<!-- Favicons and app icons -->
+<link rel="apple-touch-icon" sizes="180x180" href="/header/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/header/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/header/favicon-16x16.png">
+<link rel="manifest" href="/header/site.webmanifest">
+<link rel="mask-icon" href="/header/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<!-- Dark mode + site-wide styling -->
+<style>
+:root {
+  --bg-color: #fff;
+  --text-color: #333;
+  --card-bg: #f8f9fa;
+  --card-border: #dee2e6;
+  --card-shadow: rgba(0,0,0,0.08);
+  --link-color: #337ab7;
+  --code-bg: #f5f5f5;
+  --table-stripe: #f9f9f9;
+  --accordion-bg: #337ab7;
+  --accordion-hover: #286090;
+  --muted-text: #777;
+  --footer-text: #ccc;
+  --well-bg: #f5f5f5;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a2e;
+  --text-color: #e0e0e0;
+  --card-bg: #16213e;
+  --card-border: #0f3460;
+  --card-shadow: rgba(0,0,0,0.3);
+  --link-color: #64b5f6;
+  --code-bg: #16213e;
+  --table-stripe: #16213e;
+  --accordion-bg: #0f3460;
+  --accordion-hover: #1a4a8a;
+  --muted-text: #aaa;
+  --footer-text: #999;
+  --well-bg: #16213e;
+}
+
+body {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] .container-fluid,
+[data-theme="dark"] .container {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] h1, [data-theme="dark"] h2,
+[data-theme="dark"] h3, [data-theme="dark"] h4 {
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] a { color: var(--link-color); }
+[data-theme="dark"] code { background-color: var(--code-bg); color: #e0e0e0; }
+[data-theme="dark"] pre { background-color: var(--code-bg); border-color: var(--card-border); }
+[data-theme="dark"] .well { background-color: var(--well-bg); border-color: var(--card-border); }
+[data-theme="dark"] .table-striped > tbody > tr:nth-of-type(odd) { background-color: var(--table-stripe); }
+[data-theme="dark"] .table { color: var(--text-color); }
+[data-theme="dark"] img { opacity: 0.9; }
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px 12px;
+  margin-top: 8px;
+  color: #9d9d9d;
+  transition: color 0.2s;
+}
+.dark-mode-toggle:hover { color: #fff; }
+
+/* Project cards */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2em;
+  margin: 1.5em 0;
+}
+.project-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 1.4em;
+  text-decoration: none !important;
+  color: var(--text-color) !important;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: block;
+  box-shadow: 0 2px 8px var(--card-shadow);
+}
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px var(--card-shadow);
+  text-decoration: none !important;
+}
+.project-card .card-icon { font-size: 2em; margin-bottom: 0.4em; }
+.project-card h3 { font-size: 1.05em; margin: 0 0 0.4em 0; color: var(--link-color) !important; }
+.project-card p { font-size: 0.88em; color: var(--muted-text); margin: 0; line-height: 1.4; }
+
+/* Timestamp badges */
+.data-timestamp {
+  display: inline-block;
+  background: var(--well-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-size: 0.82em;
+  color: var(--muted-text);
+  margin-bottom: 1em;
+}
+
+/* Collapsible table accordion styling */
+details.table-accordion {
+  margin: 1em 0;
+}
+details.table-accordion > summary {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accordion-bg);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  list-style: none;
+  text-align: center;
+  transition: background 0.2s ease;
+}
+details.table-accordion > summary::-webkit-details-marker { display: none; }
+details.table-accordion > summary::before {
+  content: "\25B6\00a0\00a0";
+  font-size: 0.85em;
+}
+details.table-accordion[open] > summary {
+  border-radius: 6px 6px 0 0;
+  background: var(--accordion-hover);
+}
+details.table-accordion[open] > summary::before {
+  content: "\25BC\00a0\00a0";
+}
+details.table-accordion > summary:hover {
+  background: var(--accordion-hover);
+}
+</style>
+<script>
+(function() {
+  var saved = localStorage.getItem('theme') || 'light';
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+})();
+</script>
+</style>
+<!-- Meta tags for SEO and social sharing -->
+<meta name="description" content="Cavan Donohoe - Data Scientist. Personal website showcasing data science projects, R tutorials, and professional experience.">
+<meta name="keywords" content="data science, R programming, data analysis, R Markdown, Cavan Donohoe">
+<meta name="author" content="Cavan Donohoe">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cavandonohoe.github.io/">
+<meta property="og:title" content="Cavan Donohoe - Data Scientist">
+<meta property="og:description" content="Data Scientist passionate about making workflows easier through automation and reproducible analysis.">
+<meta property="og:image" content="https://cavandonohoe.github.io/header/android-chrome-512x512.png">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://cavandonohoe.github.io/">
+<meta property="twitter:title" content="Cavan Donohoe - Data Scientist">
+<meta property="twitter:description" content="Data Scientist passionate about making workflows easier through automation and reproducible analysis.">
+<meta property="twitter:image" content="https://cavandonohoe.github.io/header/android-chrome-512x512.png">
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Cavan Donohoe</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="fa fa-info"></span>
+     
+    About Me
+  </a>
+</li>
+<li>
+  <a href="services.html">
+    <span class="fa fa-wrench"></span>
+     
+    Services
+  </a>
+</li>
+<li>
+  <a href="cv.html">
+    <span class="fa fa-id-card"></span>
+     
+    CV
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-laptop"></span>
+     
+    Projects
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">--- Movies &amp; TV ---</li>
+    <li>
+      <a href="imdb_top_250_tv_series.html">IMDb TV Series</a>
+    </li>
+    <li>
+      <a href="imdb_rating_plot.html">IMDb Rating Plot by Season and Episode</a>
+    </li>
+    <li>
+      <a href="top_250_imdb_with_rt.html">Top 250 IMDb Movies with Rotten Tomato Scores</a>
+    </li>
+    <li>
+      <a href="best_picture_nominees.html">Best Picture Nominees</a>
+    </li>
+    <li>
+      <a href="best_pic_vs_top_1000.html">Best Picture and Top 1000 Box Office</a>
+    </li>
+    <li>
+      <a href="my_imdb.html">My IMDb Ratings</a>
+    </li>
+    <li class="dropdown-header">--- Sports &amp; Personal ---</li>
+    <li>
+      <a href="avca_all_americans.html">AVCA Men's Volleyball All-Americans</a>
+    </li>
+    <li>
+      <a href="firefighter_schedule.html">Jason, Owen, and Wyett's Firefighter Schedule</a>
+    </li>
+    <li>
+      <a href="google_maps_saved_places.html">Google Maps: Want To Go + Favorites</a>
+    </li>
+    <li>
+      <a href="my_travels.html">Get Bloggy With It</a>
+    </li>
+    <li>
+      <a href="tohs_reunion.html">TOHS Class of 2012 Reunion</a>
+    </li>
+    <li class="dropdown-header">--- Visualizations ---</li>
+    <li>
+      <a href="confederate_statues.html">When Were Confederate Statues Erected?</a>
+    </li>
+    <li>
+      <a href="sierpinski_triangle.html">Sierpinski Triangle</a>
+    </li>
+    <li class="dropdown-header">--- Real Estate &amp; Finance ---</li>
+    <li>
+      <a href="us_rental_markets.html">US Rental Investment Markets</a>
+    </li>
+    <li>
+      <a href="la_real_estate.html">LA Neighborhoods: Price per Sq Ft</a>
+    </li>
+    <li>
+      <a href="https://cavandonohoe.shinyapps.io/rent-vs-buy/">Rent vs. Buy Calculator</a>
+    </li>
+    <li class="dropdown-header">--- Archive ---</li>
+    <li>
+      <a href="sp500.html">S&amp;P 500 Perspective</a>
+    </li>
+    <li>
+      <a href="covid_cases_nostalgia.html">Covid Cases: Then &amp; Now</a>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Learn R</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="learn_r.html">R Time Is Limited, Let's Make the Most of It</a>
+        </li>
+        <li>
+          <a href="intro_to_r.html">Intro to R</a>
+        </li>
+        <li>
+          <a href="basic_operations_r.html">Basic Operations</a>
+        </li>
+        <li>
+          <a href="data_manipulation_r.html">Data Manipulations</a>
+        </li>
+        <li>
+          <a href="data_visualization_r.html">Data Visualization</a>
+        </li>
+        <li>
+          <a href="statistics_with_r.html">Statistics with R</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">LA Neighborhoods: Price per Square
+Foot</h1>
+
+</div>
+
+
+<meta property="og:title" content="LA Neighborhoods: Price per Square Foot">
+<meta property="og:description" content="Zillow and Redfin data for LA neighborhoods — median prices, rent, and what $1M buys you.">
+<meta property="og:url" content="https://cavandonohoe.github.io/la_real_estate.html">
+<meta property="og:type" content="article">
+<p><span class="data-timestamp">Zillow data as of: February 28,
+2026</span></p>
+<p>How much space does your dollar buy across Los Angeles? This page
+compares 35 neighborhoods by <strong>price per square foot</strong> —
+the ratio of median home price to typical home size. Neighborhoods are
+grouped into five tiers based on median home price:</p>
+<ul>
+<li><strong>Ultra-Luxury</strong> (&gt;$3M): Bel Air, Beverly Hills,
+Holmby Hills, Malibu</li>
+<li><strong>Luxury</strong> ($2M–$3M): Brentwood, Santa Monica, Pacific
+Palisades</li>
+<li><strong>Upper-Mid</strong> ($1.3M–$2M): Venice, Silver Lake, Sherman
+Oaks</li>
+<li><strong>Mid-Range</strong> ($900K–$1.3M): Highland Park, Pasadena,
+Eagle Rock</li>
+<li><strong>Affordable</strong> (&lt;$900K): Boyle Heights, North
+Hollywood, Koreatown</li>
+</ul>
+<div id="data-sources" class="section level3">
+<h3>Data Sources</h3>
+<p>All data is traceable and reproducible. Run
+<code>Rscript scripts/la_real_estate_data.R</code> to refresh.</p>
+<table>
+<colgroup>
+<col width="34%" />
+<col width="26%" />
+<col width="39%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>What</th>
+<th>Updated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://www.zillow.com/research/data/">Zillow ZHVI</a></td>
+<td>Typical home values (neighborhood &amp; city level)</td>
+<td>2026-02-28</td>
+</tr>
+<tr class="even">
+<td><a href="https://www.zillow.com/research/data/">Zillow ZORI</a></td>
+<td>Typical observed rents (zip-code level)</td>
+<td>2026-02-28</td>
+</tr>
+<tr class="odd">
+<td><a
+href="https://www.redfin.com/city/11203/CA/Los-Angeles/housing-market">Redfin</a></td>
+<td>Median sale prices, $/sqft</td>
+<td>Manual; see <a href="data/la_neighborhoods_redfin.csv">source
+CSV</a></td>
+</tr>
+<tr class="even">
+<td><a href="https://americanhomefield.com/">American Home
+Field</a></td>
+<td>$/sqft study</td>
+<td>2025</td>
+</tr>
+</tbody>
+</table>
+<p>Raw data files: <a
+href="data/la_neighborhoods.csv">la_neighborhoods.csv</a> | <a
+href="data/la_neighborhoods_redfin.csv">Redfin sources</a> | <a
+href="data/la_zhvi_raw.csv">Zillow ZHVI extract</a> | <a
+href="data/la_zori_raw.csv">Zillow ZORI extract</a></p>
+</div>
+<div id="price-per-square-foot-by-neighborhood"
+class="section level2 tabset">
+<h2 class="tabset">Price per Square Foot by Neighborhood</h2>
+<div id="bar-chart" class="section level3">
+<h3>Bar Chart</h3>
+<p><img src="la_real_estate_files/figure-html/bar_chart-1.png" alt="" width="960" /></p>
+</div>
+<div id="interactive-table" class="section level3">
+<h3>Interactive Table</h3>
+<details class="table-accordion">
+<summary>
+Show table
+</summary>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-f5b4e63d033f7d3e738a" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-f5b4e63d033f7d3e738a">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;Ultra-Luxury&quot;,&quot;Luxury&quot;,&quot;Upper-Mid&quot;,&quot;Mid-Range&quot;,&quot;Affordable&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["Buttons"],"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35"],["Bel Air","Beverly Crest","Beverly Hills","Venice","Hollywood Hills West","Holmby Hills","Manhattan Beach","Cheviot Hills","Malibu (Point Dume)","Pacific Palisades","Brentwood","Santa Monica","Highland Park","Los Feliz","Silver Lake","West Hollywood","Hancock Park","Culver City","Studio City","Echo Park","Atwater Village","Eagle Rock","Sherman Oaks","Pasadena","Westchester","Eastside LA","Encino","Koreatown","North Hollywood","El Sereno","Boyle Heights","South Los Angeles","Pico-Union","Historic South Central","South Park (DTLA)"],["Ultra-Luxury","Luxury","Ultra-Luxury","Upper-Mid","Luxury","Ultra-Luxury","Luxury","Luxury","Ultra-Luxury","Ultra-Luxury","Luxury","Luxury","Mid-Range","Luxury","Upper-Mid","Upper-Mid","Upper-Mid","Upper-Mid","Upper-Mid","Mid-Range","Mid-Range","Mid-Range","Upper-Mid","Mid-Range","Mid-Range","Affordable","Mid-Range","Affordable","Affordable","Affordable","Affordable","Affordable","Affordable","Affordable","Affordable"],["$4,021,000","$2,695,000","$3,581,000","$1,851,000","$2,300,000","$7,000,000","$3,000,000","$2,371,158","$5,600,000","$3,200,000","$2,648,000","$2,500,000","$1,199,000","$2,275,000","$1,675,000","$1,400,000","$1,900,000","$1,303,000","$1,567,144","$1,100,000","$1,150,000","$1,050,000","$1,341,177","$1,200,000","$1,200,000","$749,000","$1,300,000","$680,000","$850,000","$750,000","$742,000","$682,000","$650,000","$550,000","$500,000"],["redfin","redfin","redfin","redfin","redfin","redfin","redfin","zillow_zhvi","redfin","redfin","redfin","redfin","redfin","redfin","redfin","redfin","redfin","redfin","zillow_zhvi","redfin","redfin","redfin","zillow_zhvi","redfin","redfin","redfin","redfin","redfin","redfin","redfin","redfin","redfin","redfin","redfin","redfin"],["$1,318","$1,310","$1,250","$1,213","$1,209","$1,200","$1,150","$1,145","$1,100","$1,050","$1,040","$950","$936","$867","$848","$800","$780","$750","$720","$720","$700","$700","$680","$680","$650","$624","$580","$580","$550","$520","$471","$456","$453","$425","$419"],["3,051","2,057","2,865","1,526","1,902","5,833","2,609","2,071","5,091","3,048","2,546","2,632","1,281","2,624","1,975","1,750","2,436","1,737","2,177","1,528","1,643","1,500","1,972","1,765","1,846","1,200","2,241","1,172","1,545","1,442","1,575","1,496","1,435","1,294","1,193"],["759","763","800","824","827","833","870","873","909","952","962","1,053","1,068","1,153","1,179","1,250","1,282","1,333","1,389","1,389","1,429","1,429","1,471","1,471","1,538","1,603","1,724","1,724","1,818","1,923","2,123","2,193","2,208","2,353","2,387"],["$12,311","$10,842","$10,842","$3,587","$2,741","$3,982","$6,121","$3,494","$16,169","$7,601","$4,049","$3,698","$2,729","$2,518","$3,036","$3,642","$2,205","$3,674","$3,168","$2,605","$3,036","$2,908","$2,829","$2,898","$2,853","$2,405","$2,990","$1,948","$2,642","$2,477","$2,093","$2,529","$1,977","$2,395","$2,641"],["$4,021,065","$2,694,794","$3,580,741","$1,801,295","---","---","$3,159,767","$2,371,158","$3,129,197","$3,050,315","---","$1,684,070","$1,053,387","---","$1,417,136","---","---","$1,277,224","$1,567,144","$1,053,904","$1,280,270","$1,257,219","$1,341,177","$1,185,825","$1,455,258","---","$1,427,847","$764,041","$855,985","$759,138","$640,519","$664,065","$678,221","---","---"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Neighborhood<\/th>\n      <th>Tier<\/th>\n      <th>Median Price<\/th>\n      <th>Price Source<\/th>\n      <th>$/sqft<\/th>\n      <th>Typical sqft<\/th>\n      <th>$1M Buys (sqft)<\/th>\n      <th>Rent (ZORI)<\/th>\n      <th>ZHVI<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":500,"dom":"Bfrtip","buttons":["copy","csv","excel"],"scrollY":"400px","scrollX":true,"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Neighborhood","targets":1},{"name":"Tier","targets":2},{"name":"Median Price","targets":3},{"name":"Price Source","targets":4},{"name":"$/sqft","targets":5},{"name":"Typical sqft","targets":6},{"name":"$1M Buys (sqft)","targets":7},{"name":"Rent (ZORI)","targets":8},{"name":"ZHVI","targets":9}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"lengthMenu":[10,25,50,100,500]}},"evals":[],"jsHooks":[]}</script>
+</details>
+</div>
+</div>
+<div id="what-does-1-million-buy-you" class="section level2 tabset">
+<h2 class="tabset">What Does $1 Million Buy You?</h2>
+<div id="bar-chart-1" class="section level3">
+<h3>Bar Chart</h3>
+<p><img src="la_real_estate_files/figure-html/million_chart-1.png" alt="" width="960" /></p>
+</div>
+<div id="scatter-price-vs-size" class="section level3">
+<h3>Scatter: Price vs Size</h3>
+<p><img src="la_real_estate_files/figure-html/scatter-1.png" alt="" width="960" /></p>
+</div>
+</div>
+<div id="price-to-rent-ratio" class="section level2">
+<h2>Price-to-Rent Ratio</h2>
+<p>The price-to-rent ratio divides median home price by annual rent.
+Under 15 favors buying; 15–20 is a toss-up; over 20 favors renting.</p>
+<p><img src="la_real_estate_files/figure-html/rent_ratio-1.png" alt="" width="960" /></p>
+<hr />
+<p><strong>How to update this data:</strong> Run
+<code>Rscript scripts/la_real_estate_data.R</code> to refresh Zillow
+ZHVI/ZORI. For Redfin $/sqft and median sale prices, update
+<code>data/la_neighborhoods_redfin.csv</code> with the latest values
+from each neighborhood’s Redfin page (URLs are in the CSV). Then
+re-render this page.</p>
+</div>
+
+<link rel="stylesheet" href="/css/footer.css">
+<footer id="footer_stuff" class="band full" role="contentinfo">
+  <div class="bandContent">
+    <p id="full_send">Feel free to contact me:</p>
+    <nav id="logos" aria-label="Social media and contact links">
+      <a href="mailto:cavandonohoe@gmail.com" aria-label="Email Cavan Donohoe"><i class="fa fa-envelope" style="font-size:22px"></i></a>
+      <a href="https://www.instagram.com/cavandonohoe" aria-label="Instagram profile" rel="noopener noreferrer"><i class="fa fa-instagram" style="font-size:22px"></i></a>
+      <a href="https://www.facebook.com/cavandonohoe" aria-label="Facebook profile" rel="noopener noreferrer"><i class="fa fa-facebook" style="font-size:22px"></i></a>
+      <a href="https://github.com/cavandonohoe" aria-label="GitHub profile" rel="noopener noreferrer"><i class="fa fa-github" style="font-size:22px"></i></a>
+      <a href="https://www.linkedin.com/in/cavan-donohoe/" aria-label="LinkedIn profile" rel="noopener noreferrer"><i class="fa fa-linkedin" style="font-size:22px"></i></a>
+      <a href="tel:+8054043321" aria-label="Phone number"><i class="fa fa-phone" style="font-size:22px"></i></a>
+    </nav>
+  </div>
+</footer>
+<script>
+(function() {
+  var btn = document.createElement('button');
+  btn.className = 'dark-mode-toggle';
+  btn.setAttribute('aria-label', 'Toggle dark mode');
+  btn.innerHTML = localStorage.getItem('theme') === 'dark' ? '☀️' : '🌙';
+  btn.onclick = function() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    btn.innerHTML = next === 'dark' ? '☀️' : '🌙';
+  };
+  var navbar = document.querySelector('.navbar-right') || document.querySelector('.navbar-nav');
+  if (navbar) {
+    var li = document.createElement('li');
+    li.appendChild(btn);
+    navbar.appendChild(li);
+  }
+})();
+</script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
