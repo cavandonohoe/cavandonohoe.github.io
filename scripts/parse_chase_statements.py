@@ -3,15 +3,16 @@
 
 Usage:
     python3 parse_chase_statements.py <pdf> [<pdf> ...]
-    python3 parse_chase_statements.py --out transactions.csv ~/Downloads/Statements*.pdf
+    python3 parse_chase_statements.py --out transactions.xlsx ~/Downloads/Statements*.pdf
 
-Output columns: file, date, merchant, amount, type
+Output columns: file, date, merchant, amount, type, owner
     - date    : ISO date; year inferred from statement Opening/Closing Date
     - merchant: merchant name / transaction description
     - amount  : float; positive = purchase, negative = payment/credit
     - type    : PAYMENT / PURCHASE / CASH ADVANCE / FEE / INTEREST / BALANCE TRANSFER
+    - owner   : "c" for Cavan-only purchases, "b" for shared purchases, blank for payments
 
-Requires: pdfplumber (pip install pdfplumber)
+Requires: pdfplumber, openpyxl (pip install pdfplumber openpyxl)
 """
 
 from __future__ import annotations
@@ -25,6 +26,7 @@ from datetime import date, datetime
 from pathlib import Path
 
 import pdfplumber
+from openpyxl import Workbook
 
 
 PERIOD_RE = re.compile(
@@ -76,6 +78,15 @@ SECTION_TO_TYPE = {
     "BALANCE TRANSFERS": "BALANCE TRANSFER",
 }
 
+OWNER_C_PATTERNS = (
+    re.compile(r"CHATGPT|OPENAI", re.IGNORECASE),
+    re.compile(r"\bALO\b", re.IGNORECASE),
+    re.compile(r"MAMMOTH", re.IGNORECASE),
+    re.compile(r"SOLIDCORE", re.IGNORECASE),
+    re.compile(r"CLASSPASS", re.IGNORECASE),
+    re.compile(r"HIGHLINE", re.IGNORECASE),
+)
+
 
 @dataclass
 class Transaction:
@@ -84,6 +95,7 @@ class Transaction:
     merchant: str
     amount: float
     type: str
+    owner: str
 
 
 def _extract_text(pdf_path: Path) -> str:
@@ -161,6 +173,7 @@ def parse_chase_statement(pdf_path: Path) -> list[Transaction]:
         amount = float(amount_s.replace(",", ""))
 
         tx_type = SECTION_TO_TYPE.get(current_section or "", "")
+        owner = _classify_owner(merchant, amount, tx_type)
 
         records.append(
             Transaction(
@@ -169,22 +182,110 @@ def parse_chase_statement(pdf_path: Path) -> list[Transaction]:
                 merchant=merchant,
                 amount=amount,
                 type=tx_type,
+                owner=owner,
             )
         )
 
     return records
 
 
+def _classify_owner(merchant: str, amount: float, tx_type: str) -> str:
+    if amount <= 0 or tx_type == "PAYMENT":
+        return ""
+    for pattern in OWNER_C_PATTERNS:
+        if pattern.search(merchant):
+            return "c"
+    return "b"
+
+
+def _summary_path(out_path: Path) -> Path:
+    return out_path.with_name(f"{out_path.stem}_b_monthly_summary{out_path.suffix}")
+
+
+def _monthly_b_summary(rows: list[Transaction]) -> list[dict[str, str | int | float]]:
+    monthly: dict[str, dict[str, int | float | str]] = {}
+    for row in rows:
+        if row.owner != "b":
+            continue
+        month = row.date.strftime("%Y-%m")
+        if month not in monthly:
+            monthly[month] = {"month": month, "b_total": 0.0, "b_count": 0}
+        monthly[month]["b_total"] += row.amount
+        monthly[month]["b_count"] += 1
+
+    return [
+        {
+            "month": month,
+            "b_total": f"{values['b_total']:.2f}",
+            "b_count": str(values["b_count"]),
+            "c_share": f"{(values['b_total'] * 2 / 3):.2f}",
+            "v_share": f"{(values['b_total'] / 3):.2f}",
+        }
+        for month, values in sorted(monthly.items())
+    ]
+
+
+def _rows_to_dicts(rows: list[Transaction]) -> list[dict[str, str | float]]:
+    return [
+        {
+            "file": row.file,
+            "date": row.date.isoformat(),
+            "merchant": row.merchant,
+            "amount": row.amount,
+            "type": row.type,
+            "owner": row.owner,
+        }
+        for row in rows
+    ]
+
+
 def _write_csv(rows: list[Transaction], out_path: Path) -> None:
     with out_path.open("w", newline="") as fh:
         writer = csv.DictWriter(
-            fh, fieldnames=["file", "date", "merchant", "amount", "type"]
+            fh, fieldnames=["file", "date", "merchant", "amount", "type", "owner"]
         )
         writer.writeheader()
-        for r in rows:
-            row = asdict(r)
-            row["date"] = r.date.isoformat()
-            writer.writerow(row)
+        writer.writerows(_rows_to_dicts(rows))
+
+
+def _write_b_summary_csv(rows: list[Transaction], out_path: Path) -> Path:
+    summary_path = _summary_path(out_path)
+    summary_rows = _monthly_b_summary(rows)
+    with summary_path.open("w", newline="") as fh:
+        writer = csv.DictWriter(
+            fh, fieldnames=["month", "b_total", "b_count", "c_share", "v_share"]
+        )
+        writer.writeheader()
+        writer.writerows(summary_rows)
+    return summary_path
+
+
+def _autosize_worksheet(ws) -> None:
+    for column_cells in ws.columns:
+        values = [str(cell.value) if cell.value is not None else "" for cell in column_cells]
+        max_len = max(len(value) for value in values) if values else 0
+        ws.column_dimensions[column_cells[0].column_letter].width = min(max(max_len + 2, 10), 60)
+
+
+def _write_xlsx(rows: list[Transaction], out_path: Path) -> None:
+    workbook = Workbook()
+
+    tx_sheet = workbook.active
+    tx_sheet.title = "Transactions"
+    tx_fields = ["file", "date", "merchant", "amount", "type", "owner"]
+    tx_sheet.append(tx_fields)
+    for row in _rows_to_dicts(rows):
+        tx_sheet.append([row[field] for field in tx_fields])
+
+    summary_sheet = workbook.create_sheet("Monthly B Summary")
+    summary_fields = ["month", "b_total", "b_count", "c_share", "v_share"]
+    summary_sheet.append(summary_fields)
+    for row in _monthly_b_summary(rows):
+        summary_sheet.append([row[field] for field in summary_fields])
+
+    _autosize_worksheet(tx_sheet)
+    _autosize_worksheet(summary_sheet)
+    workbook.save(out_path)
 
 
 def _print_table(rows: list[Transaction]) -> None:
@@ -197,13 +298,15 @@ def _print_table(rows: list[Transaction]) -> None:
         "merchant": min(60, max(len(r.merchant) for r in rows)),
         "amount": 10,
         "type": max(len(r.type) for r in rows),
+        "owner": 5,
     }
     header = (
         f"{'file':<{widths['file']}}  "
         f"{'date':<{widths['date']}}  "
         f"{'merchant':<{widths['merchant']}}  "
         f"{'amount':>{widths['amount']}}  "
-        f"{'type':<{widths['type']}}"
+        f"{'type':<{widths['type']}}  "
+        f"{'owner':<{widths['owner']}}"
     )
     print(header)
     print("-" * len(header))
@@ -214,7 +317,8 @@ def _print_table(rows: list[Transaction]) -> None:
             f"{r.date.isoformat():<{widths['date']}}  "
             f"{merchant:<{widths['merchant']}}  "
             f"{r.amount:>{widths['amount']},.2f}  "
-            f"{r.type:<{widths['type']}}"
+            f"{r.type:<{widths['type']}}  "
+            f"{r.owner:<{widths['owner']}}"
         )
 
 
@@ -226,7 +330,7 @@ def main(argv: list[str]) -> int:
     p.add_argument(
         "--out",
         type=Path,
-        help="Write results to CSV. If omitted, prints a table to stdout.",
+        help="Write results to .xlsx or .csv. If omitted, prints a table to stdout.",
     )
     args = p.parse_args(argv)
 
@@ -240,8 +344,15 @@ def main(argv: list[str]) -> int:
     all_tx.sort(key=lambda r: (r.date, r.file))
 
     if args.out:
-        _write_csv(all_tx, args.out)
-        print(f"Wrote {len(all_tx)} transactions to {args.out}")
+        if args.out.suffix.lower() == ".xlsx":
+            _write_xlsx(all_tx, args.out)
+            print(f"Wrote {len(all_tx)} transactions to workbook {args.out}")
+            print("Workbook tabs: Transactions, Monthly B Summary")
+        else:
+            _write_csv(all_tx, args.out)
+            summary_path = _write_b_summary_csv(all_tx, args.out)
+            print(f"Wrote {len(all_tx)} transactions to {args.out}")
+            print(f"Wrote monthly shared summary to {summary_path}")
     else:
         _print_table(all_tx)
 
