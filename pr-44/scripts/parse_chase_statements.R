@@ -72,13 +72,46 @@ summary_table <- function(all_tx) {
     )
 }
 
-write_xlsx_workbook <- function(all_tx, out_file) {
+metadata_table <- function(all_tx, source_files) {
+  data.frame(
+    field = c(
+      "generated_at",
+      "source_files",
+      "statement_file_count",
+      "transaction_row_count",
+      "purchase_row_count",
+      "payment_row_count",
+      "owner_c_row_count",
+      "owner_b_row_count",
+      "owner_c_rules",
+      "shared_split"
+    ),
+    value = c(
+      format(Sys.time(), "%Y-%m-%dT%H:%M:%S%z"),
+      paste(basename(source_files), collapse = ", "),
+      length(source_files),
+      nrow(all_tx),
+      sum(all_tx$amount > 0, na.rm = TRUE),
+      sum(all_tx$amount <= 0, na.rm = TRUE),
+      sum(all_tx$owner == "c", na.rm = TRUE),
+      sum(all_tx$owner == "b", na.rm = TRUE),
+      "CHATGPT/OPENAI, ALO, MAMMOTH, SOLIDCORE, CLASSPASS, HIGHLINE",
+      "c=2/3, v=1/3"
+    ),
+    stringsAsFactors = FALSE
+  )
+}
+
+write_xlsx_workbook <- function(all_tx, out_file, source_files) {
   wb <- openxlsx::createWorkbook()
   openxlsx::addWorksheet(wb, "Transactions")
   openxlsx::writeData(wb, "Transactions", all_tx)
 
   openxlsx::addWorksheet(wb, "Monthly B Summary")
   openxlsx::writeData(wb, "Monthly B Summary", summary_table(all_tx))
+
+  openxlsx::addWorksheet(wb, "Metadata")
+  openxlsx::writeData(wb, "Metadata", metadata_table(all_tx, source_files))
 
   openxlsx::saveWorkbook(wb, out_file, overwrite = TRUE)
 }
@@ -219,9 +252,9 @@ main <- function(args) {
 
   if (!is.null(out_file)) {
     if (tolower(tools::file_ext(out_file)) == "xlsx") {
-      write_xlsx_workbook(all_tx, out_file)
+      write_xlsx_workbook(all_tx, out_file, args)
       cat("Wrote", nrow(all_tx), "transactions to workbook", out_file, "\n")
-      cat("Workbook tabs: Transactions, Monthly B Summary\n")
+      cat("Workbook tabs: Transactions, Monthly B Summary, Metadata\n")
     } else {
       utils::write.csv(all_tx, out_file, row.names = FALSE)
       summary_file <- write_b_summary(all_tx, out_file)
