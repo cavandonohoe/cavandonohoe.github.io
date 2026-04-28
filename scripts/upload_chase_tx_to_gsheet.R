@@ -23,7 +23,7 @@ sheet_id_by_name <- function(ss, sheet_name) {
 }
 
 set_owner_b_filter <- function(ss, sheet_name, n_cols) {
-  owner_col_idx <- 5
+  owner_col_idx <- 6
   criteria <- setNames(
     list(
       list(
@@ -66,6 +66,51 @@ upload_sheet <- function(ss, sheet_name, data) {
   googlesheets4::range_autofit(ss = ss, sheet = sheet_name, dimension = "columns")
 }
 
+summary_formula <- function(transactions_sheet_name = "Transactions") {
+  paste0(
+    "=QUERY({",
+    "TEXT(", transactions_sheet_name, "!B2:B,\"yyyy-mm\"),",
+    transactions_sheet_name, "!D2:D,",
+    transactions_sheet_name, "!F2:F",
+    "},",
+    "\"select Col1, sum(Col2), count(Col2), sum(Col2) * 2 / 3, sum(Col2) / 3 ",
+    "where Col3 = 'b' and Col1 is not null ",
+    "group by Col1 order by Col1 ",
+    "label Col1 'month', ",
+    "sum(Col2) 'b_total', ",
+    "count(Col2) 'b_count', ",
+    "sum(Col2) * 2 / 3 'c_share', ",
+    "sum(Col2) / 3 'v_share'\"",
+    ",0)"
+  )
+}
+
+upload_formula_summary_sheet <- function(
+  ss,
+  sheet_name,
+  transactions_sheet_name = "Transactions"
+) {
+  existing_sheets <- googlesheets4::sheet_names(ss)
+  if (!(sheet_name %in% existing_sheets)) {
+    googlesheets4::sheet_add(ss, sheet = sheet_name)
+  }
+
+  formula_cell <- data.frame(
+    value = googlesheets4::gs4_formula(summary_formula(transactions_sheet_name))
+  )
+
+  googlesheets4::range_clear(ss = ss, sheet = sheet_name)
+  googlesheets4::range_write(
+    ss = ss,
+    sheet = sheet_name,
+    range = "A1",
+    data = formula_cell,
+    col_names = FALSE,
+    reformat = FALSE
+  )
+  googlesheets4::range_autofit(ss = ss, sheet = sheet_name, dimension = "columns")
+}
+
 main <- function(args) {
   if (length(args) != 2) {
     cat("Usage: Rscript upload_chase_tx_to_gsheet.R <workbook.xlsx> <google-sheet-url>\n")
@@ -78,12 +123,11 @@ main <- function(args) {
   googlesheets4::gs4_auth(cache = TRUE)
 
   tx <- read_workbook_sheet(xlsx_path, "Transactions")
-  summary <- read_workbook_sheet(xlsx_path, "Monthly B Summary")
   metadata <- read_workbook_sheet(xlsx_path, "Metadata")
 
   upload_sheet(ss, "Transactions", tx)
   set_owner_b_filter(ss, "Transactions", ncol(tx))
-  upload_sheet(ss, "Monthly B Summary", summary)
+  upload_formula_summary_sheet(ss, "Monthly B Summary", "Transactions")
   upload_sheet(ss, "Metadata", metadata)
 
   cat("Uploaded workbook tabs to Google Sheet:\n")
