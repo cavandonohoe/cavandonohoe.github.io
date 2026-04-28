@@ -4,19 +4,84 @@
 #
 # Usage:
 #   Rscript parse_chase_statements.R <pdf> [<pdf> ...]
-#   Rscript parse_chase_statements.R --out transactions.csv ~/Downloads/Statements*.pdf
+#   Rscript parse_chase_statements.R --out transactions.xlsx ~/Downloads/Statements*.pdf
 #
-# Output columns: file, date, merchant, amount, type
+# Output columns: file, date, merchant, amount, type, owner
 #   - date    : Date (inferred year from statement Opening/Closing Date)
 #   - merchant: merchant name / transaction description
 #   - amount  : numeric; positive = purchase, negative = payment/credit
 #   - type    : "PAYMENT"/"PURCHASE"/"CASH ADVANCE"/"FEE"/"INTEREST" (section header)
+#   - owner   : "c" for Cavan-only purchases, "b" for shared purchases, blank for payments
 
 suppressPackageStartupMessages({
   if (!requireNamespace("pdftools", quietly = TRUE)) {
     stop("Install pdftools: install.packages('pdftools')")
   }
+  if (!requireNamespace("dplyr", quietly = TRUE)) {
+    stop("Install dplyr: install.packages('dplyr')")
+  }
+  if (!requireNamespace("readr", quietly = TRUE)) {
+    stop("Install readr: install.packages('readr')")
+  }
+  if (!requireNamespace("openxlsx", quietly = TRUE)) {
+    stop("Install openxlsx: install.packages('openxlsx')")
+  }
 })
+
+classify_owner <- function(merchant, amount, type) {
+  if (is.na(amount) || amount <= 0 || identical(type, "PAYMENT")) {
+    return("")
+  }
+
+  c_patterns <- c("CHATGPT", "OPENAI", "\\bALO\\b", "MAMMOTH", "SOLIDCORE", "CLASSPASS", "HIGHLINE")
+  if (any(grepl(paste(c_patterns, collapse = "|"), merchant, ignore.case = TRUE))) {
+    return("c")
+  }
+
+  "b"
+}
+
+summary_path <- function(out_file) {
+  dir_name <- dirname(out_file)
+  stem <- tools::file_path_sans_ext(basename(out_file))
+  ext <- tools::file_ext(out_file)
+  ext <- if (nzchar(ext)) paste0(".", ext) else ""
+  file.path(dir_name, paste0(stem, "_b_monthly_summary", ext))
+}
+
+write_b_summary <- function(all_tx, out_file) {
+  summary_file <- summary_path(out_file)
+
+  summary_table(all_tx) |>
+    readr::write_csv(summary_file)
+
+  summary_file
+}
+
+summary_table <- function(all_tx) {
+  all_tx |>
+    dplyr::filter(owner == "b") |>
+    dplyr::mutate(month = format(date, "%Y-%m")) |>
+    dplyr::group_by(month) |>
+    dplyr::summarise(
+      b_total = round(sum(amount), 2),
+      b_count = dplyr::n(),
+      c_share = round(b_total * 2 / 3, 2),
+      v_share = round(b_total / 3, 2),
+      .groups = "drop"
+    )
+}
+
+write_xlsx_workbook <- function(all_tx, out_file) {
+  wb <- openxlsx::createWorkbook()
+  openxlsx::addWorksheet(wb, "Transactions")
+  openxlsx::writeData(wb, "Transactions", all_tx)
+
+  openxlsx::addWorksheet(wb, "Monthly B Summary")
+  openxlsx::writeData(wb, "Monthly B Summary", summary_table(all_tx))
+
+  openxlsx::saveWorkbook(wb, out_file, overwrite = TRUE)
+}
 
 parse_chase_statement <- function(pdf_path) {
   pages <- pdftools::pdf_text(pdf_path)
@@ -113,6 +178,7 @@ parse_chase_statement <- function(pdf_path) {
         "BALANCE TRANSFERS" = "BALANCE TRANSFER",
         NA_character_
       )
+      owner <- classify_owner(merchant, amount, type)
 
       records[[length(records) + 1]] <- data.frame(
         file = basename(pdf_path),
@@ -120,6 +186,7 @@ parse_chase_statement <- function(pdf_path) {
         merchant = merchant,
         amount = amount,
         type = type,
+        owner = owner,
         stringsAsFactors = FALSE
       )
     }
@@ -128,7 +195,7 @@ parse_chase_statement <- function(pdf_path) {
   if (length(records) == 0) {
     return(data.frame(
       file = character(), date = as.Date(character()),
-      merchant = character(), amount = numeric(), type = character()
+      merchant = character(), amount = numeric(), type = character(), owner = character()
     ))
   }
   do.call(rbind, records)
@@ -143,7 +210,7 @@ main <- function(args) {
     args <- args[-(1:2)]
   }
   if (length(args) == 0) {
-    cat("Usage: Rscript parse_chase_statements.R [--out out.csv] <pdf> [<pdf> ...]\n")
+    cat("Usage: Rscript parse_chase_statements.R [--out out.xlsx] <pdf> [<pdf> ...]\n")
     quit(status = 1)
   }
 
@@ -151,8 +218,16 @@ main <- function(args) {
   all_tx <- all_tx[order(all_tx$date, all_tx$file), ]
 
   if (!is.null(out_file)) {
-    utils::write.csv(all_tx, out_file, row.names = FALSE)
-    cat("Wrote", nrow(all_tx), "transactions to", out_file, "\n")
+    if (tolower(tools::file_ext(out_file)) == "xlsx") {
+      write_xlsx_workbook(all_tx, out_file)
+      cat("Wrote", nrow(all_tx), "transactions to workbook", out_file, "\n")
+      cat("Workbook tabs: Transactions, Monthly B Summary\n")
+    } else {
+      utils::write.csv(all_tx, out_file, row.names = FALSE)
+      summary_file <- write_b_summary(all_tx, out_file)
+      cat("Wrote", nrow(all_tx), "transactions to", out_file, "\n")
+      cat("Wrote monthly shared summary to", summary_file, "\n")
+    }
   } else {
     # Print as a tidy table.
     old <- options(width = 200)
