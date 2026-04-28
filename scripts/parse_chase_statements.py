@@ -225,6 +225,28 @@ def _monthly_b_summary(rows: list[Transaction]) -> list[dict[str, str | int | fl
     ]
 
 
+def _metadata_rows(rows: list[Transaction], source_pdfs: list[Path]) -> list[dict[str, str]]:
+    purchase_count = sum(1 for row in rows if row.amount > 0)
+    payment_count = sum(1 for row in rows if row.amount <= 0)
+    c_count = sum(1 for row in rows if row.owner == "c")
+    b_count = sum(1 for row in rows if row.owner == "b")
+    return [
+        {"field": "generated_at", "value": datetime.now().isoformat(timespec="seconds")},
+        {"field": "source_files", "value": ", ".join(pdf.name for pdf in source_pdfs)},
+        {"field": "statement_file_count", "value": str(len(source_pdfs))},
+        {"field": "transaction_row_count", "value": str(len(rows))},
+        {"field": "purchase_row_count", "value": str(purchase_count)},
+        {"field": "payment_row_count", "value": str(payment_count)},
+        {"field": "owner_c_row_count", "value": str(c_count)},
+        {"field": "owner_b_row_count", "value": str(b_count)},
+        {
+            "field": "owner_c_rules",
+            "value": "CHATGPT/OPENAI, ALO, MAMMOTH, SOLIDCORE, CLASSPASS, HIGHLINE",
+        },
+        {"field": "shared_split", "value": "c=2/3, v=1/3"},
+    ]
+
+
 def _rows_to_dicts(rows: list[Transaction]) -> list[dict[str, str | float]]:
     return [
         {
@@ -267,7 +289,7 @@ def _autosize_worksheet(ws) -> None:
         ws.column_dimensions[column_cells[0].column_letter].width = min(max(max_len + 2, 10), 60)
 
 
-def _write_xlsx(rows: list[Transaction], out_path: Path) -> None:
+def _write_xlsx(rows: list[Transaction], out_path: Path, source_pdfs: list[Path]) -> None:
     workbook = Workbook()
 
     tx_sheet = workbook.active
@@ -283,8 +305,15 @@ def _write_xlsx(rows: list[Transaction], out_path: Path) -> None:
     for row in _monthly_b_summary(rows):
         summary_sheet.append([row[field] for field in summary_fields])
 
+    metadata_sheet = workbook.create_sheet("Metadata")
+    metadata_fields = ["field", "value"]
+    metadata_sheet.append(metadata_fields)
+    for row in _metadata_rows(rows, source_pdfs):
+        metadata_sheet.append([row[field] for field in metadata_fields])
+
     _autosize_worksheet(tx_sheet)
     _autosize_worksheet(summary_sheet)
+    _autosize_worksheet(metadata_sheet)
     workbook.save(out_path)
 
 
@@ -345,9 +374,9 @@ def main(argv: list[str]) -> int:
 
     if args.out:
         if args.out.suffix.lower() == ".xlsx":
-            _write_xlsx(all_tx, args.out)
+            _write_xlsx(all_tx, args.out, args.pdfs)
             print(f"Wrote {len(all_tx)} transactions to workbook {args.out}")
-            print("Workbook tabs: Transactions, Monthly B Summary")
+            print("Workbook tabs: Transactions, Monthly B Summary, Metadata")
         else:
             _write_csv(all_tx, args.out)
             summary_path = _write_b_summary_csv(all_tx, args.out)
