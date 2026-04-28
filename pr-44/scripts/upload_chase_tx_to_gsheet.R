@@ -20,6 +20,7 @@ upload_sheet <- function(ss, sheet_name, data) {
   }
   googlesheets4::range_clear(ss = ss, sheet = sheet_name)
   googlesheets4::sheet_write(data = data, ss = ss, sheet = sheet_name)
+  googlesheets4::range_autofit(ss = ss, sheet = sheet_name, dimension = "columns")
 }
 
 main <- function(args) {
