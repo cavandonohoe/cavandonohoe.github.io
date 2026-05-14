@@ -89,6 +89,85 @@ body {
 }
 .dark-mode-toggle:hover { color: #fff; }
 
+
+/* Homepage CTA buttons */
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6em;
+  margin: 1em 0 1.2em;
+}
+.hero-btn {
+  display: inline-block;
+  background: var(--link-color);
+  color: #fff !important;
+  border: 1px solid var(--link-color);
+  border-radius: 999px;
+  padding: 0.45em 0.95em;
+  font-size: 0.92em;
+  text-decoration: none !important;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.hero-btn:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+  text-decoration: none !important;
+}
+
+/* Project filters */
+.project-controls {
+  margin: 0.5em 0 1em;
+}
+#project-search {
+  width: 100%;
+  max-width: 540px;
+  padding: 0.6em 0.8em;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text-color);
+  margin-bottom: 0.7em;
+}
+#project-type {
+  width: 100%;
+  max-width: 240px;
+  padding: 0.55em 0.65em;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text-color);
+  margin-bottom: 0.7em;
+}
+.project-filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+.filter-btn {
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text-color);
+  border-radius: 999px;
+  font-size: 0.82em;
+  padding: 0.35em 0.8em;
+  cursor: pointer;
+}
+.filter-btn.active {
+  border-color: var(--link-color);
+  background: rgba(51, 122, 183, 0.12);
+}
+.project-meta {
+  margin-top: 0.65em;
+  font-size: 0.76em;
+  color: var(--muted-text);
+  text-transform: capitalize;
+}
+.project-empty-state {
+  color: var(--muted-text);
+  font-style: italic;
+  margin-top: 0.3em;
+}
+
 /* Project cards */
 .project-grid {
   display: grid;
@@ -169,7 +248,6 @@ details.table-accordion > summary:hover {
   if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
 })();
 </script>
-</style>
 <!-- Meta tags for SEO and social sharing -->
 <meta name="description" content="Cavan Donohoe - Data Scientist. Personal website showcasing data science projects, R tutorials, and professional experience.">
 <meta name="keywords" content="data science, R programming, data analysis, R Markdown, Cavan Donohoe">
