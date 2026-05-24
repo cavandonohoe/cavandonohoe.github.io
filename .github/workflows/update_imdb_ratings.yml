@@ -1,0 +1,98 @@
+name: Update IMDb episode ratings
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 8 * * 1" # Mondays 08:23 UTC (~1:23am Pacific)
+
+permissions:
+  contents: write
+
+# Don't pile up overlapping runs; if a previous run is still going, queue this
+# one and run it after.
+concurrency:
+  group: update-imdb-ratings
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::magrittr
+            any::dplyr
+            any::tibble
+            any::purrr
+            any::stringr
+            any::readr
+            any::here
+            any::httr2
+            any::jsonlite
+
+      # Run the scraper. Per-show errors are swallowed by the script's safety
+      # wrapper; if any show fails the script exits non-zero and we stop here.
+      # The no-shrink guard is enforced by the script itself (no env var set).
+      - name: Scrape IMDb episode ratings
+        run: Rscript web_scraping/imdb_season_episode_ratings_plot.R
+
+      # Sanity check: the only files the scraper is allowed to touch are
+      # data/*_ep_ratings.csv. If anything else changed, the workflow aborts
+      # before commit so a runaway script can't push unrelated mutations.
+      # We only inspect modifications/additions to *tracked* files (not
+      # untracked artifacts from the R setup actions like .cache/, lock
+      # files, etc.).
+      - name: Verify only ratings CSVs changed
+        run: |
+          set -euo pipefail
+          unexpected="$(git diff --name-only HEAD \
+            | grep -Ev '^data/[a-z0-9_]+_ep_ratings\.csv$' || true)"
+          if [ -n "$unexpected" ]; then
+            echo "ERROR: scraper modified tracked files outside data/*_ep_ratings.csv:"
+            echo "$unexpected"
+            exit 1
+          fi
+          echo "OK: only ratings CSVs changed."
+
+      - name: Debug files
+        run: |
+          ls -lah data/*_ep_ratings.csv | tail -20
+          git status --porcelain
+
+      - name: Commit and push if changed
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add data/*_ep_ratings.csv
+
+          if git diff --cached --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+
+          # Final safety check: the staged diff must only contain ratings
+          # CSVs. Belt-and-suspenders next to the earlier verify step.
+          staged_other="$(git diff --cached --name-only \
+            | grep -Ev '^data/[a-z0-9_]+_ep_ratings\.csv$' || true)"
+          if [ -n "$staged_other" ]; then
+            echo "ERROR: refusing to commit unexpected staged files:"
+            echo "$staged_other"
+            exit 1
+          fi
+
+          changed_count="$(git diff --cached --name-only | wc -l | tr -d ' ')"
+          echo "Committing $changed_count updated CSV(s)."
+
+          git commit -m "Auto-update IMDb episode ratings"
+          git push
