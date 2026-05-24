@@ -411,6 +411,16 @@ invincible %>%
   interactive_plotly
 ```
 
+## The Boys
+
+```{r}
+the_boys <- readr::read_csv(here::here("data", "the_boys_ep_ratings.csv"))
+
+the_boys %>%
+  create_episode_plot("The Boys") %>%
+  interactive_plotly
+```
+
 ## Clone Wars
 
 ```{r}
