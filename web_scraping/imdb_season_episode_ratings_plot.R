@@ -276,4 +276,8 @@ modern_love %>%
 my_hero_academia <- get_imdb_all_episodes("https://www.imdb.com/title/tt5626028/")
 my_hero_academia %>%
   readr::write_csv(here::here("data", "my_hero_academia_ep_ratings.csv"))
+# the boys
+the_boys <- get_imdb_all_episodes("https://www.imdb.com/title/tt1190634/")
+the_boys %>%
+  readr::write_csv(here::here("data", "the_boys_ep_ratings.csv"))
 
