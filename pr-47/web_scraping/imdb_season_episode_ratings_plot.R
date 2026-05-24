@@ -17,46 +17,107 @@ extract_imdb_id <- function(input) {
   return(id)
 }
 
+# Query IMDb's public GraphQL endpoint for one season of episodes.
+# We use this instead of scraping the HTML pages because IMDb's WAF
+# blocks server-side requests to www.imdb.com (e.g. from GitHub
+# Actions), but the caching.graphql.imdb.com endpoint is unauthenticated
+# and unblocked. Pagination handles long seasons (Family Guy, Simpsons,
+# etc.).
 get_imdb_season_episodes <- function(imdb_input, season) {
   imdb_id <- extract_imdb_id(imdb_input)
-
-  url <- paste0(
-    "https://www.imdb.com/title/",
-    imdb_id,
-    "/episodes/?season=",
-    season
+  endpoint <- "https://caching.graphql.imdb.com/"
+  ua <- paste0(
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) ",
+    "AppleWebKit/537.36 (KHTML, like Gecko) ",
+    "Chrome/124.0.0.0 Safari/537.36"
+  )
+  query <- paste0(
+    "query Eps($id: ID!, $season: String!, $first: Int!, $after: ID) {",
+    "  title(id: $id) {",
+    "    episodes {",
+    "      episodes(",
+    "        first: $first,",
+    "        after: $after,",
+    "        filter: { includeSeasons: [$season] }",
+    "      ) {",
+    "        edges {",
+    "          node {",
+    "            series {",
+    "              displayableEpisodeNumber {",
+    "                episodeNumber { text }",
+    "                displayableSeason { text }",
+    "              }",
+    "            }",
+    "            titleText { text }",
+    "            ratingsSummary { aggregateRating voteCount }",
+    "          }",
+    "        }",
+    "        pageInfo { endCursor hasNextPage }",
+    "      }",
+    "    }",
+    "  }",
+    "}"
   )
 
-  page <- rvest::read_html(url)
+  empty <- tibble::tibble(
+    season  = integer(),
+    episode = integer(),
+    title   = character(),
+    rating  = numeric(),
+    votes   = integer()
+  )
 
-  next_data_txt <- page %>%
-    rvest::html_element("script#__NEXT_DATA__") %>%
-    rvest::html_text2()
-
-  next_data <- jsonlite::fromJSON(next_data_txt, simplifyVector = FALSE)
-
-  episodes_items <- next_data$props$pageProps$contentData$section$episodes$items
-
-  # if this season doesn't exist or has no episodes
-  if (is.null(episodes_items) || length(episodes_items) == 0) {
-    return(
-      tibble::tibble(
-        season  = integer(),
-        episode = integer(),
-        title   = character(),
-        rating  = numeric(),
-        votes   = integer()
+  all_edges <- list()
+  after <- NULL
+  repeat {
+    body <- list(
+      query = query,
+      variables = list(
+        id = imdb_id,
+        season = as.character(season),
+        first = 50L,
+        after = after
       )
     )
+    resp <- httr2::request(endpoint) %>%
+      httr2::req_method("POST") %>%
+      httr2::req_headers(
+        `User-Agent` = ua,
+        `Content-Type` = "application/json"
+      ) %>%
+      httr2::req_body_raw(
+        jsonlite::toJSON(body, auto_unbox = TRUE, null = "null"),
+        type = "application/json"
+      ) %>%
+      httr2::req_perform()
+    parsed <- jsonlite::fromJSON(
+      httr2::resp_body_string(resp),
+      simplifyVector = FALSE
+    )
+    eps_block <- parsed$data$title$episodes$episodes
+    if (is.null(eps_block) || length(eps_block$edges) == 0) break
+    all_edges <- c(all_edges, eps_block$edges)
+    if (isTRUE(eps_block$pageInfo$hasNextPage)) {
+      after <- eps_block$pageInfo$endCursor
+    } else {
+      break
+    }
   }
 
-  purrr::map_dfr(episodes_items, function(item) {
+  if (length(all_edges) == 0) return(empty)
+
+  purrr::map_dfr(all_edges, function(edge) {
+    node <- edge$node
+    season_text <- node$series$displayableEpisodeNumber$displayableSeason$text
+    episode_text <- node$series$displayableEpisodeNumber$episodeNumber$text
+    rating <- node$ratingsSummary$aggregateRating
+    votes <- node$ratingsSummary$voteCount
     tibble::tibble(
-      season  = as.integer(item$season),
-      episode = as.integer(item$episode),
-      title   = item$titleText,
-      rating  = item$aggregateRating,
-      votes   = item$voteCount
+      season  = suppressWarnings(as.integer(season_text)),
+      episode = suppressWarnings(as.integer(episode_text)),
+      title   = if (is.null(node$titleText$text)) NA_character_ else node$titleText$text,
+      rating  = if (is.null(rating)) NA_real_ else as.numeric(rating),
+      votes   = if (is.null(votes)) 0L else as.integer(votes)
     )
   })
 }
