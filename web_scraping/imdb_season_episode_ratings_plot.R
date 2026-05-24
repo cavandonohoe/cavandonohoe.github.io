@@ -27,7 +27,20 @@ get_imdb_season_episodes <- function(imdb_input, season) {
     season
   )
 
-  page <- rvest::read_html(url)
+  html <- httr::GET(
+    url,
+    httr::add_headers(
+      `User-Agent` = paste(
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+        "AppleWebKit/537.36 (KHTML, like Gecko)",
+        "Chrome/120.0.0.0 Safari/537.36"
+      ),
+      `Accept-Language` = "en-US,en;q=0.9"
+    )
+  ) |>
+    httr::content(as = "text", encoding = "UTF-8")
+
+  page <- rvest::read_html(html)
 
   next_data_txt <- page %>%
     rvest::html_element("script#__NEXT_DATA__") %>%
