@@ -1,0 +1,43 @@
+name: Check Best Picture winners
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 16 23 3 *" # March 23 each year, 16:23 UTC (~9:23am Pacific daylight time)
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          dependencies: '"all"'
+
+      - name: Refresh Best Picture winners
+        run: Rscript scripts/check_best_picture_winners.R
+
+      - name: Open PR if data changed
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: auto/update-best-picture-winners
+          delete-branch: true
+          commit-message: "Update Best Picture winners"
+          title: "Update Best Picture winners"
+          body: |
+            This scheduled check refreshed the Best Picture winners dataset.
+
+            Review the CSV diff and any Best Picture page copy that may need a human update before merging.
+          add-paths: |
+            data/best_picture_winners.csv
+            data/best_picture_box_office_cache.rds
