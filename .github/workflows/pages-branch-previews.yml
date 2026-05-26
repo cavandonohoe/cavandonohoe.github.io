@@ -114,6 +114,11 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    # Serialize all jobs that push to gh-pages so concurrent runs (PR previews,
+    # main pushes, preview cleanups) don't race on `git push origin gh-pages`.
+    concurrency:
+      group: gh-pages-deploy
+      cancel-in-progress: false
     steps:
       - uses: actions/download-artifact@v4
         with:
@@ -138,6 +143,9 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+    concurrency:
+      group: gh-pages-deploy
+      cancel-in-progress: false
     steps:
       - uses: actions/download-artifact@v4
         with:
@@ -166,6 +174,9 @@ jobs:
     name: Remove PR preview on close
     if: ${{ github.event_name == 'pull_request' && github.event.action == 'closed' }}
     runs-on: ubuntu-latest
+    concurrency:
+      group: gh-pages-deploy
+      cancel-in-progress: false
     steps:
       - name: Checkout gh-pages
         uses: actions/checkout@v4
