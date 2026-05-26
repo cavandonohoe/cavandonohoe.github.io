@@ -17,6 +17,7 @@ on:
 permissions:
   contents: read
   issues: write
+  pull-requests: write
 
 concurrency:
   group: link-check-${{ github.ref }}
@@ -60,7 +61,7 @@ jobs:
           args: >-
             --config .github/lychee.toml
             --no-progress
-            ${{ steps.target.outputs.target == '_site' && '_site/**/*.html' || '*.Rmd README.md' }}
+            ${{ steps.target.outputs.target == '_site' && format('--root-dir {0}/_site _site/**/*.html', github.workspace) || '*.Rmd README.md' }}
           format: markdown
           output: ./lychee-report.md
           fail: false
