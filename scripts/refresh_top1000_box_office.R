@@ -5,10 +5,13 @@
 # scrapers and writes the resulting CSVs, skipping the Gmail notify step
 # that requires user-level OAuth.
 #
+# IMDb intermittently returns empty / unparseable bodies to GitHub Actions
+# IPs, so each underlying scrape is retried up to a few times with backoff
+# before we give up.
+#
 # Usage:
 #   Rscript scripts/refresh_top1000_box_office.R
 
-# Defang the email step before any sourcing happens.
 send_gmail_notification <- function(...) {
   message("[CI] Skipping Gmail notification.")
   invisible(NULL)
@@ -23,13 +26,47 @@ source <- function(file, ...) {
   orig_source(file, ...)
 }
 
-# Match the variables expected by the scrapers.
 sleep_after <- FALSE
 refresh_box_office <- TRUE
 refresh_ratings <- FALSE
 
+run_with_retry <- function(label, expr, max_attempts = 3) {
+  expr <- substitute(expr)
+  envir <- parent.frame()
+  for (attempt in seq_len(max_attempts)) {
+    res <- tryCatch(eval(expr, envir = envir), error = function(e) e)
+    if (!inherits(res, "error")) {
+      return(invisible(res))
+    }
+    msg <- conditionMessage(res)
+    message(sprintf(
+      "[CI] %s attempt %d/%d failed: %s",
+      label, attempt, max_attempts, msg
+    ))
+    cache_dir <- here::here("web_scraping", "cache")
+    if (dir.exists(cache_dir)) {
+      message("[CI] Clearing scraper cache at ", cache_dir)
+      unlink(cache_dir, recursive = TRUE, force = TRUE)
+    }
+    if (attempt < max_attempts) {
+      Sys.sleep(2 ^ attempt * 5)
+    } else {
+      stop(sprintf(
+        "%s failed after %d attempts: %s",
+        label, max_attempts, msg
+      ))
+    }
+  }
+}
+
 message("[CI] Starting Best Picture scrape...")
-orig_source(here::here("web_scraping", "best_picture_winners.R"), local = FALSE)
+run_with_retry(
+  "Best Picture scrape",
+  orig_source(
+    here::here("web_scraping", "best_picture_winners.R"),
+    local = FALSE
+  )
+)
 readr::write_csv(
   oscar_winners_clean,
   here::here("data", "best_picture_winners.csv")
@@ -37,7 +74,13 @@ readr::write_csv(
 message("[CI] Best Picture scrape complete.")
 
 message("[CI] Starting Top 1000 Box Office scrape...")
-orig_source(here::here("web_scraping", "top1000_box_office.R"), local = FALSE)
+run_with_retry(
+  "Top 1000 Box Office scrape",
+  orig_source(
+    here::here("web_scraping", "top1000_box_office.R"),
+    local = FALSE
+  )
+)
 readr::write_csv(
   imdb_rank_ratings_clean,
   here::here("data", "top1000_box_office.csv")
