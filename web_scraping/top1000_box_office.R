@@ -15,13 +15,73 @@ imdb_user_agent <- paste(
 )
 
 read_imdb_html <- function(url) {
-  response <- httr::GET(
-    url,
-    httr::user_agent(imdb_user_agent),
-    httr::add_headers("Accept-Language" = "en-US,en;q=0.9")
-  )
-  httr::stop_for_status(response)
-  xml2::read_html(response)
+  for (attempt in seq_len(3)) {
+    response <- tryCatch(
+      httr::GET(
+        url,
+        httr::user_agent(imdb_user_agent),
+        httr::add_headers("Accept-Language" = "en-US,en;q=0.9"),
+        httr::timeout(60)
+      ),
+      error = function(e) e
+    )
+    if (inherits(response, "error") || httr::http_error(response)) {
+      if (attempt < 3) Sys.sleep(2 ^ attempt)
+      next
+    }
+    html <- httr::content(response, as = "text", encoding = "UTF-8")
+    if (is.null(html) || !nzchar(html) || nchar(html) < 200) {
+      message(sprintf(
+        "[top1000] empty/short body for %s (%d chars), retrying...",
+        url, nchar(if (is.null(html)) "" else html)
+      ))
+      if (attempt < 3) Sys.sleep(2 ^ attempt)
+      next
+    }
+    parsed <- tryCatch(xml2::read_html(html), error = function(e) e)
+    if (!inherits(parsed, "error")) {
+      return(parsed)
+    }
+    message(sprintf(
+      "[top1000] parse error for %s: %s",
+      url, conditionMessage(parsed)
+    ))
+    if (attempt < 3) Sys.sleep(2 ^ attempt)
+  }
+  stop("Failed to fetch ", url, " after 3 attempts")
+}
+
+safe_read_html <- function(page_url) {
+  for (attempt in seq_len(3)) {
+    response <- tryCatch(
+      httr::GET(
+        page_url,
+        httr::user_agent(imdb_user_agent),
+        httr::add_headers("Accept-Language" = "en-US,en;q=0.9"),
+        httr::timeout(60)
+      ),
+      error = function(e) e
+    )
+    if (inherits(response, "error") || httr::http_error(response)) {
+      if (attempt < 3) Sys.sleep(2 ^ attempt)
+      next
+    }
+    html <- httr::content(response, as = "text", encoding = "UTF-8")
+    if (is.null(html) || !nzchar(html) || nchar(html) < 200) {
+      message(sprintf(
+        "[top1000] empty/short body for %s (%d chars), retrying...",
+        page_url, nchar(if (is.null(html)) "" else html)
+      ))
+      if (attempt < 3) Sys.sleep(2 ^ attempt)
+      next
+    }
+    parsed <- tryCatch(rvest::read_html(html), error = function(e) e)
+    if (!inherits(parsed, "error")) {
+      return(parsed)
+    }
+    if (attempt < 3) Sys.sleep(2 ^ attempt)
+  }
+  stop("Failed to fetch ", page_url, " after 3 attempts")
 }
 
 imdb_next_data <- function(url) {
@@ -39,7 +99,7 @@ imdb_next_data <- function(url) {
 
 url <- "https://www.boxofficemojo.com/chart/top_lifetime_gross/?area=XWW"
 
-links <- rvest::read_html(url) %>%
+links <- safe_read_html(url) %>%
   rvest::html_nodes("a") %>%
   rvest::html_attr("href")
 
@@ -50,16 +110,17 @@ all_urls <- c(url, paste0(url, "&offset=", offset))
 
 rankings_tib <- tibble::tibble()
 for (url_index in all_urls) {
-  rankings <- rvest::read_html(url_index) %>%
+  page_html <- safe_read_html(url_index)
+  rankings <- page_html %>%
     rvest::html_node("table") %>%
     rvest::html_table(fill=TRUE) %>%
     tibble::as_tibble() %>%
     dplyr::mutate(Rank = readr::parse_number(Rank))
 
-  # funny enough, before doing this, I just read in a list of imdb movies titles 
+  # funny enough, before doing this, I just read in a list of imdb movies titles
   # and got the imdb id that way. but apparently multiple versions of beauty and the beast
   # were released in 2017, so that plan kinda backfired
-  links <- rvest::read_html(url_index) %>%
+  links <- page_html %>%
     rvest::html_nodes("a") %>%
     rvest::html_attr("href")
 
