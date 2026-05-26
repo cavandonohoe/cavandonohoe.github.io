@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Try to download latest built site artifact (optional)
         id: artifact
@@ -67,7 +67,7 @@ jobs:
           fail: false
 
       - name: Upload report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         if: ${{ hashFiles('lychee-report.md') != '' }}
         with:
           name: lychee-report

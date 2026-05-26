@@ -32,7 +32,7 @@ jobs:
       # lets gargle/google libraries auto-detect the key path if you use _common.R
       GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/sa.json
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: r-lib/actions/setup-r@v2
         with:
@@ -137,7 +137,7 @@ jobs:
     steps:
       - name: Deploy
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
       
       - name: Comment preview URL
         if: ${{ github.event_name == 'pull_request' }}
