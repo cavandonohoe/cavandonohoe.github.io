@@ -136,7 +136,7 @@ jobs:
 
       - name: Open PR if CV files changed
         if: ${{ steps.diff.outputs.changed != '' }}
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: auto/rebuild-cv
