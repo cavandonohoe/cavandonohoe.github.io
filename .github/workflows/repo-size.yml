@@ -1,0 +1,107 @@
+name: Repo size monitor
+
+on:
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "44 13 * * 1"  # Mondays 13:44 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  size:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Compute size report
+        id: report
+        run: |
+          set -euo pipefail
+          total_kb=$(du -sk . 2>/dev/null | cut -f1)
+          total_mb=$(( total_kb / 1024 ))
+          git_kb=$(du -sk .git 2>/dev/null | cut -f1 || echo 0)
+          git_mb=$(( git_kb / 1024 ))
+          threshold_mb=500
+
+          {
+            echo "## Repo size report"
+            echo ""
+            echo "_Generated $(date -u '+%Y-%m-%d %H:%M UTC')_"
+            echo ""
+            echo "### Top-level directory sizes"
+            echo ""
+            echo '```'
+            du -sh ./*/ 2>/dev/null | sort -rh | head -20
+            echo '```'
+            echo ""
+            echo "### Top 25 largest tracked files"
+            echo ""
+            echo '```'
+            git ls-files -z \
+              | xargs -0 -I{} ls -l {} 2>/dev/null \
+              | awk '{ printf "%12d  %s\n", $5, $9 }' \
+              | sort -rn \
+              | head -25 \
+              | awk '{
+                  size=$1;
+                  unit="B";
+                  if (size>1024)    { size=size/1024; unit="K" }
+                  if (size>1024 && unit=="K") { size=size/1024; unit="M" }
+                  if (size>1024 && unit=="M") { size=size/1024; unit="G" }
+                  printf "%8.1f %s  ", size, unit;
+                  for (i=2;i<=NF;i++) printf "%s%s", $i, (i==NF?"":" ");
+                  printf "\n"
+                }'
+            echo '```'
+            echo ""
+            echo "**Working tree total:** ${total_mb} MB"
+            echo "**.git total:** ${git_mb} MB"
+            echo "**Threshold:** ${threshold_mb} MB"
+            if [ "$total_mb" -gt "$threshold_mb" ]; then
+              echo ":warning: Working tree exceeds threshold."
+            else
+              echo ":white_check_mark: Within threshold."
+            fi
+          } > size-report.md
+
+          if [ "$total_mb" -gt "$threshold_mb" ]; then
+            echo "exceeded=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exceeded=false" >> "$GITHUB_OUTPUT"
+          fi
+
+          cat size-report.md
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: size-report
+          path: size-report.md
+
+      - name: Comment on PR
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          filePath: ./size-report.md
+          comment_tag: repo-size
+          mode: upsert
+          create_if_not_exists: true
+
+      - name: Open issue if scheduled run exceeded threshold
+        if: ${{ github.event_name == 'schedule' && steps.report.outputs.exceeded == 'true' }}
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "Repo size exceeded threshold"
+          content-filepath: ./size-report.md
+          labels: |
+            repo-health
+            automated

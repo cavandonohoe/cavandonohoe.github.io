@@ -1,0 +1,116 @@
+name: Lighthouse CI
+
+on:
+  workflow_run:
+    workflows: ["Build site + deploy prod & PR previews (branch-based Pages)"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  actions: read
+
+concurrency:
+  group: lighthouse-${{ github.event.workflow_run.head_branch || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lighthouse:
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download site artifact from triggering workflow
+        uses: dawidd6/action-download-artifact@v6
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          run_id: ${{ github.event.workflow_run.id }}
+          name: site
+          path: _site
+          if_no_artifact_found: warn
+
+      - name: Bail if no site artifact
+        id: presence
+        run: |
+          if [ -d _site ] && [ -n "$(ls -A _site 2>/dev/null || true)" ]; then
+            echo "have_site=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "No _site artifact available; skipping Lighthouse."
+            echo "have_site=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-node@v4
+        if: steps.presence.outputs.have_site == 'true'
+        with:
+          node-version: "20"
+
+      - name: Install Lighthouse CI + http-server
+        if: steps.presence.outputs.have_site == 'true'
+        run: npm install -g @lhci/cli@0.14.x http-server
+
+      - name: Serve _site
+        if: steps.presence.outputs.have_site == 'true'
+        run: |
+          http-server _site -p 4567 --silent &
+          echo $! > server.pid
+          sleep 2
+
+      - name: Run Lighthouse CI
+        if: steps.presence.outputs.have_site == 'true'
+        id: lhci
+        run: |
+          set +e
+          lhci autorun --config=.github/lighthouserc.cjs > lhci.log 2>&1
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+          tail -200 lhci.log
+          set -e
+
+      - name: Stop server
+        if: always()
+        run: kill "$(cat server.pid)" 2>/dev/null || true
+
+      - name: Resolve PR number
+        if: steps.presence.outputs.have_site == 'true'
+        id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          n="$(gh pr list --state open --head '${{ github.event.workflow_run.head_branch }}' --json number --jq '.[0].number' || true)"
+          echo "number=${n}" >> "$GITHUB_OUTPUT"
+          echo "PR number: ${n:-none}"
+
+      - name: Build PR comment
+        if: ${{ steps.presence.outputs.have_site == 'true' && steps.pr.outputs.number != '' }}
+        run: |
+          {
+            echo "## Lighthouse CI"
+            echo ""
+            echo "\`\`\`"
+            grep -E "(http://localhost|Performance|Accessibility|Best Practices|SEO|Report:)" lhci.log | head -100 || true
+            echo "\`\`\`"
+          } > lhci-comment.md
+
+      - name: Comment on PR
+        if: ${{ steps.presence.outputs.have_site == 'true' && steps.pr.outputs.number != '' }}
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          pr_number: ${{ steps.pr.outputs.number }}
+          filePath: ./lhci-comment.md
+          comment_tag: lighthouse-ci
+          mode: upsert
+          create_if_not_exists: true
+
+      - name: Upload Lighthouse logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-logs
+          path: |
+            lhci.log
+            .lighthouseci/**
+          if-no-files-found: ignore

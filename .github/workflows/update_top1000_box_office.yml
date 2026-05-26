@@ -1,0 +1,68 @@
+name: Refresh Top 1000 box office data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "41 12 8 * *"  # 8th of each month, 12:41 UTC
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-top1000
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::dplyr
+            any::tibble
+            any::stringr
+            any::readr
+            any::here
+            any::magrittr
+            any::rvest
+            any::xml2
+            any::httr
+            any::httr2
+            any::jsonlite
+            any::lubridate
+
+      - name: Refresh Best Picture + Top 1000 box office
+        run: Rscript scripts/refresh_top1000_box_office.R
+
+      - name: Verify only expected files changed
+        run: |
+          set -euo pipefail
+          unexpected="$(git diff --name-only HEAD \
+            | grep -Ev '^data/(best_picture_winners|top1000_box_office)\.csv$' \
+            | grep -Ev '^data/best_picture_box_office_cache\.rds$' || true)"
+          if [ -n "$unexpected" ]; then
+            echo "ERROR: refresh modified unexpected files:"
+            echo "$unexpected"
+            exit 1
+          fi
+
+      - name: Commit and push if changed
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/best_picture_winners.csv data/top1000_box_office.csv data/best_picture_box_office_cache.rds 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+          git commit -m "Auto-update Top 1000 box office + Best Picture data"
+          git push

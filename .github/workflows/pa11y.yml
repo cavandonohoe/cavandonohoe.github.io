@@ -1,0 +1,106 @@
+name: Accessibility audit (pa11y-ci)
+
+on:
+  schedule:
+    - cron: "21 15 * * 1"  # Mondays 15:21 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: pa11y-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pa11y:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download latest built site
+        uses: dawidd6/action-download-artifact@v6
+        with:
+          workflow: pages-branch-previews.yml
+          name: site
+          path: _site
+          branch: main
+          if_no_artifact_found: fail
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install pa11y-ci + http-server
+        run: npm install -g pa11y-ci http-server
+
+      - name: Serve _site
+        run: |
+          http-server _site -p 4567 --silent &
+          echo $! > server.pid
+          sleep 2
+
+      - name: Run pa11y-ci
+        id: audit
+        run: |
+          set +e
+          pa11y-ci --config .github/pa11yci.json --reporter json > pa11y-report.json
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+          set -e
+
+      - name: Render report
+        if: always()
+        run: |
+          node <<'NODE' > pa11y-report.md
+          const fs = require('fs');
+          let r;
+          try { r = JSON.parse(fs.readFileSync('pa11y-report.json','utf8')); }
+          catch (e) { console.log('## pa11y report\n\nNo JSON output.'); process.exit(0); }
+          const total = r.total ?? 0;
+          const passes = r.passes ?? 0;
+          const errors = r.errors ?? 0;
+          console.log(`## pa11y-ci accessibility audit`);
+          console.log('');
+          console.log(`- URLs scanned: ${total}`);
+          console.log(`- Passing: ${passes}`);
+          console.log(`- With errors: ${errors}`);
+          console.log('');
+          if (r.results) {
+            for (const [url, issues] of Object.entries(r.results)) {
+              if (!Array.isArray(issues) || issues.length === 0) continue;
+              console.log(`### ${url}`);
+              console.log('');
+              for (const i of issues.slice(0, 25)) {
+                console.log(`- **${i.code}** — ${i.message}`);
+                if (i.selector) console.log(`  - selector: \`${i.selector}\``);
+              }
+              if (issues.length > 25) console.log(`- ...and ${issues.length - 25} more`);
+              console.log('');
+            }
+          }
+          NODE
+
+      - name: Stop server
+        if: always()
+        run: kill "$(cat server.pid)" || true
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pa11y-report
+          path: |
+            pa11y-report.json
+            pa11y-report.md
+
+      - name: Open or update issue on a11y errors
+        if: ${{ steps.audit.outputs.exit_code != '0' }}
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "Accessibility issues detected (pa11y-ci)"
+          content-filepath: ./pa11y-report.md
+          labels: |
+            accessibility
+            automated
