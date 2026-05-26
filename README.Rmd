@@ -52,6 +52,53 @@ CV:
 
 * [CV](https://cavandonohoe.github.io/cv.html)
 
+## Automation
+
+The repo runs the following on a schedule via GitHub Actions. Anything
+manual is a click away on the Actions tab.
+
+### Site build & previews
+
+* `pages-rmarkdown.yml` -- daily site render + GitHub Pages deploy.
+* `pages-branch-previews.yml` -- per-PR preview deploy and cleanup.
+
+### Data refreshes (commits to `main`)
+
+* `update_imdb_ratings.yml` -- weekly IMDb episode ratings refresh.
+* `update_top1000_box_office.yml` -- monthly Best Picture + Top 1000
+  box office refresh.
+* `update_top250_with_rt.yml` -- monthly Top 250 + Rotten Tomatoes
+  refresh.
+* `update_sp500.yml` -- weekly VOO price refresh.
+* `update_us_rentals.yml` -- monthly Zillow ZHVI/ZORI refresh.
+* `update_mymaps_export.yml` -- weekly Google My Maps export.
+
+### Data refreshes (open PR)
+
+* `update_best_picture_winners.yml` -- annual Oscar refresh.
+* `rebuild_cv.yml` -- weekly CV PDF/DOCX rebuild from Google Sheet,
+  opens a PR if anything changed.
+* `refresh-sitemap.yml` -- weekly `sitemap.xml` regeneration.
+
+### Site health
+
+* `link-check.yml` -- weekly + on-PR broken-link check (lychee).
+* `pa11y.yml` -- weekly accessibility audit (pa11y-ci).
+* `lighthouse.yml` -- on-PR Lighthouse CI run with score comment.
+* `repo-size.yml` -- weekly + on-PR repo-size report.
+
+### Code quality
+
+* `lint.yml` -- on-PR lintr scan of changed R/Rmd files.
+* `typos.yml` -- on-PR spell check.
+* `pr-smoke.yml` -- on-PR fast render of only the changed Rmds.
+
+### Repo hygiene
+
+* `.github/dependabot.yml` -- weekly bump of pinned GitHub Actions.
+* `labeler.yml` -- auto-label PRs by changed paths.
+* `stale.yml` -- mark and close inactive issues/PRs.
+
 ## Setup and Local Development
 
 This website is built using R Markdown and deployed via GitHub Actions to GitHub Pages.

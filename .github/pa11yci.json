@@ -1,0 +1,28 @@
+{
+  "defaults": {
+    "timeout": 30000,
+    "wait": 1500,
+    "standard": "WCAG2AA",
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox", "--disable-dev-shm-usage"]
+    },
+    "ignore": [
+      "warning",
+      "notice",
+      "WCAG2AA.Principle1.Guideline1_3.1_3_1.H42.2",
+      "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail"
+    ]
+  },
+  "urls": [
+    "http://localhost:4567/index.html",
+    "http://localhost:4567/about.html",
+    "http://localhost:4567/services.html",
+    "http://localhost:4567/cv.html",
+    "http://localhost:4567/learn_r.html",
+    "http://localhost:4567/best_picture_nominees.html",
+    "http://localhost:4567/imdb_top_250_tv_series.html",
+    "http://localhost:4567/google_maps_saved_places.html",
+    "http://localhost:4567/sp500.html",
+    "http://localhost:4567/us_rental_markets.html"
+  ]
+}
