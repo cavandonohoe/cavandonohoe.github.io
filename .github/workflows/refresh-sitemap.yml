@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
 
 concurrency:
   group: refresh-sitemap
@@ -35,18 +34,22 @@ jobs:
       - name: Regenerate sitemap.xml
         run: Rscript scripts/generate_sitemap.R
 
-      - name: Open PR if sitemap changed
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: auto/refresh-sitemap
-          delete-branch: true
-          commit-message: "Refresh sitemap.xml"
-          title: "Refresh sitemap.xml"
-          body: |
-            Auto-regenerated `sitemap.xml` from `_site.yml` and the rendered site.
-          add-paths: |
-            sitemap.xml
-          labels: |
-            ci
-            automated
+      - name: Commit and push if sitemap changed
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml
+          if git diff --cached --quiet; then
+            echo "No sitemap changes."
+            exit 0
+          fi
+          git commit -m "Auto-refresh sitemap.xml"
+          # Pull-rebase to avoid losing races with other refresh workflows.
+          for i in 1 2 3; do
+            if git push; then exit 0; fi
+            echo "Push failed; rebasing on remote and retrying ($i/3)..."
+            git pull --rebase origin "$(git rev-parse --abbrev-ref HEAD)"
+          done
+          echo "ERROR: failed to push sitemap update after 3 attempts."
+          exit 1
