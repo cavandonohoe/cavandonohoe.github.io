@@ -1,0 +1,46 @@
+ci:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".github/**"
+
+content:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "*.Rmd"
+          - "_site.yml"
+          - "include_footer.html"
+          - "header/**"
+          - "css/**"
+
+data:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "data/**"
+
+scrapers:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "web_scraping/**"
+          - "scripts/**"
+
+cv:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "cv.Rmd"
+          - "cv_doc.Rmd"
+          - "cv*.pdf"
+          - "cv*.docx"
+          - "cv_stuff/**"
+
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "DESCRIPTION"
+          - "renv.lock"
+
+documentation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "README.md"
+          - "README.Rmd"
+          - "LICENSE"

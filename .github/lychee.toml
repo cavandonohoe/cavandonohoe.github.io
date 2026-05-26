@@ -1,0 +1,51 @@
+# Lychee broken-link checker config
+# https://lychee.cli.rs/usage/config/
+
+# Network
+max_concurrency = 8
+max_retries = 2
+retry_wait_time = 3
+timeout = 20
+no_progress = true
+
+# Don't fail on transient connection issues; we'll see them in the report.
+accept = [200, 206, 301, 302, 303, 307, 308, 403, 429, 999]
+
+# Exclude noisy / always-flaky destinations
+exclude = [
+  # localhost / private addrs
+  "^https?://localhost",
+  "^https?://127\\.0\\.0\\.1",
+  "^https?://0\\.0\\.0\\.0",
+
+  # mailto / tel
+  "^mailto:",
+  "^tel:",
+
+  # Known to block bots / aggressively rate-limit
+  "linkedin\\.com",
+  "^https?://(www\\.)?facebook\\.com",
+  "^https?://(www\\.)?twitter\\.com",
+  "^https?://(www\\.)?x\\.com",
+  "^https?://(www\\.)?instagram\\.com",
+  "^https?://(www\\.)?reddit\\.com",
+  "^https?://(www\\.)?quora\\.com",
+
+  # Sites that frequently return 4xx to non-browser UA but work fine
+  "^https?://(www\\.)?imdb\\.com",
+  "^https?://(www\\.)?rottentomatoes\\.com",
+  "^https?://(www\\.)?boxofficemojo\\.com",
+  "^https?://(www\\.)?the-numbers\\.com",
+  "^https?://(www\\.)?zillow\\.com",
+  "^https?://(www\\.)?redfin\\.com",
+  "^https?://(www\\.)?nytimes\\.com",
+  "^https?://(www\\.)?wsj\\.com",
+  "^https?://(www\\.)?bloomberg\\.com",
+
+  # GitHub Pages preview URLs (will be 404 until deployed)
+  "^https?://cavandonohoe\\.github\\.io/pr-",
+]
+
+# Include verbatim/code blocks too — false positives are mostly excluded above
+include_verbatim = false
+include_mail = false

@@ -1,0 +1,52 @@
+name: Refresh sitemap.xml
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "37 13 * * 0"  # Sundays 13:37 UTC
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: refresh-sitemap
+  cancel-in-progress: false
+
+jobs:
+  sitemap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::yaml
+            any::xml2
+            any::magrittr
+            any::here
+
+      - name: Regenerate sitemap.xml
+        run: Rscript scripts/generate_sitemap.R
+
+      - name: Open PR if sitemap changed
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: auto/refresh-sitemap
+          delete-branch: true
+          commit-message: "Refresh sitemap.xml"
+          title: "Refresh sitemap.xml"
+          body: |
+            Auto-regenerated `sitemap.xml` from `_site.yml` and the rendered site.
+          add-paths: |
+            sitemap.xml
+          labels: |
+            ci
+            automated

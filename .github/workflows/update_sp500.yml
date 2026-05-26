@@ -1,0 +1,59 @@
+name: Refresh S&P 500 (VOO) data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "29 13 * * 6"  # Saturdays 13:29 UTC (~6:29am Pacific) — after market close
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-sp500
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::tidyquant
+            any::readr
+            any::here
+            any::magrittr
+
+      - name: Refresh VOO stock prices
+        run: Rscript scripts/sp500_data.R
+
+      - name: Verify only voo CSV changed
+        run: |
+          set -euo pipefail
+          unexpected="$(git diff --name-only HEAD \
+            | grep -Ev '^data/voo_stock_prices\.csv$' || true)"
+          if [ -n "$unexpected" ]; then
+            echo "ERROR: refresh modified files outside data/voo_stock_prices.csv:"
+            echo "$unexpected"
+            exit 1
+          fi
+
+      - name: Commit and push if changed
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/voo_stock_prices.csv
+          if git diff --cached --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+          git commit -m "Auto-update VOO stock prices"
+          git push

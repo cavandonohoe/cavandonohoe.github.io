@@ -1,0 +1,68 @@
+[default]
+extend-ignore-re = [
+  # Skip URLs
+  "https?://[^\\s)]+",
+  # Skip code fences
+  "```[^`]*```",
+  # Skip inline code
+  "`[^`]+`",
+  # Skip 7-40 char hex shas
+  "\\b[0-9a-f]{7,40}\\b",
+]
+
+[default.extend-words]
+oscar = "oscar"
+imdb = "imdb"
+nostalgia = "nostalgia"
+sierpinski = "sierpinski"
+zhvi = "zhvi"
+zori = "zori"
+zillow = "zillow"
+redfin = "redfin"
+voo = "voo"
+pagedown = "pagedown"
+gtsummary = "gtsummary"
+googlesheets4 = "googlesheets4"
+googledrive = "googledrive"
+gargle = "gargle"
+plotly = "plotly"
+ggrepel = "ggrepel"
+ggplot2 = "ggplot2"
+RColorBrewer = "RColorBrewer"
+firefighter = "firefighter"
+yoy = "yoy"
+YoY = "YoY"
+# Foreign-language place names + colloquialisms that aren't typos
+Welp = "Welp"
+Carrer = "Carrer"
+Complexe = "Complexe"
+alle = "alle"
+payed = "payed"
+ALO = "ALO"
+
+[files]
+extend-exclude = [
+  ".git/**",
+  "_archive/**",
+  "_site/**",
+  "**/*.pdf",
+  "**/*.docx",
+  "**/*.dotx",
+  "**/*.xlsx",
+  "**/*.csv",
+  "**/*.kml",
+  "**/*.rds",
+  "**/*.gif",
+  "**/*.ico",
+  "**/*.lock",
+  "renv.lock",
+  "data/**",
+  "cv_stuff/**",
+  "header/**",
+  "Saved Places_saved_places.csv",
+  "detour-finder/preload_data.js",
+  "scripts/parse_chase_statements.R",
+  "scripts/parse_chase_statements.py",
+]
+ignore-hidden = false
+ignore-vcs = true
