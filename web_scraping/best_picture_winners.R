@@ -8,13 +8,40 @@ imdb_user_agent <- paste(
 )
 
 read_imdb_html <- function(url) {
-  response <- httr::GET(
-    url,
-    httr::user_agent(imdb_user_agent),
-    httr::add_headers(`Accept-Language` = "en-US,en;q=0.9")
-  )
-  httr::stop_for_status(response)
-  xml2::read_html(response)
+  for (attempt in seq_len(3)) {
+    response <- tryCatch(
+      httr::GET(
+        url,
+        httr::user_agent(imdb_user_agent),
+        httr::add_headers(`Accept-Language` = "en-US,en;q=0.9"),
+        httr::timeout(60)
+      ),
+      error = function(e) e
+    )
+    if (inherits(response, "error") || httr::http_error(response)) {
+      if (attempt < 3) Sys.sleep(2 ^ attempt)
+      next
+    }
+    html <- httr::content(response, as = "text", encoding = "UTF-8")
+    if (is.null(html) || !nzchar(html) || nchar(html) < 200) {
+      message(sprintf(
+        "[best_picture] empty/short body for %s (%d chars), retrying...",
+        url, nchar(if (is.null(html)) "" else html)
+      ))
+      if (attempt < 3) Sys.sleep(2 ^ attempt)
+      next
+    }
+    parsed <- tryCatch(xml2::read_html(html), error = function(e) e)
+    if (!inherits(parsed, "error")) {
+      return(parsed)
+    }
+    message(sprintf(
+      "[best_picture] parse error for %s: %s",
+      url, conditionMessage(parsed)
+    ))
+    if (attempt < 3) Sys.sleep(2 ^ attempt)
+  }
+  stop("Failed to fetch ", url, " after 3 attempts")
 }
 
 imdb_next_data <- function(url) {

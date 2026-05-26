@@ -24,7 +24,7 @@ make_cache_key <- function(text) {
 
 safe_fetch_html <- function(page_url, label = "page", max_attempts = 3, use_cache = TRUE) {
   cache_path <- file.path(cache_dir, paste0(make_cache_key(page_url), ".html"))
-  if (use_cache && file.exists(cache_path)) {
+  if (use_cache && file.exists(cache_path) && file.info(cache_path)$size > 0) {
     return(rvest::read_html(cache_path))
   }
 
@@ -41,10 +41,30 @@ safe_fetch_html <- function(page_url, label = "page", max_attempts = 3, use_cach
 
     if (!inherits(resp, "error") && !httr::http_error(resp)) {
       html <- httr::content(resp, as = "text", encoding = "UTF-8")
-      if (use_cache) {
-        writeLines(html, cache_path)
+      # Treat empty / suspiciously short bodies as a transient failure: do
+      # not cache, do not parse, just retry. IMDb anti-bot infra often
+      # returns HTTP 200 with an empty body to GitHub Actions IPs.
+      if (is.null(html) || !nzchar(html) || nchar(html) < 200) {
+        message(sprintf(
+          "[%s] empty/short body (%d chars), retrying...",
+          label, nchar(if (is.null(html)) "" else html)
+        ))
+      } else {
+        if (use_cache) {
+          writeLines(html, cache_path)
+        }
+        parsed <- tryCatch(rvest::read_html(html), error = function(e) e)
+        if (!inherits(parsed, "error")) {
+          return(parsed)
+        }
+        message(sprintf(
+          "[%s] read_html parse error: %s",
+          label, conditionMessage(parsed)
+        ))
+        if (use_cache && file.exists(cache_path)) {
+          unlink(cache_path)
+        }
       }
-      return(rvest::read_html(html))
     }
 
     if (attempt < max_attempts) {
