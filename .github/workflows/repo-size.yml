@@ -88,13 +88,13 @@ jobs:
 
       - name: Comment on PR
         if: ${{ github.event_name == 'pull_request' }}
-        uses: thollander/actions-comment-pull-request@v2
+        uses: thollander/actions-comment-pull-request@v3
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          filePath: ./size-report.md
-          comment_tag: repo-size
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          file-path: ./size-report.md
+          comment-tag: repo-size
           mode: upsert
-          create_if_not_exists: true
+          create-if-not-exists: true
 
       - name: Open issue if scheduled run exceeded threshold
         if: ${{ github.event_name == 'schedule' && steps.report.outputs.exceeded == 'true' }}

@@ -96,14 +96,14 @@ jobs:
 
       - name: Comment on PR
         if: ${{ steps.presence.outputs.have_site == 'true' && steps.pr.outputs.number != '' }}
-        uses: thollander/actions-comment-pull-request@v2
+        uses: thollander/actions-comment-pull-request@v3
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          pr_number: ${{ steps.pr.outputs.number }}
-          filePath: ./lhci-comment.md
-          comment_tag: lighthouse-ci
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          pr-number: ${{ steps.pr.outputs.number }}
+          file-path: ./lhci-comment.md
+          comment-tag: lighthouse-ci
           mode: upsert
-          create_if_not_exists: true
+          create-if-not-exists: true
 
       - name: Upload Lighthouse logs
         if: always()
