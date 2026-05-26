@@ -22,6 +22,11 @@ concurrency:
 jobs:
   build:
     name: Build site
+    # Skip on Dependabot PRs: those don't get repo secrets, so we can't auth
+    # to Google Sheets, and several Rmds assume sheet data is present.
+    # The label/size/typos/lintr checks already exercise the YAML changes
+    # in a Dependabot PR.
+    if: ${{ github.actor != 'dependabot[bot]' }}
     runs-on: ubuntu-latest
     env:
       # lets gargle/google libraries auto-detect the key path if you use _common.R
@@ -49,13 +54,15 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           dependencies: '"all"'
-      # --- NEW: write your service account key from repo secret ---
+      # --- Write SA key from repo secret (skip on Dependabot/forks: no secrets) ---
       - name: Write GCP key
+        if: ${{ github.actor != 'dependabot[bot]' && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) }}
         run: |
           echo '${{ secrets.GCP_SA_KEY }}' > sa.json
 
-      # --- OPTIONAL but recommended: quick auth sanity check (fails fast if share is missing) ---
+      # --- Quick auth sanity check (skipped when no SA key was written) ---
       - name: Google auth (sanity check)
+        if: ${{ github.actor != 'dependabot[bot]' && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) }}
         run: |
           Rscript -e 'googledrive::drive_auth(path="sa.json", cache=FALSE); googlesheets4::gs4_auth(path="sa.json", cache=FALSE); googledrive::drive_user()'
 
@@ -106,7 +113,7 @@ jobs:
         env:
           CHROMOTE_CHROME: ${{ steps.chrome.outputs.chrome-path }}
         run: |
-          Rscript -e 'googledrive::drive_auth(path="sa.json", cache=FALSE); googlesheets4::gs4_auth(path="sa.json", cache=FALSE); rmarkdown::render_site(encoding="UTF-8")'
+          Rscript -e 'if (file.exists("sa.json")) { googledrive::drive_auth(path="sa.json", cache=FALSE); googlesheets4::gs4_auth(path="sa.json", cache=FALSE) } else { googlesheets4::gs4_deauth() }; rmarkdown::render_site(encoding="UTF-8")'
 
 
       - name: Upload Pages artifact
