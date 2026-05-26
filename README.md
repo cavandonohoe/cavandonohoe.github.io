@@ -103,7 +103,6 @@ manual is a click away on the Actions tab.
 
 - `.github/dependabot.yml` — weekly bump of pinned GitHub Actions.
 - `labeler.yml` — auto-label PRs by changed paths.
-- `stale.yml` — mark and close inactive issues/PRs.
 
 ## Setup and Local Development
 
