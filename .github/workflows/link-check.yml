@@ -67,7 +67,7 @@ jobs:
           fail: false
 
       - name: Upload report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: ${{ hashFiles('lychee-report.md') != '' }}
         with:
           name: lychee-report
