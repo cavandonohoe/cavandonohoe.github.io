@@ -122,7 +122,46 @@ markets <- zhvi_slim %>%
 
 cat("  Cities with both ZHVI + ZORI:", nrow(markets), "\n")
 
-readr::write_csv(markets, file.path(data_dir, "us_rental_markets.csv"))
+# ---------------------------------------------------------------------------
+# 3a. Preserve demographic columns from prior CSV if present
+# ---------------------------------------------------------------------------
+# `us_rental_demand_data.R` enriches this CSV with Census-derived columns
+# (pop_2024, pop_growth_pct, county_pop_*, net_mig_rate_per1k, vacancy_*,
+# renter_pct). That script needs a Census API key, so we don't run it on
+# every Zillow refresh. Instead, carry the existing demographic values
+# forward by left-joining them on (city, state). They drift slowly (yearly
+# Census products), so a couple of months of staleness is fine -- the page
+# already renders "---" for any city missing them.
+demand_cols <- c(
+  "pop_2024", "pop_growth_pct",
+  "county_pop_2024", "county_pop_growth_pct",
+  "net_mig_rate_per1k",
+  "vacancy_rate_pct", "rental_vacancy_pct", "renter_pct"
+)
+existing_path <- file.path(data_dir, "us_rental_markets.csv")
+if (file.exists(existing_path)) {
+  existing <- readr::read_csv(existing_path, show_col_types = FALSE)
+  carry <- intersect(demand_cols, names(existing))
+  if (length(carry) > 0) {
+    cat("  Carrying forward", length(carry), "demographic column(s) from prior CSV.\n")
+    existing_demand <- existing %>%
+      dplyr::select(city, state, dplyr::all_of(carry)) %>%
+      dplyr::distinct(city, state, .keep_all = TRUE)
+    markets <- markets %>%
+      dplyr::left_join(existing_demand, by = c("city", "state")) %>%
+      dplyr::select(
+        city, state, metro, county,
+        zhvi, zhvi_yoy_pct, zori, zori_yoy_pct,
+        annual_rent, rent_to_price_pct, price_to_rent,
+        gross_yield_pct, est_cap_rate_pct,
+        tier,
+        dplyr::any_of(demand_cols),
+        zhvi_date, zori_date
+      )
+  }
+}
+
+readr::write_csv(markets, existing_path)
 
 # ---------------------------------------------------------------------------
 # 4. Summary output
