@@ -60,19 +60,20 @@ jobs:
           args: >-
             --config .github/lychee.toml
             --no-progress
-            --format markdown
-            --output ./lychee-report.md
             ${{ steps.target.outputs.target == '_site' && '_site/**/*.html' || '*.Rmd README.md' }}
+          format: markdown
+          output: ./lychee-report.md
           fail: false
 
       - name: Upload report
         uses: actions/upload-artifact@v4
+        if: ${{ hashFiles('lychee-report.md') != '' }}
         with:
           name: lychee-report
           path: lychee-report.md
 
       - name: Open or update issue on broken links
-        if: ${{ steps.lychee.outputs.exit_code != '0' && github.event_name != 'pull_request' }}
+        if: ${{ steps.lychee.outputs.exit_code != '0' && github.event_name != 'pull_request' && hashFiles('lychee-report.md') != '' }}
         uses: peter-evans/create-issue-from-file@v5
         with:
           title: "Broken links detected"
@@ -82,7 +83,7 @@ jobs:
             automated
 
       - name: Comment on PR
-        if: ${{ github.event_name == 'pull_request' }}
+        if: ${{ github.event_name == 'pull_request' && hashFiles('lychee-report.md') != '' }}
         uses: thollander/actions-comment-pull-request@v2
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
