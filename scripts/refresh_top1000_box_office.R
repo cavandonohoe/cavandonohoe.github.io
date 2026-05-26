@@ -30,34 +30,7 @@ sleep_after <- FALSE
 refresh_box_office <- TRUE
 refresh_ratings <- FALSE
 
-run_with_retry <- function(label, expr, max_attempts = 3) {
-  expr <- substitute(expr)
-  envir <- parent.frame()
-  for (attempt in seq_len(max_attempts)) {
-    res <- tryCatch(eval(expr, envir = envir), error = function(e) e)
-    if (!inherits(res, "error")) {
-      return(invisible(res))
-    }
-    msg <- conditionMessage(res)
-    message(sprintf(
-      "[CI] %s attempt %d/%d failed: %s",
-      label, attempt, max_attempts, msg
-    ))
-    cache_dir <- here::here("web_scraping", "cache")
-    if (dir.exists(cache_dir)) {
-      message("[CI] Clearing scraper cache at ", cache_dir)
-      unlink(cache_dir, recursive = TRUE, force = TRUE)
-    }
-    if (attempt < max_attempts) {
-      Sys.sleep(2 ^ attempt * 5)
-    } else {
-      stop(sprintf(
-        "%s failed after %d attempts: %s",
-        label, max_attempts, msg
-      ))
-    }
-  }
-}
+source(here::here("scripts", "_scrape_retry.R"))
 
 message("[CI] Starting Best Picture scrape...")
 run_with_retry(

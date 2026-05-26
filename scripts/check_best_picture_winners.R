@@ -12,8 +12,13 @@ old_winners <- if (file.exists(csv_path)) {
 refresh_box_office <- TRUE
 box_office_cache_path <- cache_path
 
+source(here::here("scripts", "_scrape_retry.R"))
+
 message("Refreshing Best Picture winners from IMDb...")
-source(here::here("web_scraping", "best_picture_winners.R"))
+run_with_retry(
+  "Best Picture winners scrape",
+  source(here::here("web_scraping", "best_picture_winners.R"))
+)
 
 new_winners <- oscar_winners_clean
 readr::write_csv(new_winners, csv_path)

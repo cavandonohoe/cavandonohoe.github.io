@@ -1,5 +1,5 @@
 season,episode,title,rating,votes
-1,1,A Hard Day's Night,8.3,3598
+1,1,A Hard Day's Night,8.3,3599
 1,2,The First Cut Is the Deepest,8.1,2500
 1,3,"Winning a Battle, Losing the War",8,2315
 1,4,No Man's Land,8,2185
@@ -13,7 +13,7 @@ season,episode,title,rating,votes
 2,3,Make Me Lose Control,8.6,2023
 2,4,"Deny, Deny, Deny",8.3,1896
 2,5,Bring the Pain,8.5,1926
-2,6,Into You Like a Train,9,2553
+2,6,Into You Like a Train,9,2551
 2,7,Something to Talk About,8.1,1725
 2,8,Let It Be,7.8,1706
 2,9,Thanks for the Memories,8.3,1790
@@ -23,24 +23,24 @@ season,episode,title,rating,votes
 2,13,Begin the Begin,8.2,1754
 2,14,Tell Me Sweet Little Lies,7.9,1668
 2,15,Break on Through,8.3,1757
-2,16,It's the End of the World,9.4,3673
-2,17,As We Know It,9.4,3562
+2,16,It's the End of the World,9.4,3669
+2,17,As We Know It,9.4,3558
 2,18,Yesterday,8.3,1768
 2,19,What Have I Done to Deserve This?,8,1683
-2,20,Band-Aid Covers the Bullet Hole,7.9,1627
+2,20,Band-Aid Covers the Bullet Hole,7.9,1628
 2,21,Superstition,8.1,1620
 2,22,The Name of the Game,8.1,1636
 2,23,Blues for Sister Someone,7.9,1651
 2,24,Damage Case,8.4,1748
-2,25,17 Seconds,9,2219
-2,26,Deterioration of the Fight or Flight Response,9,2211
-2,27,Losing My Religion,9.3,2916
+2,25,17 Seconds,9,2218
+2,26,Deterioration of the Fight or Flight Response,9,2210
+2,27,Losing My Religion,9.3,2914
 3,1,Time Has Come Today,8.3,1978
 3,2,I Am a Tree,8.1,1567
 3,3,Sometimes a Fantasy,8,1579
 3,4,What I Am,8.2,1646
 3,5,"Oh, the Guilt",8,1486
-3,6,Let the Angels Commit,7.9,1866
+3,6,Let the Angels Commit,7.9,1847
 3,7,Where the Boys Are,7.9,1653
 3,8,Staring at the Sun,7.9,1593
 3,9,From a Whisper to a Scream,8.6,1815
@@ -49,58 +49,58 @@ season,episode,title,rating,votes
 3,12,Six Days: Part 2,8.6,1795
 3,13,Great Expectations,8.2,1537
 3,14,Wishin' and Hopin',8.4,1570
-3,15,Walk on Water,8.8,1928
-3,16,Drowning on Dry Land,9,2100
-3,17,Some Kind of Miracle,8.4,2059
-3,18,Scars and Souvenirs,8.1,1642
-3,19,My Favorite Mistake,8,1507
-3,20,Time After Time,8,1488
-3,21,Desire,7.9,1495
-3,22,"The Other Side of This Life, Part 1",6.8,1780
-3,23,"The Other Side of This Life, Part 2",7.1,1645
+3,15,Walk on Water,8.8,1927
+3,16,Drowning on Dry Land,9,2099
+3,17,Some Kind of Miracle,8.4,2058
+3,18,Scars and Souvenirs,8.1,1639
+3,19,My Favorite Mistake,8,1508
+3,20,Time After Time,8,1489
+3,21,Desire,7.9,1494
+3,22,"The Other Side of This Life, Part 1",6.8,1781
+3,23,"The Other Side of This Life, Part 2",7.1,1647
 3,24,Testing 1-2-3,8.3,1515
-3,25,Didn't We Almost Have It All?,8.7,2046
-4,1,A Change Is Gonna Come,8,1630
-4,2,Love/Addiction,7.7,1424
-4,3,Let the Truth Sting,7.9,1448
-4,4,The Heart of the Matter,7.9,1475
-4,5,Haunt You Every Day,7.8,1442
-4,6,Kung Fu Fighting,7.8,1379
-4,7,Physical Attraction... Chemical Reaction,7.7,1418
-4,8,Forever Young,7.9,1455
-4,9,Crash Into Me: Part 1,8.5,1618
-4,10,Crash Into Me: Part 2,8.4,1534
-4,11,Lay Your Hands on Me,7.9,1433
-4,12,Where the Wild Things Are,8,1383
-4,13,Piece of My Heart,8.1,1398
-4,14,The Becoming,8,1589
-4,15,Losing My Mind,8,1438
+3,25,Didn't We Almost Have It All?,8.7,2047
+4,1,A Change Is Gonna Come,8,1633
+4,2,Love/Addiction,7.7,1427
+4,3,Let the Truth Sting,7.9,1450
+4,4,The Heart of the Matter,7.9,1476
+4,5,Haunt You Every Day,7.8,1443
+4,6,Kung Fu Fighting,7.8,1380
+4,7,Physical Attraction... Chemical Reaction,7.7,1417
+4,8,Forever Young,7.9,1456
+4,9,Crash Into Me: Part 1,8.5,1619
+4,10,Crash Into Me: Part 2,8.4,1535
+4,11,Lay Your Hands on Me,7.9,1434
+4,12,Where the Wild Things Are,8,1384
+4,13,Piece of My Heart,8.1,1399
+4,14,The Becoming,8,1590
+4,15,Losing My Mind,8,1439
 4,16,Freedom: Part 1,8.6,1805
-4,17,Freedom: Part 2,8.8,1524
+4,17,Freedom: Part 2,8.8,1525
 5,1,Dream a Little Dream of Me: Part 1,8.2,1606
-5,2,Dream a Little Dream of Me: Part 2,8.2,1243
-5,3,Here Comes the Flood,8.1,1477
-5,4,Brave New World,8.2,1581
-5,5,There's No 'I' in Team,8.3,1544
-5,6,Life During Wartime,8.2,1410
-5,7,Rise Up,8.3,1548
-5,8,These Ties That Bind,7.8,1595
-5,9,In the Midnight Hour,8.2,1598
-5,10,All by Myself,8.2,1564
-5,11,Wish You Were Here,8.1,1345
-5,12,Sympathy for the Devil,8.6,1698
+5,2,Dream a Little Dream of Me: Part 2,8.2,1244
+5,3,Here Comes the Flood,8.1,1478
+5,4,Brave New World,8.2,1582
+5,5,There's No 'I' in Team,8.3,1545
+5,6,Life During Wartime,8.2,1411
+5,7,Rise Up,8.3,1549
+5,8,These Ties That Bind,7.8,1596
+5,9,In the Midnight Hour,8.2,1599
+5,10,All by Myself,8.2,1565
+5,11,Wish You Were Here,8.1,1346
+5,12,Sympathy for the Devil,8.6,1699
 5,13,Stairway to Heaven,9,2032
 5,14,Beat Your Heart Out,8.2,1475
-5,15,Before and After,8.1,1342
-5,16,An Honest Mistake,8.5,1641
+5,15,Before and After,8.1,1343
+5,16,An Honest Mistake,8.5,1642
 5,17,I Will Follow You Into the Dark,8.5,1623
 5,18,Stand by Me,8.8,1740
-5,19,Elevator Love Letter,8.9,1809
-5,20,Sweet Surrender,8.5,1622
-5,21,No Good at Saying Sorry (One More Chance),8.3,1365
-5,22,What a Difference a Day Makes,9.2,2146
-5,23,Here's to Future Days,8.8,1783
-5,24,Now or Never,9.5,3417
+5,19,Elevator Love Letter,8.9,1811
+5,20,Sweet Surrender,8.5,1623
+5,21,No Good at Saying Sorry (One More Chance),8.3,1366
+5,22,What a Difference a Day Makes,9.2,2145
+5,23,Here's to Future Days,8.8,1782
+5,24,Now or Never,9.5,3415
 6,1,Good Mourning,8.4,1690
 6,2,Goodbye,8.2,1557
 6,3,I Always Feel Like Somebody's Watchin' Me,7.8,1292
@@ -123,8 +123,8 @@ season,episode,title,rating,votes
 6,20,"Hook, Line and Sinner",7.6,1176
 6,21,How Insensitive,8.1,1229
 6,22,Shiny Happy People,8.2,1449
-6,23,Sanctuary,9.6,4251
-6,24,Death and All His Friends,9.7,5030
+6,23,Sanctuary,9.6,4249
+6,24,Death and All His Friends,9.7,5029
 7,1,With You I'm Born Again,7.9,1427
 7,2,Shock to the System,7.8,1247
 7,3,Superfreak,7.7,1223
@@ -133,23 +133,23 @@ season,episode,title,rating,votes
 7,6,These Arms of Mine,7.7,1704
 7,7,That's Me Trying,7.8,1229
 7,8,Something's Gotta Give,7.8,1204
-7,9,"Slow Night, So Long",8.1,1239
-7,10,Adrift and at Peace,8.2,1366
-7,11,Disarm,8.6,1568
-7,12,Start Me Up,7.9,1198
-7,13,Don't Deceive Me (Please Don't Go),7.8,1171
-7,14,P.Y.T. (Pretty Young Thing),7.7,1158
-7,15,Golden Hour,8.6,1490
-7,16,Not Responsible,7.7,1143
+7,9,"Slow Night, So Long",8.1,1240
+7,10,Adrift and at Peace,8.2,1367
+7,11,Disarm,8.6,1569
+7,12,Start Me Up,7.9,1199
+7,13,Don't Deceive Me (Please Don't Go),7.8,1172
+7,14,P.Y.T. (Pretty Young Thing),7.7,1159
+7,15,Golden Hour,8.6,1491
+7,16,Not Responsible,7.7,1144
 7,17,This Is How We Do It,8,1210
 7,18,Song Beneath the Song,6.1,4841
 7,19,It's a Long Way Back,7.8,1195
 7,20,White Wedding,7.9,1228
 7,21,I Will Survive,7.8,1116
-7,22,Unaccompanied Minor,8.1,1350
-8,1,Free Falling,8,1436
-8,2,She's Gone,8.3,1393
-8,3,Take the Lead,8.1,1207
+7,22,Unaccompanied Minor,8.1,1351
+8,1,Free Falling,8,1438
+8,2,She's Gone,8.3,1395
+8,3,Take the Lead,8.1,1206
 8,4,What Is It About Men,8.1,1264
 8,5,"Love, Loss and Legacy",8.1,1244
 8,6,Poker Face,7.9,1150
@@ -167,9 +167,9 @@ season,episode,title,rating,votes
 8,18,The Lion Sleeps Tonight,7.9,1139
 8,19,Support System,8.1,1350
 8,20,The Girl with No Name,8.5,1222
-8,21,Moment of Truth,8.4,1238
+8,21,Moment of Truth,8.4,1239
 8,22,Let the Bad Times Roll,8.5,1327
-8,23,Migration,8.5,1383
+8,23,Migration,8.5,1381
 8,24,Flight,8.8,2412
 9,1,"Going, Going, Gone",8.5,2234
 9,2,Remember the Time,8.8,1768
@@ -177,7 +177,7 @@ season,episode,title,rating,votes
 9,4,I Saw Her Standing There,8,1143
 9,5,Beautiful Doom,8.5,1419
 9,6,Second Opinion,8.1,1319
-9,7,I Was Made for Lovin' You,8.1,1315
+9,7,I Was Made for Lovin' You,8.1,1314
 9,8,Love Turns You Upside Down,8,1175
 9,9,"Run, Baby, Run",8.4,1296
 9,10,Things We Said Today,8.3,1318
@@ -206,27 +206,27 @@ season,episode,title,rating,votes
 10,9,Sorry Seems to Be the Hardest Word,7.9,1322
 10,10,Somebody That I Used to Know,7.5,1090
 10,11,Man on the Moon,7.6,1090
-10,12,"Get Up, Stand Up",8.5,1489
+10,12,"Get Up, Stand Up",8.5,1488
 10,13,Take It Back,8.1,1193
-10,14,You've Got to Hide Your Love Away,7.8,1046
+10,14,You've Got to Hide Your Love Away,7.8,1047
 10,15,Throwing It All Away,7.8,1024
 10,16,We Gotta Get Out of This Place,7.6,1100
 10,17,Do You Know?,7.3,1740
 10,18,You Be Illin',7.6,1131
 10,19,I'm Winning,8,1008
 10,20,Go It Alone,7.7,1014
-10,21,Change of Heart,8.2,1076
-10,22,We Are Never Ever Getting Back Together,8.6,1274
-10,23,"Everything I Try to Do, Nothing Seems to Turn Out Right",8.1,1019
-10,24,Fear (of the Unknown),9.2,2141
-11,1,I Must Have Lost It on the Wind,7.6,1296
-11,2,Puzzle with a Piece Missing,7.6,1229
-11,3,Got to Be Real,7.5,1082
-11,4,Only Mama Knows,8.2,1248
-11,5,Bend & Break,7.6,1162
+10,21,Change of Heart,8.2,1077
+10,22,We Are Never Ever Getting Back Together,8.6,1275
+10,23,"Everything I Try to Do, Nothing Seems to Turn Out Right",8.1,1020
+10,24,Fear (of the Unknown),9.2,2142
+11,1,I Must Have Lost It on the Wind,7.6,1297
+11,2,Puzzle with a Piece Missing,7.6,1230
+11,3,Got to Be Real,7.5,1083
+11,4,Only Mama Knows,8.2,1249
+11,5,Bend & Break,7.6,1163
 11,6,Don't Let's Start,7.5,1012
 11,7,"Could We Start Again, Please?",8,1019
-11,8,Risk,8,1069
+11,8,Risk,8,1068
 11,9,Where Do We Go From Here?,7.9,1027
 11,10,The Bed's Too Big Without You,7.9,1035
 11,11,All I Could Do Was Cry,8.5,1288
@@ -265,22 +265,22 @@ season,episode,title,rating,votes
 12,19,"It's Alright, Ma (I'm Only Bleeding)",8.1,1034
 12,20,Trigger Happy,7.8,1087
 12,21,You're Gonna Need Someone on Your Side,7.9,1122
-12,22,Mama Tried,8.4,1214
-12,23,At Last,8,1183
-12,24,Family Affair,8.7,1350
-13,1,Undo,8,1248
-13,2,Catastrophe and the Cure,7.6,987
-13,3,I Ain't No Miracle Worker,8,967
-13,4,Falling Slowly,7.6,936
-13,5,Both Sides Now,7.7,933
-13,6,Roar,8.1,986
-13,7,Why Try to Change Me Now,7.5,992
-13,8,The Room Where It Happens,6.8,1928
-13,9,You Haven't Done Nothin',8.4,1135
-13,10,You Can Look (But You'd Better Not Touch),7.7,1487
-13,11,Jukebox Hero,7.4,1093
-13,12,None of Your Business,7.5,1065
-13,13,It Only Gets Much Worse,7.9,974
+12,22,Mama Tried,8.4,1215
+12,23,At Last,8,1185
+12,24,Family Affair,8.7,1351
+13,1,Undo,8,1249
+13,2,Catastrophe and the Cure,7.6,988
+13,3,I Ain't No Miracle Worker,8,968
+13,4,Falling Slowly,7.6,937
+13,5,Both Sides Now,7.7,934
+13,6,Roar,8.1,987
+13,7,Why Try to Change Me Now,7.5,993
+13,8,The Room Where It Happens,6.8,1929
+13,9,You Haven't Done Nothin',8.4,1136
+13,10,You Can Look (But You'd Better Not Touch),7.7,1488
+13,11,Jukebox Hero,7.4,1094
+13,12,None of Your Business,7.5,1066
+13,13,It Only Gets Much Worse,7.9,975
 13,14,Back Where You Belong,7.5,1035
 13,15,Civil War,7,1059
 13,16,Who Is He (And What Is He to You)?,7.3,1373
@@ -356,17 +356,17 @@ season,episode,title,rating,votes
 16,13,Save the Last Dance for Me,7.3,810
 16,14,A Diagnosis,7.3,794
 16,15,Snowblind,7.4,807
-16,16,Leave a Light On,4.4,2880
-16,17,Life on Mars?,7,786
-16,18,Give a Little Bit,7.6,827
-16,19,Love of My Life,6.7,1030
-16,20,Sing It Again,7.8,788
-16,21,Put on a Happy Face,8.1,889
-17,1,All Tomorrow's Parties,7.6,1348
-17,2,The Center Won't Hold,8,1309
-17,3,My Happy Ending,7.6,1072
-17,4,You'll Never Walk Alone,7.7,1132
-17,5,Fight the Power,7.2,1119
+16,16,Leave a Light On,4.4,2881
+16,17,Life on Mars?,7,787
+16,18,Give a Little Bit,7.6,828
+16,19,Love of My Life,6.7,1031
+16,20,Sing It Again,7.8,789
+16,21,Put on a Happy Face,8.1,890
+17,1,All Tomorrow's Parties,7.6,1349
+17,2,The Center Won't Hold,8,1310
+17,3,My Happy Ending,7.6,1073
+17,4,You'll Never Walk Alone,7.7,1133
+17,5,Fight the Power,7.2,1120
 17,6,No Time for Despair,6.8,1088
 17,7,Helplessly Hoping,7.2,1084
 17,8,It's All Too Much,7.9,1015
@@ -381,10 +381,10 @@ season,episode,title,rating,votes
 17,17,Someone Saved My Life Tonight,7.2,829
 18,1,Here Comes the Sun,7.1,963
 18,2,Some Kind of Tomorrow,7,753
-18,3,Hotter Than Hell,8,889
-18,4,With a Little Help from My Friends,7.3,682
-18,5,Bottle Up and Explode!,7.6,710
-18,6,Every Day Is a Holiday (With You),7.2,642
+18,3,Hotter Than Hell,8,890
+18,4,With a Little Help from My Friends,7.3,683
+18,5,Bottle Up and Explode!,7.6,711
+18,6,Every Day Is a Holiday (With You),7.2,643
 18,7,Today Was a Fairytale,7.1,625
 18,8,It Came Upon a Midnight Clear,7.4,741
 18,9,No Time to Die,7.4,644
@@ -410,19 +410,19 @@ season,episode,title,rating,votes
 19,9,Love Don't Cost a Thing,6.6,500
 19,10,Sisters Are Doin' It for Themselves,7.1,473
 19,11,Training Day,7.2,604
-19,12,Pick Yourself Up,7.6,511
-19,13,Cowgirls Don't Cry,7.2,446
-19,14,Shadow of Your Love,7.2,442
-19,15,Mama Who Bore Me,7.1,461
-19,16,Gunpowder and Lead,7.3,475
-19,17,Come Fly With Me,7.6,455
-19,18,Ready to Run,7.4,431
+19,12,Pick Yourself Up,7.6,512
+19,13,Cowgirls Don't Cry,7.2,447
+19,14,Shadow of Your Love,7.2,443
+19,15,Mama Who Bore Me,7.1,462
+19,16,Gunpowder and Lead,7.3,476
+19,17,Come Fly With Me,7.6,456
+19,18,Ready to Run,7.4,432
 19,19,Wedding Bell Blues,7.7,474
 19,20,Happily Ever After?,8.1,572
 20,1,We've Only Just Begun,7.3,488
 20,2,Keep the Family Close,7.2,423
 20,3,Walk on the Ocean,7.4,412
-20,4,Baby Can I Hold You,7.4,425
+20,4,Baby Can I Hold You,7.4,426
 20,5,Never Felt So Alone,7.4,407
 20,6,The Marathon Continues,7.2,379
 20,7,She Used to Be Mine,7.4,380
@@ -435,33 +435,33 @@ season,episode,title,rating,votes
 21,4,This One's for the Girls,7.5,378
 21,5,You Make My Heart Explode,7.4,370
 21,6,Night Moves,7.4,394
-21,7,If You Leave,8.1,430
+21,7,If You Leave,8.1,431
 21,8,Drop It Like It's Hot,7.3,391
 21,9,Hit the Floor,7.3,343
 21,10,Jump (for My Love),7.3,339
-21,11,I Still Haven't Found What I'm Looking For,7.2,343
+21,11,I Still Haven't Found What I'm Looking For,7.2,344
 21,12,Ridin' Solo,7.5,339
 21,13,Don't You (Forget About Me),7.3,337
 21,14,Love in the Ice Age,7.3,332
 21,15,Bust Your Windows,7.2,328
 21,16,Papa Was a Rollin' Stone,7.5,328
-21,17,Love You Like a Love Song,7.9,360
-21,18,How Do I Live,8.1,447
-22,1,Only the Strong Survive,8,399
-22,2,We Built This City,7.4,312
-22,3,Between Two Lungs,7.3,289
-22,4,Goodbye Horses,7.2,273
-22,5,Sometimes I Feel Like a Motherless Child,7.5,274
-22,6,When I Crash,7.7,275
-22,7,Skyfall,7.4,261
-22,8,Heavy on Me,7.5,246
-22,9,Fortunate Son,7.2,248
+21,17,Love You Like a Love Song,7.9,361
+21,18,How Do I Live,8.1,448
+22,1,Only the Strong Survive,8,400
+22,2,We Built This City,7.4,313
+22,3,Between Two Lungs,7.3,291
+22,4,Goodbye Horses,7.2,274
+22,5,Sometimes I Feel Like a Motherless Child,7.5,275
+22,6,When I Crash,7.6,276
+22,7,Skyfall,7.4,262
+22,8,Heavy on Me,7.5,247
+22,9,Fortunate Son,7.1,249
 22,10,Strip That Down,7.6,242
 22,11,(If You Want It) Do It Yourself,7.6,234
 22,12,Get Lucky,7.6,208
 22,13,Love the Way You Lie,7.7,200
-22,14,Wrecking Ball,7.8,207
+22,14,Wrecking Ball,7.8,208
 22,15,Take Me to the River,7.4,180
-22,16,Feel It Still,7.9,167
-22,17,Through the Fire,7.8,156
-22,18,Bridge Over Troubled Water,8.2,174
+22,16,Feel It Still,7.9,169
+22,17,Through the Fire,7.8,158
+22,18,Bridge Over Troubled Water,8.2,177
