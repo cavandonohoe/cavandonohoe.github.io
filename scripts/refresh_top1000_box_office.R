@@ -5,7 +5,7 @@
 # scrapers and writes the resulting CSVs, skipping the Gmail notify step
 # that requires user-level OAuth.
 #
-# IMDb intermittently returns empty / unparseable bodies to GitHub Actions
+# IMDb intermittently returns empty / unparsable bodies to GitHub Actions
 # IPs, so each underlying scrape is retried up to a few times with backoff
 # before we give up.
 #
