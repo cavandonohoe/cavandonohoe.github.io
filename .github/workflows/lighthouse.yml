@@ -42,7 +42,7 @@ jobs:
             echo "have_site=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         if: steps.presence.outputs.have_site == 'true'
         with:
           node-version: "20"
