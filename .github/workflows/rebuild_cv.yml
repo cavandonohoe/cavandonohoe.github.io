@@ -22,6 +22,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Stash existing CV files for content comparison
+        run: |
+          mkdir -p .cv-pre
+          [ -f cv.pdf ] && cp cv.pdf .cv-pre/cv.pdf || true
+          [ -f cv_doc.docx ] && cp cv_doc.docx .cv-pre/cv_doc.docx || true
+
       - uses: r-lib/actions/setup-r@v2
         with:
           use-public-rspm: true
@@ -72,21 +78,60 @@ jobs:
         id: diff
         run: |
           set -euo pipefail
-          # PDFs and DOCX files contain creation timestamps; ignore those by
-          # extracting text and comparing. For PDF, use pdftotext if available,
-          # otherwise fall back to byte diff.
+          # Both PDF and DOCX embed regeneration timestamps that change every
+          # render even when the underlying Google Sheet hasn't been edited.
+          # Compare extractable content instead of raw bytes:
+          #   - DOCX: unzip and compare word/document.xml (the visible body)
+          #   - PDF:  use pdftotext to compare extracted text
+          # If content is unchanged, restore the prior bytes so the PR step
+          # below sees a clean working tree and skips opening a noise PR.
+
+          sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+
           changed=""
-          for f in cv.pdf cv_doc.docx; do
-            if [ -f "$f" ] && ! git diff --quiet -- "$f"; then
-              changed="$changed $f"
+
+          # ---- DOCX content compare ----
+          if [ -f cv_doc.docx ]; then
+            if [ -f .cv-pre/cv_doc.docx ]; then
+              old_xml="$(unzip -p .cv-pre/cv_doc.docx word/document.xml || echo "")"
+              new_xml="$(unzip -p cv_doc.docx word/document.xml || echo "")"
+              if [ "$old_xml" = "$new_xml" ]; then
+                echo "cv_doc.docx: content unchanged (timestamp-only diff); reverting."
+                cp .cv-pre/cv_doc.docx cv_doc.docx
+              else
+                echo "cv_doc.docx: content changed."
+                changed="$changed cv_doc.docx"
+              fi
+            else
+              changed="$changed cv_doc.docx"
             fi
-          done
+          fi
+
+          # ---- PDF content compare ----
+          if [ -f cv.pdf ]; then
+            if [ -f .cv-pre/cv.pdf ]; then
+              old_txt="$(pdftotext -layout .cv-pre/cv.pdf - 2>/dev/null || echo "")"
+              new_txt="$(pdftotext -layout cv.pdf - 2>/dev/null || echo "")"
+              if [ "$old_txt" = "$new_txt" ]; then
+                echo "cv.pdf: text unchanged (likely timestamp-only diff); reverting."
+                cp .cv-pre/cv.pdf cv.pdf
+              else
+                echo "cv.pdf: text changed."
+                changed="$changed cv.pdf"
+              fi
+            else
+              changed="$changed cv.pdf"
+            fi
+          fi
+
+          rm -rf .cv-pre
+
           if [ -z "$changed" ]; then
             echo "changed=" >> "$GITHUB_OUTPUT"
-            echo "No CV file changes detected."
+            echo "No meaningful CV content changes detected."
           else
             echo "changed=$changed" >> "$GITHUB_OUTPUT"
-            echo "Changed: $changed"
+            echo "Meaningful changes:$changed"
           fi
 
       - name: Open PR if CV files changed

@@ -13,3 +13,7 @@ updates:
       - "ci"
       - "dependencies"
     open-pull-requests-limit: 5
+    groups:
+      github-actions:
+        patterns:
+          - "*"
