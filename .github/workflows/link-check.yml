@@ -29,11 +29,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Try to download latest built site artifact (optional)
         id: artifact
-        uses: dawidd6/action-download-artifact@v6
+        uses: dawidd6/action-download-artifact@v21
         continue-on-error: true
         with:
           workflow: pages-branch-previews.yml
@@ -67,7 +67,7 @@ jobs:
           fail: false
 
       - name: Upload report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: ${{ hashFiles('lychee-report.md') != '' }}
         with:
           name: lychee-report
@@ -75,7 +75,7 @@ jobs:
 
       - name: Open or update issue on broken links
         if: ${{ steps.lychee.outputs.exit_code != '0' && github.event_name != 'pull_request' && hashFiles('lychee-report.md') != '' }}
-        uses: peter-evans/create-issue-from-file@v5
+        uses: peter-evans/create-issue-from-file@v6
         with:
           title: "Broken links detected"
           content-filepath: ./lychee-report.md
@@ -85,7 +85,7 @@ jobs:
 
       - name: Comment on PR
         if: ${{ github.event_name == 'pull_request' && hashFiles('lychee-report.md') != '' }}
-        uses: thollander/actions-comment-pull-request@v2
+        uses: thollander/actions-comment-pull-request@v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           filePath: ./lychee-report.md

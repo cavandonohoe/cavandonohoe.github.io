@@ -21,10 +21,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Download site artifact from triggering workflow
-        uses: dawidd6/action-download-artifact@v6
+        uses: dawidd6/action-download-artifact@v21
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           run_id: ${{ github.event.workflow_run.id }}
@@ -42,7 +42,7 @@ jobs:
             echo "have_site=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         if: steps.presence.outputs.have_site == 'true'
         with:
           node-version: "20"
@@ -96,7 +96,7 @@ jobs:
 
       - name: Comment on PR
         if: ${{ steps.presence.outputs.have_site == 'true' && steps.pr.outputs.number != '' }}
-        uses: thollander/actions-comment-pull-request@v2
+        uses: thollander/actions-comment-pull-request@v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           pr_number: ${{ steps.pr.outputs.number }}
@@ -107,7 +107,7 @@ jobs:
 
       - name: Upload Lighthouse logs
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: lighthouse-logs
           path: |

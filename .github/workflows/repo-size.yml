@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 1
 
@@ -81,14 +81,14 @@ jobs:
           cat size-report.md
 
       - name: Upload report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: size-report
           path: size-report.md
 
       - name: Comment on PR
         if: ${{ github.event_name == 'pull_request' }}
-        uses: thollander/actions-comment-pull-request@v2
+        uses: thollander/actions-comment-pull-request@v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           filePath: ./size-report.md
@@ -98,7 +98,7 @@ jobs:
 
       - name: Open issue if scheduled run exceeded threshold
         if: ${{ github.event_name == 'schedule' && steps.report.outputs.exceeded == 'true' }}
-        uses: peter-evans/create-issue-from-file@v5
+        uses: peter-evans/create-issue-from-file@v6
         with:
           title: "Repo size exceeded threshold"
           content-filepath: ./size-report.md

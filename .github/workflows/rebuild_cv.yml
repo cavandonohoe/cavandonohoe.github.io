@@ -20,7 +20,7 @@ jobs:
     env:
       GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/sa.json
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Stash existing CV files for content comparison
         run: |
@@ -45,7 +45,7 @@ jobs:
 
       - name: Setup Chrome (for pagedown::chrome_print)
         id: chrome
-        uses: browser-actions/setup-chrome@v1
+        uses: browser-actions/setup-chrome@v2
         with:
           chrome-version: stable
 
@@ -136,7 +136,7 @@ jobs:
 
       - name: Open PR if CV files changed
         if: ${{ steps.diff.outputs.changed != '' }}
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: auto/rebuild-cv
