@@ -94,7 +94,52 @@ jobs:
           changed_count="$(git diff --cached --name-only | wc -l | tr -d ' ')"
           echo "Committing $changed_count updated CSV(s)."
 
-          git commit -m "Auto-update IMDb episode ratings"
+          # Build a per-show summary of substantive changes:
+          #   - new rows (episodes that didn't exist before)
+          #   - rating changes (existing season/episode whose rating value changed)
+          # Vote-count-only changes (every row gets new votes every week) are
+          # ignored so the body highlights what actually moved.
+          summary_file="$(mktemp)"
+          total_new=0
+          total_rating=0
+          for f in $(git diff --cached --name-only); do
+            show="$(basename "$f" _ep_ratings.csv)"
+
+            old="$(mktemp)"; new="$(mktemp)"
+            git show "HEAD:$f" > "$old" 2>/dev/null || : > "$old"
+            cp "$f" "$new"
+
+            # new rows = lines in new whose season,episode key isn't in old
+            new_rows="$(awk -F, 'NR==FNR{if(FNR>1)k[$1","$2]=1;next} FNR>1 && !($1","$2 in k)' \
+              "$old" "$new" | wc -l | tr -d ' ')"
+
+            # rating changes = same season,episode key, different rating value
+            rating_changes="$(awk -F, '
+              NR==FNR{if(FNR>1)r[$1","$2]=$4;next}
+              FNR>1 && ($1","$2 in r) && r[$1","$2]!=$4
+            ' "$old" "$new" | wc -l | tr -d ' ')"
+
+            rm -f "$old" "$new"
+
+            if [ "$new_rows" -gt 0 ] || [ "$rating_changes" -gt 0 ]; then
+              printf -- '- %s: +%s new, %s rating change(s)\n' \
+                "$show" "$new_rows" "$rating_changes" >> "$summary_file"
+            else
+              printf -- '- %s: vote counts only\n' "$show" >> "$summary_file"
+            fi
+            total_new=$((total_new + new_rows))
+            total_rating=$((total_rating + rating_changes))
+          done
+
+          subject="Auto-update IMDb episode ratings (${changed_count} show(s), +${total_new} ep, ${total_rating} rating change(s))"
+          {
+            echo "$subject"
+            echo
+            cat "$summary_file"
+          } > "$summary_file.msg"
+
+          git commit -F "$summary_file.msg"
+          rm -f "$summary_file" "$summary_file.msg"
           for i in 1 2 3; do
             if git push; then exit 0; fi
             echo "Push failed; rebasing on remote and retrying ($i/3)..."
