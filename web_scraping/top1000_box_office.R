@@ -115,7 +115,7 @@ for (url_index in all_urls) {
     rvest::html_node("table") %>%
     rvest::html_table(fill=TRUE) %>%
     tibble::as_tibble() %>%
-    dplyr::mutate(Rank = readr::parse_number(Rank))
+    dplyr::mutate(Rank = readr::parse_number(as.character(Rank)))
 
   # funny enough, before doing this, I just read in a list of imdb movies titles
   # and got the imdb id that way. but apparently multiple versions of beauty and the beast
