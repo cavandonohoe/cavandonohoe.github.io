@@ -33,10 +33,36 @@
     for (var i = 0; i < anchors.length; i++) {
       var a = anchors[i];
       if ((a.hasAttribute('aria-label') && a.getAttribute('aria-label').trim()) ||
-          (a.hasAttribute('title') && a.getAttribute('title').trim())) continue;
-      var dataTitle = a.getAttribute('data-title') || '';
-      var label = dataTitle.trim() || 'Plot toolbar action';
-      a.setAttribute('aria-label', label);
+          (a.hasAttribute('title') && a.getAttribute('title').trim())) {
+        // already labeled — but H91 still wants id/name on empty anchors,
+        // so ensure that too.
+      } else {
+        var dataTitle = a.getAttribute('data-title') || '';
+        var label = dataTitle.trim() || 'Plot toolbar action';
+        a.setAttribute('aria-label', label);
+      }
+      // H91 considers an empty anchor accessible if it has id or name.
+      // Give every modebar anchor a stable, unique id derived from the
+      // parent modebar id + position so HTML_CodeSniffer stops flagging.
+      if (!a.id) {
+        var parent = a.closest('[id^="modebar-"]');
+        var base = parent ? parent.id : 'modebar';
+        var idx = Array.prototype.indexOf.call(parent ? parent.querySelectorAll('a') : [a], a);
+        a.id = base + '-btn-' + (idx >= 0 ? idx : i);
+      }
+      if (!a.getAttribute('name')) a.setAttribute('name', a.id);
+    }
+  }
+
+  function dedupePlotlySymbolIds() {
+    // Plotly inlines an SVG icon set per chart that defines <g id="symbol">,
+    // so pages with two charts trip F77 (duplicate id). Drop the id on every
+    // occurrence after the first; nothing on the page references #symbol.
+    // Restrict to the known offender so we don't accidentally rename
+    // legitimate duplicates elsewhere.
+    var symbols = document.querySelectorAll('[id="symbol"]');
+    for (var i = 1; i < symbols.length; i++) {
+      symbols[i].removeAttribute('id');
     }
   }
 
@@ -74,6 +100,7 @@
     labelNavbarToggle();
     labelPlotlyModebar();
     labelDataTablesControls();
+    dedupePlotlySymbolIds();
   }
 
   if (document.readyState === 'loading') {
