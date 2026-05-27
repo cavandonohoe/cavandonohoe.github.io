@@ -65,11 +65,28 @@ bo_result <- run_or_softfail_on_imdb_block(
   )
 )
 if (!inherits(bo_result, "imdb_block_softfail")) {
-  readr::write_csv(
-    imdb_rank_ratings_clean,
-    here::here("data", "top1000_box_office.csv")
-  )
-  message("[CI] Top 1000 Box Office scrape complete.")
+  # If MAX_NEW_RATINGS capped the run, some IDs may still be NA in the
+  # produced data frame. Don't publish a degraded CSV in that case;
+  # the cache still gets committed so the next run picks up where we
+  # left off.
+  na_count <- sum(is.na(imdb_rank_ratings_clean$imdb_rating))
+  if (na_count > 0) {
+    message(sprintf(
+      paste0(
+        "[CI] %d / %d ratings still missing after this run; ",
+        "preserving existing CSV. Cache will be committed so the ",
+        "next run continues from here."
+      ),
+      na_count,
+      nrow(imdb_rank_ratings_clean)
+    ))
+  } else {
+    readr::write_csv(
+      imdb_rank_ratings_clean,
+      here::here("data", "top1000_box_office.csv")
+    )
+    message("[CI] Top 1000 Box Office scrape complete.")
+  }
 } else {
   message("[CI] Top 1000 Box Office scrape skipped (IMDb block); CSV unchanged.")
 }
