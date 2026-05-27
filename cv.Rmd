@@ -11,6 +11,7 @@ output:
 knit: pagedown::chrome_print
 editor_options: 
   chunk_output_type: console
+lang: "en"
 ---
 ```{r ci-skip-gs4_cv, include=FALSE}
 # if (Sys.getenv("CI") == "true") knitr::knit_exit()
