@@ -19,7 +19,7 @@
 
 signal_imdb_block <- function(url) {
   cond <- structure(
-    class = c("imdb_blocked", "condition"),
+    class = c("imdb_blocked", "error", "condition"),
     list(
       message = sprintf(
         "IMDb returned 0-byte body for %s after all retries (anti-bot block)",
