@@ -15,10 +15,17 @@ box_office_cache_path <- cache_path
 source(here::here("scripts", "_scrape_retry.R"))
 
 message("Refreshing Best Picture winners from IMDb...")
-run_with_retry(
+bp_result <- run_or_softfail_on_imdb_block(
   "Best Picture winners scrape",
-  source(here::here("web_scraping", "best_picture_winners.R"))
+  run_with_retry(
+    "Best Picture winners scrape",
+    source(here::here("web_scraping", "best_picture_winners.R"))
+  )
 )
+if (inherits(bp_result, "imdb_block_softfail")) {
+  message("Best Picture scrape skipped (IMDb block); existing CSV unchanged.")
+  quit(save = "no", status = 0)
+}
 
 new_winners <- oscar_winners_clean
 readr::write_csv(new_winners, csv_path)
