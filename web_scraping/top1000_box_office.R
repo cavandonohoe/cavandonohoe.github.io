@@ -199,18 +199,73 @@ title_lookup <- setNames(rankings_tib_final2$Title, rankings_tib_final2$id)
 missing_ids <- setdiff(rankings_tib_final2$id, names(ratings_lookup))
 
 if (length(missing_ids) > 0) {
+  total_missing <- length(missing_ids)
+  message(sprintf(
+    "[CI] %d cached ratings, %d missing.",
+    length(ratings_lookup), total_missing
+  ))
+
+  # CI batch cap: bound how many new IMDb pages this run will fetch so the
+  # job always finishes well under the 60-min job timeout. Set
+  # MAX_NEW_RATINGS to control; the workflow sets a CI default. Locally
+  # the variable is unset, so all missing ratings are fetched.
+  max_new_env <- Sys.getenv("MAX_NEW_RATINGS", unset = "")
+  if (nzchar(max_new_env)) {
+    max_new <- suppressWarnings(as.integer(max_new_env))
+    if (is.na(max_new) || max_new <= 0) max_new <- total_missing
+  } else {
+    max_new <- total_missing
+  }
+  if (max_new < total_missing) {
+    message(sprintf(
+      "[CI] Capping this run at %d new ratings (set MAX_NEW_RATINGS to override).",
+      max_new
+    ))
+  }
+
+  step_summary_path <- Sys.getenv("GITHUB_STEP_SUMMARY", unset = "")
+  write_progress_summary <- function(done, target, total, started_at) {
+    if (!nzchar(step_summary_path)) return(invisible(NULL))
+    elapsed_s <- as.numeric(difftime(Sys.time(), started_at, units = "secs"))
+    rate <- if (done > 0) elapsed_s / done else NA_real_
+    eta_s <- if (!is.na(rate)) rate * (target - done) else NA_real_
+    fmt_dur <- function(s) {
+      if (is.na(s) || !is.finite(s)) return("--:--")
+      sprintf("%02d:%02d", as.integer(s) %/% 60, as.integer(s) %% 60)
+    }
+    pct <- if (target > 0) sprintf("%.1f%%", 100 * done / target) else "n/a"
+    lines <- c(
+      "## Top 1000 box office \u2014 IMDb rating fetch progress",
+      "",
+      sprintf("- **This run**: %d / %d  (%s)", done, target, pct),
+      sprintf("- **Total missing (this run + future)**: %d", total),
+      sprintf("- **Elapsed**: %s, **ETA**: %s", fmt_dur(elapsed_s), fmt_dur(eta_s)),
+      ""
+    )
+    writeLines(lines, con = step_summary_path)
+  }
+
+  fetch_target <- min(max_new, total_missing)
+  started_at <- Sys.time()
   recent_titles <- character()
-  for (i in seq_along(missing_ids)) {
+  fetched_this_run <- 0
+  for (i in seq_len(fetch_target)) {
     title_id <- missing_ids[[i]]
     title_name <- title_lookup[[title_id]]
     ratings_lookup[[title_id]] <- get_rating(title_id)
+    fetched_this_run <- i
     recent_titles <- c(recent_titles, sprintf("%s (%s)", title_name, title_id))
 
-    if (i %% 10 == 0 || i == length(missing_ids)) {
-      message(sprintf("Fetched %d/%d:", i, length(missing_ids)))
+    if (i %% 10 == 0 || i == fetch_target) {
+      pct <- 100 * i / fetch_target
+      message(sprintf(
+        "Fetched %d/%d (%.1f%%, missing total %d):",
+        i, fetch_target, pct, total_missing
+      ))
       message(paste(recent_titles, collapse = "\n"))
       message("")
       recent_titles <- character()
+      write_progress_summary(i, fetch_target, total_missing, started_at)
     }
 
     if (i %% 25 == 0) {
@@ -221,6 +276,7 @@ if (length(missing_ids) > 0) {
       )
     }
   }
+  write_progress_summary(fetched_this_run, fetch_target, total_missing, started_at)
 }
 
 saveRDS(
