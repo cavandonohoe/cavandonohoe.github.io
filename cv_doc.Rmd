@@ -5,6 +5,7 @@ output:
     reference_docx: "format_resume_test2.dotx"
 editor_options: 
   chunk_output_type: console
+lang: "en"
 ---
 
 ```{r pipe_cv_doc, include=FALSE}

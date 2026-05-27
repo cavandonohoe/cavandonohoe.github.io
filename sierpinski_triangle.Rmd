@@ -7,6 +7,7 @@ output:
     includes:
       in_header: header/header.html
       after_body: include_footer.html
+lang: "en"
 ---
 
 ```{r pipe, include=FALSE}

@@ -7,6 +7,7 @@ output:
     includes:
       in_header: header/header.html
       after_body: include_footer.html
+lang: "en"
 ---
 
 ```{r og-meta, echo=FALSE, results='asis'}
@@ -29,6 +30,7 @@ This page embeds my Google My Maps layer and shows the latest exported CSV data 
 ```{=html}
 <iframe
   src="https://www.google.com/maps/d/embed?mid=1aSjDN50VR8qKu40GyIE2UsF6C8WzhGU&ehbc=2E312F"
+  title="Google Maps: Cavan's saved and favorite places"
   width="100%"
   height="650"
   style="border:0;"

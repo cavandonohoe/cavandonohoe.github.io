@@ -12,6 +12,7 @@ output:
     toc_float:
       collapsed: true
       smooth_scroll: true
+lang: "en"
 ---
 
 ```{r pipe, include=FALSE}

@@ -8,6 +8,7 @@ output:
     includes:
       in_header: header/header.html
       after_body: include_footer.html
+lang: "en"
 ---
 
 # Introduction to R
