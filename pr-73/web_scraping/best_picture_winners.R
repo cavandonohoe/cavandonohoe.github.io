@@ -8,6 +8,7 @@ imdb_user_agent <- paste(
 )
 
 read_imdb_html <- function(url) {
+  all_empty <- TRUE
   for (attempt in seq_len(3)) {
     response <- tryCatch(
       httr::GET(
@@ -19,6 +20,7 @@ read_imdb_html <- function(url) {
       error = function(e) e
     )
     if (inherits(response, "error") || httr::http_error(response)) {
+      all_empty <- FALSE
       if (attempt < 3) Sys.sleep(2 ^ attempt)
       next
     }
@@ -35,11 +37,15 @@ read_imdb_html <- function(url) {
     if (!inherits(parsed, "error")) {
       return(parsed)
     }
+    all_empty <- FALSE
     message(sprintf(
       "[best_picture] parse error for %s: %s",
       url, conditionMessage(parsed)
     ))
     if (attempt < 3) Sys.sleep(2 ^ attempt)
+  }
+  if (all_empty && exists("signal_imdb_block", mode = "function")) {
+    signal_imdb_block(url)
   }
   stop("Failed to fetch ", url, " after 3 attempts")
 }
