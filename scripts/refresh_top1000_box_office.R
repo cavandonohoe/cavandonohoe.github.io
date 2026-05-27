@@ -33,29 +33,43 @@ refresh_ratings <- FALSE
 source(here::here("scripts", "_scrape_retry.R"))
 
 message("[CI] Starting Best Picture scrape...")
-run_with_retry(
+bp_result <- run_or_softfail_on_imdb_block(
   "Best Picture scrape",
-  orig_source(
-    here::here("web_scraping", "best_picture_winners.R"),
-    local = FALSE
+  run_with_retry(
+    "Best Picture scrape",
+    orig_source(
+      here::here("web_scraping", "best_picture_winners.R"),
+      local = FALSE
+    )
   )
 )
-readr::write_csv(
-  oscar_winners_clean,
-  here::here("data", "best_picture_winners.csv")
-)
-message("[CI] Best Picture scrape complete.")
+if (!inherits(bp_result, "imdb_block_softfail")) {
+  readr::write_csv(
+    oscar_winners_clean,
+    here::here("data", "best_picture_winners.csv")
+  )
+  message("[CI] Best Picture scrape complete.")
+} else {
+  message("[CI] Best Picture scrape skipped (IMDb block); CSV unchanged.")
+}
 
 message("[CI] Starting Top 1000 Box Office scrape...")
-run_with_retry(
+bo_result <- run_or_softfail_on_imdb_block(
   "Top 1000 Box Office scrape",
-  orig_source(
-    here::here("web_scraping", "top1000_box_office.R"),
-    local = FALSE
+  run_with_retry(
+    "Top 1000 Box Office scrape",
+    orig_source(
+      here::here("web_scraping", "top1000_box_office.R"),
+      local = FALSE
+    )
   )
 )
-readr::write_csv(
-  imdb_rank_ratings_clean,
-  here::here("data", "top1000_box_office.csv")
-)
-message("[CI] Top 1000 Box Office scrape complete.")
+if (!inherits(bo_result, "imdb_block_softfail")) {
+  readr::write_csv(
+    imdb_rank_ratings_clean,
+    here::here("data", "top1000_box_office.csv")
+  )
+  message("[CI] Top 1000 Box Office scrape complete.")
+} else {
+  message("[CI] Top 1000 Box Office scrape skipped (IMDb block); CSV unchanged.")
+}
