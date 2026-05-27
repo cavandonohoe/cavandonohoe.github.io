@@ -32,8 +32,15 @@ if (!file.exists(orig_top250)) {
 
 source(here::here("scripts", "_scrape_retry.R"))
 
-run_with_retry(
+t250_result <- run_or_softfail_on_imdb_block(
   "Top 250 with Rotten Tomatoes scrape",
-  orig_source(orig_top250, local = FALSE)
+  run_with_retry(
+    "Top 250 with Rotten Tomatoes scrape",
+    orig_source(orig_top250, local = FALSE)
+  )
 )
-message("[CI] Refresh complete: data/top250_movies_with_rt.csv")
+if (inherits(t250_result, "imdb_block_softfail")) {
+  message("[CI] Top 250 scrape skipped (IMDb block); CSV unchanged.")
+} else {
+  message("[CI] Refresh complete: data/top250_movies_with_rt.csv")
+}

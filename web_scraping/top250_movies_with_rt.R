@@ -28,6 +28,7 @@ safe_fetch_html <- function(page_url, label = "page", max_attempts = 3, use_cach
     return(rvest::read_html(cache_path))
   }
 
+  all_empty <- TRUE
   for (attempt in seq_len(max_attempts)) {
     resp <- tryCatch(
       httr::GET(
@@ -41,9 +42,6 @@ safe_fetch_html <- function(page_url, label = "page", max_attempts = 3, use_cach
 
     if (!inherits(resp, "error") && !httr::http_error(resp)) {
       html <- httr::content(resp, as = "text", encoding = "UTF-8")
-      # Treat empty / suspiciously short bodies as a transient failure: do
-      # not cache, do not parse, just retry. IMDb anti-bot infra often
-      # returns HTTP 200 with an empty body to GitHub Actions IPs.
       if (is.null(html) || !nzchar(html) || nchar(html) < 200) {
         message(sprintf(
           "[%s] empty/short body (%d chars), retrying...",
@@ -57,6 +55,7 @@ safe_fetch_html <- function(page_url, label = "page", max_attempts = 3, use_cach
         if (!inherits(parsed, "error")) {
           return(parsed)
         }
+        all_empty <- FALSE
         message(sprintf(
           "[%s] read_html parse error: %s",
           label, conditionMessage(parsed)
@@ -65,6 +64,8 @@ safe_fetch_html <- function(page_url, label = "page", max_attempts = 3, use_cach
           unlink(cache_path)
         }
       }
+    } else {
+      all_empty <- FALSE
     }
 
     if (attempt < max_attempts) {
@@ -72,6 +73,9 @@ safe_fetch_html <- function(page_url, label = "page", max_attempts = 3, use_cach
     }
   }
 
+  if (all_empty && exists("signal_imdb_block", mode = "function")) {
+    signal_imdb_block(page_url)
+  }
   message("Failed to fetch ", label, ": ", page_url)
   NULL
 }
