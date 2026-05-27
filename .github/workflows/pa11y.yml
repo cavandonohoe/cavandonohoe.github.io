@@ -95,10 +95,30 @@ jobs:
             pa11y-report.json
             pa11y-report.md
 
+      - name: Find existing open a11y issue
+        id: find_issue
+        if: ${{ steps.audit.outputs.exit_code != '0' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          existing=$(gh issue list \
+            --state open \
+            --label accessibility --label automated \
+            --json number,title \
+            --jq '.[] | select(.title=="Accessibility issues detected (pa11y-ci)") | .number' \
+            | head -1)
+          echo "number=${existing}" >> "$GITHUB_OUTPUT"
+          if [ -n "$existing" ]; then
+            echo "Updating existing issue #${existing}"
+          else
+            echo "No open issue found; will open a new one"
+          fi
+
       - name: Open or update issue on a11y errors
         if: ${{ steps.audit.outputs.exit_code != '0' }}
         uses: peter-evans/create-issue-from-file@v5
         with:
+          issue-number: ${{ steps.find_issue.outputs.number }}
           title: "Accessibility issues detected (pa11y-ci)"
           content-filepath: ./pa11y-report.md
           labels: |

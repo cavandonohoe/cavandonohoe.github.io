@@ -96,10 +96,30 @@ jobs:
           mode: upsert
           create-if-not-exists: true
 
+      - name: Find existing open repo-size issue
+        id: find_issue
+        if: ${{ github.event_name == 'schedule' && steps.report.outputs.exceeded == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          existing=$(gh issue list \
+            --state open \
+            --label repo-health --label automated \
+            --json number,title \
+            --jq '.[] | select(.title=="Repo size exceeded threshold") | .number' \
+            | head -1)
+          echo "number=${existing}" >> "$GITHUB_OUTPUT"
+          if [ -n "$existing" ]; then
+            echo "Updating existing issue #${existing}"
+          else
+            echo "No open issue found; will open a new one"
+          fi
+
       - name: Open issue if scheduled run exceeded threshold
         if: ${{ github.event_name == 'schedule' && steps.report.outputs.exceeded == 'true' }}
         uses: peter-evans/create-issue-from-file@v5
         with:
+          issue-number: ${{ steps.find_issue.outputs.number }}
           title: "Repo size exceeded threshold"
           content-filepath: ./size-report.md
           labels: |
