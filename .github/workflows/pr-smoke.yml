@@ -94,6 +94,8 @@ jobs:
                 try(googlesheets4::gs4_deauth(), silent = TRUE)
               }
               rmarkdown::render('$f', output_dir = '_smoke', encoding = 'UTF-8',
+                                output_options = list(self_contained = FALSE,
+                                                      lib_dir = '_smoke/site_libs'),
                                 envir = new.env(parent = globalenv()))
             "
             echo "::endgroup::"
