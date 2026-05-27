@@ -73,10 +73,30 @@ jobs:
           name: lychee-report
           path: lychee-report.md
 
+      - name: Find existing open broken-links issue
+        id: find_issue
+        if: ${{ steps.lychee.outputs.exit_code != '0' && github.event_name != 'pull_request' && hashFiles('lychee-report.md') != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          existing=$(gh issue list \
+            --state open \
+            --label broken-links --label automated \
+            --json number,title \
+            --jq '.[] | select(.title=="Broken links detected") | .number' \
+            | head -1)
+          echo "number=${existing}" >> "$GITHUB_OUTPUT"
+          if [ -n "$existing" ]; then
+            echo "Updating existing issue #${existing}"
+          else
+            echo "No open issue found; will open a new one"
+          fi
+
       - name: Open or update issue on broken links
         if: ${{ steps.lychee.outputs.exit_code != '0' && github.event_name != 'pull_request' && hashFiles('lychee-report.md') != '' }}
         uses: peter-evans/create-issue-from-file@v5
         with:
+          issue-number: ${{ steps.find_issue.outputs.number }}
           title: "Broken links detected"
           content-filepath: ./lychee-report.md
           labels: |
