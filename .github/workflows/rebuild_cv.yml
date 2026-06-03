@@ -20,7 +20,7 @@ jobs:
     env:
       GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/sa.json
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Stash existing CV files for content comparison
         run: |
@@ -45,7 +45,7 @@ jobs:
 
       - name: Setup Chrome (for pagedown::chrome_print)
         id: chrome
-        uses: browser-actions/setup-chrome@v1
+        uses: browser-actions/setup-chrome@v2
         with:
           chrome-version: stable
 
