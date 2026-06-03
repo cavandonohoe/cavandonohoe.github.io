@@ -18,10 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Download latest built site
-        uses: dawidd6/action-download-artifact@v6
+        uses: dawidd6/action-download-artifact@v21
         with:
           workflow: pages-branch-previews.yml
           name: site
@@ -29,7 +29,7 @@ jobs:
           branch: main
           if_no_artifact_found: fail
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
         with:
           node-version: "20"
 
@@ -88,7 +88,7 @@ jobs:
 
       - name: Upload report
         if: always()
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: pa11y-report
           path: |
@@ -116,7 +116,7 @@ jobs:
 
       - name: Open or update issue on a11y errors
         if: ${{ steps.audit.outputs.exit_code != '0' }}
-        uses: peter-evans/create-issue-from-file@v5
+        uses: peter-evans/create-issue-from-file@v6
         with:
           issue-number: ${{ steps.find_issue.outputs.number }}
           title: "Accessibility issues detected (pa11y-ci)"
