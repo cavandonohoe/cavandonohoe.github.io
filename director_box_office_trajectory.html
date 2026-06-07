@@ -9,10 +9,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Cavan Donohoe" />
 
 
-<title>Data Manipulation in R</title>
+<title>Director’s Box Office Trajectory</title>
 
 <script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -645,105 +644,80 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Data Manipulation in R</h1>
-<h4 class="author">Cavan Donohoe</h4>
+<h1 class="title toc-ignore">Director’s Box Office Trajectory</h1>
 
 </div>
 
 
-<div id="data-manipulation-in-r" class="section level1">
-<h1>Data Manipulation in R</h1>
-<p>In this section, we will explore essential data manipulation tasks in
-R, including importing and exporting data, working with data frames, and
-performing data exploration.</p>
-<div id="importing-and-exporting-data" class="section level2">
-<h2>Importing and Exporting Data</h2>
-<div id="importing-data" class="section level3">
-<h3>Importing Data</h3>
-<p>R provides various functions to import data from different file
-formats, such as CSV, Excel, and databases. Some common functions
-include:</p>
+<meta property="og:title" content="Director Box Office Trajectory">
+<meta property="og:description" content="Career box office trajectories for the 10 highest-grossing film directors of all time, in nominal and inflation-adjusted USD.">
+<meta property="og:url" content="https://cavandonohoe.github.io/director_box_office_trajectory.html">
+<meta property="og:type" content="article">
+<div class="alert alert-info"
+style="padding:1em;border:1px solid #b8daff; background:#cce5ff;border-radius:4px;margin:1em 0;">
+<strong>Data not yet available.</strong> This page is populated by
+<code>scripts/refresh_director_filmographies.R</code>, which runs
+monthly via the <code>update_director_filmographies.yml</code> GitHub
+Action. The action requires a <code>TMDB_API_KEY</code> repo secret.
+Once it has run, this page will fill in.
+</div>
+<p>How does a director’s box office change across their career? Here are
+the career trajectories of the <strong>10 highest-grossing film
+directors of all time</strong> (by cumulative worldwide box office, per
+<a
+href="https://en.wikipedia.org/wiki/List_of_highest-grossing_film_directors">Wikipedia</a>),
+sourced from <a href="https://www.themoviedb.org/">TMDb</a> and
+refreshed monthly.</p>
+<p>All dollar amounts are <strong>worldwide</strong> box office. The
+“inflation-adjusted” panels convert nominal USD to 2025-equivalent
+dollars using BLS CPI-U All Urban Consumers.</p>
+<div id="leaderboard" class="section level2">
+<h2>Leaderboard</h2>
+</div>
+<div id="trajectory-by-career-film-number"
+class="section level2 tabset tabset-pills">
+<h2 class="tabset tabset-pills">Trajectory by career film number</h2>
+<p>x-axis is <strong>career film number</strong> (their first directing
+credit on TMDb is 1, their second is 2, etc.). Each panel uses its own
+y-axis to make the shape of the trajectory visible regardless of
+scale.</p>
+<div id="inflation-adjusted-gross-2025-usd" class="section level3">
+<h3>Inflation-adjusted gross (2025 USD)</h3>
+</div>
+<div id="nominal-gross" class="section level3">
+<h3>Nominal gross</h3>
+</div>
+<div id="tmdb-vote-average" class="section level3">
+<h3>TMDb vote average</h3>
+<p>Showing only films with at least 100 votes so we don’t trust thin
+samples on early-career indie titles.</p>
+</div>
+</div>
+<div id="top-5-by-director-2025-usd" class="section level2">
+<h2>Top 5 by director (2025 USD)</h2>
+</div>
+<div id="all-films" class="section level2">
+<h2>All films</h2>
+</div>
+<div id="notes" class="section level2">
+<h2>Notes</h2>
 <ul>
-<li><code>read.csv()</code> for reading CSV files.</li>
-<li><code>read.xlsx()</code> for reading Excel files.</li>
-<li><code>readRDS()</code> for reading R data files.</li>
+<li>Filmography data is pulled from <a
+href="https://www.themoviedb.org/">TMDb</a>, filtering each director’s
+movie credits to those where <code>job == "Director"</code>.</li>
+<li>The Russo brothers (Anthony &amp; Joe) are listed as a single “Russo
+Brothers” entry because they always co-direct. TMDb tracks them as
+separate people, so the filmography is pulled via Anthony Russo’s
+credits to avoid double-counting.</li>
+<li>Revenue and budget come from TMDb’s user-maintained data, which is
+reliable for major releases but can be missing or zero for older films
+and limited releases. Films without revenue are excluded from the gross
+trajectories but included in the vote-average panel and the all-films
+table.</li>
+<li>Inflation adjustment uses BLS CPI-U All Urban Consumers (annual
+averages) and treats the most recent year in the embedded table as the
+reference. Update once a year alongside the workflow.</li>
 </ul>
-<p>Here’s an example of importing a CSV file:</p>
-<pre class="r"><code># Importing data from a CSV file
-data &lt;- read.csv(&quot;data.csv&quot;)</code></pre>
-</div>
-<div id="exporting-data" class="section level3">
-<h3>Exporting Data</h3>
-<p>To save your data or results, R offers functions like write.csv() for
-CSV files, write.xlsx() for Excel files, and saveRDS() for saving R data
-objects.</p>
-<pre class="r"><code># Exporting data to a CSV file
-write.csv(data, &quot;output.csv&quot;)</code></pre>
-</div>
-</div>
-<div id="data-frames-and-data-exploration" class="section level2">
-<h2>Data Frames and Data Exploration</h2>
-<p>Data frames are a common data structure in R for storing tabular
-data. They are like spreadsheets with rows and columns, and each column
-can have a different data type. You can create, manipulate, and explore
-data frames in R.</p>
-<pre class="r"><code># Creating a data frame
-df &lt;- data.frame(
-  Name = c(&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;),
-  Age = c(25, 30, 22),
-  Score = c(95, 88, 75)
-)
-df</code></pre>
-<pre><code>##      Name Age Score
-## 1   Alice  25    95
-## 2     Bob  30    88
-## 3 Charlie  22    75</code></pre>
-<p>Data exploration involves understanding your data’s characteristics,
-such as summary statistics, distribution, and relationships between
-variables. You can use functions like summary(), str(), and data
-visualization libraries like ggplot2 for this purpose.</p>
-<pre class="r"><code># Summary statistics
-summary(df)</code></pre>
-<pre><code>##         Name        Age            Score     
-##  Length   :3   Min.   :22.00   Min.   :75.0  
-##  N.unique :3   1st Qu.:23.50   1st Qu.:81.5  
-##  N.blank  :0   Median :25.00   Median :88.0  
-##  Min.nchar:3   Mean   :25.67   Mean   :86.0  
-##  Max.nchar:7   3rd Qu.:27.50   3rd Qu.:91.5  
-##                Max.   :30.00   Max.   :95.0</code></pre>
-<pre class="r"><code># Structure of the data frame
-str(df)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    3 obs. of  3 variables:
-##  $ Name : chr  &quot;Alice&quot; &quot;Bob&quot; &quot;Charlie&quot;
-##  $ Age  : num  25 30 22
-##  $ Score: num  95 88 75</code></pre>
-<p>In this section, we’ve covered the basics of importing and exporting
-data and introduced data frames and data exploration. These skills are
-crucial for working with real-world data and performing meaningful
-analyses.</p>
-<p>Feel free to practice these concepts with your own datasets to gain
-hands-on experience.</p>
-<p>Free Lessons:</p>
-<ul>
-<li><a href="https://cavandonohoe.github.io/learn_r.html">R Time Is
-Limited, Let’s Make the Most of It</a></li>
-<li><a
-href="https://cavandonohoe.github.io/intro_to_r.html">Introduction to
-R</a></li>
-<li><a
-href="https://cavandonohoe.github.io/basic_operations_r.html">Basic
-Operations in R</a></li>
-<li><a
-href="https://cavandonohoe.github.io/data_manipulation_r.html">Data
-Manipulation</a></li>
-<li><a
-href="https://cavandonohoe.github.io/data_visualization_r.html">Data
-Visualization</a></li>
-<li><a
-href="https://cavandonohoe.github.io/statistics_with_r.html">Statistics
-in R</a></li>
-</ul>
-</div>
 </div>
 
 <link rel="stylesheet" href="/css/footer.css">
