@@ -1,22 +1,38 @@
+// Lighthouse CI config used by .github/workflows/lighthouse.yml.
+//
+// Two modes are supported, selected by the LHCI_BASE_URL env var:
+//
+//   1. Local serve (workflow_run after a successful build):
+//        LHCI_BASE_URL unset  -> defaults to http://localhost:4567
+//      The workflow downloads the `site` artifact, serves it with http-server,
+//      and Lighthouse audits the local copy.
+//
+//   2. Deployed preview (pull_request):
+//        LHCI_BASE_URL = https://cavandonohoe.github.io/pr-<n>
+//      The workflow waits for the preview to be live, then audits the real URL.
+//
+// The set of pages audited is identical in both modes.
+
+const baseUrl = process.env.LHCI_BASE_URL || "http://localhost:4567";
+
+const pages = [
+  "/index.html",
+  "/about.html",
+  "/cv.html",
+  "/best_picture_nominees.html",
+  "/sp500.html"
+];
+
 module.exports = {
   ci: {
     collect: {
-      // Pages are served statically; no startServerCommand needed because
-      // the workflow runs http-server in the background.
-      url: [
-        "http://localhost:4567/index.html",
-        "http://localhost:4567/about.html",
-        "http://localhost:4567/cv.html",
-        "http://localhost:4567/best_picture_nominees.html",
-        "http://localhost:4567/sp500.html"
-      ],
+      url: pages.map((p) => `${baseUrl}${p}`),
       numberOfRuns: 1,
       settings: {
         chromeFlags: "--no-sandbox --disable-dev-shm-usage --headless=new"
       }
     },
     assert: {
-      // Soft thresholds — warn, don't fail the build.
       assertions: {
         "categories:performance": ["warn", { "minScore": 0.7 }],
         "categories:accessibility": ["warn", { "minScore": 0.85 }],
