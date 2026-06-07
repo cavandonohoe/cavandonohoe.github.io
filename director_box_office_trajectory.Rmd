@@ -1,0 +1,329 @@
+---
+title: "Director's Box Office Trajectory"
+editor_options:
+  chunk_output_type: console
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+    toc: true
+    toc_depth: 3
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+lang: "en"
+---
+
+```{r og-meta, echo=FALSE, results='asis'}
+cat('
+<meta property="og:title" content="Director Box Office Trajectory">
+<meta property="og:description" content="Career box office trajectories for the 10 highest-grossing film directors of all time, in nominal and inflation-adjusted USD.">
+<meta property="og:url" content="https://cavandonohoe.github.io/director_box_office_trajectory.html">
+<meta property="og:type" content="article">
+')
+```
+
+```{r pipe, include=FALSE}
+`%>%` <- magrittr::`%>%`
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE,
+  fig.width = 10, fig.height = 6, dpi = 110
+)
+```
+
+```{r data}
+films_path <- here::here("data", "director_filmographies.csv")
+meta_path <- here::here("data", "director_filmographies_meta.csv")
+
+data_available <- file.exists(films_path) && file.exists(meta_path)
+
+if (data_available) {
+  films <- readr::read_csv(films_path, show_col_types = FALSE)
+  meta <- readr::read_csv(meta_path, show_col_types = FALSE)
+
+  director_levels <- meta %>%
+    dplyr::arrange(.data$director_rank) %>%
+    dplyr::pull(.data$director_display_name)
+
+  films <- films %>%
+    dplyr::mutate(
+      director_display_name = factor(
+        .data$director_display_name,
+        levels = director_levels
+      )
+    )
+} else {
+  films <- tibble::tibble()
+  meta <- tibble::tibble()
+}
+```
+
+```{r data-placeholder, eval = !data_available, results = 'asis'}
+cat(
+  '<div class="alert alert-info" style="padding:1em;border:1px solid #b8daff;',
+  'background:#cce5ff;border-radius:4px;margin:1em 0;">',
+  '<strong>Data not yet available.</strong> This page is populated by ',
+  '<code>scripts/refresh_director_filmographies.R</code>, which runs ',
+  'monthly via the <code>update_director_filmographies.yml</code> ',
+  'GitHub Action. The action requires a <code>TMDB_API_KEY</code> ',
+  'repo secret. Once it has run, this page will fill in.',
+  '</div>\n'
+)
+```
+
+```{r timestamp, eval = data_available, results='asis'}
+cat(sprintf(
+  '<span class="data-timestamp">Data last updated: %s</span>\n',
+  format(as.Date(system(paste("git log -1 --format=%ai --",
+    here::here("data", "director_filmographies.csv")), intern = TRUE)), "%B %d, %Y")
+))
+```
+
+How does a director's box office change across their career? Here are the
+career trajectories of the **10 highest-grossing film directors of all time**
+(by cumulative worldwide box office, per
+[Wikipedia](https://en.wikipedia.org/wiki/List_of_highest-grossing_film_directors)),
+sourced from [TMDb](https://www.themoviedb.org/) and refreshed monthly.
+
+All dollar amounts are **worldwide** box office. The "inflation-adjusted"
+panels convert nominal USD to 2025-equivalent dollars using BLS CPI-U
+All Urban Consumers.
+
+## Leaderboard
+
+```{r leaderboard, eval = data_available}
+leaderboard <- meta %>%
+  dplyr::transmute(
+    Rank = .data$director_rank,
+    Director = .data$director_display_name,
+    Films = .data$n_films,
+    `Active years` = paste0(.data$first_year, "-", .data$last_year),
+    `Lifetime gross (nominal)` = scales::dollar(
+      .data$lifetime_revenue,
+      scale = 1e-9, suffix = "B", accuracy = 0.01
+    ),
+    `Lifetime gross (2025 USD)` = scales::dollar(
+      .data$lifetime_revenue_2025,
+      scale = 1e-9, suffix = "B", accuracy = 0.01
+    ),
+    `Avg per film (2025 USD)` = scales::dollar(
+      .data$avg_revenue_per_film_2025,
+      scale = 1e-6, suffix = "M", accuracy = 1
+    ),
+    `Avg TMDb vote` = round(.data$avg_vote, 2)
+  )
+
+DT::datatable(
+  leaderboard,
+  rownames = FALSE,
+  options = list(
+    pageLength = 10, dom = "tip",
+    columnDefs = list(list(className = "dt-right", targets = c(2, 4, 5, 6, 7)))
+  )
+)
+```
+
+## Trajectory by career film number {.tabset .tabset-pills}
+
+x-axis is **career film number** (their first directing credit on TMDb is 1,
+their second is 2, etc.). Each panel uses its own y-axis to make the shape
+of the trajectory visible regardless of scale.
+
+### Inflation-adjusted gross (2025 USD)
+
+```{r traj-real, eval = data_available}
+plot_films <- films %>%
+  dplyr::filter(.data$revenue_usable, !is.na(.data$revenue_2025))
+
+ggplot2::ggplot(
+  plot_films,
+  ggplot2::aes(x = .data$career_film_number, y = .data$revenue_2025 / 1e6)
+) +
+  ggplot2::geom_line(color = "grey40", alpha = 0.6) +
+  ggplot2::geom_point(
+    ggplot2::aes(size = .data$vote_average, color = .data$release_year),
+    alpha = 0.85
+  ) +
+  ggplot2::facet_wrap(
+    ~ .data$director_display_name,
+    scales = "free_y", ncol = 2
+  ) +
+  ggplot2::scale_color_viridis_c(option = "plasma", end = 0.9) +
+  ggplot2::scale_size_continuous(range = c(1.5, 5), limits = c(4, 9)) +
+  ggplot2::scale_y_continuous(
+    labels = scales::label_dollar(scale = 1, suffix = "M")
+  ) +
+  ggplot2::labs(
+    x = "Career film number",
+    y = "Worldwide gross (2025 USD, millions)",
+    color = "Release year",
+    size = "TMDb vote",
+    caption = "Data: TMDb. Inflation adjustment: BLS CPI-U."
+  ) +
+  ggplot2::theme_minimal(base_size = 11) +
+  ggplot2::theme(
+    panel.grid.minor = ggplot2::element_blank(),
+    legend.position = "bottom"
+  )
+```
+
+### Nominal gross
+
+```{r traj-nominal, eval = data_available}
+ggplot2::ggplot(
+  plot_films,
+  ggplot2::aes(x = .data$career_film_number, y = .data$revenue / 1e6)
+) +
+  ggplot2::geom_line(color = "grey40", alpha = 0.6) +
+  ggplot2::geom_point(
+    ggplot2::aes(size = .data$vote_average, color = .data$release_year),
+    alpha = 0.85
+  ) +
+  ggplot2::facet_wrap(
+    ~ .data$director_display_name,
+    scales = "free_y", ncol = 2
+  ) +
+  ggplot2::scale_color_viridis_c(option = "plasma", end = 0.9) +
+  ggplot2::scale_size_continuous(range = c(1.5, 5), limits = c(4, 9)) +
+  ggplot2::scale_y_continuous(
+    labels = scales::label_dollar(scale = 1, suffix = "M")
+  ) +
+  ggplot2::labs(
+    x = "Career film number",
+    y = "Worldwide gross (nominal USD, millions)",
+    color = "Release year",
+    size = "TMDb vote"
+  ) +
+  ggplot2::theme_minimal(base_size = 11) +
+  ggplot2::theme(
+    panel.grid.minor = ggplot2::element_blank(),
+    legend.position = "bottom"
+  )
+```
+
+### TMDb vote average
+
+Showing only films with at least 100 votes so we don't trust thin samples
+on early-career indie titles.
+
+```{r traj-vote, eval = data_available}
+vote_films <- films %>%
+  dplyr::filter(!is.na(.data$vote_average), .data$vote_count >= 100)
+
+ggplot2::ggplot(
+  vote_films,
+  ggplot2::aes(x = .data$career_film_number, y = .data$vote_average)
+) +
+  ggplot2::geom_line(color = "grey40", alpha = 0.6) +
+  ggplot2::geom_point(
+    ggplot2::aes(size = .data$vote_count, color = .data$release_year),
+    alpha = 0.85
+  ) +
+  ggplot2::facet_wrap(
+    ~ .data$director_display_name,
+    scales = "free_y", ncol = 2
+  ) +
+  ggplot2::scale_color_viridis_c(option = "plasma", end = 0.9) +
+  ggplot2::scale_size_continuous(range = c(1.5, 5)) +
+  ggplot2::labs(
+    x = "Career film number",
+    y = "TMDb vote average (1-10)",
+    color = "Release year",
+    size = "Votes",
+    caption = "Films with < 100 TMDb votes excluded."
+  ) +
+  ggplot2::theme_minimal(base_size = 11) +
+  ggplot2::theme(
+    panel.grid.minor = ggplot2::element_blank(),
+    legend.position = "bottom"
+  )
+```
+
+## Top 5 by director (2025 USD)
+
+```{r top-films, eval = data_available}
+top_films <- films %>%
+  dplyr::filter(.data$revenue_usable) %>%
+  dplyr::group_by(.data$director_display_name) %>%
+  dplyr::slice_max(order_by = .data$revenue_2025, n = 5) %>%
+  dplyr::arrange(.data$director_display_name, dplyr::desc(.data$revenue_2025)) %>%
+  dplyr::ungroup() %>%
+  dplyr::transmute(
+    Director = .data$director_display_name,
+    Title = .data$title,
+    Year = .data$release_year,
+    `Gross (nominal)` = scales::dollar(
+      .data$revenue, scale = 1e-6, suffix = "M", accuracy = 1
+    ),
+    `Gross (2025 USD)` = scales::dollar(
+      .data$revenue_2025, scale = 1e-6, suffix = "M", accuracy = 1
+    ),
+    `TMDb vote` = round(.data$vote_average, 1)
+  )
+
+DT::datatable(
+  top_films,
+  rownames = FALSE,
+  filter = "top",
+  options = list(pageLength = 10, dom = "ftip")
+)
+```
+
+## All films
+
+```{r all-films, eval = data_available}
+all_films_table <- films %>%
+  dplyr::transmute(
+    Director = .data$director_display_name,
+    `#` = .data$career_film_number,
+    Title = .data$title,
+    Year = .data$release_year,
+    `Runtime (min)` = .data$runtime,
+    `Budget (nominal)` = ifelse(
+      .data$budget_usable,
+      scales::dollar(.data$budget, scale = 1e-6, suffix = "M", accuracy = 1),
+      "—"
+    ),
+    `Gross (nominal)` = ifelse(
+      .data$revenue_usable,
+      scales::dollar(.data$revenue, scale = 1e-6, suffix = "M", accuracy = 1),
+      "—"
+    ),
+    `Gross (2025 USD)` = ifelse(
+      .data$revenue_usable,
+      scales::dollar(.data$revenue_2025, scale = 1e-6, suffix = "M", accuracy = 1),
+      "—"
+    ),
+    `TMDb vote` = round(.data$vote_average, 1),
+    Votes = .data$vote_count
+  )
+
+DT::datatable(
+  all_films_table,
+  rownames = FALSE,
+  filter = "top",
+  options = list(pageLength = 25, dom = "ftip")
+)
+```
+
+## Notes
+
+- Filmography data is pulled from
+  [TMDb](https://www.themoviedb.org/), filtering each director's movie
+  credits to those where `job == "Director"`.
+- The Russo brothers (Anthony & Joe) are listed as a single
+  "Russo Brothers" entry because they always co-direct. TMDb tracks
+  them as separate people, so the filmography is pulled via Anthony
+  Russo's credits to avoid double-counting.
+- Revenue and budget come from TMDb's user-maintained data, which is
+  reliable for major releases but can be missing or zero for older
+  films and limited releases. Films without revenue are excluded from
+  the gross trajectories but included in the vote-average panel and
+  the all-films table.
+- Inflation adjustment uses BLS CPI-U All Urban Consumers (annual
+  averages) and treats the most recent year in the embedded table as
+  the reference. Update once a year alongside the workflow.
