@@ -42,11 +42,11 @@ directors <- tibble::tribble(
   3,     "Russo Brothers",     "Anthony Russo",        19271L,
   4,     "Peter Jackson",      "Peter Jackson",        108L,
   5,     "Michael Bay",        "Michael Bay",          865L,
-  6,     "David Yates",        "David Yates",          11544L,
+  6,     "David Yates",        "David Yates",          11343L,
   7,     "Christopher Nolan",  "Christopher Nolan",    525L,
   8,     "Ridley Scott",       "Ridley Scott",         578L,
   9,     "Tim Burton",         "Tim Burton",           510L,
-  10,    "J.J. Abrams",        "J.J. Abrams",          15328L
+  10,    "J.J. Abrams",        "J.J. Abrams",          15344L
 )
 
 tmdb_get <- function(path, query = list()) {
@@ -64,6 +64,13 @@ resolve_person_id <- function(query, force_id = NA_integer_) {
   if (!is.na(force_id)) return(force_id)
   res <- tmdb_get("/search/person", list(query = query, include_adult = "false"))
   if (!is.null(res$results) && nrow(res$results) > 0) {
+    # Prefer the most popular candidate whose primary department is Directing.
+    # TMDb's default sort is by popularity, but a non-director with the same
+    # name can outrank the director (e.g. "David Yates" id 11544 has zero
+    # directing credits and was outranking the real director id 11343).
+    directing <- res$results[res$results$known_for_department == "Directing", ,
+                             drop = FALSE]
+    if (nrow(directing) > 0) return(directing$id[1])
     return(res$results$id[1])
   }
   stop("No TMDb person match for: ", query)
@@ -155,7 +162,12 @@ all_films <- purrr::pmap_dfr(
                     display_name, person_id))
     credits <- fetch_directing_credits(person_id)
     if (nrow(credits) == 0) {
-      return(tibble::tibble())
+      stop(sprintf(
+        paste0("No directing credits returned for %s (TMDb id=%d). ",
+               "The id is probably wrong (TMDb name disambiguation). ",
+               "Update the directors tribble with the correct force_id."),
+        display_name, person_id
+      ))
     }
     details <- purrr::map_dfr(credits$id, fetch_movie_details)
     dplyr::left_join(details, credits |> dplyr::select(id, popularity),
