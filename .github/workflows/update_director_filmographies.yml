@@ -1,0 +1,80 @@
+name: Refresh director filmographies (TMDb)
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 17th of each month, 14:07 UTC. Spaced away from other monthly
+    # data refreshes (top1000 on the 8th, top250 on the 12th).
+    - cron: "7 14 17 * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-director-filmographies
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::dplyr
+            any::tibble
+            any::stringr
+            any::readr
+            any::here
+            any::httr2
+            any::jsonlite
+            any::purrr
+
+      - name: Refresh director filmographies
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        run: Rscript scripts/refresh_director_filmographies.R
+
+      - name: Verify only expected files changed
+        if: always()
+        run: |
+          set -euo pipefail
+          unexpected="$(git diff --name-only HEAD \
+            | grep -Ev '^data/director_filmographies(_meta)?\.csv$' || true)"
+          if [ -n "$unexpected" ]; then
+            echo "ERROR: refresh modified unexpected files:"
+            echo "$unexpected"
+            exit 1
+          fi
+
+      - name: Commit and push if changed
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/director_filmographies.csv data/director_filmographies_meta.csv
+          if git diff --cached --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+          n_films="$(wc -l < data/director_filmographies.csv | tr -d ' ')"
+          {
+            echo "Auto-update director filmographies"
+            echo
+            echo "Total film rows (incl. header): ${n_films}"
+          } > /tmp/commit-msg.txt
+          git commit -F /tmp/commit-msg.txt
+          for i in 1 2 3; do
+            if git push; then exit 0; fi
+            echo "Push failed; rebasing on remote and retrying ($i/3)..."
+            git pull --rebase origin "$(git rev-parse --abbrev-ref HEAD)"
+          done
+          echo "ERROR: failed to push director filmographies update after 3 attempts."
+          exit 1

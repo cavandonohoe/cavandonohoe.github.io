@@ -33,6 +33,8 @@ Movies & data:
   Plots](https://cavandonohoe.github.io/imdb_rating_plot.html)
 - [Best Picture
   Nominees](https://cavandonohoe.github.io/best_picture_nominees.html)
+- [Director Box Office
+  Trajectory](https://cavandonohoe.github.io/director_box_office_trajectory.html)
 - [Rent vs. Buy
   Calculator](https://cavandonohoe.shinyapps.io/rent-vs-buy/)
   ([source](https://github.com/cavandonohoe/rent-vs-buy))
@@ -75,6 +77,8 @@ manual is a click away on the Actions tab.
   box office refresh.
 - `update_top250_with_rt.yml` — monthly Top 250 + Rotten Tomatoes
   refresh.
+- `update_director_filmographies.yml` — monthly TMDb director
+  filmography refresh for the Director Box Office Trajectory page.
 - `update_sp500.yml` — weekly VOO price refresh.
 - `update_us_rentals.yml` — monthly Zillow ZHVI/ZORI refresh.
 - `update_mymaps_export.yml` — weekly Google My Maps export.
