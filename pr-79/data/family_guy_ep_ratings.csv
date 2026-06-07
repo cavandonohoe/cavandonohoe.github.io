@@ -1,0 +1,462 @@
+season,episode,title,rating,votes
+1,1,Death Has a Shadow,7.6,5459
+1,2,I Never Met the Dead Man,7.4,4220
+1,3,Chitty Chitty Death Bang,7.5,3964
+1,4,Mind Over Murder,7.4,3725
+1,5,A Hero Sits Next Door,7.4,3611
+1,6,The Son Also Draws,7.1,3463
+1,7,Brian: Portrait of a Dog,7.4,3498
+2,1,"Peter, Peter, Caviar Eater",7.5,3319
+2,2,Holy Crap,7.2,3119
+2,3,Da Boom,8.1,3750
+2,4,Brian in Love,7.4,3039
+2,5,Love Thy Trophy,7.6,3025
+2,6,Death Is a Bitch,8.2,3469
+2,7,The King Is Dead,7.2,2853
+2,8,"I Am Peter, Hear Me Roar",8,3126
+2,9,"If I'm Dyin', I'm Lyin'",7.3,2771
+2,10,Running Mates,7.3,2742
+2,11,"A Picture Is Worth 1,000 Bucks",7,2742
+2,12,Fifteen Minutes of Shame,7.5,2718
+2,13,Road to Rhode Island,8.1,3248
+2,14,Let's Go to the Hop,7.7,2732
+2,15,Dammit Janet,7.3,2603
+2,16,There's Something About Paulie,6.9,2719
+2,17,He's Too Sexy for His Fat,7.7,2686
+2,18,E. Peterbus Unum,8.1,2875
+2,19,The Story on Page One,7.3,2476
+2,20,Wasted Talent,8,2784
+2,21,"Fore, Father",7.1,2443
+3,1,The Thin White Line,8,2808
+3,2,Brian Does Hollywood,7.6,2605
+3,3,Mr. Griffin Goes to Washington,7.5,2469
+3,4,"One If by Clam, Two If by Sea",7.5,2495
+3,5,And the Wiener Is...,7.6,2462
+3,6,Death Lives,8,2574
+3,7,Lethal Weapons,7.3,2547
+3,8,The Kiss Seen Round the World,6.7,2537
+3,9,Mr. Saturday Knight,7.3,2393
+3,10,A Fish Out of Water,7.1,2482
+3,11,Emission Impossible,8.1,2619
+3,12,To Love and Die in Dixie,8.1,2713
+3,13,Screwed the Pooch,7.3,2305
+3,14,"Peter Griffin: Husband, Father... Brother?",7.6,2328
+3,15,"Ready, Willing and Disabled",7.5,2286
+3,16,A Very Special Family Guy Freakin' Christmas,7.6,2482
+3,17,Brian Wallows and Peter's Swallows,7.5,2475
+3,18,From Method to Madness,7.4,2280
+3,19,"Stuck Together, Torn Apart",7.6,2240
+3,20,Road to Europe,7.8,2434
+3,21,Family Guy Viewer Mail #1,7.4,2349
+3,22,When You Wish Upon a Weinstein,7.3,2339
+4,1,North by North Quahog,7.7,2660
+4,2,Fast Times at Buddy Cianci Jr. High,7.5,2394
+4,3,Blind Ambition,7.5,2323
+4,4,Don't Make Me Over,7.4,2367
+4,5,The Cleveland-Loretta Quagmire,7.6,2379
+4,6,Petarded,8.2,2986
+4,7,Brian the Bachelor,7.4,2273
+4,8,8 Simple Rules for Buying My Teenage Daughter,7.5,2292
+4,9,Breaking Out Is Hard to Do,7.6,2237
+4,10,Model Misbehavior,7.2,2165
+4,11,Peter's Got Woods,7.5,2299
+4,12,The Perfect Castaway,7.6,2222
+4,13,Jungle Love,7.2,2158
+4,14,PTV,8.5,3433
+4,15,Brian Goes Back to College,7.6,2210
+4,16,The Courtship of Stewie's Father,7.7,2205
+4,17,Fat Guy Strangler,8,2511
+4,18,"The Father, the Son and the Holy Fonz",7.2,2161
+4,19,Brian Sings and Swings,7.2,2144
+4,20,Patriot Games,7.7,2452
+4,21,"I Take Thee, Quagmire",7.5,2149
+4,22,Sibling Rivalry,7.5,2136
+4,23,Deep Throats,7.4,2113
+4,24,Peterotica,7.5,2118
+4,25,You May Now Kiss the... Uh... Guy Who Receives,7.1,2103
+4,26,Petergeist,7.8,2328
+4,27,Untitled Griffin Family History,7.7,2185
+4,28,Stewie B. Goode,7.6,1935
+4,29,Bango Was His Name Oh!,7.6,1919
+4,30,Stu & Stewie's Excellent Adventure,7.8,2044
+5,1,Stewie Loves Lois,8.2,2650
+5,2,Mother Tucker,7.4,2166
+5,3,Hell Comes to Quahog,7.5,2116
+5,4,Saving Private Brian,7.6,2277
+5,5,Whistle While Your Wife Works,7.6,2114
+5,6,Prick Up Your Ears,7.3,2059
+5,7,Chick Cancer,7.4,2094
+5,8,Barely Legal,7.8,2278
+5,9,Road to Rupert,7.9,2267
+5,10,Peter's Two Dads,7.6,2145
+5,11,The Tan Aquatic with Steve Zissou,7.6,2058
+5,12,Airport '07,7.7,2145
+5,13,Bill & Peter's Bogus Journey,7.2,2023
+5,14,No Meals on Wheels,7.2,1950
+5,15,Boys Do Cry,7.3,1960
+5,16,No Chris Left Behind,7.3,1993
+5,17,"It Takes a Village Idiot, and I Married One",7.5,1966
+5,18,Meet the Quagmires,8.4,2829
+6,1,Blue Harvest,8.2,8751
+6,2,Movin' Out (Brian's Song),7.2,2068
+6,3,"Believe It or Not, Joe's Walking on Air",7.4,2091
+6,4,Stewie Kills Lois,8.3,2920
+6,5,Lois Kills Stewie,8.4,2877
+6,6,Padre de Familia,6.9,2023
+6,7,Peter's Daughter,7.3,2001
+6,8,McStroke,7.6,2211
+6,9,Back to the Woods,7.4,2075
+6,10,"Play It Again, Brian",7.2,1971
+6,11,The Former Life of Brian,6.8,1942
+6,12,Long John Peter,7.5,2068
+7,1,Love Blactually,6.8,2160
+7,2,I Dream of Jesus,8,2956
+7,3,Road to Germany,8.1,2716
+7,4,Baby Not on Board,7.5,2122
+7,5,The Man with Two Brians,7.6,2081
+7,6,Tales of a Third Grade Nothing,7.1,2166
+7,7,Ocean's Three and a Half,7.6,2118
+7,8,Family Gay,7.4,2240
+7,9,The Juice Is Loose!,6.4,2041
+7,10,FOX-y Lady,6.8,1935
+7,11,Not All Dogs Go to Heaven,7.6,2387
+7,12,420,7.6,2230
+7,13,Stew-Roids,7.9,2265
+7,14,We Love You Conrad,7.3,1953
+7,15,Three Kings,8.1,2485
+7,16,Peter's Progress,7.1,1958
+8,1,Road to the Multiverse,9.1,5454
+8,2,Family Goy,7.1,2085
+8,3,Spies Reminiscent of Us,6.7,1988
+8,4,Brian's Got a Brand New Bag,7.1,1941
+8,5,Hannah Banana,7.1,1953
+8,6,Quagmire's Baby,7.2,1928
+8,7,Jerome Is the New Black,7.1,1943
+8,8,Dog Gone,7.5,1919
+8,9,Business Guy,7.3,2004
+8,10,Big Man on Hippocampus,7.5,1899
+8,11,Dial Meg for Murder,7.5,2025
+8,12,Extra Large Medium,6.7,1897
+8,13,"Go, Stewie, Go!",7.2,1890
+8,14,Peter-assment,6.7,1854
+8,15,Brian Griffin's House of Payne,7.1,1860
+8,16,April in Quahog,7.2,1806
+8,17,Brian & Stewie,7.9,3575
+8,18,Quagmire's Dad,7.5,2255
+8,19,The Splendid Source,7.3,1890
+8,20,"Something, Something, Something, Dark Side",7.7,7294
+8,21,Partial Terms of Endearment,7.3,1712
+9,1,And Then There Were Fewer,8.7,4362
+9,2,Excellence in Broadcasting,6.5,2133
+9,3,Welcome Back Carter,7,1796
+9,4,Halloween on Spooner Street,7.9,2224
+9,5,"Baby, You Knock Me Out",7.1,1919
+9,6,Brian Writes a Bestseller,7,2027
+9,7,Road to the North Pole,8.2,2967
+9,8,New Kidney in Town,7.5,1934
+9,9,And I'm Joyce Kinney,7.1,1761
+9,10,Friends of Peter G.,7.3,1853
+9,11,German Guy,6.8,1911
+9,12,The Hand That Rocks the Wheelchair,7.2,1833
+9,13,Trading Places,7.2,1811
+9,14,Tiegs for Two,7.1,1693
+9,15,Brothers & Sisters,6.8,1677
+9,16,The Big Bang Theory,8.1,2227
+9,17,Foreign Affairs,6.4,1699
+9,18,It's a Trap!,7.3,10504
+10,1,Lottery Fever,7.3,2293
+10,2,Seahorse Seashell Party,6.6,2573
+10,3,Screams of Silence: The Story of Brenda Q,6.3,2298
+10,4,Stewie Goes for a Drive,7,1983
+10,5,Back to the Pilot,8.8,3698
+10,6,Thanksgiving,6.8,1943
+10,7,Amish Guy,7,1808
+10,8,Cool Hand Peter,7.5,1860
+10,9,Grumpy Old Man,6.7,1664
+10,10,Meg and Quagmire,7.2,1868
+10,11,The Blind Side,7.7,1973
+10,12,Livin' on a Prayer,6.9,1715
+10,13,Tom Tucker: The Man and His Dream,6.7,1671
+10,14,Be Careful What You Fish For,6.9,1888
+10,15,Burning Down the Bayit,6.7,1619
+10,16,Killer Queen,7.4,1783
+10,17,Forget-Me-Not,8.1,2056
+10,18,"You Can't Do That on Television, Peter",7,1651
+10,19,Mr. & Mrs. Stewie,7.6,1837
+10,20,Leggo My Meg-O,7.6,1833
+10,21,Tea Peter,6.6,1670
+10,22,Family Guy Viewer Mail #2,7.7,1891
+10,23,Internal Affairs,7.3,1752
+11,1,Into Fat Air,7.3,2122
+11,2,Ratings Guy,7.1,1825
+11,3,The Old Man and the Big 'C',6.8,1676
+11,4,Yug Ylimaf,8.4,2638
+11,5,Joe's Revenge,7.1,1668
+11,6,Lois Comes Out of Her Shell,7.3,1793
+11,7,Friends Without Benefits,6.9,1633
+11,8,"Jesus, Mary and Joseph!",6.8,1797
+11,9,Space Cadet,7.2,1664
+11,10,Brian's Play,7.1,1660
+11,11,The Giggity Wife,6.9,1645
+11,12,Valentine's Day in Quahog,7.2,1637
+11,13,Chris Cross,6.7,1570
+11,14,Call Girl,6.8,1589
+11,15,Turban Cowboy,6.6,1715
+11,16,12 and a Half Angry Men,7.5,1749
+11,17,Bigfat,6.8,1577
+11,18,Total Recall,7.1,1509
+11,19,Save the Clam,6.6,1486
+11,20,Farmer Guy,7.2,1573
+11,21,Roads to Vegas,7.9,1909
+11,22,No Country Club for Old Men,6.6,1533
+12,1,Finders Keepers,6.9,1989
+12,2,Vestigial Peter,5.8,2108
+12,3,Quagmire's Quagmire,7.1,1901
+12,4,A Fistful of Meg,6.7,1853
+12,5,Boopa-dee Bappa-dee,6.5,1779
+12,6,Life of Brian,4.8,3675
+12,7,Into Harmony's Way,6.5,2251
+12,8,Christmas Guy,7.6,2274
+12,9,Peter Problems,6.6,1685
+12,10,Grimm Job,7,1760
+12,11,Brian's a Bad Father,6,1718
+12,12,Mom's the Word,6.3,1598
+12,13,3 Acts of God,6.5,1582
+12,14,Fresh Heir,5.3,1798
+12,15,Secondhand Spoke,6.8,1539
+12,16,"Herpe, the Love Sore",5.7,1748
+12,17,The Most Interesting Man in the World,6.9,1553
+12,18,Baby Got Black,6.7,1561
+12,19,Meg Stinks!,7.1,1509
+12,20,He's Bla-ack!,7.1,1546
+12,21,Chap Stewie,7,1522
+13,1,The Simpsons Guy,8.4,5647
+13,2,The Book of Joe,6.6,1614
+13,3,Baking Bad,6.9,1670
+13,4,Brian the Closer,6.7,1619
+13,5,Turkey Guys,6.8,1564
+13,6,"The 2,000-Year-Old Virgin",6,1804
+13,7,"Stewie, Chris & Brian's Excellent Adventure",7.5,1678
+13,8,Our Idiot Brian,7,1534
+13,9,This Little Piggy,6.7,1468
+13,10,Quagmire's Mom,6.6,1547
+13,11,Encyclopedia Griffin,6.5,1451
+13,12,Stewie Is Enceinte,5.7,2054
+13,13,Dr. C and the Women,6.5,1389
+13,14,#JOLO,7,1427
+13,15,Once Bitten,6.7,1406
+13,16,Roasted Guy,7.2,1493
+13,17,Fighting Irish,6.8,1494
+13,18,Take My Wife,7.3,1489
+14,1,Pilling Them Softly,7.1,1671
+14,2,Papa Has a Rollin' Son,7.1,1546
+14,3,"Guy, Robot",6.9,1511
+14,4,Peternormal Activity,7.5,1659
+14,5,"Peter, Chris & Brian",6.7,1409
+14,6,Peter's Sister,6.5,1458
+14,7,Hot Pocket-Dial,6.6,1414
+14,8,Brokeback Swanson,6.8,1408
+14,9,A Shot in the Dark,6.9,1515
+14,10,"Candy, Quahog Marshmallow",7.1,1607
+14,11,The Peanut Butter Kid,7.1,1416
+14,12,Scammed Yankees,6.8,1384
+14,13,An App a Day,7,1384
+14,14,Underage Peter,7.1,1368
+14,15,A Lot Going on Upstairs,7.9,1691
+14,16,The Heartbreak Dog,6.6,1322
+14,17,Take a Letter,6.9,1324
+14,18,The New Adventures of Old Tom,7,1309
+14,19,"Run, Chris, Run",6.6,1295
+14,20,Road to India,7.1,1489
+15,1,The Boys in the Band,7.1,1565
+15,2,Bookie of the Year,6.7,1402
+15,3,American Gigg-olo,7.2,1458
+15,4,Inside Family Guy,6.8,1561
+15,5,"Chris Has Got a Date, Date, Date, Date, Date",6.8,1465
+15,6,Hot Shots,6.8,1460
+15,7,High School English,7.3,1457
+15,8,Carter and Tricia,6.6,1317
+15,9,How the Griffin Stole Christmas,7.1,1342
+15,10,Passenger Fatty-Seven,7.3,1406
+15,11,Gronkowsbees,6.5,1338
+15,12,Peter's Def Jam,6.8,1279
+15,13,The Finer Strings,6.7,1236
+15,14,The Dating Game,7.2,1356
+15,15,Cop and a Half-Wit,7.1,1246
+15,16,Saturated Fat Guy,7.4,1429
+15,17,Peter's Lost Youth,6.6,1203
+15,18,The Peter Principal,7.2,1278
+15,19,Dearly Deported,6.8,1298
+15,20,A House Full of Peters,7.1,1334
+16,1,Emmy-Winning Episode,8.2,2757
+16,2,Foxx in the Men House,7.1,1510
+16,3,Nanny Goats,7.2,1538
+16,4,Follow the Money,7.1,1546
+16,5,Three Directors,7.8,2047
+16,6,The D in Apartment 23,8.1,2195
+16,7,Petey IV,6.7,1577
+16,8,Crimes and Meg's Demeanor,7.3,1428
+16,9,Don't Be a Dickens at Christmas,7,1413
+16,10,Boy (Dog) Meets Girl (Dog),7,1413
+16,11,Dog Bites Bear,7.5,1649
+16,12,"Send in Stewie, Please",6.3,2899
+16,13,V is for Mystery,6.8,1443
+16,14,Veteran Guy,6.7,1313
+16,15,The Woof of Wall Street,7.2,1339
+16,16,'Family Guy' Through the Years,6.9,1390
+16,17,Switch the Flip,8,1623
+16,18,HTTPete,7.5,1667
+16,19,The Unkindest Cut,6.6,1237
+16,20,"Are You There God? It's Me, Peter",6.6,1286
+17,1,Married with Cancer,6.5,1631
+17,2,Dead Dog Walking,6.8,1494
+17,3,Pal Stewie,6.9,1395
+17,4,Big Trouble in Little Quahog,7.7,1682
+17,5,Regarding Carter,6.5,1245
+17,6,Stand by Meg,6.6,1276
+17,7,The Griffin Winter Games,6.8,1349
+17,8,Con Heiress,5.7,1506
+17,9,Pawtucket Pete,6.6,1221
+17,10,Hefty Shades of Gray,6.5,1285
+17,11,Trump Guy,5.8,3108
+17,12,"Bri, Robot",6.7,1240
+17,13,Trans-Fat,6.1,1324
+17,14,Family Guy Lite,6.6,1181
+17,15,"No Giggity, No Doubt",6.6,1213
+17,16,You Can't Handle the Booth,4.3,2584
+17,17,Island Adventure,6.9,1265
+17,18,Throw It Away,6.6,1245
+17,19,"Girl, Internetted",6.8,1248
+17,20,Adam West High,6.9,1266
+18,1,Yacht Rocky,5.9,1618
+18,2,Bri-Da,5.9,1368
+18,3,Absolutely Babulous,6.5,1213
+18,4,Disney's The Reboot,7.1,1516
+18,5,Cat Fight,6.7,1212
+18,6,Peter & Lois' Wedding,6.9,1267
+18,7,Heart Burn,6.6,1173
+18,8,Shanksgiving,6.5,1147
+18,9,Christmas Is Coming,6.7,1278
+18,10,Connie's Celica,6.5,1099
+18,11,Short Cuts,6.6,1096
+18,12,Undergrounded,6.7,1081
+18,13,Rich Old Stewie,7.2,1242
+18,14,The Movement,6.6,1115
+18,15,Baby Stewie,7.1,1182
+18,16,Start Me Up,6.4,1095
+18,17,Coma Guy,7,1153
+18,18,Better Off Meg,6.6,1104
+18,19,Holly Bibble,6.5,1221
+18,20,Movin' In (Principal Shepherd's Song),6.6,1052
+19,1,Stewie's First Word,6.7,1407
+19,2,The Talented Mr. Stewie,6.4,1261
+19,3,Boys & Squirrels,5.9,1266
+19,4,CutawayLand,6.3,1271
+19,5,La Famiglia Guy,6.9,1322
+19,6,Meg's Wedding,6.4,1138
+19,7,Wild Wild West,7,1248
+19,8,Pawtucket Pat,5.9,1244
+19,9,The First No L,7,1166
+19,10,Fecal Matters,7.2,1153
+19,11,Boy's Best Friend,6.8,1031
+19,12,And Then There's Fraud,6.1,1084
+19,13,PeTerminator,7.8,1485
+19,14,The Marrying Kind,6.5,1024
+19,15,Customer of the Week,7.3,1285
+19,16,Who's Brian Now?,6.6,985
+19,17,Young Parent Trap,7.1,1035
+19,18,Meg Goes to College,6.6,953
+19,19,Family Cat,7,1036
+19,20,Tales of Former Sports Glory,6.2,1062
+20,1,LASIK Instinct,6.4,1246
+20,2,Rock Hard,6.1,1122
+20,3,Must Love Dogs,6.8,1086
+20,4,80's Guy,6.6,1052
+20,5,Brief Encounter,6.5,1035
+20,6,Cootie & The Blowhard,6.5,993
+20,7,Peterschmidt Manor,6.5,973
+20,8,The Birthday Bootlegger,6.4,967
+20,9,The Fatman Always Rings Twice,7.6,1265
+20,10,Christmas Crime,6.7,968
+20,11,Mister Act,6.3,1006
+20,12,The Lois Quagmire,6.8,969
+20,13,Lawyer Guy,6.3,942
+20,14,HBO-No,6.3,999
+20,15,Hard Boiled Meg,7.1,993
+20,16,Prescription Heroine,6.7,950
+20,17,All About Alana,6.8,984
+20,18,"Girlfriend, Eh?",6.5,906
+20,19,First Blood,6.3,883
+20,20,Jersey Bore,6.2,843
+21,1,Oscars Guy,7.2,1294
+21,2,Bend or Blockbuster,6.9,1218
+21,3,A Wife-Changing Experience,6.8,1069
+21,4,The Munchurian Candidate,7.7,1430
+21,5,Unzipped Code,6.5,931
+21,6,Happy Holo-ween,7,1018
+21,7,The Stewaway,7.1,987
+21,8,Get Stewie,6.3,917
+21,9,Carny Knowledge,6.4,865
+21,10,The Candidate,6.3,896
+21,11,Love Story Guy,6.4,864
+21,12,Old West,5.8,878
+21,13,Single White Dad,7.2,960
+21,14,White Meg Can't Jump,6.6,799
+21,15,Adoptation,6.7,807
+21,16,The Bird Reich,6.6,819
+21,17,A Bottle Episode,6.6,885
+21,18,Vat Man and Rob 'Em,6.2,765
+21,19,From Russia with Love,6.3,869
+21,20,Adult Education,6.5,853
+22,1,Fertilized Megg,6.2,1034
+22,2,Supermarket Pete,6.4,889
+22,3,A Stache from the Past,5.7,871
+22,4,Old World Harm,6.5,811
+22,5,"Baby, It's Cold Inside",6.5,785
+22,6,Boston Stewie,6.2,833
+22,7,Snap(ple) Decision,6.3,742
+22,8,Baking Sad,6.1,748
+22,9,The Return of the King (of Queens),5.9,767
+22,10,Cabin Pressure,6.4,661
+22,11,Teacher's Heavy Pet,6.4,695
+22,12,Take This Job and Love It,6.7,679
+22,13,Lifeguard Meg,6.3,655
+22,14,Fat Actor,6.3,659
+22,15,Faith No More,5.8,972
+22,16,"Peter, Peter, Pumpkin Cheater",6.7,765
+22,17,Gift of the White Guy,6.4,577
+23,1,Fat Gun,6.7,877
+23,2,"Live, Laugh, Love",6.1,718
+23,3,Drunk with Power,4.8,1061
+23,4,Lois C.K.,6.3,673
+23,5,The Chicken or the Meg,6.2,678
+23,6,Dog Is My Co-Pilot,6.7,623
+23,7,Pitch Imperfect,6.4,598
+23,8,Hard Times at Adam West High,6.6,600
+23,9,The Elle Word,6.5,569
+23,10,A Real Who's Hulu,5.7,597
+23,11,China Doll,6.3,594
+23,12,One Foot in Front of the Mother,6.4,521
+23,13,The Fat Lotus,6.4,526
+23,14,Cool Hand Lois,5.6,577
+23,15,Martian Meg,6.2,509
+23,16,Row v. Wade,5.9,527
+23,17,Karenheit 451,5.7,537
+23,18,Twain's World,5.8,538
+23,19,A Little Fright Music,6.3,497
+23,20,Disney's Hulu's Family Guy's Hallmark Channel's Lifetime's Familiar Holiday Movie,6.2,440
+24,1,The Edible Arrangement,7.7,856
+24,2,Pumpkin Spice Girls,6.8,513
+24,3,Man-Fest Destiny,6.3,482
+24,4,Bringing Up Brady,6.2,411
+24,5,Dear Francis,6.8,421
+24,6,Viewer DMs,6.2,418
+24,7,Scent of a Woman,6.5,372
+24,8,Play Time,6,371
+24,9,Phony Montana,6.4,396
+24,10,A Few More Ways to Die in the West,6.2,325
+24,11,Tall Stewie,6.5,322
+24,12,Lower G.I. Joe,6.3,268
+24,13,Friend's Best Man,6.1,264
+24,14,Let the Goodtimes Walk,6.9,256
+24,15,High School History,6.5,226
