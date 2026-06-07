@@ -33,6 +33,8 @@ navbar:
         href: best_picture_nominees.html
       - text: "Best Picture and Top 1000 Box Office"
         href: best_pic_vs_top_1000.html
+      - text: "Director Box Office Trajectory"
+        href: director_box_office_trajectory.html
       - text: "My IMDb Ratings"
         href: my_imdb.html
       - text: "--- Sports & Personal ---"
