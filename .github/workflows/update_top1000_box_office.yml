@@ -62,6 +62,7 @@ jobs:
           fi
 
       - name: Commit and push if changed
+        id: push
         if: always()
         run: |
           set -euo pipefail
@@ -78,6 +79,7 @@ jobs:
             2>/dev/null || true
           if git diff --cached --quiet; then
             echo "No changes."
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
@@ -105,9 +107,21 @@ jobs:
 
           git commit -F /tmp/commit-msg.txt
           for i in 1 2 3; do
-            if git push; then exit 0; fi
+            if git push; then
+              echo "pushed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
             echo "Push failed; rebasing on remote and retrying ($i/3)..."
             git pull --rebase origin "$(git rev-parse --abbrev-ref HEAD)"
           done
           echo "ERROR: failed to push box office update after 3 attempts."
           exit 1
+
+      # Bot pushes via GITHUB_TOKEN don't trigger downstream workflows (a
+      # GitHub anti-recursion guard), so the site won't redeploy after this
+      # commit unless we explicitly dispatch the build workflow.
+      - name: Trigger site redeploy
+        if: steps.push.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run pages-branch-previews.yml --ref main

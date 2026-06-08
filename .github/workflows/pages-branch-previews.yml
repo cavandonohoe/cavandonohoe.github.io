@@ -58,23 +58,30 @@ jobs:
         with:
           dependencies: '"all"'
       
-      # ✅ Write SA key to runner temp for same-repo PRs & pushes (forks won't get secrets)
-      # NOTE: Dependabot PRs run with restricted permissions and DO NOT receive
-      # repo secrets, even though they originate from the same repo. Skip the
-      # SA-JSON write (and the auth check below) for Dependabot to avoid
-      # writing an empty sa.json that fails downstream auth.
+      # ✅ Write SA key to runner temp for same-repo PRs, pushes, and manual
+      # dispatches (forks won't get secrets). NOTE: Dependabot PRs run with
+      # restricted permissions and DO NOT receive repo secrets, even though
+      # they originate from the same repo. Skip the SA-JSON write (and the
+      # auth check below) for Dependabot to avoid writing an empty sa.json
+      # that fails downstream auth.
       - name: Write Google SA JSON
-        if: ${{ ((github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) || (github.event_name == 'push' && github.ref == 'refs/heads/main')) && github.actor != 'dependabot[bot]' }}
+        if: ${{ ((github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) || (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'workflow_dispatch') && github.actor != 'dependabot[bot]' }}
         run: |
           printf '%s' '${{ secrets.GCP_SA_KEY }}' > "$RUNNER_TEMP/sa.json"
           chmod 600 "$RUNNER_TEMP/sa.json"
 
-      # Optional: sanity check auth when key exists (no-op on forks / Dependabot)
+      # Optional: sanity check auth when key exists (no-op on forks / Dependabot
+      # / any path where Write Google SA JSON didn't run, since the file
+      # won't exist).
       - name: Google auth check
         if: ${{ (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) && github.actor != 'dependabot[bot]' }}
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/sa.json
         run: |
+          if [ ! -s "$GOOGLE_APPLICATION_CREDENTIALS" ]; then
+            echo "No SA JSON written for this event; skipping Google auth check."
+            exit 0
+          fi
           Rscript -e 'suppressPackageStartupMessages({library(googledrive);library(googlesheets4)}); drive_auth(path=Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"), cache=FALSE); gs4_auth(path=Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"), cache=FALSE)'
 
       # Optional: ensure gs4 guards (matches your other workflow)

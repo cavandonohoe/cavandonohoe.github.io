@@ -35,6 +35,7 @@ jobs:
         run: Rscript scripts/generate_sitemap.R
 
       - name: Commit and push if sitemap changed
+        id: push
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
@@ -42,14 +43,27 @@ jobs:
           git add sitemap.xml
           if git diff --cached --quiet; then
             echo "No sitemap changes."
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git commit -m "Auto-refresh sitemap.xml"
           # Pull-rebase to avoid losing races with other refresh workflows.
           for i in 1 2 3; do
-            if git push; then exit 0; fi
+            if git push; then
+              echo "pushed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
             echo "Push failed; rebasing on remote and retrying ($i/3)..."
             git pull --rebase origin "$(git rev-parse --abbrev-ref HEAD)"
           done
           echo "ERROR: failed to push sitemap update after 3 attempts."
           exit 1
+
+      # Bot pushes via GITHUB_TOKEN don't trigger downstream workflows (a
+      # GitHub anti-recursion guard), so the site won't redeploy after this
+      # commit unless we explicitly dispatch the build workflow.
+      - name: Trigger site redeploy
+        if: steps.push.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run pages-branch-previews.yml --ref main
