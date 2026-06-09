@@ -111,7 +111,7 @@ my own commits vs. automated commits from the scheduled data
 refresh workflows above. Regenerated each time `README.Rmd` is
 knit.
 
-```{r commit-activity, echo = FALSE, message = FALSE, warning = FALSE, fig.width = 10, fig.height = 7, fig.path = "images/readme/", dev = "png", dpi = 110, fig.alt = "Two bar charts showing monthly commits and monthly lines changed (insertions + deletions) for this repository, split by Cavan's own commits vs. scheduled-bot commits."}
+```{r commit-activity, echo = FALSE, message = FALSE, warning = FALSE, fig.width = 14, fig.height = 8, fig.path = "images/readme/", dev = "png", dpi = 110, fig.alt = "Two bar charts showing monthly commits and monthly lines changed (insertions + deletions) for this repository, split by Cavan's own commits vs. scheduled-bot commits."}
 suppressPackageStartupMessages({
   library(dplyr)
   library(ggplot2)
@@ -188,7 +188,8 @@ theme_readme <- ggplot2::theme_minimal(base_size = 12) +
     plot.title = ggplot2::element_text(face = "bold"),
     plot.title.position = "plot",
     panel.grid.minor = ggplot2::element_blank(),
-    legend.position = "top"
+    legend.position = "top",
+    axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.5, hjust = 1)
   )
 
 p_commits <- ggplot2::ggplot(
@@ -198,7 +199,7 @@ p_commits <- ggplot2::ggplot(
   ggplot2::geom_col(width = 25) +
   ggplot2::scale_fill_manual(values = palette, name = NULL) +
   ggplot2::scale_x_date(
-    date_breaks = "6 months",
+    date_breaks = "1 month",
     date_labels = "%b %Y",
     expand = ggplot2::expansion(mult = c(0.01, 0.01))
   ) +
@@ -220,7 +221,7 @@ p_lines <- ggplot2::ggplot(
   ) +
   ggplot2::scale_fill_manual(values = palette, name = NULL) +
   ggplot2::scale_x_date(
-    date_breaks = "6 months",
+    date_breaks = "1 month",
     date_labels = "%b %Y",
     limits = range(month_seq),
     expand = ggplot2::expansion(mult = c(0.01, 0.01))
