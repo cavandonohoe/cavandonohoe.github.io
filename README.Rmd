@@ -60,8 +60,13 @@ manual is a click away on the Actions tab.
 
 ### Site build & previews
 
-* `pages-rmarkdown.yml` -- daily site render + GitHub Pages deploy.
-* `pages-branch-previews.yml` -- per-PR preview deploy and cleanup.
+* `pages-branch-previews.yml` -- main deploy + per-PR preview deploy
+  and cleanup. This is what publishes the site (pushes to the
+  `gh-pages` branch).
+* `pages-rmarkdown.yml` -- daily safety-net build with DESCRIPTION /
+  `library()` validation and gs4 guard checks. Does **not** deploy
+  (deploy is owned by `pages-branch-previews.yml` to avoid Pages
+  deployment races).
 
 ### Data refreshes (commits to `main`)
 
