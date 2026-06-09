@@ -67,8 +67,13 @@ manual is a click away on the Actions tab.
 
 ### Site build & previews
 
-- `pages-rmarkdown.yml` – daily site render + GitHub Pages deploy.
-- `pages-branch-previews.yml` – per-PR preview deploy and cleanup.
+- `pages-branch-previews.yml` – main deploy + per-PR preview deploy and
+  cleanup. This is what publishes the site (pushes to the `gh-pages`
+  branch).
+- `pages-rmarkdown.yml` – daily safety-net build with DESCRIPTION /
+  `library()` validation and gs4 guard checks. Does **not** deploy
+  (deploy is owned by `pages-branch-previews.yml` to avoid Pages
+  deployment races).
 
 ### Data refreshes (commits to `main`)
 
@@ -119,8 +124,8 @@ above. Regenerated each time `README.Rmd` is knit.
 
 <img src="images/readme/commit-activity-1.png" alt="Two bar charts showing monthly commits and monthly lines changed (insertions + deletions) for this repository, split by Cavan's own commits vs. scheduled-bot commits."  />
 
-*511 commits since Dec 2020 — 489 by me, 22 by scheduled bots — touching
-1,992,425 lines in total.*
+*510 commits since Dec 2020 — 488 by me, 22 by scheduled bots — touching
+1,992,400 lines in total.*
 
 ## Setup and Local Development
 
