@@ -247,6 +247,63 @@ p_lines <- ggplot2::ggplot(
   ggplot2::theme(legend.position = "top")
 ```
 
+```{r commit-activity-cumulative, echo = FALSE, message = FALSE, warning = FALSE, fig.width = 14, fig.height = 7, fig.path = "images/readme/", dev = "png", dpi = 110, fig.alt = "Two cumulative line charts showing total commits and total lines changed (insertions + deletions) over time, split by Cavan's own commits vs. scheduled-bot commits."}
+cumulative <- monthly %>%
+  dplyr::arrange(author_type, month) %>%
+  dplyr::group_by(author_type) %>%
+  dplyr::mutate(
+    cum_commits = cumsum(commits),
+    cum_lines = cumsum(lines_changed)
+  ) %>%
+  dplyr::ungroup()
+
+p_cum_commits <- ggplot2::ggplot(
+  cumulative,
+  ggplot2::aes(x = month, y = cum_commits, colour = author_type)
+) +
+  ggplot2::geom_line(linewidth = 0.9) +
+  ggplot2::geom_point(size = 0.8) +
+  ggplot2::scale_colour_manual(values = palette, name = NULL) +
+  ggplot2::scale_x_date(
+    date_breaks = "1 month",
+    date_labels = "%b %Y",
+    expand = ggplot2::expansion(mult = c(0.01, 0.01))
+  ) +
+  ggplot2::scale_y_continuous(labels = scales::comma) +
+  ggplot2::labs(
+    title = "Cumulative commits",
+    x = NULL,
+    y = "Cumulative commits"
+  ) +
+  theme_readme
+
+p_cum_lines <- ggplot2::ggplot(
+  cumulative,
+  ggplot2::aes(x = month, y = cum_lines, colour = author_type)
+) +
+  ggplot2::geom_line(linewidth = 0.9) +
+  ggplot2::geom_point(size = 0.8) +
+  ggplot2::scale_colour_manual(values = palette, name = NULL) +
+  ggplot2::scale_x_date(
+    date_breaks = "1 month",
+    date_labels = "%b %Y",
+    expand = ggplot2::expansion(mult = c(0.01, 0.01))
+  ) +
+  ggplot2::scale_y_continuous(
+    labels = scales::label_number(scale_cut = scales::cut_short_scale())
+  ) +
+  ggplot2::labs(
+    title = "Cumulative lines changed (insertions + deletions)",
+    x = NULL,
+    y = "Cumulative lines changed"
+  ) +
+  theme_readme
+
+(p_cum_commits / p_cum_lines) +
+  patchwork::plot_layout(guides = "collect") &
+  ggplot2::theme(legend.position = "top")
+```
+
 ```{r commit-activity-summary, echo = FALSE, message = FALSE, results = "asis"}
 total_commits <- nrow(df)
 total_lines <- sum(df$lines_changed)
