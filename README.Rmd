@@ -103,6 +103,164 @@ manual is a click away on the Actions tab.
 * `.github/dependabot.yml` -- weekly bump of pinned GitHub Actions.
 * `labeler.yml` -- auto-label PRs by changed paths.
 
+## Activity over time
+
+The chart below summarizes commit activity on this repo: monthly
+commit count and lines changed (insertions + deletions), split by
+my own commits vs. automated commits from the scheduled data
+refresh workflows above. Regenerated each time `README.Rmd` is
+knit.
+
+```{r commit-activity, echo = FALSE, message = FALSE, warning = FALSE, fig.width = 14, fig.height = 8, fig.path = "images/readme/", dev = "png", dpi = 110, fig.alt = "Two bar charts showing monthly commits and monthly lines changed (insertions + deletions) for this repository, split by Cavan's own commits vs. scheduled-bot commits."}
+suppressPackageStartupMessages({
+  library(dplyr)
+  library(ggplot2)
+  library(tidyr)
+  library(lubridate)
+  library(scales)
+  library(patchwork)
+})
+
+raw <- system(
+  "git log --no-merges --pretty=format:'COMMIT|%H|%at|%an' --shortstat",
+  intern = TRUE
+)
+
+commits <- list()
+current <- NULL
+for (line in raw) {
+  if (startsWith(line, "COMMIT|")) {
+    if (!is.null(current)) commits[[length(commits) + 1L]] <- current
+    parts <- strsplit(line, "|", fixed = TRUE)[[1L]]
+    current <- list(
+      sha = parts[2L],
+      ts = as.numeric(parts[3L]),
+      author = parts[4L],
+      ins = 0L,
+      del = 0L
+    )
+  } else if (nchar(line) > 0 && !is.null(current)) {
+    ins_m <- regmatches(line, regexpr("([0-9]+) insertion", line))
+    del_m <- regmatches(line, regexpr("([0-9]+) deletion", line))
+    if (length(ins_m)) current$ins <- as.integer(sub(" insertion.*", "", ins_m))
+    if (length(del_m)) current$del <- as.integer(sub(" deletion.*", "", del_m))
+  }
+}
+if (!is.null(current)) commits[[length(commits) + 1L]] <- current
+
+df <- dplyr::bind_rows(commits) %>%
+  dplyr::mutate(
+    date = as.POSIXct(ts, origin = "1970-01-01", tz = "UTC"),
+    month = lubridate::floor_date(as.Date(date), "month"),
+    # All non-bot commits are mine; STEPHANIE HUSSEY is just me on her laptop.
+    is_bot = grepl("\\[bot\\]|github-actions", author, ignore.case = TRUE),
+    author_type = factor(
+      ifelse(is_bot, "Automated (bots)", "Cavan"),
+      levels = c("Cavan", "Automated (bots)")
+    ),
+    lines_changed = ins + del
+  )
+
+month_seq <- seq(min(df$month), max(df$month), by = "month")
+monthly <- tidyr::expand_grid(
+  month = month_seq,
+  author_type = levels(df$author_type)
+) %>%
+  dplyr::left_join(
+    df %>%
+      dplyr::group_by(month, author_type) %>%
+      dplyr::summarise(
+        commits = dplyr::n(),
+        lines_changed = sum(lines_changed),
+        .groups = "drop"
+      ),
+    by = c("month", "author_type")
+  ) %>%
+  tidyr::replace_na(list(commits = 0L, lines_changed = 0L)) %>%
+  dplyr::mutate(
+    author_type = factor(author_type, levels = c("Cavan", "Automated (bots)"))
+  )
+
+palette <- c("Cavan" = "#2c7fb8", "Automated (bots)" = "#f0a202")
+
+theme_readme <- ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(
+    plot.title = ggplot2::element_text(face = "bold"),
+    plot.title.position = "plot",
+    panel.grid.minor = ggplot2::element_blank(),
+    legend.position = "top",
+    axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.5, hjust = 1)
+  )
+
+p_commits <- ggplot2::ggplot(
+  monthly,
+  ggplot2::aes(x = month, y = commits, fill = author_type)
+) +
+  ggplot2::geom_col(width = 25) +
+  ggplot2::scale_fill_manual(values = palette, name = NULL) +
+  ggplot2::scale_x_date(
+    date_breaks = "1 month",
+    date_labels = "%b %Y",
+    expand = ggplot2::expansion(mult = c(0.01, 0.01))
+  ) +
+  ggplot2::scale_y_continuous(labels = scales::comma) +
+  ggplot2::labs(
+    title = "Commits per month",
+    x = NULL,
+    y = "Commits"
+  ) +
+  theme_readme
+
+p_lines <- ggplot2::ggplot(
+  monthly %>% dplyr::filter(lines_changed > 0),
+  ggplot2::aes(x = month, y = lines_changed, fill = author_type)
+) +
+  ggplot2::geom_col(
+    position = ggplot2::position_dodge2(width = 25, preserve = "single"),
+    width = 25
+  ) +
+  ggplot2::scale_fill_manual(values = palette, name = NULL) +
+  ggplot2::scale_x_date(
+    date_breaks = "1 month",
+    date_labels = "%b %Y",
+    limits = range(month_seq),
+    expand = ggplot2::expansion(mult = c(0.01, 0.01))
+  ) +
+  ggplot2::scale_y_continuous(
+    trans = "log10",
+    labels = scales::label_number(scale_cut = scales::cut_short_scale())
+  ) +
+  ggplot2::labs(
+    title = "Lines changed per month (insertions + deletions, log scale)",
+    x = NULL,
+    y = "Lines changed"
+  ) +
+  theme_readme
+
+(p_commits / p_lines) +
+  patchwork::plot_layout(guides = "collect") &
+  ggplot2::theme(legend.position = "top")
+```
+
+```{r commit-activity-summary, echo = FALSE, message = FALSE, results = "asis"}
+total_commits <- nrow(df)
+total_lines <- sum(df$lines_changed)
+total_cavan <- sum(df$author_type == "Cavan")
+total_bots <- sum(df$author_type == "Automated (bots)")
+first_commit <- min(df$date)
+cat(sprintf(
+  paste0(
+    "*%s commits since %s &mdash; %s by me, %s by scheduled bots ",
+    "&mdash; touching %s lines in total.*\n"
+  ),
+  format(total_commits, big.mark = ","),
+  format(first_commit, "%b %Y"),
+  format(total_cavan, big.mark = ","),
+  format(total_bots, big.mark = ","),
+  format(total_lines, big.mark = ",")
+))
+```
+
 ## Setup and Local Development
 
 This website is built using R Markdown and deployed via GitHub Actions to GitHub Pages.
@@ -126,7 +284,7 @@ This website is built using R Markdown and deployed via GitHub Actions to GitHub
    install.packages(c("rmarkdown", "knitr", "tidyverse", "rvest", "xml2", 
                      "httr2", "curl", "DT", "scales", "plotly", "glue", 
                      "here", "readxl", "googlesheets4", "ggplot2", 
-                     "RColorBrewer", "pagedown", "lubridate"))
+                     "RColorBrewer", "pagedown", "lubridate", "patchwork"))
    ```
 
 3. Set up Google Sheets authentication (for CV):

@@ -24,4 +24,5 @@ Imports:
     zoo,
     RColorBrewer,
     pagedown,
-    lubridate
+    lubridate,
+    patchwork
