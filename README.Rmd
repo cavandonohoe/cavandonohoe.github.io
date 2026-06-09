@@ -107,11 +107,11 @@ manual is a click away on the Actions tab.
 
 The chart below summarizes commit activity on this repo: monthly
 commit count and lines changed (insertions + deletions), split by
-human commits (mine) vs. automated commits from the scheduled data
+my own commits vs. automated commits from the scheduled data
 refresh workflows above. Regenerated each time `README.Rmd` is
 knit.
 
-```{r commit-activity, echo = FALSE, message = FALSE, warning = FALSE, fig.width = 10, fig.height = 7, fig.path = "images/readme/", dev = "png", dpi = 110, fig.alt = "Two bar charts showing monthly commits and monthly lines changed (insertions + deletions) for this repository, split by human vs. bot author."}
+```{r commit-activity, echo = FALSE, message = FALSE, warning = FALSE, fig.width = 10, fig.height = 7, fig.path = "images/readme/", dev = "png", dpi = 110, fig.alt = "Two bar charts showing monthly commits and monthly lines changed (insertions + deletions) for this repository, split by Cavan's own commits vs. scheduled-bot commits."}
 suppressPackageStartupMessages({
   library(dplyr)
   library(ggplot2)
@@ -152,10 +152,11 @@ df <- dplyr::bind_rows(commits) %>%
   dplyr::mutate(
     date = as.POSIXct(ts, origin = "1970-01-01", tz = "UTC"),
     month = lubridate::floor_date(as.Date(date), "month"),
+    # All non-bot commits are mine; STEPHANIE HUSSEY is just me on her laptop.
     is_bot = grepl("\\[bot\\]|github-actions", author, ignore.case = TRUE),
     author_type = factor(
-      ifelse(is_bot, "Automated (bots)", "Human"),
-      levels = c("Human", "Automated (bots)")
+      ifelse(is_bot, "Automated (bots)", "Cavan"),
+      levels = c("Cavan", "Automated (bots)")
     ),
     lines_changed = ins + del
   )
@@ -177,10 +178,10 @@ monthly <- tidyr::expand_grid(
   ) %>%
   tidyr::replace_na(list(commits = 0L, lines_changed = 0L)) %>%
   dplyr::mutate(
-    author_type = factor(author_type, levels = c("Human", "Automated (bots)"))
+    author_type = factor(author_type, levels = c("Cavan", "Automated (bots)"))
   )
 
-palette <- c("Human" = "#2c7fb8", "Automated (bots)" = "#f0a202")
+palette <- c("Cavan" = "#2c7fb8", "Automated (bots)" = "#f0a202")
 
 theme_readme <- ggplot2::theme_minimal(base_size = 12) +
   ggplot2::theme(
@@ -243,7 +244,7 @@ p_lines <- ggplot2::ggplot(
 ```{r commit-activity-summary, echo = FALSE, message = FALSE, results = "asis"}
 total_commits <- nrow(df)
 total_lines <- sum(df$lines_changed)
-total_human <- sum(df$author_type == "Human")
+total_cavan <- sum(df$author_type == "Cavan")
 total_bots <- sum(df$author_type == "Automated (bots)")
 first_commit <- min(df$date)
 cat(sprintf(
@@ -253,7 +254,7 @@ cat(sprintf(
   ),
   format(total_commits, big.mark = ","),
   format(first_commit, "%b %Y"),
-  format(total_human, big.mark = ","),
+  format(total_cavan, big.mark = ","),
   format(total_bots, big.mark = ","),
   format(total_lines, big.mark = ",")
 ))

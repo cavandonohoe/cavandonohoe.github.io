@@ -113,14 +113,14 @@ manual is a click away on the Actions tab.
 ## Activity over time
 
 The chart below summarizes commit activity on this repo: monthly commit
-count and lines changed (insertions + deletions), split by human commits
-(mine) vs. automated commits from the scheduled data refresh workflows
+count and lines changed (insertions + deletions), split by my own
+commits vs. automated commits from the scheduled data refresh workflows
 above. Regenerated each time `README.Rmd` is knit.
 
-<img src="images/readme/commit-activity-1.png" alt="Two bar charts showing monthly commits and monthly lines changed (insertions + deletions) for this repository, split by human vs. bot author."  />
+<img src="images/readme/commit-activity-1.png" alt="Two bar charts showing monthly commits and monthly lines changed (insertions + deletions) for this repository, split by Cavan's own commits vs. scheduled-bot commits."  />
 
-*509 commits since Dec 2020 — 487 by me, 22 by scheduled bots — touching
-1,992,175 lines in total.*
+*510 commits since Dec 2020 — 488 by me, 22 by scheduled bots — touching
+1,992,398 lines in total.*
 
 ## Setup and Local Development
 
