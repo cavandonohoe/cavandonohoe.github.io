@@ -1,0 +1,31 @@
+---
+title: "Airplane Boarding Simulation"
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+lang: "en"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, results = "asis")
+```
+
+How long does it really take to board a plane? It depends a lot on the order in which passengers walk down the aisle. This page simulates five popular boarding methods on a 30-row, single-aisle cabin (think 737 / A320) and compares how each one performs.
+
+Pick a method below and hit **Start**. To race all five at once and see a ranked dashboard, scroll down to the **Comparison Mode** section.
+
+```{r boarding-shell, echo=FALSE}
+htmltools::HTML(readr::read_file("scripts/airplane_boarding/airplane_boarding.html"))
+```
+
+## How the methods work
+
+- **Steffen Method** &mdash; window seats first, every other row, back-to-front, then middles, then aisles. The staggered geometry lets many people stow luggage simultaneously.
+- **WILMA (Window-Middle-Aisle)** &mdash; all windows first (rear-to-front), then all middles, then all aisles. Eliminates seat-swap interference.
+- **Back-to-Front** &mdash; classic zone-by-zone boarding from the rear forward. The natural intuition&hellip; that produces the worst aisle congestion.
+- **Reverse Pyramid** &mdash; diagonal waves from the rear-window corner toward the front-aisle corner. Aisle seats board last.
+- **Random** &mdash; same seat assignments, shuffled boarding order. Often beats Back-to-Front because passengers spread out naturally.
+
+The simulation models walking speed, luggage-stowing time (2&ndash;5 seconds), and aisle blocking when an upstream passenger is in the way. Blocked passengers turn yellow.
