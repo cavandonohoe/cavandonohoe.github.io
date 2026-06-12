@@ -1,11 +1,14 @@
 #!/usr/bin/env Rscript
 #
 # la_heatmap_data.R
-# Builds the data assets for the animated LA housing-price heat map.
+# Builds the data assets for the animated LA housing-price heat map plus the
+# long-run companion charts.
 #
 # Outputs:
 #   data/la_zhvi_zip_history.csv    -- annual ZHVI by ZIP for LA County (2000+)
 #   data/la_county_zips.geojson     -- LA County ZCTA polygons (simplified)
+#   data/shiller_us_home_prices.csv -- annual US real & nominal HPI, 1890+
+#   data/case_shiller_la.csv        -- monthly Case-Shiller LA HPI, 1987+
 #
 # Sources:
 #   1. Zillow ZHVI ZIP-level monthly history
@@ -14,6 +17,12 @@
 #
 #   2. OpenDataDE CA ZIP code GeoJSON (Census TIGER ZCTA 2010, ogr2ogr-converted)
 #      https://github.com/OpenDataDE/State-zip-code-GeoJSON
+#
+#   3. Robert Shiller's "Online Data" Fig 3-1 workbook (US home prices since 1890)
+#      http://www.econ.yale.edu/~shiller/data/Fig3-1.xls
+#
+#   4. FRED -- S&P Cotality Case-Shiller CA-Los Angeles HPI (LXXRSA), 1987+
+#      https://fred.stlouisfed.org/graph/fredgraph.csv?id=LXXRSA
 
 `%>%` <- magrittr::`%>%`
 
@@ -154,5 +163,67 @@ jsonlite::write_json(la_geojson, out_geojson, auto_unbox = TRUE,
                      digits = NA)
 cat("  Wrote", out_geojson, "(",
     round(file.info(out_geojson)$size / 1024 / 1024, 2), "MB )\n")
+
+# ---------------------------------------------------------------------------
+# 3. Shiller Fig 3-1 (US home prices, 1890+)
+# ---------------------------------------------------------------------------
+cat("\nDownloading Shiller Fig3-1.xls (1890+, annual + monthly post-1953)...\n")
+shiller_url <- "http://www.econ.yale.edu/~shiller/data/Fig3-1.xls"
+tmp_xls <- tempfile(fileext = ".xls")
+utils::download.file(shiller_url, tmp_xls, quiet = TRUE, mode = "wb")
+
+# Sheet "Data": header rows 4-7, data starts row 8.
+# Column 1 = decimal date, column 2 = real HPI, column 9 = nominal HPI.
+shiller_raw <- readxl::read_excel(
+  tmp_xls, sheet = "Data", col_names = FALSE, skip = 7,
+  .name_repair = "minimal"
+)
+
+shiller_us <- tibble::tibble(
+  date_dec = suppressWarnings(as.numeric(shiller_raw[[1]])),
+  real_hpi = suppressWarnings(as.numeric(shiller_raw[[2]])),
+  nominal_hpi = suppressWarnings(as.numeric(shiller_raw[[9]]))
+) %>%
+  dplyr::filter(!is.na(date_dec), !is.na(real_hpi)) %>%
+  dplyr::mutate(
+    year = as.integer(floor(date_dec)),
+    month = as.integer(round((date_dec - floor(date_dec)) * 12 + 1))
+  )
+
+# Reduce to one observation per year (annual prior to 1953, December otherwise).
+shiller_annual <- shiller_us %>%
+  dplyr::group_by(year) %>%
+  dplyr::summarise(
+    real_hpi = dplyr::last(real_hpi),
+    nominal_hpi = dplyr::last(nominal_hpi),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(year)
+
+readr::write_csv(
+  shiller_annual,
+  file.path(data_dir, "shiller_us_home_prices.csv")
+)
+cat("  Wrote data/shiller_us_home_prices.csv (",
+    nrow(shiller_annual), "rows,",
+    min(shiller_annual$year), "to", max(shiller_annual$year), ")\n")
+
+# ---------------------------------------------------------------------------
+# 4. Case-Shiller LA (LXXRSA) from FRED
+# ---------------------------------------------------------------------------
+cat("\nDownloading Case-Shiller LA from FRED (LXXRSA, 1987+ monthly)...\n")
+fred_url <- "https://fred.stlouisfed.org/graph/fredgraph.csv?id=LXXRSA"
+tmp_fred <- tempfile(fileext = ".csv")
+utils::download.file(fred_url, tmp_fred, method = "curl", quiet = TRUE)
+cs_la <- readr::read_csv(tmp_fred, show_col_types = FALSE) %>%
+  dplyr::rename(date = observation_date, index = LXXRSA) %>%
+  dplyr::filter(!is.na(index)) %>%
+  dplyr::arrange(date)
+
+readr::write_csv(cs_la, file.path(data_dir, "case_shiller_la.csv"))
+cat("  Wrote data/case_shiller_la.csv (",
+    nrow(cs_la), "rows,",
+    format(min(cs_la$date), "%Y-%m"), "to",
+    format(max(cs_la$date), "%Y-%m"), ")\n")
 
 cat("\nDone.\n")
