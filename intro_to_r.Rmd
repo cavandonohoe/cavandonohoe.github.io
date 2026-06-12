@@ -1,6 +1,7 @@
 ---
-title: "Introduction to R"
+title: "Lesson 1: Introduction to R"
 author: "Cavan Donohoe"
+description: "What R is, how to install it, the RStudio tour, your first script, and how to install packages."
 output:
   html_document:
     toc: true
@@ -11,61 +12,228 @@ output:
 lang: "en"
 ---
 
+<link rel="stylesheet" href="/css/learn-r.css">
+
+<div class="course-progress">
+Lesson 1 of 7 · <a href="learn_r.html">Course overview</a>
+</div>
+
 # Introduction to R
 
-In this section, we'll cover the basics of R, including what R is, how to install it, and an overview of the RStudio interface.
+R is a free programming language built specifically for working with data. Pretty much every statistical method you've heard of has an R implementation, and a lot of them were *first* implemented in R. The graphics are excellent, the package ecosystem is huge, and you can use it for everything from a one-off plot to a peer-reviewed publication.
+
+This lesson covers four things:
+
+1. What R actually is (and what it isn't).
+2. Installing R and RStudio.
+3. A quick tour of the RStudio interface.
+4. Writing and running your first script.
 
 ## What is R?
 
-R is a powerful and open-source programming language and software environment for statistical computing and graphics. It provides a wide range of statistical and graphical techniques and is widely used in data analysis, data visualization, and statistical modeling.
+R is two things at once: a **programming language** and an **interactive environment**. You can type `2 + 2` at the prompt and get `4` back, just like a calculator. Or you can write a 500-line script that loads a CSV, fits a model, and produces a PDF report.
+
+R was created in the early 1990s by statisticians at the University of Auckland, and it shows: the language has built-in support for vectors, missing values, factors, and other things that statisticians care about. It's *very* good at "load a table, do something to every row, summarise the result." It's less great at writing a video game.
+
+R is open source. Anyone can use it, anyone can contribute packages, and the [Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/) hosts more than 20,000 add-on packages — for everything from genomics to finance to natural language processing.
+
+<div class="callout callout-note">
+<div class="callout-title">📝 R vs. Python</div>
+You'll hear "R or Python?" a lot. Honest answer: both are fine, you can do almost anything in either, and most working data scientists use both. R has the edge for statistics, reporting, and visualization out of the box. Python has the edge for general programming, web apps, and most of modern machine learning. If you already know Python, R will feel quirky for a week and then second-nature.
+</div>
 
 ## Installing R and RStudio
 
-Before we can start using R, we need to install it and its integrated development environment, RStudio. Here are the steps to get you started:
+You need two things: **R** itself (the engine) and **RStudio** (a much nicer place to write R code than the bare R console).
 
-### Step 1: Installing R
+### Step 1: Install R
 
-1. Visit the Comprehensive R Archive Network (CRAN) website at [https://cran.r-project.org/mirrors.html](https://cran.r-project.org/mirrors.html).
+1. Go to [https://cran.r-project.org/](https://cran.r-project.org/) and click the link for your operating system (Windows, macOS, or Linux).
+2. Download the latest base R installer.
+3. Run the installer with the default options — for most users you don't need to change anything.
 
-2. Choose a CRAN mirror near your location to download R.
+### Step 2: Install RStudio Desktop
 
-3. Download and install R for your operating system (Windows, macOS, or Linux).
+1. Go to [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/).
+2. Download the **free** RStudio Desktop installer for your OS.
+3. Run the installer. RStudio will find your R installation automatically.
 
-### Step 2: Installing RStudio
+When you open RStudio for the first time, you should see a window with several panes. If you see a `>` prompt in one of them, you're good to go.
 
-1. Visit the RStudio download page at [https://www.rstudio.com/products/rstudio/download/](https://www.rstudio.com/products/rstudio/download/).
+<div class="callout callout-warning">
+<div class="callout-title">⚠️ One install, not two languages</div>
+RStudio is just an editor — it runs R for you. If you uninstall R, RStudio breaks. If you install a new version of R, RStudio will pick it up automatically.
+</div>
 
-2. Download the free RStudio Desktop version that corresponds to your operating system.
+## A tour of RStudio
 
-3. Install RStudio by following the installation instructions for your operating system.
+By default RStudio shows four panes:
 
-Once you've completed these steps, you'll have R and RStudio installed and ready to use.
+- **Source / Script editor** (top-left): where you write R scripts and R Markdown documents. This is where you'll spend most of your time.
+- **Console** (bottom-left): the live R session. Anything you run from the script gets sent here. You can also type directly into the console for one-off commands.
+- **Environment / History** (top-right): every variable, dataset, or function you've created in the current session shows up here. Great for sanity-checking what's loaded.
+- **Files / Plots / Packages / Help / Viewer** (bottom-right): file browser, plot output, installed packages, the help system, and the viewer for HTML output (like rendered R Markdown).
 
-## RStudio Interface Overview
+A few keyboard shortcuts that pay for themselves immediately:
 
-RStudio is an integrated development environment (IDE) that makes working with R easier and more efficient. Let's take a quick tour of the RStudio interface:
+| Shortcut | What it does |
+|----------|--------------|
+| <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>Enter</kbd> | Run the current line (or selection) from the script |
+| <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>N</kbd> | New R script |
+| <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> | Insert the pipe operator (`|>`) |
+| <kbd>Alt</kbd> + <kbd>-</kbd> | Insert the assignment operator (`<-`) |
+| <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>L</kbd> | Clear the console |
 
-- **Script Editor**: This is where you can write and execute R code. You can create new scripts or open existing ones.
+## Your first R script
 
-- **Console**: The R console allows you to interactively execute R commands and see the results immediately. It's great for testing small code snippets.
+Let's actually run some R. In RStudio, hit <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>N</kbd> to open a new script. Type the following (don't paste — really type it):
 
-- **Environment Pane**: Displays information about the objects (variables, data frames, functions, etc.) in your current R session.
+```{r}
+greeting <- "Hello, R!"
+greeting
+2 + 2
+sqrt(144)
+```
 
-- **Files, Plots, Packages, Help**: These panes provide access to your project files, plots, installed packages, and documentation.
+Place your cursor on the first line and hit <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>Enter</kbd>. The line gets sent to the console. Do it for each line. You should see:
 
-- **Toolbar**: Contains shortcuts for common actions like running code, saving scripts, and more.
+- `greeting` was assigned the value `"Hello, R!"` and now appears in the Environment pane.
+- `2 + 2` prints `4`.
+- `sqrt(144)` prints `12`.
 
-- **Markdown and Plots Tabs**: Use these tabs to view rendered R Markdown documents and plots generated within your R Markdown document.
+A few things to notice:
 
-That's it for our brief introduction to R and RStudio! Now that you have them installed and have a basic understanding of the interface, you're ready to start exploring R and writing your first R code.
+- `<-` is R's assignment operator. You can use `=` too, but `<-` is the convention. Use the <kbd>Alt</kbd> + <kbd>-</kbd> shortcut.
+- Anything after `#` on a line is a comment — R ignores it.
+- Functions are called with parentheses: `sqrt(144)`, `mean(c(1, 2, 3))`. Without the parentheses, R prints the function's source code instead of running it.
 
+Save the script with <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>S</kbd>. Call it `hello.R`. Now you have your first R script.
 
+## Installing and using packages
 
-Free Lessons:
+R's superpower is its packages. A **package** is a bundle of functions and data someone else wrote. To use one, you install it once and then load it whenever you need it.
 
-- [R Time Is Limited, Let's Make the Most of It](https://cavandonohoe.github.io/learn_r.html)
-- [Introduction to R](https://cavandonohoe.github.io/intro_to_r.html)
-- [Basic Operations in R](https://cavandonohoe.github.io/basic_operations_r.html)
-- [Data Manipulation](https://cavandonohoe.github.io/data_manipulation_r.html)
-- [Data Visualization](https://cavandonohoe.github.io/data_visualization_r.html)
-- [Statistics in R](https://cavandonohoe.github.io/statistics_with_r.html)
+```{r eval=FALSE}
+install.packages("dplyr")
+library(dplyr)
+```
+
+- `install.packages("dplyr")` downloads and installs the `dplyr` package from CRAN. You only need to do this once per machine.
+- `library(dplyr)` loads it into your current session, so its functions are available. You do this every session.
+
+You can also call a function from a package without loading the whole package by using `::`:
+
+```{r eval=FALSE}
+dplyr::filter(mtcars, mpg > 25)
+```
+
+This is helpful when you only need one function or want to be explicit about where it came from. We'll use it occasionally throughout the course.
+
+The packages we'll use the most:
+
+- `dplyr` and `tidyr` — data manipulation
+- `ggplot2` — plotting
+- `readr` — reading CSVs
+- `rmarkdown` and `knitr` — reproducible reports
+
+You can install them all at once with the `tidyverse` umbrella package:
+
+```{r eval=FALSE}
+install.packages("tidyverse")
+```
+
+## Getting help
+
+When (not if) you forget how a function works, R has built-in help. Three ways to get it:
+
+```{r eval=FALSE}
+?mean
+help("mean")
+example("mean")
+```
+
+The help page opens in the bottom-right pane. Every help page has the same sections: **Description**, **Usage**, **Arguments**, **Value**, **Examples**. The Examples section is gold — copy them, run them, modify them.
+
+If you don't even know the name of the function you want, `??` does a fuzzy search across all installed packages:
+
+```{r eval=FALSE}
+??"linear regression"
+```
+
+And of course, [Stack Overflow](https://stackoverflow.com/questions/tagged/r), the [Posit Community forum](https://forum.posit.co/), and now LLMs are all good for "how do I…" questions.
+
+## Putting it together
+
+Here's a tiny script that uses everything you just learned: a built-in dataset (`mtcars` — fuel efficiency for 32 cars from 1974), a function call, and a quick plot.
+
+```{r intro-mtcars-plot, fig.width=6, fig.height=4}
+head(mtcars)
+mean(mtcars$mpg)
+plot(mtcars$wt, mtcars$mpg,
+  main = "Heavier cars get worse gas mileage",
+  xlab = "Weight (1000 lbs)",
+  ylab = "Miles per gallon")
+```
+
+If you typed that in and got a similar plot back, you're in business.
+
+<div class="exercise">
+<div class="exercise-title">✏️ Exercise 1.1 — Your first script</div>
+
+Open a new R script in RStudio and write code that:
+
+1. Stores your name in a variable called `me`.
+2. Stores your age (or guess, doesn't matter) in a variable called `age`.
+3. Prints both, plus the value of `age * 365` (your age in days, roughly).
+
+<details>
+<summary>Show solution</summary>
+
+```{r}
+me <- "Cavan"
+age <- 30
+me
+age
+age * 365
+```
+
+</details>
+</div>
+
+<div class="exercise">
+<div class="exercise-title">✏️ Exercise 1.2 — Help yourself</div>
+
+R has a function called `seq()` that you've never seen before. Without searching the web, figure out what it does and use it to generate the numbers from 0 to 1 in steps of 0.1.
+
+<details>
+<summary>Show solution</summary>
+
+Run `?seq` to open the help page. The relevant arguments are `from`, `to`, and `by`:
+
+```{r}
+seq(from = 0, to = 1, by = 0.1)
+```
+
+You can also write it more compactly — R uses positional arguments:
+
+```{r}
+seq(0, 1, 0.1)
+```
+
+</details>
+</div>
+
+## What's next
+
+You can now run R, you have RStudio set up, and you know how to install packages and ask R for help. That's the whole runway. Next up: actually doing things *with* R.
+
+<div class="lesson-nav">
+  <a class="nav-prev" href="learn_r.html">
+    <span class="lesson-nav-label">← Course overview</span>
+    <span class="lesson-nav-title">Learn R Mini-Course</span>
+  </a>
+  <a class="nav-next" href="basic_operations_r.html">
+    <span class="lesson-nav-label">Next →</span>
+    <span class="lesson-nav-title">Lesson 2: Basic Operations</span>
+  </a>
+</div>
