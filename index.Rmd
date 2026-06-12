@@ -71,6 +71,8 @@ cards <- list(
     "Do Oscar winners also dominate the box office? An interactive comparison."),
   list("sierpinski_triangle.html", "\U0001F53A", "Sierpinski Triangle",
     "Fractal geometry generated in R — the classic chaos game visualization."),
+  list("airplane_boarding.html", "\U2708\UFE0F", "Airplane Boarding Simulation",
+    "Animated head-to-head race of Steffen, WILMA, Back-to-Front, Reverse Pyramid, and Random."),
   list("confederate_statues.html", "\U0001F5FD", "Confederate Statues Timeline",
     "When were Confederate monuments erected? A data-driven look at the timeline."),
   list("learn_r.html", "\U0001F4DA", "Learn R",

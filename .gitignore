@@ -54,6 +54,7 @@ Thumbs.db
 /*.html
 *.html
 !/include_footer.html
+!scripts/airplane_boarding/airplane_boarding.html
 
 # SEO files (keep these tracked)
 !/robots.txt
