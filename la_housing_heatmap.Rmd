@@ -65,7 +65,7 @@ zhvi_history <- zhvi_history %>%
   dplyr::arrange(year, zip)
 ```
 
-How have home values rippled across Los Angeles since the dot-com era? This map animates **`r scales::comma(n_zips)` LA County ZIP codes** from `r year_min` through `r year_max` using Zillow's typical home value (ZHVI). Press **Play**, drag the slider, or hover any ZIP to see its year-by-year arc.
+How have home values rippled across Los Angeles since the dot-com era? This map animates **`r scales::comma(n_zips)` LA County ZIP codes** from `r year_min` through `r year_max` using Zillow's typical home value (ZHVI). Press **Play**, drag the slider, or hover any ZIP to see its year-by-year arc and the neighborhood it covers.
 
 For context, this page also includes two **long-run companion charts** that pre-date Zillow's ZIP-level coverage: Robert Shiller's US home-price series back to 1890, and the Case-Shiller LA Metro index back to 1987.
 
@@ -75,6 +75,7 @@ For context, this page also includes two **long-run companion charts** that pre-
 
 - [Zillow ZHVI (ZIP-level, all homes, smoothed)](https://www.zillow.com/research/data/) --- the typical home value for each ZIP, defined as the smoothed seasonally adjusted mean of the middle third of the market. ZIP-level coverage starts in 2000.
 - [OpenDataDE State ZIP Code GeoJSON](https://github.com/OpenDataDE/State-zip-code-GeoJSON) --- ZIP code polygons converted from the U.S. Census Bureau's TIGER/Line ZCTA shapefiles.
+- [LA Times Mapping L.A. neighborhood boundaries](https://maps.latimes.com/about/) --- 272 named LA County neighborhoods (Hollywood, Venice, Sherman Oaks, etc.). Spatial-joined to ZIP centroids to give every ZIP a recognizable name. (CC-BY-SA, mirrored via [`blackmad/neighborhoods`](https://github.com/blackmad/neighborhoods).)
 - [Robert Shiller's "Online Data" (Fig 3-1)](http://www.econ.yale.edu/~shiller/data.htm) --- US home prices since **1890**, real and nominal, from the dataset behind *Irrational Exuberance*.
 - [S&P Cotality Case-Shiller CA-Los Angeles Home Price Index](https://fred.stlouisfed.org/series/LXXRSA) (`LXXRSA`) via FRED --- monthly LA-metro repeat-sales index since **January 1987**.
 
@@ -391,6 +392,7 @@ aria-label="Year selector" />
 
   function buildTooltip(feature) {
     var zip = feature.properties.zip;
+    var name = feature.properties.name || "";
     var arr = VALUES[zip];
     var year = YEARS[currentYearIdx];
     var v = arr ? arr[currentYearIdx] : null;
@@ -410,8 +412,11 @@ aria-label="Year selector" />
       growth = "<br>Since " + firstYear + ": " +
         (pct >= 0 ? "+" : "") + pct.toFixed(0) + "%%";
     }
+    var header = name ?
+      "<b>" + name + "</b><br>ZIP " + zip :
+      "<b>ZIP " + zip + "</b>";
     return "<div class=\\"la-heatmap-tooltip\\">" +
-      "<b>ZIP " + zip + "</b><br>" +
+      header + "<br>" +
       "Year: " + year + "<br>" +
       "Typical home value: " + fmtUSD(v) +
       growth +
@@ -528,15 +533,15 @@ indexed <- zhvi_history %>%
   dplyr::ungroup()
 
 city_lookup <- zhvi_history %>%
-  dplyr::distinct(zip, city)
+  dplyr::distinct(zip, city, name)
 
 p_lines <- indexed %>%
-  dplyr::left_join(city_lookup, by = c("zip", "city")) %>%
+  dplyr::left_join(city_lookup, by = c("zip", "city", "name")) %>%
   ggplot2::ggplot(ggplot2::aes(
     x = date, y = indexed_value, group = zip,
     text = paste0(
+      "<b>", name, "</b><br>",
       "ZIP: ", zip, "<br>",
-      "City: ", city, "<br>",
       "Year: ", year, "<br>",
       scales::dollar(zhvi, accuracy = 1e3),
       " (", scales::percent(indexed_value - 1, accuracy = 1),
@@ -564,7 +569,7 @@ plotly::ggplotly(p_lines, tooltip = "text") %>%
 
 ```{r table}
 table_data <- zhvi_history %>%
-  dplyr::group_by(zip, city) %>%
+  dplyr::group_by(zip, name, city) %>%
   dplyr::summarise(
     `First year` = min(year),
     `First value` = scales::dollar(zhvi[year == min(year)][1], accuracy = 1e3),
@@ -575,7 +580,7 @@ table_data <- zhvi_history %>%
     ),
     .groups = "drop"
   ) %>%
-  dplyr::rename(ZIP = zip, City = city) %>%
+  dplyr::rename(ZIP = zip, Neighborhood = name, City = city) %>%
   dplyr::arrange(dplyr::desc(`Latest value`))
 
 DT::datatable(

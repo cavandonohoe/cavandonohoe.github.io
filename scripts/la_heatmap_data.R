@@ -7,6 +7,7 @@
 # Outputs:
 #   data/la_zhvi_zip_history.csv    -- annual ZHVI by ZIP for LA County (2000+)
 #   data/la_county_zips.geojson     -- LA County ZCTA polygons (simplified)
+#   data/la_zip_neighborhood.csv    -- ZIP -> neighborhood/area name lookup
 #   data/shiller_us_home_prices.csv -- annual US real & nominal HPI, 1890+
 #   data/case_shiller_la.csv        -- monthly Case-Shiller LA HPI, 1987+
 #
@@ -18,10 +19,13 @@
 #   2. OpenDataDE CA ZIP code GeoJSON (Census TIGER ZCTA 2010, ogr2ogr-converted)
 #      https://github.com/OpenDataDE/State-zip-code-GeoJSON
 #
-#   3. Robert Shiller's "Online Data" Fig 3-1 workbook (US home prices since 1890)
+#   3. LA Times Mapping L.A. neighborhood polygons (mirrored by blackmad)
+#      https://github.com/blackmad/neighborhoods/blob/master/los-angeles-county.geojson
+#
+#   4. Robert Shiller's "Online Data" Fig 3-1 workbook (US home prices since 1890)
 #      http://www.econ.yale.edu/~shiller/data/Fig3-1.xls
 #
-#   4. FRED -- S&P Cotality Case-Shiller CA-Los Angeles HPI (LXXRSA), 1987+
+#   5. FRED -- S&P Cotality Case-Shiller CA-Los Angeles HPI (LXXRSA), 1987+
 #      https://fred.stlouisfed.org/graph/fredgraph.csv?id=LXXRSA
 
 `%>%` <- magrittr::`%>%`
@@ -165,7 +169,107 @@ cat("  Wrote", out_geojson, "(",
     round(file.info(out_geojson)$size / 1024 / 1024, 2), "MB )\n")
 
 # ---------------------------------------------------------------------------
-# 3. Shiller Fig 3-1 (US home prices, 1890+)
+# 3. ZIP -> neighborhood / area name crosswalk
+#
+# Strategy: spatial-join each ZIP centroid with LA Times Mapping L.A.
+# neighborhood polygons (272 named LA County neighborhoods). For ZIPs whose
+# centroid falls outside any LA Times polygon, fall back to the Zillow city
+# name (which already covers most non-LA-City ZIPs nicely, e.g., Long Beach,
+# Pasadena, Santa Monica). A small curated override map fixes the handful of
+# ZIPs whose centroid lands just inside an adjacent neighborhood polygon but
+# that locals know by another name.
+# ---------------------------------------------------------------------------
+cat("\nDownloading LA Times Mapping L.A. neighborhood polygons...\n")
+hoods_url <- paste0(
+  "https://raw.githubusercontent.com/blackmad/neighborhoods/",
+  "master/los-angeles-county.geojson"
+)
+tmp_hoods <- tempfile(fileext = ".geojson")
+utils::download.file(hoods_url, tmp_hoods, quiet = TRUE, mode = "wb")
+
+if (!requireNamespace("sf", quietly = TRUE)) {
+  stop("Package 'sf' is required for the ZIP -> neighborhood crosswalk. ",
+       "Install with: install.packages('sf').")
+}
+
+sf::sf_use_s2(FALSE)
+hoods_sf <- sf::st_read(tmp_hoods, quiet = TRUE)
+zips_sf <- sf::st_read(out_geojson, quiet = TRUE)
+if (is.na(sf::st_crs(zips_sf))) {
+  zips_sf <- sf::st_set_crs(zips_sf, 4326)
+}
+
+suppressWarnings({
+  zip_centroids <- sf::st_centroid(zips_sf)
+  zip_hood_join <- sf::st_join(
+    zip_centroids, hoods_sf,
+    join = sf::st_intersects, left = TRUE
+  )
+})
+zip_hood <- sf::st_drop_geometry(zip_hood_join) %>%
+  dplyr::select(zip, neighborhood = name) %>%
+  dplyr::distinct(zip, .keep_all = TRUE)
+
+# Curated overrides for ZIPs where the centroid lands in a neighbor polygon
+# but locals strongly identify the ZIP with a different LA Times neighborhood.
+hood_overrides <- c(
+  "90210" = "Beverly Hills",
+  "90027" = "Los Feliz"
+)
+zip_hood <- zip_hood %>%
+  dplyr::mutate(
+    neighborhood = dplyr::if_else(
+      zip %in% names(hood_overrides),
+      unname(hood_overrides[zip]),
+      neighborhood
+    )
+  )
+
+city_lookup <- la_zhvi_annual %>%
+  dplyr::distinct(zip, city)
+
+zip_names <- city_lookup %>%
+  dplyr::left_join(zip_hood, by = "zip") %>%
+  dplyr::mutate(
+    # Display label: prefer specific neighborhood; fall back to Zillow city.
+    name = dplyr::coalesce(neighborhood, city)
+  ) %>%
+  dplyr::select(zip, neighborhood, city, name) %>%
+  dplyr::arrange(zip)
+
+n_with_hood <- sum(!is.na(zip_names$neighborhood))
+cat("  Matched", n_with_hood, "of", nrow(zip_names),
+    "ZIPs to a Mapping L.A. neighborhood\n")
+cat("  Distinct display names:", dplyr::n_distinct(zip_names$name), "\n")
+
+readr::write_csv(zip_names, file.path(data_dir, "la_zip_neighborhood.csv"))
+cat("  Wrote data/la_zip_neighborhood.csv\n")
+
+# Inject the display name into the ZHVI history CSV so downstream tooltips,
+# tables, and per-ZIP charts can show a recognizable label without re-joining.
+la_zhvi_annual <- la_zhvi_annual %>%
+  dplyr::left_join(zip_names %>% dplyr::select(zip, name), by = "zip")
+readr::write_csv(la_zhvi_annual, file.path(data_dir, "la_zhvi_zip_history.csv"))
+cat("  Updated data/la_zhvi_zip_history.csv with 'name' column\n")
+
+# Inject the display name into the GeoJSON properties so the Leaflet tooltip
+# can render it directly without an extra fetch.
+zip_to_name <- stats::setNames(zip_names$name, zip_names$zip)
+la_features_named <- lapply(la_features_simple, function(f) {
+  z <- f$properties$zip
+  f$properties$name <- unname(zip_to_name[z])
+  f
+})
+la_geojson_named <- list(
+  type = "FeatureCollection",
+  features = la_features_named
+)
+jsonlite::write_json(la_geojson_named, out_geojson, auto_unbox = TRUE,
+                     digits = NA)
+cat("  Updated", out_geojson, "with 'name' property\n")
+
+# ---------------------------------------------------------------------------
+# 4. Shiller Fig 3-1 (US home prices, 1890+)
 # ---------------------------------------------------------------------------
 cat("\nDownloading Shiller Fig3-1.xls (1890+, annual + monthly post-1953)...\n")
 shiller_url <- "http://www.econ.yale.edu/~shiller/data/Fig3-1.xls"
@@ -209,7 +313,7 @@ cat("  Wrote data/shiller_us_home_prices.csv (",
     min(shiller_annual$year), "to", max(shiller_annual$year), ")\n")
 
 # ---------------------------------------------------------------------------
-# 4. Case-Shiller LA (LXXRSA) from FRED
+# 5. Case-Shiller LA (LXXRSA) from FRED
 # ---------------------------------------------------------------------------
 cat("\nDownloading Case-Shiller LA from FRED (LXXRSA, 1987+ monthly)...\n")
 fred_url <- "https://fred.stlouisfed.org/graph/fredgraph.csv?id=LXXRSA"
