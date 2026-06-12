@@ -60,6 +60,8 @@ navbar:
         href: us_rental_markets.html
       - text: "LA Neighborhoods: Price per Sq Ft"
         href: la_real_estate.html
+      - text: "LA Housing Prices: Animated Heat Map"
+        href: la_housing_heatmap.html
       - text: "Rent vs. Buy Calculator"
         href: https://cavandonohoe.shinyapps.io/rent-vs-buy/
       - text: "--- Archive ---"
