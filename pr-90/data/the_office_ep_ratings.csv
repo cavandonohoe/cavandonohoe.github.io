@@ -1,0 +1,192 @@
+season,episode,title,rating,votes
+1,1,Pilot,7.3,12978
+1,2,Diversity Day,8.1,12684
+1,3,Health Care,7.6,10575
+1,4,The Alliance,7.8,10186
+1,5,Basketball,8.2,11277
+1,6,Hot Girl,7.5,10054
+2,1,The Dundies,8.6,11270
+2,2,Sexual Harassment,8.1,9734
+2,3,Office Olympics,8.2,9583
+2,4,The Fire,8.1,9384
+2,5,Halloween,7.9,8927
+2,6,The Fight,7.9,8914
+2,7,The Client,8.5,9417
+2,8,Performance Review,8,8448
+2,9,E-Mail Surveillance,8.2,8619
+2,10,Christmas Party,8.7,9462
+2,11,Booze Cruise,8.5,9225
+2,12,The Injury,9,10751
+2,13,The Secret,8.1,8214
+2,14,The Carpet,7.6,8100
+2,15,Boys and Girls,8,8091
+2,16,Valentine's Day,8.1,8082
+2,17,Dwight's Speech,8.3,8465
+2,18,Take Your Daughter to Work Day,8.2,8330
+2,19,Michael's Birthday,8,8033
+2,20,Drug Testing,8.2,8107
+2,21,Conflict Resolution,8.6,8321
+2,22,Casino Night,9.3,11808
+3,1,Gay Witch Hunt,8.9,10648
+3,2,The Convention,8,7850
+3,3,The Coup,8.4,8152
+3,4,Grief Counseling,7.8,7808
+3,5,Initiation,7.9,7596
+3,6,Diwali,7.7,7905
+3,7,Branch Closing,8.5,7898
+3,8,The Merger,8.6,8139
+3,9,The Convict,8.2,8154
+3,10,A Benihana Christmas,8.6,8506
+3,11,Back from Vacation,8.5,7755
+3,12,Traveling Salesmen,8.5,7775
+3,13,The Return,8.7,8114
+3,14,Ben Franklin,7.8,7538
+3,15,Phyllis' Wedding,8,7638
+3,16,Business School,8.8,8701
+3,17,Cocktails,8.3,7509
+3,18,The Negotiation,8.9,8492
+3,19,Safety Training,8.6,7890
+3,20,Product Recall,8.5,7727
+3,21,Women's Appreciation,8.6,7929
+3,22,Beach Games,9,9045
+3,23,The Job,9.2,9528
+4,1,Fun Run,8.7,8733
+4,2,Dunder Mifflin Infinity,8.1,7368
+4,3,Launch Party,8.2,7245
+4,4,Money,8.5,7630
+4,5,Local Ad,8.6,7717
+4,6,Branch Wars,8.3,7359
+4,7,Survivor Man,8,7104
+4,8,The Deposition,8.6,7500
+4,9,Dinner Party,9.4,14840
+4,10,Chair Model,7.8,6930
+4,11,Night Out,8.5,7234
+4,12,Did I Stutter?,8.1,6912
+4,13,Job Fair,7.6,6656
+4,14,"Goodbye, Toby",9.2,9531
+5,1,Weight Loss,8.7,7899
+5,2,Business Ethics,8.1,6726
+5,3,Baby Shower,7.8,6726
+5,4,Crime Aid,7.9,6484
+5,5,Employee Transfer,7.8,6636
+5,6,Customer Survey,8.4,6891
+5,7,Business Trip,8,6499
+5,8,Frame Toby,8.5,7273
+5,9,The Surplus,8.6,7038
+5,10,Moroccan Christmas,8.2,6687
+5,11,The Duel,8.6,6926
+5,12,Prince Family Paper,7.8,6664
+5,13,Stress Relief,9.7,20315
+5,14,Lecture Circuit: Part 1,8,6465
+5,15,Lecture Circuit: Part 2,8,6365
+5,16,Blood Drive,7.8,6280
+5,17,Golden Ticket,8.5,6861
+5,18,New Boss,8.1,6456
+5,19,Two Weeks,8.2,6390
+5,20,Dream Team,8.1,6377
+5,21,Michael Scott Paper Company,8.5,6896
+5,22,Heavy Competition,8.5,6586
+5,23,Broke,9.2,8876
+5,24,Casual Friday,8.1,6333
+5,25,Cafe Disco,8.7,7520
+5,26,Company Picnic,8.9,7467
+6,1,Gossip,8.7,7424
+6,2,The Meeting,7.9,6116
+6,3,The Promotion,7.8,6074
+6,4,Niagara: Part 1,9.2,10138
+6,5,Niagara: Part 2,9.4,9943
+6,6,Mafia,7.5,6422
+6,7,The Lover,8.5,6713
+6,8,Koi Pond,8,6147
+6,9,Double Date,7.9,6070
+6,10,Murder,8.6,7184
+6,11,Shareholder Meeting,8,6088
+6,12,Scott's Tots,8.2,6979
+6,13,Secret Santa,8.4,6437
+6,14,The Banker,6.7,7559
+6,15,Sabre,7.5,5825
+6,16,Manager and Salesman,7.8,5746
+6,17,The Delivery: Part 1,8.3,6175
+6,18,The Delivery: Part 2,8.4,6144
+6,19,St. Patrick's Day,7.5,5685
+6,20,New Leads,7.6,5718
+6,21,Happy Hour,8.4,6360
+6,22,Secretary's Day,7.6,5713
+6,23,Body Language,7.7,5692
+6,24,The Cover-Up,8,5797
+6,25,The Chump,7.6,5516
+6,26,Whistleblower,7.8,5650
+7,1,Nepotism,8.2,6402
+7,2,Counseling,8,5904
+7,3,Andy's Play,8.1,6280
+7,4,Sex Ed,7.7,5833
+7,5,The Sting,7.6,5720
+7,6,Costume Contest,8,5859
+7,7,Christening,7.2,5822
+7,8,Viewing Party,7.7,5824
+7,9,WUPHF.com,7.5,5610
+7,10,China,8,5937
+7,11,"Classy Christmas, Part 1",8.8,7303
+7,12,"Classy Christmas, Part 2",8.6,402
+7,13,Ultimatum,8.1,5944
+7,14,The Seminar,7.5,5695
+7,15,The Search,8.4,6236
+7,16,PDA,8.2,6094
+7,17,Threat Level Midnight,9.3,12071
+7,18,Todd Packer,7.3,5590
+7,19,Garage Sale,9.3,9728
+7,20,Training Day,7.5,5748
+7,21,Michael's Last Dundies,8.9,7951
+7,22,"Goodbye, Michael",9.8,21846
+7,23,"Goodbye, Michael Part 2",9.6,761
+7,24,The Inner Circle,7.4,5729
+7,25,"Dwight K. Schrute, (Acting) Manager",8.5,6128
+7,26,Search Committee,8.5,6313
+7,27,"Search Committee, Part 2",8.1,342
+8,1,The List,7.9,5878
+8,2,The Incentive,7.9,5640
+8,3,Lotto,7.1,5379
+8,4,Garden Party,8,5927
+8,5,Spooked,7.3,5349
+8,6,Doomsday,7.4,5175
+8,7,Pam's Replacement,7.5,5489
+8,8,Gettysburg,6.6,5484
+8,9,Mrs. California,7.5,5392
+8,10,Christmas Wishes,7.7,5264
+8,11,Trivia,7.7,5234
+8,12,Pool Party,7.9,5670
+8,13,Jury Duty,7.3,5089
+8,14,Special Project,7.5,4991
+8,15,Tallahassee,7.6,5249
+8,16,After Hours,7.9,5440
+8,17,Test the Store,7.6,5214
+8,18,Last Day in Florida,7.6,5091
+8,19,Get the Girl,6.3,5817
+8,20,Welcome Party,6.7,5198
+8,21,Angry Andy,6.7,5643
+8,22,Fundraiser,6.8,5001
+8,23,Turf War,7.4,4907
+8,24,Free Family Portrait Studio,7.5,5128
+9,1,New Guys,7.3,5366
+9,2,Roy's Wedding,6.8,5185
+9,3,Andy's Ancestry,7.1,5137
+9,4,Work Bus,7.6,5432
+9,5,Here Comes Treble,6.7,5255
+9,6,The Boat,7.5,5217
+9,7,The Whale,7.4,5012
+9,8,The Target,7.7,5229
+9,9,Dwight Christmas,8.2,5793
+9,10,Lice,7.4,5176
+9,11,Suit Warehouse,7.5,5090
+9,12,Customer Loyalty,7.6,5195
+9,13,Junior Salesman,7.3,4929
+9,14,Vandalism,7.1,4986
+9,15,Couples Discount,6.9,5088
+9,16,Moving On,7.7,5400
+9,17,The Farm,7.3,5646
+9,18,Promos,7.7,5042
+9,19,Stairmageddon,7.8,5251
+9,20,Paper Airplane,7.8,5336
+9,21,Livin' the Dream,9,7778
+9,22,A.A.R.M.,9.4,10039
+9,23,Finale,9.8,26595
