@@ -13,7 +13,7 @@ lang: "en"
 ```{r og-meta, echo=FALSE, results='asis'}
 cat('
 <meta property="og:title" content="LA Housing Prices Over Time: Animated Heat Map">
-<meta property="og:description" content="Animated choropleth of typical home values across Los Angeles County ZIP codes from 2000 to today, using Zillow ZHVI data.">
+<meta property="og:description" content="Animated choropleth of typical home values across Los Angeles County ZIP codes from 2000 to today (Zillow ZHVI), plus 130+ years of US home prices from Shiller and Case-Shiller LA Metro from FRED.">
 <meta property="og:url" content="https://cavandonohoe.github.io/la_housing_heatmap.html">
 <meta property="og:type" content="article">
 ')
@@ -67,14 +67,104 @@ zhvi_history <- zhvi_history %>%
 
 How have home values rippled across Los Angeles since the dot-com era? This map animates **`r scales::comma(n_zips)` LA County ZIP codes** from `r year_min` through `r year_max` using Zillow's typical home value (ZHVI). Press **Play**, drag the slider, or hover any ZIP to see its year-by-year arc.
 
+For context, this page also includes two **long-run companion charts** that pre-date Zillow's ZIP-level coverage: Robert Shiller's US home-price series back to 1890, and the Case-Shiller LA Metro index back to 1987.
+
 <span class="data-timestamp">Zillow ZHVI snapshot: `r format(latest_snapshot, "%B %Y")`. Years before `r year_max` are December values; `r year_max` is the most recent month available.</span>
 
 ### Data Sources
 
-- [Zillow ZHVI (ZIP-level, all homes, smoothed)](https://www.zillow.com/research/data/) --- the typical home value for each ZIP, defined as the smoothed seasonally adjusted mean of the middle third of the market.
+- [Zillow ZHVI (ZIP-level, all homes, smoothed)](https://www.zillow.com/research/data/) --- the typical home value for each ZIP, defined as the smoothed seasonally adjusted mean of the middle third of the market. ZIP-level coverage starts in 2000.
 - [OpenDataDE State ZIP Code GeoJSON](https://github.com/OpenDataDE/State-zip-code-GeoJSON) --- ZIP code polygons converted from the U.S. Census Bureau's TIGER/Line ZCTA shapefiles.
+- [Robert Shiller's "Online Data" (Fig 3-1)](http://www.econ.yale.edu/~shiller/data.htm) --- US home prices since **1890**, real and nominal, from the dataset behind *Irrational Exuberance*.
+- [S&P Cotality Case-Shiller CA-Los Angeles Home Price Index](https://fred.stlouisfed.org/series/LXXRSA) (`LXXRSA`) via FRED --- monthly LA-metro repeat-sales index since **January 1987**.
 
 To refresh the data, run `Rscript scripts/la_heatmap_data.R`.
+
+## The 130-year view
+
+Before zooming into the map: how does the period we're animating fit into the long arc of US housing? There is **no LA-neighborhood-level data going back a century** --- that resolution only exists from the late 1990s on. But we can stitch in two long-run series that reach much further back.
+
+```{r long-run-data}
+shiller <- readr::read_csv(
+  here::here("data", "shiller_us_home_prices.csv"),
+  show_col_types = FALSE
+)
+
+cs_la <- readr::read_csv(
+  here::here("data", "case_shiller_la.csv"),
+  show_col_types = FALSE
+)
+
+shiller_year_min <- min(shiller$year)
+shiller_year_max <- max(shiller$year)
+cs_la_year_min <- as.integer(format(min(cs_la$date), "%Y"))
+cs_la_year_max <- as.integer(format(max(cs_la$date), "%Y"))
+```
+
+### US real home prices since `r shiller_year_min` (Shiller)
+
+This is the series Robert Shiller assembled for *Irrational Exuberance* --- a US-wide home-price index in real (inflation-adjusted) terms, normalized so that **1890 = 100**. The flat century from 1890 to the late 1990s is famous: until the dot-com era, US homes did not get more expensive in real terms, on average. Then the 2000s and 2020s happened.
+
+```{r shiller-chart, fig.height=5}
+shiller_plot_df <- shiller %>%
+  dplyr::mutate(
+    real_indexed = real_hpi / real_hpi[year == shiller_year_min] * 100
+  )
+
+p_shiller <- shiller_plot_df %>%
+  ggplot2::ggplot(ggplot2::aes(
+    x = year, y = real_indexed,
+    text = paste0(year, "<br>Real HPI (1890=100): ",
+                  format(round(real_indexed, 1), nsmall = 1))
+  )) +
+  ggplot2::geom_hline(yintercept = 100, linetype = "dashed",
+                      color = "#999999") +
+  ggplot2::geom_line(ggplot2::aes(group = 1), color = "#C0392B",
+                     size = 0.9) +
+  ggplot2::scale_x_continuous(breaks = seq(1890, 2030, 20)) +
+  ggplot2::scale_y_continuous(
+    name = "Real Home Price Index (1890 = 100)"
+  ) +
+  ggplot2::labs(x = NULL) +
+  ggplot2::theme_minimal(base_size = 12)
+
+plotly::ggplotly(p_shiller, tooltip = "text") %>%
+  plotly::config(displaylogo = FALSE)
+```
+
+For the entire 20th century, US home prices *barely budged* in inflation-adjusted terms. Two structural breaks dominate everything else: **the 2000s housing bubble** (peak in 2006, ~85% above the long-run baseline) and **the post-COVID surge** (an even higher peak around 2022). The dashed horizontal line marks the 1890 level --- everything above it is "more expensive than 1890" in real terms.
+
+### Case-Shiller LA Metro since `r cs_la_year_min`
+
+For something LA-specific that pre-dates Zillow's 2000 start, the canonical series is the **Case-Shiller LA Metro** repeat-sales index. It begins in January 1987 (the index is normalized to January 2000 = 100).
+
+```{r cs-la-chart, fig.height=5}
+p_cs <- cs_la %>%
+  ggplot2::ggplot(ggplot2::aes(
+    x = date, y = index,
+    text = paste0(format(date, "%b %Y"),
+                  "<br>Index (Jan 2000 = 100): ",
+                  format(round(index, 1), nsmall = 1))
+  )) +
+  ggplot2::geom_line(ggplot2::aes(group = 1), color = "#C0392B",
+                     size = 0.9) +
+  ggplot2::scale_y_continuous(
+    name = "Case-Shiller LA Index (Jan 2000 = 100)"
+  ) +
+  ggplot2::labs(x = NULL) +
+  ggplot2::theme_minimal(base_size = 12)
+
+plotly::ggplotly(p_cs, tooltip = "text") %>%
+  plotly::config(displaylogo = FALSE)
+```
+
+LA tells the same story as the nation, only louder: a late-80s peak (around 1990), a long slide through the early 90s, the 2000s bubble (peak 2006, sharp 2008 crash), and an aggressive post-COVID climb that has just started to retrace.
+
+### Why no neighborhood-level history?
+
+ZIP-, tract-, and neighborhood-level price indexes require a large enough volume of repeat home sales (or appraisal-model inputs) to be statistically meaningful in each tiny geography. That data really only exists from the **late 1990s onward**, when MLS records and computational hedonic/repeat-sales models like Zillow's ZHVI made it feasible to estimate a typical home value for every ZIP, every month. Pre-1996, the best you can do for LA is a single metro-wide line. Pre-1987, only the national series exists.
+
+The animated map below, then, is the *finest* spatial resolution for which a long time series is possible.
 
 ## Heat map by year
 
