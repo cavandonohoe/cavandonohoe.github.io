@@ -42,6 +42,8 @@ Movies & data:
   Analysis](https://github.com/cavandonohoe/confederate_statues)
 - [Sierpinski
   Triangle](https://cavandonohoe.github.io/sierpinski_triangle.html)
+- [Airplane Boarding
+  Simulation](https://cavandonohoe.github.io/airplane_boarding.html)
 
 Personal:
 
@@ -126,8 +128,8 @@ above. Regenerated each time `README.Rmd` is knit.
 
 <img src="images/readme/commit-activity-cumulative-1.png" alt="Two cumulative line charts showing total commits and total lines changed (insertions + deletions) over time, split by Cavan's own commits vs. scheduled-bot commits."  />
 
-*511 commits since Dec 2020 — 489 by me, 22 by scheduled bots — touching
-1,992,476 lines in total.*
+*513 commits since Dec 2020 — 491 by me, 22 by scheduled bots — touching
+1,993,711 lines in total.*
 
 ## Setup and Local Development
 

@@ -53,6 +53,8 @@ navbar:
         href: confederate_statues.html
       - text: "Sierpinski Triangle"
         href: sierpinski_triangle.html
+      - text: "Airplane Boarding Simulation"
+        href: airplane_boarding.html
       - text: "--- Real Estate & Finance ---"
       - text: "US Rental Investment Markets"
         href: us_rental_markets.html
