@@ -1,0 +1,509 @@
+---
+title: "LA Housing Prices Over Time: Animated Heat Map"
+editor_options:
+  chunk_output_type: console
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+lang: "en"
+---
+
+```{r og-meta, echo=FALSE, results='asis'}
+cat('
+<meta property="og:title" content="LA Housing Prices Over Time: Animated Heat Map">
+<meta property="og:description" content="Animated choropleth of typical home values across Los Angeles County ZIP codes from 2000 to today, using Zillow ZHVI data.">
+<meta property="og:url" content="https://cavandonohoe.github.io/la_housing_heatmap.html">
+<meta property="og:type" content="article">
+')
+```
+
+```{r pipe, include=FALSE}
+`%>%` <- magrittr::`%>%`
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE
+)
+```
+
+```{r data}
+zhvi_history <- readr::read_csv(
+  here::here("data", "la_zhvi_zip_history.csv"),
+  show_col_types = FALSE,
+  col_types = readr::cols(zip = readr::col_character())
+)
+
+geojson <- jsonlite::read_json(
+  here::here("data", "la_county_zips.geojson"),
+  simplifyVector = FALSE
+)
+```
+
+```{r prep}
+year_min <- min(zhvi_history$year)
+year_max <- max(zhvi_history$year)
+n_zips <- dplyr::n_distinct(zhvi_history$zip)
+
+latest_snapshot <- zhvi_history %>%
+  dplyr::filter(year == year_max) %>%
+  dplyr::pull(date) %>%
+  unique()
+
+zhvi_history <- zhvi_history %>%
+  dplyr::mutate(
+    year_label = ifelse(
+      year == year_max,
+      paste0(year, " (", format(latest_snapshot, "%b"), ")"),
+      paste0(year, " (Dec)")
+    ),
+    zhvi_fmt = scales::dollar(zhvi, accuracy = 1e3),
+    log_zhvi = log10(zhvi)
+  ) %>%
+  dplyr::arrange(year, zip)
+```
+
+How have home values rippled across Los Angeles since the dot-com era? This map animates **`r scales::comma(n_zips)` LA County ZIP codes** from `r year_min` through `r year_max` using Zillow's typical home value (ZHVI). Press **Play**, drag the slider, or hover any ZIP to see its year-by-year arc.
+
+<span class="data-timestamp">Zillow ZHVI snapshot: `r format(latest_snapshot, "%B %Y")`. Years before `r year_max` are December values; `r year_max` is the most recent month available.</span>
+
+### Data Sources
+
+- [Zillow ZHVI (ZIP-level, all homes, smoothed)](https://www.zillow.com/research/data/) --- the typical home value for each ZIP, defined as the smoothed seasonally adjusted mean of the middle third of the market.
+- [OpenDataDE State ZIP Code GeoJSON](https://github.com/OpenDataDE/State-zip-code-GeoJSON) --- ZIP code polygons converted from the U.S. Census Bureau's TIGER/Line ZCTA shapefiles.
+
+To refresh the data, run `Rscript scripts/la_heatmap_data.R`.
+
+## Heat map by year
+
+```{r heatmap, results='asis'}
+zhvi_for_js <- zhvi_history %>%
+  dplyr::transmute(
+    zip,
+    year,
+    zhvi = round(zhvi)
+  )
+
+# Build {zip: [v_year0, v_year1, ...]} where year index aligns with YEARS.
+years_vec <- sort(unique(zhvi_history$year))
+values_by_zip <- zhvi_for_js %>%
+  dplyr::group_by(zip) %>%
+  dplyr::summarise(
+    by_year = list({
+      v <- rep(NA_real_, length(years_vec))
+      idx <- match(year, years_vec)
+      v[idx] <- zhvi
+      v
+    }),
+    .groups = "drop"
+  ) %>%
+  tibble::deframe()
+
+year_labels <- vapply(years_vec, function(y) {
+  if (y == year_max) {
+    paste0(y, " (", format(latest_snapshot, "%b"), ")")
+  } else {
+    paste0(y, " (Dec)")
+  }
+}, character(1))
+
+zlim <- range(zhvi_history$zhvi, na.rm = TRUE)
+log_min <- log10(zlim[1])
+log_max <- log10(zlim[2])
+
+color_breaks <- c(2e5, 5e5, 1e6, 2e6, 5e6, 1e7)
+color_breaks <- color_breaks[color_breaks >= zlim[1] & color_breaks <= zlim[2]]
+
+geojson_str <- jsonlite::toJSON(geojson, auto_unbox = TRUE, digits = NA)
+values_str <- jsonlite::toJSON(values_by_zip, na = "null")
+years_str <- jsonlite::toJSON(years_vec)
+year_labels_str <- jsonlite::toJSON(year_labels)
+breaks_str <- jsonlite::toJSON(color_breaks)
+break_labels_str <- jsonlite::toJSON(
+  scales::dollar(color_breaks, scale_cut = scales::cut_short_scale(),
+                 accuracy = 1)
+)
+
+widget_id <- "la-heatmap"
+
+knitr::asis_output(sprintf('
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+crossorigin="" />
+<script
+src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+crossorigin=""></script>
+<div class="la-heatmap-wrap">
+<div id="%s" class="la-heatmap-map"></div>
+<div class="la-heatmap-controls">
+<button type="button" id="%s-play" class="la-heatmap-play"
+aria-label="Play animation">&#9654; Play</button>
+<span id="%s-year-label" class="la-heatmap-year-label"></span>
+<input type="range" id="%s-slider" class="la-heatmap-slider"
+min="0" max="%d" value="%d" step="1"
+aria-label="Year selector" />
+<div class="la-heatmap-legend" id="%s-legend"></div>
+</div>
+</div>
+<style>
+.la-heatmap-wrap {
+  position: relative;
+  margin: 1rem 0 2rem 0;
+}
+.la-heatmap-map {
+  height: 600px;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px var(--card-shadow, rgba(0,0,0,0.1));
+}
+.la-heatmap-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  margin-top: 8px;
+  background: var(--card-bg, #f8f9fa);
+  border: 1px solid var(--card-border, #dee2e6);
+  border-radius: 6px;
+  flex-wrap: wrap;
+}
+.la-heatmap-play {
+  background: var(--accordion-bg, #337ab7);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+}
+.la-heatmap-play:hover { background: var(--accordion-hover, #286090); }
+.la-heatmap-year-label {
+  font-weight: 600;
+  font-size: 16px;
+  min-width: 110px;
+  color: var(--text-color, #333);
+}
+.la-heatmap-slider { flex: 1; min-width: 200px; }
+.la-heatmap-legend {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted-text, #777);
+  flex-wrap: wrap;
+}
+.la-heatmap-legend .swatch {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  margin-right: 2px;
+  vertical-align: middle;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+.la-heatmap-tooltip {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+}
+</style>
+
+<script>
+(function() {
+  var ID = "%s";
+  var GEOJSON = %s;
+  var VALUES = %s;
+  var YEARS = %s;
+  var YEAR_LABELS = %s;
+  var COLOR_BREAKS = %s;
+  var BREAK_LABELS = %s;
+  var LOG_MIN = %f;
+  var LOG_MAX = %f;
+
+  // Viridis-like colorscale (sampled).
+  var VIRIDIS = [
+    [0.00, [68,  1,  84]],
+    [0.13, [72, 36, 117]],
+    [0.25, [64, 67, 135]],
+    [0.38, [52, 94, 141]],
+    [0.50, [41, 120, 142]],
+    [0.63, [32, 144, 140]],
+    [0.75, [34, 167, 132]],
+    [0.88, [121, 209, 81]],
+    [1.00, [253, 231, 36]]
+  ];
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  function viridis(t) {
+    if (t <= 0) t = 0; if (t >= 1) t = 1;
+    for (var i = 1; i < VIRIDIS.length; i++) {
+      if (t <= VIRIDIS[i][0]) {
+        var t0 = VIRIDIS[i-1][0], t1 = VIRIDIS[i][0];
+        var c0 = VIRIDIS[i-1][1], c1 = VIRIDIS[i][1];
+        var u = (t - t0) / (t1 - t0);
+        return "rgb(" +
+          Math.round(lerp(c0[0], c1[0], u)) + "," +
+          Math.round(lerp(c0[1], c1[1], u)) + "," +
+          Math.round(lerp(c0[2], c1[2], u)) + ")";
+      }
+    }
+    return "rgb(253,231,36)";
+  }
+
+  function colorFor(zhvi) {
+    if (zhvi == null || isNaN(zhvi)) return "#cccccc";
+    var t = (Math.log10(zhvi) - LOG_MIN) / (LOG_MAX - LOG_MIN);
+    return viridis(t);
+  }
+
+  function fmtUSD(v) {
+    if (v == null || isNaN(v)) return "—";
+    if (v >= 1e6) return "$" + (v / 1e6).toFixed(2) + "M";
+    if (v >= 1e3) return "$" + Math.round(v / 1e3) + "K";
+    return "$" + Math.round(v);
+  }
+
+  var map = L.map(ID, {
+    scrollWheelZoom: false,
+    zoomControl: true
+  }).setView([34.05, -118.30], 9);
+
+  L.tileLayer(
+    "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+    {
+      attribution:
+        "Map &copy; <a href=\\"https://carto.com/\\">CARTO</a> | " +
+        "&copy; <a href=\\"https://www.openstreetmap.org/copyright\\">OSM</a> | " +
+        "Data &copy; <a href=\\"https://www.zillow.com/research/data/\\">Zillow ZHVI</a>",
+      subdomains: "abcd",
+      maxZoom: 18
+    }
+  ).addTo(map);
+
+  var currentYearIdx = YEARS.length - 1;
+
+  function styleFor(feature) {
+    var zip = feature.properties.zip;
+    var arr = VALUES[zip];
+    var v = arr ? arr[currentYearIdx] : null;
+    return {
+      fill: true,
+      fillColor: colorFor(v),
+      weight: 0.4,
+      color: "#ffffff",
+      fillOpacity: 0.85
+    };
+  }
+
+  function buildTooltip(feature) {
+    var zip = feature.properties.zip;
+    var arr = VALUES[zip];
+    var year = YEARS[currentYearIdx];
+    var v = arr ? arr[currentYearIdx] : null;
+    var firstYear = null, firstVal = null;
+    if (arr) {
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i] != null) {
+          firstYear = YEARS[i];
+          firstVal = arr[i];
+          break;
+        }
+      }
+    }
+    var growth = "";
+    if (firstVal && v) {
+      var pct = ((v / firstVal) - 1) * 100;
+      growth = "<br>Since " + firstYear + ": " +
+        (pct >= 0 ? "+" : "") + pct.toFixed(0) + "%%";
+    }
+    return "<div class=\\"la-heatmap-tooltip\\">" +
+      "<b>ZIP " + zip + "</b><br>" +
+      "Year: " + year + "<br>" +
+      "Typical home value: " + fmtUSD(v) +
+      growth +
+      "</div>";
+  }
+
+  var layer = L.geoJSON(GEOJSON, {
+    style: styleFor,
+    onEachFeature: function(feature, lyr) {
+      lyr.bindTooltip(buildTooltip(feature), { sticky: true });
+      lyr.on("mouseover", function() {
+        lyr.setStyle({ weight: 2, color: "#222" });
+        lyr.bringToFront();
+      });
+      lyr.on("mouseout", function() {
+        layer.resetStyle(lyr);
+      });
+    }
+  }).addTo(map);
+
+  try {
+    map.fitBounds(layer.getBounds(), { padding: [10, 10] });
+  } catch (e) { /* ignore */ }
+
+  var slider = document.getElementById(ID + "-slider");
+  var label  = document.getElementById(ID + "-year-label");
+  var btn    = document.getElementById(ID + "-play");
+  var legend = document.getElementById(ID + "-legend");
+
+  function updateLabel() {
+    label.textContent = YEAR_LABELS[currentYearIdx];
+  }
+
+  function refreshAll() {
+    layer.eachLayer(function(lyr) {
+      lyr.setStyle(styleFor(lyr.feature));
+      lyr.setTooltipContent(buildTooltip(lyr.feature));
+    });
+  }
+
+  slider.addEventListener("input", function() {
+    currentYearIdx = parseInt(slider.value, 10);
+    updateLabel();
+    refreshAll();
+  });
+
+  // Build legend swatches.
+  legend.innerHTML = "";
+  var legendLabel = document.createElement("span");
+  legendLabel.textContent = "Typical home value:";
+  legendLabel.style.marginRight = "4px";
+  legend.appendChild(legendLabel);
+  for (var i = 0; i < COLOR_BREAKS.length; i++) {
+    var sw = document.createElement("span");
+    sw.className = "swatch";
+    sw.style.background = colorFor(COLOR_BREAKS[i]);
+    legend.appendChild(sw);
+    var t = document.createElement("span");
+    t.textContent = BREAK_LABELS[i];
+    t.style.marginRight = "8px";
+    legend.appendChild(t);
+  }
+
+  // Play / pause animation.
+  var playing = false;
+  var timer = null;
+  function step() {
+    currentYearIdx = (currentYearIdx + 1) %% YEARS.length;
+    slider.value = currentYearIdx;
+    updateLabel();
+    refreshAll();
+  }
+  function setPlaying(on) {
+    playing = on;
+    if (playing) {
+      btn.innerHTML = "&#10074;&#10074; Pause";
+      timer = setInterval(step, 700);
+    } else {
+      btn.innerHTML = "&#9654; Play";
+      if (timer) clearInterval(timer);
+      timer = null;
+    }
+  }
+  btn.addEventListener("click", function() { setPlaying(!playing); });
+
+  updateLabel();
+
+  // Re-fit map when navigated back via Plotly tab visibility, etc.
+  setTimeout(function() {
+    map.invalidateSize();
+    try { map.fitBounds(layer.getBounds(), { padding: [10, 10] }); }
+    catch (e) {}
+  }, 200);
+})();
+</script>
+', widget_id, widget_id, widget_id, widget_id,
+   length(years_vec) - 1L, length(years_vec) - 1L, widget_id,
+   widget_id, geojson_str, values_str, years_str, year_labels_str,
+   breaks_str, break_labels_str, log_min, log_max))
+```
+
+## Year-over-year change
+
+The map above shows levels. The chart below shows growth: each line is one ZIP code, indexed to its `r year_min` value. Hover to find a specific area.
+
+```{r yoy, fig.height=6, fig.width=10}
+indexed <- zhvi_history %>%
+  dplyr::group_by(zip) %>%
+  dplyr::filter(any(year == year_min)) %>%
+  dplyr::mutate(
+    base = zhvi[year == year_min][1],
+    indexed_value = zhvi / base
+  ) %>%
+  dplyr::ungroup()
+
+city_lookup <- zhvi_history %>%
+  dplyr::distinct(zip, city)
+
+p_lines <- indexed %>%
+  dplyr::left_join(city_lookup, by = c("zip", "city")) %>%
+  ggplot2::ggplot(ggplot2::aes(
+    x = date, y = indexed_value, group = zip,
+    text = paste0(
+      "ZIP: ", zip, "<br>",
+      "City: ", city, "<br>",
+      "Year: ", year, "<br>",
+      scales::dollar(zhvi, accuracy = 1e3),
+      " (", scales::percent(indexed_value - 1, accuracy = 1),
+      " vs ", year_min, ")"
+    )
+  )) +
+  ggplot2::geom_line(alpha = 0.18, color = "#2E86C1") +
+  ggplot2::scale_y_continuous(
+    labels = scales::label_percent(scale = 100, accuracy = 1),
+    trans = "log10"
+  ) +
+  ggplot2::labs(
+    x = NULL,
+    y = paste0("Indexed to ", year_min, " (log scale)")
+  ) +
+  ggplot2::theme_minimal(base_size = 12)
+
+plotly::ggplotly(p_lines, tooltip = "text") %>%
+  plotly::config(displaylogo = FALSE)
+```
+
+## ZIP-level table
+
+<details class="table-accordion"><summary>Show table</summary>
+
+```{r table}
+table_data <- zhvi_history %>%
+  dplyr::group_by(zip, city) %>%
+  dplyr::summarise(
+    `First year` = min(year),
+    `First value` = scales::dollar(zhvi[year == min(year)][1], accuracy = 1e3),
+    `Latest value` = scales::dollar(zhvi[year == max(year)][1], accuracy = 1e3),
+    `Total growth` = scales::percent(
+      (zhvi[year == max(year)][1] / zhvi[year == min(year)][1]) - 1,
+      accuracy = 1
+    ),
+    .groups = "drop"
+  ) %>%
+  dplyr::rename(ZIP = zip, City = city) %>%
+  dplyr::arrange(dplyr::desc(`Latest value`))
+
+DT::datatable(
+  table_data,
+  filter = "top", extensions = "Buttons",
+  options = list(
+    pageLength = 50, dom = "Bfrtip",
+    buttons = c("copy", "csv", "excel"),
+    scrollY = "400px", scrollX = TRUE
+  )
+)
+```
+
+</details>
+
+---
+
+**Methodology notes.** ZHVI is a smoothed, seasonally adjusted estimate of typical home value for the middle 33% to 67% of the market for a given region. It is not a transaction-based median sale price; it includes the full housing stock (condo/SFR), so values reflect the *typical* home rather than what is currently changing hands. Comparisons across years on a single ZIP are robust; comparisons across ZIPs reflect both market dynamics and the underlying composition of housing.
+
+For median sale prices and price-per-square-foot at the neighborhood level, see [LA Neighborhoods: Price per Square Foot](la_real_estate.html).
