@@ -224,27 +224,26 @@ aria-label="Year selector" />
   var LOG_MIN = %f;
   var LOG_MAX = %f;
 
-  // Viridis-like colorscale (sampled).
-  var VIRIDIS = [
-    [0.00, [68,  1,  84]],
-    [0.13, [72, 36, 117]],
-    [0.25, [64, 67, 135]],
-    [0.38, [52, 94, 141]],
-    [0.50, [41, 120, 142]],
-    [0.63, [32, 144, 140]],
-    [0.75, [34, 167, 132]],
-    [0.88, [121, 209, 81]],
-    [1.00, [253, 231, 36]]
+  // Sequential heat scale: pale yellow -> orange -> red -> deep red.
+  // Designed so the most expensive ZIPs read as "hot" red.
+  var HEAT_SCALE = [
+    [0.00, [255, 255, 204]],
+    [0.20, [255, 237, 160]],
+    [0.40, [254, 178,  76]],
+    [0.60, [253, 141,  60]],
+    [0.75, [252,  78,  42]],
+    [0.88, [227,  26,  28]],
+    [1.00, [128,   0,  38]]
   ];
 
   function lerp(a, b, t) { return a + (b - a) * t; }
 
-  function viridis(t) {
+  function heatColor(t) {
     if (t <= 0) t = 0; if (t >= 1) t = 1;
-    for (var i = 1; i < VIRIDIS.length; i++) {
-      if (t <= VIRIDIS[i][0]) {
-        var t0 = VIRIDIS[i-1][0], t1 = VIRIDIS[i][0];
-        var c0 = VIRIDIS[i-1][1], c1 = VIRIDIS[i][1];
+    for (var i = 1; i < HEAT_SCALE.length; i++) {
+      if (t <= HEAT_SCALE[i][0]) {
+        var t0 = HEAT_SCALE[i-1][0], t1 = HEAT_SCALE[i][0];
+        var c0 = HEAT_SCALE[i-1][1], c1 = HEAT_SCALE[i][1];
         var u = (t - t0) / (t1 - t0);
         return "rgb(" +
           Math.round(lerp(c0[0], c1[0], u)) + "," +
@@ -252,13 +251,13 @@ aria-label="Year selector" />
           Math.round(lerp(c0[2], c1[2], u)) + ")";
       }
     }
-    return "rgb(253,231,36)";
+    return "rgb(128,0,38)";
   }
 
   function colorFor(zhvi) {
     if (zhvi == null || isNaN(zhvi)) return "#cccccc";
     var t = (Math.log10(zhvi) - LOG_MIN) / (LOG_MAX - LOG_MIN);
-    return viridis(t);
+    return heatColor(t);
   }
 
   function fmtUSD(v) {
