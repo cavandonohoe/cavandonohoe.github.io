@@ -170,6 +170,12 @@
 
   <div class="ab-card">
     <div class="ab-controls">
+      <label>Layout
+        <select id="ab-layout">
+          <option value="narrow" selected>Narrow-body (3-3)</option>
+          <option value="wide">Widebody (3-4-3)</option>
+        </select>
+      </label>
       <label>Method
         <select id="ab-method">
           <option value="steffen">Steffen</option>
@@ -252,12 +258,128 @@
 'use strict';
 
 // ------------------------------------------------------------------
+// Cabin layouts
+// ------------------------------------------------------------------
+// A layout describes the seat banks (blocks) and the letters used.
+// Aisles run between blocks, so n blocks = n-1 aisles.
+//
+// Lanes are numbered top-to-bottom: each block contributes its seats
+// as consecutive lanes, and aisles occupy lanes between blocks.
+//
+// For each letter we precompute:
+//   block      - which block (0-based) the seat lives in
+//   posInBlock - position within block, 0 = topmost seat in block
+//   lane       - vertical lane index (0 = topmost lane)
+//   aisle      - which aisle index this passenger uses (0 = upper)
+//   depth      - distance (in seats) from chosen aisle to seat (>=1)
+var LAYOUTS = {
+  narrow: {
+    name: 'Narrow-body (3-3)',
+    blocks: [3, 3],
+    letters: ['A', 'B', 'C', 'D', 'E', 'F']
+  },
+  wide: {
+    name: 'Widebody (3-4-3)',
+    blocks: [3, 4, 3],
+    letters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K']
+  }
+};
+
+// Build per-letter geometry for a layout.
+function buildLayoutInfo(key) {
+  var spec = LAYOUTS[key];
+  var blocks = spec.blocks;
+  var letters = spec.letters;
+  var totalSeats = blocks.reduce(function(a, b) { return a + b; }, 0);
+  if (totalSeats !== letters.length) {
+    throw new Error('Layout ' + key + ' letter count mismatch');
+  }
+  var numAisles = blocks.length - 1;
+  // Total lanes: seats + aisles between blocks.
+  var totalLanes = totalSeats + numAisles;
+  var aisleLanes = []; // lane index for each aisle
+  // Walk blocks top-to-bottom assigning lanes.
+  var seatInfo = {};
+  var lane = 0;
+  var letterIdx = 0;
+  for (var b = 0; b < blocks.length; b++) {
+    var size = blocks[b];
+    // Determine aisle assignment & depth for each seat in block.
+    if (b === 0) {
+      // First block: only the bottom aisle borders it. All seats use
+      // aisle 0; depth = distance from bottom of block (closest seat
+      // to aisle 0 has depth 1).
+      for (var i = 0; i < size; i++) {
+        var letter = letters[letterIdx++];
+        seatInfo[letter] = {
+          letter: letter,
+          block: b,
+          posInBlock: i,
+          lane: lane + i,
+          aisle: 0,
+          depth: size - i
+        };
+      }
+    } else if (b === blocks.length - 1) {
+      // Last block: only the top aisle borders it. All seats use
+      // the previous (last) aisle; depth = distance from top of block.
+      for (var j = 0; j < size; j++) {
+        var letter2 = letters[letterIdx++];
+        seatInfo[letter2] = {
+          letter: letter2,
+          block: b,
+          posInBlock: j,
+          lane: lane + j,
+          aisle: numAisles - 1,
+          depth: j + 1
+        };
+      }
+    } else {
+      // Middle block: bordered by aisle (b-1) above and aisle b below.
+      // Top half of block uses upper aisle, bottom half uses lower.
+      // For odd block size, the middle seat goes to the upper aisle
+      // (so a 5-wide block would split 3 / 2 between aisles).
+      for (var k = 0; k < size; k++) {
+        var letter3 = letters[letterIdx++];
+        var useUpper = k < Math.ceil(size / 2);
+        var aisleIdx = useUpper ? (b - 1) : b;
+        var depth = useUpper ? (k + 1) : (size - k);
+        seatInfo[letter3] = {
+          letter: letter3,
+          block: b,
+          posInBlock: k,
+          lane: lane + k,
+          aisle: aisleIdx,
+          depth: depth
+        };
+      }
+    }
+    lane += size;
+    if (b < blocks.length - 1) {
+      aisleLanes.push(lane);
+      lane += 1; // aisle occupies one lane
+    }
+  }
+  return {
+    key: key,
+    name: spec.name,
+    blocks: blocks,
+    letters: letters,
+    seatInfo: seatInfo,
+    aisleLanes: aisleLanes,
+    numAisles: numAisles,
+    totalLanes: totalLanes,
+    totalSeats: totalSeats
+  };
+}
+
+var LAYOUT = buildLayoutInfo('narrow');
+
+// ------------------------------------------------------------------
 // Cabin geometry & passenger constants
 // ------------------------------------------------------------------
 var ROWS = 30;
-var SEATS_PER_SIDE = 3; // ABC | aisle | DEF
-var SEAT_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
-var TOTAL_PAX = ROWS * 6;
+function totalPax() { return ROWS * LAYOUT.totalSeats; }
 
 // World units are seconds & "row-lengths".
 // 1 row = 1 unit of aisle distance.
@@ -299,27 +421,36 @@ function shuffle(arr, rng) {
   return a;
 }
 
-// Distance from aisle to seat letter. Window=A/F (3), middle=B/E (2), aisle=C/D (1).
-function seatDepth(letter) {
-  if (letter === 'A' || letter === 'F') return 3;
-  if (letter === 'B' || letter === 'E') return 2;
-  return 1; // C / D
-}
-function seatSide(letter) {
-  // 'left' = A,B,C   'right' = D,E,F
-  return (letter === 'A' || letter === 'B' || letter === 'C') ? 'left' : 'right';
+// Per-seat geometry (depth, aisle, block, lane) is precomputed in
+// LAYOUT.seatInfo. Helpers below dispatch through the active layout.
+function seatDepth(letter) { return LAYOUT.seatInfo[letter].depth; }
+function seatAisle(letter) { return LAYOUT.seatInfo[letter].aisle; }
+function seatBlock(letter) { return LAYOUT.seatInfo[letter].block; }
+function seatLane(letter) { return LAYOUT.seatInfo[letter].lane; }
+
+// Window/middle/aisle classification: window = outermost seat in
+// outer blocks; aisle = depth 1 in any block; middle = everything
+// else. Used for WILMA / Steffen / Reverse Pyramid.
+function seatClass(letter) {
+  var info = LAYOUT.seatInfo[letter];
+  if (info.depth === 1) return 'aisle';
+  var blockSize = LAYOUT.blocks[info.block];
+  var isOuterBlock = info.block === 0 || info.block === LAYOUT.blocks.length - 1;
+  if (isOuterBlock && info.depth === blockSize) return 'window';
+  return 'middle';
 }
 
 // ------------------------------------------------------------------
 // Boarding orders
 // All return an array of { row, letter } in boarding order.
-// row is 1..ROWS, letter is 'A'..'F'.
+// row is 1..ROWS, letter is from LAYOUT.letters.
 // ------------------------------------------------------------------
 function allSeats() {
+  var letters = LAYOUT.letters;
   var out = [];
   for (var r = 1; r <= ROWS; r++) {
-    for (var l = 0; l < SEAT_LETTERS.length; l++) {
-      out.push({ row: r, letter: SEAT_LETTERS[l] });
+    for (var l = 0; l < letters.length; l++) {
+      out.push({ row: r, letter: letters[l] });
     }
   }
   return out;
@@ -333,14 +464,15 @@ function order_back_to_front(rng) {
   // 5 zones, 6 rows each, rear-first. Random order within each zone.
   var zones = 5;
   var rowsPerZone = ROWS / zones;
+  var letters = LAYOUT.letters;
   var out = [];
   for (var z = 0; z < zones; z++) {
     var rowHi = ROWS - z * rowsPerZone;
     var rowLo = rowHi - rowsPerZone + 1;
     var zone = [];
     for (var r = rowLo; r <= rowHi; r++) {
-      for (var l = 0; l < SEAT_LETTERS.length; l++) {
-        zone.push({ row: r, letter: SEAT_LETTERS[l], group: 'Zone ' + (z + 1) });
+      for (var l = 0; l < letters.length; l++) {
+        zone.push({ row: r, letter: letters[l], group: 'Zone ' + (z + 1) });
       }
     }
     out = out.concat(shuffle(zone, rng));
@@ -348,16 +480,29 @@ function order_back_to_front(rng) {
   return out;
 }
 
+// Group letters by class (window/middle/aisle) using the active layout.
+function lettersByClass() {
+  var groups = { window: [], middle: [], aisle: [] };
+  LAYOUT.letters.forEach(function(l) { groups[seatClass(l)].push(l); });
+  return groups;
+}
+
 function order_wilma(rng) {
-  // Windows -> middles -> aisles, each rear-to-front, random L/R within row.
-  var groups = [['A', 'F'], ['B', 'E'], ['C', 'D']];
-  var labels = ['Windows', 'Middles', 'Aisles'];
+  // Windows -> middles -> aisles, each rear-to-front, random within row.
+  var groups = lettersByClass();
+  var sequence = [
+    { letters: groups.window, label: 'Windows' },
+    { letters: groups.middle, label: 'Middles' },
+    { letters: groups.aisle, label: 'Aisles' }
+  ];
   var out = [];
-  for (var g = 0; g < groups.length; g++) {
-    var letters = groups[g];
+  for (var g = 0; g < sequence.length; g++) {
+    var letters = sequence[g].letters;
+    var label = sequence[g].label;
+    if (letters.length === 0) continue;
     for (var r = ROWS; r >= 1; r--) {
       var rowSeats = letters.map(function(l) {
-        return { row: r, letter: l, group: labels[g] };
+        return { row: r, letter: l, group: label };
       });
       out = out.concat(shuffle(rowSeats, rng));
     }
@@ -366,29 +511,42 @@ function order_wilma(rng) {
 }
 
 function order_steffen(rng) {
-  // Classic Steffen "perfect" order:
-  // 4 waves: window-even-rear, window-odd-rear, then middles same, then aisles same.
-  // We use the canonical formulation: side x letter x parity, back-to-front.
-  // Waves (8 total): for each letter group [windows, middles, aisles],
-  //   for each side [right, left], for each parity [even, odd], rear-to-front.
-  var letterGroups = [['A', 'F'], ['B', 'E'], ['C', 'D']];
-  var labels = ['Windows', 'Middles', 'Aisles'];
+  // Classic Steffen "perfect" order, generalized to N aisles:
+  //   For each class (window -> middle -> aisle):
+  //     For each aisle index (so passengers reaching the same aisle
+  //     don't collide on row entry):
+  //       For each parity (even, odd):
+  //         Rear-to-front sweep of seats matching (class, aisle, parity).
+  // For 3-3 narrow this reduces to the canonical 8-wave ordering
+  // (windows L+R x parity, ...).
+  var classes = ['window', 'middle', 'aisle'];
+  var classLabels = { window: 'Windows', middle: 'Middles', aisle: 'Aisles' };
   var out = [];
-  for (var g = 0; g < letterGroups.length; g++) {
-    for (var side = 0; side < 2; side++) {
-      var letter = letterGroups[g][side]; // A or F, B or E, C or D
+  for (var ci = 0; ci < classes.length; ci++) {
+    var cls = classes[ci];
+    var lettersInClass = LAYOUT.letters.filter(function(l) {
+      return seatClass(l) === cls;
+    });
+    if (lettersInClass.length === 0) continue;
+    for (var ai = 0; ai < LAYOUT.numAisles; ai++) {
+      var lettersHere = lettersInClass.filter(function(l) {
+        return seatAisle(l) === ai;
+      });
+      if (lettersHere.length === 0) continue;
       for (var parity = 0; parity < 2; parity++) {
         var wave = [];
         for (var r = ROWS; r >= 1; r--) {
-          if ((r % 2) === parity) {
+          if ((r % 2) !== parity) continue;
+          for (var li = 0; li < lettersHere.length; li++) {
             wave.push({
-              row: r, letter: letter,
-              group: labels[g] + ' ' + (parity === 0 ? 'even' : 'odd') +
-                     ' ' + (letter === 'A' || letter === 'B' || letter === 'C' ? 'L' : 'R')
+              row: r,
+              letter: lettersHere[li],
+              group: classLabels[cls] + ' ' +
+                     (parity === 0 ? 'even' : 'odd') +
+                     ' aisle ' + (ai + 1)
             });
           }
         }
-        // Steffen's order is strict (rear-to-front), don't shuffle.
         out = out.concat(wave);
       }
     }
@@ -397,33 +555,26 @@ function order_steffen(rng) {
 }
 
 function order_reverse_pyramid(rng) {
-  // Classic Reverse Pyramid: 6 zones, diagonal sweep from rear-window
-  // toward front-aisle. Within a zone, seat assignments are ordered
-  // rear-to-front so the back fills up first.
+  // Diagonal sweep: rear-window earliest, front-aisle latest.
+  // Score = (max_depth - depth) + half * 1.5, where half = 0 (rear)
+  // or 1 (front). Same as before but uses layout's max depth.
   var halfRows = Math.floor(ROWS / 2);
-  // zone score: smaller depth (closer to aisle) + closer to front
-  // => boards LATER. We use (rearness + depth-rank) buckets.
+  var maxDepth = 0;
+  LAYOUT.letters.forEach(function(l) {
+    if (seatDepth(l) > maxDepth) maxDepth = seatDepth(l);
+  });
   var seats = allSeats();
   var bucketed = seats.map(function(s) {
-    var depth = seatDepth(s.letter); // 3=window, 2=middle, 1=aisle
-    // 0 = rear half, 1 = front half
+    var depth = seatDepth(s.letter);
     var half = s.row > halfRows ? 0 : 1;
-    // 6 zones: (depth, half) pairs ranked diagonally.
-    // Zone 1: rear windows (depth 3, half 0)
-    // Zone 2: front windows + rear middles (depth 3, half 1) and (depth 2, half 0)
-    // Zone 3: front middles + rear aisles
-    // Zone 4: front aisles
-    // Use a numeric score: lower score = boards earlier.
-    var score = (3 - depth) + half * 1.5;
-    return { seat: s, score: score, depth: depth, half: half };
+    var score = (maxDepth - depth) + half * 1.5;
+    return { seat: s, score: score };
   });
-  // Sort by score, then rear-to-front within zone, with light jitter.
   bucketed.sort(function(a, b) {
     if (a.score !== b.score) return a.score - b.score;
     if (a.seat.row !== b.seat.row) return b.seat.row - a.seat.row;
     return rng() - 0.5;
   });
-  // Bucket into 6 visible groups for "current group" display.
   var n = bucketed.length;
   return bucketed.map(function(b, i) {
     return {
@@ -475,13 +626,16 @@ function createSim(orderFn, seed) {
   var rng = rngFromSeed(seed || 1);
   var seats = orderFn(rng);
   var pax = seats.map(function(s, i) {
+    var info = LAYOUT.seatInfo[s.letter];
     return {
       idx: i,
       row: s.row,
       letter: s.letter,
       group: s.group || ('#' + (i + 1)),
-      side: seatSide(s.letter),
-      depth: seatDepth(s.letter),
+      block: info.block,
+      aisle: info.aisle,
+      lane: info.lane,
+      depth: info.depth,
       state: 'queue',
       x: ENTRY_X - i * 0.5, // staggered queue
       y: 0,
@@ -496,6 +650,10 @@ function createSim(orderFn, seed) {
   // Mark which seats are eventually filled & whether they're already
   // seated, used for seat-conflict detection.
   var seatedMap = {}; // key "row|letter" -> true
+  // Per-aisle queue heads. nextToEnter[a] is the index into pax of the
+  // next passenger destined for aisle a who will be released.
+  var nextToEnter = [];
+  for (var a = 0; a < LAYOUT.numAisles; a++) nextToEnter.push(0);
   var sim = {
     pax: pax,
     t: 0,
@@ -503,20 +661,24 @@ function createSim(orderFn, seed) {
     aisleConflicts: 0,
     seatConflicts: 0,
     seatedMap: seatedMap,
-    nextToEnter: 0,
+    nextToEnter: nextToEnter,
     finished: false,
-    totalTime: 0
+    totalTime: 0,
+    layoutKey: LAYOUT.key,
+    numAisles: LAYOUT.numAisles
   };
   return sim;
 }
 
-// Find the closest passenger ahead in the aisle (larger x), 'walk' or 'stow'.
+// Find the closest passenger ahead in the same aisle (larger x),
+// 'walk' or 'stow'.
 function aisleObstacleAhead(sim, p) {
   var best = null;
   var bestX = Infinity;
   for (var i = 0; i < sim.pax.length; i++) {
     var q = sim.pax[i];
     if (q === p) continue;
+    if (q.aisle !== p.aisle) continue;
     if (q.state !== 'walk' && q.state !== 'stow') continue;
     if (q.x <= p.x) continue;
     if (q.x < bestX) { bestX = q.x; best = q; }
@@ -525,15 +687,16 @@ function aisleObstacleAhead(sim, p) {
 }
 
 // At a row, count seat-conflicts when this passenger slides in.
-// A conflict = a same-row, same-side passenger who is closer to the
-// aisle (smaller depth) and is already seated.
+// A conflict = a same-row, same-block, same-aisle passenger who is
+// closer to the aisle (smaller depth) and is already seated.
 function countSeatConflicts(sim, p) {
   var n = 0;
   for (var i = 0; i < sim.pax.length; i++) {
     var q = sim.pax[i];
     if (q === p) continue;
     if (q.row !== p.row) continue;
-    if (q.side !== p.side) continue;
+    if (q.block !== p.block) continue;
+    if (q.aisle !== p.aisle) continue;
     if (q.state !== 'seated') continue;
     if (q.depth < p.depth) n++;
   }
@@ -544,29 +707,45 @@ function step(sim) {
   if (sim.finished) return;
   sim.t += DT;
 
-  // Door release: only one passenger can be entering the aisle at a
-  // time; keep a small spacing.
-  if (sim.nextToEnter < sim.pax.length) {
-    var head = sim.pax[sim.nextToEnter];
-    if (head.state === 'queue') {
-      // can step into aisle if no one is right at the door
+  // Door release: each aisle has its own entry slot at the front. The
+  // global boarding order still determines who is "next" but each
+  // aisle pops the next passenger destined for that aisle. This way
+  // a 3-4-3 cabin fills both aisles in parallel without violating the
+  // method's prescribed ordering.
+  for (var a = 0; a < sim.numAisles; a++) {
+    while (sim.nextToEnter[a] < sim.pax.length) {
+      var head = sim.pax[sim.nextToEnter[a]];
+      if (head.aisle !== a) {
+        // Not destined for this aisle; skip.
+        sim.nextToEnter[a]++;
+        continue;
+      }
+      if (head.state !== 'queue') {
+        sim.nextToEnter[a]++;
+        continue;
+      }
+      // Block release if any passenger destined for this aisle is
+      // already at/near the door.
       var blocked = false;
       for (var i = 0; i < sim.pax.length; i++) {
         var q = sim.pax[i];
         if (q === head) continue;
+        if (q.aisle !== a) continue;
         if ((q.state === 'walk' || q.state === 'stow') &&
             q.x < ENTRY_X + 1.0 + AISLE_GAP) {
           blocked = true; break;
         }
       }
-      if (!blocked) {
-        head.state = 'walk';
-        head.x = ENTRY_X;
-        head.enteredAisleAt = sim.t;
-        sim.nextToEnter++;
-      }
-    } else {
-      sim.nextToEnter++;
+      if (blocked) break;
+      // Also enforce the global ordering: don't release a passenger
+      // for aisle A if an earlier passenger for the same aisle is
+      // still in queue. (We already ensured we're walking from
+      // nextToEnter[a] forward in pax order, so this holds.)
+      head.state = 'walk';
+      head.x = ENTRY_X;
+      head.enteredAisleAt = sim.t;
+      sim.nextToEnter[a]++;
+      break; // only one release per aisle per step
     }
   }
 
@@ -669,7 +848,8 @@ function getCss(varName) {
 
 // Layout: cabin runs horizontally. Front (row 1) on the LEFT
 // (door & jet bridge). Each row occupies `rowPx` horizontally.
-// Vertically: 3 seats above aisle, 3 below.
+// Vertically: lanes laid out top-to-bottom, including aisle lanes,
+// per LAYOUT.aisleLanes / LAYOUT.totalLanes.
 function computeLayout(canvas) {
   var W = canvas.width;
   var H = canvas.height;
@@ -679,13 +859,26 @@ function computeLayout(canvas) {
   var marginB = 20;
   var usableW = W - marginL - marginR;
   var rowPx = usableW / (ROWS + 1); // +1 for entry buffer
-  var seatSize = Math.min(rowPx * 0.85, (H - marginT - marginB) / 8);
-  var cy = H / 2; // aisle centerline
-  var aisleHalf = seatSize * 0.55;
+  // Total vertical "lane slots" we need to fit, plus a small gutter
+  // above and below for fuselage skin.
+  var laneSlots = LAYOUT.totalLanes + 2; // 1 gutter top + 1 gutter bottom
+  var seatSize = Math.min(rowPx * 0.85,
+                          (H - marginT - marginB) / laneSlots);
+  var cy = H / 2;
+  // Center of all lanes vertically: lane indices run 0..totalLanes-1.
+  var centerLane = (LAYOUT.totalLanes - 1) / 2;
+  function laneY(lane) {
+    return cy + (lane - centerLane) * seatSize * 0.95;
+  }
+  function aisleYForIndex(aisleIdx) {
+    return laneY(LAYOUT.aisleLanes[aisleIdx]);
+  }
   return {
     W: W, H: H, marginL: marginL, marginT: marginT,
     rowPx: rowPx, seatSize: seatSize,
-    cy: cy, aisleHalf: aisleHalf,
+    cy: cy,
+    laneY: laneY,
+    aisleYForIndex: aisleYForIndex,
     rowX: function(row) { return marginL + row * rowPx; },
     aisleX: function(x) { return marginL + (x + 1) * rowPx; }
   };
@@ -696,12 +889,13 @@ function drawCabin(ctx, layout, sim, opts) {
   var W = layout.W, H = layout.H;
   ctx.clearRect(0, 0, W, H);
 
-  // Fuselage outline (rounded capsule).
+  // Fuselage outline (rounded capsule). Top/bottom span all lanes.
   ctx.fillStyle = getCss('--ab-cabin');
   ctx.strokeStyle = getCss('--ab-cabin-stroke');
   ctx.lineWidth = 2;
-  var bodyTop = layout.cy - layout.seatSize * 3.4;
-  var bodyBot = layout.cy + layout.seatSize * 3.4;
+  var halfHeight = (LAYOUT.totalLanes / 2 + 0.6) * layout.seatSize * 0.95;
+  var bodyTop = layout.cy - halfHeight;
+  var bodyBot = layout.cy + halfHeight;
   var noseLen = layout.rowPx * 1.0;
   var tailLen = layout.rowPx * 1.4;
   var bodyL = layout.marginL - noseLen * 0.2;
@@ -718,21 +912,21 @@ function drawCabin(ctx, layout, sim, opts) {
   ctx.fill();
   ctx.stroke();
 
-  // Door (front-left).
+  // Door (front-left, near the upper aisle for visual reference).
+  var doorY = layout.aisleYForIndex(0);
   ctx.fillStyle = getCss('--ab-cabin-stroke');
-  ctx.fillRect(bodyL - 2, bodyTop - 2, 4, layout.seatSize * 0.6);
+  ctx.fillRect(bodyL - 2, doorY - layout.seatSize * 0.3, 4, layout.seatSize * 0.6);
 
   // Seats.
   var seatSize = layout.seatSize;
   var ss = seatSize * 0.78;
+  var letters = LAYOUT.letters;
   for (var r = 1; r <= ROWS; r++) {
     var cx = layout.rowX(r);
-    for (var li = 0; li < SEAT_LETTERS.length; li++) {
-      var letter = SEAT_LETTERS[li];
-      var depth = seatDepth(letter);
-      var side = seatSide(letter);
-      var sy = layout.cy + (side === 'left' ? -1 : 1) *
-               (layout.aisleHalf + (depth - 0.5) * seatSize * 0.95);
+    for (var li = 0; li < letters.length; li++) {
+      var letter = letters[li];
+      var lane = LAYOUT.seatInfo[letter].lane;
+      var sy = layout.laneY(lane);
       var taken = sim.seatedMap[r + '|' + letter];
       ctx.fillStyle = taken ? getCss('--ab-seat-taken') : getCss('--ab-seat');
       ctx.fillRect(cx - ss / 2, sy - ss / 2, ss, ss);
@@ -751,12 +945,10 @@ function drawCabin(ctx, layout, sim, opts) {
     ctx.fillStyle = getCss('--ab-muted');
     ctx.font = (Math.max(8, seatSize * 0.3)) + 'px sans-serif';
     ctx.textAlign = 'right';
-    for (var li2 = 0; li2 < SEAT_LETTERS.length; li2++) {
-      var letter2 = SEAT_LETTERS[li2];
-      var d2 = seatDepth(letter2);
-      var side2 = seatSide(letter2);
-      var sy2 = layout.cy + (side2 === 'left' ? -1 : 1) *
-                (layout.aisleHalf + (d2 - 0.5) * seatSize * 0.95);
+    for (var li2 = 0; li2 < letters.length; li2++) {
+      var letter2 = letters[li2];
+      var lane2 = LAYOUT.seatInfo[letter2].lane;
+      var sy2 = layout.laneY(lane2);
       ctx.fillText(letter2, layout.marginL - 8, sy2 + 4);
     }
   }
@@ -765,33 +957,33 @@ function drawCabin(ctx, layout, sim, opts) {
   var pr = Math.max(3, seatSize * 0.28);
   for (var i = 0; i < sim.pax.length; i++) {
     var p = sim.pax[i];
+    var aisleY = layout.aisleYForIndex(p.aisle);
     if (p.state === 'queue') {
-      // little dots in the jet bridge
+      // little dots in the jet bridge, queued at the upper aisle
+      // (door entry).
       var qx = layout.aisleX(p.x);
       if (qx < 4) continue;
       ctx.fillStyle = getCss('--ab-passenger');
       ctx.globalAlpha = 0.35;
       ctx.beginPath();
-      ctx.arc(qx, layout.cy, pr * 0.65, 0, Math.PI * 2);
+      ctx.arc(qx, layout.aisleYForIndex(0), pr * 0.65, 0, Math.PI * 2);
       ctx.fill();
       ctx.globalAlpha = 1;
       continue;
     }
     if (p.state === 'seated') continue; // already shown via seat color
     var px, py;
-    if (p.state === 'walk') {
-      px = layout.aisleX(p.x); py = layout.cy;
-    } else if (p.state === 'stow') {
-      px = layout.aisleX(p.x); py = layout.cy;
+    if (p.state === 'walk' || p.state === 'stow') {
+      px = layout.aisleX(p.x);
+      py = aisleY;
     } else if (p.state === 'shuffle') {
       // Move from aisle toward seat.
       var totalShuffle = p.depth * SEAT_SHUFFLE_TIME;
       var prog = totalShuffle > 0 ?
         Math.max(0, Math.min(1, 1 - p.shuffleRemaining / (totalShuffle + 1))) : 1;
-      var sy = layout.cy + (p.side === 'left' ? -1 : 1) *
-               (layout.aisleHalf + (p.depth - 0.5) * seatSize * 0.95);
+      var seatY = layout.laneY(p.lane);
       px = layout.aisleX(p.x);
-      py = layout.cy + (sy - layout.cy) * prog;
+      py = aisleY + (seatY - aisleY) * prog;
     }
     ctx.fillStyle = styleFor(p.state, p.blockedNow);
     ctx.beginPath();
@@ -803,7 +995,6 @@ function drawCabin(ctx, layout, sim, opts) {
     ctx.stroke();
     ctx.globalAlpha = 1;
     if (p.state === 'stow' && !opts.compact) {
-      // Tiny suitcase marker above head.
       ctx.fillStyle = getCss('--ab-stowing');
       ctx.fillRect(px - 4, py - pr - 8, 8, 5);
     }
@@ -816,6 +1007,7 @@ function drawCabin(ctx, layout, sim, opts) {
 // ------------------------------------------------------------------
 var canvas = document.getElementById('ab-cabin');
 var ctx = canvas.getContext('2d');
+var layoutSel = document.getElementById('ab-layout');
 var methodSel = document.getElementById('ab-method');
 var speedSel = document.getElementById('ab-speed');
 var startBtn = document.getElementById('ab-start');
@@ -827,17 +1019,23 @@ var elAC = document.getElementById('ab-aisle-conflicts');
 var elSC = document.getElementById('ab-seat-conflicts');
 var elAW = document.getElementById('ab-avg-wait');
 
+// Make canvas a touch taller for the wide layout (more lanes).
+function aspectForLayout() {
+  return LAYOUT.totalLanes >= 10 ? 0.36 : 0.27;
+}
+
 function resizeCanvas(c) {
   // Pick a reasonable internal resolution based on CSS width.
   var cssW = c.clientWidth || 1000;
   var ratio = window.devicePixelRatio || 1;
   c.width = Math.floor(cssW * ratio);
-  // Aspect tuned so the cabin reads as a long tube.
-  c.height = Math.floor(c.width * 0.27);
+  // Aspect tuned so the cabin reads as a long tube; widebody needs
+  // more vertical room.
+  c.height = Math.floor(c.width * aspectForLayout());
   c.getContext('2d').setTransform(1, 0, 0, 1, 0, 0);
 }
 function fitCanvasCss(c) {
-  c.style.height = (c.clientWidth * 0.27) + 'px';
+  c.style.height = (c.clientWidth * aspectForLayout()) + 'px';
 }
 
 var mainSim = null;
@@ -855,8 +1053,12 @@ function refreshStats(sim) {
   elAW.textContent = (totalWait / sim.pax.length).toFixed(1) + 's';
   // current group: take the most-recently-released passenger that
   // hasn't seated.
+  var maxNext = 0;
+  for (var k = 0; k < sim.nextToEnter.length; k++) {
+    if (sim.nextToEnter[k] > maxNext) maxNext = sim.nextToEnter[k];
+  }
   var current = '—';
-  for (var j = sim.nextToEnter - 1; j >= 0; j--) {
+  for (var j = maxNext - 1; j >= 0; j--) {
     if (sim.pax[j].state !== 'seated') {
       current = sim.pax[j].group; break;
     }
@@ -910,6 +1112,11 @@ resetBtn.addEventListener('click', function() {
   startBtn.textContent = 'Start';
 });
 methodSel.addEventListener('change', initMain);
+layoutSel.addEventListener('change', function() {
+  LAYOUT = buildLayoutInfo(layoutSel.value);
+  initMain();
+  rebuildMinis();
+});
 window.addEventListener('resize', function() {
   if (mainSim) {
     resizeCanvas(canvas);
@@ -933,6 +1140,7 @@ var rankTable = document.getElementById('ab-rank-table');
 
 function buildMinis() {
   miniGrid.innerHTML = '';
+  var pax = totalPax();
   return METHOD_KEYS.map(function(key) {
     var card = document.createElement('div');
     card.className = 'ab-mini';
@@ -941,12 +1149,12 @@ function buildMinis() {
       '<canvas></canvas>' +
       '<div style="font-size:0.8em;color:var(--ab-muted);margin-top:4px;display:flex;justify-content:space-between">' +
       '<span class="ab-mini-time">0.0s</span>' +
-      '<span class="ab-mini-seated">0/' + TOTAL_PAX + '</span>' +
+      '<span class="ab-mini-seated">0/' + pax + '</span>' +
       '</div>' +
       '<div class="ab-progress"><div></div></div>';
     miniGrid.appendChild(card);
     var c = card.querySelector('canvas');
-    c.width = 600; c.height = Math.floor(600 * 0.27);
+    c.width = 600; c.height = Math.floor(600 * miniAspect());
     return {
       key: key,
       card: card,
@@ -960,12 +1168,30 @@ function buildMinis() {
   });
 }
 
+function miniAspect() {
+  return LAYOUT.totalLanes >= 10 ? 0.42 : 0.32;
+}
+
 function sizeMiniCanvas(c) {
   var cssW = c.clientWidth || 280;
   var ratio = window.devicePixelRatio || 1;
+  var aspect = miniAspect();
   c.width = Math.floor(cssW * ratio);
-  c.height = Math.floor(c.width * 0.32);
-  c.style.height = (cssW * 0.32) + 'px';
+  c.height = Math.floor(c.width * aspect);
+  c.style.height = (cssW * aspect) + 'px';
+}
+
+// Rebuild and re-render the comparison mini cards (used when the
+// layout changes).
+function rebuildMinis() {
+  if (cmpRunning) return;
+  cmpMinis = buildMinis();
+  cmpMinis.forEach(function(m) {
+    sizeMiniCanvas(m.canvas);
+    var layout = computeLayout(m.canvas);
+    drawCabin(m.ctx, layout, createSim(ORDER_FNS[m.key], 1), { compact: true });
+    m.seatedEl.textContent = '0/' + totalPax();
+  });
 }
 
 function renderRank(results) {
