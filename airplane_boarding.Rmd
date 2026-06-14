@@ -12,9 +12,9 @@ lang: "en"
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, results = "asis")
 ```
 
-How long does it really take to board a plane? It depends a lot on the order in which passengers walk down the aisle. This page simulates five popular boarding methods on a 30-row, single-aisle cabin (think 737 / A320) and compares how each one performs.
+How long does it really take to board a plane? It depends a lot on the order in which passengers walk down the aisle. This page simulates five popular boarding methods on a 30-row cabin and compares how each one performs.
 
-Pick a method below and hit **Start**. To race all five at once and see a ranked dashboard, scroll down to the **Comparison Mode** section.
+Pick a layout (narrow-body 3-3 like a 737/A320, or widebody 3-4-3 like a 777/787), pick a method below, and hit **Start**. To race all five at once and see a ranked dashboard, scroll down to the **Comparison Mode** section.
 
 ```{r boarding-shell, echo=FALSE}
 htmltools::HTML(readr::read_file("scripts/airplane_boarding/airplane_boarding.html"))
@@ -28,4 +28,4 @@ htmltools::HTML(readr::read_file("scripts/airplane_boarding/airplane_boarding.ht
 - **Reverse Pyramid** &mdash; diagonal waves from the rear-window corner toward the front-aisle corner. Aisle seats board last.
 - **Random** &mdash; same seat assignments, shuffled boarding order. Often beats Back-to-Front because passengers spread out naturally.
 
-The simulation models walking speed, luggage-stowing time (2&ndash;5 seconds), and aisle blocking when an upstream passenger is in the way. Blocked passengers turn yellow.
+The simulation models walking speed, luggage-stowing time (2&ndash;5 seconds), and aisle blocking when an upstream passenger is in the way. Blocked passengers turn yellow. In the widebody 3-4-3 layout the cabin has two parallel aisles, and passengers split between them based on which aisle is closest to their seat (the four-across middle block is split, with D and E using the upper aisle, F and G the lower).
