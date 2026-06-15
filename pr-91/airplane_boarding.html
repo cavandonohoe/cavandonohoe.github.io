@@ -596,10 +596,11 @@ $(document).ready(function () {
 the order in which passengers walk down the aisle. This page simulates
 five popular boarding methods on a 30-row cabin and compares how each
 one performs.</p>
-<p>Pick a layout (narrow-body 3-3 like a 737/A320, or widebody 3-4-3
-like a 777/787), pick a method below, and hit <strong>Start</strong>. To
-race all five at once and see a ranked dashboard, scroll down to the
-<strong>Comparison Mode</strong> section.</p>
+<p>Pick a layout (narrow-body 3-3 like a 737/A320, widebody 3-3-3 like a
+787, or widebody 3-4-3 like a 777), pick a method below, and hit
+<strong>Start</strong>. To race all five at once and see a ranked
+dashboard, scroll down to the <strong>Comparison Mode</strong>
+section.</p>
 <div id="ab-root">
   <style>
   #ab-root {
@@ -775,6 +776,7 @@ race all five at once and see a ranked dashboard, scroll down to the
       <label>Layout
         <select id="ab-layout">
           <option value="narrow" selected>Narrow-body (3-3)</option>
+          <option value="wide333">Widebody (3-3-3)</option>
           <option value="wide">Widebody (3-4-3)</option>
         </select>
       </label>
@@ -879,6 +881,11 @@ var LAYOUTS = {
     name: 'Narrow-body (3-3)',
     blocks: [3, 3],
     letters: ['A', 'B', 'C', 'D', 'E', 'F']
+  },
+  wide333: {
+    name: 'Widebody (3-3-3)',
+    blocks: [3, 3, 3],
+    letters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J']
   },
   wide: {
     name: 'Widebody (3-4-3)',
@@ -1984,10 +1991,12 @@ naturally.</li>
 </ul>
 <p>The simulation models walking speed, luggage-stowing time (2–5
 seconds), and aisle blocking when an upstream passenger is in the way.
-Blocked passengers turn yellow. In the widebody 3-4-3 layout the cabin
-has two parallel aisles, and passengers split between them based on
-which aisle is closest to their seat (the four-across middle block is
-split, with D and E using the upper aisle, F and G the lower).</p>
+Blocked passengers turn yellow. In the widebody layouts the cabin has
+two parallel aisles, and passengers split between them based on which
+aisle is closest to their seat: in 3-3-3 the middle block’s first two
+seats (D, E) use the upper aisle and the last seat (F) uses the lower;
+in 3-4-3 the four-across middle block splits with D and E using the
+upper aisle and F and G the lower.</p>
 </div>
 
 <link rel="stylesheet" href="/css/footer.css">
