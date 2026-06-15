@@ -1,6 +1,7 @@
 ---
-title: "Data Manipulation in R"
+title: "Lesson 3: Data Manipulation in R"
 author: "Cavan Donohoe"
+description: "Read data, then reshape it with the tidyverse: filter, select, mutate, group_by, summarise, and the pipe."
 output:
   html_document:
     toc: true
@@ -11,70 +12,388 @@ output:
 lang: "en"
 ---
 
+<link rel="stylesheet" href="/css/learn-r.css">
+
+<div class="course-progress">
+Lesson 3 of 7 · <a href="learn_r.html">Course overview</a>
+</div>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = "#>", message = FALSE, warning = FALSE)
+options(scipen = 999)
+```
+
 # Data Manipulation in R
 
-In this section, we will explore essential data manipulation tasks in R, including importing and exporting data, working with data frames, and performing data exploration.
+Most data analysis is the same six things, over and over: load data, filter rows, pick columns, derive new columns, group, summarise. The **tidyverse** is a family of R packages designed around these operations, and once you learn the vocabulary it becomes second-nature.
 
-## Importing and Exporting Data
+In this lesson we'll work with the built-in `mtcars` dataset (32 cars, fuel efficiency stats from a 1974 issue of *Motor Trend*). Tiny, but enough to show every concept.
 
-### Importing Data
+## Setup
 
-R provides various functions to import data from different file formats, such as CSV, Excel, and databases. Some common functions include:
+Install the tidyverse if you haven't already:
 
-- `read.csv()` for reading CSV files.
-- `read.xlsx()` for reading Excel files.
-- `readRDS()` for reading R data files.
-
-Here's an example of importing a CSV file:
-
-```R
-# Importing data from a CSV file
-data <- read.csv("data.csv")
+```{r eval=FALSE}
+install.packages("tidyverse")
 ```
 
-### Exporting Data
-To save your data or results, R offers functions like write.csv() for CSV files, write.xlsx() for Excel files, and saveRDS() for saving R data objects.
-
-```R
-# Exporting data to a CSV file
-write.csv(data, "output.csv")
-```
-
-## Data Frames and Data Exploration
-Data frames are a common data structure in R for storing tabular data. They are like spreadsheets with rows and columns, and each column can have a different data type. You can create, manipulate, and explore data frames in R.
+And load it:
 
 ```{r}
-# Creating a data frame
-df <- data.frame(
-  Name = c("Alice", "Bob", "Charlie"),
-  Age = c(25, 30, 22),
-  Score = c(95, 88, 75)
+library(dplyr)
+library(tidyr)
+library(readr)
+```
+
+We're loading three packages: `dplyr` (the manipulation verbs), `tidyr` (reshaping), and `readr` (fast CSV reading). `library(tidyverse)` would load all of these and a few more in one shot.
+
+<div class="callout callout-note">
+<div class="callout-title">📝 <code>library()</code> vs <code>::</code></div>
+You can also call any function with `package::function()` — e.g. `dplyr::filter(mtcars, mpg > 25)` — without ever calling `library()`. That's what production R code typically does, because it's explicit about where every function comes from. For learning, `library()` is fine and what most tutorials do.
+</div>
+
+## Reading data
+
+For most analyses you'll start with a CSV. `readr::read_csv()` reads a CSV into a tibble (a tidyverse-flavored data frame):
+
+```{r eval=FALSE}
+my_data <- read_csv("path/to/file.csv")
+```
+
+`read_csv()` accepts a URL too, which is great for tutorials and reproducible examples:
+
+```{r eval=FALSE}
+penguins <- read_csv(
+  "https://raw.githubusercontent.com/allisonhorst/palmerpenguins/main/inst/extdata/penguins.csv"
 )
-df
 ```
 
+For Excel files use `readxl::read_excel()`. For databases use `DBI` plus a driver package. For R's native binary format use `readRDS()` and `saveRDS()`.
 
-Data exploration involves understanding your data's characteristics, such as summary statistics, distribution, and relationships between variables. You can use functions like summary(), str(), and data visualization libraries like ggplot2 for this purpose.
-
+For this lesson we'll use the built-in `mtcars`. Let's convert it to a tibble and add a `model` column from the row names:
 
 ```{r}
-# Summary statistics
-summary(df)
-
-# Structure of the data frame
-str(df)
+cars <- mtcars |>
+  tibble::rownames_to_column("model") |>
+  tibble::as_tibble()
+cars
 ```
 
-In this section, we've covered the basics of importing and exporting data and introduced data frames and data exploration. These skills are crucial for working with real-world data and performing meaningful analyses.
+A **tibble** prints nicer than a base data frame (only the first 10 rows by default, with column types in the header) and is otherwise mostly the same thing.
 
-Feel free to practice these concepts with your own datasets to gain hands-on experience.
+## The pipe
 
+You just saw `|>`. That's R's **pipe operator**, and it's what makes tidyverse code readable. It takes the thing on its left and feeds it to the function on its right as the first argument:
 
-Free Lessons:
+```{r eval=FALSE}
+mean(c(1, 2, 3))
+# is equivalent to
+c(1, 2, 3) |> mean()
+```
 
-- [R Time Is Limited, Let's Make the Most of It](https://cavandonohoe.github.io/learn_r.html)
-- [Introduction to R](https://cavandonohoe.github.io/intro_to_r.html)
-- [Basic Operations in R](https://cavandonohoe.github.io/basic_operations_r.html)
-- [Data Manipulation](https://cavandonohoe.github.io/data_manipulation_r.html)
-- [Data Visualization](https://cavandonohoe.github.io/data_visualization_r.html)
-- [Statistics in R](https://cavandonohoe.github.io/statistics_with_r.html)
+By itself that's a wash. The win is when you chain operations:
+
+```{r eval=FALSE}
+# without the pipe — read inside-out:
+arrange(filter(select(cars, model, mpg, cyl), cyl == 4), desc(mpg))
+
+# with the pipe — read top-to-bottom:
+cars |>
+  select(model, mpg, cyl) |>
+  filter(cyl == 4) |>
+  arrange(desc(mpg))
+```
+
+The pipe version reads almost like English: "take cars, select these columns, filter to 4-cylinder cars, sort by mpg descending."
+
+<div class="callout callout-tip">
+<div class="callout-title">💡 The pipe shortcut</div>
+RStudio has a built-in shortcut for the pipe: <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd>. Use it. You'll type the pipe thousands of times.
+
+You may also see `%>%` in older code — that's the original pipe from the `magrittr` package. They're nearly equivalent; the new built-in `|>` is the modern default.
+</div>
+
+## The five core dplyr verbs
+
+These are the verbs you'll use 95% of the time. Each takes a data frame and returns a data frame.
+
+### `filter()` — keep rows
+
+```{r}
+cars |> filter(cyl == 6)
+cars |> filter(mpg > 25, hp < 100)
+cars |> filter(cyl == 4 | cyl == 6)
+```
+
+Multiple conditions separated by commas are combined with `&` (AND).
+
+### `select()` — pick columns
+
+```{r}
+cars |> select(model, mpg, cyl)
+cars |> select(-disp, -hp)              # drop columns
+cars |> select(model, mpg:hp)           # range
+cars |> select(starts_with("d"))        # by name pattern
+```
+
+### `mutate()` — create or change columns
+
+```{r}
+cars |>
+  mutate(
+    kpl = mpg * 0.425,                  # km per liter
+    weight_lbs = wt * 1000,
+    is_efficient = mpg > 25
+  ) |>
+  select(model, mpg, kpl, weight_lbs, is_efficient)
+```
+
+`mutate()` can use any R function — including ones you write yourself.
+
+### `arrange()` — sort rows
+
+```{r}
+cars |> arrange(mpg)              # ascending
+cars |> arrange(desc(mpg))        # descending
+cars |> arrange(cyl, desc(mpg))   # multi-key
+```
+
+### `summarise()` + `group_by()` — collapse rows
+
+`summarise()` reduces a data frame to a single row. By itself it's not that interesting:
+
+```{r}
+cars |> summarise(mean_mpg = mean(mpg), n = n())
+```
+
+But pair it with `group_by()` and you have a pivot table:
+
+```{r}
+cars |>
+  group_by(cyl) |>
+  summarise(
+    n = n(),
+    mean_mpg = mean(mpg),
+    sd_mpg = sd(mpg),
+    .groups = "drop"
+  )
+```
+
+This is one of the most-used patterns in all of data analysis. "For each group, compute X."
+
+You can group by multiple variables:
+
+```{r}
+cars |>
+  group_by(cyl, am) |>     # am: 0 = automatic, 1 = manual
+  summarise(mean_mpg = mean(mpg), n = n(), .groups = "drop")
+```
+
+## A recipe-style example
+
+Suppose you want to know: **for cars with more than 100 horsepower, what's the average MPG by number of cylinders, sorted from worst to best?**
+
+```{r}
+cars |>
+  filter(hp > 100) |>
+  group_by(cyl) |>
+  summarise(
+    mean_mpg = mean(mpg),
+    n = n(),
+    .groups = "drop"
+  ) |>
+  arrange(mean_mpg)
+```
+
+That's the whole answer in 6 lines. No loops, no manual indexing, no temp variables. This is why people like the tidyverse.
+
+## A few more useful verbs
+
+### `count()` — quick frequency table
+
+```{r}
+cars |> count(cyl)
+cars |> count(cyl, sort = TRUE)
+cars |> count(cyl, am)
+```
+
+### `case_when()` — multi-branch `if`
+
+Inside `mutate()`, `case_when()` is the right tool for "if-elseif-else" logic. Each `~` line is "condition ~ value":
+
+```{r}
+cars |>
+  mutate(
+    mpg_class = case_when(
+      mpg < 15  ~ "thirsty",
+      mpg < 22  ~ "average",
+      mpg < 28  ~ "good",
+      TRUE      ~ "great"
+    )
+  ) |>
+  count(mpg_class)
+```
+
+The final `TRUE ~ ...` is the catch-all "else."
+
+### `slice_*()` — top/bottom/random rows
+
+```{r}
+cars |> slice_max(mpg, n = 3)         # 3 highest mpg
+cars |> slice_min(hp, n = 3)          # 3 lowest hp
+cars |> slice_sample(n = 3)           # 3 random rows
+```
+
+### Joining tables
+
+When you have two related tables, `*_join()` combines them on a shared key:
+
+```{r}
+classes <- tibble::tibble(
+  cyl = c(4, 6, 8),
+  class = c("compact", "midsize", "muscle")
+)
+
+cars |>
+  select(model, cyl, mpg) |>
+  left_join(classes, by = "cyl") |>
+  head()
+```
+
+`left_join()` keeps every row from the left table and pulls in matching rows from the right. There's also `inner_join()`, `right_join()`, and `full_join()` for different behaviors when keys don't match on both sides.
+
+## Reshaping with `tidyr`
+
+Sometimes data comes in **wide** format (one column per category) when you need it **long** (one row per observation), or vice versa. `tidyr` has `pivot_longer()` and `pivot_wider()` for that.
+
+```{r}
+wide <- tibble::tibble(
+  city = c("LA", "NYC", "Chicago"),
+  jan = c(58, 32, 25),
+  jul = c(83, 78, 76)
+)
+wide
+
+long <- wide |>
+  pivot_longer(cols = c(jan, jul), names_to = "month", values_to = "temp_f")
+long
+
+long |> pivot_wider(names_from = month, values_from = temp_f)
+```
+
+`pivot_longer()` is the one you'll reach for most — most analysis, plotting, and modeling functions expect long data.
+
+## Putting it together
+
+Here's a more realistic mini-analysis. We'll classify cars by efficiency, count how many fall into each class by transmission type, and report it as a clean wide table.
+
+```{r}
+cars |>
+  mutate(
+    transmission = if_else(am == 1, "manual", "automatic"),
+    efficiency = case_when(
+      mpg < 18 ~ "low",
+      mpg < 24 ~ "medium",
+      TRUE     ~ "high"
+    )
+  ) |>
+  count(transmission, efficiency) |>
+  pivot_wider(names_from = efficiency, values_from = n, values_fill = 0)
+```
+
+The whole pipeline is one connected thought, and you can comment out any line to see the intermediate result.
+
+<div class="exercise">
+<div class="exercise-title">✏️ Exercise 3.1 — Filter and sort</div>
+
+Using `cars`, find the 5 cars with the worst MPG. Show only the `model`, `mpg`, and `hp` columns.
+
+<details>
+<summary>Show solution</summary>
+
+```{r}
+cars |>
+  arrange(mpg) |>
+  select(model, mpg, hp) |>
+  head(5)
+```
+
+Or with `slice_min`:
+
+```{r}
+cars |>
+  slice_min(mpg, n = 5) |>
+  select(model, mpg, hp)
+```
+
+</details>
+</div>
+
+<div class="exercise">
+<div class="exercise-title">✏️ Exercise 3.2 — Group and summarise</div>
+
+For each unique combination of cylinders (`cyl`) and gears (`gear`), compute:
+
+- the number of cars (`n`)
+- the mean MPG
+- the mean horsepower
+
+Sort the result with the highest mean MPG first.
+
+<details>
+<summary>Show solution</summary>
+
+```{r}
+cars |>
+  group_by(cyl, gear) |>
+  summarise(
+    n = n(),
+    mean_mpg = mean(mpg),
+    mean_hp = mean(hp),
+    .groups = "drop"
+  ) |>
+  arrange(desc(mean_mpg))
+```
+
+</details>
+</div>
+
+<div class="exercise">
+<div class="exercise-title">✏️ Exercise 3.3 — Build a feature</div>
+
+Add two new columns to `cars`:
+
+1. `power_to_weight` — horsepower per 1000 lbs (i.e. `hp / wt`).
+2. `category` — `"sporty"` if `power_to_weight > 50`, otherwise `"normal"`.
+
+Then count the cars in each category.
+
+<details>
+<summary>Show solution</summary>
+
+```{r}
+cars |>
+  mutate(
+    power_to_weight = hp / wt,
+    category = if_else(power_to_weight > 50, "sporty", "normal")
+  ) |>
+  count(category)
+```
+
+</details>
+</div>
+
+## What's next
+
+You now have the toolkit to load, clean, and summarise data — easily 60% of any real analysis. Next up: making the results visible. Lesson 4 is about plotting with `ggplot2`, which pairs cleanly with everything you just learned.
+
+<div class="lesson-nav">
+  <a class="nav-prev" href="basic_operations_r.html">
+    <span class="lesson-nav-label">← Previous</span>
+    <span class="lesson-nav-title">Lesson 2: Basic Operations</span>
+  </a>
+  <a class="nav-next" href="data_visualization_r.html">
+    <span class="lesson-nav-label">Next →</span>
+    <span class="lesson-nav-title">Lesson 4: Data Visualization</span>
+  </a>
+</div>

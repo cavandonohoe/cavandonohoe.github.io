@@ -1,0 +1,297 @@
+---
+title: "Lesson 7: Capstone Project"
+author: "Cavan Donohoe"
+description: "Put it all together: explore a real dataset, model it, and write up a short report — start to finish."
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+lang: "en"
+---
+
+<link rel="stylesheet" href="/css/learn-r.css">
+
+<div class="course-progress">
+Lesson 7 of 7 · <a href="learn_r.html">Course overview</a>
+</div>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  message = FALSE,
+  warning = FALSE,
+  fig.width = 6.5,
+  fig.height = 4.2,
+  dpi = 100
+)
+options(scipen = 999, digits = 4)
+```
+
+# Capstone: A Real Analysis, Start to Finish
+
+Time to put it all together. We'll walk through a complete mini-analysis — the kind of thing you might do as a first pass on a real-world dataset. Every step uses something from a previous lesson:
+
+- **Lesson 1:** install packages, run a script.
+- **Lesson 2:** vectors, types, missing values.
+- **Lesson 3:** load and reshape data with the tidyverse.
+- **Lesson 4:** plot with ggplot2.
+- **Lesson 5:** descriptive stats, t-test, regression.
+- **Lesson 6:** wrap it up as an R Markdown report.
+
+The dataset is `airquality` — a built-in R dataset of daily air-quality measurements from New York City, May–September 1973. It's small (153 days), it has missing values, and it has both numeric and categorical variables. Realistic enough to be useful, small enough to fit on this page.
+
+## The question
+
+> **Does ozone concentration in NYC depend on temperature, and if so, how much?**
+
+That gives us a clear target variable (ozone), a candidate predictor (temperature), and a real comparison to make. Along the way we'll also peek at how ozone varies by month.
+
+## Step 1 — Load the data
+
+`airquality` is built into R, so no download needed. Let's get a clean tibble with proper dates.
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+aq <- airquality |>
+  tibble::as_tibble() |>
+  mutate(
+    date = as.Date(paste("1973", Month, Day, sep = "-")),
+    Month = factor(Month,
+      levels = 5:9,
+      labels = c("May", "Jun", "Jul", "Aug", "Sep")
+    )
+  )
+
+aq
+```
+
+Two real-world things just happened:
+
+- We built a proper `date` column from the `Year`/`Month`/`Day` parts using `as.Date()` and `paste()`.
+- We turned `Month` into a factor with sensible labels, so plots and tables show "Jul" instead of `7`.
+
+## Step 2 — Look at the shape of the data
+
+Always start with `summary()` and a count of missing values:
+
+```{r}
+summary(aq)
+
+aq |>
+  summarise(across(everything(), ~ sum(is.na(.x))))
+```
+
+Two things jump out:
+
+- `Ozone` has 37 missing values out of 153 days (about 24%).
+- `Solar.R` has a few missing too. Temperature and wind are complete.
+
+Missing data isn't necessarily a problem — but you have to know it's there. R's modeling functions handle `NA` differently depending on the function, and most plots silently drop missing rows.
+
+## Step 3 — Visual exploration
+
+Before fitting any model, *look* at the data. A scatterplot of ozone vs. temperature, colored by month:
+
+```{r}
+ggplot(aq, aes(x = Temp, y = Ozone, color = Month)) +
+  geom_point(size = 2.5, alpha = 0.85) +
+  geom_smooth(method = "lm", se = FALSE, color = "black", linewidth = 0.7) +
+  labs(
+    title = "Ozone concentration vs. temperature, NYC 1973",
+    x = "Daily max temperature (°F)",
+    y = "Ozone (ppb)",
+    color = "Month",
+    caption = "Source: New York State Department of Conservation, via R's airquality dataset."
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(plot.caption = element_text(color = "grey50", hjust = 0))
+```
+
+Two observations from this plot alone:
+
+1. **Ozone clearly increases with temperature** — and it's not linear. The relationship looks like a curve, accelerating at higher temperatures.
+2. **The high-ozone days happen mostly in July and August**, which makes sense because those are the hottest months.
+
+Let's also look at ozone by month directly:
+
+```{r}
+ggplot(aq, aes(x = Month, y = Ozone, fill = Month)) +
+  geom_boxplot() +
+  labs(
+    title = "Ozone by month, NYC 1973",
+    x = NULL, y = "Ozone (ppb)"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+July and August are noticeably higher and have a wider spread.
+
+## Step 4 — Descriptive statistics
+
+```{r}
+aq |>
+  group_by(Month) |>
+  summarise(
+    n = n(),
+    n_missing = sum(is.na(Ozone)),
+    mean_ozone = mean(Ozone, na.rm = TRUE),
+    median_ozone = median(Ozone, na.rm = TRUE),
+    sd_ozone = sd(Ozone, na.rm = TRUE),
+    .groups = "drop"
+  )
+```
+
+July and August have mean ozone roughly 2× the May/September values. May has the most missing days (probably equipment ramp-up at the start of the season, but we'd want to ask).
+
+## Step 5 — Quantify it: a t-test
+
+Are July ozone levels different from September? Quick t-test:
+
+```{r}
+jul_sep <- aq |> filter(Month %in% c("Jul", "Sep"))
+t.test(Ozone ~ Month, data = jul_sep)
+```
+
+The mean July ozone is about 50 ppb higher than September, with a tight 95% CI. The p-value is tiny — well below any reasonable threshold for "different."
+
+## Step 6 — Build a model
+
+Linear regression: predict ozone from temperature. Because the relationship in the scatterplot looked curved, let's fit two models and compare.
+
+```{r}
+fit_linear <- lm(Ozone ~ Temp, data = aq)
+fit_quadratic <- lm(Ozone ~ Temp + I(Temp^2), data = aq)
+
+summary(fit_linear)
+summary(fit_quadratic)
+```
+
+The quadratic model has a noticeably higher R-squared and a significant `I(Temp^2)` coefficient, confirming what the scatterplot suggested: ozone grows *faster than linearly* with temperature.
+
+Compare the two models formally:
+
+```{r}
+anova(fit_linear, fit_quadratic)
+```
+
+Tiny p-value — the quadratic term is pulling weight. Use the quadratic model.
+
+## Step 7 — Diagnostics
+
+Before trusting the model, check the standard diagnostic plots:
+
+```{r fig.width=7, fig.height=5}
+par(mfrow = c(2, 2))
+plot(fit_quadratic)
+par(mfrow = c(1, 1))
+```
+
+Things to notice:
+
+- **Residuals vs. Fitted** — mostly flat with no obvious pattern, good sign.
+- **Q-Q plot** — close to the diagonal in the middle but the tails depart, especially the upper tail. The model under-predicts the worst ozone days. That's worth flagging.
+- **Scale-Location** — variance increases with fitted value (heteroscedasticity). A log transform of `Ozone` would probably help.
+
+A quick sanity-check fit on the log scale:
+
+```{r}
+fit_log <- lm(log(Ozone) ~ Temp, data = aq)
+summary(fit_log)
+```
+
+Better — R-squared bumps up, and on the log scale a single linear term captures most of what the quadratic was doing on the original scale. The coefficient `Temp = `r round(coef(fit_log)["Temp"], 4)`` means each 1°F increase in temperature is associated with roughly a `r round(100 * (exp(coef(fit_log)["Temp"]) - 1), 1)`% increase in ozone.
+
+## Step 8 — Predictions
+
+What ozone level does the log-scale model predict for a hypothetical 90°F day?
+
+```{r}
+pred <- predict(
+  fit_log,
+  newdata = tibble::tibble(Temp = 90),
+  interval = "prediction"
+)
+exp(pred)
+```
+
+About `r round(exp(predict(fit_log, newdata = tibble::tibble(Temp = 90))), 0)` ppb, with a wide prediction interval — single-day variation is genuinely large.
+
+Visualize the fitted relationship on the original scale:
+
+```{r}
+grid <- tibble::tibble(Temp = seq(min(aq$Temp), max(aq$Temp), length.out = 100))
+grid$pred_log <- predict(fit_log, newdata = grid)
+grid$pred <- exp(grid$pred_log)
+
+ggplot(aq, aes(x = Temp, y = Ozone)) +
+  geom_point(alpha = 0.6, size = 2) +
+  geom_line(data = grid, aes(y = pred), color = "steelblue", linewidth = 1.1) +
+  labs(
+    title = "Ozone vs. temperature, with log-linear fit",
+    x = "Daily max temperature (°F)",
+    y = "Ozone (ppb)"
+  ) +
+  theme_minimal(base_size = 12)
+```
+
+## Step 9 — Write it up
+
+This is what would go in a one-paragraph "results" section of a report:
+
+> Daily ozone concentration in New York City in summer 1973 increased sharply with temperature. A simple linear regression of ozone on temperature explained roughly `r round(100 * summary(fit_linear)$r.squared, 0)`% of the variation; allowing for a quadratic term, or equivalently fitting on the log scale, raised that to about `r round(100 * summary(fit_log)$r.squared, 0)`%. The log-scale model implies each additional 1°F is associated with roughly a `r round(100 * (exp(coef(fit_log)["Temp"]) - 1), 1)`% increase in ozone, with substantial day-to-day variation around that trend. July and August had mean ozone roughly twice as high as May and September.
+
+That's a real result, expressed in plain language, with the numbers tied directly back to the analysis. If the data updated, every number would update too.
+
+## Step 10 — Make it a report
+
+Wrap the whole thing in an R Markdown file. Save the chunks above into a single `.Rmd`, add a YAML header, and knit. Now you have a self-contained, runnable, shareable analysis.
+
+````
+---
+title: "NYC Ozone vs. Temperature, Summer 1973"
+author: "Your Name"
+date: "`r '\x60r Sys.Date()\x60'`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: show
+---
+````
+
+## Where to go from here
+
+If you got this far, you can do real work in R. Some good next steps:
+
+- **Pick a real dataset.** Kaggle, the [tidytuesday](https://github.com/rfordatascience/tidytuesday) project, [data.gov](https://www.data.gov/), or your own work. Apply the same workflow.
+- **Read [R for Data Science](https://r4ds.hadley.nz/).** It's free online and is the standard intro to the tidyverse. It overlaps with this course but goes much deeper.
+- **Learn one new package per week for a month.** Some good first additions: `lubridate` (dates), `stringr` (strings), `forcats` (factors), `broom` (tidying model output), `gt` or `kableExtra` (publication-quality tables), `plotly` (interactive plots).
+- **Switch to Quarto.** [Quarto](https://quarto.org/) is the modern successor to R Markdown. The mental model is identical and it has nicer defaults.
+- **Try Shiny.** [Shiny](https://shiny.posit.co/) lets you turn your analysis into an interactive web app. Surprisingly easy.
+- **Practice writing functions.** Anything you find yourself doing twice, wrap in a function. Anything you do across multiple projects, put in a small package — `usethis::create_package()` is a one-liner.
+
+The R community is friendly and active — questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/r) and the [Posit Community forum](https://forum.posit.co/) usually get good answers within hours, especially if you include a small reproducible example.
+
+## Thank you
+
+Thanks for working through the course. If anything was unclear, broken, or could be better, email me at **cavandonohoe@gmail.com** or open an issue on [GitHub](https://github.com/cavandonohoe/cavandonohoe.github.io). Real feedback makes this a lot better for the next person.
+
+Now go make something with it.
+
+<div class="lesson-nav">
+  <a class="nav-prev" href="rmarkdown_r.html">
+    <span class="lesson-nav-label">← Previous</span>
+    <span class="lesson-nav-title">Lesson 6: Reproducible Reports</span>
+  </a>
+  <a class="nav-next" href="learn_r.html">
+    <span class="lesson-nav-label">↑ Back to overview</span>
+    <span class="lesson-nav-title">Course Overview</span>
+  </a>
+</div>

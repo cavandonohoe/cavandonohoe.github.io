@@ -69,18 +69,24 @@ navbar:
         href: sp500.html
       - text: "Covid Cases: Then & Now"
         href: covid_cases_nostalgia.html
-      - text: "Learn R"
-        menu:
-        - text: "R Time Is Limited, Let's Make the Most of It"
-          href: learn_r.html
-        - text: "Intro to R"
-          href: intro_to_r.html
-        - text: "Basic Operations"
-          href: basic_operations_r.html
-        - text: "Data Manipulations"
-          href: data_manipulation_r.html
-        - text: "Data Visualization"
-          href: data_visualization_r.html
-        - text: "Statistics with R"
-          href: statistics_with_r.html
+    - text: "Learn R"
+      icon: fa-graduation-cap
+      menu:
+      - text: "Course Overview"
+        href: learn_r.html
+      - text: "--- Lessons ---"
+      - text: "1. Introduction to R"
+        href: intro_to_r.html
+      - text: "2. Basic Operations"
+        href: basic_operations_r.html
+      - text: "3. Data Manipulation"
+        href: data_manipulation_r.html
+      - text: "4. Data Visualization"
+        href: data_visualization_r.html
+      - text: "5. Statistics with R"
+        href: statistics_with_r.html
+      - text: "6. Reproducible Reports with R Markdown"
+        href: rmarkdown_r.html
+      - text: "7. Capstone Project"
+        href: capstone_r.html
     
