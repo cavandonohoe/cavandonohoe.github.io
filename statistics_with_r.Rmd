@@ -1,6 +1,7 @@
 ---
-title: "Statistics with R"
+title: "Lesson 5: Statistics with R"
 author: "Cavan Donohoe"
+description: "Descriptive statistics, t-tests, correlation, and linear regression — with diagnostics and predictions."
 output:
   html_document:
     toc: true
@@ -11,70 +12,378 @@ output:
 lang: "en"
 ---
 
+<link rel="stylesheet" href="/css/learn-r.css">
+
+<div class="course-progress">
+Lesson 5 of 7 · <a href="learn_r.html">Course overview</a>
+</div>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  message = FALSE,
+  warning = FALSE,
+  fig.width = 6.5,
+  fig.height = 4.2,
+  dpi = 100
+)
+options(scipen = 999, digits = 4)
+```
+
 # Statistics with R
 
-In this section, we will explore statistical analysis in R, covering descriptive statistics, hypothesis testing, and regression analysis.
+R was built by statisticians, so the basic statistics tools are right there in the base language. This lesson covers the four things you'll do most often:
 
-## Descriptive Statistics
+1. Descriptive statistics — summarising one variable.
+2. Comparing two groups — the t-test.
+3. Measuring association — correlation.
+4. Modeling — linear regression, with diagnostics and predictions.
 
-Descriptive statistics help you summarize and understand your data. Common descriptive statistics include measures of central tendency (mean, median, mode), measures of spread (variance, standard deviation, range), and graphical representations (histograms, box plots).
+We'll keep using `mtcars` so you can compare the numbers to the plots from Lesson 4.
 
-```{r}
-# Descriptive statistics example
-data <- c(12, 15, 18, 22, 25, 28, 31)
-
-# Mean and median
-mean_data <- mean(data)
-mean_data
-
-median_data <- median(data)
-median_data
-
-# Variance and standard deviation
-variance_data <- var(data)
-variance_data
-
-sd_data <- sd(data)
-sd_data
-
-# Histogram
-hist(data, main = "Histogram of Data", xlab = "Value", ylab = "Frequency")
-```
-
-## Hypothesis Testing
-Hypothesis testing is a crucial statistical technique to make inferences about populations based on sample data. In R, you can perform hypothesis tests for means, proportions, variances, and more. Here's an example of a t-test for comparing two sample means:
+## Setup
 
 ```{r}
-# Hypothesis testing example (t-test)
-group1 <- c(10, 12, 14, 16, 18)
-group2 <- c(14, 15, 16, 17, 18)
+library(dplyr)
+library(ggplot2)
 
-t_test_result <- t.test(group1, group2)
-t_test_result
+cars <- mtcars |>
+  tibble::rownames_to_column("model") |>
+  tibble::as_tibble()
 ```
 
-## Regression Analysis
-Regression analysis helps you model and analyze relationships between variables. You can perform linear regression, logistic regression, and other types of regression analysis in R. Here's a simple linear regression example:
+## Descriptive statistics
+
+The most common single-variable summaries:
 
 ```{r}
-# Linear regression example
-x <- c(1, 2, 3, 4, 5)
-y <- c(2, 4, 5, 4, 6)
-
-linear_model <- lm(y ~ x)
-summary(linear_model)
+mean(cars$mpg)
+median(cars$mpg)
+sd(cars$mpg)              # standard deviation
+var(cars$mpg)             # variance
+min(cars$mpg)
+max(cars$mpg)
+range(cars$mpg)
+quantile(cars$mpg, probs = c(0.25, 0.5, 0.75))
+IQR(cars$mpg)
 ```
 
-In this section, we've covered the essentials of statistical analysis in R, including descriptive statistics, hypothesis testing, and regression analysis. These statistical tools are invaluable for drawing insights and making data-driven decisions.
+`summary()` prints a quick five-number summary plus the mean — handy for a first look at any variable or data frame:
 
-Feel free to explore more advanced statistical techniques and datasets to deepen your understanding of statistics with R.
+```{r}
+summary(cars$mpg)
+summary(cars)
+```
 
+For grouped summaries, use `dplyr` from Lesson 3:
 
-Free Lessons:
+```{r}
+cars |>
+  group_by(cyl) |>
+  summarise(
+    n = n(),
+    mean_mpg = mean(mpg),
+    sd_mpg = sd(mpg),
+    median_mpg = median(mpg),
+    .groups = "drop"
+  )
+```
 
-- [R Time Is Limited, Let's Make the Most of It](https://cavandonohoe.github.io/learn_r.html)
-- [Introduction to R](https://cavandonohoe.github.io/intro_to_r.html)
-- [Basic Operations in R](https://cavandonohoe.github.io/basic_operations_r.html)
-- [Data Manipulation](https://cavandonohoe.github.io/data_manipulation_r.html)
-- [Data Visualization](https://cavandonohoe.github.io/data_visualization_r.html)
-- [Statistics in R](https://cavandonohoe.github.io/statistics_with_r.html)
+<div class="callout callout-tip">
+<div class="callout-title">💡 Always look before you test</div>
+Before running a t-test or fitting a model, make a plot. A boxplot or histogram will tell you in three seconds whether the assumptions you're about to make (normality, equal variance, no crazy outliers) are even close to true.
+</div>
+
+## Comparing two groups: the t-test
+
+A t-test answers: "Are the means of two groups different by more than I'd expect from random sampling?"
+
+Question: do manual cars get better gas mileage than automatic cars on average?
+
+```{r fig.height=3.5}
+ggplot(cars, aes(x = factor(am, labels = c("automatic", "manual")), y = mpg)) +
+  geom_boxplot(fill = "lightsteelblue") +
+  labs(x = "Transmission", y = "MPG", title = "MPG by transmission type") +
+  theme_minimal()
+```
+
+The boxplot suggests yes. Let's quantify it:
+
+```{r}
+t_result <- t.test(mpg ~ am, data = cars)
+t_result
+```
+
+How to read the output:
+
+- **`t = -3.77`** — the test statistic. Bigger absolute value = stronger evidence the means differ.
+- **`df`** — degrees of freedom (Welch's t-test uses fractional df, that's fine).
+- **`p-value = 0.001374`** — probability of seeing a difference this large (or larger) if the true means were actually equal. By the conventional cutoff of 0.05, this is "significant."
+- **`95 percent confidence interval: -11.28, -3.21`** — we're 95% confident the true difference (automatic minus manual) is between about -11 and -3 MPG.
+- **`mean in group 0 = 17.15, mean in group 1 = 24.39`** — the actual group means.
+
+So manual cars in this dataset get around **7 MPG more** than automatic cars on average, and the difference is statistically significant.
+
+You can pull individual pieces out programmatically:
+
+```{r}
+t_result$p.value
+t_result$conf.int
+t_result$estimate
+```
+
+<div class="callout callout-warning">
+<div class="callout-title">⚠️ "Significant" doesn't mean "important"</div>
+A tiny effect with a huge sample will be "statistically significant." A huge effect with a small sample may not be. Always look at the confidence interval and the effect size, not just the p-value.
+
+Also: this comparison ignores that manuals tend to be in different cars than automatics (lighter, fewer cylinders, etc.). The honest answer to "does transmission cause better MPG" requires a model that controls for those things — that's what regression is for.
+</div>
+
+## Measuring association: correlation
+
+Correlation measures how strongly two numeric variables move together, on a scale of -1 to 1.
+
+```{r}
+cor(cars$wt, cars$mpg)
+```
+
+A correlation of about -0.87: strong negative association. As weight goes up, MPG goes down.
+
+`cor.test()` adds a hypothesis test (is the correlation different from zero?) and a confidence interval:
+
+```{r}
+cor.test(cars$wt, cars$mpg)
+```
+
+For a whole correlation matrix:
+
+```{r}
+cars |>
+  select(mpg, hp, wt, drat, qsec) |>
+  cor() |>
+  round(2)
+```
+
+## Linear regression
+
+Regression is the workhorse of applied statistics. The basic question: "How does the response variable change as the predictors change?"
+
+### A simple regression
+
+Predict MPG from weight:
+
+```{r}
+fit1 <- lm(mpg ~ wt, data = cars)
+fit1
+```
+
+The formula `mpg ~ wt` reads as "model `mpg` as a function of `wt`." `lm()` returns a fitted model object — print it for a quick look, `summary()` for the full output:
+
+```{r}
+summary(fit1)
+```
+
+What's important here:
+
+- **Coefficients:** `wt = -5.34` means each additional 1000 lbs of weight is associated with a **5.34-MPG decrease**, on average.
+- **`Pr(>|t|)` for `wt`:** the p-value for "is this coefficient different from 0?" Tiny — yes.
+- **R-squared = 0.75:** 75% of the variation in MPG is explained by weight alone.
+- **Residual standard error:** typical prediction error in MPG units.
+
+### A multiple regression
+
+Add more predictors with `+`:
+
+```{r}
+fit2 <- lm(mpg ~ wt + hp + factor(cyl), data = cars)
+summary(fit2)
+```
+
+Now we're estimating the effect of weight **after controlling for** horsepower and cylinder count.
+
+`factor(cyl)` tells R to treat `cyl` as a categorical variable rather than a number. The output gives you the difference between each level and a reference level (here, 4-cylinder).
+
+### Comparing models
+
+`anova()` tests whether the bigger model is significantly better than the smaller one:
+
+```{r}
+anova(fit1, fit2)
+```
+
+A small p-value means the extra predictors are pulling weight (so to speak).
+
+`AIC()` and `BIC()` are alternative model-comparison metrics — lower is better:
+
+```{r}
+AIC(fit1, fit2)
+```
+
+### Diagnostics
+
+Before trusting a regression, look at the diagnostic plots. R's built-in `plot()` on a model gives you four:
+
+```{r fig.width=7, fig.height=5}
+par(mfrow = c(2, 2))
+plot(fit1)
+par(mfrow = c(1, 1))
+```
+
+What you're looking for:
+
+- **Residuals vs. Fitted** — should look like a flat blob with no pattern. A curve suggests you're missing nonlinearity.
+- **Q-Q Residuals** — should hug the diagonal line. Big departures = non-normal residuals.
+- **Scale-Location** — should be roughly flat. A trend means the variance changes with the fitted value (heteroscedasticity).
+- **Residuals vs. Leverage** — points with high Cook's distance (top-right or bottom-right corners, past the dashed lines) are unusually influential. Investigate those rows.
+
+### Predictions
+
+Once you have a model, you can predict new values:
+
+```{r}
+new_cars <- tibble::tibble(wt = c(2.0, 3.5, 5.0))
+predict(fit1, newdata = new_cars)
+```
+
+Add a confidence interval for the *mean* response:
+
+```{r}
+predict(fit1, newdata = new_cars, interval = "confidence")
+```
+
+Or a prediction interval for a *single new observation* (wider, because individual cars vary):
+
+```{r}
+predict(fit1, newdata = new_cars, interval = "prediction")
+```
+
+### Visualizing the fit
+
+A simple regression line is one geom away in ggplot:
+
+```{r fig.height=3.8}
+ggplot(cars, aes(x = wt, y = mpg)) +
+  geom_point(size = 2.5, alpha = 0.8) +
+  geom_smooth(method = "lm", se = TRUE, color = "steelblue") +
+  labs(
+    title = "MPG vs. Weight, with linear fit and 95% CI",
+    x = "Weight (1000 lbs)", y = "MPG"
+  ) +
+  theme_minimal()
+```
+
+`geom_smooth(method = "lm")` is fitting the same model as `lm(mpg ~ wt)` under the hood and shading the confidence band.
+
+## A few other tests worth knowing
+
+- `wilcox.test()` — non-parametric alternative to the t-test (for non-normal data).
+- `chisq.test()` — chi-square test for independence between two categorical variables.
+- `prop.test()` — comparing proportions across groups.
+- `aov()` — ANOVA, for comparing means across more than two groups.
+- `glm(..., family = binomial)` — logistic regression, for binary outcomes.
+
+The pattern is the same across all of them: a formula, a data argument, a summary or print of the result.
+
+## Putting it together
+
+A complete mini-analysis: is MPG associated with weight, controlling for horsepower? Report the model, check assumptions, and predict MPG for a hypothetical new car.
+
+```{r}
+fit <- lm(mpg ~ wt + hp, data = cars)
+summary(fit)
+```
+
+Coefficient interpretations: holding horsepower constant, each additional 1000 lbs of weight is associated with a `r round(coef(fit)["wt"], 2)`-MPG decrease. Holding weight constant, each additional horsepower is associated with a `r round(coef(fit)["hp"], 4)`-MPG decrease.
+
+Quick diagnostic look:
+
+```{r fig.width=7, fig.height=3.5}
+par(mfrow = c(1, 2))
+plot(fit, which = c(1, 2))
+par(mfrow = c(1, 1))
+```
+
+Predict MPG for a 3500-lb car with 130 hp:
+
+```{r}
+predict(fit, newdata = tibble::tibble(wt = 3.5, hp = 130), interval = "prediction")
+```
+
+That's a complete (if minimal) regression analysis: fit, interpret, diagnose, predict.
+
+<div class="exercise">
+<div class="exercise-title">✏️ Exercise 5.1 — Descriptive stats</div>
+
+Compute the mean, median, standard deviation, and IQR of `cars$hp`. Are the mean and median similar? What does that tell you about the distribution?
+
+<details>
+<summary>Show solution</summary>
+
+```{r}
+mean(cars$hp)
+median(cars$hp)
+sd(cars$hp)
+IQR(cars$hp)
+```
+
+The mean is noticeably higher than the median, which means the distribution is right-skewed — there are a few high-horsepower outliers pulling the mean up. A boxplot or histogram would confirm.
+
+```{r fig.height=3}
+ggplot(cars, aes(x = hp)) +
+  geom_histogram(bins = 12, fill = "steelblue", color = "white") +
+  theme_minimal()
+```
+
+</details>
+</div>
+
+<div class="exercise">
+<div class="exercise-title">✏️ Exercise 5.2 — A t-test</div>
+
+Test whether 4-cylinder cars have a different mean MPG than 8-cylinder cars. Report the p-value, the 95% CI, and a one-sentence interpretation.
+
+<details>
+<summary>Show solution</summary>
+
+```{r}
+sub <- cars |> filter(cyl %in% c(4, 8))
+t.test(mpg ~ cyl, data = sub)
+```
+
+The mean MPG of 4-cylinder cars is roughly 11 MPG higher than 8-cylinder cars (95% CI ~9 to 13), and the p-value is tiny — the difference is far more than chance.
+
+</details>
+</div>
+
+<div class="exercise">
+<div class="exercise-title">✏️ Exercise 5.3 — A regression</div>
+
+Fit a model that predicts MPG from weight, horsepower, and cylinder count (treat `cyl` as a factor). Which coefficients are statistically significant? What's the R-squared?
+
+<details>
+<summary>Show solution</summary>
+
+```{r}
+fit <- lm(mpg ~ wt + hp + factor(cyl), data = cars)
+summary(fit)
+```
+
+`wt` has a clearly significant negative coefficient. `hp` and the cylinder-count contrasts get smaller and may no longer be significant once weight is in the model — they're correlated with weight (heavier cars tend to have more cylinders and more horsepower), so a lot of the "effect" of cylinders is really just weight. Adjusted R-squared should be around 0.83.
+
+</details>
+</div>
+
+## What's next
+
+You can now load data, manipulate it, plot it, and run real statistical analyses on it. The last two lessons stop adding new tools and start showing how to **package up an analysis** so someone else (or future-you) can run it again. Lesson 6 is R Markdown — the document format this whole course is written in.
+
+<div class="lesson-nav">
+  <a class="nav-prev" href="data_visualization_r.html">
+    <span class="lesson-nav-label">← Previous</span>
+    <span class="lesson-nav-title">Lesson 4: Data Visualization</span>
+  </a>
+  <a class="nav-next" href="rmarkdown_r.html">
+    <span class="lesson-nav-label">Next →</span>
+    <span class="lesson-nav-title">Lesson 6: Reproducible Reports</span>
+  </a>
+</div>

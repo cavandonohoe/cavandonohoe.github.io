@@ -1,0 +1,326 @@
+---
+title: "Lesson 6: Reproducible Reports with R Markdown"
+author: "Cavan Donohoe"
+description: "Write code and prose together, knit to HTML or PDF, and share something a colleague can rerun."
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+lang: "en"
+---
+
+<link rel="stylesheet" href="/css/learn-r.css">
+
+<div class="course-progress">
+Lesson 6 of 7 · <a href="learn_r.html">Course overview</a>
+</div>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = "#>", message = FALSE, warning = FALSE)
+```
+
+# Reproducible Reports with R Markdown
+
+R Markdown is how R programmers write reports. You combine narrative prose, R code, and the *output* of that code (tables, plots, model summaries) into a single document. When you "knit" it, R runs all the code from scratch and produces an HTML, PDF, or Word file.
+
+Every lesson in this course was written in R Markdown. So is the page you're reading.
+
+The big win: **the report is the source of truth**. There's no copy-pasting numbers from R into Word, no screenshots of plots that you forgot to update. You change the data or the code, you re-knit, and everything updates.
+
+## The anatomy of an Rmd file
+
+An R Markdown file (`.Rmd`) has three kinds of content:
+
+1. A **YAML header** at the top, between `---` lines, that controls metadata (title, author, output format).
+2. **Markdown prose** — same as on GitHub, headings with `#`, lists with `-`, links with `[text](url)`.
+3. **Code chunks** — R code in fenced blocks, marked with `` ```{r} ``.
+
+A minimal example:
+
+````
+---
+title: "My First Report"
+author: "Your Name"
+output: html_document
+---
+
+## Setup
+
+```{r}`r ''`
+library(dplyr)
+```
+
+The mtcars dataset has `r '\x60r nrow(mtcars)\x60'` rows.
+
+```{r}`r ''`
+mtcars |> count(cyl)
+```
+````
+
+When you knit that, R runs the code chunks, captures their output, splices in the inline values (the <code>&#96;r nrow(mtcars)&#96;</code> syntax inside the prose), and renders the whole thing into HTML.
+
+## Creating an Rmd in RStudio
+
+In RStudio, **File → New File → R Markdown…** opens a dialog. Pick a title, an output format (HTML is the default), and click OK. RStudio creates a template you can knit immediately by clicking the **Knit** button in the toolbar (or pressing <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>K</kbd>).
+
+The first time you knit, it will install whatever packages are missing. Be patient.
+
+## Code chunks
+
+A code chunk looks like this in your `.Rmd` source:
+
+````
+```{r}`r ''`
+library(dplyr)
+mtcars |> count(cyl)
+```
+````
+
+The `{r}` says "this is R" — there are also chunks for Python, SQL, and a few other languages, but you'll mostly use R.
+
+Inside the curly braces you can pass **chunk options** that control how the chunk behaves:
+
+````
+```{r my-chunk-name, echo=FALSE, fig.width=8}`r ''`
+plot(mtcars$wt, mtcars$mpg)
+```
+````
+
+The most useful chunk options:
+
+| Option | What it does |
+|--------|--------------|
+| `echo = FALSE` | Hide the code, show the output (good for figures in a report) |
+| `eval = FALSE` | Show the code but don't run it (good for "here's how you'd do it" examples) |
+| `include = FALSE` | Run the code, but show nothing (good for setup chunks) |
+| `message = FALSE` | Suppress package startup messages |
+| `warning = FALSE` | Suppress warnings |
+| `fig.width`, `fig.height` | Set the size of any plots produced |
+| `cache = TRUE` | Cache the chunk's results to disk; only re-run if the code changes |
+
+You can set defaults for the whole document in a setup chunk near the top:
+
+````
+```{r setup, include=FALSE}`r ''`
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  fig.width = 7,
+  fig.height = 4
+)
+```
+````
+
+## Inline R
+
+The <code>&#96;r nrow(mtcars)&#96;</code> syntax inside the prose runs an R expression and splices the result into the text. It's how you keep numbers in your prose in sync with the data:
+
+```
+The dataset has `r '\x60r nrow(mtcars)\x60'` rows and
+`r '\x60r ncol(mtcars)\x60'` columns. The mean MPG is
+`r '\x60r round(mean(mtcars$mpg), 1)\x60'`.
+```
+
+When this knits, it produces:
+
+> The dataset has `r nrow(mtcars)` rows and `r ncol(mtcars)` columns. The mean MPG is `r round(mean(mtcars$mpg), 1)`.
+
+If the data changes, the numbers change. No manual edits.
+
+## Output formats
+
+The `output:` line in the YAML header picks the format. Common ones:
+
+```yaml
+output: html_document
+```
+
+```yaml
+output: pdf_document    # requires LaTeX (TinyTeX is easiest: tinytex::install_tinytex())
+```
+
+```yaml
+output: word_document
+```
+
+You can also customize the HTML output:
+
+```yaml
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: show
+    theme: cosmo
+    df_print: paged
+```
+
+- `toc: true` — generate a table of contents from your headings.
+- `toc_float: true` — make it sticky on the side as you scroll.
+- `code_folding: show` — readers can hide code chunks with one click.
+- `theme: cosmo` — Bootstrap theme. Try `"flatly"`, `"journal"`, `"cosmo"`, etc.
+- `df_print: paged` — pretty pagination for data frames.
+
+R Markdown can also produce slides (`output: ioslides_presentation` or `revealjs::revealjs_presentation`), websites, books, and dashboards. The package ecosystem here is huge.
+
+## A tiny worked example
+
+Here's a complete, working `.Rmd` file end to end. Save this as `cars_report.Rmd` and knit it:
+
+````
+---
+title: "Cars Report"
+author: "You"
+date: "`r '\x60r Sys.Date()\x60'`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}`r ''`
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, fig.width = 6, fig.height = 4)
+library(dplyr)
+library(ggplot2)
+```
+
+## Overview
+
+This report uses the built-in `mtcars` dataset, which has
+`r '\x60r nrow(mtcars)\x60'` rows.
+
+## Distribution of MPG
+
+```{r}`r ''`
+ggplot(mtcars, aes(x = mpg)) +
+  geom_histogram(bins = 10, fill = "steelblue", color = "white") +
+  theme_minimal()
+```
+
+## Average MPG by cylinder count
+
+```{r}`r ''`
+mtcars |>
+  group_by(cyl) |>
+  summarise(mean_mpg = mean(mpg), n = n(), .groups = "drop")
+```
+
+## Conclusion
+
+Heavier, more-cylindered cars get worse mileage. Shocking.
+````
+
+Knit it once. Then change something — say, swap `mean` for `median`. Knit again. The whole report updates without you touching the prose.
+
+## Tips for real-world reports
+
+- **Keep one Rmd per analysis.** Don't try to put your whole life in one document.
+- **Put setup at the top.** All `library()` calls and `opts_chunk$set()` go in a single chunk near the top, often named `setup`.
+- **Name your chunks.** `{r my-thing}` instead of `{r}`. Makes errors much easier to find ("error in chunk *my-thing*").
+- **Cache slow chunks.** If something takes 30 seconds to run, set `cache = TRUE` so you don't re-run it on every knit.
+- **Don't fight the layout.** If you find yourself wanting fine control over fonts and margins, you might want a different tool (`quarto`, LaTeX, Word). R Markdown is amazing for "data-driven document," less so for "perfect typography."
+- **Quarto is the next-generation R Markdown.** Same idea, supports more languages, slightly better defaults. If you're starting fresh in 2025+, [Quarto](https://quarto.org/) is worth knowing about. The mental model is identical.
+
+<div class="callout callout-note">
+<div class="callout-title">📝 Quarto vs. R Markdown</div>
+Quarto (`.qmd` files) is essentially R Markdown's successor, built by the same team. It supports R, Python, Julia, and Observable in the same document, and has nicer defaults for things like cross-references. Everything you learn here transfers directly. For a personal site or one-off analysis, R Markdown is still totally fine.
+</div>
+
+<div class="exercise">
+<div class="exercise-title">✏️ Exercise 6.1 — Your first knitted document</div>
+
+Create a new R Markdown file in RStudio (File → New File → R Markdown). Replace the template content with:
+
+- A title and author in the YAML header.
+- A heading "About the data."
+- A short paragraph that uses inline R to report the number of rows in `mtcars`.
+- A code chunk that prints `summary(mtcars)`.
+- A code chunk that plots `mtcars$wt` vs. `mtcars$mpg`.
+
+Knit it to HTML. You should get a report with a working table of contents.
+
+<details>
+<summary>Show solution</summary>
+
+````
+---
+title: "Cars Quick Look"
+author: "Your Name"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}`r ''`
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
+## About the data
+
+The `mtcars` dataset has `r '\x60r nrow(mtcars)\x60'` rows and
+`r '\x60r ncol(mtcars)\x60'` columns.
+
+## Summary
+
+```{r}`r ''`
+summary(mtcars)
+```
+
+## Weight vs. MPG
+
+```{r}`r ''`
+plot(mtcars$wt, mtcars$mpg,
+  xlab = "Weight (1000 lbs)", ylab = "MPG",
+  main = "Heavier cars get worse mileage")
+```
+````
+
+</details>
+</div>
+
+<div class="exercise">
+<div class="exercise-title">✏️ Exercise 6.2 — Hide the code</div>
+
+Take the report from Exercise 6.1 and modify it so that the **code is hidden** in the knitted HTML — only the output (the summary table and the plot) shows. Add a single line so a reader can still toggle code on if they want.
+
+<details>
+<summary>Show solution</summary>
+
+Two changes:
+
+1. Add `echo=FALSE` to the global chunk options in the setup chunk.
+2. Add `code_folding: show` (or `hide`) to the YAML to put a toggle in the output.
+
+```yaml
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: hide
+```
+
+```r
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+</details>
+</div>
+
+## What's next
+
+You now know how to share an analysis as a real document. The last lesson is the capstone: a full, end-to-end project that puts every previous lesson together — load data, manipulate it, plot it, model it, and write it up.
+
+<div class="lesson-nav">
+  <a class="nav-prev" href="statistics_with_r.html">
+    <span class="lesson-nav-label">← Previous</span>
+    <span class="lesson-nav-title">Lesson 5: Statistics with R</span>
+  </a>
+  <a class="nav-next" href="capstone_r.html">
+    <span class="lesson-nav-label">Next →</span>
+    <span class="lesson-nav-title">Lesson 7: Capstone Project</span>
+  </a>
+</div>
