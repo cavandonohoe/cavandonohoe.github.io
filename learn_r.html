@@ -12,7 +12,7 @@
 <meta name="author" content="Cavan Donohoe" />
 
 
-<title>R Time Is Limited, Let’s Make the Most of It</title>
+<title>Learn R: A Hands-On Mini-Course</title>
 
 <script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -627,28 +627,41 @@ div.tocify {
     <li>
       <a href="covid_cases_nostalgia.html">Covid Cases: Then &amp; Now</a>
     </li>
-    <li class="dropdown-submenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Learn R</a>
-      <ul class="dropdown-menu" role="menu">
-        <li>
-          <a href="learn_r.html">R Time Is Limited, Let's Make the Most of It</a>
-        </li>
-        <li>
-          <a href="intro_to_r.html">Intro to R</a>
-        </li>
-        <li>
-          <a href="basic_operations_r.html">Basic Operations</a>
-        </li>
-        <li>
-          <a href="data_manipulation_r.html">Data Manipulations</a>
-        </li>
-        <li>
-          <a href="data_visualization_r.html">Data Visualization</a>
-        </li>
-        <li>
-          <a href="statistics_with_r.html">Statistics with R</a>
-        </li>
-      </ul>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-graduation-cap"></span>
+     
+    Learn R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="learn_r.html">Course Overview</a>
+    </li>
+    <li class="dropdown-header">--- Lessons ---</li>
+    <li>
+      <a href="intro_to_r.html">1. Introduction to R</a>
+    </li>
+    <li>
+      <a href="basic_operations_r.html">2. Basic Operations</a>
+    </li>
+    <li>
+      <a href="data_manipulation_r.html">3. Data Manipulation</a>
+    </li>
+    <li>
+      <a href="data_visualization_r.html">4. Data Visualization</a>
+    </li>
+    <li>
+      <a href="statistics_with_r.html">5. Statistics with R</a>
+    </li>
+    <li>
+      <a href="rmarkdown_r.html">6. Reproducible Reports with R Markdown</a>
+    </li>
+    <li>
+      <a href="capstone_r.html">7. Capstone Project</a>
     </li>
   </ul>
 </li>
@@ -664,110 +677,201 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">R Time Is Limited, Let’s Make the Most of
-It</h1>
+<h1 class="title toc-ignore">Learn R: A Hands-On Mini-Course</h1>
 <h4 class="author">Cavan Donohoe</h4>
 
 </div>
 
 
-<p>Welcome to the “R Time Is Limited, Let’s Make the Most of It” class!
-In this course, you will learn the basics of R programming and data
-analysis. R is a powerful and versatile programming language for
-statistical analysis, data visualization, and more.</p>
-<div id="course-objectives" class="section level2">
-<h2>Course Objectives</h2>
-<p>In this course, you will:</p>
+<p><link rel="stylesheet" href="/css/learn-r.css"></p>
+<div id="learn-r-a-hands-on-mini-course" class="section level1">
+<h1>Learn R: A Hands-On Mini-Course</h1>
+<p>R is a free, open-source language built for working with data. It’s
+how a lot of statistics, analytics, and reproducible research actually
+gets done — at universities, in clinical trials, in finance, in sports
+analytics, everywhere. If you can get comfortable with the basics, you
+can do real work with it within a weekend.</p>
+<p>This course is short, opinionated, and built around runnable
+examples. Every lesson ends with exercises (with hidden solutions) so
+you can practice as you go. You don’t need a math background. You don’t
+need a programming background. You just need to be willing to try
+things.</p>
+<div id="what-youll-be-able-to-do-by-the-end" class="section level2">
+<h2>What you’ll be able to do by the end</h2>
+<p>By the end of the course you’ll be able to:</p>
+<ul>
+<li>Read a CSV (or download one from the web) into R</li>
+<li>Clean and reshape it with the <a
+href="https://www.tidyverse.org/">tidyverse</a> (<code>dplyr</code>,
+<code>tidyr</code>)</li>
+<li>Make a clean, readable plot with <code>ggplot2</code></li>
+<li>Run basic statistics — means, t-tests, linear regression — and
+actually interpret what they say</li>
+<li>Wrap the whole thing in an R Markdown report that someone else can
+rerun</li>
+</ul>
+<p>The capstone lesson walks through a full mini-project: load a
+built-in dataset, explore it, model it, and write up the results.</p>
+</div>
+<div id="the-lessons" class="section level2">
+<h2>The lessons</h2>
+<div class="lesson-grid">
+<div class="lesson-card">
+<div class="lesson-number">
+Lesson 1
+</div>
+<h3>
+<a href="intro_to_r.html">Introduction to R</a>
+</h3>
+<p>
+What R is, how to install it, the RStudio tour, your first script, and
+how to install packages.
+</p>
+<div class="lesson-time">
+~15 min
+</div>
+</div>
+<div class="lesson-card">
+<div class="lesson-number">
+Lesson 2
+</div>
+<h3>
+<a href="basic_operations_r.html">Basic Operations</a>
+</h3>
+<p>
+Variables, data types, vectors, comparisons, control flow, and writing
+your first function.
+</p>
+<div class="lesson-time">
+~25 min
+</div>
+</div>
+<div class="lesson-card">
+<div class="lesson-number">
+Lesson 3
+</div>
+<h3>
+<a href="data_manipulation_r.html">Data Manipulation</a>
+</h3>
+<p>
+Read data, then reshape it with the tidyverse: <code>filter</code>,
+<code>select</code>, <code>mutate</code>, <code>group_by</code>,
+<code>summarise</code>, and the pipe.
+</p>
+<div class="lesson-time">
+~30 min
+</div>
+</div>
+<div class="lesson-card">
+<div class="lesson-number">
+Lesson 4
+</div>
+<h3>
+<a href="data_visualization_r.html">Data Visualization</a>
+</h3>
+<p>
+The grammar of graphics with <code>ggplot2</code>: geoms, aesthetics,
+facets, themes, and saving plots.
+</p>
+<div class="lesson-time">
+~30 min
+</div>
+</div>
+<div class="lesson-card">
+<div class="lesson-number">
+Lesson 5
+</div>
+<h3>
+<a href="statistics_with_r.html">Statistics with R</a>
+</h3>
+<p>
+Descriptive stats, t-tests, correlation, and linear regression — with
+diagnostics and predictions.
+</p>
+<div class="lesson-time">
+~30 min
+</div>
+</div>
+<div class="lesson-card">
+<div class="lesson-number">
+Lesson 6
+</div>
+<h3>
+<a href="rmarkdown_r.html">Reproducible Reports</a>
+</h3>
+<p>
+R Markdown: write code and prose together, knit to HTML or PDF, and
+share something a colleague can rerun.
+</p>
+<div class="lesson-time">
+~20 min
+</div>
+</div>
+<div class="lesson-card">
+<div class="lesson-number">
+Lesson 7
+</div>
+<h3>
+<a href="capstone_r.html">Capstone Project</a>
+</h3>
+<p>
+Put it all together: explore a real dataset, model it, and write up a
+short report — start to finish.
+</p>
+<div class="lesson-time">
+~45 min
+</div>
+</div>
+</div>
+</div>
+<div id="what-youll-need" class="section level2">
+<h2>What you’ll need</h2>
+<ul>
+<li>A computer running macOS, Windows, or Linux.</li>
+<li><a href="https://cran.r-project.org/mirrors.html">R</a> installed
+(free).</li>
+<li><a href="https://posit.co/download/rstudio-desktop/">RStudio
+Desktop</a> installed (also free) — this is the IDE we’ll use.</li>
+<li>About 2–3 hours total if you do the lessons end-to-end. You can also
+dip in and out.</li>
+</ul>
+<p>Lesson 1 walks you through the install if you haven’t done it.</p>
+</div>
+<div id="how-to-use-this-course" class="section level2">
+<h2>How to use this course</h2>
+<p>Each lesson page has runnable code blocks. The recommended workflow
+is:</p>
 <ol style="list-style-type: decimal">
-<li>Learn the fundamentals of R programming.</li>
-<li>Explore data manipulation and analysis.</li>
-<li>Create informative data visualizations.</li>
-<li>Gain practical experience through hands-on exercises.</li>
+<li>Read a section.</li>
+<li>Open RStudio and <strong>type the example yourself</strong> (don’t
+copy-paste — muscle memory matters).</li>
+<li>Try the exercises at the end of each section. Solutions are hidden
+behind a “Show solution” toggle so you can take a real swing first.</li>
 </ol>
+<div class="callout callout-tip">
+<div class="callout-title">
+💡 Tip: pick a project early
 </div>
-<div id="getting-started" class="section level2">
-<h2>Getting Started</h2>
-<p>Before we dive into the world of R, make sure you have R and RStudio
-installed on your computer. You can download them from the following
-links:</p>
-<ul>
-<li><a href="https://cran.r-project.org/mirrors.html">R</a></li>
-<li><a
-href="https://www.rstudio.com/products/rstudio/download/">RStudio</a></li>
-</ul>
+<p>You’ll learn 5x faster if you have a real question you want to
+answer. Even something silly — “are NBA teams shooting more 3s than they
+used to?” — gives every concept a place to land. Pick one before you
+finish Lesson 2.</p>
 </div>
-<div id="what-you-will-need" class="section level2">
-<h2>What You Will Need</h2>
-<ul>
-<li>A computer with R and RStudio installed.</li>
-<li>Curiosity and enthusiasm to learn!</li>
-</ul>
 </div>
-<div id="course-outline" class="section level2">
-<h2>Course Outline</h2>
-<ol style="list-style-type: decimal">
-<li><strong>Introduction to R</strong>
-<ul>
-<li>What is R?</li>
-<li>Installing R and RStudio.</li>
-<li>RStudio interface overview.</li>
-</ul></li>
-<li><strong>Basic Operations in R</strong>
-<ul>
-<li>Variables and data types.</li>
-<li>Arithmetic operations.</li>
-<li>Working with vectors and matrices.</li>
-</ul></li>
-<li><strong>Data Manipulation</strong>
-<ul>
-<li>Importing and exporting data.</li>
-<li>Data frames and data exploration.</li>
-</ul></li>
-<li><strong>Data Visualization</strong>
-<ul>
-<li>Creating basic plots.</li>
-<li>Customizing plots.</li>
-<li>Advanced visualization with ggplot2.</li>
-</ul></li>
-<li><strong>Statistics with R</strong>
-<ul>
-<li>Descriptive statistics.</li>
-<li>Hypothesis testing.</li>
-<li>Regression analysis.</li>
-</ul></li>
-</ol>
+<div id="questions-or-feedback" class="section level2">
+<h2>Questions or feedback?</h2>
+<p>If something is unclear, broken, or could be better, email me at
+<strong><a href="mailto:cavandonohoe@gmail.com"
+class="email">cavandonohoe@gmail.com</a></strong> or open an issue on <a
+href="https://github.com/cavandonohoe/cavandonohoe.github.io">GitHub</a>.
+I genuinely want to make this better.</p>
+<div class="lesson-nav">
+<p><span class="nav-placeholder"></span>
+<a class="nav-next" href="intro_to_r.html"> <span
+class="lesson-nav-label">Start here →</span> <span
+class="lesson-nav-title">Lesson 1: Introduction to R</span> </a></p>
 </div>
-<div id="contact-information" class="section level2">
-<h2>Contact Information</h2>
-<p>If you have any questions or need further assistance during the
-course, please don’t hesitate to contact me:</p>
-<ul>
-<li><strong>Email:</strong> <a href="mailto:cavandonohoe@gmail.com"
-class="email">cavandonohoe@gmail.com</a></li>
-</ul>
-<p>Feel free to reach out for clarification, additional resources, or
-any other inquiries.</p>
-<p>Let’s embark on this exciting journey of learning R together!</p>
-<p>Free Lessons:</p>
-<ul>
-<li><a href="https://cavandonohoe.github.io/learn_r.html">R Time Is
-Limited, Let’s Make the Most of It</a></li>
-<li><a
-href="https://cavandonohoe.github.io/intro_to_r.html">Introduction to
-R</a></li>
-<li><a
-href="https://cavandonohoe.github.io/basic_operations_r.html">Basic
-Operations in R</a></li>
-<li><a
-href="https://cavandonohoe.github.io/data_manipulation_r.html">Data
-Manipulation</a></li>
-<li><a
-href="https://cavandonohoe.github.io/data_visualization_r.html">Data
-Visualization</a></li>
-<li><a
-href="https://cavandonohoe.github.io/statistics_with_r.html">Statistics
-in R</a></li>
-</ul>
+</div>
 </div>
 
 <link rel="stylesheet" href="/css/footer.css">

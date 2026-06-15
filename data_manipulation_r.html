@@ -12,7 +12,7 @@
 <meta name="author" content="Cavan Donohoe" />
 
 
-<title>Data Manipulation in R</title>
+<title>Lesson 3: Data Manipulation in R</title>
 
 <script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -627,28 +627,41 @@ div.tocify {
     <li>
       <a href="covid_cases_nostalgia.html">Covid Cases: Then &amp; Now</a>
     </li>
-    <li class="dropdown-submenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Learn R</a>
-      <ul class="dropdown-menu" role="menu">
-        <li>
-          <a href="learn_r.html">R Time Is Limited, Let's Make the Most of It</a>
-        </li>
-        <li>
-          <a href="intro_to_r.html">Intro to R</a>
-        </li>
-        <li>
-          <a href="basic_operations_r.html">Basic Operations</a>
-        </li>
-        <li>
-          <a href="data_manipulation_r.html">Data Manipulations</a>
-        </li>
-        <li>
-          <a href="data_visualization_r.html">Data Visualization</a>
-        </li>
-        <li>
-          <a href="statistics_with_r.html">Statistics with R</a>
-        </li>
-      </ul>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-graduation-cap"></span>
+     
+    Learn R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="learn_r.html">Course Overview</a>
+    </li>
+    <li class="dropdown-header">--- Lessons ---</li>
+    <li>
+      <a href="intro_to_r.html">1. Introduction to R</a>
+    </li>
+    <li>
+      <a href="basic_operations_r.html">2. Basic Operations</a>
+    </li>
+    <li>
+      <a href="data_manipulation_r.html">3. Data Manipulation</a>
+    </li>
+    <li>
+      <a href="data_visualization_r.html">4. Data Visualization</a>
+    </li>
+    <li>
+      <a href="statistics_with_r.html">5. Statistics with R</a>
+    </li>
+    <li>
+      <a href="rmarkdown_r.html">6. Reproducible Reports with R Markdown</a>
+    </li>
+    <li>
+      <a href="capstone_r.html">7. Capstone Project</a>
     </li>
   </ul>
 </li>
@@ -664,104 +677,665 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Data Manipulation in R</h1>
+<h1 class="title toc-ignore">Lesson 3: Data Manipulation in R</h1>
 <h4 class="author">Cavan Donohoe</h4>
 
 </div>
 
 
+<p><link rel="stylesheet" href="/css/learn-r.css"></p>
+<div class="course-progress">
+<p>Lesson 3 of 7 · <a href="learn_r.html">Course overview</a></p>
+</div>
 <div id="data-manipulation-in-r" class="section level1">
 <h1>Data Manipulation in R</h1>
-<p>In this section, we will explore essential data manipulation tasks in
-R, including importing and exporting data, working with data frames, and
-performing data exploration.</p>
-<div id="importing-and-exporting-data" class="section level2">
-<h2>Importing and Exporting Data</h2>
-<div id="importing-data" class="section level3">
-<h3>Importing Data</h3>
-<p>R provides various functions to import data from different file
-formats, such as CSV, Excel, and databases. Some common functions
-include:</p>
-<ul>
-<li><code>read.csv()</code> for reading CSV files.</li>
-<li><code>read.xlsx()</code> for reading Excel files.</li>
-<li><code>readRDS()</code> for reading R data files.</li>
-</ul>
-<p>Here’s an example of importing a CSV file:</p>
-<pre class="r"><code># Importing data from a CSV file
-data &lt;- read.csv(&quot;data.csv&quot;)</code></pre>
+<p>Most data analysis is the same six things, over and over: load data,
+filter rows, pick columns, derive new columns, group, summarise. The
+<strong>tidyverse</strong> is a family of R packages designed around
+these operations, and once you learn the vocabulary it becomes
+second-nature.</p>
+<p>In this lesson we’ll work with the built-in <code>mtcars</code>
+dataset (32 cars, fuel efficiency stats from a 1974 issue of <em>Motor
+Trend</em>). Tiny, but enough to show every concept.</p>
+<div id="setup" class="section level2">
+<h2>Setup</h2>
+<p>Install the tidyverse if you haven’t already:</p>
+<pre class="r"><code>install.packages(&quot;tidyverse&quot;)</code></pre>
+<p>And load it:</p>
+<pre class="r"><code>library(dplyr)
+library(tidyr)
+library(readr)</code></pre>
+<p>We’re loading three packages: <code>dplyr</code> (the manipulation
+verbs), <code>tidyr</code> (reshaping), and <code>readr</code> (fast CSV
+reading). <code>library(tidyverse)</code> would load all of these and a
+few more in one shot.</p>
+<div class="callout callout-note">
+<div class="callout-title">
+📝 <code>library()</code> vs <code>::</code>
 </div>
-<div id="exporting-data" class="section level3">
-<h3>Exporting Data</h3>
-<p>To save your data or results, R offers functions like write.csv() for
-CSV files, write.xlsx() for Excel files, and saveRDS() for saving R data
-objects.</p>
-<pre class="r"><code># Exporting data to a CSV file
-write.csv(data, &quot;output.csv&quot;)</code></pre>
+<p>You can also call any function with <code>package::function()</code>
+— e.g. <code>dplyr::filter(mtcars, mpg &gt; 25)</code> — without ever
+calling <code>library()</code>. That’s what production R code typically
+does, because it’s explicit about where every function comes from. For
+learning, <code>library()</code> is fine and what most tutorials do.</p>
 </div>
 </div>
-<div id="data-frames-and-data-exploration" class="section level2">
-<h2>Data Frames and Data Exploration</h2>
-<p>Data frames are a common data structure in R for storing tabular
-data. They are like spreadsheets with rows and columns, and each column
-can have a different data type. You can create, manipulate, and explore
-data frames in R.</p>
-<pre class="r"><code># Creating a data frame
-df &lt;- data.frame(
-  Name = c(&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;),
-  Age = c(25, 30, 22),
-  Score = c(95, 88, 75)
+<div id="reading-data" class="section level2">
+<h2>Reading data</h2>
+<p>For most analyses you’ll start with a CSV.
+<code>readr::read_csv()</code> reads a CSV into a tibble (a
+tidyverse-flavored data frame):</p>
+<pre class="r"><code>my_data &lt;- read_csv(&quot;path/to/file.csv&quot;)</code></pre>
+<p><code>read_csv()</code> accepts a URL too, which is great for
+tutorials and reproducible examples:</p>
+<pre class="r"><code>penguins &lt;- read_csv(
+  &quot;https://raw.githubusercontent.com/allisonhorst/palmerpenguins/main/inst/extdata/penguins.csv&quot;
+)</code></pre>
+<p>For Excel files use <code>readxl::read_excel()</code>. For databases
+use <code>DBI</code> plus a driver package. For R’s native binary format
+use <code>readRDS()</code> and <code>saveRDS()</code>.</p>
+<p>For this lesson we’ll use the built-in <code>mtcars</code>. Let’s
+convert it to a tibble and add a <code>model</code> column from the row
+names:</p>
+<pre class="r"><code>cars &lt;- mtcars |&gt;
+  tibble::rownames_to_column(&quot;model&quot;) |&gt;
+  tibble::as_tibble()
+cars</code></pre>
+<pre><code>#&gt; # A tibble: 32 × 12
+#&gt;    model         mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+#&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt;  1 Mazda RX4    21       6  160    110  3.9   2.62  16.5     0     1     4     4
+#&gt;  2 Mazda RX4 …  21       6  160    110  3.9   2.88  17.0     0     1     4     4
+#&gt;  3 Datsun 710   22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
+#&gt;  4 Hornet 4 D…  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
+#&gt;  5 Hornet Spo…  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
+#&gt;  6 Valiant      18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
+#&gt;  7 Duster 360   14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
+#&gt;  8 Merc 240D    24.4     4  147.    62  3.69  3.19  20       1     0     4     2
+#&gt;  9 Merc 230     22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
+#&gt; 10 Merc 280     19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
+#&gt; # ℹ 22 more rows</code></pre>
+<p>A <strong>tibble</strong> prints nicer than a base data frame (only
+the first 10 rows by default, with column types in the header) and is
+otherwise mostly the same thing.</p>
+</div>
+<div id="the-pipe" class="section level2">
+<h2>The pipe</h2>
+<p>You just saw <code>|&gt;</code>. That’s R’s <strong>pipe
+operator</strong>, and it’s what makes tidyverse code readable. It takes
+the thing on its left and feeds it to the function on its right as the
+first argument:</p>
+<pre class="r"><code>mean(c(1, 2, 3))
+# is equivalent to
+c(1, 2, 3) |&gt; mean()</code></pre>
+<p>By itself that’s a wash. The win is when you chain operations:</p>
+<pre class="r"><code># without the pipe — read inside-out:
+arrange(filter(select(cars, model, mpg, cyl), cyl == 4), desc(mpg))
+
+# with the pipe — read top-to-bottom:
+cars |&gt;
+  select(model, mpg, cyl) |&gt;
+  filter(cyl == 4) |&gt;
+  arrange(desc(mpg))</code></pre>
+<p>The pipe version reads almost like English: “take cars, select these
+columns, filter to 4-cylinder cars, sort by mpg descending.”</p>
+<div class="callout callout-tip">
+<div class="callout-title">
+💡 The pipe shortcut
+</div>
+<p>RStudio has a built-in shortcut for the pipe:
+<kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd>. Use
+it. You’ll type the pipe thousands of times.</p>
+<p>You may also see <code>%&gt;%</code> in older code — that’s the
+original pipe from the <code>magrittr</code> package. They’re nearly
+equivalent; the new built-in <code>|&gt;</code> is the modern
+default.</p>
+</div>
+</div>
+<div id="the-five-core-dplyr-verbs" class="section level2">
+<h2>The five core dplyr verbs</h2>
+<p>These are the verbs you’ll use 95% of the time. Each takes a data
+frame and returns a data frame.</p>
+<div id="filter-keep-rows" class="section level3">
+<h3><code>filter()</code> — keep rows</h3>
+<pre class="r"><code>cars |&gt; filter(cyl == 6)</code></pre>
+<pre><code>#&gt; # A tibble: 7 × 12
+#&gt;   model          mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+#&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1 Mazda RX4     21       6  160    110  3.9   2.62  16.5     0     1     4     4
+#&gt; 2 Mazda RX4 W…  21       6  160    110  3.9   2.88  17.0     0     1     4     4
+#&gt; 3 Hornet 4 Dr…  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
+#&gt; 4 Valiant       18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
+#&gt; 5 Merc 280      19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
+#&gt; 6 Merc 280C     17.8     6  168.   123  3.92  3.44  18.9     1     0     4     4
+#&gt; 7 Ferrari Dino  19.7     6  145    175  3.62  2.77  15.5     0     1     5     6</code></pre>
+<pre class="r"><code>cars |&gt; filter(mpg &gt; 25, hp &lt; 100)</code></pre>
+<pre><code>#&gt; # A tibble: 5 × 12
+#&gt;   model          mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+#&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1 Fiat 128      32.4     4  78.7    66  4.08  2.2   19.5     1     1     4     1
+#&gt; 2 Honda Civic   30.4     4  75.7    52  4.93  1.62  18.5     1     1     4     2
+#&gt; 3 Toyota Coro…  33.9     4  71.1    65  4.22  1.84  19.9     1     1     4     1
+#&gt; 4 Fiat X1-9     27.3     4  79      66  4.08  1.94  18.9     1     1     4     1
+#&gt; 5 Porsche 914…  26       4 120.     91  4.43  2.14  16.7     0     1     5     2</code></pre>
+<pre class="r"><code>cars |&gt; filter(cyl == 4 | cyl == 6)</code></pre>
+<pre><code>#&gt; # A tibble: 18 × 12
+#&gt;    model         mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+#&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt;  1 Mazda RX4    21       6 160     110  3.9   2.62  16.5     0     1     4     4
+#&gt;  2 Mazda RX4 …  21       6 160     110  3.9   2.88  17.0     0     1     4     4
+#&gt;  3 Datsun 710   22.8     4 108      93  3.85  2.32  18.6     1     1     4     1
+#&gt;  4 Hornet 4 D…  21.4     6 258     110  3.08  3.22  19.4     1     0     3     1
+#&gt;  5 Valiant      18.1     6 225     105  2.76  3.46  20.2     1     0     3     1
+#&gt;  6 Merc 240D    24.4     4 147.     62  3.69  3.19  20       1     0     4     2
+#&gt;  7 Merc 230     22.8     4 141.     95  3.92  3.15  22.9     1     0     4     2
+#&gt;  8 Merc 280     19.2     6 168.    123  3.92  3.44  18.3     1     0     4     4
+#&gt;  9 Merc 280C    17.8     6 168.    123  3.92  3.44  18.9     1     0     4     4
+#&gt; 10 Fiat 128     32.4     4  78.7    66  4.08  2.2   19.5     1     1     4     1
+#&gt; 11 Honda Civic  30.4     4  75.7    52  4.93  1.62  18.5     1     1     4     2
+#&gt; 12 Toyota Cor…  33.9     4  71.1    65  4.22  1.84  19.9     1     1     4     1
+#&gt; 13 Toyota Cor…  21.5     4 120.     97  3.7   2.46  20.0     1     0     3     1
+#&gt; 14 Fiat X1-9    27.3     4  79      66  4.08  1.94  18.9     1     1     4     1
+#&gt; 15 Porsche 91…  26       4 120.     91  4.43  2.14  16.7     0     1     5     2
+#&gt; 16 Lotus Euro…  30.4     4  95.1   113  3.77  1.51  16.9     1     1     5     2
+#&gt; 17 Ferrari Di…  19.7     6 145     175  3.62  2.77  15.5     0     1     5     6
+#&gt; 18 Volvo 142E   21.4     4 121     109  4.11  2.78  18.6     1     1     4     2</code></pre>
+<p>Multiple conditions separated by commas are combined with
+<code>&amp;</code> (AND).</p>
+</div>
+<div id="select-pick-columns" class="section level3">
+<h3><code>select()</code> — pick columns</h3>
+<pre class="r"><code>cars |&gt; select(model, mpg, cyl)</code></pre>
+<pre><code>#&gt; # A tibble: 32 × 3
+#&gt;    model               mpg   cyl
+#&gt;    &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt;
+#&gt;  1 Mazda RX4          21       6
+#&gt;  2 Mazda RX4 Wag      21       6
+#&gt;  3 Datsun 710         22.8     4
+#&gt;  4 Hornet 4 Drive     21.4     6
+#&gt;  5 Hornet Sportabout  18.7     8
+#&gt;  6 Valiant            18.1     6
+#&gt;  7 Duster 360         14.3     8
+#&gt;  8 Merc 240D          24.4     4
+#&gt;  9 Merc 230           22.8     4
+#&gt; 10 Merc 280           19.2     6
+#&gt; # ℹ 22 more rows</code></pre>
+<pre class="r"><code>cars |&gt; select(-disp, -hp)              # drop columns</code></pre>
+<pre><code>#&gt; # A tibble: 32 × 10
+#&gt;    model               mpg   cyl  drat    wt  qsec    vs    am  gear  carb
+#&gt;    &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt;  1 Mazda RX4          21       6  3.9   2.62  16.5     0     1     4     4
+#&gt;  2 Mazda RX4 Wag      21       6  3.9   2.88  17.0     0     1     4     4
+#&gt;  3 Datsun 710         22.8     4  3.85  2.32  18.6     1     1     4     1
+#&gt;  4 Hornet 4 Drive     21.4     6  3.08  3.22  19.4     1     0     3     1
+#&gt;  5 Hornet Sportabout  18.7     8  3.15  3.44  17.0     0     0     3     2
+#&gt;  6 Valiant            18.1     6  2.76  3.46  20.2     1     0     3     1
+#&gt;  7 Duster 360         14.3     8  3.21  3.57  15.8     0     0     3     4
+#&gt;  8 Merc 240D          24.4     4  3.69  3.19  20       1     0     4     2
+#&gt;  9 Merc 230           22.8     4  3.92  3.15  22.9     1     0     4     2
+#&gt; 10 Merc 280           19.2     6  3.92  3.44  18.3     1     0     4     4
+#&gt; # ℹ 22 more rows</code></pre>
+<pre class="r"><code>cars |&gt; select(model, mpg:hp)           # range</code></pre>
+<pre><code>#&gt; # A tibble: 32 × 5
+#&gt;    model               mpg   cyl  disp    hp
+#&gt;    &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt;  1 Mazda RX4          21       6  160    110
+#&gt;  2 Mazda RX4 Wag      21       6  160    110
+#&gt;  3 Datsun 710         22.8     4  108     93
+#&gt;  4 Hornet 4 Drive     21.4     6  258    110
+#&gt;  5 Hornet Sportabout  18.7     8  360    175
+#&gt;  6 Valiant            18.1     6  225    105
+#&gt;  7 Duster 360         14.3     8  360    245
+#&gt;  8 Merc 240D          24.4     4  147.    62
+#&gt;  9 Merc 230           22.8     4  141.    95
+#&gt; 10 Merc 280           19.2     6  168.   123
+#&gt; # ℹ 22 more rows</code></pre>
+<pre class="r"><code>cars |&gt; select(starts_with(&quot;d&quot;))        # by name pattern</code></pre>
+<pre><code>#&gt; # A tibble: 32 × 2
+#&gt;     disp  drat
+#&gt;    &lt;dbl&gt; &lt;dbl&gt;
+#&gt;  1  160   3.9 
+#&gt;  2  160   3.9 
+#&gt;  3  108   3.85
+#&gt;  4  258   3.08
+#&gt;  5  360   3.15
+#&gt;  6  225   2.76
+#&gt;  7  360   3.21
+#&gt;  8  147.  3.69
+#&gt;  9  141.  3.92
+#&gt; 10  168.  3.92
+#&gt; # ℹ 22 more rows</code></pre>
+</div>
+<div id="mutate-create-or-change-columns" class="section level3">
+<h3><code>mutate()</code> — create or change columns</h3>
+<pre class="r"><code>cars |&gt;
+  mutate(
+    kpl = mpg * 0.425,                  # km per liter
+    weight_lbs = wt * 1000,
+    is_efficient = mpg &gt; 25
+  ) |&gt;
+  select(model, mpg, kpl, weight_lbs, is_efficient)</code></pre>
+<pre><code>#&gt; # A tibble: 32 × 5
+#&gt;    model               mpg   kpl weight_lbs is_efficient
+#&gt;    &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt; &lt;lgl&gt;       
+#&gt;  1 Mazda RX4          21    8.92       2620 FALSE       
+#&gt;  2 Mazda RX4 Wag      21    8.92       2875 FALSE       
+#&gt;  3 Datsun 710         22.8  9.69       2320 FALSE       
+#&gt;  4 Hornet 4 Drive     21.4  9.09       3215 FALSE       
+#&gt;  5 Hornet Sportabout  18.7  7.95       3440 FALSE       
+#&gt;  6 Valiant            18.1  7.69       3460 FALSE       
+#&gt;  7 Duster 360         14.3  6.08       3570 FALSE       
+#&gt;  8 Merc 240D          24.4 10.4        3190 FALSE       
+#&gt;  9 Merc 230           22.8  9.69       3150 FALSE       
+#&gt; 10 Merc 280           19.2  8.16       3440 FALSE       
+#&gt; # ℹ 22 more rows</code></pre>
+<p><code>mutate()</code> can use any R function — including ones you
+write yourself.</p>
+</div>
+<div id="arrange-sort-rows" class="section level3">
+<h3><code>arrange()</code> — sort rows</h3>
+<pre class="r"><code>cars |&gt; arrange(mpg)              # ascending</code></pre>
+<pre><code>#&gt; # A tibble: 32 × 12
+#&gt;    model         mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+#&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt;  1 Cadillac F…  10.4     8  472    205  2.93  5.25  18.0     0     0     3     4
+#&gt;  2 Lincoln Co…  10.4     8  460    215  3     5.42  17.8     0     0     3     4
+#&gt;  3 Camaro Z28   13.3     8  350    245  3.73  3.84  15.4     0     0     3     4
+#&gt;  4 Duster 360   14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
+#&gt;  5 Chrysler I…  14.7     8  440    230  3.23  5.34  17.4     0     0     3     4
+#&gt;  6 Maserati B…  15       8  301    335  3.54  3.57  14.6     0     1     5     8
+#&gt;  7 Merc 450SLC  15.2     8  276.   180  3.07  3.78  18       0     0     3     3
+#&gt;  8 AMC Javelin  15.2     8  304    150  3.15  3.44  17.3     0     0     3     2
+#&gt;  9 Dodge Chal…  15.5     8  318    150  2.76  3.52  16.9     0     0     3     2
+#&gt; 10 Ford Pante…  15.8     8  351    264  4.22  3.17  14.5     0     1     5     4
+#&gt; # ℹ 22 more rows</code></pre>
+<pre class="r"><code>cars |&gt; arrange(desc(mpg))        # descending</code></pre>
+<pre><code>#&gt; # A tibble: 32 × 12
+#&gt;    model         mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+#&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt;  1 Toyota Cor…  33.9     4  71.1    65  4.22  1.84  19.9     1     1     4     1
+#&gt;  2 Fiat 128     32.4     4  78.7    66  4.08  2.2   19.5     1     1     4     1
+#&gt;  3 Honda Civic  30.4     4  75.7    52  4.93  1.62  18.5     1     1     4     2
+#&gt;  4 Lotus Euro…  30.4     4  95.1   113  3.77  1.51  16.9     1     1     5     2
+#&gt;  5 Fiat X1-9    27.3     4  79      66  4.08  1.94  18.9     1     1     4     1
+#&gt;  6 Porsche 91…  26       4 120.     91  4.43  2.14  16.7     0     1     5     2
+#&gt;  7 Merc 240D    24.4     4 147.     62  3.69  3.19  20       1     0     4     2
+#&gt;  8 Datsun 710   22.8     4 108      93  3.85  2.32  18.6     1     1     4     1
+#&gt;  9 Merc 230     22.8     4 141.     95  3.92  3.15  22.9     1     0     4     2
+#&gt; 10 Toyota Cor…  21.5     4 120.     97  3.7   2.46  20.0     1     0     3     1
+#&gt; # ℹ 22 more rows</code></pre>
+<pre class="r"><code>cars |&gt; arrange(cyl, desc(mpg))   # multi-key</code></pre>
+<pre><code>#&gt; # A tibble: 32 × 12
+#&gt;    model         mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+#&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt;  1 Toyota Cor…  33.9     4  71.1    65  4.22  1.84  19.9     1     1     4     1
+#&gt;  2 Fiat 128     32.4     4  78.7    66  4.08  2.2   19.5     1     1     4     1
+#&gt;  3 Honda Civic  30.4     4  75.7    52  4.93  1.62  18.5     1     1     4     2
+#&gt;  4 Lotus Euro…  30.4     4  95.1   113  3.77  1.51  16.9     1     1     5     2
+#&gt;  5 Fiat X1-9    27.3     4  79      66  4.08  1.94  18.9     1     1     4     1
+#&gt;  6 Porsche 91…  26       4 120.     91  4.43  2.14  16.7     0     1     5     2
+#&gt;  7 Merc 240D    24.4     4 147.     62  3.69  3.19  20       1     0     4     2
+#&gt;  8 Datsun 710   22.8     4 108      93  3.85  2.32  18.6     1     1     4     1
+#&gt;  9 Merc 230     22.8     4 141.     95  3.92  3.15  22.9     1     0     4     2
+#&gt; 10 Toyota Cor…  21.5     4 120.     97  3.7   2.46  20.0     1     0     3     1
+#&gt; # ℹ 22 more rows</code></pre>
+</div>
+<div id="summarise-group_by-collapse-rows" class="section level3">
+<h3><code>summarise()</code> + <code>group_by()</code> — collapse
+rows</h3>
+<p><code>summarise()</code> reduces a data frame to a single row. By
+itself it’s not that interesting:</p>
+<pre class="r"><code>cars |&gt; summarise(mean_mpg = mean(mpg), n = n())</code></pre>
+<pre><code>#&gt; # A tibble: 1 × 2
+#&gt;   mean_mpg     n
+#&gt;      &lt;dbl&gt; &lt;int&gt;
+#&gt; 1     20.1    32</code></pre>
+<p>But pair it with <code>group_by()</code> and you have a pivot
+table:</p>
+<pre class="r"><code>cars |&gt;
+  group_by(cyl) |&gt;
+  summarise(
+    n = n(),
+    mean_mpg = mean(mpg),
+    sd_mpg = sd(mpg),
+    .groups = &quot;drop&quot;
+  )</code></pre>
+<pre><code>#&gt; # A tibble: 3 × 4
+#&gt;     cyl     n mean_mpg sd_mpg
+#&gt;   &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt;  &lt;dbl&gt;
+#&gt; 1     4    11     26.7   4.51
+#&gt; 2     6     7     19.7   1.45
+#&gt; 3     8    14     15.1   2.56</code></pre>
+<p>This is one of the most-used patterns in all of data analysis. “For
+each group, compute X.”</p>
+<p>You can group by multiple variables:</p>
+<pre class="r"><code>cars |&gt;
+  group_by(cyl, am) |&gt;     # am: 0 = automatic, 1 = manual
+  summarise(mean_mpg = mean(mpg), n = n(), .groups = &quot;drop&quot;)</code></pre>
+<pre><code>#&gt; # A tibble: 6 × 4
+#&gt;     cyl    am mean_mpg     n
+#&gt;   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt;
+#&gt; 1     4     0     22.9     3
+#&gt; 2     4     1     28.1     8
+#&gt; 3     6     0     19.1     4
+#&gt; 4     6     1     20.6     3
+#&gt; 5     8     0     15.0    12
+#&gt; 6     8     1     15.4     2</code></pre>
+</div>
+</div>
+<div id="a-recipe-style-example" class="section level2">
+<h2>A recipe-style example</h2>
+<p>Suppose you want to know: <strong>for cars with more than 100
+horsepower, what’s the average MPG by number of cylinders, sorted from
+worst to best?</strong></p>
+<pre class="r"><code>cars |&gt;
+  filter(hp &gt; 100) |&gt;
+  group_by(cyl) |&gt;
+  summarise(
+    mean_mpg = mean(mpg),
+    n = n(),
+    .groups = &quot;drop&quot;
+  ) |&gt;
+  arrange(mean_mpg)</code></pre>
+<pre><code>#&gt; # A tibble: 3 × 3
+#&gt;     cyl mean_mpg     n
+#&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt;
+#&gt; 1     8     15.1    14
+#&gt; 2     6     19.7     7
+#&gt; 3     4     25.9     2</code></pre>
+<p>That’s the whole answer in 6 lines. No loops, no manual indexing, no
+temp variables. This is why people like the tidyverse.</p>
+</div>
+<div id="a-few-more-useful-verbs" class="section level2">
+<h2>A few more useful verbs</h2>
+<div id="count-quick-frequency-table" class="section level3">
+<h3><code>count()</code> — quick frequency table</h3>
+<pre class="r"><code>cars |&gt; count(cyl)</code></pre>
+<pre><code>#&gt; # A tibble: 3 × 2
+#&gt;     cyl     n
+#&gt;   &lt;dbl&gt; &lt;int&gt;
+#&gt; 1     4    11
+#&gt; 2     6     7
+#&gt; 3     8    14</code></pre>
+<pre class="r"><code>cars |&gt; count(cyl, sort = TRUE)</code></pre>
+<pre><code>#&gt; # A tibble: 3 × 2
+#&gt;     cyl     n
+#&gt;   &lt;dbl&gt; &lt;int&gt;
+#&gt; 1     8    14
+#&gt; 2     4    11
+#&gt; 3     6     7</code></pre>
+<pre class="r"><code>cars |&gt; count(cyl, am)</code></pre>
+<pre><code>#&gt; # A tibble: 6 × 3
+#&gt;     cyl    am     n
+#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
+#&gt; 1     4     0     3
+#&gt; 2     4     1     8
+#&gt; 3     6     0     4
+#&gt; 4     6     1     3
+#&gt; 5     8     0    12
+#&gt; 6     8     1     2</code></pre>
+</div>
+<div id="case_when-multi-branch-if" class="section level3">
+<h3><code>case_when()</code> — multi-branch <code>if</code></h3>
+<p>Inside <code>mutate()</code>, <code>case_when()</code> is the right
+tool for “if-elseif-else” logic. Each <code>~</code> line is “condition
+~ value”:</p>
+<pre class="r"><code>cars |&gt;
+  mutate(
+    mpg_class = case_when(
+      mpg &lt; 15  ~ &quot;thirsty&quot;,
+      mpg &lt; 22  ~ &quot;average&quot;,
+      mpg &lt; 28  ~ &quot;good&quot;,
+      TRUE      ~ &quot;great&quot;
+    )
+  ) |&gt;
+  count(mpg_class)</code></pre>
+<pre><code>#&gt; # A tibble: 4 × 2
+#&gt;   mpg_class     n
+#&gt;   &lt;chr&gt;     &lt;int&gt;
+#&gt; 1 average      18
+#&gt; 2 good          5
+#&gt; 3 great         4
+#&gt; 4 thirsty       5</code></pre>
+<p>The final <code>TRUE ~ ...</code> is the catch-all “else.”</p>
+</div>
+<div id="slice_-topbottomrandom-rows" class="section level3">
+<h3><code>slice_*()</code> — top/bottom/random rows</h3>
+<pre class="r"><code>cars |&gt; slice_max(mpg, n = 3)         # 3 highest mpg</code></pre>
+<pre><code>#&gt; # A tibble: 4 × 12
+#&gt;   model          mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+#&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1 Toyota Coro…  33.9     4  71.1    65  4.22  1.84  19.9     1     1     4     1
+#&gt; 2 Fiat 128      32.4     4  78.7    66  4.08  2.2   19.5     1     1     4     1
+#&gt; 3 Honda Civic   30.4     4  75.7    52  4.93  1.62  18.5     1     1     4     2
+#&gt; 4 Lotus Europa  30.4     4  95.1   113  3.77  1.51  16.9     1     1     5     2</code></pre>
+<pre class="r"><code>cars |&gt; slice_min(hp, n = 3)          # 3 lowest hp</code></pre>
+<pre><code>#&gt; # A tibble: 3 × 12
+#&gt;   model          mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+#&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1 Honda Civic   30.4     4  75.7    52  4.93  1.62  18.5     1     1     4     2
+#&gt; 2 Merc 240D     24.4     4 147.     62  3.69  3.19  20       1     0     4     2
+#&gt; 3 Toyota Coro…  33.9     4  71.1    65  4.22  1.84  19.9     1     1     4     1</code></pre>
+<pre class="r"><code>cars |&gt; slice_sample(n = 3)           # 3 random rows</code></pre>
+<pre><code>#&gt; # A tibble: 3 × 12
+#&gt;   model          mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+#&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1 Fiat X1-9     27.3     4  79      66  4.08  1.94  18.9     1     1     4     1
+#&gt; 2 Toyota Coro…  33.9     4  71.1    65  4.22  1.84  19.9     1     1     4     1
+#&gt; 3 Maserati Bo…  15       8 301     335  3.54  3.57  14.6     0     1     5     8</code></pre>
+</div>
+<div id="joining-tables" class="section level3">
+<h3>Joining tables</h3>
+<p>When you have two related tables, <code>*_join()</code> combines them
+on a shared key:</p>
+<pre class="r"><code>classes &lt;- tibble::tibble(
+  cyl = c(4, 6, 8),
+  class = c(&quot;compact&quot;, &quot;midsize&quot;, &quot;muscle&quot;)
 )
-df</code></pre>
-<pre><code>##      Name Age Score
-## 1   Alice  25    95
-## 2     Bob  30    88
-## 3 Charlie  22    75</code></pre>
-<p>Data exploration involves understanding your data’s characteristics,
-such as summary statistics, distribution, and relationships between
-variables. You can use functions like summary(), str(), and data
-visualization libraries like ggplot2 for this purpose.</p>
-<pre class="r"><code># Summary statistics
-summary(df)</code></pre>
-<pre><code>##         Name        Age            Score     
-##  Length   :3   Min.   :22.00   Min.   :75.0  
-##  N.unique :3   1st Qu.:23.50   1st Qu.:81.5  
-##  N.blank  :0   Median :25.00   Median :88.0  
-##  Min.nchar:3   Mean   :25.67   Mean   :86.0  
-##  Max.nchar:7   3rd Qu.:27.50   3rd Qu.:91.5  
-##                Max.   :30.00   Max.   :95.0</code></pre>
-<pre class="r"><code># Structure of the data frame
-str(df)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    3 obs. of  3 variables:
-##  $ Name : chr  &quot;Alice&quot; &quot;Bob&quot; &quot;Charlie&quot;
-##  $ Age  : num  25 30 22
-##  $ Score: num  95 88 75</code></pre>
-<p>In this section, we’ve covered the basics of importing and exporting
-data and introduced data frames and data exploration. These skills are
-crucial for working with real-world data and performing meaningful
-analyses.</p>
-<p>Feel free to practice these concepts with your own datasets to gain
-hands-on experience.</p>
-<p>Free Lessons:</p>
+
+cars |&gt;
+  select(model, cyl, mpg) |&gt;
+  left_join(classes, by = &quot;cyl&quot;) |&gt;
+  head()</code></pre>
+<pre><code>#&gt; # A tibble: 6 × 4
+#&gt;   model               cyl   mpg class  
+#&gt;   &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  
+#&gt; 1 Mazda RX4             6  21   midsize
+#&gt; 2 Mazda RX4 Wag         6  21   midsize
+#&gt; 3 Datsun 710            4  22.8 compact
+#&gt; 4 Hornet 4 Drive        6  21.4 midsize
+#&gt; 5 Hornet Sportabout     8  18.7 muscle 
+#&gt; 6 Valiant               6  18.1 midsize</code></pre>
+<p><code>left_join()</code> keeps every row from the left table and
+pulls in matching rows from the right. There’s also
+<code>inner_join()</code>, <code>right_join()</code>, and
+<code>full_join()</code> for different behaviors when keys don’t match
+on both sides.</p>
+</div>
+</div>
+<div id="reshaping-with-tidyr" class="section level2">
+<h2>Reshaping with <code>tidyr</code></h2>
+<p>Sometimes data comes in <strong>wide</strong> format (one column per
+category) when you need it <strong>long</strong> (one row per
+observation), or vice versa. <code>tidyr</code> has
+<code>pivot_longer()</code> and <code>pivot_wider()</code> for that.</p>
+<pre class="r"><code>wide &lt;- tibble::tibble(
+  city = c(&quot;LA&quot;, &quot;NYC&quot;, &quot;Chicago&quot;),
+  jan = c(58, 32, 25),
+  jul = c(83, 78, 76)
+)
+wide</code></pre>
+<pre><code>#&gt; # A tibble: 3 × 3
+#&gt;   city      jan   jul
+#&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1 LA         58    83
+#&gt; 2 NYC        32    78
+#&gt; 3 Chicago    25    76</code></pre>
+<pre class="r"><code>long &lt;- wide |&gt;
+  pivot_longer(cols = c(jan, jul), names_to = &quot;month&quot;, values_to = &quot;temp_f&quot;)
+long</code></pre>
+<pre><code>#&gt; # A tibble: 6 × 3
+#&gt;   city    month temp_f
+#&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;dbl&gt;
+#&gt; 1 LA      jan       58
+#&gt; 2 LA      jul       83
+#&gt; 3 NYC     jan       32
+#&gt; 4 NYC     jul       78
+#&gt; 5 Chicago jan       25
+#&gt; 6 Chicago jul       76</code></pre>
+<pre class="r"><code>long |&gt; pivot_wider(names_from = month, values_from = temp_f)</code></pre>
+<pre><code>#&gt; # A tibble: 3 × 3
+#&gt;   city      jan   jul
+#&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1 LA         58    83
+#&gt; 2 NYC        32    78
+#&gt; 3 Chicago    25    76</code></pre>
+<p><code>pivot_longer()</code> is the one you’ll reach for most — most
+analysis, plotting, and modeling functions expect long data.</p>
+</div>
+<div id="putting-it-together" class="section level2">
+<h2>Putting it together</h2>
+<p>Here’s a more realistic mini-analysis. We’ll classify cars by
+efficiency, count how many fall into each class by transmission type,
+and report it as a clean wide table.</p>
+<pre class="r"><code>cars |&gt;
+  mutate(
+    transmission = if_else(am == 1, &quot;manual&quot;, &quot;automatic&quot;),
+    efficiency = case_when(
+      mpg &lt; 18 ~ &quot;low&quot;,
+      mpg &lt; 24 ~ &quot;medium&quot;,
+      TRUE     ~ &quot;high&quot;
+    )
+  ) |&gt;
+  count(transmission, efficiency) |&gt;
+  pivot_wider(names_from = efficiency, values_from = n, values_fill = 0)</code></pre>
+<pre><code>#&gt; # A tibble: 2 × 4
+#&gt;   transmission  high   low medium
+#&gt;   &lt;chr&gt;        &lt;int&gt; &lt;int&gt;  &lt;int&gt;
+#&gt; 1 automatic        1    11      7
+#&gt; 2 manual           6     2      5</code></pre>
+<p>The whole pipeline is one connected thought, and you can comment out
+any line to see the intermediate result.</p>
+<div class="exercise">
+<div class="exercise-title">
+✏️ Exercise 3.1 — Filter and sort
+</div>
+<p>Using <code>cars</code>, find the 5 cars with the worst MPG. Show
+only the <code>model</code>, <code>mpg</code>, and <code>hp</code>
+columns.</p>
+<details>
+<summary>
+Show solution
+</summary>
+<pre class="r"><code>cars |&gt;
+  arrange(mpg) |&gt;
+  select(model, mpg, hp) |&gt;
+  head(5)</code></pre>
+<pre><code>#&gt; # A tibble: 5 × 3
+#&gt;   model                 mpg    hp
+#&gt;   &lt;chr&gt;               &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1 Cadillac Fleetwood   10.4   205
+#&gt; 2 Lincoln Continental  10.4   215
+#&gt; 3 Camaro Z28           13.3   245
+#&gt; 4 Duster 360           14.3   245
+#&gt; 5 Chrysler Imperial    14.7   230</code></pre>
+<p>Or with <code>slice_min</code>:</p>
+<pre class="r"><code>cars |&gt;
+  slice_min(mpg, n = 5) |&gt;
+  select(model, mpg, hp)</code></pre>
+<pre><code>#&gt; # A tibble: 5 × 3
+#&gt;   model                 mpg    hp
+#&gt;   &lt;chr&gt;               &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1 Cadillac Fleetwood   10.4   205
+#&gt; 2 Lincoln Continental  10.4   215
+#&gt; 3 Camaro Z28           13.3   245
+#&gt; 4 Duster 360           14.3   245
+#&gt; 5 Chrysler Imperial    14.7   230</code></pre>
+</details>
+</div>
+<div class="exercise">
+<div class="exercise-title">
+✏️ Exercise 3.2 — Group and summarise
+</div>
+<p>For each unique combination of cylinders (<code>cyl</code>) and gears
+(<code>gear</code>), compute:</p>
 <ul>
-<li><a href="https://cavandonohoe.github.io/learn_r.html">R Time Is
-Limited, Let’s Make the Most of It</a></li>
-<li><a
-href="https://cavandonohoe.github.io/intro_to_r.html">Introduction to
-R</a></li>
-<li><a
-href="https://cavandonohoe.github.io/basic_operations_r.html">Basic
-Operations in R</a></li>
-<li><a
-href="https://cavandonohoe.github.io/data_manipulation_r.html">Data
-Manipulation</a></li>
-<li><a
-href="https://cavandonohoe.github.io/data_visualization_r.html">Data
-Visualization</a></li>
-<li><a
-href="https://cavandonohoe.github.io/statistics_with_r.html">Statistics
-in R</a></li>
+<li>the number of cars (<code>n</code>)</li>
+<li>the mean MPG</li>
+<li>the mean horsepower</li>
 </ul>
+<p>Sort the result with the highest mean MPG first.</p>
+<details>
+<summary>
+Show solution
+</summary>
+<pre class="r"><code>cars |&gt;
+  group_by(cyl, gear) |&gt;
+  summarise(
+    n = n(),
+    mean_mpg = mean(mpg),
+    mean_hp = mean(hp),
+    .groups = &quot;drop&quot;
+  ) |&gt;
+  arrange(desc(mean_mpg))</code></pre>
+<pre><code>#&gt; # A tibble: 8 × 5
+#&gt;     cyl  gear     n mean_mpg mean_hp
+#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+#&gt; 1     4     5     2     28.2    102 
+#&gt; 2     4     4     8     26.9     76 
+#&gt; 3     4     3     1     21.5     97 
+#&gt; 4     6     3     2     19.8    108.
+#&gt; 5     6     4     4     19.8    116.
+#&gt; 6     6     5     1     19.7    175 
+#&gt; 7     8     5     2     15.4    300.
+#&gt; 8     8     3    12     15.0    194.</code></pre>
+</details>
+</div>
+<div class="exercise">
+<div class="exercise-title">
+✏️ Exercise 3.3 — Build a feature
+</div>
+<p>Add two new columns to <code>cars</code>:</p>
+<ol style="list-style-type: decimal">
+<li><code>power_to_weight</code> — horsepower per 1000 lbs
+(i.e. <code>hp / wt</code>).</li>
+<li><code>category</code> — <code>"sporty"</code> if
+<code>power_to_weight &gt; 50</code>, otherwise
+<code>"normal"</code>.</li>
+</ol>
+<p>Then count the cars in each category.</p>
+<details>
+<summary>
+Show solution
+</summary>
+<pre class="r"><code>cars |&gt;
+  mutate(
+    power_to_weight = hp / wt,
+    category = if_else(power_to_weight &gt; 50, &quot;sporty&quot;, &quot;normal&quot;)
+  ) |&gt;
+  count(category)</code></pre>
+<pre><code>#&gt; # A tibble: 2 × 2
+#&gt;   category     n
+#&gt;   &lt;chr&gt;    &lt;int&gt;
+#&gt; 1 normal      25
+#&gt; 2 sporty       7</code></pre>
+</details>
+</div>
+</div>
+<div id="whats-next" class="section level2">
+<h2>What’s next</h2>
+<p>You now have the toolkit to load, clean, and summarise data — easily
+60% of any real analysis. Next up: making the results visible. Lesson 4
+is about plotting with <code>ggplot2</code>, which pairs cleanly with
+everything you just learned.</p>
+<div class="lesson-nav">
+<p><a class="nav-prev" href="basic_operations_r.html"> <span
+class="lesson-nav-label">← Previous</span> <span
+class="lesson-nav-title">Lesson 2: Basic Operations</span> </a>
+<a class="nav-next" href="data_visualization_r.html"> <span
+class="lesson-nav-label">Next →</span> <span
+class="lesson-nav-title">Lesson 4: Data Visualization</span> </a></p>
+</div>
 </div>
 </div>
 
