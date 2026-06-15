@@ -1,0 +1,57 @@
+name: Ping movie-ranker Supabase
+
+# Free-tier Supabase projects auto-pause after ~7 days of inactivity. This
+# workflow makes a cheap read query against the project once a week so it
+# never sits idle long enough to trigger the pause.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 14 * * 1"  # Mondays 14:17 UTC
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ping-movie-ranker-supabase
+  cancel-in-progress: false
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      SUPABASE_URL: ${{ secrets.MOVIE_RANKER_SUPABASE_URL }}
+      SUPABASE_ANON_KEY: ${{ secrets.MOVIE_RANKER_SUPABASE_ANON_KEY }}
+    steps:
+      - name: Verify secrets present
+        run: |
+          set -euo pipefail
+          if [ -z "${SUPABASE_URL:-}" ] || [ -z "${SUPABASE_ANON_KEY:-}" ]; then
+            echo "::error::MOVIE_RANKER_SUPABASE_URL and MOVIE_RANKER_SUPABASE_ANON_KEY must be set as repo secrets."
+            exit 1
+          fi
+
+      - name: Read one row from public.titles
+        run: |
+          set -euo pipefail
+          # `Range: 0-0` returns at most one row; the response itself is
+          # ignored — what matters is that the DB processed a query.
+          status=$(curl -s -o /tmp/resp.json -w "%{http_code}" \
+            -H "apikey: ${SUPABASE_ANON_KEY}" \
+            -H "Authorization: Bearer ${SUPABASE_ANON_KEY}" \
+            -H "Range: 0-0" \
+            "${SUPABASE_URL}/rest/v1/titles?select=id")
+          echo "HTTP ${status}"
+          # PostgREST returns 200 for full ranges and 206 for partial — both
+          # are healthy. Anything else means the project is unreachable or
+          # the keys are wrong, and the workflow should fail loudly.
+          case "${status}" in
+            200|206) ;;
+            *)
+              echo "::error::Unexpected HTTP ${status} from Supabase REST API."
+              cat /tmp/resp.json || true
+              exit 1
+              ;;
+          esac
+          echo "Supabase project pinged successfully."
