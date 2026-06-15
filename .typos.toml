@@ -63,6 +63,9 @@ extend-exclude = [
   "detour-finder/preload_data.js",
   "scripts/parse_chase_statements.R",
   "scripts/parse_chase_statements.py",
+  # Auto-generated from IMDb CSV; contains real-world proper nouns
+  # (movie titles, director names, transliterations) that trip the checker.
+  "movie-ranker/supabase/seed.sql",
 ]
 ignore-hidden = false
 ignore-vcs = true
