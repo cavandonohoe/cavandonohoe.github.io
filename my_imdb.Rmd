@@ -44,13 +44,53 @@ knitr::opts_chunk$set(
 
 ```{r data_load, include=FALSE}
 my_ratings <- readr::read_csv(here::here("data", "imdb_ratings.csv"))
+
+# Personal pairwise-ranking CSV is refreshed by
+# .github/workflows/update_movie_ranker_personal.yml. When present it lets us
+# sort each `Your Rating` bucket by personal Elo instead of falling back to
+# IMDb's average. Falls back gracefully if the file is missing (e.g. fresh
+# clone before the workflow has run).
+personal_path <- here::here("data", "movie_ranker_personal.csv")
+if (file.exists(personal_path)) {
+  personal <- readr::read_csv(personal_path, show_col_types = FALSE) %>%
+    dplyr::select(Const = tconst, `Personal Rank` = personal_rank,
+      personal_elo = elo, personal_manual = manual,
+      personal_graduated = graduated)
+  my_ratings <- my_ratings %>% dplyr::left_join(personal, by = "Const")
+} else {
+  my_ratings <- my_ratings %>%
+    dplyr::mutate(`Personal Rank` = NA_integer_, personal_elo = NA_real_,
+      personal_manual = NA, personal_graduated = NA)
+}
 ```
 
 ```{r timestamp, results='asis'}
+# Show the most recent commit timestamp across the two data sources that feed
+# this page: the IMDb export (refreshed manually) and the personal pairwise
+# ranking CSV (refreshed every 6h by update_movie_ranker_personal.yml). Files
+# that exist on disk but haven't been committed yet (e.g. fresh local
+# generation before push) are skipped so we don't hit an empty `git log`.
+data_files <- c(
+  here::here("data", "imdb_ratings.csv"),
+  here::here("data", "movie_ranker_personal.csv")
+)
+data_files <- data_files[file.exists(data_files)]
+git_dates <- vapply(data_files, function(f) {
+  out <- suppressWarnings(system(
+    paste("git log -1 --format=%ai --", shQuote(f)),
+    intern = TRUE, ignore.stderr = TRUE
+  ))
+  if (length(out) == 0) NA_character_ else out[[1]]
+}, character(1))
+git_dates <- git_dates[!is.na(git_dates) & nzchar(git_dates)]
+last_updated <- if (length(git_dates) > 0) {
+  max(as.Date(git_dates))
+} else {
+  Sys.Date()
+}
 cat(sprintf(
   '<span class="data-timestamp">Data last updated: %s</span>\n',
-  format(as.Date(system(paste("git log -1 --format=%ai --",
-    here::here("data", "imdb_ratings.csv")), intern = TRUE)), "%B %d, %Y")
+  format(last_updated, "%B %d, %Y")
 ))
 ```
 
@@ -72,9 +112,14 @@ nines_and_tens %>%
 
 ```{r full_list}
 my_ratings %>%
-  dplyr::select(`My Rating` = `Your Rating`, Title, `Title Type`, `IMDb Rating`, `Runtime (mins)`,
-    Year, Genres, `Release Date`, Directors) %>%
-  dplyr::arrange(dplyr::desc(`My Rating`), dplyr::desc(`IMDb Rating`)) %>%
+  dplyr::select(`My Rating` = `Your Rating`, `Personal Rank`, Title,
+    `Title Type`, `IMDb Rating`, `Runtime (mins)`, Year, Genres,
+    `Release Date`, Directors) %>%
+  dplyr::arrange(dplyr::desc(`My Rating`),
+    # Within a bucket, prefer personal pairwise rank when available; fall
+    # back to IMDb's rating so unranked titles still order sensibly.
+    !is.na(`Personal Rank`) == FALSE, `Personal Rank`,
+    dplyr::desc(`IMDb Rating`)) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
             elementId = "imdb-watchlist-table",
             options = list(pageLength = 500, dom = "Bfrtip", buttons = c("copy", "csv", "excel"),
