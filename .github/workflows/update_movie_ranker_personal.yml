@@ -31,6 +31,12 @@ jobs:
     timeout-minutes: 15
     container:
       image: rocker/r-ver:4.4
+    # Default shell inside containers is `sh`, but several steps use bash
+    # features (pipefail, [[ ]], $(...) inside heredocs). bash is preinstalled
+    # in rocker/r-ver.
+    defaults:
+      run:
+        shell: bash
     env:
       MOVIE_RANKER_SUPABASE_URL: ${{ secrets.MOVIE_RANKER_SUPABASE_URL }}
       MOVIE_RANKER_SUPABASE_SERVICE_KEY: ${{ secrets.MOVIE_RANKER_SUPABASE_SERVICE_KEY }}
