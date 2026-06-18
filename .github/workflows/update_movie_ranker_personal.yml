@@ -1,0 +1,127 @@
+name: Update movie-ranker personal CSV
+
+# Pulls the latest singleton row from the movie-ranker Supabase project and
+# writes data/movie_ranker_personal.csv. my_imdb.Rmd joins this CSV into the
+# IMDb watchlist so each rating bucket can be sorted by personal Elo instead
+# of falling back to IMDb's average.
+#
+# The file changes whenever a comparison or manual override is recorded in
+# the app, so we run on a 6h cadence plus on-demand dispatch.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "37 */6 * * *" # every 6 hours at :37
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-movie-ranker-personal
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      MOVIE_RANKER_SUPABASE_URL: ${{ secrets.MOVIE_RANKER_SUPABASE_URL }}
+      MOVIE_RANKER_SUPABASE_SERVICE_KEY: ${{ secrets.MOVIE_RANKER_SUPABASE_SERVICE_KEY }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Verify secrets present
+        run: |
+          set -euo pipefail
+          missing=""
+          [ -z "${MOVIE_RANKER_SUPABASE_URL:-}" ] && missing="$missing MOVIE_RANKER_SUPABASE_URL"
+          [ -z "${MOVIE_RANKER_SUPABASE_SERVICE_KEY:-}" ] && missing="$missing MOVIE_RANKER_SUPABASE_SERVICE_KEY"
+          if [ -n "$missing" ]; then
+            echo "::error::Missing required secrets:$missing"
+            exit 1
+          fi
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::dplyr
+            any::tibble
+            any::readr
+            any::here
+            any::httr2
+            any::jsonlite
+            any::purrr
+
+      - name: Replay Elo and write personal CSV
+        run: Rscript scripts/update_movie_ranker_personal.R
+
+      # Sanity check: only the personal CSV is allowed to change. If anything
+      # else moved we abort before commit so a stray script can't push
+      # unrelated mutations.
+      - name: Verify only personal CSV changed
+        run: |
+          set -euo pipefail
+          unexpected="$(git diff --name-only HEAD \
+            | grep -Ev '^data/movie_ranker_personal\.csv$' || true)"
+          if [ -n "$unexpected" ]; then
+            echo "ERROR: script modified tracked files outside data/movie_ranker_personal.csv:"
+            echo "$unexpected"
+            exit 1
+          fi
+          echo "OK: only personal CSV changed (or no change)."
+
+      - name: Commit and push if changed
+        id: push
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add data/movie_ranker_personal.csv
+
+          if git diff --cached --quiet; then
+            echo "No changes."
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # Belt-and-suspenders: refuse to commit anything other than the
+          # personal CSV.
+          staged_other="$(git diff --cached --name-only \
+            | grep -Ev '^data/movie_ranker_personal\.csv$' || true)"
+          if [ -n "$staged_other" ]; then
+            echo "ERROR: refusing to commit unexpected staged files:"
+            echo "$staged_other"
+            exit 1
+          fi
+
+          # Build a tiny summary: how many ranks moved per bucket.
+          summary="$(git diff --cached --stat data/movie_ranker_personal.csv)"
+          echo "$summary"
+
+          git commit -m "Auto-update movie-ranker personal CSV"
+
+          for i in 1 2 3; do
+            if git push; then
+              echo "pushed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "Push failed; rebasing on remote and retrying ($i/3)..."
+            git pull --rebase origin "$(git rev-parse --abbrev-ref HEAD)"
+          done
+          echo "ERROR: failed to push personal CSV update after 3 attempts."
+          exit 1
+
+      # Bot pushes via GITHUB_TOKEN don't trigger downstream workflows
+      # (GitHub anti-recursion guard), so the site won't redeploy after this
+      # commit unless we explicitly dispatch the build workflow.
+      - name: Trigger site redeploy
+        if: steps.push.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run pages-branch-previews.yml --ref main
