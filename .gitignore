@@ -6,14 +6,17 @@
 .RData
 .Ruserdata
 .RDataTmp
-.Rprofile
+# Track .Rprofile (renv activator); ignore other R env files
 .Renviron
 .Renviron.site
 .httr-oauth
 
-# renv / packrat (keep renv.lock tracked!)
+# renv / packrat (keep renv.lock + renv/activate.R + renv/settings.json tracked!)
 renv/library/
 renv/staging/
+renv/python/
+renv/local/
+renv/cellar/
 packrat/
 
 # ---------------------------------------

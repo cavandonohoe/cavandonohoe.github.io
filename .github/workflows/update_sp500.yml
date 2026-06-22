@@ -24,13 +24,16 @@ jobs:
           use-public-rspm: true
           r-version-file: .R-version
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          packages: |
-            any::tidyquant
-            any::readr
-            any::here
-            any::magrittr
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            cmake git libcurl4-openssl-dev libfontconfig1-dev libfreetype6-dev \
+            libfribidi-dev libgit2-dev libharfbuzz-dev libicu-dev libjpeg-dev \
+            libnode-dev libpng-dev libssl-dev libtiff-dev libuv1-dev libwebp-dev \
+            libx11-dev libxml2-dev make pandoc zlib1g-dev
+
+      - uses: r-lib/actions/setup-renv@v2
 
       - name: Refresh VOO stock prices
         run: Rscript scripts/sp500_data.R
