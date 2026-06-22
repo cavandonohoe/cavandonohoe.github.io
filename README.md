@@ -128,57 +128,13 @@ above. Regenerated each time `README.Rmd` is knit.
 
 <img src="images/readme/commit-activity-cumulative-1.png" alt="Two cumulative line charts showing total commits and total lines changed (insertions + deletions) over time, split by Cavan's own commits vs. scheduled-bot commits."  />
 
-*513 commits since Dec 2020 — 491 by me, 22 by scheduled bots — touching
-1,993,711 lines in total.*
+*529 commits since Dec 2020 — 500 by me, 29 by scheduled bots — touching
+2,051,012 lines in total.*
 
 ## Setup and Local Development
 
-This website is built using R Markdown and deployed via GitHub Actions
-to GitHub Pages.
-
-### Prerequisites
-
-- R (\>= 4.2)
-- R packages listed in `DESCRIPTION`
-- Pandoc (installed automatically by GitHub Actions, or via RStudio)
-
-### Local Development
-
-1.  Clone the repository:
-
-    ``` bash
-    git clone https://github.com/cavandonohoe/cavandonohoe.github.io.git
-    cd cavandonohoe.github.io
-    ```
-
-2.  Install R dependencies:
-
-    ``` r
-    install.packages(c("rmarkdown", "knitr", "tidyverse", "rvest", "xml2", 
-                      "httr2", "curl", "DT", "scales", "plotly", "glue", 
-                      "here", "readxl", "googlesheets4", "ggplot2", 
-                      "RColorBrewer", "pagedown", "lubridate", "patchwork"))
-    ```
-
-3.  Set up Google Sheets authentication (for CV):
-
-    - The site uses Google Sheets API for the CV
-    - For local development, authenticate using
-      `googlesheets4::gs4_auth()`
-    - For CI/CD, a service account key is used (stored as GitHub secret)
-
-4.  Build the site locally:
-
-    ``` r
-    rmarkdown::render_site()
-    ```
-
-    The site will be built in the `_site/` directory.
-
-5.  Preview locally:
-
-    - Open `_site/index.html` in a browser, or
-    - Use RStudio’s “Preview” feature
+Local development, prerequisites, build steps, lint/test commands, and
+PR conventions all live in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### Project Structure
 
@@ -195,15 +151,5 @@ to GitHub Pages.
 ### Deployment
 
 The site is automatically deployed to GitHub Pages via GitHub Actions
-when changes are pushed to the `main` branch. The workflow:
-
-1.  Sets up R and dependencies
-2.  Validates package dependencies
-3.  Authenticates with Google APIs using service account
-4.  Renders the R Markdown site
-5.  Deploys to GitHub Pages
-
-### Contributing
-
-If you find issues or have suggestions, please open an issue or submit a
-pull request!
+when changes are pushed to the `main` branch. See the Automation section
+above for the full list of workflows.
