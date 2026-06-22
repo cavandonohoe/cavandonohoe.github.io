@@ -30,15 +30,7 @@ out_path <- file.path(repo_root, "sitemap.xml")
 
 today <- format(Sys.Date(), "%Y-%m-%d")
 
-extract_hrefs <- function(node) {
-  if (is.list(node)) {
-    direct <- if (!is.null(node$href)) node$href else character()
-    nested <- unlist(lapply(node, extract_hrefs), use.names = FALSE)
-    c(direct, nested)
-  } else {
-    character()
-  }
-}
+source(file.path(repo_root, "scripts", "site_helpers.R"))
 
 hrefs_yml <- character()
 if (file.exists(site_yml)) {
