@@ -51,7 +51,7 @@ jobs:
           apt-get install -y --no-install-recommends git
           git --version
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Verify secrets present
         run: |
@@ -68,7 +68,7 @@ jobs:
       # a rebuild if the package set changes.
       - name: Cache R library
         id: rcache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: /usr/local/lib/R/site-library
           # v1 = initial set: dplyr, tibble, readr, here, httr2, jsonlite, purrr
