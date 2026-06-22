@@ -66,14 +66,14 @@ all_dates <- readr::read_csv(paste0(
 
 # find mode
 max_statues <- all_dates %>%
-  dplyr::group_by(value3) %>%
+  dplyr::group_by(year) %>%
   dplyr::count() %>%
   dplyr::ungroup() %>%
   dplyr::arrange(dplyr::desc(n)) %>%
   dplyr::filter(n == max(n))
 
 mode <- max_statues %>%
-  dplyr::pull(value3)
+  dplyr::pull(year)
 
 with_max <- max_statues %>%
   dplyr::pull(n)
@@ -85,12 +85,12 @@ These bins are of width = 5 years.
 
 ```{r graph1, fig.width=10, fig.height=7.5}
 all_dates_clean <- all_dates %>%
-  dplyr::group_by(value3) %>%
+  dplyr::group_by(year) %>%
   dplyr::count() %>%
   dplyr::ungroup() %>%
-  dplyr::mutate(date_bins = cut(value3, breaks = seq(min(value3), max(value3)+5, by = 5),
+  dplyr::mutate(date_bins = cut(year, breaks = seq(min(year), max(year)+5, by = 5),
     right = FALSE),
-         text = paste0(value3, ": ", n)) %>%
+         text = paste0(year, ": ", n)) %>%
   dplyr::group_by(date_bins) %>%
   dplyr::summarise(n = sum(n),
             text = paste(text, collapse = "\n")) %>%
