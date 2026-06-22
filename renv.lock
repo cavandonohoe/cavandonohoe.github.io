@@ -4,7 +4,7 @@
     "Repositories": [
       {
         "Name": "CRAN",
-        "URL": "https://cloud.r-project.org"
+        "URL": "https://packagemanager.posit.co/cran/latest"
       }
     ]
   },
@@ -81,7 +81,7 @@
     },
     "DEoptimR": {
       "Package": "DEoptimR",
-      "Version": "1.1-3-1",
+      "Version": "1.2-0",
       "Source": "Repository",
       "Date": "2024-11-23",
       "Title": "Differential Evolution Optimization in Pure R",
@@ -168,7 +168,7 @@
     },
     "PerformanceAnalytics": {
       "Package": "PerformanceAnalytics",
-      "Version": "2.0.8",
+      "Version": "2.1.0",
       "Source": "Repository",
       "Type": "Package",
       "Title": "Econometric Tools for Performance and Risk Analysis",
@@ -297,7 +297,7 @@
     },
     "RcppArmadillo": {
       "Package": "RcppArmadillo",
-      "Version": "14.6.0-1",
+      "Version": "15.4.0-1",
       "Source": "Repository",
       "Type": "Package",
       "Title": "'Rcpp' Integration for the 'Armadillo' Templated Linear Algebra Library",
@@ -335,7 +335,7 @@
     },
     "RcppRoll": {
       "Package": "RcppRoll",
-      "Version": "0.3.1",
+      "Version": "0.3.2",
       "Source": "Repository",
       "Type": "Package",
       "Title": "Efficient Rolling / Windowed Operations",
@@ -431,7 +431,7 @@
     },
     "SQUAREM": {
       "Package": "SQUAREM",
-      "Version": "2021.1",
+      "Version": "2026.1",
       "Source": "Repository",
       "Date": "2021-01-12",
       "Title": "Squared Extrapolation Methods for Accelerating EM-Like Monotone Algorithms",
@@ -1192,7 +1192,7 @@
     },
     "clock": {
       "Package": "clock",
-      "Version": "0.7.3",
+      "Version": "0.7.4",
       "Source": "Repository",
       "Title": "Date-Time Types and Tools",
       "Authors@R": "c( person(\"Davis\", \"Vaughan\", , \"davis@posit.co\", role = c(\"aut\", \"cre\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
@@ -1937,7 +1937,7 @@
     },
     "forecast": {
       "Package": "forecast",
-      "Version": "8.24.0",
+      "Version": "9.0.2",
       "Source": "Repository",
       "Title": "Forecasting Functions for Time Series and Linear Models",
       "Description": "Methods and tools for displaying and analysing univariate time series forecasts including exponential smoothing via state space models and automatic ARIMA modelling.",
@@ -1994,7 +1994,7 @@
     },
     "fracdiff": {
       "Package": "fracdiff",
-      "Version": "1.5-3",
+      "Version": "1.5-4",
       "Source": "Repository",
       "VersionNote": "Released 1.5-0 on 2019-12-09, 1.5-1 on 2020-01-20, 1.5-2 on 2022-10-31",
       "Date": "2024-02-01",
@@ -2062,7 +2062,7 @@
     },
     "furrr": {
       "Package": "furrr",
-      "Version": "0.3.1",
+      "Version": "0.4.0",
       "Source": "Repository",
       "Title": "Apply Mapping Functions in Parallel using Futures",
       "Authors@R": "c( person(\"Davis\", \"Vaughan\", , \"davis@rstudio.com\", role = c(\"aut\", \"cre\")), person(\"Matt\", \"Dancho\", , \"mdancho@business-science.io\", role = \"aut\"), person(\"RStudio\", role = c(\"cph\", \"fnd\")) )",
@@ -2802,7 +2802,7 @@
     },
     "hardhat": {
       "Package": "hardhat",
-      "Version": "1.4.1",
+      "Version": "1.4.3",
       "Source": "Repository",
       "Title": "Construct Modeling Packages",
       "Authors@R": "c( person(\"Hannah\", \"Frick\", , \"hannah@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-6049-5258\")), person(\"Davis\", \"Vaughan\", , \"davis@posit.co\", role = \"aut\"), person(\"Max\", \"Kuhn\", , \"max@posit.co\", role = \"aut\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
@@ -3580,7 +3580,7 @@
     },
     "lava": {
       "Package": "lava",
-      "Version": "1.8.1",
+      "Version": "1.9.1",
       "Source": "Repository",
       "Type": "Package",
       "Title": "Latent Variable Models",
@@ -3759,7 +3759,7 @@
     },
     "listenv": {
       "Package": "listenv",
-      "Version": "1.0.0",
+      "Version": "0.10.1",
       "Source": "Repository",
       "Depends": [
         "R (>= 3.1.2)"
@@ -4050,7 +4050,7 @@
     },
     "nlme": {
       "Package": "nlme",
-      "Version": "3.1-168",
+      "Version": "3.1-169",
       "Source": "Repository",
       "Date": "2025-03-31",
       "Priority": "recommended",
@@ -4540,7 +4540,7 @@
     },
     "polite": {
       "Package": "polite",
-      "Version": "0.1.3",
+      "Version": "0.1.4",
       "Source": "Repository",
       "Title": "Be Nice on the Web",
       "Description": "Be responsible when scraping data from websites by following polite principles: introduce yourself, ask for permission, take slowly and never ask twice.",
@@ -4640,7 +4640,7 @@
     },
     "prodlim": {
       "Package": "prodlim",
-      "Version": "2025.04.28",
+      "Version": "2026.03.11",
       "Source": "Repository",
       "Title": "Product-Limit Estimation for Censored Event History Analysis",
       "Authors@R": "person(given = c(\"Thomas\", \"A.\"), family = \"Gerds\", role = c(\"aut\", \"cre\"), email = \"tag@biostat.ku.dk\")",
@@ -4712,7 +4712,7 @@
     },
     "progressr": {
       "Package": "progressr",
-      "Version": "0.15.1",
+      "Version": "0.19.0",
       "Source": "Repository",
       "Title": "An Inclusive, Unifying API for Progress Updates",
       "Description": "A minimal, unifying API for scripts and packages to report progress updates from anywhere including when using parallel processing.  The package is designed such that the developer can to focus on what progress should be reported on without having to worry about how to present it.  The end user has full control of how, where, and when to render these progress updates, e.g. in the terminal using utils::txtProgressBar(), cli::cli_progress_bar(), in a graphical user interface using utils::winProgressBar(), tcltk::tkProgressBar() or shiny::withProgress(), via the speakers using beepr::beep(), or on a file system via the size of a file. Anyone can add additional, customized, progression handlers. The 'progressr' package uses R's condition framework for signaling progress updated. Because of this, progress can be reported from almost anywhere in R, e.g. from classical for and while loops, from map-reduce API:s like the lapply() family of functions, 'purrr', 'plyr', and 'foreach'. It will also work with parallel processing via the 'future' framework, e.g. future.apply::future_lapply(), furrr::future_map(), and 'foreach' with 'doFuture'. The package is compatible with Shiny applications.",
@@ -4895,7 +4895,7 @@
     },
     "pyinit": {
       "Package": "pyinit",
-      "Version": "1.1.3",
+      "Version": "1.1.5",
       "Source": "Repository",
       "Type": "Package",
       "Title": "Pena-Yohai Initial Estimator for Robust S-Regression",
@@ -5247,7 +5247,7 @@
     },
     "recipes": {
       "Package": "recipes",
-      "Version": "1.3.1",
+      "Version": "1.3.3",
       "Source": "Repository",
       "Title": "Preprocessing and Feature Engineering Steps for Modeling",
       "Authors@R": "c( person(\"Max\", \"Kuhn\", , \"max@posit.co\", role = c(\"aut\", \"cre\")), person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\"), person(\"Emil\", \"Hvitfeldt\", , \"emil.hvitfeldt@posit.co\", role = \"aut\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
@@ -5617,7 +5617,7 @@
     },
     "robustbase": {
       "Package": "robustbase",
-      "Version": "0.99-4-1",
+      "Version": "0.99-7",
       "Source": "Repository",
       "VersionNote": "Released 0.99-4 on 2024-08-19, 0.99-3 on 2024-07-01 and 0.99-2 on 2024-01-27 to CRAN",
       "Date": "2024-09-24",
@@ -5675,7 +5675,7 @@
     },
     "rpart": {
       "Package": "rpart",
-      "Version": "4.1.24",
+      "Version": "4.1.27",
       "Source": "Repository",
       "Priority": "recommended",
       "Date": "2025-01-06",
@@ -5771,7 +5771,7 @@
     },
     "rsample": {
       "Package": "rsample",
-      "Version": "1.3.0",
+      "Version": "1.3.2",
       "Source": "Repository",
       "Title": "General Resampling Infrastructure",
       "Authors@R": "c( person(\"Hannah\", \"Frick\", , \"hannah@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-6049-5258\")), person(\"Fanny\", \"Chow\", , \"fannybchow@gmail.com\", role = \"aut\"), person(\"Max\", \"Kuhn\", , \"max@posit.co\", role = \"aut\"), person(\"Michael\", \"Mahoney\", , \"mike.mahoney.218@gmail.com\", role = c(\"aut\"), comment = c(ORCID = \"0000-0003-2402-304X\")), person(\"Julia\", \"Silge\", , \"julia.silge@posit.co\", role = c(\"aut\"), comment = c(ORCID = \"0000-0002-3671-836X\")), person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
@@ -6069,7 +6069,7 @@
     },
     "slider": {
       "Package": "slider",
-      "Version": "0.3.2",
+      "Version": "0.3.3",
       "Source": "Repository",
       "Title": "Sliding Window Functions",
       "Authors@R": "c( person(\"Davis\", \"Vaughan\", , \"davis@posit.co\", role = c(\"aut\", \"cre\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
@@ -6112,7 +6112,7 @@
     },
     "sparsevctrs": {
       "Package": "sparsevctrs",
-      "Version": "0.3.4",
+      "Version": "0.3.6",
       "Source": "Repository",
       "Title": "Sparse Vectors for Use in Data Frames",
       "Authors@R": "c( person(\"Emil\", \"Hvitfeldt\", , \"emil.hvitfeldt@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-0679-1945\")), person(\"Davis\", \"Vaughan\", , \"davis@posit.co\", role = \"ctb\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
@@ -6257,7 +6257,7 @@
     },
     "survival": {
       "Package": "survival",
-      "Version": "3.8-3",
+      "Version": "3.8-6",
       "Source": "Repository",
       "Title": "Survival Analysis",
       "Priority": "recommended",
@@ -6527,7 +6527,7 @@
     },
     "tidyquant": {
       "Package": "tidyquant",
-      "Version": "1.0.11",
+      "Version": "1.0.12",
       "Source": "Repository",
       "Type": "Package",
       "Title": "Tidy Quantitative Financial Analysis",
@@ -6748,7 +6748,7 @@
     },
     "timeDate": {
       "Package": "timeDate",
-      "Version": "4041.110",
+      "Version": "4052.112",
       "Source": "Repository",
       "Title": "Rmetrics - Chronological and Calendar Objects",
       "Authors@R": "c(person(\"Diethelm\", \"Wuertz\", role=\"aut\", comment = \"original code\") , person(\"Tobias\", \"Setz\", role = c(\"aut\"), email = \"tobias.setz@live.com\") , person(\"Yohan\", \"Chalabi\", role = \"aut\") , person(\"Martin\",\"Maechler\", role = \"ctb\", email = \"maechler@stat.math.ethz.ch\", comment = c(ORCID = \"0000-0002-8685-9910\")) , person(given = c(\"Joe\", \"W.\"), family = \"Byers\", role = \"ctb\") , person(given = c(\"Georgi\", \"N.\"), family = \"Boshnakov\",  role = c(\"cre\", \"aut\"), email = \"georgi.boshnakov@manchester.ac.uk\") )",
@@ -6804,7 +6804,7 @@
     },
     "timetk": {
       "Package": "timetk",
-      "Version": "2.9.0",
+      "Version": "2.9.1",
       "Source": "Repository",
       "Type": "Package",
       "Title": "A Tool Kit for Working with Time Series",
@@ -6895,7 +6895,7 @@
     },
     "tseries": {
       "Package": "tseries",
-      "Version": "0.10-58",
+      "Version": "0.10-61",
       "Source": "Repository",
       "Title": "Time Series Analysis and Computational Finance",
       "Authors@R": "c(person(\"Adrian\", \"Trapletti\", role = \"aut\", email = \"adrian@trapletti.org\"), person(\"Kurt\", \"Hornik\", role = c(\"aut\", \"cre\"), email = \"Kurt.Hornik@R-project.org\", comment = c(ORCID = \"0000-0003-4198-9911\")), person(\"Blake\", \"LeBaron\", role = \"ctb\", comment = \"BDS test code\"))",
@@ -7278,7 +7278,7 @@
     },
     "warp": {
       "Package": "warp",
-      "Version": "0.2.1",
+      "Version": "0.2.3",
       "Source": "Repository",
       "Title": "Group Dates",
       "Authors@R": "c( person(\"Davis\", \"Vaughan\", , \"davis@posit.co\", role = c(\"aut\", \"cre\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
@@ -7445,7 +7445,7 @@
     },
     "xml2": {
       "Package": "xml2",
-      "Version": "1.6.0",
+      "Version": "1.5.2",
       "Source": "Repository",
       "Title": "Parse XML",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", role = \"aut\"), person(\"Jim\", \"Hester\", role = \"aut\"), person(\"Jeroen\", \"Ooms\", email = \"jeroenooms@gmail.com\", role = c(\"aut\", \"cre\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")), person(\"R Foundation\", role = \"ctb\", comment = \"Copy of R-project homepage cached as example\") )",
@@ -7485,7 +7485,7 @@
     },
     "xts": {
       "Package": "xts",
-      "Version": "0.14.1",
+      "Version": "0.14.2",
       "Source": "Repository",
       "Type": "Package",
       "Title": "eXtensible Time Series",
