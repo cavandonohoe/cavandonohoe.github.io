@@ -65,6 +65,15 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@v2
         if: ${{ steps.changed.outputs.files != '' }}
+      - name: Install system dependencies
+        if: ${{ steps.changed.outputs.files != '' }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            cmake git libcurl4-openssl-dev libfontconfig1-dev libfreetype6-dev \
+            libfribidi-dev libgit2-dev libharfbuzz-dev libicu-dev libjpeg-dev \
+            libnode-dev libpng-dev libssl-dev libtiff-dev libuv1-dev libwebp-dev \
+            libx11-dev libxml2-dev make pandoc zlib1g-dev
 
       - uses: r-lib/actions/setup-renv@v2
         if: ${{ steps.changed.outputs.files != '' }}
