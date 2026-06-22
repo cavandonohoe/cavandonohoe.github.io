@@ -55,9 +55,7 @@ jobs:
           if (length(bad)) stop("Bad Imports tokens (contain spaces): ", paste(bad, collapse=", "))
           RSCRIPT
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          dependencies: '"all"'
+      - uses: r-lib/actions/setup-renv@v2
       
       # ✅ Write SA key to runner temp for same-repo PRs, pushes, and manual
       # dispatches (forks won't get secrets). NOTE: Dependabot PRs run with

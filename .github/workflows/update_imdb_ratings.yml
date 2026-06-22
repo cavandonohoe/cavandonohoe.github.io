@@ -27,18 +27,7 @@ jobs:
           use-public-rspm: true
           r-version-file: .R-version
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          packages: |
-            any::magrittr
-            any::dplyr
-            any::tibble
-            any::purrr
-            any::stringr
-            any::readr
-            any::here
-            any::httr2
-            any::jsonlite
+      - uses: r-lib/actions/setup-renv@v2
 
       # Run the scraper. Per-show errors are swallowed by the script's safety
       # wrapper; if any show fails the script exits non-zero and we stop here.

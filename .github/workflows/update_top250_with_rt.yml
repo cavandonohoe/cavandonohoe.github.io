@@ -24,22 +24,7 @@ jobs:
           use-public-rspm: true
           r-version-file: .R-version
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          packages: |
-            any::dplyr
-            any::tibble
-            any::stringr
-            any::readr
-            any::here
-            any::magrittr
-            any::rvest
-            any::xml2
-            any::httr
-            any::httr2
-            any::jsonlite
-            any::lubridate
-            any::polite
+      - uses: r-lib/actions/setup-renv@v2
 
       - name: Refresh Top 250 with Rotten Tomatoes
         run: Rscript scripts/refresh_top250_with_rt.R

@@ -36,11 +36,7 @@ jobs:
           use-public-rspm: true
           r-version-file: .R-version
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          packages: |
-            any::lintr
-            any::xml2
+      - uses: r-lib/actions/setup-renv@v2
 
       - name: Run lintr on changed files
         run: |

@@ -20,9 +20,7 @@ jobs:
           use-public-rspm: true
           r-version-file: .R-version
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          dependencies: '"all"'
+      - uses: r-lib/actions/setup-renv@v2
 
       - name: Refresh Best Picture winners
         run: Rscript scripts/check_best_picture_winners.R

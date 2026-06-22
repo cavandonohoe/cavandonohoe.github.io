@@ -24,13 +24,7 @@ jobs:
           use-public-rspm: true
           r-version-file: .R-version
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          packages: |
-            any::yaml
-            any::xml2
-            any::magrittr
-            any::here
+      - uses: r-lib/actions/setup-renv@v2
 
       - name: Regenerate sitemap.xml
         run: Rscript scripts/generate_sitemap.R

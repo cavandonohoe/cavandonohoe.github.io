@@ -9,6 +9,7 @@ Imports:
     tidyverse,
     rvest,
     xml2,
+    httr,
     httr2,
     curl,
     DT,
@@ -25,4 +26,9 @@ Imports:
     RColorBrewer,
     pagedown,
     lubridate,
-    patchwork
+    patchwork,
+    polite,
+    tidyquant
+Suggests:
+    lintr,
+    testthat

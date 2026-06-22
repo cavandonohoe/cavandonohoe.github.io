@@ -55,9 +55,7 @@ jobs:
           if (length(bad)) stop("Bad Imports tokens (contain spaces): ", paste(bad, collapse=", "))
           RSCRIPT
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          dependencies: '"all"'
+      - uses: r-lib/actions/setup-renv@v2
       # --- Write SA key from repo secret (skip on Dependabot/forks: no secrets) ---
       - name: Write GCP key
         if: ${{ github.actor != 'dependabot[bot]' }}

@@ -8,13 +8,34 @@ Thanks for your interest in this repo. It's primarily a personal site, but bug r
 
 - R (>= 4.2). The repo pins R via `.R-version` for CI; locally any 4.2+ should work.
 - Pandoc (installed by RStudio, or via Homebrew on macOS).
-- The packages listed in `DESCRIPTION`. Install them in one shot:
 
-  ```r
-  desc <- read.dcf("DESCRIPTION")
-  pkgs <- trimws(unlist(strsplit(desc[, "Imports"], ",\\s*")))
-  install.packages(setdiff(pkgs, rownames(installed.packages())))
-  ```
+### Dependencies (renv)
+
+The repo uses [renv](https://rstudio.github.io/renv/) to pin all R
+package versions in `renv.lock`. On first checkout, restore the locked
+package versions into a project-local library:
+
+```r
+renv::restore()
+```
+
+After that, anything you `install.packages()` lands in the project
+library only and won't pollute your global R installation. The first
+restore is slow (it builds ~200 packages from source); subsequent
+restores are near-instant thanks to renv's cache.
+
+If you'd rather not use renv locally, every R package the site needs
+is also declared in `DESCRIPTION`. You can install them all in one
+shot:
+
+```r
+desc <- read.dcf("DESCRIPTION")
+pkgs <- trimws(unlist(strsplit(desc[, "Imports"], ",\\s*")))
+install.packages(setdiff(pkgs, rownames(installed.packages())))
+```
+
+The lockfile is the source of truth for CI; `DESCRIPTION` mainly
+documents the high-level package surface for humans.
 
 ### Build the site
 
@@ -56,6 +77,27 @@ testthat::test_dir("tests/testthat")
 ```
 
 For typo / link / accessibility checks see the corresponding workflows in `.github/workflows/`. These run automatically on PR.
+
+## Bumping pinned dependencies
+
+The renv lockfile (`renv.lock`) is the source of truth for what
+versions CI installs. To pull in newer versions of one or all packages:
+
+```r
+# Update everything to the latest CRAN versions
+renv::update()
+
+# Or just specific packages
+renv::update(c("rmarkdown", "knitr"))
+
+# Re-snapshot the lockfile so the updates are tracked
+renv::snapshot()
+```
+
+Then open a PR with the resulting `renv.lock` diff. CI will exercise
+the new versions on every workflow.
+
+To bump the R version itself, edit `.R-version` and update the `R.Version` field in `renv.lock` to match. CI reads R version from `.R-version` directly; the field in `renv.lock` is documentation.
 
 ## Pull request conventions
 

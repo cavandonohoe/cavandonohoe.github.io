@@ -66,10 +66,8 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@v2
         if: ${{ steps.changed.outputs.files != '' }}
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
+      - uses: r-lib/actions/setup-renv@v2
         if: ${{ steps.changed.outputs.files != '' }}
-        with:
-          dependencies: '"all"'
 
       - name: Write GCP key (same-repo PRs only)
         if: |
