@@ -20,7 +20,7 @@ jobs:
     env:
       GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/sa.json
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Stash existing CV files for content comparison
         run: |
