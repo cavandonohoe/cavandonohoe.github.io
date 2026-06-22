@@ -10,8 +10,8 @@ season,episode,title,rating,votes
 1,9,Episode 8,6.3,28
 1,10,Episode 9,6.4,27
 1,11,Episode 10,6.3,27
-1,12,Unseen Bits 2,5.1,25
-1,13,Episode 11,6.6,27
+1,12,Unseen Bits 2,5.1,26
+1,13,Episode 11,6.7,28
 1,14,Episode 12,5.7,26
 1,15,Episode 13,6.3,28
 1,16,Episode 14,6.4,24
@@ -33,7 +33,7 @@ season,episode,title,rating,votes
 1,32,Episode 27,6.3,24
 1,33,Episode 28,6,23
 1,34,The Final,6.3,27
-2,1,The Launch,6.2,46
+2,1,The Launch,6.2,47
 2,2,Episode 2,5.9,28
 2,3,Episode 3,5.5,25
 2,4,Episode 4,5.7,23
@@ -179,7 +179,7 @@ season,episode,title,rating,votes
 4,56,Episode 48,5.6,20
 4,57,The Final,5.4,23
 4,58,Love Island: The Christmas Reunion,3.8,14
-5,1,Episode 1,5.8,57
+5,1,Episode 1,5.8,58
 5,2,Episode 2,6.5,42
 5,3,Episode 3,6.2,34
 5,4,Episode 4,6.4,36
@@ -233,7 +233,7 @@ season,episode,title,rating,votes
 5,52,Episode 47,6.3,17
 5,53,Episode 48,6.2,17
 5,54,The Final,6.5,19
-6,1,Episode 1,6.4,49
+6,1,Episode 1,6.4,50
 6,2,Episode 2,6.3,26
 6,3,Episode 3,6.2,21
 6,4,Episode 4,6.4,20
@@ -274,7 +274,7 @@ season,episode,title,rating,votes
 6,39,Unseen Bits 3,5.4,11
 6,40,Unseen Bits 4,5.3,11
 6,41,Unseen Bits 5,5.7,11
-7,1,Episode 1,6,47
+7,1,Episode 1,6,48
 7,2,Episode 2,5.6,39
 7,3,Episode 3,5.7,35
 7,4,Episode 4,5.9,33
@@ -331,7 +331,7 @@ season,episode,title,rating,votes
 7,55,Unseen Bits 8,3.7,16
 7,56,Episode 48,5.8,22
 7,57,Episode 49,4.3,26
-8,1,Episode 1,5.1,45
+8,1,Episode 1,5.1,46
 8,2,Episode 2,5.3,31
 8,3,Episode 3,5.4,29
 8,4,Episode 4,5.8,32
@@ -387,7 +387,7 @@ season,episode,title,rating,votes
 8,55,Unseen Bits 8,5.1,12
 8,56,Episode 56,5,18
 8,57,Episode 57,4.9,15
-9,1,Episode #9.1,5.8,32
+9,1,Episode #9.1,5.8,33
 9,3,Episode 3,5.6,7
 9,4,Episode 4,6,7
 9,5,Episode 5,5.7,7
@@ -437,7 +437,7 @@ season,episode,title,rating,votes
 9,51,Episode 51,5.6,5
 9,52,Episode 52,5.6,5
 9,57,Episode 57,4.8,5
-10,1,Episode 1,7.2,21
+10,1,Episode 1,7.1,22
 10,2,Episode 2,6.7,15
 10,3,Episode 3,6.7,14
 10,4,Episode 4,6.4,15
@@ -473,14 +473,14 @@ season,episode,title,rating,votes
 10,45,Episode 45,6.2,5
 10,46,Episode 46,5.8,5
 10,49,Episode 49,5.8,5
-11,1,Episode 11.1,6.2,31
-11,2,Episode #11.2,6.8,13
+11,1,Episode 11.1,6.2,32
+11,2,Episode #11.2,6.8,14
 11,3,Episode #11.3,6.7,13
 11,4,Episode #11.4,6.2,13
 11,5,Episode #11.5,6.2,13
 11,6,Episode #11.6,5.6,13
 11,7,Episode #11.7,6.3,12
-11,8,Episode #11.8,5.6,13
+11,8,Episode #11.8,5.6,14
 11,9,Episode #11.9,5.6,14
 11,10,Episode #11.10,5.6,14
 11,11,Episode 11,7,10
@@ -509,7 +509,7 @@ season,episode,title,rating,votes
 11,55,Episode #11.55,6.4,7
 11,56,Episode #11.56,7,6
 11,57,Episode #11.57,6.2,12
-12,1,Episode #12.1,6.7,34
+12,1,Episode #12.1,6.8,35
 12,2,Episode #12.2,6,27
 12,3,Episode #12.3,6.4,26
 12,4,Episode #12.4,6.3,24
@@ -566,15 +566,22 @@ season,episode,title,rating,votes
 12,55,Unseen Bits,5.8,6
 12,56,Episode #12.56,7.5,12
 12,57,Final,7.3,10
-13,1,Episode #13.1,5.7,25
-13,2,Episode #13.2,6.3,18
-13,3,Episode #13.3,6,17
-13,4,Episode #13.4,6.1,16
-13,5,Episode #13.5,6,14
-13,6,Episode #13.6,5.9,7
-13,7,Episode #13.7,6.3,13
-13,8,Episode #13.8,6.5,14
-13,9,Episode #13.9,6.5,11
-13,10,Episode #13.10,5.8,9
-13,11,Episode #13.11,5.3,9
-13,12,Episode #13.12,6,6
+13,1,Episode #13.1,5.8,26
+13,2,Episode #13.2,6.4,19
+13,3,Episode #13.3,6.2,19
+13,4,Episode #13.4,6.2,19
+13,5,Episode #13.5,6.1,17
+13,6,Episode #13.6,5.9,9
+13,7,Episode #13.7,6.4,17
+13,8,Episode #13.8,6.5,18
+13,9,Episode #13.9,6.4,17
+13,10,Episode #13.10,6.1,14
+13,11,Episode #13.11,5.8,14
+13,12,Episode #13.12,6.2,14
+13,13,Episode #13.13,5.2,6
+13,14,Episode #13.14,5.4,10
+13,15,Episode #13.15,6,11
+13,16,Episode #13.16,5.5,10
+13,17,Episode #13.17,5,8
+13,18,Episode #13.18,5.4,9
+13,19,Episode #13.19,6.3,7
