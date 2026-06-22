@@ -411,15 +411,29 @@ welcome.</p>
 <div id="prerequisites" class="section level3">
 <h3>Prerequisites</h3>
 <ul>
-<li><p>R (&gt;= 4.2). The repo pins R via <code>.R-version</code> for
-CI; locally any 4.2+ should work.</p></li>
-<li><p>Pandoc (installed by RStudio, or via Homebrew on macOS).</p></li>
-<li><p>The packages listed in <code>DESCRIPTION</code>. Install them in
-one shot:</p>
+<li>R (&gt;= 4.2). The repo pins R via <code>.R-version</code> for CI;
+locally any 4.2+ should work.</li>
+<li>Pandoc (installed by RStudio, or via Homebrew on macOS).</li>
+</ul>
+</div>
+<div id="dependencies-renv" class="section level3">
+<h3>Dependencies (renv)</h3>
+<p>The repo uses <a href="https://rstudio.github.io/renv/">renv</a> to
+pin all R package versions in <code>renv.lock</code>. On first checkout,
+restore the locked package versions into a project-local library:</p>
+<pre class="r"><code>renv::restore()</code></pre>
+<p>After that, anything you <code>install.packages()</code> lands in the
+project library only and won’t pollute your global R installation. The
+first restore is slow (it builds ~200 packages from source); subsequent
+restores are near-instant thanks to renv’s cache.</p>
+<p>If you’d rather not use renv locally, every R package the site needs
+is also declared in <code>DESCRIPTION</code>. You can install them all
+in one shot:</p>
 <pre class="r"><code>desc &lt;- read.dcf(&quot;DESCRIPTION&quot;)
 pkgs &lt;- trimws(unlist(strsplit(desc[, &quot;Imports&quot;], &quot;,\\s*&quot;)))
-install.packages(setdiff(pkgs, rownames(installed.packages())))</code></pre></li>
-</ul>
+install.packages(setdiff(pkgs, rownames(installed.packages())))</code></pre>
+<p>The lockfile is the source of truth for CI; <code>DESCRIPTION</code>
+mainly documents the high-level package surface for humans.</p>
 </div>
 <div id="build-the-site" class="section level3">
 <h3>Build the site</h3>
@@ -451,6 +465,26 @@ testthat::test_dir(&quot;tests/testthat&quot;)</code></pre>
 <p>For typo / link / accessibility checks see the corresponding
 workflows in <code>.github/workflows/</code>. These run automatically on
 PR.</p>
+</div>
+<div id="bumping-pinned-dependencies" class="section level2">
+<h2>Bumping pinned dependencies</h2>
+<p>The renv lockfile (<code>renv.lock</code>) is the source of truth for
+what versions CI installs. To pull in newer versions of one or all
+packages:</p>
+<pre class="r"><code># Update everything to the latest CRAN versions
+renv::update()
+
+# Or just specific packages
+renv::update(c(&quot;rmarkdown&quot;, &quot;knitr&quot;))
+
+# Re-snapshot the lockfile so the updates are tracked
+renv::snapshot()</code></pre>
+<p>Then open a PR with the resulting <code>renv.lock</code> diff. CI
+will exercise the new versions on every workflow.</p>
+<p>To bump the R version itself, edit <code>.R-version</code> and update
+the <code>R.Version</code> field in <code>renv.lock</code> to match. CI
+reads R version from <code>.R-version</code> directly; the field in
+<code>renv.lock</code> is documentation.</p>
 </div>
 <div id="pull-request-conventions" class="section level2">
 <h2>Pull request conventions</h2>
