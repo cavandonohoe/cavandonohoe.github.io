@@ -61,7 +61,7 @@ For typo / link / accessibility checks see the corresponding workflows in `.gith
 
 - Branch off `origin/main`. Don't rebase published PR branches without good reason.
 - One concern per PR. Smaller PRs land faster.
-- PR titles use imperative voice (`Add ...`, `Fix ...`, `Pin ...`). No JIRA-style prefixes.
+- PR titles use imperative voice (`Add ...`, `Fix ...`, `Pin ...`, `Update ...`). No JIRA-style prefixes.
 - Reference the issue you're closing with `Closes #N` in the PR body.
 - CI must be green before merge. The data-refresh workflows don't run on PRs from forks (they need secrets); that's expected.
 
