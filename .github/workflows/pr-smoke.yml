@@ -61,6 +61,7 @@ jobs:
         if: ${{ steps.changed.outputs.files != '' }}
         with:
           use-public-rspm: true
+          r-version-file: .R-version
 
       - uses: r-lib/actions/setup-pandoc@v2
         if: ${{ steps.changed.outputs.files != '' }}
