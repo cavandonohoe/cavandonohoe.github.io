@@ -101,9 +101,6 @@ manual is a click away on the Actions tab.
 
 - `link-check.yml` – weekly + on-PR broken-link check (lychee).
 - `pa11y.yml` – weekly accessibility audit (pa11y-ci).
-- `lighthouse.yml` – two modes: on-PR audit of the deployed preview URL
-  with a score comment, plus a post-build audit of the production
-  artifact after each successful main build.
 - `repo-size.yml` – weekly + on-PR repo-size report.
 
 ### Code quality
