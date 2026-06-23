@@ -40,6 +40,12 @@ jobs:
     env:
       MOVIE_RANKER_SUPABASE_URL: ${{ secrets.MOVIE_RANKER_SUPABASE_URL }}
       MOVIE_RANKER_SUPABASE_SERVICE_KEY: ${{ secrets.MOVIE_RANKER_SUPABASE_SERVICE_KEY }}
+      # The repo .Rprofile sources renv/activate.R, which switches .libPaths()
+      # to an empty renv project library and breaks `library(dplyr)` here. This
+      # workflow intentionally manages its own packages via the cache step
+      # below (see #107), so disable the renv autoloader for every Rscript
+      # call in this job.
+      RENV_CONFIG_AUTOLOADER_ENABLED: "FALSE"
     steps:
       # rocker/r-ver doesn't ship git, but actions/checkout needs it for a
       # full clone. Install just git here; everything else (curl, R, build
