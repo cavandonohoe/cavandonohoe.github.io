@@ -5,14 +5,13 @@ name: Update movie-ranker personal CSV
 # IMDb watchlist so each rating bucket can be sorted by personal Elo instead
 # of falling back to IMDb's average.
 #
-# Runs daily; the file only changes when comparisons or overrides are recorded
-# in the app, so a daily cadence keeps the site fresh without burning Actions
-# minutes on no-op runs. Use workflow_dispatch for on-demand refreshes.
+# The file changes whenever a comparison or manual override is recorded in
+# the app, so we run on a 6h cadence plus on-demand dispatch.
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "37 12 * * *" # daily 12:37 UTC (~5:37am Pacific daylight)
+    - cron: "37 */6 * * *" # every 6 hours at :37
 
 permissions:
   contents: write
