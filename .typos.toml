@@ -59,7 +59,6 @@ extend-exclude = [
   "data/**",
   "cv_stuff/**",
   "header/**",
-  "Saved Places_saved_places.csv",
   "detour-finder/preload_data.js",
   "scripts/parse_chase_statements.R",
   "scripts/parse_chase_statements.py",
