@@ -5,21 +5,18 @@ name: Update movie-ranker personal CSV
 # IMDb watchlist so each rating bucket can be sorted by personal Elo instead
 # of falling back to IMDb's average.
 #
-# The file changes whenever a comparison or manual override is recorded in
-# the app, so we run on a 6h cadence plus on-demand dispatch.
-#
-# Runs in the rocker/r-ver:4.4 container (R 4.4.3, ubuntu noble) so we skip
-# the ~7-minute apt install of R that setup-r@v2 does on a bare ubuntu-latest
-# runner. R packages are restored from actions/cache keyed on the install
-# command so cold starts are ~2 min and warm runs are <30 sec.
+# Runs daily; the file only changes when comparisons or overrides are recorded
+# in the app, so a daily cadence keeps the site fresh without burning Actions
+# minutes on no-op runs. Use workflow_dispatch for on-demand refreshes.
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "37 */6 * * *" # every 6 hours at :37
+    - cron: "37 12 * * *" # daily 12:37 UTC (~5:37am Pacific daylight)
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: update-movie-ranker-personal
@@ -29,28 +26,10 @@ jobs:
   update:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    container:
-      image: rocker/r-ver:4.4
-    # Default shell inside containers is `sh`, but several steps use bash
-    # features (pipefail, [[ ]], $(...) inside heredocs). bash is preinstalled
-    # in rocker/r-ver.
-    defaults:
-      run:
-        shell: bash
     env:
       MOVIE_RANKER_SUPABASE_URL: ${{ secrets.MOVIE_RANKER_SUPABASE_URL }}
       MOVIE_RANKER_SUPABASE_SERVICE_KEY: ${{ secrets.MOVIE_RANKER_SUPABASE_SERVICE_KEY }}
     steps:
-      # rocker/r-ver doesn't ship git, but actions/checkout needs it for a
-      # full clone. Install just git here; everything else (curl, R, build
-      # toolchain, RSPM repo) is already in the image.
-      - name: Install git
-        run: |
-          set -euo pipefail
-          apt-get update -qq
-          apt-get install -y --no-install-recommends git
-          git --version
-
       - uses: actions/checkout@v7
 
       - name: Verify secrets present
@@ -64,22 +43,21 @@ jobs:
             exit 1
           fi
 
-      # Cache the site library across runs. Bump CACHE_VERSION below to force
-      # a rebuild if the package set changes.
-      - name: Cache R library
-        id: rcache
-        uses: actions/cache@v5
+      - uses: r-lib/actions/setup-r@v2
         with:
-          path: /usr/local/lib/R/site-library
-          # v1 = initial set: dplyr, tibble, readr, here, httr2, jsonlite, purrr
-          key: rlib-rocker-r-ver-4.4-v1
-          restore-keys: |
-            rlib-rocker-r-ver-4.4-
+          use-public-rspm: true
+          r-version-file: .R-version
 
-      - name: Install R packages if cache miss
-        if: steps.rcache.outputs.cache-hit != 'true'
+      - name: Install system dependencies
         run: |
-          Rscript -e 'install.packages(c("dplyr","tibble","readr","here","httr2","jsonlite","purrr"), Ncpus = 2)'
+          sudo apt-get update
+          sudo apt-get install -y \
+            cmake git libcurl4-openssl-dev libfontconfig1-dev libfreetype6-dev \
+            libfribidi-dev libgit2-dev libharfbuzz-dev libicu-dev libjpeg-dev \
+            libnode-dev libpng-dev libssl-dev libtiff-dev libuv1-dev libwebp-dev \
+            libx11-dev libxml2-dev make pandoc zlib1g-dev
+
+      - uses: r-lib/actions/setup-renv@v2
 
       - name: Replay Elo and write personal CSV
         run: Rscript scripts/update_movie_ranker_personal.R
@@ -88,8 +66,6 @@ jobs:
       - name: Verify only personal CSV changed
         run: |
           set -euo pipefail
-          # Container runs as root; mark workspace safe so git stops complaining.
-          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           unexpected="$(git diff --name-only HEAD \
             | grep -Ev '^data/movie_ranker_personal\.csv$' || true)"
           if [ -n "$unexpected" ]; then
@@ -104,7 +80,6 @@ jobs:
         run: |
           set -euo pipefail
 
-          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
@@ -126,7 +101,6 @@ jobs:
             exit 1
           fi
 
-          # Build a tiny summary: how many ranks moved per bucket.
           summary="$(git diff --cached --stat data/movie_ranker_personal.csv)"
           echo "$summary"
 
@@ -143,22 +117,11 @@ jobs:
           echo "ERROR: failed to push personal CSV update after 3 attempts."
           exit 1
 
-      # Bot pushes via GITHUB_TOKEN don't trigger downstream workflows
-      # (GitHub anti-recursion guard), so the site won't redeploy after our
-      # commit unless we explicitly dispatch the build workflow. Use plain
-      # curl against the REST API so we don't need to install gh inside the
-      # container.
+      # Bot pushes via GITHUB_TOKEN don't trigger downstream workflows (a
+      # GitHub anti-recursion guard), so the site won't redeploy after this
+      # commit unless we explicitly dispatch the build workflow.
       - name: Trigger site redeploy
         if: steps.push.outputs.pushed == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          set -euo pipefail
-          curl -fsSL \
-            -X POST \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${GH_TOKEN}" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/pages-branch-previews.yml/dispatches" \
-            -d '{"ref":"main"}'
-          echo "Dispatched pages-branch-previews.yml"
+        run: gh workflow run pages-branch-previews.yml --ref main

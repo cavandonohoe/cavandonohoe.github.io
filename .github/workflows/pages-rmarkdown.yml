@@ -3,16 +3,16 @@ name: Build R Markdown site (sanity check)
 # NOTE: Deployment to GitHub Pages is handled by
 # pages-branch-previews.yml, which pushes to the gh-pages branch.
 # This workflow is kept as a safety-net build (DESCRIPTION checks,
-# library() validation, gs4 guards, daily scheduled render). Running
-# both workflows' deploys on the same push to main caused a Pages
+# library() validation, gs4 guards) on push-to-main. Running both
+# workflows' deploys on the same push to main caused a Pages
 # deployment race ("Deployment request failed ... due to in progress
-# deployment"), so this one no longer deploys.
+# deployment"), so this one no longer deploys. No cron schedule: a
+# nightly rebuild of unchanged content is pure Actions burn; use
+# workflow_dispatch for on-demand rebuilds.
 on:
   push:
     branches: ["main"]
   workflow_dispatch:
-  schedule:
-    - cron: "11 12 * * *" # Daily 12:11 UTC (~5:11am Pacific daylight time)
 
 permissions:
   contents: read
