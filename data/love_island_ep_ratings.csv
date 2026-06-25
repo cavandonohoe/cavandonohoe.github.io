@@ -12,8 +12,8 @@ season,episode,title,rating,votes
 1,11,Episode 10,6.3,27
 1,12,Unseen Bits 2,5.1,26
 1,13,Episode 11,6.7,28
-1,14,Episode 12,5.7,26
-1,15,Episode 13,6.3,28
+1,14,Episode 12,5.8,27
+1,15,Episode 13,6.4,29
 1,16,Episode 14,6.4,24
 1,17,Episode 15,6,25
 1,18,Unseen Bits 3,5,23
@@ -420,7 +420,7 @@ season,episode,title,rating,votes
 9,33,Episode 33,5.6,5
 9,34,Episode 34,5.8,5
 9,35,Episode 35,5.6,5
-9,36,Episode 36,5.6,5
+9,36,Episode 36,6.3,6
 9,37,Episode 37,5.6,5
 9,38,Episode 38,5.6,5
 9,39,Episode 39,5.6,5
@@ -530,8 +530,8 @@ season,episode,title,rating,votes
 12,19,Episode #12.19,6.1,18
 12,20,Episode #12.20,4.8,13
 12,21,Episode #12.21,6.3,18
-12,22,Episode #12.22,6.1,19
-12,23,Episode #12.23,5.8,18
+12,22,Episode #12.22,6.1,20
+12,23,Episode #12.23,5.8,19
 12,24,Episode #12.24,5.4,19
 12,25,Episode #12.25,5.9,17
 12,26,Episode #12.26,5.5,17
@@ -575,13 +575,15 @@ season,episode,title,rating,votes
 13,7,Episode #13.7,6.4,17
 13,8,Episode #13.8,6.5,18
 13,9,Episode #13.9,6.4,17
-13,10,Episode #13.10,6.1,14
+13,10,Episode #13.10,6.1,15
 13,11,Episode #13.11,5.8,14
 13,12,Episode #13.12,6.2,14
 13,13,Episode #13.13,5.2,6
-13,14,Episode #13.14,5.4,10
-13,15,Episode #13.15,6,11
-13,16,Episode #13.16,5.5,10
-13,17,Episode #13.17,5,8
-13,18,Episode #13.18,5.4,9
-13,19,Episode #13.19,6.3,7
+13,14,Episode #13.14,5.4,13
+13,15,Episode #13.15,6,13
+13,16,Episode #13.16,5.4,12
+13,17,Episode #13.17,5.1,10
+13,18,Episode #13.18,5.5,11
+13,19,Episode #13.19,6.4,10
+13,20,Episode #13.20,6.6,5
+13,21,Episode #13.21,5.4,7

@@ -1,10 +1,10 @@
 season,episode,title,rating,votes
-1,1,Pilot,7.6,2402
-1,2,The Jenna Thing,7.6,1505
-1,3,To Kill a Mocking Girl,7.5,1340
-1,4,Can You Hear Me Now?,7.6,1254
-1,5,Reality Bites Me,7.6,1217
-1,6,There's No Place Like Homecoming,8.1,1224
+1,1,Pilot,7.6,2403
+1,2,The Jenna Thing,7.5,1506
+1,3,To Kill a Mocking Girl,7.5,1341
+1,4,Can You Hear Me Now?,7.6,1255
+1,5,Reality Bites Me,7.6,1218
+1,6,There's No Place Like Homecoming,8.1,1225
 1,7,The Homecoming Hangover,7.5,1155
 1,8,"Please, Do Talk About Me When I'm Gone",7.5,1127
 1,9,The Perfect Storm,7.9,1154
@@ -25,27 +25,27 @@ season,episode,title,rating,votes
 2,2,The Goodbye Look,7.6,951
 2,3,My Name Is Trouble,7.7,922
 2,4,Blind Dates,8,926
-2,5,The Devil You Know,8,925
-2,6,Never Letting Go,7.9,932
-2,7,Surface Tension,7.7,877
-2,8,Save the Date,7.9,905
-2,9,Picture This,8,906
-2,10,Touched by an 'A'-ngel,7.8,887
-2,11,I Must Confess,8.1,900
-2,12,Over My Dead Body,8.7,1268
-2,13,The First Secret,8.5,1219
-2,14,"Through Many Dangers, Toils, and Snares",8.4,1040
-2,15,A Hot Piece of A,8.2,962
-2,16,Let the Water Hold Me Down,7.7,872
-2,17,Blond Leading the Blind,7.8,871
-2,18,A Kiss Before Lying,7.9,877
+2,5,The Devil You Know,7.9,926
+2,6,Never Letting Go,7.9,933
+2,7,Surface Tension,7.7,879
+2,8,Save the Date,7.9,907
+2,9,Picture This,8,908
+2,10,Touched by an 'A'-ngel,7.8,890
+2,11,I Must Confess,8.1,903
+2,12,Over My Dead Body,8.7,1271
+2,13,The First Secret,8.5,1222
+2,14,"Through Many Dangers, Toils, and Snares",8.4,1042
+2,15,A Hot Piece of A,8.2,964
+2,16,Let the Water Hold Me Down,7.7,873
+2,17,Blond Leading the Blind,7.8,872
+2,18,A Kiss Before Lying,7.8,878
 2,19,The Naked Truth,8.2,926
 2,20,CTRL:A,8.2,901
 2,21,Breaking the Code,8.1,882
 2,22,Father Knows Best,7.8,864
 2,23,Eye of the Beholder,7.9,868
 2,24,If These Dolls Could Talk,8.6,1035
-2,25,unmAsked,9,1503
+2,25,unmAsked,9,1504
 3,1,It Happened 'That Night',8.2,1238
 3,2,Blood Is the New Black,8,914
 3,3,Kingdom of the Blind,8,866
@@ -92,7 +92,7 @@ season,episode,title,rating,votes
 4,20,Free Fall,8.3,828
 4,21,She's Come Undone,8.1,782
 4,22,Cover for Me,7.6,722
-4,23,Unbridled,7.9,774
+4,23,Unbridled,7.9,775
 4,24,'A' Is for Answers,8.9,1287
 5,1,EscApe from New York,8.2,982
 5,2,Whirly Girly,7.8,781
@@ -118,7 +118,7 @@ season,episode,title,rating,votes
 5,22,To Plea or Not to Plea,7.7,668
 5,23,The Melody Lingers On,7.8,697
 5,24,"I'm a Good Girl, I Am",8.4,837
-5,25,Welcome to the Dollhouse,9.2,1891
+5,25,Welcome to the Dollhouse,9.2,1892
 6,1,"Game On, Charles",9.1,1789
 6,2,Songs of Innocence,7.6,845
 6,3,Songs of Experience,7.6,753
@@ -128,17 +128,17 @@ season,episode,title,rating,votes
 6,7,"O Brother, Where Art Thou",7.7,724
 6,8,FrAmed,7.7,736
 6,9,Last Dance,8.2,959
-6,10,"Game Over, Charles",5.1,4100
-6,11,Of Late I Think of Rosewood,7.4,871
-6,12,Charlotte's Web,7,718
-6,13,The Gloves Are On,7.1,702
-6,14,"New Guys, New Lies",7,663
-6,15,Do Not Disturb,7.1,653
-6,16,Where Somebody Waits for Me,6.9,636
-6,17,We've All Got Baggage,6.8,637
-6,18,Burn This,7.2,628
-6,19,Did You Miss Me?,7.3,640
-6,20,"Hush, Hush, Sweet Liars",7.6,879
+6,10,"Game Over, Charles",5.1,4101
+6,11,Of Late I Think of Rosewood,7.4,872
+6,12,Charlotte's Web,7,719
+6,13,The Gloves Are On,7.1,703
+6,14,"New Guys, New Lies",7,664
+6,15,Do Not Disturb,7.1,654
+6,16,Where Somebody Waits for Me,6.9,637
+6,17,We've All Got Baggage,6.8,638
+6,18,Burn This,7.2,629
+6,19,Did You Miss Me?,7.3,641
+6,20,"Hush, Hush, Sweet Liars",7.6,880
 7,1,"Tick-Tock, Bitches",7.7,853
 7,2,Bedlam,6.9,693
 7,3,The Talented Mr. Rollins,7.9,727
@@ -158,4 +158,4 @@ season,episode,title,rating,votes
 7,17,Driving Miss Crazy,7.5,595
 7,18,Choose or Lose,8.2,668
 7,19,"Farewell, My Lovely",8.2,723
-7,20,Til DeAth Do Us PArt,5.4,2140
+7,20,Til DeAth Do Us PArt,5.4,2141
