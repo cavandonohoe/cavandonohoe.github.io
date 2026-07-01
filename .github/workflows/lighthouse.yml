@@ -28,7 +28,7 @@ jobs:
     name: Lighthouse (PR preview)
     if: ${{ github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v7
 
@@ -40,27 +40,36 @@ jobs:
         run: npm install -g @lhci/cli@0.14.x
 
       - name: Wait for PR preview to be live
+        id: wait
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
-          set -euo pipefail
+          set -uo pipefail
           base="https://cavandonohoe.github.io/pr-${PR_NUMBER}"
           url="${base}/index.html"
           echo "Waiting for ${url}..."
-          for i in $(seq 1 60); do
+          # The preview is published by a separate workflow (build ~3m, then a
+          # gh-pages push, then GitHub Pages rebuild/propagation). That whole
+          # chain can take well over 10 minutes on a fresh PR, so poll patiently
+          # (up to ~14 min). Lighthouse audits are advisory (all assertions are
+          # "warn"), so if the preview simply isn't live yet we skip the audit
+          # instead of failing the check and turning the PR red.
+          for i in $(seq 1 84); do
             code="$(curl -s -o /dev/null -w '%{http_code}' "$url" || true)"
             if [ "$code" = "200" ]; then
               echo "Preview is live."
+              echo "live=true" >> "$GITHUB_OUTPUT"
               exit 0
             fi
-            echo "Attempt ${i}/60: HTTP ${code}; sleeping 10s..."
+            echo "Attempt ${i}/84: HTTP ${code}; sleeping 10s..."
             sleep 10
           done
-          echo "Preview never became live; aborting."
-          exit 1
+          echo "Preview never became live within the wait window; skipping audit."
+          echo "live=false" >> "$GITHUB_OUTPUT"
 
       - name: Run Lighthouse CI against preview
         id: lhci
+        if: ${{ steps.wait.outputs.live == 'true' }}
         env:
           LHCI_BASE_URL: https://cavandonohoe.github.io/pr-${{ github.event.pull_request.number }}
         run: |
@@ -71,6 +80,7 @@ jobs:
           set -e
 
       - name: Build PR comment
+        if: ${{ steps.wait.outputs.live == 'true' }}
         run: |
           {
             echo "## Lighthouse CI (PR preview)"
@@ -83,6 +93,7 @@ jobs:
           } > lhci-comment.md
 
       - name: Comment on PR
+        if: ${{ steps.wait.outputs.live == 'true' }}
         uses: thollander/actions-comment-pull-request@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -92,8 +103,14 @@ jobs:
           mode: upsert
           create-if-not-exists: true
 
+      - name: Note skipped audit
+        if: ${{ steps.wait.outputs.live != 'true' }}
+        run: |
+          echo "::notice::PR preview was not live within the wait window; \
+          Lighthouse audit skipped (advisory check, not failing the PR)."
+
       - name: Upload Lighthouse logs
-        if: always()
+        if: ${{ always() && steps.wait.outputs.live == 'true' }}
         uses: actions/upload-artifact@v7
         with:
           name: lighthouse-logs-pr-${{ github.event.pull_request.number }}
