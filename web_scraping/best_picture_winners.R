@@ -140,20 +140,32 @@ if (use_cache) {
 }
 
 # clean it up
-latest_oscar_year <- max(oscar_winners_tib$movie_year, na.rm = TRUE) + 1
+#
+# The ceremony year (oscar_year) is the calendar year in which the Academy
+# Awards ceremony was held. A film released in year N is honored at the
+# ceremony held in year N + 1, so oscar_year = movie_year + 1 for the vast
+# majority of winners. A handful of films carry an IMDb releaseYear that does
+# not match their Academy eligibility year (early festival premieres, the
+# 1927/28 combined first ceremony, the shifted early-1940s eligibility window),
+# so those ceremony years are corrected explicitly, keyed by IMDb title id
+# (tconst) rather than the display title (which can drift, e.g. "Crash (I)").
+oscar_year_overrides <- tibble::tribble(
+  ~tconst,     ~oscar_year_fixed,
+  "tt0018578", 1929L,  # Wings (movie 1927; 1st ceremony honored 1927/28)
+  "tt0034583", 1944L,  # Casablanca (movie 1942; 16th ceremony, 1943 films)
+  "tt0375679", 2006L,  # Crash (movie 2004; 78th ceremony, 2005 films)
+  "tt0887912", 2010L   # The Hurt Locker (movie 2008; 82nd ceremony, 2009 films)
+)
 
 oscar_winners_clean <- oscar_winners_tib %>%
   dplyr::bind_cols(oscar_box_office) %>%
   # doesn't actually look like Sunrise won the oscar
   dplyr::filter(oscar_titles != "Sunrise") %>%
-  dplyr::mutate(oscar_year = latest_oscar_year - dplyr::row_number() + 1) %>%
-  dplyr::mutate(oscar_year = dplyr::case_when(oscar_titles == "The Hurt Locker" ~ 2010,
-                                oscar_titles == "Slumdog Millionaire" ~ 2009,
-                                oscar_titles == "Crash (I)" ~ 2006,
-                                oscar_titles == "Million Dollar Baby" ~ 2005,
-                                oscar_titles == "Mrs. Miniver" ~ 1943,
-                                oscar_titles == "Casablanca" ~ 1944,
-                                TRUE ~ oscar_year))
+  dplyr::left_join(oscar_year_overrides, by = "tconst") %>%
+  dplyr::mutate(
+    oscar_year = dplyr::coalesce(.data$oscar_year_fixed, .data$movie_year + 1L)
+  ) %>%
+  dplyr::select(-"oscar_year_fixed")
 
 # oscar_winners_clean %>% write.csv(here::here("data", "best_picture_winners.csv"))
 
