@@ -142,30 +142,68 @@ if (use_cache) {
 # clean it up
 #
 # The ceremony year (oscar_year) is the calendar year in which the Academy
-# Awards ceremony was held. A film released in year N is honored at the
-# ceremony held in year N + 1, so oscar_year = movie_year + 1 for the vast
-# majority of winners. A handful of films carry an IMDb releaseYear that does
-# not match their Academy eligibility year (early festival premieres, the
-# 1927/28 combined first ceremony, the shifted early-1940s eligibility window),
-# so those ceremony years are corrected explicitly, keyed by IMDb title id
-# (tconst) rather than the display title (which can drift, e.g. "Crash (I)").
-oscar_year_overrides <- tibble::tribble(
-  ~tconst,     ~oscar_year_fixed,
-  "tt0018578", 1929L,  # Wings (movie 1927; 1st ceremony honored 1927/28)
-  "tt0034583", 1944L,  # Casablanca (movie 1942; 16th ceremony, 1943 films)
-  "tt0375679", 2006L,  # Crash (movie 2004; 78th ceremony, 2005 films)
-  "tt0887912", 2010L   # The Hurt Locker (movie 2008; 82nd ceremony, 2009 films)
+# Awards ceremony was held. We source it from Wikidata rather than deriving it,
+# because the release-year -> ceremony-year mapping has real exceptions that
+# no simple rule captures: films whose IMDb releaseYear precedes their
+# eligibility year (Casablanca, Crash, The Hurt Locker), the early
+# non-calendar-year ceremonies (1930-1932), the two ceremonies held in 1930,
+# and the skipped 1933 ceremony. Wikidata's "point in time" (P585) qualifier
+# on the Best Picture award statement records the actual ceremony year, keyed
+# to the film's IMDb id (P345), which joins cleanly to our scraped tconst.
+fetch_oscar_years_wikidata <- function() {
+  query <- paste(
+    "SELECT ?imdb ?ceremony_year WHERE {",
+    "  ?film p:P166 ?statement .",
+    "  ?statement ps:P166 wd:Q102427 .",
+    "  ?statement pq:P585 ?date .",
+    "  BIND(YEAR(?date) AS ?ceremony_year)",
+    "  ?film wdt:P345 ?imdb .",
+    "}",
+    sep = "\n"
+  )
+  response <- httr::GET(
+    "https://query.wikidata.org/sparql",
+    query = list(query = query, format = "json"),
+    httr::user_agent(imdb_user_agent),
+    httr::timeout(60)
+  )
+  if (httr::http_error(response)) {
+    stop("Wikidata SPARQL request failed: HTTP ", httr::status_code(response))
+  }
+  parsed <- jsonlite::fromJSON(
+    httr::content(response, as = "text", encoding = "UTF-8"),
+    simplifyVector = TRUE
+  )
+  bindings <- parsed$results$bindings
+  tibble::tibble(
+    tconst = bindings$imdb$value,
+    oscar_year = as.integer(bindings$ceremony_year$value)
+  ) %>%
+    # keep films only (P345 also resolves to producer name-ids like nm...)
+    dplyr::filter(grepl("^tt", .data$tconst)) %>%
+    # one ceremony year per film
+    dplyr::group_by(.data$tconst) %>%
+    dplyr::summarise(oscar_year = min(.data$oscar_year), .groups = "drop")
+}
+
+oscar_years <- tryCatch(
+  fetch_oscar_years_wikidata(),
+  error = function(err) {
+    message("[best_picture] Wikidata lookup failed (", conditionMessage(err),
+            "); falling back to movie_year + 1.")
+    tibble::tibble(tconst = character(0), oscar_year = integer(0))
+  }
 )
 
 oscar_winners_clean <- oscar_winners_tib %>%
   dplyr::bind_cols(oscar_box_office) %>%
   # doesn't actually look like Sunrise won the oscar
   dplyr::filter(oscar_titles != "Sunrise") %>%
-  dplyr::left_join(oscar_year_overrides, by = "tconst") %>%
+  dplyr::left_join(oscar_years, by = "tconst") %>%
+  # fall back to release year + 1 for any winner Wikidata doesn't yet have
   dplyr::mutate(
-    oscar_year = dplyr::coalesce(.data$oscar_year_fixed, .data$movie_year + 1L)
-  ) %>%
-  dplyr::select(-"oscar_year_fixed")
+    oscar_year = dplyr::coalesce(.data$oscar_year, .data$movie_year + 1L)
+  )
 
 # oscar_winners_clean %>% write.csv(here::here("data", "best_picture_winners.csv"))
 
