@@ -62,15 +62,36 @@ tier_colors <- c(
 
 zhvi_date <- unique(la_raw$zhvi_date[!is.na(la_raw$zhvi_date)])[1]
 zori_date <- unique(la_raw$zori_date[!is.na(la_raw$zori_date)])[1]
+
+# Build the price-tier bullet list from the data so the ranges and example
+# neighborhoods can never drift out of sync with the table/chart below.
+tier_bullets <- la_neighborhoods %>%
+  dplyr::group_by(tier) %>%
+  dplyr::arrange(dplyr::desc(price_per_sqft), .by_group = TRUE) %>%
+  dplyr::summarise(
+    lo = min(median_price, na.rm = TRUE),
+    hi = max(median_price, na.rm = TRUE),
+    examples = paste(utils::head(neighborhood, 4), collapse = ", "),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(tier) %>%
+  dplyr::mutate(
+    range_label = sprintf(
+      "%s--%s",
+      scales::dollar(lo, scale = 1e-6, suffix = "M", accuracy = 0.1),
+      scales::dollar(hi, scale = 1e-6, suffix = "M", accuracy = 0.1)
+    ),
+    bullet = sprintf(
+      "- **%s** (%s): %s", tier, range_label, examples
+    )
+  )
 ```
 
 How much space does your dollar buy across Los Angeles? This page compares `r nrow(la_neighborhoods)` neighborhoods by **price per square foot** --- the ratio of median home price to typical home size. Neighborhoods are grouped into five tiers based on median home price:
 
-- **Ultra-Luxury** (>$3M): Bel Air, Beverly Hills, Holmby Hills, Malibu
-- **Luxury** ($2M--$3M): Brentwood, Santa Monica, Pacific Palisades
-- **Upper-Mid** ($1.3M--$2M): Venice, Silver Lake, Sherman Oaks
-- **Mid-Range** ($900K--$1.3M): Highland Park, Pasadena, Eagle Rock
-- **Affordable** (<$900K): Boyle Heights, North Hollywood, Koreatown
+```{r tier_bullets, results='asis'}
+cat(tier_bullets$bullet, sep = "\n")
+```
 
 ### Data Sources
 
