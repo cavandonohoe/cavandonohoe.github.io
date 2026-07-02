@@ -32,16 +32,29 @@ lang: "en"
 # give victoria princess treatment always
 # coding in the resume
 
-# resume = readxl::read_excel(here::here("data", "resume.xlsx")
-resume <- googlesheets4::read_sheet(
-  "https://docs.google.com/spreadsheets/d/13mLROsbvwiE-djiRMQuOKfQwppOlH5mOxB43EaGna8s"
-)
-file_info <- googledrive::drive_get(
-  "https://docs.google.com/spreadsheets/d/13mLROsbvwiE-djiRMQuOKfQwppOlH5mOxB43EaGna8s"
-)
-last_update <- file_info$drive_resource[[1]]$modifiedTime %>%
-  lubridate::ymd_hms() %>%
-  lubridate::as_date()
+resume_url <- "https://docs.google.com/spreadsheets/d/13mLROsbvwiE-djiRMQuOKfQwppOlH5mOxB43EaGna8s"
+
+resume <- tryCatch({
+  googlesheets4::read_sheet(resume_url)
+}, error = function(e) {
+  warning("Failed to read resume from Google Sheets: ", e$message)
+  readxl::read_excel(here::here("data", "resume.xlsx"))
+})
+
+file_info <- tryCatch({
+  googledrive::drive_get(resume_url)
+}, error = function(e) {
+  warning("Failed to get file info from Google Drive: ", e$message)
+  NULL
+})
+
+last_update <- if (!is.null(file_info) && length(file_info$drive_resource) > 0) {
+  file_info$drive_resource[[1]]$modifiedTime %>%
+    lubridate::ymd_hms() %>%
+    lubridate::as_date()
+} else {
+  Sys.Date()
+}
 
 resume_v1.1 <- resume %>%
   dplyr::mutate(start.date = as.Date(paste(start, "1", sep="-"), format="%B %Y-%d")) %>%
