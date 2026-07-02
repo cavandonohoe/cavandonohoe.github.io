@@ -38,7 +38,7 @@ resume <- tryCatch({
   googlesheets4::read_sheet(resume_url)
 }, error = function(e) {
   warning("Failed to read resume from Google Sheets: ", e$message)
-  readxl::read_excel("data/resume.xlsx")
+  readxl::read_excel(here::here("data", "resume.xlsx"))
 })
 
 file_info <- tryCatch({
