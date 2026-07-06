@@ -1,0 +1,89 @@
+name: Refresh Confederate statues data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 14 1 * *" # 1st of each month, 14:17 UTC
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: refresh-confederate-statues-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Fetch latest CSV
+        run: |
+          set -euo pipefail
+
+          url="https://raw.githubusercontent.com/cavandonohoe/confederate_statues/main/data/confederate_statue_dates.csv"
+          tmp="$(mktemp)"
+
+          curl \
+            --fail \
+            --show-error \
+            --silent \
+            --location \
+            --retry 4 \
+            --retry-all-errors \
+            --retry-delay 5 \
+            "$url" \
+            --output "$tmp"
+
+          python3 - "$tmp" <<'PY'
+          import csv
+          import sys
+
+          path = sys.argv[1]
+          with open(path, newline="", encoding="utf-8") as handle:
+              reader = csv.DictReader(handle)
+              rows = list(reader)
+
+          expected_fields = ["source", "entry", "year"]
+          if reader.fieldnames != expected_fields:
+              raise SystemExit(
+                  f"Unexpected CSV columns: {reader.fieldnames}. "
+                  f"Expected: {expected_fields}"
+              )
+
+          if not rows:
+              raise SystemExit("CSV contained no data rows.")
+
+          for row_number, row in enumerate(rows, start=2):
+              if not row["source"].strip():
+                  raise SystemExit(f"Missing source on row {row_number}.")
+              if not row["entry"].strip():
+                  raise SystemExit(f"Missing entry on row {row_number}.")
+              try:
+                  int(row["year"])
+              except ValueError as exc:
+                  raise SystemExit(
+                      f"Invalid year on row {row_number}: {row['year']!r}"
+                  ) from exc
+
+          print(f"Validated {len(rows)} rows.")
+          PY
+
+          mv "$tmp" data/confederate_statue_dates.csv
+
+      - name: Open PR if data changed
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: auto/update-confederate-statue-dates
+          delete-branch: true
+          commit-message: "Update Confederate statue dates cache"
+          title: "Update Confederate statue dates cache"
+          body: |
+            This scheduled check refreshed the local Confederate statue dates cache from the upstream source repository.
+
+            Review the CSV diff before merging. Keeping this as a PR avoids changing the published site data silently from a scheduled workflow.
+          add-paths: |
+            data/confederate_statue_dates.csv
