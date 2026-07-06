@@ -59,10 +59,10 @@ Check these out btw:
 
 
 ```{r}
-all_dates <- readr::read_csv(paste0(
-  "https://raw.githubusercontent.com/cavandonohoe/",
-  "confederate_statues/main/data/confederate_statue_dates.csv"
-))
+all_dates <- readr::read_csv(
+  "data/confederate_statue_dates.csv",
+  show_col_types = FALSE
+)
 
 # find mode
 max_statues <- all_dates %>%
