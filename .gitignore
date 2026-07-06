@@ -64,3 +64,6 @@ Thumbs.db
 !/sitemap.xml
 # Optional: keep CNAME if you add it for Pages DNS
 # !/CNAME
+# Agent tooling directories
+.positai
+.claude
