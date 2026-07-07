@@ -1,0 +1,120 @@
+name: Refresh Confederate statues data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 14 1 * *" # 1st of each month, 14:17 UTC
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: refresh-confederate-statues-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Fetch latest CSV
+        run: |
+          set -euo pipefail
+
+          url="https://raw.githubusercontent.com/cavandonohoe/confederate_statues/main/data/confederate_statue_dates.csv"
+          tmp="$(mktemp)"
+
+          curl \
+            --fail \
+            --show-error \
+            --silent \
+            --location \
+            --retry 4 \
+            --retry-all-errors \
+            --retry-delay 5 \
+            "$url" \
+            --output "$tmp"
+
+          python3 - "$tmp" <<'PY'
+          import csv
+          import sys
+
+          path = sys.argv[1]
+          with open(path, newline="", encoding="utf-8") as handle:
+              reader = csv.DictReader(handle)
+              rows = list(reader)
+
+          expected_fields = ["source", "entry", "year"]
+          if reader.fieldnames != expected_fields:
+              raise SystemExit(
+                  f"Unexpected CSV columns: {reader.fieldnames}. "
+                  f"Expected: {expected_fields}"
+              )
+
+          if not rows:
+              raise SystemExit("CSV contained no data rows.")
+
+          for row_number, row in enumerate(rows, start=2):
+              if not row["source"].strip():
+                  raise SystemExit(f"Missing source on row {row_number}.")
+              if not row["entry"].strip():
+                  raise SystemExit(f"Missing entry on row {row_number}.")
+              try:
+                  int(row["year"])
+              except ValueError as exc:
+                  raise SystemExit(
+                      f"Invalid year on row {row_number}: {row['year']!r}"
+                  ) from exc
+
+          print(f"Validated {len(rows)} rows.")
+          PY
+
+          mv "$tmp" data/confederate_statue_dates.csv
+
+      - name: Verify only expected CSV changed
+        run: |
+          set -euo pipefail
+          unexpected="$(git diff --name-only HEAD \
+            | grep -Ev '^data/confederate_statue_dates\.csv$' || true)"
+          if [ -n "$unexpected" ]; then
+            echo "ERROR: refresh modified files outside data/confederate_statue_dates.csv:"
+            echo "$unexpected"
+            exit 1
+          fi
+
+      - name: Commit and push if changed
+        id: push
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/confederate_statue_dates.csv
+
+          if git diff --cached --quiet; then
+            echo "No changes."
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git commit -m "Update Confederate statue dates cache"
+          for i in 1 2 3; do
+            if git push; then
+              echo "pushed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "Push failed; rebasing on remote and retrying ($i/3)..."
+            git pull --rebase origin "$(git rev-parse --abbrev-ref HEAD)"
+          done
+
+          echo "ERROR: failed to push Confederate statue dates cache update after 3 attempts."
+          exit 1
+
+      # Bot pushes via GITHUB_TOKEN don't trigger downstream workflows, so
+      # explicitly dispatch the site build after updating the cache.
+      - name: Trigger site redeploy
+        if: steps.push.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run pages-branch-previews.yml --ref main
