@@ -58,6 +58,8 @@ Thumbs.db
 *.html
 !/include_footer.html
 !scripts/airplane_boarding/airplane_boarding.html
+# Standalone JS app pages (hand-authored, must be tracked/deployed)
+!/wc-momentum/index.html
 
 # SEO files (keep these tracked)
 !/robots.txt
