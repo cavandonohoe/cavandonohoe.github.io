@@ -156,6 +156,30 @@ body {
 .project-card h3 { font-size: 1.05em; margin: 0 0 0.4em 0; color: var(--link-color) !important; }
 .project-card p { font-size: 0.88em; color: var(--muted-text); margin: 0; line-height: 1.4; }
 
+/* GitHub contribution chart */
+.gh-contrib-link {
+  display: block;
+  text-decoration: none !important;
+  margin: 1.2em 0 1.8em 0;
+}
+.gh-contrib-chart {
+  display: block;
+  width: 100%;
+  max-width: 740px;
+  height: auto;
+  margin: 0 auto;
+  padding: 1em;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px var(--card-shadow);
+  transition: box-shadow 0.2s;
+}
+.gh-contrib-link:hover .gh-contrib-chart {
+  box-shadow: 0 6px 20px var(--card-shadow);
+}
+[data-theme="dark"] .gh-contrib-chart { opacity: 1; }
+
 /* Figure captions (rendered from markdown image alt text) */
 .float {
   margin-bottom: 2.5em;
@@ -1120,9 +1144,9 @@ tool for “if-elseif-else” logic. Each <code>~</code> line is “condition
 <pre><code>#&gt; # A tibble: 3 × 12
 #&gt;   model          mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
 #&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 Pontiac Fir…  19.2     8 400     175  3.08  3.84  17.0     0     0     3     2
-#&gt; 2 Camaro Z28    13.3     8 350     245  3.73  3.84  15.4     0     0     3     4
-#&gt; 3 Lotus Europa  30.4     4  95.1   113  3.77  1.51  16.9     1     1     5     2</code></pre>
+#&gt; 1 Merc 240D     24.4     4  147.    62  3.69  3.19  20       1     0     4     2
+#&gt; 2 Porsche 914…  26       4  120.    91  4.43  2.14  16.7     0     1     5     2
+#&gt; 3 Ferrari Dino  19.7     6  145    175  3.62  2.77  15.5     0     1     5     6</code></pre>
 </div>
 <div id="joining-tables" class="section level3">
 <h3>Joining tables</h3>
