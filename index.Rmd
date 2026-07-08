@@ -56,6 +56,9 @@ cat('
 
 ```{r project-cards, echo=FALSE, results='asis'}
 cards <- list(
+  list("wc-momentum/index.html", "\U0001F30D", "World Cup 3D Momentum Portrait",
+    paste0("Follow the ball through the 2022 World Cup Final in 3D: possession, ",
+      "passes, and every goal, animated from real StatsBomb event data.")),
   list("us_rental_markets.html", "\U0001F3D8\UFE0F", "US Rental Investment Markets",
     "Cap rates, vacancy, and demand signals for 3,800+ cities using Zillow and Census data."),
   list("la_real_estate.html", "\U0001F3E1", "LA Neighborhoods: Price per Sq Ft",
