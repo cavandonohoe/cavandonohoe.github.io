@@ -152,29 +152,35 @@ body {
 .project-card h3 { font-size: 1.05em; margin: 0 0 0.4em 0; color: var(--link-color) !important; }
 .project-card p { font-size: 0.88em; color: var(--muted-text); margin: 0; line-height: 1.4; }
 
-/* GitHub contribution chart */
-.gh-contrib-link {
-  display: block;
-  text-decoration: none !important;
+/* GitHub contribution calendar (github-calendar.js) */
+.gh-calendar-card {
   margin: 1.2em 0 1.8em 0;
-}
-.gh-contrib-chart {
-  display: block;
-  width: 100%;
-  max-width: 740px;
-  height: auto;
-  margin: 0 auto;
-  padding: 1em;
+  padding: 1.2em 1.4em;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: 10px;
   box-shadow: 0 2px 8px var(--card-shadow);
-  transition: box-shadow 0.2s;
+  overflow-x: auto;
 }
-.gh-contrib-link:hover .gh-contrib-chart {
-  box-shadow: 0 6px 20px var(--card-shadow);
+.gh-calendar-card .calendar {
+  min-height: 60px;
+  color: var(--text-color);
 }
-[data-theme="dark"] .gh-contrib-chart { opacity: 1; }
+.gh-calendar-card .calendar .contrib-column {
+  border-color: var(--card-border);
+  color: var(--muted-text);
+}
+.gh-calendar-card .calendar a { color: var(--link-color); }
+/* Dark-mode readability for the calendar's own text/labels */
+[data-theme="dark"] .gh-calendar-card .calendar,
+[data-theme="dark"] .gh-calendar-card .calendar text,
+[data-theme="dark"] .gh-calendar-card .calendar .day-tooltip {
+  color: var(--text-color);
+}
+[data-theme="dark"] .gh-calendar-card .calendar .float-left.text-gray {
+  color: var(--muted-text) !important;
+}
+[data-theme="dark"] .gh-calendar-card svg text { fill: var(--muted-text); }
 
 /* Figure captions (rendered from markdown image alt text) */
 .float {
@@ -668,13 +674,33 @@ renting and investing. Source code on <a
 href="https://github.com/cavandonohoe/rent-vs-buy">GitHub</a>.</p>
 <div id="what-ive-been-building" class="section level2">
 <h2>What I’ve Been Building</h2>
-<p>Here’s my GitHub contribution activity — a live snapshot of the
-commits behind this site and my other projects.</p>
-<p><a href="https://github.com/cavandonohoe" class="gh-contrib-link"
-   aria-label="Cavan Donohoe's GitHub contribution graph">
-<img src="https://ghchart.rshah.org/409ba5/cavandonohoe"
-       alt="Cavan Donohoe's GitHub contribution graph"
-       class="gh-contrib-chart" loading="lazy" /> </a></p>
+<p>Here’s my GitHub contribution activity — a live look at the commits
+behind this site and my other projects. Use the tabs to jump between
+years.</p>
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/github-calendar@2.3.4/dist/github-calendar-responsive.css" />
+<div class="gh-calendar-card">
+<div id="gh-calendar" class="calendar">
+<a href="https://github.com/cavandonohoe">Loading GitHub
+contributions…</a>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/github-calendar@2.3.4/dist/github-calendar.min.js"></script>
+<script>
+(function() {
+  function renderGitHubCalendar() {
+    if (typeof GitHubCalendar !== "function") {
+      return setTimeout(renderGitHubCalendar, 200);
+    }
+    GitHubCalendar("#gh-calendar", "cavandonohoe", {
+      responsive: true,
+      tooltips: true,
+      global_stats: true
+    });
+  }
+  renderGitHubCalendar();
+})();
+</script>
 </div>
 <div id="projects" class="section level2">
 <h2>Projects</h2>
