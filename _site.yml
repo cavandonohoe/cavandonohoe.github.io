@@ -49,6 +49,8 @@ navbar:
       - text: "TOHS Class of 2012 Reunion"
         href: tohs_reunion.html
       - text: "--- Visualizations ---"
+      - text: "World Cup 3D Momentum Portrait"
+        href: wc-momentum/index.html
       - text: "When Were Confederate Statues Erected?"
         href: confederate_statues.html
       - text: "Sierpinski Triangle"
