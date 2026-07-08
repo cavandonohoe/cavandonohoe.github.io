@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+
+<html lang="en" xml:lang="en">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Cavan Donohoe" />
+
+
+<title>Lesson 1: Introduction to R</title>
+
+<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P51TN2DWZM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P51TN2DWZM', {
+    'anonymize_ip': true
+  });
+</script>
+<!-- Favicons and app icons -->
+<link rel="apple-touch-icon" sizes="180x180" href="/header/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/header/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/header/favicon-16x16.png">
+<link rel="manifest" href="/header/site.webmanifest">
+<link rel="mask-icon" href="/header/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<!-- Dark mode + site-wide styling -->
+<style>
+:root {
+  --bg-color: #fff;
+  --text-color: #333;
+  --card-bg: #f8f9fa;
+  --card-border: #dee2e6;
+  --card-shadow: rgba(0,0,0,0.08);
+  --link-color: #337ab7;
+  --code-bg: #f5f5f5;
+  --table-stripe: #f9f9f9;
+  --accordion-bg: #337ab7;
+  --accordion-hover: #286090;
+  --muted-text: #777;
+  --footer-text: #ccc;
+  --well-bg: #f5f5f5;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a2e;
+  --text-color: #e0e0e0;
+  --card-bg: #16213e;
+  --card-border: #0f3460;
+  --card-shadow: rgba(0,0,0,0.3);
+  --link-color: #64b5f6;
+  --code-bg: #16213e;
+  --table-stripe: #16213e;
+  --accordion-bg: #0f3460;
+  --accordion-hover: #1a4a8a;
+  --muted-text: #aaa;
+  --footer-text: #999;
+  --well-bg: #16213e;
+}
+
+body {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] .container-fluid,
+[data-theme="dark"] .container {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] h1, [data-theme="dark"] h2,
+[data-theme="dark"] h3, [data-theme="dark"] h4 {
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] a { color: var(--link-color); }
+[data-theme="dark"] code { background-color: var(--code-bg); color: #e0e0e0; }
+[data-theme="dark"] pre { background-color: var(--code-bg); border-color: var(--card-border); }
+[data-theme="dark"] .well { background-color: var(--well-bg); border-color: var(--card-border); }
+[data-theme="dark"] .table-striped > tbody > tr:nth-of-type(odd) { background-color: var(--table-stripe); }
+[data-theme="dark"] .table { color: var(--text-color); }
+[data-theme="dark"] img { opacity: 0.9; }
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px 12px;
+  margin-top: 8px;
+  color: #9d9d9d;
+  transition: color 0.2s;
+}
+.dark-mode-toggle:hover { color: #fff; }
+
+/* Project cards */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2em;
+  margin: 1.5em 0;
+}
+.project-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 1.4em;
+  text-decoration: none !important;
+  color: var(--text-color) !important;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: block;
+  box-shadow: 0 2px 8px var(--card-shadow);
+}
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px var(--card-shadow);
+  text-decoration: none !important;
+}
+.project-card .card-icon { font-size: 2em; margin-bottom: 0.4em; }
+.project-card h3 { font-size: 1.05em; margin: 0 0 0.4em 0; color: var(--link-color) !important; }
+.project-card p { font-size: 0.88em; color: var(--muted-text); margin: 0; line-height: 1.4; }
+
+/* GitHub contribution chart */
+.gh-contrib-link {
+  display: block;
+  text-decoration: none !important;
+  margin: 1.2em 0 1.8em 0;
+}
+.gh-contrib-chart {
+  display: block;
+  width: 100%;
+  max-width: 740px;
+  height: auto;
+  margin: 0 auto;
+  padding: 1em;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px var(--card-shadow);
+  transition: box-shadow 0.2s;
+}
+.gh-contrib-link:hover .gh-contrib-chart {
+  box-shadow: 0 6px 20px var(--card-shadow);
+}
+[data-theme="dark"] .gh-contrib-chart { opacity: 1; }
+
+/* Figure captions (rendered from markdown image alt text) */
+.float {
+  margin-bottom: 2.5em;
+}
+.figcaption {
+  font-size: 0.88em;
+  font-style: italic;
+  color: var(--muted-text);
+  text-align: center;
+  margin-top: 0.5em;
+  line-height: 1.4;
+}
+
+/* Timestamp badges */
+.data-timestamp {
+  display: inline-block;
+  background: var(--well-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-size: 0.82em;
+  color: var(--muted-text);
+  margin-bottom: 1em;
+}
+
+/* Collapsible table accordion styling */
+details.table-accordion {
+  margin: 1em 0;
+}
+details.table-accordion > summary {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accordion-bg);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  list-style: none;
+  text-align: center;
+  transition: background 0.2s ease;
+}
+details.table-accordion > summary::-webkit-details-marker { display: none; }
+details.table-accordion > summary::before {
+  content: "\25B6\00a0\00a0";
+  font-size: 0.85em;
+}
+details.table-accordion[open] > summary {
+  border-radius: 6px 6px 0 0;
+  background: var(--accordion-hover);
+}
+details.table-accordion[open] > summary::before {
+  content: "\25BC\00a0\00a0";
+}
+details.table-accordion > summary:hover {
+  background: var(--accordion-hover);
+}
+</style>
+<script>
+(function() {
+  var saved = localStorage.getItem('theme') || 'light';
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+})();
+</script>
+</style>
+<!-- Meta tags for SEO and social sharing -->
+<meta name="description" content="Cavan Donohoe - Data Scientist. Personal website showcasing data science projects, R tutorials, and professional experience.">
+<meta name="keywords" content="data science, R programming, data analysis, R Markdown, Cavan Donohoe">
+<meta name="author" content="Cavan Donohoe">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cavandonohoe.github.io/">
+<meta property="og:title" content="Cavan Donohoe - Data Scientist">
+<meta property="og:description" content="Data Scientist passionate about making workflows easier through automation and reproducible analysis.">
+<meta property="og:image" content="https://cavandonohoe.github.io/header/android-chrome-512x512.png">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://cavandonohoe.github.io/">
+<meta property="twitter:title" content="Cavan Donohoe - Data Scientist">
+<meta property="twitter:description" content="Data Scientist passionate about making workflows easier through automation and reproducible analysis.">
+<meta property="twitter:image" content="https://cavandonohoe.github.io/header/android-chrome-512x512.png">
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Cavan Donohoe</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="fa fa-info"></span>
+     
+    About Me
+  </a>
+</li>
+<li>
+  <a href="services.html">
+    <span class="fa fa-wrench"></span>
+     
+    Services
+  </a>
+</li>
+<li>
+  <a href="cv.html">
+    <span class="fa fa-id-card"></span>
+     
+    CV
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-laptop"></span>
+     
+    Projects
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">--- Movies &amp; TV ---</li>
+    <li>
+      <a href="imdb_top_250_tv_series.html">IMDb TV Series</a>
+    </li>
+    <li>
+      <a href="imdb_rating_plot.html">IMDb Rating Plot by Season and Episode</a>
+    </li>
+    <li>
+      <a href="top_250_imdb_with_rt.html">Top 250 IMDb Movies with Rotten Tomato Scores</a>
+    </li>
+    <li>
+      <a href="best_picture_nominees.html">Best Picture Nominees</a>
+    </li>
+    <li>
+      <a href="best_pic_vs_top_1000.html">Best Picture and Top 1000 Box Office</a>
+    </li>
+    <li>
+      <a href="director_box_office_trajectory.html">Director Box Office Trajectory</a>
+    </li>
+    <li>
+      <a href="my_imdb.html">My IMDb Ratings</a>
+    </li>
+    <li class="dropdown-header">--- Sports &amp; Personal ---</li>
+    <li>
+      <a href="avca_all_americans.html">AVCA Men's Volleyball All-Americans</a>
+    </li>
+    <li>
+      <a href="firefighter_schedule.html">Jason, Owen, and Wyett's Firefighter Schedule</a>
+    </li>
+    <li>
+      <a href="google_maps_saved_places.html">Google Maps: Want To Go + Favorites</a>
+    </li>
+    <li>
+      <a href="my_travels.html">Get Bloggy With It</a>
+    </li>
+    <li>
+      <a href="tohs_reunion.html">TOHS Class of 2012 Reunion</a>
+    </li>
+    <li class="dropdown-header">--- Visualizations ---</li>
+    <li>
+      <a href="confederate_statues.html">When Were Confederate Statues Erected?</a>
+    </li>
+    <li>
+      <a href="sierpinski_triangle.html">Sierpinski Triangle</a>
+    </li>
+    <li>
+      <a href="airplane_boarding.html">Airplane Boarding Simulation</a>
+    </li>
+    <li class="dropdown-header">--- Real Estate &amp; Finance ---</li>
+    <li>
+      <a href="us_rental_markets.html">US Rental Investment Markets</a>
+    </li>
+    <li>
+      <a href="la_real_estate.html">LA Neighborhoods: Price per Sq Ft</a>
+    </li>
+    <li>
+      <a href="la_housing_heatmap.html">LA Housing Prices: Animated Heat Map</a>
+    </li>
+    <li>
+      <a href="https://cavandonohoe.shinyapps.io/rent-vs-buy/">Rent vs. Buy Calculator</a>
+    </li>
+    <li class="dropdown-header">--- Archive ---</li>
+    <li>
+      <a href="sp500.html">S&amp;P 500 Perspective</a>
+    </li>
+    <li>
+      <a href="covid_cases_nostalgia.html">Covid Cases: Then &amp; Now</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-graduation-cap"></span>
+     
+    Learn R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="learn_r.html">Course Overview</a>
+    </li>
+    <li class="dropdown-header">--- Lessons ---</li>
+    <li>
+      <a href="intro_to_r.html">1. Introduction to R</a>
+    </li>
+    <li>
+      <a href="basic_operations_r.html">2. Basic Operations</a>
+    </li>
+    <li>
+      <a href="data_manipulation_r.html">3. Data Manipulation</a>
+    </li>
+    <li>
+      <a href="data_visualization_r.html">4. Data Visualization</a>
+    </li>
+    <li>
+      <a href="statistics_with_r.html">5. Statistics with R</a>
+    </li>
+    <li>
+      <a href="rmarkdown_r.html">6. Reproducible Reports with R Markdown</a>
+    </li>
+    <li>
+      <a href="capstone_r.html">7. Capstone Project</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Lesson 1: Introduction to R</h1>
+<h4 class="author">Cavan Donohoe</h4>
+
+</div>
+
+
+<p><link rel="stylesheet" href="/css/learn-r.css"></p>
+<div class="course-progress">
+<p>Lesson 1 of 7 · <a href="learn_r.html">Course overview</a></p>
+</div>
+<div id="introduction-to-r" class="section level1">
+<h1>Introduction to R</h1>
+<p>R is a free programming language built specifically for working with
+data. Pretty much every statistical method you’ve heard of has an R
+implementation, and a lot of them were <em>first</em> implemented in R.
+The graphics are excellent, the package ecosystem is huge, and you can
+use it for everything from a one-off plot to a peer-reviewed
+publication.</p>
+<p>This lesson covers four things:</p>
+<ol style="list-style-type: decimal">
+<li>What R actually is (and what it isn’t).</li>
+<li>Installing R and RStudio.</li>
+<li>A quick tour of the RStudio interface.</li>
+<li>Writing and running your first script.</li>
+</ol>
+<div id="what-is-r" class="section level2">
+<h2>What is R?</h2>
+<p>R is two things at once: a <strong>programming language</strong> and
+an <strong>interactive environment</strong>. You can type
+<code>2 + 2</code> at the prompt and get <code>4</code> back, just like
+a calculator. Or you can write a 500-line script that loads a CSV, fits
+a model, and produces a PDF report.</p>
+<p>R was created in the early 1990s by statisticians at the University
+of Auckland, and it shows: the language has built-in support for
+vectors, missing values, factors, and other things that statisticians
+care about. It’s <em>very</em> good at “load a table, do something to
+every row, summarise the result.” It’s less great at writing a video
+game.</p>
+<p>R is open source. Anyone can use it, anyone can contribute packages,
+and the <a href="https://cran.r-project.org/">Comprehensive R Archive
+Network (CRAN)</a> hosts more than 20,000 add-on packages — for
+everything from genomics to finance to natural language processing.</p>
+<div class="callout callout-note">
+<div class="callout-title">
+📝 R vs. Python
+</div>
+<p>You’ll hear “R or Python?” a lot. Honest answer: both are fine, you
+can do almost anything in either, and most working data scientists use
+both. R has the edge for statistics, reporting, and visualization out of
+the box. Python has the edge for general programming, web apps, and most
+of modern machine learning. If you already know Python, R will feel
+quirky for a week and then second-nature.</p>
+</div>
+</div>
+<div id="installing-r-and-rstudio" class="section level2">
+<h2>Installing R and RStudio</h2>
+<p>You need two things: <strong>R</strong> itself (the engine) and
+<strong>RStudio</strong> (a much nicer place to write R code than the
+bare R console).</p>
+<div id="step-1-install-r" class="section level3">
+<h3>Step 1: Install R</h3>
+<ol style="list-style-type: decimal">
+<li>Go to <a
+href="https://cran.r-project.org/">https://cran.r-project.org/</a> and
+click the link for your operating system (Windows, macOS, or
+Linux).</li>
+<li>Download the latest base R installer.</li>
+<li>Run the installer with the default options — for most users you
+don’t need to change anything.</li>
+</ol>
+</div>
+<div id="step-2-install-rstudio-desktop" class="section level3">
+<h3>Step 2: Install RStudio Desktop</h3>
+<ol style="list-style-type: decimal">
+<li>Go to <a
+href="https://posit.co/download/rstudio-desktop/">https://posit.co/download/rstudio-desktop/</a>.</li>
+<li>Download the <strong>free</strong> RStudio Desktop installer for
+your OS.</li>
+<li>Run the installer. RStudio will find your R installation
+automatically.</li>
+</ol>
+<p>When you open RStudio for the first time, you should see a window
+with several panes. If you see a <code>&gt;</code> prompt in one of
+them, you’re good to go.</p>
+<div class="callout callout-warning">
+<div class="callout-title">
+⚠️ One install, not two languages
+</div>
+<p>RStudio is just an editor — it runs R for you. If you uninstall R,
+RStudio breaks. If you install a new version of R, RStudio will pick it
+up automatically.</p>
+</div>
+</div>
+</div>
+<div id="a-tour-of-rstudio" class="section level2">
+<h2>A tour of RStudio</h2>
+<p>By default RStudio shows four panes:</p>
+<ul>
+<li><strong>Source / Script editor</strong> (top-left): where you write
+R scripts and R Markdown documents. This is where you’ll spend most of
+your time.</li>
+<li><strong>Console</strong> (bottom-left): the live R session. Anything
+you run from the script gets sent here. You can also type directly into
+the console for one-off commands.</li>
+<li><strong>Environment / History</strong> (top-right): every variable,
+dataset, or function you’ve created in the current session shows up
+here. Great for sanity-checking what’s loaded.</li>
+<li><strong>Files / Plots / Packages / Help / Viewer</strong>
+(bottom-right): file browser, plot output, installed packages, the help
+system, and the viewer for HTML output (like rendered R Markdown).</li>
+</ul>
+<p>A few keyboard shortcuts that pay for themselves immediately:</p>
+<table>
+<colgroup>
+<col width="41%" />
+<col width="58%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Shortcut</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>Enter</kbd></td>
+<td>Run the current line (or selection) from the script</td>
+</tr>
+<tr class="even">
+<td><kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>Shift</kbd> +
+<kbd>N</kbd></td>
+<td>New R script</td>
+</tr>
+<tr class="odd">
+<td><kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>Shift</kbd> +
+<kbd>M</kbd></td>
+<td>Insert the pipe operator (<code>|&gt;</code>)</td>
+</tr>
+<tr class="even">
+<td><kbd>Alt</kbd> + <kbd>-</kbd></td>
+<td>Insert the assignment operator (<code>&lt;-</code>)</td>
+</tr>
+<tr class="odd">
+<td><kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>L</kbd></td>
+<td>Clear the console</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="your-first-r-script" class="section level2">
+<h2>Your first R script</h2>
+<p>Let’s actually run some R. In RStudio, hit
+<kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>N</kbd> to open
+a new script. Type the following (don’t paste — really type it):</p>
+<pre class="r"><code>greeting &lt;- &quot;Hello, R!&quot;
+greeting</code></pre>
+<pre><code>## [1] &quot;Hello, R!&quot;</code></pre>
+<pre class="r"><code>2 + 2</code></pre>
+<pre><code>## [1] 4</code></pre>
+<pre class="r"><code>sqrt(144)</code></pre>
+<pre><code>## [1] 12</code></pre>
+<p>Place your cursor on the first line and hit
+<kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>Enter</kbd>. The line gets sent to
+the console. Do it for each line. You should see:</p>
+<ul>
+<li><code>greeting</code> was assigned the value
+<code>"Hello, R!"</code> and now appears in the Environment pane.</li>
+<li><code>2 + 2</code> prints <code>4</code>.</li>
+<li><code>sqrt(144)</code> prints <code>12</code>.</li>
+</ul>
+<p>A few things to notice:</p>
+<ul>
+<li><code>&lt;-</code> is R’s assignment operator. You can use
+<code>=</code> too, but <code>&lt;-</code> is the convention. Use the
+<kbd>Alt</kbd> + <kbd>-</kbd> shortcut.</li>
+<li>Anything after <code>#</code> on a line is a comment — R ignores
+it.</li>
+<li>Functions are called with parentheses: <code>sqrt(144)</code>,
+<code>mean(c(1, 2, 3))</code>. Without the parentheses, R prints the
+function’s source code instead of running it.</li>
+</ul>
+<p>Save the script with <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>S</kbd>.
+Call it <code>hello.R</code>. Now you have your first R script.</p>
+</div>
+<div id="installing-and-using-packages" class="section level2">
+<h2>Installing and using packages</h2>
+<p>R’s superpower is its packages. A <strong>package</strong> is a
+bundle of functions and data someone else wrote. To use one, you install
+it once and then load it whenever you need it.</p>
+<pre class="r"><code>install.packages(&quot;dplyr&quot;)
+library(dplyr)</code></pre>
+<ul>
+<li><code>install.packages("dplyr")</code> downloads and installs the
+<code>dplyr</code> package from CRAN. You only need to do this once per
+machine.</li>
+<li><code>library(dplyr)</code> loads it into your current session, so
+its functions are available. You do this every session.</li>
+</ul>
+<p>You can also call a function from a package without loading the whole
+package by using <code>::</code>:</p>
+<pre class="r"><code>dplyr::filter(mtcars, mpg &gt; 25)</code></pre>
+<p>This is helpful when you only need one function or want to be
+explicit about where it came from. We’ll use it occasionally throughout
+the course.</p>
+<p>The packages we’ll use the most:</p>
+<ul>
+<li><code>dplyr</code> and <code>tidyr</code> — data manipulation</li>
+<li><code>ggplot2</code> — plotting</li>
+<li><code>readr</code> — reading CSVs</li>
+<li><code>rmarkdown</code> and <code>knitr</code> — reproducible
+reports</li>
+</ul>
+<p>You can install them all at once with the <code>tidyverse</code>
+umbrella package:</p>
+<pre class="r"><code>install.packages(&quot;tidyverse&quot;)</code></pre>
+</div>
+<div id="getting-help" class="section level2">
+<h2>Getting help</h2>
+<p>When (not if) you forget how a function works, R has built-in help.
+Three ways to get it:</p>
+<pre class="r"><code>?mean
+help(&quot;mean&quot;)
+example(&quot;mean&quot;)</code></pre>
+<p>The help page opens in the bottom-right pane. Every help page has the
+same sections: <strong>Description</strong>, <strong>Usage</strong>,
+<strong>Arguments</strong>, <strong>Value</strong>,
+<strong>Examples</strong>. The Examples section is gold — copy them, run
+them, modify them.</p>
+<p>If you don’t even know the name of the function you want,
+<code>??</code> does a fuzzy search across all installed packages:</p>
+<pre class="r"><code>??&quot;linear regression&quot;</code></pre>
+<p>And of course, <a
+href="https://stackoverflow.com/questions/tagged/r">Stack Overflow</a>,
+the <a href="https://forum.posit.co/">Posit Community forum</a>, and now
+LLMs are all good for “how do I…” questions.</p>
+</div>
+<div id="putting-it-together" class="section level2">
+<h2>Putting it together</h2>
+<p>Here’s a tiny script that uses everything you just learned: a
+built-in dataset (<code>mtcars</code> — fuel efficiency for 32 cars from
+1974), a function call, and a quick plot.</p>
+<pre class="r"><code>head(mtcars)</code></pre>
+<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+<pre class="r"><code>mean(mtcars$mpg)</code></pre>
+<pre><code>## [1] 20.09</code></pre>
+<pre class="r"><code>plot(mtcars$wt, mtcars$mpg,
+  main = &quot;Heavier cars get worse gas mileage&quot;,
+  xlab = &quot;Weight (1000 lbs)&quot;,
+  ylab = &quot;Miles per gallon&quot;)</code></pre>
+<p><img src="intro_to_r_files/figure-html/intro-mtcars-plot-1.png" alt="" width="576" /></p>
+<p>If you typed that in and got a similar plot back, you’re in
+business.</p>
+<div class="exercise">
+<div class="exercise-title">
+✏️ Exercise 1.1 — Your first script
+</div>
+<p>Open a new R script in RStudio and write code that:</p>
+<ol style="list-style-type: decimal">
+<li>Stores your name in a variable called <code>me</code>.</li>
+<li>Stores your age (or guess, doesn’t matter) in a variable called
+<code>age</code>.</li>
+<li>Prints both, plus the value of <code>age * 365</code> (your age in
+days, roughly).</li>
+</ol>
+<details>
+<summary>
+Show solution
+</summary>
+<pre class="r"><code>me &lt;- &quot;Cavan&quot;
+age &lt;- 30
+me</code></pre>
+<pre><code>## [1] &quot;Cavan&quot;</code></pre>
+<pre class="r"><code>age</code></pre>
+<pre><code>## [1] 30</code></pre>
+<pre class="r"><code>age * 365</code></pre>
+<pre><code>## [1] 10950</code></pre>
+</details>
+</div>
+<div class="exercise">
+<div class="exercise-title">
+✏️ Exercise 1.2 — Help yourself
+</div>
+<p>R has a function called <code>seq()</code> that you’ve never seen
+before. Without searching the web, figure out what it does and use it to
+generate the numbers from 0 to 1 in steps of 0.1.</p>
+<details>
+<summary>
+Show solution
+</summary>
+<p>Run <code>?seq</code> to open the help page. The relevant arguments
+are <code>from</code>, <code>to</code>, and <code>by</code>:</p>
+<pre class="r"><code>seq(from = 0, to = 1, by = 0.1)</code></pre>
+<pre><code>##  [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0</code></pre>
+<p>You can also write it more compactly — R uses positional
+arguments:</p>
+<pre class="r"><code>seq(0, 1, 0.1)</code></pre>
+<pre><code>##  [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0</code></pre>
+</details>
+</div>
+</div>
+<div id="whats-next" class="section level2">
+<h2>What’s next</h2>
+<p>You can now run R, you have RStudio set up, and you know how to
+install packages and ask R for help. That’s the whole runway. Next up:
+actually doing things <em>with</em> R.</p>
+<div class="lesson-nav">
+<p><a class="nav-prev" href="learn_r.html"> <span
+class="lesson-nav-label">← Course overview</span> <span
+class="lesson-nav-title">Learn R Mini-Course</span> </a>
+<a class="nav-next" href="basic_operations_r.html"> <span
+class="lesson-nav-label">Next →</span> <span
+class="lesson-nav-title">Lesson 2: Basic Operations</span> </a></p>
+</div>
+</div>
+</div>
+
+<link rel="stylesheet" href="/css/footer.css">
+<footer id="footer_stuff" class="band full" role="contentinfo">
+  <div class="bandContent">
+    <p id="full_send">Feel free to contact me:</p>
+    <nav id="logos" aria-label="Social media and contact links">
+      <a href="mailto:cavandonohoe@gmail.com" aria-label="Email Cavan Donohoe"><i class="fa fa-envelope" style="font-size:22px"></i></a>
+      <a href="https://www.instagram.com/cavandonohoe" aria-label="Instagram profile" rel="noopener noreferrer"><i class="fa fa-instagram" style="font-size:22px"></i></a>
+      <a href="https://www.facebook.com/cavandonohoe" aria-label="Facebook profile" rel="noopener noreferrer"><i class="fa fa-facebook" style="font-size:22px"></i></a>
+      <a href="https://github.com/cavandonohoe" aria-label="GitHub profile" rel="noopener noreferrer"><i class="fa fa-github" style="font-size:22px"></i></a>
+      <a href="https://www.linkedin.com/in/cavan-donohoe/" aria-label="LinkedIn profile" rel="noopener noreferrer"><i class="fa fa-linkedin" style="font-size:22px"></i></a>
+      <a href="tel:+8054043321" aria-label="Phone number"><i class="fa fa-phone" style="font-size:22px"></i></a>
+    </nav>
+  </div>
+</footer>
+<script>
+(function() {
+  function addLabel(el, label) {
+    if (!el) return;
+    if (el.hasAttribute('aria-label') && el.getAttribute('aria-label').trim()) return;
+    if (el.hasAttribute('title') && el.getAttribute('title').trim()) return;
+    el.setAttribute('aria-label', label);
+  }
+
+  function labelNavbarToggle() {
+    var toggles = document.querySelectorAll('button.navbar-toggle');
+    for (var i = 0; i < toggles.length; i++) {
+      addLabel(toggles[i], 'Toggle navigation');
+    }
+  }
+
+  function labelPlotlyModebar() {
+    var anchors = document.querySelectorAll('.modebar-container a, [id^="modebar-"] a');
+    for (var i = 0; i < anchors.length; i++) {
+      var a = anchors[i];
+      if ((a.hasAttribute('aria-label') && a.getAttribute('aria-label').trim()) ||
+          (a.hasAttribute('title') && a.getAttribute('title').trim())) {
+        // already labeled — but H91 still wants id/name on empty anchors,
+        // so ensure that too.
+      } else {
+        var dataTitle = a.getAttribute('data-title') || '';
+        var label = dataTitle.trim() || 'Plot toolbar action';
+        a.setAttribute('aria-label', label);
+      }
+      // H91 considers an empty anchor accessible if it has id or name.
+      // Give every modebar anchor a stable, unique id derived from the
+      // parent modebar id + position so HTML_CodeSniffer stops flagging.
+      if (!a.id) {
+        var parent = a.closest('[id^="modebar-"]');
+        var base = parent ? parent.id : 'modebar';
+        var idx = Array.prototype.indexOf.call(parent ? parent.querySelectorAll('a') : [a], a);
+        a.id = base + '-btn-' + (idx >= 0 ? idx : i);
+      }
+      if (!a.getAttribute('name')) a.setAttribute('name', a.id);
+    }
+  }
+
+  function dedupePlotlySymbolIds() {
+    // Plotly inlines an SVG icon set per chart that defines <g id="symbol">,
+    // so pages with two charts trip F77 (duplicate id). Drop the id on every
+    // occurrence after the first; nothing on the page references #symbol.
+    // Restrict to the known offender so we don't accidentally rename
+    // legitimate duplicates elsewhere.
+    var symbols = document.querySelectorAll('[id="symbol"]');
+    for (var i = 1; i < symbols.length; i++) {
+      symbols[i].removeAttribute('id');
+    }
+  }
+
+  function labelDataTablesControls() {
+    var inputs = document.querySelectorAll(
+      '.dataTables_wrapper input[type="search"], .dataTables_wrapper input[type="text"], ' +
+      'table.dataTable thead input[type="search"], table.dataTable thead input[type="text"]'
+    );
+    for (var i = 0; i < inputs.length; i++) {
+      var input = inputs[i];
+      if ((input.hasAttribute('aria-label') && input.getAttribute('aria-label').trim()) ||
+          (input.hasAttribute('title') && input.getAttribute('title').trim())) continue;
+      var placeholder = input.getAttribute('placeholder') || '';
+      var label = placeholder.trim() || 'Search';
+      var th = input.closest('th, td');
+      var col = th ? (th.getAttribute('aria-label') || th.textContent || '').trim() : '';
+      if (col) label = col + ' search';
+      input.setAttribute('aria-label', label);
+    }
+
+    var selects = document.querySelectorAll(
+      '.dataTables_wrapper select, table.dataTable thead select'
+    );
+    for (var j = 0; j < selects.length; j++) {
+      var sel = selects[j];
+      if ((sel.hasAttribute('aria-label') && sel.getAttribute('aria-label').trim()) ||
+          (sel.hasAttribute('title') && sel.getAttribute('title').trim())) continue;
+      var th2 = sel.closest('th, td');
+      var col2 = th2 ? (th2.getAttribute('aria-label') || th2.textContent || '').trim() : '';
+      sel.setAttribute('aria-label', col2 ? col2 + ' filter' : 'Column filter');
+    }
+  }
+
+  function applyA11yShims() {
+    labelNavbarToggle();
+    labelPlotlyModebar();
+    labelDataTablesControls();
+    dedupePlotlySymbolIds();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyA11yShims);
+  } else {
+    applyA11yShims();
+  }
+
+  // Plotly and DataTables can re-render after initial load; reapply on a short
+  // delay and observe further DOM changes so dynamically-inserted controls
+  // also get labelled before the pa11y wait window expires.
+  setTimeout(applyA11yShims, 250);
+  setTimeout(applyA11yShims, 1000);
+
+  if (typeof MutationObserver !== 'undefined') {
+    var observer = new MutationObserver(function() { applyA11yShims(); });
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+})();
+</script>
+<script>
+(function() {
+  var btn = document.createElement('button');
+  btn.className = 'dark-mode-toggle';
+  btn.setAttribute('aria-label', 'Toggle dark mode');
+  btn.innerHTML = localStorage.getItem('theme') === 'dark' ? '☀️' : '🌙';
+  btn.onclick = function() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    btn.innerHTML = next === 'dark' ? '☀️' : '🌙';
+  };
+  var navbar = document.querySelector('.navbar-right') || document.querySelector('.navbar-nav');
+  if (navbar) {
+    var li = document.createElement('li');
+    li.appendChild(btn);
+    navbar.appendChild(li);
+  }
+})();
+</script>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
