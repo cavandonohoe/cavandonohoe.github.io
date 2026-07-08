@@ -39,6 +39,21 @@ I thought it might be worth investing some time to make a website to point to an
 
 Check out my latest project: a [Rent vs. Buy Calculator](https://cavandonohoe.shinyapps.io/rent-vs-buy/) — an interactive Shiny app that runs a side-by-side financial simulation to help you decide whether to buy a home or keep renting and investing. Source code on [GitHub](https://github.com/cavandonohoe/rent-vs-buy).
 
+## What I've Been Building
+
+Here's my GitHub contribution activity — a live snapshot of the commits behind this site and my other projects.
+
+```{r github-contributions, echo=FALSE, results='asis'}
+cat('
+<a href="https://github.com/cavandonohoe" class="gh-contrib-link"
+   aria-label="Cavan Donohoe\'s GitHub contribution graph">
+  <img src="https://ghchart.rshah.org/409ba5/cavandonohoe"
+       alt="Cavan Donohoe\'s GitHub contribution graph"
+       class="gh-contrib-chart" loading="lazy" />
+</a>
+')
+```
+
 ## Projects
 
 ```{r project-cards, echo=FALSE, results='asis'}
