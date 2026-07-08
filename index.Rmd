@@ -56,15 +56,15 @@ cat('
 
 ```{r project-cards, echo=FALSE, results='asis'}
 cards <- list(
-  list("wc-momentum/index.html", "\U0001F30D", "World Cup 3D Momentum Portrait",
-    paste0("Follow the ball through the 2022 World Cup Final in 3D: possession, ",
-      "passes, and every goal, animated from real StatsBomb event data.")),
   list("us_rental_markets.html", "\U0001F3D8\UFE0F", "US Rental Investment Markets",
     "Cap rates, vacancy, and demand signals for 3,800+ cities using Zillow and Census data."),
   list("la_real_estate.html", "\U0001F3E1", "LA Neighborhoods: Price per Sq Ft",
     "Zillow + Redfin data for LA neighborhoods: median prices, rent, and what $1M buys you."),
   list("https://cavandonohoe.shinyapps.io/rent-vs-buy/", "\U0001F9EE", "Rent vs. Buy Calculator",
     "Interactive Shiny app for side-by-side financial simulation of renting vs. buying."),
+  list("wc-momentum/index.html", "\U0001F30D", "World Cup 3D Momentum Portrait",
+    paste0("Follow the ball through the 2022 World Cup Final in 3D: possession, ",
+      "passes, and every goal, animated from real StatsBomb event data.")),
   list("imdb_top_250_tv_series.html", "\U0001F4FA", "IMDb Top 250 TV Series",
     "Scraped ratings, seasons, and trends for the top 250 TV shows on IMDb."),
   list("best_picture_nominees.html", "\U0001F3AC", "Best Picture Nominees",
