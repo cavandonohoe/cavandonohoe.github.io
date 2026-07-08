@@ -156,9 +156,18 @@ body {
 .project-card h3 { font-size: 1.05em; margin: 0 0 0.4em 0; color: var(--link-color) !important; }
 .project-card p { font-size: 0.88em; color: var(--muted-text); margin: 0; line-height: 1.4; }
 
-/* GitHub contribution calendar (github-calendar.js) */
-.gh-calendar-card {
+/* GitHub contribution calendar (custom SVG renderer) */
+.gh-cal-wrap {
   margin: 1.2em 0 1.8em 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1em;
+  align-items: flex-start;
+}
+.gh-cal-card {
+  flex: 1 1 auto;
+  min-width: 0;
   padding: 1.2em 1.4em;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -166,25 +175,72 @@ body {
   box-shadow: 0 2px 8px var(--card-shadow);
   overflow-x: auto;
 }
-.gh-calendar-card .calendar {
-  min-height: 60px;
-  color: var(--text-color);
-}
-.gh-calendar-card .calendar .contrib-column {
-  border-color: var(--card-border);
+.gh-cal-svg { display: block; max-width: 100%; height: auto; }
+.gh-cal-svg text { fill: var(--muted-text); font-size: 9px; }
+.gh-cal-day { rx: 2px; ry: 2px; shape-rendering: geometricPrecision; }
+.gh-cal-day:hover { stroke: var(--text-color); stroke-width: 1px; }
+.gh-cal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6em;
+  margin-top: 0.8em;
+  font-size: 0.8em;
   color: var(--muted-text);
 }
-.gh-calendar-card .calendar a { color: var(--link-color); }
-/* Dark-mode readability for the calendar's own text/labels */
-[data-theme="dark"] .gh-calendar-card .calendar,
-[data-theme="dark"] .gh-calendar-card .calendar text,
-[data-theme="dark"] .gh-calendar-card .calendar .day-tooltip {
+.gh-cal-legend { display: flex; align-items: center; gap: 4px; }
+.gh-cal-legend .gh-cal-swatch {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  display: inline-block;
+}
+/* Year selector buttons */
+.gh-cal-years {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+.gh-cal-year-btn {
+  padding: 0.5em 1em;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  background: var(--card-bg);
   color: var(--text-color);
+  font-size: 0.85em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
 }
-[data-theme="dark"] .gh-calendar-card .calendar .float-left.text-gray {
-  color: var(--muted-text) !important;
+.gh-cal-year-btn:hover { border-color: var(--link-color); }
+.gh-cal-year-btn.active {
+  background: var(--link-color);
+  border-color: var(--link-color);
+  color: #fff;
 }
-[data-theme="dark"] .gh-calendar-card svg text { fill: var(--muted-text); }
+/* Tooltip */
+.gh-cal-tooltip {
+  position: fixed;
+  z-index: 1000;
+  padding: 5px 9px;
+  background: #1b1f23;
+  color: #fff;
+  font-size: 0.78em;
+  border-radius: 6px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.1s;
+  white-space: nowrap;
+}
+@media (min-width: 700px) {
+  .gh-cal-years { flex-direction: column; }
+}
+@media (max-width: 699px) {
+  .gh-cal-wrap { flex-direction: column; }
+  .gh-cal-years { flex-direction: row; }
+}
 
 /* Figure captions (rendered from markdown image alt text) */
 .float {
@@ -1150,9 +1206,9 @@ tool for “if-elseif-else” logic. Each <code>~</code> line is “condition
 <pre><code>#&gt; # A tibble: 3 × 12
 #&gt;   model          mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
 #&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 Duster 360    14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
-#&gt; 2 Ford Panter…  15.8     8  351    264  4.22  3.17  14.5     0     1     5     4
-#&gt; 3 Merc 450SL    17.3     8  276.   180  3.07  3.73  17.6     0     0     3     3</code></pre>
+#&gt; 1 Merc 450SE    16.4     8 276.    180  3.07  4.07  17.4     0     0     3     3
+#&gt; 2 Honda Civic   30.4     4  75.7    52  4.93  1.62  18.5     1     1     4     2
+#&gt; 3 Mazda RX4 W…  21       6 160     110  3.9   2.88  17.0     0     1     4     4</code></pre>
 </div>
 <div id="joining-tables" class="section level3">
 <h3>Joining tables</h3>
