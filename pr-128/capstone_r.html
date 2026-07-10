@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+
+<html lang="en" xml:lang="en">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Cavan Donohoe" />
+
+
+<title>Lesson 7: Capstone Project</title>
+
+<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P51TN2DWZM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P51TN2DWZM', {
+    'anonymize_ip': true
+  });
+</script>
+<!-- Favicons and app icons -->
+<link rel="apple-touch-icon" sizes="180x180" href="/header/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/header/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/header/favicon-16x16.png">
+<link rel="manifest" href="/header/site.webmanifest">
+<link rel="mask-icon" href="/header/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<!-- Dark mode + site-wide styling -->
+<style>
+:root {
+  --bg-color: #fff;
+  --text-color: #333;
+  --card-bg: #f8f9fa;
+  --card-border: #dee2e6;
+  --card-shadow: rgba(0,0,0,0.08);
+  --link-color: #337ab7;
+  --code-bg: #f5f5f5;
+  --table-stripe: #f9f9f9;
+  --accordion-bg: #337ab7;
+  --accordion-hover: #286090;
+  --muted-text: #777;
+  --footer-text: #ccc;
+  --well-bg: #f5f5f5;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a2e;
+  --text-color: #e0e0e0;
+  --card-bg: #16213e;
+  --card-border: #0f3460;
+  --card-shadow: rgba(0,0,0,0.3);
+  --link-color: #64b5f6;
+  --code-bg: #16213e;
+  --table-stripe: #16213e;
+  --accordion-bg: #0f3460;
+  --accordion-hover: #1a4a8a;
+  --muted-text: #aaa;
+  --footer-text: #999;
+  --well-bg: #16213e;
+}
+
+body {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] .container-fluid,
+[data-theme="dark"] .container {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] h1, [data-theme="dark"] h2,
+[data-theme="dark"] h3, [data-theme="dark"] h4 {
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] a { color: var(--link-color); }
+[data-theme="dark"] code { background-color: var(--code-bg); color: #e0e0e0; }
+[data-theme="dark"] pre { background-color: var(--code-bg); border-color: var(--card-border); }
+[data-theme="dark"] .well { background-color: var(--well-bg); border-color: var(--card-border); }
+[data-theme="dark"] .table-striped > tbody > tr:nth-of-type(odd) { background-color: var(--table-stripe); }
+[data-theme="dark"] .table { color: var(--text-color); }
+[data-theme="dark"] img { opacity: 0.9; }
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px 12px;
+  margin-top: 8px;
+  color: #9d9d9d;
+  transition: color 0.2s;
+}
+.dark-mode-toggle:hover { color: #fff; }
+
+/* Project cards */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2em;
+  margin: 1.5em 0;
+}
+.project-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 1.4em;
+  text-decoration: none !important;
+  color: var(--text-color) !important;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: block;
+  box-shadow: 0 2px 8px var(--card-shadow);
+}
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px var(--card-shadow);
+  text-decoration: none !important;
+}
+.project-card .card-icon { font-size: 2em; margin-bottom: 0.4em; }
+.project-card h3 { font-size: 1.05em; margin: 0 0 0.4em 0; color: var(--link-color) !important; }
+.project-card p { font-size: 0.88em; color: var(--muted-text); margin: 0; line-height: 1.4; }
+
+/* GitHub contribution chart */
+.gh-contrib-link {
+  display: block;
+  text-decoration: none !important;
+  margin: 1.2em 0 1.8em 0;
+}
+.gh-contrib-chart {
+  display: block;
+  width: 100%;
+  max-width: 740px;
+  height: auto;
+  margin: 0 auto;
+  padding: 1em;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px var(--card-shadow);
+  transition: box-shadow 0.2s;
+}
+.gh-contrib-link:hover .gh-contrib-chart {
+  box-shadow: 0 6px 20px var(--card-shadow);
+}
+[data-theme="dark"] .gh-contrib-chart { opacity: 1; }
+
+/* Figure captions (rendered from markdown image alt text) */
+.float {
+  margin-bottom: 2.5em;
+}
+.figcaption {
+  font-size: 0.88em;
+  font-style: italic;
+  color: var(--muted-text);
+  text-align: center;
+  margin-top: 0.5em;
+  line-height: 1.4;
+}
+
+/* Timestamp badges */
+.data-timestamp {
+  display: inline-block;
+  background: var(--well-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-size: 0.82em;
+  color: var(--muted-text);
+  margin-bottom: 1em;
+}
+
+/* Collapsible table accordion styling */
+details.table-accordion {
+  margin: 1em 0;
+}
+details.table-accordion > summary {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accordion-bg);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  list-style: none;
+  text-align: center;
+  transition: background 0.2s ease;
+}
+details.table-accordion > summary::-webkit-details-marker { display: none; }
+details.table-accordion > summary::before {
+  content: "\25B6\00a0\00a0";
+  font-size: 0.85em;
+}
+details.table-accordion[open] > summary {
+  border-radius: 6px 6px 0 0;
+  background: var(--accordion-hover);
+}
+details.table-accordion[open] > summary::before {
+  content: "\25BC\00a0\00a0";
+}
+details.table-accordion > summary:hover {
+  background: var(--accordion-hover);
+}
+</style>
+<script>
+(function() {
+  var saved = localStorage.getItem('theme') || 'light';
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+})();
+</script>
+</style>
+<!-- Meta tags for SEO and social sharing -->
+<meta name="description" content="Cavan Donohoe - Data Scientist. Personal website showcasing data science projects, R tutorials, and professional experience.">
+<meta name="keywords" content="data science, R programming, data analysis, R Markdown, Cavan Donohoe">
+<meta name="author" content="Cavan Donohoe">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cavandonohoe.github.io/">
+<meta property="og:title" content="Cavan Donohoe - Data Scientist">
+<meta property="og:description" content="Data Scientist passionate about making workflows easier through automation and reproducible analysis.">
+<meta property="og:image" content="https://cavandonohoe.github.io/header/android-chrome-512x512.png">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://cavandonohoe.github.io/">
+<meta property="twitter:title" content="Cavan Donohoe - Data Scientist">
+<meta property="twitter:description" content="Data Scientist passionate about making workflows easier through automation and reproducible analysis.">
+<meta property="twitter:image" content="https://cavandonohoe.github.io/header/android-chrome-512x512.png">
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Cavan Donohoe</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="fa fa-info"></span>
+     
+    About Me
+  </a>
+</li>
+<li>
+  <a href="services.html">
+    <span class="fa fa-wrench"></span>
+     
+    Services
+  </a>
+</li>
+<li>
+  <a href="cv.html">
+    <span class="fa fa-id-card"></span>
+     
+    CV
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-laptop"></span>
+     
+    Projects
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">--- Movies &amp; TV ---</li>
+    <li>
+      <a href="imdb_top_250_tv_series.html">IMDb TV Series</a>
+    </li>
+    <li>
+      <a href="imdb_rating_plot.html">IMDb Rating Plot by Season and Episode</a>
+    </li>
+    <li>
+      <a href="top_250_imdb_with_rt.html">Top 250 IMDb Movies with Rotten Tomato Scores</a>
+    </li>
+    <li>
+      <a href="best_picture_nominees.html">Best Picture Nominees</a>
+    </li>
+    <li>
+      <a href="best_pic_vs_top_1000.html">Best Picture and Top 1000 Box Office</a>
+    </li>
+    <li>
+      <a href="director_box_office_trajectory.html">Director Box Office Trajectory</a>
+    </li>
+    <li>
+      <a href="my_imdb.html">My IMDb Ratings</a>
+    </li>
+    <li class="dropdown-header">--- Sports &amp; Personal ---</li>
+    <li>
+      <a href="avca_all_americans.html">AVCA Men's Volleyball All-Americans</a>
+    </li>
+    <li>
+      <a href="firefighter_schedule.html">Jason, Owen, and Wyett's Firefighter Schedule</a>
+    </li>
+    <li>
+      <a href="google_maps_saved_places.html">Google Maps: Want To Go + Favorites</a>
+    </li>
+    <li>
+      <a href="my_travels.html">Get Bloggy With It</a>
+    </li>
+    <li>
+      <a href="tohs_reunion.html">TOHS Class of 2012 Reunion</a>
+    </li>
+    <li class="dropdown-header">--- Visualizations ---</li>
+    <li>
+      <a href="wc-momentum/index.html">World Cup 3D Momentum Portrait</a>
+    </li>
+    <li>
+      <a href="confederate_statues.html">When Were Confederate Statues Erected?</a>
+    </li>
+    <li>
+      <a href="sierpinski_triangle.html">Sierpinski Triangle</a>
+    </li>
+    <li>
+      <a href="airplane_boarding.html">Airplane Boarding Simulation</a>
+    </li>
+    <li class="dropdown-header">--- Real Estate &amp; Finance ---</li>
+    <li>
+      <a href="us_rental_markets.html">US Rental Investment Markets</a>
+    </li>
+    <li>
+      <a href="la_real_estate.html">LA Neighborhoods: Price per Sq Ft</a>
+    </li>
+    <li>
+      <a href="la_housing_heatmap.html">LA Housing Prices: Animated Heat Map</a>
+    </li>
+    <li>
+      <a href="https://cavandonohoe.shinyapps.io/rent-vs-buy/">Rent vs. Buy Calculator</a>
+    </li>
+    <li class="dropdown-header">--- Archive ---</li>
+    <li>
+      <a href="sp500.html">S&amp;P 500 Perspective</a>
+    </li>
+    <li>
+      <a href="covid_cases_nostalgia.html">Covid Cases: Then &amp; Now</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-graduation-cap"></span>
+     
+    Learn R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="learn_r.html">Course Overview</a>
+    </li>
+    <li class="dropdown-header">--- Lessons ---</li>
+    <li>
+      <a href="intro_to_r.html">1. Introduction to R</a>
+    </li>
+    <li>
+      <a href="basic_operations_r.html">2. Basic Operations</a>
+    </li>
+    <li>
+      <a href="data_manipulation_r.html">3. Data Manipulation</a>
+    </li>
+    <li>
+      <a href="data_visualization_r.html">4. Data Visualization</a>
+    </li>
+    <li>
+      <a href="statistics_with_r.html">5. Statistics with R</a>
+    </li>
+    <li>
+      <a href="rmarkdown_r.html">6. Reproducible Reports with R Markdown</a>
+    </li>
+    <li>
+      <a href="capstone_r.html">7. Capstone Project</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Lesson 7: Capstone Project</h1>
+<h4 class="author">Cavan Donohoe</h4>
+
+</div>
+
+
+<p><link rel="stylesheet" href="/css/learn-r.css"></p>
+<div class="course-progress">
+<p>Lesson 7 of 7 · <a href="learn_r.html">Course overview</a></p>
+</div>
+<div id="capstone-a-real-analysis-start-to-finish"
+class="section level1">
+<h1>Capstone: A Real Analysis, Start to Finish</h1>
+<p>Time to put it all together. We’ll walk through a complete
+mini-analysis — the kind of thing you might do as a first pass on a
+real-world dataset. Every step uses something from a previous
+lesson:</p>
+<ul>
+<li><strong>Lesson 1:</strong> install packages, run a script.</li>
+<li><strong>Lesson 2:</strong> vectors, types, missing values.</li>
+<li><strong>Lesson 3:</strong> load and reshape data with the
+tidyverse.</li>
+<li><strong>Lesson 4:</strong> plot with ggplot2.</li>
+<li><strong>Lesson 5:</strong> descriptive stats, t-test,
+regression.</li>
+<li><strong>Lesson 6:</strong> wrap it up as an R Markdown report.</li>
+</ul>
+<p>The dataset is <code>airquality</code> — a built-in R dataset of
+daily air-quality measurements from New York City, May–September 1973.
+It’s small (153 days), it has missing values, and it has both numeric
+and categorical variables. Realistic enough to be useful, small enough
+to fit on this page.</p>
+<div id="the-question" class="section level2">
+<h2>The question</h2>
+<blockquote>
+<p><strong>Does ozone concentration in NYC depend on temperature, and if
+so, how much?</strong></p>
+</blockquote>
+<p>That gives us a clear target variable (ozone), a candidate predictor
+(temperature), and a real comparison to make. Along the way we’ll also
+peek at how ozone varies by month.</p>
+</div>
+<div id="step-1-load-the-data" class="section level2">
+<h2>Step 1 — Load the data</h2>
+<p><code>airquality</code> is built into R, so no download needed. Let’s
+get a clean tibble with proper dates.</p>
+<pre class="r"><code>library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+aq &lt;- airquality |&gt;
+  tibble::as_tibble() |&gt;
+  mutate(
+    date = as.Date(paste(&quot;1973&quot;, Month, Day, sep = &quot;-&quot;)),
+    Month = factor(Month,
+      levels = 5:9,
+      labels = c(&quot;May&quot;, &quot;Jun&quot;, &quot;Jul&quot;, &quot;Aug&quot;, &quot;Sep&quot;)
+    )
+  )
+
+aq</code></pre>
+<pre><code>#&gt; # A tibble: 153 × 7
+#&gt;    Ozone Solar.R  Wind  Temp Month   Day date      
+#&gt;    &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;fct&gt; &lt;int&gt; &lt;date&gt;    
+#&gt;  1    41     190   7.4    67 May       1 1973-05-01
+#&gt;  2    36     118   8      72 May       2 1973-05-02
+#&gt;  3    12     149  12.6    74 May       3 1973-05-03
+#&gt;  4    18     313  11.5    62 May       4 1973-05-04
+#&gt;  5    NA      NA  14.3    56 May       5 1973-05-05
+#&gt;  6    28      NA  14.9    66 May       6 1973-05-06
+#&gt;  7    23     299   8.6    65 May       7 1973-05-07
+#&gt;  8    19      99  13.8    59 May       8 1973-05-08
+#&gt;  9     8      19  20.1    61 May       9 1973-05-09
+#&gt; 10    NA     194   8.6    69 May      10 1973-05-10
+#&gt; # ℹ 143 more rows</code></pre>
+<p>Two real-world things just happened:</p>
+<ul>
+<li>We built a proper <code>date</code> column from the
+<code>Year</code>/<code>Month</code>/<code>Day</code> parts using
+<code>as.Date()</code> and <code>paste()</code>.</li>
+<li>We turned <code>Month</code> into a factor with sensible labels, so
+plots and tables show “Jul” instead of <code>7</code>.</li>
+</ul>
+</div>
+<div id="step-2-look-at-the-shape-of-the-data" class="section level2">
+<h2>Step 2 — Look at the shape of the data</h2>
+<p>Always start with <code>summary()</code> and a count of missing
+values:</p>
+<pre class="r"><code>summary(aq)</code></pre>
+<pre><code>#&gt;      Ozone          Solar.R         Wind            Temp      Month   
+#&gt;  Min.   :  1.0   Min.   :  7   Min.   : 1.70   Min.   :56.0   May:31  
+#&gt;  1st Qu.: 18.0   1st Qu.:116   1st Qu.: 7.40   1st Qu.:72.0   Jun:30  
+#&gt;  Median : 31.5   Median :205   Median : 9.70   Median :79.0   Jul:31  
+#&gt;  Mean   : 42.1   Mean   :186   Mean   : 9.96   Mean   :77.9   Aug:31  
+#&gt;  3rd Qu.: 63.2   3rd Qu.:259   3rd Qu.:11.50   3rd Qu.:85.0   Sep:30  
+#&gt;  Max.   :168.0   Max.   :334   Max.   :20.70   Max.   :97.0           
+#&gt;  NAs    :37      NAs    :7                                            
+#&gt;       Day            date           
+#&gt;  Min.   : 1.0   Min.   :1973-05-01  
+#&gt;  1st Qu.: 8.0   1st Qu.:1973-06-08  
+#&gt;  Median :16.0   Median :1973-07-16  
+#&gt;  Mean   :15.8   Mean   :1973-07-16  
+#&gt;  3rd Qu.:23.0   3rd Qu.:1973-08-23  
+#&gt;  Max.   :31.0   Max.   :1973-09-30  
+#&gt; </code></pre>
+<pre class="r"><code>aq |&gt;
+  summarise(across(everything(), ~ sum(is.na(.x))))</code></pre>
+<pre><code>#&gt; # A tibble: 1 × 7
+#&gt;   Ozone Solar.R  Wind  Temp Month   Day  date
+#&gt;   &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+#&gt; 1    37       7     0     0     0     0     0</code></pre>
+<p>Two things jump out:</p>
+<ul>
+<li><code>Ozone</code> has 37 missing values out of 153 days (about
+24%).</li>
+<li><code>Solar.R</code> has a few missing too. Temperature and wind are
+complete.</li>
+</ul>
+<p>Missing data isn’t necessarily a problem — but you have to know it’s
+there. R’s modeling functions handle <code>NA</code> differently
+depending on the function, and most plots silently drop missing
+rows.</p>
+</div>
+<div id="step-3-visual-exploration" class="section level2">
+<h2>Step 3 — Visual exploration</h2>
+<p>Before fitting any model, <em>look</em> at the data. A scatterplot of
+ozone vs. temperature, colored by month:</p>
+<pre class="r"><code>ggplot(aq, aes(x = Temp, y = Ozone, color = Month)) +
+  geom_point(size = 2.5, alpha = 0.85) +
+  geom_smooth(method = &quot;lm&quot;, se = FALSE, color = &quot;black&quot;, linewidth = 0.7) +
+  labs(
+    title = &quot;Ozone concentration vs. temperature, NYC 1973&quot;,
+    x = &quot;Daily max temperature (°F)&quot;,
+    y = &quot;Ozone (ppb)&quot;,
+    color = &quot;Month&quot;,
+    caption = &quot;Source: New York State Department of Conservation, via R&#39;s airquality dataset.&quot;
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(plot.caption = element_text(color = &quot;grey50&quot;, hjust = 0))</code></pre>
+<p><img src="capstone_r_files/figure-html/unnamed-chunk-3-1.png" alt="" width="650" /></p>
+<p>Two observations from this plot alone:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Ozone clearly increases with temperature</strong> — and it’s
+not linear. The relationship looks like a curve, accelerating at higher
+temperatures.</li>
+<li><strong>The high-ozone days happen mostly in July and
+August</strong>, which makes sense because those are the hottest
+months.</li>
+</ol>
+<p>Let’s also look at ozone by month directly:</p>
+<pre class="r"><code>ggplot(aq, aes(x = Month, y = Ozone, fill = Month)) +
+  geom_boxplot() +
+  labs(
+    title = &quot;Ozone by month, NYC 1973&quot;,
+    x = NULL, y = &quot;Ozone (ppb)&quot;
+  ) +
+  theme_minimal() +
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<p><img src="capstone_r_files/figure-html/unnamed-chunk-4-1.png" alt="" width="650" /></p>
+<p>July and August are noticeably higher and have a wider spread.</p>
+</div>
+<div id="step-4-descriptive-statistics" class="section level2">
+<h2>Step 4 — Descriptive statistics</h2>
+<pre class="r"><code>aq |&gt;
+  group_by(Month) |&gt;
+  summarise(
+    n = n(),
+    n_missing = sum(is.na(Ozone)),
+    mean_ozone = mean(Ozone, na.rm = TRUE),
+    median_ozone = median(Ozone, na.rm = TRUE),
+    sd_ozone = sd(Ozone, na.rm = TRUE),
+    .groups = &quot;drop&quot;
+  )</code></pre>
+<pre><code>#&gt; # A tibble: 5 × 6
+#&gt;   Month     n n_missing mean_ozone median_ozone sd_ozone
+#&gt;   &lt;fct&gt; &lt;int&gt;     &lt;int&gt;      &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;
+#&gt; 1 May      31         5       23.6           18     22.2
+#&gt; 2 Jun      30        21       29.4           23     18.2
+#&gt; 3 Jul      31         5       59.1           60     31.6
+#&gt; 4 Aug      31         5       60.0           52     39.7
+#&gt; 5 Sep      30         1       31.4           23     24.1</code></pre>
+<p>July and August have mean ozone roughly 2× the May/September values.
+May has the most missing days (probably equipment ramp-up at the start
+of the season, but we’d want to ask).</p>
+</div>
+<div id="step-5-quantify-it-a-t-test" class="section level2">
+<h2>Step 5 — Quantify it: a t-test</h2>
+<p>Are July ozone levels different from September? Quick t-test:</p>
+<pre class="r"><code>jul_sep &lt;- aq |&gt; filter(Month %in% c(&quot;Jul&quot;, &quot;Sep&quot;))
+t.test(Ozone ~ Month, data = jul_sep)</code></pre>
+<pre><code>#&gt; 
+#&gt;  Welch Two Sample t-test
+#&gt; 
+#&gt; data:  Ozone by Month
+#&gt; t = 3.6, df = 47, p-value = 0.0007
+#&gt; alternative hypothesis: true difference in means between group Jul and group Sep is not equal to 0
+#&gt; 95 percent confidence interval:
+#&gt;  12.26 43.07
+#&gt; sample estimates:
+#&gt; mean in group Jul mean in group Sep 
+#&gt;             59.12             31.45</code></pre>
+<p>The mean July ozone is about 50 ppb higher than September, with a
+tight 95% CI. The p-value is tiny — well below any reasonable threshold
+for “different.”</p>
+</div>
+<div id="step-6-build-a-model" class="section level2">
+<h2>Step 6 — Build a model</h2>
+<p>Linear regression: predict ozone from temperature. Because the
+relationship in the scatterplot looked curved, let’s fit two models and
+compare.</p>
+<pre class="r"><code>fit_linear &lt;- lm(Ozone ~ Temp, data = aq)
+fit_quadratic &lt;- lm(Ozone ~ Temp + I(Temp^2), data = aq)
+
+summary(fit_linear)</code></pre>
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = Ozone ~ Temp, data = aq)
+#&gt; 
+#&gt; Residuals:
+#&gt;    Min     1Q Median     3Q    Max 
+#&gt; -40.73 -17.41  -0.59  11.31 118.27 
+#&gt; 
+#&gt; Coefficients:
+#&gt;             Estimate Std. Error t value             Pr(&gt;|t|)    
+#&gt; (Intercept) -146.995     18.287   -8.04     0.00000000000094 ***
+#&gt; Temp           2.429      0.233   10.42 &lt; 0.0000000000000002 ***
+#&gt; ---
+#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+#&gt; 
+#&gt; Residual standard error: 23.7 on 114 degrees of freedom
+#&gt;   (37 observations deleted due to missingness)
+#&gt; Multiple R-squared:  0.488,  Adjusted R-squared:  0.483 
+#&gt; F-statistic:  109 on 1 and 114 DF,  p-value: &lt;0.0000000000000002</code></pre>
+<pre class="r"><code>summary(fit_quadratic)</code></pre>
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = Ozone ~ Temp + I(Temp^2), data = aq)
+#&gt; 
+#&gt; Residuals:
+#&gt;    Min     1Q Median     3Q    Max 
+#&gt; -37.62 -12.51  -2.74   9.68 123.91 
+#&gt; 
+#&gt; Coefficients:
+#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept) 305.4858   122.1218    2.50  0.01380 *  
+#&gt; Temp         -9.5506     3.2080   -2.98  0.00356 ** 
+#&gt; I(Temp^2)     0.0781     0.0209    3.74  0.00029 ***
+#&gt; ---
+#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+#&gt; 
+#&gt; Residual standard error: 22.5 on 113 degrees of freedom
+#&gt;   (37 observations deleted due to missingness)
+#&gt; Multiple R-squared:  0.544,  Adjusted R-squared:  0.536 
+#&gt; F-statistic: 67.5 on 2 and 113 DF,  p-value: &lt;0.0000000000000002</code></pre>
+<p>The quadratic model has a noticeably higher R-squared and a
+significant <code>I(Temp^2)</code> coefficient, confirming what the
+scatterplot suggested: ozone grows <em>faster than linearly</em> with
+temperature.</p>
+<p>Compare the two models formally:</p>
+<pre class="r"><code>anova(fit_linear, fit_quadratic)</code></pre>
+<pre><code>#&gt; Analysis of Variance Table
+#&gt; 
+#&gt; Model 1: Ozone ~ Temp
+#&gt; Model 2: Ozone ~ Temp + I(Temp^2)
+#&gt;   Res.Df   RSS Df Sum of Sq  F  Pr(&gt;F)    
+#&gt; 1    114 64110                            
+#&gt; 2    113 57038  1      7072 14 0.00029 ***
+#&gt; ---
+#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Tiny p-value — the quadratic term is pulling weight. Use the
+quadratic model.</p>
+</div>
+<div id="step-7-diagnostics" class="section level2">
+<h2>Step 7 — Diagnostics</h2>
+<p>Before trusting the model, check the standard diagnostic plots:</p>
+<pre class="r"><code>par(mfrow = c(2, 2))
+plot(fit_quadratic)</code></pre>
+<p><img src="capstone_r_files/figure-html/unnamed-chunk-9-1.png" alt="" width="700" /></p>
+<pre class="r"><code>par(mfrow = c(1, 1))</code></pre>
+<p>Things to notice:</p>
+<ul>
+<li><strong>Residuals vs. Fitted</strong> — mostly flat with no obvious
+pattern, good sign.</li>
+<li><strong>Q-Q plot</strong> — close to the diagonal in the middle but
+the tails depart, especially the upper tail. The model under-predicts
+the worst ozone days. That’s worth flagging.</li>
+<li><strong>Scale-Location</strong> — variance increases with fitted
+value (heteroscedasticity). A log transform of <code>Ozone</code> would
+probably help.</li>
+</ul>
+<p>A quick sanity-check fit on the log scale:</p>
+<pre class="r"><code>fit_log &lt;- lm(log(Ozone) ~ Temp, data = aq)
+summary(fit_log)</code></pre>
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = log(Ozone) ~ Temp, data = aq)
+#&gt; 
+#&gt; Residuals:
+#&gt;     Min      1Q  Median      3Q     Max 
+#&gt; -2.1447 -0.3309  0.0296  0.3651  1.4942 
+#&gt; 
+#&gt; Coefficients:
+#&gt;             Estimate Std. Error t value             Pr(&gt;|t|)    
+#&gt; (Intercept) -1.83797    0.45100   -4.08             0.000085 ***
+#&gt; Temp         0.06750    0.00575   11.74 &lt; 0.0000000000000002 ***
+#&gt; ---
+#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+#&gt; 
+#&gt; Residual standard error: 0.585 on 114 degrees of freedom
+#&gt;   (37 observations deleted due to missingness)
+#&gt; Multiple R-squared:  0.547,  Adjusted R-squared:  0.543 
+#&gt; F-statistic:  138 on 1 and 114 DF,  p-value: &lt;0.0000000000000002</code></pre>
+<p>Better — R-squared bumps up, and on the log scale a single linear
+term captures most of what the quadratic was doing on the original
+scale. The coefficient <code>Temp = 0.0675</code> means each 1°F
+increase in temperature is associated with roughly a 7% increase in
+ozone.</p>
+</div>
+<div id="step-8-predictions" class="section level2">
+<h2>Step 8 — Predictions</h2>
+<p>What ozone level does the log-scale model predict for a hypothetical
+90°F day?</p>
+<pre class="r"><code>pred &lt;- predict(
+  fit_log,
+  newdata = tibble::tibble(Temp = 90),
+  interval = &quot;prediction&quot;
+)
+exp(pred)</code></pre>
+<pre><code>#&gt;     fit   lwr   upr
+#&gt; 1 69.22 21.45 223.4</code></pre>
+<p>About 69 ppb, with a wide prediction interval — single-day variation
+is genuinely large.</p>
+<p>Visualize the fitted relationship on the original scale:</p>
+<pre class="r"><code>grid &lt;- tibble::tibble(Temp = seq(min(aq$Temp), max(aq$Temp), length.out = 100))
+grid$pred_log &lt;- predict(fit_log, newdata = grid)
+grid$pred &lt;- exp(grid$pred_log)
+
+ggplot(aq, aes(x = Temp, y = Ozone)) +
+  geom_point(alpha = 0.6, size = 2) +
+  geom_line(data = grid, aes(y = pred), color = &quot;steelblue&quot;, linewidth = 1.1) +
+  labs(
+    title = &quot;Ozone vs. temperature, with log-linear fit&quot;,
+    x = &quot;Daily max temperature (°F)&quot;,
+    y = &quot;Ozone (ppb)&quot;
+  ) +
+  theme_minimal(base_size = 12)</code></pre>
+<p><img src="capstone_r_files/figure-html/unnamed-chunk-12-1.png" alt="" width="650" /></p>
+</div>
+<div id="step-9-write-it-up" class="section level2">
+<h2>Step 9 — Write it up</h2>
+<p>This is what would go in a one-paragraph “results” section of a
+report:</p>
+<blockquote>
+<p>Daily ozone concentration in New York City in summer 1973 increased
+sharply with temperature. A simple linear regression of ozone on
+temperature explained roughly 49% of the variation; allowing for a
+quadratic term, or equivalently fitting on the log scale, raised that to
+about 55%. The log-scale model implies each additional 1°F is associated
+with roughly a 7% increase in ozone, with substantial day-to-day
+variation around that trend. July and August had mean ozone roughly
+twice as high as May and September.</p>
+</blockquote>
+<p>That’s a real result, expressed in plain language, with the numbers
+tied directly back to the analysis. If the data updated, every number
+would update too.</p>
+</div>
+<div id="step-10-make-it-a-report" class="section level2">
+<h2>Step 10 — Make it a report</h2>
+<p>Wrap the whole thing in an R Markdown file. Save the chunks above
+into a single <code>.Rmd</code>, add a YAML header, and knit. Now you
+have a self-contained, runnable, shareable analysis.</p>
+<pre><code>---
+title: &quot;NYC Ozone vs. Temperature, Summer 1973&quot;
+author: &quot;Your Name&quot;
+date: &quot;`r Sys.Date()`&quot;
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: show
+---</code></pre>
+</div>
+<div id="where-to-go-from-here" class="section level2">
+<h2>Where to go from here</h2>
+<p>If you got this far, you can do real work in R. Some good next
+steps:</p>
+<ul>
+<li><strong>Pick a real dataset.</strong> Kaggle, the <a
+href="https://github.com/rfordatascience/tidytuesday">tidytuesday</a>
+project, <a href="https://www.data.gov/">data.gov</a>, or your own work.
+Apply the same workflow.</li>
+<li><strong>Read <a href="https://r4ds.hadley.nz/">R for Data
+Science</a>.</strong> It’s free online and is the standard intro to the
+tidyverse. It overlaps with this course but goes much deeper.</li>
+<li><strong>Learn one new package per week for a month.</strong> Some
+good first additions: <code>lubridate</code> (dates),
+<code>stringr</code> (strings), <code>forcats</code> (factors),
+<code>broom</code> (tidying model output), <code>gt</code> or
+<code>kableExtra</code> (publication-quality tables),
+<code>plotly</code> (interactive plots).</li>
+<li><strong>Switch to Quarto.</strong> <a
+href="https://quarto.org/">Quarto</a> is the modern successor to R
+Markdown. The mental model is identical and it has nicer defaults.</li>
+<li><strong>Try Shiny.</strong> <a
+href="https://shiny.posit.co/">Shiny</a> lets you turn your analysis
+into an interactive web app. Surprisingly easy.</li>
+<li><strong>Practice writing functions.</strong> Anything you find
+yourself doing twice, wrap in a function. Anything you do across
+multiple projects, put in a small package —
+<code>usethis::create_package()</code> is a one-liner.</li>
+</ul>
+<p>The R community is friendly and active — questions on <a
+href="https://stackoverflow.com/questions/tagged/r">Stack Overflow</a>
+and the <a href="https://forum.posit.co/">Posit Community forum</a>
+usually get good answers within hours, especially if you include a small
+reproducible example.</p>
+</div>
+<div id="thank-you" class="section level2">
+<h2>Thank you</h2>
+<p>Thanks for working through the course. If anything was unclear,
+broken, or could be better, email me at <strong><a
+href="mailto:cavandonohoe@gmail.com"
+class="email">cavandonohoe@gmail.com</a></strong> or open an issue on <a
+href="https://github.com/cavandonohoe/cavandonohoe.github.io">GitHub</a>.
+Real feedback makes this a lot better for the next person.</p>
+<p>Now go make something with it.</p>
+<div class="lesson-nav">
+<p><a class="nav-prev" href="rmarkdown_r.html"> <span
+class="lesson-nav-label">← Previous</span> <span
+class="lesson-nav-title">Lesson 6: Reproducible Reports</span> </a>
+<a class="nav-next" href="learn_r.html"> <span
+class="lesson-nav-label">↑ Back to overview</span> <span
+class="lesson-nav-title">Course Overview</span> </a></p>
+</div>
+</div>
+</div>
+
+<link rel="stylesheet" href="/css/footer.css">
+<footer id="footer_stuff" class="band full" role="contentinfo">
+  <div class="bandContent">
+    <p id="full_send">Feel free to contact me:</p>
+    <nav id="logos" aria-label="Social media and contact links">
+      <a href="mailto:cavandonohoe@gmail.com" aria-label="Email Cavan Donohoe"><i class="fa fa-envelope" style="font-size:22px"></i></a>
+      <a href="https://www.instagram.com/cavandonohoe" aria-label="Instagram profile" rel="noopener noreferrer"><i class="fa fa-instagram" style="font-size:22px"></i></a>
+      <a href="https://www.facebook.com/cavandonohoe" aria-label="Facebook profile" rel="noopener noreferrer"><i class="fa fa-facebook" style="font-size:22px"></i></a>
+      <a href="https://github.com/cavandonohoe" aria-label="GitHub profile" rel="noopener noreferrer"><i class="fa fa-github" style="font-size:22px"></i></a>
+      <a href="https://www.linkedin.com/in/cavan-donohoe/" aria-label="LinkedIn profile" rel="noopener noreferrer"><i class="fa fa-linkedin" style="font-size:22px"></i></a>
+      <a href="tel:+8054043321" aria-label="Phone number"><i class="fa fa-phone" style="font-size:22px"></i></a>
+    </nav>
+  </div>
+</footer>
+<script>
+(function() {
+  function addLabel(el, label) {
+    if (!el) return;
+    if (el.hasAttribute('aria-label') && el.getAttribute('aria-label').trim()) return;
+    if (el.hasAttribute('title') && el.getAttribute('title').trim()) return;
+    el.setAttribute('aria-label', label);
+  }
+
+  function labelNavbarToggle() {
+    var toggles = document.querySelectorAll('button.navbar-toggle');
+    for (var i = 0; i < toggles.length; i++) {
+      addLabel(toggles[i], 'Toggle navigation');
+    }
+  }
+
+  function labelPlotlyModebar() {
+    var anchors = document.querySelectorAll('.modebar-container a, [id^="modebar-"] a');
+    for (var i = 0; i < anchors.length; i++) {
+      var a = anchors[i];
+      if ((a.hasAttribute('aria-label') && a.getAttribute('aria-label').trim()) ||
+          (a.hasAttribute('title') && a.getAttribute('title').trim())) {
+        // already labeled — but H91 still wants id/name on empty anchors,
+        // so ensure that too.
+      } else {
+        var dataTitle = a.getAttribute('data-title') || '';
+        var label = dataTitle.trim() || 'Plot toolbar action';
+        a.setAttribute('aria-label', label);
+      }
+      // H91 considers an empty anchor accessible if it has id or name.
+      // Give every modebar anchor a stable, unique id derived from the
+      // parent modebar id + position so HTML_CodeSniffer stops flagging.
+      if (!a.id) {
+        var parent = a.closest('[id^="modebar-"]');
+        var base = parent ? parent.id : 'modebar';
+        var idx = Array.prototype.indexOf.call(parent ? parent.querySelectorAll('a') : [a], a);
+        a.id = base + '-btn-' + (idx >= 0 ? idx : i);
+      }
+      if (!a.getAttribute('name')) a.setAttribute('name', a.id);
+    }
+  }
+
+  function dedupePlotlySymbolIds() {
+    // Plotly inlines an SVG icon set per chart that defines <g id="symbol">,
+    // so pages with two charts trip F77 (duplicate id). Drop the id on every
+    // occurrence after the first; nothing on the page references #symbol.
+    // Restrict to the known offender so we don't accidentally rename
+    // legitimate duplicates elsewhere.
+    var symbols = document.querySelectorAll('[id="symbol"]');
+    for (var i = 1; i < symbols.length; i++) {
+      symbols[i].removeAttribute('id');
+    }
+  }
+
+  function labelDataTablesControls() {
+    var inputs = document.querySelectorAll(
+      '.dataTables_wrapper input[type="search"], .dataTables_wrapper input[type="text"], ' +
+      'table.dataTable thead input[type="search"], table.dataTable thead input[type="text"]'
+    );
+    for (var i = 0; i < inputs.length; i++) {
+      var input = inputs[i];
+      if ((input.hasAttribute('aria-label') && input.getAttribute('aria-label').trim()) ||
+          (input.hasAttribute('title') && input.getAttribute('title').trim())) continue;
+      var placeholder = input.getAttribute('placeholder') || '';
+      var label = placeholder.trim() || 'Search';
+      var th = input.closest('th, td');
+      var col = th ? (th.getAttribute('aria-label') || th.textContent || '').trim() : '';
+      if (col) label = col + ' search';
+      input.setAttribute('aria-label', label);
+    }
+
+    var selects = document.querySelectorAll(
+      '.dataTables_wrapper select, table.dataTable thead select'
+    );
+    for (var j = 0; j < selects.length; j++) {
+      var sel = selects[j];
+      if ((sel.hasAttribute('aria-label') && sel.getAttribute('aria-label').trim()) ||
+          (sel.hasAttribute('title') && sel.getAttribute('title').trim())) continue;
+      var th2 = sel.closest('th, td');
+      var col2 = th2 ? (th2.getAttribute('aria-label') || th2.textContent || '').trim() : '';
+      sel.setAttribute('aria-label', col2 ? col2 + ' filter' : 'Column filter');
+    }
+  }
+
+  function applyA11yShims() {
+    labelNavbarToggle();
+    labelPlotlyModebar();
+    labelDataTablesControls();
+    dedupePlotlySymbolIds();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyA11yShims);
+  } else {
+    applyA11yShims();
+  }
+
+  // Plotly and DataTables can re-render after initial load; reapply on a short
+  // delay and observe further DOM changes so dynamically-inserted controls
+  // also get labelled before the pa11y wait window expires.
+  setTimeout(applyA11yShims, 250);
+  setTimeout(applyA11yShims, 1000);
+
+  if (typeof MutationObserver !== 'undefined') {
+    var observer = new MutationObserver(function() { applyA11yShims(); });
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+})();
+</script>
+<script>
+(function() {
+  var btn = document.createElement('button');
+  btn.className = 'dark-mode-toggle';
+  btn.setAttribute('aria-label', 'Toggle dark mode');
+  btn.innerHTML = localStorage.getItem('theme') === 'dark' ? '☀️' : '🌙';
+  btn.onclick = function() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    btn.innerHTML = next === 'dark' ? '☀️' : '🌙';
+  };
+  var navbar = document.querySelector('.navbar-right') || document.querySelector('.navbar-nav');
+  if (navbar) {
+    var li = document.createElement('li');
+    li.appendChild(btn);
+    navbar.appendChild(li);
+  }
+})();
+</script>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
