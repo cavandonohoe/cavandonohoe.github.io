@@ -1,12 +1,5 @@
 Creative Commons Attribution 4.0 International
 
-The written content of this repository (prose, articles, page copy, images,
-and the CV) is licensed under CC BY 4.0. The source code is licensed
-separately under the MIT License; see LICENSE. See the README "License"
-section for the scope of each license.
-
-Copyright (c) 2025 Cavan Donohoe
-
 =======================================================================
 
 Creative Commons Corporation ("Creative Commons") is not a law firm and
