@@ -343,3 +343,13 @@ Local development, prerequisites, build steps, lint/test commands, and PR conven
 ### Deployment
 
 The site is automatically deployed to GitHub Pages via GitHub Actions when changes are pushed to the `main` branch. See the Automation section above for the full list of workflows.
+
+## License
+
+This repository is dual-licensed to cover both its code and its written content:
+
+- **Code** (R, R Markdown chunks, scripts, workflows, and configuration) is licensed under the [MIT License](LICENSE).
+- **Content** (prose, articles, images, and the CV) is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE-CONTENT.md).
+
+In short: reuse the code freely with attribution and no warranty, and share or adapt the writing and images as long as you give credit.
+
