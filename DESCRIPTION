@@ -2,6 +2,7 @@ Package: site
 Title: Personal Site
 Version: 0.0.1
 Description: R Markdown site for cavandonohoe.github.io
+License: MIT + file LICENSE | CC-BY-4.0 (content, see LICENSE-CONTENT.md)
 Depends: R (>= 4.2)
 Imports:
     rmarkdown,
