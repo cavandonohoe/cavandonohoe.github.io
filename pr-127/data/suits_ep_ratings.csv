@@ -1,0 +1,135 @@
+season,episode,title,rating,votes
+1,1,Pilot,8.8,8689
+1,2,Errors and Omissions,8.2,5500
+1,3,Inside Track,8,4993
+1,4,Dirty Little Secrets,8,4739
+1,5,Bail Out,8,4580
+1,6,Tricks of the Trade,8,4481
+1,7,Play the Man,8.4,4667
+1,8,Identity Crisis,8,4335
+1,9,Undefeated,8.3,4226
+1,10,The Shelf Life,8.3,4148
+1,11,Rules of the Game,8.4,4124
+1,12,Dog Fight,8.8,4633
+2,1,She Knows,8.9,4800
+2,2,The Choice,8.2,3920
+2,3,Meet the New Boss,8.1,3785
+2,4,Discovery,8.4,3790
+2,5,Break Point,8.7,4058
+2,6,All In,8.3,3764
+2,7,Sucker Punch,9,4493
+2,8,Rewind,8.5,3995
+2,9,Asterisk,8.7,3838
+2,10,High Noon,9.1,5049
+2,11,Blind-Sided,8,3740
+2,12,Blood in the Water,8.4,3598
+2,13,Zane vs. Zane,8.1,3515
+2,14,He's Back,8.4,3468
+2,15,Normandy,8.3,3464
+2,16,War,8.6,4087
+3,1,The Arrangement,8.3,3965
+3,2,I Want You to Want Me,8.3,3436
+3,3,Unfinished Business,8.2,3328
+3,4,Conflict of Interest,8.2,3255
+3,5,Shadow of a Doubt,7.9,3181
+3,6,The Other Time,8.5,3403
+3,7,She's Mine,8.5,3517
+3,8,Endgame,8.5,3221
+3,9,Bad Faith,8.2,3130
+3,10,Stay,8.3,3265
+3,11,Buried Secrets,8.2,3090
+3,12,Yesterday's Gone,8.9,3630
+3,13,Moot Point,8.2,2935
+3,14,Heartburn,8.8,3250
+3,15,Know When to Fold 'Em,8.6,3091
+3,16,No Way Out,9.2,4612
+4,1,One-Two-Three Go...,8.3,3524
+4,2,"Breakfast, Lunch and Dinner",8.1,3000
+4,3,Two in the Knees,8.2,2971
+4,4,Leveraged,8,2888
+4,5,Pound of Flesh,8.2,2868
+4,6,Litt the Hell Up,8.7,3171
+4,7,We're Done,8.7,3265
+4,8,Exposure,8.8,3134
+4,9,Gone,9.2,3683
+4,10,This Is Rome,9.4,5106
+4,11,Enough Is Enough,8.8,3342
+4,12,Respect,8.2,2790
+4,13,Fork in the Road,8.7,3122
+4,14,Derailed,8.4,2903
+4,15,Intent,9.1,3689
+4,16,Not Just a Pretty Face,9,3413
+5,1,Denial,8.7,3825
+5,2,Compensation,8.4,3123
+5,3,No Refills,8.7,3092
+5,4,No Puedo Hacerlo,8.8,3318
+5,5,Toe to Toe,8.4,2871
+5,6,Privilege,8.5,2868
+5,7,Hitting Home,9.2,3918
+5,8,Mea Culpa,8.9,3242
+5,9,Uninvited Guests,8.7,3133
+5,10,Faith,9.7,11770
+5,11,Blowback,9.2,4175
+5,12,Live to Fight...,8.9,3126
+5,13,God's Green Earth,8.7,2979
+5,14,Self Defense,9.2,3719
+5,15,Tick Tock,9.5,5162
+5,16,25th Hour,9.3,4990
+6,1,To Trouble,8.1,3353
+6,2,Accounts Payable,8,2689
+6,3,Back on the Map,8.2,2548
+6,4,Turn,8.1,2505
+6,5,Trust,8,2348
+6,6,Spain,7.8,2367
+6,7,Shake the Trees,7.9,2357
+6,8,Borrowed Time,8.4,2506
+6,9,The Hand That Feeds You,9,3389
+6,10,P.S.L.,9.4,5190
+6,11,She's Gone,8.1,2592
+6,12,The Painting,8.6,2566
+6,13,"Teeth, Nose, Teeth",8.2,2284
+6,14,Admission of Guilt,8.1,2146
+6,15,Quid Pro Quo,8.1,2162
+6,16,Character and Fitness,9.5,6077
+7,1,Skin in the Game,8.4,3015
+7,2,The Statue,8.1,2228
+7,3,Mudmare,7.7,2092
+7,4,Divide and Conquer,7.8,2010
+7,5,Brooklyn Housing,7.7,1931
+7,6,Home to Roost,8.1,2008
+7,7,Full Disclosure,8.2,2027
+7,8,100,8.5,2113
+7,9,Shame,7.8,1899
+7,10,Donna,8.8,2730
+7,11,Hard Truths,8,2027
+7,12,Bad Man,7.6,1852
+7,13,Inevitable,8.4,2146
+7,14,Pulling the Goalie,8.2,1891
+7,15,Tiny Violin,8.2,1821
+7,16,Good-Bye,7.8,2448
+8,1,Right-Hand Man,7.2,2113
+8,2,Pecking Order,7.2,1786
+8,3,"Promises, Promises",7.5,1737
+8,4,Revenue Per Square Foot,7.5,1739
+8,5,Good Mudding,7.5,1702
+8,6,"Cats, Ballet, Harvey Specter",7.9,1779
+8,7,Sour Grapes,7.5,1639
+8,8,Coral Gables,7.2,1585
+8,9,Motion to Delay,7.4,1549
+8,10,Managing Partner,8.6,2118
+8,11,Rocky 8,7.6,1555
+8,12,Whale Hunt,7.5,1495
+8,13,The Greater Good,7.6,1453
+8,14,Peas in a Pod,8,1511
+8,15,Stalking Horse,7.9,1471
+8,16,Harvey,8.7,2207
+9,1,Everything's Changed,7.9,1813
+9,2,Special Master,7.6,1567
+9,3,Windmills,7.5,1525
+9,4,Cairo,7.7,1525
+9,5,If the Shoe Fits,8.3,1752
+9,6,Whatever It Takes,7.6,1517
+9,7,Scenic Route,7.5,1718
+9,8,Prisoner's Dilemma,8.6,1929
+9,9,Thunder Away,9.1,2321
+9,10,One Last Con,9.4,4824
