@@ -152,6 +152,30 @@ body {
 .project-card h3 { font-size: 1.05em; margin: 0 0 0.4em 0; color: var(--link-color) !important; }
 .project-card p { font-size: 0.88em; color: var(--muted-text); margin: 0; line-height: 1.4; }
 
+/* GitHub contribution chart */
+.gh-contrib-link {
+  display: block;
+  text-decoration: none !important;
+  margin: 1.2em 0 1.8em 0;
+}
+.gh-contrib-chart {
+  display: block;
+  width: 100%;
+  max-width: 740px;
+  height: auto;
+  margin: 0 auto;
+  padding: 1em;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px var(--card-shadow);
+  transition: box-shadow 0.2s;
+}
+.gh-contrib-link:hover .gh-contrib-chart {
+  box-shadow: 0 6px 20px var(--card-shadow);
+}
+[data-theme="dark"] .gh-contrib-chart { opacity: 1; }
+
 /* Figure captions (rendered from markdown image alt text) */
 .float {
   margin-bottom: 2.5em;
@@ -522,6 +546,9 @@ $(document).ready(function () {
     </li>
     <li class="dropdown-header">--- Visualizations ---</li>
     <li>
+      <a href="wc-momentum/index.html">World Cup 3D Momentum Portrait</a>
+    </li>
+    <li>
       <a href="confederate_statues.html">When Were Confederate Statues Erected?</a>
     </li>
     <li>
@@ -636,12 +663,16 @@ But then I thought, why <em>just</em> do that? Why not incorporate some
 other aspects of my life that makes me me. So yes, this will have my
 ever growing resume, but let’s have a little bit of fun while we’re
 here.</p>
-<p>Check out my latest project: a <a
-href="https://cavandonohoe.shinyapps.io/rent-vs-buy/">Rent vs. Buy
-Calculator</a> — an interactive Shiny app that runs a side-by-side
-financial simulation to help you decide whether to buy a home or keep
-renting and investing. Source code on <a
-href="https://github.com/cavandonohoe/rent-vs-buy">GitHub</a>.</p>
+<div id="what-ive-been-building" class="section level2">
+<h2>What I’ve Been Building</h2>
+<p>Here’s my GitHub contribution activity, a live snapshot of the
+commits behind this site and my other projects.</p>
+<p><a href="https://github.com/cavandonohoe" class="gh-contrib-link"
+   aria-label="Cavan Donohoe's GitHub contribution graph">
+<img src="https://ghchart.rshah.org/409ba5/cavandonohoe"
+       alt="Cavan Donohoe's GitHub contribution graph"
+       class="gh-contrib-chart" loading="lazy" /> </a></p>
+</div>
 <div id="projects" class="section level2">
 <h2>Projects</h2>
 <div class="project-grid">
@@ -664,8 +695,8 @@ and Census data.
 LA Neighborhoods: Price per Sq Ft
 </h3>
 <p>
-Zillow + Redfin data for LA neighborhoods — median prices, rent, and
-what $1M buys you.
+Zillow + Redfin data for LA neighborhoods: median prices, rent, and what
+$1M buys you.
 </p>
 </a><a class="project-card" href="https://cavandonohoe.shinyapps.io/rent-vs-buy/">
 <div class="card-icon">
@@ -677,6 +708,17 @@ Rent vs. Buy Calculator
 <p>
 Interactive Shiny app for side-by-side financial simulation of renting
 vs. buying.
+</p>
+</a><a class="project-card" href="wc-momentum/index.html">
+<div class="card-icon">
+🌍
+</div>
+<h3>
+World Cup 3D Momentum Portrait
+</h3>
+<p>
+Follow the ball through the 2022 World Cup Final in 3D: possession,
+passes, and every goal, animated from real StatsBomb event data.
 </p>
 </a><a class="project-card" href="imdb_top_250_tv_series.html">
 <div class="card-icon">
@@ -696,8 +738,8 @@ Scraped ratings, seasons, and trends for the top 250 TV shows on IMDb.
 Best Picture Nominees
 </h3>
 <p>
-Oscar Best Picture data — distributors, producers, and historical
-nominee analysis.
+Oscar Best Picture data: distributors, producers, and historical nominee
+analysis.
 </p>
 </a><a class="project-card" href="top_250_imdb_with_rt.html">
 <div class="card-icon">
@@ -789,7 +831,7 @@ comparison.
 Sierpinski Triangle
 </h3>
 <p>
-Fractal geometry generated in R — the classic chaos game visualization.
+Fractal geometry generated in R: the classic chaos game visualization.
 </p>
 </a><a class="project-card" href="airplane_boarding.html">
 <div class="card-icon">

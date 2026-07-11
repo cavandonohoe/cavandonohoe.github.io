@@ -155,6 +155,30 @@ body {
 .project-card h3 { font-size: 1.05em; margin: 0 0 0.4em 0; color: var(--link-color) !important; }
 .project-card p { font-size: 0.88em; color: var(--muted-text); margin: 0; line-height: 1.4; }
 
+/* GitHub contribution chart */
+.gh-contrib-link {
+  display: block;
+  text-decoration: none !important;
+  margin: 1.2em 0 1.8em 0;
+}
+.gh-contrib-chart {
+  display: block;
+  width: 100%;
+  max-width: 740px;
+  height: auto;
+  margin: 0 auto;
+  padding: 1em;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px var(--card-shadow);
+  transition: box-shadow 0.2s;
+}
+.gh-contrib-link:hover .gh-contrib-chart {
+  box-shadow: 0 6px 20px var(--card-shadow);
+}
+[data-theme="dark"] .gh-contrib-chart { opacity: 1; }
+
 /* Figure captions (rendered from markdown image alt text) */
 .float {
   margin-bottom: 2.5em;
@@ -597,6 +621,9 @@ div.tocify {
       <a href="tohs_reunion.html">TOHS Class of 2012 Reunion</a>
     </li>
     <li class="dropdown-header">--- Visualizations ---</li>
+    <li>
+      <a href="wc-momentum/index.html">World Cup 3D Momentum Portrait</a>
+    </li>
     <li>
       <a href="confederate_statues.html">When Were Confederate Statues Erected?</a>
     </li>
