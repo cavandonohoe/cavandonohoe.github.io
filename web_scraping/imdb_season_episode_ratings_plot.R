@@ -339,7 +339,7 @@ shows <- tibble::tribble(
   "modern love",        "tt8543390",   "modern_love",
   "my hero academia",   "tt5626028",   "my_hero_academia",
   "the boys",           "tt1190634",   "the_boys",
-  "schitts creek",      "tt3526078",   "schitts_creek"
+  "schitt's creek",     "tt3526078",   "schitts_creek"
 )
 
 # -----------------------------------------------------------------------------
