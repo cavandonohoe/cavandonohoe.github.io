@@ -334,6 +334,7 @@ shows <- tibble::tribble(
   "brooklyn nine-nine", "tt2467372",   "brooklyn_nine_nine",
   "avatar",             "tt0417299",   "avatar",
   "the office us",      "tt0386676",   "the_office",
+  "schitt's creek",     "tt3526078",   "schitts_creek",
   "death note",         "tt0877057",   "death_note",
   "andor",              "tt9253284",   "andor",
   "modern love",        "tt8543390",   "modern_love",

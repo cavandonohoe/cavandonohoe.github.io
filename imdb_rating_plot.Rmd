@@ -170,6 +170,16 @@ the_office %>%
   interactive_plotly
 ```
 
+## Schitt's Creek
+
+```{r}
+schitts_creek <- readr::read_csv(here::here("data", "schitts_creek_ep_ratings.csv"))
+
+schitts_creek %>%
+  create_episode_plot("Schitt's Creek") %>%
+  interactive_plotly
+```
+
 ## How I Met Your Mother
 
 ```{r}
