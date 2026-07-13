@@ -1,38 +1,38 @@
 season,episode,title,rating,votes
-1,1,The Launch,6.4,80
-1,2,Episode 2,6.4,51
-1,3,Episode 3,6.3,45
-1,4,Episode 4,6,42
-1,5,Episode 5,6.1,37
-1,6,Unseen Bits 1,4.7,33
-1,7,Episode 6,6.6,32
-1,8,Episode 7,6.1,30
-1,9,Episode 8,6.2,29
-1,10,Episode 9,6.4,27
-1,11,Episode 10,6.3,27
-1,12,Unseen Bits 2,5.1,26
-1,13,Episode 11,6.7,28
-1,14,Episode 12,5.8,27
-1,15,Episode 13,6.4,29
-1,16,Episode 14,6.5,25
-1,17,Episode 15,6,25
-1,18,Unseen Bits 3,5,23
-1,19,Episode 16,6.1,26
-1,20,Episode 17,6.1,26
-1,21,Episode 18,5.9,25
-1,22,Episode 19,6.1,26
-1,23,Episode 20,6.6,27
-1,24,Unseen Bits 4,5,23
-1,25,Episode 21,5.8,27
-1,26,Episode 22,6.1,26
-1,27,Episode 23,6.1,24
-1,28,Episode 24,6.4,25
-1,29,Episode 25,6.2,24
-1,30,Unseen Bits 5,5.4,21
-1,31,Episode 26,5.8,24
-1,32,Episode 27,6.3,24
-1,33,Episode 28,6,23
-1,34,The Final,6.3,27
+1,1,The Launch,6.3,81
+1,2,Episode 2,6.3,52
+1,3,Episode 3,6.2,46
+1,4,Episode 4,5.8,43
+1,5,Episode 5,5.9,38
+1,6,Unseen Bits 1,4.6,34
+1,7,Episode 6,6.4,33
+1,8,Episode 7,5.9,31
+1,9,Episode 8,6,30
+1,10,Episode 9,6.2,28
+1,11,Episode 10,6.1,28
+1,12,Unseen Bits 2,4.9,27
+1,13,Episode 11,6.4,29
+1,14,Episode 12,5.6,28
+1,15,Episode 13,6.2,30
+1,16,Episode 14,6.2,26
+1,17,Episode 15,5.8,26
+1,18,Unseen Bits 3,4.8,24
+1,19,Episode 16,5.9,27
+1,20,Episode 17,5.9,27
+1,21,Episode 18,5.7,26
+1,22,Episode 19,5.9,27
+1,23,Episode 20,6.4,28
+1,24,Unseen Bits 4,4.9,24
+1,25,Episode 21,5.6,28
+1,26,Episode 22,5.9,27
+1,27,Episode 23,5.9,25
+1,28,Episode 24,6.1,26
+1,29,Episode 25,6,25
+1,30,Unseen Bits 5,5.2,22
+1,31,Episode 26,5.6,25
+1,32,Episode 27,6,25
+1,33,Episode 28,5.7,24
+1,34,The Final,6.1,28
 2,1,The Launch,6.2,47
 2,2,Episode 2,5.9,28
 2,3,Episode 3,5.5,25
@@ -189,7 +189,7 @@ season,episode,title,rating,votes
 5,8,Episode 7,6.3,35
 5,9,Episode 8,6.1,31
 5,10,Episode 9,6.4,32
-5,11,Episode 10,6.4,32
+5,11,Episode 10,6.5,33
 5,12,Episode 11,6.3,31
 5,13,S5 - The Unseen Bits 2,5.6,22
 5,14,Episode 12,6.6,33
@@ -507,7 +507,7 @@ season,episode,title,rating,votes
 11,53,Episode #11.53,6.7,7
 11,54,Episode #11.54,6.2,6
 11,55,Episode #11.55,6.4,7
-11,56,Episode #11.56,7,6
+11,56,Episode #11.56,6.1,7
 11,57,Episode #11.57,6.2,12
 12,1,Episode #12.1,6.8,35
 12,2,Episode #12.2,6,27
@@ -535,9 +535,9 @@ season,episode,title,rating,votes
 12,24,Episode #12.24,5.4,19
 12,25,Episode #12.25,5.9,17
 12,26,Episode #12.26,5.5,17
-12,27,Episode #12.27,3.5,10
-12,28,Episode #12.28,5.9,17
-12,29,Episode #12.29,5.9,17
+12,27,Episode #12.27,3.6,11
+12,28,Episode #12.28,5.9,18
+12,29,Episode #12.29,5.9,18
 12,30,Episode #12.30,5.4,18
 12,31,Episode #12.31,6.4,16
 12,32,Episode #12.32,5.9,16
@@ -558,10 +558,10 @@ season,episode,title,rating,votes
 12,47,Episode #12.47,7.3,18
 12,48,Unseen Bits,4.2,9
 12,49,Episode #12.49,6.9,14
-12,50,Episode #12.50,7.8,16
+12,50,Episode #12.50,7.4,17
 12,51,Episode #12.51,7.2,13
 12,52,Episode #12.52,7.2,13
-12,53,Episode #12.53,7.9,16
+12,53,Episode #12.53,7.5,17
 12,54,Episode #12.54,7.3,13
 12,55,Unseen Bits,5.8,6
 12,56,Episode #12.56,7.5,12
@@ -576,7 +576,7 @@ season,episode,title,rating,votes
 13,8,Episode #13.8,6.5,21
 13,9,Episode #13.9,6.6,21
 13,10,Episode #13.10,6.3,19
-13,11,Episode #13.11,6.1,20
+13,11,Episode #13.11,6.2,21
 13,12,Episode #13.12,6.2,19
 13,13,Unseen Bits,5.6,7
 13,14,Episode #13.14,5.6,19
@@ -586,15 +586,20 @@ season,episode,title,rating,votes
 13,18,Episode #13.18,5.8,16
 13,19,Episode #13.19,6,15
 13,20,Unseen Bits,6.1,7
-13,21,Episode #13.21,6,11
-13,22,Episode #13.22,6.1,9
-13,23,Episode #13.23,7.8,11
-13,24,Episode #13.24,7.9,9
-13,25,Episode #13.25,8.2,10
-13,26,Episode #13.26,7.4,9
+13,21,Episode #13.21,6,12
+13,22,Episode #13.22,6.2,11
+13,23,Episode #13.23,7.2,12
+13,24,Episode #13.24,7.2,10
+13,25,Episode #13.25,7.4,12
+13,26,Episode #13.26,7.3,10
 13,27,Unseen Bits,5.2,5
-13,28,Episode #13.28,6.9,9
-13,29,Episode #13.29,7.9,7
-13,30,Episode #13.30,8,7
-13,31,Episode #13.31,8.5,8
-13,32,Episode #13.32,8,7
+13,28,Episode #13.28,6.8,10
+13,29,Episode #13.29,6.9,9
+13,30,Episode #13.30,7,9
+13,31,Episode #13.31,7.7,11
+13,32,Episode #13.32,7.3,9
+13,33,Episode #13.33,6.7,6
+13,35,Episode #13.35,7.1,8
+13,36,Episode #13.36,6.5,6
+13,37,Episode #13.37,6.8,5
+13,38,Episode #13.38,7.6,5
