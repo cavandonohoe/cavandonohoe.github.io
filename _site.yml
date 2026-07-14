@@ -71,6 +71,9 @@ navbar:
         href: sp500.html
       - text: "Covid Cases: Then & Now"
         href: covid_cases_nostalgia.html
+      - text: "--- Data Science & Clinical ---"
+      - text: "SDTM with R"
+        href: sdtm_with_r.html
     - text: "Learn R"
       icon: fa-graduation-cap
       menu:
@@ -91,7 +94,4 @@ navbar:
         href: rmarkdown_r.html
       - text: "7. Capstone Project"
         href: capstone_r.html
-    - text: "SDTM with R"
-      icon: fa-notes-medical
-      href: sdtm_with_r.html
     
