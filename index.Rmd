@@ -94,7 +94,8 @@ cards <- list(
   list("learn_r.html", "\U0001F4DA", "Learn R",
     "Tutorial series: intro, data manipulation, visualization, and statistics in R."),
   list("sdtm_with_r.html", "\U0001FA7A", "SDTM with R",
-    "Clinical trial data standards: build tidy SDTM domains (DM, AE, VS) from raw data with R.")
+    paste0("Clinical trial data standards: build tidy SDTM domains from raw data ",
+      "with R, plus the hard edge cases (partial dates, unit chaos, orphans)."))
 )
 
 html <- '<div class="project-grid">'
