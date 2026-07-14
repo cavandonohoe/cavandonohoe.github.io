@@ -66,14 +66,14 @@ navbar:
         href: la_housing_heatmap.html
       - text: "Rent vs. Buy Calculator"
         href: https://cavandonohoe.shinyapps.io/rent-vs-buy/
+      - text: "--- Data Science & Clinical ---"
+      - text: "SDTM with R"
+        href: sdtm_with_r.html
       - text: "--- Archive ---"
       - text: "S&P 500 Perspective"
         href: sp500.html
       - text: "Covid Cases: Then & Now"
         href: covid_cases_nostalgia.html
-      - text: "--- Data Science & Clinical ---"
-      - text: "SDTM with R"
-        href: sdtm_with_r.html
     - text: "Learn R"
       icon: fa-graduation-cap
       menu:
