@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+
+<html lang="en" xml:lang="en">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Director’s Box Office Trajectory</title>
+
+<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="site_libs/datatables-binding-0.34.0/datatables.js"></script>
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="site_libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+<script src="site_libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="site_libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="site_libs/selectize-0.12.0/selectize.min.js"></script>
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P51TN2DWZM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P51TN2DWZM', {
+    'anonymize_ip': true
+  });
+</script>
+<!-- Favicons and app icons -->
+<link rel="apple-touch-icon" sizes="180x180" href="/header/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/header/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/header/favicon-16x16.png">
+<link rel="manifest" href="/header/site.webmanifest">
+<link rel="mask-icon" href="/header/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<!-- Dark mode + site-wide styling -->
+<style>
+:root {
+  --bg-color: #fff;
+  --text-color: #333;
+  --card-bg: #f8f9fa;
+  --card-border: #dee2e6;
+  --card-shadow: rgba(0,0,0,0.08);
+  --link-color: #337ab7;
+  --code-bg: #f5f5f5;
+  --table-stripe: #f9f9f9;
+  --accordion-bg: #337ab7;
+  --accordion-hover: #286090;
+  --muted-text: #777;
+  --footer-text: #ccc;
+  --well-bg: #f5f5f5;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a2e;
+  --text-color: #e0e0e0;
+  --card-bg: #16213e;
+  --card-border: #0f3460;
+  --card-shadow: rgba(0,0,0,0.3);
+  --link-color: #64b5f6;
+  --code-bg: #16213e;
+  --table-stripe: #16213e;
+  --accordion-bg: #0f3460;
+  --accordion-hover: #1a4a8a;
+  --muted-text: #aaa;
+  --footer-text: #999;
+  --well-bg: #16213e;
+}
+
+body {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] .container-fluid,
+[data-theme="dark"] .container {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] h1, [data-theme="dark"] h2,
+[data-theme="dark"] h3, [data-theme="dark"] h4 {
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] a { color: var(--link-color); }
+[data-theme="dark"] code { background-color: var(--code-bg); color: #e0e0e0; }
+[data-theme="dark"] pre { background-color: var(--code-bg); border-color: var(--card-border); }
+[data-theme="dark"] .well { background-color: var(--well-bg); border-color: var(--card-border); }
+[data-theme="dark"] .table-striped > tbody > tr:nth-of-type(odd) { background-color: var(--table-stripe); }
+[data-theme="dark"] .table { color: var(--text-color); }
+[data-theme="dark"] img { opacity: 0.9; }
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px 12px;
+  margin-top: 8px;
+  color: #9d9d9d;
+  transition: color 0.2s;
+}
+.dark-mode-toggle:hover { color: #fff; }
+
+/* Project cards */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2em;
+  margin: 1.5em 0;
+}
+.project-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 1.4em;
+  text-decoration: none !important;
+  color: var(--text-color) !important;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: block;
+  box-shadow: 0 2px 8px var(--card-shadow);
+}
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px var(--card-shadow);
+  text-decoration: none !important;
+}
+.project-card .card-icon { font-size: 2em; margin-bottom: 0.4em; }
+.project-card h3 { font-size: 1.05em; margin: 0 0 0.4em 0; color: var(--link-color) !important; }
+.project-card p { font-size: 0.88em; color: var(--muted-text); margin: 0; line-height: 1.4; }
+
+/* GitHub contribution chart */
+.gh-contrib-link {
+  display: block;
+  text-decoration: none !important;
+  margin: 1.2em 0 1.8em 0;
+}
+.gh-contrib-chart {
+  display: block;
+  width: 100%;
+  max-width: 740px;
+  height: auto;
+  margin: 0 auto;
+  padding: 1em;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px var(--card-shadow);
+  transition: box-shadow 0.2s;
+}
+.gh-contrib-link:hover .gh-contrib-chart {
+  box-shadow: 0 6px 20px var(--card-shadow);
+}
+[data-theme="dark"] .gh-contrib-chart { opacity: 1; }
+
+/* Figure captions (rendered from markdown image alt text) */
+.float {
+  margin-bottom: 2.5em;
+}
+.figcaption {
+  font-size: 0.88em;
+  font-style: italic;
+  color: var(--muted-text);
+  text-align: center;
+  margin-top: 0.5em;
+  line-height: 1.4;
+}
+
+/* Timestamp badges */
+.data-timestamp {
+  display: inline-block;
+  background: var(--well-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-size: 0.82em;
+  color: var(--muted-text);
+  margin-bottom: 1em;
+}
+
+/* Collapsible table accordion styling */
+details.table-accordion {
+  margin: 1em 0;
+}
+details.table-accordion > summary {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accordion-bg);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  list-style: none;
+  text-align: center;
+  transition: background 0.2s ease;
+}
+details.table-accordion > summary::-webkit-details-marker { display: none; }
+details.table-accordion > summary::before {
+  content: "\25B6\00a0\00a0";
+  font-size: 0.85em;
+}
+details.table-accordion[open] > summary {
+  border-radius: 6px 6px 0 0;
+  background: var(--accordion-hover);
+}
+details.table-accordion[open] > summary::before {
+  content: "\25BC\00a0\00a0";
+}
+details.table-accordion > summary:hover {
+  background: var(--accordion-hover);
+}
+</style>
+<script>
+(function() {
+  var saved = localStorage.getItem('theme') || 'light';
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+})();
+</script>
+</style>
+<!-- Meta tags for SEO and social sharing -->
+<meta name="description" content="Cavan Donohoe - Data Scientist. Personal website showcasing data science projects, R tutorials, and professional experience.">
+<meta name="keywords" content="data science, R programming, data analysis, R Markdown, Cavan Donohoe">
+<meta name="author" content="Cavan Donohoe">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cavandonohoe.github.io/">
+<meta property="og:title" content="Cavan Donohoe - Data Scientist">
+<meta property="og:description" content="Data Scientist passionate about making workflows easier through automation and reproducible analysis.">
+<meta property="og:image" content="https://cavandonohoe.github.io/header/android-chrome-512x512.png">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://cavandonohoe.github.io/">
+<meta property="twitter:title" content="Cavan Donohoe - Data Scientist">
+<meta property="twitter:description" content="Data Scientist passionate about making workflows easier through automation and reproducible analysis.">
+<meta property="twitter:image" content="https://cavandonohoe.github.io/header/android-chrome-512x512.png">
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Cavan Donohoe</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="fa fa-info"></span>
+     
+    About Me
+  </a>
+</li>
+<li>
+  <a href="services.html">
+    <span class="fa fa-wrench"></span>
+     
+    Services
+  </a>
+</li>
+<li>
+  <a href="cv.html">
+    <span class="fa fa-id-card"></span>
+     
+    CV
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-laptop"></span>
+     
+    Projects
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">--- Movies &amp; TV ---</li>
+    <li>
+      <a href="imdb_top_250_tv_series.html">IMDb TV Series</a>
+    </li>
+    <li>
+      <a href="imdb_rating_plot.html">IMDb Rating Plot by Season and Episode</a>
+    </li>
+    <li>
+      <a href="top_250_imdb_with_rt.html">Top 250 IMDb Movies with Rotten Tomato Scores</a>
+    </li>
+    <li>
+      <a href="best_picture_nominees.html">Best Picture Nominees</a>
+    </li>
+    <li>
+      <a href="best_pic_vs_top_1000.html">Best Picture and Top 1000 Box Office</a>
+    </li>
+    <li>
+      <a href="director_box_office_trajectory.html">Director Box Office Trajectory</a>
+    </li>
+    <li>
+      <a href="my_imdb.html">My IMDb Ratings</a>
+    </li>
+    <li class="dropdown-header">--- Sports &amp; Personal ---</li>
+    <li>
+      <a href="avca_all_americans.html">AVCA Men's Volleyball All-Americans</a>
+    </li>
+    <li>
+      <a href="firefighter_schedule.html">Jason, Owen, and Wyett's Firefighter Schedule</a>
+    </li>
+    <li>
+      <a href="google_maps_saved_places.html">Google Maps: Want To Go + Favorites</a>
+    </li>
+    <li>
+      <a href="my_travels.html">Get Bloggy With It</a>
+    </li>
+    <li>
+      <a href="tohs_reunion.html">TOHS Class of 2012 Reunion</a>
+    </li>
+    <li class="dropdown-header">--- Visualizations ---</li>
+    <li>
+      <a href="wc-momentum/index.html">World Cup 3D Momentum Portrait</a>
+    </li>
+    <li>
+      <a href="confederate_statues.html">When Were Confederate Statues Erected?</a>
+    </li>
+    <li>
+      <a href="sierpinski_triangle.html">Sierpinski Triangle</a>
+    </li>
+    <li>
+      <a href="airplane_boarding.html">Airplane Boarding Simulation</a>
+    </li>
+    <li class="dropdown-header">--- Real Estate &amp; Finance ---</li>
+    <li>
+      <a href="us_rental_markets.html">US Rental Investment Markets</a>
+    </li>
+    <li>
+      <a href="la_real_estate.html">LA Neighborhoods: Price per Sq Ft</a>
+    </li>
+    <li>
+      <a href="la_housing_heatmap.html">LA Housing Prices: Animated Heat Map</a>
+    </li>
+    <li>
+      <a href="https://cavandonohoe.shinyapps.io/rent-vs-buy/">Rent vs. Buy Calculator</a>
+    </li>
+    <li class="dropdown-header">--- Archive ---</li>
+    <li>
+      <a href="sp500.html">S&amp;P 500 Perspective</a>
+    </li>
+    <li>
+      <a href="covid_cases_nostalgia.html">Covid Cases: Then &amp; Now</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-graduation-cap"></span>
+     
+    Learn R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="learn_r.html">Course Overview</a>
+    </li>
+    <li class="dropdown-header">--- Lessons ---</li>
+    <li>
+      <a href="intro_to_r.html">1. Introduction to R</a>
+    </li>
+    <li>
+      <a href="basic_operations_r.html">2. Basic Operations</a>
+    </li>
+    <li>
+      <a href="data_manipulation_r.html">3. Data Manipulation</a>
+    </li>
+    <li>
+      <a href="data_visualization_r.html">4. Data Visualization</a>
+    </li>
+    <li>
+      <a href="statistics_with_r.html">5. Statistics with R</a>
+    </li>
+    <li>
+      <a href="rmarkdown_r.html">6. Reproducible Reports with R Markdown</a>
+    </li>
+    <li>
+      <a href="capstone_r.html">7. Capstone Project</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="sdtm_with_r.html">
+    <span class="fa fa-notes-medical"></span>
+     
+    SDTM with R
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Director’s Box Office Trajectory</h1>
+
+</div>
+
+
+<meta property="og:title" content="Director Box Office Trajectory">
+<meta property="og:description" content="Career box office trajectories for the 10 highest-grossing film directors of all time, in nominal and inflation-adjusted USD.">
+<meta property="og:url" content="https://cavandonohoe.github.io/director_box_office_trajectory.html">
+<meta property="og:type" content="article">
+<p><span class="data-timestamp">Data last updated: July 14,
+2026</span></p>
+<p>How does a director’s box office change across their career? Here are
+the career trajectories of the <strong>10 highest-grossing film
+directors of all time</strong> (by cumulative worldwide box office, per
+<a
+href="https://en.wikipedia.org/wiki/List_of_highest-grossing_film_directors">Wikipedia</a>),
+sourced from <a href="https://www.themoviedb.org/">TMDb</a> and
+refreshed monthly.</p>
+<p>All dollar amounts are <strong>worldwide</strong> box office. The
+“inflation-adjusted” panels convert nominal USD to 2025-equivalent
+dollars using BLS CPI-U All Urban Consumers.</p>
+<div id="leaderboard" class="section level2">
+<h2>Leaderboard</h2>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-b5df3fc8ba554b2038f5" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-b5df3fc8ba554b2038f5">{"x":{"filter":"none","vertical":false,"data":[[1,2,3,4,5,6,7,8,9,10],["Steven Spielberg","James Cameron","Russo Brothers","Peter Jackson","Michael Bay","David Yates","Christopher Nolan","Ridley Scott","Tim Burton","J.J. Abrams"],[37,11,7,14,14,8,13,28,20,6],["1971-2026","1984-2026","2002-2022","1989-2022","1995-2022","2007-2022","1999-2023","1979-2024","1985-2024","2006-2019"],["$10.96B","$10.30B","$6.86B","$6.56B","$6.51B","$6.40B","$6.18B","$4.98B","$4.93B","$4.66B"],["$25.58B","$16.06B","$8.88B","$10.40B","$10.17B","$9.03B","$8.51B","$7.89B","$8.29B","$6.39B"],["$711M","$1,606M","$1,269M","$743M","$726M","$1,128M","$655M","$282M","$415M","$1,065M"],[7.18,7.58,7.18,7.47,6.61,7.23,7.84,6.79,6.96,6.97]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Rank<\/th>\n      <th>Director<\/th>\n      <th>Films<\/th>\n      <th>Active years<\/th>\n      <th>Lifetime gross (nominal)<\/th>\n      <th>Lifetime gross (2025 USD)<\/th>\n      <th>Avg per film (2025 USD)<\/th>\n      <th>Avg TMDb vote<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"dom":"tip","columnDefs":[{"className":"dt-right","targets":[2,4,5,6,7]},{"className":"dt-right","targets":0},{"name":"Rank","targets":0},{"name":"Director","targets":1},{"name":"Films","targets":2},{"name":"Active years","targets":3},{"name":"Lifetime gross (nominal)","targets":4},{"name":"Lifetime gross (2025 USD)","targets":5},{"name":"Avg per film (2025 USD)","targets":6},{"name":"Avg TMDb vote","targets":7}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="trajectory-by-career-film-number"
+class="section level2 tabset tabset-pills">
+<h2 class="tabset tabset-pills">Trajectory by career film number</h2>
+<p>x-axis is <strong>career film number</strong> (their first directing
+credit on TMDb is 1, their second is 2, etc.). Each panel uses its own
+y-axis to make the shape of the trajectory visible regardless of
+scale.</p>
+<div id="inflation-adjusted-gross-2025-usd" class="section level3">
+<h3>Inflation-adjusted gross (2025 USD)</h3>
+<p><img src="director_box_office_trajectory_files/figure-html/traj-real-1.png" alt="" width="1100" /></p>
+</div>
+<div id="nominal-gross" class="section level3">
+<h3>Nominal gross</h3>
+<p><img src="director_box_office_trajectory_files/figure-html/traj-nominal-1.png" alt="" width="1100" /></p>
+</div>
+<div id="tmdb-vote-average" class="section level3">
+<h3>TMDb vote average</h3>
+<p>Showing only films with at least 100 votes so we don’t trust thin
+samples on early-career indie titles.</p>
+<p><img src="director_box_office_trajectory_files/figure-html/traj-vote-1.png" alt="" width="1100" /></p>
+</div>
+</div>
+<div id="top-5-by-director-2025-usd" class="section level2">
+<h2>Top 5 by director (2025 USD)</h2>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-254b71564c723c43cfdf" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-254b71564c723c43cfdf">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;Steven Spielberg&quot;,&quot;James Cameron&quot;,&quot;Russo Brothers&quot;,&quot;Peter Jackson&quot;,&quot;Michael Bay&quot;,&quot;David Yates&quot;,&quot;Christopher Nolan&quot;,&quot;Ridley Scott&quot;,&quot;Tim Burton&quot;,&quot;J.J. Abrams&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1975\" data-max=\"2025\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"5.6\" data-max=\"8.5\" data-scale=\"1\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","data":[["Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","James Cameron","James Cameron","James Cameron","James Cameron","James Cameron","Russo Brothers","Russo Brothers","Russo Brothers","Russo Brothers","Russo Brothers","Peter Jackson","Peter Jackson","Peter Jackson","Peter Jackson","Peter Jackson","Michael Bay","Michael Bay","Michael Bay","Michael Bay","Michael Bay","David Yates","David Yates","David Yates","David Yates","David Yates","Christopher Nolan","Christopher Nolan","Christopher Nolan","Christopher Nolan","Christopher Nolan","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","J.J. Abrams","J.J. Abrams","J.J. Abrams","J.J. Abrams","J.J. Abrams"],["Jaws","E.T. the Extra-Terrestrial","Jurassic Park","Close Encounters of the Third Kind","Raiders of the Lost Ark","Titanic","Avatar","Avatar: The Way of Water","Avatar: Fire and Ash","Terminator 2: Judgment Day","Avengers: Endgame","Avengers: Infinity War","Captain America: Civil War","Captain America: The Winter Soldier","You, Me and Dupree","The Lord of the Rings: The Return of the King","The Lord of the Rings: The Two Towers","The Lord of the Rings: The Fellowship of the Ring","The Hobbit: An Unexpected Journey","The Hobbit: The Desolation of Smaug","Transformers: Dark of the Moon","Transformers: Age of Extinction","Transformers: Revenge of the Fallen","Transformers","Armageddon","Harry Potter and the Deathly Hallows: Part 2","Harry Potter and the Order of the Phoenix","Harry Potter and the Deathly Hallows: Part 1","Harry Potter and the Half-Blood Prince","Fantastic Beasts and Where to Find Them","The Dark Knight Rises","The Dark Knight","Inception","Interstellar","Oppenheimer","Gladiator","The Martian","Hannibal","Prometheus","Robin Hood","Alice in Wonderland","Batman","Charlie and the Chocolate Factory","Planet of the Apes","Batman Returns","Star Wars: The Force Awakens","Star Wars: The Rise of Skywalker","Star Trek Into Darkness","Mission: Impossible III","Star Trek"],[1975,1982,1993,1977,1981,1997,2009,2022,2025,1991,2019,2018,2016,2014,2006,2003,2002,2001,2012,2013,2011,2014,2009,2007,1998,2011,2007,2010,2009,2016,2012,2008,2010,2014,2023,2000,2015,2001,2012,2010,2010,1989,2005,2001,1992,2015,2019,2013,2006,2009],["$471M","$797M","$920M","$307M","$390M","$2,264M","$2,924M","$2,334M","$1,490M","$518M","$2,799M","$2,052M","$1,155M","$715M","$131M","$1,119M","$926M","$871M","$1,021M","$958M","$1,124M","$1,105M","$836M","$710M","$554M","$1,342M","$938M","$954M","$934M","$809M","$1,081M","$1,005M","$839M","$747M","$952M","$466M","$631M","$352M","$403M","$322M","$1,025M","$411M","$475M","$362M","$280M","$2,068M","$1,074M","$467M","$398M","$387M"],["$2,813M","$2,656M","$2,047M","$1,628M","$1,379M","$4,535M","$4,382M","$2,564M","$1,490M","$1,222M","$3,520M","$2,628M","$1,547M","$971M","$208M","$1,955M","$1,655M","$1,582M","$1,430M","$1,322M","$1,606M","$1,501M","$1,253M","$1,101M","$1,092M","$1,918M","$1,455M","$1,407M","$1,400M","$1,084M","$1,514M","$1,500M","$1,237M","$1,014M","$1,004M","$869M","$856M","$638M","$565M","$474M","$1,512M","$1,067M","$782M","$658M","$642M","$2,806M","$1,351M","$645M","$635M","$580M"],[7.7,7.5,8,7.4,7.9,7.9,7.6,7.6,7.6,8.199999999999999,8.199999999999999,8.199999999999999,7.4,7.7,5.6,8.5,8.4,8.4,7.4,7.6,6.2,6,6.2,6.8,6.8,8.1,7.7,7.7,7.7,7.3,7.8,8.5,8.4,8.5,8,8.199999999999999,7.7,6.8,6.6,6.4,6.6,7.2,7,5.8,6.9,7.2,6.3,7.3,6.8,7.4]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Director<\/th>\n      <th>Title<\/th>\n      <th>Year<\/th>\n      <th>Gross (nominal)<\/th>\n      <th>Gross (2025 USD)<\/th>\n      <th>TMDb vote<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"dom":"ftip","columnDefs":[{"className":"dt-right","targets":[2,5]},{"name":"Director","targets":0},{"name":"Title","targets":1},{"name":"Year","targets":2},{"name":"Gross (nominal)","targets":3},{"name":"Gross (2025 USD)","targets":4},{"name":"TMDb vote","targets":5}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="all-films" class="section level2">
+<h2>All films</h2>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-9a8e9e2752e0476eec54" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-9a8e9e2752e0476eec54">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;Steven Spielberg&quot;,&quot;James Cameron&quot;,&quot;Russo Brothers&quot;,&quot;Peter Jackson&quot;,&quot;Michael Bay&quot;,&quot;David Yates&quot;,&quot;Christopher Nolan&quot;,&quot;Ridley Scott&quot;,&quot;Tim Burton&quot;,&quot;J.J. Abrams&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1\" data-max=\"45\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1965\" data-max=\"2026\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"269\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"10\" data-scale=\"1\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"40099\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","data":[["Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","Steven Spielberg","James Cameron","James Cameron","James Cameron","James Cameron","James Cameron","James Cameron","James Cameron","James Cameron","James Cameron","James Cameron","James Cameron","James Cameron","James Cameron","James Cameron","James Cameron","James Cameron","Russo Brothers","Russo Brothers","Russo Brothers","Russo Brothers","Russo Brothers","Russo Brothers","Russo Brothers","Russo Brothers","Russo Brothers","Russo Brothers","Russo Brothers","Russo Brothers","Russo Brothers","Peter Jackson","Peter Jackson","Peter Jackson","Peter Jackson","Peter Jackson","Peter Jackson","Peter Jackson","Peter Jackson","Peter Jackson","Peter Jackson","Peter Jackson","Peter Jackson","Peter Jackson","Peter Jackson","Peter Jackson","Peter Jackson","Peter Jackson","Peter Jackson","Peter Jackson","Peter Jackson","Peter Jackson","Michael Bay","Michael Bay","Michael Bay","Michael Bay","Michael Bay","Michael Bay","Michael Bay","Michael Bay","Michael Bay","Michael Bay","Michael Bay","Michael Bay","Michael Bay","Michael Bay","Michael Bay","Michael Bay","Michael Bay","Michael Bay","David Yates","David Yates","David Yates","David Yates","David Yates","David Yates","David Yates","David Yates","David Yates","David Yates","David Yates","David Yates","David Yates","David Yates","David Yates","David Yates","Christopher Nolan","Christopher Nolan","Christopher Nolan","Christopher Nolan","Christopher Nolan","Christopher Nolan","Christopher Nolan","Christopher Nolan","Christopher Nolan","Christopher Nolan","Christopher Nolan","Christopher Nolan","Christopher Nolan","Christopher Nolan","Christopher Nolan","Christopher Nolan","Christopher Nolan","Christopher Nolan","Christopher Nolan","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Ridley Scott","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","Tim Burton","J.J. Abrams","J.J. Abrams","J.J. Abrams","J.J. Abrams","J.J. Abrams","J.J. Abrams","J.J. Abrams","J.J. Abrams"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,1,2,3,4,5,6,7,8,9,10,11,12,13,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,1,2,3,4,5,6,7,8],["Amblin'","Night Gallery","Duel","Something Evil","Savage","The Sugarland Express","Jaws","Close Encounters of the Third Kind","1941","Raiders of the Lost Ark","Poltergeist","E.T. the Extra-Terrestrial","Twilight Zone: The Movie","Indiana Jones and the Temple of Doom","The Color Purple","Amazing Stories","Empire of the Sun","Indiana Jones and the Last Crusade","Always","Amazing Stories: The Movie II","Hook","Jurassic Park","Schindler's List","The Lost World: Jurassic Park","Amistad","Saving Private Ryan","The Unfinished Journey","A.I. Artificial Intelligence","Minority Report","Catch Me If You Can","The Terminal","War of the Worlds","Munich","Indiana Jones and the Kingdom of the Crystal Skull","A Timeless Call","The Adventures of Tintin","War Horse","Lincoln","Bridge of Spies","The BFG","The Post","Ready Player One","West Side Story","The Fabelmans","Disclosure Day","Xenogenesis","Piranha II: The Spawning","The Terminator","Aliens","Martini Ranch: Reach","The Abyss","Terminator 2: Judgment Day","True Lies","Titanic","Expedition: Bismarck","Ghosts of the Abyss","Aliens of the Deep","Avatar","Avatar: The Way of Water","Avatar: Fire and Ash","Billie Eilish - Hit Me Hard and Soft: The Tour (Live in 3D)","Pieces","The Kiss","Welcome to Collinwood","You, Me and Dupree","Carfuckers","Captain America: The Winter Soldier","Captain America: Civil War","Avengers: Infinity War","Avengers: Endgame","Cherry","The Gray Man","The Electric State","Avengers: Doomsday","The Valley","Bad Taste","Meet the Feebles","Sex, Drugs and Soft Toys - The Making of Meet the Feebles","Braindead","Heavenly Creatures","The Frighteners","Forgotten Silver","The Making of 'The Frighteners'","The Lord of the Rings: The Fellowship of the Ring","The Lord of the Rings: The Two Towers","The Lord of the Rings: The Return of the King","The Lost Spider Pit Sequence","King Kong","Crossing the Line","The Lovely Bones","The Hobbit: An Unexpected Journey","The Hobbit: The Desolation of Smaug","The Hobbit: The Battle of the Five Armies","They Shall Not Grow Old","The Beatles: Get Back - The Rooftop Concert","I'd Do Anything for Love (But I Won't Do That)","Bad Boys","The Rock","Armageddon","Pearl Harbor","Great White: My...My...My...","Bad Boys II","The Island","Transformers","Transformers: Revenge of the Fallen","Transformers: Dark of the Moon","Pain &amp; Gain","Transformers: Age of Extinction","13 Hours: The Secret Soldiers of Benghazi","Transformers: The Last Knight","6 Underground","Ambulance","We Are Storror","When I Was a Girl","The Weaver's Wife","Oranges and Lemons","The Tichborne Claimant","Rank","The Young Visiters","The Girl in the Café","Harry Potter and the Order of the Phoenix","Harry Potter and the Half-Blood Prince","Harry Potter and the Deathly Hallows: Part 1","Harry Potter and the Deathly Hallows: Part 2","The Legend of Tarzan","Fantastic Beasts and Where to Find Them","Fantastic Beasts: The Crimes of Grindelwald","Fantastic Beasts: The Secrets of Dumbledore","Pain Hustlers","Tarantella","Larceny","Doodlebug","Following","Memento","Insomnia","Cinema16: British Short Films","Batman Begins","The Prestige","Cinema 16: European Short Films (U.S. Edition)","The Dark Knight","Inception","The Dark Knight Rises","Interstellar","Quay","Dunkirk","Tenet","Oppenheimer","The Odyssey","Boy and Bicycle","Robert","The Duellists","Alien","Blade Runner","Legend","Someone to Watch Over Me","Black Rain","Thelma &amp; Louise","The King of Ads","1492: Conquest of Paradise","The King of Ads, Part 2","White Squall","G.I. Jane","Gladiator","Hannibal","Black Hawk Down","Cinema16: British Short Films","Matchstick Men","Kingdom of Heaven","Le court des grands","All the Invisible Children","A Good Year","Cinema 16: European Short Films (U.S. Edition)","American Gangster","Body of Lies","Robin Hood","Prometheus","The Counselor","Exodus: Gods and Kings","The Martian","Alien: Covenant","All the Money in the World","The Last Duel","House of Gucci","Napoleon","Gladiator II","The Dog Stars","Prehistoric Caveman","Stalk of the Celery Monster","Doctor of Doom","Luau","Vincent","Hansel and Gretel","Frankenweenie","Pee-wee's Big Adventure","Aladdin and His Wonderful Lamp","Beetlejuice","Batman","Edward Scissorhands","Batman Returns","Ed Wood","Mars Attacks!","Sleepy Hollow","The World of Stainboy","Planet of the Apes","Big Fish","Charlie and the Chocolate Factory","Corpse Bride","Cinema16: American Short Films","Sweeney Todd: The Demon Barber of Fleet Street","Alice in Wonderland","Dark Shadows","Frankenweenie","Miniatures in Motion: Bringing Frankenweenie to Life","Big Eyes","Houdini: The Untold Story","Miss Peregrine's Home for Peculiar Children","Dumbo","Beetlejuice Beetlejuice","Mission: Impossible III","Anatomy of Hope","Star Trek","Super 8","Star Trek Into Darkness","Star Wars: The Force Awakens","Star Wars: The Rise of Skywalker","The Great Beyond"],[1968,1969,1971,1972,1973,1974,1975,1977,1979,1981,1982,1982,1983,1984,1985,1986,1987,1989,1989,1990,1991,1993,1993,1997,1997,1998,1999,2001,2002,2002,2004,2005,2005,2008,2008,2011,2011,2012,2015,2016,2017,2018,2021,2022,2026,1978,1982,1984,1986,1988,1989,1991,1994,1997,2002,2003,2005,2009,2022,2025,2026,1997,2001,2002,2006,2008,2014,2016,2018,2019,2021,2022,2025,2026,1976,1987,1989,1989,1992,1994,1996,1997,1998,2001,2002,2003,2005,2005,2008,2009,2012,2013,2014,2018,2022,1993,1995,1996,1998,2001,2002,2003,2005,2007,2009,2011,2013,2014,2016,2017,2019,2022,2025,1988,1991,1991,1999,2002,2003,2005,2007,2009,2010,2011,2016,2016,2018,2022,2023,1989,1996,1997,1999,2000,2002,2003,2005,2006,2007,2008,2010,2012,2014,2015,2017,2020,2023,2026,1965,1967,1977,1979,1982,1985,1987,1989,1991,1991,1992,1993,1996,1997,2000,2001,2001,2003,2003,2005,2005,2006,2006,2007,2007,2008,2010,2012,2013,2014,2015,2017,2017,2021,2021,2023,2024,2026,1971,1979,1979,1982,1982,1983,1984,1985,1986,1988,1989,1990,1992,1994,1996,1999,2000,2001,2003,2005,2005,2006,2007,2010,2012,2012,2012,2014,2016,2016,2019,2024,2006,2009,2009,2011,2013,2015,2019,2026],[26,98,74,73,73,110,124,137,118,115,114,115,101,118,154,111,153,127,122,120,142,127,195,129,155,169,21,146,145,141,128,117,164,122,7,107,146,150,141,117,116,140,156,151,145,12,94,108,137,8,140,137,141,194,92,91,95,162,192,198,114,72,8,86,108,4,136,147,149,181,142,128,125,0,20,91,93,29,103,109,110,53,269,179,179,201,6,188,3,136,169,161,144,99,65,8,119,137,151,183,54,146,136,144,150,154,130,165,144,154,128,136,95,20,30,10,98,15,90,94,138,153,146,130,109,133,134,142,122,5,9,3,69,113,118,203,140,130,218,152,148,165,169,8,107,150,181,172,27,25,100,117,118,94,103,125,130,91,154,56,129,125,155,131,145,203,116,144,203,124,117,218,157,128,140,124,117,150,141,122,132,153,158,158,148,100,4,2,12,31,6,35,29,91,47,92,126,105,126,127,106,105,25,120,125,115,77,209,116,108,113,87,23,106,4,127,112,105,126,0,127,112,132,136,142,0],["$0M","—","$0M","—","—","$3M","$7M","$20M","$35M","$18M","$11M","$10M","$10M","$28M","$15M","—","$35M","$48M","$31M","—","$70M","$63M","$22M","$73M","$36M","$70M","—","$100M","$102M","$52M","$60M","$132M","$70M","$185M","—","$130M","$66M","$65M","$40M","$140M","$50M","$175M","$100M","$40M","$115M","—","$0M","$6M","$18M","—","$43M","$102M","$115M","$200M","—","$13M","—","$237M","$460M","$350M","$20M","—","—","$7M","$54M","—","$170M","$250M","$300M","$356M","$40M","$200M","$320M","—","—","$0M","$1M","—","$3M","$5M","$30M","$1M","—","$93M","$79M","$94M","—","$207M","—","$65M","$250M","$250M","$250M","—","—","—","$19M","$75M","$140M","$140M","—","$130M","$126M","$150M","$200M","$195M","$25M","$210M","$50M","$217M","$150M","$40M","—","—","—","—","—","—","—","—","$150M","$250M","$250M","$125M","$180M","$180M","$200M","$200M","—","—","—","—","$0M","$9M","$46M","—","$150M","$40M","—","$185M","$160M","$250M","$165M","—","$150M","$205M","$100M","$250M","$0M","—","$1M","$11M","$28M","$24M","$17M","$30M","$16M","—","$47M","—","$38M","$50M","$103M","$87M","$92M","—","$62M","$130M","—","—","$35M","—","$100M","$70M","$200M","$130M","$25M","$140M","$108M","$97M","$50M","$100M","$75M","$165M","$310M","$110M","—","—","—","—","$0M","$0M","—","$6M","—","$15M","$35M","$20M","$80M","$18M","$70M","$100M","—","$100M","$70M","$150M","$40M","—","$50M","$200M","$150M","$39M","—","$10M","—","$110M","$170M","$99M","$150M","—","$150M","$50M","$190M","$245M","$490M","—"],["—","—","$0M","—","—","$13M","$471M","$307M","$95M","$390M","$122M","$797M","$29M","$333M","$146M","—","$67M","$474M","$74M","—","$301M","$920M","$321M","$619M","$44M","$482M","—","$236M","$358M","$352M","$219M","$604M","$131M","$787M","—","$374M","$178M","$275M","$165M","$195M","$180M","$607M","$76M","$46M","$169M","—","—","$78M","$183M","—","$90M","$518M","$379M","$2,264M","—","$17M","—","$2,924M","$2,334M","$1,490M","$27M","—","—","$4M","$131M","—","$715M","$1,155M","$2,052M","$2,799M","—","$0M","—","—","—","—","$0M","—","$0M","$3M","$29M","—","—","$871M","$926M","$1,119M","—","$562M","—","$94M","$1,021M","$958M","$956M","$21M","$0M","—","$141M","$335M","$554M","$449M","—","$273M","$163M","$710M","$836M","$1,124M","$87M","$1,105M","$69M","$605M","—","$52M","—","—","—","—","—","—","—","—","$938M","$934M","$954M","$1,342M","$357M","$809M","$655M","$407M","—","—","—","—","$0M","$40M","$114M","—","$374M","$110M","—","$1,005M","$839M","$1,081M","$747M","$0M","$549M","$365M","$952M","—","—","—","—","$105M","$42M","$16M","$10M","$134M","$45M","—","$7M","—","$10M","$48M","$466M","$352M","$173M","—","$66M","$218M","—","—","$42M","—","$270M","$113M","$322M","$403M","$71M","$268M","$631M","$241M","$57M","$31M","$153M","$222M","$462M","—","—","—","—","—","—","—","—","$41M","—","$85M","$411M","$86M","$280M","$6M","$101M","$206M","—","$362M","$123M","$475M","$118M","—","$153M","$1,025M","$246M","$81M","—","$29M","—","$296M","$353M","$452M","$398M","—","$387M","$260M","$467M","$2,068M","$1,074M","—"],["—","—","$0M","—","—","$83M","$2,813M","$1,628M","$420M","$1,379M","$406M","$2,656M","$95M","$1,030M","$437M","—","$189M","$1,229M","$192M","—","$710M","$2,047M","$715M","$1,239M","$89M","$950M","—","$428M","$640M","$629M","$373M","$994M","$216M","$1,175M","—","$535M","$254M","$385M","$224M","$262M","$236M","$778M","$90M","$50M",null,"—","—","$243M","$538M","—","$233M","$1,222M","$822M","$4,535M","—","$30M","—","$4,382M","$2,564M","$1,490M",null,"—","—","$8M","$208M","—","$971M","$1,547M","$2,628M","$3,520M","—","$0M","—","—","—","—","$0M","—","$1M","$7M","$60M","—","—","$1,582M","$1,655M","$1,955M","—","$926M","—","$140M","$1,430M","$1,322M","$1,299M","$27M","$1M","—","$298M","$687M","$1,092M","$815M","—","$478M","$268M","$1,101M","$1,253M","$1,606M","$120M","$1,501M","$93M","$794M","—","$57M","—","—","—","—","—","—","—","—","$1,455M","$1,400M","$1,407M","$1,918M","$478M","$1,084M","$839M","$447M","—","—","—","—","$0M","$75M","$203M","—","$616M","$175M","—","$1,500M","$1,237M","$1,514M","$1,014M","$0M","$720M","$454M","$1,004M","—","—","—","—","$465M","$139M","$46M","$29M","$348M","$107M","—","$16M","—","$21M","$96M","$869M","$638M","$314M","—","$115M","$359M","—","—","$67M","—","$418M","$169M","$474M","$565M","$98M","$364M","$856M","$316M","$75M","$36M","$182M","$235M","$474M","—","—","—","—","—","—","—","—","$122M","—","$230M","$1,067M","$212M","$642M","$13M","$208M","$398M","—","$658M","$215M","$782M","$194M","—","$238M","$1,512M","$344M","$114M","—","$39M","—","$397M","$444M","$463M","$635M","—","$580M","$372M","$645M","$2,806M","$1,351M","—"],[6.1,6.5,7.4,5.4,5.5,6.6,7.7,7.4,5.8,7.9,7.2,7.5,6.5,7.3,7.7,6.2,7.5,7.9,6.2,0,6.8,8,8.6,6.6,7,8.199999999999999,6.5,7.1,7.4,8,7.4,6.5,7.1,6,5,6.9,7.3,6.8,7.2,6.3,7,7.6,6.9,7.6,6.7,5,4.3,7.7,8,0,7.4,8.199999999999999,7.1,7.9,7.2,6.8,6.1,7.6,7.6,7.6,7.5,7,8,6.1,5.6,3,7.7,7.4,8.199999999999999,8.199999999999999,7.3,6.9,6.5,0,10,6.3,6.3,0,7.4,7,6.9,7.2,8.5,8.4,8.4,8.5,6.7,6.9,8,7.1,7.4,7.6,7.3,7.8,8,7.2,6.8,7.2,6.8,6.9,5.7,6.7,6.7,6.8,6.2,6.2,6.3,6,7.3,6.1,6.3,6.6,0,9,10,8,8.699999999999999,6.5,5.3,7.1,7.7,7.7,7.7,8.1,5.9,7.3,6.8,6.6,6.7,5.2,5.7,6.5,7.1,8.199999999999999,7,5.2,7.7,8.199999999999999,6,8.5,8.4,7.8,8.5,6.1,7.5,7.2,8,0,5.6,8,7.2,8.199999999999999,7.9,6.3,5.9,6.6,7.6,4.3,6.3,3,6.3,6.5,8.199999999999999,6.8,7.4,5.2,7,7.1,8,7,6.7,6,7.6,6.6,6.4,6.6,5.3,5.9,7.7,6.2,6.5,7.4,6.6,6.3,6.6,0,3,6.1,4.8,4.8,7.9,6.4,7,6.5,6,7.4,7.2,7.7,6.9,7.5,6.4,7.2,6.5,5.8,7.8,7,7.6,7.5,7.2,6.6,6.1,7,6.8,7,0,6.8,6.6,6.9,6.8,1,7.4,6.8,7.3,7.2,6.3,0],[49,23,2075,60,14,463,11579,4683,691,13689,3346,12033,811,10145,1981,31,2137,11100,667,0,5758,17932,17540,9267,1421,17336,4,6688,9670,17169,8741,9227,3013,9048,3,5842,3696,4061,7290,3635,4929,16997,1788,2783,653,41,309,14681,10904,0,3456,14376,4599,27256,23,229,80,34097,14225,3537,23,1,1,248,1440,1,20063,24094,32153,27899,1382,4278,1676,0,1,927,319,0,1856,1038,1754,124,10,27711,24012,26689,10,8531,3,4966,19694,14251,15423,669,44,4,6980,5217,8612,7018,3,5973,5901,12272,9210,8984,4826,8790,3966,6746,5194,2462,0,1,1,1,3,2,9,100,20864,20849,20437,22044,6529,19737,11495,5123,787,49,7,488,1861,16325,5329,6,22688,17661,1,35954,39416,24447,40099,69,17619,11150,11885,0,38,1,635,16455,15047,1389,216,1239,3889,10,922,1,408,1859,20987,5212,6392,6,1990,5009,1,77,1650,1,6075,3338,5032,13307,1999,4862,21315,9458,2422,3872,3456,3114,4485,0,2,29,18,6,919,46,448,851,5,8474,8601,13814,7116,2522,5896,7398,44,4433,7793,16158,10224,2,6365,14844,7630,3629,10,3620,0,10497,4532,3142,7647,1,10523,7103,9691,20585,10878,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Director<\/th>\n      <th>#<\/th>\n      <th>Title<\/th>\n      <th>Year<\/th>\n      <th>Runtime (min)<\/th>\n      <th>Budget (nominal)<\/th>\n      <th>Gross (nominal)<\/th>\n      <th>Gross (2025 USD)<\/th>\n      <th>TMDb vote<\/th>\n      <th>Votes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":25,"dom":"ftip","columnDefs":[{"className":"dt-right","targets":[1,3,4,8,9]},{"name":"Director","targets":0},{"name":"#","targets":1},{"name":"Title","targets":2},{"name":"Year","targets":3},{"name":"Runtime (min)","targets":4},{"name":"Budget (nominal)","targets":5},{"name":"Gross (nominal)","targets":6},{"name":"Gross (2025 USD)","targets":7},{"name":"TMDb vote","targets":8},{"name":"Votes","targets":9}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="notes" class="section level2">
+<h2>Notes</h2>
+<ul>
+<li>Filmography data is pulled from <a
+href="https://www.themoviedb.org/">TMDb</a>, filtering each director’s
+movie credits to those where <code>job == "Director"</code>.</li>
+<li>The Russo brothers (Anthony &amp; Joe) are listed as a single “Russo
+Brothers” entry because they always co-direct. TMDb tracks them as
+separate people, so the filmography is pulled via Anthony Russo’s
+credits to avoid double-counting.</li>
+<li>Revenue and budget come from TMDb’s user-maintained data, which is
+reliable for major releases but can be missing or zero for older films
+and limited releases. Films without revenue are excluded from the gross
+trajectories but included in the vote-average panel and the all-films
+table.</li>
+<li>Inflation adjustment uses BLS CPI-U All Urban Consumers (annual
+averages) and treats the most recent year in the embedded table as the
+reference. Update once a year alongside the workflow.</li>
+</ul>
+</div>
+
+<link rel="stylesheet" href="/css/footer.css">
+<footer id="footer_stuff" class="band full" role="contentinfo">
+  <div class="bandContent">
+    <p id="full_send">Feel free to contact me:</p>
+    <nav id="logos" aria-label="Social media and contact links">
+      <a href="mailto:cavandonohoe@gmail.com" aria-label="Email Cavan Donohoe"><i class="fa fa-envelope" style="font-size:22px"></i></a>
+      <a href="https://www.instagram.com/cavandonohoe" aria-label="Instagram profile" rel="noopener noreferrer"><i class="fa fa-instagram" style="font-size:22px"></i></a>
+      <a href="https://www.facebook.com/cavandonohoe" aria-label="Facebook profile" rel="noopener noreferrer"><i class="fa fa-facebook" style="font-size:22px"></i></a>
+      <a href="https://github.com/cavandonohoe" aria-label="GitHub profile" rel="noopener noreferrer"><i class="fa fa-github" style="font-size:22px"></i></a>
+      <a href="https://www.linkedin.com/in/cavan-donohoe/" aria-label="LinkedIn profile" rel="noopener noreferrer"><i class="fa fa-linkedin" style="font-size:22px"></i></a>
+      <a href="tel:+8054043321" aria-label="Phone number"><i class="fa fa-phone" style="font-size:22px"></i></a>
+    </nav>
+  </div>
+</footer>
+<script>
+(function() {
+  function addLabel(el, label) {
+    if (!el) return;
+    if (el.hasAttribute('aria-label') && el.getAttribute('aria-label').trim()) return;
+    if (el.hasAttribute('title') && el.getAttribute('title').trim()) return;
+    el.setAttribute('aria-label', label);
+  }
+
+  function labelNavbarToggle() {
+    var toggles = document.querySelectorAll('button.navbar-toggle');
+    for (var i = 0; i < toggles.length; i++) {
+      addLabel(toggles[i], 'Toggle navigation');
+    }
+  }
+
+  function labelPlotlyModebar() {
+    var anchors = document.querySelectorAll('.modebar-container a, [id^="modebar-"] a');
+    for (var i = 0; i < anchors.length; i++) {
+      var a = anchors[i];
+      if ((a.hasAttribute('aria-label') && a.getAttribute('aria-label').trim()) ||
+          (a.hasAttribute('title') && a.getAttribute('title').trim())) {
+        // already labeled — but H91 still wants id/name on empty anchors,
+        // so ensure that too.
+      } else {
+        var dataTitle = a.getAttribute('data-title') || '';
+        var label = dataTitle.trim() || 'Plot toolbar action';
+        a.setAttribute('aria-label', label);
+      }
+      // H91 considers an empty anchor accessible if it has id or name.
+      // Give every modebar anchor a stable, unique id derived from the
+      // parent modebar id + position so HTML_CodeSniffer stops flagging.
+      if (!a.id) {
+        var parent = a.closest('[id^="modebar-"]');
+        var base = parent ? parent.id : 'modebar';
+        var idx = Array.prototype.indexOf.call(parent ? parent.querySelectorAll('a') : [a], a);
+        a.id = base + '-btn-' + (idx >= 0 ? idx : i);
+      }
+      if (!a.getAttribute('name')) a.setAttribute('name', a.id);
+    }
+  }
+
+  function dedupePlotlySymbolIds() {
+    // Plotly inlines an SVG icon set per chart that defines <g id="symbol">,
+    // so pages with two charts trip F77 (duplicate id). Drop the id on every
+    // occurrence after the first; nothing on the page references #symbol.
+    // Restrict to the known offender so we don't accidentally rename
+    // legitimate duplicates elsewhere.
+    var symbols = document.querySelectorAll('[id="symbol"]');
+    for (var i = 1; i < symbols.length; i++) {
+      symbols[i].removeAttribute('id');
+    }
+  }
+
+  function labelDataTablesControls() {
+    var inputs = document.querySelectorAll(
+      '.dataTables_wrapper input[type="search"], .dataTables_wrapper input[type="text"], ' +
+      'table.dataTable thead input[type="search"], table.dataTable thead input[type="text"]'
+    );
+    for (var i = 0; i < inputs.length; i++) {
+      var input = inputs[i];
+      if ((input.hasAttribute('aria-label') && input.getAttribute('aria-label').trim()) ||
+          (input.hasAttribute('title') && input.getAttribute('title').trim())) continue;
+      var placeholder = input.getAttribute('placeholder') || '';
+      var label = placeholder.trim() || 'Search';
+      var th = input.closest('th, td');
+      var col = th ? (th.getAttribute('aria-label') || th.textContent || '').trim() : '';
+      if (col) label = col + ' search';
+      input.setAttribute('aria-label', label);
+    }
+
+    var selects = document.querySelectorAll(
+      '.dataTables_wrapper select, table.dataTable thead select'
+    );
+    for (var j = 0; j < selects.length; j++) {
+      var sel = selects[j];
+      if ((sel.hasAttribute('aria-label') && sel.getAttribute('aria-label').trim()) ||
+          (sel.hasAttribute('title') && sel.getAttribute('title').trim())) continue;
+      var th2 = sel.closest('th, td');
+      var col2 = th2 ? (th2.getAttribute('aria-label') || th2.textContent || '').trim() : '';
+      sel.setAttribute('aria-label', col2 ? col2 + ' filter' : 'Column filter');
+    }
+  }
+
+  function applyA11yShims() {
+    labelNavbarToggle();
+    labelPlotlyModebar();
+    labelDataTablesControls();
+    dedupePlotlySymbolIds();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyA11yShims);
+  } else {
+    applyA11yShims();
+  }
+
+  // Plotly and DataTables can re-render after initial load; reapply on a short
+  // delay and observe further DOM changes so dynamically-inserted controls
+  // also get labelled before the pa11y wait window expires.
+  setTimeout(applyA11yShims, 250);
+  setTimeout(applyA11yShims, 1000);
+
+  if (typeof MutationObserver !== 'undefined') {
+    var observer = new MutationObserver(function() { applyA11yShims(); });
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+})();
+</script>
+<script>
+(function() {
+  var btn = document.createElement('button');
+  btn.className = 'dark-mode-toggle';
+  btn.setAttribute('aria-label', 'Toggle dark mode');
+  btn.innerHTML = localStorage.getItem('theme') === 'dark' ? '☀️' : '🌙';
+  btn.onclick = function() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    btn.innerHTML = next === 'dark' ? '☀️' : '🌙';
+  };
+  var navbar = document.querySelector('.navbar-right') || document.querySelector('.navbar-nav');
+  if (navbar) {
+    var li = document.createElement('li');
+    li.appendChild(btn);
+    navbar.appendChild(li);
+  }
+})();
+</script>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

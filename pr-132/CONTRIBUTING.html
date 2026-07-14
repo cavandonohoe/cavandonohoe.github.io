@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>CONTRIBUTING</title>
+
+<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Cavan Donohoe</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="fa fa-info"></span>
+     
+    About Me
+  </a>
+</li>
+<li>
+  <a href="services.html">
+    <span class="fa fa-wrench"></span>
+     
+    Services
+  </a>
+</li>
+<li>
+  <a href="cv.html">
+    <span class="fa fa-id-card"></span>
+     
+    CV
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-laptop"></span>
+     
+    Projects
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">--- Movies &amp; TV ---</li>
+    <li>
+      <a href="imdb_top_250_tv_series.html">IMDb TV Series</a>
+    </li>
+    <li>
+      <a href="imdb_rating_plot.html">IMDb Rating Plot by Season and Episode</a>
+    </li>
+    <li>
+      <a href="top_250_imdb_with_rt.html">Top 250 IMDb Movies with Rotten Tomato Scores</a>
+    </li>
+    <li>
+      <a href="best_picture_nominees.html">Best Picture Nominees</a>
+    </li>
+    <li>
+      <a href="best_pic_vs_top_1000.html">Best Picture and Top 1000 Box Office</a>
+    </li>
+    <li>
+      <a href="director_box_office_trajectory.html">Director Box Office Trajectory</a>
+    </li>
+    <li>
+      <a href="my_imdb.html">My IMDb Ratings</a>
+    </li>
+    <li class="dropdown-header">--- Sports &amp; Personal ---</li>
+    <li>
+      <a href="avca_all_americans.html">AVCA Men's Volleyball All-Americans</a>
+    </li>
+    <li>
+      <a href="firefighter_schedule.html">Jason, Owen, and Wyett's Firefighter Schedule</a>
+    </li>
+    <li>
+      <a href="google_maps_saved_places.html">Google Maps: Want To Go + Favorites</a>
+    </li>
+    <li>
+      <a href="my_travels.html">Get Bloggy With It</a>
+    </li>
+    <li>
+      <a href="tohs_reunion.html">TOHS Class of 2012 Reunion</a>
+    </li>
+    <li class="dropdown-header">--- Visualizations ---</li>
+    <li>
+      <a href="wc-momentum/index.html">World Cup 3D Momentum Portrait</a>
+    </li>
+    <li>
+      <a href="confederate_statues.html">When Were Confederate Statues Erected?</a>
+    </li>
+    <li>
+      <a href="sierpinski_triangle.html">Sierpinski Triangle</a>
+    </li>
+    <li>
+      <a href="airplane_boarding.html">Airplane Boarding Simulation</a>
+    </li>
+    <li class="dropdown-header">--- Real Estate &amp; Finance ---</li>
+    <li>
+      <a href="us_rental_markets.html">US Rental Investment Markets</a>
+    </li>
+    <li>
+      <a href="la_real_estate.html">LA Neighborhoods: Price per Sq Ft</a>
+    </li>
+    <li>
+      <a href="la_housing_heatmap.html">LA Housing Prices: Animated Heat Map</a>
+    </li>
+    <li>
+      <a href="https://cavandonohoe.shinyapps.io/rent-vs-buy/">Rent vs. Buy Calculator</a>
+    </li>
+    <li class="dropdown-header">--- Archive ---</li>
+    <li>
+      <a href="sp500.html">S&amp;P 500 Perspective</a>
+    </li>
+    <li>
+      <a href="covid_cases_nostalgia.html">Covid Cases: Then &amp; Now</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-graduation-cap"></span>
+     
+    Learn R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="learn_r.html">Course Overview</a>
+    </li>
+    <li class="dropdown-header">--- Lessons ---</li>
+    <li>
+      <a href="intro_to_r.html">1. Introduction to R</a>
+    </li>
+    <li>
+      <a href="basic_operations_r.html">2. Basic Operations</a>
+    </li>
+    <li>
+      <a href="data_manipulation_r.html">3. Data Manipulation</a>
+    </li>
+    <li>
+      <a href="data_visualization_r.html">4. Data Visualization</a>
+    </li>
+    <li>
+      <a href="statistics_with_r.html">5. Statistics with R</a>
+    </li>
+    <li>
+      <a href="rmarkdown_r.html">6. Reproducible Reports with R Markdown</a>
+    </li>
+    <li>
+      <a href="capstone_r.html">7. Capstone Project</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="sdtm_with_r.html">
+    <span class="fa fa-notes-medical"></span>
+     
+    SDTM with R
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div id="contributing" class="section level1">
+<h1>Contributing</h1>
+<p>Thanks for your interest in this repo. It’s primarily a personal
+site, but bug reports, link fixes, and accessibility improvements are
+welcome.</p>
+<div id="local-development" class="section level2">
+<h2>Local development</h2>
+<div id="prerequisites" class="section level3">
+<h3>Prerequisites</h3>
+<ul>
+<li>R (&gt;= 4.2). The repo pins R via <code>.R-version</code> for CI;
+locally any 4.2+ should work.</li>
+<li>Pandoc (installed by RStudio, or via Homebrew on macOS).</li>
+</ul>
+</div>
+<div id="dependencies-renv" class="section level3">
+<h3>Dependencies (renv)</h3>
+<p>The repo uses <a href="https://rstudio.github.io/renv/">renv</a> to
+pin all R package versions in <code>renv.lock</code>. On first checkout,
+restore the locked package versions into a project-local library:</p>
+<pre class="r"><code>renv::restore()</code></pre>
+<p>After that, anything you <code>install.packages()</code> lands in the
+project library only and won’t pollute your global R installation. The
+first restore is slow (it builds ~200 packages from source); subsequent
+restores are near-instant thanks to renv’s cache.</p>
+<p>If you’d rather not use renv locally, every R package the site needs
+is also declared in <code>DESCRIPTION</code>. You can install them all
+in one shot:</p>
+<pre class="r"><code>desc &lt;- read.dcf(&quot;DESCRIPTION&quot;)
+pkgs &lt;- trimws(unlist(strsplit(desc[, &quot;Imports&quot;], &quot;,\\s*&quot;)))
+install.packages(setdiff(pkgs, rownames(installed.packages())))</code></pre>
+<p>The lockfile is the source of truth for CI; <code>DESCRIPTION</code>
+mainly documents the high-level package surface for humans.</p>
+</div>
+<div id="build-the-site" class="section level3">
+<h3>Build the site</h3>
+<pre class="r"><code>rmarkdown::render_site()</code></pre>
+<p>Output goes to <code>_site/</code>. Open
+<code>_site/index.html</code> in a browser to preview.</p>
+<p>To render a single page (much faster during iteration):</p>
+<pre class="r"><code>rmarkdown::render(&quot;airplane_boarding.Rmd&quot;)</code></pre>
+</div>
+<div id="google-sheets-auth-cv-only" class="section level3">
+<h3>Google Sheets auth (CV only)</h3>
+<p>The CV page reads from a Google Sheet. For local development:</p>
+<pre class="r"><code>googlesheets4::gs4_auth()</code></pre>
+<p>CI uses a service-account key stored as the <code>GCP_SA_KEY</code>
+GitHub secret. Most other pages do not need auth.</p>
+</div>
+</div>
+<div id="running-checks-locally" class="section level2">
+<h2>Running checks locally</h2>
+<p>The same checks CI runs, in increasing order of cost:</p>
+<pre class="r"><code># Lint a single file
+lintr::lint(&quot;scripts/generate_sitemap.R&quot;)
+
+# Lint a directory
+lintr::lint_dir(&quot;scripts/&quot;)
+
+# Run the test suite (when tests are present)
+testthat::test_dir(&quot;tests/testthat&quot;)</code></pre>
+<p>For typo / link / accessibility checks see the corresponding
+workflows in <code>.github/workflows/</code>. These run automatically on
+PR.</p>
+</div>
+<div id="bumping-pinned-dependencies" class="section level2">
+<h2>Bumping pinned dependencies</h2>
+<p>The renv lockfile (<code>renv.lock</code>) is the source of truth for
+what versions CI installs. To pull in newer versions of one or all
+packages:</p>
+<pre class="r"><code># Update everything to the latest CRAN versions
+renv::update()
+
+# Or just specific packages
+renv::update(c(&quot;rmarkdown&quot;, &quot;knitr&quot;))
+
+# Re-snapshot the lockfile so the updates are tracked
+renv::snapshot()</code></pre>
+<p>Then open a PR with the resulting <code>renv.lock</code> diff. CI
+will exercise the new versions on every workflow.</p>
+<p>To bump the R version itself, edit <code>.R-version</code> and update
+the <code>R.Version</code> field in <code>renv.lock</code> to match. CI
+reads R version from <code>.R-version</code> directly; the field in
+<code>renv.lock</code> is documentation.</p>
+</div>
+<div id="pull-request-conventions" class="section level2">
+<h2>Pull request conventions</h2>
+<ul>
+<li>Branch off <code>origin/main</code>. Don’t rebase published PR
+branches without good reason.</li>
+<li>One concern per PR. Smaller PRs land faster.</li>
+<li>PR titles use imperative voice (<code>Add ...</code>,
+<code>Fix ...</code>, <code>Pin ...</code>, <code>Update ...</code>). No
+JIRA-style prefixes.</li>
+<li>Reference the issue you’re closing with <code>Closes #N</code> in
+the PR body.</li>
+<li>CI must be green before merge. The data-refresh workflows don’t run
+on PRs from forks (they need secrets); that’s expected.</li>
+</ul>
+</div>
+<div id="adding-a-new-page" class="section level2">
+<h2>Adding a new page</h2>
+<ol style="list-style-type: decimal">
+<li>Create <code>your_page.Rmd</code> at the repo root.</li>
+<li>Add an entry to <code>_site.yml</code> under <code>navbar:</code> if
+it should appear in the top nav, or just under a <code>Project</code>
+card in <code>index.Rmd</code> for project pages.</li>
+<li>Render locally and confirm <code>pr-smoke.yml</code> will pick it up
+(it auto-discovers changed top-level <code>.Rmd</code> files).</li>
+<li>If the page needs a scheduled data refresh, add a workflow under
+<code>.github/workflows/update_*.yml</code> modeled on the existing
+ones.</li>
+</ol>
+</div>
+<div id="adding-a-new-test" class="section level2">
+<h2>Adding a new test</h2>
+<ol style="list-style-type: decimal">
+<li>Pure functions go in a sourceable file under
+<code>scripts/</code>.</li>
+<li>Tests go in <code>tests/testthat/test-&lt;name&gt;.R</code> and
+<code>source("../../scripts/&lt;file&gt;.R")</code> at the top.</li>
+<li>Run <code>testthat::test_dir("tests/testthat")</code> locally before
+pushing.</li>
+</ol>
+</div>
+<div id="reporting-issues" class="section level2">
+<h2>Reporting issues</h2>
+<p>Open an issue with:</p>
+<ul>
+<li>What page or workflow is affected</li>
+<li>What you expected vs. what happened</li>
+<li>A link to the relevant page or commit if applicable</li>
+</ul>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
