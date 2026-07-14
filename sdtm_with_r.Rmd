@@ -1,0 +1,438 @@
+---
+title: "SDTM with R: Clinical Trial Data Standards"
+author: "Cavan Donohoe"
+description: "What SDTM is, why clinical trials use it, and how to build tidy SDTM domains (DM, AE, VS, LB) from raw data with reusable R functions."
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+lang: "en"
+---
+
+<link rel="stylesheet" href="/css/learn-r.css">
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  message = FALSE,
+  warning = FALSE,
+  fig.width = 6.5,
+  fig.height = 4.2,
+  dpi = 100
+)
+options(scipen = 999, digits = 4)
+```
+
+# SDTM with R
+
+Every drug and diagnostic that gets submitted to the FDA (and most other
+regulators) arrives with its clinical trial data in a very specific shape.
+That shape is **SDTM** — the Study Data Tabulation Model, a CDISC standard.
+If you work in clinical data science, biostatistics, or statistical
+programming, SDTM is the lingua franca. This page is a from-scratch
+introduction: what it is, why it exists, and how to build SDTM-style
+datasets in R using a handful of small, reusable functions.
+
+You don't need any clinical background. If you've done a little tidyverse
+(see the [Learn R course](learn_r.html)), you can follow everything here.
+
+## What is SDTM?
+
+Imagine every pharma company invented its own column names, table layouts,
+and coding conventions for their trial data. A reviewer at the FDA would
+have to relearn the data from scratch for every single submission. SDTM
+exists to stop that.
+
+**SDTM standardizes the *content and structure* of the raw, collected trial
+data** so that any reviewer, any validation tool, and any downstream program
+knows exactly where to look. It defines:
+
+- A fixed set of **domains** — one per type of data collected. Each has a
+  two-letter code.
+- Standard **variable names** within each domain (again, mostly two-to-eight
+  letter codes).
+- Rules for how rows, subjects, visits, and timing are represented.
+
+<div class="callout callout-tip">
+<div class="callout-title">💡 The mental model</div>
+SDTM is "one tidy table per kind of thing that happened in the trial."
+Demographics is one table. Adverse events is another. Vital signs is
+another. Every table shares a common backbone (subject ID, study ID) so they
+can be joined back together.
+</div>
+
+### The domains you'll see most often
+
+| Code | Domain | One row per... |
+|------|--------|----------------|
+| `DM` | Demographics | subject |
+| `AE` | Adverse Events | adverse event a subject had |
+| `VS` | Vital Signs | vital-sign measurement |
+| `LB` | Laboratory | lab test result |
+| `CM` | Concomitant Meds | medication a subject took |
+| `EX` | Exposure | dose of study drug administered |
+
+There are dozens more, but if you understand these you understand the model.
+
+### The naming conventions
+
+SDTM variable names follow a pattern. Once you see it, the columns stop
+looking like alphabet soup:
+
+- **`--SEQ`** — a sequence number, unique within a subject and domain
+  (`AESEQ`, `VSSEQ`).
+- **`--TESTCD` / `--TEST`** — the short code and long name of what was
+  measured (`VSTESTCD = "SYSBP"`, `VSTEST = "Systolic Blood Pressure"`).
+- **`--ORRES` / `--ORRESU`** — the original result as collected, and its unit
+  (`VSORRES = "120"`, `VSORRESU = "mmHg"`).
+- **`--STRESC` / `--STRESN`** — the result standardized to a character and a
+  numeric form.
+- **`--DTC`** — a date/time in ISO 8601 text (`AESTDTC = "2023-04-12"`).
+- **`STUDYID` / `USUBJID`** — the study ID and the *unique* subject ID, the
+  keys that tie every domain together.
+
+The leading `--` is a placeholder for the domain code. So the "test code"
+variable is `VSTESTCD` in Vital Signs and `LBTESTCD` in Labs.
+
+## Some raw data to start from
+
+In real life the raw data comes out of an electronic data capture (EDC)
+system and looks nothing like SDTM. Our job is to reshape it. Let's fabricate
+a tiny, messy "raw" export so we have something concrete to transform.
+
+```{r}
+library(dplyr)
+library(tidyr)
+
+set.seed(42)
+
+raw_demographics <- tibble::tribble(
+  ~subject, ~site, ~birth_date,  ~sex,     ~race,    ~arm,
+  "001",    "01",  "1968-03-11", "Male",   "White",  "Active",
+  "002",    "01",  "1975-11-30", "Female", "Asian",  "Placebo",
+  "003",    "02",  "1954-07-02", "Female", "White",  "Active",
+  "004",    "02",  "1981-01-19", "Male",   "Black",  "Placebo",
+  "005",    "03",  "1990-09-25", "Male",   "White",  "Active"
+)
+
+raw_demographics
+```
+
+A raw vital-signs export, in "long" form, one measurement per row:
+
+```{r}
+raw_vitals <- tibble::tribble(
+  ~subject, ~visit,      ~measure, ~value, ~units, ~date,
+  "001",    "Screening", "SYSBP",  128,    "mmHg", "2023-01-05",
+  "001",    "Screening", "DIABP",  82,     "mmHg", "2023-01-05",
+  "001",    "Week 4",    "SYSBP",  122,    "mmHg", "2023-02-02",
+  "001",    "Week 4",    "DIABP",  79,     "mmHg", "2023-02-02",
+  "002",    "Screening", "SYSBP",  141,    "mmHg", "2023-01-06",
+  "002",    "Screening", "DIABP",  90,     "mmHg", "2023-01-06",
+  "003",    "Screening", "SYSBP",  118,    "mmHg", "2023-01-09",
+  "003",    "Week 4",    "SYSBP",  115,    "mmHg", "2023-02-07"
+)
+
+raw_vitals
+```
+
+And a raw adverse-event log:
+
+```{r}
+raw_ae <- tibble::tribble(
+  ~subject, ~event,        ~severity,  ~start,       ~end,
+  "001",    "Headache",    "Mild",     "2023-01-20", "2023-01-22",
+  "001",    "Nausea",      "Moderate", "2023-02-05", NA,
+  "003",    "Fatigue",     "Mild",     "2023-01-15", "2023-01-30",
+  "004",    "Dizziness",   "Severe",   "2023-01-25", "2023-01-26"
+)
+
+raw_ae
+```
+
+## Building the DM (Demographics) domain
+
+DM is the anchor domain: exactly one row per subject. Everything else joins
+back to it. Building it means renaming to SDTM variables, constructing the
+`USUBJID` key, and deriving `AGE` from the birth date.
+
+Here's a reusable function:
+
+```{r}
+make_dm <- function(raw, studyid) {
+  raw |>
+    mutate(
+      STUDYID = studyid,
+      DOMAIN = "DM",
+      SITEID = site,
+      SUBJID = subject,
+      USUBJID = paste(studyid, site, subject, sep = "-"),
+      RFSTDTC = birth_date,                       # reference start (placeholder)
+      BRTHDTC = birth_date,
+      AGE = as.integer(
+        floor(as.numeric(Sys.Date() - as.Date(birth_date)) / 365.25)
+      ),
+      AGEU = "YEARS",
+      SEX = dplyr::recode(sex, "Male" = "M", "Female" = "F"),
+      RACE = toupper(race),
+      ARM = arm,
+      ACTARM = arm
+    ) |>
+    select(
+      STUDYID, DOMAIN, USUBJID, SUBJID, SITEID,
+      BRTHDTC, AGE, AGEU, SEX, RACE, ARM, ACTARM
+    )
+}
+
+dm <- make_dm(raw_demographics, studyid = "DEMO01")
+dm
+```
+
+A few SDTM conventions on display here:
+
+- **`USUBJID` must be unique across the whole study**, so we build it from
+  study + site + subject. Two sites could both have a subject "001"; the
+  `USUBJID` keeps them distinct.
+- **`SEX` is coded** to controlled terminology (`M`/`F`), not free text.
+- **`AGE` is derived**, not collected. SDTM is full of derived variables like
+  this.
+
+<div class="callout callout-warning">
+<div class="callout-title">⚠️ Controlled terminology</div>
+Real SDTM uses CDISC **controlled terminology** — fixed, published code lists
+for values like `SEX`, `RACE`, and units. You can't put "Male" in `SEX`; it
+has to be `M`. Here we're doing a simplified `recode()`, but in a real study
+you'd validate every coded column against the official code list.
+</div>
+
+## Building the VS (Vital Signs) domain
+
+Vital signs are a **findings** domain: one row per measurement, using the
+`--TESTCD` / `--ORRES` pattern. Our raw data is already long, which is the
+right shape — we mostly need to rename and add the standard result columns.
+
+```{r}
+vs_test_labels <- c(
+  SYSBP = "Systolic Blood Pressure",
+  DIABP = "Diastolic Blood Pressure",
+  PULSE = "Pulse Rate",
+  TEMP = "Temperature",
+  RESP = "Respiratory Rate"
+)
+
+make_vs <- function(raw, dm, studyid) {
+  subject_key <- dm |>
+    select(subject = SUBJID, USUBJID)
+  raw |>
+    left_join(subject_key, by = "subject") |>
+    mutate(
+      STUDYID = studyid,
+      DOMAIN = "VS",
+      VSTESTCD = measure,
+      VSTEST = unname(vs_test_labels[measure]),
+      VSORRES = as.character(value),
+      VSORRESU = units,
+      VSSTRESC = as.character(value),
+      VSSTRESN = as.numeric(value),
+      VSSTRESU = units,
+      VISIT = visit,
+      VSDTC = date
+    ) |>
+    arrange(USUBJID, VSDTC, VSTESTCD) |>
+    group_by(USUBJID) |>
+    mutate(VSSEQ = row_number()) |>
+    ungroup() |>
+    select(
+      STUDYID, DOMAIN, USUBJID, VSSEQ, VSTESTCD, VSTEST,
+      VSORRES, VSORRESU, VSSTRESC, VSSTRESN, VSSTRESU, VISIT, VSDTC
+    )
+}
+
+vs <- make_vs(raw_vitals, dm, studyid = "DEMO01")
+vs
+```
+
+The key moves:
+
+- We **joined to `dm`** to attach the proper `USUBJID` — findings domains
+  never re-derive the subject key, they inherit it.
+- **`VSSEQ`** is generated per subject with `group_by()` + `row_number()`,
+  giving each row a unique sequence number within the subject.
+- We split the result into original (`VSORRES`, text) and standardized
+  (`VSSTRESN`, numeric) forms. Downstream analysis uses the numeric one.
+
+## Building the AE (Adverse Events) domain
+
+Adverse events are an **events** domain: one row per event, with start/end
+dates and a severity. AE also carries a couple of the most-scrutinized
+variables in all of clinical data — seriousness and severity.
+
+```{r}
+make_ae <- function(raw, dm, studyid) {
+  subject_key <- dm |>
+    select(subject = SUBJID, USUBJID)
+  raw |>
+    left_join(subject_key, by = "subject") |>
+    mutate(
+      STUDYID = studyid,
+      DOMAIN = "AE",
+      AETERM = event,
+      AESEV = toupper(severity),
+      AESTDTC = start,
+      AEENDTC = end,
+      AEONGO = if_else(is.na(end), "Y", "N")   # ongoing at data cutoff?
+    ) |>
+    arrange(USUBJID, AESTDTC) |>
+    group_by(USUBJID) |>
+    mutate(AESEQ = row_number()) |>
+    ungroup() |>
+    select(
+      STUDYID, DOMAIN, USUBJID, AESEQ,
+      AETERM, AESEV, AESTDTC, AEENDTC, AEONGO
+    )
+}
+
+ae <- make_ae(raw_ae, dm, studyid = "DEMO01")
+ae
+```
+
+Note how a missing end date becomes a derived "ongoing" flag rather than
+just an `NA` — deriving meaningful flags from raw gaps is a huge part of the
+real work.
+
+## Why the common structure pays off
+
+Because every domain shares `STUDYID` and `USUBJID`, answering
+cross-domain questions is just a join. For example: "for each subject, how
+many adverse events did they have, and what arm were they in?"
+
+```{r}
+dm_arm <- dm |>
+  select(USUBJID, ARM)
+
+dm_arm |>
+  left_join(
+    ae |> count(USUBJID, name = "n_ae"),
+    by = "USUBJID"
+  ) |>
+  mutate(n_ae = tidyr::replace_na(n_ae, 0)) |>
+  arrange(desc(n_ae))
+```
+
+Or a quick clinical summary — mean systolic blood pressure at screening by
+treatment arm:
+
+```{r}
+vs |>
+  filter(VSTESTCD == "SYSBP", VISIT == "Screening") |>
+  left_join(dm_arm, by = "USUBJID") |>
+  group_by(ARM) |>
+  summarise(
+    n = n(),
+    mean_sysbp = mean(VSSTRESN),
+    .groups = "drop"
+  )
+```
+
+This is the whole point of SDTM: once the data is in this shape, *any*
+analysis is a predictable combination of filters, joins, and summaries.
+
+## A tiny validation function
+
+Regulators run automated conformance checks (Pinnacle 21 is the famous one)
+against submitted SDTM. You can write lightweight versions of those checks
+yourself. Here's one that flags the most common structural problems:
+
+```{r}
+check_domain <- function(df, domain, key_vars = c("STUDYID", "USUBJID")) {
+  issues <- character(0)
+
+  missing_keys <- setdiff(key_vars, names(df))
+  if (length(missing_keys) > 0) {
+    issues <- c(issues, paste("Missing key variable(s):",
+                              paste(missing_keys, collapse = ", ")))
+  }
+
+  if ("DOMAIN" %in% names(df) && any(df$DOMAIN != domain)) {
+    issues <- c(issues, "DOMAIN value does not match expected domain")
+  }
+
+  seq_var <- paste0(domain, "SEQ")
+  if (seq_var %in% names(df)) {
+    dup <- df |>
+      count(USUBJID, .data[[seq_var]]) |>
+      filter(n > 1)
+    if (nrow(dup) > 0) {
+      issues <- c(issues, paste0(seq_var, " is not unique within USUBJID"))
+    }
+  }
+
+  if (length(issues) == 0) {
+    cat("PASS:", domain, "looks structurally valid\n")
+  } else {
+    cat("ISSUES in", domain, ":\n")
+    cat(paste0("  - ", issues, collapse = "\n"), "\n")
+  }
+  invisible(issues)
+}
+
+check_domain(dm, "DM")
+check_domain(vs, "VS")
+check_domain(ae, "AE")
+```
+
+Real conformance rules number in the hundreds, but the idea is the same:
+programmatic, repeatable checks that either pass or point you at the exact
+problem.
+
+<div class="callout callout-tip">
+<div class="callout-title">💡 The pharmaverse</div>
+Everything here is hand-rolled to show the mechanics, but you rarely start
+from zero in practice. The open-source **pharmaverse** — packages like
+<a href="https://pharmaverse.github.io/admiral/">admiral</a> (for building
+the analysis-ready ADaM datasets that come <em>after</em> SDTM),
+<a href="https://pharmaverse.github.io/sdtm.oak/">sdtm.oak</a> (for building
+SDTM itself), and <code>pharmaverseadam</code> / <code>pharmaversesdtm</code>
+(realistic example data) — gives you tested, regulator-aware tooling. This
+page is the "under the hood" version so those packages make sense when you
+reach for them.
+</div>
+
+## SDTM vs. ADaM (the next step)
+
+One more thing worth knowing: SDTM is not the end of the pipeline. It's the
+*tabulation* layer — a faithful, standardized record of what was collected.
+For the actual statistical analysis, that data gets transformed again into
+**ADaM** (Analysis Data Model) datasets, which are built to be
+one-row-per-analysis-record and carry all the derived flags and baselines a
+statistician needs.
+
+The typical flow:
+
+```
+Raw EDC data  ->  SDTM (standardized tabulation)  ->  ADaM (analysis-ready)  ->  Tables, Figures, Listings
+```
+
+Each arrow is a set of documented, validated R (or SAS) programs. If you can
+build the SDTM step, the ADaM step is the same skills applied one layer up.
+
+## Recap
+
+- **SDTM** is a CDISC standard that puts clinical trial data into a fixed set
+  of domains (`DM`, `AE`, `VS`, `LB`, …) with standardized variable names.
+- Every domain shares `STUDYID` and `USUBJID`, so cross-domain analysis is
+  just a join.
+- Building a domain in R is: **rename to SDTM variables, derive the keys and
+  flags, add sequence numbers, and validate**.
+- Findings domains (`VS`, `LB`) use the `--TESTCD` / `--ORRES` / `--STRESN`
+  pattern; events domains (`AE`) use start/end dates; `DM` is one row per
+  subject.
+- In production you'd lean on the **pharmaverse**, but the transformations
+  are ordinary tidyverse under the hood.
+
+If you found this useful or spotted something to fix, email me at
+**cavandonohoe@gmail.com** or open an issue on
+[GitHub](https://github.com/cavandonohoe/cavandonohoe.github.io).

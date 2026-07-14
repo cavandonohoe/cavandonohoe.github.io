@@ -91,4 +91,7 @@ navbar:
         href: rmarkdown_r.html
       - text: "7. Capstone Project"
         href: capstone_r.html
+    - text: "SDTM with R"
+      icon: fa-notes-medical
+      href: sdtm_with_r.html
     

@@ -92,7 +92,9 @@ cards <- list(
   list("confederate_statues.html", "\U0001F5FF", "Confederate Statues Timeline",
     "When were Confederate monuments erected? A data-driven look at the timeline."),
   list("learn_r.html", "\U0001F4DA", "Learn R",
-    "Tutorial series: intro, data manipulation, visualization, and statistics in R.")
+    "Tutorial series: intro, data manipulation, visualization, and statistics in R."),
+  list("sdtm_with_r.html", "\U0001FA7A", "SDTM with R",
+    "Clinical trial data standards: build tidy SDTM domains (DM, AE, VS) from raw data with R.")
 )
 
 html <- '<div class="project-grid">'
