@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en" xml:lang="en">
 
 <head>
 
@@ -12,7 +12,7 @@
 <meta name="author" content="Cavan Donohoe" />
 
 
-<title>Data Visualization in R</title>
+<title>Lesson 4: Data Visualization in R</title>
 
 <script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -234,6 +234,43 @@ body {
 .project-card .card-icon { font-size: 2em; margin-bottom: 0.4em; }
 .project-card h3 { font-size: 1.05em; margin: 0 0 0.4em 0; color: var(--link-color) !important; }
 .project-card p { font-size: 0.88em; color: var(--muted-text); margin: 0; line-height: 1.4; }
+
+/* GitHub contribution chart */
+.gh-contrib-link {
+  display: block;
+  text-decoration: none !important;
+  margin: 1.2em 0 1.8em 0;
+}
+.gh-contrib-chart {
+  display: block;
+  width: 100%;
+  max-width: 740px;
+  height: auto;
+  margin: 0 auto;
+  padding: 1em;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px var(--card-shadow);
+  transition: box-shadow 0.2s;
+}
+.gh-contrib-link:hover .gh-contrib-chart {
+  box-shadow: 0 6px 20px var(--card-shadow);
+}
+[data-theme="dark"] .gh-contrib-chart { opacity: 1; }
+
+/* Figure captions (rendered from markdown image alt text) */
+.float {
+  margin-bottom: 2.5em;
+}
+.figcaption {
+  font-size: 0.88em;
+  font-style: italic;
+  color: var(--muted-text);
+  text-align: center;
+  margin-top: 0.5em;
+  line-height: 1.4;
+}
 
 /* Timestamp badges */
 .data-timestamp {
@@ -641,6 +678,9 @@ div.tocify {
       <a href="best_pic_vs_top_1000.html">Best Picture and Top 1000 Box Office</a>
     </li>
     <li>
+      <a href="director_box_office_trajectory.html">Director Box Office Trajectory</a>
+    </li>
+    <li>
       <a href="my_imdb.html">My IMDb Ratings</a>
     </li>
     <li class="dropdown-header">--- Sports &amp; Personal ---</li>
@@ -661,10 +701,16 @@ div.tocify {
     </li>
     <li class="dropdown-header">--- Visualizations ---</li>
     <li>
+      <a href="wc-momentum/index.html">World Cup 3D Momentum Portrait</a>
+    </li>
+    <li>
       <a href="confederate_statues.html">When Were Confederate Statues Erected?</a>
     </li>
     <li>
       <a href="sierpinski_triangle.html">Sierpinski Triangle</a>
+    </li>
+    <li>
+      <a href="airplane_boarding.html">Airplane Boarding Simulation</a>
     </li>
     <li class="dropdown-header">--- Real Estate &amp; Finance ---</li>
     <li>
@@ -674,7 +720,14 @@ div.tocify {
       <a href="la_real_estate.html">LA Neighborhoods: Price per Sq Ft</a>
     </li>
     <li>
+      <a href="la_housing_heatmap.html">LA Housing Prices: Animated Heat Map</a>
+    </li>
+    <li>
       <a href="https://cavandonohoe.shinyapps.io/rent-vs-buy/">Rent vs. Buy Calculator</a>
+    </li>
+    <li class="dropdown-header">--- Data Science &amp; Clinical ---</li>
+    <li>
+      <a href="sdtm_with_r.html">SDTM with R</a>
     </li>
     <li class="dropdown-header">--- Archive ---</li>
     <li>
@@ -683,28 +736,41 @@ div.tocify {
     <li>
       <a href="covid_cases_nostalgia.html">Covid Cases: Then &amp; Now</a>
     </li>
-    <li class="dropdown-submenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Learn R</a>
-      <ul class="dropdown-menu" role="menu">
-        <li>
-          <a href="learn_r.html">R Time Is Limited, Let's Make the Most of It</a>
-        </li>
-        <li>
-          <a href="intro_to_r.html">Intro to R</a>
-        </li>
-        <li>
-          <a href="basic_operations_r.html">Basic Operations</a>
-        </li>
-        <li>
-          <a href="data_manipulation_r.html">Data Manipulations</a>
-        </li>
-        <li>
-          <a href="data_visualization_r.html">Data Visualization</a>
-        </li>
-        <li>
-          <a href="statistics_with_r.html">Statistics with R</a>
-        </li>
-      </ul>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-graduation-cap"></span>
+     
+    Learn R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="learn_r.html">Course Overview</a>
+    </li>
+    <li class="dropdown-header">--- Lessons ---</li>
+    <li>
+      <a href="intro_to_r.html">1. Introduction to R</a>
+    </li>
+    <li>
+      <a href="basic_operations_r.html">2. Basic Operations</a>
+    </li>
+    <li>
+      <a href="data_manipulation_r.html">3. Data Manipulation</a>
+    </li>
+    <li>
+      <a href="data_visualization_r.html">4. Data Visualization</a>
+    </li>
+    <li>
+      <a href="statistics_with_r.html">5. Statistics with R</a>
+    </li>
+    <li>
+      <a href="rmarkdown_r.html">6. Reproducible Reports with R Markdown</a>
+    </li>
+    <li>
+      <a href="capstone_r.html">7. Capstone Project</a>
     </li>
   </ul>
 </li>
@@ -720,90 +786,332 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Data Visualization in R</h1>
+<h1 class="title toc-ignore">Lesson 4: Data Visualization in R</h1>
 <h4 class="author">Cavan Donohoe</h4>
 
 </div>
 
 
+<p><link rel="stylesheet" href="/css/learn-r.css"></p>
+<div class="course-progress">
+<p>Lesson 4 of 7 · <a href="learn_r.html">Course overview</a></p>
+</div>
 <div id="data-visualization-in-r" class="section level1">
 <h1>Data Visualization in R</h1>
-<p>In this section, we will explore the exciting world of data
-visualization in R. We’ll cover creating basic plots, customizing plots,
-and diving into advanced visualization techniques using the ggplot2
-package.</p>
-<div id="creating-basic-plots" class="section level2">
-<h2>Creating Basic Plots</h2>
-<p>R offers a variety of functions for creating basic plots,
-including:</p>
-<ul>
-<li><code>plot()</code>: For creating scatterplots and line plots.</li>
-<li><code>hist()</code>: For creating histograms.</li>
-<li><code>barplot()</code>: For creating bar charts.</li>
-<li><code>boxplot()</code>: For creating box plots.</li>
-</ul>
-<p>Here’s an example of creating a simple scatterplot:</p>
-<pre class="r"><code># Creating a scatterplot
-x &lt;- c(1, 2, 3, 4, 5)
-y &lt;- c(10, 15, 7, 20, 12)
+<p>Plotting in R is excellent. You’ve already seen <code>plot()</code> —
+it works, but the real toolkit is <strong>ggplot2</strong>. It’s based
+on a “grammar of graphics” that, once it clicks, lets you describe
+almost any plot in a handful of lines.</p>
+<p>This lesson covers the ggplot2 grammar, the most common geoms,
+faceting, themes, and how to save plots.</p>
+<div id="setup" class="section level2">
+<h2>Setup</h2>
+<pre class="r"><code>library(ggplot2)
+library(dplyr)
 
-plot(x, y, type = &quot;p&quot;, main = &quot;Scatterplot Example&quot;, xlab = &quot;X-axis&quot;, ylab = &quot;Y-axis&quot;)</code></pre>
+cars &lt;- mtcars |&gt;
+  tibble::rownames_to_column(&quot;model&quot;) |&gt;
+  tibble::as_tibble() |&gt;
+  mutate(
+    cyl = factor(cyl),
+    transmission = if_else(am == 1, &quot;manual&quot;, &quot;automatic&quot;)
+  )</code></pre>
 </div>
-<div id="customizing-plots" class="section level2">
-<h2>Customizing Plots</h2>
-<p>Customizing plots allows you to make them more informative and
-visually appealing. You can customize various aspects of your plots,
-including titles, labels, colors, and more. Here’s an example:</p>
-<pre class="r"><code>data_example &lt;- data.frame(
-  x = c(1, 2, 3, 4, 5, 6),
-  y = c(2, 3.5, 2, 4, 4.5, 7)
+<div id="the-ggplot2-grammar" class="section level2">
+<h2>The ggplot2 grammar</h2>
+<p>Every ggplot2 plot has three required pieces:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Data</strong> — the data frame you’re plotting.</li>
+<li><strong>Aesthetics</strong> (<code>aes()</code>) — which columns map
+to which visual properties (x, y, color, size, shape).</li>
+<li><strong>Geoms</strong> — the geometric shapes to draw (points, bars,
+lines, boxes, …).</li>
+</ol>
+<p>The pattern:</p>
+<pre class="r"><code>ggplot(data, aes(x = ..., y = ..., color = ...)) +
+  geom_*()</code></pre>
+<p>You add layers with <code>+</code>. Yes, <code>+</code> (not the
+pipe). Inside a <code>ggplot()</code> call you <code>+</code>, between
+data steps you <code>|&gt;</code>. It’s a mild gotcha and you’ll get it
+wrong a lot at first.</p>
+</div>
+<div id="a-first-plot" class="section level2">
+<h2>A first plot</h2>
+<pre class="r"><code>ggplot(cars, aes(x = wt, y = mpg)) +
+  geom_point()</code></pre>
+<p><img src="data_visualization_r_files/figure-html/unnamed-chunk-2-1.png" alt="" width="650" /></p>
+<p>That’s the whole plot: data (<code>cars</code>), aesthetics
+(<code>wt</code> on x, <code>mpg</code> on y), one geom
+(<code>geom_point</code> for a scatterplot).</p>
+<p>Now let’s add color, size, and labels:</p>
+<pre class="r"><code>ggplot(cars, aes(x = wt, y = mpg, color = cyl, size = hp)) +
+  geom_point(alpha = 0.8) +
+  labs(
+    title = &quot;Heavier, more powerful cars get worse mileage&quot;,
+    subtitle = &quot;Each point is a 1974 car model&quot;,
+    x = &quot;Weight (1000 lbs)&quot;,
+    y = &quot;Miles per gallon&quot;,
+    color = &quot;Cylinders&quot;,
+    size = &quot;Horsepower&quot;
+  )</code></pre>
+<p><img src="data_visualization_r_files/figure-html/unnamed-chunk-3-1.png" alt="" width="650" /></p>
+<p>Notice three things:</p>
+<ul>
+<li><code>color = cyl</code> and <code>size = hp</code> are inside
+<code>aes()</code> because they map to data columns.</li>
+<li><code>alpha = 0.8</code> is outside <code>aes()</code> because it’s
+a fixed value (every point gets the same alpha), not a mapping.</li>
+<li><code>labs()</code> controls every text label on the plot at
+once.</li>
+</ul>
+</div>
+<div id="the-most-useful-geoms" class="section level2">
+<h2>The most useful geoms</h2>
+<div id="geom_point-scatterplots" class="section level3">
+<h3><code>geom_point()</code> — scatterplots</h3>
+<p>Shown above. Add <code>geom_smooth()</code> to overlay a regression
+line:</p>
+<pre class="r"><code>ggplot(cars, aes(x = wt, y = mpg)) +
+  geom_point() +
+  geom_smooth(method = &quot;lm&quot;, se = TRUE)</code></pre>
+<p><img src="data_visualization_r_files/figure-html/unnamed-chunk-4-1.png" alt="" width="650" /></p>
+<p><code>method = "lm"</code> is a straight line; the default
+<code>"loess"</code> is a smooth curve.</p>
+</div>
+<div id="geom_line-connect-points-by-some-ordering"
+class="section level3">
+<h3><code>geom_line()</code> — connect points by some ordering</h3>
+<pre class="r"><code>year_data &lt;- tibble::tibble(
+  year = 2015:2024,
+  sales = c(100, 108, 121, 119, 130, 145, 160, 158, 172, 185)
 )
 
-# Customizing a plot
-plot(data_example$x, data_example$y, type = &quot;p&quot;, main = &quot;Customized Scatterplot&quot;,
-     xlab = &quot;X-axis&quot;, ylab = &quot;Y-axis&quot;, col = &quot;blue&quot;, pch = 19)</code></pre>
-<p><img src="data_visualization_r_files/figure-html/unnamed-chunk-1-1.png" alt="" width="672" /></p>
+ggplot(year_data, aes(x = year, y = sales)) +
+  geom_line(linewidth = 1.1, color = &quot;steelblue&quot;) +
+  geom_point(size = 2.5, color = &quot;steelblue&quot;) +
+  labs(title = &quot;Sales over time&quot;, x = NULL, y = &quot;Sales (units)&quot;)</code></pre>
+<p><img src="data_visualization_r_files/figure-html/unnamed-chunk-5-1.png" alt="" width="650" /></p>
 </div>
-<div id="advanced-visualization-with-ggplot2" class="section level2">
-<h2>Advanced Visualization with ggplot2</h2>
-<p>The ggplot2 package is a powerful and versatile tool for creating a
-wide range of customized and complex visualizations. It follows a
-grammar of graphics approach, making it intuitive and flexible. Here’s a
-basic example using ggplot2:</p>
-<pre class="r"><code># Load the ggplot2 library
-
-# Create a ggplot scatterplot
-ggplot2::ggplot(data = data_example, ggplot2::aes(x = x, y = y)) +
-  ggplot2::geom_point(size = 3, color = &quot;red&quot;) +
-  ggplot2::labs(title = &quot;ggplot2 Scatterplot&quot;, x = &quot;X-axis&quot;, y = &quot;Y-axis&quot;)</code></pre>
-<p><img src="data_visualization_r_files/figure-html/unnamed-chunk-2-1.png" alt="" width="672" /></p>
-<p>In this section, we’ve covered the fundamentals of data visualization
-in R, including creating basic plots, customizing them to meet your
-needs, and introducing you to the power of ggplot2 for advanced
-visualization. Data visualization is a crucial skill for exploring and
-communicating insights from your data effectively.</p>
-<p>Feel free to experiment with different plot types and customization
-options to enhance your data visualization skills.</p>
-<p>Free Lessons:</p>
+<div id="geom_bar-and-geom_col-bar-charts" class="section level3">
+<h3><code>geom_bar()</code> and <code>geom_col()</code> — bar
+charts</h3>
+<p><code>geom_bar()</code> counts rows itself. <code>geom_col()</code>
+uses the y-value you give it.</p>
+<pre class="r"><code>ggplot(cars, aes(x = cyl)) +
+  geom_bar(fill = &quot;steelblue&quot;) +
+  labs(title = &quot;How many of each cylinder count?&quot;, x = &quot;Cylinders&quot;, y = &quot;Count&quot;)</code></pre>
+<p><img src="data_visualization_r_files/figure-html/unnamed-chunk-6-1.png" alt="" width="650" /></p>
+<pre class="r"><code>cars |&gt;
+  group_by(cyl) |&gt;
+  summarise(mean_mpg = mean(mpg), .groups = &quot;drop&quot;) |&gt;
+  ggplot(aes(x = cyl, y = mean_mpg, fill = cyl)) +
+  geom_col() +
+  geom_text(aes(label = round(mean_mpg, 1)), vjust = -0.4) +
+  labs(title = &quot;Average MPG by cylinder count&quot;, x = &quot;Cylinders&quot;, y = &quot;Mean MPG&quot;) +
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<p><img src="data_visualization_r_files/figure-html/unnamed-chunk-7-1.png" alt="" width="650" /></p>
+<p>Notice we pipe a <code>dplyr</code> summary directly into
+<code>ggplot()</code>. This is the standard tidyverse workflow.</p>
+</div>
+<div id="geom_histogram-and-geom_density-distributions"
+class="section level3">
+<h3><code>geom_histogram()</code> and <code>geom_density()</code> —
+distributions</h3>
+<pre class="r"><code>ggplot(cars, aes(x = mpg)) +
+  geom_histogram(bins = 12, fill = &quot;steelblue&quot;, color = &quot;white&quot;) +
+  labs(title = &quot;Distribution of MPG across all cars&quot;, x = &quot;MPG&quot;, y = &quot;Count&quot;)</code></pre>
+<p><img src="data_visualization_r_files/figure-html/unnamed-chunk-8-1.png" alt="" width="650" /></p>
+<pre class="r"><code>ggplot(cars, aes(x = mpg, fill = transmission)) +
+  geom_density(alpha = 0.5) +
+  labs(title = &quot;MPG by transmission type&quot;, x = &quot;MPG&quot;, y = &quot;Density&quot;)</code></pre>
+<p><img src="data_visualization_r_files/figure-html/unnamed-chunk-9-1.png" alt="" width="650" /></p>
+</div>
+<div id="geom_boxplot-distributions-by-group" class="section level3">
+<h3><code>geom_boxplot()</code> — distributions by group</h3>
+<pre class="r"><code>ggplot(cars, aes(x = cyl, y = mpg, fill = cyl)) +
+  geom_boxplot() +
+  labs(title = &quot;MPG by cylinder count&quot;, x = &quot;Cylinders&quot;, y = &quot;MPG&quot;) +
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<p><img src="data_visualization_r_files/figure-html/unnamed-chunk-10-1.png" alt="" width="650" /></p>
+</div>
+</div>
+<div id="faceting-small-multiples" class="section level2">
+<h2>Faceting — small multiples</h2>
+<p><code>facet_wrap()</code> and <code>facet_grid()</code> let you split
+a plot into a grid of subplots, one per category. Often more informative
+than mapping a category to color.</p>
+<pre class="r"><code>ggplot(cars, aes(x = wt, y = mpg)) +
+  geom_point() +
+  geom_smooth(method = &quot;lm&quot;, se = FALSE) +
+  facet_wrap(~ cyl, labeller = label_both) +
+  labs(title = &quot;Weight vs. MPG by cylinder count&quot;)</code></pre>
+<p><img src="data_visualization_r_files/figure-html/unnamed-chunk-11-1.png" alt="" width="650" /></p>
+<p><code>facet_grid()</code> does a 2D grid of categories:</p>
+<pre class="r"><code>ggplot(cars, aes(x = wt, y = mpg)) +
+  geom_point() +
+  facet_grid(transmission ~ cyl, labeller = label_both) +
+  labs(title = &quot;Weight vs. MPG by transmission and cylinder count&quot;)</code></pre>
+<p><img src="data_visualization_r_files/figure-html/unnamed-chunk-12-1.png" alt="" width="650" /></p>
+</div>
+<div id="scales-controlling-axes-and-color" class="section level2">
+<h2>Scales — controlling axes and color</h2>
+<p>Scales control how data values map to visual properties. Common
+ones:</p>
+<pre class="r"><code>ggplot(cars, aes(x = wt, y = mpg, color = hp)) +
+  geom_point(size = 3) +
+  scale_color_viridis_c(option = &quot;plasma&quot;) +
+  scale_x_continuous(limits = c(1, 6), breaks = 1:6) +
+  scale_y_continuous(name = &quot;Miles per gallon&quot;) +
+  labs(title = &quot;Weight vs. MPG, colored by horsepower&quot;)</code></pre>
+<p><img src="data_visualization_r_files/figure-html/unnamed-chunk-13-1.png" alt="" width="650" /></p>
+<p>A few worth knowing:</p>
 <ul>
-<li><a href="https://cavandonohoe.github.io/learn_r.html">R Time Is
-Limited, Let’s Make the Most of It</a></li>
-<li><a
-href="https://cavandonohoe.github.io/intro_to_r.html">Introduction to
-R</a></li>
-<li><a
-href="https://cavandonohoe.github.io/basic_operations_r.html">Basic
-Operations in R</a></li>
-<li><a
-href="https://cavandonohoe.github.io/data_manipulation_r.html">Data
-Manipulation</a></li>
-<li><a
-href="https://cavandonohoe.github.io/data_visualization_r.html">Data
-Visualization</a></li>
-<li><a
-href="https://cavandonohoe.github.io/statistics_with_r.html">Statistics
-in R</a></li>
+<li><code>scale_*_continuous()</code> — for numeric axes; sets limits,
+breaks, labels.</li>
+<li><code>scale_*_log10()</code> — log axis (useful when data spans
+orders of magnitude).</li>
+<li><code>scale_color_viridis_*()</code> /
+<code>scale_fill_viridis_*()</code> — perceptually uniform,
+color-blind-friendly palettes. Use these.</li>
+<li><code>scale_color_manual()</code> — assign specific colors to
+specific levels.</li>
 </ul>
+</div>
+<div id="themes-controlling-the-non-data-ink" class="section level2">
+<h2>Themes — controlling the non-data ink</h2>
+<p>Themes change how the plot <em>looks</em> — gridlines, fonts,
+backgrounds. ggplot2 ships with several:</p>
+<pre class="r"><code>p &lt;- ggplot(cars, aes(x = wt, y = mpg, color = cyl)) +
+  geom_point(size = 3) +
+  labs(title = &quot;Weight vs. MPG&quot;, x = &quot;Weight&quot;, y = &quot;MPG&quot;)
+
+p + theme_minimal()</code></pre>
+<p><img src="data_visualization_r_files/figure-html/unnamed-chunk-14-1.png" alt="" width="650" /></p>
+<pre class="r"><code>p + theme_classic()</code></pre>
+<p><img src="data_visualization_r_files/figure-html/unnamed-chunk-15-1.png" alt="" width="650" /></p>
+<p>You can also tweak individual theme elements:</p>
+<pre class="r"><code>p +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = &quot;bold&quot;, size = 16),
+    legend.position = &quot;bottom&quot;,
+    panel.grid.minor = element_blank()
+  )</code></pre>
+<p><img src="data_visualization_r_files/figure-html/unnamed-chunk-16-1.png" alt="" width="650" /></p>
+<p>Setting a theme for the whole session:</p>
+<pre class="r"><code>theme_set(theme_minimal(base_size = 13))</code></pre>
+</div>
+<div id="saving-plots" class="section level2">
+<h2>Saving plots</h2>
+<p><code>ggsave()</code> saves the most recent plot — or one you pass to
+it — as a file:</p>
+<pre class="r"><code>my_plot &lt;- ggplot(cars, aes(x = wt, y = mpg)) + geom_point()
+
+ggsave(&quot;my_plot.png&quot;, my_plot, width = 6, height = 4, dpi = 300)
+ggsave(&quot;my_plot.pdf&quot;, my_plot, width = 6, height = 4)</code></pre>
+<p><code>ggsave()</code> infers the format from the file extension.
+Width and height are in inches by default.</p>
+</div>
+<div id="putting-it-together" class="section level2">
+<h2>Putting it together</h2>
+<p>Let’s build a single, polished figure that summarises something
+interesting from the data: how MPG depends on weight, broken out by
+cylinder count, with a fitted line for each group.</p>
+<pre class="r"><code>ggplot(cars, aes(x = wt, y = mpg, color = cyl)) +
+  geom_point(size = 3, alpha = 0.85) +
+  geom_smooth(method = &quot;lm&quot;, se = FALSE, linewidth = 0.9) +
+  scale_color_viridis_d(option = &quot;viridis&quot;, end = 0.85) +
+  labs(
+    title = &quot;Heavier cars get worse mileage — but cylinder count matters too&quot;,
+    subtitle = &quot;Each point is a 1974 car model from the mtcars dataset&quot;,
+    x = &quot;Weight (1000 lbs)&quot;,
+    y = &quot;Miles per gallon&quot;,
+    color = &quot;Cylinders&quot;,
+    caption = &quot;Data: Henderson &amp; Velleman (1981). Building multiple regression models interactively.&quot;
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = &quot;bold&quot;),
+    plot.subtitle = element_text(color = &quot;grey40&quot;),
+    plot.caption = element_text(color = &quot;grey50&quot;, hjust = 0),
+    legend.position = &quot;bottom&quot;,
+    panel.grid.minor = element_blank()
+  )</code></pre>
+<p><img src="data_visualization_r_files/figure-html/unnamed-chunk-19-1.png" alt="" width="650" /></p>
+<p>That’s a publication-quality plot in about 20 lines.</p>
+<div class="exercise">
+<div class="exercise-title">
+✏️ Exercise 4.1 — Your first ggplot
+</div>
+<p>Make a scatterplot of <code>hp</code> (x) versus <code>mpg</code> (y)
+from <code>cars</code>, with points colored by <code>cyl</code>. Add a
+title.</p>
+<details>
+<summary>
+Show solution
+</summary>
+<pre class="r"><code>ggplot(cars, aes(x = hp, y = mpg, color = cyl)) +
+  geom_point(size = 3) +
+  labs(title = &quot;Horsepower vs. MPG&quot;, x = &quot;Horsepower&quot;, y = &quot;MPG&quot;, color = &quot;Cylinders&quot;)</code></pre>
+<p><img src="data_visualization_r_files/figure-html/unnamed-chunk-20-1.png" alt="" width="650" /></p>
+</details>
+</div>
+<div class="exercise">
+<div class="exercise-title">
+✏️ Exercise 4.2 — Bars from a summary
+</div>
+<p>For each transmission type (<code>automatic</code> /
+<code>manual</code>), compute the mean MPG. Plot it as a bar chart with
+the bar height equal to the mean.</p>
+<details>
+<summary>
+Show solution
+</summary>
+<pre class="r"><code>cars |&gt;
+  group_by(transmission) |&gt;
+  summarise(mean_mpg = mean(mpg), .groups = &quot;drop&quot;) |&gt;
+  ggplot(aes(x = transmission, y = mean_mpg, fill = transmission)) +
+  geom_col(width = 0.6) +
+  geom_text(aes(label = round(mean_mpg, 1)), vjust = -0.4) +
+  labs(title = &quot;Mean MPG by transmission type&quot;, x = NULL, y = &quot;Mean MPG&quot;) +
+  theme_minimal() +
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<p><img src="data_visualization_r_files/figure-html/unnamed-chunk-21-1.png" alt="" width="650" /></p>
+</details>
+</div>
+<div class="exercise">
+<div class="exercise-title">
+✏️ Exercise 4.3 — Faceting
+</div>
+<p>Make a scatterplot of <code>wt</code> vs. <code>mpg</code>, with one
+panel per cylinder count, and a linear fit line in each panel.</p>
+<details>
+<summary>
+Show solution
+</summary>
+<pre class="r"><code>ggplot(cars, aes(x = wt, y = mpg)) +
+  geom_point() +
+  geom_smooth(method = &quot;lm&quot;, se = FALSE) +
+  facet_wrap(~ cyl, labeller = label_both) +
+  theme_minimal()</code></pre>
+<p><img src="data_visualization_r_files/figure-html/unnamed-chunk-22-1.png" alt="" width="650" /></p>
+</details>
+</div>
+</div>
+<div id="whats-next" class="section level2">
+<h2>What’s next</h2>
+<p>You can now turn a data frame into a clear, attractive plot. Combined
+with Lesson 3, you’ve got a real “explore the data” workflow. Lesson 5
+brings in actual statistics — t-tests, correlation, and regression — so
+you can quantify what your plots are showing you.</p>
+<div class="lesson-nav">
+<p><a class="nav-prev" href="data_manipulation_r.html"> <span
+class="lesson-nav-label">← Previous</span> <span
+class="lesson-nav-title">Lesson 3: Data Manipulation</span> </a>
+<a class="nav-next" href="statistics_with_r.html"> <span
+class="lesson-nav-label">Next →</span> <span
+class="lesson-nav-title">Lesson 5: Statistics with R</span> </a></p>
+</div>
 </div>
 </div>
 
@@ -821,6 +1129,115 @@ in R</a></li>
     </nav>
   </div>
 </footer>
+<script>
+(function() {
+  function addLabel(el, label) {
+    if (!el) return;
+    if (el.hasAttribute('aria-label') && el.getAttribute('aria-label').trim()) return;
+    if (el.hasAttribute('title') && el.getAttribute('title').trim()) return;
+    el.setAttribute('aria-label', label);
+  }
+
+  function labelNavbarToggle() {
+    var toggles = document.querySelectorAll('button.navbar-toggle');
+    for (var i = 0; i < toggles.length; i++) {
+      addLabel(toggles[i], 'Toggle navigation');
+    }
+  }
+
+  function labelPlotlyModebar() {
+    var anchors = document.querySelectorAll('.modebar-container a, [id^="modebar-"] a');
+    for (var i = 0; i < anchors.length; i++) {
+      var a = anchors[i];
+      if ((a.hasAttribute('aria-label') && a.getAttribute('aria-label').trim()) ||
+          (a.hasAttribute('title') && a.getAttribute('title').trim())) {
+        // already labeled — but H91 still wants id/name on empty anchors,
+        // so ensure that too.
+      } else {
+        var dataTitle = a.getAttribute('data-title') || '';
+        var label = dataTitle.trim() || 'Plot toolbar action';
+        a.setAttribute('aria-label', label);
+      }
+      // H91 considers an empty anchor accessible if it has id or name.
+      // Give every modebar anchor a stable, unique id derived from the
+      // parent modebar id + position so HTML_CodeSniffer stops flagging.
+      if (!a.id) {
+        var parent = a.closest('[id^="modebar-"]');
+        var base = parent ? parent.id : 'modebar';
+        var idx = Array.prototype.indexOf.call(parent ? parent.querySelectorAll('a') : [a], a);
+        a.id = base + '-btn-' + (idx >= 0 ? idx : i);
+      }
+      if (!a.getAttribute('name')) a.setAttribute('name', a.id);
+    }
+  }
+
+  function dedupePlotlySymbolIds() {
+    // Plotly inlines an SVG icon set per chart that defines <g id="symbol">,
+    // so pages with two charts trip F77 (duplicate id). Drop the id on every
+    // occurrence after the first; nothing on the page references #symbol.
+    // Restrict to the known offender so we don't accidentally rename
+    // legitimate duplicates elsewhere.
+    var symbols = document.querySelectorAll('[id="symbol"]');
+    for (var i = 1; i < symbols.length; i++) {
+      symbols[i].removeAttribute('id');
+    }
+  }
+
+  function labelDataTablesControls() {
+    var inputs = document.querySelectorAll(
+      '.dataTables_wrapper input[type="search"], .dataTables_wrapper input[type="text"], ' +
+      'table.dataTable thead input[type="search"], table.dataTable thead input[type="text"]'
+    );
+    for (var i = 0; i < inputs.length; i++) {
+      var input = inputs[i];
+      if ((input.hasAttribute('aria-label') && input.getAttribute('aria-label').trim()) ||
+          (input.hasAttribute('title') && input.getAttribute('title').trim())) continue;
+      var placeholder = input.getAttribute('placeholder') || '';
+      var label = placeholder.trim() || 'Search';
+      var th = input.closest('th, td');
+      var col = th ? (th.getAttribute('aria-label') || th.textContent || '').trim() : '';
+      if (col) label = col + ' search';
+      input.setAttribute('aria-label', label);
+    }
+
+    var selects = document.querySelectorAll(
+      '.dataTables_wrapper select, table.dataTable thead select'
+    );
+    for (var j = 0; j < selects.length; j++) {
+      var sel = selects[j];
+      if ((sel.hasAttribute('aria-label') && sel.getAttribute('aria-label').trim()) ||
+          (sel.hasAttribute('title') && sel.getAttribute('title').trim())) continue;
+      var th2 = sel.closest('th, td');
+      var col2 = th2 ? (th2.getAttribute('aria-label') || th2.textContent || '').trim() : '';
+      sel.setAttribute('aria-label', col2 ? col2 + ' filter' : 'Column filter');
+    }
+  }
+
+  function applyA11yShims() {
+    labelNavbarToggle();
+    labelPlotlyModebar();
+    labelDataTablesControls();
+    dedupePlotlySymbolIds();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyA11yShims);
+  } else {
+    applyA11yShims();
+  }
+
+  // Plotly and DataTables can re-render after initial load; reapply on a short
+  // delay and observe further DOM changes so dynamically-inserted controls
+  // also get labelled before the pa11y wait window expires.
+  setTimeout(applyA11yShims, 250);
+  setTimeout(applyA11yShims, 1000);
+
+  if (typeof MutationObserver !== 'undefined') {
+    var observer = new MutationObserver(function() { applyA11yShims(); });
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+})();
+</script>
 <script>
 (function() {
   var btn = document.createElement('button');

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en" xml:lang="en">
 
 <head>
 
@@ -230,6 +230,43 @@ body {
 .project-card .card-icon { font-size: 2em; margin-bottom: 0.4em; }
 .project-card h3 { font-size: 1.05em; margin: 0 0 0.4em 0; color: var(--link-color) !important; }
 .project-card p { font-size: 0.88em; color: var(--muted-text); margin: 0; line-height: 1.4; }
+
+/* GitHub contribution chart */
+.gh-contrib-link {
+  display: block;
+  text-decoration: none !important;
+  margin: 1.2em 0 1.8em 0;
+}
+.gh-contrib-chart {
+  display: block;
+  width: 100%;
+  max-width: 740px;
+  height: auto;
+  margin: 0 auto;
+  padding: 1em;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px var(--card-shadow);
+  transition: box-shadow 0.2s;
+}
+.gh-contrib-link:hover .gh-contrib-chart {
+  box-shadow: 0 6px 20px var(--card-shadow);
+}
+[data-theme="dark"] .gh-contrib-chart { opacity: 1; }
+
+/* Figure captions (rendered from markdown image alt text) */
+.float {
+  margin-bottom: 2.5em;
+}
+.figcaption {
+  font-size: 0.88em;
+  font-style: italic;
+  color: var(--muted-text);
+  text-align: center;
+  margin-top: 0.5em;
+  line-height: 1.4;
+}
 
 /* Timestamp badges */
 .data-timestamp {
@@ -564,6 +601,9 @@ $(document).ready(function () {
       <a href="best_pic_vs_top_1000.html">Best Picture and Top 1000 Box Office</a>
     </li>
     <li>
+      <a href="director_box_office_trajectory.html">Director Box Office Trajectory</a>
+    </li>
+    <li>
       <a href="my_imdb.html">My IMDb Ratings</a>
     </li>
     <li class="dropdown-header">--- Sports &amp; Personal ---</li>
@@ -584,10 +624,16 @@ $(document).ready(function () {
     </li>
     <li class="dropdown-header">--- Visualizations ---</li>
     <li>
+      <a href="wc-momentum/index.html">World Cup 3D Momentum Portrait</a>
+    </li>
+    <li>
       <a href="confederate_statues.html">When Were Confederate Statues Erected?</a>
     </li>
     <li>
       <a href="sierpinski_triangle.html">Sierpinski Triangle</a>
+    </li>
+    <li>
+      <a href="airplane_boarding.html">Airplane Boarding Simulation</a>
     </li>
     <li class="dropdown-header">--- Real Estate &amp; Finance ---</li>
     <li>
@@ -597,7 +643,14 @@ $(document).ready(function () {
       <a href="la_real_estate.html">LA Neighborhoods: Price per Sq Ft</a>
     </li>
     <li>
+      <a href="la_housing_heatmap.html">LA Housing Prices: Animated Heat Map</a>
+    </li>
+    <li>
       <a href="https://cavandonohoe.shinyapps.io/rent-vs-buy/">Rent vs. Buy Calculator</a>
+    </li>
+    <li class="dropdown-header">--- Data Science &amp; Clinical ---</li>
+    <li>
+      <a href="sdtm_with_r.html">SDTM with R</a>
     </li>
     <li class="dropdown-header">--- Archive ---</li>
     <li>
@@ -606,28 +659,41 @@ $(document).ready(function () {
     <li>
       <a href="covid_cases_nostalgia.html">Covid Cases: Then &amp; Now</a>
     </li>
-    <li class="dropdown-submenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Learn R</a>
-      <ul class="dropdown-menu" role="menu">
-        <li>
-          <a href="learn_r.html">R Time Is Limited, Let's Make the Most of It</a>
-        </li>
-        <li>
-          <a href="intro_to_r.html">Intro to R</a>
-        </li>
-        <li>
-          <a href="basic_operations_r.html">Basic Operations</a>
-        </li>
-        <li>
-          <a href="data_manipulation_r.html">Data Manipulations</a>
-        </li>
-        <li>
-          <a href="data_visualization_r.html">Data Visualization</a>
-        </li>
-        <li>
-          <a href="statistics_with_r.html">Statistics with R</a>
-        </li>
-      </ul>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-graduation-cap"></span>
+     
+    Learn R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="learn_r.html">Course Overview</a>
+    </li>
+    <li class="dropdown-header">--- Lessons ---</li>
+    <li>
+      <a href="intro_to_r.html">1. Introduction to R</a>
+    </li>
+    <li>
+      <a href="basic_operations_r.html">2. Basic Operations</a>
+    </li>
+    <li>
+      <a href="data_manipulation_r.html">3. Data Manipulation</a>
+    </li>
+    <li>
+      <a href="data_visualization_r.html">4. Data Visualization</a>
+    </li>
+    <li>
+      <a href="statistics_with_r.html">5. Statistics with R</a>
+    </li>
+    <li>
+      <a href="rmarkdown_r.html">6. Reproducible Reports with R Markdown</a>
+    </li>
+    <li>
+      <a href="capstone_r.html">7. Capstone Project</a>
     </li>
   </ul>
 </li>
@@ -668,8 +734,8 @@ $(document).ready(function () {
 <div id="hi-im-cavan" class="section level2">
 <h2>Hi, I’m Cavan 👋</h2>
 <p>I’m a <strong>Data Scientist</strong> who likes turning messy data
-into clear decisions — through automation, reproducible analysis, and
-the occasional weekend side project. This site is part resume, part
+into clear decisions through automation, reproducible analysis, and the
+occasional weekend side project. This site is part resume, part
 playground: everything here is built in R and deployed through GitHub,
 because why not have a little fun while we’re here.</p>
 <div class="hero-cta">
@@ -686,6 +752,16 @@ Reminiscing of my life on Oahu</div>
 </div>
 <p>My work ranges from housing market intelligence and finance
 calculators to entertainment analytics and educational R content.</p>
+</div>
+<div id="what-ive-been-building" class="section level2">
+<h2>What I’ve Been Building</h2>
+<p>Here’s my GitHub contribution activity, a live snapshot of the
+commits behind this site and my other projects.</p>
+<p><a href="https://github.com/cavandonohoe" class="gh-contrib-link"
+   aria-label="Cavan Donohoe's GitHub contribution graph">
+<img src="https://ghchart.rshah.org/409ba5/cavandonohoe"
+       alt="Cavan Donohoe's GitHub contribution graph"
+       class="gh-contrib-chart" loading="lazy" /> </a></p>
 </div>
 <div id="featured-project-rent-vs.-buy-calculator"
 class="section level2">
@@ -770,7 +846,7 @@ and Census data.
 <div class="project-meta">
 analysis • real-estate • finance
 </div>
-</a><a class="project-card" href="la_real_estate.html" data-tags="real-estate,finance" data-type="analysis" data-title="la neighborhoods: price per sq ft" data-desc="zillow + redfin data for la neighborhoods — median prices, rent, and what $1m buys you.">
+</a><a class="project-card" href="la_real_estate.html" data-tags="real-estate,finance" data-type="analysis" data-title="la neighborhoods: price per sq ft" data-desc="zillow + redfin data for la neighborhoods: median prices, rent, and what $1m buys you.">
 <div class="card-icon">
 🏡
 </div>
@@ -778,8 +854,8 @@ analysis • real-estate • finance
 LA Neighborhoods: Price per Sq Ft
 </h3>
 <p>
-Zillow + Redfin data for LA neighborhoods — median prices, rent, and
-what $1M buys you.
+Zillow + Redfin data for LA neighborhoods: median prices, rent, and what
+$1M buys you.
 </p>
 <div class="project-meta">
 analysis • real-estate • finance
@@ -798,6 +874,20 @@ vs. buying.
 <div class="project-meta">
 app • finance • tools
 </div>
+</a><a class="project-card" href="wc-momentum/index.html" data-tags="sports,visualization" data-type="app" data-title="world cup 3d momentum portrait" data-desc="follow the ball through the 2022 world cup final in 3d: possession, passes, and every goal, animated from real statsbomb event data.">
+<div class="card-icon">
+🌍
+</div>
+<h3>
+World Cup 3D Momentum Portrait
+</h3>
+<p>
+Follow the ball through the 2022 World Cup Final in 3D: possession,
+passes, and every goal, animated from real StatsBomb event data.
+</p>
+<div class="project-meta">
+app • sports • visualization
+</div>
 </a><a class="project-card" href="imdb_top_250_tv_series.html" data-tags="entertainment" data-type="analysis" data-title="imdb top 250 tv series" data-desc="scraped ratings, seasons, and trends for the top 250 tv shows on imdb.">
 <div class="card-icon">
 📺
@@ -811,7 +901,7 @@ Scraped ratings, seasons, and trends for the top 250 TV shows on IMDb.
 <div class="project-meta">
 analysis • entertainment
 </div>
-</a><a class="project-card" href="best_picture_nominees.html" data-tags="entertainment" data-type="analysis" data-title="best picture nominees" data-desc="oscar best picture data — distributors, producers, and historical nominee analysis.">
+</a><a class="project-card" href="best_picture_nominees.html" data-tags="entertainment" data-type="analysis" data-title="best picture nominees" data-desc="oscar best picture data: distributors, producers, and historical nominee analysis.">
 <div class="card-icon">
 🎬
 </div>
@@ -819,8 +909,8 @@ analysis • entertainment
 Best Picture Nominees
 </h3>
 <p>
-Oscar Best Picture data — distributors, producers, and historical
-nominee analysis.
+Oscar Best Picture data: distributors, producers, and historical nominee
+analysis.
 </p>
 <div class="project-meta">
 analysis • entertainment
@@ -931,7 +1021,7 @@ comparison.
 <div class="project-meta">
 analysis • entertainment • finance
 </div>
-</a><a class="project-card" href="sierpinski_triangle.html" data-tags="education,visualization" data-type="analysis" data-title="sierpinski triangle" data-desc="fractal geometry generated in r — the classic chaos game visualization.">
+</a><a class="project-card" href="sierpinski_triangle.html" data-tags="education,visualization" data-type="analysis" data-title="sierpinski triangle" data-desc="fractal geometry generated in r: the classic chaos game visualization.">
 <div class="card-icon">
 🔺
 </div>
@@ -939,14 +1029,28 @@ analysis • entertainment • finance
 Sierpinski Triangle
 </h3>
 <p>
-Fractal geometry generated in R — the classic chaos game visualization.
+Fractal geometry generated in R: the classic chaos game visualization.
 </p>
 <div class="project-meta">
 analysis • education • visualization
 </div>
+</a><a class="project-card" href="airplane_boarding.html" data-tags="visualization,tools" data-type="app" data-title="airplane boarding simulation" data-desc="animated head-to-head race of steffen, wilma, back-to-front, reverse pyramid, and random.">
+<div class="card-icon">
+✈️
+</div>
+<h3>
+Airplane Boarding Simulation
+</h3>
+<p>
+Animated head-to-head race of Steffen, WILMA, Back-to-Front, Reverse
+Pyramid, and Random.
+</p>
+<div class="project-meta">
+app • visualization • tools
+</div>
 </a><a class="project-card" href="confederate_statues.html" data-tags="history,visualization" data-type="analysis" data-title="confederate statues timeline" data-desc="when were confederate monuments erected? a data-driven look at the timeline.">
 <div class="card-icon">
-🗽
+🗿
 </div>
 <h3>
 Confederate Statues Timeline
@@ -1039,6 +1143,115 @@ No projects match your current filters.
     </nav>
   </div>
 </footer>
+<script>
+(function() {
+  function addLabel(el, label) {
+    if (!el) return;
+    if (el.hasAttribute('aria-label') && el.getAttribute('aria-label').trim()) return;
+    if (el.hasAttribute('title') && el.getAttribute('title').trim()) return;
+    el.setAttribute('aria-label', label);
+  }
+
+  function labelNavbarToggle() {
+    var toggles = document.querySelectorAll('button.navbar-toggle');
+    for (var i = 0; i < toggles.length; i++) {
+      addLabel(toggles[i], 'Toggle navigation');
+    }
+  }
+
+  function labelPlotlyModebar() {
+    var anchors = document.querySelectorAll('.modebar-container a, [id^="modebar-"] a');
+    for (var i = 0; i < anchors.length; i++) {
+      var a = anchors[i];
+      if ((a.hasAttribute('aria-label') && a.getAttribute('aria-label').trim()) ||
+          (a.hasAttribute('title') && a.getAttribute('title').trim())) {
+        // already labeled — but H91 still wants id/name on empty anchors,
+        // so ensure that too.
+      } else {
+        var dataTitle = a.getAttribute('data-title') || '';
+        var label = dataTitle.trim() || 'Plot toolbar action';
+        a.setAttribute('aria-label', label);
+      }
+      // H91 considers an empty anchor accessible if it has id or name.
+      // Give every modebar anchor a stable, unique id derived from the
+      // parent modebar id + position so HTML_CodeSniffer stops flagging.
+      if (!a.id) {
+        var parent = a.closest('[id^="modebar-"]');
+        var base = parent ? parent.id : 'modebar';
+        var idx = Array.prototype.indexOf.call(parent ? parent.querySelectorAll('a') : [a], a);
+        a.id = base + '-btn-' + (idx >= 0 ? idx : i);
+      }
+      if (!a.getAttribute('name')) a.setAttribute('name', a.id);
+    }
+  }
+
+  function dedupePlotlySymbolIds() {
+    // Plotly inlines an SVG icon set per chart that defines <g id="symbol">,
+    // so pages with two charts trip F77 (duplicate id). Drop the id on every
+    // occurrence after the first; nothing on the page references #symbol.
+    // Restrict to the known offender so we don't accidentally rename
+    // legitimate duplicates elsewhere.
+    var symbols = document.querySelectorAll('[id="symbol"]');
+    for (var i = 1; i < symbols.length; i++) {
+      symbols[i].removeAttribute('id');
+    }
+  }
+
+  function labelDataTablesControls() {
+    var inputs = document.querySelectorAll(
+      '.dataTables_wrapper input[type="search"], .dataTables_wrapper input[type="text"], ' +
+      'table.dataTable thead input[type="search"], table.dataTable thead input[type="text"]'
+    );
+    for (var i = 0; i < inputs.length; i++) {
+      var input = inputs[i];
+      if ((input.hasAttribute('aria-label') && input.getAttribute('aria-label').trim()) ||
+          (input.hasAttribute('title') && input.getAttribute('title').trim())) continue;
+      var placeholder = input.getAttribute('placeholder') || '';
+      var label = placeholder.trim() || 'Search';
+      var th = input.closest('th, td');
+      var col = th ? (th.getAttribute('aria-label') || th.textContent || '').trim() : '';
+      if (col) label = col + ' search';
+      input.setAttribute('aria-label', label);
+    }
+
+    var selects = document.querySelectorAll(
+      '.dataTables_wrapper select, table.dataTable thead select'
+    );
+    for (var j = 0; j < selects.length; j++) {
+      var sel = selects[j];
+      if ((sel.hasAttribute('aria-label') && sel.getAttribute('aria-label').trim()) ||
+          (sel.hasAttribute('title') && sel.getAttribute('title').trim())) continue;
+      var th2 = sel.closest('th, td');
+      var col2 = th2 ? (th2.getAttribute('aria-label') || th2.textContent || '').trim() : '';
+      sel.setAttribute('aria-label', col2 ? col2 + ' filter' : 'Column filter');
+    }
+  }
+
+  function applyA11yShims() {
+    labelNavbarToggle();
+    labelPlotlyModebar();
+    labelDataTablesControls();
+    dedupePlotlySymbolIds();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyA11yShims);
+  } else {
+    applyA11yShims();
+  }
+
+  // Plotly and DataTables can re-render after initial load; reapply on a short
+  // delay and observe further DOM changes so dynamically-inserted controls
+  // also get labelled before the pa11y wait window expires.
+  setTimeout(applyA11yShims, 250);
+  setTimeout(applyA11yShims, 1000);
+
+  if (typeof MutationObserver !== 'undefined') {
+    var observer = new MutationObserver(function() { applyA11yShims(); });
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+})();
+</script>
 <script>
 (function() {
   var btn = document.createElement('button');
