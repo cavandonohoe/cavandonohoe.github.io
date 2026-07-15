@@ -1,63 +1,63 @@
 season,episode,title,rating,votes
-1,1,Pilot,9.1,57627
-1,2,Cat's in the Bag...,8.6,42353
-1,3,...And the Bag's in the River,8.7,40898
-1,4,Cancer Man,8.2,39122
-1,5,Gray Matter,8.3,38421
-1,6,Crazy Handful of Nothin',9.3,45052
-1,7,A No-Rough-Stuff-Type Deal,8.8,39362
-2,1,Seven Thirty-Seven,8.6,35601
-2,2,Grilled,9.3,40586
-2,3,Bit by a Dead Bee,8.3,34120
-2,4,Down,8.2,34171
-2,5,Breakage,8.2,33339
-2,6,Peekaboo,8.8,36313
-2,7,Negro y Azul,8.6,33586
-2,8,Better Call Saul,9.3,39715
-2,9,4 Days Out,9.2,37916
-2,10,Over,8.4,32709
-2,11,Mandala,8.9,33737
-2,12,Phoenix,9.3,38057
-2,13,ABQ,9.2,37192
-3,1,No Más,8.5,32228
-3,2,Caballo sin Nombre,8.6,31600
-3,3,I.F.T.,8.4,31283
-3,4,Green Light,8.1,31879
-3,5,Más,8.5,30654
-3,6,Sunset,9.3,35446
-3,7,One Minute,9.6,42985
-3,8,I See You,8.7,31569
-3,9,Kafkaesque,8.4,30944
-3,10,Fly,8,65461
-3,11,Abiquiu,8.4,30878
-3,12,Half Measures,9.5,42262
-3,13,Full Measure,9.7,48422
-4,1,Box Cutter,9.2,37683
-4,2,Thirty-Eight Snub,8.2,31451
-4,3,Open House,8,32506
-4,4,Bullet Points,8.5,30521
-4,5,Shotgun,8.6,30542
-4,6,Cornered,8.4,30924
-4,7,Problem Dog,8.8,31887
-4,8,Hermanos,9.3,35906
-4,9,Bug,8.9,32490
-4,10,Salud,9.6,44645
-4,11,Crawl Space,9.7,53574
-4,12,End Times,9.5,40582
-4,13,Face Off,9.9,94250
-5,1,Live Free or Die,9.2,41484
-5,2,Madrigal,8.8,36464
-5,3,Hazard Pay,8.8,35842
-5,4,Fifty-One,8.8,36078
-5,5,Dead Freight,9.7,52087
-5,6,Buyout,9,36831
-5,7,Say My Name,9.6,48785
-5,8,Gliding Over All,9.6,45683
-5,9,Blood Money,9.5,43540
-5,10,Buried,9.2,39400
-5,11,Confessions,9.6,47421
-5,12,Rabid Dog,9.2,41069
-5,13,To'hajiilee,9.8,70171
-5,14,Ozymandias,10,271581
-5,15,Granite State,9.7,68586
-5,16,Felina,9.9,172830
+1,1,Pilot,9,83062
+1,2,Cat's in the Bag...,8.6,61764
+1,3,...And the Bag's in the River,8.7,59536
+1,4,Cancer Man,8.2,57212
+1,5,Gray Matter,8.2,56192
+1,6,Crazy Handful of Nothin',9.3,65565
+1,7,A No-Rough-Stuff-Type Deal,8.8,57124
+2,1,Seven Thirty-Seven,8.6,51386
+2,2,Grilled,9.3,59202
+2,3,Bit by a Dead Bee,8.3,49436
+2,4,Down,8.2,49505
+2,5,Breakage,8.2,48814
+2,6,Peekaboo,8.8,52200
+2,7,Negro y Azul,8.6,48545
+2,8,Better Call Saul,9.3,57336
+2,9,4 Days Out,9.2,55067
+2,10,Over,8.4,47713
+2,11,Mandala,8.9,49591
+2,12,Phoenix,9.3,55815
+2,13,ABQ,9.2,54483
+3,1,No Más,8.4,46997
+3,2,Caballo sin Nombre,8.6,45804
+3,3,I.F.T.,8.3,45620
+3,4,Green Light,8.1,47471
+3,5,Más,8.5,44830
+3,6,Sunset,9.3,51413
+3,7,One Minute,9.6,63010
+3,8,I See You,8.7,45840
+3,9,Kafkaesque,8.3,45210
+3,10,Fly,7.9,96662
+3,11,Abiquiu,8.4,44999
+3,12,Half Measures,9.5,62378
+3,13,Full Measure,9.7,76190
+4,1,Box Cutter,9.2,54526
+4,2,Thirty-Eight Snub,8.2,46228
+4,3,Open House,7.9,56045
+4,4,Bullet Points,8.5,45273
+4,5,Shotgun,8.6,44913
+4,6,Cornered,8.4,45973
+4,7,Problem Dog,8.8,46392
+4,8,Hermanos,9.3,53171
+4,9,Bug,8.9,48657
+4,10,Salud,9.6,66103
+4,11,Crawl Space,9.7,84430
+4,12,End Times,9.5,61282
+4,13,Face Off,9.8,158210
+5,1,Live Free or Die,9.2,64167
+5,2,Madrigal,8.8,56757
+5,3,Hazard Pay,8.8,56157
+5,4,Fifty-One,8.8,56567
+5,5,Dead Freight,9.6,86143
+5,6,Buyout,9,58895
+5,7,Say My Name,9.6,82076
+5,8,Gliding Over All,9.5,72698
+5,9,Blood Money,9.4,68460
+5,10,Buried,9.2,62953
+5,11,Confessions,9.6,80223
+5,12,Rabid Dog,9.1,67686
+5,13,To'hajiilee,9.7,127592
+5,14,Ozymandias,9.5,503725
+5,15,Granite State,9.6,122683
+5,16,Felina,9.8,293372

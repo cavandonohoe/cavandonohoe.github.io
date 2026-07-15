@@ -15,13 +15,85 @@ imdb_user_agent <- paste(
 )
 
 read_imdb_html <- function(url) {
-  response <- httr::GET(
-    url,
-    httr::user_agent(imdb_user_agent),
-    httr::add_headers("Accept-Language" = "en-US,en;q=0.9")
-  )
-  httr::stop_for_status(response)
-  xml2::read_html(response)
+  all_empty <- TRUE
+  for (attempt in seq_len(3)) {
+    response <- tryCatch(
+      httr::GET(
+        url,
+        httr::user_agent(imdb_user_agent),
+        httr::add_headers("Accept-Language" = "en-US,en;q=0.9"),
+        httr::timeout(60)
+      ),
+      error = function(e) e
+    )
+    if (inherits(response, "error") || httr::http_error(response)) {
+      all_empty <- FALSE
+      if (attempt < 3) Sys.sleep(2 ^ attempt)
+      next
+    }
+    html <- httr::content(response, as = "text", encoding = "UTF-8")
+    if (is.null(html) || !nzchar(html) || nchar(html) < 200) {
+      message(sprintf(
+        "[top1000] empty/short body for %s (%d chars), retrying...",
+        url, nchar(if (is.null(html)) "" else html)
+      ))
+      if (attempt < 3) Sys.sleep(2 ^ attempt)
+      next
+    }
+    parsed <- tryCatch(xml2::read_html(html), error = function(e) e)
+    if (!inherits(parsed, "error")) {
+      return(parsed)
+    }
+    all_empty <- FALSE
+    message(sprintf(
+      "[top1000] parse error for %s: %s",
+      url, conditionMessage(parsed)
+    ))
+    if (attempt < 3) Sys.sleep(2 ^ attempt)
+  }
+  if (all_empty && exists("signal_imdb_block", mode = "function")) {
+    signal_imdb_block(url)
+  }
+  stop("Failed to fetch ", url, " after 3 attempts")
+}
+
+safe_read_html <- function(page_url) {
+  all_empty <- TRUE
+  for (attempt in seq_len(3)) {
+    response <- tryCatch(
+      httr::GET(
+        page_url,
+        httr::user_agent(imdb_user_agent),
+        httr::add_headers("Accept-Language" = "en-US,en;q=0.9"),
+        httr::timeout(60)
+      ),
+      error = function(e) e
+    )
+    if (inherits(response, "error") || httr::http_error(response)) {
+      all_empty <- FALSE
+      if (attempt < 3) Sys.sleep(2 ^ attempt)
+      next
+    }
+    html <- httr::content(response, as = "text", encoding = "UTF-8")
+    if (is.null(html) || !nzchar(html) || nchar(html) < 200) {
+      message(sprintf(
+        "[top1000] empty/short body for %s (%d chars), retrying...",
+        page_url, nchar(if (is.null(html)) "" else html)
+      ))
+      if (attempt < 3) Sys.sleep(2 ^ attempt)
+      next
+    }
+    parsed <- tryCatch(rvest::read_html(html), error = function(e) e)
+    if (!inherits(parsed, "error")) {
+      return(parsed)
+    }
+    all_empty <- FALSE
+    if (attempt < 3) Sys.sleep(2 ^ attempt)
+  }
+  if (all_empty && exists("signal_imdb_block", mode = "function")) {
+    signal_imdb_block(page_url)
+  }
+  stop("Failed to fetch ", page_url, " after 3 attempts")
 }
 
 imdb_next_data <- function(url) {
@@ -39,7 +111,7 @@ imdb_next_data <- function(url) {
 
 url <- "https://www.boxofficemojo.com/chart/top_lifetime_gross/?area=XWW"
 
-links <- rvest::read_html(url) %>%
+links <- safe_read_html(url) %>%
   rvest::html_nodes("a") %>%
   rvest::html_attr("href")
 
@@ -50,16 +122,17 @@ all_urls <- c(url, paste0(url, "&offset=", offset))
 
 rankings_tib <- tibble::tibble()
 for (url_index in all_urls) {
-  rankings <- rvest::read_html(url_index) %>%
+  page_html <- safe_read_html(url_index)
+  rankings <- page_html %>%
     rvest::html_node("table") %>%
     rvest::html_table(fill=TRUE) %>%
     tibble::as_tibble() %>%
-    dplyr::mutate(Rank = readr::parse_number(Rank))
+    dplyr::mutate(Rank = readr::parse_number(as.character(Rank)))
 
-  # funny enough, before doing this, I just read in a list of imdb movies titles 
+  # funny enough, before doing this, I just read in a list of imdb movies titles
   # and got the imdb id that way. but apparently multiple versions of beauty and the beast
   # were released in 2017, so that plan kinda backfired
-  links <- rvest::read_html(url_index) %>%
+  links <- page_html %>%
     rvest::html_nodes("a") %>%
     rvest::html_attr("href")
 
@@ -126,18 +199,73 @@ title_lookup <- setNames(rankings_tib_final2$Title, rankings_tib_final2$id)
 missing_ids <- setdiff(rankings_tib_final2$id, names(ratings_lookup))
 
 if (length(missing_ids) > 0) {
+  total_missing <- length(missing_ids)
+  message(sprintf(
+    "[CI] %d cached ratings, %d missing.",
+    length(ratings_lookup), total_missing
+  ))
+
+  # CI batch cap: bound how many new IMDb pages this run will fetch so the
+  # job always finishes well under the 60-min job timeout. Set
+  # MAX_NEW_RATINGS to control; the workflow sets a CI default. Locally
+  # the variable is unset, so all missing ratings are fetched.
+  max_new_env <- Sys.getenv("MAX_NEW_RATINGS", unset = "")
+  if (nzchar(max_new_env)) {
+    max_new <- suppressWarnings(as.integer(max_new_env))
+    if (is.na(max_new) || max_new <= 0) max_new <- total_missing
+  } else {
+    max_new <- total_missing
+  }
+  if (max_new < total_missing) {
+    message(sprintf(
+      "[CI] Capping this run at %d new ratings (set MAX_NEW_RATINGS to override).",
+      max_new
+    ))
+  }
+
+  step_summary_path <- Sys.getenv("GITHUB_STEP_SUMMARY", unset = "")
+  write_progress_summary <- function(done, target, total, started_at) {
+    if (!nzchar(step_summary_path)) return(invisible(NULL))
+    elapsed_s <- as.numeric(difftime(Sys.time(), started_at, units = "secs"))
+    rate <- if (done > 0) elapsed_s / done else NA_real_
+    eta_s <- if (!is.na(rate)) rate * (target - done) else NA_real_
+    fmt_dur <- function(s) {
+      if (is.na(s) || !is.finite(s)) return("--:--")
+      sprintf("%02d:%02d", as.integer(s) %/% 60, as.integer(s) %% 60)
+    }
+    pct <- if (target > 0) sprintf("%.1f%%", 100 * done / target) else "n/a"
+    lines <- c(
+      "## Top 1000 box office \u2014 IMDb rating fetch progress",
+      "",
+      sprintf("- **This run**: %d / %d  (%s)", done, target, pct),
+      sprintf("- **Total missing (this run + future)**: %d", total),
+      sprintf("- **Elapsed**: %s, **ETA**: %s", fmt_dur(elapsed_s), fmt_dur(eta_s)),
+      ""
+    )
+    writeLines(lines, con = step_summary_path)
+  }
+
+  fetch_target <- min(max_new, total_missing)
+  started_at <- Sys.time()
   recent_titles <- character()
-  for (i in seq_along(missing_ids)) {
+  fetched_this_run <- 0
+  for (i in seq_len(fetch_target)) {
     title_id <- missing_ids[[i]]
     title_name <- title_lookup[[title_id]]
     ratings_lookup[[title_id]] <- get_rating(title_id)
+    fetched_this_run <- i
     recent_titles <- c(recent_titles, sprintf("%s (%s)", title_name, title_id))
 
-    if (i %% 10 == 0 || i == length(missing_ids)) {
-      message(sprintf("Fetched %d/%d:", i, length(missing_ids)))
+    if (i %% 10 == 0 || i == fetch_target) {
+      pct <- 100 * i / fetch_target
+      message(sprintf(
+        "Fetched %d/%d (%.1f%%, missing total %d):",
+        i, fetch_target, pct, total_missing
+      ))
       message(paste(recent_titles, collapse = "\n"))
       message("")
       recent_titles <- character()
+      write_progress_summary(i, fetch_target, total_missing, started_at)
     }
 
     if (i %% 25 == 0) {
@@ -148,6 +276,7 @@ if (length(missing_ids) > 0) {
       )
     }
   }
+  write_progress_summary(fetched_this_run, fetch_target, total_missing, started_at)
 }
 
 saveRDS(
