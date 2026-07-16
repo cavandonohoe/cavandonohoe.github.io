@@ -43,6 +43,9 @@ ALO = "ALO"
 [files]
 extend-exclude = [
   ".git/**",
+  # Nested git repos (e.g. food-ranker/) are not submodules and their
+  # .git/objects blobs otherwise get scanned as binary noise.
+  "**/.git/**",
   "_archive/**",
   "_site/**",
   "**/*.pdf",

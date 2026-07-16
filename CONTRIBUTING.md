@@ -72,11 +72,43 @@ lintr::lint("scripts/generate_sitemap.R")
 # Lint a directory
 lintr::lint_dir("scripts/")
 
-# Run the test suite (when tests are present)
-testthat::test_dir("tests/testthat")
+# Run the full test suite (testthat dir + flat tests/test*.R) the same way
+# the pre-push hook and CI do
+Rscript scripts/run_tests.R
 ```
 
 For typo / link / accessibility checks see the corresponding workflows in `.github/workflows/`. These run automatically on PR.
+
+## Git hooks (pre-push)
+
+The repo ships a pre-push hook (`.githooks/pre-push`) that runs the fast,
+deterministic slice of CI locally so red checks are caught before the push
+instead of after a round-trip to GitHub. Enable it once after cloning:
+
+```bash
+./scripts/install-git-hooks.sh
+```
+
+That points `core.hooksPath` at the tracked `.githooks/` directory, so the
+hook is versioned and shared. On each `git push` it runs against the files
+changed in the range being pushed:
+
+- **typos** — spell check via `.typos.toml` (mirrors `typos.yml`)
+- **lintr** — lints changed `.R` / `.Rmd` files via `.lintr` (mirrors `lint.yml`)
+- **testthat** — runs `tests/testthat` and flat `tests/test*.R` files when `scripts/` or `tests/` changed (mirrors `test.yml`)
+- **DESCRIPTION** — checks every `library()` call in an Rmd is declared (mirrors the build sanity check)
+
+Heavy jobs (site render, Lighthouse, pa11y, link-check) stay on CI; they
+need Chrome / a built `_site` / network and are too slow for a push gate.
+
+Bypass when you need to:
+
+```bash
+git push --no-verify          # skip all hooks
+SKIP_HOOKS=1 git push         # same, explicit
+SKIP_PRE_PUSH=1 git push      # same, named for this hook
+SKIP_LINT=1 git push          # skip just lintr (also SKIP_TYPOS / SKIP_TESTS / SKIP_DESC)
+```
 
 ## Bumping pinned dependencies
 
