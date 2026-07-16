@@ -3,14 +3,14 @@
 
 Usage:
     python3 parse_chase_statements.py <pdf> [<pdf> ...]
-    python3 parse_chase_statements.py --out transactions.xlsx ~/Downloads/Statements*.pdf
+    python3 parse_chase_statements.py --rules config/chase_owner_rules.csv --out transactions.xlsx ~/Downloads/Statements*.pdf
 
 Output columns: file, date, merchant, amount, type, owner
     - date    : ISO date; year inferred from statement Opening/Closing Date
     - merchant: merchant name / transaction description
     - amount  : float; positive = purchase, negative = payment/credit
     - type    : PAYMENT / PURCHASE / CASH ADVANCE / FEE / INTEREST / BALANCE TRANSFER
-    - owner   : "c" for Cavan-only purchases, "b" for shared purchases, blank for payments
+    - owner   : rule-matched owner; positive unmatched purchases default to "b"; payments blank
 
 Requires: pdfplumber, openpyxl (pip install pdfplumber openpyxl)
 """
@@ -78,15 +78,6 @@ SECTION_TO_TYPE = {
     "BALANCE TRANSFERS": "BALANCE TRANSFER",
 }
 
-OWNER_C_PATTERNS = (
-    re.compile(r"CHATGPT|OPENAI", re.IGNORECASE),
-    re.compile(r"\bALO\b", re.IGNORECASE),
-    re.compile(r"MAMMOTH", re.IGNORECASE),
-    re.compile(r"SOLIDCORE", re.IGNORECASE),
-    re.compile(r"CLASSPASS", re.IGNORECASE),
-    re.compile(r"HIGHLINE", re.IGNORECASE),
-)
-
 
 @dataclass
 class Transaction:
@@ -96,6 +87,46 @@ class Transaction:
     amount: float
     type: str
     owner: str
+
+
+@dataclass
+class OwnerRule:
+    pattern: re.Pattern[str]
+    owner: str
+    label: str
+    notes: str
+
+
+def _read_owner_rules(path: Path | None) -> list[OwnerRule]:
+    if path is None:
+        return []
+    if not path.exists():
+        raise FileNotFoundError(f"Rules file does not exist: {path}")
+
+    with path.open(newline="") as fh:
+        reader = csv.DictReader(fh)
+        required = {"pattern", "owner", "label", "notes"}
+        missing = required - set(reader.fieldnames or [])
+        if missing:
+            raise ValueError(f"Rules file is missing columns: {', '.join(sorted(missing))}")
+
+        rules: list[OwnerRule] = []
+        for row in reader:
+            pattern = (row.get("pattern") or "").strip()
+            owner = (row.get("owner") or "").strip()
+            if not pattern:
+                continue
+            if owner not in {"", "b", "c"}:
+                raise ValueError("Rules file owner values must be blank, 'b', or 'c'")
+            rules.append(
+                OwnerRule(
+                    pattern=re.compile(pattern, re.IGNORECASE),
+                    owner=owner,
+                    label=(row.get("label") or "").strip(),
+                    notes=(row.get("notes") or "").strip(),
+                )
+            )
+        return rules
 
 
 def _extract_text(pdf_path: Path) -> str:
@@ -123,9 +154,18 @@ def _infer_year(mm: int, open_d: date, close_d: date) -> int:
     return open_d.year if mm >= open_d.month else close_d.year
 
 
-def parse_chase_statement(pdf_path: Path) -> list[Transaction]:
+def parse_chase_statement(pdf_path: Path, owner_rules: list[OwnerRule] | None = None) -> list[Transaction]:
     text = _extract_text(pdf_path)
+    return parse_chase_statement_text(text, pdf_path.name, owner_rules or [])
+
+
+def parse_chase_statement_text(
+    text: str,
+    source_file: str = "statement.txt",
+    owner_rules: list[OwnerRule] | None = None,
+) -> list[Transaction]:
     open_d, close_d = _statement_period(text)
+    owner_rules = owner_rules or []
 
     records: list[Transaction] = []
     in_activity = False
@@ -173,11 +213,11 @@ def parse_chase_statement(pdf_path: Path) -> list[Transaction]:
         amount = float(amount_s.replace(",", ""))
 
         tx_type = SECTION_TO_TYPE.get(current_section or "", "")
-        owner = _classify_owner(merchant, amount, tx_type)
+        owner = _classify_owner(merchant, amount, tx_type, owner_rules)
 
         records.append(
             Transaction(
-                file=pdf_path.name,
+                file=Path(source_file).name,
                 date=tx_date,
                 merchant=merchant,
                 amount=amount,
@@ -189,12 +229,17 @@ def parse_chase_statement(pdf_path: Path) -> list[Transaction]:
     return records
 
 
-def _classify_owner(merchant: str, amount: float, tx_type: str) -> str:
+def _classify_owner(
+    merchant: str,
+    amount: float,
+    tx_type: str,
+    owner_rules: list[OwnerRule],
+) -> str:
     if amount <= 0 or tx_type == "PAYMENT":
         return ""
-    for pattern in OWNER_C_PATTERNS:
-        if pattern.search(merchant):
-            return "c"
+    for rule in owner_rules:
+        if rule.pattern.search(merchant):
+            return rule.owner
     return "b"
 
 
@@ -225,7 +270,18 @@ def _monthly_b_summary(rows: list[Transaction]) -> list[dict[str, str | int | fl
     ]
 
 
-def _metadata_rows(rows: list[Transaction], source_pdfs: list[Path]) -> list[dict[str, str]]:
+def _rule_summary(owner_rules: list[OwnerRule]) -> str:
+    if not owner_rules:
+        return "none"
+    labels = sorted({rule.label for rule in owner_rules if rule.label})
+    return ", ".join(labels) if labels else f"{len(owner_rules)} rule(s)"
+
+
+def _metadata_rows(
+    rows: list[Transaction],
+    source_pdfs: list[Path],
+    owner_rules: list[OwnerRule],
+) -> list[dict[str, str]]:
     purchase_count = sum(1 for row in rows if row.amount > 0)
     payment_count = sum(1 for row in rows if row.amount <= 0)
     c_count = sum(1 for row in rows if row.owner == "c")
@@ -239,10 +295,8 @@ def _metadata_rows(rows: list[Transaction], source_pdfs: list[Path]) -> list[dic
         {"field": "payment_row_count", "value": str(payment_count)},
         {"field": "owner_c_row_count", "value": str(c_count)},
         {"field": "owner_b_row_count", "value": str(b_count)},
-        {
-            "field": "owner_c_rules",
-            "value": "CHATGPT/OPENAI, ALO, MAMMOTH, SOLIDCORE, CLASSPASS, HIGHLINE",
-        },
+        {"field": "owner_rule_count", "value": str(len(owner_rules))},
+        {"field": "owner_rule_labels", "value": _rule_summary(owner_rules)},
         {"field": "shared_split", "value": "c=2/3, v=1/3"},
     ]
 
@@ -289,7 +343,12 @@ def _autosize_worksheet(ws) -> None:
         ws.column_dimensions[column_cells[0].column_letter].width = min(max(max_len + 2, 10), 60)
 
 
-def _write_xlsx(rows: list[Transaction], out_path: Path, source_pdfs: list[Path]) -> None:
+def _write_xlsx(
+    rows: list[Transaction],
+    out_path: Path,
+    source_pdfs: list[Path],
+    owner_rules: list[OwnerRule],
+) -> None:
     workbook = Workbook()
 
     tx_sheet = workbook.active
@@ -308,7 +367,7 @@ def _write_xlsx(rows: list[Transaction], out_path: Path, source_pdfs: list[Path]
     metadata_sheet = workbook.create_sheet("Metadata")
     metadata_fields = ["field", "value"]
     metadata_sheet.append(metadata_fields)
-    for row in _metadata_rows(rows, source_pdfs):
+    for row in _metadata_rows(rows, source_pdfs, owner_rules):
         metadata_sheet.append([row[field] for field in metadata_fields])
 
     _autosize_worksheet(tx_sheet)
@@ -361,20 +420,31 @@ def main(argv: list[str]) -> int:
         type=Path,
         help="Write results to .xlsx or .csv. If omitted, prints a table to stdout.",
     )
+    p.add_argument(
+        "--rules",
+        type=Path,
+        help="Optional CSV with columns pattern, owner, label, notes.",
+    )
     args = p.parse_args(argv)
+
+    try:
+        owner_rules = _read_owner_rules(args.rules)
+    except (OSError, ValueError) as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 1
 
     all_tx: list[Transaction] = []
     for pdf in args.pdfs:
         if not pdf.exists():
             print(f"error: {pdf} does not exist", file=sys.stderr)
             return 1
-        all_tx.extend(parse_chase_statement(pdf))
+        all_tx.extend(parse_chase_statement(pdf, owner_rules))
 
     all_tx.sort(key=lambda r: (r.date, r.file))
 
     if args.out:
         if args.out.suffix.lower() == ".xlsx":
-            _write_xlsx(all_tx, args.out, args.pdfs)
+            _write_xlsx(all_tx, args.out, args.pdfs, owner_rules)
             print(f"Wrote {len(all_tx)} transactions to workbook {args.out}")
             print("Workbook tabs: Transactions, Monthly B Summary, Metadata")
         else:
