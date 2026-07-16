@@ -467,11 +467,44 @@ lintr::lint(&quot;scripts/generate_sitemap.R&quot;)
 # Lint a directory
 lintr::lint_dir(&quot;scripts/&quot;)
 
-# Run the test suite (when tests are present)
-testthat::test_dir(&quot;tests/testthat&quot;)</code></pre>
+# Run the full test suite (testthat dir + flat tests/test*.R) the same way
+# the pre-push hook and CI do
+Rscript scripts/run_tests.R</code></pre>
 <p>For typo / link / accessibility checks see the corresponding
 workflows in <code>.github/workflows/</code>. These run automatically on
 PR.</p>
+</div>
+<div id="git-hooks-pre-push" class="section level2">
+<h2>Git hooks (pre-push)</h2>
+<p>The repo ships a pre-push hook (<code>.githooks/pre-push</code>) that
+runs the fast, deterministic slice of CI locally so red checks are
+caught before the push instead of after a round-trip to GitHub. Enable
+it once after cloning:</p>
+<pre class="bash"><code>./scripts/install-git-hooks.sh</code></pre>
+<p>That points <code>core.hooksPath</code> at the tracked
+<code>.githooks/</code> directory, so the hook is versioned and shared.
+On each <code>git push</code> it runs against the files changed in the
+range being pushed:</p>
+<ul>
+<li><strong>typos</strong> — spell check via <code>.typos.toml</code>
+(mirrors <code>typos.yml</code>)</li>
+<li><strong>lintr</strong> — lints changed <code>.R</code> /
+<code>.Rmd</code> files via <code>.lintr</code> (mirrors
+<code>lint.yml</code>)</li>
+<li><strong>testthat</strong> — runs <code>tests/testthat</code> and
+flat <code>tests/test*.R</code> files when <code>scripts/</code> or
+<code>tests/</code> changed (mirrors <code>test.yml</code>)</li>
+<li><strong>DESCRIPTION</strong> — checks every <code>library()</code>
+call in an Rmd is declared (mirrors the build sanity check)</li>
+</ul>
+<p>Heavy jobs (site render, Lighthouse, pa11y, link-check) stay on CI;
+they need Chrome / a built <code>_site</code> / network and are too slow
+for a push gate.</p>
+<p>Bypass when you need to:</p>
+<pre class="bash"><code>git push --no-verify          # skip all hooks
+SKIP_HOOKS=1 git push         # same, explicit
+SKIP_PRE_PUSH=1 git push      # same, named for this hook
+SKIP_LINT=1 git push          # skip just lintr (also SKIP_TYPOS / SKIP_TESTS / SKIP_DESC)</code></pre>
 </div>
 <div id="bumping-pinned-dependencies" class="section level2">
 <h2>Bumping pinned dependencies</h2>
