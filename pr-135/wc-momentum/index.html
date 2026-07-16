@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>World Cup — 3D Momentum Portrait · Cavan Donohoe</title>
+  <style>
+    :root {
+      --arg: #5ab0e6;
+      --fra: #e23b4e;
+      --ink: #f4eae2;
+      --muted: #c9a79a;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; background: #05010f; overflow: hidden; }
+    body {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #stage {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      margin: 0 auto;
+      background:
+        radial-gradient(ellipse at 58% 40%, #3a0a52 0%, #14002e 45%, #05010f 100%);
+      overflow: hidden;
+    }
+    canvas { display: block; }
+
+    /* ----- overlay HUD ----- */
+    .hud { position: absolute; inset: 0; pointer-events: none; }
+
+    .scoreboard {
+      position: absolute;
+      top: 6.5%;
+      left: 7%;
+    }
+    .teams { display: flex; gap: 34px; align-items: flex-start; }
+    .team { display: flex; flex-direction: column; }
+    .team .row {
+      display: flex; align-items: center; gap: 9px;
+    }
+    .flag { width: 34px; height: 9px; border-radius: 1px; }
+    .flag.arg {
+      background: linear-gradient(#7cb9e8 33%, #fff 33%, #fff 66%, #7cb9e8 66%);
+    }
+    .flag.fra {
+      background: linear-gradient(90deg, #22409a 33%, #fff 33%, #fff 66%, #ce1126 66%);
+    }
+    .abbr {
+      font-weight: 800; letter-spacing: 3px; font-size: 15px;
+      color: var(--ink); text-transform: uppercase;
+    }
+    .bar { height: 4px; width: 96px; margin-top: 7px; border-radius: 2px; }
+    .bar.arg { background: linear-gradient(90deg, #5ab0e6, rgba(90,176,230,0)); }
+    .bar.fra { background: linear-gradient(90deg, #e23b4e, rgba(226,59,78,0)); }
+
+    .scores { display: flex; gap: 40px; margin-top: 14px; }
+    .score {
+      font-weight: 800; font-size: 92px; line-height: 0.9;
+      font-variant-numeric: tabular-nums;
+    }
+    .score.arg { color: #eaf4fb; }
+    .score.fra { color: #f7d9d4; }
+
+    .clock {
+      position: absolute; top: 6.5%; right: 7%; text-align: right;
+    }
+    .clock .min {
+      font-weight: 800; font-size: 58px; line-height: 0.9;
+      font-variant-numeric: tabular-nums;
+    }
+    .clock .min sup { font-size: 26px; top: -1.1em; }
+    .clock .phase {
+      font-weight: 700; letter-spacing: 3px; font-size: 12px;
+      color: var(--muted); margin-top: 6px; text-transform: uppercase;
+    }
+
+    /* goal ticker under score */
+    .goals-list {
+      margin-top: 18px; display: flex; flex-direction: column; gap: 6px;
+    }
+    .goal-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.5px;
+      color: var(--muted); opacity: 0; transform: translateY(4px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .goal-item.show { opacity: 1; transform: none; }
+    .goal-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .goal-dot.arg { background: #5ab0e6; }
+    .goal-dot.fra { background: #e23b4e; }
+
+    /* possession bar */
+    .poss {
+      position: absolute; left: 7%; bottom: 9%; width: 300px;
+    }
+    .poss .lbl {
+      font-size: 10px; letter-spacing: 2px; color: var(--muted);
+      text-transform: uppercase; margin-bottom: 8px;
+      display: flex; justify-content: space-between;
+    }
+    .poss .lbl .pa { color: #8fd6ff; font-weight: 700; }
+    .poss .lbl .pf { color: #ff8fa3; font-weight: 700; }
+    .poss .track {
+      display: flex; height: 12px; border-radius: 6px; overflow: hidden;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .poss .fill-arg {
+      background: linear-gradient(90deg, #0d6ea3, #29b6ff); width: 50%;
+      transition: width .3s ease;
+    }
+    .poss .fill-fra {
+      background: linear-gradient(90deg, #ff2d55, #a3122e); width: 50%;
+      transition: width .3s ease;
+    }
+    .poss .cap {
+      font-size: 10px; letter-spacing: 2px; color: var(--muted);
+      text-transform: uppercase; margin-top: 8px;
+    }
+
+    /* floating ball-carrier label */
+    #carrier {
+      position: absolute; top: 0; left: 0; pointer-events: none;
+      font-weight: 800; font-size: 15px; letter-spacing: 0.5px;
+      color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,0.9);
+      padding: 3px 9px; background: rgba(8,6,14,0.55);
+      border-radius: 12px; white-space: nowrap; opacity: 0;
+      transition: opacity .15s ease;
+    }
+
+    /* footer credits */
+    .credits {
+      position: absolute; left: 7%; right: 7%; bottom: 3.4%;
+      display: flex; justify-content: space-between;
+      font-size: 10.5px; letter-spacing: 1.2px; color: var(--muted);
+      border-top: 1px solid rgba(201,167,154,0.25); padding-top: 10px;
+      text-transform: uppercase;
+    }
+    .credits b { color: var(--ink); font-weight: 700; }
+    .credits a { pointer-events: auto; }
+    .credits a:hover { color: var(--ink); }
+
+    /* controls */
+    .controls {
+      position: absolute; right: 7%; bottom: 9%; pointer-events: auto;
+      display: flex; gap: 10px; align-items: center;
+    }
+    .btn {
+      background: rgba(0,0,0,0.35); border: 1px solid rgba(244,234,226,0.35);
+      color: var(--ink); font-size: 12px; letter-spacing: 1.5px;
+      padding: 8px 16px; border-radius: 20px; cursor: pointer;
+      text-transform: uppercase; font-weight: 700;
+      transition: background .2s ease;
+    }
+    .btn:hover { background: rgba(0,0,0,0.6); }
+
+    #loading {
+      position: absolute; inset: 0; display: flex; align-items: center;
+      justify-content: center; font-size: 13px; letter-spacing: 3px;
+      color: var(--muted); text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div id="stage">
+    <canvas id="scene"></canvas>
+
+    <div class="hud">
+      <div class="scoreboard">
+        <div class="teams">
+          <div class="team">
+            <div class="row"><span class="flag arg"></span><span class="abbr">ARG</span></div>
+            <div class="bar arg"></div>
+          </div>
+          <div class="team">
+            <div class="row"><span class="flag fra"></span><span class="abbr">FRA</span></div>
+            <div class="bar fra"></div>
+          </div>
+        </div>
+        <div class="scores">
+          <div class="score arg" id="scoreH">0</div>
+          <div class="score fra" id="scoreA">0</div>
+        </div>
+        <div class="goals-list" id="goalsList"></div>
+      </div>
+
+      <div class="clock">
+        <div class="min"><span id="minute">0</span><sup>&prime;</sup></div>
+        <div class="phase" id="phase">1st Half</div>
+      </div>
+
+      <div class="spark" style="display:none"></div>
+      <div class="poss">
+        <div class="lbl">
+          <span class="pa">ARG <span id="possPctArg">50%</span></span>
+          <span>Possession</span>
+          <span class="pf"><span id="possPctFra">50%</span> FRA</span>
+        </div>
+        <div class="track">
+          <div class="fill-arg" id="possFillArg"></div>
+          <div class="fill-fra" id="possFillFra"></div>
+        </div>
+        <div class="cap">&larr; FRA attacks &nbsp;&middot;&nbsp; ARG attacks &rarr;</div>
+      </div>
+
+      <div id="carrier"></div>
+
+      <div class="controls">
+        <button class="btn" id="replayBtn">Replay</button>
+      </div>
+
+      <div class="credits">
+        <span><a href="../" style="color:inherit;text-decoration:none;">&larr; cavandonohoe.github.io</a> &nbsp;&middot;&nbsp; <b id="compLabel">FIFA World Cup 2022 — Final</b></span>
+        <span>Data: <b>StatsBomb Open Data</b></span>
+      </div>
+    </div>
+
+    <div id="loading">Loading match&hellip;</div>
+  </div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./vendor/three.module.js",
+        "three/addons/controls/OrbitControls.js": "./vendor/OrbitControls.js"
+      }
+    }
+  </script>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
