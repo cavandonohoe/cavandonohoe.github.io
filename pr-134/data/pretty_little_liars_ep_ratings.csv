@@ -1,0 +1,161 @@
+season,episode,title,rating,votes
+1,1,Pilot,7.6,2420
+1,2,The Jenna Thing,7.5,1518
+1,3,To Kill a Mocking Girl,7.5,1352
+1,4,Can You Hear Me Now?,7.6,1265
+1,5,Reality Bites Me,7.5,1227
+1,6,There's No Place Like Homecoming,8.1,1234
+1,7,The Homecoming Hangover,7.5,1164
+1,8,"Please, Do Talk About Me When I'm Gone",7.5,1137
+1,9,The Perfect Storm,7.9,1164
+1,10,Keep Your Friends Close,8.2,1212
+1,11,Moments Later,7.8,1110
+1,12,Salt Meets Wound,7.6,1077
+1,13,Know Your Frenemies,8,1232
+1,14,Careful What U Wish 4,7.7,1061
+1,15,"If at First You Don't Succeed, Lie, Lie Again",7.7,1064
+1,16,Je Suis Une Amie,7.7,1034
+1,17,The New Normal,7.7,1023
+1,18,The Badass Seed,7.8,1039
+1,19,A Person of Interest,8,1060
+1,20,Someone to Watch Over Me,7.9,1013
+1,21,Monsters in the End,8.1,1030
+1,22,For Whom the Bell Tolls,8.4,1167
+2,1,It's Alive,8,1165
+2,2,The Goodbye Look,7.6,956
+2,3,My Name Is Trouble,7.7,927
+2,4,Blind Dates,8,931
+2,5,The Devil You Know,7.9,932
+2,6,Never Letting Go,7.9,940
+2,7,Surface Tension,7.7,886
+2,8,Save the Date,7.9,914
+2,9,Picture This,8,915
+2,10,Touched by an 'A'-ngel,7.8,897
+2,11,I Must Confess,8.1,910
+2,12,Over My Dead Body,8.7,1280
+2,13,The First Secret,8.5,1230
+2,14,"Through Many Dangers, Toils, and Snares",8.4,1051
+2,15,A Hot Piece of A,8.2,974
+2,16,Let the Water Hold Me Down,7.7,883
+2,17,Blond Leading the Blind,7.8,882
+2,18,A Kiss Before Lying,7.8,888
+2,19,The Naked Truth,8.2,938
+2,20,CTRL:A,8.2,912
+2,21,Breaking the Code,8.1,893
+2,22,Father Knows Best,7.8,875
+2,23,Eye of the Beholder,7.9,879
+2,24,If These Dolls Could Talk,8.5,1048
+2,25,unmAsked,9,1518
+3,1,It Happened 'That Night',8.1,1247
+3,2,Blood Is the New Black,8,923
+3,3,Kingdom of the Blind,8,874
+3,4,Birds of a Feather,7.7,865
+3,5,That Girl Is Poison,7.7,871
+3,6,The Remains of the 'A',7.6,852
+3,7,Crazy,8,858
+3,8,Stolen Kisses,7.7,877
+3,9,The Kahn Game,7.8,865
+3,10,What Lies Beneath,7.7,830
+3,11,Single Fright Female,7.8,843
+3,12,The Lady Killer,8.9,1298
+3,13,This Is a Dark Ride,8.9,1437
+3,14,She's Better Now,8,883
+3,15,Mona-Mania,7.9,827
+3,16,Misery Loves Company,8.4,942
+3,17,"Out of the Frying Pan, Into the Inferno",8,819
+3,18,Dead to Me,7.9,807
+3,19,What Becomes of the Broken-Hearted,8.1,825
+3,20,Hot Water,7.9,793
+3,21,"Out of Sight, Out of Mind",8,797
+3,22,Will the Circle Be Unbroken?,7.7,770
+3,23,I'm Your Puppet,8.2,829
+3,24,A Dangerous gAme,8.6,1128
+4,1,A Is for A-l-i-v-e,8.2,1249
+4,2,Turn of the Shoe,7.8,796
+4,3,Cat's Cradle,7.4,791
+4,4,Face Time,7.7,763
+4,5,Gamma Zeta Die!,7.8,774
+4,6,Under the Gun,7.8,769
+4,7,"Crash and Burn, Girl!",7.9,762
+4,8,The Guilty Girl's Handbook,7.9,765
+4,9,Into the Deep,7.8,720
+4,10,The Mirror Has Three Faces,7.9,768
+4,11,Bring Down the Hoe,7.8,777
+4,12,"Now You See Me, Now You Don't",8.8,1313
+4,13,Grave New World,8.4,1156
+4,14,Who's in the Box?,7.6,813
+4,15,"Love ShAck, Baby",7.8,745
+4,16,Close Encounters,7.8,718
+4,17,Bite Your Tongue,8.2,791
+4,18,Hot for Teacher,7.9,759
+4,19,Shadow Play,6.6,1285
+4,20,Free Fall,8.3,831
+4,21,She's Come Undone,8.1,785
+4,22,Cover for Me,7.6,725
+4,23,Unbridled,7.8,779
+4,24,'A' Is for Answers,8.9,1293
+5,1,EscApe from New York,8.2,988
+5,2,Whirly Girly,7.8,785
+5,3,Surfing the Aftershocks,7.4,729
+5,4,Thrown from the Ride,7.2,721
+5,5,Miss Me x100,8.5,994
+5,6,"Run, Ali, Run",7.6,717
+5,7,The Silence of E. Lamb,7.5,694
+5,8,Scream for Me,7.5,691
+5,9,March of Crimes,7.7,697
+5,10,A Dark Ali,7.8,688
+5,11,No One Here Can Love or Understand Me,7.5,710
+5,12,Taking This One to the Grave,8.7,1149
+5,13,How the 'A' Stole Christmas,7.8,884
+5,14,"Through a Glass, Darkly",7.7,721
+5,15,Fresh Meat,7.4,693
+5,16,Over a Barrel,7.3,680
+5,17,The Bin of Sin,7.5,679
+5,18,Oh What Hard Luck Stories They All Hand Me,7.1,699
+5,19,Out Damned Spot,7.4,688
+5,20,Pretty Isn't the Point,7.8,719
+5,21,Bloody Hell,7.5,681
+5,22,To Plea or Not to Plea,7.7,670
+5,23,The Melody Lingers On,7.8,699
+5,24,"I'm a Good Girl, I Am",8.4,840
+5,25,Welcome to the Dollhouse,9.2,1897
+6,1,"Game On, Charles",9.1,1793
+6,2,Songs of Innocence,7.6,848
+6,3,Songs of Experience,7.6,756
+6,4,Don't Look Now,7.6,730
+6,5,She's No Angel,7.4,751
+6,6,No Stone Unturned,7.3,739
+6,7,"O Brother, Where Art Thou",7.7,727
+6,8,FrAmed,7.7,739
+6,9,Last Dance,8.2,963
+6,10,"Game Over, Charles",5.1,4106
+6,11,Of Late I Think of Rosewood,7.4,876
+6,12,Charlotte's Web,7.1,722
+6,13,The Gloves Are On,7.1,705
+6,14,"New Guys, New Lies",7,666
+6,15,Do Not Disturb,7.1,656
+6,16,Where Somebody Waits for Me,6.9,639
+6,17,We've All Got Baggage,6.8,640
+6,18,Burn This,7.2,631
+6,19,Did You Miss Me?,7.3,643
+6,20,"Hush, Hush, Sweet Liars",7.6,882
+7,1,"Tick-Tock, Bitches",7.7,857
+7,2,Bedlam,6.9,696
+7,3,The Talented Mr. Rollins,7.9,730
+7,4,"Hit and Run, Run, Run",7.9,736
+7,5,Along Comes Mary,7.2,647
+7,6,Wanted: Dead or Alive,7.6,643
+7,7,Original G'A'ngsters,7.4,630
+7,8,Exes and OMGs,7.1,656
+7,9,The Wrath of Kahn,7.5,635
+7,10,The DArkest Knight,8.3,1030
+7,11,Playtime,7.5,698
+7,12,These Boots Were Made for Stalking,6.9,611
+7,13,Hold Your Piece,7.2,607
+7,14,Power Play,7.9,678
+7,15,In the Eye Abides the Heart,7.5,660
+7,16,The Glove That Rocks the Cradle,7.6,598
+7,17,Driving Miss Crazy,7.5,598
+7,18,Choose or Lose,8.2,671
+7,19,"Farewell, My Lovely",8.2,727
+7,20,Til DeAth Do Us PArt,5.4,2145
