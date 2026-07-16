@@ -15,18 +15,19 @@
 # here: they need Chrome / a built _site / network and are too slow for a
 # push gate. Those stay on GitHub Actions.
 #
-# Only files that actually changed on the range being pushed are checked,
-# so day-to-day pushes stay fast.
+# Only files that actually changed on the range being pushed are checked where
+# the underlying tool supports it, so day-to-day pushes stay fast.
 #
 # Escape hatches:
 #   git push --no-verify      # skip all hooks (git built-in)
 #   SKIP_HOOKS=1 git push     # same, explicit
+#   SKIP_PRE_PUSH=1 git push  # same, named for this hook
 #   SKIP_LINT=1 / SKIP_TYPOS=1 / SKIP_TESTS=1 / SKIP_DESC=1  # skip one check
 
 set -uo pipefail
 
-if [ "${SKIP_HOOKS:-0}" = "1" ]; then
-  echo "pre-push: SKIP_HOOKS=1 set; skipping all checks."
+if [ "${SKIP_HOOKS:-0}" = "1" ] || [ "${SKIP_PRE_PUSH:-0}" = "1" ]; then
+  echo "pre-push: SKIP_HOOKS=1 or SKIP_PRE_PUSH=1 set; skipping all checks."
   exit 0
 fi
 
@@ -91,12 +92,14 @@ changed_raw="$(
     | grep -Ev '^_archive/' || true
 )"
 
-# Changed R / Rmd files that still exist in the tree.
+# Changed files that still exist in the tree.
+changed_files=()
 r_files=()
 scripts_or_tests_changed=0
 description_relevant_changed=0
 while IFS= read -r f; do
   [ -z "$f" ] && continue
+  [ -f "$f" ] && changed_files+=("$f")
   case "$f" in
     *.R | *.r | *.Rmd | *.rmd) [ -f "$f" ] && r_files+=("$f") ;;
   esac
@@ -113,15 +116,17 @@ fail=0
 echo "pre-push: checking ${range_base:0:7}..${range_tip:0:7}"
 
 # ---------------------------------------------------------------------------
-# 1. typos (fast; scans the whole tree via its own config excludes)
+# 1. typos on changed files
 # ---------------------------------------------------------------------------
 if [ "${SKIP_TYPOS:-0}" = "1" ]; then
   echo "  [typos]   skipped (SKIP_TYPOS=1)"
+elif [ "${#changed_files[@]}" -eq 0 ]; then
+  echo "  [typos]   skipped (no files changed)"
 elif ! command -v typos >/dev/null 2>&1; then
   echo "  [typos]   skipped (typos not installed; 'brew install typos-cli')"
 else
-  echo "  [typos]   running..."
-  if ! typos --config .typos.toml; then
+  echo "  [typos]   checking ${#changed_files[@]} file(s)..."
+  if ! typos --config .typos.toml -- "${changed_files[@]}"; then
     echo "  [typos]   FAILED — fix the typos above or add them to .typos.toml"
     fail=1
   else
@@ -176,8 +181,6 @@ if [ "${SKIP_TESTS:-0}" = "1" ]; then
   echo "  [testthat] skipped (SKIP_TESTS=1)"
 elif [ "$scripts_or_tests_changed" -eq 0 ]; then
   echo "  [testthat] skipped (no scripts/ or tests/ changes)"
-elif [ ! -d tests/testthat ]; then
-  echo "  [testthat] skipped (no tests/testthat dir)"
 elif ! command -v Rscript >/dev/null 2>&1; then
   echo "  [testthat] skipped (Rscript not found)"
 else
@@ -187,9 +190,31 @@ if (!requireNamespace("testthat", quietly = TRUE)) {
   cat("    testthat not installed; skipping.\n")
   quit(status = 0)
 }
-results <- testthat::test_dir("tests/testthat", reporter = "summary")
-df <- as.data.frame(results)
-if (any(df$failed > 0) || any(df$error)) {
+failed <- FALSE
+if (dir.exists("tests/testthat")) {
+  results <- testthat::test_dir("tests/testthat", reporter = "summary")
+  df <- as.data.frame(results)
+  failed <- failed || any(df$failed > 0) || any(df$error)
+} else {
+  cat("    No tests/testthat dir.\n")
+}
+flat_tests <- list.files("tests", pattern = "^test.*\\.R$", full.names = TRUE)
+if (length(flat_tests)) {
+  cat("    Running flat test file(s):\n")
+  for (f in flat_tests) {
+    cat("      - ", f, "\n", sep = "")
+    tryCatch(
+      sys.source(f, envir = new.env(parent = globalenv())),
+      error = function(e) {
+        message("    flat test failed in ", f, ": ", conditionMessage(e))
+        failed <<- TRUE
+      }
+    )
+  }
+} else {
+  cat("    No flat tests/test*.R files.\n")
+}
+if (failed) {
   quit(status = 1)
 }
 RSCRIPT

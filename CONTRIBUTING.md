@@ -74,6 +74,9 @@ lintr::lint_dir("scripts/")
 
 # Run the test suite (when tests are present)
 testthat::test_dir("tests/testthat")
+
+# Run a flat smoke test
+source("tests/test_chase_parser.R")
 ```
 
 For typo / link / accessibility checks see the corresponding workflows in `.github/workflows/`. These run automatically on PR.
@@ -89,12 +92,12 @@ instead of after a round-trip to GitHub. Enable it once after cloning:
 ```
 
 That points `core.hooksPath` at the tracked `.githooks/` directory, so the
-hook is versioned and shared. On each `git push` it runs, against only the
-files changed in the range being pushed:
+hook is versioned and shared. On each `git push` it runs against the files
+changed in the range being pushed:
 
 - **typos** — spell check via `.typos.toml` (mirrors `typos.yml`)
 - **lintr** — lints changed `.R` / `.Rmd` files via `.lintr` (mirrors `lint.yml`)
-- **testthat** — runs `tests/testthat` when `scripts/` or `tests/` changed (mirrors `test.yml`)
+- **testthat** — runs `tests/testthat` and flat `tests/test*.R` files when `scripts/` or `tests/` changed (mirrors `test.yml`)
 - **DESCRIPTION** — checks every `library()` call in an Rmd is declared (mirrors the build sanity check)
 
 Heavy jobs (site render, Lighthouse, pa11y, link-check) stay on CI; they
@@ -105,6 +108,7 @@ Bypass when you need to:
 ```bash
 git push --no-verify          # skip all hooks
 SKIP_HOOKS=1 git push         # same, explicit
+SKIP_PRE_PUSH=1 git push      # same, named for this hook
 SKIP_LINT=1 git push          # skip just lintr (also SKIP_TYPOS / SKIP_TESTS / SKIP_DESC)
 ```
 
