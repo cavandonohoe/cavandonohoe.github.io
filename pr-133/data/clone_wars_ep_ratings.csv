@@ -1,0 +1,134 @@
+season,episode,title,rating,votes
+1,1,Ambush,7.3,7761
+1,2,Rising Malevolence,7.3,6817
+1,3,Shadow of Malevolence,7.3,6378
+1,4,Destroy Malevolence,7.4,6221
+1,5,Rookies,7.9,6791
+1,6,Downfall of a Droid,6.5,5784
+1,7,Duel of the Droids,7.1,5734
+1,8,Bombad Jedi,6,5826
+1,9,Cloak of Darkness,7.9,5848
+1,10,Lair of Grievous,8.1,6009
+1,11,Dooku Captured,7.3,5432
+1,12,The Gungan General,6.9,5285
+1,13,Jedi Crash,7.3,5275
+1,14,Defenders of Peace,7.4,5229
+1,15,Trespass,7.5,5290
+1,16,The Hidden Enemy,7.6,5439
+1,17,Blue Shadow Virus,6.6,5023
+1,18,Mystery of a Thousand Moons,6.9,4903
+1,19,Storm Over Ryloth,7.6,5137
+1,20,Innocents of Ryloth,7.9,5287
+1,21,Liberty on Ryloth,7.6,5017
+1,22,Hostage Crisis,7.8,5129
+2,1,Holocron Heist,7.8,5053
+2,2,Cargo of Doom,8,4974
+2,3,Children of the Force,7.6,4808
+2,4,Senate Spy,6.8,4627
+2,5,Landing at Point Rain,8.2,5288
+2,6,Weapons Factory,7.8,4836
+2,7,Legacy of Terror,7.6,4730
+2,8,Brain Invaders,8,4862
+2,9,Grievous Intrigue,7.8,4547
+2,10,The Deserter,8.1,4820
+2,11,Lightsaber Lost,7.5,4621
+2,12,The Mandalore Plot,8,4910
+2,13,Voyage of Temptation,8.1,4868
+2,14,Duchess of Mandalore,7.6,4593
+2,15,Senate Murders,6.7,4246
+2,16,Cat and Mouse,7.5,4818
+2,17,Bounty Hunters,7.5,4460
+2,18,The Zillo Beast,7.3,4406
+2,19,The Zillo Beast Strikes Back,7.6,4437
+2,20,Death Trap,7.7,4428
+2,21,R2 Come Home,7.5,4324
+2,22,Lethal Trackdown,7.9,4384
+3,1,Clone Cadets,7.8,5423
+3,2,ARC Troopers,8.6,5312
+3,3,Supply Lines,6.9,4560
+3,4,Sphere of Influence,6.9,4093
+3,5,Corruption,6.6,4238
+3,6,The Academy,6.9,4200
+3,7,Assassin,7.5,4210
+3,8,Evil Plans,6.2,4100
+3,9,Hunt for Ziro,7,4165
+3,10,Heroes on Both Sides,7.5,4267
+3,11,Pursuit of Peace,7.1,4113
+3,12,Nightsisters,8.6,5115
+3,13,Monster,8.7,5104
+3,14,Witches of the Mist,8.9,5207
+3,15,Overlords,8.9,5816
+3,16,Altar of Mortis,8.6,5351
+3,17,Ghosts of Mortis,8.9,5794
+3,18,The Citadel,8.1,4483
+3,19,Counter Attack,8,4336
+3,20,Citadel Rescue,8.2,4376
+3,21,Padawan Lost,7.6,4176
+3,22,Wookiee Hunt,7.9,4229
+4,1,Water War,7,4091
+4,2,Gungan Attack,7,3969
+4,3,Prisoners,7.1,3930
+4,4,Shadow Warrior,7.1,3858
+4,5,Mercy Mission,6.1,3872
+4,6,Nomad Droids,6.2,3845
+4,7,Darkness on Umbara,8.5,5226
+4,8,The General,8.6,5178
+4,9,Plan of Dissent,8.8,5190
+4,10,Carnage of Krell,9.4,6588
+4,11,Kidnapped,7.6,3972
+4,12,Slaves of the Republic,7.8,4035
+4,13,Escape from Kadavo,8.1,4067
+4,14,A Friend in Need,7.9,4074
+4,15,Deception,8.3,4309
+4,16,Friends and Enemies,8.3,4232
+4,17,The Box,8.7,4709
+4,18,Crisis on Naboo,8.3,4198
+4,19,Massacre,8.1,4301
+4,20,Bounty,8.2,4263
+4,21,Brothers,8.2,4556
+4,22,Revenge,9.1,5417
+5,1,Revival,8.8,5160
+5,2,A War on Two Fronts,7.3,3944
+5,3,Front Runners,7.3,3862
+5,4,The Soft War,7.5,3834
+5,5,Tipping Points,7.9,3958
+5,6,The Gathering,7.8,4117
+5,7,A Test of Strength,7.6,3884
+5,8,Bound for Rescue,7.3,3796
+5,9,A Necessary Bond,7.9,3900
+5,10,Secret Weapons,6.3,3811
+5,11,A Sunny Day in the Void,6,3909
+5,12,Missing in Action,7.2,3868
+5,13,Point of No Return,7,3693
+5,14,Eminence,8.8,5147
+5,15,Shades of Reason,9.1,5599
+5,16,The Lawless,9.7,8539
+5,17,Sabotage,8.1,4682
+5,18,The Jedi Who Knew Too Much,9.1,5672
+5,19,To Catch a Jedi,9.1,5477
+5,20,The Wrong Jedi,9.7,9721
+6,1,The Unknown,8.2,4486
+6,2,Conspiracy,8.2,4416
+6,3,Fugitive,8.4,4436
+6,4,Orders,9,5342
+6,5,An Old Friend,7,3678
+6,6,The Rise of Clovis,7.2,3683
+6,7,Crisis at the Heart,7.4,3671
+6,8,The Disappeared: Part 1,6.4,3620
+6,9,The Disappeared: Part 2,6.6,3595
+6,10,The Lost One,8.6,4363
+6,11,Voices,8.8,4740
+6,12,Destiny,8.7,4608
+6,13,Sacrifice,9.2,5393
+7,1,The Bad Batch,8.2,6479
+7,2,A Distant Echo,8.1,5863
+7,3,On the Wings of Keeradaks,7.7,5652
+7,4,Unfinished Business,8.5,5962
+7,5,Gone with a Trace,6.4,5951
+7,6,Deal No Deal,6.1,5854
+7,7,Dangerous Debt,6,5885
+7,8,Together Again,7,5613
+7,9,Old Friends Not Forgotten,9.7,16150
+7,10,The Phantom Apprentice,9.8,21376
+7,11,Shattered,9.8,19555
+7,12,Victory and Death,9.9,24951
