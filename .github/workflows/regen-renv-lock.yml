@@ -12,6 +12,9 @@ name: Regenerate renv.lock
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - cdonohoe/fix-ci-renv-restore
 
 permissions:
   contents: write
