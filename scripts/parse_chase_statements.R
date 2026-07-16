@@ -4,38 +4,68 @@
 #
 # Usage:
 #   Rscript parse_chase_statements.R <pdf> [<pdf> ...]
-#   Rscript parse_chase_statements.R --out transactions.xlsx ~/Downloads/Statements*.pdf
+#   Rscript parse_chase_statements.R --rules config/chase_owner_rules.csv --out transactions.xlsx ~/Downloads/Statements*.pdf
 #
 # Output columns: file, date, merchant, amount, type, owner
 #   - date    : Date (inferred year from statement Opening/Closing Date)
 #   - merchant: merchant name / transaction description
 #   - amount  : numeric; positive = purchase, negative = payment/credit
 #   - type    : "PAYMENT"/"PURCHASE"/"CASH ADVANCE"/"FEE"/"INTEREST" (section header)
-#   - owner   : "c" for Cavan-only purchases, "b" for shared purchases, blank for payments
+#   - owner   : rule-matched owner; positive unmatched purchases default to "b"; payments blank
 
-suppressPackageStartupMessages({
-  if (!requireNamespace("pdftools", quietly = TRUE)) {
-    stop("Install pdftools: install.packages('pdftools')")
+require_package <- function(package) {
+  if (!requireNamespace(package, quietly = TRUE)) {
+    stop("Install ", package, ": install.packages('", package, "')", call. = FALSE)
   }
-  if (!requireNamespace("dplyr", quietly = TRUE)) {
-    stop("Install dplyr: install.packages('dplyr')")
-  }
-  if (!requireNamespace("readr", quietly = TRUE)) {
-    stop("Install readr: install.packages('readr')")
-  }
-  if (!requireNamespace("openxlsx", quietly = TRUE)) {
-    stop("Install openxlsx: install.packages('openxlsx')")
-  }
-})
+}
 
-classify_owner <- function(merchant, amount, type) {
+empty_rules <- function() {
+  data.frame(
+    pattern = character(),
+    owner = character(),
+    label = character(),
+    notes = character(),
+    stringsAsFactors = FALSE
+  )
+}
+
+read_owner_rules <- function(path = NULL) {
+  require_package("readr")
+
+  if (is.null(path) || !nzchar(path)) {
+    return(empty_rules())
+  }
+  if (!file.exists(path)) {
+    stop("Rules file does not exist: ", path, call. = FALSE)
+  }
+
+  rules <- readr::read_csv(path, col_types = readr::cols(.default = "c"), show_col_types = FALSE)
+  required <- c("pattern", "owner", "label", "notes")
+  missing <- setdiff(required, names(rules))
+  if (length(missing) > 0) {
+    stop("Rules file is missing columns: ", paste(missing, collapse = ", "), call. = FALSE)
+  }
+
+  rules <- as.data.frame(rules[required], stringsAsFactors = FALSE)
+  rules$pattern <- trimws(rules$pattern)
+  rules$owner <- trimws(rules$owner)
+  rules <- rules[nzchar(rules$pattern), , drop = FALSE]
+  invalid_owner <- !rules$owner %in% c("", "b", "c")
+  if (any(invalid_owner)) {
+    stop("Rules file owner values must be blank, 'b', or 'c'", call. = FALSE)
+  }
+  rules
+}
+
+classify_owner <- function(merchant, amount, type, owner_rules = empty_rules()) {
   if (is.na(amount) || amount <= 0 || identical(type, "PAYMENT")) {
     return("")
   }
 
-  c_patterns <- c("CHATGPT", "OPENAI", "\\bALO\\b", "MAMMOTH", "SOLIDCORE", "CLASSPASS", "HIGHLINE")
-  if (any(grepl(paste(c_patterns, collapse = "|"), merchant, ignore.case = TRUE))) {
-    return("c")
+  for (i in seq_len(nrow(owner_rules))) {
+    if (grepl(owner_rules$pattern[[i]], merchant, ignore.case = TRUE)) {
+      return(owner_rules$owner[[i]])
+    }
   }
 
   "b"
@@ -50,6 +80,8 @@ summary_path <- function(out_file) {
 }
 
 write_b_summary <- function(all_tx, out_file) {
+  require_package("readr")
+
   summary_file <- summary_path(out_file)
 
   summary_table(all_tx) |>
@@ -59,20 +91,43 @@ write_b_summary <- function(all_tx, out_file) {
 }
 
 summary_table <- function(all_tx) {
-  all_tx |>
-    dplyr::filter(owner == "b") |>
-    dplyr::mutate(month = format(date, "%Y-%m")) |>
-    dplyr::group_by(month) |>
-    dplyr::summarise(
-      b_total = round(sum(amount), 2),
-      b_count = dplyr::n(),
-      c_share = round(b_total * 2 / 3, 2),
-      v_share = round(b_total / 3, 2),
-      .groups = "drop"
-    )
+  shared <- all_tx[!is.na(all_tx$owner) & all_tx$owner == "b", , drop = FALSE]
+  if (nrow(shared) == 0) {
+    return(data.frame(
+      month = character(),
+      b_total = numeric(),
+      b_count = integer(),
+      c_share = numeric(),
+      v_share = numeric(),
+      stringsAsFactors = FALSE
+    ))
+  }
+
+  shared$month <- format(shared$date, "%Y-%m")
+  totals <- aggregate(amount ~ month, shared, sum)
+  counts <- aggregate(amount ~ month, shared, length)
+  names(totals)[names(totals) == "amount"] <- "b_total"
+  names(counts)[names(counts) == "amount"] <- "b_count"
+
+  summary <- merge(totals, counts, by = "month", sort = TRUE)
+  summary$b_total <- round(summary$b_total, 2)
+  summary$c_share <- round(summary$b_total * 2 / 3, 2)
+  summary$v_share <- round(summary$b_total / 3, 2)
+  summary[, c("month", "b_total", "b_count", "c_share", "v_share")]
 }
 
-metadata_table <- function(all_tx, source_files) {
+rule_summary <- function(owner_rules) {
+  if (nrow(owner_rules) == 0) {
+    return("none")
+  }
+  labels <- owner_rules$label[nzchar(owner_rules$label)]
+  if (length(labels) == 0) {
+    return(paste0(nrow(owner_rules), " rule(s)"))
+  }
+  paste(unique(labels), collapse = ", ")
+}
+
+metadata_table <- function(all_tx, source_files, owner_rules = empty_rules()) {
   data.frame(
     field = c(
       "generated_at",
@@ -83,7 +138,8 @@ metadata_table <- function(all_tx, source_files) {
       "payment_row_count",
       "owner_c_row_count",
       "owner_b_row_count",
-      "owner_c_rules",
+      "owner_rule_count",
+      "owner_rule_labels",
       "shared_split"
     ),
     value = c(
@@ -95,14 +151,17 @@ metadata_table <- function(all_tx, source_files) {
       sum(all_tx$amount <= 0, na.rm = TRUE),
       sum(all_tx$owner == "c", na.rm = TRUE),
       sum(all_tx$owner == "b", na.rm = TRUE),
-      "CHATGPT/OPENAI, ALO, MAMMOTH, SOLIDCORE, CLASSPASS, HIGHLINE",
+      nrow(owner_rules),
+      rule_summary(owner_rules),
       "c=2/3, v=1/3"
     ),
     stringsAsFactors = FALSE
   )
 }
 
-write_xlsx_workbook <- function(all_tx, out_file, source_files) {
+write_xlsx_workbook <- function(all_tx, out_file, source_files, owner_rules = empty_rules()) {
+  require_package("openxlsx")
+
   wb <- openxlsx::createWorkbook()
   openxlsx::addWorksheet(wb, "Transactions")
   openxlsx::writeData(wb, "Transactions", all_tx)
@@ -111,25 +170,22 @@ write_xlsx_workbook <- function(all_tx, out_file, source_files) {
   openxlsx::writeData(wb, "Monthly B Summary", summary_table(all_tx))
 
   openxlsx::addWorksheet(wb, "Metadata")
-  openxlsx::writeData(wb, "Metadata", metadata_table(all_tx, source_files))
+  openxlsx::writeData(wb, "Metadata", metadata_table(all_tx, source_files, owner_rules))
 
   openxlsx::saveWorkbook(wb, out_file, overwrite = TRUE)
 }
 
-parse_chase_statement <- function(pdf_path) {
-  pages <- pdftools::pdf_text(pdf_path)
-  full_text <- paste(pages, collapse = "\n")
-
+parse_chase_statement_text <- function(text, source_file = "statement.txt", owner_rules = empty_rules()) {
   # Statement period: "Opening/Closing Date   MM/DD/YY - MM/DD/YY"
   period_match <- regmatches(
-    full_text,
+    text,
     regexpr(
       "Opening/Closing Date[[:space:]]+([0-9]{2}/[0-9]{2}/[0-9]{2})[[:space:]]*-[[:space:]]*([0-9]{2}/[0-9]{2}/[0-9]{2})",
-      full_text
+      text
     )
   )
   if (length(period_match) == 0) {
-    stop("Could not find Opening/Closing Date in ", pdf_path)
+    stop("Could not find Opening/Closing Date in ", source_file)
   }
   dates <- regmatches(
     period_match,
@@ -140,7 +196,7 @@ parse_chase_statement <- function(pdf_path) {
   open_year <- as.integer(format(open_date, "%Y"))
   close_year <- as.integer(format(close_date, "%Y"))
 
-  lines <- unlist(strsplit(pages, "\n"))
+  lines <- unlist(strsplit(text, "\n"))
 
   # Section headers that group transactions inside ACCOUNT ACTIVITY.
   section_regex <- paste0(
@@ -211,10 +267,10 @@ parse_chase_statement <- function(pdf_path) {
         "BALANCE TRANSFERS" = "BALANCE TRANSFER",
         NA_character_
       )
-      owner <- classify_owner(merchant, amount, type)
+      owner <- classify_owner(merchant, amount, type, owner_rules)
 
       records[[length(records) + 1]] <- data.frame(
-        file = basename(pdf_path),
+        file = basename(source_file),
         date = tx_date,
         merchant = merchant,
         amount = amount,
@@ -234,31 +290,59 @@ parse_chase_statement <- function(pdf_path) {
   do.call(rbind, records)
 }
 
+parse_chase_statement <- function(pdf_path, owner_rules = empty_rules()) {
+  require_package("pdftools")
+
+  parse_chase_statement_text(
+    paste(pdftools::pdf_text(pdf_path), collapse = "\n"),
+    source_file = pdf_path,
+    owner_rules = owner_rules
+  )
+}
+
 `%||%` <- function(a, b) if (is.null(a) || is.na(a)) b else a
 
-main <- function(args) {
-  out_file <- NULL
-  if (length(args) >= 2 && args[1] == "--out") {
-    out_file <- args[2]
-    args <- args[-(1:2)]
+parse_cli_args <- function(args) {
+  parsed <- list(out_file = NULL, rules_file = NULL, pdfs = character())
+  i <- 1
+  while (i <= length(args)) {
+    arg <- args[[i]]
+    if (arg == "--out") {
+      if (i == length(args)) stop("--out requires a value", call. = FALSE)
+      parsed$out_file <- args[[i + 1]]
+      i <- i + 2
+    } else if (arg == "--rules") {
+      if (i == length(args)) stop("--rules requires a value", call. = FALSE)
+      parsed$rules_file <- args[[i + 1]]
+      i <- i + 2
+    } else {
+      parsed$pdfs <- c(parsed$pdfs, arg)
+      i <- i + 1
+    }
   }
-  if (length(args) == 0) {
-    cat("Usage: Rscript parse_chase_statements.R [--out out.xlsx] <pdf> [<pdf> ...]\n")
+  parsed
+}
+
+main <- function(args) {
+  parsed <- parse_cli_args(args)
+  if (length(parsed$pdfs) == 0) {
+    cat("Usage: Rscript parse_chase_statements.R [--rules rules.csv] [--out out.xlsx] <pdf> [<pdf> ...]\n")
     quit(status = 1)
   }
 
-  all_tx <- do.call(rbind, lapply(args, parse_chase_statement))
+  owner_rules <- read_owner_rules(parsed$rules_file)
+  all_tx <- do.call(rbind, lapply(parsed$pdfs, parse_chase_statement, owner_rules = owner_rules))
   all_tx <- all_tx[order(all_tx$date, all_tx$file), ]
 
-  if (!is.null(out_file)) {
-    if (tolower(tools::file_ext(out_file)) == "xlsx") {
-      write_xlsx_workbook(all_tx, out_file, args)
-      cat("Wrote", nrow(all_tx), "transactions to workbook", out_file, "\n")
+  if (!is.null(parsed$out_file)) {
+    if (tolower(tools::file_ext(parsed$out_file)) == "xlsx") {
+      write_xlsx_workbook(all_tx, parsed$out_file, parsed$pdfs, owner_rules)
+      cat("Wrote", nrow(all_tx), "transactions to workbook", parsed$out_file, "\n")
       cat("Workbook tabs: Transactions, Monthly B Summary, Metadata\n")
     } else {
-      utils::write.csv(all_tx, out_file, row.names = FALSE)
-      summary_file <- write_b_summary(all_tx, out_file)
-      cat("Wrote", nrow(all_tx), "transactions to", out_file, "\n")
+      utils::write.csv(all_tx, parsed$out_file, row.names = FALSE)
+      summary_file <- write_b_summary(all_tx, parsed$out_file)
+      cat("Wrote", nrow(all_tx), "transactions to", parsed$out_file, "\n")
       cat("Wrote monthly shared summary to", summary_file, "\n")
     }
   } else {
