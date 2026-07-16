@@ -136,6 +136,52 @@ above. Regenerated each time `README.Rmd` is knit.
 Local development, prerequisites, build steps, lint/test commands, and
 PR conventions all live in [CONTRIBUTING.md](CONTRIBUTING.md).
 
+### Chase Statement Parser
+
+The Chase statement parser is a local utility for turning Chase credit
+card statement PDFs into a transaction workbook. It is designed so the
+repo can keep reusable code without committing private finance data.
+
+Privacy rules:
+
+- Do not commit statement PDFs, generated workbooks, exported
+  transaction CSVs, or Google Sheet URLs.
+- Keep personal owner rules in `config/chase_owner_rules.csv`; that
+  file is ignored by git.
+- Use `config/chase_owner_rules.example.csv` as the tracked starting
+  rules file for non-sensitive patterns and labels.
+
+Parse statements locally:
+
+``` bash
+Rscript scripts/parse_chase_statements.R \
+  --rules config/chase_owner_rules.csv \
+  --out data/chase_tx.xlsx \
+  statements/*.pdf
+```
+
+Upload an already-generated workbook to a Google Sheet:
+
+``` bash
+Rscript scripts/upload_chase_tx_to_gsheet.R \
+  data/chase_tx.xlsx \
+  "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit"
+```
+
+The R parser is the canonical workflow. The Python parser supports the
+same rules CSV format, but the R path is what this repo validates with
+synthetic tests.
+
+Parsing real PDFs with the R script requires the optional `pdftools`
+package and its system Poppler libraries. The synthetic tests do not
+require PDF parsing dependencies.
+
+Run the synthetic parser smoke test:
+
+``` bash
+Rscript tests/test_chase_parser.R
+```
+
 ### Project Structure
 
 - `*.Rmd` files: Individual pages of the website

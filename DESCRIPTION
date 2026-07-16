@@ -19,6 +19,7 @@ Imports:
     glue,
     here,
     readxl,
+    readr,
     googlesheets4,
     ggplot2,
     ggrepel,
@@ -29,7 +30,8 @@ Imports:
     lubridate,
     patchwork,
     polite,
-    tidyquant
+    tidyquant,
+    openxlsx
 Suggests:
     lintr,
     testthat
