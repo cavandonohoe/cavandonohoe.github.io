@@ -31,7 +31,7 @@ jobs:
       - uses: r-lib/actions/setup-r@v2
         with:
           use-public-rspm: true
-          r-version-file: .R-version
+          r-version: '4.6'
 
       - uses: r-lib/actions/setup-pandoc@v2
       - name: Install system dependencies
@@ -39,9 +39,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y \
             cmake git libcurl4-openssl-dev libfontconfig1-dev libfreetype6-dev \
-            libfribidi-dev libgit2-dev libharfbuzz-dev libicu-dev libjpeg-dev \
-            libnode-dev libpng-dev libssl-dev libtiff-dev libuv1-dev libwebp-dev \
-            libx11-dev libxml2-dev make pandoc zlib1g-dev
+            libfribidi-dev libgdal-dev libgeos-dev libgit2-dev libharfbuzz-dev \
+            libicu-dev libjpeg-dev libmagick++-dev libnode-dev libpng-dev \
+            libpoppler-cpp-dev libproj-dev librsvg2-dev libssl-dev libtiff-dev \
+            libudunits2-dev libuv1-dev libwebp-dev libx11-dev libxml2-dev make \
+            pandoc zlib1g-dev
 
       - uses: r-lib/actions/setup-renv@v2
 
