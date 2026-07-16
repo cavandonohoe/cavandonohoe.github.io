@@ -467,11 +467,9 @@ lintr::lint(&quot;scripts/generate_sitemap.R&quot;)
 # Lint a directory
 lintr::lint_dir(&quot;scripts/&quot;)
 
-# Run the test suite (when tests are present)
-testthat::test_dir(&quot;tests/testthat&quot;)
-
-# Run a flat smoke test
-source(&quot;tests/test_chase_parser.R&quot;)</code></pre>
+# Run the full test suite (testthat dir + flat tests/test*.R) the same way
+# the pre-push hook and CI do
+Rscript scripts/run_tests.R</code></pre>
 <p>For typo / link / accessibility checks see the corresponding
 workflows in <code>.github/workflows/</code>. These run automatically on
 PR.</p>
