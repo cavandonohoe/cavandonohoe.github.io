@@ -51,7 +51,7 @@ jobs:
       - uses: r-lib/actions/setup-r@v2
         with:
           use-public-rspm: true
-          r-version-file: .R-version
+          use-r-version-file: true
 
       - name: Install system dependencies
         run: |
@@ -63,6 +63,37 @@ jobs:
             libx11-dev libxml2-dev make pandoc zlib1g-dev
 
       - uses: r-lib/actions/setup-renv@v2
+
+      # setup-renv's internal renv::restore() only *warns* on a failed package
+      # download (e.g. a transient Posit Package Manager hiccup), so the job can
+      # continue with an incomplete library and only die later with a confusing
+      # "there is no package called X". Retry restore explicitly (with the renv
+      # autoloader on so it targets the project library), then hard-fail if any
+      # package the script needs is still missing. RENV_CONFIG_AUTOLOADER_ENABLED
+      # is FALSE at the job level, so enable it just for this restore call.
+      - name: Ensure renv library is complete
+        env:
+          RENV_CONFIG_AUTOLOADER_ENABLED: "TRUE"
+        run: |
+          Rscript -e '
+            ok <- FALSE
+            for (i in 1:3) {
+              tryCatch({
+                renv::restore(prompt = FALSE)
+                st <- renv::status()
+                if (isTRUE(st$synchronized)) { ok <- TRUE; break }
+              }, error = function(e) message("restore attempt ", i, " failed: ", conditionMessage(e)))
+              message("renv library incomplete; retrying (", i, "/3)...")
+              Sys.sleep(15)
+            }
+            if (!isTRUE(ok)) stop("renv::restore() could not install all lockfile packages after 3 attempts")
+          '
+
+      # Confirm the packages the script needs load in the same environment the
+      # script runs in (autoloader disabled, default .libPaths()).
+      - name: Verify script packages load
+        run: |
+          Rscript -e 'for (p in c("dplyr","tibble","readr","here","httr2","jsonlite","purrr")) loadNamespace(p)'
 
       - name: Replay Elo and write personal CSV
         run: Rscript scripts/update_movie_ranker_personal.R
