@@ -4,14 +4,20 @@ on:
   push:
     branches: [main]
     paths:
+      - ".githooks/pre-push"
       - "scripts/**/*.R"
+      - "scripts/run_tests.R"
       - "tests/**/*.R"
+      - "tests/**/*.sh"
       - ".github/workflows/test.yml"
   pull_request:
     branches: [main]
     paths:
+      - ".githooks/pre-push"
       - "scripts/**/*.R"
+      - "scripts/run_tests.R"
       - "tests/**/*.R"
+      - "tests/**/*.sh"
       - ".github/workflows/test.yml"
   workflow_dispatch:
 
@@ -45,12 +51,8 @@ jobs:
 
       - uses: r-lib/actions/setup-renv@v2
 
-      - name: Run testthat
-        run: |
-          Rscript -e '
-            results <- testthat::test_dir("tests/testthat", reporter = "summary")
-            df <- as.data.frame(results)
-            if (any(df$failed > 0) || any(df$error)) {
-              quit(status = 1)
-            }
-          '
+      - name: Run pre-push hook smoke test
+        run: ./tests/test_pre_push_hook.sh
+
+      - name: Run tests
+        run: Rscript scripts/run_tests.R
