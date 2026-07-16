@@ -117,16 +117,69 @@ echo "pre-push: checking ${range_base:0:7}..${range_tip:0:7}"
 
 # ---------------------------------------------------------------------------
 # 1. typos on changed files
+#
+# typos does NOT apply `[files] extend-exclude` to paths passed explicitly on
+# the command line (it only honors excludes during directory traversal), so
+# we filter the changed set through the config's exclude globs ourselves.
+# Without this the hook could flag a file that CI (which scans the tree and
+# honors excludes) happily ignores, e.g. the auto-generated seed.sql.
 # ---------------------------------------------------------------------------
+typos_files=()
+if [ "${#changed_files[@]}" -gt 0 ] && command -v Rscript >/dev/null 2>&1 \
+  && [ -f .typos.toml ]; then
+  typos_kept="$(
+    CHANGED="$(printf '%s\n' "${changed_files[@]}")" \
+      RENV_CONFIG_AUTOLOADER_ENABLED=FALSE Rscript - <<'RSCRIPT'
+files <- strsplit(Sys.getenv("CHANGED"), "\n", fixed = TRUE)[[1]]
+files <- files[nzchar(files)]
+cfg <- readLines(".typos.toml", warn = FALSE)
+# Pull the quoted glob patterns out of the extend-exclude array.
+start <- grep("extend-exclude", cfg)
+pats <- character()
+if (length(start)) {
+  block <- cfg[start[1]:length(cfg)]
+  end <- grep("^\\]", block)
+  if (length(end)) block <- block[seq_len(end[1])]
+  m <- regmatches(block, gregexpr('"([^"]+)"', block))
+  pats <- gsub('"', "", unlist(m))
+}
+glob_to_regex <- function(p) {
+  # Order matters: protect ** before single *.
+  p <- gsub("\\.", "\\\\.", p)
+  p <- gsub("\\*\\*/", "\x01", p)   # **/  -> match any dirs (incl none)
+  p <- gsub("\\*\\*", "\x02", p)    # **   -> match anything
+  p <- gsub("\\*", "[^/]*", p)      # *    -> anything but a slash
+  p <- gsub("\x01", "(.*/)?", p)
+  p <- gsub("\x02", ".*", p)
+  paste0("^", p, "$")
+}
+regexes <- vapply(pats, glob_to_regex, character(1))
+excluded <- function(f) any(vapply(regexes, function(rx) {
+  grepl(rx, f)
+}, logical(1)))
+keep <- files[!vapply(files, excluded, logical(1))]
+cat(keep, sep = "\n")
+RSCRIPT
+  )"
+  while IFS= read -r kf; do
+    [ -n "$kf" ] && typos_files+=("$kf")
+  done <<< "$typos_kept"
+else
+  # No Rscript / no config: fall back to the raw changed set.
+  if [ "${#changed_files[@]}" -gt 0 ]; then
+    typos_files=("${changed_files[@]}")
+  fi
+fi
+
 if [ "${SKIP_TYPOS:-0}" = "1" ]; then
   echo "  [typos]   skipped (SKIP_TYPOS=1)"
-elif [ "${#changed_files[@]}" -eq 0 ]; then
-  echo "  [typos]   skipped (no files changed)"
+elif [ "${#typos_files[@]}" -eq 0 ]; then
+  echo "  [typos]   skipped (no non-excluded files changed)"
 elif ! command -v typos >/dev/null 2>&1; then
   echo "  [typos]   skipped (typos not installed; 'brew install typos-cli')"
 else
-  echo "  [typos]   checking ${#changed_files[@]} file(s)..."
-  if ! typos --config .typos.toml -- "${changed_files[@]}"; then
+  echo "  [typos]   checking ${#typos_files[@]} file(s)..."
+  if ! typos --config .typos.toml -- "${typos_files[@]}"; then
     echo "  [typos]   FAILED — fix the typos above or add them to .typos.toml"
     fail=1
   else
@@ -185,39 +238,7 @@ elif ! command -v Rscript >/dev/null 2>&1; then
   echo "  [testthat] skipped (Rscript not found)"
 else
   echo "  [testthat] running..."
-  if ! Rscript - <<'RSCRIPT'
-if (!requireNamespace("testthat", quietly = TRUE)) {
-  cat("    testthat not installed; skipping.\n")
-  quit(status = 0)
-}
-failed <- FALSE
-if (dir.exists("tests/testthat")) {
-  results <- testthat::test_dir("tests/testthat", reporter = "summary")
-  df <- as.data.frame(results)
-  failed <- failed || any(df$failed > 0) || any(df$error)
-} else {
-  cat("    No tests/testthat dir.\n")
-}
-flat_tests <- list.files("tests", pattern = "^test.*\\.R$", full.names = TRUE)
-if (length(flat_tests)) {
-  cat("    Running flat test file(s):\n")
-  for (f in flat_tests) {
-    cat("      - ", f, "\n", sep = "")
-    tryCatch(
-      sys.source(f, envir = new.env(parent = globalenv())),
-      error = function(e) {
-        message("    flat test failed in ", f, ": ", conditionMessage(e))
-        failed <<- TRUE
-      }
-    )
-  }
-} else {
-  cat("    No flat tests/test*.R files.\n")
-}
-if (failed) {
-  quit(status = 1)
-}
-RSCRIPT
+  if ! Rscript scripts/run_tests.R
   then
     echo "  [testthat] FAILED — fix the failing tests above"
     fail=1

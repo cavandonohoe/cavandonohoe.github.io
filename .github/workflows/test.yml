@@ -6,6 +6,7 @@ on:
     paths:
       - ".githooks/pre-push"
       - "scripts/**/*.R"
+      - "scripts/run_tests.R"
       - "tests/**/*.R"
       - "tests/**/*.sh"
       - ".github/workflows/test.yml"
@@ -14,6 +15,7 @@ on:
     paths:
       - ".githooks/pre-push"
       - "scripts/**/*.R"
+      - "scripts/run_tests.R"
       - "tests/**/*.R"
       - "tests/**/*.sh"
       - ".github/workflows/test.yml"
@@ -52,20 +54,5 @@ jobs:
       - name: Run pre-push hook smoke test
         run: ./tests/test_pre_push_hook.sh
 
-      - name: Run testthat
-        run: |
-          Rscript -e '
-            failed <- FALSE
-            if (dir.exists("tests/testthat")) {
-              results <- testthat::test_dir("tests/testthat", reporter = "summary")
-              df <- as.data.frame(results)
-              failed <- failed || any(df$failed > 0) || any(df$error)
-            }
-            flat_tests <- list.files("tests", pattern = "^test.*\\.R$", full.names = TRUE)
-            for (f in flat_tests) {
-              sys.source(f, envir = new.env(parent = globalenv()))
-            }
-            if (failed) {
-              quit(status = 1)
-            }
-          '
+      - name: Run tests
+        run: Rscript scripts/run_tests.R
