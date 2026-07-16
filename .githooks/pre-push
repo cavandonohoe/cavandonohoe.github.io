@@ -1,0 +1,276 @@
+#!/usr/bin/env bash
+#
+# Pre-push hook for cavandonohoe.github.io.
+#
+# Runs the cheap, deterministic slice of CI locally before a push so red
+# checks are caught in seconds instead of after a round-trip to GitHub:
+#
+#   1. typos      -> mirrors .github/workflows/typos.yml (.typos.toml)
+#   2. lintr      -> mirrors .github/workflows/lint.yml   (.lintr)
+#   3. testthat   -> mirrors .github/workflows/test.yml
+#   4. DESCRIPTION -> mirrors the build-workflow "library() vs DESCRIPTION"
+#                     sanity check
+#
+# Heavy CI jobs (site render, Lighthouse, pa11y, link-check) are NOT run
+# here: they need Chrome / a built _site / network and are too slow for a
+# push gate. Those stay on GitHub Actions.
+#
+# Only files that actually changed on the range being pushed are checked,
+# so day-to-day pushes stay fast.
+#
+# Escape hatches:
+#   git push --no-verify      # skip all hooks (git built-in)
+#   SKIP_HOOKS=1 git push     # same, explicit
+#   SKIP_LINT=1 / SKIP_TYPOS=1 / SKIP_TESTS=1 / SKIP_DESC=1  # skip one check
+
+set -uo pipefail
+
+if [ "${SKIP_HOOKS:-0}" = "1" ]; then
+  echo "pre-push: SKIP_HOOKS=1 set; skipping all checks."
+  exit 0
+fi
+
+repo_root="$(git rev-parse --show-toplevel)"
+cd "$repo_root" || exit 1
+
+# ---------------------------------------------------------------------------
+# Figure out which local commits are being pushed, and derive the set of
+# changed files. git feeds the hook "<local ref> <local sha> <remote ref>
+# <remote sha>" lines on stdin, one per ref being pushed.
+# ---------------------------------------------------------------------------
+zero="0000000000000000000000000000000000000000"
+range_base=""
+range_tip="HEAD"
+have_range=0
+saw_stdin_ref=0
+
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [ -z "${local_sha:-}" ] && continue
+  saw_stdin_ref=1
+  # Deleting a remote branch: nothing to check.
+  if [ "$local_sha" = "$zero" ]; then
+    continue
+  fi
+  range_tip="$local_sha"
+  if [ "$remote_sha" = "$zero" ]; then
+    # New branch on the remote. Diff against origin/main if we can, so we
+    # only look at this branch's own commits rather than all of history.
+    if git rev-parse --verify --quiet origin/main >/dev/null; then
+      range_base="$(git merge-base origin/main "$local_sha" 2>/dev/null || true)"
+    fi
+  else
+    range_base="$remote_sha"
+  fi
+  have_range=1
+done
+
+# stdin listed only branch deletions (or other no-op refs): nothing to push
+# content-wise, so let it through.
+if [ "$saw_stdin_ref" -eq 1 ] && [ "$have_range" -eq 0 ]; then
+  echo "pre-push: only ref deletions in this push; nothing to check."
+  exit 0
+fi
+
+# Fallbacks when stdin gave us nothing usable (e.g. manual invocation).
+if [ "$have_range" -eq 0 ]; then
+  range_tip="HEAD"
+fi
+if [ -z "$range_base" ]; then
+  if git rev-parse --verify --quiet origin/main >/dev/null; then
+    range_base="$(git merge-base origin/main "$range_tip" 2>/dev/null || true)"
+  fi
+fi
+if [ -z "$range_base" ]; then
+  range_base="$(git rev-parse "${range_tip}~1" 2>/dev/null || echo "$range_tip")"
+fi
+
+# macOS ships Bash 3.2 (no `mapfile`), so build the list the portable way.
+# Newline-delimited; paths with newlines are not a concern for this repo.
+changed_raw="$(
+  git diff --name-only --diff-filter=ACMR "$range_base" "$range_tip" 2>/dev/null \
+    | grep -Ev '^_archive/' || true
+)"
+
+# Changed R / Rmd files that still exist in the tree.
+r_files=()
+scripts_or_tests_changed=0
+description_relevant_changed=0
+while IFS= read -r f; do
+  [ -z "$f" ] && continue
+  case "$f" in
+    *.R | *.r | *.Rmd | *.rmd) [ -f "$f" ] && r_files+=("$f") ;;
+  esac
+  case "$f" in
+    scripts/*.R | scripts/*.r | tests/*) scripts_or_tests_changed=1 ;;
+  esac
+  case "$f" in
+    DESCRIPTION | *.Rmd | *.rmd) description_relevant_changed=1 ;;
+  esac
+done <<< "$changed_raw"
+
+fail=0
+
+echo "pre-push: checking ${range_base:0:7}..${range_tip:0:7}"
+
+# ---------------------------------------------------------------------------
+# 1. typos (fast; scans the whole tree via its own config excludes)
+# ---------------------------------------------------------------------------
+if [ "${SKIP_TYPOS:-0}" = "1" ]; then
+  echo "  [typos]   skipped (SKIP_TYPOS=1)"
+elif ! command -v typos >/dev/null 2>&1; then
+  echo "  [typos]   skipped (typos not installed; 'brew install typos-cli')"
+else
+  echo "  [typos]   running..."
+  if ! typos --config .typos.toml; then
+    echo "  [typos]   FAILED — fix the typos above or add them to .typos.toml"
+    fail=1
+  else
+    echo "  [typos]   ok"
+  fi
+fi
+
+# ---------------------------------------------------------------------------
+# 2. lintr on changed R/Rmd files
+# ---------------------------------------------------------------------------
+if [ "${SKIP_LINT:-0}" = "1" ]; then
+  echo "  [lintr]   skipped (SKIP_LINT=1)"
+elif [ "${#r_files[@]}" -eq 0 ]; then
+  echo "  [lintr]   skipped (no R/Rmd files changed)"
+elif ! command -v Rscript >/dev/null 2>&1; then
+  echo "  [lintr]   skipped (Rscript not found)"
+else
+  echo "  [lintr]   linting ${#r_files[@]} file(s)..."
+  if ! LINT_FILES="$(printf '%s\n' "${r_files[@]}")" Rscript - <<'RSCRIPT'
+files <- strsplit(Sys.getenv("LINT_FILES"), "\n", fixed = TRUE)[[1]]
+files <- files[nzchar(files)]
+if (!requireNamespace("lintr", quietly = TRUE)) {
+  cat("    lintr not installed; skipping.\n")
+  quit(status = 0)
+}
+lints <- unlist(lapply(files, function(f) {
+  tryCatch(lintr::lint(f), error = function(e) {
+    message("    lintr error on ", f, ": ", conditionMessage(e))
+    list()
+  })
+}), recursive = FALSE)
+n <- length(lints)
+if (n > 0) {
+  print(structure(lints, class = "lints"))
+  cat("\n    Found", n, "lint(s).\n")
+  quit(status = 1)
+}
+cat("    No lints.\n")
+RSCRIPT
+  then
+    echo "  [lintr]   FAILED — fix the lints above (or tune .lintr)"
+    fail=1
+  else
+    echo "  [lintr]   ok"
+  fi
+fi
+
+# ---------------------------------------------------------------------------
+# 3. testthat (only when scripts/ or tests/ changed)
+# ---------------------------------------------------------------------------
+if [ "${SKIP_TESTS:-0}" = "1" ]; then
+  echo "  [testthat] skipped (SKIP_TESTS=1)"
+elif [ "$scripts_or_tests_changed" -eq 0 ]; then
+  echo "  [testthat] skipped (no scripts/ or tests/ changes)"
+elif [ ! -d tests/testthat ]; then
+  echo "  [testthat] skipped (no tests/testthat dir)"
+elif ! command -v Rscript >/dev/null 2>&1; then
+  echo "  [testthat] skipped (Rscript not found)"
+else
+  echo "  [testthat] running..."
+  if ! Rscript - <<'RSCRIPT'
+if (!requireNamespace("testthat", quietly = TRUE)) {
+  cat("    testthat not installed; skipping.\n")
+  quit(status = 0)
+}
+results <- testthat::test_dir("tests/testthat", reporter = "summary")
+df <- as.data.frame(results)
+if (any(df$failed > 0) || any(df$error)) {
+  quit(status = 1)
+}
+RSCRIPT
+  then
+    echo "  [testthat] FAILED — fix the failing tests above"
+    fail=1
+  else
+    echo "  [testthat] ok"
+  fi
+fi
+
+# ---------------------------------------------------------------------------
+# 4. DESCRIPTION: every library() call in an Rmd must be declared. Mirrors
+#    the build workflow's "Validate DESCRIPTION vs library() calls" step.
+#    Only runs when DESCRIPTION or an Rmd changed.
+# ---------------------------------------------------------------------------
+if [ "${SKIP_DESC:-0}" = "1" ]; then
+  echo "  [desc]    skipped (SKIP_DESC=1)"
+elif [ "$description_relevant_changed" -eq 0 ]; then
+  echo "  [desc]    skipped (no DESCRIPTION/Rmd changes)"
+elif ! command -v Rscript >/dev/null 2>&1; then
+  echo "  [desc]    skipped (Rscript not found)"
+else
+  echo "  [desc]    validating library() calls against DESCRIPTION..."
+  if ! Rscript - <<'RSCRIPT'
+desc <- read.dcf("DESCRIPTION")
+get_tokens <- function(field) {
+  if (!field %in% colnames(desc)) {
+    return(character())
+  }
+  x <- desc[, field]
+  if (length(x) == 0 || is.na(x)) {
+    return(character())
+  }
+  toks <- trimws(unlist(strsplit(x, ",\\s*")))
+  toks <- gsub("\\s*\\(.*\\)$", "", toks)
+  toks[nzchar(toks) & toks != "NA"]
+}
+declared <- unique(c(
+  get_tokens("Imports"), get_tokens("Depends"), get_tokens("Suggests")
+))
+declared <- declared[declared != "R"]
+rmds <- list.files(".", pattern = "\\.Rmd$", full.names = FALSE)
+libs_txt <- unlist(lapply(rmds, function(f) {
+  m <- regmatches(
+    readLines(f, warn = FALSE),
+    gregexpr("library\\(([^)]+)\\)", readLines(f, warn = FALSE))
+  )
+  unlist(m)
+}))
+libs <- unique(sub("^library\\(([^)]+)\\).*", "\\1", libs_txt))
+libs <- gsub("[\"' ]", "", libs)
+tv_core <- c(
+  "ggplot2", "dplyr", "tidyr", "readr", "purrr", "tibble", "stringr", "forcats"
+)
+if ("tidyverse" %in% declared) {
+  libs <- setdiff(libs, tv_core)
+}
+missing <- setdiff(libs, declared)
+if (length(missing)) {
+  cat("    ERROR: used via library() in an Rmd but not in DESCRIPTION:\n")
+  cat(paste0("      - ", missing), sep = "\n")
+  cat("\n")
+  quit(status = 1)
+}
+cat("    All library() packages are declared.\n")
+RSCRIPT
+  then
+    echo "  [desc]    FAILED — add the missing package(s) to DESCRIPTION Imports"
+    fail=1
+  else
+    echo "  [desc]    ok"
+  fi
+fi
+
+echo ""
+if [ "$fail" -ne 0 ]; then
+  echo "pre-push: checks FAILED. Fix the issues above, or bypass with:"
+  echo "  git push --no-verify"
+  exit 1
+fi
+
+echo "pre-push: all checks passed."
+exit 0

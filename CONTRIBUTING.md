@@ -78,6 +78,36 @@ testthat::test_dir("tests/testthat")
 
 For typo / link / accessibility checks see the corresponding workflows in `.github/workflows/`. These run automatically on PR.
 
+## Git hooks (pre-push)
+
+The repo ships a pre-push hook (`.githooks/pre-push`) that runs the fast,
+deterministic slice of CI locally so red checks are caught before the push
+instead of after a round-trip to GitHub. Enable it once after cloning:
+
+```bash
+./scripts/install-git-hooks.sh
+```
+
+That points `core.hooksPath` at the tracked `.githooks/` directory, so the
+hook is versioned and shared. On each `git push` it runs, against only the
+files changed in the range being pushed:
+
+- **typos** — spell check via `.typos.toml` (mirrors `typos.yml`)
+- **lintr** — lints changed `.R` / `.Rmd` files via `.lintr` (mirrors `lint.yml`)
+- **testthat** — runs `tests/testthat` when `scripts/` or `tests/` changed (mirrors `test.yml`)
+- **DESCRIPTION** — checks every `library()` call in an Rmd is declared (mirrors the build sanity check)
+
+Heavy jobs (site render, Lighthouse, pa11y, link-check) stay on CI; they
+need Chrome / a built `_site` / network and are too slow for a push gate.
+
+Bypass when you need to:
+
+```bash
+git push --no-verify          # skip all hooks
+SKIP_HOOKS=1 git push         # same, explicit
+SKIP_LINT=1 git push          # skip just lintr (also SKIP_TYPOS / SKIP_TESTS / SKIP_DESC)
+```
+
 ## Bumping pinned dependencies
 
 The renv lockfile (`renv.lock`) is the source of truth for what
