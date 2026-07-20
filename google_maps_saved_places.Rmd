@@ -21,6 +21,7 @@ cat('
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+`%>%` <- magrittr::`%>%`
 ```
 
 This page embeds my Google My Maps layer and shows the latest exported CSV data from the repo.
@@ -76,7 +77,7 @@ if (length(existing_csvs) == 0) {
 if (!file.exists(want_to_go_path)) {
   cat("`data/want_to_go.csv` not found.\n\n")
 } else {
-  readr::read_csv(want_to_go_path, show_col_types = FALSE) |>
+  readr::read_csv(want_to_go_path, show_col_types = FALSE) %>%
     DT::datatable(
       filter = "top",
       extensions = "Buttons",
@@ -97,7 +98,7 @@ if (!file.exists(want_to_go_path)) {
 if (!file.exists(favorites_path)) {
   cat("`data/favorites.csv` not found.\n\n")
 } else {
-  readr::read_csv(favorites_path, show_col_types = FALSE) |>
+  readr::read_csv(favorites_path, show_col_types = FALSE) %>%
     DT::datatable(
       filter = "top",
       extensions = "Buttons",
