@@ -51,10 +51,10 @@ directors <- tibble::tribble(
 
 tmdb_get <- function(path, query = list()) {
   url <- paste0("https://api.themoviedb.org/3", path)
-  req <- httr2::request(url) |>
-    httr2::req_url_query(!!!c(list(api_key = api_key), query)) |>
-    httr2::req_retry(max_tries = 4, backoff = ~ min(2 ^ .x, 30)) |>
-    httr2::req_throttle(rate = 35 / 10) |>
+  req <- httr2::request(url) %>%
+    httr2::req_url_query(!!!c(list(api_key = api_key), query)) %>%
+    httr2::req_retry(max_tries = 4, backoff = ~ min(2 ^ .x, 30)) %>%
+    httr2::req_throttle(rate = 35 / 10) %>%
     httr2::req_user_agent("cavandonohoe.github.io/director-filmographies")
   resp <- httr2::req_perform(req)
   jsonlite::fromJSON(httr2::resp_body_string(resp), simplifyVector = TRUE)
@@ -82,9 +82,9 @@ fetch_directing_credits <- function(person_id) {
   if (is.null(crew) || nrow(crew) == 0) {
     return(tibble::tibble())
   }
-  crew |>
-    dplyr::filter(.data$job == "Director") |>
-    dplyr::select(any_of(c("id", "title", "release_date", "popularity"))) |>
+  crew %>%
+    dplyr::filter(.data$job == "Director") %>%
+    dplyr::select(any_of(c("id", "title", "release_date", "popularity"))) %>%
     dplyr::distinct(.data$id, .keep_all = TRUE)
 }
 
@@ -140,7 +140,7 @@ message(sprintf(
   "[director-films] Resolving %d directors...", nrow(directors)
 ))
 
-directors_resolved <- directors |>
+directors_resolved <- directors %>%
   dplyr::mutate(
     person_id = purrr::pmap_int(
       list(.data$tmdb_query, .data$force_id),
@@ -149,7 +149,7 @@ directors_resolved <- directors |>
   )
 
 message("[director-films] Person IDs:")
-print(directors_resolved |> dplyr::select(rank, display_name, person_id))
+print(directors_resolved %>% dplyr::select(rank, display_name, person_id))
 
 all_films <- purrr::pmap_dfr(
   list(
@@ -170,8 +170,8 @@ all_films <- purrr::pmap_dfr(
       ))
     }
     details <- purrr::map_dfr(credits$id, fetch_movie_details)
-    dplyr::left_join(details, credits |> dplyr::select(id, popularity),
-                     by = "id") |>
+    dplyr::left_join(details, credits %>% dplyr::select(id, popularity),
+                     by = "id") %>%
       dplyr::mutate(
         director_rank = rank,
         director_display_name = display_name,
@@ -184,16 +184,16 @@ all_films <- purrr::pmap_dfr(
 # Joe Russo's directing credits are the same set (they always co-direct).
 # Pulling both would double-count, so we collapse under one display name.
 
-films_clean <- all_films |>
-  dplyr::filter(!is.na(.data$release_date), .data$release_date != "") |>
+films_clean <- all_films %>%
+  dplyr::filter(!is.na(.data$release_date), .data$release_date != "") %>%
   dplyr::mutate(
     release_year = as.integer(stringr::str_sub(.data$release_date, 1, 4))
-  ) |>
+  ) %>%
   dplyr::filter(
     !is.na(.data$release_year),
     .data$release_year >= 1960,
     .data$release_year <= as.integer(format(Sys.Date(), "%Y"))
-  ) |>
+  ) %>%
   # Drop films that haven't released revenue data yet (TMDb defaults to 0
   # for unknowns, which would distort plots). Keep them only if they have
   # a non-zero vote_count, so vote-average plots can still include them.
@@ -202,14 +202,14 @@ films_clean <- all_films |>
     budget_usable = .data$budget > 0,
     revenue_2025 = inflate_to_ref(.data$revenue, .data$release_year),
     budget_2025 = inflate_to_ref(.data$budget, .data$release_year)
-  ) |>
-  dplyr::group_by(.data$director_display_name) |>
-  dplyr::arrange(.data$release_date, .by_group = TRUE) |>
+  ) %>%
+  dplyr::group_by(.data$director_display_name) %>%
+  dplyr::arrange(.data$release_date, .by_group = TRUE) %>%
   dplyr::mutate(
     career_film_number = dplyr::row_number()
-  ) |>
-  dplyr::ungroup() |>
-  dplyr::arrange(.data$director_rank, .data$career_film_number) |>
+  ) %>%
+  dplyr::ungroup() %>%
+  dplyr::arrange(.data$director_rank, .data$career_film_number) %>%
   dplyr::select(
     director_rank, director_display_name, director_person_id,
     career_film_number, tmdb_id = id, imdb_id, title, release_date,
@@ -219,9 +219,9 @@ films_clean <- all_films |>
   )
 
 # Director-level rollup so the Rmd doesn't have to recompute it.
-meta <- films_clean |>
-  dplyr::filter(.data$revenue_usable) |>
-  dplyr::group_by(.data$director_rank, .data$director_display_name) |>
+meta <- films_clean %>%
+  dplyr::filter(.data$revenue_usable) %>%
+  dplyr::group_by(.data$director_rank, .data$director_display_name) %>%
   dplyr::summarise(
     n_films = dplyr::n(),
     first_year = min(.data$release_year, na.rm = TRUE),
@@ -232,7 +232,7 @@ meta <- films_clean |>
     avg_revenue_per_film_2025 = mean(.data$revenue_2025, na.rm = TRUE),
     avg_vote = mean(.data$vote_average[.data$vote_count >= 100], na.rm = TRUE),
     .groups = "drop"
-  ) |>
+  ) %>%
   dplyr::arrange(.data$director_rank)
 
 dir.create(here::here("data"), showWarnings = FALSE, recursive = TRUE)
