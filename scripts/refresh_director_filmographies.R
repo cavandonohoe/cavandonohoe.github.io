@@ -14,16 +14,7 @@
 # Usage:
 #   TMDB_API_KEY=... Rscript scripts/refresh_director_filmographies.R
 
-suppressPackageStartupMessages({
-  library(dplyr)
-  library(tibble)
-  library(stringr)
-  library(readr)
-  library(here)
-  library(httr2)
-  library(jsonlite)
-  library(purrr)
-})
+`%>%` <- magrittr::`%>%`
 
 api_key <- Sys.getenv("TMDB_API_KEY", unset = "")
 if (!nzchar(api_key)) {
@@ -84,7 +75,7 @@ fetch_directing_credits <- function(person_id) {
   }
   crew %>%
     dplyr::filter(.data$job == "Director") %>%
-    dplyr::select(any_of(c("id", "title", "release_date", "popularity"))) %>%
+    dplyr::select(tidyselect::any_of(c("id", "title", "release_date", "popularity"))) %>%
     dplyr::distinct(.data$id, .keep_all = TRUE)
 }
 

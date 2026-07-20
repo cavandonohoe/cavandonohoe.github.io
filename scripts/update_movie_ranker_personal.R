@@ -27,15 +27,7 @@
 #   replay comparisons in created_at order
 #   apply manual overrides last (clobber rating, keep W-L)
 
-suppressPackageStartupMessages({
-  library(dplyr)
-  library(tibble)
-  library(readr)
-  library(here)
-  library(httr2)
-  library(jsonlite)
-  library(purrr)
-})
+`%>%` <- magrittr::`%>%`
 
 `%||%` <- function(a, b) if (is.null(a)) b else a
 
