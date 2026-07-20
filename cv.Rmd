@@ -13,9 +13,6 @@ editor_options:
   chunk_output_type: console
 lang: "en"
 ---
-```{r pipe_cv, include=FALSE}
-`%>%` <- magrittr::`%>%`
-```
 ```{r ci-skip-gs4_cv, include=FALSE}
 # if (Sys.getenv("CI") == "true") knitr::knit_exit()
 ```
@@ -70,8 +67,8 @@ file_info <- tryCatch({
 
 last_update <- if (!is.null(file_info) && length(file_info$drive_resource) > 0) {
   tryCatch({
-    file_info$drive_resource[[1]]$modifiedTime %>%
-      lubridate::ymd_hms() %>%
+    file_info$drive_resource[[1]]$modifiedTime |>
+      lubridate::ymd_hms() |>
       lubridate::as_date()
   }, error = function(e) {
     warning("Failed to parse last update date: ", e$message)
@@ -81,40 +78,40 @@ last_update <- if (!is.null(file_info) && length(file_info$drive_resource) > 0) 
   Sys.Date()
 }
 
-resume_v1.1 <- resume %>%
-  dplyr::mutate(dplyr::across(c(start, end), format_resume_date)) %>%
-  dplyr::mutate(dplyr::across(tidyselect::starts_with("description"), as.character)) %>%
+resume_v1.1 <- resume |>
+  dplyr::mutate(dplyr::across(c(start, end), format_resume_date)) |>
+  dplyr::mutate(dplyr::across(tidyselect::starts_with("description"), as.character)) |>
   dplyr::mutate(description_1 = dplyr::if_else(
     dplyr::if_all(tidyselect::starts_with("description"), ~ is.na(.x) | .x == ""),
     "[keep]",
     description_1
-  )) %>%
-  dplyr::mutate(start.date = as.Date(paste(start, "1", sep = "-"), format = "%B %Y-%d")) %>%
+  )) |>
+  dplyr::mutate(start.date = as.Date(paste(start, "1", sep = "-"), format = "%B %Y-%d")) |>
   dplyr::mutate(section_num = dplyr::row_number())
 
-resume_v2 <- resume_v1.1 %>%
+resume_v2 <- resume_v1.1 |>
   tidyr::pivot_longer(tidyselect::starts_with("description"),
                                          names_to = "description_num",
                                          values_to = "description",
                                          values_drop_na = TRUE)
 
-resume_v3 <- resume_v2 %>%
-  dplyr::mutate(start = ifelse(is.na(start), "", start), end = ifelse(is.na(end), "", end)) %>%
+resume_v3 <- resume_v2 |>
+  dplyr::mutate(start = ifelse(is.na(start), "", start), end = ifelse(is.na(end), "", end)) |>
   dplyr::mutate(time_period = dplyr::case_when(start == "" ~ end,
                                  end == "" & section == "Awards" ~ start,
-                                 TRUE ~ paste(start, end, sep = " - "))) %>%
+                                 TRUE ~ paste(start, end, sep = " - "))) |>
   dplyr::mutate(description_paste = ifelse(section != "About Me", paste("-", description),
-    description)) %>%
+    description)) |>
   dplyr::filter(in_resume)
 
-pos_bullets <- resume_v3 %>%
-  dplyr::mutate(group_num = dplyr::cur_group_id()) %>%
-  dplyr::group_by(section, title, location, institution, time_period, section_num) %>%
-  dplyr::summarise(description_section = paste(description_paste, collapse = "\n")) %>%
+pos_bullets <- resume_v3 |>
+  dplyr::mutate(group_num = dplyr::cur_group_id()) |>
+  dplyr::group_by(section, title, location, institution, time_period, section_num) |>
+  dplyr::summarise(description_section = paste(description_paste, collapse = "\n")) |>
     dplyr::arrange(section_num)
 
-pos_bullets_v1.1 <- pos_bullets %>%
-  dplyr::ungroup() %>%
+pos_bullets_v1.1 <- pos_bullets |>
+  dplyr::ungroup() |>
   dplyr::mutate(description_section = dplyr::case_when(
     section == "Skills" ~ gsub(
       x = description_section,
@@ -127,11 +124,12 @@ pos_bullets_v1.1 <- pos_bullets %>%
       replacement = ""
     ),
     TRUE ~ description_section
-  )) %>%
-  replace(is.na(.), "N/A")
+  ))
+
+pos_bullets_v1.1[is.na(pos_bullets_v1.1)] <- "N/A"
 
 # dealing with hyperlinks
-pos_bullets_v1.2 <- pos_bullets_v1.1 %>%
+pos_bullets_v1.2 <- pos_bullets_v1.1 |>
   dplyr::mutate(description_section = gsub(
     x = description_section,
     pattern = "Project Presentation",
@@ -141,7 +139,7 @@ pos_bullets_v1.2 <- pos_bullets_v1.1 %>%
       "Case%20Comp%202018%20-%20Team%20UCI%20Presentation.pdf",
       ")"
     )
-  )) %>%
+  )) |>
   dplyr::mutate(description_section = gsub(
     x = description_section,
     pattern = "Project Memorandum",
@@ -153,7 +151,7 @@ pos_bullets_v1.2 <- pos_bullets_v1.1 %>%
     )
   ))
 
-pos_bullets_v1.3 <- pos_bullets_v1.2 %>%
+pos_bullets_v1.3 <- pos_bullets_v1.2 |>
   dplyr::mutate(description_section = dplyr::case_when(grepl(x = description_section,
     pattern = "\\[keep\\]") ~ "N/A",
                                          TRUE ~ description_section))
@@ -192,8 +190,8 @@ Skills {#skills}
 
 
 ```{r skills, echo=FALSE, results='asis'}
-pos_bullets_final %>%
-  dplyr::filter(section == "Skills") %>%
+pos_bullets_final |>
+  dplyr::filter(section == "Skills") |>
   dplyr::mutate(
     description_section = gsub(
       "website", "[website](https://cavandonohoe.github.io/)", description_section
@@ -201,7 +199,7 @@ pos_bullets_final %>%
     description_section = gsub(
       "resume", "[resume](https://cavandonohoe.github.io/cv.html)", description_section
     )
-  ) %>%
+  ) |>
   glue::glue_data("{description_section}", "\n\n")
 ```
 
@@ -227,8 +225,8 @@ Cavan Donohoe {#title}
 
 
 ```{r summary, echo=FALSE, results='asis'}
-pos_bullets_final %>%
-  dplyr::filter(section == "About Me") %>%
+pos_bullets_final |>
+  dplyr::filter(section == "About Me") |>
   glue::glue_data("{description_section}", "\n\n")
 ```
 
@@ -239,8 +237,8 @@ Professional Experience {data-icon=suitcase}
 
 
 ```{r professional experience, echo=FALSE, results='asis'}
-pos_bullets_final %>%
-  dplyr::filter(section == "Experience") %>%
+pos_bullets_final |>
+  dplyr::filter(section == "Experience") |>
   glue::glue_data("### {title}", "\n\n",
                                                                     "{institution}",
                                                                     "\n\n",
@@ -258,8 +256,8 @@ Education {data-icon=graduation-cap data-concise=true}
 
 
 ```{r education, echo=FALSE, results='asis'}
-pos_bullets_final %>%
-  dplyr::filter(section == "Education") %>%
+pos_bullets_final |>
+  dplyr::filter(section == "Education") |>
   glue::glue_data("### {title}", "\n\n",
                                                                     "{institution}",
                                                                     "\n\n",
@@ -280,8 +278,8 @@ Awards {data-icon=medal}
 
 
 ```{r awards, echo=FALSE, results='asis'}
-pos_bullets_final %>%
-  dplyr::filter(section == "Awards") %>%
+pos_bullets_final |>
+  dplyr::filter(section == "Awards") |>
   glue::glue_data("### {description_section}",
                                                                               "\n\n",
                                                                               "{institution}",
@@ -298,8 +296,8 @@ Credentials {data-icon=th-list}
 
 ```{r credentials, echo=FALSE, results='asis'}
 
-pos_bullets_final %>%
-  dplyr::filter(section == "Credentials") %>%
+pos_bullets_final |>
+  dplyr::filter(section == "Credentials") |>
   glue::glue_data("### {description_section}",
                                                                               "\n\n",
                                                                               "{institution}",
