@@ -36,6 +36,18 @@ library(googlesheets4)
 library(lubridate)
 # coding in the resume
 
+format_resume_date <- function(x) {
+  vapply(x, function(value) {
+    if (length(value) == 0 || all(is.na(value))) {
+      ""
+    } else if (inherits(value, "POSIXt") || inherits(value, "Date")) {
+      format(as.Date(value), "%B %Y")
+    } else {
+      as.character(value)[1]
+    }
+  }, character(1))
+}
+
 # resume = read_excel(here::here("data", "resume.xlsx")
 resume_url <- "https://docs.google.com/spreadsheets/d/13mLROsbvwiE-djiRMQuOKfQwppOlH5mOxB43EaGna8s"
 
@@ -72,7 +84,15 @@ last_update <- if (!is.null(file_info) && length(file_info$drive_resource) > 0) 
   Sys.Date()
 }
 
-resume_v1.1 = resume %>% mutate(start.date = as.Date(paste(start, "1", sep="-"), format="%B %Y-%d")) %>%
+resume_v1.1 <- resume %>%
+  mutate(across(c(start, end), format_resume_date)) %>%
+  mutate(across(starts_with("description"), as.character)) %>%
+  mutate(description_1 = if_else(
+    if_all(starts_with("description"), ~ is.na(.x) | .x == ""),
+    "[keep]",
+    description_1
+  )) %>%
+  mutate(start.date = as.Date(paste(start, "1", sep="-"), format="%B %Y-%d")) %>%
   mutate(section_num = row_number())
 
 resume_v2 = resume_v1.1 %>% pivot_longer(starts_with('description'),
@@ -246,4 +266,3 @@ positions_collapsed_bullets_final %>% filter(section=="Credentials") %>% glue_da
                                                                               "{time_period}",
                                                                               "\n\n")
 ```
-

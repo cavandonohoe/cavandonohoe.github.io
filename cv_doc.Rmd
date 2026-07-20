@@ -32,6 +32,18 @@ lang: "en"
 # give victoria princess treatment always
 # coding in the resume
 
+format_resume_date <- function(x) {
+  vapply(x, function(value) {
+    if (length(value) == 0 || all(is.na(value))) {
+      ""
+    } else if (inherits(value, "POSIXt") || inherits(value, "Date")) {
+      format(as.Date(value), "%B %Y")
+    } else {
+      as.character(value)[1]
+    }
+  }, character(1))
+}
+
 resume_url <- "https://docs.google.com/spreadsheets/d/13mLROsbvwiE-djiRMQuOKfQwppOlH5mOxB43EaGna8s"
 
 resume <- tryCatch({
@@ -57,6 +69,13 @@ last_update <- if (!is.null(file_info) && length(file_info$drive_resource) > 0) 
 }
 
 resume_v1.1 <- resume %>%
+  dplyr::mutate(dplyr::across(c(start, end), format_resume_date)) %>%
+  dplyr::mutate(dplyr::across(tidyselect::starts_with("description"), as.character)) %>%
+  dplyr::mutate(description_1 = dplyr::if_else(
+    dplyr::if_all(tidyselect::starts_with("description"), ~ is.na(.x) | .x == ""),
+    "[keep]",
+    description_1
+  )) %>%
   dplyr::mutate(start.date = as.Date(paste(start, "1", sep="-"), format="%B %Y-%d")) %>%
   dplyr::mutate(section_num = dplyr::row_number())
 
