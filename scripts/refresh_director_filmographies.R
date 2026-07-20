@@ -75,7 +75,7 @@ fetch_directing_credits <- function(person_id) {
   }
   crew %>%
     dplyr::filter(.data$job == "Director") %>%
-    dplyr::select(tidyselect::any_of(c("id", "title", "release_date", "popularity"))) %>%
+    dplyr::select(dplyr::any_of(c("id", "title", "release_date", "popularity"))) %>%
     dplyr::distinct(.data$id, .keep_all = TRUE)
 }
 
