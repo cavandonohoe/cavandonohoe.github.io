@@ -107,13 +107,13 @@ resume_v3 <- resume_v2 %>%
     description)) %>%
   dplyr::filter(in_resume)
 
-positions_collapsed_bullets <- resume_v3 %>%
+pos_bullets <- resume_v3 %>%
   dplyr::mutate(group_num = dplyr::cur_group_id()) %>%
   dplyr::group_by(section, title, location, institution, time_period, section_num) %>%
   dplyr::summarise(description_section = paste(description_paste, collapse = "\n")) %>%
     dplyr::arrange(section_num)
 
-positions_collapsed_bullets_v1.1 <- positions_collapsed_bullets %>%
+pos_bullets_v1.1 <- pos_bullets %>%
   dplyr::ungroup() %>%
   dplyr::mutate(description_section = dplyr::case_when(
     section == "Skills" ~ gsub(
@@ -131,7 +131,7 @@ positions_collapsed_bullets_v1.1 <- positions_collapsed_bullets %>%
   replace(is.na(.), "N/A")
 
 # dealing with hyperlinks
-positions_collapsed_bullets_v1.2 <- positions_collapsed_bullets_v1.1 %>%
+pos_bullets_v1.2 <- pos_bullets_v1.1 %>%
   dplyr::mutate(description_section = gsub(
     x = description_section,
     pattern = "Project Presentation",
@@ -153,12 +153,12 @@ positions_collapsed_bullets_v1.2 <- positions_collapsed_bullets_v1.1 %>%
     )
   ))
 
-positions_collapsed_bullets_v1.3 <- positions_collapsed_bullets_v1.2 %>%
+pos_bullets_v1.3 <- pos_bullets_v1.2 %>%
   dplyr::mutate(description_section = dplyr::case_when(grepl(x = description_section,
     pattern = "\\[keep\\]") ~ "N/A",
                                          TRUE ~ description_section))
 
-positions_collapsed_bullets_final <- positions_collapsed_bullets_v1.3
+pos_bullets_final <- pos_bullets_v1.3
 
 # adding word doc stuff too
 rmarkdown::render("cv_doc.Rmd", output_format = "word_document", quiet = TRUE)
@@ -192,7 +192,7 @@ Skills {#skills}
 
 
 ```{r skills, echo=FALSE, results='asis'}
-positions_collapsed_bullets_final %>%
+pos_bullets_final %>%
   dplyr::filter(section == "Skills") %>%
   dplyr::mutate(
     description_section = gsub(
@@ -227,7 +227,7 @@ Cavan Donohoe {#title}
 
 
 ```{r summary, echo=FALSE, results='asis'}
-positions_collapsed_bullets_final %>%
+pos_bullets_final %>%
   dplyr::filter(section == "About Me") %>%
   glue::glue_data("{description_section}", "\n\n")
 ```
@@ -239,7 +239,7 @@ Professional Experience {data-icon=suitcase}
 
 
 ```{r professional experience, echo=FALSE, results='asis'}
-positions_collapsed_bullets_final %>%
+pos_bullets_final %>%
   dplyr::filter(section == "Experience") %>%
   glue::glue_data("### {title}", "\n\n",
                                                                     "{institution}",
@@ -258,7 +258,7 @@ Education {data-icon=graduation-cap data-concise=true}
 
 
 ```{r education, echo=FALSE, results='asis'}
-positions_collapsed_bullets_final %>%
+pos_bullets_final %>%
   dplyr::filter(section == "Education") %>%
   glue::glue_data("### {title}", "\n\n",
                                                                     "{institution}",
@@ -280,7 +280,7 @@ Awards {data-icon=medal}
 
 
 ```{r awards, echo=FALSE, results='asis'}
-positions_collapsed_bullets_final %>%
+pos_bullets_final %>%
   dplyr::filter(section == "Awards") %>%
   glue::glue_data("### {description_section}",
                                                                               "\n\n",
@@ -298,7 +298,7 @@ Credentials {data-icon=th-list}
 
 ```{r credentials, echo=FALSE, results='asis'}
 
-positions_collapsed_bullets_final %>%
+pos_bullets_final %>%
   dplyr::filter(section == "Credentials") %>%
   glue::glue_data("### {description_section}",
                                                                               "\n\n",
