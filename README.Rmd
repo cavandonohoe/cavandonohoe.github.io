@@ -118,15 +118,6 @@ refresh workflows above. Regenerated each time `README.Rmd` is
 knit.
 
 ```{r commit-activity, echo = FALSE, message = FALSE, warning = FALSE, fig.width = 14, fig.height = 8, fig.path = "images/readme/", dev = "png", dpi = 110, fig.alt = "Two bar charts showing monthly commits and monthly lines changed (insertions + deletions) for this repository, split by Cavan's own commits vs. scheduled-bot commits."}
-suppressPackageStartupMessages({
-  library(dplyr)
-  library(ggplot2)
-  library(tidyr)
-  library(lubridate)
-  library(scales)
-  library(patchwork)
-})
-
 raw <- system(
   "git log --no-merges --pretty=format:'COMMIT|%H|%at|%an' --shortstat",
   intern = TRUE
@@ -243,7 +234,7 @@ p_lines <- ggplot2::ggplot(
   ) +
   theme_readme
 
-(p_commits / p_lines) +
+patchwork::wrap_plots(p_commits, p_lines, ncol = 1) +
   patchwork::plot_layout(guides = "collect") &
   ggplot2::theme(legend.position = "top")
 ```
@@ -300,7 +291,7 @@ p_cum_lines <- ggplot2::ggplot(
   ) +
   theme_readme
 
-(p_cum_commits / p_cum_lines) +
+patchwork::wrap_plots(p_cum_commits, p_cum_lines, ncol = 1) +
   patchwork::plot_layout(guides = "collect") &
   ggplot2::theme(legend.position = "top")
 ```
