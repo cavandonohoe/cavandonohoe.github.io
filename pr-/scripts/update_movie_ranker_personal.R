@@ -27,15 +27,7 @@
 #   replay comparisons in created_at order
 #   apply manual overrides last (clobber rating, keep W-L)
 
-suppressPackageStartupMessages({
-  library(dplyr)
-  library(tibble)
-  library(readr)
-  library(here)
-  library(httr2)
-  library(jsonlite)
-  library(purrr)
-})
+`%>%` <- magrittr::`%>%`
 
 `%||%` <- function(a, b) if (is.null(a)) b else a
 
@@ -51,14 +43,14 @@ if (!nzchar(supabase_url) || !nzchar(service_key)) {
 
 # --- Fetch singleton row -----------------------------------------------------
 fetch_state <- function() {
-  req <- httr2::request(paste0(supabase_url, "/rest/v1/ranker_state")) |>
-    httr2::req_url_query(id = "eq.singleton", select = "*") |>
+  req <- httr2::request(paste0(supabase_url, "/rest/v1/ranker_state")) %>%
+    httr2::req_url_query(id = "eq.singleton", select = "*") %>%
     httr2::req_headers(
       apikey = service_key,
       Authorization = paste("Bearer", service_key),
       Accept = "application/json"
-    ) |>
-    httr2::req_retry(max_tries = 4, backoff = ~ min(2 ^ .x, 30)) |>
+    ) %>%
+    httr2::req_retry(max_tries = 4, backoff = ~ min(2 ^ .x, 30)) %>%
     httr2::req_user_agent("cavandonohoe.github.io/update-movie-ranker-personal")
   resp <- httr2::req_perform(req)
   rows <- jsonlite::fromJSON(
@@ -89,8 +81,8 @@ if (!file.exists(ratings_csv)) {
   stop("Missing ", ratings_csv,
        " - the IMDb export must be in the repo before this script runs.")
 }
-ratings <- readr::read_csv(ratings_csv, show_col_types = FALSE) |>
-  dplyr::rename(tconst = Const, your_rating = `Your Rating`) |>
+ratings <- readr::read_csv(ratings_csv, show_col_types = FALSE) %>%
+  dplyr::rename(tconst = Const, your_rating = `Your Rating`) %>%
   dplyr::filter(!is.na(your_rating))
 
 cat(sprintf("IMDb export: %d rated titles\n", nrow(ratings)))
@@ -99,7 +91,7 @@ cat(sprintf("IMDb export: %d rated titles\n", nrow(ratings)))
 bucket_anchor <- function(your_rating) 800 + your_rating * 50
 K_FACTOR <- 32
 
-stats <- ratings |>
+stats <- ratings %>%
   dplyr::transmute(
     tconst,
     rating = bucket_anchor(your_rating),
@@ -170,23 +162,23 @@ graduated_tconsts <- graduated_tconsts[!is.na(graduated_tconsts) &
                                         nzchar(graduated_tconsts)]
 
 # --- Build the personal CSV --------------------------------------------------
-personal <- ratings |>
+personal <- ratings %>%
   dplyr::transmute(
     tconst,
     your_rating
-  ) |>
+  ) %>%
   dplyr::mutate(
     elo = vapply(tconst, function(t) stats_env[[t]]$rating, numeric(1)),
     wins = vapply(tconst, function(t) stats_env[[t]]$wins, integer(1)),
     losses = vapply(tconst, function(t) stats_env[[t]]$losses, integer(1)),
     manual = vapply(tconst, function(t) stats_env[[t]]$manual, logical(1)),
     graduated = tconst %in% graduated_tconsts
-  ) |>
-  dplyr::group_by(your_rating) |>
-  dplyr::arrange(dplyr::desc(elo), .by_group = TRUE) |>
-  dplyr::mutate(personal_rank = dplyr::row_number()) |>
-  dplyr::ungroup() |>
-  dplyr::arrange(dplyr::desc(your_rating), personal_rank) |>
+  ) %>%
+  dplyr::group_by(your_rating) %>%
+  dplyr::arrange(dplyr::desc(elo), .by_group = TRUE) %>%
+  dplyr::mutate(personal_rank = dplyr::row_number()) %>%
+  dplyr::ungroup() %>%
+  dplyr::arrange(dplyr::desc(your_rating), personal_rank) %>%
   dplyr::select(
     tconst, your_rating, personal_rank, elo, wins, losses, manual, graduated
   )
@@ -197,11 +189,11 @@ readr::write_csv(personal, out_path)
 cat(sprintf("Wrote %s (%d rows)\n", out_path, nrow(personal)))
 
 # Quick sanity log: top 5 in the 10/10 bucket. Useful to eyeball in CI logs.
-top10 <- personal |>
-  dplyr::filter(your_rating == 10) |>
-  dplyr::slice_head(n = 5) |>
+top10 <- personal %>%
+  dplyr::filter(your_rating == 10) %>%
+  dplyr::slice_head(n = 5) %>%
   dplyr::left_join(
-    ratings |> dplyr::select(tconst, Title, Year),
+    ratings %>% dplyr::select(tconst, Title, Year),
     by = "tconst"
   )
 cat("Top 5 in 10/10 bucket:\n")
