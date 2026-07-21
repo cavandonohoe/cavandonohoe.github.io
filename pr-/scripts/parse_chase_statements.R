@@ -81,10 +81,12 @@ summary_path <- function(out_file) {
 
 write_b_summary <- function(all_tx, out_file) {
   require_package("readr")
+  require_package("magrittr")
+  `%>%` <- magrittr::`%>%`
 
   summary_file <- summary_path(out_file)
 
-  summary_table(all_tx) |>
+  summary_table(all_tx) %>%
     readr::write_csv(summary_file)
 
   summary_file
