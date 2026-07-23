@@ -21,8 +21,16 @@ import { applyPersonalStats, derivePersonalStats } from "@/lib/personal_stats";
 type Status = "loading" | "ready" | "submitting" | "empty" | "error";
 type Scope = "personal" | "global";
 
+const STAR_VALUES = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1] as const;
+
 function isCompareKind(v: string | null): v is CompareKind {
   return v != null && (COMPARE_KINDS as string[]).includes(v);
+}
+
+function parseStars(v: string | null): number | null {
+  if (v == null) return null;
+  const n = Number(v);
+  return (STAR_VALUES as readonly number[]).includes(n) ? n : null;
 }
 
 function ComparePageInner() {
@@ -34,6 +42,7 @@ function ComparePageInner() {
     ? (searchParams.get("kind") as CompareKind)
     : "movie";
   const scope: Scope = searchParams.get("scope") === "global" ? "global" : "personal";
+  const stars: number | null = parseStars(searchParams.get("stars"));
 
   // Pool tracks the *active* (kind-filtered) titles with up-to-date personal Elo.
   const [pool, setPool] = useState<Title[]>([]);
@@ -70,7 +79,9 @@ function ComparePageInner() {
       setUserId(userData.user.id);
 
       const allTitles = (titlesData ?? []) as Title[];
-      const kindTitles = allTitles.filter((t) => compareKindOf(t) === kind);
+      const kindTitles = allTitles
+        .filter((t) => compareKindOf(t) === kind)
+        .filter((t) => stars == null || t.your_rating === stars);
 
       let workingPool = kindTitles;
       let countForKind = 0;
@@ -121,7 +132,7 @@ function ComparePageInner() {
     return () => {
       cancelled = true;
     };
-  }, [supabase, kind, scope]);
+  }, [supabase, kind, scope, stars]);
 
   const advance = useCallback(
     (currentPool: Title[], lastPair: [Title, Title]) => {
@@ -254,6 +265,7 @@ function ComparePageInner() {
     const params = new URLSearchParams();
     params.set("kind", k);
     if (scope !== "personal") params.set("scope", scope);
+    if (stars != null) params.set("stars", String(stars));
     router.replace(`/compare?${params.toString()}`);
   };
 
@@ -261,6 +273,15 @@ function ComparePageInner() {
     const params = new URLSearchParams();
     params.set("kind", kind);
     if (s !== "personal") params.set("scope", s);
+    if (stars != null) params.set("stars", String(stars));
+    router.replace(`/compare?${params.toString()}`);
+  };
+
+  const setStars = (s: number | null) => {
+    const params = new URLSearchParams();
+    params.set("kind", kind);
+    if (scope !== "personal") params.set("scope", scope);
+    if (s != null) params.set("stars", String(s));
     router.replace(`/compare?${params.toString()}`);
   };
 
@@ -271,9 +292,14 @@ function ComparePageInner() {
         <ScopeTabs current={scope} onChange={setScope} />
       </div>
 
+      <div className="mb-6">
+        <StarTabs current={stars} onChange={setStars} />
+      </div>
+
       <div className="mb-4 flex items-center justify-between text-xs uppercase tracking-[0.18em] text-mist">
         <span>
           {scope === "personal" ? "Your ranking" : "Shared ranking"} · {COMPARE_KIND_LABEL[kind]}
+          {stars != null ? ` · ${stars}★ only` : ""}
         </span>
         <span>
           {comparisonsCount} comparison{comparisonsCount === 1 ? "" : "s"} · K = 32
@@ -477,6 +503,49 @@ function ScopeTabs({
             ].join(" ")}
           >
             {s === "personal" ? "Personal" : "Global"}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function StarTabs({
+  current,
+  onChange
+}: {
+  current: number | null;
+  onChange: (s: number | null) => void;
+}) {
+  return (
+    <div className="inline-flex flex-wrap gap-1 rounded-full border border-white/10 bg-slate p-1">
+      <button
+        type="button"
+        onClick={() => onChange(null)}
+        className={[
+          "rounded-full px-3 py-1.5 text-sm font-medium transition",
+          current == null
+            ? "bg-gold text-cream"
+            : "text-ink/70 hover:bg-white/5 hover:text-ink"
+        ].join(" ")}
+      >
+        All
+      </button>
+      {STAR_VALUES.map((s) => {
+        const active = s === current;
+        return (
+          <button
+            key={s}
+            type="button"
+            onClick={() => onChange(s)}
+            className={[
+              "rounded-full px-3 py-1.5 text-sm font-medium transition",
+              active
+                ? "bg-gold text-cream"
+                : "text-ink/70 hover:bg-white/5 hover:text-ink"
+            ].join(" ")}
+          >
+            {s}★
           </button>
         );
       })}
