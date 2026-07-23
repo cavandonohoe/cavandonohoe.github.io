@@ -70,14 +70,18 @@ create policy "titles_read_all"
   using (true);
 
 -- Global Elo updates flow through Server Actions running with the user's
--- session; allow update from any authenticated user. Inserts/deletes are
--- managed offline via the seed/import script with the service role key.
+-- session. Only the owner account may move the shared global Elo, so a
+-- stranger who signs up cannot rewrite the global leaderboard. Their own
+-- personal comparisons/overrides are still isolated by the policies below.
+-- Inserts/deletes are managed offline via the seed/import script with the
+-- service role key. Replace the uuid with your own auth.users id.
 drop policy if exists "titles_update_authed" on public.titles;
-create policy "titles_update_authed"
+drop policy if exists "titles_update_owner" on public.titles;
+create policy "titles_update_owner"
   on public.titles for update
   to authenticated
-  using (true)
-  with check (true);
+  using (auth.uid() = '48bd53ba-ad7b-4291-82c5-13a34b989b52'::uuid)
+  with check (auth.uid() = '48bd53ba-ad7b-4291-82c5-13a34b989b52'::uuid);
 
 drop policy if exists "comparisons_read_own" on public.comparisons;
 create policy "comparisons_read_own"
