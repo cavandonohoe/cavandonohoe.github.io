@@ -1,0 +1,467 @@
+season,episode,title,rating,votes
+1,1,A Hard Day's Night,8.3,3631
+1,2,The First Cut Is the Deepest,8.1,2518
+1,3,"Winning a Battle, Losing the War",8,2331
+1,4,No Man's Land,8,2198
+1,5,Shake Your Groove Thing,8,2118
+1,6,If Tomorrow Never Comes,8.1,2045
+1,7,The Self-Destruct Button,8.1,2014
+1,8,Save Me,7.9,1996
+1,9,Who's Zoomin' Who?,8.6,2239
+2,1,Raindrops Keep Falling on My Head,8.3,2014
+2,2,Enough Is Enough,8,1857
+2,3,Make Me Lose Control,8.6,2026
+2,4,"Deny, Deny, Deny",8.3,1903
+2,5,Bring the Pain,8.5,1929
+2,6,Into You Like a Train,9,2553
+2,7,Something to Talk About,8.1,1731
+2,8,Let It Be,7.8,1714
+2,9,Thanks for the Memories,8.3,1791
+2,10,Much Too Much,8,1714
+2,11,Owner of a Lonely Heart,8.1,1678
+2,12,Grandma Got Run Over by a Reindeer,8.1,1703
+2,13,Begin the Begin,8.1,1763
+2,14,Tell Me Sweet Little Lies,7.8,1677
+2,15,Break on Through,8.3,1758
+2,16,It's the End of the World,9.4,3659
+2,17,As We Know It,9.4,3555
+2,18,Yesterday,8.3,1776
+2,19,What Have I Done to Deserve This?,8,1690
+2,20,Band-Aid Covers the Bullet Hole,7.9,1635
+2,21,Superstition,8.1,1627
+2,22,The Name of the Game,8.1,1641
+2,23,Blues for Sister Someone,7.9,1657
+2,24,Damage Case,8.4,1749
+2,25,17 Seconds,9,2215
+2,26,Deterioration of the Fight or Flight Response,9,2204
+2,27,Losing My Religion,9.2,2905
+3,1,Time Has Come Today,8.3,1979
+3,2,I Am a Tree,8.1,1566
+3,3,Sometimes a Fantasy,8,1580
+3,4,What I Am,8.2,1647
+3,5,"Oh, the Guilt",8,1487
+3,6,Let the Angels Commit,7.9,1637
+3,7,Where the Boys Are,7.9,1653
+3,8,Staring at the Sun,7.9,1594
+3,9,From a Whisper to a Scream,8.6,1809
+3,10,Don't Stand So Close to Me,8.1,1518
+3,11,Six Days: Part 1,8.2,1711
+3,12,Six Days: Part 2,8.6,1795
+3,13,Great Expectations,8.2,1535
+3,14,Wishin' and Hopin',8.4,1564
+3,15,Walk on Water,8.8,1920
+3,16,Drowning on Dry Land,9,2093
+3,17,Some Kind of Miracle,8.4,2052
+3,18,Scars and Souvenirs,8.1,1628
+3,19,My Favorite Mistake,8,1504
+3,20,Time After Time,8,1488
+3,21,Desire,7.9,1492
+3,22,"The Other Side of This Life, Part 1",6.8,1784
+3,23,"The Other Side of This Life, Part 2",7.1,1650
+3,24,Testing 1-2-3,8.3,1504
+3,25,Didn't We Almost Have It All?,8.7,2039
+4,1,A Change Is Gonna Come,8,1634
+4,2,Love/Addiction,7.7,1429
+4,3,Let the Truth Sting,7.9,1450
+4,4,The Heart of the Matter,7.9,1478
+4,5,Haunt You Every Day,7.8,1443
+4,6,Kung Fu Fighting,7.8,1379
+4,7,Physical Attraction... Chemical Reaction,7.7,1390
+4,8,Forever Young,7.9,1454
+4,9,Crash Into Me: Part 1,8.5,1611
+4,10,Crash Into Me: Part 2,8.4,1527
+4,11,Lay Your Hands on Me,7.9,1433
+4,12,Where the Wild Things Are,8,1383
+4,13,Piece of My Heart,8.1,1390
+4,14,The Becoming,8,1591
+4,15,Losing My Mind,8,1435
+4,16,Freedom: Part 1,8.6,1786
+4,17,Freedom: Part 2,8.8,1526
+5,1,Dream a Little Dream of Me: Part 1,8.2,1605
+5,2,Dream a Little Dream of Me: Part 2,8.2,1245
+5,3,Here Comes the Flood,8.1,1478
+5,4,Brave New World,8.2,1582
+5,5,There's No 'I' in Team,8.3,1545
+5,6,Life During Wartime,8.2,1409
+5,7,Rise Up,8.3,1549
+5,8,These Ties That Bind,7.8,1599
+5,9,In the Midnight Hour,8.2,1599
+5,10,All by Myself,8.2,1563
+5,11,Wish You Were Here,8.1,1342
+5,12,Sympathy for the Devil,8.6,1698
+5,13,Stairway to Heaven,9,2024
+5,14,Beat Your Heart Out,8.2,1472
+5,15,Before and After,8.1,1342
+5,16,An Honest Mistake,8.5,1637
+5,17,I Will Follow You Into the Dark,8.5,1617
+5,18,Stand by Me,8.8,1731
+5,19,Elevator Love Letter,8.9,1800
+5,20,Sweet Surrender,8.5,1616
+5,21,No Good at Saying Sorry (One More Chance),8.3,1364
+5,22,What a Difference a Day Makes,9.2,2139
+5,23,Here's to Future Days,8.8,1774
+5,24,Now or Never,9.5,3400
+6,1,Good Mourning,8.4,1691
+6,2,Goodbye,8.2,1555
+6,3,I Always Feel Like Somebody's Watchin' Me,7.8,1290
+6,4,Tainted Obligation,7.9,1300
+6,5,Invasion,8,1353
+6,6,I Saw What I Saw,9,2213
+6,7,Give Peace a Chance,8.7,1596
+6,8,Invest in Love,8.4,1423
+6,9,New History,8.1,1248
+6,10,Holidaze,7.9,1296
+6,11,Blink,8,1242
+6,12,I Like You So Much Better When You're Naked,7.8,1252
+6,13,State of Love and Trust,8,1219
+6,14,Valentine's Day Massacre,8,1207
+6,15,The Time Warp,8.8,1839
+6,16,Perfect Little Accident,8,1229
+6,17,Push,7.8,1222
+6,18,Suicide Is Painless,7.8,1284
+6,19,Sympathy for the Parents,7.9,1211
+6,20,"Hook, Line and Sinner",7.6,1175
+6,21,How Insensitive,8.1,1230
+6,22,Shiny Happy People,8.2,1444
+6,23,Sanctuary,9.6,4242
+6,24,Death and All His Friends,9.6,5079
+7,1,With You I'm Born Again,7.9,1427
+7,2,Shock to the System,7.8,1245
+7,3,Superfreak,7.7,1219
+7,4,Can't Fight Biology,7.6,1186
+7,5,Almost Grown,7.9,1208
+7,6,These Arms of Mine,7.7,1700
+7,7,That's Me Trying,7.8,1224
+7,8,Something's Gotta Give,7.8,1200
+7,9,"Slow Night, So Long",8.1,1233
+7,10,Adrift and at Peace,8.2,1361
+7,11,Disarm,8.6,1561
+7,12,Start Me Up,7.9,1195
+7,13,Don't Deceive Me (Please Don't Go),7.8,1167
+7,14,P.Y.T. (Pretty Young Thing),7.7,1153
+7,15,Golden Hour,8.6,1486
+7,16,Not Responsible,7.7,1140
+7,17,This Is How We Do It,8,1203
+7,18,Song Beneath the Song,6.1,4859
+7,19,It's a Long Way Back,7.8,1191
+7,20,White Wedding,7.9,1224
+7,21,I Will Survive,7.8,1110
+7,22,Unaccompanied Minor,8.1,1344
+8,1,Free Falling,8,1432
+8,2,She's Gone,8.3,1387
+8,3,Take the Lead,8.1,1203
+8,4,What Is It About Men,8.1,1259
+8,5,"Love, Loss and Legacy",8.1,1240
+8,6,Poker Face,7.9,1146
+8,7,"Put Me in, Coach",8.2,1260
+8,8,Heart-Shaped Box,8.4,1427
+8,9,Dark Was the Night,9.1,1927
+8,10,Suddenly,9,1750
+8,11,This Magic Moment,8.2,1267
+8,12,Hope for the Hopeless,8.2,1316
+8,13,If/Then,7.6,1869
+8,14,All You Need Is Love,8,1138
+8,15,Have You Seen Me Lately?,7.8,1157
+8,16,If Only You Were Lonely,8,1258
+8,17,One Step Too Far,7.9,1117
+8,18,The Lion Sleeps Tonight,7.9,1134
+8,19,Support System,8.1,1348
+8,20,The Girl with No Name,8.5,1214
+8,21,Moment of Truth,8.4,1233
+8,22,Let the Bad Times Roll,8.5,1321
+8,23,Migration,8.5,1349
+8,24,Flight,8.9,2412
+9,1,"Going, Going, Gone",8.5,2226
+9,2,Remember the Time,8.8,1764
+9,3,Love the One You're With,8.2,1277
+9,4,I Saw Her Standing There,8,1140
+9,5,Beautiful Doom,8.5,1415
+9,6,Second Opinion,8.1,1318
+9,7,I Was Made for Lovin' You,8.1,1308
+9,8,Love Turns You Upside Down,8,1171
+9,9,"Run, Baby, Run",8.4,1293
+9,10,Things We Said Today,8.3,1313
+9,11,The End Is the Beginning Is the End,8,1128
+9,12,Walking on a Dream,7.8,1106
+9,13,Bad Blood,7.8,1125
+9,14,The Face of Change,8.1,1248
+9,15,Hard Bargain,8.2,1160
+9,16,This Is Why We Fight,8.5,1228
+9,17,Transplant Wasteland,8.1,1168
+9,18,Idle Hands,7.8,1129
+9,19,Can't Fight This Feeling,7.8,1169
+9,20,She's Killing Me,7.8,1098
+9,21,Sleeping Monster,7.8,1064
+9,22,Do You Believe in Magic,7.7,1183
+9,23,Readiness Is All,8.4,1216
+9,24,Perfect Storm,8.9,1669
+10,1,Seal Our Fate,8,1540
+10,2,I Want You with Me,7.8,1274
+10,3,Everybody's Crying Mercy,7.5,1218
+10,4,Puttin' on the Ritz,7.7,1197
+10,5,I Bet It Stung,7.5,1194
+10,6,Map of You,7.6,1211
+10,7,Thriller,7.3,1328
+10,8,Two Against One,7.3,1177
+10,9,Sorry Seems to Be the Hardest Word,7.9,1318
+10,10,Somebody That I Used to Know,7.5,1091
+10,11,Man on the Moon,7.6,1089
+10,12,"Get Up, Stand Up",8.5,1487
+10,13,Take It Back,8.1,1200
+10,14,You've Got to Hide Your Love Away,7.8,1053
+10,15,Throwing It All Away,7.8,1030
+10,16,We Gotta Get Out of This Place,7.6,1106
+10,17,Do You Know?,7.3,1753
+10,18,You Be Illin',7.6,1138
+10,19,I'm Winning,8,1015
+10,20,Go It Alone,7.7,1020
+10,21,Change of Heart,8.2,1083
+10,22,We Are Never Ever Getting Back Together,8.6,1284
+10,23,"Everything I Try to Do, Nothing Seems to Turn Out Right",8.1,1028
+10,24,Fear (of the Unknown),9.2,2157
+11,1,I Must Have Lost It on the Wind,7.6,1308
+11,2,Puzzle with a Piece Missing,7.6,1241
+11,3,Got to Be Real,7.5,1094
+11,4,Only Mama Knows,8.2,1261
+11,5,Bend & Break,7.6,1175
+11,6,Don't Let's Start,7.5,1025
+11,7,"Could We Start Again, Please?",8,1031
+11,8,Risk,8,1078
+11,9,Where Do We Go From Here?,7.9,1038
+11,10,The Bed's Too Big Without You,7.9,1046
+11,11,All I Could Do Was Cry,8.5,1301
+11,12,The Great Pretender,7.7,1026
+11,13,Staring at the End,8.3,1270
+11,14,The Distance,8.9,1685
+11,15,I Feel the Earth Move,7.8,1099
+11,16,Don't Dream It's Over,8,1032
+11,17,With or Without You,7.8,1086
+11,18,When I Grow Up,7.9,1053
+11,19,Crazy Love,7.5,1147
+11,20,One Flight Down,7.8,1063
+11,21,How to Save a Life,5.7,3783
+11,22,She's Leaving Home: Part 1,7.2,1657
+11,23,She's Leaving Home: Part 2,7.9,1023
+11,24,Time Stops,8.1,1264
+11,25,You're My Home,8.2,1249
+12,1,Sledgehammer,8.2,1563
+12,2,Walking Tall,7.8,1071
+12,3,I Choose You,8.1,1180
+12,4,Old Time Rock and Roll,8.3,1313
+12,5,Guess Who's Coming to Dinner,8.9,1824
+12,6,The Me Nobody Knows,7.8,994
+12,7,Something Against You,7.7,972
+12,8,Things We Lost in the Fire,8.3,1233
+12,9,The Sound of Silence,9.3,2607
+12,10,All I Want Is You,8.1,1138
+12,11,Unbreak My Heart,7.1,1552
+12,12,My Next Life,8.1,1134
+12,13,All Eyez on Me,7.6,1168
+12,14,Odd Man Out,7.9,1025
+12,15,I Am Not Waiting Anymore,7.9,1089
+12,16,When It Hurts So Bad,7.6,968
+12,17,I Wear the Face,7.6,953
+12,18,"There's a Fine, Fine Line",8.6,1159
+12,19,"It's Alright, Ma (I'm Only Bleeding)",8.1,1041
+12,20,Trigger Happy,7.8,1094
+12,21,You're Gonna Need Someone on Your Side,7.9,1128
+12,22,Mama Tried,8.4,1223
+12,23,At Last,8,1192
+12,24,Family Affair,8.7,1358
+13,1,Undo,8,1259
+13,2,Catastrophe and the Cure,7.6,996
+13,3,I Ain't No Miracle Worker,8,976
+13,4,Falling Slowly,7.6,945
+13,5,Both Sides Now,7.7,942
+13,6,Roar,8.1,995
+13,7,Why Try to Change Me Now,7.5,1002
+13,8,The Room Where It Happens,6.8,1936
+13,9,You Haven't Done Nothin',8.4,1145
+13,10,You Can Look (But You'd Better Not Touch),7.7,1495
+13,11,Jukebox Hero,7.4,1101
+13,12,None of Your Business,7.5,1073
+13,13,It Only Gets Much Worse,7.9,984
+13,14,Back Where You Belong,7.5,1043
+13,15,Civil War,7,1068
+13,16,Who Is He (And What Is He to You)?,7.3,1381
+13,17,'Till I Hear It from You,7.9,1119
+13,18,"Be Still, My Soul",8.3,1287
+13,19,What's Inside,7.7,970
+13,20,In the Air Tonight,7.9,1567
+13,21,Don't Stop Me Now,7.6,978
+13,22,Leave It Inside,7.6,953
+13,23,True Colors,8.7,1359
+13,24,Ring of Fire,8.6,1513
+14,1,Break Down the House,8.1,1412
+14,2,Get Off on the Pain,8.2,1246
+14,3,Go Big or Go Home,8.2,1200
+14,4,Ain't That a Kick in the Head,8.2,1248
+14,5,Danger Zone,7.3,1451
+14,6,"Come on Down to My Boat, Baby",7.9,1294
+14,7,"Who Lives, Who Dies, Who Tells Your Story",9,2152
+14,8,Out of Nowhere,8.5,1476
+14,9,1-800-799-7233,8.7,1686
+14,10,Personal Jesus,8.8,2060
+14,11,(Don't Fear) the Reaper,8.1,1435
+14,12,"Harder, Better, Faster, Stronger",7.5,1003
+14,13,You Really Got a Hold on Me,7.5,953
+14,14,Games People Play,7.7,984
+14,15,"Old Scars, Future Hearts",7.7,986
+14,16,Caught Somewhere in Time,7.3,939
+14,17,One Day Like This,8.2,1247
+14,18,Hold Back The River,7.7,892
+14,19,Beautiful Dreamer,7.7,926
+14,20,Judgment Day,8.4,1246
+14,21,Bad Reputation,7.8,905
+14,22,Fight For Your Mind,7.8,912
+14,23,Cold As Ice,8.8,1335
+14,24,All of Me,8.5,1318
+15,1,With a Wonder and a Wild Desire,7.7,1191
+15,2,Broken Together,7.9,1089
+15,3,Gut Feeling,7.5,1044
+15,4,Momma Knows Best,7.8,1057
+15,5,Everyday Angel,7.6,1005
+15,6,Flowers Grow Out Of My Grave,8.3,1245
+15,7,Anybody Have a Map?,8,1097
+15,8,Blowin' in the Wind,8.5,1322
+15,9,Shelter From the Storm,8.2,1052
+15,10,"Help, I'm Alive",7.7,971
+15,11,The Winner Takes It All,8.2,1090
+15,12,Girlfriend in a Coma,8.1,1096
+15,13,I Walk the Line,7.7,1027
+15,14,I Want a New Drug,8.1,1036
+15,15,We Didn't Start the Fire,7.9,1051
+15,16,Blood and Water,7.3,972
+15,17,And Dream of Sheep,7.3,960
+15,18,Add It Up,7.2,967
+15,19,Silent All These Years,9.5,3260
+15,20,The Whole Package,7.6,958
+15,21,Good Shepherd,8.2,1110
+15,22,Head Over High Heels,7.7,940
+15,23,What I Did For Love,7.7,1007
+15,24,Drawn to the Blood,8.3,1092
+15,25,Jump Into the Fog,8.1,1060
+16,1,Nothing Left to Cling To,7.4,981
+16,2,Back in the Saddle,7.5,863
+16,3,Reunited,7.6,929
+16,4,It's Raining Men,7.6,824
+16,5,Breathe Again,7.7,843
+16,6,Whistlin' Past the Graveyard,7.6,813
+16,7,Papa Don't Preach,7.7,850
+16,8,My Shot,8.9,1509
+16,9,Let's All Go to the Bar,7.9,909
+16,10,Help Me Through the Night,7.6,834
+16,11,A Hard Pill to Swallow,7.4,794
+16,12,The Last Supper,6.2,1091
+16,13,Save the Last Dance for Me,7.3,815
+16,14,A Diagnosis,7.3,797
+16,15,Snowblind,7.4,810
+16,16,Leave a Light On,4.4,2891
+16,17,Life on Mars?,7,791
+16,18,Give a Little Bit,7.6,832
+16,19,Love of My Life,6.7,1035
+16,20,Sing It Again,7.8,793
+16,21,Put on a Happy Face,8.1,895
+17,1,All Tomorrow's Parties,7.6,1355
+17,2,The Center Won't Hold,8,1316
+17,3,My Happy Ending,7.5,1079
+17,4,You'll Never Walk Alone,7.7,1138
+17,5,Fight the Power,7.2,1126
+17,6,No Time for Despair,6.8,1097
+17,7,Helplessly Hoping,7.2,1090
+17,8,It's All Too Much,7.8,1021
+17,9,In My Life,5.2,1687
+17,10,Breathe,7.7,1033
+17,11,Sorry Doesn't Always Make It Right,7,845
+17,12,Sign O' the Times,6.2,1359
+17,13,Good as Hell,7.7,1070
+17,14,Look Up Child,6.7,1042
+17,15,Tradition,7.5,870
+17,16,I'm Still Standing,7,736
+17,17,Someone Saved My Life Tonight,7.1,834
+18,1,Here Comes the Sun,7.1,976
+18,2,Some Kind of Tomorrow,7,760
+18,3,Hotter Than Hell,8,899
+18,4,With a Little Help from My Friends,7.3,689
+18,5,Bottle Up and Explode!,7.6,718
+18,6,Every Day Is a Holiday (With You),7.2,651
+18,7,Today Was a Fairytale,7.1,632
+18,8,It Came Upon a Midnight Clear,7.4,750
+18,9,No Time to Die,7.4,653
+18,10,Living in a House Divided,7.3,597
+18,11,Legacy,7.3,579
+18,12,The Makings of You,5.7,787
+18,13,Put the Squeeze on Me,7.2,582
+18,14,Road Trippin',7.2,569
+18,15,Put It to the Test,7.8,612
+18,16,Should I Stay or Should I Go,7.1,579
+18,17,I'll Cover You,7.2,552
+18,18,Stronger Than Hate,7.6,583
+18,19,Out for Blood,7.6,582
+18,20,You Are the Blood,8.5,1007
+19,1,Everything Has Changed,7.7,841
+19,2,Wasn't Expecting That,7.4,625
+19,3,Let's Talk About Sex,7.3,927
+19,4,Haunted,7.1,569
+19,5,When I Get to the Border,7.4,682
+19,6,Thunderstruck,7.4,565
+19,7,I'll Follow the Sun,6.3,730
+19,8,All Star,6.7,526
+19,9,Love Don't Cost a Thing,6.6,511
+19,10,Sisters Are Doin' It for Themselves,7.1,483
+19,11,Training Day,7.2,615
+19,12,Pick Yourself Up,7.6,522
+19,13,Cowgirls Don't Cry,7.2,456
+19,14,Shadow of Your Love,7.1,452
+19,15,Mama Who Bore Me,7.1,470
+19,16,Gunpowder and Lead,7.3,483
+19,17,Come Fly With Me,7.5,463
+19,18,Ready to Run,7.4,439
+19,19,Wedding Bell Blues,7.7,482
+19,20,Happily Ever After?,8.1,581
+20,1,We've Only Just Begun,7.3,500
+20,2,Keep the Family Close,7.2,435
+20,3,Walk on the Ocean,7.4,422
+20,4,Baby Can I Hold You,7.4,437
+20,5,Never Felt So Alone,7.4,417
+20,6,The Marathon Continues,7.2,388
+20,7,She Used to Be Mine,7.4,389
+20,8,"Blood, Sweat and Tears",7.1,385
+20,9,I Carry Your Heart,7.4,380
+20,10,Burn It Down,7.8,438
+21,1,If Walls Could Talk,7.2,466
+21,2,Take Me to Church,7.5,408
+21,3,I Can See Clearly Now,7.3,388
+21,4,This One's for the Girls,7.5,389
+21,5,You Make My Heart Explode,7.4,382
+21,6,Night Moves,7.4,407
+21,7,If You Leave,8.1,444
+21,8,Drop It Like It's Hot,7.3,405
+21,9,Hit the Floor,7.3,354
+21,10,Jump (for My Love),7.3,350
+21,11,I Still Haven't Found What I'm Looking For,7.2,356
+21,12,Ridin' Solo,7.5,350
+21,13,Don't You (Forget About Me),7.3,348
+21,14,Love in the Ice Age,7.3,342
+21,15,Bust Your Windows,7.2,339
+21,16,Papa Was a Rollin' Stone,7.5,342
+21,17,Love You Like a Love Song,7.9,374
+21,18,How Do I Live,8.1,461
+22,1,Only the Strong Survive,7.9,423
+22,2,We Built This City,7.4,337
+22,3,Between Two Lungs,7.3,315
+22,4,Goodbye Horses,7.2,301
+22,5,Sometimes I Feel Like a Motherless Child,7.5,306
+22,6,When I Crash,7.6,306
+22,7,Skyfall,7.4,288
+22,8,Heavy on Me,7.5,274
+22,9,Fortunate Son,7.1,276
+22,10,Strip That Down,7.6,267
+22,11,(If You Want It) Do It Yourself,7.6,265
+22,12,Get Lucky,7.5,240
+22,13,Love the Way You Lie,7.6,240
+22,14,Wrecking Ball,7.7,251
+22,15,Take Me to the River,7.3,224
+22,16,Feel It Still,7.7,212
+22,17,Through the Fire,7.7,212
+22,18,Bridge Over Troubled Water,8.1,247
