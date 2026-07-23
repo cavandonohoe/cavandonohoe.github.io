@@ -1,0 +1,172 @@
+season,episode,title,rating,votes
+1,1,Pilot,7.8,5243
+1,2,The Night of the Comet,7.5,3688
+1,3,Friday Night Bites,7.9,3321
+1,4,Family Ties,7.9,3102
+1,5,You're Undead to Me,8.2,3057
+1,6,Lost Girls,8.4,3107
+1,7,Haunted,8.2,2913
+1,8,162 Candles,8.3,2928
+1,9,History Repeating,8.1,2799
+1,10,The Turning Point,8.3,2807
+1,11,Bloodlines,8.2,2813
+1,12,Unpleasantville,8.1,2678
+1,13,Children of the Damned,8.3,2682
+1,14,Fool Me Once,8.6,2747
+1,15,A Few Good Men,8,2580
+1,16,There Goes the Neighborhood,7.8,2549
+1,17,Let the Right One In,8.6,2670
+1,18,Under Control,8.1,2566
+1,19,Miss Mystic Falls,8.3,2792
+1,20,Blood Brothers,8.2,2608
+1,21,Isobel,8.4,2664
+1,22,Founder's Day,9.2,3838
+2,1,The Return,8.9,3228
+2,2,Brave New World,8.4,2499
+2,3,Bad Moon Rising,8.3,2440
+2,4,Memory Lane,8.1,2407
+2,5,Kill or Be Killed,8.6,2419
+2,6,Plan B,8.6,2414
+2,7,Masquerade,9,2915
+2,8,Rose,8.8,2739
+2,9,Katerina,8.5,2436
+2,10,The Sacrifice,8.3,2231
+2,11,By the Light of the Moon,8.4,2301
+2,12,The Descent,8.4,2449
+2,13,Daddy Issues,8.1,2197
+2,14,Crying Wolf,8,2227
+2,15,The Dinner Party,8.3,2213
+2,16,The House Guest,8.5,2209
+2,17,Know Thy Enemy,8.3,2216
+2,18,The Last Dance,8.7,2354
+2,19,Klaus,8.8,2551
+2,20,The Last Day,8.7,2336
+2,21,The Sun Also Rises,9.1,2809
+2,22,As I Lay Dying,8.9,2851
+3,1,The Birthday,8.5,3015
+3,2,The Hybrid,8.4,2430
+3,3,The End of the Affair,8.7,2567
+3,4,Disturbing Behavior,8.2,2222
+3,5,The Reckoning,9.1,2840
+3,6,Smells Like Teen Spirit,8.4,2266
+3,7,Ghost World,8.5,2299
+3,8,Ordinary People,8.7,2337
+3,9,Homecoming,8.9,2606
+3,10,The New Deal,8.3,2239
+3,11,Our Town,8.2,2110
+3,12,The Ties That Bind,8.2,2135
+3,13,Bringing Out the Dead,8.6,2267
+3,14,Dangerous Liaisons,8.6,2307
+3,15,All My Children,8.3,2195
+3,16,1912,7.7,2055
+3,17,Break on Through,7.9,1998
+3,18,The Murder of One,8.4,2115
+3,19,Heart of Darkness,8.6,2589
+3,20,Do Not Go Gentle,8.4,2165
+3,21,Before Sunset,8.6,2133
+3,22,The Departed,9.4,4754
+4,1,Growing Pains,8.7,3459
+4,2,Memorial,8.7,2539
+4,3,The Rager,8.3,2167
+4,4,The Five,8.3,2156
+4,5,The Killer,8.2,1991
+4,6,We All Go a Little Mad Sometimes,8.2,2110
+4,7,My Brother's Keeper,8.7,2677
+4,8,We'll Always Have Bourbon Street,8.3,2104
+4,9,"O Come, All Ye Faithful",8.5,2148
+4,10,After School Special,8.3,2091
+4,11,Catch Me If You Can,7.9,1891
+4,12,A View to a Kill,8.5,1972
+4,13,Into the Wild,8,1899
+4,14,Down the Rabbit Hole,8.5,1979
+4,15,Stand by Me,8.6,2160
+4,16,Bring It On,7.6,1919
+4,17,Because the Night,8,1784
+4,18,American Gothic,8.4,1910
+4,19,Pictures of You,8.2,1877
+4,20,The Originals,8.6,2430
+4,21,She's Come Undone,8.3,1833
+4,22,The Walking Dead,8.6,2024
+4,23,Graduation,9.1,3036
+5,1,I Know What You Did Last Summer,8.2,2721
+5,2,True Lies,7.8,1882
+5,3,Original Sin,8.2,1939
+5,4,For Whom the Bell Tolls,8.1,1854
+5,5,Monster's Ball,7.8,1751
+5,6,Handle with Care,7.9,1722
+5,7,Death and the Maiden,8,1720
+5,8,Dead Man on Campus,7.7,1675
+5,9,The Cell,8.1,1703
+5,10,Fifty Shades of Grayson,7.8,1686
+5,11,500 Years of Solitude,8.6,2252
+5,12,The Devil Inside,7.8,1668
+5,13,Total Eclipse of the Heart,7.7,1603
+5,14,No Exit,7.8,1582
+5,15,Gone Girl,8.6,1871
+5,16,While You Were Sleeping,7.7,1599
+5,17,Rescue Me,7.9,1532
+5,18,Resident Evil,7.8,1606
+5,19,Man on Fire,7.8,1498
+5,20,What Lies Beneath,7.6,1493
+5,21,Promised Land,8.5,1805
+5,22,Home,8.9,2660
+6,1,I'll Remember,7.7,1983
+6,2,Yellow Ledbetter,8.3,1818
+6,3,Welcome to Paradise,7.8,1642
+6,4,Black Hole Sun,7.9,1577
+6,5,The World Has Turned and Left Me Here,8.6,1856
+6,6,"The More You Ignore Me, the Closer I Get",7.9,1591
+6,7,Do You Remember the First Time?,8.1,1672
+6,8,Fade Into You,8.2,1534
+6,9,I Alone,8,1449
+6,10,Christmas Through Your Eyes,7.9,1482
+6,11,Woke Up with a Monster,7.9,1491
+6,12,Prayer for the Dying,8.1,1454
+6,13,The Day I Tried to Live,8,1447
+6,14,Stay,8.3,1627
+6,15,Let Her Go,8.7,1826
+6,16,The Downward Spiral,8.4,1741
+6,17,A Bird in a Gilded Cage,8,1443
+6,18,I Could Never Love Like That,7.7,1395
+6,19,Because,7.9,1382
+6,20,I'd Leave My Happy Home for You,7.9,1406
+6,21,I'll Wed You in the Golden Summertime,8.5,1649
+6,22,I'm Thinking of You All the While,8.8,2266
+7,1,"Day One of Twenty-Two Thousand, Give or Take",8.1,1746
+7,2,Never Let Me Go,7.9,1422
+7,3,Age of Innocence,7.9,1369
+7,4,I Carry Your Heart with Me,8,1371
+7,5,Live Through This,8.1,1330
+7,6,Best Served Cold,8,1312
+7,7,Mommie Dearest,8.1,1287
+7,8,"Hold Me, Thrill Me, Kiss Me, Kill Me",8.1,1316
+7,9,Cold as Ice,8.1,1350
+7,10,Hell Is Other People,8.7,1796
+7,11,Things We Lost in the Fire,7.7,1263
+7,12,Postcards from the Edge,7.9,1241
+7,13,This Woman's Work,8.3,1283
+7,14,Moonlight on the Bayou,8.6,1453
+7,15,I Would for You,8.2,1232
+7,16,Days of Future Past,7.8,1324
+7,17,I Went to the Woods,8.1,1272
+7,18,One Way or Another,7.7,1147
+7,19,Somebody That I Used to Know,7.6,1157
+7,20,Kill 'Em All,7.7,1141
+7,21,Requiem for a Dream,8,1198
+7,22,Gods and Monsters,8.1,1383
+8,1,"Hello, Brother",8.2,1876
+8,2,Today Will Be Different,7.8,1380
+8,3,You Decided That I Was Worth Saving,7.9,1317
+8,4,An Eternity of Misery,7.9,1287
+8,5,Coming Home Was a Mistake,7.7,1234
+8,6,Detoured on Some Random Backwoods Path to Hell,7.9,1243
+8,7,"The Next Time I Hurt Somebody, It Could Be You",7.8,1239
+8,8,We Have History Together,7.5,1240
+8,9,The Simple Intimacy of the Near Touch,7.8,1198
+8,10,Nostalgia's a Bitch,8.5,1460
+8,11,You Made a Choice to Be Good,8.9,1822
+8,12,What Are You?,8.1,1264
+8,13,The Lies Will Catch Up to You,8,1240
+8,14,It's Been a Hell of a Ride,8.7,1561
+8,15,We're Planning a June Wedding,8.7,1600
+8,16,I Was Feeling Epic,9.3,4865
