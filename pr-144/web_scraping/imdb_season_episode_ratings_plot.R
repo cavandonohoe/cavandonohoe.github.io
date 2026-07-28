@@ -12,7 +12,7 @@ extract_imdb_id <- function(input) {
   if (is.na(id)) {
     stop("Could not extract IMDb ID from input: ", input)
   }
-  return(id)
+  id
 }
 
 # Retrying POST to IMDb's GraphQL endpoint. httr2's built-in transient-error
