@@ -612,4 +612,14 @@ my_hero_academia %>%
   interactive_plotly
 ```
 
+## Batman: Caped Crusader
+
+```{r}
+batman_caped_crusader <- readr::read_csv("data/batman_caped_crusader_ep_ratings.csv")
+
+batman_caped_crusader %>%
+  create_episode_plot("Batman: Caped Crusader") %>%
+  interactive_plotly
+```
+
 [Raw pngs found here](https://github.com/cavandonohoe/cavandonohoe.github.io/tree/gh-pages/imdb_rating_plot_files)
