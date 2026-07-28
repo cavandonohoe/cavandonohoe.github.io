@@ -341,7 +341,10 @@ shows <- tibble::tribble(
   "the boys",           "tt1190634",   "the_boys",
   "schitt's creek",     "tt3526078",   "schitts_creek",
   "batman caped crusader", "tt14681596", "batman_caped_crusader",
-  "batman the animated series", "tt0103359", "batman_animated_series"
+  "batman the animated series", "tt0103359", "batman_animated_series",
+  "ted lasso",          "tt10986410",  "ted_lasso",
+  "rick and morty",     "tt2861424",   "rick_and_morty",
+  "gravity falls",      "tt1865718",   "gravity_falls"
 )
 
 # -----------------------------------------------------------------------------
