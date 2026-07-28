@@ -622,4 +622,16 @@ batman_caped_crusader %>%
   interactive_plotly
 ```
 
+## Batman: The Animated Series
+
+```{r fig.height=14, fig.width=7}
+batman_animated_series <- readr::read_csv(
+  "data/batman_animated_series_ep_ratings.csv"
+)
+
+batman_animated_series %>%
+  create_episode_plot("Batman: The Animated Series") %>%
+  interactive_plotly
+```
+
 [Raw pngs found here](https://github.com/cavandonohoe/cavandonohoe.github.io/tree/gh-pages/imdb_rating_plot_files)
