@@ -634,4 +634,34 @@ batman_animated_series %>%
   interactive_plotly
 ```
 
+## Ted Lasso
+
+```{r}
+ted_lasso <- readr::read_csv("data/ted_lasso_ep_ratings.csv")
+
+ted_lasso %>%
+  create_episode_plot("Ted Lasso") %>%
+  interactive_plotly
+```
+
+## Rick and Morty
+
+```{r}
+rick_and_morty <- readr::read_csv("data/rick_and_morty_ep_ratings.csv")
+
+rick_and_morty %>%
+  create_episode_plot("Rick and Morty") %>%
+  interactive_plotly
+```
+
+## Gravity Falls
+
+```{r fig.height=8}
+gravity_falls <- readr::read_csv("data/gravity_falls_ep_ratings.csv")
+
+gravity_falls %>%
+  create_episode_plot("Gravity Falls") %>%
+  interactive_plotly
+```
+
 [Raw pngs found here](https://github.com/cavandonohoe/cavandonohoe.github.io/tree/gh-pages/imdb_rating_plot_files)
