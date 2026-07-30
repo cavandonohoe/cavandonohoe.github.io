@@ -241,27 +241,41 @@ DT::datatable(
 # (alphabetical). Each section keeps its own interactive plotly, so hovering
 # still reveals the episode title. Content lives in the DOM even while
 # collapsed, so Cmd/Ctrl + F finds every show and episode.
+#
+# NOTE: printing an htmlwidget from inside a results='asis' loop via
+# knit_print() drops the widget's JS/CSS dependencies, so the plots never
+# render. Instead we render each widget's HTML with htmltools::renderTags()
+# and register its dependencies with knitr::knit_meta_add() so the plotly
+# library is emitted into the page exactly once.
 render_one_show <- function(row) {
   data <- read_show(row$slug)
 
-  fig_w <- if (is.na(row$fig_width)) 7 else row$fig_width
-  fig_h <- if (is.na(row$fig_height)) 6 else row$fig_height
-  png_w <- if (is.na(row$png_width)) fig_w else row$png_width
-  png_h <- if (is.na(row$png_height)) fig_h else row$png_height
-
-  cat(sprintf("\n## %s\n\n", row$title))
-  cat("<details>\n")
-  cat(sprintf("<summary>Show %s heatmap</summary>\n\n", row$title))
+  png_w <- if (is.na(row$png_width)) {
+    if (is.na(row$fig_width)) 8 else row$fig_width
+  } else {
+    row$png_width
+  }
+  png_h <- if (is.na(row$png_height)) {
+    if (is.na(row$fig_height)) 6 else row$fig_height
+  } else {
+    row$png_height
+  }
 
   gg <- create_episode_plot(
     data, row$title,
     png_width = png_w, png_height = png_h
   )
-
   widget <- interactive_plotly(gg)
-  # print the plotly widget inline inside the <details> block
-  cat(knitr::knit_print(widget))
 
+  rendered <- htmltools::renderTags(widget)
+  knitr::knit_meta_add(list(rendered$dependencies))
+
+  cat(sprintf("\n## %s\n\n", row$title))
+  cat("<details>\n")
+  cat(sprintf("<summary>Show %s heatmap</summary>\n\n", row$title))
+  cat("\n\n```{=html}\n")
+  cat(rendered$html)
+  cat("\n```\n\n")
   cat("\n</details>\n\n")
 }
 
@@ -271,3 +285,35 @@ for (i in seq_len(nrow(shows))) {
 ```
 
 [Raw pngs found here](https://github.com/cavandonohoe/cavandonohoe.github.io/tree/gh-pages/imdb_rating_plot_files)
+
+```{js resize-plots-on-expand, echo=FALSE}
+// Plotly sizes each chart to its container when the page loads. A collapsed
+// <details> has zero width at that point, so the heatmap renders blank until
+// something forces a redraw. When a <details> is opened, resize any Plotly
+// charts inside it so they fill the now-visible container.
+(function () {
+  function resizePlotsIn(container) {
+    if (typeof Plotly === "undefined") return;
+    container.querySelectorAll(".plotly.html-widget").forEach(function (el) {
+      // only resize once it actually has a rendered plot
+      if (el.querySelector(".plot-container")) {
+        Plotly.Plots.resize(el);
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("details").forEach(function (d) {
+      d.addEventListener("toggle", function () {
+        if (d.open) {
+          // defer so layout has settled before measuring width
+          window.requestAnimationFrame(function () {
+            resizePlotsIn(d);
+          });
+        }
+      });
+    });
+  });
+})();
+```
+
