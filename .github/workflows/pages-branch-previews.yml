@@ -168,12 +168,12 @@ jobs:
           exclude_assets: 'sa.json'
       - name: Comment preview URL
         if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
-        uses: thollander/actions-comment-pull-request@v3
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          message: "🚀 Preview: https://cavandonohoe.github.io/pr-${{ github.event.pull_request.number }}/"
-          mode: upsert
-          create-if-not-exists: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          STICKY_TAG: pr-preview
+          BODY: "🚀 Preview: https://cavandonohoe.github.io/pr-${{ github.event.pull_request.number }}/"
+        run: .github/scripts/sticky-comment.sh
 
   # CLEANUP: delete subfolder when PR closes
   cleanup_preview:

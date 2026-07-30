@@ -94,14 +94,12 @@ jobs:
 
       - name: Comment on PR
         if: ${{ steps.wait.outputs.live == 'true' }}
-        uses: thollander/actions-comment-pull-request@v3
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          pr-number: ${{ github.event.pull_request.number }}
-          file-path: ./lhci-comment.md
-          comment-tag: lighthouse-ci
-          mode: upsert
-          create-if-not-exists: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          STICKY_TAG: lighthouse-ci
+          BODY_FILE: ./lhci-comment.md
+        run: .github/scripts/sticky-comment.sh
 
       - name: Note skipped audit
         if: ${{ steps.wait.outputs.live != 'true' }}
