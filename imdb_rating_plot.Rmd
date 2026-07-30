@@ -42,6 +42,16 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{css heatmap-styles, echo=FALSE}
+/* Let a wide heatmap scroll sideways on narrow screens instead of being
+   squished into an unreadable smear. .heatmap-inner carries a per-show
+   min-width; when the viewport is narrower, .heatmap-scroll scrolls. */
+.heatmap-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+```
+
 
 ```{r episode_plot}
 # Function to create a plot of IMDb ratings by season and episode
@@ -277,11 +287,22 @@ render_one_show <- function(row) {
   widget <- interactive_plotly(gg)
   rendered <- htmltools::renderTags(widget)
 
+  # Keep the heatmap legible on narrow screens: give the plot a per-season
+  # minimum width and let the container scroll horizontally when the viewport
+  # is too small. Wide shows (many seasons) then stay readable via a swipe
+  # instead of being squished into a smear; shows with few seasons keep a
+  # small min-width and still fit without scrolling.
+  n_seasons <- dplyr::n_distinct(data$season)
+  min_px <- max(320, n_seasons * 46 + 140)
+
   cat(sprintf("\n## %s\n\n", row$title))
   cat("<details>\n")
   cat(sprintf("<summary>Show %s heatmap</summary>\n\n", row$title))
   cat("\n\n```{=html}\n")
+  cat("<div class=\"heatmap-scroll\">\n")
+  cat(sprintf("<div class=\"heatmap-inner\" style=\"min-width:%dpx;\">\n", min_px))
   cat(rendered$html)
+  cat("\n</div>\n</div>\n")
   cat("\n```\n\n")
   cat("\n</details>\n\n")
 }
