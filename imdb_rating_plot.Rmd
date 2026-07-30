@@ -236,17 +236,26 @@ DT::datatable(
 )
 ```
 
+```{r plotly_dependency_primer, results='markup'}
+# Guarantee the plotly + htmlwidgets JS/CSS dependencies are emitted into the
+# page. The show heatmaps below are printed as raw HTML from a results='asis'
+# loop, and dependency registration from inside such a loop is dropped by the
+# render_site() build path (works with plain render(), fails on the site
+# build). Printing one real, hidden plotly widget here routes its dependencies
+# through knitr's normal htmlwidget path, so the library loads reliably; every
+# raw-HTML widget below then reuses that already-loaded library.
+htmltools::tagList(
+  htmltools::tags$div(
+    style = "display:none;",
+    plotly::plot_ly(x = 1, y = 1, type = "scatter", mode = "markers")
+  )
+)
+```
+
 ```{r render_shows}
 # Emit one collapsible <details> section per show, in the manifest order
 # (alphabetical). Each section keeps its own interactive plotly, so hovering
-# still reveals the episode title. Content lives in the DOM even while
-# collapsed, so Cmd/Ctrl + F finds every show and episode.
-#
-# NOTE: printing an htmlwidget from inside a results='asis' loop via
-# knit_print() drops the widget's JS/CSS dependencies, so the plots never
-# render. Instead we render each widget's HTML with htmltools::renderTags()
-# and register its dependencies with knitr::knit_meta_add() so the plotly
-# library is emitted into the page exactly once.
+# still reveals the episode title.
 render_one_show <- function(row) {
   data <- read_show(row$slug)
 
@@ -266,9 +275,7 @@ render_one_show <- function(row) {
     png_width = png_w, png_height = png_h
   )
   widget <- interactive_plotly(gg)
-
   rendered <- htmltools::renderTags(widget)
-  knitr::knit_meta_add(list(rendered$dependencies))
 
   cat(sprintf("\n## %s\n\n", row$title))
   cat("<details>\n")
