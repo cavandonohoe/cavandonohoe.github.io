@@ -21,7 +21,7 @@ lang: "en"
 
 I'm kinda obsessed with seeing a whole map of series and where they stride well and when they just absolutely fuck different episodes. Sometimes, critics are just a little harsh. Sometimes it's hard to completely crush an entire series, but we can explore some series that figure it out and quit while they're ahead.
 
-Each show is collapsed by default. Click a title to expand its interactive heatmap, or use the summary table below to jump around. `Cmd`/`Ctrl` + `F` still searches every show name and episode title, even the collapsed ones.
+Each show is collapsed by default. Click a title to expand its interactive heatmap, or use the summary table below to jump around.
 
 
 ```{r ci-outdir, include=FALSE}
