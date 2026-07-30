@@ -19,7 +19,9 @@ lang: "en"
 `%>%` <- magrittr::`%>%`
 ```
 
-I'm kinda obsessed with seeing a whole map of series and where they stride well and when they just absolutely fuck different episodes. Sometimes, critics are just a little harsh. Sometimes it's hard to completely crush an entire series, but we can explore some series that figure it out and quite while they're ahead.
+I'm kinda obsessed with seeing a whole map of series and where they stride well and when they just absolutely fuck different episodes. Sometimes, critics are just a little harsh. Sometimes it's hard to completely crush an entire series, but we can explore some series that figure it out and quit while they're ahead.
+
+Each show is collapsed by default. Click a title to expand its interactive heatmap, or use the summary table below to jump around. `Cmd`/`Ctrl` + `F` still searches every show name and episode title, even the collapsed ones.
 
 
 ```{r ci-outdir, include=FALSE}
@@ -42,9 +44,9 @@ knitr::opts_chunk$set(
 
 
 ```{r episode_plot}
-
 # Function to create a plot of IMDb ratings by season and episode
-create_episode_plot <- function(episode_data, title, export_png = TRUE) {
+create_episode_plot <- function(episode_data, title, export_png = TRUE,
+                                 png_width = 8, png_height = 6) {
   # make sure we have imdb_rating + hover text
   episode_data <- episode_data %>%
     dplyr::mutate(
@@ -104,8 +106,8 @@ create_episode_plot <- function(episode_data, title, export_png = TRUE) {
     ggplot2::ggsave(
       filename = here::here(dirname(file_name), basename(file_name)),
       plot = episode_plot,
-      width = 8,
-      height = 6,
+      width = png_width,
+      height = png_height,
       dpi = 300
     )
   }
@@ -120,548 +122,152 @@ interactive_plotly <- function(gg_object) {
 }
 ```
 
-## Game of Thrones
+```{r manifest}
+# One row per show. Adding a show is a one-row edit here (no new chunk needed).
+#   title      - heading shown on the page (also drives the PNG file name)
+#   slug       - data/<slug>_ep_ratings.csv
+#   fig_width  - knitr figure width (inches) for the on-page interactive plot
+#   fig_height - knitr figure height (inches)
+#   png_width  - width (inches) used for the exported PNG (defaults to fig_width)
+#   png_height - height (inches) used for the exported PNG (defaults to fig_height)
+# Leave dims as NA to use the document defaults.
+shows <- tibble::tribble(
+  ~title, ~slug, ~fig_width, ~fig_height, ~png_width, ~png_height,
+  "Always Sunny in Philadelphia", "always_sunny", NA, NA, NA, NA,
+  "Andor", "andor", NA, NA, NA, NA,
+  "Attack on Titan", "attack_on_titan", NA, 7, NA, NA,
+  "Avatar: The Last Airbender", "avatar", NA, NA, NA, NA,
+  "Batman: Caped Crusader", "batman_caped_crusader", NA, NA, NA, NA,
+  "Batman: The Animated Series", "batman_animated_series", 7, 14, NA, NA,
+  "Better Call Saul", "better_call_saul", NA, NA, NA, NA,
+  "Blue Eye Samurai", "blue_eye_samurai", NA, NA, NA, NA,
+  "Bluey", "bluey", 4, 9, NA, NA,
+  "Bojack Horseman", "bojack", NA, NA, NA, NA,
+  "Breaking Bad", "breaking_bad", NA, NA, NA, NA,
+  "Brooklyn Nine-Nine", "brooklyn_nine_nine", NA, NA, NA, NA,
+  "Chernobyl", "chernobyl", NA, NA, NA, NA,
+  "Clone Wars", "clone_wars", NA, NA, NA, NA,
+  "Death Note", "death_note", NA, 12, NA, NA,
+  "Family Guy", "family_guy", 15, 9, 16, 9,
+  "Fleabag", "fleabag", NA, NA, NA, NA,
+  "Friends", "friends", 7, 7, NA, NA,
+  "Game of Thrones", "game_of_thrones", NA, NA, NA, NA,
+  "Gravity Falls", "gravity_falls", NA, 8, NA, NA,
+  "Grey's Anatomy", "greys_anatomy", 9, 9, NA, NA,
+  "Hannibal", "hannibal", NA, NA, NA, NA,
+  "House MD", "house", 7, 7, NA, NA,
+  "House of the Dragon", "hotd", NA, NA, NA, NA,
+  "How I Met Your Mother", "himym", NA, NA, NA, NA,
+  "Invincible", "invincible", NA, NA, NA, NA,
+  "Love Island (UK)", "love_island", NA, 11, NA, NA,
+  "Mad Men", "mad_men", NA, NA, NA, NA,
+  "Modern Love", "modern_love", NA, NA, NA, NA,
+  "Mr Robot", "mr_robot", NA, NA, NA, NA,
+  "My Hero Academia", "my_hero_academia", NA, NA, NA, NA,
+  "New Girl", "new_girl", NA, NA, NA, NA,
+  "Paris Hilton's My New BFF", "paris_hilton_bff", NA, NA, NA, NA,
+  "Parks and Recreation", "parks_and_rec", NA, NA, NA, NA,
+  "Person of Interest", "person_of_interest", NA, NA, NA, NA,
+  "Pretty Little Liars", "pretty_little_liars", NA, NA, NA, NA,
+  "Rick and Morty", "rick_and_morty", NA, NA, NA, NA,
+  "Schitt's Creek", "schitts_creek", NA, NA, NA, NA,
+  "Six Feet Under", "six_feet_under", NA, NA, NA, NA,
+  "South Park", "south_park", 15, 6, 16, 6,
+  "Sparticus", "sparticus", NA, NA, NA, NA,
+  "Stranger Things", "stranger_things", NA, NA, NA, NA,
+  "Suits", "suits", NA, NA, NA, NA,
+  "Ted Lasso", "ted_lasso", NA, NA, NA, NA,
+  "The Boys", "the_boys", NA, NA, NA, NA,
+  "The Crown", "crown", NA, NA, NA, NA,
+  "The Office (US)", "the_office", NA, NA, NA, NA,
+  "The Simpsons", "simpsons", 15, 6, 16, 6,
+  "The Wire", "the_wire", NA, NA, NA, NA,
+  "Vampire Diaries", "vampire_diaries", NA, NA, NA, NA,
+  "Velma", "velma", NA, NA, NA, NA,
+  "Westworld", "westworld", NA, NA, NA, NA,
+  "ZeroZeroZero", "zerozerozero", NA, NA, NA, NA
+) %>%
+  dplyr::arrange(tolower(title))
 
-```{r}
-game_of_thrones <- readr::read_csv(here::here("data", "game_of_thrones_ep_ratings.csv"))
+# helper: turn a title into the same anchor slug R Markdown auto-generates
+# for a "## Title" heading, so the summary table can link to each section.
+anchor_id <- function(x) {
+  x %>%
+    tolower() %>%
+    stringr::str_replace_all("[^a-z0-9]+", "-") %>%
+    stringr::str_replace_all("^-+|-+$", "")
+}
 
-game_of_thrones %>%
-  create_episode_plot("Game of Thrones") %>%
-  interactive_plotly
+read_show <- function(slug) {
+  readr::read_csv(here::here("data", paste0(slug, "_ep_ratings.csv")))
+}
 ```
 
-## Breaking Bad
-
-```{r}
-breaking_bad <- readr::read_csv(here::here("data", "breaking_bad_ep_ratings.csv"))
-
-breaking_bad %>%
-  create_episode_plot("Breaking Bad") %>%
-  interactive_plotly
-```
-
-## Avatar: The Last Airbender
-
-```{r}
-avatar <- readr::read_csv(here::here("data", "avatar_ep_ratings.csv"))
-
-avatar %>%
-  create_episode_plot("Avatar: The Last Airbender") %>%
-  interactive_plotly
-```
-
-## Always Sunny in Philadelphia
-
-```{r}
-always_sunny <- readr::read_csv(here::here("data", "always_sunny_ep_ratings.csv"))
-
-always_sunny %>%
-  create_episode_plot("Always Sunny in Philadelphia") %>%
-  interactive_plotly
-```
-
-## The Office (US)
-
-```{r}
-the_office <- readr::read_csv(here::here("data", "the_office_ep_ratings.csv"))
-
-the_office %>%
-  create_episode_plot("The Office (US)") %>%
-  interactive_plotly
-```
-
-## How I Met Your Mother
-
-```{r}
-himym <- readr::read_csv(here::here("data", "himym_ep_ratings.csv"))
-
-himym %>%
-  create_episode_plot("How I Met Your Mother") %>%
-  interactive_plotly
-```
-
-## Better Call Saul
-
-```{r}
-better_call_saul <- readr::read_csv(here::here("data", "better_call_saul_ep_ratings.csv"))
-
-better_call_saul %>%
-  create_episode_plot("Better Call Saul") %>%
-  interactive_plotly
-```
-
-## ZeroZeroZero
-
-```{r}
-zerozerozero <- readr::read_csv(here::here("data", "zerozerozero_ep_ratings.csv"))
-
-zerozerozero %>%
-  create_episode_plot("ZeroZeroZero") %>%
-  interactive_plotly
-```
-
-## House of the Dragon
-
-```{r}
-hotd <- readr::read_csv(here::here("data", "hotd_ep_ratings.csv"))
-
-hotd %>%
-  create_episode_plot("House of the Dragon") %>%
-  interactive_plotly
-```
-
-## Bluey
-
-```{r fig.height=9, fig.width=4}
-bluey <- readr::read_csv(here::here("data", "bluey_ep_ratings.csv"))
-
-bluey %>%
-  create_episode_plot("Bluey") %>%
-  interactive_plotly
-```
-
-## Westworld
-
-```{r}
-westworld <- readr::read_csv(here::here("data", "westworld_ep_ratings.csv"))
-
-westworld %>%
-  create_episode_plot("Westworld") %>%
-  interactive_plotly
-```
-
-## Paris Hilton's My New BFF
-
-```{r}
-paris_hilton_bff <- readr::read_csv(here::here("data", "paris_hilton_bff_ep_ratings.csv"))
-
-paris_hilton_bff %>%
-  create_episode_plot("Paris Hilton's My New BFF") %>%
-  interactive_plotly
-```
-
-## Stranger Things
-
-```{r}
-stranger_things <- readr::read_csv(here::here("data", "stranger_things_ep_ratings.csv"))
-
-stranger_things %>%
-  create_episode_plot("Stranger Things") %>%
-  interactive_plotly
-```
-
-## Bojack Horseman
-
-```{r}
-bojack <- readr::read_csv(here::here("data", "bojack_ep_ratings.csv"))
-
-bojack %>%
-  create_episode_plot("Bojack Horseman") %>%
-  interactive_plotly
-```
-
-## Velma
-
-```{r}
-velma <- readr::read_csv(here::here("data", "velma_ep_ratings.csv"))
-
-velma %>%
-  create_episode_plot("Velma") %>%
-  interactive_plotly
-```
-
-## Suits
-
-```{r}
-suits <- readr::read_csv(here::here("data", "suits_ep_ratings.csv"))
-
-suits %>%
-  create_episode_plot("Suits") %>%
-  interactive_plotly
-```
-
-## Vampire Diaries
-
-```{r}
-vampire_diaries <- readr::read_csv(here::here("data", "vampire_diaries_ep_ratings.csv"))
-
-vampire_diaries %>%
-  create_episode_plot("Vampire Diaries") %>%
-  interactive_plotly
-```
-
-## Mad Men
-
-```{r}
-mad_men <- readr::read_csv(here::here("data", "mad_men_ep_ratings.csv"))
-
-mad_men %>%
-  create_episode_plot("Mad Men") %>%
-  interactive_plotly
-```
-
-## Grey's Anatomy
-
-```{r fig.height=9, fig.width=9}
-greys_anatomy <- readr::read_csv(here::here("data", "greys_anatomy_ep_ratings.csv"))
-
-greys_anatomy %>%
-  create_episode_plot("Grey's Anatomy") %>%
-  interactive_plotly
-```
-
-## Friends
-
-```{r fig.height=7, fig.width=7}
-friends <- readr::read_csv(here::here("data", "friends_ep_ratings.csv"))
-
-friends %>%
-  create_episode_plot("Friends") %>%
-  interactive_plotly
-```
-
-## House MD
-
-```{r fig.height=7, fig.width=7}
-house <- readr::read_csv(here::here("data", "house_ep_ratings.csv"))
-
-house %>%
-  create_episode_plot("House MD") %>%
-  interactive_plotly
-```
-
-## The Simpsons
-
-```{r fig.width=15}
-simpsons <- readr::read_csv(here::here("data", "simpsons_ep_ratings.csv"))
-
-simpsons_gg <- simpsons %>%
-  create_episode_plot("The Simpsons")
-simpsons_gg %>%
-  interactive_plotly
-# resave here for the correct width
-ggplot2::ggsave("imdb_rating_plot_files/the_simpsons.png", plot = simpsons_gg, width = 16,
-  height = 6, dpi = 300)
-```
-
-## Pretty Little Liars
-
-```{r}
-pretty_little_liars <- readr::read_csv(here::here("data", "pretty_little_liars_ep_ratings.csv"))
-
-pretty_little_liars %>%
-  create_episode_plot("Pretty Little Liars") %>%
-  interactive_plotly
-```
-
-## The Crown
-
-```{r}
-crown <- readr::read_csv(here::here("data", "crown_ep_ratings.csv"))
-
-crown %>%
-  create_episode_plot("The Crown") %>%
-  interactive_plotly
-```
-
-## Love Island (UK)
-
-```{r fig.height=11}
-love_island <- readr::read_csv(here::here("data", "love_island_ep_ratings.csv"))
-
-love_island %>%
-  create_episode_plot("Love Island (UK)") %>%
-  interactive_plotly
-```
-
-## South Park
-
-```{r fig.width=15}
-south_park <- readr::read_csv(here::here("data", "south_park_ep_ratings.csv"))
-
-south_park_gg <- south_park %>%
-  create_episode_plot("South Park")
-south_park_gg %>%
-  interactive_plotly
-# resave here for the correct width
-ggplot2::ggsave("imdb_rating_plot_files/south_park.png", plot = south_park_gg, width = 16,
-  height = 6, dpi = 300)
-```
-
-## Family Guy
-
-```{r fig.height=9, fig.width=15}
-family_guy <- readr::read_csv(here::here("data", "family_guy_ep_ratings.csv"))
-
-family_guy_gg <- family_guy %>%
-  create_episode_plot("Family Guy")
-family_guy_gg %>%
-  interactive_plotly
-# resave here for the correct width
-ggplot2::ggsave("imdb_rating_plot_files/family_guy.png", plot = family_guy_gg, width = 16,
-  height = 9, dpi = 300)
-```
-
-## Invincible
-
-```{r}
-invincible <- readr::read_csv(here::here("data", "invincible_ep_ratings.csv"))
-
-invincible %>%
-  create_episode_plot("Invincible") %>%
-  interactive_plotly
-```
-
-## The Boys
-
-```{r}
-the_boys <- readr::read_csv(here::here("data", "the_boys_ep_ratings.csv"))
-
-the_boys %>%
-  create_episode_plot("The Boys") %>%
-  interactive_plotly
-```
-
-## Schitt's Creek
-
-```{r}
-schitts_creek <- readr::read_csv(here::here("data", "schitts_creek_ep_ratings.csv"))
-
-schitts_creek %>%
-  create_episode_plot("Schitt's Creek") %>%
-  interactive_plotly
-```
-
-## Clone Wars
-
-```{r}
-clone_wars <- readr::read_csv(here::here("data", "clone_wars_ep_ratings.csv"))
-
-clone_wars %>%
-  create_episode_plot("Clone Wars") %>%
-  interactive_plotly
-```
-
-## Mr Robot
-
-```{r}
-mr_robot <- readr::read_csv(here::here("data", "mr_robot_ep_ratings.csv"))
-
-mr_robot %>%
-  create_episode_plot("Mr Robot") %>%
-  interactive_plotly
-```
-
-## Sparticus
-
-```{r}
-sparticus <- readr::read_csv(here::here("data", "sparticus_ep_ratings.csv"))
-
-sparticus %>%
-  create_episode_plot("Sparticus") %>%
-  interactive_plotly
-```
-
-## Attack on Titan
-
-```{r fig.height=7}
-attack_on_titan <- readr::read_csv(here::here("data", "attack_on_titan_ep_ratings.csv"))
-
-attack_on_titan %>%
-  create_episode_plot("Attack on Titan") %>%
-  interactive_plotly
-```
-
-## Blue Eye Samurai
-
-```{r}
-blue_eye_samurai <- readr::read_csv(here::here("data", "blue_eye_samurai_ep_ratings.csv"))
-
-blue_eye_samurai %>%
-  create_episode_plot("Blue Eye Samurai") %>%
-  interactive_plotly
-```
-
-## Six Feet Under
-
-```{r}
-six_feet_under <- readr::read_csv(here::here("data", "six_feet_under_ep_ratings.csv"))
-
-six_feet_under %>%
-  create_episode_plot("Six Feet Under") %>%
-  interactive_plotly
-```
-
-## Hannibal
-
-```{r}
-hannibal <- readr::read_csv(here::here("data", "hannibal_ep_ratings.csv"))
-
-hannibal %>%
-  create_episode_plot("Hannibal") %>%
-  interactive_plotly
-```
-
-## The Wire
-
-```{r}
-the_wire <- readr::read_csv(here::here("data", "the_wire_ep_ratings.csv"))
-
-the_wire %>%
-  create_episode_plot("The Wire") %>%
-  interactive_plotly
-```
-
-## Person of Interest
-
-```{r}
-person_of_interest <- readr::read_csv(here::here("data", "person_of_interest_ep_ratings.csv"))
-
-person_of_interest %>%
-  create_episode_plot("Person of Interest") %>%
-  interactive_plotly
-```
-
-## Chernobyl
-
-```{r}
-chernobyl <- readr::read_csv(here::here("data", "chernobyl_ep_ratings.csv"))
-
-chernobyl %>%
-  create_episode_plot("Chernobyl") %>%
-  interactive_plotly
-```
-
-## Fleabag
-
-```{r}
-fleabag <- readr::read_csv(here::here("data", "fleabag_ep_ratings.csv"))
-
-fleabag %>%
-  create_episode_plot("Fleabag") %>%
-  interactive_plotly
-```
-
-## Parks and Recreation
-
-```{r}
-parks_and_rec <- readr::read_csv(here::here("data", "parks_and_rec_ep_ratings.csv"))
-
-parks_and_rec %>%
-  create_episode_plot("Parks and Recreation") %>%
-  interactive_plotly
-```
-
-## New Girl
-
-```{r}
-new_girl <- readr::read_csv(here::here("data", "new_girl_ep_ratings.csv"))
-
-new_girl %>%
-  create_episode_plot("New Girl") %>%
-  interactive_plotly
-```
-
-## Brooklyn Nine-Nine
-
-```{r}
-brooklyn_nine_nine <- readr::read_csv(here::here("data", "brooklyn_nine_nine_ep_ratings.csv"))
-
-brooklyn_nine_nine %>%
-  create_episode_plot("Brooklyn Nine-Nine") %>%
-  interactive_plotly
-```
-
-## Death Note
-
-```{r fig.height=12}
-death_note <- readr::read_csv("data/death_note_ep_ratings.csv")
-
-death_note %>%
-  create_episode_plot("Death Note") %>%
-  interactive_plotly
-```
-
-## Andor
-
-```{r}
-andor <- readr::read_csv("data/andor_ep_ratings.csv")
-
-andor %>%
-  create_episode_plot("Andor") %>%
-  interactive_plotly
-```
-
-## Modern Love
-
-```{r}
-modern_love <- readr::read_csv("data/modern_love_ep_ratings.csv")
-
-modern_love %>%
-  create_episode_plot("Modern Love") %>%
-  interactive_plotly
-```
-
-## My Hero Academia
-
-```{r}
-my_hero_academia <- readr::read_csv("data/my_hero_academia_ep_ratings.csv")
-
-my_hero_academia %>%
-  create_episode_plot("My Hero Academia") %>%
-  interactive_plotly
-```
-
-## Batman: Caped Crusader
-
-```{r}
-batman_caped_crusader <- readr::read_csv("data/batman_caped_crusader_ep_ratings.csv")
-
-batman_caped_crusader %>%
-  create_episode_plot("Batman: Caped Crusader") %>%
-  interactive_plotly
-```
-
-## Batman: The Animated Series
-
-```{r fig.height=14, fig.width=7}
-batman_animated_series <- readr::read_csv(
-  "data/batman_animated_series_ep_ratings.csv"
+```{r summary_table}
+summary_tbl <- shows %>%
+  dplyr::mutate(
+    data = purrr::map(slug, read_show),
+    Seasons = purrr::map_int(data, ~ dplyr::n_distinct(.x$season)),
+    Episodes = purrr::map_int(data, nrow),
+    `Avg rating` = purrr::map_dbl(data, ~ round(mean(.x$rating, na.rm = TRUE), 2)),
+    `Best ep` = purrr::map_chr(data, function(d) {
+      top <- d %>% dplyr::slice_max(rating, n = 1, with_ties = FALSE)
+      sprintf("%.1f — %s (S%dE%d)", top$rating, top$title, top$season, top$episode)
+    }),
+    `Worst ep` = purrr::map_chr(data, function(d) {
+      low <- d %>% dplyr::slice_min(rating, n = 1, with_ties = FALSE)
+      sprintf("%.1f — %s (S%dE%d)", low$rating, low$title, low$season, low$episode)
+    }),
+    Show = sprintf("<a href='#%s'>%s</a>", anchor_id(title), title)
+  ) %>%
+  dplyr::select(Show, Seasons, Episodes, `Avg rating`, `Best ep`, `Worst ep`)
+
+DT::datatable(
+  summary_tbl,
+  escape = FALSE,
+  rownames = FALSE,
+  filter = "top",
+  options = list(
+    pageLength = 15,
+    autoWidth = TRUE,
+    order = list(list(0, "asc"))
+  ),
+  caption = "Click a show name to jump to its heatmap. Sort or filter any column."
 )
-
-batman_animated_series %>%
-  create_episode_plot("Batman: The Animated Series") %>%
-  interactive_plotly
 ```
 
-## Ted Lasso
+```{r render_shows}
+# Emit one collapsible <details> section per show, in the manifest order
+# (alphabetical). Each section keeps its own interactive plotly, so hovering
+# still reveals the episode title. Content lives in the DOM even while
+# collapsed, so Cmd/Ctrl + F finds every show and episode.
+render_one_show <- function(row) {
+  data <- read_show(row$slug)
 
-```{r}
-ted_lasso <- readr::read_csv("data/ted_lasso_ep_ratings.csv")
+  fig_w <- if (is.na(row$fig_width)) 7 else row$fig_width
+  fig_h <- if (is.na(row$fig_height)) 6 else row$fig_height
+  png_w <- if (is.na(row$png_width)) fig_w else row$png_width
+  png_h <- if (is.na(row$png_height)) fig_h else row$png_height
 
-ted_lasso %>%
-  create_episode_plot("Ted Lasso") %>%
-  interactive_plotly
-```
+  cat(sprintf("\n## %s\n\n", row$title))
+  cat("<details>\n")
+  cat(sprintf("<summary>Show %s heatmap</summary>\n\n", row$title))
 
-## Rick and Morty
+  gg <- create_episode_plot(
+    data, row$title,
+    png_width = png_w, png_height = png_h
+  )
 
-```{r}
-rick_and_morty <- readr::read_csv("data/rick_and_morty_ep_ratings.csv")
+  widget <- interactive_plotly(gg)
+  # print the plotly widget inline inside the <details> block
+  cat(knitr::knit_print(widget))
 
-rick_and_morty %>%
-  create_episode_plot("Rick and Morty") %>%
-  interactive_plotly
-```
+  cat("\n</details>\n\n")
+}
 
-## Gravity Falls
-
-```{r fig.height=8}
-gravity_falls <- readr::read_csv("data/gravity_falls_ep_ratings.csv")
-
-gravity_falls %>%
-  create_episode_plot("Gravity Falls") %>%
-  interactive_plotly
+for (i in seq_len(nrow(shows))) {
+  render_one_show(shows[i, ])
+}
 ```
 
 [Raw pngs found here](https://github.com/cavandonohoe/cavandonohoe.github.io/tree/gh-pages/imdb_rating_plot_files)
