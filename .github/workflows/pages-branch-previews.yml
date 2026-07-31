@@ -153,6 +153,10 @@ jobs:
       group: gh-pages-deploy
       cancel-in-progress: false
     steps:
+      # Checkout source so .github/scripts/sticky-comment.sh is available for
+      # the "Comment preview URL" step. peaceiris clones gh-pages into its own
+      # temp dir, so this source checkout does not interfere with publishing.
+      - uses: actions/checkout@v7
       - uses: actions/download-artifact@v8
         with:
           name: site
