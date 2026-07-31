@@ -88,13 +88,12 @@ jobs:
 
       - name: Comment on PR
         if: ${{ github.event_name == 'pull_request' }}
-        uses: thollander/actions-comment-pull-request@v3
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          file-path: ./size-report.md
-          comment-tag: repo-size
-          mode: upsert
-          create-if-not-exists: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          STICKY_TAG: repo-size
+          BODY_FILE: ./size-report.md
+        run: .github/scripts/sticky-comment.sh
 
       - name: Find existing open repo-size issue
         id: find_issue

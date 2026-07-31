@@ -153,6 +153,10 @@ jobs:
       group: gh-pages-deploy
       cancel-in-progress: false
     steps:
+      # Checkout source so .github/scripts/sticky-comment.sh is available for
+      # the "Comment preview URL" step. peaceiris clones gh-pages into its own
+      # temp dir, so this source checkout does not interfere with publishing.
+      - uses: actions/checkout@v7
       - uses: actions/download-artifact@v8
         with:
           name: site
@@ -168,12 +172,12 @@ jobs:
           exclude_assets: 'sa.json'
       - name: Comment preview URL
         if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
-        uses: thollander/actions-comment-pull-request@v3
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          message: "🚀 Preview: https://cavandonohoe.github.io/pr-${{ github.event.pull_request.number }}/"
-          mode: upsert
-          create-if-not-exists: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          STICKY_TAG: pr-preview
+          BODY: "🚀 Preview: https://cavandonohoe.github.io/pr-${{ github.event.pull_request.number }}/"
+        run: .github/scripts/sticky-comment.sh
 
   # CLEANUP: delete subfolder when PR closes
   cleanup_preview:
