@@ -12,7 +12,7 @@ extract_imdb_id <- function(input) {
   if (is.na(id)) {
     stop("Could not extract IMDb ID from input: ", input)
   }
-  return(id)
+  id
 }
 
 # Retrying POST to IMDb's GraphQL endpoint. httr2's built-in transient-error
@@ -339,7 +339,12 @@ shows <- tibble::tribble(
   "modern love",        "tt8543390",   "modern_love",
   "my hero academia",   "tt5626028",   "my_hero_academia",
   "the boys",           "tt1190634",   "the_boys",
-  "schitt's creek",     "tt3526078",   "schitts_creek"
+  "schitt's creek",     "tt3526078",   "schitts_creek",
+  "batman caped crusader", "tt14681596", "batman_caped_crusader",
+  "batman the animated series", "tt0103359", "batman_animated_series",
+  "ted lasso",          "tt10986410",  "ted_lasso",
+  "rick and morty",     "tt2861424",   "rick_and_morty",
+  "gravity falls",      "tt1865718",   "gravity_falls"
 )
 
 # -----------------------------------------------------------------------------
