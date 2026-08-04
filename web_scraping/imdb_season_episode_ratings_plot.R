@@ -346,6 +346,7 @@ shows <- tibble::tribble(
   "andor",              "tt9253284",   "andor",
   "modern love",        "tt8543390",   "modern_love",
   "my hero academia",   "tt5626028",   "my_hero_academia",
+  "x-men 97",           "tt16026746",  "x_men_97",
   "the boys",           "tt1190634",   "the_boys",
   "schitt's creek",     "tt3526078",   "schitts_creek",
   "batman caped crusader", "tt14681596", "batman_caped_crusader",
