@@ -1,0 +1,154 @@
+season,episode,title,rating,votes
+1,1,Pilot,7.7,7200
+1,2,The Tagger,7.5,5899
+1,3,The Slump,7.5,5525
+1,4,M.E. Time,7.6,5341
+1,5,The Vulture,7.9,5192
+1,6,Halloween,8.4,5858
+1,7,48 Hours,8,5098
+1,8,Old School,7.6,4900
+1,9,Sal's Pizza,7.5,4787
+1,10,Thanksgiving,8.1,4905
+1,11,Christmas,8.1,4699
+1,12,Pontiac Bandit,8,4759
+1,13,The Bet,8.7,5356
+1,14,The Ebony Falcon,7.5,4433
+1,15,Operation: Broken Feather,8,4626
+1,16,The Party,8.4,4845
+1,17,Full Boyle,7.8,4384
+1,18,The Apartment,7.5,4265
+1,19,Tactical Village,8.3,4526
+1,20,Fancy Brudgom,7.5,4246
+1,21,Unsolvable,8,4306
+1,22,Charges and Specs,8.8,5067
+2,1,Undercover,8.1,4409
+2,2,Chocolate Milk,7.6,4157
+2,3,The Jimmy Jab Games,8.1,4346
+2,4,Halloween II,8.7,4862
+2,5,The Mole,8.1,4147
+2,6,Jake and Sophia,8.1,4148
+2,7,Lockdown,7.7,4003
+2,8,USPIS,7.7,3983
+2,9,The Road Trip,8.1,4119
+2,10,The Pontiac Bandit Returns,8.2,4086
+2,11,Stakeout,7.7,3916
+2,12,Beach House,8.2,4134
+2,13,Payback,7.8,3860
+2,14,Defense Rests,7.6,3824
+2,15,Windbreaker City,8.1,3922
+2,16,The Wednesday Incident,7.9,3839
+2,17,Boyle-Linetti Wedding,8.1,3936
+2,18,Captain Peralta,7.7,3799
+2,19,Sabotage,7.8,3767
+2,20,AC/DC,7.6,3714
+2,21,Det. Dave Majors,7.8,3773
+2,22,The Chopper,8.5,3931
+2,23,Johnny and Dora,9,5125
+3,1,New Captain,8.2,4162
+3,2,The Funeral,7.6,3776
+3,3,Boyle's Hunch,7.7,3696
+3,4,The Oolong Slayer,8.4,3958
+3,5,Halloween III,8.9,4730
+3,6,Into the Woods,7.6,3663
+3,7,The Mattress,7.6,3645
+3,8,Ava,8.1,3735
+3,9,The Swedes,7.7,3760
+3,10,Yippie Kayak,8.7,4228
+3,11,Hostage Situation,7.6,3596
+3,12,9 Days,7.9,3846
+3,13,The Cruise,8,3702
+3,14,Karen Peralta,7.5,3505
+3,15,The 9-8,7.9,3561
+3,16,House Mouses,7.7,3432
+3,17,Adrian Pimento,7.7,3537
+3,18,Cheddar,7.7,3530
+3,19,Terry Kitties,7.6,3370
+3,20,Paranoia,8.1,3465
+3,21,Maximum Security,8,3469
+3,22,Bureau,8.6,3734
+3,23,Greg and Larry,9,4311
+4,1,"Coral Palms, Part 1",8.1,3883
+4,2,"Coral Palms, Part 2",8.1,3702
+4,3,"Coral Palms, Part 3",8.3,3724
+4,4,The Night Shift,7.5,3534
+4,5,Halloween IV,8.7,4193
+4,6,Monster in the Closet,7.8,3410
+4,7,Mr. Santiago,8.1,3608
+4,8,Skyfire Cycle,7.6,3408
+4,9,The Overmining,7.9,3373
+4,10,Captain Latvia,7.5,3374
+4,11,"The Fugitive, Part 1",8.3,3554
+4,12,"The Fugitive, Part 2",8.4,3296
+4,13,The Audit,7.6,3269
+4,14,Serve & Protect,7.7,3278
+4,15,The Last Ride,8.2,3392
+4,16,Moo Moo,8.8,6027
+4,17,Cop-Con,8.2,3325
+4,18,Chasing Amy,7.9,3238
+4,19,Your Honor,7.8,3176
+4,20,The Slaughterhouse,7.9,3172
+4,21,The Bank Job,8.4,3361
+4,22,Crime & Punishment,8.5,3560
+5,1,The Big House Pt. 1,8.4,3830
+5,2,The Big House Pt. 2,8.3,3628
+5,3,Kicks,7.8,3315
+5,4,HalloVeen,9.4,6838
+5,5,Bad Beat,7.8,3261
+5,6,The Venue,7.6,3260
+5,7,Two Turkeys,8,3355
+5,8,Return to Skyfire,7.4,3248
+5,9,99,8.7,4064
+5,10,Game Night,8.4,4127
+5,11,The Favor,7.8,3208
+5,12,Safe House,8.6,3754
+5,13,The Negotiation,8.2,3494
+5,14,The Box,9.5,10416
+5,15,The Puzzle Master,7.6,3203
+5,16,NutriBoom,7.7,3188
+5,17,DFW,7.7,3421
+5,18,Gray Star Mutual,7.8,3144
+5,19,Bachelor/ette Party,8.3,3311
+5,20,Show Me Going,8.2,3528
+5,21,White Whale,7.8,3085
+5,22,Jake & Amy,9.1,4873
+6,1,Honeymoon,8.3,4108
+6,2,Hitchcock & Scully,8.7,4530
+6,3,The Tattler,7.5,3423
+6,4,Four Movements,7.3,3668
+6,5,A Tale of Two Bandits,8,3537
+6,6,The Crime Scene,8.4,3827
+6,7,The Honeypot,8.3,3563
+6,8,"He Said, She Said",7.1,5488
+6,9,The Golden Child,8,3412
+6,10,Gintars,7.3,3183
+6,11,The Therapist,7.9,3255
+6,12,Casecation,7.5,3542
+6,13,The Bimbo,7.8,3105
+6,14,Ticking Clocks,8.2,3465
+6,15,Return of the King,6.4,3774
+6,16,Cinco de Mayo,9,4459
+6,17,Sicko,8.3,3146
+6,18,Suicide Squad,8.9,3993
+7,1,Manhunter,7.9,3442
+7,2,Captain Kim,8.1,3309
+7,3,Pimemento,8.5,3633
+7,4,The Jimmy Jab Games II,7.8,3193
+7,5,Debbie,7.2,3376
+7,6,Trying,7.7,3140
+7,7,Ding Dong,8.6,3576
+7,8,The Takeback,8.1,3196
+7,9,Dillman,8.6,3342
+7,10,Admiral Peralta,7.8,2982
+7,11,Valloweaster,8.1,3261
+7,12,Ransom,8.6,3415
+7,13,Lights Out,9.1,4635
+8,1,The Good Ones,4.9,9680
+8,2,The Lake House,7.6,3891
+8,3,Blue Flu,7,3607
+8,4,Balancing,7.5,3276
+8,5,PB&J,7.8,3461
+8,6,The Set Up,6.7,3591
+8,7,Game of Boyles,7.9,3249
+8,8,Renewal,7.9,3011
+8,9,The Last Day Pt 1,9.2,4695
+8,10,The Last Day Pt 2,9.4,6230
