@@ -195,6 +195,7 @@ shows <- tibble::tribble(
   "Vampire Diaries", "vampire_diaries", NA, NA, NA, NA,
   "Velma", "velma", NA, NA, NA, NA,
   "Westworld", "westworld", NA, NA, NA, NA,
+  "X-Men '97", "x_men_97", NA, NA, NA, NA,
   "ZeroZeroZero", "zerozerozero", NA, NA, NA, NA
 ) %>%
   dplyr::arrange(tolower(title))
@@ -344,4 +345,3 @@ for (i in seq_len(nrow(shows))) {
   });
 })();
 ```
-
