@@ -188,15 +188,15 @@ shows <- tibble::tribble(
   "Suits", "suits", NA, NA, NA, NA,
   "Ted Lasso", "ted_lasso", NA, NA, NA, NA,
   "The Boys", "the_boys", NA, NA, NA, NA,
-  "The Crown", "crown", NA, NA, NA, NA,
+  # "The Crown", "crown", NA, NA, NA, NA,
   "The Office (US)", "the_office", NA, NA, NA, NA,
   "The Simpsons", "simpsons", 15, 6, 16, 6,
   "The Wire", "the_wire", NA, NA, NA, NA,
   "Vampire Diaries", "vampire_diaries", NA, NA, NA, NA,
   "Velma", "velma", NA, NA, NA, NA,
   "Westworld", "westworld", NA, NA, NA, NA,
-  "X-Men '97", "x_men_97", NA, NA, NA, NA,
-  "ZeroZeroZero", "zerozerozero", NA, NA, NA, NA
+  "X-Men '97", "x_men_97", NA, NA, NA, NA
+  # "ZeroZeroZero", "zerozerozero", NA, NA, NA, NA
 ) %>%
   dplyr::arrange(tolower(title))
 
