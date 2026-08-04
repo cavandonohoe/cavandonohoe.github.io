@@ -221,6 +221,7 @@ summary_tbl <- shows %>%
     Seasons = purrr::map_int(data, ~ dplyr::n_distinct(.x$season)),
     Episodes = purrr::map_int(data, nrow),
     `Avg rating` = purrr::map_dbl(data, ~ round(mean(.x$rating, na.rm = TRUE), 2)),
+    `Median rating` = purrr::map_dbl(data, ~ round(stats::median(.x$rating, na.rm = TRUE), 2)),
     `Best ep` = purrr::map_chr(data, function(d) {
       top <- d %>% dplyr::slice_max(rating, n = 1, with_ties = FALSE)
       sprintf("%.1f — %s (S%dE%d)", top$rating, top$title, top$season, top$episode)
@@ -231,7 +232,7 @@ summary_tbl <- shows %>%
     }),
     Show = sprintf("<a href='#%s'>%s</a>", anchor_id(title), title)
   ) %>%
-  dplyr::select(Show, Seasons, Episodes, `Avg rating`, `Best ep`, `Worst ep`)
+  dplyr::select(Show, Seasons, Episodes, `Avg rating`, `Median rating`, `Best ep`, `Worst ep`)
 
 DT::datatable(
   summary_tbl,
