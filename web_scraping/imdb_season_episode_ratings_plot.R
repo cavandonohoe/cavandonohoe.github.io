@@ -354,7 +354,8 @@ shows <- tibble::tribble(
   "ted lasso",          "tt10986410",  "ted_lasso",
   "rick and morty",     "tt2861424",   "rick_and_morty",
   "gravity falls",      "tt1865718",   "gravity_falls",
-  "seinfeld",           "tt0098904",   "seinfeld"
+  "seinfeld",           "tt0098904",   "seinfeld",
+  "daredevil",          "tt3322312",   "daredevil"
 )
 
 # -----------------------------------------------------------------------------
