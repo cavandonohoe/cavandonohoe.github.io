@@ -190,6 +190,7 @@ shows <- tibble::tribble(
   "Schitt's Creek", "schitts_creek", NA, NA, NA, NA,
   "Scrubs", "scrubs", NA, NA, NA, NA,
   "Seinfeld", "seinfeld", NA, NA, NA, NA,
+  "Sherlock", "sherlock", NA, NA, NA, NA,
   "Six Feet Under", "six_feet_under", NA, NA, NA, NA,
   "South Park", "south_park", 15, 6, 16, 6,
   "Sparticus", "sparticus", NA, NA, NA, NA,
