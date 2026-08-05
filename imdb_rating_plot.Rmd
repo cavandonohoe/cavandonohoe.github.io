@@ -165,6 +165,7 @@ shows <- tibble::tribble(
   "Family Guy", "family_guy", 15, 9, 16, 9,
   "Fleabag", "fleabag", NA, NA, NA, NA,
   "Friends", "friends", 7, 7, NA, NA,
+  "Futurama", "futurama", NA, NA, NA, NA,
   "Game of Thrones", "game_of_thrones", NA, NA, NA, NA,
   "Gravity Falls", "gravity_falls", NA, 8, NA, NA,
   "Grey's Anatomy", "greys_anatomy", 9, 9, NA, NA,

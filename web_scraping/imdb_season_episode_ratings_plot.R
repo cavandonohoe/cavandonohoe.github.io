@@ -362,7 +362,8 @@ shows <- tibble::tribble(
   "scrubs",             "tt0285403",   "scrubs",
   "the last of us",     "tt3581920",   "the_last_of_us",
   "barry",              "tt5348176",   "barry",
-  "community",          "tt1439629",   "community"
+  "community",          "tt1439629",   "community",
+  "futurama",           "tt0149460",   "futurama"
 )
 
 # -----------------------------------------------------------------------------
