@@ -203,7 +203,7 @@ shows <- tibble::tribble(
   "X-Men '97", "x_men_97", NA, NA, NA, NA
   # "ZeroZeroZero", "zerozerozero", NA, NA, NA, NA
 ) %>%
-  dplyr::arrange(tolower(title))
+  dplyr::arrange(stringr::str_remove(tolower(title), "^the "))
 
 # helper: turn a title into the same anchor slug R Markdown auto-generates
 # for a "## Title" heading, so the summary table can link to each section.
