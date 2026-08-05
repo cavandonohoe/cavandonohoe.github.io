@@ -353,7 +353,17 @@ shows <- tibble::tribble(
   "batman the animated series", "tt0103359", "batman_animated_series",
   "ted lasso",          "tt10986410",  "ted_lasso",
   "rick and morty",     "tt2861424",   "rick_and_morty",
-  "gravity falls",      "tt1865718",   "gravity_falls"
+  "gravity falls",      "tt1865718",   "gravity_falls",
+  "seinfeld",           "tt0098904",   "seinfeld",
+  "daredevil",          "tt3322312",   "daredevil",
+  "the mandalorian",    "tt8111088",   "the_mandalorian",
+  "archer",             "tt1486217",   "archer",
+  "heated rivalry",     "tt35495073",  "heated_rivalry",
+  "scrubs",             "tt0285403",   "scrubs",
+  "the last of us",     "tt3581920",   "the_last_of_us",
+  "barry",              "tt5348176",   "barry",
+  "community",          "tt1439629",   "community",
+  "futurama",           "tt0149460",   "futurama"
 )
 
 # -----------------------------------------------------------------------------
