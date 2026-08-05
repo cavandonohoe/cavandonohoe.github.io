@@ -172,6 +172,7 @@ shows <- tibble::tribble(
   "House of the Dragon", "hotd", NA, NA, NA, NA,
   "How I Met Your Mother", "himym", NA, NA, NA, NA,
   "Invincible", "invincible", NA, NA, NA, NA,
+  "The Last of Us", "the_last_of_us", NA, NA, NA, NA,
   "Love Island (UK)", "love_island", NA, 11, NA, NA,
   "Mad Men", "mad_men", NA, NA, NA, NA,
   "Modern Love", "modern_love", NA, NA, NA, NA,
