@@ -19,11 +19,18 @@ extract_imdb_id <- function(input) {
 # retry handles 429/5xx responses; we add a small extra layer for connection
 # errors (e.g. transient DNS / TLS).
 imdb_graphql_post <- function(endpoint, body_json, ua, max_tries = 4L) {
+  # IMDb's WAF rejects requests to this endpoint (HTTP 403) unless they look
+  # like they originate from the imdb.com web app, so we send the Origin and
+  # Referer headers the browser client uses. Without them every request 403s.
   req <- httr2::request(endpoint) %>%
     httr2::req_method("POST") %>%
     httr2::req_headers(
       `User-Agent` = ua,
-      `Content-Type` = "application/json"
+      `Content-Type` = "application/json",
+      Accept = "application/graphql+json, application/json",
+      Origin = "https://www.imdb.com",
+      Referer = "https://www.imdb.com/",
+      `Accept-Language` = "en-US,en;q=0.9"
     ) %>%
     httr2::req_body_raw(body_json, type = "application/json") %>%
     httr2::req_retry(
@@ -37,8 +44,9 @@ imdb_graphql_post <- function(endpoint, body_json, ua, max_tries = 4L) {
 # Query IMDb's public GraphQL endpoint for one season of episodes.
 # We use this instead of scraping the HTML pages because IMDb's WAF
 # blocks server-side requests to www.imdb.com (e.g. from GitHub
-# Actions), but the caching.graphql.imdb.com endpoint is unauthenticated
-# and unblocked. Pagination handles long seasons (Family Guy, Simpsons,
+# Actions). The caching.graphql.imdb.com endpoint is unauthenticated but
+# its WAF requires the imdb.com Origin/Referer headers (see
+# imdb_graphql_post). Pagination handles long seasons (Family Guy, Simpsons,
 # etc.). Rows with no aggregate rating (unaired/upcoming placeholders
 # IMDb auto-generates) are dropped here so they never reach the CSVs.
 get_imdb_season_episodes <- function(imdb_input, season) {
@@ -338,6 +346,7 @@ shows <- tibble::tribble(
   "andor",              "tt9253284",   "andor",
   "modern love",        "tt8543390",   "modern_love",
   "my hero academia",   "tt5626028",   "my_hero_academia",
+  "x-men 97",           "tt16026746",  "x_men_97",
   "the boys",           "tt1190634",   "the_boys",
   "schitt's creek",     "tt3526078",   "schitts_creek",
   "batman caped crusader", "tt14681596", "batman_caped_crusader",
