@@ -358,7 +358,8 @@ shows <- tibble::tribble(
   "daredevil",          "tt3322312",   "daredevil",
   "the mandalorian",    "tt8111088",   "the_mandalorian",
   "archer",             "tt1486217",   "archer",
-  "heated rivalry",     "tt35495073",  "heated_rivalry"
+  "heated rivalry",     "tt35495073",  "heated_rivalry",
+  "scrubs",             "tt0285403",   "scrubs"
 )
 
 # -----------------------------------------------------------------------------
