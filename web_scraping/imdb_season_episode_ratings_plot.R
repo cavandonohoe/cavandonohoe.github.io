@@ -356,7 +356,8 @@ shows <- tibble::tribble(
   "gravity falls",      "tt1865718",   "gravity_falls",
   "seinfeld",           "tt0098904",   "seinfeld",
   "daredevil",          "tt3322312",   "daredevil",
-  "the mandalorian",    "tt8111088",   "the_mandalorian"
+  "the mandalorian",    "tt8111088",   "the_mandalorian",
+  "archer",             "tt1486217",   "archer"
 )
 
 # -----------------------------------------------------------------------------
