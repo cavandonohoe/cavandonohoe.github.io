@@ -167,6 +167,7 @@ shows <- tibble::tribble(
   "Gravity Falls", "gravity_falls", NA, 8, NA, NA,
   "Grey's Anatomy", "greys_anatomy", 9, 9, NA, NA,
   "Hannibal", "hannibal", NA, NA, NA, NA,
+  "Heated Rivalry", "heated_rivalry", NA, NA, NA, NA,
   "House MD", "house", 7, 7, NA, NA,
   "House of the Dragon", "hotd", NA, NA, NA, NA,
   "How I Met Your Mother", "himym", NA, NA, NA, NA,
