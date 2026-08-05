@@ -159,6 +159,7 @@ shows <- tibble::tribble(
   "Brooklyn Nine-Nine", "brooklyn_nine_nine", NA, NA, NA, NA,
   "Chernobyl", "chernobyl", NA, NA, NA, NA,
   "Clone Wars", "clone_wars", NA, NA, NA, NA,
+  "Community", "community", NA, NA, NA, NA,
   "Daredevil", "daredevil", NA, NA, NA, NA,
   "Death Note", "death_note", NA, 12, NA, NA,
   "Family Guy", "family_guy", 15, 9, 16, 9,

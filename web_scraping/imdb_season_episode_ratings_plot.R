@@ -361,7 +361,8 @@ shows <- tibble::tribble(
   "heated rivalry",     "tt35495073",  "heated_rivalry",
   "scrubs",             "tt0285403",   "scrubs",
   "the last of us",     "tt3581920",   "the_last_of_us",
-  "barry",              "tt5348176",   "barry"
+  "barry",              "tt5348176",   "barry",
+  "community",          "tt1439629",   "community"
 )
 
 # -----------------------------------------------------------------------------
