@@ -212,6 +212,7 @@ shows <- tibble::tribble(
   #   "The Crown", "crown", NA, NA, NA, NA,
   "The Mandalorian", "the_mandalorian", NA, NA, NA, NA,
   "The Office (US)", "the_office", NA, NA, NA, NA,
+  "The Owl House", "the_owl_house", NA, NA, NA, NA,
   "The Simpsons", "simpsons", 15, 6, 16, 6,
   "The Wire", "the_wire", NA, NA, NA, NA,
   "Vampire Diaries", "vampire_diaries", NA, NA, NA, NA,
