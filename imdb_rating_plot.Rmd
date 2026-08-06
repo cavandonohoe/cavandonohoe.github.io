@@ -156,7 +156,7 @@ shows <- tibble::tribble(
   "Always Sunny in Philadelphia", "always_sunny", NA, NA, NA, NA,
   "Andor", "andor", NA, NA, NA, NA,
   "Archer", "archer", NA, NA, NA, NA,
-  "Attack on Titan", "attack_on_titan", NA, 7, NA, NA,
+  "Attack on Titan", "attack_on_titan", NA, 9, NA, NA,
   "Avatar: The Last Airbender", "avatar", NA, NA, NA, NA,
   "Barry", "barry", NA, NA, NA, NA,
   "Batman: Caped Crusader", "batman_caped_crusader", NA, NA, NA, NA,
