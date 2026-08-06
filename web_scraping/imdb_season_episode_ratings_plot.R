@@ -348,6 +348,7 @@ shows <- tibble::tribble(
   "my hero academia",   "tt5626028",   "my_hero_academia",
   "x-men 97",           "tt16026746",  "x_men_97",
   "the boys",           "tt1190634",   "the_boys",
+  "the punisher",       "tt5675620",   "the_punisher",
   "schitt's creek",     "tt3526078",   "schitts_creek",
   "batman caped crusader", "tt14681596", "batman_caped_crusader",
   "batman the animated series", "tt0103359", "batman_animated_series",

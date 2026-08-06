@@ -196,6 +196,7 @@ shows <- tibble::tribble(
   "Parks and Recreation", "parks_and_rec", NA, NA, NA, NA,
   "Person of Interest", "person_of_interest", NA, NA, NA, NA,
   "Pretty Little Liars", "pretty_little_liars", NA, NA, NA, NA,
+  "The Punisher", "the_punisher", NA, NA, NA, NA,
   "Rick and Morty", "rick_and_morty", NA, NA, NA, NA,
   "Schitt's Creek", "schitts_creek", NA, NA, NA, NA,
   "Scrubs", "scrubs", NA, NA, NA, NA,
