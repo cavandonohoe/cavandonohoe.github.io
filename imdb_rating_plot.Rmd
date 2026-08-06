@@ -125,10 +125,20 @@ create_episode_plot <- function(episode_data, title, export_png = TRUE,
   episode_plot
 }
 
-interactive_plotly <- function(gg_object) {
+interactive_plotly <- function(gg_object, fig_width = NA, fig_height = NA) {
+  px_per_in <- 96
+  plot_width <- if (is.na(fig_width)) NULL else fig_width * px_per_in
+  plot_height <- if (is.na(fig_height)) NULL else fig_height * px_per_in
+
   gg_object %>%
-    plotly::ggplotly(tooltip = "text") %>%
-    plotly::layout(xaxis = list(side = "top"))
+    plotly::ggplotly(
+      tooltip = "text",
+      width = plot_width,
+      height = plot_height
+    ) %>%
+    plotly::layout(
+      xaxis = list(side = "top")
+    )
 }
 ```
 
@@ -150,7 +160,7 @@ shows <- tibble::tribble(
   "Avatar: The Last Airbender", "avatar", NA, NA, NA, NA,
   "Barry", "barry", NA, NA, NA, NA,
   "Batman: Caped Crusader", "batman_caped_crusader", NA, NA, NA, NA,
-  "Batman: The Animated Series", "batman_animated_series", 7, 14, NA, NA,
+  "Batman: The Animated Series", "batman_animated_series", 7, 16, NA, NA,
   "Better Call Saul", "better_call_saul", NA, NA, NA, NA,
   "Blue Eye Samurai", "blue_eye_samurai", NA, NA, NA, NA,
   "Bluey", "bluey", 4, 9, NA, NA,
@@ -297,7 +307,11 @@ render_one_show <- function(row) {
     data, row$title,
     png_width = png_w, png_height = png_h
   )
-  widget <- interactive_plotly(gg)
+  widget <- interactive_plotly(
+    gg,
+    fig_width = row$fig_width,
+    fig_height = row$fig_height
+  )
   rendered <- htmltools::renderTags(widget)
 
   # Keep the heatmap legible on narrow screens: give the plot a per-season
