@@ -18,7 +18,7 @@ season,episode,title,rating,votes
 1,17,The New Normal,7.7,1032
 1,18,The Badass Seed,7.8,1048
 1,19,A Person of Interest,8,1071
-1,20,Someone to Watch Over Me,7.9,1024
+1,20,Someone to Watch Over Me,7.9,1025
 1,21,Monsters in the End,8.1,1041
 1,22,For Whom the Bell Tolls,8.4,1179
 2,1,It's Alive,8,1177
@@ -27,13 +27,13 @@ season,episode,title,rating,votes
 2,4,Blind Dates,8,943
 2,5,The Devil You Know,7.9,942
 2,6,Never Letting Go,7.9,949
-2,7,Surface Tension,7.7,894
+2,7,Surface Tension,7.7,895
 2,8,Save the Date,7.9,921
 2,9,Picture This,8,924
 2,10,Touched by an 'A'-ngel,7.8,906
 2,11,I Must Confess,8.1,919
-2,12,Over My Dead Body,8.7,1289
-2,13,The First Secret,8.5,1239
+2,12,Over My Dead Body,8.7,1290
+2,13,The First Secret,8.5,1240
 2,14,"Through Many Dangers, Toils, and Snares",8.4,1060
 2,15,A Hot Piece of A,8.2,982
 2,16,Let the Water Hold Me Down,7.7,891
@@ -77,11 +77,11 @@ season,episode,title,rating,votes
 4,5,Gamma Zeta Die!,7.8,781
 4,6,Under the Gun,7.8,776
 4,7,"Crash and Burn, Girl!",7.9,769
-4,8,The Guilty Girl's Handbook,7.9,770
-4,9,Into the Deep,7.8,725
-4,10,The Mirror Has Three Faces,7.9,773
-4,11,Bring Down the Hoe,7.8,782
-4,12,"Now You See Me, Now You Don't",8.8,1318
+4,8,The Guilty Girl's Handbook,7.9,771
+4,9,Into the Deep,7.8,726
+4,10,The Mirror Has Three Faces,7.9,774
+4,11,Bring Down the Hoe,7.8,783
+4,12,"Now You See Me, Now You Don't",8.8,1319
 4,13,Grave New World,8.4,1161
 4,14,Who's in the Box?,7.6,818
 4,15,"Love ShAck, Baby",7.8,750
@@ -93,19 +93,19 @@ season,episode,title,rating,votes
 4,21,She's Come Undone,8.1,791
 4,22,Cover for Me,7.6,731
 4,23,Unbridled,7.8,786
-4,24,'A' Is for Answers,8.9,1302
+4,24,'A' Is for Answers,8.9,1303
 5,1,EscApe from New York,8.2,995
 5,2,Whirly Girly,7.8,791
 5,3,Surfing the Aftershocks,7.4,736
 5,4,Thrown from the Ride,7.2,727
-5,5,Miss Me x100,8.5,1000
+5,5,Miss Me x100,8.5,1002
 5,6,"Run, Ali, Run",7.6,723
 5,7,The Silence of E. Lamb,7.4,700
 5,8,Scream for Me,7.5,697
-5,9,March of Crimes,7.7,702
+5,9,March of Crimes,7.7,703
 5,10,A Dark Ali,7.8,693
 5,11,No One Here Can Love or Understand Me,7.4,715
-5,12,Taking This One to the Grave,8.7,1155
+5,12,Taking This One to the Grave,8.7,1156
 5,13,How the 'A' Stole Christmas,7.8,889
 5,14,"Through a Glass, Darkly",7.7,726
 5,15,Fresh Meat,7.3,698
@@ -116,7 +116,7 @@ season,episode,title,rating,votes
 5,20,Pretty Isn't the Point,7.7,724
 5,21,Bloody Hell,7.5,686
 5,22,To Plea or Not to Plea,7.7,675
-5,23,The Melody Lingers On,7.8,704
+5,23,The Melody Lingers On,7.8,705
 5,24,"I'm a Good Girl, I Am",8.4,845
 5,25,Welcome to the Dollhouse,9.2,1905
 6,1,"Game On, Charles",9.1,1801
@@ -128,7 +128,7 @@ season,episode,title,rating,votes
 6,7,"O Brother, Where Art Thou",7.7,732
 6,8,FrAmed,7.7,744
 6,9,Last Dance,8.2,969
-6,10,"Game Over, Charles",5.1,4117
+6,10,"Game Over, Charles",5.1,4118
 6,11,Of Late I Think of Rosewood,7.4,884
 6,12,Charlotte's Web,7,730
 6,13,The Gloves Are On,7,712
@@ -141,10 +141,10 @@ season,episode,title,rating,votes
 6,20,"Hush, Hush, Sweet Liars",7.6,888
 7,1,"Tick-Tock, Bitches",7.7,864
 7,2,Bedlam,6.9,703
-7,3,The Talented Mr. Rollins,7.9,737
-7,4,"Hit and Run, Run, Run",7.9,743
+7,3,The Talented Mr. Rollins,7.9,738
+7,4,"Hit and Run, Run, Run",7.9,744
 7,5,Along Comes Mary,7.2,653
-7,6,Wanted: Dead or Alive,7.6,650
+7,6,Wanted: Dead or Alive,7.6,651
 7,7,Original G'A'ngsters,7.4,636
 7,8,Exes and OMGs,7.1,662
 7,9,The Wrath of Kahn,7.5,641
@@ -153,9 +153,9 @@ season,episode,title,rating,votes
 7,12,These Boots Were Made for Stalking,6.9,618
 7,13,Hold Your Piece,7.2,614
 7,14,Power Play,7.8,685
-7,15,In the Eye Abides the Heart,7.5,666
-7,16,The Glove That Rocks the Cradle,7.6,605
-7,17,Driving Miss Crazy,7.5,605
-7,18,Choose or Lose,8.2,679
-7,19,"Farewell, My Lovely",8.2,734
-7,20,Til DeAth Do Us PArt,5.4,2187
+7,15,In the Eye Abides the Heart,7.5,667
+7,16,The Glove That Rocks the Cradle,7.6,606
+7,17,Driving Miss Crazy,7.5,606
+7,18,Choose or Lose,8.2,680
+7,19,"Farewell, My Lovely",8.2,735
+7,20,Til DeAth Do Us PArt,5.4,2191
