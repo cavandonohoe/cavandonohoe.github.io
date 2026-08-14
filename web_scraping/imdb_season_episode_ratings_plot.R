@@ -75,6 +75,7 @@ get_imdb_season_episodes <- function(imdb_input, season) {
     "              }",
     "            }",
     "            titleText { text }",
+    "            releaseYear { year }",
     "            ratingsSummary { aggregateRating voteCount }",
     "          }",
     "        }",
@@ -90,7 +91,8 @@ get_imdb_season_episodes <- function(imdb_input, season) {
     episode = integer(),
     title   = character(),
     rating  = numeric(),
-    votes   = integer()
+    votes   = integer(),
+    episode_year = integer()
   )
 
   all_edges <- list()
@@ -136,12 +138,18 @@ get_imdb_season_episodes <- function(imdb_input, season) {
     rating <- node$ratingsSummary$aggregateRating
     votes <- node$ratingsSummary$voteCount
     title <- node$titleText$text
+    episode_year <- node$releaseYear$year
     tibble::tibble(
       season  = suppressWarnings(as.integer(season_text)),
       episode = suppressWarnings(as.integer(episode_text)),
       title   = if (is.null(title)) NA_character_ else title,
       rating  = if (is.null(rating)) NA_real_ else as.numeric(rating),
-      votes   = if (is.null(votes)) 0L else as.integer(votes)
+      votes   = if (is.null(votes)) 0L else as.integer(votes),
+      episode_year = if (is.null(episode_year)) {
+        NA_integer_
+      } else {
+        as.integer(episode_year)
+      }
     )
   })
 
@@ -163,7 +171,8 @@ get_imdb_all_episodes <- function(imdb_id, max_seasons = 50) {
       episode = integer(),
       title   = character(),
       rating  = numeric(),
-      votes   = integer()
+      votes   = integer(),
+      episode_year = integer()
     ))
   }
   dplyr::bind_rows(out)
