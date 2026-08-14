@@ -128,7 +128,7 @@ segments_and_weekends_county <- owens_work_schedule %>%
 
 Jason, Owen, and Wyett's Work Schedule for the next `r years_till_retirement` years (Retire at 65 right?). Should be a fun journey for them! Keep battling those fires! 
 
-This is based on the Kelly Schedule.
+Jason's and Wyett's schedules are based on the Kelly Schedule (48/96). Owen's is the County Schedule, a 12-day rotation.
 
 ## Jason's:
 
