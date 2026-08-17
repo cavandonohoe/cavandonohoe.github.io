@@ -1,74 +1,74 @@
 season,episode,title,rating,votes
-1,1,Winter Is Coming,8.9,80674
-1,2,The Kingsroad,8.6,61260
-1,3,Lord Snow,8.5,58065
-1,4,"Cripples, Bastards, and Broken Things",8.6,55399
-1,5,The Wolf and the Lion,9,58313
-1,6,A Golden Crown,9.1,57307
-1,7,You Win or You Die,9.2,58078
-1,8,The Pointy End,8.9,54211
-1,9,Baelor,9.6,79430
-1,10,Fire and Blood,9.4,66826
-2,1,The North Remembers,8.6,50038
-2,2,The Night Lands,8.3,47614
-2,3,What Is Dead May Never Die,8.6,47046
-2,4,Garden of Bones,8.6,46007
-2,5,The Ghost of Harrenhal,8.6,46213
-2,6,The Old Gods and the New,8.9,48109
-2,7,A Man Without Honor,8.8,46573
-2,8,The Prince of Winterfell,8.6,45792
-2,9,Blackwater,9.7,86732
-2,10,Valar Morghulis,9.3,56378
-3,1,Valar Dohaeris,8.6,48093
-3,2,"Dark Wings, Dark Words",8.4,44971
-3,3,Walk of Punishment,8.7,45535
-3,4,And Now His Watch Is Ended,9.5,62844
-3,5,Kissed by Fire,8.9,47784
-3,6,The Climb,8.7,46308
-3,7,The Bear and the Maiden Fair,8.6,44836
-3,8,Second Sons,8.9,46164
-3,9,The Rains of Castamere,9.9,185697
-3,10,Mhysa,9.1,52543
-4,1,Two Swords,9,55034
-4,2,The Lion and the Rose,9.7,89941
-4,3,Breaker of Chains,8.8,48374
-4,4,Oathkeeper,8.7,46744
-4,5,First of His Name,8.6,46094
-4,6,The Laws of Gods and Men,9.7,92846
-4,7,Mockingbird,9,50870
-4,8,The Mountain and the Viper,9.7,90226
-4,9,The Watchers on the Wall,9.6,82600
-4,10,The Children,9.7,81286
-5,1,The Wars to Come,8.3,47374
-5,2,The House of Black and White,8.3,44023
-5,3,High Sparrow,8.3,42941
-5,4,Sons of the Harpy,8.5,43879
-5,5,Kill the Boy,8.5,44065
-5,6,"Unbowed, Unbent, Unbroken",7.9,51410
-5,7,The Gift,8.8,46537
-5,8,Hardhome,9.8,144777
-5,9,The Dance of Dragons,9.4,66877
-5,10,Mother's Mercy,9.2,65540
-6,1,The Red Woman,8.4,57833
-6,2,Home,9.2,66864
-6,3,Oathbreaker,8.6,52314
-6,4,Book of the Stranger,9,57053
-6,5,The Door,9.7,109913
-6,6,Blood of My Blood,8.3,51227
-6,7,The Broken Man,8.5,50525
-6,8,No One,8.3,55236
-6,9,Battle of the Bastards,9.9,312509
-6,10,The Winds of Winter,9.9,230995
-7,1,Dragonstone,8.5,69253
-7,2,Stormborn,8.7,62321
-7,3,The Queen's Justice,9.1,66183
-7,4,The Spoils of War,9.7,126133
-7,5,Eastwatch,8.6,62060
-7,6,Beyond the Wall,9,88603
-7,7,The Dragon and the Wolf,9.4,90223
-8,1,Winterfell,7.6,160531
-8,2,A Knight of the Seven Kingdoms,7.9,160501
-8,3,The Long Night,7.5,256107
-8,4,The Last of the Starks,5.5,195662
-8,5,The Bells,5.9,227599
-8,6,The Iron Throne,4,306304
+1,1,Winter Is Coming,8.9,80856
+1,2,The Kingsroad,8.6,61406
+1,3,Lord Snow,8.5,58198
+1,4,"Cripples, Bastards, and Broken Things",8.6,55530
+1,5,The Wolf and the Lion,9,58446
+1,6,A Golden Crown,9.1,57440
+1,7,You Win or You Die,9.2,58210
+1,8,The Pointy End,8.9,54344
+1,9,Baelor,9.6,79605
+1,10,Fire and Blood,9.4,66982
+2,1,The North Remembers,8.6,50163
+2,2,The Night Lands,8.3,47739
+2,3,What Is Dead May Never Die,8.6,47165
+2,4,Garden of Bones,8.6,46123
+2,5,The Ghost of Harrenhal,8.6,46329
+2,6,The Old Gods and the New,8.9,48224
+2,7,A Man Without Honor,8.8,46685
+2,8,The Prince of Winterfell,8.6,45899
+2,9,Blackwater,9.7,86883
+2,10,Valar Morghulis,9.3,56507
+3,1,Valar Dohaeris,8.6,48201
+3,2,"Dark Wings, Dark Words",8.4,45080
+3,3,Walk of Punishment,8.7,45646
+3,4,And Now His Watch Is Ended,9.5,62974
+3,5,Kissed by Fire,8.9,47890
+3,6,The Climb,8.7,46415
+3,7,The Bear and the Maiden Fair,8.6,44940
+3,8,Second Sons,8.9,46271
+3,9,The Rains of Castamere,9.9,185940
+3,10,Mhysa,9.1,52658
+4,1,Two Swords,9,55138
+4,2,The Lion and the Rose,9.7,90083
+4,3,Breaker of Chains,8.8,48476
+4,4,Oathkeeper,8.7,46844
+4,5,First of His Name,8.6,46194
+4,6,The Laws of Gods and Men,9.7,93015
+4,7,Mockingbird,9,50979
+4,8,The Mountain and the Viper,9.7,90382
+4,9,The Watchers on the Wall,9.6,82766
+4,10,The Children,9.7,81451
+5,1,The Wars to Come,8.3,47460
+5,2,The House of Black and White,8.3,44106
+5,3,High Sparrow,8.3,43027
+5,4,Sons of the Harpy,8.5,43967
+5,5,Kill the Boy,8.5,44153
+5,6,"Unbowed, Unbent, Unbroken",7.9,51513
+5,7,The Gift,8.8,46630
+5,8,Hardhome,9.8,144941
+5,9,The Dance of Dragons,9.4,67002
+5,10,Mother's Mercy,9.2,65673
+6,1,The Red Woman,8.4,57932
+6,2,Home,9.2,66963
+6,3,Oathbreaker,8.6,52416
+6,4,Book of the Stranger,9,57167
+6,5,The Door,9.7,110080
+6,6,Blood of My Blood,8.3,51321
+6,7,The Broken Man,8.5,50617
+6,8,No One,8.3,55325
+6,9,Battle of the Bastards,9.9,312785
+6,10,The Winds of Winter,9.9,231226
+7,1,Dragonstone,8.5,69348
+7,2,Stormborn,8.7,62416
+7,3,The Queen's Justice,9.1,66291
+7,4,The Spoils of War,9.7,126290
+7,5,Eastwatch,8.6,62154
+7,6,Beyond the Wall,9,88733
+7,7,The Dragon and the Wolf,9.4,90350
+8,1,Winterfell,7.6,160677
+8,2,A Knight of the Seven Kingdoms,7.9,160651
+8,3,The Long Night,7.5,256313
+8,4,The Last of the Starks,5.5,195809
+8,5,The Bells,5.9,227768
+8,6,The Iron Throne,4,306548
