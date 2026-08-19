@@ -11,12 +11,16 @@ lang: "en"
 ---
 
 ```{r og-meta, echo=FALSE, results='asis'}
-cat('
+og_desc <- paste0(
+  "48/96 Kelly shift schedule calculator for firefighters. ",
+  "Projected schedules through retirement."
+)
+cat(paste0('
 <meta property="og:title" content="Firefighter Schedule Generator">
-<meta property="og:description" content="48/96 Kelly shift schedule calculator for firefighters — projected schedules through retirement.">
+<meta property="og:description" content="', og_desc, '">
 <meta property="og:url" content="https://cavandonohoe.github.io/firefighter_schedule.html">
 <meta property="og:type" content="article">
-')
+'))
 ```
 
 ```{r pipe, include=FALSE}
@@ -63,7 +67,7 @@ segments_and_weekends_c <- wyetts_work_schedule %>%
 years_till_retirement <- 65 - (lubridate::year(Sys.Date()) - 1994)
 
 # fun code to check our overlap
-# segments_and_weekends_c %>% 
+# segments_and_weekends_c %>%
 #   dplyr::filter(day_of_week %in% c("Saturday", "Sunday") &
 #            type == "weekend")
 
@@ -124,7 +128,7 @@ segments_and_weekends_county <- owens_work_schedule %>%
 
 Jason, Owen, and Wyett's Work Schedule for the next `r years_till_retirement` years (Retire at 65 right?). Should be a fun journey for them! Keep battling those fires! 
 
-This is based on the Kelly Schedule.
+Jason's and Wyett's schedules are based on the Kelly Schedule (48/96). Owen's is the County Schedule, a 12-day rotation.
 
 ## Jason's:
 
@@ -142,7 +146,7 @@ segments_and_weekends_b %>%
 
 </details>
 
-## Owen's:
+## Owen's (County Schedule):
 
 <details class="table-accordion"><summary>Show schedule</summary>
 
