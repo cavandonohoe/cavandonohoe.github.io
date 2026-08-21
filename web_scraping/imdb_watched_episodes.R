@@ -11,7 +11,7 @@
 #
 # Output: data/watched_tv_episodes.csv with columns
 #   imdb_id, series_title, my_series_rating, season, episode, title, rating,
-#   votes, release_year
+#   votes, release_year (the episode's own air year)
 #
 # my_imdb.Rmd reads this CSV to render the "All Episodes I've Seen" section.
 # Refreshed on a schedule by .github/workflows/update_watched_episodes.yml so
@@ -25,9 +25,11 @@ source(here::here("web_scraping", "imdb_season_episode_ratings_plot.R"))
 SERIES_TITLE_TYPES <- c("TV Series", "TV Mini Series")
 
 # Fetch every episode for one rated series. Returns a tibble (possibly 0 rows
-# on failure) tagged with the series' id, title, and my rating.
+# on failure) tagged with the series' id, title, and my rating. The output
+# release_year is the episode's own air year (falling back to the series year
+# when IMDb has no per-episode year).
 fetch_series_episodes <- function(imdb_id, series_title, my_series_rating,
-                                  release_year) {
+                                  series_year) {
   eps <- tryCatch(
     get_imdb_all_episodes(imdb_id),
     error = function(e) {
@@ -50,7 +52,9 @@ fetch_series_episodes <- function(imdb_id, series_title, my_series_rating,
       series_title = series_title,
       my_series_rating = as.integer(my_series_rating),
       season, episode, title, rating, votes,
-      release_year = as.integer(release_year)
+      release_year = dplyr::coalesce(
+        as.integer(episode_year), as.integer(series_year)
+      )
     )
 }
 
@@ -65,7 +69,7 @@ build_watched_episodes <- function(ratings_csv = here::here("data",
       imdb_id = Const,
       series_title = Title,
       my_series_rating = `Your Rating`,
-      release_year = Year
+      series_year = Year
     ) %>%
     dplyr::distinct(imdb_id, .keep_all = TRUE) %>%
     dplyr::arrange(series_title)
@@ -78,7 +82,7 @@ build_watched_episodes <- function(ratings_csv = here::here("data",
     cat(sprintf("[%3d/%3d] %s (%s) ... ", i, nrow(series),
       row$series_title, row$imdb_id))
     eps <- fetch_series_episodes(row$imdb_id, row$series_title,
-      row$my_series_rating, row$release_year)
+      row$my_series_rating, row$series_year)
     cat(sprintf("%d episodes\n", nrow(eps)))
     results[[i]] <- eps
     # Be polite to IMDb's endpoint between shows.
