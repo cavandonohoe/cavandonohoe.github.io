@@ -181,7 +181,7 @@ watched_eps %>%
     `Episode Title` = title,
     `IMDb Rating` = rating,
     Votes = votes,
-    Year = release_year
+    `Year Aired` = release_year
   ) %>%
   dplyr::arrange(Series, Season, Episode) %>%
   DT::datatable(filter = "top", extensions = "Buttons",
@@ -297,5 +297,4 @@ my_rating_vs_imdb <- my_ratings %>%
     dplyr::count() %>%
     dplyr::ungroup() %>%
   dplyr::mutate(perc = n / sum(n))
-
 ```
