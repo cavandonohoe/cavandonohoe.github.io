@@ -1,111 +1,111 @@
 season,episode,title,rating,votes
-1,1,Pilot,7.5,6749
-1,2,Spanish 101,7.7,5868
-1,3,Introduction to Film,8.1,5828
-1,4,Social Psychology,8,5362
-1,5,Advanced Criminal Law,7.7,5146
-1,6,"Football, Feminism and You",7.6,5042
-1,7,Introduction to Statistics,8.6,5786
-1,8,Home Economics,7.8,4925
-1,9,Debate 109,8.7,5834
-1,10,Environmental Science,8.1,4965
-1,11,Politics of Human Sexuality,7.7,4755
-1,12,Comparative Religion,8.3,5129
-1,13,Investigative Journalism,7.8,4908
-1,14,Interpretive Dance,7.8,4676
-1,15,Romantic Expressionism,7.9,4644
-1,16,Communication Studies,8.3,4817
-1,17,Physical Education,8.9,5952
-1,18,Basic Genealogy,7.8,4672
-1,19,Beginner Pottery,8.3,4911
-1,20,The Science of Illusion,8.3,4807
-1,21,Contemporary American Poultry,9.3,7561
-1,22,The Art of Discourse,7.8,4840
-1,23,Modern Warfare,9.8,16925
-1,24,English as a Second Language,8.1,4554
-1,25,Pascal's Triangle Revisited,8.4,4903
-2,1,Anthropology 101,8.6,5245
-2,2,Accounting for Lawyers,8.2,4724
-2,3,The Psychology of Letting Go,7.9,4560
-2,4,Basic Rocket Science,8.6,5429
-2,5,Messianic Myths and Ancient Peoples,7.7,5055
-2,6,Epidemiology,9.2,7382
-2,7,Aerodynamics of Gender,8.3,5136
-2,8,Cooperative Calligraphy,9.1,6349
-2,9,Conspiracy Theories and Interior Design,9.4,7674
-2,10,Mixology Certification,8.4,5057
-2,11,Abed's Uncontrollable Christmas,8.6,6631
-2,12,Asian Population Studies,7.9,4335
-2,13,Celebrity Pharmacology 212,7.8,4470
-2,14,Advanced Dungeons & Dragons,9.5,8489
-2,15,Early 21st Century Romanticism,7.9,4429
-2,16,Intermediate Documentary Filmmaking,8.7,5130
-2,17,Intro to Political Science,8.1,4562
-2,18,Custody Law and Eastern European Diplomacy,7.3,4270
-2,19,Critical Film Studies,8.9,5890
-2,20,Competitive Wine Tasting,7.4,4218
-2,21,Paradigms of Human Memory,9,5870
-2,22,Applied Anthropology and Culinary Arts,7.9,4245
-2,23,A Fistful of Paintballs,9.6,9614
-2,24,For a Few Paintballs More,9.5,7675
-3,1,Biology 101,7.9,4503
-3,2,Geography of Global Conflict,7.9,4447
-3,3,Competitive Ecology,7.9,4459
-3,4,Remedial Chaos Theory,9.8,15034
-3,5,Horror Fiction in Seven Spooky Steps,8.7,5194
-3,6,Advanced Gay,7.5,4353
-3,7,Studies in Modern Movement,8.5,4722
-3,8,Documentary Filmmaking: Redux,9,5880
-3,9,Foosball and Nocturnal Vigilantism,8.3,4520
-3,10,Regional Holiday Music,8.5,5385
-3,11,Urban Matrimony and the Sandwich Arts,7.5,4146
-3,12,Contemporary Impressionists,7.8,4242
-3,13,Digital Exploration of Interior Design,8.1,4311
-3,14,Pillows and Blankets,9.3,7027
-3,15,Origins of Vampire Mythology,8,4210
-3,16,Virtual Systems Analysis,8.5,4722
-3,17,Basic Lupine Urology,9.4,7115
-3,18,Course Listing Unavailable,8.1,4096
-3,19,Curriculum Unavailable,9.1,5428
-3,20,Digital Estate Planning,9.4,7108
-3,21,The First Chang Dynasty,9,5021
-3,22,Introduction to Finality,8.7,4503
-4,1,History 101,7.1,4472
-4,2,Paranormal Parentage,7.5,4111
-4,3,Conventions of Space and Time,7.2,4050
-4,4,Alternative History of the German Invasion,7,3851
-4,5,Cooperative Escapism in Familial Relations,7.4,3894
-4,6,Advanced Documentary Filmmaking,7.4,3775
-4,7,Economics of Marine Biology,6.6,3830
-4,8,Herstory of Dance,7.8,4052
-4,9,Intro to Felt Surrogacy,6.8,4461
-4,10,Intro to Knots,7.5,3782
-4,11,Basic Human Anatomy,7.9,3913
-4,12,Heroic Origins,8.1,4202
-4,13,Advanced Introduction to Finality,7.6,3996
-5,1,Repilot,7.6,4233
-5,2,Introduction to Teaching,8.4,4299
-5,3,Basic Intergluteal Numismatics,9,5635
-5,4,Cooperative Polygraphy,9.2,5675
-5,5,Geothermal Escapism,9.4,6317
-5,6,Analysis of Cork-Based Networking,8,3974
-5,7,Bondage and Beta Male Sexuality,7.7,3612
-5,8,App Development and Condiments,8.9,5206
-5,9,VCR Maintenance and Educational Publishing,7.9,3727
-5,10,Advanced Advanced Dungeons & Dragons,8.3,4009
-5,11,G.I. Jeff,7.7,4048
-5,12,Basic Story,7.6,3389
-5,13,Basic Sandwich,8,3543
-6,1,Ladders,7.5,3858
-6,2,Lawnmower Maintenance & Postnatal Care,7.3,3667
-6,3,Basic Crisis Room Decorum,7.5,3465
-6,4,Queer Studies & Advanced Waxing,7.9,3631
-6,5,Laws of Robotics & Party Rights,7.4,3329
-6,6,Basic Email Security,7.3,3412
-6,7,Advanced Safety Features,7.1,3380
-6,8,Intro to Recycled Cinema,7.7,3448
-6,9,Grifting 101,7.5,3382
-6,10,Basic RV Repair and Palmistry,7.3,3429
-6,11,Modern Espionage,8.8,4296
-6,12,Wedding Videography,8.5,3995
-6,13,Emotional Consequences of Broadcast Television,9.4,7051
+1,1,Pilot,7.5,6759
+1,2,Spanish 101,7.7,5876
+1,3,Introduction to Film,8.1,5837
+1,4,Social Psychology,8,5368
+1,5,Advanced Criminal Law,7.7,5152
+1,6,"Football, Feminism and You",7.6,5048
+1,7,Introduction to Statistics,8.6,5795
+1,8,Home Economics,7.8,4932
+1,9,Debate 109,8.7,5842
+1,10,Environmental Science,8.1,4977
+1,11,Politics of Human Sexuality,7.7,4766
+1,12,Comparative Religion,8.3,5140
+1,13,Investigative Journalism,7.8,4918
+1,14,Interpretive Dance,7.8,4686
+1,15,Romantic Expressionism,7.9,4653
+1,16,Communication Studies,8.3,4827
+1,17,Physical Education,8.9,5964
+1,18,Basic Genealogy,7.8,4683
+1,19,Beginner Pottery,8.3,4923
+1,20,The Science of Illusion,8.3,4821
+1,21,Contemporary American Poultry,9.3,7577
+1,22,The Art of Discourse,7.8,4855
+1,23,Modern Warfare,9.8,16958
+1,24,English as a Second Language,8.1,4565
+1,25,Pascal's Triangle Revisited,8.4,4913
+2,1,Anthropology 101,8.6,5254
+2,2,Accounting for Lawyers,8.2,4734
+2,3,The Psychology of Letting Go,7.9,4569
+2,4,Basic Rocket Science,8.6,5437
+2,5,Messianic Myths and Ancient Peoples,7.7,5063
+2,6,Epidemiology,9.2,7392
+2,7,Aerodynamics of Gender,8.3,5145
+2,8,Cooperative Calligraphy,9.1,6359
+2,9,Conspiracy Theories and Interior Design,9.4,7686
+2,10,Mixology Certification,8.4,5066
+2,11,Abed's Uncontrollable Christmas,8.6,6640
+2,12,Asian Population Studies,7.9,4343
+2,13,Celebrity Pharmacology 212,7.8,4477
+2,14,Advanced Dungeons & Dragons,9.5,8499
+2,15,Early 21st Century Romanticism,7.9,4441
+2,16,Intermediate Documentary Filmmaking,8.7,5140
+2,17,Intro to Political Science,8.1,4571
+2,18,Custody Law and Eastern European Diplomacy,7.3,4279
+2,19,Critical Film Studies,8.9,5899
+2,20,Competitive Wine Tasting,7.4,4226
+2,21,Paradigms of Human Memory,9,5879
+2,22,Applied Anthropology and Culinary Arts,7.9,4251
+2,23,A Fistful of Paintballs,9.6,9624
+2,24,For a Few Paintballs More,9.5,7684
+3,1,Biology 101,7.9,4511
+3,2,Geography of Global Conflict,7.9,4457
+3,3,Competitive Ecology,7.9,4469
+3,4,Remedial Chaos Theory,9.8,15054
+3,5,Horror Fiction in Seven Spooky Steps,8.7,5203
+3,6,Advanced Gay,7.5,4361
+3,7,Studies in Modern Movement,8.5,4730
+3,8,Documentary Filmmaking: Redux,9,5891
+3,9,Foosball and Nocturnal Vigilantism,8.3,4528
+3,10,Regional Holiday Music,8.5,5393
+3,11,Urban Matrimony and the Sandwich Arts,7.5,4153
+3,12,Contemporary Impressionists,7.8,4247
+3,13,Digital Exploration of Interior Design,8.1,4318
+3,14,Pillows and Blankets,9.3,7034
+3,15,Origins of Vampire Mythology,8,4216
+3,16,Virtual Systems Analysis,8.5,4728
+3,17,Basic Lupine Urology,9.4,7124
+3,18,Course Listing Unavailable,8.1,4102
+3,19,Curriculum Unavailable,9.1,5434
+3,20,Digital Estate Planning,9.4,7116
+3,21,The First Chang Dynasty,9,5026
+3,22,Introduction to Finality,8.7,4509
+4,1,History 101,7.1,4477
+4,2,Paranormal Parentage,7.5,4115
+4,3,Conventions of Space and Time,7.2,4055
+4,4,Alternative History of the German Invasion,7,3857
+4,5,Cooperative Escapism in Familial Relations,7.4,3900
+4,6,Advanced Documentary Filmmaking,7.4,3780
+4,7,Economics of Marine Biology,6.6,3835
+4,8,Herstory of Dance,7.8,4057
+4,9,Intro to Felt Surrogacy,6.8,4467
+4,10,Intro to Knots,7.5,3787
+4,11,Basic Human Anatomy,7.9,3919
+4,12,Heroic Origins,8.1,4206
+4,13,Advanced Introduction to Finality,7.6,4001
+5,1,Repilot,7.6,4242
+5,2,Introduction to Teaching,8.4,4308
+5,3,Basic Intergluteal Numismatics,9,5645
+5,4,Cooperative Polygraphy,9.2,5685
+5,5,Geothermal Escapism,9.4,6325
+5,6,Analysis of Cork-Based Networking,8,3980
+5,7,Bondage and Beta Male Sexuality,7.7,3619
+5,8,App Development and Condiments,8.9,5212
+5,9,VCR Maintenance and Educational Publishing,7.9,3733
+5,10,Advanced Advanced Dungeons & Dragons,8.3,4014
+5,11,G.I. Jeff,7.7,4053
+5,12,Basic Story,7.6,3394
+5,13,Basic Sandwich,8,3547
+6,1,Ladders,7.5,3861
+6,2,Lawnmower Maintenance & Postnatal Care,7.3,3671
+6,3,Basic Crisis Room Decorum,7.5,3469
+6,4,Queer Studies & Advanced Waxing,7.9,3636
+6,5,Laws of Robotics & Party Rights,7.4,3332
+6,6,Basic Email Security,7.3,3414
+6,7,Advanced Safety Features,7.1,3384
+6,8,Intro to Recycled Cinema,7.7,3452
+6,9,Grifting 101,7.5,3386
+6,10,Basic RV Repair and Palmistry,7.3,3431
+6,11,Modern Espionage,8.8,4299
+6,12,Wedding Videography,8.5,3999
+6,13,Emotional Consequences of Broadcast Television,9.4,7054

@@ -1,10 +1,10 @@
 season,episode,title,rating,votes
-1,1,Pilot,7.6,2433
-1,2,The Jenna Thing,7.5,1529
+1,1,Pilot,7.6,2436
+1,2,The Jenna Thing,7.5,1531
 1,3,To Kill a Mocking Girl,7.5,1361
 1,4,Can You Hear Me Now?,7.6,1277
-1,5,Reality Bites Me,7.5,1238
-1,6,There's No Place Like Homecoming,8,1245
+1,5,Reality Bites Me,7.5,1239
+1,6,There's No Place Like Homecoming,8,1246
 1,7,The Homecoming Hangover,7.5,1175
 1,8,"Please, Do Talk About Me When I'm Gone",7.5,1148
 1,9,The Perfect Storm,7.9,1174
@@ -19,8 +19,8 @@ season,episode,title,rating,votes
 1,18,The Badass Seed,7.8,1048
 1,19,A Person of Interest,8,1071
 1,20,Someone to Watch Over Me,7.9,1025
-1,21,Monsters in the End,8.1,1041
-1,22,For Whom the Bell Tolls,8.4,1179
+1,21,Monsters in the End,8.1,1042
+1,22,For Whom the Bell Tolls,8.4,1180
 2,1,It's Alive,8,1177
 2,2,The Goodbye Look,7.6,968
 2,3,My Name Is Trouble,7.7,939
@@ -28,14 +28,14 @@ season,episode,title,rating,votes
 2,5,The Devil You Know,7.9,942
 2,6,Never Letting Go,7.9,949
 2,7,Surface Tension,7.7,895
-2,8,Save the Date,7.9,921
-2,9,Picture This,8,924
-2,10,Touched by an 'A'-ngel,7.8,906
-2,11,I Must Confess,8.1,919
-2,12,Over My Dead Body,8.7,1290
-2,13,The First Secret,8.5,1240
-2,14,"Through Many Dangers, Toils, and Snares",8.4,1060
-2,15,A Hot Piece of A,8.2,982
+2,8,Save the Date,7.9,923
+2,9,Picture This,8,925
+2,10,Touched by an 'A'-ngel,7.8,907
+2,11,I Must Confess,8.1,920
+2,12,Over My Dead Body,8.6,1291
+2,13,The First Secret,8.5,1241
+2,14,"Through Many Dangers, Toils, and Snares",8.4,1061
+2,15,A Hot Piece of A,8.2,983
 2,16,Let the Water Hold Me Down,7.7,891
 2,17,Blond Leading the Blind,7.8,890
 2,18,A Kiss Before Lying,7.8,896
@@ -43,8 +43,8 @@ season,episode,title,rating,votes
 2,20,CTRL:A,8.2,920
 2,21,Breaking the Code,8.1,900
 2,22,Father Knows Best,7.8,882
-2,23,Eye of the Beholder,7.9,885
-2,24,If These Dolls Could Talk,8.5,1054
+2,23,Eye of the Beholder,7.9,886
+2,24,If These Dolls Could Talk,8.5,1055
 2,25,unmAsked,9,1527
 3,1,It Happened 'That Night',8.1,1252
 3,2,Blood Is the New Black,8,928
@@ -57,14 +57,14 @@ season,episode,title,rating,votes
 3,9,The Kahn Game,7.8,871
 3,10,What Lies Beneath,7.7,836
 3,11,Single Fright Female,7.8,850
-3,12,The Lady Killer,8.9,1307
-3,13,This Is a Dark Ride,8.9,1445
+3,12,The Lady Killer,8.9,1308
+3,13,This Is a Dark Ride,8.9,1446
 3,14,She's Better Now,7.9,891
 3,15,Mona-Mania,7.9,835
 3,16,Misery Loves Company,8.4,952
 3,17,"Out of the Frying Pan, Into the Inferno",8,828
 3,18,Dead to Me,7.8,816
-3,19,What Becomes of the Broken-Hearted,8,833
+3,19,What Becomes of the Broken-Hearted,8,834
 3,20,Hot Water,7.9,801
 3,21,"Out of Sight, Out of Mind",8,805
 3,22,Will the Circle Be Unbroken?,7.7,777
@@ -82,8 +82,8 @@ season,episode,title,rating,votes
 4,10,The Mirror Has Three Faces,7.9,774
 4,11,Bring Down the Hoe,7.8,783
 4,12,"Now You See Me, Now You Don't",8.8,1319
-4,13,Grave New World,8.4,1161
-4,14,Who's in the Box?,7.6,818
+4,13,Grave New World,8.4,1162
+4,14,Who's in the Box?,7.6,819
 4,15,"Love ShAck, Baby",7.8,750
 4,16,Close Encounters,7.7,724
 4,17,Bite Your Tongue,8.2,797
@@ -99,17 +99,17 @@ season,episode,title,rating,votes
 5,3,Surfing the Aftershocks,7.4,736
 5,4,Thrown from the Ride,7.2,727
 5,5,Miss Me x100,8.5,1002
-5,6,"Run, Ali, Run",7.6,723
-5,7,The Silence of E. Lamb,7.4,700
-5,8,Scream for Me,7.5,697
-5,9,March of Crimes,7.7,703
+5,6,"Run, Ali, Run",7.6,724
+5,7,The Silence of E. Lamb,7.4,701
+5,8,Scream for Me,7.5,698
+5,9,March of Crimes,7.7,704
 5,10,A Dark Ali,7.8,693
 5,11,No One Here Can Love or Understand Me,7.4,715
 5,12,Taking This One to the Grave,8.7,1156
 5,13,How the 'A' Stole Christmas,7.8,889
-5,14,"Through a Glass, Darkly",7.7,726
-5,15,Fresh Meat,7.3,698
-5,16,Over a Barrel,7.3,685
+5,14,"Through a Glass, Darkly",7.7,727
+5,15,Fresh Meat,7.3,699
+5,16,Over a Barrel,7.3,686
 5,17,The Bin of Sin,7.5,684
 5,18,Oh What Hard Luck Stories They All Hand Me,7.1,704
 5,19,Out Damned Spot,7.4,693
@@ -136,13 +136,13 @@ season,episode,title,rating,votes
 6,15,Do Not Disturb,7,662
 6,16,Where Somebody Waits for Me,6.9,645
 6,17,We've All Got Baggage,6.7,646
-6,18,Burn This,7.2,638
+6,18,Burn This,7.2,639
 6,19,Did You Miss Me?,7.3,649
 6,20,"Hush, Hush, Sweet Liars",7.6,888
 7,1,"Tick-Tock, Bitches",7.7,864
 7,2,Bedlam,6.9,703
 7,3,The Talented Mr. Rollins,7.9,738
-7,4,"Hit and Run, Run, Run",7.9,744
+7,4,"Hit and Run, Run, Run",7.9,745
 7,5,Along Comes Mary,7.2,653
 7,6,Wanted: Dead or Alive,7.6,651
 7,7,Original G'A'ngsters,7.4,636
@@ -158,4 +158,4 @@ season,episode,title,rating,votes
 7,17,Driving Miss Crazy,7.5,606
 7,18,Choose or Lose,8.2,680
 7,19,"Farewell, My Lovely",8.2,735
-7,20,Til DeAth Do Us PArt,5.4,2191
+7,20,Til DeAth Do Us PArt,5.4,2194
