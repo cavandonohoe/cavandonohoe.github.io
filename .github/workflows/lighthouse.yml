@@ -132,7 +132,7 @@ jobs:
       - uses: actions/checkout@v7
 
       - name: Download site artifact from triggering workflow
-        uses: dawidd6/action-download-artifact@v21
+        uses: dawidd6/action-download-artifact@v24
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           run_id: ${{ github.event.workflow_run.id }}

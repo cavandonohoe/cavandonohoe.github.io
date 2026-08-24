@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v7
 
       - name: Download latest built site
-        uses: dawidd6/action-download-artifact@v21
+        uses: dawidd6/action-download-artifact@v24
         with:
           workflow: pages-branch-previews.yml
           name: site
