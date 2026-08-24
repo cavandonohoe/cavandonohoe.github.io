@@ -33,7 +33,7 @@ jobs:
 
       - name: Try to download latest built site artifact (optional)
         id: artifact
-        uses: dawidd6/action-download-artifact@v21
+        uses: dawidd6/action-download-artifact@v24
         continue-on-error: true
         with:
           workflow: pages-branch-previews.yml
