@@ -1,40 +1,40 @@
-season,episode,title,rating,votes
-1,1,Apéritif,8.3,12026
-1,2,Amuse-Bouche,8.1,10105
-1,3,Potage,8.1,9406
-1,4,Oeuf,7.7,8569
-1,5,Coquilles,7.9,8711
-1,6,Entrée,8.5,8515
-1,7,Sorbet,8.6,8683
-1,8,Fromage,9,9224
-1,9,Trou Normand,8.2,8040
-1,10,Buffet Froid,8.7,8401
-1,11,Rôti,8.5,7941
-1,12,Relevés,8.8,8081
-1,13,Savoureux,9.2,9802
-2,1,Kaiseki,8.8,8689
-2,2,Sakizuke,9,8411
-2,3,Hassun,8.6,7844
-2,4,Takiawase,9.2,8616
-2,5,Mukozuke,9.2,8684
-2,6,Futamono,9.2,8529
-2,7,Yakimono,9.2,8361
-2,8,Su-zakana,8.4,7524
-2,9,Shiizakana,8.5,7433
-2,10,Naka-Choko,8.8,7798
-2,11,Ko no Mono,8.9,7686
-2,12,Tome-wan,9.2,8511
-2,13,Mizumono,9.8,27977
-3,1,Antipasto,8.1,8326
-3,2,Primavera,7.9,7293
-3,3,Secondo,7.9,6754
-3,4,Aperitivo,7.8,6589
-3,5,Contorno,9,7569
-3,6,Dolce,8.6,6704
-3,7,Digestivo,9.3,8416
-3,8,The Great Red Dragon,8.4,6044
-3,9,...And the Woman Clothed with the Sun,8.2,5710
-3,10,...And the Woman Clothed in Sun,8.4,5762
-3,11,...And the Beast from the Sea,8.5,5757
-3,12,The Number of the Beast Is 666,8.8,6239
-3,13,The Wrath of the Lamb,9.7,18207
+season,episode,title,rating,votes,episode_year
+1,1,Apéritif,8.3,12080,2013
+1,2,Amuse-Bouche,8.1,10153,2013
+1,3,Potage,8.1,9451,2013
+1,4,Oeuf,7.7,8611,2013
+1,5,Coquilles,7.9,8753,2013
+1,6,Entrée,8.5,8558,2013
+1,7,Sorbet,8.6,8729,2013
+1,8,Fromage,9,9272,2013
+1,9,Trou Normand,8.2,8083,2013
+1,10,Buffet Froid,8.7,8447,2013
+1,11,Rôti,8.5,7980,2013
+1,12,Relevés,8.8,8125,2013
+1,13,Savoureux,9.2,9850,2013
+2,1,Kaiseki,8.8,8733,2014
+2,2,Sakizuke,9,8457,2014
+2,3,Hassun,8.6,7887,2014
+2,4,Takiawase,9.2,8657,2014
+2,5,Mukozuke,9.2,8722,2014
+2,6,Futamono,9.2,8570,2014
+2,7,Yakimono,9.2,8403,2014
+2,8,Su-zakana,8.4,7557,2014
+2,9,Shiizakana,8.5,7464,2014
+2,10,Naka-Choko,8.8,7832,2014
+2,11,Ko no Mono,8.9,7716,2014
+2,12,Tome-wan,9.2,8548,2014
+2,13,Mizumono,9.8,28047,2014
+3,1,Antipasto,8.1,8356,2015
+3,2,Primavera,7.9,7319,2015
+3,3,Secondo,7.9,6780,2015
+3,4,Aperitivo,7.8,6618,2015
+3,5,Contorno,9,7602,2015
+3,6,Dolce,8.6,6738,2015
+3,7,Digestivo,9.3,8452,2015
+3,8,The Great Red Dragon,8.4,6074,2015
+3,9,...And the Woman Clothed with the Sun,8.2,5737,2015
+3,10,...And the Woman Clothed in Sun,8.4,5786,2015
+3,11,...And the Beast from the Sea,8.5,5784,2015
+3,12,The Number of the Beast Is 666,8.8,6265,2015
+3,13,The Wrath of the Lamb,9.7,18248,2015
