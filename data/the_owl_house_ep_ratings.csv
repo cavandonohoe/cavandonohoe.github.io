@@ -1,44 +1,44 @@
-season,episode,title,rating,votes
-1,1,A Lying Witch and a Warden,7.7,2000
-1,2,Witches Before Wizards,7.3,1771
-1,3,I Was a Teenage Abomination,7.8,1726
-1,4,The Intruder,8.1,1683
-1,5,Covention,8.5,1871
-1,6,Hooty's Moving Hassle,7.5,1579
-1,7,Lost in Language,8.5,1829
-1,8,Once Upon a Swap,7,1590
-1,9,"Something Ventured, Someone Framed",7.6,1525
-1,10,Escape of the Palisman,7.5,1510
-1,11,Sense and Insensitivity,7.3,1475
-1,12,Adventures in the Elements,8.5,1560
-1,13,The First Day,8.4,1516
-1,14,Really Small Problems,6.9,1497
-1,15,Understanding Willow,9,1837
-1,16,Enchanting Grom Fright,9.3,2167
-1,17,Wing It Like Witches,8.4,1574
-1,18,Agony of a Witch,9.5,2028
-1,19,"Young Blood, Old Souls",9.1,1728
-2,1,Separate Tides,8.1,1583
-2,2,Escaping Expulsion,8.6,1709
-2,3,Echoes of the Past,9,1730
-2,4,Keeping Up A-Fear-Ances,8.1,1461
-2,5,Through the Looking Glass Ruins,8.9,1794
-2,6,Hunting Palismen,9,1581
-2,7,Eda's Requiem,9,1804
-2,8,"Knock, Knock, Knockin' on Hooty's Door",9.6,2628
-2,9,Eclipse Lake,9.1,1708
-2,10,Yesterday's Lie,9.3,1611
-2,11,Follies at the Coven Day Parade,8.3,1293
-2,12,Elsewhere and Elsewhen,8.8,1289
-2,13,Any Sport in a Storm,8.4,1304
-2,14,Reaching Out,9.1,1413
-2,15,"Them's the Breaks, Kid",8.4,1297
-2,16,Hollow Mind,9.6,1943
-2,17,Edge of the World,8.7,1292
-2,18,Labyrinth Runners,8.9,1320
-2,19,"O Titan, Where Art Thou",9.1,1280
-2,20,Clouds on the Horizon,9.3,1419
-2,21,King's Tide,9.7,2138
-3,1,Thanks to Them,9.3,2650
-3,2,For the Future,8.8,1593
-3,3,Watching and Dreaming,9.5,2291
+season,episode,title,rating,votes,episode_year
+1,1,A Lying Witch and a Warden,7.7,2006,2020
+1,2,Witches Before Wizards,7.3,1777,2020
+1,3,I Was a Teenage Abomination,7.8,1732,2020
+1,4,The Intruder,8.1,1689,2020
+1,5,Covention,8.5,1876,2020
+1,6,Hooty's Moving Hassle,7.5,1584,2020
+1,7,Lost in Language,8.5,1834,2020
+1,8,Once Upon a Swap,7,1595,2020
+1,9,"Something Ventured, Someone Framed",7.6,1530,2020
+1,10,Escape of the Palisman,7.5,1516,2020
+1,11,Sense and Insensitivity,7.3,1481,2020
+1,12,Adventures in the Elements,8.5,1566,2020
+1,13,The First Day,8.4,1521,2020
+1,14,Really Small Problems,6.9,1502,2020
+1,15,Understanding Willow,9,1842,2020
+1,16,Enchanting Grom Fright,9.3,2173,2020
+1,17,Wing It Like Witches,8.4,1579,2020
+1,18,Agony of a Witch,9.5,2034,2020
+1,19,"Young Blood, Old Souls",9.1,1733,2020
+2,1,Separate Tides,8.1,1588,2021
+2,2,Escaping Expulsion,8.6,1715,2021
+2,3,Echoes of the Past,9,1734,2021
+2,4,Keeping Up A-Fear-Ances,8.1,1465,2021
+2,5,Through the Looking Glass Ruins,8.9,1798,2021
+2,6,Hunting Palismen,9,1586,2021
+2,7,Eda's Requiem,9,1809,2021
+2,8,"Knock, Knock, Knockin' on Hooty's Door",9.6,2633,2021
+2,9,Eclipse Lake,9.1,1713,2021
+2,10,Yesterday's Lie,9.3,1616,2021
+2,11,Follies at the Coven Day Parade,8.3,1298,2022
+2,12,Elsewhere and Elsewhen,8.8,1294,2022
+2,13,Any Sport in a Storm,8.4,1309,2022
+2,14,Reaching Out,9.1,1418,2022
+2,15,"Them's the Breaks, Kid",8.4,1301,2022
+2,16,Hollow Mind,9.6,1952,2022
+2,17,Edge of the World,8.7,1297,2022
+2,18,Labyrinth Runners,8.9,1325,2022
+2,19,"O Titan, Where Art Thou",9.1,1286,2022
+2,20,Clouds on the Horizon,9.3,1424,2022
+2,21,King's Tide,9.7,2145,2022
+3,1,Thanks to Them,9.3,2658,2022
+3,2,For the Future,8.8,1599,2023
+3,3,Watching and Dreaming,9.5,2296,2023

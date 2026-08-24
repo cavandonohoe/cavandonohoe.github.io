@@ -1,135 +1,135 @@
-season,episode,title,rating,votes
-1,1,Pilot,8.8,8828
-1,2,Errors and Omissions,8.2,5575
-1,3,Inside Track,8,5067
-1,4,Dirty Little Secrets,8,4805
-1,5,Bail Out,8,4642
-1,6,Tricks of the Trade,8,4543
-1,7,Play the Man,8.4,4735
-1,8,Identity Crisis,8,4396
-1,9,Undefeated,8.3,4288
-1,10,The Shelf Life,8.3,4207
-1,11,Rules of the Game,8.4,4187
-1,12,Dog Fight,8.8,4701
-2,1,She Knows,8.9,4863
-2,2,The Choice,8.2,3971
-2,3,Meet the New Boss,8.1,3843
-2,4,Discovery,8.4,3848
-2,5,Break Point,8.7,4123
-2,6,All In,8.3,3821
-2,7,Sucker Punch,9,4558
-2,8,Rewind,8.5,4051
-2,9,Asterisk,8.7,3896
-2,10,High Noon,9.1,5112
-2,11,Blind-Sided,8,3792
-2,12,Blood in the Water,8.4,3651
-2,13,Zane vs. Zane,8.1,3568
-2,14,He's Back,8.4,3518
-2,15,Normandy,8.3,3518
-2,16,War,8.6,4141
-3,1,The Arrangement,8.3,4021
-3,2,I Want You to Want Me,8.3,3486
-3,3,Unfinished Business,8.2,3373
-3,4,Conflict of Interest,8.2,3298
-3,5,Shadow of a Doubt,7.9,3232
-3,6,The Other Time,8.5,3450
-3,7,She's Mine,8.5,3562
-3,8,Endgame,8.5,3259
-3,9,Bad Faith,8.2,3165
-3,10,Stay,8.3,3298
-3,11,Buried Secrets,8.2,3128
-3,12,Yesterday's Gone,8.9,3674
-3,13,Moot Point,8.2,2973
-3,14,Heartburn,8.8,3286
-3,15,Know When to Fold 'Em,8.6,3132
-3,16,No Way Out,9.2,4659
-4,1,One-Two-Three Go...,8.3,3561
-4,2,"Breakfast, Lunch and Dinner",8.1,3037
-4,3,Two in the Knees,8.2,3010
-4,4,Leveraged,8,2923
-4,5,Pound of Flesh,8.2,2900
-4,6,Litt the Hell Up,8.7,3207
-4,7,We're Done,8.7,3304
-4,8,Exposure,8.8,3170
-4,9,Gone,9.2,3723
-4,10,This Is Rome,9.4,5158
-4,11,Enough Is Enough,8.8,3381
-4,12,Respect,8.2,2822
-4,13,Fork in the Road,8.7,3157
-4,14,Derailed,8.4,2935
-4,15,Intent,9.1,3725
-4,16,Not Just a Pretty Face,9,3451
-5,1,Denial,8.7,3862
-5,2,Compensation,8.4,3155
-5,3,No Refills,8.7,3125
-5,4,No Puedo Hacerlo,8.8,3348
-5,5,Toe to Toe,8.4,2899
-5,6,Privilege,8.5,2897
-5,7,Hitting Home,9.2,3956
-5,8,Mea Culpa,8.9,3277
-5,9,Uninvited Guests,8.7,3165
-5,10,Faith,9.7,11843
-5,11,Blowback,9.2,4212
-5,12,Live to Fight...,8.9,3159
-5,13,God's Green Earth,8.7,3014
-5,14,Self Defense,9.2,3761
-5,15,Tick Tock,9.5,5212
-5,16,25th Hour,9.3,5039
-6,1,To Trouble,8.1,3391
-6,2,Accounts Payable,8,2722
-6,3,Back on the Map,8.2,2582
-6,4,Turn,8.1,2540
-6,5,Trust,8,2380
-6,6,Spain,7.8,2401
-6,7,Shake the Trees,7.9,2390
-6,8,Borrowed Time,8.4,2540
-6,9,The Hand That Feeds You,9,3431
-6,10,P.S.L.,9.4,5243
-6,11,She's Gone,8.1,2629
-6,12,The Painting,8.6,2604
-6,13,"Teeth, Nose, Teeth",8.2,2317
-6,14,Admission of Guilt,8.1,2176
-6,15,Quid Pro Quo,8.1,2192
-6,16,Character and Fitness,9.5,6120
-7,1,Skin in the Game,8.4,3051
-7,2,The Statue,8.1,2254
-7,3,Mudmare,7.6,2119
-7,4,Divide and Conquer,7.8,2037
-7,5,Brooklyn Housing,7.7,1956
-7,6,Home to Roost,8.1,2032
-7,7,Full Disclosure,8.2,2053
-7,8,100,8.5,2139
-7,9,Shame,7.8,1925
-7,10,Donna,8.8,2760
-7,11,Hard Truths,8,2052
-7,12,Bad Man,7.6,1873
-7,13,Inevitable,8.4,2171
-7,14,Pulling the Goalie,8.2,1915
-7,15,Tiny Violin,8.2,1849
-7,16,Good-Bye,7.8,2479
-8,1,Right-Hand Man,7.2,2139
-8,2,Pecking Order,7.2,1808
-8,3,"Promises, Promises",7.5,1759
-8,4,Revenue Per Square Foot,7.5,1762
-8,5,Good Mudding,7.5,1723
-8,6,"Cats, Ballet, Harvey Specter",7.9,1803
-8,7,Sour Grapes,7.5,1660
-8,8,Coral Gables,7.2,1606
-8,9,Motion to Delay,7.4,1569
-8,10,Managing Partner,8.6,2142
-8,11,Rocky 8,7.6,1573
-8,12,Whale Hunt,7.5,1514
-8,13,The Greater Good,7.6,1474
-8,14,Peas in a Pod,8,1532
-8,15,Stalking Horse,7.9,1492
-8,16,Harvey,8.7,2241
-9,1,Everything's Changed,7.9,1837
-9,2,Special Master,7.6,1588
-9,3,Windmills,7.5,1547
-9,4,Cairo,7.7,1547
-9,5,If the Shoe Fits,8.3,1781
-9,6,Whatever It Takes,7.6,1543
-9,7,Scenic Route,7.5,1745
-9,8,Prisoner's Dilemma,8.6,1961
-9,9,Thunder Away,9.1,2358
-9,10,One Last Con,9.4,4897
+season,episode,title,rating,votes,episode_year
+1,1,Pilot,8.8,8855,2011
+1,2,Errors and Omissions,8.2,5600,2011
+1,3,Inside Track,8,5089,2011
+1,4,Dirty Little Secrets,8,4825,2011
+1,5,Bail Out,8,4661,2011
+1,6,Tricks of the Trade,8,4563,2011
+1,7,Play the Man,8.4,4751,2011
+1,8,Identity Crisis,8,4413,2011
+1,9,Undefeated,8.3,4303,2011
+1,10,The Shelf Life,8.3,4224,2011
+1,11,Rules of the Game,8.4,4204,2011
+1,12,Dog Fight,8.8,4719,2011
+2,1,She Knows,8.9,4878,2012
+2,2,The Choice,8.2,3986,2012
+2,3,Meet the New Boss,8.1,3857,2012
+2,4,Discovery,8.4,3859,2012
+2,5,Break Point,8.7,4135,2012
+2,6,All In,8.3,3830,2012
+2,7,Sucker Punch,9,4570,2012
+2,8,Rewind,8.5,4063,2012
+2,9,Asterisk,8.7,3908,2012
+2,10,High Noon,9.1,5126,2012
+2,11,Blind-Sided,8,3801,2013
+2,12,Blood in the Water,8.4,3658,2013
+2,13,Zane vs. Zane,8.1,3575,2013
+2,14,He's Back,8.4,3528,2013
+2,15,Normandy,8.3,3528,2013
+2,16,War,8.6,4153,2013
+3,1,The Arrangement,8.3,4032,2013
+3,2,I Want You to Want Me,8.3,3499,2013
+3,3,Unfinished Business,8.2,3382,2013
+3,4,Conflict of Interest,8.2,3305,2013
+3,5,Shadow of a Doubt,7.9,3240,2013
+3,6,The Other Time,8.5,3457,2013
+3,7,She's Mine,8.5,3571,2013
+3,8,Endgame,8.5,3268,2013
+3,9,Bad Faith,8.2,3175,2013
+3,10,Stay,8.3,3308,2013
+3,11,Buried Secrets,8.2,3138,2014
+3,12,Yesterday's Gone,8.9,3682,2014
+3,13,Moot Point,8.2,2981,2014
+3,14,Heartburn,8.8,3294,2014
+3,15,Know When to Fold 'Em,8.6,3141,2014
+3,16,No Way Out,9.2,4671,2014
+4,1,One-Two-Three Go...,8.3,3571,2014
+4,2,"Breakfast, Lunch and Dinner",8.1,3044,2014
+4,3,Two in the Knees,8.2,3019,2014
+4,4,Leveraged,8,2929,2014
+4,5,Pound of Flesh,8.2,2907,2014
+4,6,Litt the Hell Up,8.7,3213,2014
+4,7,We're Done,8.7,3311,2014
+4,8,Exposure,8.8,3176,2014
+4,9,Gone,9.2,3731,2014
+4,10,This Is Rome,9.4,5164,2014
+4,11,Enough Is Enough,8.8,3385,2015
+4,12,Respect,8.2,2826,2015
+4,13,Fork in the Road,8.7,3164,2015
+4,14,Derailed,8.4,2939,2015
+4,15,Intent,9.1,3732,2015
+4,16,Not Just a Pretty Face,9,3457,2015
+5,1,Denial,8.7,3870,2015
+5,2,Compensation,8.4,3160,2015
+5,3,No Refills,8.7,3132,2015
+5,4,No Puedo Hacerlo,8.8,3354,2015
+5,5,Toe to Toe,8.4,2905,2015
+5,6,Privilege,8.5,2902,2015
+5,7,Hitting Home,9.2,3965,2015
+5,8,Mea Culpa,8.9,3282,2015
+5,9,Uninvited Guests,8.7,3171,2015
+5,10,Faith,9.7,11860,2015
+5,11,Blowback,9.2,4219,2016
+5,12,Live to Fight...,8.9,3167,2016
+5,13,God's Green Earth,8.7,3021,2016
+5,14,Self Defense,9.2,3767,2016
+5,15,Tick Tock,9.5,5218,2016
+5,16,25th Hour,9.3,5049,2016
+6,1,To Trouble,8.1,3394,2016
+6,2,Accounts Payable,8,2725,2016
+6,3,Back on the Map,8.2,2585,2016
+6,4,Turn,8.1,2542,2016
+6,5,Trust,8,2383,2016
+6,6,Spain,7.8,2404,2016
+6,7,Shake the Trees,7.9,2394,2016
+6,8,Borrowed Time,8.4,2544,2016
+6,9,The Hand That Feeds You,9,3437,2016
+6,10,P.S.L.,9.4,5249,2016
+6,11,She's Gone,8.1,2634,2017
+6,12,The Painting,8.6,2611,2017
+6,13,"Teeth, Nose, Teeth",8.2,2322,2017
+6,14,Admission of Guilt,8,2181,2017
+6,15,Quid Pro Quo,8.1,2198,2017
+6,16,Character and Fitness,9.5,6131,2017
+7,1,Skin in the Game,8.4,3059,2017
+7,2,The Statue,8.1,2261,2017
+7,3,Mudmare,7.6,2126,2017
+7,4,Divide and Conquer,7.8,2044,2017
+7,5,Brooklyn Housing,7.7,1962,2017
+7,6,Home to Roost,8.1,2038,2017
+7,7,Full Disclosure,8.2,2058,2017
+7,8,100,8.5,2145,2017
+7,9,Shame,7.8,1929,2017
+7,10,Donna,8.8,2764,2017
+7,11,Hard Truths,8,2057,2018
+7,12,Bad Man,7.6,1879,2018
+7,13,Inevitable,8.4,2176,2018
+7,14,Pulling the Goalie,8.2,1920,2018
+7,15,Tiny Violin,8.2,1854,2018
+7,16,Good-Bye,7.8,2484,2018
+8,1,Right-Hand Man,7.2,2146,2018
+8,2,Pecking Order,7.2,1814,2018
+8,3,"Promises, Promises",7.5,1765,2018
+8,4,Revenue Per Square Foot,7.5,1769,2018
+8,5,Good Mudding,7.5,1730,2018
+8,6,"Cats, Ballet, Harvey Specter",7.9,1813,2018
+8,7,Sour Grapes,7.5,1668,2018
+8,8,Coral Gables,7.2,1612,2018
+8,9,Motion to Delay,7.4,1573,2018
+8,10,Managing Partner,8.6,2147,2018
+8,11,Rocky 8,7.6,1576,2019
+8,12,Whale Hunt,7.5,1518,2019
+8,13,The Greater Good,7.6,1477,2019
+8,14,Peas in a Pod,8,1535,2019
+8,15,Stalking Horse,7.9,1496,2019
+8,16,Harvey,8.7,2247,2019
+9,1,Everything's Changed,7.9,1841,2019
+9,2,Special Master,7.6,1591,2019
+9,3,Windmills,7.5,1550,2019
+9,4,Cairo,7.7,1550,2019
+9,5,If the Shoe Fits,8.3,1784,2019
+9,6,Whatever It Takes,7.6,1546,2019
+9,7,Scenic Route,7.5,1749,2019
+9,8,Prisoner's Dilemma,8.6,1966,2019
+9,9,Thunder Away,9.1,2364,2019
+9,10,One Last Con,9.4,4909,2019
