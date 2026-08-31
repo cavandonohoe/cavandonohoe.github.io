@@ -1,90 +1,90 @@
 season,episode,title,rating,votes,episode_year
-1,1,"To You, in 2000 Years: The Fall of Shiganshina, Part 1",9.2,56583,2013
-1,2,"That Day: The Fall of Shiganshina, Part 2",8.5,41205,2013
-1,3,"A Dim Light Amid Despair: Humanity's Comeback, Part 1",8.1,39509,2013
-1,4,"The Night of the Closing Ceremony: Humanity's Comeback, Part 2",8.6,37452,2013
-1,5,"First Battle: The Struggle for Trost, Part 1",9.3,39947,2013
-1,6,"The World the Girl Saw: The Struggle for Trost, Part 2",8.9,37519,2013
-1,7,"Small Blade: The Struggle for Trost, Part 3",8.9,36601,2013
-1,8,"I Can Hear His Heartbeat: The Struggle for Trost, Part 4",9.2,36733,2013
-1,9,"Whereabouts of His Left Arm: The Struggle for Trost, Part 5",8.8,34443,2013
-1,10,"Response: The Struggle for Trost, Part 6",8.3,33730,2013
-1,11,"Idol: The Struggle for Trost, Part 7",8.3,33140,2013
-1,12,"Wound: The Struggle for Trost, Part 8",8.3,32762,2013
-1,13,"Primal Desire: The Struggle for Trost, Part 9",9,34220,2013
-1,14,"Can't Look Into His Eyes Yet: Eve of The Counterattack, Part 1",8.5,32532,2013
-1,15,"Special Operations Squad: Eve of the Counterattack, Part 2",8.1,33688,2013
-1,16,"What Needs to Be Done Now: Eve of the Counterattack, Part 3",8.2,32173,2013
-1,17,"Female Titan: The 57th Expedition Beyond the Walls, Part 1",9.1,34433,2013
-1,18,"Forest of Giant Trees: The 57th Expedition Beyond the Walls, Part 2",8.9,32477,2013
-1,19,"Bite: The 57th Exterior Scouting Mission, Part 3",8.9,32858,2013
-1,20,"Erwin Smith: The 57th Expedition Beyond the Walls, Part 4",9.1,33516,2013
-1,21,"Crushing Blow: The 57th Exterior Scouting Mission, Part 5",9.6,42547,2013
-1,22,"The Defeated: The 57th Expedition Beyond the Walls, Part 6",9.1,33828,2013
-1,23,"Smile: Raid on Stohess District, Part 1",9,33923,2013
-1,24,"Mercy: Raid on Stohess District, Part 2",9.2,33671,2013
-1,25,"Wall: Raid on Stohess District, Part 3",9.4,38148,2013
-2,1,Beast Titan,9.2,35252,2017
-2,2,I'm Home,8.5,30630,2017
-2,3,Southwestward,8.6,30227,2017
-2,4,Soldier,9.1,32260,2017
-2,5,Historia,9.1,32688,2017
-2,6,Warrior,9.8,74992,2017
-2,7,Close Combat,9.6,40770,2017
-2,8,The Hunters,8.4,30076,2017
-2,9,Opening,8.6,30094,2017
-2,10,Children,9,32366,2017
-2,11,Charge,9.6,38594,2017
-2,12,Scream,9.7,55356,2017
-3,1,Smoke Signal,8.8,34038,2018
-3,2,Pain,9.2,36430,2018
-3,3,Old Story,8.7,31101,2018
-3,4,Trust,8.5,31084,2018
-3,5,Reply,9,32572,2018
-3,6,Sin,9.2,34301,2018
-3,7,Wish,9.5,38953,2018
-3,8,Outside the Walls of Orvud District,8.9,31851,2018
-3,9,Ruler of the Walls,9.3,33493,2018
-3,10,Friends,9.2,33163,2018
-3,11,Bystander,9.1,33474,2018
-3,12,Night of the Battle to Retake the Wall,8.9,33435,2018
-3,13,The Town Where Everything Began,9.6,44740,2019
-3,14,Thunder Spears,9.6,43244,2019
-3,15,Descent,9.6,44726,2019
-3,16,Perfect Game,9.8,122847,2019
-3,17,Hero,9.8,169427,2019
-3,18,Midnight Sun,9.8,97968,2019
-3,19,The Basement,9.2,40554,2019
-3,20,That Day,9.8,77750,2019
-3,21,Attack Titan,9.6,51601,2019
-3,22,The Other Side of the Wall,9.5,45460,2019
-4,1,The Other Side of the Sea,9.2,55230,2020
-4,2,Midnight Train,8.6,49079,2020
-4,3,The Door of Hope,9.2,50168,2020
-4,4,From One Hand to Another,8.9,49419,2020
-4,5,Declaration of War,9.8,106317,2021
-4,6,The War Hammer Titan,9.8,106446,2021
-4,7,Assault,9.8,133086,2021
-4,8,Assassin's Bullet,9.5,57890,2021
-4,9,Brave Volunteers,8.9,46352,2021
-4,10,A Sound Argument,8.5,42327,2021
-4,11,Deceiver,8.8,40787,2021
-4,12,Guides,8.9,41820,2021
-4,13,Children of the Forest,9.6,52147,2021
-4,14,Savagery,9.7,57845,2021
-4,15,Sole Salvation,9.5,48761,2021
-4,16,Above and Below,9.4,48081,2021
-4,17,Judgment,9.1,57460,2022
-4,18,Sneak Attack,9.3,52530,2022
-4,19,Two Brothers,9.7,99189,2022
-4,20,Memories of the Future,9.8,107871,2022
-4,21,"From You, 2000 Years Ago",9.8,105274,2022
-4,22,Thaw,9,40868,2022
-4,23,Sunset,8.5,33788,2022
-4,24,Pride,8.5,34177,2022
-4,25,Night of the End,8.6,34075,2022
-4,26,Traitor,9.2,37192,2022
-4,27,Retrospective,9.5,43564,2022
-4,28,The Dawn of Humanity,9.6,55270,2022
-4,29,The Final Chapters: Special 1,9.5,71920,2023
-4,30,The Final Chapters: Special 2,9,92717,2023
+1,1,"To You, in 2000 Years: The Fall of Shiganshina, Part 1",9.2,57073,2013
+1,2,"That Day: The Fall of Shiganshina, Part 2",8.5,41572,2013
+1,3,"A Dim Light Amid Despair: Humanity's Comeback, Part 1",8.1,39874,2013
+1,4,"The Night of the Closing Ceremony: Humanity's Comeback, Part 2",8.6,37797,2013
+1,5,"First Battle: The Struggle for Trost, Part 1",9.3,40331,2013
+1,6,"The World the Girl Saw: The Struggle for Trost, Part 2",8.9,37863,2013
+1,7,"Small Blade: The Struggle for Trost, Part 3",8.9,36936,2013
+1,8,"I Can Hear His Heartbeat: The Struggle for Trost, Part 4",9.2,37082,2013
+1,9,"Whereabouts of His Left Arm: The Struggle for Trost, Part 5",8.8,34759,2013
+1,10,"Response: The Struggle for Trost, Part 6",8.3,34038,2013
+1,11,"Idol: The Struggle for Trost, Part 7",8.3,33450,2013
+1,12,"Wound: The Struggle for Trost, Part 8",8.3,33068,2013
+1,13,"Primal Desire: The Struggle for Trost, Part 9",9,34556,2013
+1,14,"Can't Look Into His Eyes Yet: Eve of The Counterattack, Part 1",8.5,32846,2013
+1,15,"Special Operations Squad: Eve of the Counterattack, Part 2",8.1,34007,2013
+1,16,"What Needs to Be Done Now: Eve of the Counterattack, Part 3",8.2,32478,2013
+1,17,"Female Titan: The 57th Expedition Beyond the Walls, Part 1",9.1,34763,2013
+1,18,"Forest of Giant Trees: The 57th Expedition Beyond the Walls, Part 2",8.9,32786,2013
+1,19,"Bite: The 57th Exterior Scouting Mission, Part 3",8.9,33164,2013
+1,20,"Erwin Smith: The 57th Expedition Beyond the Walls, Part 4",9.1,33832,2013
+1,21,"Crushing Blow: The 57th Exterior Scouting Mission, Part 5",9.6,42954,2013
+1,22,"The Defeated: The 57th Expedition Beyond the Walls, Part 6",9.1,34144,2013
+1,23,"Smile: Raid on Stohess District, Part 1",9,34237,2013
+1,24,"Mercy: Raid on Stohess District, Part 2",9.2,33989,2013
+1,25,"Wall: Raid on Stohess District, Part 3",9.4,38504,2013
+2,1,Beast Titan,9.2,35576,2017
+2,2,I'm Home,8.5,30919,2017
+2,3,Southwestward,8.6,30504,2017
+2,4,Soldier,9.1,32557,2017
+2,5,Historia,9.1,32985,2017
+2,6,Warrior,9.8,75557,2017
+2,7,Close Combat,9.6,41146,2017
+2,8,The Hunters,8.4,30361,2017
+2,9,Opening,8.6,30374,2017
+2,10,Children,9,32667,2017
+2,11,Charge,9.6,38976,2017
+2,12,Scream,9.7,55797,2017
+3,1,Smoke Signal,8.8,34349,2018
+3,2,Pain,9.2,36770,2018
+3,3,Old Story,8.7,31394,2018
+3,4,Trust,8.5,31383,2018
+3,5,Reply,9,32889,2018
+3,6,Sin,9.2,34611,2018
+3,7,Wish,9.5,39292,2018
+3,8,Outside the Walls of Orvud District,8.9,32150,2018
+3,9,Ruler of the Walls,9.3,33806,2018
+3,10,Friends,9.2,33471,2018
+3,11,Bystander,9.1,33771,2018
+3,12,Night of the Battle to Retake the Wall,8.9,33734,2018
+3,13,The Town Where Everything Began,9.6,45135,2019
+3,14,Thunder Spears,9.6,43631,2019
+3,15,Descent,9.6,45124,2019
+3,16,Perfect Game,9.8,123530,2019
+3,17,Hero,9.8,170191,2019
+3,18,Midnight Sun,9.8,98620,2019
+3,19,The Basement,9.2,40910,2019
+3,20,That Day,9.8,78340,2019
+3,21,Attack Titan,9.6,52015,2019
+3,22,The Other Side of the Wall,9.5,45872,2019
+4,1,The Other Side of the Sea,9.2,55581,2020
+4,2,Midnight Train,8.6,49397,2020
+4,3,The Door of Hope,9.2,50488,2020
+4,4,From One Hand to Another,8.9,49731,2020
+4,5,Declaration of War,9.8,106946,2021
+4,6,The War Hammer Titan,9.8,107030,2021
+4,7,Assault,9.8,133656,2021
+4,8,Assassin's Bullet,9.5,58268,2021
+4,9,Brave Volunteers,8.9,46664,2021
+4,10,A Sound Argument,8.5,42640,2021
+4,11,Deceiver,8.8,41101,2021
+4,12,Guides,8.9,42142,2021
+4,13,Children of the Forest,9.6,52557,2021
+4,14,Savagery,9.7,58268,2021
+4,15,Sole Salvation,9.5,49109,2021
+4,16,Above and Below,9.4,48425,2021
+4,17,Judgment,9.1,57797,2022
+4,18,Sneak Attack,9.3,52877,2022
+4,19,Two Brothers,9.7,99662,2022
+4,20,Memories of the Future,9.8,108547,2022
+4,21,"From You, 2000 Years Ago",9.8,105913,2022
+4,22,Thaw,9,41212,2022
+4,23,Sunset,8.5,34105,2022
+4,24,Pride,8.5,34498,2022
+4,25,Night of the End,8.6,34396,2022
+4,26,Traitor,9.2,37550,2022
+4,27,Retrospective,9.5,43958,2022
+4,28,The Dawn of Humanity,9.6,55730,2022
+4,29,The Final Chapters: Special 1,9.5,72397,2023
+4,30,The Final Chapters: Special 2,9,93256,2023

@@ -1,192 +1,192 @@
 season,episode,title,rating,votes,episode_year
-1,1,Pilot,7.3,13394,2005
-1,2,Diversity Day,8.1,13063,2005
-1,3,Health Care,7.6,10901,2005
-1,4,The Alliance,7.8,10492,2005
-1,5,Basketball,8.2,11598,2005
-1,6,Hot Girl,7.5,10350,2005
-2,1,The Dundies,8.6,11607,2005
-2,2,Sexual Harassment,8.1,10025,2005
-2,3,Office Olympics,8.2,9865,2005
-2,4,The Fire,8.1,9641,2005
-2,5,Halloween,7.9,9185,2005
-2,6,The Fight,7.9,9167,2005
-2,7,The Client,8.5,9679,2005
-2,8,Performance Review,8,8684,2005
-2,9,E-Mail Surveillance,8.2,8854,2005
-2,10,Christmas Party,8.7,9722,2005
-2,11,Booze Cruise,8.5,9476,2006
-2,12,The Injury,9,11048,2006
-2,13,The Secret,8.1,8444,2006
-2,14,The Carpet,7.6,8327,2006
-2,15,Boys and Girls,8,8318,2006
-2,16,Valentine's Day,8.1,8307,2006
-2,17,Dwight's Speech,8.2,8693,2006
-2,18,Take Your Daughter to Work Day,8.2,8564,2006
-2,19,Michael's Birthday,8,8256,2006
-2,20,Drug Testing,8.2,8332,2006
-2,21,Conflict Resolution,8.5,8545,2006
-2,22,Casino Night,9.3,12133,2006
-3,1,Gay Witch Hunt,8.9,10943,2006
-3,2,The Convention,8,8078,2006
-3,3,The Coup,8.4,8379,2006
-3,4,Grief Counseling,7.8,8026,2006
-3,5,Initiation,7.9,7806,2006
-3,6,Diwali,7.7,8123,2006
-3,7,Branch Closing,8.5,8111,2006
-3,8,The Merger,8.6,8360,2006
-3,9,The Convict,8.2,8377,2006
-3,10,A Benihana Christmas,8.6,8716,2006
-3,11,Back from Vacation,8.5,7965,2007
-3,12,Traveling Salesmen,8.5,7982,2007
-3,13,The Return,8.7,8325,2007
-3,14,Ben Franklin,7.8,7737,2007
-3,15,Phyllis' Wedding,8,7844,2007
-3,16,Business School,8.8,8928,2007
-3,17,Cocktails,8.3,7703,2007
-3,18,The Negotiation,8.9,8717,2007
-3,19,Safety Training,8.6,8094,2007
-3,20,Product Recall,8.5,7927,2007
-3,21,Women's Appreciation,8.6,8142,2007
-3,22,Beach Games,9,9275,2007
-3,23,The Job,9.2,9783,2007
-4,1,Fun Run,8.7,8952,2007
-4,2,Dunder Mifflin Infinity,8.1,7547,2007
-4,3,Launch Party,8.2,7429,2007
-4,4,Money,8.5,7818,2007
-4,5,Local Ad,8.6,7894,2007
-4,6,Branch Wars,8.3,7542,2007
-4,7,Survivor Man,8,7279,2007
-4,8,The Deposition,8.6,7679,2007
-4,9,Dinner Party,9.4,15194,2008
-4,10,Chair Model,7.8,7105,2008
-4,11,Night Out,8.5,7412,2008
-4,12,Did I Stutter?,8.1,7085,2008
-4,13,Job Fair,7.6,6814,2008
-4,14,"Goodbye, Toby",9.2,9755,2008
-5,1,Weight Loss,8.7,8086,2008
-5,2,Business Ethics,8.1,6891,2008
-5,3,Baby Shower,7.8,6893,2008
-5,4,Crime Aid,7.9,6645,2008
-5,5,Employee Transfer,7.8,6796,2008
-5,6,Customer Survey,8.4,7056,2008
-5,7,Business Trip,8,6662,2008
-5,8,Frame Toby,8.5,7452,2008
-5,9,The Surplus,8.6,7207,2008
-5,10,Moroccan Christmas,8.2,6844,2008
-5,11,The Duel,8.6,7092,2009
-5,12,Prince Family Paper,7.8,6829,2009
-5,13,Stress Relief,9.7,20970,2009
-5,14,Lecture Circuit: Part 1,8,6636,2009
-5,15,Lecture Circuit: Part 2,8,6526,2009
-5,16,Blood Drive,7.8,6433,2009
-5,17,Golden Ticket,8.5,7038,2009
-5,18,New Boss,8.1,6623,2009
-5,19,Two Weeks,8.2,6556,2009
-5,20,Dream Team,8.1,6547,2009
-5,21,Michael Scott Paper Company,8.5,7072,2009
-5,22,Heavy Competition,8.5,6753,2009
-5,23,Broke,9.2,9114,2009
-5,24,Casual Friday,8.1,6489,2009
-5,25,Cafe Disco,8.7,7721,2009
-5,26,Company Picnic,8.9,7652,2009
-6,1,Gossip,8.7,7614,2009
-6,2,The Meeting,7.9,6276,2009
-6,3,The Promotion,7.8,6231,2009
-6,4,Niagara: Part 1,9.2,10352,2009
-6,5,Niagara: Part 2,9.4,10214,2009
-6,6,Mafia,7.5,6583,2009
-6,7,The Lover,8.5,6891,2009
-6,8,Koi Pond,8,6300,2009
-6,9,Double Date,7.9,6229,2009
-6,10,Murder,8.6,7370,2009
-6,11,Shareholder Meeting,8,6249,2009
-6,12,Scott's Tots,8.2,7156,2009
-6,13,Secret Santa,8.4,6614,2009
-6,14,The Banker,6.7,7759,2010
-6,15,Sabre,7.5,5991,2010
-6,16,Manager and Salesman,7.8,5903,2010
-6,17,The Delivery: Part 1,8.3,6343,2010
-6,18,The Delivery: Part 2,8.4,6313,2010
-6,19,St. Patrick's Day,7.5,5839,2010
-6,20,New Leads,7.5,5872,2010
-6,21,Happy Hour,8.4,6526,2010
-6,22,Secretary's Day,7.6,5867,2010
-6,23,Body Language,7.7,5849,2010
-6,24,The Cover-Up,8,5954,2010
-6,25,The Chump,7.6,5673,2010
-6,26,Whistleblower,7.8,5805,2010
-7,1,Nepotism,8.2,6576,2010
-7,2,Counseling,8,6059,2010
-7,3,Andy's Play,8.1,6450,2010
-7,4,Sex Ed,7.7,5998,2010
-7,5,The Sting,7.6,5876,2010
-7,6,Costume Contest,8,6018,2010
-7,7,Christening,7.2,5975,2010
-7,8,Viewing Party,7.7,5985,2010
-7,9,WUPHF.com,7.5,5769,2010
-7,10,China,8,6111,2010
-7,11,"Classy Christmas, Part 1",8.8,7488,2010
-7,12,"Classy Christmas, Part 2",8.6,617,2010
-7,13,Ultimatum,8.1,6102,2011
-7,14,The Seminar,7.5,5855,2011
-7,15,The Search,8.4,6402,2011
-7,16,PDA,8.2,6261,2011
-7,17,Threat Level Midnight,9.3,12324,2011
-7,18,Todd Packer,7.3,5744,2011
-7,19,Garage Sale,9.3,9951,2011
-7,20,Training Day,7.5,5900,2011
-7,21,Michael's Last Dundies,8.9,8139,2011
-7,22,"Goodbye, Michael",9.8,22209,2011
-7,23,"Goodbye, Michael Part 2",9.6,1110,2011
-7,24,The Inner Circle,7.4,5878,2011
-7,25,"Dwight K. Schrute, (Acting) Manager",8.5,6278,2011
-7,26,Search Committee,8.5,6457,2011
-7,27,"Search Committee, Part 2",8.1,508,2011
-8,1,The List,7.9,6030,2011
-8,2,The Incentive,7.9,5789,2011
-8,3,Lotto,7.1,5524,2011
-8,4,Garden Party,8,6077,2011
-8,5,Spooked,7.3,5487,2011
-8,6,Doomsday,7.4,5315,2011
-8,7,Pam's Replacement,7.5,5635,2011
-8,8,Gettysburg,6.6,5632,2011
-8,9,Mrs. California,7.5,5534,2011
-8,10,Christmas Wishes,7.7,5398,2011
-8,11,Trivia,7.7,5373,2012
-8,12,Pool Party,7.9,5813,2012
-8,13,Jury Duty,7.3,5218,2012
-8,14,Special Project,7.5,5119,2012
-8,15,Tallahassee,7.6,5382,2012
-8,16,After Hours,7.9,5581,2012
-8,17,Test the Store,7.6,5348,2012
-8,18,Last Day in Florida,7.6,5221,2012
-8,19,Get the Girl,6.3,5956,2012
-8,20,Welcome Party,6.7,5331,2012
-8,21,Angry Andy,6.6,5779,2012
-8,22,Fundraiser,6.8,5126,2012
-8,23,Turf War,7.4,5034,2012
-8,24,Free Family Portrait Studio,7.5,5263,2012
-9,1,New Guys,7.3,5504,2012
-9,2,Roy's Wedding,6.8,5318,2012
-9,3,Andy's Ancestry,7.1,5266,2012
-9,4,Work Bus,7.6,5567,2012
-9,5,Here Comes Treble,6.7,5387,2012
-9,6,The Boat,7.5,5345,2012
-9,7,The Whale,7.4,5144,2012
-9,8,The Target,7.7,5367,2012
-9,9,Dwight Christmas,8.2,5935,2012
-9,10,Lice,7.4,5303,2013
-9,11,Suit Warehouse,7.5,5217,2013
-9,12,Customer Loyalty,7.6,5322,2013
-9,13,Junior Salesman,7.3,5057,2013
-9,14,Vandalism,7.1,5117,2013
-9,15,Couples Discount,6.9,5226,2013
-9,16,Moving On,7.7,5547,2013
-9,17,The Farm,7.3,5786,2013
-9,18,Promos,7.7,5175,2013
-9,19,Stairmageddon,7.8,5395,2013
-9,20,Paper Airplane,7.8,5479,2013
-9,21,Livin' the Dream,9,7985,2013
-9,22,A.A.R.M.,9.4,10275,2013
-9,23,Finale,9.8,27246,2013
+1,1,Pilot,7.3,13433,2005
+1,2,Diversity Day,8.1,13098,2005
+1,3,Health Care,7.6,10931,2005
+1,4,The Alliance,7.8,10518,2005
+1,5,Basketball,8.2,11626,2005
+1,6,Hot Girl,7.5,10374,2005
+2,1,The Dundies,8.6,11628,2005
+2,2,Sexual Harassment,8.1,10046,2005
+2,3,Office Olympics,8.2,9883,2005
+2,4,The Fire,8.1,9662,2005
+2,5,Halloween,7.9,9206,2005
+2,6,The Fight,7.9,9188,2005
+2,7,The Client,8.5,9702,2005
+2,8,Performance Review,8,8703,2005
+2,9,E-Mail Surveillance,8.2,8877,2005
+2,10,Christmas Party,8.7,9745,2005
+2,11,Booze Cruise,8.5,9503,2006
+2,12,The Injury,9,11075,2006
+2,13,The Secret,8.1,8461,2006
+2,14,The Carpet,7.6,8346,2006
+2,15,Boys and Girls,8,8339,2006
+2,16,Valentine's Day,8.1,8329,2006
+2,17,Dwight's Speech,8.2,8714,2006
+2,18,Take Your Daughter to Work Day,8.2,8586,2006
+2,19,Michael's Birthday,8,8278,2006
+2,20,Drug Testing,8.2,8348,2006
+2,21,Conflict Resolution,8.5,8564,2006
+2,22,Casino Night,9.3,12159,2006
+3,1,Gay Witch Hunt,8.9,10970,2006
+3,2,The Convention,8,8096,2006
+3,3,The Coup,8.4,8395,2006
+3,4,Grief Counseling,7.8,8040,2006
+3,5,Initiation,7.9,7822,2006
+3,6,Diwali,7.7,8139,2006
+3,7,Branch Closing,8.5,8125,2006
+3,8,The Merger,8.6,8373,2006
+3,9,The Convict,8.2,8393,2006
+3,10,A Benihana Christmas,8.6,8730,2006
+3,11,Back from Vacation,8.5,7981,2007
+3,12,Traveling Salesmen,8.5,7997,2007
+3,13,The Return,8.7,8345,2007
+3,14,Ben Franklin,7.8,7752,2007
+3,15,Phyllis' Wedding,8,7861,2007
+3,16,Business School,8.8,8946,2007
+3,17,Cocktails,8.3,7718,2007
+3,18,The Negotiation,8.9,8735,2007
+3,19,Safety Training,8.6,8110,2007
+3,20,Product Recall,8.4,7941,2007
+3,21,Women's Appreciation,8.6,8158,2007
+3,22,Beach Games,9,9294,2007
+3,23,The Job,9.2,9806,2007
+4,1,Fun Run,8.7,8971,2007
+4,2,Dunder Mifflin Infinity,8.1,7564,2007
+4,3,Launch Party,8.2,7447,2007
+4,4,Money,8.5,7836,2007
+4,5,Local Ad,8.6,7911,2007
+4,6,Branch Wars,8.3,7560,2007
+4,7,Survivor Man,8,7297,2007
+4,8,The Deposition,8.6,7694,2007
+4,9,Dinner Party,9.4,15233,2008
+4,10,Chair Model,7.8,7122,2008
+4,11,Night Out,8.5,7434,2008
+4,12,Did I Stutter?,8.1,7104,2008
+4,13,Job Fair,7.6,6832,2008
+4,14,"Goodbye, Toby",9.2,9780,2008
+5,1,Weight Loss,8.7,8103,2008
+5,2,Business Ethics,8.1,6904,2008
+5,3,Baby Shower,7.8,6907,2008
+5,4,Crime Aid,7.9,6661,2008
+5,5,Employee Transfer,7.8,6811,2008
+5,6,Customer Survey,8.4,7066,2008
+5,7,Business Trip,8,6673,2008
+5,8,Frame Toby,8.5,7464,2008
+5,9,The Surplus,8.6,7218,2008
+5,10,Moroccan Christmas,8.2,6855,2008
+5,11,The Duel,8.6,7105,2009
+5,12,Prince Family Paper,7.8,6840,2009
+5,13,Stress Relief,9.7,21012,2009
+5,14,Lecture Circuit: Part 1,8,6648,2009
+5,15,Lecture Circuit: Part 2,8,6540,2009
+5,16,Blood Drive,7.8,6447,2009
+5,17,Golden Ticket,8.5,7051,2009
+5,18,New Boss,8.1,6635,2009
+5,19,Two Weeks,8.2,6567,2009
+5,20,Dream Team,8.1,6557,2009
+5,21,Michael Scott Paper Company,8.5,7082,2009
+5,22,Heavy Competition,8.5,6763,2009
+5,23,Broke,9.2,9133,2009
+5,24,Casual Friday,8.1,6499,2009
+5,25,Cafe Disco,8.7,7737,2009
+5,26,Company Picnic,8.9,7669,2009
+6,1,Gossip,8.7,7634,2009
+6,2,The Meeting,7.9,6286,2009
+6,3,The Promotion,7.8,6244,2009
+6,4,Niagara: Part 1,9.2,10367,2009
+6,5,Niagara: Part 2,9.4,10234,2009
+6,6,Mafia,7.5,6593,2009
+6,7,The Lover,8.5,6903,2009
+6,8,Koi Pond,8,6311,2009
+6,9,Double Date,7.9,6241,2009
+6,10,Murder,8.6,7379,2009
+6,11,Shareholder Meeting,8,6257,2009
+6,12,Scott's Tots,8.2,7165,2009
+6,13,Secret Santa,8.4,6619,2009
+6,14,The Banker,6.7,7769,2010
+6,15,Sabre,7.5,5997,2010
+6,16,Manager and Salesman,7.8,5911,2010
+6,17,The Delivery: Part 1,8.3,6353,2010
+6,18,The Delivery: Part 2,8.4,6323,2010
+6,19,St. Patrick's Day,7.5,5846,2010
+6,20,New Leads,7.5,5878,2010
+6,21,Happy Hour,8.4,6535,2010
+6,22,Secretary's Day,7.6,5874,2010
+6,23,Body Language,7.7,5856,2010
+6,24,The Cover-Up,8,5961,2010
+6,25,The Chump,7.6,5681,2010
+6,26,Whistleblower,7.8,5815,2010
+7,1,Nepotism,8.2,6583,2010
+7,2,Counseling,8,6065,2010
+7,3,Andy's Play,8.1,6455,2010
+7,4,Sex Ed,7.7,6003,2010
+7,5,The Sting,7.6,5883,2010
+7,6,Costume Contest,8,6027,2010
+7,7,Christening,7.2,5984,2010
+7,8,Viewing Party,7.7,5992,2010
+7,9,WUPHF.com,7.5,5776,2010
+7,10,China,8,6120,2010
+7,11,"Classy Christmas, Part 1",8.8,7499,2010
+7,12,"Classy Christmas, Part 2",8.6,631,2010
+7,13,Ultimatum,8.1,6112,2011
+7,14,The Seminar,7.5,5863,2011
+7,15,The Search,8.4,6410,2011
+7,16,PDA,8.2,6271,2011
+7,17,Threat Level Midnight,9.3,12349,2011
+7,18,Todd Packer,7.3,5757,2011
+7,19,Garage Sale,9.3,9978,2011
+7,20,Training Day,7.5,5912,2011
+7,21,Michael's Last Dundies,8.9,8160,2011
+7,22,"Goodbye, Michael",9.8,22252,2011
+7,23,"Goodbye, Michael Part 2",9.6,1149,2011
+7,24,The Inner Circle,7.4,5891,2011
+7,25,"Dwight K. Schrute, (Acting) Manager",8.5,6289,2011
+7,26,Search Committee,8.5,6469,2011
+7,27,"Search Committee, Part 2",8.1,519,2011
+8,1,The List,7.9,6041,2011
+8,2,The Incentive,7.9,5802,2011
+8,3,Lotto,7.1,5536,2011
+8,4,Garden Party,8,6090,2011
+8,5,Spooked,7.3,5496,2011
+8,6,Doomsday,7.4,5326,2011
+8,7,Pam's Replacement,7.5,5646,2011
+8,8,Gettysburg,6.6,5643,2011
+8,9,Mrs. California,7.5,5547,2011
+8,10,Christmas Wishes,7.7,5409,2011
+8,11,Trivia,7.7,5385,2012
+8,12,Pool Party,7.9,5824,2012
+8,13,Jury Duty,7.3,5228,2012
+8,14,Special Project,7.5,5128,2012
+8,15,Tallahassee,7.6,5390,2012
+8,16,After Hours,7.9,5593,2012
+8,17,Test the Store,7.6,5357,2012
+8,18,Last Day in Florida,7.6,5231,2012
+8,19,Get the Girl,6.3,5967,2012
+8,20,Welcome Party,6.7,5342,2012
+8,21,Angry Andy,6.6,5791,2012
+8,22,Fundraiser,6.8,5136,2012
+8,23,Turf War,7.4,5047,2012
+8,24,Free Family Portrait Studio,7.5,5276,2012
+9,1,New Guys,7.3,5518,2012
+9,2,Roy's Wedding,6.8,5332,2012
+9,3,Andy's Ancestry,7.1,5278,2012
+9,4,Work Bus,7.6,5579,2012
+9,5,Here Comes Treble,6.7,5398,2012
+9,6,The Boat,7.5,5357,2012
+9,7,The Whale,7.4,5156,2012
+9,8,The Target,7.7,5381,2012
+9,9,Dwight Christmas,8.2,5946,2012
+9,10,Lice,7.4,5314,2013
+9,11,Suit Warehouse,7.5,5225,2013
+9,12,Customer Loyalty,7.6,5335,2013
+9,13,Junior Salesman,7.3,5067,2013
+9,14,Vandalism,7.1,5126,2013
+9,15,Couples Discount,6.9,5235,2013
+9,16,Moving On,7.7,5555,2013
+9,17,The Farm,7.3,5793,2013
+9,18,Promos,7.7,5182,2013
+9,19,Stairmageddon,7.8,5402,2013
+9,20,Paper Airplane,7.8,5486,2013
+9,21,Livin' the Dream,9,8000,2013
+9,22,A.A.R.M.,9.4,10302,2013
+9,23,Finale,9.8,27303,2013

@@ -1,175 +1,176 @@
 season,episode,title,rating,votes,episode_year
-1,1,Space Pilot 3000,8.6,5771,1999
-1,2,The Series Has Landed,8,4592,1999
-1,3,"I, Roommate",8.2,4451,1999
-1,4,Love's Labours Lost in Space,8,4190,1999
-1,5,Fear of a Bot Planet,7.8,3965,1999
-1,6,A Fishful of Dollars,8.2,4073,1999
-1,7,My Three Suns,7.7,3854,1999
-1,8,A Big Piece of Garbage,8,3821,1999
-1,9,Hell Is Other Robots,8.1,3932,1999
-2,1,A Flight to Remember,8.2,3806,1999
-2,2,Mars University,7.7,3588,1999
-2,3,When Aliens Attack,8,3462,1999
-2,4,Fry and the Slurm Factory,8.3,3808,1999
-2,5,I Second That Emotion,7.6,3333,1999
-2,6,"Brannigan, Begin Again",7.8,3323,1999
-2,7,A Head in the Polls,7.6,3228,1999
-2,8,Xmas Story,8.1,3485,1999
-2,9,Why Must I Be a Crustacean in Love?,8,3306,2000
-2,10,Put Your Head on My Shoulders,7.5,3095,2000
-2,11,The Lesser of Two Evils,7.6,3058,2000
-2,12,Raging Bender,7.6,3005,2000
-2,13,A Bicyclops Built for Two,8,3209,2000
-2,14,How Hermes Requisitioned His Groove Back,8,3122,2000
-2,15,A Clone of My Own,7.5,2969,2000
-2,16,The Deep South,7.8,3099,2000
-2,17,Bender Gets Made,7.6,2955,2000
-2,18,The Problem with Popplers,8.5,3307,2000
-2,19,Mother's Day,7.8,2937,2000
-2,20,Anthology of Interest I,8.5,3329,2000
-3,1,The Honking,7.5,3022,2000
-3,2,War Is the H-Word,8.4,3230,2000
-3,3,The Cryonic Woman,7.4,2890,2000
-3,4,Parasites Lost,9,3768,2001
-3,5,Amazon Women in the Mood,8.6,3708,2001
-3,6,Bendless Love,7.3,2772,2001
-3,7,The Day the Earth Stood Stupid,8.5,3099,2001
-3,8,That's Lobstertainment!,7.1,2785,2001
-3,9,The Birdbot of Ice-Catraz,7.5,2724,2001
-3,10,The Luck of the Fryrish,9.4,6091,2001
-3,11,The Cyber House Rules,7.7,2795,2001
-3,12,Insane in the Mainframe,8.1,2913,2001
-3,13,Bendin' in the Wind,7.3,2806,2001
-3,14,Time Keeps on Slipping,8.3,3082,2001
-3,15,I Dated a Robot,7.6,2797,2001
-4,1,Roswell That Ends Well,9.1,3939,2001
-4,2,A Tale of Two Santas,7.7,2742,2001
-4,3,Anthology of Interest II,8.2,2885,2002
-4,4,Love and Rocket,7.7,2731,2002
-4,5,Leela's Homeworld,8.7,3276,2002
-4,6,Where the Buggalo Roam,7.5,2632,2002
-4,7,A Pharaoh to Remember,7.6,2712,2002
-4,8,Godfellas,8.9,3883,2002
-4,9,Future Stock,7.7,2678,2002
-4,10,A Leela of Her Own,6.9,2593,2002
-4,11,The 30% Iron Chef,7.6,2593,2002
-4,12,Where No Fan Has Gone Before,8.3,3155,2002
-5,1,Crimes of the Hot,7.8,2579,2002
-5,2,Jurassic Bark,9.5,7622,2002
-5,3,The Route of All Evil,7.3,2528,2002
-5,4,A Taste of Freedom,7.7,2551,2002
-5,5,Kif Gets Knocked Up a Notch,7.5,2578,2003
-5,6,Less Than Hero,7.7,2574,2003
-5,7,Teenage Mutant Leela's Hurdles,8.3,2725,2003
-5,8,The Why of Fry,8.7,3006,2003
-5,9,The Sting,9.2,4122,2003
-5,10,The Farnsworth Parabox,8.9,3323,2003
-5,11,Three Hundred Big Boys,8.2,2751,2003
-5,12,Spanish Fry,7.6,2526,2003
-5,13,Bend Her,7.2,2574,2003
-5,14,Obsoletely Fabulous,7.7,2470,2003
-5,15,Bender Should Not Be Allowed on TV,7.5,2478,2003
-5,16,The Devil's Hands Are Idle Playthings,9.1,4074,2003
-6,1,Bender's Big Score: Part 1,7.8,1039,2008
-6,2,Bender's Big Score: Part 2,7.9,1006,2008
-6,3,Bender's Big Score: Part 3,8,999,2008
-6,4,Bender's Big Score: Part 4,8.2,1031,2008
-6,5,The Beast with a Billion Backs: Part 1,7.3,904,2008
-6,6,The Beast with a Billion Backs: Part 2,7.3,891,2008
-6,7,The Beast with a Billion Backs: Part 3,7.3,891,2008
-6,8,The Beast with a Billion Backs: Part 4,7.2,899,2008
-6,9,Bender's Game: Part 1,7.3,853,2009
-6,10,Bender's Game: Part 2,7.3,848,2009
-6,11,Bender's Game: Part 3,7.3,846,2009
-6,12,Bender's Game: Part 4,7.4,852,2009
-6,13,Into the Wild Green Yonder: Part 1,7.4,838,2009
-6,14,Into the Wild Green Yonder: Part 2,7.2,829,2009
-6,15,Into the Wild Green Yonder: Part 3,7.3,816,2009
-6,16,Into the Wild Green Yonder: Part 4,7.5,847,2009
-7,1,Rebirth,7.8,2826,2010
-7,2,In-A-Gadda-Da-Leela,7.1,2550,2010
-7,3,Attack of the Killer App,7.6,2585,2010
-7,4,Proposition Infinity,7.2,2401,2010
-7,5,The Duh-Vinci Code,7.3,2387,2010
-7,6,Lethal Inspection,8.5,2944,2010
-7,7,The Late Philip J. Fry,9.3,4562,2010
-7,8,That Darn Katz!,7.2,2253,2010
-7,9,A Clockwork Origin,7.9,2372,2010
-7,10,The Prisoner of Benda,8.3,2463,2010
-7,11,Lrrreconcilable Ndndifferences,7.2,2128,2010
-7,12,The Mutants Are Revolting,7.5,2098,2010
-7,13,The Futurama Holiday Spectacular,6.4,2186,2010
-8,1,Neutopia,7.4,2254,2011
-8,2,Benderama,7.6,2200,2011
-8,3,Ghost in the Machines,7.5,2053,2011
-8,4,Law and Oracle,8.1,2204,2011
-8,5,The Silence of the Clamps,7.5,2036,2011
-8,6,Yo Leela Leela,6.8,2050,2011
-8,7,All the Presidents' Heads,7.3,2004,2011
-8,8,Möbius Dick,7.3,2014,2011
-8,9,Fry Am the Egg Man,7.2,1927,2011
-8,10,The Tip of the Zoidberg,7.7,2059,2011
-8,11,Cold Warriors,7.7,2056,2011
-8,12,Overclockwise,8,2112,2011
-8,13,Reincarnation,7.9,2282,2011
-9,1,The Bots and the Bees,7.7,2248,2012
-9,2,A Farewell to Arms,7.6,2013,2012
-9,3,Decision 3012,7.5,2052,2012
-9,4,The Thief of Baghead,7.2,1945,2012
-9,5,Zapp Dingbat,7,1898,2012
-9,6,The Butterjunk Effect,6.9,1949,2012
-9,7,The Six Million Dollar Mon,7.2,1942,2012
-9,8,Fun on a Bun,7.6,1995,2012
-9,9,Free Will Hunting,7.3,1890,2012
-9,10,Near-Death Wish,7.6,1967,2012
-9,11,Viva Mars Vegas,7.5,1860,2012
-9,12,31st Century Fox,7.1,1875,2012
-9,13,Naturama,7.2,2096,2012
-10,1,2-D Blacktop,7.2,1975,2013
-10,2,Fry and Leela's Big Fling,7.9,2007,2013
-10,3,T.: The Terrestrial,7.3,1901,2013
-10,4,Forty Percent Leadbelly,6.6,1954,2013
-10,5,The Inhuman Torch,7.2,1870,2013
-10,6,Saturday Morning Fun Pit,6.8,2211,2013
-10,7,Calculon 2.0,7.1,1882,2013
-10,8,Assie Come Home,7.1,1869,2013
-10,9,Leela and the Genestalk,7.1,1844,2013
-10,10,Game of Tones,8.5,2715,2013
-10,11,Murder on the Planet Express,8.5,2308,2013
-10,12,Stench and Stenchibility,8,2239,2013
-10,13,Meanwhile,9.5,5008,2013
-11,1,The Impossible Stream,7.2,3087,2023
-11,2,Children of a Lesser Bog,6.8,2219,2023
-11,3,How the West Was 1010001,6.7,2040,2023
-11,4,Parasites Regained,6.7,1860,2023
-11,5,Related to Items You've Viewed,7.5,1763,2023
-11,6,I Know What You Did Next Xmas,7.4,1705,2023
+1,1,Space Pilot 3000,8.6,5783,1999
+1,2,The Series Has Landed,8,4602,1999
+1,3,"I, Roommate",8.2,4459,1999
+1,4,Love's Labours Lost in Space,8,4197,1999
+1,5,Fear of a Bot Planet,7.8,3974,1999
+1,6,A Fishful of Dollars,8.2,4080,1999
+1,7,My Three Suns,7.7,3863,1999
+1,8,A Big Piece of Garbage,8,3830,1999
+1,9,Hell Is Other Robots,8.1,3941,1999
+2,1,A Flight to Remember,8.2,3812,1999
+2,2,Mars University,7.7,3594,1999
+2,3,When Aliens Attack,8,3468,1999
+2,4,Fry and the Slurm Factory,8.3,3814,1999
+2,5,I Second That Emotion,7.6,3338,1999
+2,6,"Brannigan, Begin Again",7.8,3329,1999
+2,7,A Head in the Polls,7.6,3234,1999
+2,8,Xmas Story,8.1,3490,1999
+2,9,Why Must I Be a Crustacean in Love?,8,3311,2000
+2,10,Put Your Head on My Shoulders,7.5,3100,2000
+2,11,The Lesser of Two Evils,7.6,3064,2000
+2,12,Raging Bender,7.6,3009,2000
+2,13,A Bicyclops Built for Two,8,3213,2000
+2,14,How Hermes Requisitioned His Groove Back,8,3127,2000
+2,15,A Clone of My Own,7.5,2972,2000
+2,16,The Deep South,7.8,3102,2000
+2,17,Bender Gets Made,7.6,2958,2000
+2,18,The Problem with Popplers,8.5,3310,2000
+2,19,Mother's Day,7.8,2940,2000
+2,20,Anthology of Interest I,8.5,3331,2000
+3,1,The Honking,7.5,3027,2000
+3,2,War Is the H-Word,8.4,3234,2000
+3,3,The Cryonic Woman,7.4,2895,2000
+3,4,Parasites Lost,9,3772,2001
+3,5,Amazon Women in the Mood,8.6,3712,2001
+3,6,Bendless Love,7.3,2775,2001
+3,7,The Day the Earth Stood Stupid,8.5,3101,2001
+3,8,That's Lobstertainment!,7.1,2790,2001
+3,9,The Birdbot of Ice-Catraz,7.5,2728,2001
+3,10,The Luck of the Fryrish,9.4,6098,2001
+3,11,The Cyber House Rules,7.7,2801,2001
+3,12,Insane in the Mainframe,8.1,2920,2001
+3,13,Bendin' in the Wind,7.3,2810,2001
+3,14,Time Keeps on Slipping,8.3,3086,2001
+3,15,I Dated a Robot,7.6,2802,2001
+4,1,Roswell That Ends Well,9.1,3944,2001
+4,2,A Tale of Two Santas,7.7,2747,2001
+4,3,Anthology of Interest II,8.2,2889,2002
+4,4,Love and Rocket,7.7,2737,2002
+4,5,Leela's Homeworld,8.7,3280,2002
+4,6,Where the Buggalo Roam,7.5,2636,2002
+4,7,A Pharaoh to Remember,7.6,2716,2002
+4,8,Godfellas,8.9,3888,2002
+4,9,Future Stock,7.7,2682,2002
+4,10,A Leela of Her Own,6.9,2598,2002
+4,11,The 30% Iron Chef,7.6,2598,2002
+4,12,Where No Fan Has Gone Before,8.3,3160,2002
+5,1,Crimes of the Hot,7.8,2584,2002
+5,2,Jurassic Bark,9.5,7632,2002
+5,3,The Route of All Evil,7.3,2532,2002
+5,4,A Taste of Freedom,7.7,2557,2002
+5,5,Kif Gets Knocked Up a Notch,7.5,2582,2003
+5,6,Less Than Hero,7.7,2580,2003
+5,7,Teenage Mutant Leela's Hurdles,8.3,2729,2003
+5,8,The Why of Fry,8.7,3010,2003
+5,9,The Sting,9.2,4127,2003
+5,10,The Farnsworth Parabox,8.9,3327,2003
+5,11,Three Hundred Big Boys,8.2,2754,2003
+5,12,Spanish Fry,7.6,2529,2003
+5,13,Bend Her,7.2,2578,2003
+5,14,Obsoletely Fabulous,7.7,2475,2003
+5,15,Bender Should Not Be Allowed on TV,7.5,2483,2003
+5,16,The Devil's Hands Are Idle Playthings,9.1,4079,2003
+6,1,Bender's Big Score: Part 1,7.8,1042,2008
+6,2,Bender's Big Score: Part 2,7.9,1009,2008
+6,3,Bender's Big Score: Part 3,8,1002,2008
+6,4,Bender's Big Score: Part 4,8.2,1034,2008
+6,5,The Beast with a Billion Backs: Part 1,7.3,907,2008
+6,6,The Beast with a Billion Backs: Part 2,7.3,894,2008
+6,7,The Beast with a Billion Backs: Part 3,7.3,894,2008
+6,8,The Beast with a Billion Backs: Part 4,7.2,902,2008
+6,9,Bender's Game: Part 1,7.3,855,2009
+6,10,Bender's Game: Part 2,7.3,850,2009
+6,11,Bender's Game: Part 3,7.3,848,2009
+6,12,Bender's Game: Part 4,7.4,854,2009
+6,13,Into the Wild Green Yonder: Part 1,7.4,842,2009
+6,14,Into the Wild Green Yonder: Part 2,7.2,833,2009
+6,15,Into the Wild Green Yonder: Part 3,7.3,821,2009
+6,16,Into the Wild Green Yonder: Part 4,7.5,852,2009
+7,1,Rebirth,7.8,2830,2010
+7,2,In-A-Gadda-Da-Leela,7.1,2553,2010
+7,3,Attack of the Killer App,7.6,2588,2010
+7,4,Proposition Infinity,7.2,2403,2010
+7,5,The Duh-Vinci Code,7.3,2389,2010
+7,6,Lethal Inspection,8.5,2946,2010
+7,7,The Late Philip J. Fry,9.3,4568,2010
+7,8,That Darn Katz!,7.2,2255,2010
+7,9,A Clockwork Origin,7.9,2374,2010
+7,10,The Prisoner of Benda,8.3,2466,2010
+7,11,Lrrreconcilable Ndndifferences,7.2,2131,2010
+7,12,The Mutants Are Revolting,7.5,2101,2010
+7,13,The Futurama Holiday Spectacular,6.4,2188,2010
+8,1,Neutopia,7.4,2257,2011
+8,2,Benderama,7.6,2203,2011
+8,3,Ghost in the Machines,7.5,2056,2011
+8,4,Law and Oracle,8.1,2207,2011
+8,5,The Silence of the Clamps,7.5,2039,2011
+8,6,Yo Leela Leela,6.8,2052,2011
+8,7,All the Presidents' Heads,7.3,2007,2011
+8,8,Möbius Dick,7.3,2017,2011
+8,9,Fry Am the Egg Man,7.2,1930,2011
+8,10,The Tip of the Zoidberg,7.7,2063,2011
+8,11,Cold Warriors,7.7,2060,2011
+8,12,Overclockwise,8,2117,2011
+8,13,Reincarnation,7.9,2286,2011
+9,1,The Bots and the Bees,7.7,2251,2012
+9,2,A Farewell to Arms,7.6,2016,2012
+9,3,Decision 3012,7.5,2055,2012
+9,4,The Thief of Baghead,7.2,1948,2012
+9,5,Zapp Dingbat,7,1899,2012
+9,6,The Butterjunk Effect,6.9,1950,2012
+9,7,The Six Million Dollar Mon,7.2,1943,2012
+9,8,Fun on a Bun,7.6,1996,2012
+9,9,Free Will Hunting,7.3,1891,2012
+9,10,Near-Death Wish,7.6,1968,2012
+9,11,Viva Mars Vegas,7.5,1862,2012
+9,12,31st Century Fox,7.1,1876,2012
+9,13,Naturama,7.2,2098,2012
+10,1,2-D Blacktop,7.2,1978,2013
+10,2,Fry and Leela's Big Fling,7.9,2009,2013
+10,3,T.: The Terrestrial,7.3,1902,2013
+10,4,Forty Percent Leadbelly,6.6,1956,2013
+10,5,The Inhuman Torch,7.2,1872,2013
+10,6,Saturday Morning Fun Pit,6.8,2212,2013
+10,7,Calculon 2.0,7.1,1883,2013
+10,8,Assie Come Home,7.1,1870,2013
+10,9,Leela and the Genestalk,7.1,1845,2013
+10,10,Game of Tones,8.5,2716,2013
+10,11,Murder on the Planet Express,8.5,2310,2013
+10,12,Stench and Stenchibility,8,2241,2013
+10,13,Meanwhile,9.5,5012,2013
+11,1,The Impossible Stream,7.2,3091,2023
+11,2,Children of a Lesser Bog,6.8,2223,2023
+11,3,How the West Was 1010001,6.7,2044,2023
+11,4,Parasites Regained,6.7,1864,2023
+11,5,Related to Items You've Viewed,7.5,1764,2023
+11,6,I Know What You Did Next Xmas,7.4,1707,2023
 11,7,Rage Against the Vaccine,6.3,1892,2023
-11,8,Zapp Gets Canceled,7,1486,2023
-11,9,The Prince and the Product,4.3,2343,2023
-11,10,All the Way Down,8,1796,2023
-12,1,The One Amigo,6.3,1370,2024
-12,2,Quids Game,6.8,1320,2024
-12,3,The Temp,7.2,1166,2024
-12,4,Beauty and the Bug,6.4,1020,2024
-12,5,One Is Silicon and the Other Gold,6.6,967,2024
-12,6,Attack of the Clothes,7,1019,2024
-12,7,Planet Espresso,6.9,932,2024
-12,8,Cuteness Overlord,7,884,2024
-12,9,The Futurama Mystery Liberry,6.1,913,2024
-12,10,Otherwise,7.5,897,2024
-13,1,Destroy Tall Monsters,6.9,803,2025
-13,2,The World is Hot Enough,6.8,820,2025
-13,3,Fifty Shades of Green,6.7,719,2025
-13,4,The Numberland Gap,7.3,755,2025
-13,5,Scared Screenless,6.7,659,2025
-13,6,Wicked Human,7.1,661,2025
-13,7,Murderoni,7,646,2025
-13,8,Crab Splatter,7.4,627,2025
-13,9,The Trouble with Truffles,7.2,622,2025
-13,10,The White Hole,8.1,705,2025
-14,1,Beef,6.9,358,2026
-14,2,Catfish Hunter,6.9,314,2026
-14,3,Our Flag Means Medical Coverage,7.4,246,2026
-14,4,Lords of the Ring,7.5,191,2026
+11,8,Zapp Gets Canceled,7,1488,2023
+11,9,The Prince and the Product,4.3,2346,2023
+11,10,All the Way Down,8,1798,2023
+12,1,The One Amigo,6.3,1371,2024
+12,2,Quids Game,6.8,1321,2024
+12,3,The Temp,7.2,1169,2024
+12,4,Beauty and the Bug,6.4,1025,2024
+12,5,One Is Silicon and the Other Gold,6.6,970,2024
+12,6,Attack of the Clothes,7,1021,2024
+12,7,Planet Espresso,6.9,934,2024
+12,8,Cuteness Overlord,7,886,2024
+12,9,The Futurama Mystery Liberry,6.1,916,2024
+12,10,Otherwise,7.5,899,2024
+13,1,Destroy Tall Monsters,6.9,808,2025
+13,2,The World is Hot Enough,6.8,827,2025
+13,3,Fifty Shades of Green,6.7,723,2025
+13,4,The Numberland Gap,7.3,760,2025
+13,5,Scared Screenless,6.7,667,2025
+13,6,Wicked Human,7.1,670,2025
+13,7,Murderoni,7,654,2025
+13,8,Crab Splatter,7.4,633,2025
+13,9,The Trouble with Truffles,7.2,628,2025
+13,10,The White Hole,8.1,712,2025
+14,1,Beef,6.8,391,2026
+14,2,Catfish Hunter,6.9,346,2026
+14,3,Our Flag Means Medical Coverage,7.3,295,2026
+14,4,Lords of the Ring,7.5,250,2026
+14,5,The Charm Offensive,6.9,199,2026

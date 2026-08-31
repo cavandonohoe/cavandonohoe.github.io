@@ -1,63 +1,63 @@
 season,episode,title,rating,votes,episode_year
-1,1,Pilot,9.1,84775,2008
-1,2,Cat's in the Bag...,8.6,63023,2008
-1,3,...And the Bag's in the River,8.7,60743,2008
-1,4,Cancer Man,8.2,58358,2008
-1,5,Gray Matter,8.2,57372,2008
-1,6,Crazy Handful of Nothin',9.3,66850,2008
-1,7,A No-Rough-Stuff-Type Deal,8.8,58290,2008
-2,1,Seven Thirty-Seven,8.6,52427,2009
-2,2,Grilled,9.3,60462,2009
-2,3,Bit by a Dead Bee,8.3,50422,2009
-2,4,Down,8.2,50488,2009
-2,5,Breakage,8.2,49814,2009
-2,6,Peekaboo,8.8,53256,2009
-2,7,Negro y Azul,8.6,49505,2009
-2,8,Better Call Saul,9.3,58431,2009
-2,9,4 Days Out,9.2,56192,2009
-2,10,Over,8.4,48696,2009
-2,11,Mandala,8.9,50655,2009
-2,12,Phoenix,9.3,56948,2009
-2,13,ABQ,9.2,55601,2009
-3,1,No Más,8.4,47952,2010
-3,2,Caballo sin Nombre,8.6,46690,2010
-3,3,I.F.T.,8.3,46595,2010
-3,4,Green Light,8.1,48467,2010
-3,5,Más,8.5,45782,2010
-3,6,Sunset,9.3,52378,2010
-3,7,One Minute,9.6,64132,2010
-3,8,I See You,8.7,46726,2010
-3,9,Kafkaesque,8.3,46166,2010
-3,10,Fly,7.9,97969,2010
-3,11,Abiquiu,8.4,45855,2010
-3,12,Half Measures,9.5,63571,2010
-3,13,Full Measure,9.7,77400,2010
-4,1,Box Cutter,9.2,55531,2011
-4,2,Thirty-Eight Snub,8.2,47083,2011
-4,3,Open House,7.9,57057,2011
-4,4,Bullet Points,8.5,46210,2011
-4,5,Shotgun,8.6,45761,2011
-4,6,Cornered,8.4,46857,2011
-4,7,Problem Dog,8.8,47260,2011
-4,8,Hermanos,9.3,54197,2011
-4,9,Bug,8.9,49676,2011
-4,10,Salud,9.6,67183,2011
-4,11,Crawl Space,9.7,85792,2011
-4,12,End Times,9.5,62347,2011
-4,13,Face Off,9.8,159883,2011
-5,1,Live Free or Die,9.2,65304,2012
-5,2,Madrigal,8.8,57792,2012
-5,3,Hazard Pay,8.8,57249,2012
-5,4,Fifty-One,8.8,57624,2012
-5,5,Dead Freight,9.6,87370,2012
-5,6,Buyout,9,59979,2012
-5,7,Say My Name,9.6,83327,2012
-5,8,Gliding Over All,9.5,73843,2012
-5,9,Blood Money,9.4,69570,2013
-5,10,Buried,9.2,63989,2013
-5,11,Confessions,9.6,81417,2013
-5,12,Rabid Dog,9.1,68821,2013
-5,13,To'hajiilee,9.7,129196,2013
-5,14,Ozymandias,9.5,506584,2013
-5,15,Granite State,9.6,124297,2013
-5,16,Felina,9.8,295717,2013
+1,1,Pilot,9.1,85097,2008
+1,2,Cat's in the Bag...,8.6,63272,2008
+1,3,...And the Bag's in the River,8.7,60982,2008
+1,4,Cancer Man,8.2,58602,2008
+1,5,Gray Matter,8.2,57614,2008
+1,6,Crazy Handful of Nothin',9.3,67117,2008
+1,7,A No-Rough-Stuff-Type Deal,8.8,58523,2008
+2,1,Seven Thirty-Seven,8.6,52630,2009
+2,2,Grilled,9.3,60688,2009
+2,3,Bit by a Dead Bee,8.3,50624,2009
+2,4,Down,8.2,50686,2009
+2,5,Breakage,8.2,50014,2009
+2,6,Peekaboo,8.8,53466,2009
+2,7,Negro y Azul,8.6,49700,2009
+2,8,Better Call Saul,9.3,58654,2009
+2,9,4 Days Out,9.2,56419,2009
+2,10,Over,8.4,48904,2009
+2,11,Mandala,8.9,50864,2009
+2,12,Phoenix,9.3,57174,2009
+2,13,ABQ,9.2,55825,2009
+3,1,No Más,8.4,48161,2010
+3,2,Caballo sin Nombre,8.6,46891,2010
+3,3,I.F.T.,8.3,46798,2010
+3,4,Green Light,8.1,48670,2010
+3,5,Más,8.5,45981,2010
+3,6,Sunset,9.3,52589,2010
+3,7,One Minute,9.6,64361,2010
+3,8,I See You,8.7,46912,2010
+3,9,Kafkaesque,8.3,46358,2010
+3,10,Fly,7.9,98239,2010
+3,11,Abiquiu,8.4,46034,2010
+3,12,Half Measures,9.5,63798,2010
+3,13,Full Measure,9.7,77651,2010
+4,1,Box Cutter,9.2,55734,2011
+4,2,Thirty-Eight Snub,8.2,47262,2011
+4,3,Open House,7.9,57271,2011
+4,4,Bullet Points,8.5,46393,2011
+4,5,Shotgun,8.6,45938,2011
+4,6,Cornered,8.4,47036,2011
+4,7,Problem Dog,8.8,47439,2011
+4,8,Hermanos,9.3,54395,2011
+4,9,Bug,8.9,49856,2011
+4,10,Salud,9.6,67408,2011
+4,11,Crawl Space,9.7,86054,2011
+4,12,End Times,9.5,62563,2011
+4,13,Face Off,9.8,160206,2011
+5,1,Live Free or Die,9.2,65526,2012
+5,2,Madrigal,8.8,58007,2012
+5,3,Hazard Pay,8.8,57463,2012
+5,4,Fifty-One,8.8,57837,2012
+5,5,Dead Freight,9.6,87624,2012
+5,6,Buyout,9,60203,2012
+5,7,Say My Name,9.6,83596,2012
+5,8,Gliding Over All,9.5,74081,2012
+5,9,Blood Money,9.4,69805,2013
+5,10,Buried,9.2,64207,2013
+5,11,Confessions,9.6,81683,2013
+5,12,Rabid Dog,9.1,69065,2013
+5,13,To'hajiilee,9.7,129525,2013
+5,14,Ozymandias,9.5,507181,2013
+5,15,Granite State,9.6,124617,2013
+5,16,Felina,9.8,296202,2013
