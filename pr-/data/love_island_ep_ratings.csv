@@ -22,8 +22,8 @@ season,episode,title,rating,votes,episode_year
 1,21,Episode 18,5.8,28,2015
 1,22,Episode 19,6,29,2015
 1,23,Episode 20,6.4,30,2015
-1,24,Unseen Bits 4,4.9,25,2015
-1,25,Episode 21,5.6,29,2015
+1,24,Unseen Bits 4,4.9,26,2015
+1,25,Episode 21,5.6,30,2015
 1,26,Episode 22,5.9,28,2015
 1,27,Episode 23,5.9,26,2015
 1,28,Episode 24,6.1,27,2015
@@ -149,18 +149,18 @@ season,episode,title,rating,votes,episode_year
 4,26,Episode 23,5.1,26,2018
 4,27,Unseen Bits 4,4.9,23,2018
 4,28,Episode 24,5.3,26,2018
-4,29,Episode 25,5.2,26,2018
-4,30,Episode 26,5.2,25,2018
-4,31,Episode 27,5.4,26,2018
-4,32,Episode 28,5,26,2018
-4,33,Episode 29,5.2,24,2018
-4,34,Unseen Bits 5,4.4,19,2018
-4,35,Episode 30,5.1,24,2018
-4,36,Episode 31,5.1,24,2018
-4,37,Episode 32,5,24,2018
-4,38,Episode 33,5.4,25,2018
-4,39,Episode 34,5.2,24,2018
-4,40,Episode 35,5.1,24,2018
+4,29,Episode 25,5.2,27,2018
+4,30,Episode 26,5.2,26,2018
+4,31,Episode 27,5.4,27,2018
+4,32,Episode 28,5,27,2018
+4,33,Episode 29,5.2,25,2018
+4,34,Unseen Bits 5,4.4,20,2018
+4,35,Episode 30,5.1,25,2018
+4,36,Episode 31,5.1,25,2018
+4,37,Episode 32,5,25,2018
+4,38,Episode 33,5.4,26,2018
+4,39,Episode 34,5.2,25,2018
+4,40,Episode 35,5.1,25,2018
 4,41,Unseen Bits 6,4.2,19,2018
 4,42,Episode 36,5,24,2018
 4,43,Episode 37,4.8,24,2018
@@ -603,10 +603,10 @@ season,episode,title,rating,votes,episode_year
 13,36,Episode #13.36,6.3,14,2026
 13,37,Episode #13.37,6.7,12,2026
 13,38,Episode #13.38,6.9,14,2026
-13,39,Episode #13.39,6.5,12,2026
-13,40,Episode #13.40,6.8,13,2026
-13,42,Episode #13.42,6.3,9,2026
-13,43,Episode #13.43,6.4,8,2026
+13,39,Episode #13.39,6.5,13,2026
+13,40,Episode #13.40,6.8,14,2026
+13,42,Episode #13.42,6.4,10,2026
+13,43,Episode #13.43,6.4,9,2026
 13,44,Episode #13.44,5.7,9,2026
 13,45,Episode #13.45,5.5,8,2026
 13,46,Episode #13.46,6.4,8,2026
@@ -615,6 +615,6 @@ season,episode,title,rating,votes,episode_year
 13,50,Episode #13.50,6.9,8,2026
 13,51,Episode #13.51,7,7,2026
 13,52,Episode #13.52,5.6,7,2026
-13,53,Episode #13.53,6.4,5,2026
-13,54,Episode #13.54,5.8,6,2026
-13,56,Episode #13.56,6.2,5,2026
+13,53,Episode #13.53,6.5,6,2026
+13,54,Episode #13.54,5.9,7,2026
+13,56,Episode #13.56,6.2,6,2026
