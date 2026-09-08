@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  actions: write  # needed for the "gh workflow run" redeploy dispatch below
 
 jobs:
   update:
