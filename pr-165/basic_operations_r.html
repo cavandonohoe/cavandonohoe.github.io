@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+
+<html lang="en" xml:lang="en">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Cavan Donohoe" />
+
+
+<title>Lesson 2: Basic Operations in R</title>
+
+<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P51TN2DWZM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P51TN2DWZM', {
+    'anonymize_ip': true
+  });
+</script>
+<!-- Favicons and app icons -->
+<link rel="apple-touch-icon" sizes="180x180" href="/header/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/header/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/header/favicon-16x16.png">
+<link rel="manifest" href="/header/site.webmanifest">
+<link rel="mask-icon" href="/header/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<!-- Dark mode + site-wide styling -->
+<style>
+:root {
+  --bg-color: #fff;
+  --text-color: #333;
+  --card-bg: #f8f9fa;
+  --card-border: #dee2e6;
+  --card-shadow: rgba(0,0,0,0.08);
+  --link-color: #337ab7;
+  --code-bg: #f5f5f5;
+  --table-stripe: #f9f9f9;
+  --accordion-bg: #337ab7;
+  --accordion-hover: #286090;
+  --muted-text: #777;
+  --footer-text: #ccc;
+  --well-bg: #f5f5f5;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a2e;
+  --text-color: #e0e0e0;
+  --card-bg: #16213e;
+  --card-border: #0f3460;
+  --card-shadow: rgba(0,0,0,0.3);
+  --link-color: #64b5f6;
+  --code-bg: #16213e;
+  --table-stripe: #16213e;
+  --accordion-bg: #0f3460;
+  --accordion-hover: #1a4a8a;
+  --muted-text: #aaa;
+  --footer-text: #999;
+  --well-bg: #16213e;
+}
+
+body {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] .container-fluid,
+[data-theme="dark"] .container {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] h1, [data-theme="dark"] h2,
+[data-theme="dark"] h3, [data-theme="dark"] h4 {
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] a { color: var(--link-color); }
+[data-theme="dark"] code { background-color: var(--code-bg); color: #e0e0e0; }
+[data-theme="dark"] pre { background-color: var(--code-bg); border-color: var(--card-border); }
+[data-theme="dark"] .well { background-color: var(--well-bg); border-color: var(--card-border); }
+[data-theme="dark"] .table-striped > tbody > tr:nth-of-type(odd) { background-color: var(--table-stripe); }
+[data-theme="dark"] .table { color: var(--text-color); }
+[data-theme="dark"] img { opacity: 0.9; }
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px 12px;
+  margin-top: 8px;
+  color: #9d9d9d;
+  transition: color 0.2s;
+}
+.dark-mode-toggle:hover { color: #fff; }
+
+/* Project cards */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2em;
+  margin: 1.5em 0;
+}
+.project-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 1.4em;
+  text-decoration: none !important;
+  color: var(--text-color) !important;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: block;
+  box-shadow: 0 2px 8px var(--card-shadow);
+}
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px var(--card-shadow);
+  text-decoration: none !important;
+}
+.project-card .card-icon { font-size: 2em; margin-bottom: 0.4em; }
+.project-card h3 { font-size: 1.05em; margin: 0 0 0.4em 0; color: var(--link-color) !important; }
+.project-card p { font-size: 0.88em; color: var(--muted-text); margin: 0; line-height: 1.4; }
+
+/* GitHub contribution chart */
+.gh-contrib-link {
+  display: block;
+  text-decoration: none !important;
+  margin: 1.2em 0 1.8em 0;
+}
+.gh-contrib-chart {
+  display: block;
+  width: 100%;
+  max-width: 740px;
+  height: auto;
+  margin: 0 auto;
+  padding: 1em;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px var(--card-shadow);
+  transition: box-shadow 0.2s;
+}
+.gh-contrib-link:hover .gh-contrib-chart {
+  box-shadow: 0 6px 20px var(--card-shadow);
+}
+[data-theme="dark"] .gh-contrib-chart { opacity: 1; }
+
+/* Figure captions (rendered from markdown image alt text) */
+.float {
+  margin-bottom: 2.5em;
+}
+.figcaption {
+  font-size: 0.88em;
+  font-style: italic;
+  color: var(--muted-text);
+  text-align: center;
+  margin-top: 0.5em;
+  line-height: 1.4;
+}
+
+/* Timestamp badges */
+.data-timestamp {
+  display: inline-block;
+  background: var(--well-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-size: 0.82em;
+  color: var(--muted-text);
+  margin-bottom: 1em;
+}
+
+/* Collapsible table accordion styling */
+details.table-accordion {
+  margin: 1em 0;
+}
+details.table-accordion > summary {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accordion-bg);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  list-style: none;
+  text-align: center;
+  transition: background 0.2s ease;
+}
+details.table-accordion > summary::-webkit-details-marker { display: none; }
+details.table-accordion > summary::before {
+  content: "\25B6\00a0\00a0";
+  font-size: 0.85em;
+}
+details.table-accordion[open] > summary {
+  border-radius: 6px 6px 0 0;
+  background: var(--accordion-hover);
+}
+details.table-accordion[open] > summary::before {
+  content: "\25BC\00a0\00a0";
+}
+details.table-accordion > summary:hover {
+  background: var(--accordion-hover);
+}
+</style>
+<script>
+(function() {
+  var saved = localStorage.getItem('theme') || 'light';
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+})();
+</script>
+</style>
+<!-- Meta tags for SEO and social sharing -->
+<meta name="description" content="Cavan Donohoe - Data Scientist. Personal website showcasing data science projects, R tutorials, and professional experience.">
+<meta name="keywords" content="data science, R programming, data analysis, R Markdown, Cavan Donohoe">
+<meta name="author" content="Cavan Donohoe">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cavandonohoe.github.io/">
+<meta property="og:title" content="Cavan Donohoe - Data Scientist">
+<meta property="og:description" content="Data Scientist passionate about making workflows easier through automation and reproducible analysis.">
+<meta property="og:image" content="https://cavandonohoe.github.io/header/android-chrome-512x512.png">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://cavandonohoe.github.io/">
+<meta property="twitter:title" content="Cavan Donohoe - Data Scientist">
+<meta property="twitter:description" content="Data Scientist passionate about making workflows easier through automation and reproducible analysis.">
+<meta property="twitter:image" content="https://cavandonohoe.github.io/header/android-chrome-512x512.png">
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Cavan Donohoe</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="fa fa-info"></span>
+     
+    About Me
+  </a>
+</li>
+<li>
+  <a href="services.html">
+    <span class="fa fa-wrench"></span>
+     
+    Services
+  </a>
+</li>
+<li>
+  <a href="cv.html">
+    <span class="fa fa-id-card"></span>
+     
+    CV
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-laptop"></span>
+     
+    Projects
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">--- Movies &amp; TV ---</li>
+    <li>
+      <a href="imdb_top_250_tv_series.html">IMDb TV Series</a>
+    </li>
+    <li>
+      <a href="imdb_rating_plot.html">IMDb Rating Plot by Season and Episode</a>
+    </li>
+    <li>
+      <a href="top_250_imdb_with_rt.html">Top 250 IMDb Movies with Rotten Tomato Scores</a>
+    </li>
+    <li>
+      <a href="best_picture_nominees.html">Best Picture Nominees</a>
+    </li>
+    <li>
+      <a href="best_pic_vs_top_1000.html">Best Picture and Top 1000 Box Office</a>
+    </li>
+    <li>
+      <a href="director_box_office_trajectory.html">Director Box Office Trajectory</a>
+    </li>
+    <li>
+      <a href="my_imdb.html">My IMDb Ratings</a>
+    </li>
+    <li class="dropdown-header">--- Sports &amp; Personal ---</li>
+    <li>
+      <a href="avca_all_americans.html">AVCA Men's Volleyball All-Americans</a>
+    </li>
+    <li>
+      <a href="firefighter_schedule.html">Jason, Owen, and Wyett's Firefighter Schedule</a>
+    </li>
+    <li>
+      <a href="google_maps_saved_places.html">Google Maps: Want To Go + Favorites</a>
+    </li>
+    <li>
+      <a href="my_travels.html">Get Bloggy With It</a>
+    </li>
+    <li>
+      <a href="tohs_reunion.html">TOHS Class of 2012 Reunion</a>
+    </li>
+    <li class="dropdown-header">--- Visualizations ---</li>
+    <li>
+      <a href="wc-momentum/index.html">World Cup 3D Momentum Portrait</a>
+    </li>
+    <li>
+      <a href="confederate_statues.html">When Were Confederate Statues Erected?</a>
+    </li>
+    <li>
+      <a href="sierpinski_triangle.html">Sierpinski Triangle</a>
+    </li>
+    <li>
+      <a href="airplane_boarding.html">Airplane Boarding Simulation</a>
+    </li>
+    <li class="dropdown-header">--- Real Estate &amp; Finance ---</li>
+    <li>
+      <a href="us_rental_markets.html">US Rental Investment Markets</a>
+    </li>
+    <li>
+      <a href="la_real_estate.html">LA Neighborhoods: Price per Sq Ft</a>
+    </li>
+    <li>
+      <a href="la_housing_heatmap.html">LA Housing Prices: Animated Heat Map</a>
+    </li>
+    <li>
+      <a href="https://cavandonohoe.shinyapps.io/rent-vs-buy/">Rent vs. Buy Calculator</a>
+    </li>
+    <li class="dropdown-header">--- Data Science &amp; Clinical ---</li>
+    <li>
+      <a href="sdtm_with_r.html">SDTM with R</a>
+    </li>
+    <li class="dropdown-header">--- Archive ---</li>
+    <li>
+      <a href="sp500.html">S&amp;P 500 Perspective</a>
+    </li>
+    <li>
+      <a href="covid_cases_nostalgia.html">Covid Cases: Then &amp; Now</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-graduation-cap"></span>
+     
+    Learn R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="learn_r.html">Course Overview</a>
+    </li>
+    <li class="dropdown-header">--- Lessons ---</li>
+    <li>
+      <a href="intro_to_r.html">1. Introduction to R</a>
+    </li>
+    <li>
+      <a href="basic_operations_r.html">2. Basic Operations</a>
+    </li>
+    <li>
+      <a href="data_manipulation_r.html">3. Data Manipulation</a>
+    </li>
+    <li>
+      <a href="data_visualization_r.html">4. Data Visualization</a>
+    </li>
+    <li>
+      <a href="statistics_with_r.html">5. Statistics with R</a>
+    </li>
+    <li>
+      <a href="rmarkdown_r.html">6. Reproducible Reports with R Markdown</a>
+    </li>
+    <li>
+      <a href="capstone_r.html">7. Capstone Project</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Lesson 2: Basic Operations in R</h1>
+<h4 class="author">Cavan Donohoe</h4>
+
+</div>
+
+
+<p><link rel="stylesheet" href="/css/learn-r.css"></p>
+<div class="course-progress">
+<p>Lesson 2 of 7 · <a href="learn_r.html">Course overview</a></p>
+</div>
+<div id="basic-operations-in-r" class="section level1">
+<h1>Basic Operations in R</h1>
+<p>This lesson covers the building blocks: variables, data types,
+vectors, operators, control flow, and functions. None of it is exciting
+on its own, but every single thing in R is built out of these pieces.
+Get comfortable here and the rest of the course is mostly
+pattern-matching.</p>
+<div id="variables-and-assignment" class="section level2">
+<h2>Variables and assignment</h2>
+<p>A <strong>variable</strong> is a name that points to a value. Assign
+with <code>&lt;-</code>:</p>
+<pre class="r"><code>x &lt;- 5
+y &lt;- 12
+x + y</code></pre>
+<pre><code>#&gt; [1] 17</code></pre>
+<p><code>=</code> works too, but <code>&lt;-</code> is the convention in
+R for assignment. Stick with it.</p>
+<p>You can reassign a variable as often as you like — R doesn’t
+care:</p>
+<pre class="r"><code>x &lt;- 5
+x &lt;- x + 1
+x</code></pre>
+<pre><code>#&gt; [1] 6</code></pre>
+</div>
+<div id="data-types" class="section level2">
+<h2>Data types</h2>
+<p>R has a small set of basic types you’ll use constantly.</p>
+<pre class="r"><code>n  &lt;- 3.14         # numeric (double)
+i  &lt;- 42L          # integer (the L makes it an integer, not a double)
+s  &lt;- &quot;hello&quot;      # character (string)
+b  &lt;- TRUE         # logical (TRUE / FALSE)
+m  &lt;- NA           # missing value</code></pre>
+<p>To check what type something is, use <code>class()</code> or one of
+the <code>is.*</code> family:</p>
+<pre class="r"><code>class(n)</code></pre>
+<pre><code>#&gt; [1] &quot;numeric&quot;</code></pre>
+<pre class="r"><code>class(s)</code></pre>
+<pre><code>#&gt; [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>class(b)</code></pre>
+<pre><code>#&gt; [1] &quot;logical&quot;</code></pre>
+<pre class="r"><code>is.numeric(n)</code></pre>
+<pre><code>#&gt; [1] TRUE</code></pre>
+<pre class="r"><code>is.character(s)</code></pre>
+<pre><code>#&gt; [1] TRUE</code></pre>
+<p>Missing values (<code>NA</code>) are everywhere in real data. R takes
+them seriously — most functions return <code>NA</code> if their input
+has any <code>NA</code>s, unless you tell them otherwise:</p>
+<pre class="r"><code>mean(c(1, 2, NA))</code></pre>
+<pre><code>#&gt; [1] NA</code></pre>
+<pre class="r"><code>mean(c(1, 2, NA), na.rm = TRUE)</code></pre>
+<pre><code>#&gt; [1] 1.5</code></pre>
+<div class="callout callout-warning">
+<div class="callout-title">
+⚠️ <code>NA</code> is contagious
+</div>
+<p><code>NA == NA</code> is <code>NA</code>, not <code>TRUE</code>. To
+check for missingness use <code>is.na(x)</code>. This trips up beginners
+constantly.</p>
+</div>
+</div>
+<div id="arithmetic-and-math" class="section level2">
+<h2>Arithmetic and math</h2>
+<p>The usual suspects:</p>
+<pre class="r"><code>10 + 3</code></pre>
+<pre><code>#&gt; [1] 13</code></pre>
+<pre class="r"><code>10 - 3</code></pre>
+<pre><code>#&gt; [1] 7</code></pre>
+<pre class="r"><code>10 * 3</code></pre>
+<pre><code>#&gt; [1] 30</code></pre>
+<pre class="r"><code>10 / 3</code></pre>
+<pre><code>#&gt; [1] 3.333333</code></pre>
+<pre class="r"><code>10 %% 3   # remainder (modulo)</code></pre>
+<pre><code>#&gt; [1] 1</code></pre>
+<pre class="r"><code>10 %/% 3  # integer division</code></pre>
+<pre><code>#&gt; [1] 3</code></pre>
+<pre class="r"><code>10 ^ 3    # exponentiation</code></pre>
+<pre><code>#&gt; [1] 1000</code></pre>
+<p>Plus a stack of built-in math functions:</p>
+<pre class="r"><code>sqrt(16)</code></pre>
+<pre><code>#&gt; [1] 4</code></pre>
+<pre class="r"><code>log(100)        # natural log</code></pre>
+<pre><code>#&gt; [1] 4.60517</code></pre>
+<pre class="r"><code>log(100, base = 10)</code></pre>
+<pre><code>#&gt; [1] 2</code></pre>
+<pre class="r"><code>exp(1)          # e</code></pre>
+<pre><code>#&gt; [1] 2.718282</code></pre>
+<pre class="r"><code>abs(-7)</code></pre>
+<pre><code>#&gt; [1] 7</code></pre>
+<pre class="r"><code>round(3.14159, 2)</code></pre>
+<pre><code>#&gt; [1] 3.14</code></pre>
+<pre class="r"><code>ceiling(2.1)</code></pre>
+<pre><code>#&gt; [1] 3</code></pre>
+<pre class="r"><code>floor(2.9)</code></pre>
+<pre><code>#&gt; [1] 2</code></pre>
+</div>
+<div id="comparison-and-logical-operators" class="section level2">
+<h2>Comparison and logical operators</h2>
+<p>Comparisons return <code>TRUE</code> or <code>FALSE</code>:</p>
+<pre class="r"><code>5 &gt; 3</code></pre>
+<pre><code>#&gt; [1] TRUE</code></pre>
+<pre class="r"><code>5 == 5     # equality is double-equals; single-equals is assignment</code></pre>
+<pre><code>#&gt; [1] TRUE</code></pre>
+<pre class="r"><code>5 != 6</code></pre>
+<pre><code>#&gt; [1] TRUE</code></pre>
+<pre class="r"><code>5 &gt;= 5</code></pre>
+<pre><code>#&gt; [1] TRUE</code></pre>
+<pre class="r"><code>&quot;a&quot; &lt; &quot;b&quot;  # alphabetical</code></pre>
+<pre><code>#&gt; [1] TRUE</code></pre>
+<p>Logical operators combine <code>TRUE</code>/<code>FALSE</code>
+values:</p>
+<pre class="r"><code>TRUE &amp; FALSE   # AND</code></pre>
+<pre><code>#&gt; [1] FALSE</code></pre>
+<pre class="r"><code>TRUE | FALSE   # OR</code></pre>
+<pre><code>#&gt; [1] TRUE</code></pre>
+<pre class="r"><code>!TRUE          # NOT</code></pre>
+<pre><code>#&gt; [1] FALSE</code></pre>
+<p>The single-character versions (<code>&amp;</code>, <code>|</code>)
+work elementwise on vectors. The double-character versions
+(<code>&amp;&amp;</code>, <code>||</code>) only look at the first
+element and short-circuit — use them inside <code>if</code> statements,
+not for filtering data.</p>
+</div>
+<div id="vectors" class="section level2">
+<h2>Vectors</h2>
+<p>A <strong>vector</strong> is an ordered collection of values, all of
+the same type. It’s the most fundamental data structure in R — even a
+single number is technically a vector of length 1.</p>
+<p>Create a vector with <code>c()</code> (“combine”):</p>
+<pre class="r"><code>ages &lt;- c(23, 31, 27, 45, 19)
+fruit &lt;- c(&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;)
+flags &lt;- c(TRUE, FALSE, TRUE, TRUE)</code></pre>
+<p>A few handy ways to create vectors:</p>
+<pre class="r"><code>1:5                  # integer sequence</code></pre>
+<pre><code>#&gt; [1] 1 2 3 4 5</code></pre>
+<pre class="r"><code>seq(0, 1, by = 0.25)</code></pre>
+<pre><code>#&gt; [1] 0.00 0.25 0.50 0.75 1.00</code></pre>
+<pre class="r"><code>rep(&quot;a&quot;, times = 3)</code></pre>
+<pre><code>#&gt; [1] &quot;a&quot; &quot;a&quot; &quot;a&quot;</code></pre>
+<div id="indexing-vectors" class="section level3">
+<h3>Indexing vectors</h3>
+<p>Subsetting a vector by position uses <code>[ ]</code>. <strong>R is
+1-indexed</strong> — the first element is at position 1, not 0.</p>
+<pre class="r"><code>ages[1]            # first element</code></pre>
+<pre><code>#&gt; [1] 23</code></pre>
+<pre class="r"><code>ages[c(1, 3)]      # first and third</code></pre>
+<pre><code>#&gt; [1] 23 27</code></pre>
+<pre class="r"><code>ages[-1]           # everything except the first (negative indexing drops)</code></pre>
+<pre><code>#&gt; [1] 31 27 45 19</code></pre>
+<pre class="r"><code>ages[ages &gt; 25]    # elements that match a condition</code></pre>
+<pre><code>#&gt; [1] 31 27 45</code></pre>
+<p>That last one — subsetting by a logical vector — is one of the
+most-used patterns in R. The expression <code>ages &gt; 25</code>
+returns a logical vector the same length as <code>ages</code>, and
+<code>ages[...]</code> keeps the elements where it’s
+<code>TRUE</code>.</p>
+</div>
+<div id="vectorized-operations" class="section level3">
+<h3>Vectorized operations</h3>
+<p>R operations work on entire vectors at once. You almost never need a
+loop for elementwise math:</p>
+<pre class="r"><code>ages</code></pre>
+<pre><code>#&gt; [1] 23 31 27 45 19</code></pre>
+<pre class="r"><code>ages + 1            # add 1 to every element</code></pre>
+<pre><code>#&gt; [1] 24 32 28 46 20</code></pre>
+<pre class="r"><code>ages * 2</code></pre>
+<pre><code>#&gt; [1] 46 62 54 90 38</code></pre>
+<pre class="r"><code>ages &gt; 30</code></pre>
+<pre><code>#&gt; [1] FALSE  TRUE FALSE  TRUE FALSE</code></pre>
+<pre class="r"><code>sum(ages)</code></pre>
+<pre><code>#&gt; [1] 145</code></pre>
+<pre class="r"><code>mean(ages)</code></pre>
+<pre><code>#&gt; [1] 29</code></pre>
+<pre class="r"><code>length(ages)</code></pre>
+<pre><code>#&gt; [1] 5</code></pre>
+<p>This is the single biggest stylistic difference between R and most
+other languages, and getting comfortable with it is half the battle.</p>
+</div>
+<div id="named-vectors" class="section level3">
+<h3>Named vectors</h3>
+<p>Vectors can have names attached to each element:</p>
+<pre class="r"><code>prices &lt;- c(apple = 1.20, banana = 0.50, cherry = 3.00)
+prices</code></pre>
+<pre><code>#&gt;  apple banana cherry 
+#&gt;    1.2    0.5    3.0</code></pre>
+<pre class="r"><code>prices[&quot;banana&quot;]</code></pre>
+<pre><code>#&gt; banana 
+#&gt;    0.5</code></pre>
+</div>
+</div>
+<div id="lists" class="section level2">
+<h2>Lists</h2>
+<p>A <strong>list</strong> is like a vector, but each element can be a
+different type — even another list.</p>
+<pre class="r"><code>person &lt;- list(name = &quot;Ada&quot;, age = 36, hobbies = c(&quot;math&quot;, &quot;logic&quot;))
+person$name</code></pre>
+<pre><code>#&gt; [1] &quot;Ada&quot;</code></pre>
+<pre class="r"><code>person$hobbies</code></pre>
+<pre><code>#&gt; [1] &quot;math&quot;  &quot;logic&quot;</code></pre>
+<pre class="r"><code>person[[&quot;age&quot;]]</code></pre>
+<pre><code>#&gt; [1] 36</code></pre>
+<p>You’ll meet lists most often as the return value of model-fitting
+functions like <code>lm()</code> (we’ll get there in Lesson 5).</p>
+</div>
+<div id="data-frames" class="section level2">
+<h2>Data frames</h2>
+<p>A <strong>data frame</strong> is a table — rows are observations,
+columns are variables, and each column is a vector of the same length.
+It’s the workhorse data structure for most analysis.</p>
+<pre class="r"><code>df &lt;- data.frame(
+  name = c(&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;),
+  age = c(25, 30, 22),
+  score = c(95, 88, 75)
+)
+df</code></pre>
+<pre><code>#&gt;      name age score
+#&gt; 1   Alice  25    95
+#&gt; 2     Bob  30    88
+#&gt; 3 Charlie  22    75</code></pre>
+<p>Subset by column with <code>$</code> or <code>[[ ]]</code>, and by
+row/column with <code>[ , ]</code>:</p>
+<pre class="r"><code>df$age</code></pre>
+<pre><code>#&gt; [1] 25 30 22</code></pre>
+<pre class="r"><code>df[1, ]            # first row</code></pre>
+<pre><code>#&gt;    name age score
+#&gt; 1 Alice  25    95</code></pre>
+<pre class="r"><code>df[, &quot;name&quot;]       # name column</code></pre>
+<pre><code>#&gt; [1] &quot;Alice&quot;   &quot;Bob&quot;     &quot;Charlie&quot;</code></pre>
+<pre class="r"><code>df[df$age &gt; 23, ]  # all rows where age &gt; 23</code></pre>
+<pre><code>#&gt;    name age score
+#&gt; 1 Alice  25    95
+#&gt; 2   Bob  30    88</code></pre>
+<p>We’ll spend most of Lesson 3 working with data frames using a much
+nicer toolset (<code>dplyr</code>). For now, just know they exist and
+look like a spreadsheet.</p>
+</div>
+<div id="control-flow" class="section level2">
+<h2>Control flow</h2>
+<div id="if-else" class="section level3">
+<h3><code>if</code> / <code>else</code></h3>
+<pre class="r"><code>score &lt;- 78
+if (score &gt;= 90) {
+  &quot;A&quot;
+} else if (score &gt;= 80) {
+  &quot;B&quot;
+} else if (score &gt;= 70) {
+  &quot;C&quot;
+} else {
+  &quot;F&quot;
+}</code></pre>
+<pre><code>#&gt; [1] &quot;C&quot;</code></pre>
+</div>
+<div id="for-loops" class="section level3">
+<h3><code>for</code> loops</h3>
+<pre class="r"><code>for (n in 1:5) {
+  print(n^2)
+}</code></pre>
+<pre><code>#&gt; [1] 1
+#&gt; [1] 4
+#&gt; [1] 9
+#&gt; [1] 16
+#&gt; [1] 25</code></pre>
+<div class="callout callout-tip">
+<div class="callout-title">
+💡 You’ll write fewer loops than you think
+</div>
+<p>In R, most things you’d loop over in another language can be done
+with vectorized operations or with
+<code>sapply</code>/<code>lapply</code>. Loops aren’t wrong — they’re
+just often unnecessary. We’ll see this in Lesson 3.</p>
+</div>
+</div>
+<div id="while-loops" class="section level3">
+<h3><code>while</code> loops</h3>
+<pre class="r"><code>n &lt;- 1
+while (n &lt; 100) {
+  n &lt;- n * 2
+}
+n</code></pre>
+<pre><code>#&gt; [1] 128</code></pre>
+</div>
+</div>
+<div id="functions" class="section level2">
+<h2>Functions</h2>
+<p>Writing your own functions is how you go from “running examples” to
+“actually using R for something.” Syntax:</p>
+<pre class="r"><code>celsius_to_fahrenheit &lt;- function(c) {
+  c * 9 / 5 + 32
+}
+
+celsius_to_fahrenheit(0)</code></pre>
+<pre><code>#&gt; [1] 32</code></pre>
+<pre class="r"><code>celsius_to_fahrenheit(c(0, 20, 100))   # works on a vector for free</code></pre>
+<pre><code>#&gt; [1]  32  68 212</code></pre>
+<p>A few rules:</p>
+<ul>
+<li>The last expression in the body is what the function returns. You
+can also write <code>return(...)</code> explicitly, but it’s not
+required.</li>
+<li>Arguments can have default values:
+<code>function(c, offset = 0) { ... }</code>.</li>
+<li>Functions are first-class — you can pass them around as values.</li>
+</ul>
+<p>A slightly more useful one — given a numeric vector, compute summary
+stats:</p>
+<pre class="r"><code>quick_summary &lt;- function(x, na_rm = TRUE) {
+  list(
+    n = length(x),
+    n_missing = sum(is.na(x)),
+    mean = mean(x, na.rm = na_rm),
+    sd = sd(x, na.rm = na_rm),
+    min = min(x, na.rm = na_rm),
+    max = max(x, na.rm = na_rm)
+  )
+}
+
+quick_summary(c(2, 4, 6, 8, 10, NA))</code></pre>
+<pre><code>#&gt; $n
+#&gt; [1] 6
+#&gt; 
+#&gt; $n_missing
+#&gt; [1] 1
+#&gt; 
+#&gt; $mean
+#&gt; [1] 6
+#&gt; 
+#&gt; $sd
+#&gt; [1] 3.162278
+#&gt; 
+#&gt; $min
+#&gt; [1] 2
+#&gt; 
+#&gt; $max
+#&gt; [1] 10</code></pre>
+</div>
+<div id="putting-it-together" class="section level2">
+<h2>Putting it together</h2>
+<p>Let’s combine everything in this lesson into a tiny analysis. Given a
+vector of test scores, classify each into a letter grade and report how
+many of each.</p>
+<pre class="r"><code>scores &lt;- c(72, 88, 95, 67, 81, 59, 91, 78, 84, 100)
+
+grade &lt;- function(score) {
+  if (score &gt;= 90) {
+    &quot;A&quot;
+  } else if (score &gt;= 80) {
+    &quot;B&quot;
+  } else if (score &gt;= 70) {
+    &quot;C&quot;
+  } else if (score &gt;= 60) {
+    &quot;D&quot;
+  } else {
+    &quot;F&quot;
+  }
+}
+
+grades &lt;- sapply(scores, grade)
+grades</code></pre>
+<pre><code>#&gt;  [1] &quot;C&quot; &quot;B&quot; &quot;A&quot; &quot;D&quot; &quot;B&quot; &quot;F&quot; &quot;A&quot; &quot;C&quot; &quot;B&quot; &quot;A&quot;</code></pre>
+<pre class="r"><code>table(grades)</code></pre>
+<pre><code>#&gt; grades
+#&gt; A B C D F 
+#&gt; 3 3 2 1 1</code></pre>
+<p><code>sapply</code> applies a function to each element of a vector
+and returns the results. We need it here because <code>grade()</code>
+uses <code>if</code>, which only works on a single value at a time. (In
+Lesson 3 we’ll see a much cleaner way to do this with
+<code>dplyr::case_when()</code>.)</p>
+<div class="exercise">
+<div class="exercise-title">
+✏️ Exercise 2.1 — Vectorized math
+</div>
+<p>Given the temperatures vector below (in Fahrenheit), convert all of
+them to Celsius without writing a loop.</p>
+<pre class="r"><code>temps_f &lt;- c(32, 50, 68, 86, 104)</code></pre>
+<details>
+<summary>
+Show solution
+</summary>
+<pre class="r"><code>temps_f &lt;- c(32, 50, 68, 86, 104)
+temps_c &lt;- (temps_f - 32) * 5 / 9
+temps_c</code></pre>
+<pre><code>#&gt; [1]  0 10 20 30 40</code></pre>
+<p>Or wrap it in a function so you can reuse it:</p>
+<pre class="r"><code>fahrenheit_to_celsius &lt;- function(f) (f - 32) * 5 / 9
+fahrenheit_to_celsius(temps_f)</code></pre>
+<pre><code>#&gt; [1]  0 10 20 30 40</code></pre>
+</details>
+</div>
+<div class="exercise">
+<div class="exercise-title">
+✏️ Exercise 2.2 — Subsetting
+</div>
+<p>Using the built-in <code>mtcars</code> dataset:</p>
+<ol style="list-style-type: decimal">
+<li>Print the <code>mpg</code> column.</li>
+<li>Print only the cars with <code>mpg &gt; 25</code>.</li>
+<li>What’s the mean <code>mpg</code> of cars with 4 cylinders
+(<code>cyl == 4</code>)?</li>
+</ol>
+<details>
+<summary>
+Show solution
+</summary>
+<pre class="r"><code>mtcars$mpg</code></pre>
+<pre><code>#&gt;  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4
+#&gt; [16] 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4 15.8 19.7
+#&gt; [31] 15.0 21.4</code></pre>
+<pre class="r"><code>mtcars[mtcars$mpg &gt; 25, ]</code></pre>
+<pre><code>#&gt;                 mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+#&gt; Fiat 128       32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+#&gt; Honda Civic    30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+#&gt; Toyota Corolla 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+#&gt; Fiat X1-9      27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+#&gt; Porsche 914-2  26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+#&gt; Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2</code></pre>
+<pre class="r"><code>mean(mtcars$mpg[mtcars$cyl == 4])</code></pre>
+<pre><code>#&gt; [1] 26.66364</code></pre>
+</details>
+</div>
+<div class="exercise">
+<div class="exercise-title">
+✏️ Exercise 2.3 — Write a function
+</div>
+<p>Write a function <code>is_leap_year(year)</code> that returns
+<code>TRUE</code> if <code>year</code> is a leap year and
+<code>FALSE</code> otherwise. (A year is a leap year if it’s divisible
+by 4, <em>except</em> century years are only leap years if also
+divisible by 400. So 2000 is, 1900 isn’t.)</p>
+<p>Test it on <code>c(2000, 1900, 2020, 2023, 2024)</code>.</p>
+<details>
+<summary>
+Show solution
+</summary>
+<pre class="r"><code>is_leap_year &lt;- function(year) {
+  (year %% 4 == 0 &amp; year %% 100 != 0) | (year %% 400 == 0)
+}
+
+is_leap_year(c(2000, 1900, 2020, 2023, 2024))</code></pre>
+<pre><code>#&gt; [1]  TRUE FALSE  TRUE FALSE  TRUE</code></pre>
+<p>Note we used <code>&amp;</code> and <code>|</code> (single character)
+so it works on a whole vector at once — exactly the vectorization point
+from earlier.</p>
+</details>
+</div>
+</div>
+<div id="whats-next" class="section level2">
+<h2>What’s next</h2>
+<p>You now have variables, types, vectors, control flow, and functions.
+That’s enough to write real code. Lesson 3 introduces the
+<strong>tidyverse</strong> — a much nicer way to manipulate data frames
+than what you saw above.</p>
+<div class="lesson-nav">
+<p><a class="nav-prev" href="intro_to_r.html"> <span
+class="lesson-nav-label">← Previous</span> <span
+class="lesson-nav-title">Lesson 1: Introduction to R</span> </a>
+<a class="nav-next" href="data_manipulation_r.html"> <span
+class="lesson-nav-label">Next →</span> <span
+class="lesson-nav-title">Lesson 3: Data Manipulation</span> </a></p>
+</div>
+</div>
+</div>
+
+<link rel="stylesheet" href="/css/footer.css">
+<footer id="footer_stuff" class="band full" role="contentinfo">
+  <div class="bandContent">
+    <p id="full_send">Feel free to contact me:</p>
+    <nav id="logos" aria-label="Social media and contact links">
+      <a href="mailto:cavandonohoe@gmail.com" aria-label="Email Cavan Donohoe"><i class="fa fa-envelope" style="font-size:22px"></i></a>
+      <a href="https://www.instagram.com/cavandonohoe" aria-label="Instagram profile" rel="noopener noreferrer"><i class="fa fa-instagram" style="font-size:22px"></i></a>
+      <a href="https://www.facebook.com/cavandonohoe" aria-label="Facebook profile" rel="noopener noreferrer"><i class="fa fa-facebook" style="font-size:22px"></i></a>
+      <a href="https://github.com/cavandonohoe" aria-label="GitHub profile" rel="noopener noreferrer"><i class="fa fa-github" style="font-size:22px"></i></a>
+      <a href="https://www.linkedin.com/in/cavan-donohoe/" aria-label="LinkedIn profile" rel="noopener noreferrer"><i class="fa fa-linkedin" style="font-size:22px"></i></a>
+      <a href="tel:+8054043321" aria-label="Phone number"><i class="fa fa-phone" style="font-size:22px"></i></a>
+    </nav>
+  </div>
+</footer>
+<script>
+(function() {
+  function addLabel(el, label) {
+    if (!el) return;
+    if (el.hasAttribute('aria-label') && el.getAttribute('aria-label').trim()) return;
+    if (el.hasAttribute('title') && el.getAttribute('title').trim()) return;
+    el.setAttribute('aria-label', label);
+  }
+
+  function labelNavbarToggle() {
+    var toggles = document.querySelectorAll('button.navbar-toggle');
+    for (var i = 0; i < toggles.length; i++) {
+      addLabel(toggles[i], 'Toggle navigation');
+    }
+  }
+
+  function labelPlotlyModebar() {
+    var anchors = document.querySelectorAll('.modebar-container a, [id^="modebar-"] a');
+    for (var i = 0; i < anchors.length; i++) {
+      var a = anchors[i];
+      if ((a.hasAttribute('aria-label') && a.getAttribute('aria-label').trim()) ||
+          (a.hasAttribute('title') && a.getAttribute('title').trim())) {
+        // already labeled — but H91 still wants id/name on empty anchors,
+        // so ensure that too.
+      } else {
+        var dataTitle = a.getAttribute('data-title') || '';
+        var label = dataTitle.trim() || 'Plot toolbar action';
+        a.setAttribute('aria-label', label);
+      }
+      // H91 considers an empty anchor accessible if it has id or name.
+      // Give every modebar anchor a stable, unique id derived from the
+      // parent modebar id + position so HTML_CodeSniffer stops flagging.
+      if (!a.id) {
+        var parent = a.closest('[id^="modebar-"]');
+        var base = parent ? parent.id : 'modebar';
+        var idx = Array.prototype.indexOf.call(parent ? parent.querySelectorAll('a') : [a], a);
+        a.id = base + '-btn-' + (idx >= 0 ? idx : i);
+      }
+      if (!a.getAttribute('name')) a.setAttribute('name', a.id);
+    }
+  }
+
+  function dedupePlotlySymbolIds() {
+    // Plotly inlines an SVG icon set per chart that defines <g id="symbol">,
+    // so pages with two charts trip F77 (duplicate id). Drop the id on every
+    // occurrence after the first; nothing on the page references #symbol.
+    // Restrict to the known offender so we don't accidentally rename
+    // legitimate duplicates elsewhere.
+    var symbols = document.querySelectorAll('[id="symbol"]');
+    for (var i = 1; i < symbols.length; i++) {
+      symbols[i].removeAttribute('id');
+    }
+  }
+
+  function labelDataTablesControls() {
+    var inputs = document.querySelectorAll(
+      '.dataTables_wrapper input[type="search"], .dataTables_wrapper input[type="text"], ' +
+      'table.dataTable thead input[type="search"], table.dataTable thead input[type="text"]'
+    );
+    for (var i = 0; i < inputs.length; i++) {
+      var input = inputs[i];
+      if ((input.hasAttribute('aria-label') && input.getAttribute('aria-label').trim()) ||
+          (input.hasAttribute('title') && input.getAttribute('title').trim())) continue;
+      var placeholder = input.getAttribute('placeholder') || '';
+      var label = placeholder.trim() || 'Search';
+      var th = input.closest('th, td');
+      var col = th ? (th.getAttribute('aria-label') || th.textContent || '').trim() : '';
+      if (col) label = col + ' search';
+      input.setAttribute('aria-label', label);
+    }
+
+    var selects = document.querySelectorAll(
+      '.dataTables_wrapper select, table.dataTable thead select'
+    );
+    for (var j = 0; j < selects.length; j++) {
+      var sel = selects[j];
+      if ((sel.hasAttribute('aria-label') && sel.getAttribute('aria-label').trim()) ||
+          (sel.hasAttribute('title') && sel.getAttribute('title').trim())) continue;
+      var th2 = sel.closest('th, td');
+      var col2 = th2 ? (th2.getAttribute('aria-label') || th2.textContent || '').trim() : '';
+      sel.setAttribute('aria-label', col2 ? col2 + ' filter' : 'Column filter');
+    }
+  }
+
+  function applyA11yShims() {
+    labelNavbarToggle();
+    labelPlotlyModebar();
+    labelDataTablesControls();
+    dedupePlotlySymbolIds();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyA11yShims);
+  } else {
+    applyA11yShims();
+  }
+
+  // Plotly and DataTables can re-render after initial load; reapply on a short
+  // delay and observe further DOM changes so dynamically-inserted controls
+  // also get labelled before the pa11y wait window expires.
+  setTimeout(applyA11yShims, 250);
+  setTimeout(applyA11yShims, 1000);
+
+  if (typeof MutationObserver !== 'undefined') {
+    var observer = new MutationObserver(function() { applyA11yShims(); });
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+})();
+</script>
+<script>
+(function() {
+  var btn = document.createElement('button');
+  btn.className = 'dark-mode-toggle';
+  btn.setAttribute('aria-label', 'Toggle dark mode');
+  btn.innerHTML = localStorage.getItem('theme') === 'dark' ? '☀️' : '🌙';
+  btn.onclick = function() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    btn.innerHTML = next === 'dark' ? '☀️' : '🌙';
+  };
+  var navbar = document.querySelector('.navbar-right') || document.querySelector('.navbar-nav');
+  if (navbar) {
+    var li = document.createElement('li');
+    li.appendChild(btn);
+    navbar.appendChild(li);
+  }
+})();
+</script>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
