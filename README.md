@@ -128,8 +128,8 @@ above. Regenerated each time `README.Rmd` is knit.
 
 <img src="images/readme/commit-activity-cumulative-1.png" alt="Two cumulative line charts showing total commits and total lines changed (insertions + deletions) over time, split by Cavan's own commits vs. scheduled-bot commits."  />
 
-*529 commits since Dec 2020 — 500 by me, 29 by scheduled bots — touching
-2,051,012 lines in total.*
+*641 commits since Dec 2020 — 557 by me, 84 by scheduled bots — touching
+2,532,712 lines in total.*
 
 ## Setup and Local Development
 
@@ -146,8 +146,8 @@ Privacy rules:
 
 - Do not commit statement PDFs, generated workbooks, exported
   transaction CSVs, or Google Sheet URLs.
-- Keep personal owner rules in `config/chase_owner_rules.csv`; that
-  file is ignored by git.
+- Keep personal owner rules in `config/chase_owner_rules.csv`; that file
+  is ignored by git.
 - Use `config/chase_owner_rules.example.csv` as the tracked starting
   rules file for non-sensitive patterns and labels.
 
