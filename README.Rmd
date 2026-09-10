@@ -118,6 +118,11 @@ refresh workflows above. Regenerated each time `README.Rmd` is
 knit.
 
 ```{r commit-activity, echo = FALSE, message = FALSE, warning = FALSE, fig.width = 14, fig.height = 8, fig.path = "images/readme/", dev = "png", dpi = 110, fig.alt = "Two bar charts showing monthly commits and monthly lines changed (insertions + deletions) for this repository, split by Cavan's own commits vs. scheduled-bot commits."}
+# Bind the magrittr pipe locally so this chunk (and the cumulative/summary
+# chunks that share the knit environment) render standalone without a prior
+# library(dplyr) attach.
+`%>%` <- magrittr::`%>%`
+
 raw <- system(
   "git log --no-merges --pretty=format:'COMMIT|%H|%at|%an' --shortstat",
   intern = TRUE
