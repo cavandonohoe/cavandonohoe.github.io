@@ -161,20 +161,20 @@ season,episode,title,rating,votes,episode_year
 4,38,Episode 33,5.4,26,2018
 4,39,Episode 34,5.2,25,2018
 4,40,Episode 35,5.1,25,2018
-4,41,Unseen Bits 6,4.2,19,2018
-4,42,Episode 36,5,24,2018
-4,43,Episode 37,4.8,24,2018
-4,44,Episode 38,4.9,24,2018
-4,45,Episode 39,5,25,2018
-4,46,Episode 40,5,24,2018
-4,47,Episode 41,5,25,2018
-4,48,Unseen Bits 7,4.2,19,2018
-4,49,Episode 42,5,24,2018
-4,50,Episode 43,5.3,24,2018
-4,51,Episode 44,5.1,21,2018
-4,52,Episode 45,5.1,21,2018
-4,53,Episode 46,5.2,21,2018
-4,54,Episode 47,5.2,21,2018
+4,41,Unseen Bits 6,4.3,20,2018
+4,42,Episode 36,5,25,2018
+4,43,Episode 37,4.8,25,2018
+4,44,Episode 38,4.9,25,2018
+4,45,Episode 39,5,26,2018
+4,46,Episode 40,5,25,2018
+4,47,Episode 41,5,26,2018
+4,48,Unseen Bits 7,4.2,20,2018
+4,49,Episode 42,5,25,2018
+4,50,Episode 43,5.3,25,2018
+4,51,Episode 44,5.1,22,2018
+4,52,Episode 45,5.1,22,2018
+4,53,Episode 46,5.2,22,2018
+4,54,Episode 47,5.2,22,2018
 4,55,Unseen Bits 8,4.4,17,2018
 4,56,Episode 48,5.6,20,2018
 4,57,The Final,5.5,24,2018
@@ -599,12 +599,12 @@ season,episode,title,rating,votes,episode_year
 13,31,Episode #13.31,7.3,17,2026
 13,32,Episode #13.32,7.1,14,2026
 13,33,Episode #13.33,6.5,12,2026
-13,35,Episode #13.35,7.2,16,2026
+13,35,Episode #13.35,7,16,2026
 13,36,Episode #13.36,6.3,14,2026
 13,37,Episode #13.37,6.7,12,2026
 13,38,Episode #13.38,6.9,14,2026
 13,39,Episode #13.39,6.5,13,2026
-13,40,Episode #13.40,6.8,14,2026
+13,40,Episode #13.40,6.5,14,2026
 13,42,Episode #13.42,6.4,10,2026
 13,43,Episode #13.43,6.4,9,2026
 13,44,Episode #13.44,5.7,9,2026
@@ -618,3 +618,4 @@ season,episode,title,rating,votes,episode_year
 13,53,Episode #13.53,6.5,6,2026
 13,54,Episode #13.54,5.9,7,2026
 13,56,Episode #13.56,6.2,6,2026
+13,57,Episode #13.57,7.4,5,2026
