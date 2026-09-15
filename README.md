@@ -90,6 +90,14 @@ manual is a click away on the Actions tab.
 - `update_us_rentals.yml` – monthly Zillow ZHVI/ZORI refresh.
 - `update_mymaps_export.yml` – weekly Google My Maps export.
 
+The uniform ones (`update_sp500`, `update_us_rentals`,
+`update_top250_with_rt`, `update_watched_episodes`) are thin callers of
+`refresh-data.yml`, which owns the shared run/guard/commit/redeploy
+logic. The rest stay standalone because they build dynamic commit
+messages or need extra fetch steps. Every refresh that commits to `main`
+runs `scripts/data_sanity.R` first, so an empty or collapsed scrape fails
+the run instead of landing on `main`.
+
 ### Data refreshes (open PR)
 
 - `update_best_picture_winners.yml` – annual Oscar refresh.
