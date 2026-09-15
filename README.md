@@ -95,8 +95,8 @@ The uniform ones (`update_sp500`, `update_us_rentals`,
 `refresh-data.yml`, which owns the shared run/guard/commit/redeploy
 logic. The rest stay standalone because they build dynamic commit
 messages or need extra fetch steps. Every refresh that commits to `main`
-runs `scripts/data_sanity.R` first, so an empty or collapsed scrape fails
-the run instead of landing on `main`.
+runs `scripts/data_sanity.R` first, so an empty or collapsed scrape
+fails the run instead of landing on `main`.
 
 ### Data refreshes (open PR)
 
@@ -136,8 +136,8 @@ above. Regenerated each time `README.Rmd` is knit.
 
 <img src="images/readme/commit-activity-cumulative-1.png" alt="Two cumulative line charts showing total commits and total lines changed (insertions + deletions) over time, split by Cavan's own commits vs. scheduled-bot commits."  />
 
-*642 commits since Dec 2020 — 556 by me, 86 by scheduled bots — touching
-2,538,793 lines in total.*
+*647 commits since Dec 2020 — 557 by me, 90 by scheduled bots — touching
+2,574,303 lines in total.*
 
 ## Setup and Local Development
 
