@@ -544,15 +544,20 @@ on PRs from forks (they need secrets); that’s expected.</li>
 <div id="adding-a-new-page" class="section level2">
 <h2>Adding a new page</h2>
 <ol style="list-style-type: decimal">
-<li>Create <code>your_page.Rmd</code> at the repo root.</li>
-<li>Add an entry to <code>_site.yml</code> under <code>navbar:</code> if
-it should appear in the top nav, or just under a <code>Project</code>
-card in <code>index.Rmd</code> for project pages.</li>
-<li>Render locally and confirm <code>pr-smoke.yml</code> will pick it up
-(it auto-discovers changed top-level <code>.Rmd</code> files).</li>
-<li>If the page needs a scheduled data refresh, add a workflow under
+<li><p>Create <code>your_page.Rmd</code> at the repo root.</p></li>
+<li><p>Add an entry to <code>_site.yml</code> under <code>navbar:</code>
+if it should appear in the top nav, or just under a <code>Project</code>
+card in <code>index.Rmd</code> for project pages.</p></li>
+<li><p>Render locally and confirm <code>pr-smoke.yml</code> will pick it
+up (it auto-discovers changed top-level <code>.Rmd</code>
+files).</p></li>
+<li><p>If the page needs a scheduled data refresh, add a workflow under
 <code>.github/workflows/update_*.yml</code> modeled on the existing
-ones.</li>
+ones. Refreshes that commit to <code>main</code> should run
+<code>scripts/data_sanity.R</code> on the CSVs they stage, before the
+commit step, so a collapsed or empty scrape fails the run instead of
+landing on <code>main</code>:</p>
+<pre class="bash"><code>Rscript scripts/data_sanity.R [--min-rows N] [--max-drop-pct P] data/your_file.csv</code></pre></li>
 </ol>
 </div>
 <div id="adding-a-new-test" class="section level2">
