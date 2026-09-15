@@ -144,7 +144,11 @@ To bump the R version itself, edit `.R-version` and update the `R.Version` field
 1. Create `your_page.Rmd` at the repo root.
 2. Add an entry to `_site.yml` under `navbar:` if it should appear in the top nav, or just under a `Project` card in `index.Rmd` for project pages.
 3. Render locally and confirm `pr-smoke.yml` will pick it up (it auto-discovers changed top-level `.Rmd` files).
-4. If the page needs a scheduled data refresh, add a workflow under `.github/workflows/update_*.yml` modeled on the existing ones.
+4. If the page needs a scheduled data refresh, add a workflow under `.github/workflows/update_*.yml` modeled on the existing ones. Refreshes that commit to `main` should run `scripts/data_sanity.R` on the CSVs they stage, before the commit step, so a collapsed or empty scrape fails the run instead of landing on `main`:
+
+   ```bash
+   Rscript scripts/data_sanity.R [--min-rows N] [--max-drop-pct P] data/your_file.csv
+   ```
 
 ## Adding a new test
 
