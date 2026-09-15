@@ -84,6 +84,13 @@ jobs:
             exit 1
           fi
 
+      # This job is otherwise pure bash + python3, so pull in R just for the
+      # sanity check. restore: false skips the renv library; data_sanity.R
+      # only needs base R.
+      - uses: ./.github/actions/setup-r-env
+        with:
+          restore: "false"
+
       # Refuse to commit data that came back empty or collapsed, which is
       # what a silent upstream change looks like from here.
       - name: Sanity-check refreshed data
