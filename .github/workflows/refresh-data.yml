@@ -1,0 +1,145 @@
+name: Reusable data refresh
+
+# Shared implementation for the scheduled refreshes whose shape is identical:
+# run one R script, confirm it only touched the files it was supposed to,
+# sanity-check the result, commit to main, and dispatch a site redeploy.
+#
+# Callers keep only their own schedule and inputs (see update_sp500.yml).
+# Refreshes that build a dynamic commit message or need extra fetch steps
+# (imdb_ratings, top1000_box_office, movie_ranker_personal, mymaps_export,
+# confederate_statues_data) stay standalone on purpose — templating them
+# would hide more than it saves.
+
+on:
+  workflow_call:
+    inputs:
+      refresh_command:
+        description: Command that refreshes the data (e.g. 'Rscript scripts/sp500_data.R').
+        required: true
+        type: string
+      data_paths:
+        description: >-
+          Space-separated repo-relative paths the refresh is allowed to touch.
+          Used for the change guard, the sanity check, and `git add`.
+        required: true
+        type: string
+      commit_message:
+        description: Commit message for the auto-update.
+        required: true
+        type: string
+      timeout_minutes:
+        description: Job timeout.
+        required: false
+        type: number
+        default: 30
+      max_drop_pct:
+        description: Largest tolerated drop in row count vs. the committed data.
+        required: false
+        type: number
+        default: 20
+
+permissions:
+  contents: write
+  actions: write # needed for the "gh workflow run" redeploy dispatch below
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: ${{ inputs.timeout_minutes }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: ./.github/actions/setup-r-env
+
+      # Inputs are passed through env rather than interpolated into the script
+      # body, so a value containing shell metacharacters can't break out.
+      - name: Refresh data
+        env:
+          REFRESH_COMMAND: ${{ inputs.refresh_command }}
+        run: $REFRESH_COMMAND
+
+      # Turn the input paths into an anchored alternation so the guards below
+      # can reject anything the refresh touched outside its own files.
+      - name: Build expected-path pattern
+        id: expected
+        env:
+          DATA_PATHS: ${{ inputs.data_paths }}
+        run: |
+          set -euo pipefail
+          pattern=""
+          for path in $DATA_PATHS; do
+            escaped="$(printf '%s' "$path" | sed 's/[.[\*^$()+?{}|]/\\&/g')"
+            pattern="${pattern:+$pattern|}^${escaped}$"
+          done
+          echo "pattern=$pattern" >> "$GITHUB_OUTPUT"
+          echo "Expected paths: $pattern"
+
+      - name: Verify only expected files changed
+        env:
+          PATTERN: ${{ steps.expected.outputs.pattern }}
+          DATA_PATHS: ${{ inputs.data_paths }}
+        run: |
+          set -euo pipefail
+          unexpected="$(git diff --name-only HEAD | grep -Ev "$PATTERN" || true)"
+          if [ -n "$unexpected" ]; then
+            echo "ERROR: refresh modified files outside $DATA_PATHS:"
+            echo "$unexpected"
+            exit 1
+          fi
+          echo "OK: only expected files changed (or no change)."
+
+      # Refuse to commit data that came back empty or collapsed, which is
+      # what a silent upstream change looks like from here.
+      - name: Sanity-check refreshed data
+        env:
+          DATA_PATHS: ${{ inputs.data_paths }}
+          MAX_DROP_PCT: ${{ inputs.max_drop_pct }}
+        run: Rscript scripts/data_sanity.R --max-drop-pct "$MAX_DROP_PCT" $DATA_PATHS
+
+      - name: Commit and push if changed
+        id: push
+        env:
+          PATTERN: ${{ steps.expected.outputs.pattern }}
+          DATA_PATHS: ${{ inputs.data_paths }}
+          COMMIT_MESSAGE: ${{ inputs.commit_message }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add $DATA_PATHS
+
+          if git diff --cached --quiet; then
+            echo "No changes."
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          staged_other="$(git diff --cached --name-only | grep -Ev "$PATTERN" || true)"
+          if [ -n "$staged_other" ]; then
+            echo "ERROR: refusing to commit unexpected staged files:"
+            echo "$staged_other"
+            exit 1
+          fi
+
+          git commit -m "$COMMIT_MESSAGE"
+
+          for i in 1 2 3; do
+            if git push; then
+              echo "pushed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "Push failed; rebasing on remote and retrying ($i/3)..."
+            git pull --rebase origin "$(git rev-parse --abbrev-ref HEAD)"
+          done
+          echo "ERROR: failed to push after 3 attempts."
+          exit 1
+
+      # Bot pushes via GITHUB_TOKEN don't trigger downstream workflows (a
+      # GitHub anti-recursion guard), so the site won't redeploy after this
+      # commit unless we explicitly dispatch the build workflow.
+      - name: Trigger site redeploy
+        if: steps.push.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run pages-branch-previews.yml --ref main

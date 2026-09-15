@@ -44,6 +44,11 @@ jobs:
             exit 1
           fi
 
+      # Refuse to commit data that came back empty or collapsed, which is
+      # what a silent upstream change looks like from here.
+      - name: Sanity-check refreshed data
+        run: Rscript scripts/data_sanity.R data/best_picture_winners.csv data/top1000_box_office.csv
+
       - name: Commit and push if changed
         id: push
         if: always()

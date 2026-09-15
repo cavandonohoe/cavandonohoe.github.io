@@ -7,64 +7,17 @@ on:
 
 permissions:
   contents: write
-  actions: write  # needed for the "gh workflow run" redeploy dispatch below
+  actions: write
 
 concurrency:
   group: refresh-top250-rt
   cancel-in-progress: false
 
 jobs:
-  update:
-    runs-on: ubuntu-latest
-    timeout-minutes: 90
-    steps:
-      - uses: actions/checkout@v7
-
-      - uses: ./.github/actions/setup-r-env
-
-      - name: Refresh Top 250 with Rotten Tomatoes
-        run: Rscript scripts/refresh_top250_with_rt.R
-
-      - name: Verify only the expected CSV changed
-        run: |
-          set -euo pipefail
-          unexpected="$(git diff --name-only HEAD \
-            | grep -Ev '^data/top250_movies_with_rt\.csv$' || true)"
-          if [ -n "$unexpected" ]; then
-            echo "ERROR: refresh modified unexpected files:"
-            echo "$unexpected"
-            exit 1
-          fi
-
-      - name: Commit and push if changed
-        id: push
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/top250_movies_with_rt.csv
-          if git diff --cached --quiet; then
-            echo "No changes."
-            echo "pushed=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          git commit -m "Auto-update Top 250 movies with Rotten Tomatoes"
-          for i in 1 2 3; do
-            if git push; then
-              echo "pushed=true" >> "$GITHUB_OUTPUT"
-              exit 0
-            fi
-            echo "Push failed; rebasing on remote and retrying ($i/3)..."
-            git pull --rebase origin "$(git rev-parse --abbrev-ref HEAD)"
-          done
-          echo "ERROR: failed to push Top 250 update after 3 attempts."
-          exit 1
-
-      # Bot pushes via GITHUB_TOKEN don't trigger downstream workflows (a
-      # GitHub anti-recursion guard), so the site won't redeploy after this
-      # commit unless we explicitly dispatch the build workflow.
-      - name: Trigger site redeploy
-        if: steps.push.outputs.pushed == 'true'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh workflow run pages-branch-previews.yml --ref main
+  refresh:
+    uses: ./.github/workflows/refresh-data.yml
+    with:
+      refresh_command: Rscript scripts/refresh_top250_with_rt.R
+      data_paths: data/top250_movies_with_rt.csv
+      commit_message: Auto-update Top 250 movies with Rotten Tomatoes
+      timeout_minutes: 90

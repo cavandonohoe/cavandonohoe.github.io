@@ -31,6 +31,18 @@ jobs:
           git status --porcelain
           head -n 5 data/saved_places.csv || true
 
+      # This job is otherwise pure curl + python3, so pull in R just for the
+      # sanity check. restore: false skips the renv library; data_sanity.R
+      # only needs base R.
+      - uses: ./.github/actions/setup-r-env
+        with:
+          restore: "false"
+
+      # Refuse to commit data that came back empty or collapsed, which is
+      # what a silent upstream change looks like from here.
+      - name: Sanity-check refreshed data
+        run: Rscript scripts/data_sanity.R data/saved_places.csv
+
       - name: Commit and push if changed
         id: push
         run: |
