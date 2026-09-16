@@ -31,9 +31,8 @@ cat('
 ')
 ```
 
-Welcome to my Website! Every page here is written in R and deployed straight from GitHub, and
-most of the data behind them refreshes itself on a schedule — so a fair bit of this updated
-without me touching it.
+Welcome to my Website! It's all done in R and GitHub, so that's pretty cool. Most of the data
+updates itself on a schedule too.
 
 ![Sunset at China Walls on Oahu, Hawaii - Reminiscing of my life on Oahu](images/China Walls Sunset.jpg)
 
