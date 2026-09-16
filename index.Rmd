@@ -119,7 +119,7 @@ for (card in cards) {
     card[[1]], card[[2]], card[[3]], card[[4]]
   ))
 }
-html <- paste0(html, '</div>')
+html <- paste0(html, "</div>")
 cat(html)
 ```
 
