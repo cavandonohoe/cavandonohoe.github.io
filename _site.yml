@@ -53,6 +53,8 @@ navbar:
       - text: "--- Visualizations ---"
       - text: "World Cup 3D Momentum Portrait"
         href: wc-momentum/index.html
+      - text: "Detour Finder"
+        href: detour-finder/index.html
       - text: "When Were Confederate Statues Erected?"
         href: confederate_statues.html
       - text: "Sierpinski Triangle"
