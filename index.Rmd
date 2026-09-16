@@ -31,7 +31,8 @@ cat('
 ')
 ```
 
-Welcome to my Website! I know it's not much, but it's all done in R and GitHub, so that's pretty cool.
+Welcome to my Website! It's all done in R and GitHub, so that's pretty cool. Most of the data
+updates itself on a schedule too.
 
 ![Sunset at China Walls on Oahu, Hawaii - Reminiscing of my life on Oahu](images/China Walls Sunset.jpg)
 
@@ -60,6 +61,9 @@ cards <- list(
     "Cap rates, vacancy, and demand signals for 3,800+ cities using Zillow and Census data."),
   list("la_real_estate.html", "\U0001F3E1", "LA Neighborhoods: Price per Sq Ft",
     "Zillow + Redfin data for LA neighborhoods: median prices, rent, and what $1M buys you."),
+  list("la_housing_heatmap.html", "\U0001F525", "LA Housing Prices: Animated Heat Map",
+    paste0("Zillow home values across LA County ZIP codes, animated year by year, with ",
+      "Case-Shiller and Shiller's long-run series for context.")),
   list("https://cavandonohoe.shinyapps.io/rent-vs-buy/", "\U0001F9EE", "Rent vs. Buy Calculator",
     "Interactive Shiny app for side-by-side financial simulation of renting vs. buying."),
   list("wc-momentum/index.html", "\U0001F30D", "World Cup 3D Momentum Portrait",
@@ -73,16 +77,26 @@ cards <- list(
     "Cross-referencing IMDb's top 250 movies with Rotten Tomatoes scores."),
   list("imdb_rating_plot.html", "\U0001F4C8", "IMDb Rating Plot",
     "Interactive episode-by-episode rating visualization for any TV series."),
+  list("tv_decline_leaderboard.html", "\U0001F4C9", "Did They Quit While They Were Ahead?",
+    paste0("Which shows ended on their best season and which limped out: every tracked ",
+      "series ranked by how far it fell from its own peak.")),
+  list("director_box_office_trajectory.html", "\U0001F3A5", "Director Box Office Trajectory",
+    "Career arcs of major directors, film by film, measured in box office receipts."),
   list("avca_all_americans.html", "\U0001F3D0", "AVCA Volleyball All-Americans",
     "Web-scraped history of men's volleyball All-American selections and champions."),
   list("firefighter_schedule.html", "\U0001F692", "Firefighter Schedule",
     "Shift calendar generator for firefighter 48/96 schedules."),
   list("google_maps_saved_places.html", "\U0001F4CD", "Google Maps Saved Places",
     'My "Want to Go" and "Favorites" lists exported and visualized.'),
+  list("detour-finder/index.html", "\U0001F5FA\UFE0F", "Detour Finder",
+    paste0("Draw a route and find which of my saved places sit within a corridor of it, ",
+      "so a long drive can pick up a few stops.")),
   list("my_imdb.html", "\U2B50", "My IMDb Ratings",
     "Personal movie ratings and watchlist from my IMDb account."),
   list("my_travels.html", "\U2708\UFE0F", "Get Bloggy With It",
     "Travel blog entries from my adventures around the world."),
+  list("tohs_reunion.html", "\U0001F393", "TOHS Class of 2012 Reunion",
+    "Tracking down classmates for the reunion, and who we're still missing emails for."),
   list("best_pic_vs_top_1000.html", "\U0001F39E\UFE0F", "Best Picture vs Top 1000 Box Office",
     "Do Oscar winners also dominate the box office? An interactive comparison."),
   list("sierpinski_triangle.html", "\U0001F53A", "Sierpinski Triangle",
@@ -91,6 +105,8 @@ cards <- list(
     "Animated head-to-head race of Steffen, WILMA, Back-to-Front, Reverse Pyramid, and Random."),
   list("confederate_statues.html", "\U0001F5FF", "Confederate Statues Timeline",
     "When were Confederate monuments erected? A data-driven look at the timeline."),
+  list("sdtm_with_r.html", "\U0001F9EA", "SDTM with R",
+    "Building CDISC SDTM clinical trial datasets in R, with worked examples."),
   list("learn_r.html", "\U0001F4DA", "Learn R",
     "Tutorial series: intro, data manipulation, visualization, and statistics in R.")
 )
@@ -102,7 +118,7 @@ for (card in cards) {
     card[[1]], card[[2]], card[[3]], card[[4]]
   ))
 }
-html <- paste0(html, '</div>')
+html <- paste0(html, "</div>")
 cat(html)
 ```
 
