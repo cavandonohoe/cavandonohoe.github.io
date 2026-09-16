@@ -27,6 +27,8 @@ navbar:
         href: imdb_top_250_tv_series.html
       - text: "IMDb Rating Plot by Season and Episode"
         href: imdb_rating_plot.html
+      - text: "Did They Quit While They Were Ahead?"
+        href: tv_decline_leaderboard.html
       - text: "Top 250 IMDb Movies with Rotten Tomato Scores"
         href: top_250_imdb_with_rt.html
       - text: "Best Picture Nominees"
