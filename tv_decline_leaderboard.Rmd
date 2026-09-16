@@ -51,14 +51,14 @@ on_peak <- decline %>% dplyr::filter(latest_is_peak, !likely_ongoing)
 
 The single biggest fall from grace is **`r worst$title`**, which peaked in season
 `r worst$peak_season` at `r sprintf("%.2f", worst$peak_avg)` and finished season
-`r worst$latest_season` at `r sprintf("%.2f", worst$latest_avg)` — a drop of
+`r worst$latest_season` at `r sprintf("%.2f", worst$latest_avg)`, a drop of
 `r sprintf("%.2f", worst$peak_to_latest_drop)` points. On the other side,
 `r nrow(on_peak)` shows ended their run on their own best season.
 
 ## The fall-from-peak leaderboard
 
 Bars are how far a show sits below its own best season. Shows still on the air are shaded
-differently, because their story isn't finished — a dip might still be a comeback.
+differently, because their story isn't finished. A dip might still turn into a comeback.
 
 ```{r drop-chart, fig.width=9, fig.height=8}
 top_drops <- decline %>%
@@ -94,7 +94,7 @@ plotly::plot_ly(
 
 ## Shows that stuck the landing
 
-These shows ended — as far as the episode data goes — on their highest-rated season. This is
+These shows ended on their highest-rated season, as far as the episode data goes. This is
 the list the whole page was built to find.
 
 ```{r stuck-landing}
