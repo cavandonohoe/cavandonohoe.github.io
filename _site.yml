@@ -19,6 +19,9 @@ navbar:
     - text: "CV"
       icon: fa-id-card
       href: cv.html
+    - text: "Publications"
+      icon: fa-book
+      href: publications.html
     - text: "Projects"
       icon: fa-laptop
       menu:
