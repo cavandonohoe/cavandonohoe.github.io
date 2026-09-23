@@ -1,0 +1,10 @@
+name: podcast-dashboard
+title: Saved Podcast Episodes
+username: cavandonohoe
+account: cavandonohoe
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 17984768
+bundleId:
+url: https://cavandonohoe.shinyapps.io/podcast-dashboard/
+version: 1

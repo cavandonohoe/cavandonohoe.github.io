@@ -56,6 +56,8 @@ navbar:
       - text: "--- Visualizations ---"
       - text: "World Cup 3D Momentum Portrait"
         href: wc-momentum/index.html
+      - text: "Saved Podcast Episodes"
+        href: https://cavandonohoe.shinyapps.io/podcast-dashboard/
       - text: "Detour Finder"
         href: detour-finder/index.html
       - text: "When Were Confederate Statues Erected?"
