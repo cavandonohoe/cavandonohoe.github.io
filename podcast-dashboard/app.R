@@ -79,11 +79,11 @@ ui <- bslib::page_sidebar(
     col_widths = c(6, 6),
     bslib::card(
       bslib::card_header("Episodes per show"),
-      plotlyOutput("bar_count", height = 720)
+      plotlyOutput("bar_count", height = 900)
     ),
     bslib::card(
       bslib::card_header("Hours per show"),
-      plotlyOutput("bar_hours", height = 720)
+      plotlyOutput("bar_hours", height = 900)
     )
   ),
   bslib::card(
@@ -155,16 +155,22 @@ server <- function(input, output, session) {
 
   hbar <- function(d, x, xlab) {
     d <- d |> dplyr::arrange(.data[[x]])
+    # ~55px of vertical room per show so every podcaster label is legible,
+    # with a tall floor; the card grows to fit.
+    plot_h <- max(720, nrow(d) * 55)
     plot_ly(
       d,
       x = ~ get(x), y = ~ factor(show, levels = show),
       type = "bar", orientation = "h",
+      height = plot_h,
       marker = list(color = accent),
       hovertemplate = paste0("%{y}<br>", xlab, ": %{x}<extra></extra>")
     ) |>
       layout(
         xaxis = list(title = xlab, gridcolor = "#2a2a2a"),
-        yaxis = list(title = ""),
+        yaxis = list(
+          title = "", automargin = TRUE, tickfont = list(size = 13)
+        ),
         paper_bgcolor = "rgba(0,0,0,0)", plot_bgcolor = "rgba(0,0,0,0)",
         font = list(color = "#e8e8e8"), margin = list(l = 10)
       ) |>
