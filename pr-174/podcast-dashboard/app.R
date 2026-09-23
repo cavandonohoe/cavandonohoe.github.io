@@ -41,6 +41,7 @@ theme <- bslib::bs_theme(
 ui <- bslib::page_sidebar(
   title = "Saved Podcast Episodes",
   theme = theme,
+  fillable = FALSE,
   sidebar = bslib::sidebar(
     width = 300,
     bslib::input_switch("only_top", "Group tail shows as \"Other\"", value = FALSE),
