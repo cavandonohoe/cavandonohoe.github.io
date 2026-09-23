@@ -32,6 +32,29 @@ show_levels <- episodes |>
 
 accent <- "#1DB954" # Spotify green, used sparingly
 
+# Insert <br> line breaks so long podcast names wrap across multiple lines on
+# the bar-chart axis instead of being truncated. Greedily packs whole words up
+# to `width` characters per line.
+wrap_label <- function(x, width = 24) {
+  vapply(x, function(s) {
+    if (is.na(s) || !nzchar(s)) return(s)
+    words <- strsplit(s, " ", fixed = TRUE)[[1]]
+    lines <- character(0)
+    cur <- ""
+    for (w in words) {
+      cand <- if (nzchar(cur)) paste(cur, w) else w
+      if (nchar(cand) > width && nzchar(cur)) {
+        lines <- c(lines, cur)
+        cur <- w
+      } else {
+        cur <- cand
+      }
+    }
+    if (nzchar(cur)) lines <- c(lines, cur)
+    paste(lines, collapse = "<br>")
+  }, character(1), USE.NAMES = FALSE)
+}
+
 theme <- bslib::bs_theme(
   version = 5,
   bg = "#121212",
@@ -45,6 +68,18 @@ ui <- bslib::page_sidebar(
   title = "Saved Podcast Episodes",
   theme = theme,
   fillable = FALSE,
+  tags$head(tags$style(HTML(paste(
+    # On touch devices plotly grabs the drag gesture, so a finger swipe that
+    # lands on a chart pans the plot instead of scrolling the page. Handing
+    # the browser the relevant axis via touch-action keeps the page scrollable.
+    ".plot-vscroll .plotly, .plot-vscroll .js-plotly-plot {",
+    "  touch-action: pan-y !important;",
+    "}",
+    ".plot-hscroll .plotly, .plot-hscroll .js-plotly-plot {",
+    "  touch-action: pan-x !important;",
+    "}",
+    sep = "\n"
+  )))),
   sidebar = bslib::sidebar(
     width = 300,
     bslib::input_switch("only_top", "Group tail shows as \"Other\"", value = FALSE),
@@ -101,17 +136,21 @@ ui <- bslib::page_sidebar(
     col_widths = c(6, 6),
     bslib::card(
       bslib::card_header("Episodes per show"),
-      plotlyOutput("bar_count", height = 900)
+      div(class = "plot-vscroll", plotlyOutput("bar_count", height = 900))
     ),
     bslib::card(
       bslib::card_header("Hours per show"),
-      plotlyOutput("bar_hours", height = 900)
+      div(class = "plot-vscroll", plotlyOutput("bar_hours", height = 900))
     )
   ),
   bslib::card(
     bslib::card_header("Episodes saved over time, by show"),
     div(
-      style = "overflow-x: auto; overflow-y: hidden; width: 100%;",
+      class = "plot-hscroll",
+      style = paste(
+        "overflow-x: auto; overflow-y: hidden; width: 100%;",
+        "touch-action: pan-x;"
+      ),
       plotlyOutput("line_time", height = 340, width = "100%")
     ),
     tags$small(
@@ -177,16 +216,26 @@ server <- function(input, output, session) {
 
   hbar <- function(d, x, xlab) {
     d <- d |> dplyr::arrange(.data[[x]])
-    # ~55px of vertical room per show so every podcaster label is legible,
-    # with a tall floor; the card grows to fit.
-    plot_h <- max(720, nrow(d) * 55)
+    # Wrap long podcast names onto multiple lines so they aren't truncated;
+    # keep the raw name for the hover tooltip.
+    d <- d |>
+      dplyr::mutate(show_wrapped = wrap_label(show))
+    wrap_levels <- d$show_wrapped
+    n_lines <- vapply(
+      wrap_levels, function(s) lengths(gregexpr("<br>", s, fixed = TRUE)) + 1L,
+      integer(1)
+    )
+    # ~30px per text line per show (with a per-show floor) so wrapped, multi-line
+    # podcaster labels are fully legible; the card grows to fit.
+    plot_h <- max(720, sum(pmax(2L, n_lines)) * 30)
     plot_ly(
       d,
-      x = ~ get(x), y = ~ factor(show, levels = show),
+      x = ~ get(x), y = ~ factor(show_wrapped, levels = wrap_levels),
       type = "bar", orientation = "h",
       height = plot_h,
       marker = list(color = accent),
-      hovertemplate = paste0("%{y}<br>", xlab, ": %{x}<extra></extra>")
+      customdata = ~show,
+      hovertemplate = paste0("%{customdata}<br>", xlab, ": %{x}<extra></extra>")
     ) |>
       layout(
         xaxis = list(title = xlab, gridcolor = "#2a2a2a"),
@@ -194,9 +243,10 @@ server <- function(input, output, session) {
           title = "", automargin = TRUE, tickfont = list(size = 13)
         ),
         paper_bgcolor = "rgba(0,0,0,0)", plot_bgcolor = "rgba(0,0,0,0)",
-        font = list(color = "#e8e8e8"), margin = list(l = 10)
+        font = list(color = "#e8e8e8"), margin = list(l = 10),
+        dragmode = FALSE
       ) |>
-      config(displayModeBar = FALSE)
+      config(displayModeBar = FALSE, scrollZoom = FALSE)
   }
 
   output$bar_count <- renderPlotly(hbar(per_show(), "n", "Episodes"))
@@ -257,9 +307,10 @@ server <- function(input, output, session) {
         yaxis = list(title = "Episodes saved", gridcolor = "#2a2a2a"),
         paper_bgcolor = "rgba(0,0,0,0)", plot_bgcolor = "rgba(0,0,0,0)",
         font = list(color = "#e8e8e8"),
-        margin = list(b = 70)
+        margin = list(b = 70),
+        dragmode = FALSE
       ) |>
-      config(displayModeBar = FALSE)
+      config(displayModeBar = FALSE, scrollZoom = FALSE)
   })
 
   output$tbl <- DT::renderDT({
