@@ -72,6 +72,16 @@ ui <- bslib::page_sidebar(
       )
     )
   ),
+  bslib::layout_columns(
+    fill = FALSE,
+    bslib::value_box(
+      "Episodes (API call limit)", textOutput("kpi_eps"),
+      theme = "dark"
+    ),
+    bslib::value_box("Shows", textOutput("kpi_shows"), theme = "dark"),
+    bslib::value_box("Total hours", textOutput("kpi_hours"), theme = "dark"),
+    bslib::value_box("Avg length", textOutput("kpi_avg"), theme = "dark")
+  ),
   tags$div(
     class = "alert alert-secondary",
     style = paste(
@@ -86,16 +96,6 @@ ui <- bslib::page_sidebar(
     "auto-added episodes), but the full number isn't available through the ",
     "public API, so everything below covers only these ",
     sprintf("%s.", meta$n_episodes)
-  ),
-  bslib::layout_columns(
-    fill = FALSE,
-    bslib::value_box(
-      "Episodes", textOutput("kpi_eps"),
-      theme = "dark"
-    ),
-    bslib::value_box("Shows", textOutput("kpi_shows"), theme = "dark"),
-    bslib::value_box("Total hours", textOutput("kpi_hours"), theme = "dark"),
-    bslib::value_box("Avg length", textOutput("kpi_avg"), theme = "dark")
   ),
   bslib::layout_columns(
     col_widths = c(6, 6),
