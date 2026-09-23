@@ -67,20 +67,10 @@ ui <- bslib::page_sidebar(
     tags$small(
       style = "color:#9a9a9a;",
       sprintf(
-        "Snapshot: %s \u00b7 %s of ~343 saved episodes (Spotify API cap)",
+        "Snapshot: %s \u00b7 %s episodes (all the API returns)",
         meta$generated_at, meta$n_episodes
       )
     )
-  ),
-  bslib::layout_columns(
-    fill = FALSE,
-    bslib::value_box(
-      "Episodes (API cap)", textOutput("kpi_eps"),
-      theme = "dark"
-    ),
-    bslib::value_box("Shows", textOutput("kpi_shows"), theme = "dark"),
-    bslib::value_box("Total hours", textOutput("kpi_hours"), theme = "dark"),
-    bslib::value_box("Avg length", textOutput("kpi_avg"), theme = "dark")
   ),
   tags$div(
     class = "alert alert-secondary",
@@ -88,12 +78,24 @@ ui <- bslib::page_sidebar(
       "background:#1e1e1e; border:1px solid #2a2a2a; color:#c9c9c9;",
       "font-size:0.85rem;"
     ),
-    tags$strong("Note: "),
-    "Spotify's Web API returns only the ~185 most recently saved podcast ",
-    "episodes (the ", tags$code("saved-episodes"), " endpoint is capped at ",
-    "offset 200 and the saved-status check is blocked for third-party apps). ",
-    "Your Spotify app's \"Your Episodes\" shows more (~343) because it also ",
-    "counts downloads and auto-added episodes the public API doesn't expose."
+    tags$strong(sprintf("Showing %s episodes. ", meta$n_episodes)),
+    "This is every episode Spotify's Web API will return: the ",
+    tags$code("saved-episodes"), " endpoint is capped at offset 200 and the ",
+    "saved-status check is blocked for third-party apps. Your Spotify app's ",
+    "\"Your Episodes\" list is larger (it also counts downloads and ",
+    "auto-added episodes), but the full number isn't available through the ",
+    "public API, so everything below covers only these ",
+    sprintf("%s.", meta$n_episodes)
+  ),
+  bslib::layout_columns(
+    fill = FALSE,
+    bslib::value_box(
+      "Episodes", textOutput("kpi_eps"),
+      theme = "dark"
+    ),
+    bslib::value_box("Shows", textOutput("kpi_shows"), theme = "dark"),
+    bslib::value_box("Total hours", textOutput("kpi_hours"), theme = "dark"),
+    bslib::value_box("Avg length", textOutput("kpi_avg"), theme = "dark")
   ),
   bslib::layout_columns(
     col_widths = c(6, 6),
