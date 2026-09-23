@@ -71,6 +71,10 @@ extend-exclude = [
   "wc-momentum/vendor/**",
   # Preprocessed StatsBomb event data (proper nouns, player names).
   "wc-momentum/data/**",
+  # Spotify saved-episode snapshot: opaque track/episode IDs and
+  # truncated episode descriptions (real-world proper nouns) trip the
+  # checker; it's machine-generated data, not prose.
+  "podcast-dashboard/data/**",
   "scripts/parse_chase_statements.R",
   "scripts/parse_chase_statements.py",
   # Auto-generated from IMDb CSV; contains real-world proper nouns

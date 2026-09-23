@@ -77,3 +77,7 @@ Thumbs.db
 .positai
 .claude
 food-ranker/
+
+# Local shinyapps.io deploy metadata (personal deploy artifact; adding it
+# would make renv treat rsconnect as a project dependency and break CI).
+podcast-dashboard/rsconnect/

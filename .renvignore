@@ -1,0 +1,7 @@
+# renv scans the whole project for library()/:: calls to derive the
+# implicit dependency list (snapshot.type = "implicit"). The self-contained
+# sub-apps below are deployed independently (shinyapps.io / static hosting)
+# and are NOT part of the R Markdown site build, so their dependencies must
+# not leak into the site's renv.lock (doing so makes renv::status() report
+# the library as out of sync and fails CI setup).
+podcast-dashboard/
