@@ -82,7 +82,7 @@ ui <- bslib::page_sidebar(
   )))),
   sidebar = bslib::sidebar(
     width = 300,
-    bslib::input_switch("only_top", "Group tail shows as \"Other\"", value = FALSE),
+    bslib::input_switch("only_top", "Group tail shows as \"Other\"", value = TRUE),
     selectInput(
       "shows", "Shows",
       choices = show_levels, selected = show_levels,
@@ -136,11 +136,11 @@ ui <- bslib::page_sidebar(
     col_widths = c(6, 6),
     bslib::card(
       bslib::card_header("Episodes per show"),
-      div(class = "plot-vscroll", plotlyOutput("bar_count", height = 900))
+      div(class = "plot-vscroll", plotlyOutput("bar_count", height = "auto"))
     ),
     bslib::card(
       bslib::card_header("Hours per show"),
-      div(class = "plot-vscroll", plotlyOutput("bar_hours", height = 900))
+      div(class = "plot-vscroll", plotlyOutput("bar_hours", height = "auto"))
     )
   ),
   bslib::card(
@@ -173,7 +173,9 @@ server <- function(input, output, session) {
         added_at >= input$dates[1], added_at <= input$dates[2]
       )
     if (nzchar(input$q)) {
-      pat <- stringr::regex(input$q, ignore_case = TRUE)
+      # Literal, not regex: a stray "(" or "*" typed in the search box throws a
+      # pattern error that takes out every output depending on filtered().
+      pat <- stringr::fixed(input$q, ignore_case = TRUE)
       df <- df |>
         dplyr::filter(
           stringr::str_detect(name, pat) |
