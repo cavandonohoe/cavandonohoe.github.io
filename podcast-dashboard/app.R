@@ -107,14 +107,14 @@ ui <- bslib::page_sidebar(
     )
   ),
   bslib::card(
-    bslib::card_header("Episodes saved over time"),
+    bslib::card_header("Episodes saved over time, by show"),
     div(
       style = "overflow-x: auto; overflow-y: hidden; width: 100%;",
-      plotlyOutput("line_time", height = 260, width = "100%")
+      plotlyOutput("line_time", height = 340, width = "100%")
     ),
     tags$small(
       style = "color:#9a9a9a;",
-      "Scroll horizontally to see every month."
+      "Each month's bar is split by show. Scroll horizontally to see every month."
     )
   ),
   bslib::card(
@@ -204,37 +204,55 @@ server <- function(input, output, session) {
   })
 
   output$line_time <- renderPlotly({
-    counts <- filtered() |>
-      dplyr::count(added_month, name = "n")
-    # Build a continuous monthly sequence (fill empty months with 0) so the
-    # scrollable trend reads granularly month-by-month with no gaps.
-    if (nrow(counts) == 0) {
+    df <- filtered()
+    # Continuous monthly sequence (fill gaps) so the scrollable trend reads
+    # month-by-month with no missing columns.
+    if (nrow(df) == 0) {
       months <- as.Date(character())
     } else {
-      months <- seq(min(counts$added_month), max(counts$added_month),
-        by = "month"
-      )
+      months <- seq(min(df$added_month), max(df$added_month), by = "month")
     }
-    d <- tibble::tibble(added_month = months) |>
-      dplyr::left_join(counts, by = "added_month") |>
-      dplyr::mutate(n = dplyr::coalesce(n, 0L)) |>
-      dplyr::arrange(added_month)
-    # ~90px per month so each point is readable; the parent div scrolls.
-    plot_width <- max(720, nrow(d) * 90)
-    plot_ly(
-      d,
-      x = ~added_month, y = ~n, type = "scatter", mode = "lines+markers",
-      line = list(color = accent), marker = list(color = accent),
-      fill = "tozeroy", fillcolor = "rgba(29,185,84,0.15)",
-      width = plot_width, height = 260,
-      hovertemplate = "%{x|%b %Y}<br>%{y} saved<extra></extra>"
-    ) |>
+    # Collapse the show dimension the same way the per-show charts do: when the
+    # "Other" toggle is on, keep the top shows and bucket the rest so the
+    # stacked legend stays readable.
+    show_order <- df |>
+      dplyr::count(show, sort = TRUE) |>
+      dplyr::pull(show)
+    if (isTRUE(input$only_top) && length(show_order) > 8) {
+      keep <- show_order[1:8]
+      df <- df |>
+        dplyr::mutate(show_grp = ifelse(show %in% keep, show, "Other"))
+      grp_levels <- c(keep, "Other")
+    } else {
+      df <- df |> dplyr::mutate(show_grp = show)
+      grp_levels <- show_order
+    }
+    counts <- df |>
+      dplyr::count(added_month, show_grp, name = "n")
+    plot_width <- max(720, length(months) * 90)
+    p <- plot_ly(width = plot_width, height = 320)
+    for (g in grp_levels) {
+      gd <- counts |> dplyr::filter(show_grp == g)
+      yvals <- tibble::tibble(added_month = months) |>
+        dplyr::left_join(gd, by = "added_month") |>
+        dplyr::mutate(n = dplyr::coalesce(n, 0L)) |>
+        dplyr::arrange(added_month) |>
+        dplyr::pull(n)
+      p <- p |>
+        add_bars(
+          x = months, y = yvals, name = g,
+          hovertemplate = paste0(g, "<br>%{x|%b %Y}: %{y}<extra></extra>")
+        )
+    }
+    p |>
       layout(
+        barmode = "stack",
+        legend = list(font = list(size = 11)),
         xaxis = list(
           title = "Month saved", gridcolor = "#2a2a2a",
           dtick = "M1", tickformat = "%b %Y", tickangle = -45
         ),
-        yaxis = list(title = "Episodes", gridcolor = "#2a2a2a"),
+        yaxis = list(title = "Episodes saved", gridcolor = "#2a2a2a"),
         paper_bgcolor = "rgba(0,0,0,0)", plot_bgcolor = "rgba(0,0,0,0)",
         font = list(color = "#e8e8e8"),
         margin = list(b = 70)
