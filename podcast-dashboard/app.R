@@ -45,6 +45,18 @@ ui <- bslib::page_sidebar(
   title = "Saved Podcast Episodes",
   theme = theme,
   fillable = FALSE,
+  tags$head(tags$style(HTML(paste(
+    # On touch devices plotly grabs the drag gesture, so a finger swipe that
+    # lands on a chart pans the plot instead of scrolling the page. Handing
+    # the browser the relevant axis via touch-action keeps the page scrollable.
+    ".plot-vscroll .plotly, .plot-vscroll .js-plotly-plot {",
+    "  touch-action: pan-y !important;",
+    "}",
+    ".plot-hscroll .plotly, .plot-hscroll .js-plotly-plot {",
+    "  touch-action: pan-x !important;",
+    "}",
+    sep = "\n"
+  )))),
   sidebar = bslib::sidebar(
     width = 300,
     bslib::input_switch("only_top", "Group tail shows as \"Other\"", value = FALSE),
@@ -101,17 +113,21 @@ ui <- bslib::page_sidebar(
     col_widths = c(6, 6),
     bslib::card(
       bslib::card_header("Episodes per show"),
-      plotlyOutput("bar_count", height = 900)
+      div(class = "plot-vscroll", plotlyOutput("bar_count", height = 900))
     ),
     bslib::card(
       bslib::card_header("Hours per show"),
-      plotlyOutput("bar_hours", height = 900)
+      div(class = "plot-vscroll", plotlyOutput("bar_hours", height = 900))
     )
   ),
   bslib::card(
     bslib::card_header("Episodes saved over time, by show"),
     div(
-      style = "overflow-x: auto; overflow-y: hidden; width: 100%;",
+      class = "plot-hscroll",
+      style = paste(
+        "overflow-x: auto; overflow-y: hidden; width: 100%;",
+        "touch-action: pan-x;"
+      ),
       plotlyOutput("line_time", height = 340, width = "100%")
     ),
     tags$small(
@@ -194,9 +210,10 @@ server <- function(input, output, session) {
           title = "", automargin = TRUE, tickfont = list(size = 13)
         ),
         paper_bgcolor = "rgba(0,0,0,0)", plot_bgcolor = "rgba(0,0,0,0)",
-        font = list(color = "#e8e8e8"), margin = list(l = 10)
+        font = list(color = "#e8e8e8"), margin = list(l = 10),
+        dragmode = FALSE
       ) |>
-      config(displayModeBar = FALSE)
+      config(displayModeBar = FALSE, scrollZoom = FALSE)
   }
 
   output$bar_count <- renderPlotly(hbar(per_show(), "n", "Episodes"))
@@ -257,9 +274,10 @@ server <- function(input, output, session) {
         yaxis = list(title = "Episodes saved", gridcolor = "#2a2a2a"),
         paper_bgcolor = "rgba(0,0,0,0)", plot_bgcolor = "rgba(0,0,0,0)",
         font = list(color = "#e8e8e8"),
-        margin = list(b = 70)
+        margin = list(b = 70),
+        dragmode = FALSE
       ) |>
-      config(displayModeBar = FALSE)
+      config(displayModeBar = FALSE, scrollZoom = FALSE)
   })
 
   output$tbl <- DT::renderDT({
