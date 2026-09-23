@@ -79,11 +79,11 @@ ui <- bslib::page_sidebar(
     col_widths = c(6, 6),
     bslib::card(
       bslib::card_header("Episodes per show"),
-      plotlyOutput("bar_count", height = 520)
+      plotlyOutput("bar_count", height = 720)
     ),
     bslib::card(
       bslib::card_header("Hours per show"),
-      plotlyOutput("bar_hours", height = 520)
+      plotlyOutput("bar_hours", height = 720)
     )
   ),
   bslib::card(
