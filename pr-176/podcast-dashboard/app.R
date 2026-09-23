@@ -32,6 +32,29 @@ show_levels <- episodes |>
 
 accent <- "#1DB954" # Spotify green, used sparingly
 
+# Insert <br> line breaks so long podcast names wrap across multiple lines on
+# the bar-chart axis instead of being truncated. Greedily packs whole words up
+# to `width` characters per line.
+wrap_label <- function(x, width = 24) {
+  vapply(x, function(s) {
+    if (is.na(s) || !nzchar(s)) return(s)
+    words <- strsplit(s, " ", fixed = TRUE)[[1]]
+    lines <- character(0)
+    cur <- ""
+    for (w in words) {
+      cand <- if (nzchar(cur)) paste(cur, w) else w
+      if (nchar(cand) > width && nzchar(cur)) {
+        lines <- c(lines, cur)
+        cur <- w
+      } else {
+        cur <- cand
+      }
+    }
+    if (nzchar(cur)) lines <- c(lines, cur)
+    paste(lines, collapse = "<br>")
+  }, character(1), USE.NAMES = FALSE)
+}
+
 theme <- bslib::bs_theme(
   version = 5,
   bg = "#121212",
@@ -193,16 +216,26 @@ server <- function(input, output, session) {
 
   hbar <- function(d, x, xlab) {
     d <- d |> dplyr::arrange(.data[[x]])
-    # ~55px of vertical room per show so every podcaster label is legible,
-    # with a tall floor; the card grows to fit.
-    plot_h <- max(720, nrow(d) * 55)
+    # Wrap long podcast names onto multiple lines so they aren't truncated;
+    # keep the raw name for the hover tooltip.
+    d <- d |>
+      dplyr::mutate(show_wrapped = wrap_label(show))
+    wrap_levels <- d$show_wrapped
+    n_lines <- vapply(
+      wrap_levels, function(s) lengths(gregexpr("<br>", s, fixed = TRUE)) + 1L,
+      integer(1)
+    )
+    # ~30px per text line per show (with a per-show floor) so wrapped, multi-line
+    # podcaster labels are fully legible; the card grows to fit.
+    plot_h <- max(720, sum(pmax(2L, n_lines)) * 30)
     plot_ly(
       d,
-      x = ~ get(x), y = ~ factor(show, levels = show),
+      x = ~ get(x), y = ~ factor(show_wrapped, levels = wrap_levels),
       type = "bar", orientation = "h",
       height = plot_h,
       marker = list(color = accent),
-      hovertemplate = paste0("%{y}<br>", xlab, ": %{x}<extra></extra>")
+      customdata = ~show,
+      hovertemplate = paste0("%{customdata}<br>", xlab, ": %{x}<extra></extra>")
     ) |>
       layout(
         xaxis = list(title = xlab, gridcolor = "#2a2a2a"),
