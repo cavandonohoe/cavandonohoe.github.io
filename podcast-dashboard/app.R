@@ -11,6 +11,7 @@ library(plotly)
 library(DT)
 library(scales)
 library(stringr)
+library(tibble)
 
 raw <- jsonlite::fromJSON("data/saved_episodes.json", simplifyDataFrame = TRUE)
 meta <- raw$meta
@@ -78,16 +79,23 @@ ui <- bslib::page_sidebar(
     col_widths = c(6, 6),
     bslib::card(
       bslib::card_header("Episodes per show"),
-      plotlyOutput("bar_count", height = 320)
+      plotlyOutput("bar_count", height = 520)
     ),
     bslib::card(
       bslib::card_header("Hours per show"),
-      plotlyOutput("bar_hours", height = 320)
+      plotlyOutput("bar_hours", height = 520)
     )
   ),
   bslib::card(
     bslib::card_header("Episodes saved over time"),
-    plotlyOutput("line_time", height = 240)
+    div(
+      style = "overflow-x: auto; overflow-y: hidden; width: 100%;",
+      plotlyOutput("line_time", height = 260, width = "100%")
+    ),
+    tags$small(
+      style = "color:#9a9a9a;",
+      "Scroll horizontally to see every month."
+    )
   ),
   bslib::card(
     bslib::card_header("Episodes"),
@@ -170,21 +178,40 @@ server <- function(input, output, session) {
   })
 
   output$line_time <- renderPlotly({
-    d <- filtered() |>
-      dplyr::count(added_month, name = "n") |>
+    counts <- filtered() |>
+      dplyr::count(added_month, name = "n")
+    # Build a continuous monthly sequence (fill empty months with 0) so the
+    # scrollable trend reads granularly month-by-month with no gaps.
+    if (nrow(counts) == 0) {
+      months <- as.Date(character())
+    } else {
+      months <- seq(min(counts$added_month), max(counts$added_month),
+        by = "month"
+      )
+    }
+    d <- tibble::tibble(added_month = months) |>
+      dplyr::left_join(counts, by = "added_month") |>
+      dplyr::mutate(n = dplyr::coalesce(n, 0L)) |>
       dplyr::arrange(added_month)
+    # ~90px per month so each point is readable; the parent div scrolls.
+    plot_width <- max(720, nrow(d) * 90)
     plot_ly(
       d,
       x = ~added_month, y = ~n, type = "scatter", mode = "lines+markers",
       line = list(color = accent), marker = list(color = accent),
       fill = "tozeroy", fillcolor = "rgba(29,185,84,0.15)",
+      width = plot_width, height = 260,
       hovertemplate = "%{x|%b %Y}<br>%{y} saved<extra></extra>"
     ) |>
       layout(
-        xaxis = list(title = "Month saved", gridcolor = "#2a2a2a"),
+        xaxis = list(
+          title = "Month saved", gridcolor = "#2a2a2a",
+          dtick = "M1", tickformat = "%b %Y", tickangle = -45
+        ),
         yaxis = list(title = "Episodes", gridcolor = "#2a2a2a"),
         paper_bgcolor = "rgba(0,0,0,0)", plot_bgcolor = "rgba(0,0,0,0)",
-        font = list(color = "#e8e8e8")
+        font = list(color = "#e8e8e8"),
+        margin = list(b = 70)
       ) |>
       config(displayModeBar = FALSE)
   })
