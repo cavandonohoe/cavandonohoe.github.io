@@ -132,10 +132,11 @@ cap <- 200L
 truncation_active <- offset >= cap && last_page_had_next && last_page_size > 0
 truncation_possible <- length(episodes) >= (cap - limit)
 
-# 2. Calendar-gap detector. Months between the first and last save with zero
-#    saved episodes are windows you likely listened via followed-show
-#    auto-adds rather than hearting, i.e. present in "Your Episodes" but
-#    invisible to this endpoint.
+# 2. Save-cadence gap detector. Months between the first and last save with
+#    zero new saves. This reflects *saving* behaviour (when episodes were
+#    hearted), not listening: a quiet stretch may just mean you were working
+#    through an earlier batch. Reported for context, not as evidence of a
+#    data gap.
 zero_save_months <- character(0)
 if (length(saved_dates) > 1) {
   months_present <- unique(substr(saved_dates, 1, 7))
