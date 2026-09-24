@@ -73,9 +73,10 @@ missingness_note <- function(meta) {
 
   gap_msg <- if (!is.null(zsm) && !is.null(zsm$count) && zsm$count > 0) {
     paste0(
-      zsm$count, " month(s) between your first and last save have zero saved ",
-      "episodes, likely listened via followed-show auto-adds rather than ",
-      "hearted, so they are absent here."
+      zsm$count, " month(s) between your first and last save have zero new ",
+      "saves. This tracks when episodes were hearted, not when they were ",
+      "played, so a quiet stretch can just mean you were working through an ",
+      "earlier batch rather than saving anything new."
     )
   } else {
     NULL
