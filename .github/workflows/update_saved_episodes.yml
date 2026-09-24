@@ -1,0 +1,168 @@
+name: Update saved podcast episodes
+
+# Refreshes podcast-dashboard/data/saved_episodes.json from the Spotify Web
+# API (current_user_saved_episodes) and redeploys the shinyapps.io app so the
+# live dashboard picks up the new data. The Shiny app bundles the JSON at
+# deploy time, so a repo commit alone would not update the live app; the
+# redeploy step is what actually refreshes it.
+#
+# Auth: a stored Spotify refresh token is exchanged for a fresh access token
+# each run (scripts/update_saved_episodes.R). Mint the refresh token once with
+# scripts/get_spotify_refresh_token.R.
+#
+# Saves are low-frequency, so a daily cadence is plenty.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 8 * * *" # daily at 08:23 UTC
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-saved-episodes
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+      SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+      SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
+      SHINYAPPS_NAME: ${{ secrets.SHINYAPPS_NAME }}
+      SHINYAPPS_TOKEN: ${{ secrets.SHINYAPPS_TOKEN }}
+      SHINYAPPS_SECRET: ${{ secrets.SHINYAPPS_SECRET }}
+      # The repo .Rprofile sources renv/activate.R, which switches .libPaths()
+      # to an empty renv project library and breaks library() here. This job
+      # manages its own packages via the setup action, so disable the renv
+      # autoloader for every Rscript call (see update_movie_ranker_personal).
+      RENV_CONFIG_AUTOLOADER_ENABLED: "FALSE"
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Verify secrets present
+        run: |
+          set -euo pipefail
+          missing=""
+          [ -z "${SPOTIFY_CLIENT_ID:-}" ] && missing="$missing SPOTIFY_CLIENT_ID"
+          [ -z "${SPOTIFY_CLIENT_SECRET:-}" ] && missing="$missing SPOTIFY_CLIENT_SECRET"
+          [ -z "${SPOTIFY_REFRESH_TOKEN:-}" ] && missing="$missing SPOTIFY_REFRESH_TOKEN"
+          [ -z "${SHINYAPPS_NAME:-}" ] && missing="$missing SHINYAPPS_NAME"
+          [ -z "${SHINYAPPS_TOKEN:-}" ] && missing="$missing SHINYAPPS_TOKEN"
+          [ -z "${SHINYAPPS_SECRET:-}" ] && missing="$missing SHINYAPPS_SECRET"
+          if [ -n "$missing" ]; then
+            echo "::error::Missing required secrets:$missing"
+            exit 1
+          fi
+
+      - uses: ./.github/actions/setup-r-env
+        with:
+          restore: "false"
+
+      - name: Install script packages
+        run: >-
+          Rscript -e 'install.packages(c("httr2", "jsonlite", "rsconnect"),
+          repos = "https://packagemanager.posit.co/cran/latest")'
+
+      - name: Refresh saved-episodes JSON
+        run: Rscript scripts/update_saved_episodes.R
+
+      - name: Verify only the saved-episodes JSON changed
+        run: |
+          set -euo pipefail
+          unexpected="$(git diff --name-only HEAD \
+            | grep -Ev '^podcast-dashboard/data/saved_episodes\.json$' || true)"
+          if [ -n "$unexpected" ]; then
+            echo "ERROR: script modified files outside the saved-episodes JSON:"
+            echo "$unexpected"
+            exit 1
+          fi
+          echo "OK: only the saved-episodes JSON changed (or no change)."
+
+      # Refuse to commit data that came back empty or collapsed, which is what
+      # a silent upstream change (rate limit, revoked token, API tweak) looks
+      # like from here. Compares the new episode count against the committed
+      # copy and fails on a >30% drop or an unreadable/empty file.
+      - name: Sanity-check refreshed data
+        run: |
+          set -euo pipefail
+          Rscript -e '
+            path <- "podcast-dashboard/data/saved_episodes.json"
+            new <- jsonlite::fromJSON(path, simplifyDataFrame = FALSE)
+            n_new <- length(new$episodes)
+            if (n_new < 1) stop("refreshed JSON has 0 episodes")
+            old_raw <- suppressWarnings(system2("git",
+              c("show", sprintf("HEAD:%s", path)), stdout = TRUE, stderr = FALSE))
+            if (is.null(attr(old_raw, "status")) && length(old_raw)) {
+              old <- jsonlite::fromJSON(paste(old_raw, collapse = "\n"),
+                simplifyDataFrame = FALSE)
+              n_old <- length(old$episodes)
+              if (n_old > 0 && n_new < n_old * 0.7) {
+                stop(sprintf("episode count fell from %d to %d (>30%% drop)",
+                  n_old, n_new))
+              }
+              cat(sprintf("sanity ok: %d -> %d episodes\n", n_old, n_new))
+            } else {
+              cat(sprintf("sanity ok: %d episodes (no prior copy)\n", n_new))
+            }
+          '
+
+      - name: Commit and push if changed
+        id: push
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add podcast-dashboard/data/saved_episodes.json
+
+          if git diff --cached --quiet; then
+            echo "No changes."
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          staged_other="$(git diff --cached --name-only \
+            | grep -Ev '^podcast-dashboard/data/saved_episodes\.json$' || true)"
+          if [ -n "$staged_other" ]; then
+            echo "ERROR: refusing to commit unexpected staged files:"
+            echo "$staged_other"
+            exit 1
+          fi
+
+          git commit -m "Auto-update saved podcast episodes"
+
+          for i in 1 2 3; do
+            if git push; then
+              echo "pushed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "Push failed; rebasing on remote and retrying ($i/3)..."
+            git pull --rebase origin "$(git rev-parse --abbrev-ref HEAD)"
+          done
+          echo "ERROR: failed to push after 3 attempts."
+          exit 1
+
+      # Redeploy so the live shinyapps.io app picks up the new JSON (it bundles
+      # the data at deploy time). Runs only when the data actually changed.
+      - name: Redeploy shinyapps.io app
+        if: steps.push.outputs.pushed == 'true'
+        run: |
+          Rscript -e '
+            rsconnect::setAccountInfo(
+              name = Sys.getenv("SHINYAPPS_NAME"),
+              token = Sys.getenv("SHINYAPPS_TOKEN"),
+              secret = Sys.getenv("SHINYAPPS_SECRET")
+            )
+            rsconnect::deployApp(
+              appDir = "podcast-dashboard",
+              appName = "podcast-dashboard",
+              account = Sys.getenv("SHINYAPPS_NAME"),
+              server = "shinyapps.io",
+              forceUpdate = TRUE
+            )
+          '
