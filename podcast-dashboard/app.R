@@ -1,9 +1,12 @@
 # Saved Podcast Episodes — Shiny dashboard
 # Data: static snapshot in data/saved_episodes.json, pulled from the Spotify
-# Web API (current_user_saved_episodes). NOTE: that endpoint only serves the
-# ~185 most recently saved episodes (capped at offset 200; the saved-status
-# check is 403 for third-party apps), so this is a subset of the full
-# "Your Episodes" list. Deployed to shinyapps.io.
+# Web API (current_user_saved_episodes). NOTE: that endpoint serves only
+# explicitly-saved (hearted) episodes and is capped at offset 200. Auto-added
+# and followed-show episodes shown under "Your Episodes" in the app are not
+# exposed by the public API. The refresh script writes a meta$missingness
+# block that bounds this gap (offset-cap headroom, zero-save month gaps, and
+# saved-share of episodes across followed shows); the banner renders it.
+# Deployed to shinyapps.io.
 
 library(shiny)
 library(bslib)
@@ -18,6 +21,76 @@ library(tibble)
 
 raw <- jsonlite::fromJSON("data/saved_episodes.json", simplifyDataFrame = TRUE)
 meta <- raw$meta
+
+# Build the "what's missing" banner from meta$missingness when the refresh
+# script has populated it; otherwise fall back to a static caveat. The
+# saved-episodes endpoint only returns hearted episodes (capped at 200), so
+# "Your Episodes" in the app is larger; these figures bound that gap.
+missingness_note <- function(meta) {
+  m <- meta$missingness
+  if (is.null(m)) {
+    return(tagList(
+      tags$strong(sprintf("Showing %s episodes. ", meta$n_episodes)),
+      "This is every episode the Spotify Web API's ", tags$code("saved-episodes"),
+      " endpoint returns (explicitly-saved episodes only, capped at 200). Your ",
+      "app's \"Your Episodes\" list is larger because it also counts ",
+      "auto-added and followed-show episodes the public API does not expose."
+    ))
+  }
+
+  fs <- m$followed_shows
+  oc <- m$offset_cap
+  zsm <- m$zero_save_months
+
+  cap_msg <- if (isTRUE(oc$truncation_active)) {
+    paste0(
+      "Saved-episode paging hit the ", oc$cap, "-episode API cap, so the ",
+      "oldest saves are truncated."
+    )
+  } else if (isTRUE(oc$truncation_possible)) {
+    paste0(
+      "Approaching the ", oc$cap, "-episode API cap (", oc$n_returned,
+      " saved); older saves will start truncating soon."
+    )
+  } else {
+    paste0(
+      "Well under the ", oc$cap, "-episode API cap (", oc$n_returned,
+      " saved), so no saves are being truncated."
+    )
+  }
+
+  share_msg <- if (!is.null(fs) && !is.null(fs$n_followed) && fs$n_followed > 0 &&
+    !is.null(fs$saved_share_of_available) &&
+    !is.na(fs$saved_share_of_available)) {
+    paste0(
+      "Across your ", fs$n_followed, " followed shows there are about ",
+      fs$total_episodes_available, " episodes available; your saved set covers ",
+      sprintf("%.1f%%", 100 * fs$saved_share_of_available), " of them."
+    )
+  } else {
+    NULL
+  }
+
+  gap_msg <- if (!is.null(zsm) && !is.null(zsm$count) && zsm$count > 0) {
+    paste0(
+      zsm$count, " month(s) between your first and last save have zero new ",
+      "saves. This tracks when episodes were hearted, not when they were ",
+      "played, so a quiet stretch can just mean you were working through an ",
+      "earlier batch rather than saving anything new."
+    )
+  } else {
+    NULL
+  }
+
+  tagList(
+    tags$strong(sprintf("Showing %s saved episodes. ", meta$n_episodes)),
+    "Only explicitly-saved episodes are exposed by the public API. ",
+    cap_msg,
+    if (!is.null(share_msg)) tagList(" ", share_msg),
+    if (!is.null(gap_msg)) tagList(" ", gap_msg)
+  )
+}
+
 episodes <- raw$episodes |>
   dplyr::mutate(
     added_at = as.Date(added_at),
@@ -123,14 +196,7 @@ ui <- bslib::page_sidebar(
       "background:#1e1e1e; border:1px solid #2a2a2a; color:#c9c9c9;",
       "font-size:0.85rem;"
     ),
-    tags$strong(sprintf("Showing %s episodes. ", meta$n_episodes)),
-    "This is every episode Spotify's Web API will return: the ",
-    tags$code("saved-episodes"), " endpoint is capped at offset 200 and the ",
-    "saved-status check is blocked for third-party apps. Your Spotify app's ",
-    "\"Your Episodes\" list is larger (it also counts downloads and ",
-    "auto-added episodes), but the full number isn't available through the ",
-    "public API, so everything below covers only these ",
-    sprintf("%s.", meta$n_episodes)
+    missingness_note(meta)
   ),
   bslib::layout_columns(
     col_widths = c(6, 6),
