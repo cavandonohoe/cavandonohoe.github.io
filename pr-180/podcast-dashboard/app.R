@@ -28,12 +28,17 @@ episodes <- raw$episodes |>
 
 history <- jsonlite::fromJSON("data/listening_history.json")
 history_meta <- history$meta
+# `events` is numeric (double) here to match how jsonlite deserializes the
+# populated history file, so the empty-history placeholder and the real data
+# agree on column types before the left_join below.
 history_rows <- tibble::tibble(
-  id = character(), events = integer(), listened_min = double(),
+  id = character(), events = double(), listened_min = double(),
   first_played = character(), last_played = character(),
   start_reasons = character(), end_reasons = character()
 )
-if (length(history$episodes) > 0) history_rows <- history$episodes
+if (length(history$episodes) > 0) {
+  history_rows <- history$episodes
+}
 episodes <- episodes |>
   dplyr::left_join(history_rows, by = "id") |>
   dplyr::mutate(
