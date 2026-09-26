@@ -26,6 +26,20 @@ episodes <- raw$episodes |>
     dur_hr = dur_min / 60
   )
 
+history <- jsonlite::fromJSON("data/listening_history.json")
+history_meta <- history$meta
+history_rows <- tibble::tibble(
+  id = character(), events = integer(), listened_min = double(),
+  first_played = character(), last_played = character(),
+  start_reasons = character(), end_reasons = character()
+)
+if (length(history$episodes) > 0) history_rows <- history$episodes
+episodes <- episodes |>
+  dplyr::left_join(history_rows, by = "id") |>
+  dplyr::mutate(
+    history_status = ifelse(is.na(events), "No matching history", "Recorded playback")
+  )
+
 show_levels <- episodes |>
   dplyr::count(show, sort = TRUE) |>
   dplyr::pull(show)
@@ -98,6 +112,10 @@ ui <- bslib::page_sidebar(
       start = min(episodes$added_at), end = max(episodes$added_at)
     ),
     textInput("q", "Search title / description", placeholder = "e.g. aliens"),
+    selectInput(
+      "history_status", "Listening history",
+      choices = c("All", "Recorded playback", "No matching history")
+    ),
     hr(),
     tags$small(
       style = "color:#9a9a9a;",
@@ -114,8 +132,22 @@ ui <- bslib::page_sidebar(
       theme = "dark"
     ),
     bslib::value_box("Shows", textOutput("kpi_shows"), theme = "dark"),
-    bslib::value_box("Total hours", textOutput("kpi_hours"), theme = "dark"),
+    bslib::value_box("Saved duration (hours)", textOutput("kpi_hours"), theme = "dark"),
     bslib::value_box("Avg length", textOutput("kpi_avg"), theme = "dark")
+  ),
+  bslib::layout_columns(
+    fill = FALSE,
+    bslib::value_box("With recorded playback", textOutput("kpi_recorded"), theme = "dark"),
+    bslib::value_box("Recorded listening hours", textOutput("kpi_listened"), theme = "dark"),
+    bslib::value_box("Listening events", textOutput("kpi_events"), theme = "dark")
+  ),
+  tags$p(
+    style = "color:#9a9a9a;",
+    sprintf("Listening export: %s through %s (UTC dates). ",
+            history_meta$coverage_start, history_meta$coverage_end),
+    "History is matched to saved episodes by Spotify ID and may predate saving. ",
+    "No matching history does not mean unplayed. Events can include partial or ",
+    "repeat plays; listening time does not establish completion."
   ),
   tags$div(
     class = "alert alert-secondary",
@@ -139,7 +171,7 @@ ui <- bslib::page_sidebar(
       div(class = "plot-vscroll", plotlyOutput("bar_count", height = "auto"))
     ),
     bslib::card(
-      bslib::card_header("Hours per show"),
+      bslib::card_header("Saved episode duration per show"),
       div(class = "plot-vscroll", plotlyOutput("bar_hours", height = "auto"))
     )
   ),
@@ -172,6 +204,9 @@ server <- function(input, output, session) {
         dur_min >= input$dur[1], dur_min <= input$dur[2],
         added_at >= input$dates[1], added_at <= input$dates[2]
       )
+    if (!is.null(input$history_status) && input$history_status != "All") {
+      df <- df |> dplyr::filter(history_status == input$history_status)
+    }
     if (nzchar(input$q)) {
       # Literal, not regex: a stray "(" or "*" typed in the search box throws a
       # pattern error that takes out every output depending on filtered().
@@ -208,6 +243,15 @@ server <- function(input, output, session) {
     d
   })
 
+  output$kpi_recorded <- renderText(sum(!is.na(filtered()$events)))
+  output$kpi_listened <- renderText({
+    if (all(is.na(filtered()$events))) return("\u2014")
+    sprintf("%.1f", sum(filtered()$listened_min, na.rm = TRUE) / 60)
+  })
+  output$kpi_events <- renderText({
+    if (all(is.na(filtered()$events))) return("\u2014")
+    scales::comma(sum(filtered()$events, na.rm = TRUE))
+  })
   output$kpi_eps <- renderText(scales::comma(nrow(filtered())))
   output$kpi_shows <- renderText(dplyr::n_distinct(filtered()$show))
   output$kpi_hours <- renderText(sprintf("%.1f", sum(filtered()$dur_hr)))
@@ -319,7 +363,11 @@ server <- function(input, output, session) {
     d <- filtered() |>
       dplyr::transmute(
         Added = added_at, Show = show, Episode = name,
-        Min = dur_min, Link = url
+        `Length (min)` = dur_min, History = history_status,
+        `Listened (min)` = round(listened_min, 1), Events = events,
+        `First played (UTC)` = first_played, `Last played (UTC)` = last_played,
+        `Start reasons (counts)` = start_reasons,
+        `End reasons (counts)` = end_reasons, Link = url
       ) |>
       dplyr::arrange(dplyr::desc(Added))
     d$Link <- ifelse(
@@ -328,8 +376,8 @@ server <- function(input, output, session) {
     )
     DT::datatable(
       d,
-      escape = FALSE, rownames = FALSE,
-      options = list(pageLength = 15, order = list(list(0, "desc"))),
+      escape = which(names(d) != "Link"), rownames = FALSE,
+      options = list(pageLength = 15, scrollX = TRUE, order = list(list(0, "desc"))),
       class = "compact stripe hover"
     )
   })
