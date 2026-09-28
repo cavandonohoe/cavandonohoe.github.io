@@ -340,20 +340,34 @@ server <- function(input, output, session) {
       grp_levels <- show_order
     }
     counts <- df |>
-      dplyr::count(added_month, show_grp, name = "n")
+      dplyr::group_by(added_month, show_grp) |>
+      dplyr::summarise(
+        n = dplyr::n(),
+        saved_dates = paste(
+          sprintf("%d/%d", month(sort(unique(added_at))), day(sort(unique(added_at)))),
+          collapse = ", "
+        ),
+        .groups = "drop"
+      )
     plot_width <- max(720, length(months) * 90)
     p <- plot_ly(width = plot_width, height = 320)
     for (g in grp_levels) {
       gd <- counts |> dplyr::filter(show_grp == g)
-      yvals <- tibble::tibble(added_month = months) |>
+      month_data <- tibble::tibble(added_month = months) |>
         dplyr::left_join(gd, by = "added_month") |>
-        dplyr::mutate(n = dplyr::coalesce(n, 0L)) |>
-        dplyr::arrange(added_month) |>
-        dplyr::pull(n)
+        dplyr::mutate(
+          n = dplyr::coalesce(n, 0L),
+          saved_dates = dplyr::coalesce(saved_dates, "None")
+        ) |>
+        dplyr::arrange(added_month)
       p <- p |>
         add_bars(
-          x = months, y = yvals, name = g,
-          hovertemplate = paste0(g, "<br>%{x|%b %Y}: %{y}<extra></extra>")
+          x = months, y = month_data$n, name = g,
+          customdata = month_data$saved_dates,
+          hovertemplate = paste0(
+            g, "<br>%{x|%b %Y}: %{y}",
+            "<br>Saved dates: %{customdata}<extra></extra>"
+          )
         )
     }
     p |>
