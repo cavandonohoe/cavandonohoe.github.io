@@ -146,7 +146,7 @@ top_shows <- plays |>
   dplyr::arrange(dplyr::desc(minutes))
 
 meta <- list(
-  generated_at = format(Sys.Date()),
+  imported_at = format(Sys.time(), "%Y-%m-%dT%H:%M:%SZ", tz = "UTC"),
   source = "Spotify Extended Streaming History (GDPR export)",
   files_ingested = length(files),
   n_streams = nrow(plays),
