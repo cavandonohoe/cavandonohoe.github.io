@@ -58,9 +58,9 @@ ui <- page_sidebar(
     tags$small(
       style = "color:#9a9a9a;",
       sprintf(
-        "Export generated %s \u00b7 %s streams \u00b7 %s to %s",
-        meta$generated_at, fmt_int(meta$n_streams),
-        meta$first_stream, meta$last_stream
+        "Last imported %s · Data through %s · %s streams · Coverage starts %s",
+        meta$imported_at, meta$last_stream, fmt_int(meta$n_streams),
+        meta$first_stream
       )
     )
   ),
