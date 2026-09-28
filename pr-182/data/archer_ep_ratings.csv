@@ -1,0 +1,144 @@
+season,episode,title,rating,votes,episode_year
+1,1,Mole Hunt,7.7,3245,2009
+1,2,Training Day,7.5,2678,2010
+1,3,Diversity Hire,8.1,2622,2010
+1,4,Killing Utne,7.5,2388,2010
+1,5,Honeypot,7.9,2433,2010
+1,6,Skorpio,8.1,2307,2010
+1,7,Skytanic,8.6,2608,2010
+1,8,The Rock,7.6,2112,2010
+1,9,Job Offer,8,2142,2010
+1,10,Dial M for Mother,7.9,2155,2010
+2,1,Swiss Miss,8.5,2278,2011
+2,2,A Going Concern,7.7,2011,2011
+2,3,Blood Test,7.8,2030,2011
+2,4,Pipeline Fever,8.2,2125,2011
+2,5,The Double Deuce,8,2029,2011
+2,6,Tragical History,7.7,1955,2011
+2,7,Movie Star,7.7,1964,2011
+2,8,Stage Two,8.5,2125,2011
+2,9,Placebo Effect,8.9,2680,2011
+2,10,El Secuestro,8.6,2090,2011
+2,11,Jeu Monegasque,8,1941,2011
+2,12,White Nights,8.1,1912,2011
+2,13,Double Trouble,8.3,1915,2011
+3,1,Heart of Archness: Part I,8.5,2068,2011
+3,2,Heart of Archness: Part II,8.1,1915,2011
+3,3,Heart of Archness: Part III,8.1,1892,2011
+3,4,The Man from Jupiter,8.4,2007,2012
+3,5,El Contador,8,1870,2012
+3,6,The Limited,8.4,2016,2012
+3,7,Drift Problem,7.7,1810,2012
+3,8,Lo Scandalo,8.6,2103,2012
+3,9,Bloody Ferlin,7.9,1864,2012
+3,10,Crossing Over,8,1776,2012
+3,11,Skin Game,7.7,1738,2012
+3,12,Space Race: Part I,8.3,1828,2012
+3,13,Space Race: Part II,8.3,1826,2012
+4,1,Fugue and Riffs,8.3,1988,2013
+4,2,The Wind Cries Mary,8.2,1864,2013
+4,3,Legs,8,1773,2013
+4,4,Midnight Ron,7.6,1699,2013
+4,5,Viscous Coupling,7.5,1646,2013
+4,6,Once Bitten,7.5,1698,2013
+4,7,Live and Let Dine,7.8,1757,2013
+4,8,Coyote Lovely,7.6,1681,2013
+4,9,The Honeymooners,8,1684,2013
+4,10,Un Chien Tangerine,7.8,1632,2013
+4,11,The Papal Chase,7.8,1653,2013
+4,12,Sea Tunt: Part 1,7.7,1626,2013
+4,13,Sea Tunt: Part 2,8,1648,2013
+5,1,Archer Vice: White Elephant,8.5,1915,2014
+5,2,Archer Vice: A Kiss While Dying,7.7,1608,2014
+5,3,Archer Vice: A Debt of Honor,7.7,1577,2014
+5,4,Archer Vice: House Call,8.1,1592,2014
+5,5,Archer Vice: Southbound and Down,7.7,1588,2014
+5,6,Archer Vice: Baby Shower,7.7,1546,2014
+5,7,Archer Vice: Smugglers' Blues,7.7,1491,2014
+5,8,Archer Vice: The Rules of Extraction,8.2,1552,2014
+5,9,Archer Vice: On the Carpet,8,1484,2014
+5,10,Archer Vice: Palace Intrigue - Part I,8,1482,2014
+5,11,Archer Vice: Palace Intrigue: Part II,7.9,1469,2014
+5,12,Archer Vice: Filibuster,8,1469,2014
+5,13,Archer Vice: Arrival/Departure,8.6,1664,2014
+6,1,The Holdout,8.1,1586,2015
+6,2,Three to Tango,7.9,1493,2015
+6,3,The Archer Sanction,8.2,1547,2015
+6,4,Edie's Wedding,8,1514,2015
+6,5,Vision Quest,8.7,1770,2015
+6,6,Sitting,7.9,1464,2015
+6,7,Nellis,7.6,1424,2015
+6,8,The Kanes,8.8,1834,2015
+6,9,Pocket Listing,8.5,1534,2015
+6,10,Reignition Sequence,8.1,1403,2015
+6,11,Achub y Morfilod,7.9,1425,2015
+6,12,Drastic Voyage: Part 1,7.9,1408,2015
+6,13,Drastic Voyage: Part 2,8.4,1445,2015
+7,1,The Figgis Agency,7.9,1536,2016
+7,2,The Handoff,8,1403,2016
+7,3,Deadly Prep,8.4,1434,2016
+7,4,Motherless Child,8,1370,2016
+7,5,Bel Panto: Part I,8.1,1372,2016
+7,6,Bel Panto: Part II,8.3,1405,2016
+7,7,Double Indecency,8.4,1435,2016
+7,8,Liquid Lunch,7.6,1273,2016
+7,9,Deadly Velvet: Part 1,8.1,1322,2016
+7,10,Deadly Velvet: Part 2,8.8,1628,2016
+8,1,Archer Dreamland: No Good Deed,7.7,1459,2017
+8,2,Archer Dreamland: Berenice,7.6,1267,2017
+8,3,Archer Dreamland: Jane Doe,7.5,1217,2017
+8,4,Archer Dreamland: Ladyfingers,7.5,1200,2017
+8,5,Archer Dreamland: Sleepers Wake,7.2,1158,2017
+8,6,Archer Dreamland: Waxing Gibbous,7.7,1195,2017
+8,7,"Archer Dreamland: Gramercy, Halberd!",7.9,1214,2017
+8,8,Archer Dreamland: Auflösung,7.5,1252,2017
+9,1,Danger Island: Strange Pilot,7.2,1340,2018
+9,2,Danger Island: Disheartening Situation,7.2,1174,2018
+9,3,Danger Island: Different Modes of Preparing the Fruit,7,1111,2018
+9,4,Danger Island: A Warrior in Costume,7.2,1091,2018
+9,5,Danger Island: Strange Doings in the Taboo Groves,7.3,1069,2018
+9,6,Danger Island: Some Remarks on Cannibalism,7.3,1061,2018
+9,7,Danger Island: Comparative Wickedness of Civilized and Unenlightened Peoples,7.8,1115,2018
+9,8,Danger Island: A Discovery,7.7,1130,2018
+10,1,Archer: 1999 -- Bort the Garj,7.1,1276,2019
+10,2,Archer: 1999 -- Happy Borthday,7.3,1136,2019
+10,3,Archer: 1999 -- The Leftovers,7.4,1081,2019
+10,4,Archer: 1999 -- Dining with the Zarglorp,7.2,1038,2019
+10,5,Archer: 1999 -- Mr. Deadly Goes to Town,7.9,1181,2019
+10,6,Archer: 1999 -- Road Trip,7.3,1010,2019
+10,7,Archer: 1999 -- Space Pirates,7.6,1022,2019
+10,8,Archer: 1999 -- Cubert,8,1057,2019
+10,9,Archer: 1999 -- Robert De Niro,8.5,1269,2019
+11,1,The Orpheus Gambit,8,1322,2020
+11,2,Bloodsploosh,7.8,1199,2020
+11,3,Helping Hands,7.9,1135,2020
+11,4,Robot Factory,8.5,1216,2020
+11,5,Best Friends,8.5,1168,2020
+11,6,The Double Date,8,1092,2020
+11,7,Caught Napping,8.3,1112,2020
+11,8,Cold Fusion,7.8,1085,2020
+12,1,Identity Crisis,7.5,1053,2021
+12,2,Lowjacked,7.9,1007,2021
+12,3,London Time,7.5,955,2021
+12,4,Photo Op,7.4,936,2021
+12,5,Shots,7.9,941,2021
+12,6,"Dingo, Baby, et Cetera",8.5,1046,2021
+12,7,Colt Express,7.8,896,2021
+12,8,Mission: Difficult,9,1648,2021
+13,1,The Big Con,7.5,813,2022
+13,2,Operation: Fang,7.3,715,2022
+13,3,Saturday,7.7,752,2022
+13,4,The Laws of Attraction,7.3,676,2022
+13,5,Out of Network,7.5,664,2022
+13,6,Bank Run at Mr. Bank's Bank,7.5,642,2022
+13,7,Distraction Action,7.6,656,2022
+13,8,"Dough, Ray, and Me",7.8,666,2022
+14,1,The Anglerfish Stratagem,7.3,691,2023
+14,2,30 for 30,7.4,662,2023
+14,3,Plaque Removal,6.8,666,2023
+14,4,Chill Barry,7.5,594,2023
+14,5,Keys Open Doors,7.5,584,2023
+14,6,Face Off,7.7,583,2023
+14,7,Mission Out of Control Room,7.5,551,2023
+14,8,Breaking Fabian,7.5,561,2023
+14,9,Into the Cold,8.4,826,2023
