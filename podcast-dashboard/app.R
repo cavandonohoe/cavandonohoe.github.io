@@ -244,7 +244,9 @@ server <- function(input, output, session) {
         dplyr::slice(9:dplyr::n()) |>
         dplyr::summarise(
           show = "Other",
-          n = sum(n), hours = if (all(is.na(hours))) NA_real_ else sum(hours, na.rm = TRUE), avg_min = round(mean(avg_min))
+          n = sum(n),
+          hours = if (all(is.na(hours))) NA_real_ else sum(hours, na.rm = TRUE),
+          avg_min = round(mean(avg_min, na.rm = TRUE))
         )
       d <- dplyr::bind_rows(top, other)
     }
