@@ -7,9 +7,27 @@ time.
 
 ## Data
 
-`data/saved_episodes.json` is a static snapshot pulled from the Spotify Web
-API (`current_user_saved_episodes`). No live credentials are used at
-runtime, so the app is fully self-contained.
+`data/saved_episodes.json` uses the Account Data export's `YourLibrary.json`
+for saved membership, titles, shows, and Spotify IDs. Known dates, descriptions,
+and durations are retained from the previous API snapshot. The current export
+contains 322 episodes (144 overlap the previous snapshot; 178 are additional).
+The 42 previous-only IDs are not treated as currently saved.
+
+Unknown lengths and saved dates remain null and are included in filters by
+default. Disable "Include unknown lengths / saved dates" for complete metadata
+only. Duration statistics use known values; the saved-date chart excludes unknown
+dates. Listening history matches 103 current-library episodes.
+
+To refresh from an Account Data ZIP, then rebuild listening aggregates:
+
+```sh
+python3 podcast-dashboard/tools/import_library.py "/path/to/my_spotify_data.zip"
+python3 podcast-dashboard/tools/import_history.py "/path/to/Spotify Extended Streaming History"
+```
+
+The import date is not a saved date or an assertion about export generation time.
+Only episode fields are imported; unrelated account data stays out of the repo.
+No live credentials are used at runtime.
 
 ## Run locally
 
