@@ -13,6 +13,7 @@
 tv_shows_manifest <- function() {
   manifest <- tibble::tribble(
     ~title, ~slug, ~fig_width, ~fig_height, ~png_width, ~png_height,
+    "Alice in Borderland", "alice_in_borderland", NA, NA, NA, NA,
     "Always Sunny in Philadelphia", "always_sunny", NA, NA, NA, NA,
     "Andor", "andor", NA, NA, NA, NA,
     "Archer", "archer", NA, NA, NA, NA,
