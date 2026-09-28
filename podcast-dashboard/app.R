@@ -141,12 +141,6 @@ ui <- bslib::page_sidebar(
     bslib::value_box("Known duration (hours)", textOutput("kpi_hours"), theme = "dark"),
     bslib::value_box("Avg known length", textOutput("kpi_avg"), theme = "dark")
   ),
-  bslib::layout_columns(
-    fill = FALSE,
-    bslib::value_box("With recorded playback", textOutput("kpi_recorded"), theme = "dark"),
-    bslib::value_box("Recorded listening hours", textOutput("kpi_listened"), theme = "dark"),
-    bslib::value_box("Listening events", textOutput("kpi_events"), theme = "dark")
-  ),
   tags$p(
     style = "color:#9a9a9a;",
     sprintf("Listening export: %s through %s (UTC dates). ",
@@ -253,15 +247,6 @@ server <- function(input, output, session) {
     d
   })
 
-  output$kpi_recorded <- renderText(sum(!is.na(filtered()$events)))
-  output$kpi_listened <- renderText({
-    if (all(is.na(filtered()$events))) return("\u2014")
-    sprintf("%.1f", sum(filtered()$listened_min, na.rm = TRUE) / 60)
-  })
-  output$kpi_events <- renderText({
-    if (all(is.na(filtered()$events))) return("\u2014")
-    scales::comma(sum(filtered()$events, na.rm = TRUE))
-  })
   output$kpi_eps <- renderText(scales::comma(nrow(filtered())))
   output$kpi_shows <- renderText(dplyr::n_distinct(filtered()$show))
   output$kpi_hours <- renderText({
