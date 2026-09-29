@@ -149,7 +149,9 @@ meta$api_saved_count <- length(api_episodes)
 meta$source <- "Spotify Account Data export + Spotify Web API incremental refresh"
 
 payload <- list(meta = meta, episodes = episodes)
-json <- jsonlite::toJSON(payload, auto_unbox = TRUE, pretty = TRUE, na = "null")
+json <- jsonlite::toJSON(
+  payload, auto_unbox = TRUE, pretty = TRUE, na = "null", null = "null"
+)
 writeLines(json, out_path)
 
 cat(sprintf(
