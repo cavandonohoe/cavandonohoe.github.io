@@ -62,10 +62,25 @@ jobs:
         with:
           restore: "false"
 
-      - name: Install script packages
-        run: >-
-          Rscript -e 'install.packages(c("httr2", "jsonlite", "rsconnect"),
-          repos = "https://packagemanager.posit.co/cran/latest")'
+      - name: Install refresh and dashboard packages
+        run: |
+          Rscript -e '
+            packages <- c(
+              "httr2", "jsonlite", "rsconnect", "shiny", "bslib", "dplyr",
+              "lubridate", "plotly", "DT", "scales", "stringr", "tibble"
+            )
+            install.packages(packages, repos = "https://cloud.r-project.org")
+            missing <- packages[!vapply(packages, requireNamespace,
+              logical(1), quietly = TRUE)]
+            if (length(missing)) stop("Missing packages: ", paste(missing, collapse = ", "))
+          '
+
+      - name: Verify dashboard deployment dependencies
+        run: |
+          Rscript -e '
+            options(repos = c(CRAN = "https://cloud.r-project.org"))
+            rsconnect::appDependencies(appDir = "podcast-dashboard")
+          '
 
       - name: Refresh saved-episodes JSON
         run: Rscript scripts/update_saved_episodes.R

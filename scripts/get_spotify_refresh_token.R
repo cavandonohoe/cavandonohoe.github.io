@@ -61,7 +61,16 @@ cat(
   "   Copy the FULL redirected URL from the address bar and paste it here.\n\n",
   sep = ""
 )
-redirected <- trimws(readline("Paste the redirected URL: "))
+cat("Paste the redirected URL: ")
+redirected <- if (interactive()) {
+  readline()
+} else {
+  readLines(file("stdin"), n = 1L, warn = FALSE)
+}
+if (!length(redirected) || !nzchar(trimws(redirected))) {
+  stop("No redirected URL received on stdin. Re-run and paste the full URL.")
+}
+redirected <- trimws(redirected)
 
 parsed <- httr2::url_parse(redirected)
 code <- parsed$query$code
