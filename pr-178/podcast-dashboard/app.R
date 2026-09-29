@@ -1,12 +1,4 @@
-# Saved Podcast Episodes — Shiny dashboard
-# Data: static snapshot in data/saved_episodes.json, pulled from the Spotify
-# Web API (current_user_saved_episodes). NOTE: that endpoint serves only
-# explicitly-saved (hearted) episodes and is capped at offset 200. Auto-added
-# and followed-show episodes shown under "Your Episodes" in the app are not
-# exposed by the public API. The refresh script writes a meta$missingness
-# block that bounds this gap (offset-cap headroom, zero-save month gaps, and
-# saved-share of episodes across followed shows); the banner renders it.
-# Deployed to shinyapps.io.
+# Saved Podcast Episodes — library export with retained API metadata.
 
 library(shiny)
 library(bslib)
@@ -21,73 +13,6 @@ library(tibble)
 
 raw <- jsonlite::fromJSON("data/saved_episodes.json", simplifyDataFrame = TRUE)
 meta <- raw$meta
-
-# Build the "what's missing" banner from meta$missingness when the refresh
-# script has populated it; otherwise fall back to a static caveat.
-missingness_note <- function(meta) {
-  m <- meta$missingness
-  if (is.null(m)) {
-    return(tagList(
-      tags$strong(sprintf("Showing %s episodes. ", meta$n_episodes)),
-      "This is every episode the Spotify Web API's ", tags$code("saved-episodes"),
-      " endpoint returns (explicitly-saved episodes only, capped at 200). Your ",
-      "app's \"Your Episodes\" list is larger because it also counts ",
-      "auto-added and followed-show episodes the public API does not expose."
-    ))
-  }
-
-  fs <- m$followed_shows
-  oc <- m$offset_cap
-  zsm <- m$zero_save_months
-
-  cap_msg <- if (isTRUE(oc$truncation_active)) {
-    paste0(
-      "Saved-episode paging hit the ", oc$cap, "-episode API cap, so the ",
-      "oldest saves are truncated."
-    )
-  } else if (isTRUE(oc$truncation_possible)) {
-    paste0(
-      "Approaching the ", oc$cap, "-episode API cap (", oc$n_returned,
-      " saved); older saves will start truncating soon."
-    )
-  } else {
-    paste0(
-      "Well under the ", oc$cap, "-episode API cap (", oc$n_returned,
-      " saved), so no saves are being truncated."
-    )
-  }
-
-  share_msg <- if (!is.null(fs) && !is.null(fs$n_followed) && fs$n_followed > 0 &&
-    !is.null(fs$saved_share_of_available) &&
-    !is.na(fs$saved_share_of_available)) {
-    paste0(
-      "Across your ", fs$n_followed, " followed shows there are about ",
-      fs$total_episodes_available, " episodes available; your saved set covers ",
-      sprintf("%.1f%%", 100 * fs$saved_share_of_available), " of them."
-    )
-  } else {
-    NULL
-  }
-
-  gap_msg <- if (!is.null(zsm) && !is.null(zsm$count) && zsm$count > 0) {
-    paste0(
-      zsm$count, " month(s) between your first and last save have zero new ",
-      "saves. This tracks when episodes were hearted, not when they were ",
-      "played, so a quiet stretch can just mean you were working through an ",
-      "earlier batch rather than saving anything new."
-    )
-  } else {
-    NULL
-  }
-
-  tagList(
-    tags$strong(sprintf("Showing %s saved episodes. ", meta$n_episodes)),
-    "Only explicitly-saved episodes are exposed by the public API. ",
-    cap_msg,
-    if (!is.null(share_msg)) tagList(" ", share_msg),
-    if (!is.null(gap_msg)) tagList(" ", gap_msg)
-  )
-}
 episodes <- raw$episodes |>
   dplyr::mutate(
     added_at = as.Date(added_at),
@@ -114,6 +39,11 @@ episodes <- episodes |>
   dplyr::mutate(
     history_status = ifelse(is.na(events), "No matching history", "Recorded playback")
   )
+
+known_dates <- episodes$added_at[!is.na(episodes$added_at)]
+length_max <- max(c(5, episodes$dur_min), na.rm = TRUE)
+date_min <- if (length(known_dates)) min(known_dates) else Sys.Date()
+date_max <- if (length(known_dates)) max(known_dates) else Sys.Date()
 
 show_levels <- episodes |>
   dplyr::count(show, sort = TRUE) |>
@@ -179,13 +109,14 @@ ui <- bslib::page_sidebar(
     ),
     sliderInput(
       "dur", "Episode length (min)",
-      min = 0, max = ceiling(max(episodes$dur_min)),
-      value = c(0, ceiling(max(episodes$dur_min))), step = 5
+      min = 0, max = ceiling(length_max),
+      value = c(0, ceiling(length_max)), step = 5
     ),
     dateRangeInput(
       "dates", "Date saved",
-      start = min(episodes$added_at), end = max(episodes$added_at)
+      start = date_min, end = date_max
     ),
+    checkboxInput("include_unknown", "Include unknown lengths / saved dates", TRUE),
     textInput("q", "Search title / description", placeholder = "e.g. aliens"),
     selectInput(
       "history_status", "Listening history",
@@ -195,7 +126,7 @@ ui <- bslib::page_sidebar(
     tags$small(
       style = "color:#9a9a9a;",
       sprintf(
-        "Snapshot: %s \u00b7 %s episodes (all the API returns)",
+        "Imported: %s \u00b7 %s library episodes",
         meta$generated_at, meta$n_episodes
       )
     )
@@ -203,18 +134,12 @@ ui <- bslib::page_sidebar(
   bslib::layout_columns(
     fill = FALSE,
     bslib::value_box(
-      "Episodes (API call limit)", textOutput("kpi_eps"),
+      "Saved episodes", textOutput("kpi_eps"),
       theme = "dark"
     ),
     bslib::value_box("Shows", textOutput("kpi_shows"), theme = "dark"),
-    bslib::value_box("Saved duration (hours)", textOutput("kpi_hours"), theme = "dark"),
-    bslib::value_box("Avg length", textOutput("kpi_avg"), theme = "dark")
-  ),
-  bslib::layout_columns(
-    fill = FALSE,
-    bslib::value_box("With recorded playback", textOutput("kpi_recorded"), theme = "dark"),
-    bslib::value_box("Recorded listening hours", textOutput("kpi_listened"), theme = "dark"),
-    bslib::value_box("Listening events", textOutput("kpi_events"), theme = "dark")
+    bslib::value_box("Known duration (hours)", textOutput("kpi_hours"), theme = "dark"),
+    bslib::value_box("Avg known length", textOutput("kpi_avg"), theme = "dark")
   ),
   tags$p(
     style = "color:#9a9a9a;",
@@ -230,7 +155,14 @@ ui <- bslib::page_sidebar(
       "background:#1e1e1e; border:1px solid #2a2a2a; color:#c9c9c9;",
       "font-size:0.85rem;"
     ),
-    missingness_note(meta)
+    tags$strong(sprintf("Showing %s episodes. ", meta$n_episodes)),
+    "Membership comes from YourLibrary.json. Titles, shows and links cover every episode. ",
+    "Lengths and saved dates are retained where available from the earlier API snapshot. ",
+    sprintf("%s episodes have unknown lengths; %s have unknown saved dates. ",
+            sum(is.na(episodes$dur_min)), sum(is.na(episodes$added_at))),
+    "Duration statistics and the saved-date chart cover known values only. ",
+    "Episodes absent from this export are excluded from this library view; ",
+    "their absence does not establish when or why they left the library."
   ),
   bslib::layout_columns(
     col_widths = c(6, 6),
@@ -239,12 +171,12 @@ ui <- bslib::page_sidebar(
       div(class = "plot-vscroll", plotlyOutput("bar_count", height = "auto"))
     ),
     bslib::card(
-      bslib::card_header("Saved episode duration per show"),
+      bslib::card_header("Known episode duration per show"),
       div(class = "plot-vscroll", plotlyOutput("bar_hours", height = "auto"))
     )
   ),
   bslib::card(
-    bslib::card_header("Episodes saved over time, by show"),
+    bslib::card_header("Episodes with known saved dates, by show"),
     div(
       class = "plot-hscroll",
       style = paste(
@@ -255,7 +187,7 @@ ui <- bslib::page_sidebar(
     ),
     tags$small(
       style = "color:#9a9a9a;",
-      "Each month's bar is split by show. Scroll horizontally to see every month."
+      "Unknown saved dates are excluded. Each month is split by show; scroll to see every month."
     )
   ),
   bslib::card(
@@ -269,8 +201,10 @@ server <- function(input, output, session) {
     df <- episodes |>
       dplyr::filter(
         show %in% input$shows,
-        dur_min >= input$dur[1], dur_min <= input$dur[2],
-        added_at >= input$dates[1], added_at <= input$dates[2]
+        (isTRUE(input$include_unknown) & is.na(dur_min)) |
+          (!is.na(dur_min) & dur_min >= input$dur[1] & dur_min <= input$dur[2]),
+        (isTRUE(input$include_unknown) & is.na(added_at)) |
+          (!is.na(added_at) & added_at >= input$dates[1] & added_at <= input$dates[2])
       )
     if (!is.null(input$history_status) && input$history_status != "All") {
       df <- df |> dplyr::filter(history_status == input$history_status)
@@ -293,8 +227,8 @@ server <- function(input, output, session) {
       dplyr::group_by(show) |>
       dplyr::summarise(
         n = dplyr::n(),
-        hours = sum(dur_hr),
-        avg_min = round(mean(dur_min)),
+        hours = if (all(is.na(dur_hr))) NA_real_ else sum(dur_hr, na.rm = TRUE),
+        avg_min = round(mean(dur_min, na.rm = TRUE)),
         .groups = "drop"
       ) |>
       dplyr::arrange(dplyr::desc(n))
@@ -304,27 +238,24 @@ server <- function(input, output, session) {
         dplyr::slice(9:dplyr::n()) |>
         dplyr::summarise(
           show = "Other",
-          n = sum(n), hours = sum(hours), avg_min = round(mean(avg_min))
+          n = sum(n),
+          hours = if (all(is.na(hours))) NA_real_ else sum(hours, na.rm = TRUE),
+          avg_min = round(mean(avg_min, na.rm = TRUE))
         )
       d <- dplyr::bind_rows(top, other)
     }
     d
   })
 
-  output$kpi_recorded <- renderText(sum(!is.na(filtered()$events)))
-  output$kpi_listened <- renderText({
-    if (all(is.na(filtered()$events))) return("\u2014")
-    sprintf("%.1f", sum(filtered()$listened_min, na.rm = TRUE) / 60)
-  })
-  output$kpi_events <- renderText({
-    if (all(is.na(filtered()$events))) return("\u2014")
-    scales::comma(sum(filtered()$events, na.rm = TRUE))
-  })
   output$kpi_eps <- renderText(scales::comma(nrow(filtered())))
   output$kpi_shows <- renderText(dplyr::n_distinct(filtered()$show))
-  output$kpi_hours <- renderText(sprintf("%.1f", sum(filtered()$dur_hr)))
+  output$kpi_hours <- renderText({
+    v <- filtered()$dur_hr
+    if (all(is.na(v))) return("\u2014")
+    sprintf("%.1f", sum(v, na.rm = TRUE))
+  })
   output$kpi_avg <- renderText({
-    v <- filtered()$dur_min
+    v <- na.omit(filtered()$dur_min)
     if (length(v) == 0) "\u2014" else sprintf("%d min", round(mean(v)))
   })
 
@@ -365,12 +296,12 @@ server <- function(input, output, session) {
 
   output$bar_count <- renderPlotly(hbar(per_show(), "n", "Episodes"))
   output$bar_hours <- renderPlotly({
-    d <- per_show() |> dplyr::mutate(hours = round(hours, 1))
+    d <- per_show() |> dplyr::filter(!is.na(hours)) |> dplyr::mutate(hours = round(hours, 1))
     hbar(d, "hours", "Hours")
   })
 
   output$line_time <- renderPlotly({
-    df <- filtered()
+    df <- filtered() |> dplyr::filter(!is.na(added_month))
     # Continuous monthly sequence (fill gaps) so the scrollable trend reads
     # month-by-month with no missing columns.
     if (nrow(df) == 0) {
@@ -394,20 +325,34 @@ server <- function(input, output, session) {
       grp_levels <- show_order
     }
     counts <- df |>
-      dplyr::count(added_month, show_grp, name = "n")
+      dplyr::group_by(added_month, show_grp) |>
+      dplyr::summarise(
+        n = dplyr::n(),
+        saved_dates = paste(
+          sprintf("%d/%d", month(sort(unique(added_at))), day(sort(unique(added_at)))),
+          collapse = ", "
+        ),
+        .groups = "drop"
+      )
     plot_width <- max(720, length(months) * 90)
     p <- plot_ly(width = plot_width, height = 320)
     for (g in grp_levels) {
       gd <- counts |> dplyr::filter(show_grp == g)
-      yvals <- tibble::tibble(added_month = months) |>
+      month_data <- tibble::tibble(added_month = months) |>
         dplyr::left_join(gd, by = "added_month") |>
-        dplyr::mutate(n = dplyr::coalesce(n, 0L)) |>
-        dplyr::arrange(added_month) |>
-        dplyr::pull(n)
+        dplyr::mutate(
+          n = dplyr::coalesce(n, 0L),
+          saved_dates = dplyr::coalesce(saved_dates, "None")
+        ) |>
+        dplyr::arrange(added_month)
       p <- p |>
         add_bars(
-          x = months, y = yvals, name = g,
-          hovertemplate = paste0(g, "<br>%{x|%b %Y}: %{y}<extra></extra>")
+          x = months, y = month_data$n, name = g,
+          customdata = month_data$saved_dates,
+          hovertemplate = paste0(
+            g, "<br>%{x|%b %Y}: %{y}",
+            "<br>Saved dates: %{customdata}<extra></extra>"
+          )
         )
     }
     p |>

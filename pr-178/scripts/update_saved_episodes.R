@@ -92,8 +92,12 @@ if (!length(items)) {
   stop("Spotify returned 0 saved episodes; refusing to overwrite the JSON.")
 }
 
-# --- normalize into the app's episode shape ---------------------------------
-episodes <- lapply(items, function(it) {
+# --- normalize and merge into the full library export -----------------------
+# The dashboard now uses the Account Data export as its membership source of
+# truth. The Web API is therefore an incremental enrichment source: refresh
+# known metadata and append newly saved episodes, but never replace the full
+# exported library with the API's smaller/capped result.
+api_episodes <- lapply(items, function(it) {
   ep <- it$episode %||% list()
   show <- ep$show %||% list()
   dur_ms <- ep$duration_ms %||% NA_real_
@@ -110,121 +114,45 @@ episodes <- lapply(items, function(it) {
   )
 })
 
-meta <- list(
-  generated_at = format(Sys.Date()),
-  source = "Spotify Web API (current_user_saved_episodes)",
-  n_episodes = length(episodes)
-)
+existing <- jsonlite::fromJSON(out_path, simplifyDataFrame = FALSE)
+episodes <- existing$episodes %||% list()
+existing_ids <- vapply(episodes, function(e) e$id %||% NA_character_, character(1))
+api_ids <- vapply(api_episodes, function(e) e$id %||% NA_character_, character(1))
 
-# --- missingness estimators -------------------------------------------------
-# The saved-episodes endpoint only returns explicitly-saved (hearted)
-# episodes, capped at offset 200. We can't recover the true "Your Episodes"
-# count via the public API, but we can bound and characterise the gap.
-
-# 1. Offset-cap headroom. Truncation is *active* only if the last page came
-#    back full AND advertised a next page while we were at/over the cap.
-saved_dates <- vapply(
-  episodes, function(e) e$added_at %||% NA_character_, character(1)
-)
-saved_dates <- saved_dates[!is.na(saved_dates) & nzchar(saved_dates)]
-
-cap <- 200L
-truncation_active <- offset >= cap && last_page_had_next && last_page_size > 0
-truncation_possible <- length(episodes) >= (cap - limit)
-
-# 2. Save-cadence gap detector. Months between the first and last save with
-#    zero new saves. This reflects *saving* behaviour (when episodes were
-#    hearted), not listening: a quiet stretch may just mean you were working
-#    through an earlier batch. Reported for context, not as evidence of a
-#    data gap.
-zero_save_months <- character(0)
-if (length(saved_dates) > 1) {
-  months_present <- unique(substr(saved_dates, 1, 7))
-  rng <- range(as.Date(paste0(months_present, "-01")))
-  all_months <- format(
-    seq(rng[1], rng[2], by = "month"), "%Y-%m"
-  )
-  zero_save_months <- setdiff(all_months, months_present)
-}
-
-# 3. Followed-shows coverage. Pull followed shows and their episode totals so
-#    the dashboard can express saved episodes as a share of everything
-#    available across the shows you follow (an upper-bound denominator).
-fetch_followed_shows <- function() {
-  out <- list()
-  after <- NULL
-  repeat {
-    req <- httr2::request("https://api.spotify.com/v1/me/shows") |>
-      httr2::req_auth_bearer_token(access_token) |>
-      httr2::req_url_query(limit = 50) |>
-      httr2::req_retry(max_tries = 4)
-    if (!is.null(after)) req <- httr2::req_url_query(req, after = after)
-    page <- httr2::req_perform(req) |> httr2::resp_body_json()
-    page_items <- page$items %||% list()
-    if (!length(page_items)) break
-    out <- c(out, page_items)
-    after <- (page$cursors %||% list())$after
-    if (is.null(after) || !nzchar(after)) break
+# Enrich existing library rows with fresh API metadata without dropping fields
+# that only exist in the Account Data export.
+for (i in seq_along(episodes)) {
+  id <- existing_ids[[i]]
+  j <- match(id, api_ids)
+  if (!is.na(j)) {
+    fresh <- api_episodes[[j]]
+    for (field in c("added_at", "publisher", "dur_min", "release", "url", "desc")) {
+      value <- fresh[[field]]
+      if (!is.null(value) && length(value) && !all(is.na(value))) {
+        episodes[[i]][[field]] <- value
+      }
+    }
   }
-  out
 }
 
-followed_shows <- tryCatch(fetch_followed_shows(), error = function(e) list())
-n_followed <- length(followed_shows)
-total_available <- sum(vapply(followed_shows, function(s) {
-  sh <- s$show %||% list()
-  as.integer(sh$total_episodes %||% 0L)
-}, integer(1)))
+# Newly saved API episodes may post-date the last Account Data export. Append
+# them so the dashboard grows between manual exports. API absence is NOT used
+# to delete anything because the endpoint is capped and does not represent the
+# complete library.
+new_idx <- which(!is.na(api_ids) & nzchar(api_ids) & !(api_ids %in% existing_ids))
+if (length(new_idx)) episodes <- c(episodes, api_episodes[new_idx])
 
-# Which shows you saved from are ones you actually follow?
-followed_names <- vapply(followed_shows, function(s) {
-  (s$show %||% list())$name %||% NA_character_
-}, character(1))
-saved_show_names <- unique(vapply(
-  episodes, function(e) e$show %||% NA_character_, character(1)
-))
-saved_show_names <- saved_show_names[!is.na(saved_show_names)]
-saved_from_unfollowed <- setdiff(saved_show_names, followed_names)
-
-meta$missingness <- list(
-  note = paste(
-    "This endpoint returns only explicitly-saved (hearted) episodes and is",
-    "capped at 200. Auto-added / followed-show episodes in \"Your Episodes\"",
-    "are not exposed by the public API; the figures below bound the gap."
-  ),
-  offset_cap = list(
-    cap = cap,
-    n_returned = length(episodes),
-    truncation_possible = truncation_possible,
-    truncation_active = truncation_active
-  ),
-  zero_save_months = list(
-    count = length(zero_save_months),
-    months = as.list(zero_save_months)
-  ),
-  followed_shows = list(
-    n_followed = n_followed,
-    total_episodes_available = total_available,
-    saved_share_of_available = if (total_available > 0) {
-      round(length(episodes) / total_available, 4)
-    } else {
-      NA_real_
-    },
-    n_shows_saved_from = length(saved_show_names),
-    n_saved_from_unfollowed = length(saved_from_unfollowed)
-  )
-)
+meta <- existing$meta %||% list()
+meta$n_episodes <- length(episodes)
+meta$api_refreshed_at <- format(Sys.Date())
+meta$api_saved_count <- length(api_episodes)
+meta$source <- "Spotify Account Data export + Spotify Web API incremental refresh"
 
 payload <- list(meta = meta, episodes = episodes)
-
-json <- jsonlite::toJSON(
-  payload,
-  auto_unbox = TRUE,
-  pretty = TRUE,
-  na = "null"
-)
-
-dir.create(dirname(out_path), showWarnings = FALSE, recursive = TRUE)
+json <- jsonlite::toJSON(payload, auto_unbox = TRUE, pretty = TRUE, na = "null")
 writeLines(json, out_path)
 
-cat(sprintf("Wrote %d episodes to %s\n", length(episodes), out_path))
+cat(sprintf(
+  "Refreshed %d API saves; library now contains %d episodes (%d newly appended)\n",
+  length(api_episodes), length(episodes), length(new_idx)
+))
