@@ -390,7 +390,17 @@ server <- function(input, output, session) {
     DT::datatable(
       d,
       escape = which(names(d) != "Link"), rownames = FALSE,
-      options = list(pageLength = 15, scrollX = TRUE, order = list(list(0, "desc"))),
+      extensions = "Scroller",
+      options = list(
+        deferRender = TRUE,
+        scrollY = "65vh",
+        scrollX = TRUE,
+        scrollCollapse = TRUE,
+        scroller = TRUE,
+        pageLength = 50,
+        dom = "frti",
+        order = list(list(0, "desc"))
+      ),
       class = "compact stripe hover"
     )
   })
