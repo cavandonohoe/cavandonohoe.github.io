@@ -39,7 +39,7 @@ jobs:
             echo "### Top-level directory sizes"
             echo ""
             echo '```'
-            du -sh ./*/ 2>/dev/null | sort -rh | head -20
+            du -sh ./*/ 2>/dev/null | sort -rh | sed -n '1,20p'
             echo '```'
             echo ""
             echo "### Top 25 largest tracked files"
@@ -49,7 +49,7 @@ jobs:
               | xargs -0 -I{} ls -l {} 2>/dev/null \
               | awk '{ printf "%12d  %s\n", $5, $9 }' \
               | sort -rn \
-              | head -25 \
+              | sed -n '1,25p' \
               | awk '{
                   size=$1;
                   unit="B";
