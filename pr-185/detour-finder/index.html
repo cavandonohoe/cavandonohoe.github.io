@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detour Finder</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --surface2: #242736;
+      --border: #2e3244;
+      --text: #e4e6f0;
+      --text-dim: #8b8fa3;
+      --accent: #4A90D9;
+      --accent-hover: #5BA0E9;
+      --green: #27AE60;
+      --yellow: #F39C12;
+      --orange: #E67E22;
+      --red: #C0392B;
+      --radius: 10px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    header h1 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    #places-count {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      display: none;
+    }
+
+    .controls {
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 10px 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      color: var(--text);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input[type="text"]:focus {
+      border-color: var(--accent);
+    }
+
+    input[type="text"]::placeholder {
+      color: var(--text-dim);
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border-radius: var(--radius);
+      padding: 10px 16px;
+      transition: background 0.2s, opacity 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-primary:active { opacity: 0.85; }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .btn-full {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 1rem;
+    }
+
+    .btn-secondary {
+      background: var(--surface2);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { background: var(--border); }
+
+    .btn-icon {
+      background: var(--surface2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .btn-icon:hover { background: var(--border); }
+
+    .btn-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .options-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .upload-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      padding: 8px 14px;
+      border-radius: var(--radius);
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      transition: background 0.2s;
+    }
+    .upload-label:hover { background: var(--border); color: var(--text); }
+    .upload-label input { display: none; }
+
+    .corridor-control {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      margin-left: auto;
+    }
+
+    input[type="range"] {
+      width: 90px;
+      accent-color: var(--accent);
+    }
+
+    .btn-clear {
+      background: none;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      padding: 4px 8px;
+    }
+    .btn-clear:hover { color: var(--red); }
+
+    #base-route-info {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      padding: 0 2px;
+      min-height: 1.3em;
+    }
+
+    .status {
+      display: none;
+      padding: 8px 20px;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      border-bottom: 1px solid var(--border);
+    }
+    .status.error { color: var(--red); }
+    .status.success { color: var(--green); }
+
+    #progress-bar {
+      display: none;
+      height: 3px;
+      background: var(--surface2);
+      position: relative;
+    }
+    #progress-fill {
+      height: 100%;
+      background: var(--accent);
+      width: 0%;
+      transition: width 0.15s;
+    }
+    #progress-text {
+      position: absolute;
+      right: 20px;
+      top: 4px;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    #map {
+      flex: 1;
+      min-height: 250px;
+    }
+
+    .leaflet-control-zoom a {
+      background: var(--surface) !important;
+      color: var(--text) !important;
+      border-color: var(--border) !important;
+    }
+
+    #results-section {
+      border-top: 1px solid var(--border);
+      flex-shrink: 0;
+      max-height: 45dvh;
+      overflow: hidden;
+      display: none;
+      flex-direction: column;
+    }
+
+    #results-section.visible {
+      display: flex;
+    }
+
+    .results-header {
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+      overflow-x: auto;
+    }
+
+    .filter-btn {
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      background: var(--surface2);
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .filter-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .filter-btn:hover:not(.active) { background: var(--border); }
+
+    #results {
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .result-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .result-item:hover { background: var(--surface2); }
+    .result-item.selected { background: var(--surface2); }
+
+    .result-badge {
+      flex-shrink: 0;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #fff;
+      min-width: 70px;
+      text-align: center;
+    }
+
+    .result-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .result-name {
+      font-weight: 500;
+      font-size: 0.95rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .result-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 2px;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    .result-list {
+      background: var(--surface);
+      padding: 1px 7px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    .result-note {
+      font-style: italic;
+    }
+
+    .result-addr {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 200px;
+    }
+
+    .result-link {
+      flex-shrink: 0;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 1.2rem;
+      padding: 4px;
+    }
+    .result-link:hover { color: var(--accent); }
+
+    .empty-results {
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--text-dim);
+    }
+
+    @media (min-width: 768px) {
+      .main-content {
+        flex-direction: row;
+      }
+      #map {
+        flex: 1;
+        min-height: unset;
+      }
+      #results-section.visible {
+        max-height: unset;
+        width: 380px;
+        border-top: none;
+        border-left: 1px solid var(--border);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Detour Finder</h1>
+    <div class="header-right">
+      <span id="places-count"></span>
+    </div>
+  </header>
+
+  <div class="controls">
+    <div class="input-row">
+      <button class="btn-icon" id="use-location-btn" title="Use my location">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 2v4m0 12v4M2 12h4m12 0h4"/>
+        </svg>
+      </button>
+      <input type="text" id="origin" placeholder="Origin (address, city, state)">
+    </div>
+    <div class="input-row">
+      <input type="text" id="destination" placeholder="Destination (address, city, state)">
+    </div>
+    <button class="btn-primary btn-full" id="calculate-btn">Find Detours</button>
+    <div class="options-row">
+      <label class="upload-label">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7-7 7 7"/></svg>
+        Upload CSV
+        <input type="file" id="csv-upload" accept=".csv" multiple>
+      </label>
+      <div id="base-route-info"></div>
+      <div class="corridor-control">
+        Corridor:
+        <input type="range" id="corridor-slider" min="1" max="50" value="15">
+        <span id="corridor-value">15</span> km
+      </div>
+      <button class="btn-clear" id="clear-data-btn">Clear data</button>
+    </div>
+  </div>
+
+  <div id="status" class="status"></div>
+  <div id="progress-bar"><div id="progress-fill"></div><div id="progress-text"></div></div>
+
+  <div class="main-content">
+    <div id="map"></div>
+    <div id="results-section">
+      <div class="results-header" id="filter-buttons"></div>
+      <div id="results"></div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="corridor.js"></script>
+  <script src="places.js"></script>
+  <script src="routing.js"></script>
+  <script src="preload_data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
