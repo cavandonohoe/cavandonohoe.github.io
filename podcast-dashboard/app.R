@@ -141,12 +141,6 @@ ui <- bslib::page_sidebar(
     bslib::value_box("Known duration (hours)", textOutput("kpi_hours"), theme = "dark"),
     bslib::value_box("Avg known length", textOutput("kpi_avg"), theme = "dark")
   ),
-  bslib::layout_columns(
-    fill = FALSE,
-    bslib::value_box("With recorded playback", textOutput("kpi_recorded"), theme = "dark"),
-    bslib::value_box("Recorded listening hours", textOutput("kpi_listened"), theme = "dark"),
-    bslib::value_box("Listening events", textOutput("kpi_events"), theme = "dark")
-  ),
   tags$p(
     style = "color:#9a9a9a;",
     sprintf("Listening export: %s through %s (UTC dates). ",
@@ -253,15 +247,6 @@ server <- function(input, output, session) {
     d
   })
 
-  output$kpi_recorded <- renderText(sum(!is.na(filtered()$events)))
-  output$kpi_listened <- renderText({
-    if (all(is.na(filtered()$events))) return("\u2014")
-    sprintf("%.1f", sum(filtered()$listened_min, na.rm = TRUE) / 60)
-  })
-  output$kpi_events <- renderText({
-    if (all(is.na(filtered()$events))) return("\u2014")
-    scales::comma(sum(filtered()$events, na.rm = TRUE))
-  })
   output$kpi_eps <- renderText(scales::comma(nrow(filtered())))
   output$kpi_shows <- renderText(dplyr::n_distinct(filtered()$show))
   output$kpi_hours <- renderText({
@@ -340,20 +325,34 @@ server <- function(input, output, session) {
       grp_levels <- show_order
     }
     counts <- df |>
-      dplyr::count(added_month, show_grp, name = "n")
+      dplyr::group_by(added_month, show_grp) |>
+      dplyr::summarise(
+        n = dplyr::n(),
+        saved_dates = paste(
+          sprintf("%d/%d", month(sort(unique(added_at))), day(sort(unique(added_at)))),
+          collapse = ", "
+        ),
+        .groups = "drop"
+      )
     plot_width <- max(720, length(months) * 90)
     p <- plot_ly(width = plot_width, height = 320)
     for (g in grp_levels) {
       gd <- counts |> dplyr::filter(show_grp == g)
-      yvals <- tibble::tibble(added_month = months) |>
+      month_data <- tibble::tibble(added_month = months) |>
         dplyr::left_join(gd, by = "added_month") |>
-        dplyr::mutate(n = dplyr::coalesce(n, 0L)) |>
-        dplyr::arrange(added_month) |>
-        dplyr::pull(n)
+        dplyr::mutate(
+          n = dplyr::coalesce(n, 0L),
+          saved_dates = dplyr::coalesce(saved_dates, "None")
+        ) |>
+        dplyr::arrange(added_month)
       p <- p |>
         add_bars(
-          x = months, y = yvals, name = g,
-          hovertemplate = paste0(g, "<br>%{x|%b %Y}: %{y}<extra></extra>")
+          x = months, y = month_data$n, name = g,
+          customdata = month_data$saved_dates,
+          hovertemplate = paste0(
+            g, "<br>%{x|%b %Y}: %{y}",
+            "<br>Saved dates: %{customdata}<extra></extra>"
+          )
         )
     }
     p |>
