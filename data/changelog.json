@@ -1,11 +1,23 @@
 {
-  "generated_at": "2026-10-01T04:21:51.765358+00:00",
+  "generated_at": "2026-10-01T21:12:33.063609+00:00",
   "events": [
+    {
+      "date": "2026-10-01",
+      "type": "merged_pr",
+      "title": "Start a fresh lately refresh when its workflow changes",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/197"
+    },
     {
       "date": "2026-10-01",
       "type": "merged_pr",
       "title": "Replace LA heatmap fire emoji",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/196"
+    },
+    {
+      "date": "2026-10-01",
+      "type": "merged_pr",
+      "title": "Surface live automated activity on the homepage",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/195"
     },
     {
       "date": "2026-10-01",
