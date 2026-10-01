@@ -61,7 +61,7 @@ cards <- list(
     "Cap rates, vacancy, and demand signals for 3,800+ cities using Zillow and Census data."),
   list("la_real_estate.html", "\U0001F3E1", "LA Neighborhoods: Price per Sq Ft",
     "Zillow + Redfin data for LA neighborhoods: median prices, rent, and what $1M buys you."),
-  list("la_housing_heatmap.html", "\U0001F525", "LA Housing Prices: Animated Heat Map",
+  list("la_housing_heatmap.html", "\U0001F5FA\UFE0F", "LA Housing Prices: Animated Heat Map",
     paste0("Zillow home values across LA County ZIP codes, animated year by year, with ",
       "Case-Shiller and Shiller's long-run series for context.")),
   list("https://cavandonohoe.shinyapps.io/rent-vs-buy/", "\U0001F9EE", "Rent vs. Buy Calculator",
