@@ -1,8 +1,14 @@
 name: Developer year in review
 on:
   schedule:
+    # Jan 1 at 17:13 UTC; snapshots the year that just ended.
     - cron: '13 17 1 1 *'
   workflow_dispatch:
+    inputs:
+      year:
+        description: 'Year to snapshot (blank = current year, or previous year on Jan 1)'
+        required: false
+        type: string
 permissions:
   contents: write
 jobs:
@@ -10,26 +16,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Generate annual stats
-        run: |
-          mkdir -p data/year-in-review
-          python3 - <<'PY'
-          import json, subprocess
-          from datetime import datetime, timezone
-          now=datetime.now(timezone.utc); year=now.year-1 if now.month==1 else now.year
-          since=f'{year}-01-01'; until=f'{year+1}-01-01'
-          commits=int(subprocess.check_output(['git','rev-list','--count',f'--since={since}',f'--until={until}','HEAD'],text=True).strip())
-          authors=subprocess.check_output(['git','log',f'--since={since}',f'--until={until}','--pretty=%an'],text=True).splitlines()
-          files=subprocess.check_output(['git','log',f'--since={since}',f'--until={until}','--name-only','--pretty='],text=True).splitlines()
-          touched=len(set(x for x in files if x))
-          out={'year':year,'commits_in_repo':commits,'unique_files_touched':touched,'generated_at':now.isoformat()}
-          open(f'data/year-in-review/{year}.json','w').write(json.dumps(out,indent=2)+'\n')
-          PY
+      - name: Generate annual developer stats
+        env:
+          GITHUB_USER: cavandonohoe
+          GITHUB_TOKEN: ${{ github.token }}
+          REVIEW_YEAR: ${{ inputs.year }}
+        run: python3 scripts/developer_year_in_review.py
       - name: Commit snapshot
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add data/year-in-review
-          git diff --cached --quiet || (git commit -m 'Add developer year in review' && git push)
+          git diff --cached --quiet || (git commit -m "Add developer year in review snapshot" && git push)
