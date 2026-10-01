@@ -1,0 +1,18 @@
+name: Data question intake
+on:
+  issues:
+    types: [opened]
+permissions:
+  issues: write
+jobs:
+  intake:
+    if: contains(github.event.issue.labels.*.name, 'data-question')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Acknowledge supported public-data question
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ github.event.issue.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          gh issue comment "$ISSUE" --repo "$REPO" --body "Thanks — this question is queued against the site's public datasets. This first version intentionally does not execute issue text as code. Future iterations can add a constrained query layer for supported questions."
