@@ -89,7 +89,7 @@
     {
       "project": "header",
       "tracked_files": 11,
-      "commits_touching_project": 13,
+      "commits_touching_project": 14,
       "top_extensions": [
         [
           ".png",
@@ -116,7 +116,7 @@
     {
       "project": "images",
       "tracked_files": 11,
-      "commits_touching_project": 30,
+      "commits_touching_project": 31,
       "top_extensions": [
         [
           ".jpg",
