@@ -19,17 +19,28 @@ jobs:
           import subprocess
           from datetime import datetime, timezone, timedelta
           now=datetime.now(timezone.utc)
-          vals=[]
+          dates=[]; vals=[]
           for i in range(29,-1,-1):
             d=(now-timedelta(days=i)).date()
+            dates.append(d)
             n=int(subprocess.check_output(['git','rev-list','--count',f'--since={d}T00:00:00Z',f'--until={d}T23:59:59Z','HEAD'],text=True).strip())
             vals.append(n)
-          m=max(vals+[1]); w,h=660,180; bw=18; gap=3
+          m=max(vals+[1]); w,h=660,195; bw=18; gap=3
           bars=[]
           for i,v in enumerate(vals):
             bh=120*v/m; x=15+i*(bw+gap); y=145-bh
             bars.append(f'<rect x="{x}" y="{y:.1f}" width="{bw}" height="{bh:.1f}" rx="3" fill="currentColor" opacity="{0.25+0.75*v/m:.2f}"/>')
-          svg=f'''<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="30 days of GitHub activity"><style>svg{{color:#238636}} text{{font:14px system-ui;fill:#57606a}}</style><text x="15" y="20">30 days of site-repository activity</text>{''.join(bars)}<text x="15" y="170">Generated {now.date().isoformat()}</text></svg>'''
+          label_idxs=[0,7,14,21,29]
+          labels=[]
+          for i in label_idxs:
+            x=15+i*(bw+gap)+bw/2
+            anchor='middle'
+            if i == 0:
+              x=15; anchor='start'
+            elif i == 29:
+              x=15+29*(bw+gap)+bw; anchor='end'
+            labels.append(f'<text x="{x}" y="163" text-anchor="{anchor}" class="date-label">{dates[i].strftime("%b %-d")}</text>')
+          svg=f'''<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="30 days of GitHub activity"><style>svg{{color:#238636}} text{{font:14px system-ui;fill:#57606a}} .date-label{{font-size:10px;fill:#8c959f}}</style><text x="15" y="20">30 days of site-repository activity</text>{''.join(bars)}{''.join(labels)}<text x="15" y="188">Generated {now.date().isoformat()}</text></svg>'''
           open('assets/generated/activity.svg','w').write(svg+'\n')
           PY
       - name: Commit art
