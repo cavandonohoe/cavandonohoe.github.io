@@ -1,0 +1,173 @@
+season,episode,title,rating,votes,episode_year
+1,1,"Good News, Bad News",7.3,7603,1989
+1,2,The Stakeout,7.5,6477,1990
+1,3,The Robbery,7.4,5944,1990
+1,4,Male Unbonding,7.2,5780,1990
+1,5,The Stock Tip,7.3,5584,1990
+2,1,The Ex-Girlfriend,7.5,5462,1991
+2,2,The Pony Remark,7.8,5678,1991
+2,3,The Jacket,8.2,5800,1991
+2,4,The Phone Message,8.3,5610,1991
+2,5,The Apartment,7.7,5132,1991
+2,6,The Statue,7.8,5171,1991
+2,7,The Revenge,8.2,5290,1991
+2,8,The Heart Attack,7.8,5214,1991
+2,9,The Deal,8.2,5252,1991
+2,10,The Baby Shower,7.4,5001,1991
+2,11,The Chinese Restaurant,8.6,6294,1991
+2,12,The Busboy,7.6,5004,1991
+3,1,The Note,8.2,5365,1991
+3,2,The Truth,7.6,4834,1991
+3,3,The Pen,8.2,5432,1991
+3,4,The Dog,7.1,5207,1991
+3,5,The Library,8.5,5910,1991
+3,6,The Parking Garage,8.7,6419,1991
+3,7,The Cafe,8.3,5068,1991
+3,8,The Tape,8.7,5502,1991
+3,9,The Nose Job,7.8,4936,1991
+3,10,The Stranded,7.4,4831,1991
+3,11,The Alternate Side,8.2,4925,1991
+3,12,The Red Dot,8.3,4960,1991
+3,13,The Subway,8.7,5759,1992
+3,14,The Pez Dispenser,8.4,4999,1992
+3,15,The Suicide,7.4,4522,1992
+3,16,The Fix Up,8.4,5035,1992
+3,17,The Boyfriend,8.6,5669,1992
+3,18,The Limo,8.9,6423,1992
+3,19,The Good Samaritan,7.8,4514,1992
+3,20,The Letter,7.8,4394,1992
+3,21,The Parking Space,8.2,4694,1992
+3,22,The Keys,8.2,4579,1992
+4,1,The Trip: Part 1,8,4627,1992
+4,2,The Trip: Part 2,8.3,4583,1992
+4,3,The Pitch,8.5,4727,1992
+4,4,The Ticket,8.2,4346,1992
+4,5,The Wallet,7.9,4304,1992
+4,6,The Watch,8,4214,1992
+4,7,The Bubble Boy,8.7,5732,1992
+4,8,The Cheever Letters,8.5,4666,1992
+4,9,The Opera,8.2,4520,1992
+4,10,The Virgin,8.1,4396,1992
+4,11,The Contest,9.5,10174,1992
+4,12,The Airport,8.9,5574,1992
+4,13,The Pick,8.5,4666,1992
+4,14,The Movie,8.1,4479,1993
+4,15,The Visa,8,4209,1993
+4,16,The Shoes,8.1,4434,1993
+4,17,The Outing,9.4,7579,1993
+4,18,The Old Man,8,4448,1993
+4,19,The Implant,8.6,4737,1993
+4,20,The Junior Mint,8.7,5192,1993
+4,21,The Smelly Car,8.3,4491,1993
+4,22,The Handicap Spot,8.2,4308,1993
+4,23,The Pilot,8.6,4738,1993
+5,1,The Mango,8.5,4733,1993
+5,2,The Puffy Shirt,8.8,5522,1993
+5,3,The Glasses,8.3,4483,1993
+5,4,The Sniffing Accountant,8.1,4324,1993
+5,5,The Bris,8,4558,1993
+5,6,The Lip Reader,8.4,4400,1993
+5,7,The Non-Fat Yogurt,8.3,4663,1993
+5,8,The Barber,8.3,4496,1993
+5,9,The Masseuse,7.7,4214,1993
+5,10,The Cigar Store Indian,8.4,4596,1993
+5,11,The Conversion,8.1,4201,1993
+5,12,The Stall,8.6,4615,1994
+5,13,The Dinner Party,8.2,4340,1994
+5,14,The Marine Biologist,9.2,6791,1994
+5,15,The Pie,8.5,4396,1994
+5,16,The Stand-In,7.6,4053,1994
+5,17,The Wife,7.9,4187,1994
+5,18,The Raincoats,8.3,4265,1994
+5,19,The Fire,8.6,4656,1994
+5,20,The Hamptons,9.1,5814,1994
+5,21,The Opposite,9.5,8074,1994
+6,1,The Chaperone,7.8,4077,1994
+6,2,The Big Salad,8,4269,1994
+6,3,The Pledge Drive,8.2,4200,1994
+6,4,The Chinese Woman,8.1,4163,1994
+6,5,The Couch,8,4127,1994
+6,6,The Gymnast,8.2,4226,1994
+6,7,The Soup,8,4056,1994
+6,8,The Mom and Pop Store,8,4111,1994
+6,9,The Secretary,8,3893,1994
+6,10,The Race,8.9,5388,1994
+6,11,The Switch,8.8,5262,1995
+6,12,The Label Maker,8.5,4143,1995
+6,13,The Scofflaw,8,3865,1995
+6,14,The Highlights of a Hundred,6.9,3581,1995
+6,15,The Beard,8.2,4014,1995
+6,16,The Kiss Hello,8.1,3923,1995
+6,17,The Doorman,8.2,4067,1995
+6,18,The Jimmy,8.8,5188,1995
+6,19,The Doodle,8.2,3870,1995
+6,20,The Fusilli Jerry,8.7,4644,1995
+6,21,The Diplomat's Club,8,3885,1995
+6,22,The Face Painter,8.4,4074,1995
+6,23,The Understudy,7.8,3987,1995
+7,1,The Engagement,8.6,4287,1995
+7,2,The Postponement,8.2,3860,1995
+7,3,The Maestro,8,3966,1995
+7,4,The Wink,8.5,4219,1995
+7,5,The Hot Tub,8.5,4117,1995
+7,6,The Soup Nazi,9.5,8218,1995
+7,7,The Secret Code,8.4,4025,1995
+7,8,The Pool Guy,8.3,3974,1995
+7,9,The Sponge,8.2,4010,1995
+7,10,The Gum,8.5,4413,1995
+7,11,The Rye,8.8,4828,1996
+7,12,The Caddy,8.6,4143,1996
+7,13,The Seven,8.1,3805,1996
+7,14,The Cadillac,8.5,4253,1996
+7,15,The Shower Head,8.4,3902,1996
+7,16,The Doll,8.1,3857,1996
+7,17,The Friars Club,7.6,3704,1996
+7,18,The Wig Master,8.1,3830,1996
+7,19,The Calzone,8.7,4583,1996
+7,20,The Bottle Deposit,8.6,4511,1996
+7,21,The Wait Out,8.2,3786,1996
+7,22,The Invitations,8.5,4713,1996
+8,1,The Foundation,8,3821,1996
+8,2,The Soul Mate,7.9,3724,1996
+8,3,The Bizarro Jerry,9,5431,1996
+8,4,The Little Kicks,8.9,4942,1996
+8,5,The Package,8.6,4138,1996
+8,6,The Fatigues,8,3794,1996
+8,7,The Checks,8,3753,1996
+8,8,The Chicken Roaster,8.9,5034,1996
+8,9,The Abstinence,9,4937,1996
+8,10,The Andrea Doria,8.3,3819,1996
+8,11,The Little Jerry,8.2,3955,1997
+8,12,The Money,7.6,3577,1997
+8,13,The Comeback,8.5,4136,1997
+8,14,The Van Buren Boys,7.9,3699,1997
+8,15,The Susie,8.6,4117,1997
+8,16,The Pothole,8.6,4053,1997
+8,17,The English Patient,8.5,4108,1997
+8,18,The Nap,8.6,4287,1997
+8,19,The Yada Yada,9,5331,1997
+8,20,The Millennium,8,3707,1997
+8,21,The Muffin Tops,8.3,3983,1997
+8,22,The Summer of George,8.5,4028,1997
+9,1,The Butter Shave,8.3,4124,1997
+9,2,The Voice,8.3,4011,1997
+9,3,The Serenity Now,8.7,4980,1997
+9,4,The Blood,8.1,3809,1997
+9,5,The Junk Mail,7.9,3732,1997
+9,6,The Merv Griffin Show,9,5507,1997
+9,7,The Slicer,8.3,3779,1997
+9,8,The Betrayal,8.9,5664,1997
+9,9,The Apology,8.2,3799,1997
+9,10,The Strike,8.7,4883,1997
+9,11,The Dealership,8.3,3990,1998
+9,12,The Reverse Peephole,8.2,3741,1998
+9,13,The Cartoon,7.8,3750,1998
+9,14,The Strongbox,7.9,3664,1998
+9,15,The Wizard,7.8,3585,1998
+9,16,The Burning,8.3,4060,1998
+9,17,The Bookstore,8.1,3662,1998
+9,18,The Frogger,8.7,4525,1998
+9,19,The Maid,8,3619,1998
+9,20,The Puerto Rican Day,7.8,3884,1998
+9,21,The Chronicle,7.6,3387,1998
+9,22,The Finale,7.8,5807,1998
