@@ -1,0 +1,24 @@
+name: Ask my public data
+description: Ask a question about one of the public datasets behind this site
+title: "[data question] "
+labels: ["data-question"]
+body:
+  - type: dropdown
+    id: dataset
+    attributes:
+      label: Dataset
+      options:
+        - Movie rankings
+        - Saved podcast episodes
+        - IMDb episode ratings
+        - GitHub/site activity
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: Ask something answerable from the public repository data.
+      placeholder: What were the five highest-rated movies added this year?
+    validations:
+      required: true
