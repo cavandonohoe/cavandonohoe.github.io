@@ -1,5 +1,9 @@
 name: Refresh lately feed
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/lately.yml'
   schedule:
     - cron: '43 16 * * *'
   workflow_dispatch:
