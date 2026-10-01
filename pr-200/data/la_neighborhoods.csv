@@ -1,0 +1,36 @@
+neighborhood,zip,tier,median_price,price_source,zhvi,zhvi_date,price_per_sqft,redfin_url,redfin_date,typical_sqft,median_rent,zori_date
+Bel Air,90077,Ultra-Luxury,4021000,redfin,4021065.130653783,2026-02-28,1318,https://www.redfin.com/neighborhood/760389/CA/Los-Angeles/Bel-Air/housing-market,2025-06-30,3051,12310.555555555557,2026-02-28
+Beverly Crest,90210,Luxury,2695000,redfin,2694794.133602195,2026-02-28,1310,https://www.redfin.com/neighborhood/9424/CA/Los-Angeles/Beverly-Crest/housing-market,2025-06-30,2057,10842.359523809524,2026-02-28
+Beverly Hills,90210,Ultra-Luxury,3581000,redfin,3580740.518361746,2026-02-28,1250,https://www.redfin.com/city/1669/CA/Beverly-Hills/housing-market,2026-02-28,2865,10842.359523809524,2026-02-28
+Venice,90291,Upper-Mid,1851000,redfin,1801294.8620095607,2026-02-28,1213,https://www.redfin.com/neighborhood/21056/CA/Los-Angeles/Venice/housing-market,2025-07-31,1526,3587.010582010582,2026-02-28
+Hollywood Hills West,90046,Luxury,2300000,redfin,NA,NA,1209,https://www.redfin.com/neighborhood/547223/CA/Los-Angeles/Hollywood-Hills/housing-market,2025-07-31,1902,2740.97866559053,2026-02-28
+Holmby Hills,90024,Ultra-Luxury,7000000,redfin,NA,NA,1200,NA,NA,5833,3981.5716845878137,2026-02-28
+Manhattan Beach,90266,Luxury,3000000,redfin,3159767.3044338855,2026-02-28,1150,https://www.redfin.com/city/11280/CA/Manhattan-Beach/housing-market,2025-06-30,2609,6121.004273504273,2026-02-28
+Cheviot Hills,90064,Luxury,2371158.0725644506,zillow_zhvi,2371158.0725644506,2026-02-28,1145,https://www.redfin.com/neighborhood/10493/CA/Los-Angeles/Cheviot-Hills/housing-market,NA,2071,3493.7041958041955,2026-02-28
+Malibu (Point Dume),90265,Ultra-Luxury,5600000,redfin,3129196.5235037454,2026-02-28,1100,https://www.redfin.com/city/11380/CA/Malibu/housing-market,2025-06-30,5091,16168.87878787879,2026-02-28
+Pacific Palisades,90272,Ultra-Luxury,3200000,redfin,3050314.843982855,2026-02-28,1050,https://www.redfin.com/neighborhood/64066/CA/Los-Angeles/Pacific-Palisades/housing-market,2025-05-31,3048,7600.694444444444,2026-02-28
+Brentwood,90049,Luxury,2648000,redfin,NA,NA,1040,https://www.redfin.com/neighborhood/258/CA/Los-Angeles/Brentwood/housing-market,2025-05-31,2546,4048.9061538461538,2026-02-28
+Santa Monica,90401,Luxury,2500000,redfin,1684069.8469246684,2026-02-28,950,https://www.redfin.com/city/17882/CA/Santa-Monica/housing-market,2025-06-30,2632,3698.437286025521,2026-02-28
+Highland Park,90042,Mid-Range,1199000,redfin,1053386.9186094457,2026-02-28,936,https://www.redfin.com/neighborhood/1243/CA/Los-Angeles/Highland-Park/housing-market,2025-06-30,1281,2729.088888888889,2026-02-28
+Los Feliz,90027,Luxury,2275000,redfin,NA,NA,867,https://www.redfin.com/neighborhood/9961/CA/Los-Angeles/Los-Feliz/housing-market,2025-07-31,2624,2517.7648141281807,2026-02-28
+Silver Lake,90039,Upper-Mid,1675000,redfin,1417136.090999806,2026-02-28,848,https://www.redfin.com/neighborhood/7511/CA/Los-Angeles/Silver-Lake/housing-market,2025-07-31,1975,3035.8119047619043,2026-02-28
+West Hollywood,90069,Upper-Mid,1400000,redfin,NA,NA,800,https://www.redfin.com/city/21058/CA/West-Hollywood/housing-market,2025-06-30,1750,3642.147619047619,2026-02-28
+Hancock Park,90004,Upper-Mid,1900000,redfin,NA,NA,780,https://www.redfin.com/neighborhood/1186/CA/Los-Angeles/Hancock-Park/housing-market,2025-06-30,2436,2205.369022939236,2026-02-28
+Culver City,90232,Upper-Mid,1303000,redfin,1277223.727842982,2026-02-28,750,https://www.redfin.com/city/4539/CA/Culver-City/housing-market,2025-06-30,1737,3673.794444444445,2026-02-28
+Studio City,91604,Upper-Mid,1567144.2424849663,zillow_zhvi,1567144.2424849663,2026-02-28,720,https://www.redfin.com/neighborhood/2629/CA/Los-Angeles/Studio-City/housing-market,NA,2177,3168.325396825397,2026-02-28
+Echo Park,90026,Mid-Range,1100000,redfin,1053903.6591089268,2026-02-28,720,https://www.redfin.com/neighborhood/762867/CA/Los-Angeles/Echo-Park/housing-market,2025-06-30,1528,2605.3444208789915,2026-02-28
+Atwater Village,90039,Mid-Range,1150000,redfin,1280270.0336914258,2026-02-28,700,https://www.redfin.com/neighborhood/104/CA/Los-Angeles/Atwater-Village/housing-market,2025-06-30,1643,3035.8119047619043,2026-02-28
+Eagle Rock,90041,Mid-Range,1050000,redfin,1257219.205553823,2026-02-28,700,https://www.redfin.com/neighborhood/786/CA/Los-Angeles/Eagle-Rock/housing-market,2025-06-30,1500,2907.5166666666664,2026-02-28
+Sherman Oaks,91403,Upper-Mid,1341177.0612349815,zillow_zhvi,1341177.0612349815,2026-02-28,680,https://www.redfin.com/neighborhood/2440/CA/Los-Angeles/Sherman-Oaks/housing-market,NA,1972,2829.265522875817,2026-02-28
+Pasadena,91101,Mid-Range,1200000,redfin,1185824.741762583,2026-02-28,680,https://www.redfin.com/city/14498/CA/Pasadena/housing-market,2025-06-30,1765,2897.7592262494222,2026-02-28
+Westchester,90045,Mid-Range,1200000,redfin,1455257.7547740338,2026-02-28,650,https://www.redfin.com/neighborhood/3003/CA/Los-Angeles/Westchester/housing-market,2025-06-30,1846,2853.118876317282,2026-02-28
+Eastside LA,90063,Affordable,749000,redfin,NA,NA,624,https://www.redfin.com/neighborhood/888/CA/Los-Angeles/El-Sereno/housing-market,2025-06-30,1200,2405.1190476190477,2026-02-28
+Encino,91316,Mid-Range,1300000,redfin,1427847.2681751605,2026-02-28,580,https://www.redfin.com/neighborhood/899/CA/Los-Angeles/Encino/housing-market,2025-06-30,2241,2990.24358974359,2026-02-28
+Koreatown,90020,Affordable,680000,redfin,764041.2175239247,2026-02-28,580,https://www.redfin.com/neighborhood/1486/CA/Los-Angeles/Koreatown/housing-market,2025-06-30,1172,1947.5828828828828,2026-02-28
+North Hollywood,91601,Affordable,850000,redfin,855984.5630270801,2026-02-28,550,https://www.redfin.com/neighborhood/1905/CA/Los-Angeles/North-Hollywood/housing-market,2025-06-30,1545,2642.0535322509877,2026-02-28
+El Sereno,90032,Affordable,750000,redfin,759138.4125829655,2026-02-28,520,https://www.redfin.com/neighborhood/888/CA/Los-Angeles/El-Sereno/housing-market,2025-06-30,1442,2477.222222222222,2026-02-28
+Boyle Heights,90033,Affordable,742000,redfin,640519.394163635,2026-02-28,471,https://www.redfin.com/neighborhood/247/CA/Los-Angeles/Boyle-Heights/housing-market,2025-06-30,1575,2092.7575757575755,2026-02-28
+South Los Angeles,90037,Affordable,682000,redfin,664064.7045554584,2026-02-28,456,https://www.redfin.com/neighborhood/118208/CA/Los-Angeles/South-Los-Angeles/housing-market,2025-06-30,1496,2529.040032679739,2026-02-28
+Pico-Union,90006,Affordable,650000,redfin,678221.4247055053,2026-02-28,453,https://www.redfin.com/neighborhood/2122/CA/Los-Angeles/Pico-Union/housing-market,2025-06-30,1435,1976.604884760922,2026-02-28
+Historic South Central,90011,Affordable,550000,redfin,NA,NA,425,https://www.redfin.com/neighborhood/1277/CA/Los-Angeles/Historic-South-Central/housing-market,2025-06-30,1294,2394.805555555555,2026-02-28
+South Park (DTLA),90015,Affordable,500000,redfin,NA,NA,419,https://www.redfin.com/neighborhood/2568/CA/Los-Angeles/South-Park/housing-market,2025-06-30,1193,2641.0436934630484,2026-02-28
