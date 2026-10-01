@@ -24,6 +24,17 @@
       ]
     },
     {
+      "project": "assets",
+      "tracked_files": 1,
+      "commits_touching_project": 1,
+      "top_extensions": [
+        [
+          ".svg",
+          1
+        ]
+      ]
+    },
+    {
       "project": "config",
       "tracked_files": 1,
       "commits_touching_project": 1,
@@ -105,7 +116,7 @@
     {
       "project": "images",
       "tracked_files": 11,
-      "commits_touching_project": 29,
+      "commits_touching_project": 30,
       "top_extensions": [
         [
           ".jpg",
