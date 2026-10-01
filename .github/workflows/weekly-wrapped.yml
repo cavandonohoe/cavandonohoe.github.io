@@ -1,0 +1,39 @@
+name: Weekly Cavan Wrapped
+
+on:
+  schedule:
+    - cron: '17 16 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  wrapped:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Build weekly snapshot
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p data/weekly
+          python3 - <<'PY'
+          import json, os, subprocess
+          from datetime import datetime, timezone, timedelta
+          now=datetime.now(timezone.utc); since=now-timedelta(days=7)
+          log=subprocess.check_output(['git','log',f'--since={since.isoformat()}','--pretty=%H'],text=True).splitlines()
+          prs=json.loads(subprocess.check_output(['gh','api',f'/repos/{os.environ["GITHUB_REPOSITORY"]}/pulls?state=closed&per_page=100'],text=True))
+          merged=[p for p in prs if p.get('merged_at') and datetime.fromisoformat(p['merged_at'].replace('Z','+00:00'))>=since]
+          out={'generated_at':now.isoformat(),'period_start':since.isoformat(),'commits':len(log),'prs_merged':len(merged),'merged_prs':[{'number':p['number'],'title':p['title']} for p in merged]}
+          path=f'data/weekly/{now.date().isoformat()}.json'
+          open(path,'w').write(json.dumps(out,indent=2)+'\n')
+          PY
+      - name: Commit snapshot
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add data/weekly
+          git diff --cached --quiet || (git commit -m 'Weekly activity snapshot' && git push)
