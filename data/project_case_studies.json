@@ -26,7 +26,7 @@
     {
       "project": "assets",
       "tracked_files": 1,
-      "commits_touching_project": 1,
+      "commits_touching_project": 2,
       "top_extensions": [
         [
           ".svg",
@@ -89,7 +89,7 @@
     {
       "project": "header",
       "tracked_files": 11,
-      "commits_touching_project": 14,
+      "commits_touching_project": 15,
       "top_extensions": [
         [
           ".png",
@@ -116,7 +116,7 @@
     {
       "project": "images",
       "tracked_files": 11,
-      "commits_touching_project": 31,
+      "commits_touching_project": 33,
       "top_extensions": [
         [
           ".jpg",
