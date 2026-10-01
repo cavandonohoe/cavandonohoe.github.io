@@ -67,15 +67,38 @@ panel <- paste0(
 )
 cat(panel)
 
-if (!is.null(changelog$events) && length(changelog$events) > 0) {
-  recent <- head(changelog$events, 4)
-  items <- vapply(recent, function(event) {
-    title <- if (!is.null(event$title)) event$title else "Site update"
-    date <- if (!is.null(event$date)) event$date else ""
-    url <- if (!is.null(event$url)) event$url else "#"
-    paste0('<li><a href="', url, '">', title, '</a><span>', date, '</span></li>')
+if (!is.null(changelog$daily_summaries) && length(changelog$daily_summaries) > 0) {
+  recent_days <- head(changelog$daily_summaries, 5)
+  day_html <- vapply(recent_days, function(day) {
+    date_label <- if (!is.null(day$date)) {
+      d <- as.Date(day$date)
+      toupper(format(d, "%b %d"))
+    } else {
+      ""
+    }
+    item_html <- vapply(day$items, function(item) {
+      emoji <- if (!is.null(item$emoji)) item$emoji else "✨"
+      text <- if (!is.null(item$text)) item$text else "Site updated"
+      body <- paste0('<span class="activity-emoji">', emoji, '</span><span>', text, '</span>')
+      if (!is.null(item$url) && nzchar(item$url)) {
+        body <- paste0('<a href="', item$url, '">', body, '</a>')
+      }
+      paste0('<li>', body, '</li>')
+    }, character(1))
+    paste0(
+      '<div class="activity-day">',
+      '<div class="activity-date">', date_label, '</div>',
+      '<ul>', paste(item_html, collapse = ""), '</ul>',
+      '</div>'
+    )
   }, character(1))
-  cat(paste0('<div class="recent-activity"><h3>Recently shipped</h3><ul>', paste(items, collapse = ""), '</ul></div>'))
+  cat(paste0(
+    '<div class="recent-activity">',
+    '<div class="recent-activity-heading"><h3>What I’ve been up to</h3>',
+    '<span>Big-picture highlights from recent commits + merged PRs</span></div>',
+    paste(day_html, collapse = ""),
+    '</div>'
+  ))
 }
 ```
 
