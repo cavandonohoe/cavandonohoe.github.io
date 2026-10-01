@@ -1,0 +1,40 @@
+name: Generate activity art
+on:
+  schedule:
+    - cron: '7 17 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  art:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Generate SVG from commit activity
+        run: |
+          mkdir -p assets/generated
+          python3 - <<'PY'
+          import subprocess
+          from datetime import datetime, timezone, timedelta
+          now=datetime.now(timezone.utc)
+          vals=[]
+          for i in range(29,-1,-1):
+            d=(now-timedelta(days=i)).date()
+            n=int(subprocess.check_output(['git','rev-list','--count',f'--since={d}T00:00:00Z',f'--until={d}T23:59:59Z','HEAD'],text=True).strip())
+            vals.append(n)
+          m=max(vals+[1]); w,h=660,180; bw=18; gap=3
+          bars=[]
+          for i,v in enumerate(vals):
+            bh=120*v/m; x=15+i*(bw+gap); y=145-bh
+            bars.append(f'<rect x="{x}" y="{y:.1f}" width="{bw}" height="{bh:.1f}" rx="3" fill="currentColor" opacity="{0.25+0.75*v/m:.2f}"/>')
+          svg=f'''<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="30 days of GitHub activity"><style>svg{{color:#238636}} text{{font:14px system-ui;fill:#57606a}}</style><text x="15" y="20">30 days of site-repository activity</text>{''.join(bars)}<text x="15" y="170">Generated {now.date().isoformat()}</text></svg>'''
+          open('assets/generated/activity.svg','w').write(svg+'\n')
+          PY
+      - name: Commit art
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add assets/generated/activity.svg
+          git diff --cached --quiet || (git commit -m 'Refresh activity art' && git push)
