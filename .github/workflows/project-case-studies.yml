@@ -3,8 +3,14 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+
 permissions:
   contents: write
+
+concurrency:
+  group: site-generated-writeback
+  cancel-in-progress: false
+
 jobs:
   build:
     if: github.actor != 'github-actions[bot]'
@@ -30,9 +36,22 @@ jobs:
             projects.append({'project':d,'tracked_files':len(files),'commits_touching_project':commits,'top_extensions':ext.most_common(5)})
           open('data/project_case_studies.json','w').write(json.dumps({'projects':projects},indent=2)+'\n')
           PY
-      - name: Commit changes
+      - name: Commit and safely push changes
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add data/project_case_studies.json
-          git diff --cached --quiet || (git commit -m 'Refresh project case-study metadata' && git push)
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m 'Refresh project case-study metadata'
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 2))
+          done
+          echo 'Failed to push generated metadata after 3 attempts.' >&2
+          exit 1
