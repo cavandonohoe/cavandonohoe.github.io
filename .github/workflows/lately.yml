@@ -1,0 +1,35 @@
+name: Refresh lately feed
+on:
+  schedule:
+    - cron: '43 16 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  lately:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Summarize recent work
+        run: |
+          mkdir -p data
+          python3 - <<'PY'
+          import json, subprocess
+          from collections import Counter
+          from datetime import datetime, timezone, timedelta
+          since=datetime.now(timezone.utc)-timedelta(days=30)
+          lines=subprocess.check_output(['git','log',f'--since={since.isoformat()}','--name-only','--pretty='],text=True).splitlines()
+          files=[x for x in lines if x]
+          areas=Counter((f.split('/')[0] if '/' in f else 'site') for f in files)
+          commits=subprocess.check_output(['git','rev-list','--count',f'--since={since.isoformat()}','HEAD'],text=True).strip()
+          out={'generated_at':datetime.now(timezone.utc).isoformat(),'window_days':30,'commits':int(commits),'active_areas':[{'name':k,'file_touches':v} for k,v in areas.most_common(5)]}
+          open('data/lately.json','w').write(json.dumps(out,indent=2)+'\n')
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add data/lately.json
+          git diff --cached --quiet || (git commit -m 'Refresh lately feed' && git push)
