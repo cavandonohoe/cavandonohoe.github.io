@@ -1,0 +1,22 @@
+name: Refresh personal changelog
+on:
+  schedule:
+    - cron: '31 16 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate changelog
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/build_changelog.py
+      - name: Commit changes
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add data/changelog.json
+          git diff --cached --quiet || (git commit -m 'Refresh personal changelog' && git push)
