@@ -1,0 +1,38 @@
+name: Refresh project case-study metadata
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Generate project metadata
+        run: |
+          mkdir -p data
+          python3 - <<'PY'
+          import json, os, subprocess
+          from collections import Counter
+          skip={'.git','.github','data','scripts'}
+          dirs=[d for d in os.listdir('.') if os.path.isdir(d) and not d.startswith('.') and d not in skip]
+          projects=[]
+          for d in sorted(dirs):
+            files=subprocess.check_output(['git','ls-files',d],text=True).splitlines()
+            if not files: continue
+            ext=Counter(os.path.splitext(f)[1].lower() or '[none]' for f in files)
+            commits=int(subprocess.check_output(['git','rev-list','--count','HEAD','--',d],text=True).strip() or 0)
+            projects.append({'project':d,'tracked_files':len(files),'commits_touching_project':commits,'top_extensions':ext.most_common(5)})
+          open('data/project_case_studies.json','w').write(json.dumps({'projects':projects},indent=2)+'\n')
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add data/project_case_studies.json
+          git diff --cached --quiet || (git commit -m 'Refresh project case-study metadata' && git push)
