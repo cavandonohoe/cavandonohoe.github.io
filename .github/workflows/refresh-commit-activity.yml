@@ -4,22 +4,19 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    # Don't re-run on the bot's own output. Bot pushes via GITHUB_TOKEN
-    # already don't retrigger workflows (GitHub anti-recursion guard); this
-    # is a second guard so a manual edit to only these files is a no-op too.
     paths-ignore:
       - "README.md"
       - "images/readme/commit-activity-1.png"
       - "images/readme/commit-activity-cumulative-1.png"
   schedule:
-    - cron: "41 13 * * 0"  # Sundays 13:41 UTC — safety net
+    - cron: "41 13 * * 0"
 
 permissions:
   contents: write
   actions: write
 
 concurrency:
-  group: refresh-commit-activity
+  group: site-generated-writeback
   cancel-in-progress: false
 
 jobs:
@@ -27,7 +24,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      # Full history: the charts and summary are derived from `git log`.
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0
@@ -49,7 +45,7 @@ jobs:
             exit 1
           fi
 
-      - name: Commit and push if changed
+      - name: Commit and safely push if changed
         id: push
         run: |
           set -euo pipefail
@@ -64,21 +60,37 @@ jobs:
             exit 0
           fi
           git commit -m "Auto-update commit-activity charts"
-          # Pull-rebase to avoid losing races with other refresh workflows.
-          for i in 1 2 3; do
-            if git push; then
+
+          for attempt in 1 2 3; do
+            git fetch origin main
+            if ! git rebase origin/main; then
+              echo "Rebase conflicted on generated outputs; regenerating from latest main..."
+              git rebase --abort || true
+              git reset --hard origin/main
+              Rscript -e 'rmarkdown::render("README.Rmd", quiet = TRUE)'
+              git add README.md \
+                images/readme/commit-activity-1.png \
+                images/readme/commit-activity-cumulative-1.png
+              if git diff --cached --quiet; then
+                echo "Latest main already contains equivalent output."
+                echo "pushed=false" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
+              git commit -m "Auto-update commit-activity charts"
+            fi
+
+            if git push origin HEAD:main; then
               echo "pushed=true" >> "$GITHUB_OUTPUT"
               exit 0
             fi
-            echo "Push failed; rebasing on remote and retrying ($i/3)..."
-            git pull --rebase origin "$(git rev-parse --abbrev-ref HEAD)"
+
+            echo "Push raced with another writer; retrying ($attempt/3)..."
+            sleep $((attempt * 2))
           done
+
           echo "ERROR: failed to push commit-activity update after 3 attempts."
           exit 1
 
-      # Bot pushes via GITHUB_TOKEN don't trigger downstream workflows (a
-      # GitHub anti-recursion guard), so the site won't redeploy after this
-      # commit unless we explicitly dispatch the build workflow.
       - name: Trigger site redeploy
         if: steps.push.outputs.pushed == 'true'
         env:
