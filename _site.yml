@@ -76,8 +76,6 @@ navbar:
       - text: "Rent vs. Buy Calculator"
         href: https://cavandonohoe.shinyapps.io/rent-vs-buy/
       - text: "--- Data Science & Clinical ---"
-      - text: "Developer Year in Review"
-        href: year_in_review.html
       - text: "SDTM with R"
         href: sdtm_with_r.html
       - text: "--- Archive ---"
