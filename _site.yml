@@ -3,6 +3,8 @@ output_dir: "_site"
 include:
   - imdb_rating_plot_files
   - css
+exclude:
+  - _archive
 navbar:
   title: "Cavan Donohoe"
   type: inverse
@@ -54,8 +56,6 @@ navbar:
       - text: "TOHS Class of 2012 Reunion"
         href: tohs_reunion.html
       - text: "--- Visualizations ---"
-      - text: "World Cup 3D Momentum Portrait"
-        href: wc-momentum/index.html
       - text: "Saved Podcast Episodes"
         href: https://cavandonohoe.shinyapps.io/podcast-dashboard/
       - text: "Detour Finder"
