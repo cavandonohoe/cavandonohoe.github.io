@@ -66,6 +66,7 @@ tv_shows_manifest <- function() {
     "Six Feet Under", "six_feet_under", NA, NA, NA, NA,
     "South Park", "south_park", 15, 6, 16, 6,
     "Sparticus", "sparticus", NA, NA, NA, NA,
+    "Star Wars: Visions", "star_wars_visions", NA, NA, NA, NA,
     "Stranger Things", "stranger_things", NA, NA, NA, NA,
     "Suits", "suits", NA, NA, NA, NA,
     "Ted Lasso", "ted_lasso", NA, NA, NA, NA,
