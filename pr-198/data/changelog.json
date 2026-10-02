@@ -28,7 +28,7 @@
     {
       "date": "2026-10-01",
       "type": "merged_pr",
-      "title": "Add \u201cAsk my public data\u201d GitHub Issue workflow",
+      "title": "Add “Ask my public data” GitHub Issue workflow",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/193"
     },
     {
@@ -52,7 +52,7 @@
     {
       "date": "2026-10-01",
       "type": "merged_pr",
-      "title": "Generate a live \u201cLately\u201d activity feed",
+      "title": "Generate a live “Lately” activity feed",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/189"
     },
     {
@@ -180,6 +180,92 @@
       "type": "merged_pr",
       "title": "ci: grant actions:write so scheduled data updates can dispatch redeploy",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/165"
+    }
+  ],
+  "daily_summaries": [
+    {
+      "date": "2026-10-01",
+      "items": [
+        {
+          "emoji": "💻",
+          "text": "11 PRs merged"
+        },
+        {
+          "emoji": "⚙️",
+          "text": "Developer activity + site automation expanded"
+        },
+        {
+          "emoji": "🗺️",
+          "text": "Data-viz projects polished"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "items": [
+        {
+          "emoji": "🎧",
+          "text": "1 podcast episode added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/4114d99c20c9108f34048b2b1bb5bcba1a35552a"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "items": [
+        {
+          "emoji": "💻",
+          "text": "5 PRs merged"
+        },
+        {
+          "emoji": "🎧",
+          "text": "Podcast + Spotify experience improved"
+        },
+        {
+          "emoji": "📄",
+          "text": "CV rebuilt from the latest source data"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-28",
+      "items": [
+        {
+          "emoji": "💻",
+          "text": "4 PRs merged"
+        },
+        {
+          "emoji": "🎧",
+          "text": "Podcast + Spotify experience improved"
+        },
+        {
+          "emoji": "🎬",
+          "text": "Movie & TV data refreshed"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-23",
+      "items": [
+        {
+          "emoji": "💻",
+          "text": "4 PRs merged"
+        },
+        {
+          "emoji": "🎧",
+          "text": "Saved Podcast Episodes dashboard launched and polished"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-22",
+      "items": [
+        {
+          "emoji": "📚",
+          "text": "Publications section expanded",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/173"
+        }
+      ]
     }
   ]
 }
