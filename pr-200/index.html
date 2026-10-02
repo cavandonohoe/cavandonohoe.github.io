@@ -159,18 +159,34 @@ body {
 .live-art-wrap { margin-top: 1.3em; border-top: 1px solid var(--card-border); padding-top: 1em; }
 .live-activity-art { width: 100%; height: auto; display: block; opacity: 1 !important; }
 .live-explainer { color: var(--muted-text); font-size: .86em; margin: .8em 0 0; }
-.recent-activity { margin: 1em 0 2em; }
-.recent-activity h3 { margin-bottom: .6em; }
-.recent-activity ul { list-style: none; padding: 0; margin: 0; }
-.recent-activity li { display: flex; justify-content: space-between; gap: 1em; padding: .55em 0; border-bottom: 1px solid var(--card-border); }
-.recent-activity li span { color: var(--muted-text); white-space: nowrap; font-size: .85em; }
+.recent-activity {
+  margin: 1em 0 2em;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 1.2em 1.35em;
+  box-shadow: 0 2px 10px var(--card-shadow);
+}
+.recent-activity-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 1em; border-bottom: 1px solid var(--card-border); padding-bottom: .75em; margin-bottom: .2em; }
+.recent-activity-heading h3 { margin: 0; }
+.recent-activity-heading > span { color: var(--muted-text); font-size: .82em; }
+.activity-day { display: grid; grid-template-columns: 78px 1fr; gap: 1em; padding: .9em 0; border-bottom: 1px solid var(--card-border); }
+.activity-day:last-child { border-bottom: 0; padding-bottom: .2em; }
+.activity-date { font-size: .78em; font-weight: 800; letter-spacing: .08em; color: var(--muted-text); padding-top: .15em; }
+.activity-day ul { list-style: none; padding: 0; margin: 0; }
+.activity-day li { padding: .2em 0; line-height: 1.45; }
+.activity-day li a { color: var(--text-color); text-decoration: none; }
+.activity-day li a:hover { color: var(--link-color); text-decoration: underline; }
+.activity-emoji { display: inline-block; width: 1.8em; margin-right: .15em; }
 @media (max-width: 600px) {
   .live-stat-grid { grid-template-columns: 1fr; }
   .live-stat { border-right: 0; border-bottom: 1px solid var(--card-border); padding-bottom: .8em; }
   .live-stat:last-child { border-bottom: 0; }
   .live-updated { float: none; display: block; margin-top: .4em; }
-  .recent-activity li { display: block; }
-  .recent-activity li span { display: block; margin-top: .2em; }
+  .recent-activity-heading { display: block; }
+  .recent-activity-heading > span { display: block; margin-top: .3em; }
+  .activity-day { grid-template-columns: 1fr; gap: .35em; }
+  .activity-date { padding-top: 0; }
 }
 
 /* Project cards */
@@ -668,13 +684,13 @@ class="live-updated">Updated 2026-10-01</span>
 </div>
 <div class="live-stat-grid">
 <div class="live-stat">
-<strong>87</strong><span>commits · 30 days</span>
+<strong>90</strong><span>commits · 30 days</span>
 </div>
 <div class="live-stat">
 <strong>5</strong><span>active areas</span>
 </div>
 <div class="live-stat">
-<strong>28</strong><span>recent events</span>
+<strong>30</strong><span>recent events</span>
 </div>
 </div>
 <div class="live-art-wrap">
@@ -687,28 +703,91 @@ automatically.
 </p>
 </div>
 <div class="recent-activity">
+<div class="recent-activity-heading">
 <h3>
-Recently shipped
+What I’ve been up to
 </h3>
+<span>Big-picture highlights from recent commits + merged PRs</span>
+</div>
+<div class="activity-day">
+<div class="activity-date">
+OCT 01
+</div>
 <ul>
 <li>
-<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/pull/196">Replace
-LA heatmap fire emoji</a><span>2026-10-01</span>
+<span class="activity-emoji">💻</span><span>11 PRs merged</span>
 </li>
 <li>
-<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/pull/194">Harden
-generated-data Actions against writeback
-races</a><span>2026-10-01</span>
+<span class="activity-emoji">⚙️</span><span>Developer activity + site
+automation expanded</span>
 </li>
 <li>
-<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/pull/193">Add
-“Ask my public data” GitHub Issue workflow</a><span>2026-10-01</span>
-</li>
-<li>
-<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/pull/192">Generate
-daily GitHub activity data art</a><span>2026-10-01</span>
+<span class="activity-emoji">🗺️</span><span>Data-viz projects
+polished</span>
 </li>
 </ul>
+</div>
+<div class="activity-day">
+<div class="activity-date">
+SEP 30
+</div>
+<ul>
+<li>
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/4114d99c20c9108f34048b2b1bb5bcba1a35552a"><span
+class="activity-emoji">🎧</span><span>1 podcast episode added</span></a>
+</li>
+</ul>
+</div>
+<div class="activity-day">
+<div class="activity-date">
+SEP 29
+</div>
+<ul>
+<li>
+<span class="activity-emoji">💻</span><span>5 PRs merged</span>
+</li>
+<li>
+<span class="activity-emoji">🎧</span><span>Podcast + Spotify experience
+improved</span>
+</li>
+<li>
+<span class="activity-emoji">📄</span><span>CV rebuilt from the latest
+source data</span>
+</li>
+</ul>
+</div>
+<div class="activity-day">
+<div class="activity-date">
+SEP 28
+</div>
+<ul>
+<li>
+<span class="activity-emoji">💻</span><span>4 PRs merged</span>
+</li>
+<li>
+<span class="activity-emoji">🎧</span><span>Podcast + Spotify experience
+improved</span>
+</li>
+<li>
+<span class="activity-emoji">🎬</span><span>Movie &amp; TV data
+refreshed</span>
+</li>
+</ul>
+</div>
+<div class="activity-day">
+<div class="activity-date">
+SEP 23
+</div>
+<ul>
+<li>
+<span class="activity-emoji">💻</span><span>4 PRs merged</span>
+</li>
+<li>
+<span class="activity-emoji">🎧</span><span>Saved Podcast Episodes
+dashboard launched and polished</span>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div id="what-ive-been-building" class="section level2">
