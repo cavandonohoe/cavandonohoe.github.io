@@ -1,6 +1,24 @@
 {
-  "generated_at": "2026-10-01T21:12:33.063609+00:00",
+  "generated_at": "2026-10-02T20:52:54.965948+00:00",
   "events": [
+    {
+      "date": "2026-10-02",
+      "type": "merged_pr",
+      "title": "Add automated developer year in review",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/198"
+    },
+    {
+      "date": "2026-10-01",
+      "type": "merged_pr",
+      "title": "Turn recent activity into a big-picture emoji timeline",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/199"
+    },
+    {
+      "date": "2026-10-01",
+      "type": "merged_pr",
+      "title": "Surface live automated activity on the homepage",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/195"
+    },
     {
       "date": "2026-10-01",
       "type": "merged_pr",
@@ -16,32 +34,8 @@
     {
       "date": "2026-10-01",
       "type": "merged_pr",
-      "title": "Surface live automated activity on the homepage",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/195"
-    },
-    {
-      "date": "2026-10-01",
-      "type": "merged_pr",
       "title": "Harden generated-data Actions against writeback races",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/194"
-    },
-    {
-      "date": "2026-10-01",
-      "type": "merged_pr",
-      "title": "Add “Ask my public data” GitHub Issue workflow",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/193"
-    },
-    {
-      "date": "2026-10-01",
-      "type": "merged_pr",
-      "title": "Generate daily GitHub activity data art",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/192"
-    },
-    {
-      "date": "2026-10-01",
-      "type": "merged_pr",
-      "title": "Add automated developer year-in-review snapshots",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/191"
     },
     {
       "date": "2026-10-01",
@@ -52,8 +46,26 @@
     {
       "date": "2026-10-01",
       "type": "merged_pr",
-      "title": "Generate a live “Lately” activity feed",
+      "title": "Generate daily GitHub activity data art",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/192"
+    },
+    {
+      "date": "2026-10-01",
+      "type": "merged_pr",
+      "title": "Generate a live \u201cLately\u201d activity feed",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/189"
+    },
+    {
+      "date": "2026-10-01",
+      "type": "merged_pr",
+      "title": "Add \u201cAsk my public data\u201d GitHub Issue workflow",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/193"
+    },
+    {
+      "date": "2026-10-01",
+      "type": "merged_pr",
+      "title": "Add weekly Cavan Wrapped activity snapshots",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/187"
     },
     {
       "date": "2026-10-01",
@@ -64,20 +76,8 @@
     {
       "date": "2026-10-01",
       "type": "merged_pr",
-      "title": "Add weekly Cavan Wrapped activity snapshots",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/187"
-    },
-    {
-      "date": "2026-09-29",
-      "type": "merged_pr",
-      "title": "Fix Spotify Shiny redeploys after app changes",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/186"
-    },
-    {
-      "date": "2026-09-29",
-      "type": "merged_pr",
-      "title": "Rebuild CV from latest Google Sheet",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/185"
+      "title": "Add automated developer year-in-review snapshots",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/191"
     },
     {
       "date": "2026-09-29",
@@ -94,6 +94,18 @@
     {
       "date": "2026-09-29",
       "type": "merged_pr",
+      "title": "Rebuild CV from latest Google Sheet",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/185"
+    },
+    {
+      "date": "2026-09-29",
+      "type": "merged_pr",
+      "title": "Fix Spotify Shiny redeploys after app changes",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/186"
+    },
+    {
+      "date": "2026-09-29",
+      "type": "merged_pr",
       "title": "Continually refresh Spotify saved-episodes data via scheduled CI",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/178"
     },
@@ -106,12 +118,6 @@
     {
       "date": "2026-09-28",
       "type": "merged_pr",
-      "title": "Add Alice in Borderland to the IMDb rating plot",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/181"
-    },
-    {
-      "date": "2026-09-28",
-      "type": "merged_pr",
       "title": "Add listening history to saved podcast dashboard",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/180"
     },
@@ -120,6 +126,12 @@
       "type": "merged_pr",
       "title": "Add Spotify streaming-history export ingestion + dashboard",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/179"
+    },
+    {
+      "date": "2026-09-28",
+      "type": "merged_pr",
+      "title": "Add Alice in Borderland to the IMDb rating plot",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/181"
     },
     {
       "date": "2026-09-23",
@@ -154,14 +166,14 @@
     {
       "date": "2026-09-16",
       "type": "merged_pr",
-      "title": "Add the six live projects missing from the landing page gallery",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/172"
+      "title": "Rank every tracked show on whether it quit while it was ahead",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/170"
     },
     {
       "date": "2026-09-16",
       "type": "merged_pr",
-      "title": "Rank every tracked show on whether it quit while it was ahead",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/170"
+      "title": "Add the six live projects missing from the landing page gallery",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/172"
     },
     {
       "date": "2026-09-15",
@@ -184,19 +196,31 @@
   ],
   "daily_summaries": [
     {
+      "date": "2026-10-02",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "10 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/40837f3b448170c0aeacb08f728a3c3ceea260ef"
+        }
+      ]
+    },
+    {
       "date": "2026-10-01",
       "items": [
         {
-          "emoji": "💻",
-          "text": "11 PRs merged"
+          "emoji": "\ud83d\udcbb",
+          "text": "12 PRs merged"
         },
         {
-          "emoji": "⚙️",
-          "text": "Developer activity + site automation expanded"
+          "emoji": "\u2699\ufe0f",
+          "text": "Developer activity + site automation expanded",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/199"
         },
         {
-          "emoji": "🗺️",
-          "text": "Data-viz projects polished"
+          "emoji": "\ud83d\uddfa\ufe0f",
+          "text": "Data-viz projects polished",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/196"
         }
       ]
     },
@@ -204,7 +228,7 @@
       "date": "2026-09-30",
       "items": [
         {
-          "emoji": "🎧",
+          "emoji": "\ud83c\udfa7",
           "text": "1 podcast episode added",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/4114d99c20c9108f34048b2b1bb5bcba1a35552a"
         }
@@ -214,16 +238,18 @@
       "date": "2026-09-29",
       "items": [
         {
-          "emoji": "💻",
+          "emoji": "\ud83d\udcbb",
           "text": "5 PRs merged"
         },
         {
-          "emoji": "🎧",
-          "text": "Podcast + Spotify experience improved"
+          "emoji": "\ud83c\udfa7",
+          "text": "Podcast + Spotify experience improved",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/186"
         },
         {
-          "emoji": "📄",
-          "text": "CV rebuilt from the latest source data"
+          "emoji": "\ud83d\udcc4",
+          "text": "CV rebuilt from the latest source data",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/185"
         }
       ]
     },
@@ -231,16 +257,18 @@
       "date": "2026-09-28",
       "items": [
         {
-          "emoji": "💻",
+          "emoji": "\ud83d\udcbb",
           "text": "4 PRs merged"
         },
         {
-          "emoji": "🎧",
-          "text": "Podcast + Spotify experience improved"
+          "emoji": "\ud83c\udfa7",
+          "text": "Podcast + Spotify experience improved",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/182"
         },
         {
-          "emoji": "🎬",
-          "text": "Movie & TV data refreshed"
+          "emoji": "\ud83c\udfac",
+          "text": "Movie & TV projects updated",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/181"
         }
       ]
     },
@@ -248,12 +276,13 @@
       "date": "2026-09-23",
       "items": [
         {
-          "emoji": "💻",
+          "emoji": "\ud83d\udcbb",
           "text": "4 PRs merged"
         },
         {
-          "emoji": "🎧",
-          "text": "Saved Podcast Episodes dashboard launched and polished"
+          "emoji": "\ud83c\udfa7",
+          "text": "Podcast + Spotify experience improved",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/177"
         }
       ]
     },
@@ -261,9 +290,78 @@
       "date": "2026-09-22",
       "items": [
         {
-          "emoji": "📚",
+          "emoji": "\ud83d\udcda",
           "text": "Publications section expanded",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/173"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-21",
+      "items": [
+        {
+          "emoji": "\ud83c\udfac",
+          "text": "Movie & TV data refreshed",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/9a44cded3a216bfc8b0cdb3317236803d380b639"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-16",
+      "items": [
+        {
+          "emoji": "\ud83d\udcbb",
+          "text": "2 PRs merged"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-15",
+      "items": [
+        {
+          "emoji": "\ud83d\ude80",
+          "text": "Guard the scheduled data refreshes and fix preview deploy hygiene",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/169"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-14",
+      "items": [
+        {
+          "emoji": "\ud83c\udfac",
+          "text": "Movie & TV data refreshed",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/8f255c9ddbe57391944bc8f4ac9f6e8aae82eb53"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-10",
+      "items": [
+        {
+          "emoji": "\u2699\ufe0f",
+          "text": "Developer activity + site automation expanded",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/166"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-08",
+      "items": [
+        {
+          "emoji": "\ud83d\ude80",
+          "text": "ci: grant actions:write so scheduled data updates can dispatch redeploy",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/165"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-07",
+      "items": [
+        {
+          "emoji": "\ud83c\udfac",
+          "text": "Movie & TV data refreshed",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/353dc650168ed0cdee80e9199c6e1743eb449e39"
         }
       ]
     }
