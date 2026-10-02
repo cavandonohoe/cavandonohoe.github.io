@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-10-01T05:50:39.223570+00:00",
+  "generated_at": "2026-10-01T21:23:43.776174+00:00",
   "window_days": 30,
-  "commits": 87,
+  "commits": 90,
   "active_areas": [
     {
       "name": "data",
-      "file_touches": 284
+      "file_touches": 286
     },
     {
       "name": "site",
-      "file_touches": 56
+      "file_touches": 57
     },
     {
       "name": "images",
-      "file_touches": 54
+      "file_touches": 56
     },
     {
       "name": ".github",

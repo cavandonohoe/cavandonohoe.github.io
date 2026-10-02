@@ -1,0 +1,57 @@
+---
+title: "Developer Year in Review"
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+lang: "en"
+---
+
+<style>
+.year-hero { margin: 2rem 0; padding: 2.4rem; border-radius: 18px; background: linear-gradient(135deg,#111827,#1f2937); color:#fff; box-shadow:0 14px 34px rgba(0,0,0,.18); }
+.year-kicker { text-transform:uppercase; letter-spacing:.16em; font-size:.8rem; opacity:.72; }
+.year-title { font-size:clamp(2.3rem,7vw,5.6rem); line-height:.95; margin:.4rem 0 1.6rem; font-weight:800; }
+.year-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(145px,1fr)); gap:1rem; }
+.year-stat { padding:1rem; border:1px solid rgba(255,255,255,.14); border-radius:12px; background:rgba(255,255,255,.06); }
+.year-stat strong { display:block; font-size:1.8rem; }
+.year-stat span { opacity:.72; font-size:.9rem; }
+.year-details { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:.8rem; margin-top:1.2rem; }
+.year-detail { padding:.9rem 1rem; border-radius:10px; background:rgba(255,255,255,.08); }
+.year-project { margin-top:1.2rem; padding:1rem 1.1rem; border-left:4px solid #60a5fa; background:rgba(96,165,250,.12); border-radius:0 10px 10px 0; }
+.year-note { opacity:.62; font-size:.8rem; margin-top:1.1rem; }
+</style>
+
+```{r year-review, echo=FALSE, results='asis'}
+files <- list.files("data/year-in-review", pattern = "^[0-9]{4}\\.json$", full.names = TRUE)
+if (!length(files) || !requireNamespace("jsonlite", quietly = TRUE)) {
+  cat('<div class="year-hero"><div class="year-kicker">Developer archive</div><div class="year-title">YEAR IN CODE</div><p>The first snapshot will appear here after the annual GitHub Action runs.</p></div>')
+} else {
+  years <- as.integer(sub("\\.json$", "", basename(files)))
+  d <- jsonlite::fromJSON(files[which.max(years)])
+  val <- function(x, fallback="—") if (is.null(x) || is.na(x) || identical(x, "")) fallback else x
+  fmt <- function(x) if (is.numeric(x)) format(x, big.mark=",", scientific=FALSE, trim=TRUE) else val(x)
+  cat(paste0(
+    '<div class="year-hero">',
+    '<div class="year-kicker">Developer year in review</div>',
+    '<div class="year-title">', d$year, ' IN CODE</div>',
+    '<div class="year-grid">',
+      '<div class="year-stat"><strong>', fmt(d$commits), '</strong><span>commits</span></div>',
+      '<div class="year-stat"><strong>', fmt(d$pull_requests), '</strong><span>pull requests</span></div>',
+      '<div class="year-stat"><strong>', fmt(d$repositories_touched), '</strong><span>repositories touched</span></div>',
+      '<div class="year-stat"><strong>', fmt(d$lines_added), '</strong><span>lines added</span></div>',
+    '</div>',
+    '<div class="year-details">',
+      '<div class="year-detail"><strong>Most-used language:</strong> ', val(d$most_used_language), '</div>',
+      '<div class="year-detail"><strong>Most-active month:</strong> ', val(d$most_active_month), '</div>',
+      '<div class="year-detail"><strong>Longest streak:</strong> ', fmt(d$longest_streak_days), ' days</div>',
+    '</div>',
+    '<div class="year-project"><strong>Biggest project</strong><br>', val(d$biggest_project),
+      if (!is.null(d$biggest_project_commits)) paste0(' · ', fmt(d$biggest_project_commits), ' commits') else '', '</div>',
+    '<div class="year-note">', val(d$scope), ' Snapshot generated ', substr(val(d$generated_at),1,10), '.</div>',
+    '</div>'
+  ))
+}
+```
+
+Each January 1, GitHub Actions preserves a new JSON snapshot instead of replacing the old one, so this becomes a permanent year-by-year developer archive.
