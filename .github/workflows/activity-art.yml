@@ -40,7 +40,7 @@ jobs:
             elif i == 29:
               x=15+29*(bw+gap)+bw; anchor='end'
             labels.append(f'<text x="{x}" y="163" text-anchor="{anchor}" class="date-label">{dates[i].strftime("%b %-d")}</text>')
-          svg=f'''<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="30 days of GitHub activity"><style>svg{{color:#238636}} text{{font:14px system-ui;fill:#57606a}} .date-label{{font-size:10px;fill:#8c959f}}</style><text x="15" y="20">30 days of site-repository activity</text>{''.join(bars)}{''.join(labels)}<text x="15" y="188">Generated {now.date().isoformat()}</text></svg>'''
+          svg=f'''<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="30 days of GitHub activity"><style>svg{{color:#238636}} text{{font:14px system-ui;fill:#57606a}} .date-label{{font-size:12px;font-weight:500;fill:#6e7781}}</style><text x="15" y="20">30 days of site-repository activity</text>{''.join(bars)}{''.join(labels)}<text x="15" y="188">Generated {now.date().isoformat()}</text></svg>'''
           open('assets/generated/activity.svg','w').write(svg+'\n')
           PY
       - name: Commit art
