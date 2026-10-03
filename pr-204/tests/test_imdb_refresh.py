@@ -112,6 +112,22 @@ class RefreshTests(unittest.TestCase):
                 refresh.main()
         self.assertEqual(before, {p.name: p.read_bytes() for p in (published / 'results').iterdir()})
 
+    def test_preview_refresh_saves_separate_snapshot(self):
+        published = self.root / 'published'
+        shutil.copytree(self.results, published / 'results')
+        before = {p.name: p.read_bytes() for p in (published / 'results').iterdir()}
+        output = self.root / 'preview'
+
+        def analyze(command, **kwargs):
+            destination = pathlib.Path(command[command.index('--output-dir') + 1])
+            shutil.copytree(self.results, destination)
+
+        with mock.patch.object(refresh, 'ROOT', published), mock.patch.object(sys, 'argv',
+                ['refresh.py', '--data-dir', str(self.inputs), '--output-dir', str(output)]), mock.patch.object(refresh.subprocess, 'run', analyze):
+            refresh.main()
+        self.assertEqual(refresh.validate(output), (2, 1))
+        self.assertEqual(before, {p.name: p.read_bytes() for p in (published / 'results').iterdir()})
+
     def test_partial_download_never_replaces_previous_input(self):
         target = self.inputs / 'title.ratings.tsv.gz'
         before = target.read_bytes()
