@@ -5,30 +5,34 @@ imdb_plotly_layout <- function(widget, titles, labels, left_margin, axis_title,
 function(el, x, data) {
   let lastWidth = 0;
   let timer;
+  const desktopRange = x.layout.xaxis.range.slice();
+  const maxValue = Math.max.apply(null, el.data[0].x);
   function update() {
     const width = el.clientWidth;
     if (!width || width === lastWidth) return;
     lastWidth = width;
     const compact = width < 600;
-    const height = compact ? data.titles.length * 64 + 100 : 650;
+    const height = compact ? data.titles.length * 52 + 100 : 650;
     el.style.height = height + 'px';
     const annotations = compact ? data.titles.map(function(title, i) {
       return {
         xref: 'paper', x: 0, xanchor: 'left',
-        yref: 'y', y: title, yshift: 23,
-        text: '<b>' + data.safeTitles[i] + '</b><br>' + data.labels[i],
-        showarrow: false, align: 'left', font: {size: 11}
+        yref: 'y', y: title, yshift: 14, yanchor: 'bottom',
+        text: '<b>' + data.safeTitles[i] + '</b><br>' + data.labels[i].replace(/<br[^>]*>/gi, ' · ')
+          .replace('exceptional episodes', 'episodes').replace('series votes', 'votes'),
+        showarrow: false, align: 'left', font: {size: 12}
       };
     }) : [];
     Plotly.restyle(el, {
       textposition: compact ? 'none' : 'outside',
-      width: compact ? 0.2 : 0.8
+      width: compact ? 0.34 : 0.8
     }).then(function() {
       return Plotly.relayout(el, {
         width: width, height: height, dragmode: false,
         margin: {l: compact ? 12 : data.leftMargin, r: 20, t: 60, b: 60},
         'yaxis.showticklabels': !compact,
         'xaxis.title.text': compact ? data.compactAxisTitle : data.axisTitle,
+        'xaxis.range': compact ? [0, maxValue * 1.08] : desktopRange,
         annotations: annotations
       });
     });
