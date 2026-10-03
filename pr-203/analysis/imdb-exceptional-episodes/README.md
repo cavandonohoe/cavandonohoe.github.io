@@ -72,3 +72,7 @@ For the original validation snapshot, use repository commit `448604a20ae1669cec4
 Downloads change daily; reruns against a later snapshot can change counts. The original downloads were retrieved 3 October 2026 UTC; their individual Last-Modified and x-amz-meta-run-date headers are in the manifest. Raw downloads are not bundled.
 
 Official sources: https://data.imdb.com/non-commercial-datasets/ and https://datasets.imdbws.com/ . Current comparison target: https://www.imdb.com/chart/toptv/ .
+
+## Website page
+
+`imdb_exceptional_episodes.Rmd` renders this snapshot into the website, with a show leaderboard, searchable show and episode tables, vote-threshold tabs, and a historical cohort comparison. `scripts/imdb_exceptional_metrics.R` recomputes counts in R and the page checks them against the saved sensitivity summary. Rendering does not download bulk data. The page is linked from the homepage and Projects menu.
