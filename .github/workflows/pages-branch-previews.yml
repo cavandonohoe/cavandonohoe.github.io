@@ -138,6 +138,23 @@ jobs:
           publish_dir: _site
           keep_files: true        # keep pr-*/ folders
 
+      # keep_files preserves PR previews, but also retains removed production
+      # assets. Remove this archived project from the existing published root.
+      - name: Checkout published branch for archive cleanup
+        uses: actions/checkout@v7
+        with:
+          ref: gh-pages
+      - name: Remove archived World Cup map from production
+        run: |
+          git rm -r --ignore-unmatch wc-momentum _archive/wc-momentum
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Remove archived World Cup map from published site"
+          git push origin HEAD:gh-pages
+
   # PREVIEW: publish to gh-pages/pr-<PR#>/ for PRs
   deploy_preview:
     name: Deploy PR preview (gh-pages/pr-<num>/)

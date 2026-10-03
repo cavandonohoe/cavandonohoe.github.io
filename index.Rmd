@@ -156,7 +156,6 @@ cards <- list(
   list("la_real_estate.html", "\U0001F3E1", "LA Neighborhoods: Price per Sq Ft", "Zillow + Redfin data for LA neighborhoods: median prices, rent, and what $1M buys you."),
   list("la_housing_heatmap.html", "\U0001F5FA\UFE0F", "LA Housing Prices: Animated Heat Map", paste0("Zillow home values across LA County ZIP codes, animated year by year, with ", "Case-Shiller and Shiller's long-run series for context.")),
   list("https://cavandonohoe.shinyapps.io/rent-vs-buy/", "\U0001F9EE", "Rent vs. Buy Calculator", "Interactive Shiny app for side-by-side financial simulation of renting vs. buying."),
-  list("wc-momentum/index.html", "\U0001F30D", "World Cup 3D Momentum Portrait", paste0("Follow the ball through the 2022 World Cup Final in 3D: possession, ", "passes, and every goal, animated from real StatsBomb event data.")),
   list("https://cavandonohoe.shinyapps.io/podcast-dashboard/", "\U0001F3A7", "Saved Podcast Episodes", paste0("Interactive Shiny dashboard of my saved Spotify podcast episodes: ", "per-show breakdowns, listening hours, and a monthly saving timeline.")),
   list("imdb_top_250_tv_series.html", "\U0001F4FA", "IMDb Top 250 TV Series", "Scraped ratings, seasons, and trends for the top 250 TV shows on IMDb."),
   list("best_picture_nominees.html", "\U0001F3AC", "Best Picture Nominees", "Oscar Best Picture data: distributors, producers, and historical nominee analysis."),
