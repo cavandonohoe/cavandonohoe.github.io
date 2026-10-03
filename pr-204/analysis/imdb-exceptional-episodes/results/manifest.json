@@ -1,0 +1,74 @@
+{
+  "retrieved_utc": "2026-10-03T09:33:52.400369+00:00",
+  "repo_commit": "448604a20ae1669cec4b6a08b544949ffdd54e2a",
+  "cohort_note": "Live Top 250 blocked (403); saved cohort is historical, not verified current.",
+  "saved_cohort_unique_shows": 250,
+  "eligible_title_types": {
+    "tvSeries": 1132,
+    "tvMiniSeries": 208
+  },
+  "eligible_without_linked_episodes": 0,
+  "eligible_without_rated_episodes": 0,
+  "datasets": {
+    "title.basics": {
+      "sha256": "038b82200f31ed7dc320421a92f0763c09b60becb386e5c309f70f61db6bda2f",
+      "headers": {
+        "Content-Type": "binary/octet-stream",
+        "Content-Length": "227943560",
+        "Connection": "close",
+        "Server": "AmazonS3",
+        "Date": "Fri, 02 Oct 2026 22:19:42 GMT",
+        "Last-Modified": "Fri, 02 Oct 2026 12:43:36 GMT",
+        "ETag": "\"39f7602d12b1d46d39b87069bf7ad0e4-28\"",
+        "x-amz-server-side-encryption": "AES256",
+        "x-amz-meta-run-date": "2026-10-02",
+        "Accept-Ranges": "bytes",
+        "X-Cache": "Hit from cloudfront",
+        "Via": "1.1 7a851297d5e102915e85f0734993e868.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Pop": "DFW59-P6",
+        "X-Amz-Cf-Id": "Gaw1_ryAvRsLQD5gE-F2aavCKnm1e3KTTHGLAXdfq3GUGdQvH7PPNQ==",
+        "Age": "40028"
+      }
+    },
+    "title.episode": {
+      "sha256": "a6b9894feb68dd8678a8958efcf5b575aff32e0b5f5e6477d66963752f06e218",
+      "headers": {
+        "Content-Type": "binary/octet-stream",
+        "Content-Length": "54863924",
+        "Connection": "close",
+        "Server": "AmazonS3",
+        "Date": "Fri, 02 Oct 2026 18:42:00 GMT",
+        "Last-Modified": "Fri, 02 Oct 2026 12:43:57 GMT",
+        "ETag": "\"552bf519c9c8f6edea260d58ac8f55c3-7\"",
+        "x-amz-server-side-encryption": "AES256",
+        "x-amz-meta-run-date": "2026-10-02",
+        "Accept-Ranges": "bytes",
+        "X-Cache": "Hit from cloudfront",
+        "Via": "1.1 3464dfd29ea725137a4e56a5b8387b30.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Pop": "DFW59-P6",
+        "X-Amz-Cf-Id": "EYgioGXHSNOati8xFiTa6yIIGs5wphLMtAFLTlHInH-YrhsifUEsPA==",
+        "Age": "53090"
+      }
+    },
+    "title.ratings": {
+      "sha256": "275c1b0ff353d21e372abe0224b9fcf741a841401017741ecea48a0e04f10beb",
+      "headers": {
+        "Content-Type": "binary/octet-stream",
+        "Content-Length": "8671065",
+        "Connection": "close",
+        "Date": "Sat, 03 Oct 2026 09:00:01 GMT",
+        "Last-Modified": "Sat, 03 Oct 2026 00:50:06 GMT",
+        "ETag": "\"3c7289fdd5700310dc9bb9b1c28f6123-2\"",
+        "x-amz-server-side-encryption": "AES256",
+        "x-amz-meta-run-date": "2026-10-02",
+        "Accept-Ranges": "bytes",
+        "Server": "AmazonS3",
+        "X-Cache": "Hit from cloudfront",
+        "Via": "1.1 5e8c263d902978fea874ef2fa06bae8e.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Pop": "DFW59-P6",
+        "X-Amz-Cf-Id": "TQ4QdSm2GdzfU8iliq7cWbgQZmSZDKxDnN9hRpSMireZnKBcGoawEQ==",
+        "Age": "1609"
+      }
+    }
+  }
+}
