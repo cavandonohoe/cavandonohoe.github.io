@@ -1,0 +1,108 @@
+name: Refresh exceptional IMDb episodes
+
+on:
+  schedule:
+    - cron: "17 9 * * 1" # Mondays, after the existing episode-ratings import
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+    paths:
+      - ".github/workflows/update_imdb_exceptional_episodes.yml"
+      - "analysis/imdb-exceptional-episodes/**"
+      - "tests/test_imdb_refresh.py"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: exceptional-imdb-refresh-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Test snapshot refresh without network downloads
+        run: python -m unittest discover -s tests -p test_imdb_refresh.py -v
+
+  preview-import:
+    name: Test full IMDb import without publishing
+    if: >-
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      contains(github.event.pull_request.labels.*.name, 'test-imdb-import')
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Download official datasets, analyze, and validate
+        run: python analysis/imdb-exceptional-episodes/refresh.py --output-dir "$RUNNER_TEMP/imdb-test-results"
+      - name: Verify published results are untouched
+        run: git diff --exit-code -- analysis/imdb-exceptional-episodes/results
+      - name: Save validated test snapshot
+        uses: actions/upload-artifact@v7
+        with:
+          name: imdb-test-snapshot
+          path: ${{ runner.temp }}/imdb-test-results
+          if-no-files-found: error
+          retention-days: 7
+
+  refresh:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+      actions: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Download, analyze, and validate a complete snapshot
+        run: python analysis/imdb-exceptional-episodes/refresh.py
+      - name: Commit validated result files
+        id: push
+        shell: bash
+        run: |
+          set -euo pipefail
+          result_dir=analysis/imdb-exceptional-episodes/results
+          unexpected=$(git diff --name-only | rg -v '^analysis/imdb-exceptional-episodes/results/[^/]+\.(csv|json)$' || true)
+          if [ -n "$unexpected" ]; then
+            echo "Unexpected changes: $unexpected"
+            exit 1
+          fi
+          git add "$result_dir"
+          if git diff --cached --quiet; then
+            echo 'pushed=false' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Refresh exceptional IMDb episode snapshot'
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main
+            python analysis/imdb-exceptional-episodes/refresh.py --validate-only "$result_dir"
+            if git push origin HEAD:main; then
+              echo 'pushed=true' >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          done
+          exit 1
+      - name: Rebuild and deploy production website
+        if: steps.push.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages-branch-previews.yml --ref main -f deploy_root=true

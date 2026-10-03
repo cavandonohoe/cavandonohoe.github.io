@@ -12,6 +12,7 @@ Imports:
     xml2,
     httr,
     httr2,
+    jsonlite,
     curl,
     DT,
     scales,
