@@ -81,7 +81,7 @@ chart <- plotly::plot_ly(
   leaders, x = ~exceptional_episodes, y = ~series_title, type = "bar", orientation = "h",
   text = ~paste0(series_title, "<br>", exceptional_episodes, " exceptional episodes",
                  "<br>Series votes: ", fmt(series_votes)),
-  hoverinfo = "text", marker = list(color = "#287d8e")
+  hoverinfo = "text", textposition = "none", marker = list(color = "#287d8e")
 )
 plotly::layout(chart, height = 650, margin = list(l = 190),
                xaxis = list(title = "Episodes rated ≥9.7 with ≥5,000 votes", rangemode = "tozero"),
