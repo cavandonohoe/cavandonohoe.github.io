@@ -8,6 +8,13 @@ imdb_exceptional_counts <- function(series, episodes, min_votes = 5000L) {
     dplyr::count(series_id, name = "exceptional_episodes")
   eligible |>
     dplyr::left_join(hits, by = "series_id") |>
-    dplyr::mutate(exceptional_episodes = dplyr::coalesce(exceptional_episodes, 0L)) |>
+    dplyr::mutate(
+      exceptional_episodes = dplyr::coalesce(exceptional_episodes, 0L),
+      percent_exceptional = dplyr::if_else(
+        linked_episodes > 0,
+        100 * exceptional_episodes / linked_episodes,
+        NA_real_
+      )
+    ) |>
     dplyr::arrange(dplyr::desc(exceptional_episodes), dplyr::desc(series_votes), series_id)
 }
