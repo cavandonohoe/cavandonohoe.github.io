@@ -82,6 +82,7 @@ I haven't verified today's Top 250 membership because IMDb's live chart blocked 
 
 This is an episode count, so longer shows have more chances to qualify. It is not a ranking of overall show quality.
 The labels show each count and its series-vote total; the full searchable table follows.
+On phones, labels sit above thicker bars that use the available chart width.
 
 ```{r leaderboard-chart}
 leaders <- primary |> dplyr::filter(exceptional_episodes > 0) |> dplyr::slice_head(n = 20)
