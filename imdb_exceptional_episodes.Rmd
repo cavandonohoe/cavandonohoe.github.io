@@ -175,7 +175,7 @@ plotly::plot_ly(
     labels = paste0(share_leaders$exceptional_episodes, " / ", share_leaders$linked_episodes,
                     " episodes<br>", sprintf("%.2f", share_leaders$percent_exceptional), "%"),
     left_margin = 210, axis_title = "Share of all episodes rated ≥9.7 with ≥5,000 votes (%)",
-    compact_axis_title = "Exceptional share (%)"
+    compact_axis_title = "Exceptional share (%)", compact_row_height = 76
   )
 ```
 

@@ -1,18 +1,25 @@
 # Permanent labels stay readable on narrow screens without horizontal overflow.
 imdb_plotly_layout <- function(widget, titles, labels, left_margin, axis_title,
-                               compact_axis_title) {
+                               compact_axis_title, compact_row_height = 68) {
   htmlwidgets::onRender(widget, "
 function(el, x, data) {
   let lastWidth = 0;
   let timer;
+  let applying = false;
   const desktopRange = x.layout.xaxis.range.slice();
   const maxValue = Math.max.apply(null, el.data[0].x);
   function update() {
     const width = el.clientWidth;
-    if (!width || width === lastWidth) return;
-    lastWidth = width;
+    if (!width || applying) return;
     const compact = width < 600;
-    const height = compact ? data.titles.length * 68 + 100 : 650;
+    const height = compact ? data.titles.length * data.rowHeight + 120 : 650;
+    const instance = HTMLWidgets.getInstance(el);
+    // The R binding caches its original 650px height and reuses it on resize.
+    // Keep that cached height in sync, so it cannot squash the mobile rows.
+    if (instance) instance.height = height;
+    if (width === lastWidth && el.clientHeight === height && el.layout.height === height) return;
+    lastWidth = width;
+    applying = true;
     el.style.height = height + 'px';
     const annotations = compact ? data.titles.map(function(title, i) {
       return {
@@ -25,7 +32,7 @@ function(el, x, data) {
     }) : [];
     Plotly.restyle(el, {
       textposition: compact ? 'none' : 'outside',
-      width: compact ? 0.26 : 0.8
+      width: compact ? 18 / data.rowHeight : 0.8
     }).then(function() {
       return Plotly.relayout(el, {
         width: width, height: height, dragmode: false,
@@ -35,17 +42,24 @@ function(el, x, data) {
         'xaxis.range': compact ? [0, maxValue * 1.08] : desktopRange,
         annotations: annotations
       });
+    }).finally(function() {
+      applying = false;
+      schedule();
     });
   }
-  update();
-  window.addEventListener('resize', function() {
+  function schedule() {
     clearTimeout(timer);
-    timer = setTimeout(update, 150);
-  });
+    timer = setTimeout(update, 50);
+  }
+  update();
+  window.addEventListener('resize', schedule);
+  el.on('plotly_afterplot', schedule);
+  const observer = new ResizeObserver(schedule);
+  observer.observe(el);
 }
 ", data = list(
     titles = as.character(titles), safeTitles = htmltools::htmlEscape(as.character(titles)),
     labels = labels, leftMargin = left_margin, axisTitle = axis_title,
-    compactAxisTitle = compact_axis_title
+    compactAxisTitle = compact_axis_title, rowHeight = compact_row_height
   ))
 }
