@@ -12,7 +12,7 @@ function(el, x, data) {
     if (!width || width === lastWidth) return;
     lastWidth = width;
     const compact = width < 600;
-    const height = compact ? data.titles.length * 52 + 100 : 650;
+    const height = compact ? data.titles.length * 68 + 100 : 650;
     el.style.height = height + 'px';
     const annotations = compact ? data.titles.map(function(title, i) {
       return {
@@ -25,7 +25,7 @@ function(el, x, data) {
     }) : [];
     Plotly.restyle(el, {
       textposition: compact ? 'none' : 'outside',
-      width: compact ? 0.34 : 0.8
+      width: compact ? 0.26 : 0.8
     }).then(function() {
       return Plotly.relayout(el, {
         width: width, height: height, dragmode: false,
