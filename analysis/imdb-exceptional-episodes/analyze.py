@@ -110,7 +110,11 @@ for filename, rs, parent in files:
     validation.append({'file': filename, **{k: stats[k] for k in ['rows', 'matched', 'same_rating', 'same_votes', 'primary_classification_changes', 'unmapped_series', 'missing_or_ambiguous_key', 'no_official_rating', 'invalid_csv_rating_or_votes']}})
 write('validation_summary.csv', validation)
 write('validation_episode_matches.csv', detail)
-manifest = {'analyzed_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'repo_commit': __import__('subprocess').check_output(['git', '-C', str(REPO), 'rev-parse', 'HEAD'], text=True).strip(), 'cohort_note': 'Live Top 250 blocked (403); saved cohort is historical, not verified current.', 'saved_cohort_unique_shows': len(saved_ids), 'eligible_title_types': dict(collections.Counter((series[i]['title_type'] for i in eligible))), 'eligible_without_linked_episodes': len([i for i in eligible if not coverage[i]]), 'eligible_without_rated_episodes': len([i for i in eligible if not rated[i]]), 'datasets': {n: {'sha256': hashlib.sha256((DATA / (n + '.tsv.gz')).read_bytes()).hexdigest(), 'headers': json.loads((DATA / (n + '.headers.json')).read_text())} for n in ['title.basics', 'title.episode', 'title.ratings']}}
+def input_hash(name):
+    with (DATA / (name + '.tsv.gz')).open('rb') as stream:
+        return hashlib.file_digest(stream, 'sha256').hexdigest()
+
+manifest = {'analyzed_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'repo_commit': __import__('subprocess').check_output(['git', '-C', str(REPO), 'rev-parse', 'HEAD'], text=True).strip(), 'cohort_note': 'Live Top 250 blocked (403); saved cohort is historical, not verified current.', 'saved_cohort_unique_shows': len(saved_ids), 'eligible_title_types': dict(collections.Counter((series[i]['title_type'] for i in eligible))), 'eligible_without_linked_episodes': len([i for i in eligible if not coverage[i]]), 'eligible_without_rated_episodes': len([i for i in eligible if not rated[i]]), 'datasets': {n: {'sha256': input_hash(n), 'headers': json.loads((DATA / (n + '.headers.json')).read_text())} for n in ['title.basics', 'title.episode', 'title.ratings']}}
 (OUT / 'manifest.json').write_text(json.dumps(manifest, indent=2))
 print(json.dumps(summary, indent=2))
 print('Top shows', json.dumps(leader[:15], indent=2))

@@ -58,14 +58,14 @@ Official episode IDs uniquely define episode counts. Missing season/episode numb
 - `results/validation_summary.csv` and `results/validation_episode_matches.csv`: CSV comparisons; these can overlap across files and should not be summed as unique episodes.
 - `results/manifest.json`: dataset SHA-256 hashes, HTTP metadata, retrieval time, and repository commit.
 
-Run with Python 3.10+ from the repository root (no third-party packages required):
+Run with Python 3.11+ from the repository root (no third-party packages required):
 
 ```sh
 python analysis/imdb-exceptional-episodes/download.py
 python analysis/imdb-exceptional-episodes/analyze.py
 ```
 
-The input downloads are ignored by Git. Output CSVs and metadata go to this directory's `results/` folder; validation reads existing CSVs from the repository's `data/` directory. `analyze.py --data-dir PATH --output-dir PATH` supports an existing snapshot and a separate output directory. The checked-in report is a dated snapshot and must be updated when fresh outputs are committed.
+The input downloads are ignored by Git. Output CSVs and metadata go to this directory's `results/` folder; validation reads existing CSVs from the repository's `data/` directory. `analyze.py --data-dir PATH --output-dir PATH` supports an existing snapshot and a separate output directory. This README preserves the original 3 October report; its dated tables are historical. The website and results directory reflect the latest successful refresh.
 
 For the original validation snapshot, use repository commit `448604a20ae1669cec4b6a08b544949ffdd54e2a`. Later repository CSV edits may change validation results independently of official dataset updates.
 
@@ -80,3 +80,11 @@ Official sources: https://data.imdb.com/non-commercial-datasets/ and https://dat
 The show table and download now include exceptional episodes as a percentage of all linked episodes. Each vote-threshold numerator is divided by `linked_episodes`, including unrated entries and any upcoming placeholders. Zero-total denominators produce a missing percentage. The Rmd page includes a percentage leaderboard alongside raw counts. Plotly charts disable wheel zoom and drag gestures and allow vertical touch scrolling. Count bars permanently display episode counts and series votes; percentage bars display numerator, denominator, and percentage.
 
 On narrow screens, both charts place permanent title and metric labels above each bar and expand vertically to fit them. Chart and widget heights are updated together. Tables collapse secondary columns into expandable row details instead of requiring horizontal scrolling.
+
+## Automatic refresh
+
+`update_imdb_exceptional_episodes.yml` proposes a weekly refresh on Mondays at 09:17 UTC, plus manual **Run workflow** runs on `main`. It downloads the three official bulk datasets, recomputes all exports, validates unique IDs, vote cutoffs, cohort totals, percentages, provenance, and a 20% eligible-series shrink guard, then commits only result files. Failed downloads or validation leave the previous published snapshot intact. Raw inputs are temporary and never committed.
+
+A successful data commit explicitly dispatches the site build with `deploy_root=true`, so the production page updates even though a GitHub token commit does not trigger the ordinary push workflow. No additional secret is required. The page reads its snapshot date from the manifest. This does not attempt to refresh live Top 250 membership, which remains a historical comparison.
+
+Local refresh: `python analysis/imdb-exceptional-episodes/refresh.py`. Use `--data-dir PATH` to reuse downloaded inputs, or `--validate-only analysis/imdb-exceptional-episodes/results` to check a saved snapshot. Python 3.11+ is required. Fixture tests run on PRs without downloading the large datasets; the scheduled production import starts after this workflow is merged.

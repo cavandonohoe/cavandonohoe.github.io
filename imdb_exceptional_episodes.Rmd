@@ -24,6 +24,9 @@ series <- readr::read_csv(file.path(result_dir, "eligible_series.csv"), show_col
 episodes <- readr::read_csv(file.path(result_dir, "exceptional_episodes.csv"), show_col_types = FALSE)
 snapshot <- readr::read_csv(file.path(result_dir, "cohort_summary.csv"), show_col_types = FALSE)
 validation <- readr::read_csv(file.path(result_dir, "validation_summary.csv"), show_col_types = FALSE)
+manifest <- jsonlite::fromJSON(file.path(result_dir, "manifest.json"))
+snapshot_time <- if (!is.null(manifest$analyzed_utc)) manifest$analyzed_utc else manifest$retrieved_utc
+snapshot_date <- format(as.Date(substr(snapshot_time, 1, 10)), "%d %B %Y")
 counts <- lapply(c(1000L, 5000L, 10000L), function(n) imdb_exceptional_counts(series, episodes, n))
 names(counts) <- c("1000", "5000", "10000")
 primary <- counts[["5000"]]
@@ -61,7 +64,7 @@ I looked beyond the IMDb Top 250 at **all TV series and miniseries with at least
 in IMDb's official downloadable datasets. An exceptional episode earns **at least 9.7/10 with at least
 5,000 episode votes**.
 
-**Snapshot: 3 October 2026.** Ratings and vote counts can change.
+**Snapshot: `r snapshot_date` (UTC).** Ratings and vote counts can change.
 
 ```{r headline, results='asis'}
 cat(sprintf(
