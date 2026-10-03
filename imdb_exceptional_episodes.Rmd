@@ -85,7 +85,7 @@ Hover for details; the full searchable table follows.
 leaders <- primary |> dplyr::filter(exceptional_episodes > 0) |> dplyr::slice_head(n = 20)
 leaders$series_title <- factor(leaders$series_title, levels = rev(leaders$series_title))
 chart <- plotly::plot_ly(
-  leaders, x = ~exceptional_episodes, y = ~series_title, type = "bar", orientation = "h",
+  leaders, height = 650, x = ~exceptional_episodes, y = ~series_title, type = "bar", orientation = "h",
   text = ~paste0(series_title, "<br>", exceptional_episodes, " exceptional episodes",
                  "<br>Series votes: ", fmt(series_votes)),
   hoverinfo = "text", textposition = "none", marker = list(color = "#287d8e")
@@ -140,7 +140,7 @@ share_leaders <- primary |>
   dplyr::slice_head(n = 20)
 share_leaders$series_title <- factor(share_leaders$series_title, levels = rev(share_leaders$series_title))
 plotly::plot_ly(
-  share_leaders, x = ~percent_exceptional, y = ~series_title, type = "bar", orientation = "h",
+  share_leaders, height = 650, x = ~percent_exceptional, y = ~series_title, type = "bar", orientation = "h",
   text = ~paste0(series_title, "<br>", exceptional_episodes, " / ", linked_episodes,
                  " episodes (", sprintf("%.2f", percent_exceptional), "%)"),
   hoverinfo = "text", textposition = "none", marker = list(color = "#6b5b95")
