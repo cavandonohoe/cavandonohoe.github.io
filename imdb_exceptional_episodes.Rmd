@@ -207,6 +207,6 @@ of very small samples but do not eliminate fandom effects or organized voting.
 [Download cohort sensitivity results](analysis/imdb-exceptional-episodes/results/cohort_summary.csv) ·
 [Download CSV validation summary](analysis/imdb-exceptional-episodes/results/validation_summary.csv)
 
-The [project source and refresh instructions](https://github.com/cavandonohoe/cavandonohoe.github.io/tree/main/analysis/imdb-exceptional-episodes)
+The [project source and refresh instructions](https://github.com/cavandonohoe/cavandonohoe.github.io/tree/75d095f24e258d90ef3f0d56b2e714df9bf0f6e5/analysis/imdb-exceptional-episodes)
 include dataset hashes and source HTTP metadata for this dated snapshot. The page renders from checked-in
 data; building the website does not download IMDb's full datasets.
