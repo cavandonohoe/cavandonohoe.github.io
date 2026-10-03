@@ -1,0 +1,212 @@
+---
+title: "Which TV Shows Have Exceptional Episodes?"
+description: "IMDb episodes rated 9.7 or higher across popular TV series, with vote thresholds and a Top 250 comparison."
+lang: "en"
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+    toc: true
+    toc_depth: 2
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(dplyr)
+source(here::here("scripts", "imdb_exceptional_metrics.R"))
+result_dir <- here::here("analysis", "imdb-exceptional-episodes", "results")
+series <- readr::read_csv(file.path(result_dir, "eligible_series.csv"), show_col_types = FALSE)
+episodes <- readr::read_csv(file.path(result_dir, "exceptional_episodes.csv"), show_col_types = FALSE)
+snapshot <- readr::read_csv(file.path(result_dir, "cohort_summary.csv"), show_col_types = FALSE)
+validation <- readr::read_csv(file.path(result_dir, "validation_summary.csv"), show_col_types = FALSE)
+counts <- lapply(c(1000L, 5000L, 10000L), function(n) imdb_exceptional_counts(series, episodes, n))
+names(counts) <- c("1000", "5000", "10000")
+primary <- counts[["5000"]]
+sensitivity <- dplyr::bind_rows(lapply(names(counts), function(n) {
+  d <- counts[[n]]
+  tibble::tibble(
+    episode_votes = as.integer(n), eligible_shows = nrow(d),
+    qualifying_shows = sum(d$exceptional_episodes > 0),
+    exceptional_episodes = sum(d$exceptional_episodes),
+    percent_shows = 100 * mean(d$exceptional_episodes > 0)
+  )
+}))
+expected <- snapshot |> dplyr::filter(cohort == "broader_eligible")
+stopifnot(
+  identical(sensitivity$episode_votes, as.integer(expected$episode_vote_threshold)),
+  all(sensitivity$eligible_shows == expected$cohort_shows),
+  all(sensitivity$qualifying_shows == expected$shows_with_exceptional_episodes),
+  all(sensitivity$exceptional_episodes == expected$exceptional_episodes)
+)
+main <- sensitivity |> dplyr::filter(episode_votes == 5000)
+outside <- primary |> dplyr::filter(!saved_cohort, exceptional_episodes > 0)
+fmt <- function(x) format(x, big.mark = ",", scientific = FALSE, trim = TRUE)
+```
+
+Some shows have an episode that everyone seems to agree is extraordinary. How rare is that?
+I looked beyond the IMDb Top 250 at **all TV series and miniseries with at least 25,000 series votes**
+in IMDb's official downloadable datasets. An exceptional episode earns **at least 9.7/10 with at least
+5,000 episode votes**.
+
+**Snapshot: 3 October 2026.** Ratings and vote counts can change.
+
+```{r headline, results='asis'}
+cat(sprintf(
+  '<div class="row" aria-label="Primary results">
+  <div class="col-sm-4"><div class="well"><strong style="font-size:2em">%s</strong><br>eligible shows</div></div>
+  <div class="col-sm-4"><div class="well"><strong style="font-size:2em">%s</strong><br>shows with exceptional episodes (%s%%)</div></div>
+  <div class="col-sm-4"><div class="well"><strong style="font-size:2em">%s</strong><br>exceptional episodes</div></div></div>',
+  fmt(main$eligible_shows), fmt(main$qualifying_shows), sprintf("%.2f", main$percent_shows),
+  fmt(main$exceptional_episodes)
+))
+```
+
+**`r nrow(outside)` qualifying shows are outside the saved Top 250 cohort**, contributing
+`r sum(outside$exceptional_episodes)` exceptional episodes. The saved list is a historical comparison:
+I haven't verified today's Top 250 membership because IMDb's live chart blocked access.
+
+## Which shows have the most?
+
+This is an episode count, so longer shows have more chances to qualify. It is not a ranking of overall show quality.
+Hover for details; the full searchable table follows.
+
+```{r leaderboard-chart}
+leaders <- primary |> dplyr::filter(exceptional_episodes > 0) |> dplyr::slice_head(n = 20)
+leaders$series_title <- factor(leaders$series_title, levels = rev(leaders$series_title))
+chart <- plotly::plot_ly(
+  leaders, x = ~exceptional_episodes, y = ~series_title, type = "bar", orientation = "h",
+  text = ~paste0(series_title, "<br>", exceptional_episodes, " exceptional episodes",
+                 "<br>Series votes: ", fmt(series_votes)),
+  hoverinfo = "text", marker = list(color = "#287d8e")
+)
+plotly::layout(chart, height = 650, margin = list(l = 190),
+               xaxis = list(title = "Episodes rated ≥9.7 with ≥5,000 votes", rangemode = "tozero"),
+               yaxis = list(title = ""))
+```
+
+## Explore the shows
+
+All `r fmt(nrow(primary))` eligible shows are included, even those with zero exceptional episodes.
+Search for a title or genre. The three count columns let you compare episode-vote cutoffs.
+“Saved Top 250” refers to historical membership, not today's chart.
+
+```{r shows-table}
+show_table <- primary |> dplyr::transmute(
+  Show = series_title, Year = start_year, Type = title_type,
+  Genres = genres, `Series rating` = series_rating, `Series votes` = series_votes,
+  `Episodes: ≥1,000 votes` = exceptional_1000,
+  `Episodes: ≥5,000 votes` = exceptional_5000,
+  `Episodes: ≥10,000 votes` = exceptional_10000,
+  `Saved Top 250` = ifelse(saved_cohort, "Yes", "No")
+)
+DT::datatable(show_table, rownames = FALSE, filter = "top", extensions = "Buttons",
+              caption = "Exceptional episodes have rating ≥9.7. All eligible shows remain in the denominator.",
+              options = list(pageLength = 15, scrollX = TRUE, order = list(list(7, "desc")),
+                             dom = "Bfrtip", buttons = c("copy", "csv"))) |>
+  DT::formatRound(c("Series votes", "Episodes: ≥1,000 votes", "Episodes: ≥5,000 votes",
+                    "Episodes: ≥10,000 votes"), digits = 0)
+```
+
+## How sensitive is the result to episode votes?
+
+The rating cutoff stays at 9.7 and the series-vote cutoff stays at 25,000. Only the minimum
+number of episode votes changes.
+
+```{r sensitivity-table}
+knitr::kable(sensitivity |> dplyr::transmute(
+  `Minimum episode votes` = fmt(episode_votes), `Shows with exceptional episodes` = qualifying_shows,
+  `Share of eligible shows` = sprintf("%.2f%%", percent_shows),
+  `Exceptional episodes` = exceptional_episodes
+), align = c("r", "r", "r", "r"))
+```
+
+## Explore the episodes {.tabset}
+
+Each tab applies its own minimum episode-vote cutoff. Every episode is from an eligible show and
+has rating ≥9.7. Search for a show or episode title; use the IMDb link to open its episode page.
+
+```{r episode-widget-function, include=FALSE}
+episode_widget <- function(threshold) {
+  selected <- episodes |>
+    dplyr::filter(series_id %in% primary$series_id, rating >= 9.7, votes >= threshold) |>
+    dplyr::arrange(dplyr::desc(votes)) |>
+    dplyr::transmute(
+      Show = series_title, Season = season, Episode = episode, Title = episode_title,
+      Rating = rating, Votes = votes,
+      IMDb = paste0('<a href="https://www.imdb.com/title/', episode_id, '/">Episode page</a>')
+    )
+  DT::datatable(selected, rownames = FALSE, escape = c(1:6), extensions = "Buttons",
+                options = list(pageLength = 15, scrollX = TRUE, order = list(list(5, "desc")),
+                               dom = "Bfrtip", buttons = c("copy", "csv"))) |>
+    DT::formatRound("Votes", digits = 0)
+}
+```
+
+### 5,000 votes
+
+```{r episodes-primary}
+episode_widget(5000L)
+```
+
+### 1,000 votes
+
+```{r episodes-1000}
+episode_widget(1000L)
+```
+
+### 10,000 votes
+
+```{r episodes-10000}
+episode_widget(10000L)
+```
+
+## Comparison with the saved Top 250
+
+The existing CSV contains 250 distinct show IDs. Of those, **218 meet the 25,000-series-vote cutoff**
+in this snapshot. This comparison uses official episode ratings for those historical IDs.
+I haven't rebuilt the chart by sorting bulk ratings: IMDb's Top 250 uses its own ranking rules.
+
+```{r cohort-table}
+cohort_table <- snapshot |>
+  dplyr::filter(episode_vote_threshold == 5000) |>
+  dplyr::mutate(Cohort = dplyr::recode(cohort,
+    broader_eligible = "All eligible shows", saved_cohort_all = "Saved Top 250: all members",
+    saved_cohort_eligible = "Saved Top 250: eligible members",
+    outside_saved_cohort = "Eligible shows outside saved Top 250")) |>
+  dplyr::transmute(Cohort, Shows = cohort_shows,
+                   `Shows with exceptional episodes` = shows_with_exceptional_episodes,
+                   Share = sprintf("%.2f%%", percent_shows), `Exceptional episodes` = exceptional_episodes)
+knitr::kable(cohort_table)
+```
+
+The cohort rows overlap: eligible saved members and eligible shows outside the saved list together
+make up the broader universe. The all-member saved cohort also includes 32 shows below the series-vote cutoff.
+
+## Sources, validation, and limitations
+
+The universe comes from [IMDb's official non-commercial datasets](https://data.imdb.com/non-commercial-datasets/):
+`title.basics` identifies series and miniseries, `title.episode` links episodes to their parent shows,
+and `title.ratings` provides weighted ratings and vote counts. Series votes are for the show itself;
+they are not a sum of episode votes. There are no language, country, animation, or documentary exclusions.
+
+Existing CSVs serve as validation checks. The stored Top 250 CSV has 15,519 rows; 15,405 match a unique
+official series/season/episode key. Twenty matched rows change their primary exceptional classification
+between snapshots. Because the stored CSV lacks episode IDs, matching is provisional and can be affected
+by renumbering as well as changes in ratings and votes.
+
+Specials and season-zero entries are included. The downloads lack exact episode air dates, so this analysis
+does not apply an exact release-date filter. A rating record is required. Vote cutoffs reduce the influence
+of very small samples but do not eliminate fandom effects or organized voting.
+
+[Download all eligible shows](analysis/imdb-exceptional-episodes/results/eligible_series.csv) ·
+[Download primary exceptional episodes](analysis/imdb-exceptional-episodes/results/primary_exceptional_episodes.csv) ·
+[Download cohort sensitivity results](analysis/imdb-exceptional-episodes/results/cohort_summary.csv) ·
+[Download CSV validation summary](analysis/imdb-exceptional-episodes/results/validation_summary.csv)
+
+The [project source and refresh instructions](https://github.com/cavandonohoe/cavandonohoe.github.io/tree/main/analysis/imdb-exceptional-episodes)
+include dataset hashes and source HTTP metadata for this dated snapshot. The page renders from checked-in
+data; building the website does not download IMDb's full datasets.

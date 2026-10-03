@@ -157,6 +157,7 @@ cards <- list(
   list("la_housing_heatmap.html", "\U0001F5FA\UFE0F", "LA Housing Prices: Animated Heat Map", paste0("Zillow home values across LA County ZIP codes, animated year by year, with ", "Case-Shiller and Shiller's long-run series for context.")),
   list("https://cavandonohoe.shinyapps.io/rent-vs-buy/", "\U0001F9EE", "Rent vs. Buy Calculator", "Interactive Shiny app for side-by-side financial simulation of renting vs. buying."),
   list("https://cavandonohoe.shinyapps.io/podcast-dashboard/", "\U0001F3A7", "Saved Podcast Episodes", paste0("Interactive Shiny dashboard of my saved Spotify podcast episodes: ", "per-show breakdowns, listening hours, and a monthly saving timeline.")),
+  list("imdb_exceptional_episodes.html", "\U2B50", "Exceptional IMDb Episodes", "Which popular shows have episodes rated 9.7+? Explore IMDb data, episode vote thresholds, and the Top 250 comparison."),
   list("imdb_top_250_tv_series.html", "\U0001F4FA", "IMDb Top 250 TV Series", "Scraped ratings, seasons, and trends for the top 250 TV shows on IMDb."),
   list("best_picture_nominees.html", "\U0001F3AC", "Best Picture Nominees", "Oscar Best Picture data: distributors, producers, and historical nominee analysis."),
   list("top_250_imdb_with_rt.html", "\U0001F37F", "Top 250 IMDb + Rotten Tomatoes", "Cross-referencing IMDb's top 250 movies with Rotten Tomatoes scores."),

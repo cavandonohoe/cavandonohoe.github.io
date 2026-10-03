@@ -103,6 +103,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://cavandonohoe.github.io/imdb_exceptional_episodes.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://cavandonohoe.github.io/imdb_rating_plot.html</loc>
     <lastmod>2026-09-27</lastmod>
     <changefreq>monthly</changefreq>
