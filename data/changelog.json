@@ -1,6 +1,24 @@
 {
-  "generated_at": "2026-10-02T20:52:54.965948+00:00",
+  "generated_at": "2026-10-03T19:20:17.905978+00:00",
   "events": [
+    {
+      "date": "2026-10-03",
+      "type": "merged_pr",
+      "title": "Archive World Cup 3D map",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/201"
+    },
+    {
+      "date": "2026-10-03",
+      "type": "merged_pr",
+      "title": "Add Star Wars: Visions to IMDb rating plot",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/202"
+    },
+    {
+      "date": "2026-10-02",
+      "type": "merged_pr",
+      "title": "Add date labels to Live Activity chart",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/200"
+    },
     {
       "date": "2026-10-02",
       "type": "merged_pr",
@@ -196,12 +214,40 @@
   ],
   "daily_summaries": [
     {
+      "date": "2026-10-03",
+      "items": [
+        {
+          "emoji": "\ud83d\udcbb",
+          "text": "2 PRs merged"
+        },
+        {
+          "emoji": "\ud83c\udfac",
+          "text": "Movie & TV projects updated",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/202"
+        },
+        {
+          "emoji": "\ud83c\udfac",
+          "text": "Movie & TV data refreshed",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/162b1ae1727fff02ffaa7adfae59849817e61c49"
+        }
+      ]
+    },
+    {
       "date": "2026-10-02",
       "items": [
         {
           "emoji": "\ud83c\udfa7",
           "text": "10 podcast episodes added",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/40837f3b448170c0aeacb08f728a3c3ceea260ef"
+        },
+        {
+          "emoji": "\ud83d\udcbb",
+          "text": "2 PRs merged"
+        },
+        {
+          "emoji": "\u2699\ufe0f",
+          "text": "Developer activity + site automation expanded",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/200"
         }
       ]
     },
@@ -352,16 +398,6 @@
           "emoji": "\ud83d\ude80",
           "text": "ci: grant actions:write so scheduled data updates can dispatch redeploy",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/165"
-        }
-      ]
-    },
-    {
-      "date": "2026-09-07",
-      "items": [
-        {
-          "emoji": "\ud83c\udfac",
-          "text": "Movie & TV data refreshed",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/353dc650168ed0cdee80e9199c6e1743eb449e39"
         }
       ]
     }
