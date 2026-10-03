@@ -3,6 +3,7 @@ output_dir: "_site"
 include:
   - imdb_rating_plot_files
   - css
+  - analysis/imdb-exceptional-episodes/results
 exclude:
   - _archive
 navbar:
@@ -28,6 +29,8 @@ navbar:
       icon: fa-laptop
       menu:
       - text: "--- Movies & TV ---"
+      - text: "Exceptional IMDb Episodes"
+        href: imdb_exceptional_episodes.html
       - text: "IMDb TV Series"
         href: imdb_top_250_tv_series.html
       - text: "IMDb Rating Plot by Season and Episode"
