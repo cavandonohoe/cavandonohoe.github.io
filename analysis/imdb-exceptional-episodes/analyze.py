@@ -22,7 +22,7 @@ def write(name, rs):
     if not rs:
         return
     with (OUT / name).open('w', newline='') as f:
-        w = csv.DictWriter(f, fieldnames=list(rs[0]))
+        w = csv.DictWriter(f, fieldnames=list(rs[0]), lineterminator="\n")
         w.writeheader()
         w.writerows(rs)
 ratings = {r['tconst']: (float(r['averageRating']), int(r['numVotes'])) for r in rows('title.ratings')}
@@ -71,7 +71,7 @@ write('primary_exceptional_episodes.csv', sorted((e for e in episodes if e['elig
 write('exceptional_episodes.csv', sorted(episodes, key=lambda e: (-e['votes'], e['series_title'])))
 leader = []
 for i in eligible:
-    leader.append({**series[i], 'saved_cohort': i in saved_ids, 'linked_episodes': coverage[i], 'rated_episodes': rated[i], **{'exceptional_' + str(n): counts[n][i] for n in counts}})
+    leader.append({**series[i], 'saved_cohort': i in saved_ids, 'linked_episodes': coverage[i], 'rated_episodes': rated[i], **{'exceptional_' + str(n): counts[n][i] for n in counts}, **{'percent_exceptional_' + str(n): round(100 * counts[n][i] / coverage[i], 6) if coverage[i] else None for n in counts}})
 leader.sort(key=lambda r: (-r['exceptional_5000'], -r['exceptional_10000'], -r['series_votes'], r['series_id']))
 write('eligible_series.csv', leader)
 validation = []

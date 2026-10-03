@@ -47,6 +47,13 @@ outside <- primary |> dplyr::filter(!saved_cohort, exceptional_episodes > 0)
 fmt <- function(x) format(x, big.mark = ",", scientific = FALSE, trim = TRUE)
 ```
 
+<style>
+/* Let a vertical swipe over either chart scroll the page on touch screens. */
+.plotly.html-widget, .plotly .svg-container, .plotly .main-svg, .plotly .draglayer {
+  touch-action: pan-y !important;
+}
+</style>
+
 Some shows have an episode that everyone seems to agree is extraordinary. How rare is that?
 I looked beyond the IMDb Top 250 at **all TV series and miniseries with at least 25,000 series votes**
 in IMDb's official downloadable datasets. An exceptional episode earns **at least 9.7/10 with at least
@@ -83,9 +90,10 @@ chart <- plotly::plot_ly(
                  "<br>Series votes: ", fmt(series_votes)),
   hoverinfo = "text", textposition = "none", marker = list(color = "#287d8e")
 )
-plotly::layout(chart, height = 650, margin = list(l = 190),
+plotly::layout(chart, height = 650, dragmode = FALSE, margin = list(l = 190),
                xaxis = list(title = "Episodes rated ≥9.7 with ≥5,000 votes", rangemode = "tozero"),
-               yaxis = list(title = ""))
+               yaxis = list(title = "")) |>
+  plotly::config(scrollZoom = FALSE, doubleClick = FALSE)
 ```
 
 ## Explore the shows
@@ -94,21 +102,54 @@ All `r fmt(nrow(primary))` eligible shows are included, even those with zero exc
 Search for a title or genre. The three count columns let you compare episode-vote cutoffs.
 “Saved Top 250” refers to historical membership, not today's chart.
 
+**Exceptional share = 100 × exceptional episodes ÷ total episodes.** The table's percentage
+uses the primary cutoff: rating ≥9.7 with ≥5,000 episode votes. “Total episodes” means every
+episode linked to the show in IMDb's snapshot, including specials, unrated entries, and any
+upcoming placeholders. It is not restricted to episodes that received enough votes.
+
 ```{r shows-table}
 show_table <- primary |> dplyr::transmute(
   Show = series_title, Year = start_year, Type = title_type,
   Genres = genres, `Series rating` = series_rating, `Series votes` = series_votes,
+  `Total episodes` = linked_episodes,
   `Episodes: ≥1,000 votes` = exceptional_1000,
   `Episodes: ≥5,000 votes` = exceptional_5000,
   `Episodes: ≥10,000 votes` = exceptional_10000,
+  `Exceptional share (%)` = percent_exceptional,
   `Saved Top 250` = ifelse(saved_cohort, "Yes", "No")
 )
 DT::datatable(show_table, rownames = FALSE, filter = "top", extensions = "Buttons",
               caption = "Exceptional episodes have rating ≥9.7. All eligible shows remain in the denominator.",
-              options = list(pageLength = 15, scrollX = TRUE, order = list(list(7, "desc")),
+              options = list(pageLength = 15, scrollX = TRUE, order = list(list(8, "desc")),
                              dom = "Bfrtip", buttons = c("copy", "csv"))) |>
-  DT::formatRound(c("Series votes", "Episodes: ≥1,000 votes", "Episodes: ≥5,000 votes",
-                    "Episodes: ≥10,000 votes"), digits = 0)
+  DT::formatRound(c("Series votes", "Total episodes", "Episodes: ≥1,000 votes",
+                    "Episodes: ≥5,000 votes", "Episodes: ≥10,000 votes"), digits = 0) |>
+  DT::formatRound("Exceptional share (%)", digits = 2)
+```
+
+## Which shows have the highest exceptional share?
+
+This view divides the primary exceptional-episode count by the show's total episode count.
+Short shows can rank highly with only a few standout episodes; hover to see the numerator and denominator.
+Shows without an exceptional episode are omitted from this chart and remain in the full table above.
+
+```{r percentage-chart}
+share_leaders <- primary |>
+  dplyr::filter(exceptional_episodes > 0, linked_episodes > 0) |>
+  dplyr::arrange(dplyr::desc(percent_exceptional), dplyr::desc(exceptional_episodes), series_id) |>
+  dplyr::slice_head(n = 20)
+share_leaders$series_title <- factor(share_leaders$series_title, levels = rev(share_leaders$series_title))
+plotly::plot_ly(
+  share_leaders, x = ~percent_exceptional, y = ~series_title, type = "bar", orientation = "h",
+  text = ~paste0(series_title, "<br>", exceptional_episodes, " / ", linked_episodes,
+                 " episodes (", sprintf("%.2f", percent_exceptional), "%)"),
+  hoverinfo = "text", textposition = "none", marker = list(color = "#6b5b95")
+) |>
+  plotly::layout(height = 650, dragmode = FALSE, margin = list(l = 210),
+                 xaxis = list(title = "Share of all episodes rated ≥9.7 with ≥5,000 votes (%)",
+                              rangemode = "tozero", ticksuffix = "%"),
+                 yaxis = list(title = "")) |>
+  plotly::config(scrollZoom = FALSE, doubleClick = FALSE)
 ```
 
 ## How sensitive is the result to episode votes?
