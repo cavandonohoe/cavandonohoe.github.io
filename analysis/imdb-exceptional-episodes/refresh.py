@@ -84,6 +84,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--data-dir', type=pathlib.Path, help='Reuse local inputs instead of downloading')
     parser.add_argument('--validate-only', type=pathlib.Path, help='Validate an existing result directory')
+    parser.add_argument('--output-dir', type=pathlib.Path, help='Save a test snapshot separately from published results')
     args = parser.parse_args()
     if args.validate_only:
         print('Validated shows / primary episodes:', validate(args.validate_only))
@@ -98,9 +99,12 @@ def main():
                         '--output-dir', str(results)], check=True)
         counts = validate(results, ROOT / 'results')
         # Validation happens before any checked-in result is replaced.
+        output = args.output_dir or ROOT / 'results'
+        output.mkdir(parents=True, exist_ok=True)
         for name in FILES:
-            (ROOT / 'results' / name).write_bytes((results / name).read_bytes())
-        print('Published shows / primary episodes:', counts)
+            (output / name).write_bytes((results / name).read_bytes())
+        print('Validated shows / primary episodes:', counts)
+        print('Snapshot saved to:', output)
 
 
 if __name__ == '__main__':
