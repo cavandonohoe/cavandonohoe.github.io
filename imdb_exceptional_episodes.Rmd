@@ -79,19 +79,21 @@ I haven't verified today's Top 250 membership because IMDb's live chart blocked 
 ## Which shows have the most?
 
 This is an episode count, so longer shows have more chances to qualify. It is not a ranking of overall show quality.
-Hover for details; the full searchable table follows.
+The labels show each count and its series-vote total; the full searchable table follows.
 
 ```{r leaderboard-chart}
 leaders <- primary |> dplyr::filter(exceptional_episodes > 0) |> dplyr::slice_head(n = 20)
 leaders$series_title <- factor(leaders$series_title, levels = rev(leaders$series_title))
 chart <- plotly::plot_ly(
   leaders, height = 650, x = ~exceptional_episodes, y = ~series_title, type = "bar", orientation = "h",
-  text = ~paste0(series_title, "<br>", exceptional_episodes, " exceptional episodes",
-                 "<br>Series votes: ", fmt(series_votes)),
-  hoverinfo = "text", textposition = "none", marker = list(color = "#287d8e")
+  text = ~paste0(exceptional_episodes, " exceptional episodes<br>",
+                 fmt(series_votes), " series votes"),
+  hoverinfo = "skip", textposition = "outside", textfont = list(size = 11),
+  cliponaxis = FALSE, marker = list(color = "#287d8e")
 )
 plotly::layout(chart, height = 650, dragmode = FALSE, margin = list(l = 190),
-               xaxis = list(title = "Episodes rated ≥9.7 with ≥5,000 votes", rangemode = "tozero"),
+               xaxis = list(title = "Episodes rated ≥9.7 with ≥5,000 votes",
+                            range = c(0, max(leaders$exceptional_episodes) * 1.65)),
                yaxis = list(title = "")) |>
   plotly::config(scrollZoom = FALSE, doubleClick = FALSE)
 ```
@@ -130,7 +132,7 @@ DT::datatable(show_table, rownames = FALSE, filter = "top", extensions = "Button
 ## Which shows have the highest exceptional share?
 
 This view divides the primary exceptional-episode count by the show's total episode count.
-Short shows can rank highly with only a few standout episodes; hover to see the numerator and denominator.
+Short shows can rank highly with only a few standout episodes. The labels show the numerator, denominator, and percentage.
 Shows without an exceptional episode are omitted from this chart and remain in the full table above.
 
 ```{r percentage-chart}
@@ -141,13 +143,15 @@ share_leaders <- primary |>
 share_leaders$series_title <- factor(share_leaders$series_title, levels = rev(share_leaders$series_title))
 plotly::plot_ly(
   share_leaders, height = 650, x = ~percent_exceptional, y = ~series_title, type = "bar", orientation = "h",
-  text = ~paste0(series_title, "<br>", exceptional_episodes, " / ", linked_episodes,
-                 " episodes (", sprintf("%.2f", percent_exceptional), "%)"),
-  hoverinfo = "text", textposition = "none", marker = list(color = "#6b5b95")
+  text = ~paste0(exceptional_episodes, " / ", linked_episodes, " episodes<br>",
+                 sprintf("%.2f", percent_exceptional), "%"),
+  hoverinfo = "skip", textposition = "outside", textfont = list(size = 11),
+  cliponaxis = FALSE, marker = list(color = "#6b5b95")
 ) |>
   plotly::layout(height = 650, dragmode = FALSE, margin = list(l = 210),
                  xaxis = list(title = "Share of all episodes rated ≥9.7 with ≥5,000 votes (%)",
-                              rangemode = "tozero", ticksuffix = "%"),
+                              range = c(0, max(share_leaders$percent_exceptional) * 1.55),
+                              ticksuffix = "%"),
                  yaxis = list(title = "")) |>
   plotly::config(scrollZoom = FALSE, doubleClick = FALSE)
 ```
