@@ -18,6 +18,7 @@ output:
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 library(dplyr)
 source(here::here("scripts", "imdb_exceptional_metrics.R"))
+source(here::here("scripts", "imdb_plotly_layout.R"))
 result_dir <- here::here("analysis", "imdb-exceptional-episodes", "results")
 series <- readr::read_csv(file.path(result_dir, "eligible_series.csv"), show_col_types = FALSE)
 episodes <- readr::read_csv(file.path(result_dir, "exceptional_episodes.csv"), show_col_types = FALSE)
@@ -52,6 +53,7 @@ fmt <- function(x) format(x, big.mark = ",", scientific = FALSE, trim = TRUE)
 .plotly.html-widget, .plotly .svg-container, .plotly .main-svg, .plotly .draglayer {
   touch-action: pan-y !important;
 }
+.plotly.html-widget { max-width: 100%; }
 </style>
 
 Some shows have an episode that everyone seems to agree is extraordinary. How rare is that?
@@ -95,13 +97,20 @@ plotly::layout(chart, height = 650, dragmode = FALSE, margin = list(l = 190),
                xaxis = list(title = "Episodes rated ≥9.7 with ≥5,000 votes",
                             range = c(0, max(leaders$exceptional_episodes) * 1.65)),
                yaxis = list(title = "")) |>
-  plotly::config(scrollZoom = FALSE, doubleClick = FALSE)
+  plotly::config(scrollZoom = FALSE, doubleClick = FALSE) |>
+  imdb_plotly_layout(
+    titles = leaders$series_title,
+    labels = paste0(leaders$exceptional_episodes, " exceptional episodes<br>",
+                    fmt(leaders$series_votes), " series votes"),
+    left_margin = 190, axis_title = "Episodes rated ≥9.7 with ≥5,000 votes",
+    compact_axis_title = "Exceptional episodes"
+  )
 ```
 
 ## Explore the shows
 
 All `r fmt(nrow(primary))` eligible shows are included, even those with zero exceptional episodes.
-Search for a title or genre. The three count columns let you compare episode-vote cutoffs.
+Search for a title or genre. On narrow screens, expand a show’s row to see all details and vote cutoffs.
 “Saved Top 250” refers to historical membership, not today's chart.
 
 **Exceptional share = 100 × exceptional episodes ÷ total episodes.** The table's percentage
@@ -120,9 +129,15 @@ show_table <- primary |> dplyr::transmute(
   `Exceptional share (%)` = percent_exceptional,
   `Saved Top 250` = ifelse(saved_cohort, "Yes", "No")
 )
-DT::datatable(show_table, rownames = FALSE, filter = "top", extensions = "Buttons",
+DT::datatable(show_table, rownames = FALSE, extensions = c("Buttons", "Responsive"),
               caption = "Exceptional episodes have rating ≥9.7. All eligible shows remain in the denominator.",
-              options = list(pageLength = 15, scrollX = TRUE, order = list(list(8, "desc")),
+              options = list(pageLength = 15, responsive = TRUE, order = list(list(8, "desc")),
+                             columnDefs = list(
+                               list(responsivePriority = 1, targets = 0),
+                               list(responsivePriority = 2, targets = 10),
+                               list(responsivePriority = 3, targets = 8),
+                               list(responsivePriority = 4, targets = 6)
+                             ),
                              dom = "Bfrtip", buttons = c("copy", "csv"))) |>
   DT::formatRound(c("Series votes", "Total episodes", "Episodes: ≥1,000 votes",
                     "Episodes: ≥5,000 votes", "Episodes: ≥10,000 votes"), digits = 0) |>
@@ -153,7 +168,14 @@ plotly::plot_ly(
                               range = c(0, max(share_leaders$percent_exceptional) * 1.55),
                               ticksuffix = "%"),
                  yaxis = list(title = "")) |>
-  plotly::config(scrollZoom = FALSE, doubleClick = FALSE)
+  plotly::config(scrollZoom = FALSE, doubleClick = FALSE) |>
+  imdb_plotly_layout(
+    titles = share_leaders$series_title,
+    labels = paste0(share_leaders$exceptional_episodes, " / ", share_leaders$linked_episodes,
+                    " episodes<br>", sprintf("%.2f", share_leaders$percent_exceptional), "%"),
+    left_margin = 210, axis_title = "Share of all episodes rated ≥9.7 with ≥5,000 votes (%)",
+    compact_axis_title = "Exceptional share (%)"
+  )
 ```
 
 ## How sensitive is the result to episode votes?
@@ -184,8 +206,14 @@ episode_widget <- function(threshold) {
       Rating = rating, Votes = votes,
       IMDb = paste0('<a href="https://www.imdb.com/title/', episode_id, '/">Episode page</a>')
     )
-  DT::datatable(selected, rownames = FALSE, escape = c(1:6), extensions = "Buttons",
-                options = list(pageLength = 15, scrollX = TRUE, order = list(list(5, "desc")),
+  DT::datatable(selected, rownames = FALSE, escape = c(1:6),
+                extensions = c("Buttons", "Responsive"),
+                options = list(pageLength = 15, responsive = TRUE, order = list(list(5, "desc")),
+                               columnDefs = list(
+                                 list(responsivePriority = 1, targets = 0),
+                                 list(responsivePriority = 2, targets = 4),
+                                 list(responsivePriority = 3, targets = 3)
+                               ),
                                dom = "Bfrtip", buttons = c("copy", "csv"))) |>
     DT::formatRound("Votes", digits = 0)
 }
