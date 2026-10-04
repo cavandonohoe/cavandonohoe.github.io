@@ -163,3 +163,19 @@ Open an issue with:
 - What page or workflow is affected
 - What you expected vs. what happened
 - A link to the relevant page or commit if applicable
+
+## Reunion email coverage
+
+Edit emails in the **Full Grad Class** tab of the existing reunion Google Sheet.
+The **Refresh TOHS reunion** Action checks hourly at minute 23 UTC; use its
+**Run workflow** button on `main` after a batch of edits for a faster update.
+The existing `GCP_SA_KEY` service account must have read access to that sheet.
+Form responses must reach the Full Grad Class tab to count on the page.
+
+The Action saves only names, email-present flags, and the last data-change time
+in `data/tohs_reunion.csv`. It never saves email addresses. Blank or whitespace
+emails count as missing. Empty data, missing columns, or a graduate count drop
+above 20% fail the refresh. Same-repo PR runs validate reads without publishing.
+Changed snapshots trigger the production site build explicitly. Unchanged
+checks skip builds once the same snapshot is on `gh-pages`; a failed deployment
+is retried on the next check. GitHub schedules may be delayed under load.
