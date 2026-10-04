@@ -39,3 +39,10 @@ testthat::test_that("stale V2 exports never replace the last good snapshot", {
                        updated_at = "2000-01-01T00:00:00.000Z", stringsAsFactors = FALSE)
   testthat::expect_error(tohs_validate_public(public), "stale")
 })
+
+testthat::test_that("reunion display accepts ISO and refresh-action UTC timestamps", {
+  expected <- "October 04, 2026 at 14:48 UTC"
+  testthat::expect_identical(tohs_format_timestamp("2026-10-04 14:48 UTC"), expected)
+  testthat::expect_identical(tohs_format_timestamp("2026-10-04T14:48:03.985Z"), expected)
+  testthat::expect_error(tohs_format_timestamp("invalid"), "Invalid reunion snapshot")
+})
