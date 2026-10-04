@@ -29,8 +29,8 @@
     },
     {
       "project": "analysis",
-      "tracked_files": 11,
-      "commits_touching_project": 1,
+      "tracked_files": 12,
+      "commits_touching_project": 2,
       "top_extensions": [
         [
           ".csv",
@@ -38,7 +38,7 @@
         ],
         [
           ".py",
-          2
+          3
         ],
         [
           "[none]",
@@ -147,7 +147,7 @@
     {
       "project": "images",
       "tracked_files": 11,
-      "commits_touching_project": 38,
+      "commits_touching_project": 39,
       "top_extensions": [
         [
           ".jpg",
@@ -257,8 +257,8 @@
     },
     {
       "project": "tests",
-      "tracked_files": 8,
-      "commits_touching_project": 7,
+      "tracked_files": 9,
+      "commits_touching_project": 8,
       "top_extensions": [
         [
           ".r",
@@ -266,6 +266,10 @@
         ],
         [
           ".txt",
+          1
+        ],
+        [
+          ".py",
           1
         ],
         [

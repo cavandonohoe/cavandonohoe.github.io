@@ -596,6 +596,25 @@ pushing.</li>
 <li>A link to the relevant page or commit if applicable</li>
 </ul>
 </div>
+<div id="reunion-email-coverage" class="section level2">
+<h2>Reunion email coverage</h2>
+<p>Edit emails in the <strong>Full Grad Class</strong> tab of the
+existing reunion Google Sheet. The <strong>Refresh TOHS reunion</strong>
+Action checks hourly at minute 23 UTC; use its <strong>Run
+workflow</strong> button on <code>main</code> after a batch of edits for
+a faster update. The existing <code>GCP_SA_KEY</code> service account
+must have read access to that sheet. Form responses must reach the Full
+Grad Class tab to count on the page.</p>
+<p>The Action saves only names, email-present flags, and the last
+data-change time in <code>data/tohs_reunion.csv</code>. It never saves
+email addresses. Blank or whitespace emails count as missing. Empty
+data, missing columns, or a graduate count drop above 20% fail the
+refresh. Same-repo PR runs validate reads without publishing. Changed
+snapshots trigger the production site build explicitly. Unchanged checks
+skip builds once the same snapshot is on <code>gh-pages</code>; a failed
+deployment is retried on the next check. GitHub schedules may be delayed
+under load.</p>
+</div>
 </div>
 
 
