@@ -80,3 +80,27 @@ test('installer links a new Form with no destination and reuses it on retry', ()
   assert.equal(links,1);
   assert.equal(refreshes,4);
 });
+
+test('legacy rows without IDs get stable content references', () => {
+  const vm = require('node:vm');
+  const crypto = require('node:crypto');
+  const table = [
+    ['ID','First Name','Last Name','Preferred Name','email','phone number'],
+    ['', 'Meghan','Conlan','','meghan@example.invalid',''],
+    ['', 'Ada','Lovelace','','ada@example.invalid','']
+  ];
+  const forms = [['ID','First Name','Last Name','Preferred Full Name','Email','Phone Number',
+    'Are you interested in joining the reunion?','Are you interested in joining the planning committee?']];
+  const context = {Utilities:{DigestAlgorithm:{SHA_256:'sha256'},
+    computeDigest:(_,s)=>crypto.createHash('sha256').update(s).digest(),
+    base64EncodeWebSafe:b=>Buffer.from(b).toString('base64url')},
+    ss:{getSheetByName:n=>({getDataRange:()=>({getDisplayValues:()=>n==='Contact List (No-form)'?table:forms})})}};
+  vm.createContext(context);
+  vm.runInContext(fs.readFileSync('scripts/tohs/contact_workflow.js','utf8'),context);
+  const first=vm.runInContext('legacySubmissions(ss)',context).map(r=>r.response_id);
+  table.splice(1,2,table[2],table[1]);
+  const reordered=vm.runInContext('legacySubmissions(ss)',context).map(r=>r.response_id);
+  assert.equal(new Set(first).size,2);
+  assert.deepEqual([...first].sort(),[...reordered].sort());
+  assert.ok(first.every(id=>id.startsWith('legacy:Contact List (No-form):sha256:')));
+});

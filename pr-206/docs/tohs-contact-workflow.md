@@ -35,7 +35,7 @@ flowchart TD
   D["Organizer review decisions"] --> S
   S --> M["Private Master Contacts by roster ID"]
   S --> Q["Private Match Review and audit"]
-  M --> P["Safe Public Export"]
+  M --> P["Separate safe export workbook"]
   P --> A["Hourly GitHub Action"]
   A --> C["Allowlisted public CSV"]
   C --> W["GitHub Pages reunion page"]
@@ -95,8 +95,9 @@ decisions attached to them. Never edit generated Master Contacts directly.
 No emails, phones, preferred names, response IDs, individual interest answers,
 review decisions, or raw responses are written to GitHub, logs, or build artifacts.
 Unit tests use reserved example.invalid addresses only. The public CSV begins with
-the unchanged original roster's coverage; the synthetic Meghan test never changes
-that committed snapshot or any live contact data.
+the conservatively reconciled roster coverage. The isolated synthetic preview test
+temporarily used a safe test snapshot with a prominent TEST ONLY banner; both were
+restored before review. The real contact records were never changed by the test.
 
 The V2 Action reads only `Public Export`. It rejects unknown columns, malformed
 coverage flags, unsafe names, inconsistent timestamps, export age over three hours,
@@ -146,19 +147,35 @@ list consumed by the website, leaves the input roster untouched, and exports no
 email address. It also checks conflicts, duplicates, ambiguous identity, rejection,
 replay, malformed values, and formula-like user input.
 
-Live acceptance still requires the following observed evidence:
+Observed acceptance evidence on 2026-10-04 UTC:
 
-1. Submit a verified Meghan update to the new Form. Use her real supplied contact
-   information, or use a disposable isolated test copy for a synthetic submission.
-   Never submit a fake contact as a real production record.
-2. Check native raw responses, Match Audit, roster ID 90 in Master Contacts, and
-   `email_bool = TRUE` in Public Export. Confirm the original row was preserved.
-3. Run the refresh Action on the PR branch and inspect its preview: collected
-   count rises by one, Meghan leaves the missing list, and no private value appears
-   in CSV, rendered HTML, artifacts, or logs.
-4. After review/merge, dispatch refresh on main, check the deployment, and verify
-   the production reunion URL. Until these steps are observed, do not label the
-   workflow production-tested or claim Meghan's real update is live.
+* A browser submitted one Meghan response to **TEST ONLY — TOHS Meghan acceptance**.
+  Its linked native response tab is `TEST ONLY Responses`. The separate submit
+  handler completed with 0% errors and wrote `Acceptance Test Status = PASS`.
+* The isolated test matched roster ID 90, produced `email_bool = TRUE`, and
+  increased reconciled coverage from 219 to 220 of 574. Production Master Contacts
+  and its export retained Meghan's blank email and `FALSE` coverage flag.
+* Test snapshot commit `efdd0bf0f36a2812904b4acc680306edd537deda` built and deployed
+  the actual reunion page at the PR preview. Browser verification showed 220/574,
+  Meghan absent from the missing list, and no synthetic address in rendered HTML.
+  All nine CI workflows passed. A screenshot was saved as acceptance evidence.
+* The production-source PR Action independently authenticated as the existing
+  service account, read the separate safe Sheet, passed R tests/data sanity and
+  reported 219/574. No private source contact values were found in that job's logs.
+* The final PR restores the real 219/574 snapshot and removes the test banner.
+  No test contact was ever written into production master/export or the original
+  workbook. The original three tabs and their native preservation copy match.
+
+The test helper and test response evidence remain private in the workflow workbook;
+its synthetic helper code contains only a reserved example.invalid address. The
+test Form is separate from the published reunion Form.
+
+**Production acceptance remains pending merge and a real supplied contact update.**
+No verified Meghan email was supplied. After reviewing/merging PR 206, dispatch
+`Refresh TOHS reunion` on main, verify deployment, then submit her verified update
+and confirm ID 90 in Master Contacts, TRUE in the separate export, and removal
+from the production missing list. The isolated preview test is not a claim that
+Meghan's real contact update is live.
 
 Local checks: `node --test tests/tohs-contact-workflow.test.cjs`; R checks:
 `Rscript -e 'testthat::test_file("tests/testthat/test-tohs_reunion.R", stop_on_failure=TRUE)'`.

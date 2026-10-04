@@ -24,7 +24,8 @@ function onAcceptanceSubmit() {
   const m=r.master.find(x=>x.id==='90');
   if(!m || m.email!=='meghan.acceptance@example.invalid') throw new Error('Acceptance match failed');
   writeGenerated(t,'Acceptance Test Master',['roster_id','first_name','last_name','email','phone','test_only'],[[m.id,m.first,m.last,m.email,m.phone,true]]);
-  writeGenerated(t,'Acceptance Test Public',['first_name','last_name','email_bool','updated_at'],r.publicRows.map(x=>[x.first_name,x.last_name,x.email_bool,new Date().toISOString()]));
+  const updated=new Date().toISOString();
+  writeGenerated(t,'Acceptance Test Public',['first_name','last_name','email_bool','updated_at'],r.publicRows.map(x=>[x.first_name,x.last_name,x.email_bool,updated]));
   writeGenerated(t,'Acceptance Test Status',['key','value'],[['status','PASS — synthetic isolated test'],['response_count',f.getResponses().length],['coverage',r.publicRows.filter(x=>x.email_bool).length],['master_roster_id',m.id],['production_untouched',true]]);
   SpreadsheetApp.flush();
 }
