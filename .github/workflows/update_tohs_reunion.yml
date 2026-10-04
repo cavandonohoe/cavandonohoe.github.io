@@ -28,14 +28,13 @@ jobs:
     permissions:
       contents: write
       actions: write
-    env:
-      GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/tohs-sa.json
     steps:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-r-env
       - name: Write Google key
         env:
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/tohs-sa.json
         run: |
           test -n "$GCP_SA_KEY" || { echo "GCP_SA_KEY is missing"; exit 1; }
           printf '%s' "$GCP_SA_KEY" > "$GOOGLE_APPLICATION_CREDENTIALS"
@@ -43,6 +42,8 @@ jobs:
       - name: Test normalization
         run: Rscript -e 'testthat::test_file("tests/testthat/test-tohs_reunion.R", stop_on_failure=TRUE)'
       - name: Read sheet and refresh public snapshot
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/tohs-sa.json
         run: Rscript scripts/refresh_tohs_reunion.R
       - name: Sanity-check snapshot
         run: Rscript scripts/data_sanity.R data/tohs_reunion.csv
@@ -69,4 +70,4 @@ jobs:
           fi
       - name: Remove Google key
         if: always()
-        run: rm -f "$GOOGLE_APPLICATION_CREDENTIALS"
+        run: rm -f "$RUNNER_TEMP/tohs-sa.json"
