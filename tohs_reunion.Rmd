@@ -31,33 +31,34 @@ knitr::opts_chunk$set(
 ```
 
 ```{r}
-grad_list <- googlesheets4::read_sheet(
-  paste0(
-    "https://docs.google.com/spreadsheets/d/",
+snapshot_path <- "data/tohs_reunion.csv"
+if (file.exists(snapshot_path)) {
+  snapshot <- read.csv(snapshot_path, stringsAsFactors = FALSE)
+  grad_list_clean <- dplyr::transmute(
+    snapshot, `First Name` = first_name, `Last Name` = last_name,
+    email_bool = email_bool
+  )
+  data_updated_at <- snapshot$updated_at[[1]]
+} else {
+  # Bootstrap until the first scheduled refresh creates the public snapshot.
+  source("scripts/refresh_tohs_reunion.R", local = TRUE)
+  grad_list <- googlesheets4::read_sheet(
     "1JwWeBjwwQHzmGgh8HPuO_0pghzemC3ikpLx_pXlQvsI",
-    "/edit#gid=1184195844"
-  ),
-  sheet = "Full Grad Class"
+    sheet = "Full Grad Class", col_types = "c"
+  )
+  rows <- tohs_public_rows(grad_list)
+  grad_list_clean <- dplyr::transmute(
+    rows, `First Name` = first_name, `Last Name` = last_name,
+    email_bool = email_bool
+  )
+  data_updated_at <- format(Sys.time(), "%Y-%m-%d %H:%M UTC", tz = "UTC")
+}
+
+percent_accounted_text <- sprintf(
+  "%s (%d/%d)",
+  scales::percent(mean(grad_list_clean$email_bool)),
+  sum(grad_list_clean$email_bool), nrow(grad_list_clean)
 )
-
-grad_list_clean <- grad_list %>%
-  dplyr::slice(-1) %>%
-  dplyr::mutate(`First Name` = unlist(`First Name`),
-         Email = lapply(Email, function(x) ifelse(is.null(x), NA, x)),
-         Email = unlist(Email)) %>%
-  dplyr::mutate(email_bool = !is.na(Email))
-
-percent_accounted <- grad_list_clean %>%
-  dplyr::group_by(email_bool) %>%
-    dplyr::count() %>%
-  dplyr::ungroup() %>%
-  dplyr::mutate(total = sum(n)) %>%
-  dplyr::mutate(percent = scales::percent(n / sum(n))) %>%
-  dplyr::mutate(text = paste0(percent, " (", n, "/", total, ")")) %>%
-  dplyr::filter(email_bool)
-
-
-percent_accounted_text <- percent_accounted$text
 
 missing_list <- grad_list_clean %>%
   dplyr::filter(!email_bool) %>%
@@ -72,7 +73,7 @@ It's so awesome talking to old friends and seeing how everyone is doing! We do n
 
 Also, here is a link to [**the lancer: SENIOR ISSUE 2012**](https://issuu.com/thelancer/docs/seniorissue2012) (our Lancer newspaper), if you want to walk down memory lane.
 
-As of `r format(Sys.time(), "%B %d, %Y at %H:%M")`, we have the following missing emails:
+As of `r data_updated_at`, we have the following missing emails:
 
 ```{r}
 cat(missing_list)

@@ -1,0 +1,73 @@
+name: Refresh TOHS reunion
+
+on:
+  schedule:
+    - cron: "23 * * * *" # Hourly, away from the top-of-hour rush.
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/update_tohs_reunion.yml"
+      - "scripts/refresh_tohs_reunion.R"
+      - "tests/testthat/test-tohs_reunion.R"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tohs-reunion-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    # Same-repo PRs validate the real sheet read without committing or deploying.
+    if: >-
+      github.actor != 'dependabot[bot]' &&
+      (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      actions: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/setup-r-env
+      - name: Write Google key
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/tohs-sa.json
+        run: |
+          test -n "$GCP_SA_KEY" || { echo "GCP_SA_KEY is missing"; exit 1; }
+          printf '%s' "$GCP_SA_KEY" > "$GOOGLE_APPLICATION_CREDENTIALS"
+          chmod 600 "$GOOGLE_APPLICATION_CREDENTIALS"
+      - name: Test normalization
+        run: Rscript -e 'testthat::test_file("tests/testthat/test-tohs_reunion.R", stop_on_failure=TRUE)'
+      - name: Read sheet and refresh public snapshot
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/tohs-sa.json
+        run: Rscript scripts/refresh_tohs_reunion.R
+      - name: Sanity-check snapshot
+        run: Rscript scripts/data_sanity.R data/tohs_reunion.csv
+      - name: Save changes and publish site
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git add data/tohs_reunion.csv
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Update TOHS reunion email coverage"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+          # Also retry a failed/cancelled deployment on the next unchanged check.
+          # Compare the snapshot shipped with production before requesting a build.
+          git fetch origin gh-pages
+          if ! git show origin/gh-pages:data/tohs_reunion.csv > "$RUNNER_TEMP/published-tohs.csv" || \
+             ! cmp -s data/tohs_reunion.csv "$RUNNER_TEMP/published-tohs.csv"; then
+            gh workflow run pages-branch-previews.yml --ref main -f deploy_root=true
+          fi
+      - name: Remove Google key
+        if: always()
+        run: rm -f "$RUNNER_TEMP/tohs-sa.json"
