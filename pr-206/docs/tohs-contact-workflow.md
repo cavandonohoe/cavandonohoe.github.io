@@ -2,11 +2,16 @@
 
 ## Current rollout status
 
-V2 is staged, not cut over. The original workbook, its three tabs, its Form link,
-and the production website remain on the existing workflow. No legacy contact
-data has been replaced or deleted. The new live Google Form and Apps Script
-triggers still need installation and Google authorization. Do not enable the V2
-repository variables until the acceptance checks below pass.
+The new Form is installed and published, with a native response tab, submission
+trigger and hourly recovery trigger. The private master is rebuilt successfully.
+The production website remains on the old workflow until PR 206 is reviewed and
+merged. No legacy data or old Form has been replaced or deleted.
+
+[New contact Form](https://docs.google.com/forms/d/e/1FAIpQLSf6ooQrcPNEJI9DnVKlxtksYhhZtNEXHTzBNcalMiRgSRHHnw/viewform).
+[Separate safe export workbook](https://docs.google.com/spreadsheets/d/1-LqsItnKUbSvGhMqMMKmHg-IkMk3uonioNJHD95st58/edit)
+contains only the four public fields and is shared read-only with the existing
+GitHub service account. It was created from sanitized data, with no contact data
+in its version history. The private workbook is owner-only.
 
 The original [TOHS Class of 2012 workbook](https://docs.google.com/spreadsheets/d/1JwWeBjwwQHzmGgh8HPuO_0pghzemC3ikpLx_pXlQvsI/edit)
 remains authoritative for the graduation roster and manual legacy contact edits.
@@ -105,42 +110,29 @@ each hour, updates only the allowlisted CSV/Form URL, and requests a Pages build
 when the deployed data or Form URL differs. Google/GitHub scheduling and build
 queues can delay this; it is not a real-time delivery guarantee.
 
-Keep the entire workflow workbook private. Do not publish it to the web. Share
-only with explicitly authorized organizers. GitHub's existing service account
-needs viewer access to read the V2 export. Google permissions apply to the whole
-workbook, so that account can technically read its private tabs; the code reads
-only the safe tab. A separate sanitized export workbook is an optional later
-hardening step, not a prerequisite for keeping private data out of GitHub.
+Keep the entire contact workflow workbook private. GitHub has reader access only
+to the separate export file, never the private response/master workbook. Google
+permissions are file-wide; a safe tab inside a private workbook is insufficient.
 
 ## Installation and cutover
 
-1. In a standalone Google Apps Script project, paste
-   `scripts/tohs/contact_workflow.js`. It is source code only and contains no
-   credentials or contact values. Verify both workbook IDs at the top.
-2. Run `installContactWorkflow()` as the workbook owner and authorize Google Forms,
-   Sheets, and trigger access. It creates one Form, links its response destination,
-   installs submit/hourly triggers, builds the views, and then publishes the Form.
-   Re-running reuses the stored Form ID and existing triggers. A partially created
-   or manually changed question schema stops for inspection rather than creating
-   another Form. Record the actual published URL from `Workflow Status`.
-3. Verify the destination ID, response tab, private workbook sharing, Form settings,
-   successful trigger execution and all preservation checks below. Do not remove
-   the old Form or old contact tabs.
-4. Give the existing GitHub service account viewer access to the workflow workbook.
-   Obtain its identity from the existing key in GitHub settings; do not print the
-   key, put it in source, or place it in build artifacts.
-5. Set repository variable `TOHS_PUBLIC_SPREADSHEET_ID` to the verified workflow
-   workbook ID and `TOHS_FORM_URL` to the observed published Form URL. The variables
-   contain no contact values. Without the spreadsheet variable, the Action retains
-   the existing read-and-sanitize source behavior for a safe staged rollout.
-6. Validate the PR's live read and preview. Review and merge the PR separately;
-   no direct main edits are part of this change. Dispatch the reunion refresh on
-   main after merge, then verify the Pages build and public page.
+The installed Apps Script project is **TOHS 2012 Contact Workflow**. Its runtime
+source corresponds to `scripts/tohs/contact_workflow.js`, with the test helper in
+`scripts/tohs/acceptance_test.js`. Verify the three IDs before any reinstallation.
+`installContactWorkflow()` reuses the stored Form ID and triggers on retry; it
+publishes only after the linked destination and refresh succeed. Legacy rows with
+no ID receive a stable SHA-256 content reference, never a roster person ID.
 
-The changes at cutover are the website's Form link and the Action's data source.
-The old Form, original roster and historical responses are retained. To roll back,
-clear the V2 spreadsheet variable and restore the old Form URL variable; rerun the
-refresh and deployment. Retain the new response workbook even during rollback.
+Merging PR 206 changes the website Form link and the Action source to the separate
+safe export workbook. Those defaults are checked in; no repository variable is
+required. Optional variables `TOHS_PUBLIC_SPREADSHEET_ID` and `TOHS_FORM_URL`
+override them; never point the export variable at a private contact workbook.
+CI validates the live service-account read on the PR without deploying production.
+After merge, dispatch the reunion refresh on main and verify the Pages deployment.
+
+The old Form, original roster, old contacts and historical responses remain
+available. Roll back by reverting the PR and running the old refresh/deployment;
+retain the new response workbook and Form data. Do not delete anything at cutover.
 
 ## Meghan Conlan acceptance test
 

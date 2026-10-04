@@ -1,6 +1,7 @@
 const {test} = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
+const vm = require('node:vm');
 const {reconcileContacts,literalCell} = require('../scripts/tohs/contact_workflow.js');
 const roster = () => [{id:'90',first:'Meghan',last:'Conlan',email:'',phone:'',preferred:'',sources:{}},
   {id:'91',first:'Ada',last:'Smith',email:'existing@example.invalid',phone:'1234567890',preferred:'',sources:{}}];
@@ -55,4 +56,27 @@ test('page renders snapshots only; no live private-sheet bootstrap remains', () 
   const page = fs.readFileSync('tohs_reunion.Rmd','utf8');
   assert.equal(page.includes('googlesheets4::read_sheet'),false);
   assert.equal(page.includes('snapshot_path'),true);
+});
+
+test('installer links a new Form with no destination and reuses it on retry', () => {
+  let destination = '', links = 0, refreshes = 0;
+  const titles = ['First name','Last name','Preferred/full name','Email','Phone number',
+    'Reunion interest','Planning-committee interest'];
+  const form = {
+    getItems: () => titles.map(title => ({getTitle: () => title})),
+    getDestinationId: () => { if (!destination) throw new Error('The form currently has no response destination.'); return destination; },
+    setDestination: (_type,id) => { destination = id; links++; return form; }
+  };
+  for (const setter of ['setPublishingSummary','setCollectEmail','setLimitOneResponsePerUser',
+    'setAllowResponseEdits','setConfirmationMessage','setPublished','setAcceptingResponses']) form[setter] = () => form;
+  const context = {
+    FormApp: {openById: () => form, create: () => {throw new Error('Must reuse existing Form');},DestinationType:{SPREADSHEET:'spreadsheet'}},
+    PropertiesService:{getScriptProperties: () => ({getProperty: () => 'existing-form'})},
+    ScriptApp:{getProjectTriggers: () => ['onContactSubmit','refreshContactWorkflow'].map(name => ({getHandlerFunction: () => name}))},
+    recordRefresh: () => {refreshes++;}
+  };
+  vm.runInNewContext(fs.readFileSync('scripts/tohs/contact_workflow.js','utf8') +
+    '\nrefreshContactWorkflow = recordRefresh; installContactWorkflow(); installContactWorkflow();', context);
+  assert.equal(links,1);
+  assert.equal(refreshes,4);
 });
