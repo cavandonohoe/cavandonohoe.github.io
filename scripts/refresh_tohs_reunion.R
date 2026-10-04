@@ -17,15 +17,41 @@ tohs_public_rows <- function(sheet) {
   result
 }
 
+tohs_validate_public <- function(sheet, check_freshness = TRUE) {
+  allowed <- c("first_name", "last_name", "email_bool", "updated_at")
+  if (!identical(names(sheet), allowed)) stop("Public export schema changed; publication refused")
+  if (!nrow(sheet)) stop("Public export returned no graduates")
+  for (field in c("first_name", "last_name")) {
+    values <- trimws(as.character(sheet[[field]]))
+    if (anyNA(values) || any(!nzchar(values)) || any(nchar(values) > 100) ||
+        any(grepl("@|[<>\\r\\n]|https?:|[0-9]{5}", values, perl = TRUE)))
+      stop("Unsafe public name; publication refused")
+    sheet[[field]] <- values
+  }
+  flags <- toupper(as.character(sheet$email_bool))
+  if (anyNA(flags) || any(!flags %in% c("TRUE", "FALSE"))) stop("Invalid email coverage flag")
+  sheet$email_bool <- flags == "TRUE"
+  timestamps <- unique(as.character(sheet$updated_at))
+  if (length(timestamps) != 1L || is.na(timestamps) || !nzchar(timestamps)) stop("Invalid export timestamp")
+  if (check_freshness) {
+    stamp <- as.POSIXct(timestamps, format = "%Y-%m-%dT%H:%M:%OSZ", tz = "UTC")
+    age <- as.numeric(difftime(Sys.time(), stamp, units = "hours"))
+    if (is.na(age) || age > 3 || age < -0.1) stop("Public export is stale; keeping last good snapshot")
+  }
+  sheet
+}
+
 refresh_tohs_reunion <- function(path = "data/tohs_reunion.csv") {
   key <- Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS")
   if (!nzchar(key) || !file.exists(key)) stop("Google service-account key is required")
   googlesheets4::gs4_auth(path = key, cache = FALSE)
-  sheet <- googlesheets4::read_sheet(
-    "1JwWeBjwwQHzmGgh8HPuO_0pghzemC3ikpLx_pXlQvsI",
-    sheet = "Full Grad Class", col_types = "c"
-  )
-  rows <- tohs_public_rows(sheet)
+  public_id <- Sys.getenv("TOHS_PUBLIC_SPREADSHEET_ID")
+  if (!nzchar(public_id)) public_id <- "1-LqsItnKUbSvGhMqMMKmHg-IkMk3uonioNJHD95st58"
+  # Only the separate sanitized workbook is readable by this pipeline.
+  sheet <- suppressMessages(googlesheets4::read_sheet(
+    public_id, sheet = "Public Export", col_types = "c"
+  ))
+  rows <- as.data.frame(tohs_validate_public(sheet)[c("first_name", "last_name", "email_bool")])
   changed <- TRUE
   if (file.exists(path)) {
     previous <- read.csv(path, stringsAsFactors = FALSE)
@@ -36,6 +62,13 @@ refresh_tohs_reunion <- function(path = "data/tohs_reunion.csv") {
     rows$updated_at <- format(Sys.time(), "%Y-%m-%d %H:%M UTC", tz = "UTC")
     dir.create(dirname(path), recursive = TRUE, showWarnings = FALSE)
     write.csv(rows, path, row.names = FALSE, na = "")
+  }
+  form_url <- Sys.getenv("TOHS_FORM_URL")
+  if (nzchar(form_url)) {
+    if (!grepl("^https://(docs\\.google\\.com/forms/d/[A-Za-z0-9_/-]+|forms\\.gle/[A-Za-z0-9_-]+)$", form_url))
+      stop("Invalid public Form URL")
+    dir.create("config", showWarnings = FALSE)
+    writeLines(form_url, "config/tohs_form_url.txt")
   }
   summary <- sprintf(
     "Reunion: %d/%d emails collected; %d missing. Snapshot %s.",
