@@ -1,6 +1,7 @@
 /* Paste this file into a standalone Apps Script project. No private data belongs here. */
 const TOHS_SOURCE_ID = '1JwWeBjwwQHzmGgh8HPuO_0pghzemC3ikpLx_pXlQvsI';
 const TOHS_WORKFLOW_ID = '14WancXKUFazrPQPz09vSQve0Ae9jroSAufHhbYNrJYw';
+const TOHS_EXPORT_ID = '1-LqsItnKUbSvGhMqMMKmHg-IkMk3uonioNJHD95st58';
 const TOHS_QUESTIONS = ['First name', 'Last name', 'Preferred/full name', 'Email',
   'Phone number', 'Reunion interest', 'Planning-committee interest'];
 const TOHS_FIELDS = ['preferred', 'email', 'phone', 'reunion', 'committee'];
@@ -92,8 +93,12 @@ function legacySubmissions(ss) {
     rows.slice(1).forEach((r,i) => {
       if (!textValue(r[indexes[0]]) || !textValue(r[indexes[1]])) return;
       const v = indexes.map(j => textValue(r[j]));
-      if (!textValue(r[0])) throw new Error('Legacy contact lacks stable source ID');
-      result.push({response_id:'legacy:' + tab + ':' + textValue(r[0]),timestamp:'',
+      // Some old manually entered contacts have no ID. Hash their normalized
+      // content rather than inventing a person ID or depending on row position.
+      const sourceId = textValue(r[0]) || 'sha256:' + Utilities.base64EncodeWebSafe(
+        Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256, JSON.stringify(v))
+      );
+      result.push({response_id:'legacy:' + tab + ':' + sourceId,timestamp:'',
         first:v[0],last:v[1],preferred:v[2],email:v[3],phone:v[4],reunion:v[5] || '',committee:v[6] || ''});
     });
   }
@@ -161,6 +166,10 @@ function refreshContactWorkflow() {
     // Public Export contains ONLY the allowlisted public fields.
     writeGenerated(target,'Public Export',['first_name','last_name','email_bool','updated_at'],
       result.publicRows.map(r => [r.first_name,r.last_name,r.email_bool,updated]));
+    // Separate file: GitHub's reader cannot access the private contact workbook.
+    writeGenerated(SpreadsheetApp.openById(TOHS_EXPORT_ID),'Public Export',
+      ['first_name','last_name','email_bool','updated_at'],
+      result.publicRows.map(r => [r.first_name,r.last_name,r.email_bool,updated]));
     writeGenerated(target,'Workflow Status',['key','value'],[['last_success',updated],
       ['roster_count',result.master.length],['review_count',result.review.length],
       ['form_url',formId ? FormApp.openById(formId).getPublishedUrl() : 'Form not installed']]);
@@ -190,7 +199,11 @@ function installContactWorkflow() {
     throw new Error('Partial or changed Form schema: inspect before continuing');
   form.setPublishingSummary(false).setCollectEmail(false).setLimitOneResponsePerUser(false)
     .setAllowResponseEdits(false).setConfirmationMessage('Thank you! Your update has been received.');
-  if (form.getDestinationId() !== TOHS_WORKFLOW_ID)
+  let destinationId = '';
+  try { destinationId = form.getDestinationId(); } catch (error) {
+    if (!/no response destination/i.test(error.message)) throw error;
+  }
+  if (destinationId !== TOHS_WORKFLOW_ID)
     form.setDestination(FormApp.DestinationType.SPREADSHEET,TOHS_WORKFLOW_ID);
   const triggers = ScriptApp.getProjectTriggers();
   if (!triggers.some(t => t.getHandlerFunction() === 'onContactSubmit'))

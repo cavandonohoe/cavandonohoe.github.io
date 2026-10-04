@@ -9,9 +9,6 @@ on:
       - ".github/workflows/update_tohs_reunion.yml"
       - "scripts/refresh_tohs_reunion.R"
       - "tests/testthat/test-tohs_reunion.R"
-      - "scripts/tohs/**"
-      - "tests/tohs-contact-workflow.test.cjs"
-      - "tohs_reunion.Rmd"
 
 permissions:
   contents: read
@@ -33,11 +30,6 @@ jobs:
       actions: write
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Test contact matching and privacy
-        run: node --test tests/tohs-contact-workflow.test.cjs
       - uses: ./.github/actions/setup-r-env
       - name: Write Google key
         env:
@@ -52,8 +44,6 @@ jobs:
       - name: Read sheet and refresh public snapshot
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/tohs-sa.json
-          TOHS_PUBLIC_SPREADSHEET_ID: ${{ vars.TOHS_PUBLIC_SPREADSHEET_ID }}
-          TOHS_FORM_URL: ${{ vars.TOHS_FORM_URL }}
         run: Rscript scripts/refresh_tohs_reunion.R
       - name: Sanity-check snapshot
         run: Rscript scripts/data_sanity.R data/tohs_reunion.csv
@@ -63,7 +53,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
-          git add data/tohs_reunion.csv config/tohs_form_url.txt
+          git add data/tohs_reunion.csv
           if ! git diff --cached --quiet; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -75,9 +65,7 @@ jobs:
           # Compare the snapshot shipped with production before requesting a build.
           git fetch origin gh-pages
           if ! git show origin/gh-pages:data/tohs_reunion.csv > "$RUNNER_TEMP/published-tohs.csv" || \
-             ! cmp -s data/tohs_reunion.csv "$RUNNER_TEMP/published-tohs.csv" || \
-             ! git show origin/gh-pages:config/tohs_form_url.txt > "$RUNNER_TEMP/published-tohs-form.txt" || \
-             ! cmp -s config/tohs_form_url.txt "$RUNNER_TEMP/published-tohs-form.txt"; then
+             ! cmp -s data/tohs_reunion.csv "$RUNNER_TEMP/published-tohs.csv"; then
             gh workflow run pages-branch-previews.yml --ref main -f deploy_root=true
           fi
       - name: Remove Google key

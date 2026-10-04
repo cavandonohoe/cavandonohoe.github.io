@@ -40,9 +40,19 @@ if (file.exists(snapshot_path)) {
   )
   data_updated_at <- snapshot$updated_at[[1]]
 } else {
-  stop("Public reunion snapshot missing; run the reunion refresh workflow first")
+  # Bootstrap until the first scheduled refresh creates the public snapshot.
+  source("scripts/refresh_tohs_reunion.R", local = TRUE)
+  grad_list <- googlesheets4::read_sheet(
+    "1JwWeBjwwQHzmGgh8HPuO_0pghzemC3ikpLx_pXlQvsI",
+    sheet = "Full Grad Class", col_types = "c"
+  )
+  rows <- tohs_public_rows(grad_list)
+  grad_list_clean <- dplyr::transmute(
+    rows, `First Name` = first_name, `Last Name` = last_name,
+    email_bool = email_bool
+  )
+  data_updated_at <- format(Sys.time(), "%Y-%m-%d %H:%M UTC", tz = "UTC")
 }
-form_url <- trimws(readLines("config/tohs_form_url.txt", warn = FALSE)[[1]])
 
 percent_accounted_text <- sprintf(
   "%s (%d/%d)",
@@ -59,7 +69,7 @@ missing_list <- grad_list_clean %>%
 
 ```
 
-Help us reach the TOHS Class of 2012 for our next reunion! We currently have emails for **`r percent_accounted_text`** of our class. If you see yourself on the list below, please [update your reunion contact details](`r form_url`). You can also tell us whether you're interested in attending or helping with planning. Your email, phone number, and responses are kept private to reunion organizers.
+It's so awesome talking to old friends and seeing how everyone is doing! We do need people's emails though, so if you know anyone who is on this list, reach out! We would love to have them at our reunion! Thank you for all of your help! Currently we have emails for **`r percent_accounted_text`** of our class. If you see yourself on this list, please fill out this [survey](https://forms.gle/a9Ag8w4F7ie4BNpY8) to add your email.
 
 Also, here is a link to [**the lancer: SENIOR ISSUE 2012**](https://issuu.com/thelancer/docs/seniorissue2012) (our Lancer newspaper), if you want to walk down memory lane.
 
