@@ -38,18 +38,8 @@ if (file.exists(snapshot_path)) {
     snapshot, `First Name` = first_name, `Last Name` = last_name,
     email_bool = email_bool
   )
-  snapshot_timestamp <- snapshot$updated_at[[1]]
-  timestamp_format <- if (grepl("T", snapshot_timestamp, fixed = TRUE)) {
-    "%Y-%m-%dT%H:%M:%OSZ"
-  } else {
-    "%Y-%m-%d %H:%M UTC"
-  }
-  snapshot_time <- as.POSIXct(
-    snapshot_timestamp, format = timestamp_format, tz = "UTC"
-  )
-  data_updated_at <- format(
-    snapshot_time, "%B %d, %Y at %H:%M UTC", tz = "UTC"
-  )
+  source("scripts/refresh_tohs_reunion.R")
+  data_updated_at <- tohs_format_timestamp(snapshot$updated_at[[1]])
 } else {
   stop("Public reunion snapshot missing; run the reunion refresh workflow first")
 }
