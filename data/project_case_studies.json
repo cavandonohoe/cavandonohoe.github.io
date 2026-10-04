@@ -67,11 +67,15 @@
     },
     {
       "project": "config",
-      "tracked_files": 1,
-      "commits_touching_project": 1,
+      "tracked_files": 2,
+      "commits_touching_project": 2,
       "top_extensions": [
         [
           ".csv",
+          1
+        ],
+        [
+          ".txt",
           1
         ]
       ]
@@ -118,6 +122,17 @@
       ]
     },
     {
+      "project": "docs",
+      "tracked_files": 1,
+      "commits_touching_project": 1,
+      "top_extensions": [
+        [
+          ".md",
+          1
+        ]
+      ]
+    },
+    {
       "project": "header",
       "tracked_files": 11,
       "commits_touching_project": 15,
@@ -147,7 +162,7 @@
     {
       "project": "images",
       "tracked_files": 11,
-      "commits_touching_project": 40,
+      "commits_touching_project": 41,
       "top_extensions": [
         [
           ".jpg",
@@ -257,8 +272,8 @@
     },
     {
       "project": "tests",
-      "tracked_files": 10,
-      "commits_touching_project": 9,
+      "tracked_files": 11,
+      "commits_touching_project": 10,
       "top_extensions": [
         [
           ".r",
@@ -274,6 +289,10 @@
         ],
         [
           ".sh",
+          1
+        ],
+        [
+          ".cjs",
           1
         ]
       ]

@@ -2,10 +2,10 @@
   "meta": {
     "generated_at": "2026-09-27",
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 342,
+    "n_episodes": 345,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-10-03",
-    "api_saved_count": 192
+    "api_refreshed_at": "2026-10-04",
+    "api_saved_count": 178
   },
   "episodes": [
     {
@@ -314,7 +314,7 @@
       "dur_min": 41,
       "release": "2025-09-29",
       "url": "https://open.spotify.com/episode/78MBrBY535ywCSAF7a2YgO",
-      "desc": "Who are you, really? Our friends at The Gray Area ask whether it's really possible to change. Guest: ⁠Olga Khazan⁠, author of Me, But Better: The Science and Promise of Personality Change For show transcripts, go to…"
+      "desc": "Who are you, really? Our friends at The Gray Area ask whether it's really possible to change.  Guest: ⁠Olga Khazan⁠, author of Me, But Better: The Science and Promise of Personality Change    For show transcripts, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unxtranscripts⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠  For more, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unexplainable⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠  And please email us! ⁠⁠⁠⁠⁠unexplainable@vox.com⁠⁠⁠⁠⁠  We read every email.  Support Unexplainable (and get ad-free episodes) by becoming a Vox Member today: ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/members⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠ Learn more about your ad choices. Visit podcastchoices.com/adchoices"
     },
     {
       "added_at": "2026-01-12",
@@ -369,7 +369,7 @@
       "dur_min": 29,
       "release": "2026-01-28",
       "url": "https://open.spotify.com/episode/0hxJpYQ1M6ZNUUaxXKwwg5",
-      "desc": "Every hand-crafted instrument from violin maker Michael Doran holds its own unexplainable questions. Guest: Michael Doran of Doran’s Violin’s For show transcripts, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unxtranscripts⁠⁠…"
+      "desc": "Every hand-crafted instrument from violin maker Michael Doran holds its own unexplainable questions.  Guest: Michael Doran of Doran’s Violin’s    For show transcripts, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unxtranscripts⁠⁠  ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠For more, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unexplainable⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠  And please email us! ⁠⁠⁠⁠⁠⁠unexplainable@vox.com⁠⁠⁠⁠⁠⁠  We read every email.  Support Unexplainable (and get ad-free episodes) by becoming a Vox Member today: ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/members⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠  Thank you! Learn more about your ad choices. Visit podcastchoices.com/adchoices"
     },
     {
       "added_at": null,
@@ -919,7 +919,7 @@
       "dur_min": 47,
       "release": "2025-09-30",
       "url": "https://open.spotify.com/episode/1GS0zmLps7F88g81iSf7i4",
-      "desc": "It seems ridiculously irresponsible with the benefit of hindsight, but the concept of giving Hitler everything he wanted was the policy among the UK and France as a way to keep the world from sliding into a second world war. Turns out it…"
+      "desc": "It seems ridiculously irresponsible with the benefit of hindsight, but the concept of giving Hitler everything he wanted was the policy among the UK and France as a way to keep the world from sliding into a second world war. Turns out it didn’t work.See omnystudio.com/listener for privacy information."
     },
     {
       "id": "42krVXxVR2EC9U5wVsbhvp",
@@ -1810,7 +1810,7 @@
       "dur_min": 10,
       "release": "2026-01-27",
       "url": "https://open.spotify.com/episode/1d7XKIDQuhNCRlB0ooe2Wo",
-      "desc": "“Sell America.” There’s new talk of how Europe could turn the economic screws on the U.S. after President Trump’s play for Greenland. Selling U.S. Treasury bonds is one way. Another is a legal tool. It’s been called the EU’s bazooka.On…"
+      "desc": "“Sell America.” There’s new talk of how Europe could turn the economic screws on the U.S. after President Trump’s play for Greenland. Selling U.S. Treasury bonds is one way. Another is a legal tool. It’s been called the EU’s bazooka.On today’s show, taking stock of Europe’s financial arsenal. How could America’s largest foreign lender lighten Americans’ wallets?Planet Money wrote a book and is going on tour, come see us: tickets and tour dates here. Related episodes: Davos drama, credit card caps and tariff truthsWhy Trump resurrected the Monroe DoctrineLunch with the man who coined TACOFor sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
     },
     {
       "added_at": null,
@@ -1898,7 +1898,7 @@
       "dur_min": 39,
       "release": "2025-12-01",
       "url": "https://open.spotify.com/episode/7FkIqyuu7oz4MkA04Pzi7h",
-      "desc": "Jordan Klepper sits down with Daily Show Supervising Producer and Segment Director Ian Berger, and Writer Scott Sherman, to discuss their upcoming special, The Daily Show Presents: Jordan Klepper Fingers the Pulse: Give the Man a Prize.…"
+      "desc": "Jordan Klepper sits down with Daily Show Supervising Producer and Segment Director Ian Berger, and Writer Scott Sherman, to discuss their upcoming special, The Daily Show Presents: Jordan Klepper Fingers the Pulse: Give the Man a Prize.   They talk traveling from the South, to the Pacific Northwest and all the way to Norway to unpack Trump's overt quest for the Nobel Peace Prize, despite his escalating of tensions at home and abroad.  Watch The Daily Show Presents: Jordan Klepper Fingers the Pulse: Give the Man a Prize on Monday December 8 at 11:30pm after The Daily Show on Comedy Central. Learn more about your ad choices. Visit podcastchoices.com/adchoices"
     },
     {
       "added_at": "2025-10-31",
@@ -2646,7 +2646,7 @@
       "dur_min": 9,
       "release": "2025-12-01",
       "url": "https://open.spotify.com/episode/5JXn9m6eUlXmS0lvGb5yHp",
-      "desc": "Why can't the US be like Europe, Japan or India—countries that all have extensive passenger train systems? On today's show, why the US chose not to. We learn why, despite this, US railroads could still be worth bragging about.Related…"
+      "desc": "Why can't the US be like Europe, Japan or India—countries that all have extensive passenger train systems? On today's show, why the US chose not to. We learn why, despite this, US railroads could still be worth bragging about.Related episodes: What happens when railroads get hitchedHow three letters reinvented the railroad businessFor sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
     },
     {
       "added_at": null,
@@ -2888,7 +2888,7 @@
       "dur_min": 55,
       "release": "2025-12-09",
       "url": "https://open.spotify.com/episode/4doyhpDjuaKXMnC8FE3NA9",
-      "desc": "What if our universe is the inside of a black hole… inside another black hole? Neil deGrasse Tyson and Paul Mecurio answer a grab bag of fan questions about black hole mergers, the misconception about gravity assists, and if there’s such a…"
+      "desc": "What if our universe is the inside of a black hole… inside another black hole? Neil deGrasse Tyson and Paul Mecurio answer a grab bag of fan questions about black hole mergers, the misconception about gravity assists, and if there’s such a thing as laws of physics.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free.Thanks to our Patrons Beth, Rebecca Yoswein, Leigh, Desiree Doporto, Bao Le, Thomas Alvarez, Eric Venus, Max And Gaz, Angel, Rebecca Schatz, Micheal Booth, Bruce Walton Jr, Rhea Rosier, Blake Rottmann, Patrick Clark, Cap, Paul Porter, Matthew Walton, Tiffany Brown, Brenda Eaves, Nash Bosworth, Billy Smith, Mike, Frenchy (Michael French), Teddy Funk, Randall Napier, Mary Zoellner, Carl L. Blackwell, Boris Barberic, Dexter Blackman, Joel Barjon, Kev, Abhay Joshi, Catherine Mary Darensbourg, Dav W, Brian Loop, cryHAVOC884, Daniel Bernal, Brian Page, Brendon Dougherty, hello hello is this thing on, Randy, Mary, Max, lo-res file, \"CK\" with th maual curly quotes, Draszje, David Szacik, Jason Nowak, Charlie Waddell, Danielle Taylor, Guillermo Gonzales, Gary in SD, Ohana, Jesse Abelson, Alex Nijman, Thorigrim, Peter J. Kushar, Kerry Lamb, Lengua Franca, Pamela Diane Carls, Jon, L Moore, RobbaYaga, Vilius Kazakauskas, Bjorn Nelson, Bob Watson, Shawn, MadWarrior, Devin, Brady Tomberlin, Micheal McEvoy, Pat, Kevin B, Tyler, Blaine Willick, Matthew CRessman, Zac, Julius Chatterjee, and Rigel Lopez for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising."
     },
     {
       "added_at": "2026-01-13",
@@ -2921,7 +2921,7 @@
       "dur_min": 67,
       "release": "2025-09-30",
       "url": "https://open.spotify.com/episode/5ETQ44o8JUy3rSAJMd1yD2",
-      "desc": "What will the future of space look like? Neil deGrasse Tyson and comic co-host Chuck Nice explore the engineering challenges and scientific questions shaping the next era of aerospace with aerospace engineer Jeff Thornburg.NOTE: StarTalk+…"
+      "desc": "What will the future of space look like? Neil deGrasse Tyson and comic co-host Chuck Nice explore the engineering challenges and scientific questions shaping the next era of aerospace with aerospace engineer Jeff Thornburg.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/the-new-space-race-with-jeff-thornburg/Thanks to our Patrons Adam Jensen, Eric Forde, Jaren Foreman, Robert Collier, Ryan Sanderson, Michael Franklin, Tiffiany Amber, MSegars, Clinton Hays, Rob, Wesley Michel, Aaron Wright, Vi Rose, James Sorensen, Jamie, David, Russell Knecht (Connect), John T McCoy, Ben Ryan, Fidel Roque-Flores, Eric walburn METZLER, Joseph Strasser, Daniel Ludlow, William Sacher, William Nowottny, Jay Sackett, Bryan Poole, Trevor Walter, Chiem Ma, Robert Rice, Lex Townes, Cavvote Landes, Franny, Keith Dickson, Bill Gallerani, Rosemary Taylor, Lisa Holloway, Jim Staub, Stiven Miranda, Erica, Jon Nebenfuhr, Ranjam69, David R Dykes, Micky Pistillo, Tony Toon, sr, April Lorenzo Spoor, Tom Randall, Jeff, Nico Cerceo, Sterling GRiffin, John, Red Shi, Pete Stoppani, Jonathan Hyatt, Dylan Moore, Shawn Kalas, Eric Dickinson, Kiela Badeaux, Leyna McGrath, Armaghan, bmanone, Much More Matt, Patrick Ritter, Laszlo Zoltan Buru, Indiigo, Isaiah, Brett Sklar, Brian Pickett, Micheal Kaplan, Cecilia, PopoMakBeth, and Shawn Best for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising."
     },
     {
       "id": "1AsyCqCgBX6TVgFQBbeffR",
@@ -3031,7 +3031,7 @@
       "dur_min": 48,
       "release": "2026-01-27",
       "url": "https://open.spotify.com/episode/0F5LDRzFNH11yLqkE0OZF8",
-      "desc": "What do astrophysicists mean when they talk about “information”? Neil deGrasse Tyson and comic co-host Chuck Nice dive into questions about the black hole information paradox, moon moons, wormholes between black hole universes, and more!…"
+      "desc": "What do astrophysicists mean when they talk about “information”? Neil deGrasse Tyson and comic co-host Chuck Nice dive into questions about the black hole information paradox, moon moons, wormholes between black hole universes, and more! NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here:https://startalkmedia.com/show/cosmic-queries-black-hole-information-paradox/Thanks to our Patrons Dustin Franke, Joel Bradley, Bill, Bailey's Old Guard, Ezrah Davies, Joseph, David Tilbury, David Holt, Andrew Bowen, John Blair, BigShrimpin, Niall Heaton, Stefan Tabakov, Roger McVay, Steve, John Skobrak, Mau Guzmán, Marcus, Michael Astro-Knight, Charlize, Zach Sweet, Trish Edwards, 에이 큐, Michael Kitchen, Alboogie, studioofmars, Anders Öqvist, Liris, Robbie Bentley, Harry Campbell Blyth Clark, Timmeh, Stupot, Wick3dHeathen, Denise Pinheiro, Kenneth Millen, Porn Person, Bill, PotatoGraphick, Conrad Dunfee, Steve A, Priit Pääsukene, Étienne Pouly, thomas rodriguez, Jibak, Michael S, Kerin McGee, Kyle Young, S.P., Adam Sweeney, Micah Sell, Austin, Emmyb, Caiden Osborne, Devinder Singh, John Posey, Thierry Hubert, Spider, B. Nielsen, jonathan Ryan Munns, tanya henry, K Be, Tyler, Moseph Thuglewits, A O, Tim Gibbs I, Robert Buckley, Maggy, Abhi Arikapudi, Luna Sylvan, omarelsewefy, Kevin, Sylvain Racicot, Aiden Nathan, naked alien, Mohammed Al-Sabah, Derek S., Mark Oestereich, DarkInferno, Joseph Hernandez, Osboyjr, Jay Titus, Nathan Hargett, Dave Baxter, aspiring scientific journalist Also a cow, Charles Ian Norman Venn, Amanda, Tony DeGregorio, Michael Chunn, jeffrey gerber, Raymond McGovern, Ricky Byrd, Glen Bizeau, Richard Rines, Matthew Drumheiser, Raj, and kornschnitzel for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising."
     },
     {
       "id": "483hV68f4cX0Bn0B4zQ4WN",
@@ -3207,7 +3207,7 @@
       "dur_min": 9,
       "release": "2026-01-29",
       "url": "https://open.spotify.com/episode/5C2Yb3kHyuNrtwT3nc3eYB",
-      "desc": "Macadamia nuts. Labor shortages. Volcanoes. All that might sound like econ Mad Libs, but they’re all connected to the Federal Reserve Bank of San Francisco’s entry into the Beige Book this month: labor shortages are hurting macadamia nut…"
+      "desc": "Macadamia nuts. Labor shortages. Volcanoes. All that might sound like econ Mad Libs, but they’re all connected to the Federal Reserve Bank of San Francisco’s entry into the Beige Book this month: labor shortages are hurting macadamia nut harvests in Hawaii. On today’s show, we take a vacation and talk to someone on the Big Island who runs a macadamia nut farm. He calls them “mac nuts.” Related episodes: Why beef prices are so high For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
     },
     {
       "id": "2k971mOyOmsezOZTNZyRZj",
@@ -3218,7 +3218,7 @@
       "dur_min": 77,
       "release": "2025-09-30",
       "url": "https://open.spotify.com/episode/2k971mOyOmsezOZTNZyRZj",
-      "desc": "Brian Baumgartner joins Seth and Josh on the pod this week! He talks all about growing up in Atlanta, vacations to the Caribbean, snorkeling adventures, playing with alligators, chasing armadillos, and so much more! Plus, he chats about…"
+      "desc": "Brian Baumgartner joins Seth and Josh on the pod this week! He talks all about growing up in Atlanta, vacations to the Caribbean, snorkeling adventures, playing with alligators, chasing armadillos, and so much more! Plus, he chats about his new golf podcast, \"We Need A Fourth.\"  Watch more Family Trips episodes: https://www.youtube.com/playlist?list=PLlqYOfxU_jQem4_NRJPM8_wLBrEEQ17B6  Support our sponsors: Tavola For a limited time save up to $300 on the Tovala smart oven when you order meals 6+ times by heading to Tovala.com/TRIPS and use our code TRIPS.  Remember: With Tovala, dinner is taken care of.  Laundry Sauce Make laundry day the best day of the week! Get 20% off your entire order @LaundrySauce with code TRIPS at https://laundrysauce.com/TRIPS  #laundrysaucepod  Fabric Join the thousands of parents who trust Fabric to help protect their family. Apply today in just minutes at meetfabric.com/trips.  Policies issued by Western-Southern Life Assurance Company. Not available in certain states. Prices subject to underwriting and health questions  Learn more about your ad choices. Visit megaphone.fm/adchoices"
     },
     {
       "added_at": null,
@@ -3548,7 +3548,7 @@
       "dur_min": 8,
       "release": "2025-09-29",
       "url": "https://open.spotify.com/episode/2YXYOdRFKrQcaOznf66bKQ",
-      "desc": "Jimmy Kimmel’s brief departure from the airwaves triggered a wave of debate over free speech. Partly triggering his suspension was the government threatening to leverage its power over pending media deals. That’s in part due to a piece of…"
+      "desc": "Jimmy Kimmel’s brief departure from the airwaves triggered a wave of debate over free speech.  Partly triggering his suspension was the government threatening to leverage its power over pending media deals. That’s in part due to a piece of decades-old legislation. Today on the show, we look at how the Telecommunications Act of 1996 set the stage for government meddling and corporate capitulation. Related episodes: Breaking up big business is hard to do Mergers, acquisitions and Elon’s “rude” proposal For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
     },
     {
       "id": "0DRWubxZO8QzttEi8AxHdd",
@@ -3769,6 +3769,39 @@
       "release": "2026-09-30",
       "url": "https://open.spotify.com/episode/4Ou15NgwqpumFw3pU9mJnz",
       "desc": "Very soon, Social Security may not have enough money to make full payments to retirees. Very soon. Like by 2032, just six years from now. So what are we gonna do about it? Today on the show, we look at some of the most talked about possible solutions; and exactly whose wallets we’ll have to rifle through to find the money to pay for each. Then we’ll run the options by the Social Security Administration's former Chief Actuary. The guy Congress used to call to crunch numbers and give them the bottom line. Read: - Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life - Our weekly longform Planet Money newsletter- Our weekly Indicator round-up newsletterFollow: - Instagram- TikTok- YouTube- FacebookSupport public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.This episode of Planet Money was hosted by Erika Beras and Jeff Guo, it was produced by James Sneed, and edited by Marianne McCune. Sierra Juarez is our fact-checker, and Annlie Huang & Robert Rodriguez engineered the show. Alex Goldmark is the executive producer of Planet Money.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
+    },
+    {
+      "id": "46MDIWa1vhS9IdyYIraCZD",
+      "added_at": "2026-10-04",
+      "show": "The Daily Show: Ears Edition",
+      "publisher": null,
+      "name": "The Interviews |  Evan Gershkovich, Marlon James, CMAT, John Wilson",
+      "dur_min": 82,
+      "release": "2026-10-04",
+      "url": "https://open.spotify.com/episode/46MDIWa1vhS9IdyYIraCZD",
+      "desc": "Catch all of the past week's great guests in one place.   Wall Street Journal foreign correspondent Evan Gershkovich joins Jon Stewart to talk about his new memoir, “This Cursed Beautiful Land: A Russian-American Story.” Gershkovich, who spent 16 months imprisoned in Russia on false espionage charges, breaks down how a source, a second meeting, and a Putin pep talk to the FSB landed him in Russian prison. He discusses growing up in a Russian-speaking home, what drew him to reporting in Russia, life pre-imprisonment, and how he ultimately became a bargaining chip in a Putin-led prisoner swap scheme. He also weighs in on what a post-Putin Russia might look like and the totalitarian warning signs he sees in the U.S.  Booker Prize-winning and bestselling author Marlon James sits down with Jordan Klepper to discuss his new novel “The Disappearers,\" which The New York Times called \"the novel of the decade, if not the century.” James discusses his childhood in Jamaica, where he hid his sexuality by learning to disappear; his use of violence and sex in his work; and literature’s role in keeping a historical record for those typically erased from mainstream history.  Irish musician CMAT joins Jordan to discuss her acclaimed third album, “Euro-Country.” They talk about how she weaves profound lyricism with Western melodies, what it means for her music to embody “funeral humor,” why the Irish psyche loves country music, and how the title track examines the repercussions of politicians’ actions.  John Wilson joins Jordan to discuss his new documentary, “The History of Concrete.” The creator of “How To with John Wilson” shares how he finds beauty in the mundane through his unique shooting and editing style, how he scored an uninterrupted shot of Kim Kardashian at a fancy dinner party, and what happens when you spend your entire film budget on a creepy wax museum in Rome. Jordan also pitches an idea for Wilson’s next documentary project.  --  The Daily Show airs weeknights at 11/10c on Comedy Central.  Stream full episodes on Paramount+  Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices"
+    },
+    {
+      "id": "0JrnaPUF6P5tCAONQrfNrF",
+      "added_at": "2026-10-03",
+      "show": "Stuff You Should Know",
+      "publisher": null,
+      "name": "Selects: How Bras Work",
+      "dur_min": 53,
+      "release": "2026-10-03",
+      "url": "https://open.spotify.com/episode/0JrnaPUF6P5tCAONQrfNrF",
+      "desc": "Bras are loved and hated, sometimes at the same time. But as difficult and restrictive as they can be, they rescued women from a much cruel contraption: corsets. The question remains, though, do women need bras at all? Listen to this classic episode to find out.See omnystudio.com/listener for privacy information."
+    },
+    {
+      "id": "6cntflMsLtwvZ8ghx05l05",
+      "added_at": "2026-10-03",
+      "show": "Planet Money",
+      "publisher": null,
+      "name": "Where all those weird new drinks are coming from",
+      "dur_min": 30,
+      "release": "2026-10-02",
+      "url": "https://open.spotify.com/episode/6cntflMsLtwvZ8ghx05l05",
+      "desc": "It's getting pretty wild in the beverage aisle these days — from the rainbow wall of seltzers, to the increasingly strange flavors of Pepsi, to the new \"functional\" sodas with added fiber or supplements that supposedly offer health benefits. Where are all these new drinks coming from? And why does it seem like the options are multiplying faster than ever?Today on the show, we go behind the scenes at one of the nation’s top-secret beverage laboratories. The food scientists in this lab have quietly helped companies design many of the new drinks on the shelves these days. We taste things we have never tasted before, including a sports hydration … broth? We learn what a strawberry has in common with a block of cheese. And we discover why the business of beverages will never be the same again. Read: - Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life - Our weekly longform Planet Money newsletter- Our weekly Indicator round-up newsletterFollow:- Instagram- TikTok- YouTube- FacebookSupport public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.This episode of Planet Money was hosted by Jeff Guo. It was produced by James Sneed and Sam Yellowhorse Kesler, and edited by Jess Jiang. Vito Emanuel is our fact-checker, and Kwesi Lee engineered the show. Alex Goldmark is the executive producer of Planet Money.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
     }
   ]
 }
