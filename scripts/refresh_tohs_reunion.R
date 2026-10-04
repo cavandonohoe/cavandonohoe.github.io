@@ -51,7 +51,7 @@ refresh_tohs_reunion <- function(path = "data/tohs_reunion.csv") {
   sheet <- suppressMessages(googlesheets4::read_sheet(
     public_id, sheet = "Public Export", col_types = "c"
   ))
-  rows <- tohs_validate_public(sheet)[c("first_name", "last_name", "email_bool")]
+  rows <- as.data.frame(tohs_validate_public(sheet)[c("first_name", "last_name", "email_bool")])
   changed <- TRUE
   if (file.exists(path)) {
     previous <- read.csv(path, stringsAsFactors = FALSE)

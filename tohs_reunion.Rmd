@@ -59,8 +59,6 @@ missing_list <- grad_list_clean %>%
 
 ```
 
-**TEST ONLY — isolated synthetic Meghan update; production contacts are unchanged.**
-
 Help us reach the TOHS Class of 2012 for our next reunion! We currently have emails for **`r percent_accounted_text`** of our class. If you see yourself on the list below, please [update your reunion contact details](`r form_url`). You can also tell us whether you're interested in attending or helping with planning. Your email, phone number, and responses are kept private to reunion organizers.
 
 Also, here is a link to [**the lancer: SENIOR ISSUE 2012**](https://issuu.com/thelancer/docs/seniorissue2012) (our Lancer newspaper), if you want to walk down memory lane.
