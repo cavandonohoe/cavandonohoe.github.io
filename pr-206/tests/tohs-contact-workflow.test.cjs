@@ -60,8 +60,7 @@ test('page renders snapshots only; no live private-sheet bootstrap remains', () 
 
 test('installer links a new Form with no destination and reuses it on retry', () => {
   let destination = '', links = 0, refreshes = 0;
-  const titles = ['First name','Last name','Preferred/full name','Email','Phone number',
-    'Reunion interest','Planning-committee interest'];
+  const titles = ['First name','Last name','Preferred/full name','Email','Phone number'];
   const form = {
     getItems: () => titles.map(title => ({getTitle: () => title})),
     getDestinationId: () => { if (!destination) throw new Error('The form currently has no response destination.'); return destination; },
@@ -103,4 +102,15 @@ test('legacy rows without IDs get stable content references', () => {
   assert.equal(new Set(first).size,2);
   assert.deepEqual([...first].sort(),[...reordered].sort());
   assert.ok(first.every(id=>id.startsWith('legacy:Contact List (No-form):sha256:')));
+});
+
+
+test('five-question responses preserve existing historical interests', () => {
+  const original = roster();
+  original[0].reunion='Yes'; original[0].committee='No';
+  const response = submission({reunion:'',committee:''});
+  const result = reconcileContacts(original,[response],{});
+  assert.equal(result.master[0].email,response.email);
+  assert.equal(result.master[0].reunion,'Yes');
+  assert.equal(result.master[0].committee,'No');
 });

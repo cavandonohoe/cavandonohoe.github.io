@@ -42,9 +42,10 @@ flowchart TD
 ```
 
 The Form collects graduation first/last names, preferred/full name, email,
-optional phone number, reunion interest, and planning-committee interest.
-First name, last name, email, and the two interest answers are required. Interest
-choices are Yes, No, Maybe. Respondent summaries and response editing are disabled.
+and optional phone number. First name, last name and email are required.
+The two interest questions were removed at the owner's request; historical answers
+remain in the preserved legacy tabs and private master. Respondent summaries and
+response editing are disabled.
 The Form description explains which fields appear publicly.
 
 Google stores native raw responses in a newly linked response tab in the staging
