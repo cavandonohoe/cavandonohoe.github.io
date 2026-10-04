@@ -1,3 +1,14 @@
+tohs_format_timestamp <- function(timestamp) {
+  timestamp_format <- if (substr(timestamp, 11, 11) == "T") {
+    "%Y-%m-%dT%H:%M:%OSZ"
+  } else {
+    "%Y-%m-%d %H:%M UTC"
+  }
+  snapshot_time <- as.POSIXct(timestamp, format = timestamp_format, tz = "UTC")
+  if (is.na(snapshot_time)) stop("Invalid reunion snapshot timestamp")
+  format(snapshot_time, "%B %d, %Y at %H:%M UTC", tz = "UTC")
+}
+
 # Public snapshot: never persist email addresses from the private sheet.
 tohs_public_rows <- function(sheet) {
   required <- c("First Name", "Last Name", "Email")

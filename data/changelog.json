@@ -1,11 +1,41 @@
 {
-  "generated_at": "2026-10-03T19:20:17.905978+00:00",
+  "generated_at": "2026-10-04T19:45:46.552582+00:00",
   "events": [
+    {
+      "date": "2026-10-04",
+      "type": "merged_pr",
+      "title": "Make reunion update timestamp readable",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/207"
+    },
+    {
+      "date": "2026-10-04",
+      "type": "merged_pr",
+      "title": "Create private TOHS contact workflow and isolate the website export",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/206"
+    },
+    {
+      "date": "2026-10-04",
+      "type": "merged_pr",
+      "title": "Add hourly TOHS reunion email coverage refresh",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/205"
+    },
+    {
+      "date": "2026-10-03",
+      "type": "merged_pr",
+      "title": "Automatically refresh exceptional IMDb episode data weekly",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/204"
+    },
     {
       "date": "2026-10-03",
       "type": "merged_pr",
       "title": "Archive World Cup 3D map",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/201"
+    },
+    {
+      "date": "2026-10-03",
+      "type": "merged_pr",
+      "title": "Add an R Markdown project for exceptional IMDb episodes",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/203"
     },
     {
       "date": "2026-10-03",
@@ -214,21 +244,35 @@
   ],
   "daily_summaries": [
     {
+      "date": "2026-10-04",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "3 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/7f9a43864ab217f0a17191e453d0d725bbce65d7"
+        },
+        {
+          "emoji": "\ud83d\udcbb",
+          "text": "3 PRs merged"
+        }
+      ]
+    },
+    {
       "date": "2026-10-03",
       "items": [
         {
           "emoji": "\ud83d\udcbb",
-          "text": "2 PRs merged"
+          "text": "4 PRs merged"
         },
         {
           "emoji": "\ud83c\udfac",
           "text": "Movie & TV projects updated",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/202"
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/204"
         },
         {
           "emoji": "\ud83c\udfac",
           "text": "Movie & TV data refreshed",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/162b1ae1727fff02ffaa7adfae59849817e61c49"
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/432afab37877da4c031d9e00e0e507c2c0fde46b"
         }
       ]
     },
@@ -343,16 +387,6 @@
       ]
     },
     {
-      "date": "2026-09-21",
-      "items": [
-        {
-          "emoji": "\ud83c\udfac",
-          "text": "Movie & TV data refreshed",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/9a44cded3a216bfc8b0cdb3317236803d380b639"
-        }
-      ]
-    },
-    {
       "date": "2026-09-16",
       "items": [
         {
@@ -368,16 +402,6 @@
           "emoji": "\ud83d\ude80",
           "text": "Guard the scheduled data refreshes and fix preview deploy hygiene",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/169"
-        }
-      ]
-    },
-    {
-      "date": "2026-09-14",
-      "items": [
-        {
-          "emoji": "\ud83c\udfac",
-          "text": "Movie & TV data refreshed",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/8f255c9ddbe57391944bc8f4ac9f6e8aae82eb53"
         }
       ]
     },
