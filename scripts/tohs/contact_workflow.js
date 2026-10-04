@@ -3,7 +3,7 @@ const TOHS_SOURCE_ID = '1JwWeBjwwQHzmGgh8HPuO_0pghzemC3ikpLx_pXlQvsI';
 const TOHS_WORKFLOW_ID = '14WancXKUFazrPQPz09vSQve0Ae9jroSAufHhbYNrJYw';
 const TOHS_EXPORT_ID = '1-LqsItnKUbSvGhMqMMKmHg-IkMk3uonioNJHD95st58';
 const TOHS_QUESTIONS = ['First name', 'Last name', 'Preferred/full name', 'Email',
-  'Phone number', 'Reunion interest', 'Planning-committee interest'];
+  'Phone number'];
 const TOHS_FIELDS = ['preferred', 'email', 'phone', 'reunion', 'committee'];
 
 function textValue(value) { return value == null ? '' : String(value).trim(); }
@@ -112,7 +112,7 @@ function formSubmissions(form) {
     return {response_id:response.getId(),timestamp:response.getTimestamp().toISOString(),
       first:answers[TOHS_QUESTIONS[0]],last:answers[TOHS_QUESTIONS[1]],preferred:answers[TOHS_QUESTIONS[2]],
       email:answers[TOHS_QUESTIONS[3]],phone:answers[TOHS_QUESTIONS[4]],
-      reunion:answers[TOHS_QUESTIONS[5]],committee:answers[TOHS_QUESTIONS[6]]};
+      reunion:answers['Reunion interest'] || '',committee:answers['Planning-committee interest'] || ''};
   });
 }
 
@@ -189,10 +189,8 @@ function installContactWorkflow() {
   if (form.getItems().length === 0) {
     form.setDescription('Use your name from graduation so we can match the class roster. Contact details and responses remain private to reunion organizers. The website shows only class names and whether we have an email.');
     for (const [i,title] of TOHS_QUESTIONS.entries()) {
-      if (i < 5) {
-        const item = form.addTextItem().setTitle(title).setRequired([0,1,3].includes(i));
-        if (i === 3) item.setValidation(FormApp.createTextValidation().requireTextIsEmail().build());
-      } else form.addMultipleChoiceItem().setTitle(title).setChoiceValues(['Yes','No','Maybe']).setRequired(true);
+      const item = form.addTextItem().setTitle(title).setRequired([0,1,3].includes(i));
+      if (i === 3) item.setValidation(FormApp.createTextValidation().requireTextIsEmail().build());
     }
   }
   if (form.getItems().map(i => i.getTitle()).join('|') !== TOHS_QUESTIONS.join('|'))
