@@ -1,0 +1,312 @@
+{
+  "projects": [
+    {
+      "project": "_archive",
+      "tracked_files": 12,
+      "commits_touching_project": 7,
+      "top_extensions": [
+        [
+          ".js",
+          3
+        ],
+        [
+          ".rmd",
+          2
+        ],
+        [
+          ".dotx",
+          2
+        ],
+        [
+          ".r",
+          2
+        ],
+        [
+          ".xlsx",
+          1
+        ]
+      ]
+    },
+    {
+      "project": "analysis",
+      "tracked_files": 12,
+      "commits_touching_project": 2,
+      "top_extensions": [
+        [
+          ".csv",
+          6
+        ],
+        [
+          ".py",
+          3
+        ],
+        [
+          "[none]",
+          1
+        ],
+        [
+          ".md",
+          1
+        ],
+        [
+          ".json",
+          1
+        ]
+      ]
+    },
+    {
+      "project": "assets",
+      "tracked_files": 1,
+      "commits_touching_project": 6,
+      "top_extensions": [
+        [
+          ".svg",
+          1
+        ]
+      ]
+    },
+    {
+      "project": "config",
+      "tracked_files": 2,
+      "commits_touching_project": 2,
+      "top_extensions": [
+        [
+          ".csv",
+          1
+        ],
+        [
+          ".txt",
+          1
+        ]
+      ]
+    },
+    {
+      "project": "css",
+      "tracked_files": 2,
+      "commits_touching_project": 2,
+      "top_extensions": [
+        [
+          ".css",
+          2
+        ]
+      ]
+    },
+    {
+      "project": "cv_stuff",
+      "tracked_files": 2,
+      "commits_touching_project": 8,
+      "top_extensions": [
+        [
+          "[none]",
+          1
+        ],
+        [
+          ".css",
+          1
+        ]
+      ]
+    },
+    {
+      "project": "detour-finder",
+      "tracked_files": 6,
+      "commits_touching_project": 2,
+      "top_extensions": [
+        [
+          ".js",
+          5
+        ],
+        [
+          ".html",
+          1
+        ]
+      ]
+    },
+    {
+      "project": "docs",
+      "tracked_files": 1,
+      "commits_touching_project": 1,
+      "top_extensions": [
+        [
+          ".md",
+          1
+        ]
+      ]
+    },
+    {
+      "project": "header",
+      "tracked_files": 11,
+      "commits_touching_project": 15,
+      "top_extensions": [
+        [
+          ".png",
+          7
+        ],
+        [
+          ".ico",
+          1
+        ],
+        [
+          ".html",
+          1
+        ],
+        [
+          ".svg",
+          1
+        ],
+        [
+          ".webmanifest",
+          1
+        ]
+      ]
+    },
+    {
+      "project": "images",
+      "tracked_files": 11,
+      "commits_touching_project": 45,
+      "top_extensions": [
+        [
+          ".jpg",
+          8
+        ],
+        [
+          ".png",
+          2
+        ],
+        [
+          ".gif",
+          1
+        ]
+      ]
+    },
+    {
+      "project": "movie-ranker",
+      "tracked_files": 33,
+      "commits_touching_project": 4,
+      "top_extensions": [
+        [
+          ".ts",
+          13
+        ],
+        [
+          ".tsx",
+          8
+        ],
+        [
+          ".json",
+          3
+        ],
+        [
+          ".js",
+          2
+        ],
+        [
+          ".sql",
+          2
+        ]
+      ]
+    },
+    {
+      "project": "podcast-dashboard",
+      "tracked_files": 6,
+      "commits_touching_project": 12,
+      "top_extensions": [
+        [
+          ".json",
+          2
+        ],
+        [
+          ".py",
+          2
+        ],
+        [
+          ".md",
+          1
+        ],
+        [
+          ".r",
+          1
+        ]
+      ]
+    },
+    {
+      "project": "renv",
+      "tracked_files": 3,
+      "commits_touching_project": 1,
+      "top_extensions": [
+        [
+          "[none]",
+          1
+        ],
+        [
+          ".r",
+          1
+        ],
+        [
+          ".json",
+          1
+        ]
+      ]
+    },
+    {
+      "project": "streaming-history",
+      "tracked_files": 7,
+      "commits_touching_project": 1,
+      "top_extensions": [
+        [
+          ".csv",
+          4
+        ],
+        [
+          ".md",
+          1
+        ],
+        [
+          ".r",
+          1
+        ],
+        [
+          ".json",
+          1
+        ]
+      ]
+    },
+    {
+      "project": "tests",
+      "tracked_files": 12,
+      "commits_touching_project": 12,
+      "top_extensions": [
+        [
+          ".r",
+          7
+        ],
+        [
+          ".py",
+          2
+        ],
+        [
+          ".txt",
+          1
+        ],
+        [
+          ".sh",
+          1
+        ],
+        [
+          ".cjs",
+          1
+        ]
+      ]
+    },
+    {
+      "project": "web_scraping",
+      "tracked_files": 8,
+      "commits_touching_project": 57,
+      "top_extensions": [
+        [
+          ".r",
+          8
+        ]
+      ]
+    }
+  ]
+}
