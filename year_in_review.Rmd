@@ -20,6 +20,15 @@ lang: "en"
 .year-detail { padding:.9rem 1rem; border-radius:10px; background:rgba(255,255,255,.08); }
 .year-project { margin-top:1.2rem; padding:1rem 1.1rem; border-left:4px solid #60a5fa; background:rgba(96,165,250,.12); border-radius:0 10px 10px 0; }
 .year-note { opacity:.62; font-size:.8rem; margin-top:1.1rem; }
+.year-nav { display:flex; flex-wrap:wrap; gap:.6rem; margin:1.5rem 0; }
+.year-nav a { padding:.6rem 1rem; border:1px solid #cbd5e1; border-radius:999px; text-decoration:none; font-weight:600; }
+.year-nav a[aria-current="page"] { background:#111827; color:#fff; border-color:#111827; }
+.year-hero[hidden] { display:none; }
+.year-hero table { width:100%; margin-top:1rem; color:#fff; }
+.year-hero th, .year-hero td { padding:.5rem; text-align:left; border-bottom:1px solid rgba(255,255,255,.14); }
+.year-hero td:first-child { overflow-wrap:anywhere; }
+.year-hero caption { color:#fff; text-align:left; font-weight:600; }
+@media(max-width:480px) { .year-hero { padding:1.2rem; } .year-stat strong { font-size:1.5rem; } }
 </style>
 
 ```{r year-review, echo=FALSE, results='asis'}
@@ -28,12 +37,22 @@ if (!length(files) || !requireNamespace("jsonlite", quietly = TRUE)) {
   cat('<div class="year-hero"><div class="year-kicker">Developer archive</div><div class="year-title">YEAR IN CODE</div><p>The first snapshot will appear here after the annual GitHub Action runs.</p></div>')
 } else {
   years <- as.integer(sub("\\.json$", "", basename(files)))
-  d <- jsonlite::fromJSON(files[which.max(years)])
+  files <- files[order(years, decreasing = TRUE)]
+  reviews <- lapply(files, jsonlite::fromJSON)
+  cat('<p>Explore a year of commits, projects, and coding activity. Choose a year below.</p>')
+  cat('<nav class="year-nav" aria-label="Review year">')
+  for (d in reviews) {
+    cat(paste0('<a href="#year-', d$year, '">', d$year,
+               if (isTRUE(d$is_partial_year)) ' · YTD' else '', '</a>'))
+  }
+  cat('</nav>')
   val <- function(x, fallback="—") if (is.null(x) || is.na(x) || identical(x, "")) fallback else x
+  escape <- function(x) as.character(htmltools::htmlEscape(as.character(val(x))))
   fmt <- function(x) if (is.numeric(x)) format(x, big.mark=",", scientific=FALSE, trim=TRUE) else val(x)
+  for (d in reviews) {
   cat(paste0(
-    '<div class="year-hero">',
-    '<div class="year-kicker">Developer year in review</div>',
+    '<section class="year-hero" id="year-', d$year, '" aria-label="', d$year, ' developer review">',
+    '<div class="year-kicker">', if (isTRUE(d$is_partial_year)) 'Year to date' else 'Developer year in review', '</div>',
     '<div class="year-title">', d$year, ' IN CODE</div>',
     '<div class="year-grid">',
       '<div class="year-stat"><strong>', fmt(d$commits), '</strong><span>commits</span></div>',
@@ -42,16 +61,40 @@ if (!length(files) || !requireNamespace("jsonlite", quietly = TRUE)) {
       '<div class="year-stat"><strong>', fmt(d$lines_added), '</strong><span>lines added</span></div>',
     '</div>',
     '<div class="year-details">',
-      '<div class="year-detail"><strong>Most-used language:</strong> ', val(d$most_used_language), '</div>',
-      '<div class="year-detail"><strong>Most-active month:</strong> ', val(d$most_active_month), '</div>',
+      '<div class="year-detail"><strong>Top language by lines added:</strong> ', escape(d$most_used_language), '</div>',
+      '<div class="year-detail"><strong>Most-active month:</strong> ', escape(d$most_active_month), '</div>',
       '<div class="year-detail"><strong>Longest streak:</strong> ', fmt(d$longest_streak_days), ' days</div>',
     '</div>',
-    '<div class="year-project"><strong>Biggest project</strong><br>', val(d$biggest_project),
+    '<div class="year-project"><strong>Biggest project</strong><br>', escape(d$biggest_project),
       if (!is.null(d$biggest_project_commits)) paste0(' · ', fmt(d$biggest_project_commits), ' commits') else '', '</div>',
-    '<div class="year-note">', val(d$scope), ' Snapshot generated ', substr(val(d$generated_at),1,10), '.</div>',
-    '</div>'
+    if (!is.null(d$repository_commits)) paste0(
+      '<table><caption>Projects this year</caption><thead><tr><th scope="col">Repository</th><th scope="col">Commits</th></tr></thead><tbody>',
+      paste(vapply(names(d$repository_commits), function(repo) paste0(
+        '<tr><td>', escape(repo), '</td><td>', fmt(d$repository_commits[[repo]]), '</td></tr>'
+      ), character(1)), collapse=''), '</tbody></table>') else '',
+    '<div class="year-note">', escape(d$scope), ' Snapshot generated ', substr(val(d$generated_at),1,10), '.</div>',
+    '</section>'
   ))
+  }
 }
 ```
 
-Each January 1, GitHub Actions preserves a new JSON snapshot instead of replacing the old one, so this becomes a permanent year-by-year developer archive.
+Past reviews are reconstructed from public commit history. Each January 1, GitHub Actions saves the year that just ended. The current year is a snapshot through its generation date.
+
+<script>
+(function () {
+  const reviews = Array.from(document.querySelectorAll('section.year-hero[id]'));
+  const links = Array.from(document.querySelectorAll('.year-nav a'));
+  if (!reviews.length) return;
+  function selectYear() {
+    const selected = reviews.find(review => '#' + review.id === window.location.hash) || reviews[0];
+    reviews.forEach(review => { review.hidden = review !== selected; });
+    links.forEach(link => {
+      if (link.getAttribute('href') === '#' + selected.id) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
+    });
+  }
+  window.addEventListener('hashchange', selectYear);
+  selectYear();
+})();
+</script>
