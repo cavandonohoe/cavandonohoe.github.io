@@ -1,0 +1,161 @@
+season,episode,title,rating,votes,episode_year
+1,1,Pilot,7.6,2454,2010
+1,2,The Jenna Thing,7.5,1546,2010
+1,3,To Kill a Mocking Girl,7.5,1377,2010
+1,4,Can You Hear Me Now?,7.6,1292,2010
+1,5,Reality Bites Me,7.5,1254,2010
+1,6,There's No Place Like Homecoming,8,1262,2010
+1,7,The Homecoming Hangover,7.5,1189,2010
+1,8,"Please, Do Talk About Me When I'm Gone",7.5,1161,2010
+1,9,The Perfect Storm,7.9,1190,2010
+1,10,Keep Your Friends Close,8.2,1236,2010
+1,11,Moments Later,7.8,1132,2011
+1,12,Salt Meets Wound,7.6,1097,2011
+1,13,Know Your Frenemies,8,1252,2011
+1,14,Careful What U Wish 4,7.7,1081,2011
+1,15,"If at First You Don't Succeed, Lie, Lie Again",7.7,1083,2011
+1,16,Je Suis Une Amie,7.7,1054,2011
+1,17,The New Normal,7.7,1041,2011
+1,18,The Badass Seed,7.8,1056,2011
+1,19,A Person of Interest,8,1078,2011
+1,20,Someone to Watch Over Me,7.9,1031,2011
+1,21,Monsters in the End,8.1,1048,2011
+1,22,For Whom the Bell Tolls,8.4,1188,2011
+2,1,It's Alive,8,1184,2011
+2,2,The Goodbye Look,7.6,974,2011
+2,3,My Name Is Trouble,7.7,946,2011
+2,4,Blind Dates,8,950,2011
+2,5,The Devil You Know,7.9,950,2011
+2,6,Never Letting Go,7.9,958,2011
+2,7,Surface Tension,7.7,903,2011
+2,8,Save the Date,7.9,931,2011
+2,9,Picture This,8,934,2011
+2,10,Touched by an 'A'-ngel,7.8,915,2011
+2,11,I Must Confess,8.1,929,2011
+2,12,Over My Dead Body,8.6,1303,2011
+2,13,The First Secret,8.5,1251,2011
+2,14,"Through Many Dangers, Toils, and Snares",8.4,1071,2012
+2,15,A Hot Piece of A,8.2,989,2012
+2,16,Let the Water Hold Me Down,7.7,899,2012
+2,17,Blond Leading the Blind,7.8,897,2012
+2,18,A Kiss Before Lying,7.8,903,2012
+2,19,The Naked Truth,8.2,954,2012
+2,20,CTRL:A,8.1,927,2012
+2,21,Breaking the Code,8.1,908,2012
+2,22,Father Knows Best,7.8,890,2012
+2,23,Eye of the Beholder,7.9,894,2012
+2,24,If These Dolls Could Talk,8.5,1064,2012
+2,25,unmAsked,9,1541,2012
+3,1,It Happened 'That Night',8.1,1261,2012
+3,2,Blood Is the New Black,8,937,2012
+3,3,Kingdom of the Blind,8,888,2012
+3,4,Birds of a Feather,7.7,879,2012
+3,5,That Girl Is Poison,7.7,885,2012
+3,6,The Remains of the 'A',7.6,866,2012
+3,7,Crazy,8,874,2012
+3,8,Stolen Kisses,7.7,893,2012
+3,9,The Kahn Game,7.8,880,2012
+3,10,What Lies Beneath,7.7,845,2012
+3,11,Single Fright Female,7.8,859,2012
+3,12,The Lady Killer,8.9,1318,2012
+3,13,This Is a Dark Ride,8.9,1456,2012
+3,14,She's Better Now,7.9,900,2013
+3,15,Mona-Mania,7.9,844,2013
+3,16,Misery Loves Company,8.4,961,2013
+3,17,"Out of the Frying Pan, Into the Inferno",8,837,2013
+3,18,Dead to Me,7.8,824,2013
+3,19,What Becomes of the Broken-Hearted,8,842,2013
+3,20,Hot Water,7.9,810,2013
+3,21,"Out of Sight, Out of Mind",8,814,2013
+3,22,Will the Circle Be Unbroken?,7.7,786,2013
+3,23,I'm Your Puppet,8.2,846,2013
+3,24,A Dangerous gAme,8.6,1145,2013
+4,1,A Is for A-l-i-v-e,8.2,1264,2013
+4,2,Turn of the Shoe,7.8,811,2013
+4,3,Cat's Cradle,7.4,807,2013
+4,4,Face Time,7.7,779,2013
+4,5,Gamma Zeta Die!,7.8,790,2013
+4,6,Under the Gun,7.7,785,2013
+4,7,"Crash and Burn, Girl!",7.9,778,2013
+4,8,The Guilty Girl's Handbook,7.9,780,2013
+4,9,Into the Deep,7.8,735,2013
+4,10,The Mirror Has Three Faces,7.9,783,2013
+4,11,Bring Down the Hoe,7.8,791,2013
+4,12,"Now You See Me, Now You Don't",8.8,1328,2013
+4,13,Grave New World,8.4,1172,2013
+4,14,Who's in the Box?,7.6,828,2014
+4,15,"Love ShAck, Baby",7.8,760,2014
+4,16,Close Encounters,7.7,734,2014
+4,17,Bite Your Tongue,8.1,807,2014
+4,18,Hot for Teacher,7.9,774,2014
+4,19,Shadow Play,6.5,1304,2014
+4,20,Free Fall,8.3,847,2014
+4,21,She's Come Undone,8.1,800,2014
+4,22,Cover for Me,7.6,740,2014
+4,23,Unbridled,7.8,795,2014
+4,24,'A' Is for Answers,8.9,1315,2014
+5,1,EscApe from New York,8.2,1003,2014
+5,2,Whirly Girly,7.8,799,2014
+5,3,Surfing the Aftershocks,7.4,744,2014
+5,4,Thrown from the Ride,7.2,736,2014
+5,5,Miss Me x100,8.5,1011,2014
+5,6,"Run, Ali, Run",7.6,733,2014
+5,7,The Silence of E. Lamb,7.4,709,2014
+5,8,Scream for Me,7.5,706,2014
+5,9,March of Crimes,7.7,712,2014
+5,10,A Dark Ali,7.7,701,2014
+5,11,No One Here Can Love or Understand Me,7.4,724,2014
+5,12,Taking This One to the Grave,8.7,1163,2014
+5,13,How the 'A' Stole Christmas,7.8,897,2014
+5,14,"Through a Glass, Darkly",7.7,735,2015
+5,15,Fresh Meat,7.3,707,2015
+5,16,Over a Barrel,7.3,693,2015
+5,17,The Bin of Sin,7.5,691,2015
+5,18,Oh What Hard Luck Stories They All Hand Me,7.1,711,2015
+5,19,Out Damned Spot,7.4,700,2015
+5,20,Pretty Isn't the Point,7.7,731,2015
+5,21,Bloody Hell,7.5,692,2015
+5,22,To Plea or Not to Plea,7.7,681,2015
+5,23,The Melody Lingers On,7.8,711,2015
+5,24,"I'm a Good Girl, I Am",8.4,850,2015
+5,25,Welcome to the Dollhouse,9.2,1913,2015
+6,1,"Game On, Charles",9.1,1812,2015
+6,2,Songs of Innocence,7.6,861,2015
+6,3,Songs of Experience,7.6,768,2015
+6,4,Don't Look Now,7.6,742,2015
+6,5,She's No Angel,7.4,762,2015
+6,6,No Stone Unturned,7.3,751,2015
+6,7,"O Brother, Where Art Thou",7.7,738,2015
+6,8,FrAmed,7.7,751,2015
+6,9,Last Dance,8.2,976,2015
+6,10,"Game Over, Charles",5.1,4128,2015
+6,11,Of Late I Think of Rosewood,7.4,891,2016
+6,12,Charlotte's Web,7,736,2016
+6,13,The Gloves Are On,7.1,719,2016
+6,14,"New Guys, New Lies",7,679,2016
+6,15,Do Not Disturb,7,669,2016
+6,16,Where Somebody Waits for Me,6.9,652,2016
+6,17,We've All Got Baggage,6.8,652,2016
+6,18,Burn This,7.2,645,2016
+6,19,Did You Miss Me?,7.3,655,2016
+6,20,"Hush, Hush, Sweet Liars",7.6,893,2016
+7,1,"Tick-Tock, Bitches",7.6,870,2016
+7,2,Bedlam,6.9,709,2016
+7,3,The Talented Mr. Rollins,7.9,744,2016
+7,4,"Hit and Run, Run, Run",7.9,751,2016
+7,5,Along Comes Mary,7.2,659,2016
+7,6,Wanted: Dead or Alive,7.6,658,2016
+7,7,Original G'A'ngsters,7.4,642,2016
+7,8,Exes and OMGs,7.1,668,2016
+7,9,The Wrath of Kahn,7.5,647,2016
+7,10,The DArkest Knight,8.3,1044,2016
+7,11,Playtime,7.5,710,2017
+7,12,These Boots Were Made for Stalking,6.9,624,2017
+7,13,Hold Your Piece,7.2,620,2017
+7,14,Power Play,7.8,691,2017
+7,15,In the Eye Abides the Heart,7.5,673,2017
+7,16,The Glove That Rocks the Cradle,7.6,612,2017
+7,17,Driving Miss Crazy,7.5,612,2017
+7,18,Choose or Lose,8.2,686,2017
+7,19,"Farewell, My Lovely",8.2,741,2017
+7,20,Til DeAth Do Us PArt,5.4,2204,2017
