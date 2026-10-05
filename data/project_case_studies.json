@@ -57,7 +57,7 @@
     {
       "project": "assets",
       "tracked_files": 1,
-      "commits_touching_project": 6,
+      "commits_touching_project": 7,
       "top_extensions": [
         [
           ".svg",
@@ -124,7 +124,7 @@
     {
       "project": "docs",
       "tracked_files": 1,
-      "commits_touching_project": 1,
+      "commits_touching_project": 2,
       "top_extensions": [
         [
           ".md",
@@ -273,7 +273,7 @@
     {
       "project": "tests",
       "tracked_files": 12,
-      "commits_touching_project": 12,
+      "commits_touching_project": 13,
       "top_extensions": [
         [
           ".r",

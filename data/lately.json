@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-05T22:21:29.414893+00:00",
+  "generated_at": "2026-10-05T22:55:54.906921+00:00",
   "window_days": 30,
-  "commits": 151,
+  "commits": 155,
   "active_areas": [
     {
       "name": "data",
-      "file_touches": 386
+      "file_touches": 390
     },
     {
       "name": "site",

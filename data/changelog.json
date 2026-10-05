@@ -1,11 +1,35 @@
 {
-  "generated_at": "2026-10-04T19:45:46.552582+00:00",
+  "generated_at": "2026-10-05T22:51:34.927511+00:00",
   "events": [
+    {
+      "date": "2026-10-05",
+      "type": "merged_pr",
+      "title": "ci: bump the github-actions group with 4 updates",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/211"
+    },
+    {
+      "date": "2026-10-05",
+      "type": "merged_pr",
+      "title": "Clarify year-in-review stats count personal commits",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/210"
+    },
+    {
+      "date": "2026-10-05",
+      "type": "merged_pr",
+      "title": "Add a 2020\u20132026 Developer Year in Review archive",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/209"
+    },
     {
       "date": "2026-10-04",
       "type": "merged_pr",
       "title": "Make reunion update timestamp readable",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/207"
+    },
+    {
+      "date": "2026-10-04",
+      "type": "merged_pr",
+      "title": "Fix reunion date showing NA after hourly refresh",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/208"
     },
     {
       "date": "2026-10-04",
@@ -244,6 +268,25 @@
   ],
   "daily_summaries": [
     {
+      "date": "2026-10-05",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "6 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/d4bccd88e8920ebd0d35df62553ac97a1abc04eb"
+        },
+        {
+          "emoji": "\ud83d\udcbb",
+          "text": "3 PRs merged"
+        },
+        {
+          "emoji": "\u2699\ufe0f",
+          "text": "Developer activity + site automation expanded",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/210"
+        }
+      ]
+    },
+    {
       "date": "2026-10-04",
       "items": [
         {
@@ -253,7 +296,7 @@
         },
         {
           "emoji": "\ud83d\udcbb",
-          "text": "3 PRs merged"
+          "text": "4 PRs merged"
         }
       ]
     },
