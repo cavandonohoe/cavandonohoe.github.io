@@ -116,6 +116,57 @@ function formSubmissions(form) {
   });
 }
 
+function contactSignature(s) {
+  return JSON.stringify(['first','last','preferred','email','phone','reunion','committee']
+    .map(field => field === 'phone' ? textValue(s[field]).replace(/\D/g, '') : nameKey(s[field])));
+}
+
+// API writes to the response Sheet are not Google Form responses. Read both,
+// keeping native response IDs (and their review decisions) for duplicate rows.
+function responseSheetSubmissions(ss, form, nativeResponses) {
+  if (form.getDestinationId() !== ss.getId()) throw new Error('Form destination changed');
+  const published = form.getPublishedUrl().split('?')[0];
+  const sheets = ss.getSheets().filter(sheet => {
+    const url = textValue(sheet.getFormUrl());
+    return url && (url.includes('/' + form.getId() + '/') || url.split('?')[0] === published);
+  });
+  if (sheets.length !== 1) throw new Error('Expected exactly one linked contact response sheet');
+  const sheet = sheets[0], rows = sheet.getDataRange().getValues(), header = rows[0];
+  const index = title => header.indexOf(title);
+  if (!['Timestamp',...TOHS_QUESTIONS].every(title => index(title) >= 0))
+    throw new Error('Contact response sheet schema changed');
+  const nativeSignatures = new Set(nativeResponses.map(contactSignature));
+  const result = [];
+  for (const row of rows.slice(1)) {
+    const answer = title => index(title) < 0 ? '' : textValue(row[index(title)]);
+    const fields = {first:answer('First name'),last:answer('Last name'),
+      preferred:answer('Preferred/full name'),email:answer('Email'),phone:answer('Phone number'),
+      reunion:answer('Reunion interest'),committee:answer('Planning-committee interest')};
+    if (!Object.values(fields).some(Boolean)) continue;
+    // Partial and invalid manual entries remain visible in the private review queue.
+    const stamp = row[index('Timestamp')];
+    const timestamp = stamp instanceof Date && !isNaN(stamp.getTime()) ? stamp.toISOString() : '';
+    const signature = contactSignature(fields);
+    if (nativeSignatures.has(signature)) continue;
+    const digest = Utilities.base64EncodeWebSafe(Utilities.computeDigest(
+      Utilities.DigestAlgorithm.SHA_256, JSON.stringify([timestamp || textValue(stamp),signature])));
+    result.push(Object.assign(fields, {response_id:'sheet:' + sheet.getSheetId() + ':sha256:' + digest,timestamp}));
+  }
+  return result;
+}
+
+function assertSubmissionAudit(submissions, result) {
+  const expected = new Set(submissions.map(s => s.response_id));
+  const audited = new Set(result.audit.map(s => s.response_id));
+  if (expected.has('') || expected.has(undefined) || result.audit.length !== audited.size ||
+      expected.size !== audited.size || [...expected].some(id => !audited.has(id)))
+    throw new Error('Contact submission missing from audit; publication refused');
+  for (const entry of result.audit) {
+    if (entry.status.startsWith('needs ') && !result.review.some(r => r.response_id === entry.response_id))
+      throw new Error('Contact submission missing from review; publication refused');
+  }
+}
+
 // Treat all user-supplied text as literal, including spreadsheet formula-like text.
 function literalCell(value) { return typeof value === 'string' && /^[=+\-@]/.test(value) ? "'" + value : value; }
 function writeGenerated(ss, name, header, rows) {
@@ -151,8 +202,12 @@ function refreshContactWorkflow() {
   try {
     const source = SpreadsheetApp.openById(TOHS_SOURCE_ID), target = SpreadsheetApp.openById(TOHS_WORKFLOW_ID);
     const formId = PropertiesService.getScriptProperties().getProperty('TOHS_FORM_ID');
-    const submissions = legacySubmissions(source).concat(formId ? formSubmissions(FormApp.openById(formId)) : []);
+    if (!formId) throw new Error('Contact Form is not installed');
+    const form = FormApp.openById(formId), nativeResponses = formSubmissions(form);
+    const sheetResponses = responseSheetSubmissions(target,form,nativeResponses);
+    const submissions = legacySubmissions(source).concat(nativeResponses,sheetResponses);
     const result = reconcileContacts(sourceRoster(source), submissions, readDecisions(target));
+    assertSubmissionAudit(submissions,result);
     const masterHeader = ['roster_id','first_name','last_name','preferred_name','email','phone',
       'reunion_interest','committee_interest','field_sources'];
     writeGenerated(target,'Master Contacts',masterHeader,result.master.map(r =>
@@ -172,7 +227,8 @@ function refreshContactWorkflow() {
       result.publicRows.map(r => [r.first_name,r.last_name,r.email_bool,updated]));
     writeGenerated(target,'Workflow Status',['key','value'],[['last_success',updated],
       ['roster_count',result.master.length],['review_count',result.review.length],
-      ['form_url',formId ? FormApp.openById(formId).getPublishedUrl() : 'Form not installed']]);
+      ['form_url',form.getPublishedUrl()],['native_response_count',nativeResponses.length],
+      ['sheet_only_response_count',sheetResponses.length],['audited_submission_count',result.audit.length]]);
     SpreadsheetApp.flush();
   } finally { lock.releaseLock(); }
 }
@@ -216,4 +272,5 @@ function installContactWorkflow() {
 
 function onContactSubmit() { refreshContactWorkflow(); }
 
-if (typeof module !== 'undefined') module.exports = {reconcileContacts,literalCell,nameKey};
+if (typeof module !== 'undefined') module.exports = {reconcileContacts,literalCell,nameKey,
+  responseSheetSubmissions,assertSubmissionAudit};

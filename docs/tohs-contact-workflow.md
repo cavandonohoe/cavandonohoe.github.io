@@ -49,10 +49,36 @@ response editing are disabled.
 The Form description explains which fields appear publicly.
 
 Google stores native raw responses in a newly linked response tab in the staging
-workbook. `refreshContactWorkflow()` also rereads Form responses by stable Google
-response ID, so a failed submission trigger is recovered by the hourly trigger.
+workbook. `refreshContactWorkflow()` rereads Form responses by stable Google
+response ID and also reads rows added directly to that linked response tab.
+The sheet is identified by its Form link, so renaming the tab does not break intake.
+Rows identical to native responses retain the native response ID and its review
+decision. Sheet-only rows receive stable content hashes scoped to the sheet ID;
+reordering rows does not change their IDs. Editing a row creates a new input for
+the existing conservative reconciliation policy. Partial or invalid entries go
+to the private review queue rather than disappearing.
+
+Before any generated output is written, every distinct input must have an audit
+outcome and every unresolved outcome must have a review entry. A missing or
+ambiguous linked response sheet, changed schema or incomplete audit stops the
+refresh. `Workflow Status` records native, sheet-only and audited submission counts.
+The existing hourly trigger recovers failed submission triggers and API/manual
+sheet writes, which do not necessarily fire a native Form submission trigger.
 It never deletes or rewrites native responses, the original workbook, or its copied
 legacy tabs. Only script-owned generated views are rebuilt.
+
+### Response-sheet ingestion rollout
+
+The repository fix must also be installed in the existing **TOHS 2012 Contact
+Workflow** Apps Script project; merging a GitHub PR does not update that runtime.
+Until installed and verified, use the original workbook's `Contact List (No-form)`
+for organizer-entered contacts. Do not edit generated Master Contacts or exports.
+After installation, run `refreshContactWorkflow()` and confirm that each supplied
+contact is either accepted in Master Contacts or present in Match Review, with an
+outcome in Match Audit. Confirm the separate safe export and deployed website too.
+The regression suite covers a Karis-style sheet-only entry, duplicate/native
+response decisions, row reordering, partial/conflicting inputs and publication
+refusal when an input is absent from the audit.
 
 ## Matching and merge policy
 
