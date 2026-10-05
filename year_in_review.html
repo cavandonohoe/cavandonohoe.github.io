@@ -656,50 +656,600 @@ $(document).ready(function () {
 .year-detail { padding:.9rem 1rem; border-radius:10px; background:rgba(255,255,255,.08); }
 .year-project { margin-top:1.2rem; padding:1rem 1.1rem; border-left:4px solid #60a5fa; background:rgba(96,165,250,.12); border-radius:0 10px 10px 0; }
 .year-note { opacity:.62; font-size:.8rem; margin-top:1.1rem; }
+.year-nav { display:flex; flex-wrap:wrap; gap:.6rem; margin:1.5rem 0; }
+.year-nav a { padding:.6rem 1rem; border:1px solid #cbd5e1; border-radius:999px; text-decoration:none; font-weight:600; }
+.year-nav a[aria-current="page"] { background:#111827; color:#fff; border-color:#111827; }
+.year-hero[hidden] { display:none; }
+.year-hero table { width:100%; margin-top:1rem; color:#fff; }
+.year-hero th, .year-hero td { padding:.5rem; text-align:left; border-bottom:1px solid rgba(255,255,255,.14); }
+.year-hero td:first-child { overflow-wrap:anywhere; }
+.year-hero caption { color:#fff; text-align:left; font-weight:600; }
+@media(max-width:480px) { .year-hero { padding:1.2rem; } .year-stat strong { font-size:1.5rem; } }
 </style>
-<div class="year-hero">
+<p>
+Explore a year of commits, projects, and coding activity. Choose a year
+below.
+</p>
+<nav class="year-nav" aria-label="Review year">
+<a href="#year-2026">2026 ·
+YTD</a><a href="#year-2025">2025</a><a href="#year-2024">2024</a><a href="#year-2023">2023</a><a href="#year-2022">2022</a><a href="#year-2021">2021</a><a href="#year-2020">2020</a>
+</nav>
+<section class="year-hero" id="year-2026" aria-label="2026 developer review">
 <div class="year-kicker">
-Developer year in review
+Year to date
 </div>
 <div class="year-title">
 2026 IN CODE
 </div>
 <div class="year-grid">
 <div class="year-stat">
-<strong>742</strong><span>commits</span>
+<strong>778</strong><span>commits</span>
 </div>
 <div class="year-stat">
-<strong>195</strong><span>pull requests</span>
+<strong>203</strong><span>pull requests</span>
 </div>
 <div class="year-stat">
 <strong>6</strong><span>repositories touched</span>
 </div>
 <div class="year-stat">
-<strong>52,914,738</strong><span>lines added</span>
+<strong>56,363,463</strong><span>lines added</span>
 </div>
 </div>
 <div class="year-details">
 <div class="year-detail">
-<strong>Most-used language:</strong> HTML
+<strong>Top language by lines added:</strong> JavaScript
 </div>
 <div class="year-detail">
 <strong>Most-active month:</strong> June
 </div>
 <div class="year-detail">
-<strong>Longest streak:</strong> 7 days
+<strong>Longest streak:</strong> 5 days
 </div>
 </div>
 <div class="year-project">
-<strong>Biggest project</strong><br>cavandonohoe.github.io · 650 commits
+<strong>Biggest project</strong><br>cavandonohoe.github.io · 686 commits
 </div>
+<table>
+<caption>
+Projects this year
+</caption>
+<thead>
+<tr>
+<th scope="col">
+Repository
+</th>
+<th scope="col">
+Commits
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+cavandonohoe/cavandonohoe.github.io
+</td>
+<td>
+686
+</td>
+</tr>
+<tr>
+<td>
+cavandonohoe/rent-vs-buy
+</td>
+<td>
+38
+</td>
+</tr>
+<tr>
+<td>
+cavandonohoe/grocery-compare
+</td>
+<td>
+18
+</td>
+</tr>
+<tr>
+<td>
+cavandonohoe/confederate_statues
+</td>
+<td>
+17
+</td>
+</tr>
+<tr>
+<td>
+cavandonohoe/docuchat
+</td>
+<td>
+12
+</td>
+</tr>
+<tr>
+<td>
+cavandonohoe/cavandonohoe
+</td>
+<td>
+7
+</td>
+</tr>
+</tbody>
+</table>
 <div class="year-note">
-Public repositories owned by the GitHub user; commit totals use author
-matching and PRs use GitHub search. Snapshot generated 2026-10-02.
+Author-matched commits reachable from branches and tags in public,
+non-fork repositories owned by the user, including archived projects.
+Dates use UTC; bots and other authors are excluded. Lines added include
+generated files. PRs count public pull requests authored by the user,
+when available. Snapshot generated 2026-10-05.
+</div>
+</section>
+<section class="year-hero" id="year-2025" aria-label="2025 developer review">
+<div class="year-kicker">
+Developer year in review
+</div>
+<div class="year-title">
+2025 IN CODE
+</div>
+<div class="year-grid">
+<div class="year-stat">
+<strong>123</strong><span>commits</span>
+</div>
+<div class="year-stat">
+<strong>26</strong><span>pull requests</span>
+</div>
+<div class="year-stat">
+<strong>1</strong><span>repositories touched</span>
+</div>
+<div class="year-stat">
+<strong>2,541,071</strong><span>lines added</span>
 </div>
 </div>
-<p>Each January 1, GitHub Actions preserves a new JSON snapshot instead
-of replacing the old one, so this becomes a permanent year-by-year
-developer archive.</p>
+<div class="year-details">
+<div class="year-detail">
+<strong>Top language by lines added:</strong> JavaScript
+</div>
+<div class="year-detail">
+<strong>Most-active month:</strong> December
+</div>
+<div class="year-detail">
+<strong>Longest streak:</strong> 4 days
+</div>
+</div>
+<div class="year-project">
+<strong>Biggest project</strong><br>cavandonohoe.github.io · 123 commits
+</div>
+<table>
+<caption>
+Projects this year
+</caption>
+<thead>
+<tr>
+<th scope="col">
+Repository
+</th>
+<th scope="col">
+Commits
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+cavandonohoe/cavandonohoe.github.io
+</td>
+<td>
+123
+</td>
+</tr>
+</tbody>
+</table>
+<div class="year-note">
+Author-matched commits reachable from branches and tags in public,
+non-fork repositories owned by the user, including archived projects.
+Dates use UTC; bots and other authors are excluded. Lines added include
+generated files. PRs count public pull requests authored by the user,
+when available. Snapshot generated 2026-10-05.
+</div>
+</section>
+<section class="year-hero" id="year-2024" aria-label="2024 developer review">
+<div class="year-kicker">
+Developer year in review
+</div>
+<div class="year-title">
+2024 IN CODE
+</div>
+<div class="year-grid">
+<div class="year-stat">
+<strong>21</strong><span>commits</span>
+</div>
+<div class="year-stat">
+<strong>0</strong><span>pull requests</span>
+</div>
+<div class="year-stat">
+<strong>2</strong><span>repositories touched</span>
+</div>
+<div class="year-stat">
+<strong>72,431</strong><span>lines added</span>
+</div>
+</div>
+<div class="year-details">
+<div class="year-detail">
+<strong>Top language by lines added:</strong> JavaScript
+</div>
+<div class="year-detail">
+<strong>Most-active month:</strong> October
+</div>
+<div class="year-detail">
+<strong>Longest streak:</strong> 2 days
+</div>
+</div>
+<div class="year-project">
+<strong>Biggest project</strong><br>cavandonohoe.github.io · 20 commits
+</div>
+<table>
+<caption>
+Projects this year
+</caption>
+<thead>
+<tr>
+<th scope="col">
+Repository
+</th>
+<th scope="col">
+Commits
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+cavandonohoe/cavandonohoe.github.io
+</td>
+<td>
+20
+</td>
+</tr>
+<tr>
+<td>
+cavandonohoe/cavandonohoe
+</td>
+<td>
+1
+</td>
+</tr>
+</tbody>
+</table>
+<div class="year-note">
+Author-matched commits reachable from branches and tags in public,
+non-fork repositories owned by the user, including archived projects.
+Dates use UTC; bots and other authors are excluded. Lines added include
+generated files. PRs count public pull requests authored by the user,
+when available. Snapshot generated 2026-10-05.
+</div>
+</section>
+<section class="year-hero" id="year-2023" aria-label="2023 developer review">
+<div class="year-kicker">
+Developer year in review
+</div>
+<div class="year-title">
+2023 IN CODE
+</div>
+<div class="year-grid">
+<div class="year-stat">
+<strong>80</strong><span>commits</span>
+</div>
+<div class="year-stat">
+<strong>0</strong><span>pull requests</span>
+</div>
+<div class="year-stat">
+<strong>2</strong><span>repositories touched</span>
+</div>
+<div class="year-stat">
+<strong>87,015</strong><span>lines added</span>
+</div>
+</div>
+<div class="year-details">
+<div class="year-detail">
+<strong>Top language by lines added:</strong> HTML
+</div>
+<div class="year-detail">
+<strong>Most-active month:</strong> March
+</div>
+<div class="year-detail">
+<strong>Longest streak:</strong> 4 days
+</div>
+</div>
+<div class="year-project">
+<strong>Biggest project</strong><br>cavandonohoe.github.io · 79 commits
+</div>
+<table>
+<caption>
+Projects this year
+</caption>
+<thead>
+<tr>
+<th scope="col">
+Repository
+</th>
+<th scope="col">
+Commits
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+cavandonohoe/cavandonohoe.github.io
+</td>
+<td>
+79
+</td>
+</tr>
+<tr>
+<td>
+cavandonohoe/cavandonohoe
+</td>
+<td>
+1
+</td>
+</tr>
+</tbody>
+</table>
+<div class="year-note">
+Author-matched commits reachable from branches and tags in public,
+non-fork repositories owned by the user, including archived projects.
+Dates use UTC; bots and other authors are excluded. Lines added include
+generated files. PRs count public pull requests authored by the user,
+when available. Snapshot generated 2026-10-05.
+</div>
+</section>
+<section class="year-hero" id="year-2022" aria-label="2022 developer review">
+<div class="year-kicker">
+Developer year in review
+</div>
+<div class="year-title">
+2022 IN CODE
+</div>
+<div class="year-grid">
+<div class="year-stat">
+<strong>102</strong><span>commits</span>
+</div>
+<div class="year-stat">
+<strong>0</strong><span>pull requests</span>
+</div>
+<div class="year-stat">
+<strong>3</strong><span>repositories touched</span>
+</div>
+<div class="year-stat">
+<strong>245,244</strong><span>lines added</span>
+</div>
+</div>
+<div class="year-details">
+<div class="year-detail">
+<strong>Top language by lines added:</strong> HTML
+</div>
+<div class="year-detail">
+<strong>Most-active month:</strong> April
+</div>
+<div class="year-detail">
+<strong>Longest streak:</strong> 8 days
+</div>
+</div>
+<div class="year-project">
+<strong>Biggest project</strong><br>cavandonohoe.github.io · 93 commits
+</div>
+<table>
+<caption>
+Projects this year
+</caption>
+<thead>
+<tr>
+<th scope="col">
+Repository
+</th>
+<th scope="col">
+Commits
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+cavandonohoe/cavandonohoe.github.io
+</td>
+<td>
+93
+</td>
+</tr>
+<tr>
+<td>
+cavandonohoe/confederate_statues
+</td>
+<td>
+7
+</td>
+</tr>
+<tr>
+<td>
+cavandonohoe/cavandonohoe
+</td>
+<td>
+2
+</td>
+</tr>
+</tbody>
+</table>
+<div class="year-note">
+Author-matched commits reachable from branches and tags in public,
+non-fork repositories owned by the user, including archived projects.
+Dates use UTC; bots and other authors are excluded. Lines added include
+generated files. PRs count public pull requests authored by the user,
+when available. Snapshot generated 2026-10-05.
+</div>
+</section>
+<section class="year-hero" id="year-2021" aria-label="2021 developer review">
+<div class="year-kicker">
+Developer year in review
+</div>
+<div class="year-title">
+2021 IN CODE
+</div>
+<div class="year-grid">
+<div class="year-stat">
+<strong>100</strong><span>commits</span>
+</div>
+<div class="year-stat">
+<strong>0</strong><span>pull requests</span>
+</div>
+<div class="year-stat">
+<strong>2</strong><span>repositories touched</span>
+</div>
+<div class="year-stat">
+<strong>214,376</strong><span>lines added</span>
+</div>
+</div>
+<div class="year-details">
+<div class="year-detail">
+<strong>Top language by lines added:</strong> JavaScript
+</div>
+<div class="year-detail">
+<strong>Most-active month:</strong> September
+</div>
+<div class="year-detail">
+<strong>Longest streak:</strong> 5 days
+</div>
+</div>
+<div class="year-project">
+<strong>Biggest project</strong><br>cavandonohoe.github.io · 99 commits
+</div>
+<table>
+<caption>
+Projects this year
+</caption>
+<thead>
+<tr>
+<th scope="col">
+Repository
+</th>
+<th scope="col">
+Commits
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+cavandonohoe/cavandonohoe.github.io
+</td>
+<td>
+99
+</td>
+</tr>
+<tr>
+<td>
+cavandonohoe/cavandonohoe
+</td>
+<td>
+1
+</td>
+</tr>
+</tbody>
+</table>
+<div class="year-note">
+Author-matched commits reachable from branches and tags in public,
+non-fork repositories owned by the user, including archived projects.
+Dates use UTC; bots and other authors are excluded. Lines added include
+generated files. PRs count public pull requests authored by the user,
+when available. Snapshot generated 2026-10-05.
+</div>
+</section>
+<section class="year-hero" id="year-2020" aria-label="2020 developer review">
+<div class="year-kicker">
+Developer year in review
+</div>
+<div class="year-title">
+2020 IN CODE
+</div>
+<div class="year-grid">
+<div class="year-stat">
+<strong>10</strong><span>commits</span>
+</div>
+<div class="year-stat">
+<strong>0</strong><span>pull requests</span>
+</div>
+<div class="year-stat">
+<strong>1</strong><span>repositories touched</span>
+</div>
+<div class="year-stat">
+<strong>46,957</strong><span>lines added</span>
+</div>
+</div>
+<div class="year-details">
+<div class="year-detail">
+<strong>Top language by lines added:</strong> JavaScript
+</div>
+<div class="year-detail">
+<strong>Most-active month:</strong> December
+</div>
+<div class="year-detail">
+<strong>Longest streak:</strong> 2 days
+</div>
+</div>
+<div class="year-project">
+<strong>Biggest project</strong><br>cavandonohoe.github.io · 10 commits
+</div>
+<table>
+<caption>
+Projects this year
+</caption>
+<thead>
+<tr>
+<th scope="col">
+Repository
+</th>
+<th scope="col">
+Commits
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+cavandonohoe/cavandonohoe.github.io
+</td>
+<td>
+10
+</td>
+</tr>
+</tbody>
+</table>
+<div class="year-note">
+Author-matched commits reachable from branches and tags in public,
+non-fork repositories owned by the user, including archived projects.
+Dates use UTC; bots and other authors are excluded. Lines added include
+generated files. PRs count public pull requests authored by the user,
+when available. Snapshot generated 2026-10-05.
+</div>
+</section>
+<p>Past reviews are reconstructed from public commit history. Each
+January 1, GitHub Actions saves the year that just ended. The current
+year is a snapshot through its generation date.</p>
+<script>
+(function () {
+  const reviews = Array.from(document.querySelectorAll('section.year-hero[id]'));
+  const links = Array.from(document.querySelectorAll('.year-nav a'));
+  if (!reviews.length) return;
+  function selectYear() {
+    const selected = reviews.find(review => '#' + review.id === window.location.hash) || reviews[0];
+    reviews.forEach(review => { review.hidden = review !== selected; });
+    links.forEach(link => {
+      if (link.getAttribute('href') === '#' + selected.id) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
+    });
+  }
+  window.addEventListener('hashchange', selectYear);
+  selectYear();
+})();
+</script>
 
 <link rel="stylesheet" href="/css/footer.css">
 <footer id="footer_stuff" class="band full" role="contentinfo">
