@@ -104,6 +104,8 @@ if (!is.null(changelog$daily_summaries) && length(changelog$daily_summaries) > 0
 
 ## Developer Year in Review
 
+Commit totals and streaks reflect my personal commits in public repositories. Automated bot commits are excluded. Streaks use UTC calendar days.
+
 ```{r home-year-review, echo=FALSE, results='asis'}
 files <- list.files("data/year-in-review", pattern = "^[0-9]{4}\\.json$", full.names = TRUE)
 if (!length(files) || !requireNamespace("jsonlite", quietly = TRUE)) {
