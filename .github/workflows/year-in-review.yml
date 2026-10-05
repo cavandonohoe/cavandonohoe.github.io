@@ -20,7 +20,7 @@ jobs:
   review:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Test history aggregation
         run: python3 -m unittest discover -s tests -p 'test_developer_year_in_review.py'
       - name: Generate annual developer stats
