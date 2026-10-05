@@ -1,5 +1,7 @@
 [default]
 extend-ignore-re = [
+  # CloudFront request IDs are opaque metadata, not prose.
+  '"X-Amz-Cf-Id": "[^"]*"',
   # Skip URLs
   "https?://[^\\s)]+",
   # Skip code fences
