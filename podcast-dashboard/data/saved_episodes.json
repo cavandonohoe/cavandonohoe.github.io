@@ -2,10 +2,10 @@
   "meta": {
     "generated_at": "2026-09-27",
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 345,
+    "n_episodes": 351,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-10-04",
-    "api_saved_count": 178
+    "api_refreshed_at": "2026-10-05",
+    "api_saved_count": 183
   },
   "episodes": [
     {
@@ -3802,6 +3802,72 @@
       "release": "2026-10-02",
       "url": "https://open.spotify.com/episode/6cntflMsLtwvZ8ghx05l05",
       "desc": "It's getting pretty wild in the beverage aisle these days — from the rainbow wall of seltzers, to the increasingly strange flavors of Pepsi, to the new \"functional\" sodas with added fiber or supplements that supposedly offer health benefits. Where are all these new drinks coming from? And why does it seem like the options are multiplying faster than ever?Today on the show, we go behind the scenes at one of the nation’s top-secret beverage laboratories. The food scientists in this lab have quietly helped companies design many of the new drinks on the shelves these days. We taste things we have never tasted before, including a sports hydration … broth? We learn what a strawberry has in common with a block of cheese. And we discover why the business of beverages will never be the same again. Read: - Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life - Our weekly longform Planet Money newsletter- Our weekly Indicator round-up newsletterFollow:- Instagram- TikTok- YouTube- FacebookSupport public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.This episode of Planet Money was hosted by Jeff Guo. It was produced by James Sneed and Sam Yellowhorse Kesler, and edited by Jess Jiang. Vito Emanuel is our fact-checker, and Kwesi Lee engineered the show. Alex Goldmark is the executive producer of Planet Money.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
+    },
+    {
+      "id": "00NVPNDsVEFJDSfvuBYgBA",
+      "added_at": "2026-10-05",
+      "show": "Twenty Thousand Hertz",
+      "publisher": null,
+      "name": "Guess That Sound: Video Game Edition",
+      "dur_min": 54,
+      "release": "2026-10-05",
+      "url": "https://open.spotify.com/episode/00NVPNDsVEFJDSfvuBYgBA",
+      "desc": "For a special video game edition of our Guess That Sound competition, we invited three game audio experts to test their ears on 18 sounds from gaming history. Play along as they identify iconic fanfares, weapons, spells, power-ups, and some seriously tricky deep cuts. Who will claim the title of ultimate video game sound expert? Featuring Foley Artist and Sound Editor Joanna Fang, Senior Interactive Sound Designer Mark Kilborn, and Sound Designer and Composer Jeffrey Brice.Twenty Thousand Hertz is produced by ⁠⁠Defacto Sound⁠⁠.Support the show and get ad-free episodes at ⁠⁠⁠⁠⁠⁠⁠⁠⁠20k.org/plus⁠⁠⁠⁠⁠⁠⁠⁠⁠.Subscribe on ⁠⁠⁠⁠⁠⁠⁠⁠YouTube⁠⁠⁠⁠⁠⁠⁠⁠⁠ to see our video series.Follow Dallas on ⁠⁠⁠⁠⁠⁠⁠Instagram⁠⁠⁠⁠⁠⁠⁠, ⁠⁠⁠⁠⁠⁠⁠TikTok⁠⁠⁠⁠⁠⁠⁠, ⁠⁠Facebook⁠⁠, and ⁠⁠⁠⁠⁠⁠⁠LinkedIn⁠⁠⁠⁠⁠⁠⁠.If you know what this week's mystery sound is, tell us at ⁠⁠⁠⁠⁠⁠⁠⁠⁠mystery.20k.org⁠⁠⁠⁠⁠⁠⁠⁠⁠.Get three months of free payroll with Gusto at gusto.com/20k.Visit ⁠⁠⁠⁠⁠⁠quo.com/20k⁠⁠⁠⁠⁠⁠ for 20% of your first 6 months of business phone software.Build your home sound system today at sonos.com."
+    },
+    {
+      "id": "0uMVt0CZNlf0mpjDIlwsp5",
+      "added_at": "2026-10-05",
+      "show": "Late Night with Seth Meyers Podcast",
+      "publisher": null,
+      "name": "Late Night Lit: Hernan Diaz | Maggie Tokuda-Hall",
+      "dur_min": 45,
+      "release": "2026-10-05",
+      "url": "https://open.spotify.com/episode/0uMVt0CZNlf0mpjDIlwsp5",
+      "desc": "In the latest edition of Late Night Lit, Late Night Supervising Producer Sarah Jenks-Daly talks to author Hernan Diaz about his new novel, \"Ply.\" Then, writer Maggie Tokuda-Hall, a founding member of Authors Against Book Bans, discusses that group's efforts to keep books on the shelves of libraries and schools, and talks about her forthcoming book, \"Bathtime for Snow Monkeys.\"See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info."
+    },
+    {
+      "id": "1C1D1o2o569Smn7QofdwTL",
+      "added_at": "2026-10-05",
+      "show": "The Economics of Everyday Things",
+      "publisher": null,
+      "name": "79. School Photos",
+      "dur_min": 18,
+      "release": "2026-10-05",
+      "url": "https://open.spotify.com/episode/1C1D1o2o569Smn7QofdwTL",
+      "desc": "Picture day is an annual tradition for American families — and, for the companies that take the photos, a lucrative one. Zachary Crockett smiles for the camera. This episode was originally published on February 2nd, 2025. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising."
+    },
+    {
+      "id": "3M5KZrO27xztKcxIYPyQKs",
+      "added_at": "2026-10-05",
+      "show": "The Indicator from Planet Money",
+      "publisher": null,
+      "name": "The proper etiquette of the Venmo nudge",
+      "dur_min": 9,
+      "release": "2026-10-05",
+      "url": "https://open.spotify.com/episode/3M5KZrO27xztKcxIYPyQKs",
+      "desc": "How do you ask your friends to pay you back in a timely way? We’ve got an etiquette coach to help with that. Fact checking by Sierra Juarez.Your Next Listen — Is this a bank?Connect with The Indicator — Sign up for The Indicator’s weekly newsletter! — Buy the Planet Money book — Find our socials, YouTube and more! — For sponsor-free episodes, subscribe to NPR+ Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
+    },
+    {
+      "id": "66qOTq7rAMpJr90fPptG6Y",
+      "added_at": "2026-10-05",
+      "show": "Unexplainable",
+      "publisher": null,
+      "name": "What color is a tennis ball?",
+      "dur_min": 30,
+      "release": "2026-10-05",
+      "url": "https://open.spotify.com/episode/66qOTq7rAMpJr90fPptG6Y",
+      "desc": "Is it yellow? Is it green? Or what if, as one scientist argues, “there’s no such thing as a color?”  Guest: Bevil Conway, visual artist and neuroscientist at the National Eye Institute    To watch this episode on video, find us on Netflix!    For show transcripts, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unxtranscripts⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠For more, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unexplainable⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠And please email us! ⁠⁠⁠⁠unexplainable@vox.com⁠⁠⁠⁠   We read every email.Support Unexplainable (and get ad-free episodes) by becoming a Vox Member today: ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/members⁠ Learn more about your ad choices. Visit podcastchoices.com/adchoices"
+    },
+    {
+      "id": "7pVtMwL0hKrS3McEepuGEV",
+      "added_at": "2026-10-05",
+      "show": "Conan O’Brien Needs A Friend",
+      "publisher": null,
+      "name": "Owen Wilson",
+      "dur_min": 63,
+      "release": "2026-10-05",
+      "url": "https://open.spotify.com/episode/7pVtMwL0hKrS3McEepuGEV",
+      "desc": "Actor Owen Wilson feels good about being Conan O’Brien’s friend. Owen sits down with Conan to discuss how military school led him to a creative partnership with Wes Anderson, learning how to wear a cowboy hat, bringing Timothy Olyphant on for season two of Stick, his new film Rolling Loud: The Movie, and more. For Conan videos, tour dates and more visit TeamCoco.com.Got a question for Conan? Call our voicemail: (323) 362-2295. Get access to all the podcasts you love, music channels and radio shows with the SiriusXM App! Get 3 months free using this show link: https://siriusxm.com/conan. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising."
     }
   ]
 }
