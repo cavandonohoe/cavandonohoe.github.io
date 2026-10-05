@@ -9,6 +9,11 @@ on:
         description: 'Year to snapshot (blank = current year, or previous year on Jan 1)'
         required: false
         type: string
+      backfill:
+        description: 'Rebuild every available year from past commit history'
+        required: false
+        default: false
+        type: boolean
 permissions:
   contents: write
 jobs:
@@ -16,12 +21,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Test history aggregation
+        run: python3 -m unittest discover -s tests -p 'test_developer_year_in_review.py'
       - name: Generate annual developer stats
         env:
           GITHUB_USER: cavandonohoe
           GITHUB_TOKEN: ${{ github.token }}
           REVIEW_YEAR: ${{ inputs.year }}
-        run: python3 scripts/developer_year_in_review.py
+          BACKFILL: ${{ inputs.backfill }}
+        run: |
+          if [ "$BACKFILL" = "true" ]; then
+            python3 scripts/developer_year_in_review.py --all-years
+          else
+            python3 scripts/developer_year_in_review.py
+          fi
       - name: Commit snapshot
         run: |
           git config user.name github-actions[bot]
