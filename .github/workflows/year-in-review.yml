@@ -1,5 +1,11 @@
 name: Developer year in review
 on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/year-in-review.yml'
+      - 'scripts/developer_year_in_review.py'
+      - 'tests/test_developer_year_in_review.py'
   schedule:
     # Daily at 08:37 UTC; refresh only the current calendar year.
     - cron: '37 8 * * *'
@@ -26,6 +32,7 @@ jobs:
       - name: Test history aggregation
         run: python3 -m unittest discover -s tests -p 'test_developer_year_in_review.py'
       - name: Generate annual developer stats
+        if: github.event_name != 'pull_request'
         env:
           GITHUB_USER: cavandonohoe
           GITHUB_TOKEN: ${{ github.token }}
@@ -40,6 +47,7 @@ jobs:
             python3 scripts/developer_year_in_review.py
           fi
       - name: Commit snapshot
+        if: github.event_name != 'pull_request'
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
