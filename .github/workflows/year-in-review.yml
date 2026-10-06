@@ -1,6 +1,8 @@
 name: Developer year in review
 on:
   schedule:
+    # Daily at 08:37 UTC; refresh only the current calendar year.
+    - cron: '37 8 * * *'
     # Jan 1 at 17:13 UTC; snapshots the year that just ended.
     - cron: '13 17 1 1 *'
   workflow_dispatch:
@@ -32,6 +34,8 @@ jobs:
         run: |
           if [ "$BACKFILL" = "true" ]; then
             python3 scripts/developer_year_in_review.py --all-years
+          elif [ "${{ github.event.schedule }}" = "37 8 * * *" ]; then
+            python3 scripts/developer_year_in_review.py --year "$(date -u +%Y)"
           else
             python3 scripts/developer_year_in_review.py
           fi
