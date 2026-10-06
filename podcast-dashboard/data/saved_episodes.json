@@ -2,10 +2,10 @@
   "meta": {
     "generated_at": "2026-09-27",
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 351,
+    "n_episodes": 357,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-10-05",
-    "api_saved_count": 183
+    "api_refreshed_at": "2026-10-06",
+    "api_saved_count": 189
   },
   "episodes": [
     {
@@ -3868,6 +3868,72 @@
       "release": "2026-10-05",
       "url": "https://open.spotify.com/episode/7pVtMwL0hKrS3McEepuGEV",
       "desc": "Actor Owen Wilson feels good about being Conan O’Brien’s friend. Owen sits down with Conan to discuss how military school led him to a creative partnership with Wes Anderson, learning how to wear a cowboy hat, bringing Timothy Olyphant on for season two of Stick, his new film Rolling Loud: The Movie, and more. For Conan videos, tour dates and more visit TeamCoco.com.Got a question for Conan? Call our voicemail: (323) 362-2295. Get access to all the podcasts you love, music channels and radio shows with the SiriusXM App! Get 3 months free using this show link: https://siriusxm.com/conan. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising."
+    },
+    {
+      "id": "02dx6RvttaKezoljzXYX2J",
+      "added_at": "2026-10-06",
+      "show": "StarTalk with Neil deGrasse Tyson",
+      "publisher": null,
+      "name": "Cosmic Queries – Light Sails & Quantum Scales",
+      "dur_min": 60,
+      "release": "2026-10-06",
+      "url": "https://open.spotify.com/episode/02dx6RvttaKezoljzXYX2J",
+      "desc": "If the multiverse exists, where does our universe end and another begin? Neil deGrasse Tyson and comic co-host Chuck Nice tackle a wide-ranging grab bag of fan questions covering bubble universes, the nature of now, fractals, Hoag's Object, and more.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/cosmic-queries-light-sails-quantum-scales/Thanks to our Patrons Joan Kirk, Robert Roberts, Mike Holland, Manickore, Zaki Imani, Christopher Johnson, Seb, Annette Hinkle, Bruce Davis, Geoff Hansen, Matthew Binggeli, Michael Greer, steph, Jo, Laurie Rieman, Monneke King, TakeOffYourPantsAndJacket, Catharine Hula, John, Mike, Jordan Jefferson, Bruce, Burç Ayata, Armon Jackson, and Sami Röksä for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising."
+    },
+    {
+      "id": "0u5GfPwsC8ugY8ZfL2DhSS",
+      "added_at": "2026-10-06",
+      "show": "The Indicator from Planet Money",
+      "publisher": null,
+      "name": "Inside Norway's sovereign wealth fund dilemma to divest from Israel",
+      "dur_min": 8,
+      "release": "2026-10-06",
+      "url": "https://open.spotify.com/episode/0u5GfPwsC8ugY8ZfL2DhSS",
+      "desc": "Norway has the world’s largest sovereign wealth fund, but it’s facing a self-imposed dilemma. Should the fund's investments include companies that directly or indirectly contribute to the ongoing Israel-Hamas war? On today’s show, the ethical tightrope Norway is walking to invest its oil riches responsibly. Fact checking by Sierra Juarez.Your Next Listen —How would a US sovereign wealth fund even work? Connect with The Indicator — Sign up for The Indicator’s weekly newsletter! — Buy the Planet Money book — Find our socials, YouTube and more! — For sponsor-free episodes, subscribe to NPR+ Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
+    },
+    {
+      "id": "6VD2brjgRwgNExSHdocliq",
+      "added_at": "2026-10-06",
+      "show": "The Daily Show: Ears Edition",
+      "publisher": null,
+      "name": "Jon Stewart Unpacks AI’s Dubious Promise of a \"Better Future\" | Jacob Coxon",
+      "dur_min": 57,
+      "release": "2026-10-06",
+      "url": "https://open.spotify.com/episode/6VD2brjgRwgNExSHdocliq",
+      "desc": "As the threats posed by AI models continue to grow, AI oligarchs struggle to explain the upsides of their technology. Jon Stewart breaks down the latest tech headlines, including Trump’s refusal to regulate AI and CEOs’ awkward attempts to make human annihilation seem less scary (at least Grok can make funny videos!). Plus, Jon chats with Meta’s totally cute and totally not-sinister Muse AI agent, who makes him feel WAY better about the situation.  Jacob Coxon, a former Anthropic and OpenAI researcher who spoke out about the dangers of artificial intelligence, opens up to Jon about the grim reality of the tech industry— from malicious hacks to potential biological attacks. The two discuss the future, AI-led utopia that tech companies are trying to sell us, the megalomania and riskiness that underlies the industry, and the terrifying capabilities Coxon witnessed while training AI models at Anthropic and OpenAI.  --Go to https://Quince.com/dailyshow for free shipping on your order and 365-day returns.   --https://homeserve.com/tds   --  The Daily Show airs weeknights at 11/10c on Comedy Central.  Stream full episodes on Paramount+  Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices"
+    },
+    {
+      "id": "6b55YnKaQmphyHFAK3aiTj",
+      "added_at": "2026-10-06",
+      "show": "Stuff You Should Know",
+      "publisher": null,
+      "name": "Stand-Up Comedy Pt I",
+      "dur_min": 45,
+      "release": "2026-10-06",
+      "url": "https://open.spotify.com/episode/6b55YnKaQmphyHFAK3aiTj",
+      "desc": "Chuck and Josh do their best to tackle “the craft,” which most normal people call stand-up comedy. Stand-up dates back to the vaudeville days but it really started to take off in the 60s when comics stopped wearing suits and started getting edgy.See omnystudio.com/listener for privacy information."
+    },
+    {
+      "id": "7MCJlvk6tCg7oIs4ZL9yK5",
+      "added_at": "2026-10-06",
+      "show": "Late Night with Seth Meyers Podcast",
+      "publisher": null,
+      "name": "Jessica Biel | Trump-GOP Infighting Erupts, Kennedy Calls Trump an \"A-hole,\" Trump Doxes Tom Cotton: A Closer Look",
+      "dur_min": 27,
+      "release": "2026-10-06",
+      "url": "https://open.spotify.com/episode/7MCJlvk6tCg7oIs4ZL9yK5",
+      "desc": "Seth takes a closer look at Donald Trump doxxing one Republican candidate and calling another \"controversial\" while hitting the campaign trail amid midterm election panic.After that, Jessica Biel talks about going on ski trips with her family and learning intense vehicle stunts for her role in Matchbox: The Movie before reminiscing on her 7th Heaven audition. See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info."
+    },
+    {
+      "id": "5ZumnQGojfOZ4qxFVuOWAC",
+      "added_at": "2026-10-06",
+      "show": "The Daily Show: Ears Edition",
+      "publisher": null,
+      "name": "The Precap | Michael Kosta on Russia Dropping a New Plague, and Vivek Ramaswamy Almost Dropping a Kid",
+      "dur_min": 39,
+      "release": "2026-10-05",
+      "url": "https://open.spotify.com/episode/5ZumnQGojfOZ4qxFVuOWAC",
+      "desc": "This week's host Michael Kosta sits down with Daily Show writer Nicole Conlan to recap the latest news, and preview the week to come.  They discuss the bubonic plague making a comeback in Russia, Vivek Ramaswamy nearly dropping a child after struggling to pick him up at a campaign rally, former DHS Secretary Kristi Noem filing for divorce, and Mayor Mamdani joining forces (and hands) with his former rival Curtis Sliwa to spread flu shot awareness in NYC. Plus, Kosta and Nicole look ahead to this week's guests: Aaron Sorkin, Sebastian Stan, and Kyle MacLachlan.  Check out Michael's interview with Gianna Toboni on YouTube.  Check out Nicole's podcast The Climate Denier's Playbook on Apple Podcasts or Spotify  --  The Daily Show airs weeknights at 11/10c on Comedy Central.  Stream full episodes on Paramount+  Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices"
     }
   ]
 }
