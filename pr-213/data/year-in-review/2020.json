@@ -1,0 +1,37 @@
+{
+  "year": 2020,
+  "commits": 10,
+  "pull_requests": 0,
+  "repositories_touched": 1,
+  "lines_added": 46957,
+  "most_used_language": "JavaScript",
+  "language_basis": "Lines added in recognized source files during this year",
+  "most_active_month": "December",
+  "longest_streak_days": 2,
+  "active_days": 3,
+  "monthly_commits": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    10
+  ],
+  "biggest_project": "cavandonohoe.github.io",
+  "biggest_project_commits": 10,
+  "repositories": [
+    "cavandonohoe/cavandonohoe.github.io"
+  ],
+  "repository_commits": {
+    "cavandonohoe/cavandonohoe.github.io": 10
+  },
+  "scope": "Author-matched commits reachable from branches and tags in public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bots and other authors are excluded. Lines added include generated files. PRs count public pull requests authored by the user, when available.",
+  "is_partial_year": false,
+  "generated_at": "2026-10-05T02:45:59.891818+00:00"
+}
