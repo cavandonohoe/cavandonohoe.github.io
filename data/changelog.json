@@ -1,11 +1,23 @@
 {
-  "generated_at": "2026-10-05T22:51:34.927511+00:00",
+  "generated_at": "2026-10-06T21:08:48.714892+00:00",
   "events": [
+    {
+      "date": "2026-10-06",
+      "type": "merged_pr",
+      "title": "Refresh the current Developer Year in Review daily",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/213"
+    },
     {
       "date": "2026-10-05",
       "type": "merged_pr",
       "title": "ci: bump the github-actions group with 4 updates",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/211"
+    },
+    {
+      "date": "2026-10-05",
+      "type": "merged_pr",
+      "title": "Import sheet-only reunion contacts so submissions cannot be silently skipped",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/212"
     },
     {
       "date": "2026-10-05",
@@ -268,6 +280,16 @@
   ],
   "daily_summaries": [
     {
+      "date": "2026-10-06",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "6 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/d3c21bae13cab84d7413150733bff3c50b00c825"
+        }
+      ]
+    },
+    {
       "date": "2026-10-05",
       "items": [
         {
@@ -277,7 +299,7 @@
         },
         {
           "emoji": "\ud83d\udcbb",
-          "text": "3 PRs merged"
+          "text": "4 PRs merged"
         },
         {
           "emoji": "\u2699\ufe0f",
@@ -354,16 +376,6 @@
           "emoji": "\ud83d\uddfa\ufe0f",
           "text": "Data-viz projects polished",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/196"
-        }
-      ]
-    },
-    {
-      "date": "2026-09-30",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "1 podcast episode added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/4114d99c20c9108f34048b2b1bb5bcba1a35552a"
         }
       ]
     },
