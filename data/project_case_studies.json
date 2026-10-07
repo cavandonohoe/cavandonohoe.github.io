@@ -162,7 +162,7 @@
     {
       "project": "images",
       "tracked_files": 11,
-      "commits_touching_project": 51,
+      "commits_touching_project": 52,
       "top_extensions": [
         [
           ".jpg",
@@ -273,7 +273,7 @@
     {
       "project": "tests",
       "tracked_files": 12,
-      "commits_touching_project": 14,
+      "commits_touching_project": 15,
       "top_extensions": [
         [
           ".r",
