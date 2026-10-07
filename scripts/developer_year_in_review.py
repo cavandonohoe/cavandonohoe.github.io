@@ -16,6 +16,19 @@ USER = os.getenv("GITHUB_USER", "cavandonohoe")
 TOKEN = os.getenv("GH_STATS_TOKEN") or os.getenv("GITHUB_TOKEN")
 AUTHOR_NAMES = {USER.casefold(), *[x.strip().casefold() for x in os.getenv("GITHUB_AUTHOR_NAMES", "Cavan Donohoe").split(",")]}
 LANGUAGES = {".r": "R", ".rmd": "R", ".py": "Python", ".js": "JavaScript", ".cjs": "JavaScript", ".ts": "TypeScript", ".tsx": "TypeScript", ".html": "HTML", ".css": "CSS", ".sql": "SQL", ".sh": "Shell"}
+DEPENDENCY_DIRS = {"node_modules", "vendor", "vendors", "third_party", "third-party"}
+
+
+def excluded_from_language_stats(repo, path):
+    """Match GitHub Linguist exclusions plus conventional dependency directories."""
+    parts = Path(path).parts
+    if any(part.casefold() in DEPENDENCY_DIRS for part in parts[:-1]):
+        return True
+    try:
+        attrs = git(repo, "check-attr", "linguist-generated", "linguist-vendored", "--", path).splitlines()
+    except subprocess.CalledProcessError:
+        return False
+    return any(line.rsplit(": ", 1)[-1].strip().casefold() in {"set", "true"} for line in attrs)
 
 
 def api(path):
@@ -76,8 +89,9 @@ def read_history(repo):
             if len(parts) == 3 and parts[0].isdigit():
                 count = int(parts[0])
                 added += count
-                language = LANGUAGES.get(Path(parts[2]).suffix.casefold())
-                if language:
+                path = parts[2]
+                language = LANGUAGES.get(Path(path).suffix.casefold())
+                if language and not excluded_from_language_stats(repo, path):
                     languages[language] += count
         yield {"sha": sha, "day": day, "added": added, "languages": languages}
 
@@ -98,7 +112,7 @@ def snapshot(year, records, now):
         "repositories_touched": len(repos),
         "lines_added": sum(row["added"] for _, row in rows),
         "most_used_language": languages.most_common(1)[0][0] if languages else None,
-        "language_basis": "Lines added in recognized source files during this year",
+        "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, and dependency files are excluded.",
         "most_active_month": calendar.month_name[months.most_common(1)[0][0]] if months else None,
         "longest_streak_days": longest_streak(days),
         "active_days": len(set(days)),
@@ -107,7 +121,7 @@ def snapshot(year, records, now):
         "biggest_project_commits": project_commits,
         "repositories": sorted(repos),
         "repository_commits": dict(repos.most_common()),
-        "scope": "Author-matched commits reachable from branches and tags in public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bots and other authors are excluded. Lines added include generated files. PRs count public pull requests authored by the user, when available.",
+        "scope": "Author-matched commits reachable from branches and tags in public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bots and other authors are excluded. Language totals exclude Linguist-generated, vendored, and conventional dependency files. Overall lines added still include all files. PRs count public pull requests authored by the user, when available.",
         "is_partial_year": year == now.year,
         "generated_at": now.isoformat(),
     }
