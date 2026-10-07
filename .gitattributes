@@ -6,3 +6,6 @@ include_footer.html linguist-generated
 # (Optional) Count Rmd/Qmd as R so your work shows up
 *.Rmd linguist-language=R
 *.qmd linguist-language=R
+
+# Exclude vendored libraries from language stats
+_archive/wc-momentum/vendor/** linguist-vendored
