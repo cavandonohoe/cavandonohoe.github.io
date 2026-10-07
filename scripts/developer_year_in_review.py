@@ -22,6 +22,9 @@ DEPENDENCY_DIRS = {"node_modules", "vendor", "vendors", "third_party", "third-pa
 def excluded_from_language_stats(repo, path):
     """Match GitHub Linguist exclusions plus conventional dependency directories."""
     parts = Path(path).parts
+    # renv writes this bootstrap script; it is not authored project code.
+    if tuple(part.casefold() for part in parts[-2:]) == ("renv", "activate.r"):
+        return True
     if any(part.casefold() in DEPENDENCY_DIRS for part in parts[:-1]):
         return True
     # Downloaded HTML under R packages' raw-data directory is an input dataset.
@@ -91,6 +94,7 @@ def read_history(repo):
         # Half-open calendar years, based on author dates normalized to UTC.
         day = datetime.fromisoformat(stamp).astimezone(timezone.utc).date()
         added, languages, excluded_languages = 0, Counter(), Counter()
+        language_files = defaultdict(Counter)
         for line in lines:
             parts = line.split("\t", 2)
             if len(parts) == 3 and parts[0].isdigit():
@@ -103,7 +107,9 @@ def read_history(repo):
                         exclusions[path] = excluded_from_language_stats(repo, path)
                     totals = excluded_languages if exclusions[path] else languages
                     totals[language] += count
-        yield {"sha": sha, "day": day, "added": added, "languages": languages, "excluded_languages": excluded_languages}
+                    if not exclusions[path] and count:
+                        language_files[language][path] += count
+        yield {"sha": sha, "day": day, "added": added, "languages": languages, "excluded_languages": excluded_languages, "language_files": dict(language_files)}
 
 
 def snapshot(year, records, now):
@@ -113,9 +119,20 @@ def snapshot(year, records, now):
     months = Counter(day.month for day in days)
     languages = Counter()
     excluded_languages = Counter()
-    for _, row in rows:
+    language_files = defaultdict(dict)
+    for repo, row in rows:
         languages.update(row["languages"])
         excluded_languages.update(row.get("excluded_languages", {}))
+        for language, files in row.get("language_files", {}).items():
+            for path, count in files.items():
+                entry = language_files[language].setdefault((repo, path), {
+                    "repository": repo, "path": path, "lines_added": 0, "commits": [],
+                })
+                entry["lines_added"] += count
+                entry["commits"].append({"sha": row["sha"], "date": row["day"].isoformat(), "lines_added": count})
+    for files in language_files.values():
+        for entry in files.values():
+            entry["commits"].sort(key=lambda commit: (commit["date"], commit["sha"]), reverse=True)
     project, project_commits = repos.most_common(1)[0] if repos else (None, 0)
     return {
         "year": year,
@@ -125,6 +142,7 @@ def snapshot(year, records, now):
         "lines_added": sum(row["added"] for _, row in rows),
         "most_used_language": languages.most_common(1)[0][0] if languages else None,
         "language_lines_added": dict(languages.most_common()),
+        "language_files": {language: sorted(files.values(), key=lambda entry: (-entry["lines_added"], entry["repository"], entry["path"])) for language, files in sorted(language_files.items())},
         "excluded_language_lines_added": dict(excluded_languages.most_common()),
         "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, dependency files, and raw HTML inputs are excluded.",
         "most_active_month": calendar.month_name[months.most_common(1)[0][0]] if months else None,
