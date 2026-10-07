@@ -30,12 +30,16 @@ Commit totals and streaks reflect my personal commits in public repositories. Au
 .year-hero th, .year-hero td { padding:.5rem; text-align:left; border-bottom:1px solid rgba(255,255,255,.14); }
 .year-hero td:first-child { overflow-wrap:anywhere; }
 .year-hero caption { color:#fff; text-align:left; font-weight:600; }
-.year-web-highlights { margin-top:1.4rem; }
-.year-web-highlights h2 { font-size:1.3rem; margin-bottom:.4rem; color:inherit; }
-.year-web-highlights p { opacity:.75; }
-.year-web-highlights .year-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-.year-web-highlights .year-stat { border-top:3px solid #facc15; }
-.year-web-highlights .year-stat:last-child { border-top-color:#fb923c; }
+.year-language summary { cursor:pointer; }
+.year-language[open] { grid-column:1 / -1; }
+.year-language summary:hover { text-decoration:underline; }
+.year-language a { color:#93c5fd; text-decoration:underline; }
+.year-language .year-language-content { margin-top:1rem; }
+.year-language td, .year-language th { vertical-align:top; }
+.year-language td:first-child { width:70%; }
+.year-language .year-file-commits { max-height:18rem; overflow:auto; }
+.year-language .year-file-commits li { margin:.5rem 0; }
+.year-language .year-file-repo { display:block; opacity:.75; font-size:.85em; }
 .year-web-history { margin:2rem 0; padding:1.4rem; border:1px solid #cbd5e1; border-radius:14px; background:#f8fafc; color:#0f172a; }
 .year-web-history h2 { margin-top:0; font-size:1.5rem; }
 .year-web-table { width:100%; table-layout:fixed; }
@@ -72,6 +76,36 @@ if (!length(files) || !requireNamespace("jsonlite", quietly = TRUE)) {
     total <- d$language_lines_added[[language]]
     if (is.null(total)) 0 else total
   }
+  language_details <- function(d) {
+    language <- d$most_used_language
+    files <- if (!is.null(language)) d$language_files[[language]] else NULL
+    heading <- paste0('<strong>Top language by lines added:</strong> ', escape(language))
+    if (is.null(files) || !nrow(files)) {
+      return(paste0('<div class="year-detail">', heading, '<p>File and commit breakdown unavailable for this snapshot.</p></div>'))
+    }
+    rows <- vapply(seq_len(nrow(files)), function(i) {
+      file <- files[i, ]
+      commits <- file$commits[[1]]
+      repo_url <- paste0('https://github.com/', file$repository)
+      path_url <- paste(vapply(strsplit(file$path, '/', fixed=TRUE)[[1]], utils::URLencode, character(1), reserved=TRUE), collapse='/')
+      commit_items <- vapply(seq_len(nrow(commits)), function(j) paste0(
+        '<li><a href="', repo_url, '/commit/', escape(commits$sha[j]), '">', escape(substr(commits$sha[j], 1, 7)), '</a>',
+        ' · ', escape(commits$date[j]), ' · ', fmt(commits$lines_added[j]), ' lines added',
+        ' · <a href="', repo_url, '/blob/', escape(commits$sha[j]), '/', escape(path_url), '">File at this commit</a></li>'
+      ), character(1))
+      paste0('<tr><td><span class="year-file-repo">', escape(file$repository), '</span>', escape(file$path),
+             '<details><summary>', nrow(commits), ' contributing commit', if (nrow(commits) != 1) 's' else '', '</summary>',
+             '<ul class="year-file-commits">', paste(commit_items, collapse=''), '</ul></details></td>',
+             '<td>', fmt(file$lines_added), '</td></tr>')
+    }, character(1))
+    paste0('<details class="year-detail year-language"><summary>', heading, '</summary>',
+           '<div class="year-language-content"><p>', fmt(language_total(d, language)), ' first-party ', escape(language),
+           ' lines added across ', nrow(files), ' files. Expand a file to see its contributing commits and GitHub changes.</p>',
+           '<p>Generated outputs, vendored libraries, and raw HTML inputs are excluded. Counts are additions over the year, including repeated edits.</p>',
+           '<table><caption>', escape(language), ' files in ', d$year, '</caption>',
+           '<thead><tr><th scope="col">File and commits</th><th scope="col">Lines added</th></tr></thead>',
+           '<tbody>', paste(rows, collapse=''), '</tbody></table></div></details>')
+  }
   for (d in reviews) {
   cat(paste0(
     '<section class="year-hero" id="year-', d$year, '" aria-label="', d$year, ' developer review">',
@@ -84,17 +118,9 @@ if (!length(files) || !requireNamespace("jsonlite", quietly = TRUE)) {
       '<div class="year-stat"><strong>', fmt(d$lines_added), '</strong><span>lines added</span></div>',
     '</div>',
     '<div class="year-details">',
-      '<div class="year-detail"><strong>Top language by lines added:</strong> ', escape(d$most_used_language), '</div>',
+      language_details(d),
       '<div class="year-detail"><strong>Most-active month:</strong> ', escape(d$most_active_month), '</div>',
       '<div class="year-detail"><strong>Longest streak:</strong> ', fmt(d$longest_streak_days), ' days</div>',
-    '</div>',
-    '<div class="year-web-highlights">',
-      '<h2>JavaScript &amp; HTML in ', d$year, '</h2>',
-      '<p>First-party lines added during this year.</p>',
-      '<div class="year-grid">',
-        '<div class="year-stat"><strong>', fmt(language_total(d, 'JavaScript')), '</strong><span>JavaScript lines added</span></div>',
-        '<div class="year-stat"><strong>', fmt(language_total(d, 'HTML')), '</strong><span>HTML lines added</span></div>',
-      '</div>',
     '</div>',
     '<div class="year-project"><strong>Biggest project</strong><br>', escape(d$biggest_project),
       if (!is.null(d$biggest_project_commits)) paste0(' · ', fmt(d$biggest_project_commits), ' commits') else '', '</div>',

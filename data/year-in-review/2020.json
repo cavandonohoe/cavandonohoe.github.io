@@ -8,6 +8,93 @@
   "language_lines_added": {
     "R": 367
   },
+  "language_files": {
+    "R": [
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "cv builder.Rmd",
+        "lines_added": 181,
+        "commits": [
+          {
+            "sha": "dc5c890400fbc693a02b45f7088b0214086c4ed3",
+            "date": "2020-12-31",
+            "lines_added": 2
+          },
+          {
+            "sha": "a209bb5b557160a683cfc0932b1ba2dca1a5dc10",
+            "date": "2020-12-29",
+            "lines_added": 4
+          },
+          {
+            "sha": "07e6a9e19786dfe7efd8674118ba50410469e738",
+            "date": "2020-12-29",
+            "lines_added": 1
+          },
+          {
+            "sha": "2230cf4753463f1f127d6bf8c9726c4782b9fc07",
+            "date": "2020-12-28",
+            "lines_added": 174
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "cv builder.R",
+        "lines_added": 117,
+        "commits": [
+          {
+            "sha": "2230cf4753463f1f127d6bf8c9726c4782b9fc07",
+            "date": "2020-12-28",
+            "lines_added": 117
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "about.Rmd",
+        "lines_added": 56,
+        "commits": [
+          {
+            "sha": "dc5c890400fbc693a02b45f7088b0214086c4ed3",
+            "date": "2020-12-31",
+            "lines_added": 27
+          },
+          {
+            "sha": "a209bb5b557160a683cfc0932b1ba2dca1a5dc10",
+            "date": "2020-12-29",
+            "lines_added": 24
+          },
+          {
+            "sha": "2230cf4753463f1f127d6bf8c9726c4782b9fc07",
+            "date": "2020-12-28",
+            "lines_added": 5
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "index.Rmd",
+        "lines_added": 13,
+        "commits": [
+          {
+            "sha": "dc5c890400fbc693a02b45f7088b0214086c4ed3",
+            "date": "2020-12-31",
+            "lines_added": 1
+          },
+          {
+            "sha": "a209bb5b557160a683cfc0932b1ba2dca1a5dc10",
+            "date": "2020-12-29",
+            "lines_added": 7
+          },
+          {
+            "sha": "2230cf4753463f1f127d6bf8c9726c4782b9fc07",
+            "date": "2020-12-28",
+            "lines_added": 5
+          }
+        ]
+      }
+    ]
+  },
   "excluded_language_lines_added": {
     "JavaScript": 30887,
     "CSS": 10419,
@@ -41,5 +128,5 @@
   },
   "scope": "Author-matched commits reachable from branches and tags in public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bots and other authors are excluded. Language totals exclude Linguist-generated, vendored, conventional dependency files, and raw HTML inputs. Overall lines added still include all files. PRs count public pull requests authored by the user, when available.",
   "is_partial_year": false,
-  "generated_at": "2026-10-07T01:14:46.990848+00:00"
+  "generated_at": "2026-10-07T03:32:18.308884+00:00"
 }
