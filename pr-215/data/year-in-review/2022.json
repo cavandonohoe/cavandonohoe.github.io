@@ -1,0 +1,41 @@
+{
+  "year": 2022,
+  "commits": 102,
+  "pull_requests": 0,
+  "repositories_touched": 3,
+  "lines_added": 245244,
+  "most_used_language": "HTML",
+  "language_basis": "Lines added in recognized source files during this year",
+  "most_active_month": "April",
+  "longest_streak_days": 8,
+  "active_days": 52,
+  "monthly_commits": [
+    6,
+    3,
+    6,
+    20,
+    3,
+    1,
+    11,
+    19,
+    8,
+    2,
+    17,
+    6
+  ],
+  "biggest_project": "cavandonohoe.github.io",
+  "biggest_project_commits": 93,
+  "repositories": [
+    "cavandonohoe/cavandonohoe",
+    "cavandonohoe/cavandonohoe.github.io",
+    "cavandonohoe/confederate_statues"
+  ],
+  "repository_commits": {
+    "cavandonohoe/cavandonohoe.github.io": 93,
+    "cavandonohoe/confederate_statues": 7,
+    "cavandonohoe/cavandonohoe": 2
+  },
+  "scope": "Author-matched commits reachable from branches and tags in public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bots and other authors are excluded. Lines added include generated files. PRs count public pull requests authored by the user, when available.",
+  "is_partial_year": false,
+  "generated_at": "2026-10-05T02:45:59.891818+00:00"
+}
