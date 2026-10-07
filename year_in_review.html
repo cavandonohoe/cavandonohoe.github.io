@@ -648,7 +648,7 @@ $(document).ready(function () {
 repositories. Automated bot commits are excluded. Streaks use UTC
 calendar days.</p>
 <style>
-.year-hero { margin: 2rem 0; padding: 2.4rem; border-radius: 18px; background: linear-gradient(135deg,#111827,#1f2937); color:#fff; box-shadow:0 14px 34px rgba(0,0,0,.18); }
+.year-hero { scroll-margin-top:6rem; margin: 2rem 0; padding: 2.4rem; border-radius: 18px; background: linear-gradient(135deg,#111827,#1f2937); color:#fff; box-shadow:0 14px 34px rgba(0,0,0,.18); }
 .year-kicker { text-transform:uppercase; letter-spacing:.16em; font-size:.8rem; opacity:.72; }
 .year-title { font-size:clamp(2.3rem,7vw,5.6rem); line-height:.95; margin:.4rem 0 1.6rem; font-weight:800; }
 .year-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(145px,1fr)); gap:1rem; }
@@ -667,6 +667,22 @@ calendar days.</p>
 .year-hero th, .year-hero td { padding:.5rem; text-align:left; border-bottom:1px solid rgba(255,255,255,.14); }
 .year-hero td:first-child { overflow-wrap:anywhere; }
 .year-hero caption { color:#fff; text-align:left; font-weight:600; }
+.year-web-highlights { margin-top:1.4rem; }
+.year-web-highlights h2 { font-size:1.3rem; margin-bottom:.4rem; color:inherit; }
+.year-web-highlights p { opacity:.75; }
+.year-web-highlights .year-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.year-web-highlights .year-stat { border-top:3px solid #facc15; }
+.year-web-highlights .year-stat:last-child { border-top-color:#fb923c; }
+.year-web-history { margin:2rem 0; padding:1.4rem; border:1px solid #cbd5e1; border-radius:14px; background:#f8fafc; color:#0f172a; }
+.year-web-history h2 { margin-top:0; font-size:1.5rem; }
+.year-web-table { width:100%; table-layout:fixed; }
+.year-web-table caption { color:#475569; text-align:left; margin-bottom:.6rem; }
+.year-web-table th, .year-web-table td { padding:.7rem .45rem; border-bottom:1px solid #cbd5e1; }
+.year-web-table th { text-align:left; }
+.year-web-table .year-web-number { text-align:right; font-variant-numeric:tabular-nums; }
+.year-web-table tr[aria-current="true"] { background:#e0f2fe; font-weight:700; }
+.year-web-table a { color:#075985; text-decoration:underline; }
+.year-web-history .year-web-note { margin-top:1rem; color:#475569; font-size:.9rem; }
 @media(max-width:480px) { .year-hero { padding:1.2rem; } .year-stat strong { font-size:1.5rem; } }
 </style>
 <p>
@@ -707,6 +723,22 @@ Year to date
 </div>
 <div class="year-detail">
 <strong>Longest streak:</strong> 7 days
+</div>
+</div>
+<div class="year-web-highlights">
+<h2>
+JavaScript &amp; HTML in 2026
+</h2>
+<p>
+First-party lines added during this year.
+</p>
+<div class="year-grid">
+<div class="year-stat">
+<strong>4,687</strong><span>JavaScript lines added</span>
+</div>
+<div class="year-stat">
+<strong>4,592</strong><span>HTML lines added</span>
+</div>
 </div>
 </div>
 <div class="year-project">
@@ -819,6 +851,22 @@ Developer year in review
 <strong>Longest streak:</strong> 4 days
 </div>
 </div>
+<div class="year-web-highlights">
+<h2>
+JavaScript &amp; HTML in 2025
+</h2>
+<p>
+First-party lines added during this year.
+</p>
+<div class="year-grid">
+<div class="year-stat">
+<strong>0</strong><span>JavaScript lines added</span>
+</div>
+<div class="year-stat">
+<strong>0</strong><span>HTML lines added</span>
+</div>
+</div>
+</div>
 <div class="year-project">
 <strong>Biggest project</strong><br>cavandonohoe.github.io · 123 commits
 </div>
@@ -887,6 +935,22 @@ Developer year in review
 </div>
 <div class="year-detail">
 <strong>Longest streak:</strong> 2 days
+</div>
+</div>
+<div class="year-web-highlights">
+<h2>
+JavaScript &amp; HTML in 2024
+</h2>
+<p>
+First-party lines added during this year.
+</p>
+<div class="year-grid">
+<div class="year-stat">
+<strong>0</strong><span>JavaScript lines added</span>
+</div>
+<div class="year-stat">
+<strong>0</strong><span>HTML lines added</span>
+</div>
 </div>
 </div>
 <div class="year-project">
@@ -967,6 +1031,22 @@ Developer year in review
 <strong>Longest streak:</strong> 4 days
 </div>
 </div>
+<div class="year-web-highlights">
+<h2>
+JavaScript &amp; HTML in 2023
+</h2>
+<p>
+First-party lines added during this year.
+</p>
+<div class="year-grid">
+<div class="year-stat">
+<strong>0</strong><span>JavaScript lines added</span>
+</div>
+<div class="year-stat">
+<strong>0</strong><span>HTML lines added</span>
+</div>
+</div>
+</div>
 <div class="year-project">
 <strong>Biggest project</strong><br>cavandonohoe.github.io · 79 commits
 </div>
@@ -1043,6 +1123,22 @@ Developer year in review
 </div>
 <div class="year-detail">
 <strong>Longest streak:</strong> 8 days
+</div>
+</div>
+<div class="year-web-highlights">
+<h2>
+JavaScript &amp; HTML in 2022
+</h2>
+<p>
+First-party lines added during this year.
+</p>
+<div class="year-grid">
+<div class="year-stat">
+<strong>0</strong><span>JavaScript lines added</span>
+</div>
+<div class="year-stat">
+<strong>432</strong><span>HTML lines added</span>
+</div>
 </div>
 </div>
 <div class="year-project">
@@ -1131,6 +1227,22 @@ Developer year in review
 <strong>Longest streak:</strong> 5 days
 </div>
 </div>
+<div class="year-web-highlights">
+<h2>
+JavaScript &amp; HTML in 2021
+</h2>
+<p>
+First-party lines added during this year.
+</p>
+<div class="year-grid">
+<div class="year-stat">
+<strong>0</strong><span>JavaScript lines added</span>
+</div>
+<div class="year-stat">
+<strong>0</strong><span>HTML lines added</span>
+</div>
+</div>
+</div>
 <div class="year-project">
 <strong>Biggest project</strong><br>cavandonohoe.github.io · 99 commits
 </div>
@@ -1209,6 +1321,22 @@ Developer year in review
 <strong>Longest streak:</strong> 2 days
 </div>
 </div>
+<div class="year-web-highlights">
+<h2>
+JavaScript &amp; HTML in 2020
+</h2>
+<p>
+First-party lines added during this year.
+</p>
+<div class="year-grid">
+<div class="year-stat">
+<strong>0</strong><span>JavaScript lines added</span>
+</div>
+<div class="year-stat">
+<strong>0</strong><span>HTML lines added</span>
+</div>
+</div>
+</div>
 <div class="year-project">
 <strong>Biggest project</strong><br>cavandonohoe.github.io · 10 commits
 </div>
@@ -1247,6 +1375,113 @@ public pull requests authored by the user, when available. Snapshot
 generated 2026-10-07.
 </div>
 </section>
+<section class="year-web-history" aria-labelledby="year-web-history-title">
+<h2 id="year-web-history-title">
+JavaScript &amp; HTML through the years
+</h2>
+<table class="year-web-table">
+<caption>
+First-party lines added by year. Select a year to view its full review.
+</caption>
+<thead>
+<tr>
+<th scope="col">
+Year
+</th>
+<th scope="col" class="year-web-number">
+JavaScript
+</th>
+<th scope="col" class="year-web-number">
+HTML
+</th>
+</tr>
+</thead>
+<tbody>
+<tr data-review-year="2026">
+<th scope="row">
+<a href="#year-2026">2026 · YTD</a>
+</th>
+<td class="year-web-number">
+4,687
+</td>
+<td class="year-web-number">
+4,592
+</td>
+</tr>
+<tr data-review-year="2025">
+<th scope="row">
+<a href="#year-2025">2025</a>
+</th>
+<td class="year-web-number">
+0
+</td>
+<td class="year-web-number">
+0
+</td>
+</tr>
+<tr data-review-year="2024">
+<th scope="row">
+<a href="#year-2024">2024</a>
+</th>
+<td class="year-web-number">
+0
+</td>
+<td class="year-web-number">
+0
+</td>
+</tr>
+<tr data-review-year="2023">
+<th scope="row">
+<a href="#year-2023">2023</a>
+</th>
+<td class="year-web-number">
+0
+</td>
+<td class="year-web-number">
+0
+</td>
+</tr>
+<tr data-review-year="2022">
+<th scope="row">
+<a href="#year-2022">2022</a>
+</th>
+<td class="year-web-number">
+0
+</td>
+<td class="year-web-number">
+432
+</td>
+</tr>
+<tr data-review-year="2021">
+<th scope="row">
+<a href="#year-2021">2021</a>
+</th>
+<td class="year-web-number">
+0
+</td>
+<td class="year-web-number">
+0
+</td>
+</tr>
+<tr data-review-year="2020">
+<th scope="row">
+<a href="#year-2020">2020</a>
+</th>
+<td class="year-web-number">
+0
+</td>
+<td class="year-web-number">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<p class="year-web-note">
+Generated outputs, vendored libraries, and raw HTML inputs are excluded.
+Zero means no recorded first-party additions for that language; a dash
+means the breakdown is unavailable.
+</p>
+</section>
 <p>Past reviews are reconstructed from public commit history. Each
 January 1, GitHub Actions saves the year that just ended. The current
 year is a snapshot through its generation date.</p>
@@ -1254,17 +1489,23 @@ year is a snapshot through its generation date.</p>
 (function () {
   const reviews = Array.from(document.querySelectorAll('section.year-hero[id]'));
   const links = Array.from(document.querySelectorAll('.year-nav a'));
+  const languageRows = Array.from(document.querySelectorAll('.year-web-table tr[data-review-year]'));
   if (!reviews.length) return;
-  function selectYear() {
+  function selectYear(scrollToReview = false) {
     const selected = reviews.find(review => '#' + review.id === window.location.hash) || reviews[0];
     reviews.forEach(review => { review.hidden = review !== selected; });
     links.forEach(link => {
       if (link.getAttribute('href') === '#' + selected.id) link.setAttribute('aria-current', 'page');
       else link.removeAttribute('aria-current');
     });
+    languageRows.forEach(row => {
+      if ('year-' + row.dataset.reviewYear === selected.id) row.setAttribute('aria-current', 'true');
+      else row.removeAttribute('aria-current');
+    });
+    if (scrollToReview) selected.scrollIntoView({ block: 'start' });
   }
-  window.addEventListener('hashchange', selectYear);
-  selectYear();
+  window.addEventListener('hashchange', () => selectYear(true));
+  selectYear(Boolean(window.location.hash));
 })();
 </script>
 
