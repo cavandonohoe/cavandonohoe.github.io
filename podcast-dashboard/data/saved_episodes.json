@@ -2,10 +2,10 @@
   "meta": {
     "generated_at": "2026-09-27",
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 357,
+    "n_episodes": 362,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-10-06",
-    "api_saved_count": 189
+    "api_refreshed_at": "2026-10-07",
+    "api_saved_count": 194
   },
   "episodes": [
     {
@@ -592,11 +592,11 @@
       "url": "https://open.spotify.com/episode/2QW6tYyZsU7nfgQOzZyN8C"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-16",
+      "dur_min": 55,
+      "release": "2026-01-16",
       "publisher": null,
-      "desc": null,
+      "desc": "It regulates 20 percent of the U.S. economy, and its commissioner has an aggressive agenda — faster drug approvals, healthier food, cures for diabetes and cancer. How much can he deliver? (Part two of “The Freakonomics Radio Guide to Getting Better.”) SOURCES:Marty Makary, commissioner of the Food and Drug Administration. RESOURCES:\"Clinical Trials Affected by Research Grant Terminations at the National Institutes of Health,\" by Vishal Patel, Michael Liu, and Anupam Jena (JAMA Internal Medicine, 2025).\"What the evidence tells us about Tylenol, leucovorin, and autism,\" by Matthew Herper (STAT, 2025).\"I Run the F.D.A. Pharma Ads Are Hurting Americans.\" by Marty Makary (New York Times, 2025).Blind Spots: When Medicine Gets It Wrong, and What It Means for Our Health, by Marty Makary (2024). EXTRAS:\"Are You Really Allergic to Penicillin?\" by Freakonomics Radio (2025).\"How to Fix the Hot Mess of U.S. Healthcare,\" by Freakonomics Radio (2021).\"Bad Medicine, Part 3: Death by Diagnosis,\" by Freakonomics Radio (2016). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "id": "2qo4xNguCAmac3Ouk7LzXc",
       "name": "659. Can Marty Makary Fix the F.D.A.?",
       "show": "Freakonomics Radio",
@@ -625,11 +625,11 @@
       "desc": "Americans are moving at record lows for work. What’s driving people to, well, not drive cross-country for jobs? On today’s Jobs Friday, we explore the rising homebody economy. Related episodes: Can … we still trust the monthly jobs report? Why moms are leaving their paid jobs How the end of Roe is reshaping the medical workforce For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Corey Bridges. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-17",
+      "dur_min": 33,
+      "release": "2026-01-17",
       "publisher": null,
-      "desc": null,
+      "desc": "Venezuela and Chevron have perhaps one of the strangest partnerships … ever? Chevron, one of the world’s most famous and profitable oil corporations, has for decades, been plugging away in Venezuela, one of the world’s most famous and infamous socialist countries. Today on the show, the story of their intertwined histories. Before Saudi Arabia, before Iran… there was Venezuela, the first petrostate. The first country whose entire economy became dependent on oil. With the blessing of oil, an entire economic textbook of complications opened up: from the Dutch Disease, to the resource curse, to mono-economic vulnerability.And, oddly, along for that ride…Chevron. Pre-order the Planet Money book and get a free gift. /  Subscribe to Planet Money+Listen free: Apple Podcasts, Spotify, the NPR app or anywhere you get podcasts.Facebook / Instagram / TikTok / Our weekly Newsletter.This episode of Planet Money was hosted by Erika Beras and Kenny Malone. It was produced by Luis Gallo with help from Sam Yellowhorse Kesler. It was edited by Marianne McCune, fact-checked by Sierra Juarez and engineered by Cena Loffredo. Alex Goldmark is our executive producer.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "id": "1PeIFyNkiFYmuO4cQkLwM0",
       "name": "Chevron, Venezuela and the Paradox of Plenty",
       "show": "Planet Money",
@@ -647,11 +647,11 @@
       "url": "https://open.spotify.com/episode/0VBvYASnpmkbPihTWdg2Xo"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-08-13",
+      "dur_min": 9,
+      "release": "2025-08-13",
       "publisher": null,
-      "desc": null,
+      "desc": "Trump’s tax and spending law makes the largest cut in history to one of the nation’s biggest safety net programs. Today on the show, we explore how cuts to the Supplemental Nutrition Assistance Program, also known as SNAP, impacts families and grocery stores alike. Based on the digital story: Independent grocery stores have had a tough five years. SNAP cuts will make it harderRelated episodes:Do work requirements help SNAP people out of government aid? When SNAP Gets Squeezed The trouble with water discountsFor sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org.Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "id": "60sO6KjEJS6X8o3s8dkDIc",
       "name": "Why Trump's spending bill could close your grocery store",
       "show": "The Indicator from Planet Money",
@@ -1450,11 +1450,11 @@
       "desc": "President Trump’s tariffs are set to kick in on August 1st, school kids will soon be required to pass a new Presidential Fitness Test, the musical tastes of some well-known people were leaked after a Spotify hack, and disgraced lawyer Alan…"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-08-13",
+      "dur_min": 10,
+      "release": "2025-08-13",
       "publisher": null,
-      "desc": null,
+      "desc": "Stephen Colbert is proud to present in this podcast-exclusive introduction: the thrilling conclusion of Late Show writer Asher Perlman's journey to learn how to double-pump dunk like NBA star Ja Morant. ",
       "id": "1Te6dfcYOgVNTj83tdZzwz",
       "name": "Stephen Presents: Asher Perlman's Final Dunk",
       "show": "The Late Show Pod Show with Stephen Colbert",
@@ -1813,11 +1813,11 @@
       "desc": "“Sell America.” There’s new talk of how Europe could turn the economic screws on the U.S. after President Trump’s play for Greenland. Selling U.S. Treasury bonds is one way. Another is a legal tool. It’s been called the EU’s bazooka.On today’s show, taking stock of Europe’s financial arsenal. How could America’s largest foreign lender lighten Americans’ wallets?Planet Money wrote a book and is going on tour, come see us: tickets and tour dates here. Related episodes: Davos drama, credit card caps and tariff truthsWhy Trump resurrected the Monroe DoctrineLunch with the man who coined TACOFor sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-08-13",
+      "dur_min": 36,
+      "release": "2025-08-06",
       "publisher": null,
-      "desc": null,
+      "desc": "LIVE SHOW: August 18th in Brooklyn. Tickets here. (PM+ supporters get a 10 percent discount off their tickets. Listen to the July 8th bonus episode to get the code!) In economics, a market is a place (even virtual) where buyers and sellers meet to exchange goods or services. Economists love markets. It's like all of our supply and demand graphs have come to life. Almost everything you buy goes through some sort of marketplace—your cup of coffee came from trading in the bean markets. Your spouse might have come from the dating marketplace on the apps. Even kids will tell you one Snickers is worth at least two Twix.But sometimes, as we'll see today, markets can go terribly wrong; greed can run out of control; lives can be at risk. That's when the government often steps in and gives the market a little nudge to work better. Today's episode: Market Design.The series is hosted by Robert Smith and produced by Eric Mennel. Our project manager is Devin Mellor. This episode was edited by Planet Money Executive Producer Alex Goldmark and fact-checked by Emily Crawford. Help support Planet Money and hear our bonus episodes by subscribing to Planet Money+ in Apple Podcasts or at plus.npr.org/planetmoney.Always free at these links: Apple Podcasts, Spotify, the NPR app or anywhere you get podcasts.Find more Planet Money: Facebook / Instagram / TikTok / Our weekly Newsletter.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "id": "5qNwEQ1lrfiEGj2QbFVxuN",
       "name": "Summer School 6: When the markets need a designer",
       "show": "Planet Money",
@@ -1868,11 +1868,11 @@
       "url": "https://open.spotify.com/episode/2yXKlTVtTFnZq8B40nB7q6"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-08-13",
+      "dur_min": 59,
+      "release": "2025-08-13",
       "publisher": null,
-      "desc": null,
+      "desc": "It’s one of the weirder things Jordan Klepper has heard at Trump rallies: Democrats are drinking the blood of children to get their daily adrenochrome fix. What is adrenochrome, and how did Hillary Clinton get involved? Jordan sits down with Matt Gertz, Senior Fellow for Media Matters for America and Elise Wang, an assistant professor at California State University, Fullerton. Together, they unravel this conspiracy theory that begins in the Middle Ages, pops up in the 2016 election, and makes its way to the non-existent basement of a Washington D.C. pizza shop.   Originally Aired in 2022 Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "id": "74ume9sSWihOPuFNF3kBV9",
       "name": "Replay | Pizzagate: Are Democrats Harvesting Children's Blood? | Jordan Klepper Fingers the Conspiracy",
       "show": "The Daily Show: Ears Edition",
@@ -1912,11 +1912,11 @@
       "url": "https://open.spotify.com/episode/7sxMhBCPOmHbYjlZjWhMue"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-16",
+      "dur_min": 37,
+      "release": "2026-01-16",
       "publisher": null,
-      "desc": null,
+      "desc": "Jordan Klepper covers the latest on Trump’s whole milk antics, the president’s push to take over Greenland that has Europe mobilizing, and Mayor Zohran Mamdani’s burgeoning communist reign in New York City, which has unleashed terrors such as expanded access to childcare and free public restrooms.  Grace Kuhlenschmidt breaks down the latest tech from the CES conference: candy that puts voices in your head, razors that botch your haircut for you, robots that can see you but can’t hear you, and a chance to fulfill your dreams of beating up a machine!  Actor Wagner Moura joins Jordan Klepper, fresh off of his Golden Globe win for his performance in “The Secret Agent.” Moura, a Brazilian native, describes how the film, which takes place in 1977 Brazil during a heavy dictatorship, was a way for him and director Kleber Mendonça Filho to process their perplexity after their country’s return to dictatorship values with the election of far-right president Jair Bolsonaro in 2018. They also discuss how this period piece resonates with Brazilians today, as well as audiences all over the world who are likewise facing authoritarian threats, the importance of retaining historical memory in order to avoid repeating past mistakes, and why he gravitates towards projects that merge art with politics. Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "id": "6nv4NoUpfhn7qQORakUmfl",
       "name": "Trump Makes Milk Whole Again, Europe Defends Greenland & MAGA Blasts Mamdani | Wagner Moura",
       "show": "The Daily Show: Ears Edition",
@@ -1945,11 +1945,11 @@
       "desc": "Minneapolis tells ICE to “get the f**k out” after an agent fatally shot a woman, Kristi Noem smears the victim as a terrorist while MAGA decides she deserved it, and Ronny Chieng questions ICE’s PR push to recruit highly aggressive, unqualified agents and unleash them on American cities.  Americans are known for spoiling their living pets, but what about the ones who’ve passed? Michael Kosta explores the rising popularity of pet psychics, like Danielle MacKinnon, who claims to have the intuitive ability to communicate with all animals, past and present. Kosta learns about her process, meets her very real clients, and attempts to glean some insight into his relationship with his own dog, Walter.  Actor and producer Lucy Liu sits down with Ronny Chieng to discuss her new film, “Rosemead,” which is based on a true story about a terminally ill mother and her son. They talk about Liu’s connection to the film and how its themes of mental health and grief affected her, why every role feels like a way of documenting her life, the time she directed Ronny onscreen, and how taking risks has led to the biggest rewards in her career. Plus, Simu Liu makes a cameo!  Refresh your winter wardrobe with Quince—visit https://quince.com/DAILYSHOW for free shipping and 365-day returns.  Let Rocket Money help you reach your financial goals faster—join at https://RocketMoney.com/DAILYSHOW with promo code DAILYSHOW.  Join the thousands of parents who trust Fabric to help protect their family. Apply today in just minutes at https://meetfabric.com/daily  Learn more about your ad choices. Visit podcastchoices.com/adchoices"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-06",
+      "dur_min": 35,
+      "release": "2025-11-06",
       "publisher": null,
-      "desc": null,
+      "desc": "Jordan Klepper dives into the big wins for Democrats across the country last night, including in the hotly contested mayoral race in New York City, which ended in a historic victory for Zohran Mamdani that sparked threats of a mass exodus of Cuomo supporters from the city. Plus, nobody is more eager to get out of the city than Eric Adams, the guy who's still in charge at City Hall, so The Daily Show takes a final look back at the legacy the outgoing mayor is leaving behind.  In the Art of the Altercation, Desi Lydic unpacks Donald Trump’s long and tumultuous relationship with New York, a home he once called \"the greatest city in the world,\" but now, as president, thinks is a crime-infested hellhole that needs to be punished.  NYU professor, co-host of the Pivot podcast, and bestselling author, Scott Galloway, joins Jordan to discuss his latest book, \"Notes on Being a Man.\" Galloway explains how modern men are leaning into masculinity as a code, how our country's male role models don’t exemplify “protectors,” big tech’s ploy to sequester men from relationships, the value of being physically and emotionally involved in young men's lives, and how empathy towards men in crisis isn’t a zero-sum game. Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "id": "7DCqfmg9YzfVnCh6ZxonYa",
       "name": "Mamdani and Democrats Score Big Wins & Conservatives Melt Down | Scott Galloway",
       "show": "The Daily Show: Ears Edition",
@@ -2517,22 +2517,22 @@
       "url": "https://open.spotify.com/episode/0CkhiXsRCmSzLEaGmn2n6A"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-16",
+      "dur_min": 9,
+      "release": "2026-01-16",
       "publisher": null,
-      "desc": null,
+      "desc": "Welcome back to Indicators of the Week! Our weekly look at some of the most fascinating economic numbers from the news. On today’s episode: Influencers for ICE, China’s tremendous trade surplus, and America heads back to the moon. Related episodes: We resolve to watch these 2026 indicators China's trade war perspective Who owns the moon?For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Vito Emanuel. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "id": "0xycifEGfJfbR5l8ew4i5y",
       "name": "ICE influencers, a world-record trade surplus, and the moon goes nuclear",
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/0xycifEGfJfbR5l8ew4i5y"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-08-12",
+      "dur_min": 9,
+      "release": "2025-08-12",
       "publisher": null,
-      "desc": null,
+      "desc": "Insulin needles. Sleeping bags. Nutella. These are items Arwa Damon’s charity — International Network for Aid, Relief and Assistance — has tried to send to Gaza and Israel has rejected. It’s a glimpse into the harsh reality of a humanitarian crisis with no end in sight. Today on the show, we talk to Damon about the economics of running a humanitarian nonprofit and what’s stopping more aid from reaching Gaza. Related episodes: Why Israel uses diaspora bonds Why the U.S. helps pay for Israel’s military What could convince Egypt to take Gaza’s refugees? For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "id": "2hYNU3C2h92ALi0YUTk3Iy",
       "name": "The arduous system for getting aid into Gaza",
       "show": "The Indicator from Planet Money",
@@ -2583,11 +2583,11 @@
       "desc": "With only several seconds of audio, someone can clone a victim’s voice, call their bank, and potentially get access to … everything. Vocal deepfakes have gotten very good, but so has the technology to fight back. This week on The Indicator we're gonna bring you a special series on the evolving business of crime. In this episode, we hear from the company helping banks beat deepfakes, and we learn about the efforts to protect us all from AI voice fraud. Related episodes: Can you copyright artwork made using AI? AI creates, transforms and destroys... jobs For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-16",
+      "dur_min": 27,
+      "release": "2026-01-16",
       "publisher": null,
-      "desc": null,
+      "desc": "Seth takes a closer look at Trump threatening to use a law from 1792 to send the military into an American city, risking war with Europe over his fixation on Greenland and sending oil revenue from Venezuela to a bank account in Qatar.Then, Kenan Thompson talks about releasing his children's book \"Unfunny Bunny\" and ringing in his 23rd year as a cast member on \"Saturday Night Live\" before bringing back his author alter ego, Pernice Lafonk, to read an excerpt from his latest book, \"The Legacy of Booty.\"See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
       "id": "4sCHUhuIng2ssROVjDQm2w",
       "name": "Kenan Thompson | Trump Flips Off Auto Worker Who Called Him a \"Pedophile Protector,\" Pushes Whole Milk: A Closer Look",
       "show": "Late Night with Seth Meyers Podcast",
@@ -2660,11 +2660,11 @@
       "url": "https://open.spotify.com/episode/4HtBPD1R1y1aCq3MtD8tH3"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-05",
+      "dur_min": 43,
+      "release": "2025-11-05",
       "publisher": null,
-      "desc": null,
+      "desc": "In the ‘60s and ‘70s, world-class musicians gathered in smoky studios to record tracks that you couldn’t buy in a store… but ended up everywhere. In this episode, Dallas and the TTH crew dive into the golden age of production music: versatile cues crafted for everything from car chases to romantic montages to space odysseys. Along the way, they uncover how these obscure records found their way into sports broadcasts, hip hop singles, and modern sitcoms, and reveal the vintage library track that Quentin Tarantino brought back into style.  Twenty Thousand Hertz is produced by Defacto Sound. Subscribe on ⁠⁠⁠⁠⁠⁠⁠⁠YouTube⁠⁠⁠⁠⁠⁠⁠⁠⁠ to see our video series. If you know what this week's mystery sound is, tell us at ⁠⁠⁠⁠⁠⁠⁠⁠mystery.20k.org⁠⁠⁠⁠⁠⁠⁠⁠. Support the show and get ad-free episodes at ⁠⁠⁠⁠⁠⁠20k.org/plus⁠⁠⁠⁠⁠⁠. Follow Dallas on ⁠⁠⁠⁠⁠⁠Instagram⁠⁠⁠⁠⁠⁠, ⁠⁠⁠⁠⁠⁠TikTok⁠⁠⁠⁠⁠⁠, ⁠Facebook⁠, and ⁠⁠⁠⁠⁠⁠LinkedIn⁠⁠⁠⁠⁠⁠. Join our community on ⁠⁠⁠⁠⁠⁠Reddit⁠⁠⁠⁠⁠⁠. Explore incredible speakers, soundbars and more at ⁠sonos.com⁠. Sign up for a one-dollar-per-month trial at ⁠⁠⁠shopify.com/20k⁠⁠⁠. Visit ⁠⁠⁠quo.com/20k⁠⁠⁠ for 20% of your first 6 months of business phone software. Claim your $75 sponsored job credit at ⁠⁠⁠⁠indeed.com/hertz⁠⁠⁠⁠. Learn more about your ad choices. Visit megaphone.fm/adchoices",
       "id": "3IIuzyE9GKeocOuday8Nz3",
       "name": "The Secret Soundtracks of Movies & TV",
       "show": "Twenty Thousand Hertz",
@@ -3166,11 +3166,11 @@
       "desc": "Is social media rewiring childhood and fueling a mental health crisis? Neil deGrasse Tyson, Chuck Nice, and Gary O’Reilly explore the costs of growing up online and how to take back childhood with social psychologist and author of The Anxious Generation, Jonathan Haidt.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/the-anxious-generation-with-jonathan-haidt/Thanks to our Patrons Maz Dunic, gummibear359, Jack Bovee, Richard McCullough, Margaret, Daniel Zaibelt, Micheka K, Steph, Laura Kat Corey, Mark Benthien, Thompson Mhlanga, Robbie James, Micheal Fields, Nathanial Evans, John Malkin, Jonathan Madsen, Luis, Pete hall in Wi, Boonifa-Latifa-Shaweefa-Haweefa-Erikson-Vendez-Jackson-Hausenfef the First, Timmy Johansson, Shatesha, Jay, Lynne Henderson, Nimrod Nir, Candice Manion, Cody Rosenberg, Hai-Tue Han, Brandon DeYoung, Robert Guillot, james, Edward Madden, Jan Bart Verbist, Matthias, Orlando Calvo Arias, Raghav Kaushik, Elisa Castro, No Name, Samuel Griffith, Suresh Narayanan, Chris, Jacob, Duvall, Maarten van Nieuwstadt, Sockrateez, Cozine_stones, ERICA LOPEZ, Larry Maguire, jeffrey l. mueller, Hugo Dart, Alex Wayne, summer barker, Jonathan Thomas-Stagg, and  Vanniar Hernandez Giniebra for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising."
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-05",
+      "dur_min": 35,
+      "release": "2025-11-05",
       "publisher": null,
-      "desc": null,
+      "desc": "Almost 15% of adults suffer from a persistent, often intolerable sound... that is literally just in their heads. Why does the brain do this to us? We help one of our listeners get some answers.  This is the second episode of our new four-part series, The Sound Barrier.    Guests: Stéphane Maison, director of the tinnitus clinic at Mass Eye and Ear; Susan Shore, professor emerita at the University of Michigan, and Dan Polley, tinnitus researcher at Mass Eye and Ear    For show transcripts, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unxtranscripts  ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠For more, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unexplainable⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠  And please email us! ⁠⁠⁠⁠unexplainable@vox.com⁠⁠⁠⁠  We read every email.  Support Unexplainable (and get ad-free episodes) by becoming a Vox Member today: ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/members⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠  Thank you!   Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "id": "2r6X3Pqs1BGbQc5EuONO3m",
       "name": "The Sound Barrier #2: The noise that isn't there",
       "show": "Unexplainable",
@@ -3452,11 +3452,11 @@
       "url": "https://open.spotify.com/episode/7n5TcsEhZujjglm8QNtEN3"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-06",
+      "dur_min": 9,
+      "release": "2025-11-06",
       "publisher": null,
-      "desc": null,
+      "desc": "The “Shiller PE Ratio” is at its highest level since November of 1999. That was at the peak of the online gold rush right before the dot com bubble burst in 2000. Today on the show, we learn what the Shiller PE Ratio is, how it works and whether we should be worried that it’s relatively high right now. You can find John Campbell's book here: Fixed: Why Personal Finance is Broken and How to Make It Work for EveryoneRelated episodes: What’s a Bubble? Zombie 2nd mortgages are coming to life, threatening thousands of Americans' homes For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Tyler Jones. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "id": "1JG9QzLiy1uziYvggIm9Xe",
       "name": "This indicator hasn’t flashed this red since the dot-com bubble",
       "show": "The Indicator from Planet Money",
@@ -3507,11 +3507,11 @@
       "url": "https://open.spotify.com/episode/30DpajpQKqxv4JngrMDBEa"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-05",
+      "dur_min": 18,
+      "release": "2025-11-05",
       "publisher": null,
-      "desc": null,
+      "desc": "People in the U.S. are feeling the financial squeeze, in part because of rising inflation, higher consumer prices and slowing job growth. The Indicator from Planet Money is tackling a special series on the rising cost of living. Today, two stories from that series. First, what’s making ticket prices go up? We look at the economics behind the ticket market and how “reseller bots” are wreaking all sorts of havoc. The industry is not a fan, and yet they do serve an economic function. And… why pet care costs have surged. It comes down to unique skills, people’s love for their pets and something called the “Baumol effect.” Related episodes: - The Vet Clinic Chow Down - What Do Private Equity Firms Actually Do?  - Kid Rock vs. The Scalpers - Ticket scalpers: The real ticket masters Subscribe to Planet Money+ Listen free: Apple Podcasts, Spotify, the NPR app or anywhere you get podcasts.Facebook / Instagram / TikTok / Our weekly Newsletter. This episode is hosted by Darian Woods, Adrian Ma, and Wailin Wong. These episodes of The Indicator were originally produced by Angel Carreras. Cooper Katz McKim produced this episode. It was engineered by Robert Rodriguez and fact-checked by Sierra Juarez. Kate Concannon is The Indicator’s editor. Alex Goldmark is Planet Money's executive producer. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "id": "64oRZTntxB4qPkjit3de8o",
       "name": "Everything’s more expensive!! Pet care!! Concert tickets!! (Two Indicators)",
       "show": "Planet Money",
@@ -3934,6 +3934,61 @@
       "release": "2026-10-05",
       "url": "https://open.spotify.com/episode/5ZumnQGojfOZ4qxFVuOWAC",
       "desc": "This week's host Michael Kosta sits down with Daily Show writer Nicole Conlan to recap the latest news, and preview the week to come.  They discuss the bubonic plague making a comeback in Russia, Vivek Ramaswamy nearly dropping a child after struggling to pick him up at a campaign rally, former DHS Secretary Kristi Noem filing for divorce, and Mayor Mamdani joining forces (and hands) with his former rival Curtis Sliwa to spread flu shot awareness in NYC. Plus, Kosta and Nicole look ahead to this week's guests: Aaron Sorkin, Sebastian Stan, and Kyle MacLachlan.  Check out Michael's interview with Gianna Toboni on YouTube.  Check out Nicole's podcast The Climate Denier's Playbook on Apple Podcasts or Spotify  --  The Daily Show airs weeknights at 11/10c on Comedy Central.  Stream full episodes on Paramount+  Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices"
+    },
+    {
+      "id": "40VBBhFo4a96cKLH73gBCm",
+      "added_at": "2026-10-07",
+      "show": "Stuff You Should Know",
+      "publisher": null,
+      "name": "Short Stuff: The Style Cycle",
+      "dur_min": 13,
+      "release": "2026-10-07",
+      "url": "https://open.spotify.com/episode/40VBBhFo4a96cKLH73gBCm",
+      "desc": "Why do clothing styles get stale and then come back into fashion? Listen in to find out.See omnystudio.com/listener for privacy information."
+    },
+    {
+      "id": "1pHHFomZq3B65UnS7Xbpyi",
+      "added_at": "2026-10-07",
+      "show": "Planet Money",
+      "publisher": null,
+      "name": "Charles Ponzi's scheme (plus a new scam)",
+      "dur_min": 26,
+      "release": "2026-10-07",
+      "url": "https://open.spotify.com/episode/1pHHFomZq3B65UnS7Xbpyi",
+      "desc": "Charles Ponzi was down on his luck. In 1919, the Italian immigrant had spent a decade and a half in the U.S. He was looking for a way to get rich and tried his hand at everything — including bookkeeping, sign painting, grocery clerk, dishwasher, and librarian.He caught a lucky break in August, when he received a letter from Europe. In the envelope was an International Reply Coupon, a clever way to prepay for international postage. Ponzi realized he might be able to use these coupons to make his fortune. All he needed was investors.What happened next made him a household name. This is the story of the man behind the eponymous Ponzi scheme — a tale of financial fraud that lives up to its linguistic legacy.(Note: The original version of this episode ran in 2023.)Read Planet Money:  • Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life  • Our weekly longform Planet Money newsletter • Our weekly Indicator round-up newsletterFollow Planet Money:  • Instagram • TikTok • YouTube • FacebookListen to more Planet Money:  • Our short, daily podcast, The Indicator from Planet Money • Over 1,000 episodes in our archive on the NPR AppMerch:  • NPR Shop • The Planet Money game, Sell Me A SasquatchSupport public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.This episode was produced by James Sneed. It was fact checked by Sierra Juarez, mastered by Natasha Branch, and edited by Jess Jiang. It's based on the book Ponzi's Scheme, by Mitchell Zuckoff.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
+    },
+    {
+      "id": "3DCbjWWH7Baf5mSreaDIlP",
+      "added_at": "2026-10-07",
+      "show": "The Daily Show: Ears Edition",
+      "publisher": null,
+      "name": "Ramaswamy Nearly Drops a Kid, Paxton's Ad Backfires & Trump Wants to Fix Your Clock | Aaron Sorkin",
+      "dur_min": 40,
+      "release": "2026-10-07",
+      "url": "https://open.spotify.com/episode/3DCbjWWH7Baf5mSreaDIlP",
+      "desc": "Michael Kosta breaks down the headlines as the GOP struggles ahead of the midterms: Texas Senate candidate Ken Paxton drops an ad boasting that he tears down posters of missing children, Ohio gubernatorial candidate Vivek Ramaswamy almost drops a literal child at a campaign rally, and Trump is no help to his flailing party as he focuses on “red-dye diesel” and the inconvenience of daylight saving time. Plus, Kosta chats with Mordok the Clock Keeper (Grace Kuhlenschmidt) to get his take on the cost of changing your clocks.  Jordan Klepper sits down with a J6 insurrectionist demanding a payout for being...the victim?   Academy Award-winning screenwriter Aaron Sorkin sits down with Michael to discuss writing and directing his new film, \"The Social Reckoning.\" Sorkin discusses revisiting Mark Zuckerberg as an anti-hero 16 years after “The Social Network,” balancing his role as both writer and director of the film, and recounting how intense physicality during the writing process once landed him in the hospital with a broken nose.  --Go to https://Quince.com/dailyshow for free shipping on your order and 365-day returns.   --  https://homeserve.com/tds   --  The Daily Show airs weeknights at 11/10c on Comedy Central.  Stream full episodes on Paramount+  Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices"
+    },
+    {
+      "id": "3Kj4i902k0J4V7768udcQU",
+      "added_at": "2026-10-07",
+      "show": "Unexplainable",
+      "publisher": null,
+      "name": "How does music move us? (feat. Sylvan Esso's Amelia Meath)",
+      "dur_min": 34,
+      "release": "2026-10-07",
+      "url": "https://open.spotify.com/episode/3Kj4i902k0J4V7768udcQU",
+      "desc": "Music can give us goosebumps. It can make us cry. It can make us move. How?  Guests: Amelia Meath, songwriter and singer in Sylvan Esso; Elizabeth Margulis,  director of the Music Cognition Lab at Princeton University and author of On Repeat: How Music Plays the Mind    For show transcripts, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unxtranscripts⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠For more, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unexplainable⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠And please email us! ⁠⁠⁠unexplainable@vox.com⁠⁠⁠We read every email.Support Unexplainable (and get ad-free episodes) by becoming a Vox Member today: ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/members⁠⁠⁠⁠⁠⁠⁠⁠Thank you! Learn more about your ad choices. Visit podcastchoices.com/adchoices"
+    },
+    {
+      "id": "2ku6denxn54xzlzW3Pf7IY",
+      "added_at": "2026-10-07",
+      "show": "The Indicator from Planet Money",
+      "publisher": null,
+      "name": "One economist's answer to data center anxiety",
+      "dur_min": 9,
+      "release": "2026-10-07",
+      "url": "https://open.spotify.com/episode/2ku6denxn54xzlzW3Pf7IY",
+      "desc": "Rising electricity prices are one of the primary reasons why data centers are a public enemy this election cycle. But is it realistic to expect energy prices to stay high forever? Fact checking by Sierra Juarez.Your Next Listen No AI data centers in my backyard!Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet MoneyThe Indicator newsletter — a weekly roundup of news, ideas and staff picks.Instagram, TikTok and YouTubeFind the Planet Money book Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop!Support public media by subscribing to NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
     }
   ]
 }
