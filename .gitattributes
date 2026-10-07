@@ -1,5 +1,8 @@
 # Exclude tracked HTML from language stats
 _archive/*.html     linguist-generated
+archive/*.html      linguist-generated
+blog/about_me_blog.html linguist-generated
+cv_stuff/cv.html     linguist-generated
 header/*.html       linguist-generated
 include_footer.html linguist-generated
 

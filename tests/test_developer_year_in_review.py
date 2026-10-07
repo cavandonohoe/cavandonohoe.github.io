@@ -108,6 +108,23 @@ class HistoryTests(unittest.TestCase):
             with self.assertRaises(RuntimeError):
                 review.excluded_from_language_stats("fixture", "app.js")
 
+    def test_site_attribute_rules_keep_original_javascript(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            review.git(repo, "init", "-q")
+            review.git(repo, "config", "user.name", "Fixture")
+            review.git(repo, "config", "user.email", "fixture@example.com")
+            rules = Path(__file__).resolve().parents[1] / ".gitattributes"
+            (repo / ".gitattributes").write_text(rules.read_text())
+            review.git(repo, "add", ".gitattributes")
+            review.git(repo, "commit", "-qm", "Site language rules")
+            for path in ["index.html", "archive/sp500.html", "blog/about_me_blog.html", "cv_stuff/cv.html", "_site/index.html", "pr-215/detour-finder/app.js", "wc-momentum/vendor/three.module.js", "_archive/wc-momentum/vendor/three.module.js", "site_libs/jquery/jquery.js"]:
+                with self.subTest(path=path):
+                    self.assertTrue(review.excluded_from_language_stats(repo, path))
+            for path in ["detour-finder/app.js", "wc-momentum/main.js", "_archive/wc-momentum/main.js", "scripts/tohs/contact_workflow.js", "tests/tohs-contact-workflow.test.cjs", "movie-ranker/next.config.js"]:
+                with self.subTest(path=path):
+                    self.assertFalse(review.excluded_from_language_stats(repo, path))
+
     def test_streak_deduplicates_days_and_spans_year_end(self):
         self.assertEqual(review.longest_streak([date(2025, 12, 30), date(2025, 12, 31), date(2025, 12, 31), date(2026, 1, 1)]), 3)
         self.assertEqual(review.longest_streak([]), 0)
