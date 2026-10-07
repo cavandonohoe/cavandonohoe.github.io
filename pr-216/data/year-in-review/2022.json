@@ -1,0 +1,50 @@
+{
+  "year": 2022,
+  "commits": 102,
+  "pull_requests": 0,
+  "repositories_touched": 3,
+  "lines_added": 245244,
+  "most_used_language": "R",
+  "language_lines_added": {
+    "R": 1366,
+    "HTML": 432
+  },
+  "excluded_language_lines_added": {
+    "HTML": 174549,
+    "JavaScript": 47947,
+    "CSS": 475
+  },
+  "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, dependency files, and raw HTML inputs are excluded.",
+  "most_active_month": "April",
+  "longest_streak_days": 8,
+  "active_days": 52,
+  "monthly_commits": [
+    6,
+    3,
+    6,
+    20,
+    3,
+    1,
+    11,
+    19,
+    8,
+    2,
+    17,
+    6
+  ],
+  "biggest_project": "cavandonohoe.github.io",
+  "biggest_project_commits": 93,
+  "repositories": [
+    "cavandonohoe/cavandonohoe",
+    "cavandonohoe/cavandonohoe.github.io",
+    "cavandonohoe/confederate_statues"
+  ],
+  "repository_commits": {
+    "cavandonohoe/cavandonohoe.github.io": 93,
+    "cavandonohoe/confederate_statues": 7,
+    "cavandonohoe/cavandonohoe": 2
+  },
+  "scope": "Author-matched commits reachable from branches and tags in public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bots and other authors are excluded. Language totals exclude Linguist-generated, vendored, conventional dependency files, and raw HTML inputs. Overall lines added still include all files. PRs count public pull requests authored by the user, when available.",
+  "is_partial_year": false,
+  "generated_at": "2026-10-07T01:14:46.990848+00:00"
+}

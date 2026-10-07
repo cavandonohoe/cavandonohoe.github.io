@@ -1,0 +1,48 @@
+{
+  "year": 2021,
+  "commits": 100,
+  "pull_requests": 0,
+  "repositories_touched": 2,
+  "lines_added": 214376,
+  "most_used_language": "R",
+  "language_lines_added": {
+    "R": 3025,
+    "CSS": 26
+  },
+  "excluded_language_lines_added": {
+    "JavaScript": 147001,
+    "CSS": 14044,
+    "HTML": 8778
+  },
+  "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, dependency files, and raw HTML inputs are excluded.",
+  "most_active_month": "September",
+  "longest_streak_days": 5,
+  "active_days": 42,
+  "monthly_commits": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    7,
+    46,
+    30,
+    14,
+    3
+  ],
+  "biggest_project": "cavandonohoe.github.io",
+  "biggest_project_commits": 99,
+  "repositories": [
+    "cavandonohoe/cavandonohoe",
+    "cavandonohoe/cavandonohoe.github.io"
+  ],
+  "repository_commits": {
+    "cavandonohoe/cavandonohoe.github.io": 99,
+    "cavandonohoe/cavandonohoe": 1
+  },
+  "scope": "Author-matched commits reachable from branches and tags in public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bots and other authors are excluded. Language totals exclude Linguist-generated, vendored, conventional dependency files, and raw HTML inputs. Overall lines added still include all files. PRs count public pull requests authored by the user, when available.",
+  "is_partial_year": false,
+  "generated_at": "2026-10-07T01:14:46.990848+00:00"
+}
