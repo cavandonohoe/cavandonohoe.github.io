@@ -6,6 +6,8 @@ on:
       - '.github/workflows/year-in-review.yml'
       - 'scripts/developer_year_in_review.py'
       - 'tests/test_developer_year_in_review.py'
+      - '.gitattributes'
+      - 'data/year-in-review/**'
   schedule:
     # Daily at 08:37 UTC; refresh only the current calendar year.
     - cron: '37 8 * * *'
@@ -29,23 +31,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
       - name: Test history aggregation
         run: python3 -m unittest discover -s tests -p 'test_developer_year_in_review.py'
       - name: Generate annual developer stats
-        if: github.event_name != 'pull_request'
         env:
           GITHUB_USER: cavandonohoe
           GITHUB_TOKEN: ${{ github.token }}
           REVIEW_YEAR: ${{ inputs.year }}
           BACKFILL: ${{ inputs.backfill }}
         run: |
-          if [ "$BACKFILL" = "true" ]; then
-            python3 scripts/developer_year_in_review.py --all-years
+          if [ "$BACKFILL" = "true" ] || [ "${{ github.event_name }}" = "pull_request" ]; then
+            python3 scripts/developer_year_in_review.py --all-years --repository-override "$GITHUB_REPOSITORY=$GITHUB_WORKSPACE"
           elif [ "${{ github.event.schedule }}" = "37 8 * * *" ]; then
-            python3 scripts/developer_year_in_review.py --year "$(date -u +%Y)"
+            python3 scripts/developer_year_in_review.py --year "$(date -u +%Y)" --repository-override "$GITHUB_REPOSITORY=$GITHUB_WORKSPACE"
           else
-            python3 scripts/developer_year_in_review.py
+            python3 scripts/developer_year_in_review.py --repository-override "$GITHUB_REPOSITORY=$GITHUB_WORKSPACE"
           fi
+      - name: Upload regenerated snapshots
+        uses: actions/upload-artifact@v7
+        with:
+          name: developer-year-in-review
+          path: data/year-in-review/*.json
       - name: Commit snapshot
         if: github.event_name != 'pull_request'
         run: |
