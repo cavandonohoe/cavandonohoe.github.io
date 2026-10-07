@@ -224,3 +224,25 @@ test('refresh reads Sheet-only inputs and audits before writing generated output
   assert.throws(()=>vm.runInContext('refreshContactWorkflow()',context),/audit failure/);
   assert.equal(writes.length,0);
 });
+
+
+// Organized workbook regression tests.
+{
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const code=fs.readFileSync('scripts/tohs/contact_workflow.js','utf8');
+function context(rows){const writes=[]; const sheet={getDataRange:()=>({getDisplayValues:()=>rows,getValues:()=>rows}),getRange:()=>({setValues:v=>writes.push(v)})};const c={ss:{getSheetByName:n=>n==='Contacts'?sheet:n==='Master Contacts'?{getDataRange:()=>({getDisplayValues:()=>[['roster_id'],['125']]})}:null}};vm.createContext(c);vm.runInContext(code,c);return {c,writes};}
+const header=['Roster ID','First Name','Graduation Last Name','Current/Preferred Name','Primary Email','Phone','Reunion Interest','Committee Interest','Field Sources','Contact Status','Alternate Email','Last Contacted','Last Verified','Contact Source','Notes'];
+test('direct Contacts edit becomes public coverage and keeps current name and tracking fields',()=>{const rows=[header,['125','Jessica','Dorthalina','Jessica Rogers','jessica@example.invalid','','Yes','No','{}','','other@example.invalid','2026-10-06','2026-10-07','Text','Follow up']];const {c,writes}=context(rows);vm.runInContext('const result = reconcileContacts(editableRoster(ss),[],{}); writeEditableContacts(ss,result);',c);assert.equal(vm.runInContext('result.publicRows[0].email_bool',c),true);assert.equal(writes[0][0][3],'Jessica Rogers');assert.equal(writes[0][0][9],'Email collected');assert.deepEqual([...writes[0][0].slice(10)],rows[1].slice(10));assert.equal(JSON.stringify(vm.runInContext('result.publicRows',c)).includes('@'),false);});
+test('ID deletions and invalid primary emails refuse publication',()=>{let {c}=context([header]);assert.throws(()=>vm.runInContext('editableRoster(ss)',c),/IDs changed/);({c}=context([header,['125','Jessica','Dorthalina','','invalid']]));assert.throws(()=>vm.runInContext('editableRoster(ss)',c),/Invalid primary email/);});
+test('short rows are padded and a conflict marks the existing contact for review',()=>{const {c,writes}=context([header,['125','Jessica','Dorthalina','','saved@example.invalid','','','','{}']]);vm.runInContext('writeEditableContacts(ss,{master:editableRoster(ss),review:[{roster_id:"125"}]})',c);assert.equal(writes[0][0].length,15);assert.equal(writes[0][0][9],'Needs review');});
+test('review actions require a note and survive through the decision archive',()=>{
+ const decisionRows=[['response_id','roster_id','action','reviewer_note'],['old','125','Approve fill','Previously verified']];
+ let reviewRows=[['Response ID','Roster ID','Reason','First Name','Last Name','Current/Preferred Name','Submitted Email','Phone','Reunion Interest','Committee Interest','Action','Reviewer Note'],['new','125','','Jessica','Dorthalina','','','','','','Approve replacement','Confirmed by organizer']];
+ const c={ss:{getSheetByName:n=>({getDataRange:()=>({getDisplayValues:()=>n==='Review Decisions'?decisionRows:reviewRows})})}};
+ vm.createContext(c);vm.runInContext(code,c);
+ assert.equal(vm.runInContext('readOrganizedDecisions(ss).new.note',c),'Confirmed by organizer');
+ assert.equal(vm.runInContext('readOrganizedDecisions(ss).old.action',c),'Approve fill');
+ reviewRows[1][11]='';assert.throws(()=>vm.runInContext('readOrganizedDecisions(ss)',c),/reviewer note required/);
+});
+
+}

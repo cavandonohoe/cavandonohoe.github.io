@@ -1,27 +1,27 @@
 {
-  "generated_at": "2026-10-05T22:55:54.906921+00:00",
+  "generated_at": "2026-10-06T21:15:20.412652+00:00",
   "window_days": 30,
-  "commits": 155,
+  "commits": 172,
   "active_areas": [
     {
       "name": "data",
-      "file_touches": 390
+      "file_touches": 400
     },
     {
       "name": "site",
-      "file_touches": 95
+      "file_touches": 99
     },
     {
       "name": "images",
-      "file_touches": 84
+      "file_touches": 92
     },
     {
       "name": ".github",
-      "file_touches": 52
+      "file_touches": 53
     },
     {
-      "name": "analysis",
-      "file_touches": 22
+      "name": "podcast-dashboard",
+      "file_touches": 23
     }
   ]
 }
