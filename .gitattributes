@@ -9,3 +9,11 @@ include_footer.html linguist-generated
 
 # Exclude vendored libraries from language stats
 _archive/wc-momentum/vendor/** linguist-vendored
+wc-momentum/vendor/** linguist-vendored
+site_libs/** linguist-vendored
+
+# Historical R Markdown builds and deployed preview copies are generated.
+# Hand-authored app sources (including their JavaScript) remain counted.
+/*.html linguist-generated
+_site/** linguist-generated
+pr-*/** linguist-generated

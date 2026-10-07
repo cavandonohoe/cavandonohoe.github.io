@@ -71,6 +71,9 @@ class HistoryTests(unittest.TestCase):
                 "site_libs/widget.js": "const widget = true;\n" * 100,
                 "nested/node_modules/package/index.js": "const dependency = true;\n" * 100,
                 "explicit/app.js": "const authored = true;\n",
+                "pr-215/app.js": "const deployed = true;\n" * 100,
+                "_site/index.html": "<p>Rendered</p>\n" * 100,
+                "index.html": "<p>Rendered</p>\n" * 100,
             }
             for path, content in files.items():
                 target = source / path
@@ -84,6 +87,9 @@ class HistoryTests(unittest.TestCase):
                 "generated/** linguist-generated=true\n"
                 "marked/** linguist-vendored\n"
                 "explicit/** linguist-generated=false linguist-vendored=false\n"
+                "pr-*/** linguist-generated\n"
+                "_site/** linguist-generated\n"
+                "/*.html linguist-generated\n"
             )
             review.git(source, "add", ".")
             review.git(source, "commit", "-qm", "Classify generated and vendored files")
@@ -94,8 +100,8 @@ class HistoryTests(unittest.TestCase):
             now = datetime.now(timezone.utc)
             result = review.snapshot(now.year, [("cavandonohoe/project", row) for row in rows], now)
             self.assertEqual(result["language_lines_added"], {"JavaScript": 8, "R": 5})
-            self.assertEqual(result["excluded_language_lines_added"], {"JavaScript": 500})
-            self.assertEqual(result["lines_added"], 516)
+            self.assertEqual(result["excluded_language_lines_added"], {"JavaScript": 600, "HTML": 200})
+            self.assertEqual(result["lines_added"], 819)
 
     def test_attribute_failure_does_not_publish_unfiltered_totals(self):
         with patch.object(review, "git", side_effect=subprocess.CalledProcessError(1, "git")):
