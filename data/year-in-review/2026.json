@@ -6,7 +6,7 @@
   "lines_added": 58873227,
   "most_used_language": "R",
   "language_lines_added": {
-    "R": 31969,
+    "R": 30531,
     "TypeScript": 7453,
     "Python": 6531,
     "JavaScript": 4687,
@@ -1644,18 +1644,6 @@
             "sha": "05b9706d4eed5e8cbdee920d461069b18b0b44aa",
             "date": "2026-03-24",
             "lines_added": 27
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "renv/activate.R",
-        "lines_added": 1438,
-        "commits": [
-          {
-            "sha": "ed18626be8d2aaac2fb2556d6a30cf6940d5ed23",
-            "date": "2026-06-22",
-            "lines_added": 1438
           }
         ]
       },
@@ -5774,7 +5762,7 @@
     "JavaScript": 15628114,
     "HTML": 6083573,
     "CSS": 3585716,
-    "R": 850897,
+    "R": 852335,
     "TypeScript": 242700,
     "SQL": 125789,
     "Python": 84658,

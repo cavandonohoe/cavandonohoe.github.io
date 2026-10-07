@@ -22,6 +22,9 @@ DEPENDENCY_DIRS = {"node_modules", "vendor", "vendors", "third_party", "third-pa
 def excluded_from_language_stats(repo, path):
     """Match GitHub Linguist exclusions plus conventional dependency directories."""
     parts = Path(path).parts
+    # renv writes this bootstrap script; it is not authored project code.
+    if tuple(part.casefold() for part in parts[-2:]) == ("renv", "activate.r"):
+        return True
     if any(part.casefold() in DEPENDENCY_DIRS for part in parts[:-1]):
         return True
     # Downloaded HTML under R packages' raw-data directory is an input dataset.

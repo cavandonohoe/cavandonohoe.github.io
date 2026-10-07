@@ -76,6 +76,7 @@ class HistoryTests(unittest.TestCase):
                 "index.html": "<p>Rendered</p>\n" * 100,
                 "data-raw/download.html": "<p>Downloaded</p>\n" * 100,
                 "data-raw/prepare.R": "x <- 1\n",
+                "renv/activate.R": "# Generated bootstrap\n" * 100,
             }
             for path, content in files.items():
                 target = source / path
@@ -102,8 +103,8 @@ class HistoryTests(unittest.TestCase):
             now = datetime.now(timezone.utc)
             result = review.snapshot(now.year, [("cavandonohoe/project", row) for row in rows], now)
             self.assertEqual(result["language_lines_added"], {"JavaScript": 8, "R": 6})
-            self.assertEqual(result["excluded_language_lines_added"], {"JavaScript": 600, "HTML": 300})
-            self.assertEqual(result["lines_added"], 920)
+            self.assertEqual(result["excluded_language_lines_added"], {"JavaScript": 600, "HTML": 300, "R": 100})
+            self.assertEqual(result["lines_added"], 1020)
             files = result["language_files"]["JavaScript"]
             self.assertEqual(sum(file["lines_added"] for file in files), 8)
             self.assertEqual({file["path"] for file in files}, {"app.js", "_archive/wc-momentum/main.js", "scripts/tohs/contact_workflow.js", "explicit/app.js"})
