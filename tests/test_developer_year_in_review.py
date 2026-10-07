@@ -104,6 +104,26 @@ class HistoryTests(unittest.TestCase):
             self.assertEqual(result["language_lines_added"], {"JavaScript": 8, "R": 6})
             self.assertEqual(result["excluded_language_lines_added"], {"JavaScript": 600, "HTML": 300})
             self.assertEqual(result["lines_added"], 920)
+            files = result["language_files"]["JavaScript"]
+            self.assertEqual(sum(file["lines_added"] for file in files), 8)
+            self.assertEqual({file["path"] for file in files}, {"app.js", "_archive/wc-momentum/main.js", "scripts/tohs/contact_workflow.js", "explicit/app.js"})
+            for file in files:
+                self.assertEqual(sum(commit["lines_added"] for commit in file["commits"]), file["lines_added"])
+                self.assertEqual(file["repository"], "cavandonohoe/project")
+                self.assertEqual(len(file["commits"][0]["sha"]), 40)
+
+    def test_file_attribution_separates_repositories_and_calendar_years(self):
+        records = [
+            ("cavandonohoe/one", {"sha": "a", "day": date(2026, 1, 1), "added": 3, "languages": {"R": 3}, "language_files": {"R": {"app.R": 3}}}),
+            ("cavandonohoe/one", {"sha": "b", "day": date(2026, 2, 1), "added": 2, "languages": {"R": 2}, "language_files": {"R": {"app.R": 2}}}),
+            ("cavandonohoe/two", {"sha": "c", "day": date(2026, 1, 1), "added": 7, "languages": {"R": 7}, "language_files": {"R": {"app.R": 7}}}),
+            ("cavandonohoe/one", {"sha": "d", "day": date(2025, 1, 1), "added": 100, "languages": {"R": 100}, "language_files": {"R": {"app.R": 100}}}),
+        ]
+        result = review.snapshot(2026, records, datetime(2026, 10, 7, tzinfo=timezone.utc))
+        files = result["language_files"]["R"]
+        self.assertEqual([file["lines_added"] for file in files], [7, 5])
+        self.assertEqual([commit["sha"] for commit in files[1]["commits"]], ["b", "a"])
+        self.assertEqual(sum(file["lines_added"] for file in files), result["language_lines_added"]["R"])
 
     def test_attribute_failure_does_not_publish_unfiltered_totals(self):
         with patch.object(review, "git", side_effect=subprocess.CalledProcessError(1, "git")):
