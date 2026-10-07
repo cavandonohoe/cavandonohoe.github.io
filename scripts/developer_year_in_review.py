@@ -24,6 +24,10 @@ def excluded_from_language_stats(repo, path):
     parts = Path(path).parts
     if any(part.casefold() in DEPENDENCY_DIRS for part in parts[:-1]):
         return True
+    # Downloaded HTML under R packages' raw-data directory is an input dataset.
+    # Keep the authored R/Python/JavaScript scripts alongside it counted.
+    if Path(path).suffix.casefold() == ".html" and "data-raw" in parts[:-1]:
+        return True
     try:
         # Read the selected ref's rules even in --no-checkout clones. These rules
         # intentionally also classify deleted files and their historical paths.
@@ -122,7 +126,7 @@ def snapshot(year, records, now):
         "most_used_language": languages.most_common(1)[0][0] if languages else None,
         "language_lines_added": dict(languages.most_common()),
         "excluded_language_lines_added": dict(excluded_languages.most_common()),
-        "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, and dependency files are excluded.",
+        "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, dependency files, and raw HTML inputs are excluded.",
         "most_active_month": calendar.month_name[months.most_common(1)[0][0]] if months else None,
         "longest_streak_days": longest_streak(days),
         "active_days": len(set(days)),
@@ -131,7 +135,7 @@ def snapshot(year, records, now):
         "biggest_project_commits": project_commits,
         "repositories": sorted(repos),
         "repository_commits": dict(repos.most_common()),
-        "scope": "Author-matched commits reachable from branches and tags in public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bots and other authors are excluded. Language totals exclude Linguist-generated, vendored, and conventional dependency files. Overall lines added still include all files. PRs count public pull requests authored by the user, when available.",
+        "scope": "Author-matched commits reachable from branches and tags in public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bots and other authors are excluded. Language totals exclude Linguist-generated, vendored, conventional dependency files, and raw HTML inputs. Overall lines added still include all files. PRs count public pull requests authored by the user, when available.",
         "is_partial_year": year == now.year,
         "generated_at": now.isoformat(),
     }

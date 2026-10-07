@@ -74,6 +74,8 @@ class HistoryTests(unittest.TestCase):
                 "pr-215/app.js": "const deployed = true;\n" * 100,
                 "_site/index.html": "<p>Rendered</p>\n" * 100,
                 "index.html": "<p>Rendered</p>\n" * 100,
+                "data-raw/download.html": "<p>Downloaded</p>\n" * 100,
+                "data-raw/prepare.R": "x <- 1\n",
             }
             for path, content in files.items():
                 target = source / path
@@ -99,9 +101,9 @@ class HistoryTests(unittest.TestCase):
             rows = list(review.read_history(clone))
             now = datetime.now(timezone.utc)
             result = review.snapshot(now.year, [("cavandonohoe/project", row) for row in rows], now)
-            self.assertEqual(result["language_lines_added"], {"JavaScript": 8, "R": 5})
-            self.assertEqual(result["excluded_language_lines_added"], {"JavaScript": 600, "HTML": 200})
-            self.assertEqual(result["lines_added"], 819)
+            self.assertEqual(result["language_lines_added"], {"JavaScript": 8, "R": 6})
+            self.assertEqual(result["excluded_language_lines_added"], {"JavaScript": 600, "HTML": 300})
+            self.assertEqual(result["lines_added"], 920)
 
     def test_attribute_failure_does_not_publish_unfiltered_totals(self):
         with patch.object(review, "git", side_effect=subprocess.CalledProcessError(1, "git")):
@@ -121,7 +123,7 @@ class HistoryTests(unittest.TestCase):
             for path in ["index.html", "archive/sp500.html", "blog/about_me_blog.html", "cv_stuff/cv.html", "_site/index.html", "pr-215/detour-finder/app.js", "wc-momentum/vendor/three.module.js", "_archive/wc-momentum/vendor/three.module.js", "site_libs/jquery/jquery.js"]:
                 with self.subTest(path=path):
                     self.assertTrue(review.excluded_from_language_stats(repo, path))
-            for path in ["detour-finder/app.js", "wc-momentum/main.js", "_archive/wc-momentum/main.js", "scripts/tohs/contact_workflow.js", "tests/tohs-contact-workflow.test.cjs", "movie-ranker/next.config.js"]:
+            for path in ["detour-finder/app.js", "wc-momentum/main.js", "_archive/wc-momentum/main.js", "scripts/tohs/contact_workflow.js", "tests/tohs-contact-workflow.test.cjs", "movie-ranker/next.config.js", "data-raw/prepare.js"]:
                 with self.subTest(path=path):
                     self.assertFalse(review.excluded_from_language_stats(repo, path))
 
