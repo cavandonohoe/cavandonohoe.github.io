@@ -1,0 +1,47 @@
+{
+  "year": 2026,
+  "commits": 778,
+  "pull_requests": 203,
+  "repositories_touched": 6,
+  "lines_added": 56363463,
+  "most_used_language": "JavaScript",
+  "language_basis": "Lines added in recognized source files during this year",
+  "most_active_month": "June",
+  "longest_streak_days": 5,
+  "active_days": 87,
+  "monthly_commits": [
+    28,
+    77,
+    63,
+    57,
+    64,
+    134,
+    122,
+    44,
+    107,
+    82,
+    0,
+    0
+  ],
+  "biggest_project": "cavandonohoe.github.io",
+  "biggest_project_commits": 686,
+  "repositories": [
+    "cavandonohoe/cavandonohoe",
+    "cavandonohoe/cavandonohoe.github.io",
+    "cavandonohoe/confederate_statues",
+    "cavandonohoe/docuchat",
+    "cavandonohoe/grocery-compare",
+    "cavandonohoe/rent-vs-buy"
+  ],
+  "repository_commits": {
+    "cavandonohoe/cavandonohoe.github.io": 686,
+    "cavandonohoe/rent-vs-buy": 38,
+    "cavandonohoe/grocery-compare": 18,
+    "cavandonohoe/confederate_statues": 17,
+    "cavandonohoe/docuchat": 12,
+    "cavandonohoe/cavandonohoe": 7
+  },
+  "scope": "Author-matched commits reachable from branches and tags in public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bots and other authors are excluded. Lines added include generated files. PRs count public pull requests authored by the user, when available.",
+  "is_partial_year": true,
+  "generated_at": "2026-10-05T02:45:59.891818+00:00"
+}
