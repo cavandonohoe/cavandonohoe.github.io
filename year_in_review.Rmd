@@ -30,6 +30,22 @@ Commit totals and streaks reflect my personal commits in public repositories. Au
 .year-hero th, .year-hero td { padding:.5rem; text-align:left; border-bottom:1px solid rgba(255,255,255,.14); }
 .year-hero td:first-child { overflow-wrap:anywhere; }
 .year-hero caption { color:#fff; text-align:left; font-weight:600; }
+.year-web-highlights { margin-top:1.4rem; }
+.year-web-highlights h2 { font-size:1.3rem; margin-bottom:.4rem; color:inherit; }
+.year-web-highlights p { opacity:.75; }
+.year-web-highlights .year-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.year-web-highlights .year-stat { border-top:3px solid #facc15; }
+.year-web-highlights .year-stat:last-child { border-top-color:#fb923c; }
+.year-web-history { margin:2rem 0; padding:1.4rem; border:1px solid #cbd5e1; border-radius:14px; background:#f8fafc; color:#0f172a; }
+.year-web-history h2 { margin-top:0; font-size:1.5rem; }
+.year-web-table { width:100%; table-layout:fixed; }
+.year-web-table caption { color:#475569; text-align:left; margin-bottom:.6rem; }
+.year-web-table th, .year-web-table td { padding:.7rem .45rem; border-bottom:1px solid #cbd5e1; }
+.year-web-table th { text-align:left; }
+.year-web-table .year-web-number { text-align:right; font-variant-numeric:tabular-nums; }
+.year-web-table tr[aria-current="true"] { background:#e0f2fe; font-weight:700; }
+.year-web-table a { color:#075985; text-decoration:underline; }
+.year-web-history .year-web-note { margin-top:1rem; color:#475569; font-size:.9rem; }
 @media(max-width:480px) { .year-hero { padding:1.2rem; } .year-stat strong { font-size:1.5rem; } }
 </style>
 
@@ -51,6 +67,11 @@ if (!length(files) || !requireNamespace("jsonlite", quietly = TRUE)) {
   val <- function(x, fallback="—") if (is.null(x) || is.na(x) || identical(x, "")) fallback else x
   escape <- function(x) as.character(htmltools::htmlEscape(as.character(val(x))))
   fmt <- function(x) if (is.numeric(x)) format(x, big.mark=",", scientific=FALSE, trim=TRUE) else val(x)
+  language_total <- function(d, language) {
+    if (is.null(d$language_lines_added)) return(NULL)
+    total <- d$language_lines_added[[language]]
+    if (is.null(total)) 0 else total
+  }
   for (d in reviews) {
   cat(paste0(
     '<section class="year-hero" id="year-', d$year, '" aria-label="', d$year, ' developer review">',
@@ -67,6 +88,14 @@ if (!length(files) || !requireNamespace("jsonlite", quietly = TRUE)) {
       '<div class="year-detail"><strong>Most-active month:</strong> ', escape(d$most_active_month), '</div>',
       '<div class="year-detail"><strong>Longest streak:</strong> ', fmt(d$longest_streak_days), ' days</div>',
     '</div>',
+    '<div class="year-web-highlights">',
+      '<h2>JavaScript &amp; HTML in ', d$year, '</h2>',
+      '<p>First-party lines added during this year.</p>',
+      '<div class="year-grid">',
+        '<div class="year-stat"><strong>', fmt(language_total(d, 'JavaScript')), '</strong><span>JavaScript lines added</span></div>',
+        '<div class="year-stat"><strong>', fmt(language_total(d, 'HTML')), '</strong><span>HTML lines added</span></div>',
+      '</div>',
+    '</div>',
     '<div class="year-project"><strong>Biggest project</strong><br>', escape(d$biggest_project),
       if (!is.null(d$biggest_project_commits)) paste0(' · ', fmt(d$biggest_project_commits), ' commits') else '', '</div>',
     if (!is.null(d$repository_commits)) paste0(
@@ -78,6 +107,17 @@ if (!length(files) || !requireNamespace("jsonlite", quietly = TRUE)) {
     '</section>'
   ))
   }
+  cat('<section class="year-web-history" aria-labelledby="year-web-history-title">',
+      '<h2 id="year-web-history-title">JavaScript &amp; HTML through the years</h2>',
+      '<table class="year-web-table"><caption>First-party lines added by year. Select a year to view its full review.</caption>',
+      '<thead><tr><th scope="col">Year</th><th scope="col" class="year-web-number">JavaScript</th><th scope="col" class="year-web-number">HTML</th></tr></thead><tbody>')
+  for (d in reviews) {
+    cat(paste0('<tr data-review-year="', d$year, '"><th scope="row"><a href="#year-', d$year, '">', d$year,
+               if (isTRUE(d$is_partial_year)) ' · YTD' else '', '</a></th>',
+               '<td class="year-web-number">', fmt(language_total(d, 'JavaScript')), '</td>',
+               '<td class="year-web-number">', fmt(language_total(d, 'HTML')), '</td></tr>'))
+  }
+  cat('</tbody></table><p class="year-web-note">Generated outputs, vendored libraries, and raw HTML inputs are excluded. Zero means no recorded first-party additions for that language; a dash means the breakdown is unavailable.</p></section>')
 }
 ```
 
@@ -87,6 +127,7 @@ Past reviews are reconstructed from public commit history. Each January 1, GitHu
 (function () {
   const reviews = Array.from(document.querySelectorAll('section.year-hero[id]'));
   const links = Array.from(document.querySelectorAll('.year-nav a'));
+  const languageRows = Array.from(document.querySelectorAll('.year-web-table tr[data-review-year]'));
   if (!reviews.length) return;
   function selectYear() {
     const selected = reviews.find(review => '#' + review.id === window.location.hash) || reviews[0];
@@ -94,6 +135,10 @@ Past reviews are reconstructed from public commit history. Each January 1, GitHu
     links.forEach(link => {
       if (link.getAttribute('href') === '#' + selected.id) link.setAttribute('aria-current', 'page');
       else link.removeAttribute('aria-current');
+    });
+    languageRows.forEach(row => {
+      if ('year-' + row.dataset.reviewYear === selected.id) row.setAttribute('aria-current', 'true');
+      else row.removeAttribute('aria-current');
     });
   }
   window.addEventListener('hashchange', selectYear);
