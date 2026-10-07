@@ -57,7 +57,7 @@
     {
       "project": "assets",
       "tracked_files": 1,
-      "commits_touching_project": 7,
+      "commits_touching_project": 8,
       "top_extensions": [
         [
           ".svg",
@@ -162,7 +162,7 @@
     {
       "project": "images",
       "tracked_files": 11,
-      "commits_touching_project": 50,
+      "commits_touching_project": 51,
       "top_extensions": [
         [
           ".jpg",
@@ -273,7 +273,7 @@
     {
       "project": "tests",
       "tracked_files": 12,
-      "commits_touching_project": 13,
+      "commits_touching_project": 14,
       "top_extensions": [
         [
           ".r",
