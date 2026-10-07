@@ -11,7 +11,7 @@ lang: "en"
 Commit totals and streaks reflect my personal commits in public repositories. Automated bot commits are excluded. Streaks use UTC calendar days.
 
 <style>
-.year-hero { margin: 2rem 0; padding: 2.4rem; border-radius: 18px; background: linear-gradient(135deg,#111827,#1f2937); color:#fff; box-shadow:0 14px 34px rgba(0,0,0,.18); }
+.year-hero { scroll-margin-top:6rem; margin: 2rem 0; padding: 2.4rem; border-radius: 18px; background: linear-gradient(135deg,#111827,#1f2937); color:#fff; box-shadow:0 14px 34px rgba(0,0,0,.18); }
 .year-kicker { text-transform:uppercase; letter-spacing:.16em; font-size:.8rem; opacity:.72; }
 .year-title { font-size:clamp(2.3rem,7vw,5.6rem); line-height:.95; margin:.4rem 0 1.6rem; font-weight:800; }
 .year-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(145px,1fr)); gap:1rem; }
@@ -129,7 +129,7 @@ Past reviews are reconstructed from public commit history. Each January 1, GitHu
   const links = Array.from(document.querySelectorAll('.year-nav a'));
   const languageRows = Array.from(document.querySelectorAll('.year-web-table tr[data-review-year]'));
   if (!reviews.length) return;
-  function selectYear() {
+  function selectYear(scrollToReview = false) {
     const selected = reviews.find(review => '#' + review.id === window.location.hash) || reviews[0];
     reviews.forEach(review => { review.hidden = review !== selected; });
     links.forEach(link => {
@@ -140,8 +140,9 @@ Past reviews are reconstructed from public commit history. Each January 1, GitHu
       if ('year-' + row.dataset.reviewYear === selected.id) row.setAttribute('aria-current', 'true');
       else row.removeAttribute('aria-current');
     });
+    if (scrollToReview) selected.scrollIntoView({ block: 'start' });
   }
-  window.addEventListener('hashchange', selectYear);
-  selectYear();
+  window.addEventListener('hashchange', () => selectYear(true));
+  selectYear(Boolean(window.location.hash));
 })();
 </script>
