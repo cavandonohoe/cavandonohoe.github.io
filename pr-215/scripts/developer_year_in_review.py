@@ -16,7 +16,7 @@ USER = os.getenv("GITHUB_USER", "cavandonohoe")
 TOKEN = os.getenv("GH_STATS_TOKEN") or os.getenv("GITHUB_TOKEN")
 AUTHOR_NAMES = {USER.casefold(), *[x.strip().casefold() for x in os.getenv("GITHUB_AUTHOR_NAMES", "Cavan Donohoe").split(",")]}
 LANGUAGES = {".r": "R", ".rmd": "R", ".py": "Python", ".js": "JavaScript", ".cjs": "JavaScript", ".ts": "TypeScript", ".tsx": "TypeScript", ".html": "HTML", ".css": "CSS", ".sql": "SQL", ".sh": "Shell"}
-DEPENDENCY_DIRS = {"node_modules", "vendor", "vendors", "third_party", "third-party"}
+DEPENDENCY_DIRS = {"node_modules", "vendor", "vendors", "third_party", "third-party", "site_libs"}
 
 
 def excluded_from_language_stats(repo, path):
@@ -24,10 +24,16 @@ def excluded_from_language_stats(repo, path):
     parts = Path(path).parts
     if any(part.casefold() in DEPENDENCY_DIRS for part in parts[:-1]):
         return True
+    # Downloaded HTML under R packages' raw-data directory is an input dataset.
+    # Keep the authored R/Python/JavaScript scripts alongside it counted.
+    if Path(path).suffix.casefold() == ".html" and "data-raw" in parts[:-1]:
+        return True
     try:
-        attrs = git(repo, "check-attr", "linguist-generated", "linguist-vendored", "--", path).splitlines()
-    except subprocess.CalledProcessError:
-        return False
+        # Read the selected ref's rules even in --no-checkout clones. These rules
+        # intentionally also classify deleted files and their historical paths.
+        attrs = git(repo, "check-attr", "--source=HEAD", "linguist-generated", "linguist-vendored", "--", path).splitlines()
+    except subprocess.CalledProcessError as exc:
+        raise RuntimeError(f"Cannot classify language statistics for {repo}: {path}") from exc
     return any(line.rsplit(": ", 1)[-1].strip().casefold() in {"set", "true"} for line in attrs)
 
 
@@ -73,6 +79,7 @@ def read_history(repo):
         raise ValueError(f"Full commit history is required: {repo}")
     log = git(repo, "log", "--all", "--numstat", "--no-renames", "--format=%x1e%H|%aI|%an|%ae")
     seen = set()
+    exclusions = {}
     for block in log.split("\x1e"):
         if not block.strip():
             continue
@@ -83,7 +90,7 @@ def read_history(repo):
         seen.add(sha)
         # Half-open calendar years, based on author dates normalized to UTC.
         day = datetime.fromisoformat(stamp).astimezone(timezone.utc).date()
-        added, languages = 0, Counter()
+        added, languages, excluded_languages = 0, Counter(), Counter()
         for line in lines:
             parts = line.split("\t", 2)
             if len(parts) == 3 and parts[0].isdigit():
@@ -91,9 +98,12 @@ def read_history(repo):
                 added += count
                 path = parts[2]
                 language = LANGUAGES.get(Path(path).suffix.casefold())
-                if language and not excluded_from_language_stats(repo, path):
-                    languages[language] += count
-        yield {"sha": sha, "day": day, "added": added, "languages": languages}
+                if language:
+                    if path not in exclusions:
+                        exclusions[path] = excluded_from_language_stats(repo, path)
+                    totals = excluded_languages if exclusions[path] else languages
+                    totals[language] += count
+        yield {"sha": sha, "day": day, "added": added, "languages": languages, "excluded_languages": excluded_languages}
 
 
 def snapshot(year, records, now):
@@ -102,8 +112,10 @@ def snapshot(year, records, now):
     days = [row["day"] for _, row in rows]
     months = Counter(day.month for day in days)
     languages = Counter()
+    excluded_languages = Counter()
     for _, row in rows:
         languages.update(row["languages"])
+        excluded_languages.update(row.get("excluded_languages", {}))
     project, project_commits = repos.most_common(1)[0] if repos else (None, 0)
     return {
         "year": year,
@@ -112,7 +124,9 @@ def snapshot(year, records, now):
         "repositories_touched": len(repos),
         "lines_added": sum(row["added"] for _, row in rows),
         "most_used_language": languages.most_common(1)[0][0] if languages else None,
-        "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, and dependency files are excluded.",
+        "language_lines_added": dict(languages.most_common()),
+        "excluded_language_lines_added": dict(excluded_languages.most_common()),
+        "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, dependency files, and raw HTML inputs are excluded.",
         "most_active_month": calendar.month_name[months.most_common(1)[0][0]] if months else None,
         "longest_streak_days": longest_streak(days),
         "active_days": len(set(days)),
@@ -121,7 +135,7 @@ def snapshot(year, records, now):
         "biggest_project_commits": project_commits,
         "repositories": sorted(repos),
         "repository_commits": dict(repos.most_common()),
-        "scope": "Author-matched commits reachable from branches and tags in public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bots and other authors are excluded. Language totals exclude Linguist-generated, vendored, and conventional dependency files. Overall lines added still include all files. PRs count public pull requests authored by the user, when available.",
+        "scope": "Author-matched commits reachable from branches and tags in public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bots and other authors are excluded. Language totals exclude Linguist-generated, vendored, conventional dependency files, and raw HTML inputs. Overall lines added still include all files. PRs count public pull requests authored by the user, when available.",
         "is_partial_year": year == now.year,
         "generated_at": now.isoformat(),
     }
@@ -132,9 +146,16 @@ def main():
     parser.add_argument("--all-years", action="store_true", help="Backfill every year with authored commits; clone each repository once")
     parser.add_argument("--year", type=int)
     parser.add_argument("--local-repos", type=Path, help="JSON map of public repository full names to complete local checkouts")
+    parser.add_argument("--repository-override", action="append", default=[], metavar="OWNER/REPO=PATH", help="Use a full local checkout for a public repository, including its current attribute rules")
     parser.add_argument("--pr-counts", type=Path, help="Pre-fetched public PR counts keyed by year")
     parser.add_argument("--output", type=Path, default=Path("data/year-in-review"))
     args = parser.parse_args()
+    overrides = {}
+    for entry in args.repository_override:
+        name, separator, dest = entry.partition("=")
+        if not separator or not name or not dest:
+            parser.error("Repository overrides must use OWNER/REPO=PATH")
+        overrides[name] = dest
     now = datetime.now(timezone.utc)
     year = args.year or int(os.getenv("REVIEW_YEAR") or 0) or (now.year - 1 if now.month == 1 else now.year)
     if not 1970 <= year <= now.year:
@@ -146,6 +167,9 @@ def main():
         else:
             checkouts = {}
             for meta in public_repos():
+                if meta["full_name"] in overrides:
+                    checkouts[meta["full_name"]] = overrides[meta["full_name"]]
+                    continue
                 dest = Path(tmp) / meta["name"]
                 # Fail instead of publishing a silently incomplete archive.
                 subprocess.run(["git", "clone", "--quiet", "--no-checkout", meta["clone_url"], str(dest)], check=True, timeout=300)
