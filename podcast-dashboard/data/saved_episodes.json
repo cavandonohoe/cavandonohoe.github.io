@@ -2,10 +2,10 @@
   "meta": {
     "generated_at": "2026-09-27",
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 362,
+    "n_episodes": 368,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-10-07",
-    "api_saved_count": 194
+    "api_refreshed_at": "2026-10-08",
+    "api_saved_count": 200
   },
   "episodes": [
     {
@@ -328,11 +328,11 @@
       "url": "https://open.spotify.com/episode/65qStIEGChrMEFswdCAg7R"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-11",
+      "dur_min": 21,
+      "release": "2025-06-04",
       "publisher": null,
-      "desc": null,
+      "desc": "You’ll need your best friend, a computer in your shoe, and a working knowledge of physics.  Guest: Doyne Farmer, Director of Complexity Economics at Oxford    For show transcripts, go to ⁠⁠⁠⁠⁠⁠vox.com/unxtranscripts⁠⁠⁠⁠⁠⁠  For more, go to ⁠⁠⁠⁠⁠⁠vox.com/unexplainable⁠⁠⁠⁠⁠⁠  And please email us! ⁠⁠unexplainable@vox.com⁠⁠  We read every email.  Support Unexplainable (and get ad-free episodes) by becoming a Vox Member today: ⁠⁠⁠⁠⁠⁠vox.com/members⁠⁠  Help us plan for the future of Unexplainable by filling out a brief survey: ⁠⁠⁠⁠voxmedia.com/survey⁠⁠⁠⁠. Thank you! Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "id": "5lv31Wh14vKQZft7DuXwkG",
       "name": "How to beat roulette",
       "show": "Unexplainable",
@@ -636,11 +636,11 @@
       "url": "https://open.spotify.com/episode/1PeIFyNkiFYmuO4cQkLwM0"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-08-13",
+      "dur_min": 14,
+      "release": "2025-08-13",
       "publisher": null,
-      "desc": null,
+      "desc": "Metal fans have many ways to express themselves, but none are as metal as throwing the devil horns. But who did it first?See omnystudio.com/listener for privacy information.",
       "id": "0VBvYASnpmkbPihTWdg2Xo",
       "name": "Short Stuff: Devil Horns",
       "show": "Stuff You Should Know",
@@ -878,22 +878,22 @@
       "desc": "The BBC has been around as long as there has been radio. Today we salute the venerable institution that's as British as tea and crumpets. See omnystudio.com/listener for privacy information."
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-11",
+      "dur_min": 48,
+      "release": "2025-11-11",
       "publisher": null,
-      "desc": null,
+      "desc": "In 1905, an engineering mistake created a brand new 400-square-mile sea (lake?) in the California desert. People made the most of it at first, but it didn’t take long to become a toxic brew that now threatens the health of anyone in breathing distance.See omnystudio.com/listener for privacy information.",
       "id": "2aZumkQ1gUNnzhrFLpwggD",
       "name": "Eco-Disasters 101: The Salton Sea",
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/2aZumkQ1gUNnzhrFLpwggD"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-08-16",
+      "dur_min": 51,
+      "release": "2025-08-16",
       "publisher": null,
-      "desc": null,
+      "desc": "Rape kits are simple forensic evidence collection kits used when someone is sexually assaulted. But the story is deeper than this. Learn all about rape kits, the sad backlog problem, and what you can do to help, in this classic episode. See omnystudio.com/listener for privacy information.",
       "id": "30XJ718foCE01lqrVv5jwG",
       "name": "Selects: How Rape Kits Work",
       "show": "Stuff You Should Know",
@@ -955,11 +955,11 @@
       "url": "https://open.spotify.com/episode/1T46cHrJ8RhCQUn8mMRUbv"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-08",
+      "dur_min": 63,
+      "release": "2025-11-08",
       "publisher": null,
-      "desc": null,
+      "desc": "Conversion therapy is a misguided attempt by religious zealots to convert people from gay to straight. News flash - it doesn't work. Learn all about this abhorrent practice in this classic episode.See omnystudio.com/listener for privacy information.",
       "id": "0isqRQnhdlKb8tY3qiwMOn",
       "name": "Selects: How Conversion Therapy Doesn't Work",
       "show": "Stuff You Should Know",
@@ -977,11 +977,11 @@
       "url": "https://open.spotify.com/episode/25YChfJNER7iTM7GxGW7KQ"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-17",
+      "dur_min": 51,
+      "release": "2026-01-17",
       "publisher": null,
-      "desc": null,
+      "desc": "Borderline Personality Disorder has been described as emotional “third degree burns over ninety percent of your body.” It’s as close to a curse as a personality disorder can be: deep fear of being abandoned creates behaviors that end up driving people off. Learn all about it in this classic episode.See omnystudio.com/listener for privacy information.",
       "id": "1XqPHar55a4sWyWioKp5HH",
       "name": "Selects: BPD: The Worst Disorder or Not a Disorder at All?",
       "show": "Stuff You Should Know",
@@ -1252,22 +1252,22 @@
       "url": "https://open.spotify.com/episode/6l46ECv65j7G3OJl13JVYs"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-19",
+      "dur_min": 9,
+      "release": "2026-01-19",
       "publisher": null,
-      "desc": null,
+      "desc": "Pulitzer Prize-winning biographer Jon Meacham argues that the authors of the Constitution anticipated that authoritarian leaders would one day seek to corrupt the principles on which this country was founded.",
       "id": "6fnflFUhB1bLlSPcUNgCrc",
       "name": "Historian Jon Meacham (Extended)",
       "show": "The Late Show Pod Show with Stephen Colbert",
       "url": "https://open.spotify.com/episode/6fnflFUhB1bLlSPcUNgCrc"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-18",
+      "dur_min": 10,
+      "release": "2026-01-18",
       "publisher": null,
-      "desc": null,
+      "desc": "Meanwhile... Historians may have found actual DNA from Leonardo da Vinci, Stephen checks in on his fellow Olympic bobsledders, a man was found with over 100 human skulls in his house, a town in Japan appointed a calico cat to run a train terminal, Stephen fearlessly bites into a trending fish-covered donut, Mr. Beast is penniless, a bear broke into a candy store, and Staten Island is back on top!",
       "id": "6wm2YTtKbiqq4KZSjfwptm",
       "name": "Meanwhile | Anchovy Donut, Bungled Bobsled",
       "show": "The Late Show Pod Show with Stephen Colbert",
@@ -1307,11 +1307,11 @@
       "url": "https://open.spotify.com/episode/4hTifFbhfjAyByPBdST2nW"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-17",
+      "dur_min": 12,
+      "release": "2026-01-17",
       "publisher": null,
-      "desc": null,
+      "desc": "Incoming Virginia Governor Abigail Spanberger talks about what she will do if President Trump threatens to send troops to her state, and argues that the deployment of unaccountable federal agents to our cities undermines the public's trust in law enforcement. ",
       "id": "0dJ2HnhmfX9OT14tccKw3M",
       "name": "Gov.-Elect Abigail Spanberger",
       "show": "The Late Show Pod Show with Stephen Colbert",
@@ -1340,11 +1340,11 @@
       "url": "https://open.spotify.com/episode/0rE9iUsCqUxmBj5teE1EBV"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-08-15",
+      "dur_min": 17,
+      "release": "2025-08-15",
       "publisher": null,
-      "desc": null,
+      "desc": "Stephen returns to the Pod Show to play a new game showcasing the unique etymology of life at The Late Show before launching into his extended conversation with poet, bestselling author and McArthur Genius Grant recipient Ocean Vuong. His latest book, \"The Emperor of Gladness,\" is available now. ",
       "id": "35CKWH5BAh8kYcm0q9woMH",
       "name": "Stephen Presents: Ocean Vuong (Extended)",
       "show": "The Late Show Pod Show with Stephen Colbert",
@@ -1857,11 +1857,11 @@
       "url": "https://open.spotify.com/episode/7ALzIxJcU7w6CXz85iBCks"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-08-15",
+      "dur_min": 38,
+      "release": "2025-08-15",
       "publisher": null,
-      "desc": null,
+      "desc": "For years, whale oil was used as lighting fuel, industrial lubricant, and the main ingredient in (yum!) margarine. Whale meat was also on a few menus. But today, demand for whale products is at a historic low. And yet some countries still have a whaling industry. We find out why. (Part 2 of “Everything You Never Knew About Whaling.”) SOURCES:Jay Alabaster, doctoral student at Arizona State University’s Walter Cronkite School of Journalism.Bjorn Basberg, professor emeritus of economic history at the Norwegian School of Economics.Eric Hilt, professor of economics at Wellesley College.Kate O’Connell, senior policy consultant for the marine life program at the Animal Welfare Institute.Paul Watson, environmental activist and founder of the Sea Shepherd Conservation Society. RESOURCES:“The Soviet Union Killed an Appalling Number of Whales. I Wanted to Know Why,” by Ryan Tucker Jones (Slate, 2022).“Behind the Smile: The Multi-Billion Dollar Dolphin Entertainment Industry,” by World Animal Protection (2019).“Japan to Resume Commercial Whaling, Defying International Ban,” by Daniel Victor (The New York Times, 2018).“Why Is There Not More Outrage About Japan’s Barbaric Practice of Whaling?” by Boris Johnson (The Telegraph, 2018).“Margarine Once Contained a Whole Lot More Whale,” by Sarah Laskow (Gastro Obscura, 2017).“3 Million Whales Were Killed in the 20th Century: Report,” (N.B.C. News, 2015).“The Spectacular Rise and Fall of U.S. Whaling: An Innovation Story,” by Derek Thompson (The Atlantic, 2012).In Pursuit of Leviathan: Technology, Institutions, Productivity, and Profits in American Whaling, 1816-1906, by Lance E. Davis, Robert E. Gallman, and Karin Gleiter (1997).“Norway Is Planning to Resume Whaling Despite World Ban,” by Craig R. Whitney (The New York Times, 1992). EXTRAS:“The First Great American Industry,” by Freakonomics Radio (2023). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "id": "2yXKlTVtTFnZq8B40nB7q6",
       "name": "Why Do People Still Hunt Whales? (Update)",
       "show": "Freakonomics Radio",
@@ -2176,11 +2176,11 @@
       "desc": "Shake off the turkey coma and pick up your weapon of choice, it's America's favorite holiday free-for-all: Black Friday. Check out The Daily Show's coverage of the annual carnage. Learn more about your ad choices. Visit…"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-18",
+      "dur_min": 31,
+      "release": "2026-01-18",
       "publisher": null,
-      "desc": null,
+      "desc": "Josh Johnson's freshman year at The Daily Show desk was filled with deep dives into the unraveling of the Epstein files, Trump's grudge against \"treasonous\" Obama, an accidental venture into socialism, a strange debate about pedophilia, and the president's ever-shrinking chances of getting into heaven. Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "id": "1VibAclkgS81iL0njzBhHk",
       "name": "TDS Time Machine | Josh at the Desk 2025",
       "show": "The Daily Show: Ears Edition",
@@ -2539,11 +2539,11 @@
       "url": "https://open.spotify.com/episode/2hYNU3C2h92ALi0YUTk3Iy"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-08-20",
+      "dur_min": 9,
+      "release": "2025-08-20",
       "publisher": null,
-      "desc": null,
+      "desc": "There’s been an era-defining race underway between two types of batteries used in electric vehicles: lithium batteries that use cobalt, and ones that use iron phosphate. Cobalt, a metal with a checkered human rights record, has been in the lead. Until recently. Henry Sanderson’s book on the elements that build electric vehicles is Volt Rush: The Winners and Losers in the Race to Go Green.Related episodes: The race to produce lithium How batteries are already changing the grid How batteries are riding the free market rodeo in Texas How EV batteries tore apart Michigan (Update) Batteries are catching fire at sea For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "id": "74nS8ZsJ5MwP6RpAx5fAMX",
       "name": "Cobalt-free batteries reign in Chinese EVs. Why not the US?",
       "show": "The Indicator from Planet Money",
@@ -2649,11 +2649,11 @@
       "desc": "Why can't the US be like Europe, Japan or India—countries that all have extensive passenger train systems? On today's show, why the US chose not to. We learn why, despite this, US railroads could still be worth bragging about.Related episodes: What happens when railroads get hitchedHow three letters reinvented the railroad businessFor sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-12",
+      "dur_min": 38,
+      "release": "2025-11-12",
       "publisher": null,
-      "desc": null,
+      "desc": "When Wanda Diáz-Merced lost her sight as a college student, she thought her dreams of becoming an astronomer were over — until she learned to listen to space instead.  Wanda is one of several pioneering scientists listening to space. For this episode, we also spoke to Robert Wilson, who used sound to help him discover the first direct evidence of the Big Bang, and Kim Arcand, who plays us what the center of the Milky Way sounds like.    This is the fourth episode in our of our new four-part series, ⁠⁠The Sound Barrier⁠⁠.    Guests: ⁠Wanda Diáz-Merced⁠, astronomer; ⁠Robert Wilson⁠, Nobel laureate and senior scientist at at the Harvard-Smithsonian Center for Astrophysics; ⁠Kim Arcand⁠, emerging tech lead at NASA's Chandra X-ray Observatory    You can find Kim’s sonification of the center of the Milky Way (with visuals) here: ⁠https://chandra.si.edu/sound/gcenter.html⁠     For show transcripts, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unxtranscripts⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠  For more, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unexplainable⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠  And please email us! ⁠⁠⁠⁠unexplainable@vox.com⁠⁠⁠⁠  We read every email.  Support Unexplainable (and get ad-free episodes) by becoming a Vox Member today: ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/members⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠  Thank you! Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "id": "4HtBPD1R1y1aCq3MtD8tH3",
       "name": "The Sound Barrier #4: Listen to the universe",
       "show": "Unexplainable",
@@ -2858,11 +2858,11 @@
       "url": "https://open.spotify.com/episode/7aDLid6vrQ5h70tMaYNHVu"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-11",
+      "dur_min": 45,
+      "release": "2025-11-11",
       "publisher": null,
-      "desc": null,
+      "desc": "What would a four-dimensional being see if it looked at us? In this episode, Neil deGrasse Tyson and Chuck Nice answer fan questions covering higher-dimensional surgery, space elevators, alien intelligence, and colliding galaxies. Could spacetime itself be a cosmic crystal?NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/cosmic-queries-quantumly-stupid/Thanks to our Patrons Joei Brianne, Robert Simons, Isiah Campbell, DEVVON WILMOT, mark horgan, Jesse Carruth, John Aktiv, Kgaleberkeley, Jordan Crist, Alex Gonzalez, Guy, Jack Molyneaux, Mike, CJ Brooks, Thomas Jones, Ashley, Matt H, Pamela Carroll, Kristie Nixon, Wolter Wielenga, Richard Breytenbach, Will Mansell-Brown, Wayne Eyjolfson, Ashlanne, Jeff, PatternsComplexity, Venessa, Maya Hawthorne, Lil.Mazikeen, David Stokes, Samantha, vijay raghunathan, Jon Kerr, Micheal Charles, Alicia Reed, Petrovici Bogdan, Jordan Fofonoff, Yawaridi Southerland, Rodney Ross, Ted Doyle, Alish, Yelson Rodriguez, dahonetwo ., Janis Purens, Oscar Blanco, Roy Frank Sproule III, Tayla Szabadics, Jens Frederik Lennert Olsen, Gabe, Daniel, Nora, masterbuilderej, Brad, Will, James H English, Evolved Finch, Kioshana LaCount Burrell, Lynda Osborne, Micheal Tiberg, Damein Alexander, Jared Craig, wqf3qwf32tgf23qg, Zane Smith, Ondřej Dubina, Chimenem Wodi, George Stewart, Robbie & Annie James, John Koehler, Megan, David Bayles, robenheimer, Kiryl Medina, paul paulson, Justin Reinschmidt, Tammye, Henry C Weismann IV, and Eric Schwartz for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "id": "1NupSuvaOVBeLwMFpqfUyS",
       "name": "Cosmic Queries – Quantumly Stupid",
       "show": "StarTalk with Neil deGrasse Tyson",
@@ -2902,11 +2902,11 @@
       "url": "https://open.spotify.com/episode/2ze8LxiPJZjIeowQNLZYp5"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-08-19",
+      "dur_min": 54,
+      "release": "2025-08-19",
       "publisher": null,
-      "desc": null,
+      "desc": "Are we alone in the universe? Neil deGrasse Tyson and comic co-host Matt Kirshen sit down with one of the founders of the SETI Institute, Jill Tarter, to explore the search for intelligent life beyond Earth, technosignatures, The Drake Equation, and more.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free.Thanks to our Patrons Bryan Boleyn, Lisa, TheTrustyTrading Post, Kasharn George, Jon Warninger, Gatorcat, Ann, Drisco Leyva, Jorge Estelles, Wayne Holt, tati, Only Zuul, Doug Macuit, Larry Spencer, SANDMAN1974, Jason Lingle, Rob Christian, Pete Hall, Rick Henderson, Dave, Adam Hershman, Eric Clement, Dalmir da Silva, Derek Graham, dynsul, Mateusz Ratajczak, Gary Jaklevich, Bryant, buddyp, Micheal Genn, Stephen Macknik, Rodrigo Torres, Kat Genrich, Martin Le Blanc, Matthew Jury, Frank Gallagher, Jo S, Erik Ritter, Hamish Dunn, Jesse, Terry Remsik, Lynn Newton, Hunter Greeson, Eva, Adam Krebsbach, Scott Alderman, Poppy Docherty, Diamond Bro, and Nicholas Volpi for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "id": "01DybKX10LY6zHeWLEDkQZ",
       "name": "Are We Alone? with Jill Tarter",
       "show": "StarTalk with Neil deGrasse Tyson",
@@ -3430,11 +3430,11 @@
       "url": "https://open.spotify.com/episode/0ABrwxZw1uQ0DnbqONINEU"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-12",
+      "dur_min": 63,
+      "release": "2025-11-12",
       "publisher": null,
-      "desc": null,
+      "desc": "The world has changed a good bit since Freakonomics was first published. In this live anniversary episode, Stephen Dubner tells Geoff Bennett of PBS NewsHour everything he has learned since then. Happy birthday, Freakonomics. SOURCES:Geoff Bennett, co-anchor and co-managing editor of PBS News Hour. RESOURCES:Freakonomics Twentieth Anniversary Edition: A Rogue Economist Explores the Hidden Side of Everything, by Stephen Dubner and Steve Levitt (2025). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "id": "0bcdrcfMRVYcqWD1r76qdD",
       "name": "What Happens When You Turn 20",
       "show": "Freakonomics Radio",
@@ -3989,6 +3989,72 @@
       "release": "2026-10-07",
       "url": "https://open.spotify.com/episode/2ku6denxn54xzlzW3Pf7IY",
       "desc": "Rising electricity prices are one of the primary reasons why data centers are a public enemy this election cycle. But is it realistic to expect energy prices to stay high forever? Fact checking by Sierra Juarez.Your Next Listen No AI data centers in my backyard!Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet MoneyThe Indicator newsletter — a weekly roundup of news, ideas and staff picks.Instagram, TikTok and YouTubeFind the Planet Money book Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop!Support public media by subscribing to NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
+    },
+    {
+      "id": "2xjdQNmzruAiMvSf2InOh9",
+      "added_at": "2026-10-08",
+      "show": "Stuff You Should Know",
+      "publisher": null,
+      "name": "Stand-Up Pt II",
+      "dur_min": 48,
+      "release": "2026-10-08",
+      "url": "https://open.spotify.com/episode/2xjdQNmzruAiMvSf2InOh9",
+      "desc": "The SYSK boys continue the episode on stand-up comedy in part two, placing it in the rarefied company of other two-parters like Evel Knievel, the Hoover Dam, and the Trail of Tears. In this ep: should anything be off limits for stand-up? Consensus: no.See omnystudio.com/listener for privacy information."
+    },
+    {
+      "id": "0rsVujmLChYTI6u9xRmwGp",
+      "added_at": "2026-10-08",
+      "show": "Late Night with Seth Meyers Podcast",
+      "publisher": null,
+      "name": "Ben Affleck | Trump Rambles About Iran Nuking LA & San Diego, Allies Plot Martial Law for Midterms: A Closer Look",
+      "dur_min": 26,
+      "release": "2026-10-08",
+      "url": "https://open.spotify.com/episode/0rsVujmLChYTI6u9xRmwGp",
+      "desc": "Seth takes a closer look at Trump suggesting Iran could \"take out\" Los Angeles and San Diego as his allies are plotting ways to undermine the midterms.Then, Ben Affleck talks about the time the Red Sox finally won the World Series in 2004, winning Who Wants to be a Millionaire? to benefit his Eastern Congo Initiative charity and what inspired him to give actors freedom with dialogue while directing movies.See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info."
+    },
+    {
+      "id": "1N9H8SqCokJGgX0FFfnUku",
+      "added_at": "2026-10-08",
+      "show": "The Daily Show: Ears Edition",
+      "publisher": null,
+      "name": "Russia's Plague Scare and America's Sinkholes Ruin Kosta’s Quarantine Plans | Sebastian Stan",
+      "dur_min": 40,
+      "release": "2026-10-08",
+      "url": "https://open.spotify.com/episode/1N9H8SqCokJGgX0FFfnUku",
+      "desc": "Michael Kosta dives into the various disasters plotting to kill humanity, from sneaky sinkholes devouring cars, to widespread frozen food contamination, to a possible plague outbreak in Russia. And if Trump’s elevated scientific language is a litmus test of concern, we’re f**ked. Plus, Josh Johnson weighs the pros and cons of grisly death over another round of quarantine hobbies.  Lewis Black has no problem with the whole dying thing, but not everyone shares his passionate yearning for the bright light. In this edition of Back in Black, Lewis looks at how anti-aging biohackers are doing everything they can to delay the inevitable, from tech tycoon Bryan Johnson getting injected with his son's plasma to TikTokers sleeping 12 hours a night and eating \"organ meats.\"   Sebastian Stan sits down with Michael to talk about the Palme d'Or-winning film “Fjord,” which explores the story of an immigrant family in Norway whose children are taken away by authorities who believe they’re acting for the right reasons. Stan opens up about his personal connections to the film, leaving Romania at the age of eight, and reconnecting with the country he left behind. Plus, Kosta talks about Stan’s eclectic career choices, from the Marvel Cinematic Universe to playing President Donald Trump.  --  Go to https://Quince.com/dailyshow for free shipping on your order and 365-day returns.   --  https://homeserve.com/tds   --  The Daily Show airs weeknights at 11/10c on Comedy Central.  Stream full episodes on Paramount+  Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices"
+    },
+    {
+      "id": "0PqvGXDpAaNgdAYLoz7gt5",
+      "added_at": "2026-10-08",
+      "show": "The Indicator from Planet Money",
+      "publisher": null,
+      "name": "The chilling effect of ICE in hospitals",
+      "dur_min": 9,
+      "release": "2026-10-08",
+      "url": "https://open.spotify.com/episode/0PqvGXDpAaNgdAYLoz7gt5",
+      "desc": "Federal immigration enforcement arrests reached record highs this past summer, and under the second Trump administration, immigration agents can now more easily access so-called sensitive areas, including hospitals. Today on the show: how both patients and healthcare workers are bearing the physical and economic costs of these deportation campaigns. Featuring Dr. William D. Lopez, author of Raiding the Heartland: an American Story of Deportation and Resistance.Fact checking by Sierra Juarez.Your Next Listen  How ICE arrests are creating 'economies of fear'Connect with The Indicator from Planet MoneyThe Indicator newsletter - a weekly roundup of news, ideas and staff picks.Buy the Planet Money book InstagramTikTokYouTubeFor sponsor-free episodes, subscribe to NPR+ Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
+    },
+    {
+      "id": "3X729JgXcbPBaH0CjXlnlu",
+      "added_at": "2026-10-08",
+      "show": "Conan O’Brien Needs A Friend",
+      "publisher": null,
+      "name": "Conan O’Brien Must Go: Season 3 Roundtable Discussion Part II",
+      "dur_min": 35,
+      "release": "2026-10-08",
+      "url": "https://open.spotify.com/episode/3X729JgXcbPBaH0CjXlnlu",
+      "desc": "Conan returns with producers Mike Sweeney, Jessie Gaskell, and Jose Arroyo for a deep dive into his travels through Morocco and the Philippines on the newest season of Conan O’Brien Must Go. Wanna get a chance to talk to Conan? Submit here: teamcoco.com/apply Get access to all the podcasts you love, music channels and radio shows with the SiriusXM App! Get 3 months free using this show link: https://siriusxm.com/conan. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising."
+    },
+    {
+      "id": "44EuNXqlVRYFmtPSuD35Rk",
+      "added_at": "2026-10-08",
+      "show": "The Economics of Everyday Things",
+      "publisher": null,
+      "name": "80. Going-Out-of-Business Sales",
+      "dur_min": 16,
+      "release": "2026-10-08",
+      "url": "https://open.spotify.com/episode/44EuNXqlVRYFmtPSuD35Rk",
+      "desc": "Behind that 70% off sign, there’s a liquidation consultant trying to maximize retailer profits. Zachary Crockett seeks a deal. This episode was originally published on February 9th, 2025. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising."
     }
   ]
 }
