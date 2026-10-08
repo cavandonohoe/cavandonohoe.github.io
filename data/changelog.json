@@ -1,6 +1,30 @@
 {
-  "generated_at": "2026-10-06T21:08:48.714892+00:00",
+  "generated_at": "2026-10-07T21:29:11.897756+00:00",
   "events": [
+    {
+      "date": "2026-10-07",
+      "type": "merged_pr",
+      "title": "Use Contacts as the editable reunion roster",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/214"
+    },
+    {
+      "date": "2026-10-07",
+      "type": "merged_pr",
+      "title": "Show files and commits behind the top yearly language",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/217"
+    },
+    {
+      "date": "2026-10-07",
+      "type": "merged_pr",
+      "title": "Highlight JavaScript and HTML across Developer Year in Review",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/216"
+    },
+    {
+      "date": "2026-10-07",
+      "type": "merged_pr",
+      "title": "Fix Developer Year in Review language attribution and vendor stats",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/215"
+    },
     {
       "date": "2026-10-06",
       "type": "merged_pr",
@@ -280,6 +304,20 @@
   ],
   "daily_summaries": [
     {
+      "date": "2026-10-07",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "5 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/654ecc5627a5b39acbf8f81803ed84967b94096e"
+        },
+        {
+          "emoji": "\ud83d\udcbb",
+          "text": "4 PRs merged"
+        }
+      ]
+    },
+    {
       "date": "2026-10-06",
       "items": [
         {
@@ -467,16 +505,6 @@
           "emoji": "\u2699\ufe0f",
           "text": "Developer activity + site automation expanded",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/166"
-        }
-      ]
-    },
-    {
-      "date": "2026-09-08",
-      "items": [
-        {
-          "emoji": "\ud83d\ude80",
-          "text": "ci: grant actions:write so scheduled data updates can dispatch redeploy",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/165"
         }
       ]
     }
