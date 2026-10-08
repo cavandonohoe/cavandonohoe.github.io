@@ -10,7 +10,8 @@ Checked against `main` on **2026-10-08** ([source snapshot](https://github.com/c
 - Each diamond is a **scheduled start**, not a measured runtime. Chart dates are illustrative; the pattern repeats at the cadence shown.
 - Scheduled runs can be delayed. Spaced start times do not guarantee that one workflow finishes before the next starts.
 - Workflows with `workflow_dispatch` can also be run from the [Actions tab](https://github.com/cavandonohoe/cavandonohoe.github.io/actions).
-- This is a documentation snapshot. Update it when a workflow's triggers change.
+- Charts are embedded SVG images so they display without Mermaid support. Expand **Mermaid source** below each image to inspect the diagram code.
+- This is a documentation snapshot. Update the tables, Mermaid source, and chart images when a workflow's triggers change.
 
 ## Throughout the day
 
@@ -22,6 +23,11 @@ Checked against `main` on **2026-10-08** ([source snapshot](https://github.com/c
 The daily chart includes all four movie-ranking runs. The hourly reunion check is omitted from the chart to keep it readable.
 
 ## Daily rhythm
+
+![Daily scheduled starts in UTC](images/actions-schedule/daily.svg)
+
+<details>
+<summary>Mermaid source</summary>
 
 ```mermaid
 gantt
@@ -43,6 +49,8 @@ gantt
     Activity art 17h07 :milestone, daily5, 2026-10-05 17:07, 0m
 ```
 
+</details>
+
 | Workflow | When (UTC) | PDT (UTC−7) | PST (UTC−8) | JST (UTC+9) | Cron | Result |
 |---|---|---|---|---|---|---|
 | [Saved podcasts](.github/workflows/update_saved_episodes.yml) | Daily 08:23 | 01:23 | 00:23 | 17:23 | `23 8 * * *` | Refresh JSON and redeploy Shiny dashboard |
@@ -55,6 +63,11 @@ gantt
 ## Weekly rhythm
 
 These runs are in addition to the hourly and daily work above. Monday has the largest cluster of scheduled checks and data refreshes.
+
+![Weekly scheduled starts in UTC](images/actions-schedule/weekly.svg)
+
+<details>
+<summary>Mermaid source</summary>
 
 ```mermaid
 gantt
@@ -81,6 +94,8 @@ gantt
     Weekly Wrapped 16h17 :milestone, week0_2, 2026-10-11 16:17, 0m
 ```
 
+</details>
+
 | Workflow | When (UTC) | PDT (UTC−7) | PST (UTC−8) | JST (UTC+9) | Cron | Result |
 |---|---|---|---|---|---|---|
 | [IMDb episode ratings](.github/workflows/update_imdb_ratings.yml) | Mon 08:23 | 01:23 | 00:23 | 17:23 | `23 8 * * 1` | Refresh ratings; request site build when changed |
@@ -101,6 +116,11 @@ gantt
 
 ## Monthly rhythm
 
+![Monthly scheduled starts in UTC](images/actions-schedule/monthly.svg)
+
+<details>
+<summary>Mermaid source</summary>
+
 ```mermaid
 gantt
     title Monthly scheduled starts (UTC)
@@ -114,6 +134,8 @@ gantt
     Top 250 + Rotten Tomatoes (day 12, 13h53) :milestone, month3, 2026-10-12 13:53, 0m
     Director filmographies (day 17, 14h07) :milestone, month4, 2026-10-17 14:07, 0m
 ```
+
+</details>
 
 | Workflow | When (UTC) | PDT (UTC−7) | PST (UTC−8) | JST (UTC+9) | Cron | Result |
 |---|---|---|---|---|---|---|
