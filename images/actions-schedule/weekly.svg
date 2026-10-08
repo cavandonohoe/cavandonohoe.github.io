@@ -42,7 +42,7 @@ L 934.56 90.880592
 L 934.56 116.720124 
 L 259.2 116.720124 
 z
-" clip-path="url(#pff0c8eac0c)" style="fill: #f3f6fa; stroke: #f3f6fa; stroke-linejoin: miter"/>
+" clip-path="url(#p7d8e6dc03c)" style="fill: #f3f6fa; stroke: #f3f6fa; stroke-linejoin: miter"/>
    </g>
    <g id="patch_4">
     <path d="M 259.2 147.053488 
@@ -50,7 +50,7 @@ L 934.56 147.053488
 L 934.56 172.89302 
 L 259.2 172.89302 
 z
-" clip-path="url(#pff0c8eac0c)" style="fill: #f3f6fa; stroke: #f3f6fa; stroke-linejoin: miter"/>
+" clip-path="url(#p7d8e6dc03c)" style="fill: #f3f6fa; stroke: #f3f6fa; stroke-linejoin: miter"/>
    </g>
    <g id="patch_5">
     <path d="M 259.2 203.226383 
@@ -58,7 +58,7 @@ L 934.56 203.226383
 L 934.56 229.065915 
 L 259.2 229.065915 
 z
-" clip-path="url(#pff0c8eac0c)" style="fill: #f3f6fa; stroke: #f3f6fa; stroke-linejoin: miter"/>
+" clip-path="url(#p7d8e6dc03c)" style="fill: #f3f6fa; stroke: #f3f6fa; stroke-linejoin: miter"/>
    </g>
    <g id="patch_6">
     <path d="M 259.2 259.399279 
@@ -66,7 +66,7 @@ L 934.56 259.399279
 L 934.56 285.238811 
 L 259.2 285.238811 
 z
-" clip-path="url(#pff0c8eac0c)" style="fill: #f3f6fa; stroke: #f3f6fa; stroke-linejoin: miter"/>
+" clip-path="url(#p7d8e6dc03c)" style="fill: #f3f6fa; stroke: #f3f6fa; stroke-linejoin: miter"/>
    </g>
    <g id="patch_7">
     <path d="M 259.2 315.572174 
@@ -74,7 +74,7 @@ L 934.56 315.572174
 L 934.56 341.411706 
 L 259.2 341.411706 
 z
-" clip-path="url(#pff0c8eac0c)" style="fill: #f3f6fa; stroke: #f3f6fa; stroke-linejoin: miter"/>
+" clip-path="url(#p7d8e6dc03c)" style="fill: #f3f6fa; stroke: #f3f6fa; stroke-linejoin: miter"/>
    </g>
    <g id="patch_8">
     <path d="M 259.2 371.74507 
@@ -82,7 +82,7 @@ L 934.56 371.74507
 L 934.56 397.584602 
 L 259.2 397.584602 
 z
-" clip-path="url(#pff0c8eac0c)" style="fill: #f3f6fa; stroke: #f3f6fa; stroke-linejoin: miter"/>
+" clip-path="url(#p7d8e6dc03c)" style="fill: #f3f6fa; stroke: #f3f6fa; stroke-linejoin: miter"/>
    </g>
    <g id="patch_9">
     <path d="M 259.2 427.917965 
@@ -90,14 +90,14 @@ L 934.56 427.917965
 L 934.56 453.757497 
 L 259.2 453.757497 
 z
-" clip-path="url(#pff0c8eac0c)" style="fill: #f3f6fa; stroke: #f3f6fa; stroke-linejoin: miter"/>
+" clip-path="url(#p7d8e6dc03c)" style="fill: #f3f6fa; stroke: #f3f6fa; stroke-linejoin: miter"/>
    </g>
    <g id="matplotlib.axis_1">
     <g id="xtick_1">
      <g id="line2d_1">
       <path d="M 307.44 457.6896 
 L 307.44 81.3312 
-" clip-path="url(#pff0c8eac0c)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+" clip-path="url(#p7d8e6dc03c)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_2"/>
      <g id="text_1">
@@ -108,7 +108,7 @@ L 307.44 81.3312
      <g id="line2d_3">
       <path d="M 403.92 457.6896 
 L 403.92 81.3312 
-" clip-path="url(#pff0c8eac0c)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+" clip-path="url(#p7d8e6dc03c)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_4"/>
      <g id="text_2">
@@ -119,7 +119,7 @@ L 403.92 81.3312
      <g id="line2d_5">
       <path d="M 500.4 457.6896 
 L 500.4 81.3312 
-" clip-path="url(#pff0c8eac0c)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+" clip-path="url(#p7d8e6dc03c)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_6"/>
      <g id="text_3">
@@ -130,7 +130,7 @@ L 500.4 81.3312
      <g id="line2d_7">
       <path d="M 596.88 457.6896 
 L 596.88 81.3312 
-" clip-path="url(#pff0c8eac0c)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+" clip-path="url(#p7d8e6dc03c)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_8"/>
      <g id="text_4">
@@ -141,7 +141,7 @@ L 596.88 81.3312
      <g id="line2d_9">
       <path d="M 693.36 457.6896 
 L 693.36 81.3312 
-" clip-path="url(#pff0c8eac0c)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+" clip-path="url(#p7d8e6dc03c)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_10"/>
      <g id="text_5">
@@ -152,7 +152,7 @@ L 693.36 81.3312
      <g id="line2d_11">
       <path d="M 789.84 457.6896 
 L 789.84 81.3312 
-" clip-path="url(#pff0c8eac0c)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+" clip-path="url(#p7d8e6dc03c)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_12"/>
      <g id="text_6">
@@ -163,7 +163,7 @@ L 789.84 81.3312
      <g id="line2d_13">
       <path d="M 886.32 457.6896 
 L 886.32 81.3312 
-" clip-path="url(#pff0c8eac0c)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+" clip-path="url(#p7d8e6dc03c)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_14"/>
      <g id="text_7">
@@ -171,7 +171,7 @@ L 886.32 81.3312
      </g>
     </g>
     <g id="text_8">
-     <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #475569" x="596.88" y="498.693819" transform="rotate(-0 596.88 498.693819)">UTC calendar</text>
+     <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #475569" x="596.88" y="498.693819" transform="rotate(-0 596.88 498.693819)">Pacific calendar (PDT)</text>
     </g>
    </g>
    <g id="matplotlib.axis_2">
@@ -256,153 +256,153 @@ L 886.32 81.3312
    </g>
    <g id="PathCollection_1">
     <defs>
-     <path id="mef46eb0abf" d="M -0 6.519202 
+     <path id="m32cc769d9e" d="M -0 6.519202 
 L 6.519202 0 
 L 0 -6.519202 
 L -6.519202 -0 
 z
 " style="stroke: #2563eb"/>
     </defs>
-    <g clip-path="url(#pff0c8eac0c)">
-     <use xlink:href="#mef46eb0abf" x="292.901" y="103.800358" style="fill: #2563eb; stroke: #2563eb"/>
+    <g clip-path="url(#p7d8e6dc03c)">
+     <use xlink:href="#m32cc769d9e" x="264.761" y="103.800358" style="fill: #2563eb; stroke: #2563eb"/>
     </g>
    </g>
    <g id="text_22">
-    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="106.559733" transform="rotate(-0 951.444 106.559733)">Mon 08:23</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="106.559733" transform="rotate(-0 951.444 106.559733)">Mon 01:23</text>
    </g>
    <g id="PathCollection_2">
-    <g clip-path="url(#pff0c8eac0c)">
-     <use xlink:href="#mef46eb0abf" x="294.107" y="131.886806" style="fill: #2563eb; stroke: #2563eb"/>
+    <g clip-path="url(#p7d8e6dc03c)">
+     <use xlink:href="#m32cc769d9e" x="265.967" y="131.886806" style="fill: #2563eb; stroke: #2563eb"/>
     </g>
    </g>
    <g id="text_23">
-    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="134.646181" transform="rotate(-0 951.444 134.646181)">Mon 08:41</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="134.646181" transform="rotate(-0 951.444 134.646181)">Mon 01:41</text>
    </g>
    <g id="PathCollection_3">
-    <g clip-path="url(#pff0c8eac0c)">
-     <use xlink:href="#mef46eb0abf" x="296.519" y="159.973254" style="fill: #2563eb; stroke: #2563eb"/>
+    <g clip-path="url(#p7d8e6dc03c)">
+     <use xlink:href="#m32cc769d9e" x="268.379" y="159.973254" style="fill: #2563eb; stroke: #2563eb"/>
     </g>
    </g>
    <g id="text_24">
-    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="162.732629" transform="rotate(-0 951.444 162.732629)">Mon 09:17</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="162.732629" transform="rotate(-0 951.444 162.732629)">Mon 02:17</text>
    </g>
    <g id="PathCollection_4">
-    <g clip-path="url(#pff0c8eac0c)">
-     <use xlink:href="#mef46eb0abf" x="314.408" y="188.059701" style="fill: #2563eb; stroke: #2563eb"/>
+    <g clip-path="url(#p7d8e6dc03c)">
+     <use xlink:href="#m32cc769d9e" x="286.268" y="188.059701" style="fill: #2563eb; stroke: #2563eb"/>
     </g>
    </g>
    <g id="text_25">
-    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="190.819076" transform="rotate(-0 951.444 190.819076)">Mon 13:44</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="190.819076" transform="rotate(-0 951.444 190.819076)">Mon 06:44</text>
    </g>
    <g id="PathCollection_5">
-    <g clip-path="url(#pff0c8eac0c)">
-     <use xlink:href="#mef46eb0abf" x="316.351" y="216.146149" style="fill: #2563eb; stroke: #2563eb"/>
+    <g clip-path="url(#p7d8e6dc03c)">
+     <use xlink:href="#m32cc769d9e" x="288.211" y="216.146149" style="fill: #2563eb; stroke: #2563eb"/>
     </g>
    </g>
    <g id="text_26">
-    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="218.905524" transform="rotate(-0 951.444 218.905524)">Mon 14:13</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="218.905524" transform="rotate(-0 951.444 218.905524)">Mon 07:13</text>
    </g>
    <g id="PathCollection_6">
-    <g clip-path="url(#pff0c8eac0c)">
-     <use xlink:href="#mef46eb0abf" x="316.619" y="244.232597" style="fill: #2563eb; stroke: #2563eb"/>
+    <g clip-path="url(#p7d8e6dc03c)">
+     <use xlink:href="#m32cc769d9e" x="288.479" y="244.232597" style="fill: #2563eb; stroke: #2563eb"/>
     </g>
    </g>
    <g id="text_27">
-    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="246.991972" transform="rotate(-0 951.444 246.991972)">Mon 14:17</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="246.991972" transform="rotate(-0 951.444 246.991972)">Mon 07:17</text>
    </g>
    <g id="PathCollection_7">
-    <g clip-path="url(#pff0c8eac0c)">
-     <use xlink:href="#mef46eb0abf" x="320.907" y="272.319045" style="fill: #2563eb; stroke: #2563eb"/>
+    <g clip-path="url(#p7d8e6dc03c)">
+     <use xlink:href="#m32cc769d9e" x="292.767" y="272.319045" style="fill: #2563eb; stroke: #2563eb"/>
     </g>
    </g>
    <g id="text_28">
-    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="275.07842" transform="rotate(-0 951.444 275.07842)">Mon 15:21</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="275.07842" transform="rotate(-0 951.444 275.07842)">Mon 08:21</text>
    </g>
    <g id="PathCollection_8">
-    <g clip-path="url(#pff0c8eac0c)">
-     <use xlink:href="#mef46eb0abf" x="328.679" y="300.405493" style="fill: #2563eb; stroke: #2563eb"/>
+    <g clip-path="url(#p7d8e6dc03c)">
+     <use xlink:href="#m32cc769d9e" x="300.539" y="300.405493" style="fill: #2563eb; stroke: #2563eb"/>
     </g>
    </g>
    <g id="text_29">
-    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="303.164868" transform="rotate(-0 951.444 303.164868)">Mon 17:17</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="303.164868" transform="rotate(-0 951.444 303.164868)">Mon 10:17</text>
    </g>
    <g id="PathCollection_9">
     <defs>
-     <path id="m11fd61fc23" d="M -0 6.519202 
+     <path id="mbbd46decf6" d="M -0 6.519202 
 L 6.519202 0 
 L 0 -6.519202 
 L -6.519202 -0 
 z
 " style="stroke: #0d9488"/>
     </defs>
-    <g clip-path="url(#pff0c8eac0c)">
-     <use xlink:href="#m11fd61fc23" x="402.111" y="328.49194" style="fill: #0d9488; stroke: #0d9488"/>
+    <g clip-path="url(#p7d8e6dc03c)">
+     <use xlink:href="#mbbd46decf6" x="373.971" y="328.49194" style="fill: #0d9488; stroke: #0d9488"/>
     </g>
    </g>
    <g id="text_30">
-    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="331.251315" transform="rotate(-0 951.444 331.251315)">Tue 11:33</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="331.251315" transform="rotate(-0 951.444 331.251315)">Tue 04:33</text>
    </g>
    <g id="PathCollection_10">
     <defs>
-     <path id="md9b8adeb9c" d="M -0 6.519202 
+     <path id="me1adf6baee" d="M -0 6.519202 
 L 6.519202 0 
 L 0 -6.519202 
 L -6.519202 -0 
 z
 " style="stroke: #7c3aed"/>
     </defs>
-    <g clip-path="url(#pff0c8eac0c)">
-     <use xlink:href="#md9b8adeb9c" x="795.803" y="356.578388" style="fill: #7c3aed; stroke: #7c3aed"/>
+    <g clip-path="url(#p7d8e6dc03c)">
+     <use xlink:href="#me1adf6baee" x="767.663" y="356.578388" style="fill: #7c3aed; stroke: #7c3aed"/>
     </g>
    </g>
    <g id="text_31">
-    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="359.337763" transform="rotate(-0 951.444 359.337763)">Sat 13:29</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="359.337763" transform="rotate(-0 951.444 359.337763)">Sat 06:29</text>
    </g>
    <g id="PathCollection_11">
     <defs>
-     <path id="m78d866195d" d="M -0 6.519202 
+     <path id="mc7a9764171" d="M -0 6.519202 
 L 6.519202 0 
 L 0 -6.519202 
 L -6.519202 -0 
 z
 " style="stroke: #d97706"/>
     </defs>
-    <g clip-path="url(#pff0c8eac0c)">
-     <use xlink:href="#m78d866195d" x="892.819" y="384.664836" style="fill: #d97706; stroke: #d97706"/>
+    <g clip-path="url(#p7d8e6dc03c)">
+     <use xlink:href="#mc7a9764171" x="864.679" y="384.664836" style="fill: #d97706; stroke: #d97706"/>
     </g>
    </g>
    <g id="text_32">
-    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="387.424211" transform="rotate(-0 951.444 387.424211)">Sun 13:37</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="387.424211" transform="rotate(-0 951.444 387.424211)">Sun 06:37</text>
    </g>
    <g id="PathCollection_12">
-    <g clip-path="url(#pff0c8eac0c)">
-     <use xlink:href="#m78d866195d" x="893.087" y="412.751284" style="fill: #d97706; stroke: #d97706"/>
+    <g clip-path="url(#p7d8e6dc03c)">
+     <use xlink:href="#mc7a9764171" x="864.947" y="412.751284" style="fill: #d97706; stroke: #d97706"/>
     </g>
    </g>
    <g id="text_33">
-    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="415.510659" transform="rotate(-0 951.444 415.510659)">Sun 13:41</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="415.510659" transform="rotate(-0 951.444 415.510659)">Sun 06:41</text>
    </g>
    <g id="PathCollection_13">
-    <g clip-path="url(#pff0c8eac0c)">
-     <use xlink:href="#m78d866195d" x="903.539" y="440.837731" style="fill: #d97706; stroke: #d97706"/>
+    <g clip-path="url(#p7d8e6dc03c)">
+     <use xlink:href="#mc7a9764171" x="875.399" y="440.837731" style="fill: #d97706; stroke: #d97706"/>
     </g>
    </g>
    <g id="text_34">
-    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="443.597106" transform="rotate(-0 951.444 443.597106)">Sun 16:17</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="443.597106" transform="rotate(-0 951.444 443.597106)">Sun 09:17</text>
    </g>
   </g>
   <g id="text_35">
-   <text style="font-weight: 700; font-size: 21px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #0f172a" x="7.2" y="23.156719" transform="rotate(-0 7.2 23.156719)">Weekly scheduled starts</text>
+   <text style="font-weight: 700; font-size: 21px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #0f172a" x="7.2" y="23.156719" transform="rotate(-0 7.2 23.156719)">Weekly scheduled starts · Pacific</text>
   </g>
   <g id="text_36">
-   <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="7.2" y="59.086125" transform="rotate(-0 7.2 59.086125)">Weekly extras · daily and hourly jobs continue</text>
+   <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="7.2" y="59.086125" transform="rotate(-0 7.2 59.086125)">Weekly extras · daily and hourly jobs continue · PDT (PST runs one hour earlier)</text>
   </g>
   <g id="text_37">
    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #64748b" x="7.2" y="534.672" transform="rotate(-0 7.2 534.672)">Diamonds show trigger times, not runtimes. Exact cron rules and local times are listed below.</text>
   </g>
  </g>
  <defs>
-  <clipPath id="pff0c8eac0c">
+  <clipPath id="p7d8e6dc03c">
    <rect x="259.2" y="81.3312" width="675.36" height="376.3584"/>
   </clipPath>
  </defs>
