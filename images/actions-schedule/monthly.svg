@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1032.647125pt" height="309.519687pt" viewBox="0 0 1032.647125 309.519687" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 309.519687 
+L 1032.647125 309.519687 
+L 1032.647125 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 259.2 257.472 
+L 934.56 257.472 
+L 934.56 48.384 
+L 259.2 48.384 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 259.2 61.5488 
+L 934.56 61.5488 
+L 934.56 97.1712 
+L 259.2 97.1712 
+z
+" clip-path="url(#p68b525d5af)" style="fill: #f3f6fa; stroke: #f3f6fa; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 259.2 138.9888 
+L 934.56 138.9888 
+L 934.56 174.6112 
+L 259.2 174.6112 
+z
+" clip-path="url(#p68b525d5af)" style="fill: #f3f6fa; stroke: #f3f6fa; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 259.2 216.4288 
+L 934.56 216.4288 
+L 934.56 252.0512 
+L 259.2 252.0512 
+z
+" clip-path="url(#p68b525d5af)" style="fill: #f3f6fa; stroke: #f3f6fa; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 259.2 257.472 
+L 259.2 48.384 
+" clip-path="url(#p68b525d5af)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2"/>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #334155" x="259.2" y="275.830281" transform="rotate(-0 259.2 275.830281)">1</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 346.343226 257.472 
+L 346.343226 48.384 
+" clip-path="url(#p68b525d5af)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4"/>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #334155" x="346.343226" y="275.830281" transform="rotate(-0 346.343226 275.830281)">5</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 411.700645 257.472 
+L 411.700645 48.384 
+" clip-path="url(#p68b525d5af)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6"/>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #334155" x="411.700645" y="275.830281" transform="rotate(-0 411.700645 275.830281)">8</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 498.843871 257.472 
+L 498.843871 48.384 
+" clip-path="url(#p68b525d5af)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8"/>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #334155" x="498.843871" y="275.830281" transform="rotate(-0 498.843871 275.830281)">12</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 607.772903 257.472 
+L 607.772903 48.384 
+" clip-path="url(#p68b525d5af)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10"/>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #334155" x="607.772903" y="275.830281" transform="rotate(-0 607.772903 275.830281)">17</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path d="M 716.701935 257.472 
+L 716.701935 48.384 
+" clip-path="url(#p68b525d5af)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12"/>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #334155" x="716.701935" y="275.830281" transform="rotate(-0 716.701935 275.830281)">22</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_13">
+      <path d="M 825.630968 257.472 
+L 825.630968 48.384 
+" clip-path="url(#p68b525d5af)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14"/>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #334155" x="825.630968" y="275.830281" transform="rotate(-0 825.630968 275.830281)">27</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_15">
+      <path d="M 912.774194 257.472 
+L 912.774194 48.384 
+" clip-path="url(#p68b525d5af)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16"/>
+     <g id="text_8">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #334155" x="912.774194" y="275.830281" transform="rotate(-0 912.774194 275.830281)">31</text>
+     </g>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #475569" x="596.88" y="298.476219" transform="rotate(-0 596.88 298.476219)">Pacific calendar (PDT)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_17"/>
+     <g id="text_10">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #334155" x="249.2" y="83.539141" transform="rotate(-0 249.2 83.539141)">Confederate statues</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_18"/>
+     <g id="text_11">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #334155" x="249.2" y="122.259141" transform="rotate(-0 249.2 122.259141)">US rental markets</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_19"/>
+     <g id="text_12">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #334155" x="249.2" y="160.979141" transform="rotate(-0 249.2 160.979141)">Top 1000 box office</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_20"/>
+     <g id="text_13">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #334155" x="249.2" y="199.699141" transform="rotate(-0 249.2 199.699141)">Top 250 + Rotten Tomatoes</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_21"/>
+     <g id="text_14">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #334155" x="249.2" y="238.419141" transform="rotate(-0 249.2 238.419141)">Director filmographies</text>
+     </g>
+    </g>
+   </g>
+   <g id="PathCollection_1">
+    <defs>
+     <path id="m22f729f246" d="M -0 6.519202 
+L 6.519202 0 
+L 0 -6.519202 
+L -6.519202 -0 
+z
+" style="stroke: #2563eb"/>
+    </defs>
+    <g clip-path="url(#p68b525d5af)">
+     <use xlink:href="#m22f729f246" x="265.811387" y="79.36" style="fill: #2563eb; stroke: #2563eb"/>
+    </g>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="82.119375" transform="rotate(-0 951.444 82.119375)">Day 1 · 07:17</text>
+   </g>
+   <g id="PathCollection_2">
+    <g clip-path="url(#p68b525d5af)">
+     <use xlink:href="#m22f729f246" x="353.408484" y="118.08" style="fill: #2563eb; stroke: #2563eb"/>
+    </g>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="120.839375" transform="rotate(-0 951.444 120.839375)">Day 5 · 07:47</text>
+   </g>
+   <g id="PathCollection_3">
+    <g clip-path="url(#p68b525d5af)">
+     <use xlink:href="#m22f729f246" x="416.859645" y="156.8" style="fill: #2563eb; stroke: #2563eb"/>
+    </g>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="159.559375" transform="rotate(-0 951.444 159.559375)">Day 8 · 05:41</text>
+   </g>
+   <g id="PathCollection_4">
+    <g clip-path="url(#p68b525d5af)">
+     <use xlink:href="#m22f729f246" x="505.092161" y="195.52" style="fill: #2563eb; stroke: #2563eb"/>
+    </g>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="198.279375" transform="rotate(-0 951.444 198.279375)">Day 12 · 06:53</text>
+   </g>
+   <g id="PathCollection_5">
+    <g clip-path="url(#p68b525d5af)">
+     <use xlink:href="#m22f729f246" x="614.233" y="234.24" style="fill: #2563eb; stroke: #2563eb"/>
+    </g>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="951.444" y="236.999375" transform="rotate(-0 951.444 236.999375)">Day 17 · 07:07</text>
+   </g>
+  </g>
+  <g id="text_20">
+   <text style="font-weight: 700; font-size: 21px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #0f172a" x="7.2" y="23.156719" transform="rotate(-0 7.2 23.156719)">Monthly scheduled starts · Pacific</text>
+  </g>
+  <g id="text_21">
+   <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #475569" x="7.2" y="40.078125" transform="rotate(-0 7.2 40.078125)">Day of month · pattern repeats each month · PDT</text>
+  </g>
+  <g id="text_22">
+   <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #64748b" x="7.2" y="300.24" transform="rotate(-0 7.2 300.24)">Diamonds show trigger times, not runtimes. Exact cron rules and local times are listed below.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p68b525d5af">
+   <rect x="259.2" y="48.384" width="675.36" height="209.088"/>
+  </clipPath>
+ </defs>
+</svg>

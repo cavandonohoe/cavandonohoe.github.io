@@ -438,11 +438,9 @@ truth.</p>
 <div id="reading-the-clock" class="section level2">
 <h2>Reading the clock</h2>
 <ul>
-<li><strong>Charts use UTC</strong>, matching the workflow cron
-expressions. Tables show Pacific daylight time (PDT), Pacific standard
-time (PST), and Japan time (JST, UTC+9). Choose the Pacific column for
-the date you are checking; JST does not observe daylight saving. “Next
-day” is relative to the listed UTC date.</li>
+<li><strong>Charts and tables use current Pacific time: PDT (UTC−7),
+checked October 8, 2026.</strong> Update the displayed times when the
+clock changes. Cron expressions remain in UTC.</li>
 <li>Each diamond is a <strong>scheduled start</strong>, not a measured
 runtime. Chart dates are illustrative; the pattern repeats at the
 cadence shown.</li>
@@ -452,27 +450,26 @@ that one workflow finishes before the next starts.</li>
 the <a
 href="https://github.com/cavandonohoe/cavandonohoe.github.io/actions">Actions
 tab</a>.</li>
-<li>This is a documentation snapshot. Update it when a workflow’s
-triggers change.</li>
+<li>Charts are embedded SVG images so they display without Mermaid
+support. Expand <strong>Mermaid source</strong> below each image to
+inspect the diagram code.</li>
+<li>This is a documentation snapshot. Update the tables, Mermaid source,
+and chart images when a workflow’s triggers change.</li>
 </ul>
 </div>
 <div id="throughout-the-day" class="section level2">
 <h2>Throughout the day</h2>
-<table style="width:100%;">
+<table>
 <colgroup>
-<col width="16%" />
-<col width="16%" />
-<col width="16%" />
-<col width="16%" />
-<col width="16%" />
-<col width="16%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th>Workflow</th>
-<th>UTC schedule</th>
-<th>Pacific schedule</th>
-<th>JST (UTC+9)</th>
+<th>Pacific time (PDT)</th>
 <th>Cron</th>
 <th>Result</th>
 </tr>
@@ -482,8 +479,6 @@ triggers change.</li>
 <td><a href=".github/workflows/update_tohs_reunion.yml">TOHS
 reunion</a></td>
 <td>Every hour at :23</td>
-<td>Every hour at :23</td>
-<td>Every hour at :23</td>
 <td><code>23 * * * *</code></td>
 <td>Refresh coverage; deploy if published snapshot differs</td>
 </tr>
@@ -491,10 +486,7 @@ reunion</a></td>
 <td><a
 href=".github/workflows/update_movie_ranker_personal.yml">Personal movie
 rankings</a></td>
-<td>00:37, 06:37, 12:37, 18:37</td>
-<td>PDT: 05:37, 11:37, 17:37, 23:37; PST: 04:37, 10:37, 16:37,
-22:37</td>
-<td>03:37, 09:37, 15:37, 21:37</td>
+<td>05:37, 11:37, 17:37, 23:37</td>
 <td><code>37 */6 * * *</code></td>
 <td>Refresh rankings; request site build when changed</td>
 </tr>
@@ -505,40 +497,47 @@ reunion check is omitted from the chart to keep it readable.</p>
 </div>
 <div id="daily-rhythm" class="section level2">
 <h2>Daily rhythm</h2>
+<div class="float">
+<img src="images/actions-schedule/daily.svg"
+alt="Daily scheduled starts in Pacific daylight time" />
+<div class="figcaption">Daily scheduled starts in Pacific daylight
+time</div>
+</div>
+<details>
+<summary>
+Mermaid source
+</summary>
 <pre class="mermaid"><code>gantt
-    title Daily scheduled starts (UTC)
+    title Daily scheduled starts (Pacific daylight time)
     dateFormat YYYY-MM-DD HH:mm
     axisFormat %H:%M
     todayMarker off
     section Six-hour refresh
-    Movie rankings 00h37 :milestone, rank0, 2026-10-05 00:37, 0m
-    Movie rankings 06h37 :milestone, rank1, 2026-10-05 06:37, 0m
-    Movie rankings 12h37 :milestone, rank2, 2026-10-05 12:37, 0m
-    Movie rankings 18h37 :milestone, rank3, 2026-10-05 18:37, 0m
+    Movie rankings 17h37 :milestone, rank0, 2026-10-05 17:37, 0m
+    Movie rankings 23h37 :milestone, rank1, 2026-10-05 23:37, 0m
+    Movie rankings 05h37 :milestone, rank2, 2026-10-05 05:37, 0m
+    Movie rankings 11h37 :milestone, rank3, 2026-10-05 11:37, 0m
     section Daily refreshes
-    Saved podcasts 08h23 :milestone, daily0, 2026-10-05 08:23, 0m
-    Developer year in review 08h37 :milestone, daily1, 2026-10-05 08:37, 0m
-    Site sanity build 12h11 :milestone, daily2, 2026-10-05 12:11, 0m
-    Personal changelog 16h31 :milestone, daily3, 2026-10-05 16:31, 0m
-    Lately feed 16h43 :milestone, daily4, 2026-10-05 16:43, 0m
-    Activity art 17h07 :milestone, daily5, 2026-10-05 17:07, 0m</code></pre>
-<table style="width:100%;">
+    Saved podcasts 01h23 :milestone, daily0, 2026-10-05 01:23, 0m
+    Developer year in review 01h37 :milestone, daily1, 2026-10-05 01:37, 0m
+    Site sanity build 05h11 :milestone, daily2, 2026-10-05 05:11, 0m
+    Personal changelog 09h31 :milestone, daily3, 2026-10-05 09:31, 0m
+    Lately feed 09h43 :milestone, daily4, 2026-10-05 09:43, 0m
+    Activity art 10h07 :milestone, daily5, 2026-10-05 10:07, 0m</code></pre>
+</details>
+<table>
 <colgroup>
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th>Workflow</th>
-<th>When (UTC)</th>
-<th>PDT (UTC−7)</th>
-<th>PST (UTC−8)</th>
-<th>JST (UTC+9)</th>
+<th>Pacific calendar</th>
+<th>Pacific time (PDT)</th>
 <th>Cron</th>
 <th>Result</th>
 </tr>
@@ -547,20 +546,16 @@ reunion check is omitted from the chart to keep it readable.</p>
 <tr class="odd">
 <td><a href=".github/workflows/update_saved_episodes.yml">Saved
 podcasts</a></td>
-<td>Daily 08:23</td>
+<td>Daily</td>
 <td>01:23</td>
-<td>00:23</td>
-<td>17:23</td>
 <td><code>23 8 * * *</code></td>
 <td>Refresh JSON and redeploy Shiny dashboard</td>
 </tr>
 <tr class="even">
 <td><a href=".github/workflows/year-in-review.yml">Developer year in
 review</a></td>
-<td>Daily 08:37</td>
+<td>Daily</td>
 <td>01:37</td>
-<td>00:37</td>
-<td>17:37</td>
 <td><code>37 8 * * *</code></td>
 <td>Commit current-year stats (daily); previous-year snapshot
 (annual)</td>
@@ -568,38 +563,30 @@ review</a></td>
 <tr class="odd">
 <td><a href=".github/workflows/pages-rmarkdown.yml">Site sanity
 build</a></td>
-<td>Daily 12:11</td>
+<td>Daily</td>
 <td>05:11</td>
-<td>04:11</td>
-<td>21:11</td>
 <td><code>11 12 * * *</code></td>
 <td>Render and validate; no deployment</td>
 </tr>
 <tr class="even">
 <td><a href=".github/workflows/personal-changelog.yml">Personal
 changelog</a></td>
-<td>Daily 16:31</td>
+<td>Daily</td>
 <td>09:31</td>
-<td>08:31</td>
-<td>01:31 (next day)</td>
 <td><code>31 16 * * *</code></td>
 <td>Commit changelog JSON</td>
 </tr>
 <tr class="odd">
 <td><a href=".github/workflows/lately.yml">Lately feed</a></td>
-<td>Daily 16:43</td>
+<td>Daily</td>
 <td>09:43</td>
-<td>08:43</td>
-<td>01:43 (next day)</td>
 <td><code>43 16 * * *</code></td>
 <td>Commit recent-activity summary</td>
 </tr>
 <tr class="even">
 <td><a href=".github/workflows/activity-art.yml">Activity art</a></td>
-<td>Daily 17:07</td>
+<td>Daily</td>
 <td>10:07</td>
-<td>09:07</td>
-<td>02:07 (next day)</td>
 <td><code>7 17 * * *</code></td>
 <td>Commit activity SVG</td>
 </tr>
@@ -610,45 +597,52 @@ changelog</a></td>
 <h2>Weekly rhythm</h2>
 <p>These runs are in addition to the hourly and daily work above. Monday
 has the largest cluster of scheduled checks and data refreshes.</p>
+<div class="float">
+<img src="images/actions-schedule/weekly.svg"
+alt="Weekly scheduled starts in Pacific daylight time" />
+<div class="figcaption">Weekly scheduled starts in Pacific daylight
+time</div>
+</div>
+<details>
+<summary>
+Mermaid source
+</summary>
 <pre class="mermaid"><code>gantt
-    title Weekly scheduled starts (UTC)
+    title Weekly scheduled starts (Pacific daylight time)
     dateFormat YYYY-MM-DD HH:mm
     axisFormat %a %H:%M
     todayMarker off
     section Monday
-    IMDb episode ratings 08h23 :milestone, week1_0, 2026-10-05 08:23, 0m
-    Watched TV episodes 08h41 :milestone, week1_1, 2026-10-05 08:41, 0m
-    Exceptional IMDb episodes 09h17 :milestone, week1_2, 2026-10-05 09:17, 0m
-    Repo size 13h44 :milestone, week1_3, 2026-10-05 13:44, 0m
-    Broken links 14h13 :milestone, week1_4, 2026-10-05 14:13, 0m
-    Supabase keepalive 14h17 :milestone, week1_5, 2026-10-05 14:17, 0m
-    Accessibility audit 15h21 :milestone, week1_6, 2026-10-05 15:21, 0m
-    My Maps export 17h17 :milestone, week1_7, 2026-10-05 17:17, 0m
+    IMDb episode ratings 01h23 :milestone, week1_0, 2026-10-05 01:23, 0m
+    Watched TV episodes 01h41 :milestone, week1_1, 2026-10-05 01:41, 0m
+    Exceptional IMDb episodes 02h17 :milestone, week1_2, 2026-10-05 02:17, 0m
+    Repo size 06h44 :milestone, week1_3, 2026-10-05 06:44, 0m
+    Broken links 07h13 :milestone, week1_4, 2026-10-05 07:13, 0m
+    Supabase keepalive 07h17 :milestone, week1_5, 2026-10-05 07:17, 0m
+    Accessibility audit 08h21 :milestone, week1_6, 2026-10-05 08:21, 0m
+    My Maps export 10h17 :milestone, week1_7, 2026-10-05 10:17, 0m
     section Tuesday
-    CV PDF / DOCX 11h33 :milestone, week2_0, 2026-10-06 11:33, 0m
+    CV PDF / DOCX 04h33 :milestone, week2_0, 2026-10-06 04:33, 0m
     section Saturday
-    S&amp;P 500 / VOO 13h29 :milestone, week6_0, 2026-10-10 13:29, 0m
+    S&amp;P 500 / VOO 06h29 :milestone, week6_0, 2026-10-10 06:29, 0m
     section Sunday
-    Sitemap 13h37 :milestone, week0_0, 2026-10-11 13:37, 0m
-    Commit activity charts 13h41 :milestone, week0_1, 2026-10-11 13:41, 0m
-    Weekly Wrapped 16h17 :milestone, week0_2, 2026-10-11 16:17, 0m</code></pre>
-<table style="width:100%;">
+    Sitemap 06h37 :milestone, week0_0, 2026-10-11 06:37, 0m
+    Commit activity charts 06h41 :milestone, week0_1, 2026-10-11 06:41, 0m
+    Weekly Wrapped 09h17 :milestone, week0_2, 2026-10-11 09:17, 0m</code></pre>
+</details>
+<table>
 <colgroup>
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th>Workflow</th>
-<th>When (UTC)</th>
-<th>PDT (UTC−7)</th>
-<th>PST (UTC−8)</th>
-<th>JST (UTC+9)</th>
+<th>Pacific calendar</th>
+<th>Pacific time (PDT)</th>
 <th>Cron</th>
 <th>Result</th>
 </tr>
@@ -657,20 +651,16 @@ has the largest cluster of scheduled checks and data refreshes.</p>
 <tr class="odd">
 <td><a href=".github/workflows/update_imdb_ratings.yml">IMDb episode
 ratings</a></td>
-<td>Mon 08:23</td>
+<td>Mon</td>
 <td>01:23</td>
-<td>00:23</td>
-<td>17:23</td>
 <td><code>23 8 * * 1</code></td>
 <td>Refresh ratings; request site build when changed</td>
 </tr>
 <tr class="even">
 <td><a href=".github/workflows/update_watched_episodes.yml">Watched TV
 episodes</a></td>
-<td>Mon 08:41</td>
+<td>Mon</td>
 <td>01:41</td>
-<td>00:41</td>
-<td>17:41</td>
 <td><code>41 8 * * 1</code></td>
 <td>Refresh episodes; request site build when changed</td>
 </tr>
@@ -678,106 +668,84 @@ episodes</a></td>
 <td><a
 href=".github/workflows/update_imdb_exceptional_episodes.yml">Exceptional
 IMDb episodes</a></td>
-<td>Mon 09:17</td>
+<td>Mon</td>
 <td>02:17</td>
-<td>01:17</td>
-<td>18:17</td>
 <td><code>17 9 * * 1</code></td>
 <td>Validate official datasets; publish results and request site
 build</td>
 </tr>
 <tr class="even">
 <td><a href=".github/workflows/repo-size.yml">Repo size</a></td>
-<td>Mon 13:44</td>
+<td>Mon</td>
 <td>06:44</td>
-<td>05:44</td>
-<td>22:44</td>
 <td><code>44 13 * * 1</code></td>
 <td>Upload report; may open threshold issue</td>
 </tr>
 <tr class="odd">
 <td><a href=".github/workflows/link-check.yml">Broken links</a></td>
-<td>Mon 14:13</td>
+<td>Mon</td>
 <td>07:13</td>
-<td>06:13</td>
-<td>23:13</td>
 <td><code>13 14 * * 1</code></td>
 <td>Upload report; open or update issue on broken links</td>
 </tr>
 <tr class="even">
 <td><a href=".github/workflows/ping-movie-ranker-supabase.yml">Supabase
 keepalive</a></td>
-<td>Mon 14:17</td>
+<td>Mon</td>
 <td>07:17</td>
-<td>06:17</td>
-<td>23:17</td>
 <td><code>17 14 * * 1</code></td>
 <td>Read one row to keep database active</td>
 </tr>
 <tr class="odd">
 <td><a href=".github/workflows/pa11y.yml">Accessibility audit</a></td>
-<td>Mon 15:21</td>
+<td>Mon</td>
 <td>08:21</td>
-<td>07:21</td>
-<td>00:21 (next day)</td>
 <td><code>21 15 * * 1</code></td>
 <td>Upload report; open or update issue on errors</td>
 </tr>
 <tr class="even">
 <td><a href=".github/workflows/update_mymaps_export.yml">My Maps
 export</a></td>
-<td>Mon 17:17</td>
+<td>Mon</td>
 <td>10:17</td>
-<td>09:17</td>
-<td>02:17 (next day)</td>
 <td><code>17 17 * * 1</code></td>
 <td>Refresh KML/CSV; request site build when changed</td>
 </tr>
 <tr class="odd">
 <td><a href=".github/workflows/rebuild_cv.yml">CV PDF / DOCX</a></td>
-<td>Tue 11:33</td>
+<td>Tue</td>
 <td>04:33</td>
-<td>03:33</td>
-<td>20:33</td>
 <td><code>33 11 * * 2</code></td>
 <td>Open PR for meaningful CV changes</td>
 </tr>
 <tr class="even">
 <td><a href=".github/workflows/update_sp500.yml">S&amp;P 500 /
 VOO</a></td>
-<td>Sat 13:29</td>
+<td>Sat</td>
 <td>06:29</td>
-<td>05:29</td>
-<td>22:29</td>
 <td><code>29 13 * * 6</code></td>
 <td>Refresh prices; request site build when changed</td>
 </tr>
 <tr class="odd">
 <td><a href=".github/workflows/refresh-sitemap.yml">Sitemap</a></td>
-<td>Sun 13:37</td>
+<td>Sun</td>
 <td>06:37</td>
-<td>05:37</td>
-<td>22:37</td>
 <td><code>37 13 * * 0</code></td>
 <td>Commit sitemap; request site build when changed</td>
 </tr>
 <tr class="even">
 <td><a href=".github/workflows/refresh-commit-activity.yml">Commit
 activity charts</a></td>
-<td>Sun 13:41</td>
+<td>Sun</td>
 <td>06:41</td>
-<td>05:41</td>
-<td>22:41</td>
 <td><code>41 13 * * 0</code></td>
 <td>Re-knit README and charts; request site build when changed</td>
 </tr>
 <tr class="odd">
 <td><a href=".github/workflows/weekly-wrapped.yml">Weekly
 Wrapped</a></td>
-<td>Sun 16:17</td>
+<td>Sun</td>
 <td>09:17</td>
-<td>08:17</td>
-<td>01:17 (next day)</td>
 <td><code>17 16 * * 0</code></td>
 <td>Commit weekly activity snapshot</td>
 </tr>
@@ -786,40 +754,46 @@ Wrapped</a></td>
 <p><strong>Dependabot is separate:</strong> <a
 href=".github/dependabot.yml">.github/dependabot.yml</a> checks GitHub
 Actions dependencies on <strong>Mondays at 10:00
-America/Los_Angeles</strong> (17:00 UTC during PDT; 18:00 UTC during
-PST), opening grouped update PRs as needed. Unlike the cron rules above,
-its local time follows daylight saving time.</p>
+America/Los_Angeles</strong>, opening grouped update PRs as needed. It
+runs at 10:00 Pacific.</p>
 </div>
 <div id="monthly-rhythm" class="section level2">
 <h2>Monthly rhythm</h2>
+<div class="float">
+<img src="images/actions-schedule/monthly.svg"
+alt="Monthly scheduled starts in Pacific daylight time" />
+<div class="figcaption">Monthly scheduled starts in Pacific daylight
+time</div>
+</div>
+<details>
+<summary>
+Mermaid source
+</summary>
 <pre class="mermaid"><code>gantt
-    title Monthly scheduled starts (UTC)
+    title Monthly scheduled starts (Pacific daylight time)
     dateFormat YYYY-MM-DD HH:mm
     axisFormat %d %b
     todayMarker off
     section Monthly data
-    Confederate statues (day 1, 14h17) :milestone, month0, 2026-10-01 14:17, 0m
-    US rental markets (day 5, 14h47) :milestone, month1, 2026-10-05 14:47, 0m
-    Top 1000 box office (day 8, 12h41) :milestone, month2, 2026-10-08 12:41, 0m
-    Top 250 + Rotten Tomatoes (day 12, 13h53) :milestone, month3, 2026-10-12 13:53, 0m
-    Director filmographies (day 17, 14h07) :milestone, month4, 2026-10-17 14:07, 0m</code></pre>
-<table style="width:100%;">
+    Confederate statues (day 1, 07h17) :milestone, month0, 2026-10-01 07:17, 0m
+    US rental markets (day 5, 07h47) :milestone, month1, 2026-10-05 07:47, 0m
+    Top 1000 box office (day 8, 05h41) :milestone, month2, 2026-10-08 05:41, 0m
+    Top 250 + Rotten Tomatoes (day 12, 06h53) :milestone, month3, 2026-10-12 06:53, 0m
+    Director filmographies (day 17, 07h07) :milestone, month4, 2026-10-17 07:07, 0m</code></pre>
+</details>
+<table>
 <colgroup>
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th>Workflow</th>
-<th>When (UTC)</th>
-<th>PDT (UTC−7)</th>
-<th>PST (UTC−8)</th>
-<th>JST (UTC+9)</th>
+<th>Pacific calendar</th>
+<th>Pacific time (PDT)</th>
 <th>Cron</th>
 <th>Result</th>
 </tr>
@@ -829,40 +803,32 @@ its local time follows daylight saving time.</p>
 <td><a
 href=".github/workflows/update_confederate_statues_data.yml">Confederate
 statues</a></td>
-<td>Day 1 at 14:17</td>
+<td>Day 1</td>
 <td>07:17</td>
-<td>06:17</td>
-<td>23:17</td>
 <td><code>17 14 1 * *</code></td>
 <td>Refresh CSV; request site build when changed</td>
 </tr>
 <tr class="even">
 <td><a href=".github/workflows/update_us_rentals.yml">US rental
 markets</a></td>
-<td>Day 5 at 14:47</td>
+<td>Day 5</td>
 <td>07:47</td>
-<td>06:47</td>
-<td>23:47</td>
 <td><code>47 14 5 * *</code></td>
 <td>Refresh Zillow data; request site build when changed</td>
 </tr>
 <tr class="odd">
 <td><a href=".github/workflows/update_top1000_box_office.yml">Top 1000
 box office</a></td>
-<td>Day 8 at 12:41</td>
+<td>Day 8</td>
 <td>05:41</td>
-<td>04:41</td>
-<td>21:41</td>
 <td><code>41 12 8 * *</code></td>
 <td>Refresh box office and caches; request site build when changed</td>
 </tr>
 <tr class="even">
 <td><a href=".github/workflows/update_top250_with_rt.yml">Top 250 +
 Rotten Tomatoes</a></td>
-<td>Day 12 at 13:53</td>
+<td>Day 12</td>
 <td>06:53</td>
-<td>05:53</td>
-<td>22:53</td>
 <td><code>53 13 12 * *</code></td>
 <td>Refresh ratings; request site build when changed</td>
 </tr>
@@ -870,10 +836,8 @@ Rotten Tomatoes</a></td>
 <td><a
 href=".github/workflows/update_director_filmographies.yml">Director
 filmographies</a></td>
-<td>Day 17 at 14:07</td>
+<td>Day 17</td>
 <td>07:07</td>
-<td>06:07</td>
-<td>23:07</td>
 <td><code>7 14 17 * *</code></td>
 <td>Refresh TMDb data; request site build when changed</td>
 </tr>
@@ -882,23 +846,19 @@ filmographies</a></td>
 </div>
 <div id="annual-checkpoints" class="section level2">
 <h2>Annual checkpoints</h2>
-<table style="width:100%;">
+<table>
 <colgroup>
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th>Workflow</th>
-<th>When (UTC)</th>
-<th>PDT (UTC−7)</th>
-<th>PST (UTC−8)</th>
-<th>JST (UTC+9)</th>
+<th>Pacific calendar</th>
+<th>Pacific time (PDT)</th>
 <th>Cron</th>
 <th>Result</th>
 </tr>
@@ -907,20 +867,16 @@ filmographies</a></td>
 <tr class="odd">
 <td><a href=".github/workflows/update_best_picture_winners.yml">Best
 Picture winners</a></td>
-<td>Mar 23 at 16:23</td>
+<td>Mar 23</td>
 <td>09:23</td>
-<td>08:23</td>
-<td>01:23 (next day)</td>
 <td><code>23 16 23 3 *</code></td>
 <td>Open PR if winners data changed</td>
 </tr>
 <tr class="even">
 <td><a href=".github/workflows/year-in-review.yml">Developer year in
 review</a></td>
-<td>Jan 1 at 17:13</td>
+<td>Jan 1</td>
 <td>10:13</td>
-<td>09:13</td>
-<td>02:13 (next day)</td>
 <td><code>13 17 1 1 *</code></td>
 <td>Commit current-year stats (daily); previous-year snapshot
 (annual)</td>
