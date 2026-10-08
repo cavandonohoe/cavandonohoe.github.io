@@ -1,0 +1,486 @@
+{
+  "year": 2022,
+  "commits": 102,
+  "pull_requests": 0,
+  "repositories_touched": 3,
+  "lines_added": 245244,
+  "most_used_language": "R",
+  "language_lines_added": {
+    "R": 1366,
+    "HTML": 432
+  },
+  "language_files": {
+    "HTML": [
+      {
+        "repository": "cavandonohoe/confederate_statues",
+        "path": "plots.html",
+        "lines_added": 432,
+        "commits": [
+          {
+            "sha": "f21d7eb075edbfd7a81e09ce9890cbfdef93399e",
+            "date": "2022-11-08",
+            "lines_added": 432
+          }
+        ]
+      }
+    ],
+    "R": [
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "archive/covid_cases_nostalgia.Rmd",
+        "lines_added": 371,
+        "commits": [
+          {
+            "sha": "151c8d6c2488515abbf6d7d74dd3123e9f19b3d0",
+            "date": "2022-09-07",
+            "lines_added": 371
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "archive/sp500.Rmd",
+        "lines_added": 143,
+        "commits": [
+          {
+            "sha": "18bdea205a360142fb31de17367a51156e2b5d0f",
+            "date": "2022-05-03",
+            "lines_added": 143
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/confederate_statues",
+        "path": "web_scraping.R",
+        "lines_added": 132,
+        "commits": [
+          {
+            "sha": "f21d7eb075edbfd7a81e09ce9890cbfdef93399e",
+            "date": "2022-11-08",
+            "lines_added": 15
+          },
+          {
+            "sha": "bafe06d455caf5ed3b953b035de4d8c0c0c81f07",
+            "date": "2022-11-07",
+            "lines_added": 117
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "about.Rmd",
+        "lines_added": 101,
+        "commits": [
+          {
+            "sha": "f31f0c11a5213245661513dcad6d916a23085e38",
+            "date": "2022-12-12",
+            "lines_added": 2
+          },
+          {
+            "sha": "ddd1eebe7135c94bd346e3c79477196903f5de67",
+            "date": "2022-11-16",
+            "lines_added": 3
+          },
+          {
+            "sha": "e5df7b5ae6d8871ca4a3bd45cc74a4a087845bb8",
+            "date": "2022-11-15",
+            "lines_added": 7
+          },
+          {
+            "sha": "e22e533c08d5d911cc5cc3f737b60d7de00a07f2",
+            "date": "2022-11-15",
+            "lines_added": 1
+          },
+          {
+            "sha": "d3ce85ebd98aebe6c4b8e7fcd82674447cabfc92",
+            "date": "2022-11-15",
+            "lines_added": 1
+          },
+          {
+            "sha": "829b3a29da3c575f1d651709094305a177575648",
+            "date": "2022-11-15",
+            "lines_added": 26
+          },
+          {
+            "sha": "33f387d082cc856647a94a35f014ef4eeeb3c711",
+            "date": "2022-11-15",
+            "lines_added": 24
+          },
+          {
+            "sha": "2b06332c25f6a49f79dfdc765ea5f4c87c0810d7",
+            "date": "2022-11-15",
+            "lines_added": 2
+          },
+          {
+            "sha": "4f8f983ba32ea87bb37340ed486fc4ba080e7e9c",
+            "date": "2022-09-07",
+            "lines_added": 1
+          },
+          {
+            "sha": "e8627fe4711750bf759ea9784686a8d4fcc70eac",
+            "date": "2022-08-22",
+            "lines_added": 1
+          },
+          {
+            "sha": "a723c36132be365658de22d0f071d285f04c561c",
+            "date": "2022-08-22",
+            "lines_added": 2
+          },
+          {
+            "sha": "654b3e9cbbbdabc9388ef7c38934f42c127e87a0",
+            "date": "2022-08-20",
+            "lines_added": 5
+          },
+          {
+            "sha": "ef54a189e6d3e64fa0f255afa0ddef97b9b70af3",
+            "date": "2022-08-19",
+            "lines_added": 2
+          },
+          {
+            "sha": "c449b19d066d5ee4615a959ca8749f190b0ef672",
+            "date": "2022-08-19",
+            "lines_added": 2
+          },
+          {
+            "sha": "2f41dec43bdff6a8f96aef278b7918f8b11d57bd",
+            "date": "2022-08-19",
+            "lines_added": 9
+          },
+          {
+            "sha": "518bc047f2ce252e10895aed3690fa88ae15ac16",
+            "date": "2022-07-15",
+            "lines_added": 10
+          },
+          {
+            "sha": "137a79e1b5305baec39601a24bcca7deff58e830",
+            "date": "2022-04-15",
+            "lines_added": 3
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/confederate_statues",
+        "path": "README.Rmd",
+        "lines_added": 99,
+        "commits": [
+          {
+            "sha": "f3a78cc3088a58931f261c0c30095d0651a2166b",
+            "date": "2022-11-08",
+            "lines_added": 3
+          },
+          {
+            "sha": "259a1b69108d839fe466db230a2f82ff885b340a",
+            "date": "2022-11-08",
+            "lines_added": 20
+          },
+          {
+            "sha": "13de0598be3708efe403315502f6036307edd208",
+            "date": "2022-11-08",
+            "lines_added": 76
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "jason_firefighter.Rmd",
+        "lines_added": 86,
+        "commits": [
+          {
+            "sha": "32e82038530045b433187ea2b08c1192aa9a914c",
+            "date": "2022-03-17",
+            "lines_added": 2
+          },
+          {
+            "sha": "9ca4494675609ae6696484918a6225b2455e9b2f",
+            "date": "2022-01-31",
+            "lines_added": 5
+          },
+          {
+            "sha": "ea2973efbfd54e6e1985db12a1d112e5404cc3b6",
+            "date": "2022-01-23",
+            "lines_added": 3
+          },
+          {
+            "sha": "8505ae23d9878aaa953003e719227ad634e3cf0d",
+            "date": "2022-01-23",
+            "lines_added": 3
+          },
+          {
+            "sha": "848649f5ce2f44b77581334ba5eaf7d506c5cb3b",
+            "date": "2022-01-23",
+            "lines_added": 73
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "tohs_reunion.Rmd",
+        "lines_added": 78,
+        "commits": [
+          {
+            "sha": "ddd1eebe7135c94bd346e3c79477196903f5de67",
+            "date": "2022-11-16",
+            "lines_added": 1
+          },
+          {
+            "sha": "cb4e002a807c04da2052051f811d9f342a378909",
+            "date": "2022-09-15",
+            "lines_added": 3
+          },
+          {
+            "sha": "81d01ff9e362ed0cf215d9acf4b93ec13eb40660",
+            "date": "2022-08-02",
+            "lines_added": 12
+          },
+          {
+            "sha": "3309035dd385138a1297036553d8495186adf7f5",
+            "date": "2022-07-07",
+            "lines_added": 1
+          },
+          {
+            "sha": "3c63ee328d98fb8efdd387a68bf8166da0a9f720",
+            "date": "2022-05-10",
+            "lines_added": 1
+          },
+          {
+            "sha": "209f0abc89a4a568a55dc4637a4b6848cc043597",
+            "date": "2022-04-16",
+            "lines_added": 17
+          },
+          {
+            "sha": "e54074dd3c4fe95a2713d01f0fe0790a5903e29d",
+            "date": "2022-04-15",
+            "lines_added": 43
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "firefighter_schedule.Rmd",
+        "lines_added": 74,
+        "commits": [
+          {
+            "sha": "ddd1eebe7135c94bd346e3c79477196903f5de67",
+            "date": "2022-11-16",
+            "lines_added": 1
+          },
+          {
+            "sha": "62373755854d3204b66271d4016c8b89be5bf304",
+            "date": "2022-08-29",
+            "lines_added": 73
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/confederate_statues",
+        "path": "plots.Rmd",
+        "lines_added": 53,
+        "commits": [
+          {
+            "sha": "f21d7eb075edbfd7a81e09ce9890cbfdef93399e",
+            "date": "2022-11-08",
+            "lines_added": 53
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "web_scraping/top250_movies_with_rt.R",
+        "lines_added": 52,
+        "commits": [
+          {
+            "sha": "fc83428f553710e974c1a1b1a36b74adfbfb8b1d",
+            "date": "2022-09-07",
+            "lines_added": 5
+          },
+          {
+            "sha": "a52f0fbbf145ff8c545c46ed0919be5113ccbde4",
+            "date": "2022-09-07",
+            "lines_added": 47
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "archive/spine_stuff.R",
+        "lines_added": 44,
+        "commits": [
+          {
+            "sha": "505bf3ae75ea63dcaf6267fdc984e82ec67a2c91",
+            "date": "2022-09-12",
+            "lines_added": 44
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "selling_vs_renting.R",
+        "lines_added": 40,
+        "commits": [
+          {
+            "sha": "4208a7e479104c93b471753389559a423b972352",
+            "date": "2022-12-09",
+            "lines_added": 40
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "web_scraping/best_picture_nominees.R",
+        "lines_added": 29,
+        "commits": [
+          {
+            "sha": "a52f0fbbf145ff8c545c46ed0919be5113ccbde4",
+            "date": "2022-09-07",
+            "lines_added": 29
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe",
+        "path": "README.Rmd",
+        "lines_added": 27,
+        "commits": [
+          {
+            "sha": "f31f2553a35f38013a1d2d614cddefda3280969f",
+            "date": "2022-12-01",
+            "lines_added": 1
+          },
+          {
+            "sha": "358b9dd83808cbbf1b85cb2d728f94fe089aedca",
+            "date": "2022-11-15",
+            "lines_added": 26
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "cv.Rmd",
+        "lines_added": 11,
+        "commits": [
+          {
+            "sha": "8e4f25eef116aef5862413e2cac158e3f67da46b",
+            "date": "2022-11-14",
+            "lines_added": 4
+          },
+          {
+            "sha": "f59e12d01e65ae3f6492c068f1082ba5fc9e0905",
+            "date": "2022-08-18",
+            "lines_added": 1
+          },
+          {
+            "sha": "f377eecce7d70cbd9639dcc8c18f16389d3f7568",
+            "date": "2022-08-18",
+            "lines_added": 4
+          },
+          {
+            "sha": "9f507783dc59c52ddb93d3f8e3d63aeba22ba4d9",
+            "date": "2022-08-18",
+            "lines_added": 2
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "web_scraping/imdb_tv_series_web_scraping.R",
+        "lines_added": 9,
+        "commits": [
+          {
+            "sha": "fc83428f553710e974c1a1b1a36b74adfbfb8b1d",
+            "date": "2022-09-07",
+            "lines_added": 9
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "README.Rmd",
+        "lines_added": 7,
+        "commits": [
+          {
+            "sha": "8e4f25eef116aef5862413e2cac158e3f67da46b",
+            "date": "2022-11-14",
+            "lines_added": 3
+          },
+          {
+            "sha": "32e82038530045b433187ea2b08c1192aa9a914c",
+            "date": "2022-03-17",
+            "lines_added": 2
+          },
+          {
+            "sha": "bf0b9c6e16ab393692f1b1697ec2f7aad449cb37",
+            "date": "2022-03-07",
+            "lines_added": 1
+          },
+          {
+            "sha": "20d1ede560fe10a23b783fc77a2710f0ef713725",
+            "date": "2022-03-07",
+            "lines_added": 1
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "web_scraping/top1000_box_office.R",
+        "lines_added": 6,
+        "commits": [
+          {
+            "sha": "a52f0fbbf145ff8c545c46ed0919be5113ccbde4",
+            "date": "2022-09-07",
+            "lines_added": 6
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "get_all_episodes.R",
+        "lines_added": 4,
+        "commits": [
+          {
+            "sha": "fc83428f553710e974c1a1b1a36b74adfbfb8b1d",
+            "date": "2022-09-07",
+            "lines_added": 4
+          }
+        ]
+      }
+    ]
+  },
+  "excluded_language_lines_added": {
+    "HTML": 174549,
+    "JavaScript": 47947,
+    "CSS": 475
+  },
+  "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, dependency files, and raw HTML inputs are excluded.",
+  "most_active_month": "April",
+  "longest_streak_days": 8,
+  "active_days": 52,
+  "monthly_commits": [
+    6,
+    3,
+    6,
+    20,
+    3,
+    1,
+    11,
+    19,
+    8,
+    2,
+    17,
+    6
+  ],
+  "biggest_project": "cavandonohoe.github.io",
+  "biggest_project_commits": 93,
+  "repositories": [
+    "cavandonohoe/cavandonohoe",
+    "cavandonohoe/cavandonohoe.github.io",
+    "cavandonohoe/confederate_statues"
+  ],
+  "repository_commits": {
+    "cavandonohoe/cavandonohoe.github.io": 93,
+    "cavandonohoe/confederate_statues": 7,
+    "cavandonohoe/cavandonohoe": 2
+  },
+  "scope": "Author-matched commits reachable from branches and tags in public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bots and other authors are excluded. Language totals exclude Linguist-generated, vendored, conventional dependency files, and raw HTML inputs. Overall lines added still include all files. PRs count public pull requests authored by the user, when available.",
+  "is_partial_year": false,
+  "generated_at": "2026-10-07T03:32:18.308884+00:00"
+}
