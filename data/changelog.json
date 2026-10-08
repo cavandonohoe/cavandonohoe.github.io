@@ -1,6 +1,18 @@
 {
-  "generated_at": "2026-10-07T21:29:11.897756+00:00",
+  "generated_at": "2026-10-08T21:26:23.937539+00:00",
   "events": [
+    {
+      "date": "2026-10-08",
+      "type": "merged_pr",
+      "title": "Fix Developer Year in Review snapshot push failures",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/218"
+    },
+    {
+      "date": "2026-10-08",
+      "type": "merged_pr",
+      "title": "Add GitHub Actions schedule with Mermaid timelines",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/219"
+    },
     {
       "date": "2026-10-07",
       "type": "merged_pr",
@@ -294,15 +306,23 @@
       "type": "merged_pr",
       "title": "Auto-refresh the activity-over-time charts via CI",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/166"
-    },
-    {
-      "date": "2026-09-08",
-      "type": "merged_pr",
-      "title": "ci: grant actions:write so scheduled data updates can dispatch redeploy",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/165"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-10-08",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "6 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/6f1944f521224622d15590362073ea37fa4ca227"
+        },
+        {
+          "emoji": "\ud83d\udcbb",
+          "text": "2 PRs merged"
+        }
+      ]
+    },
     {
       "date": "2026-10-07",
       "items": [
@@ -382,11 +402,6 @@
     {
       "date": "2026-10-02",
       "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "10 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/40837f3b448170c0aeacb08f728a3c3ceea260ef"
-        },
         {
           "emoji": "\ud83d\udcbb",
           "text": "2 PRs merged"
@@ -495,16 +510,6 @@
           "emoji": "\ud83d\ude80",
           "text": "Guard the scheduled data refreshes and fix preview deploy hygiene",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/169"
-        }
-      ]
-    },
-    {
-      "date": "2026-09-10",
-      "items": [
-        {
-          "emoji": "\u2699\ufe0f",
-          "text": "Developer activity + site automation expanded",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/166"
         }
       ]
     }
