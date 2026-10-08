@@ -1,14 +1,14 @@
 {
   "year": 2026,
-  "commits": 804,
-  "pull_requests": 209,
+  "commits": 829,
+  "pull_requests": 214,
   "repositories_touched": 6,
-  "lines_added": 58873227,
+  "lines_added": 61061563,
   "most_used_language": "R",
   "language_lines_added": {
-    "R": 30531,
+    "R": 30572,
     "TypeScript": 7453,
-    "Python": 6531,
+    "Python": 6728,
     "JavaScript": 4687,
     "HTML": 4592,
     "SQL": 4352,
@@ -508,17 +508,27 @@
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "scripts/developer_year_in_review.py",
-        "lines_added": 528,
+        "lines_added": 594,
         "commits": [
           {
-            "sha": "d3c4922b5ee479393f30d2bba8a9a136e727e068",
+            "sha": "a3fcf88f6468b91fd30dc08d611c8f9d3f7f1304",
             "date": "2026-10-07",
-            "lines_added": 18
+            "lines_added": 20
           },
           {
             "sha": "5d6650c55efe23c67b491031b570628877f3770b",
             "date": "2026-10-07",
             "lines_added": 44
+          },
+          {
+            "sha": "44f80f6d718e36910140d6496dc2145b1818ee3f",
+            "date": "2026-10-07",
+            "lines_added": 44
+          },
+          {
+            "sha": "0bacd4eb4fba0654667d169784edf3c587e2c791",
+            "date": "2026-10-07",
+            "lines_added": 20
           },
           {
             "sha": "5c615a309994f644a636abd2e34aee0644543303",
@@ -539,6 +549,43 @@
             "sha": "46f68fb16b7c3aa2334d2a1b0dc783f05eabeb10",
             "date": "2026-10-02",
             "lines_added": 111
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "tests/test_developer_year_in_review.py",
+        "lines_added": 320,
+        "commits": [
+          {
+            "sha": "a3fcf88f6468b91fd30dc08d611c8f9d3f7f1304",
+            "date": "2026-10-07",
+            "lines_added": 23
+          },
+          {
+            "sha": "5d6650c55efe23c67b491031b570628877f3770b",
+            "date": "2026-10-07",
+            "lines_added": 85
+          },
+          {
+            "sha": "44f80f6d718e36910140d6496dc2145b1818ee3f",
+            "date": "2026-10-07",
+            "lines_added": 85
+          },
+          {
+            "sha": "0bacd4eb4fba0654667d169784edf3c587e2c791",
+            "date": "2026-10-07",
+            "lines_added": 23
+          },
+          {
+            "sha": "5c615a309994f644a636abd2e34aee0644543303",
+            "date": "2026-10-05",
+            "lines_added": 52
+          },
+          {
+            "sha": "2ae53a3073df683a97922409fa63f95ad1098bfb",
+            "date": "2026-10-05",
+            "lines_added": 52
           }
         ]
       },
@@ -654,28 +701,6 @@
             "sha": "2372985f035cf26fce87e187e54322edf085a4db",
             "date": "2026-02-16",
             "lines_added": 29
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "tests/test_developer_year_in_review.py",
-        "lines_added": 189,
-        "commits": [
-          {
-            "sha": "5d6650c55efe23c67b491031b570628877f3770b",
-            "date": "2026-10-07",
-            "lines_added": 85
-          },
-          {
-            "sha": "5c615a309994f644a636abd2e34aee0644543303",
-            "date": "2026-10-05",
-            "lines_added": 52
-          },
-          {
-            "sha": "2ae53a3073df683a97922409fa63f95ad1098bfb",
-            "date": "2026-10-05",
-            "lines_added": 52
           }
         ]
       },
@@ -3363,6 +3388,38 @@
       },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "year_in_review.Rmd",
+        "lines_added": 202,
+        "commits": [
+          {
+            "sha": "1a2021cfa38a52f4fc88c5164cb00431e14b35e7",
+            "date": "2026-10-07",
+            "lines_added": 50
+          },
+          {
+            "sha": "0bacd4eb4fba0654667d169784edf3c587e2c791",
+            "date": "2026-10-07",
+            "lines_added": 41
+          },
+          {
+            "sha": "6a1b6420b2541f8d4f25d2690ca98bae3b89793b",
+            "date": "2026-10-05",
+            "lines_added": 2
+          },
+          {
+            "sha": "2ae53a3073df683a97922409fa63f95ad1098bfb",
+            "date": "2026-10-05",
+            "lines_added": 52
+          },
+          {
+            "sha": "d0dcbe44d0e337298843c53a19e827e04ff424f8",
+            "date": "2026-10-02",
+            "lines_added": 57
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "scripts/refresh_tohs_reunion.R",
         "lines_added": 200,
         "commits": [
@@ -3618,33 +3675,6 @@
             "sha": "97cb30273952b356920d03992152796268baa760",
             "date": "2026-02-02",
             "lines_added": 15
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "year_in_review.Rmd",
-        "lines_added": 161,
-        "commits": [
-          {
-            "sha": "1a2021cfa38a52f4fc88c5164cb00431e14b35e7",
-            "date": "2026-10-07",
-            "lines_added": 50
-          },
-          {
-            "sha": "6a1b6420b2541f8d4f25d2690ca98bae3b89793b",
-            "date": "2026-10-05",
-            "lines_added": 2
-          },
-          {
-            "sha": "2ae53a3073df683a97922409fa63f95ad1098bfb",
-            "date": "2026-10-05",
-            "lines_added": 52
-          },
-          {
-            "sha": "d0dcbe44d0e337298843c53a19e827e04ff424f8",
-            "date": "2026-10-02",
-            "lines_added": 57
           }
         ]
       },
@@ -5759,19 +5789,19 @@
     ]
   },
   "excluded_language_lines_added": {
-    "JavaScript": 15628114,
-    "HTML": 6083573,
-    "CSS": 3585716,
-    "R": 852335,
-    "TypeScript": 242700,
-    "SQL": 125789,
-    "Python": 84658,
-    "Shell": 4968
+    "JavaScript": 15988394,
+    "HTML": 6374408,
+    "CSS": 3696096,
+    "R": 889390,
+    "TypeScript": 253875,
+    "SQL": 131539,
+    "Python": 92458,
+    "Shell": 5313
   },
   "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, dependency files, and raw HTML inputs are excluded.",
   "most_active_month": "June",
-  "longest_streak_days": 7,
-  "active_days": 90,
+  "longest_streak_days": 8,
+  "active_days": 91,
   "monthly_commits": [
     28,
     77,
@@ -5782,12 +5812,12 @@
     122,
     44,
     107,
-    108,
+    133,
     0,
     0
   ],
   "biggest_project": "cavandonohoe.github.io",
-  "biggest_project_commits": 712,
+  "biggest_project_commits": 737,
   "repositories": [
     "cavandonohoe/cavandonohoe",
     "cavandonohoe/cavandonohoe.github.io",
@@ -5797,7 +5827,7 @@
     "cavandonohoe/rent-vs-buy"
   ],
   "repository_commits": {
-    "cavandonohoe/cavandonohoe.github.io": 712,
+    "cavandonohoe/cavandonohoe.github.io": 737,
     "cavandonohoe/rent-vs-buy": 38,
     "cavandonohoe/grocery-compare": 18,
     "cavandonohoe/confederate_statues": 17,
@@ -5806,5 +5836,5 @@
   },
   "scope": "Author-matched commits reachable from branches and tags in public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bots and other authors are excluded. Language totals exclude Linguist-generated, vendored, conventional dependency files, and raw HTML inputs. Overall lines added still include all files. PRs count public pull requests authored by the user, when available.",
   "is_partial_year": true,
-  "generated_at": "2026-10-07T03:32:18.308884+00:00"
+  "generated_at": "2026-10-08T15:50:02.003566+00:00"
 }
