@@ -66,6 +66,8 @@ navbar:
         href: detour-finder/index.html
       - text: "When Were Confederate Statues Erected?"
         href: confederate_statues.html
+      - text: "Animated Procedural Maze"
+        href: maze-art.html
       - text: "Sierpinski Triangle"
         href: sierpinski_triangle.html
       - text: "Airplane Boarding Simulation"
