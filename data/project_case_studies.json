@@ -83,7 +83,7 @@
     {
       "project": "css",
       "tracked_files": 2,
-      "commits_touching_project": 2,
+      "commits_touching_project": 3,
       "top_extensions": [
         [
           ".css",
@@ -162,7 +162,7 @@
     {
       "project": "images",
       "tracked_files": 14,
-      "commits_touching_project": 58,
+      "commits_touching_project": 59,
       "top_extensions": [
         [
           ".jpg",
