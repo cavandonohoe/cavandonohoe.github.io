@@ -174,6 +174,7 @@ cards <- list(
   list("my_travels.html", "\U2708\UFE0F", "Get Bloggy With It", "Travel blog entries from my adventures around the world."),
   list("tohs_reunion.html", "\U0001F393", "TOHS Class of 2012 Reunion", "Tracking down classmates for the reunion, and who we're still missing emails for."),
   list("best_pic_vs_top_1000.html", "\U0001F39E\UFE0F", "Best Picture vs Top 1000 Box Office", "Do Oscar winners also dominate the box office? An interactive comparison."),
+  list("maze-art.html", "🧩", "Animated Procedural Maze", "Watch a maze emerge step by step, customize its geometry, and export your design."),
   list("sierpinski_triangle.html", "\U0001F53A", "Sierpinski Triangle", "Fractal geometry generated in R: the classic chaos game visualization."),
   list("airplane_boarding.html", "\U2708\UFE0F", "Airplane Boarding Simulation", "Animated head-to-head race of Steffen, WILMA, Back-to-Front, Reverse Pyramid, and Random."),
   list("confederate_statues.html", "\U0001F5FF", "Confederate Statues Timeline", "When were Confederate monuments erected? A data-driven look at the timeline."),
