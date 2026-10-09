@@ -4,30 +4,54 @@
 :root{color-scheme:dark}body{margin:0;background:#060b11;color:#dcebf4;font:16px system-ui,sans-serif}
 main{max-width:1150px;margin:auto;padding:24px}h1{font-size:1.6rem;margin:0 0 8px}
 p{color:#a8bdc9}canvas{display:block;width:100%;height:auto;background:#060b11;border:1px solid #233342;border-radius:12px}
-.controls{display:flex;flex-wrap:wrap;align-items:end;gap:16px;margin:18px 0}label{display:grid;gap:6px}
+.controls{display:flex;flex-wrap:wrap;align-items:end;gap:16px;margin:18px 0}label{display:grid;gap:6px}.toggle{display:flex;align-items:center;gap:8px}.toggle input{width:auto}.lesson{padding:16px;background:#111e29;border:1px solid #415361;border-radius:8px;margin:16px 0}.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.9rem}.legend span::before{content:"";display:inline-block;width:12px;height:12px;background:var(--key);margin-right:6px}#stack{overflow-wrap:anywhere}button:disabled{opacity:.45;cursor:default}output{min-width:70px}
 input,button{font:inherit}input{width:110px;padding:8px;background:#111e29;color:white;border:1px solid #415361;border-radius:6px}
 button{padding:10px 14px;background:#15374a;color:white;border:1px solid #477b96;border-radius:7px;cursor:pointer}
 </style></head><body><main><h1>Procedural Maze Art</h1><p>A connected maze generated with randomized depth-first search and rendered as luminous geometric outlines. Inspired by a floor-plan installation; not a reconstruction of its optimization model.</p>
-<div class="controls"><label>Columns<input id="cols" type="number" min="4" max="65" value="22"></label><label>Rows<input id="rows" type="number" min="4" max="45" value="14"></label><label>Seed<input id="seed" type="number" value="7"></label><label>Speed<input id="speed" type="range" min="1" max="100" value="55"></label><button id="play">Pause</button><button id="replay">Replay</button><button id="generate">Generate</button><button id="random">Random seed</button><button id="save">Save PNG</button></div>
+<div class="controls"><label>Columns<input id="cols" type="number" min="4" max="65" value="22"></label><label>Rows<input id="rows" type="number" min="4" max="45" value="14"></label><label>Seed<input id="seed" type="number" value="7"></label><label>Iterations / second<input id="speed" type="range" min="0.25" max="80" step="0.25" value="40"></label><output id="rate"></output><label class="toggle"><input id="learn" type="checkbox">Learning mode</label><button id="step">Next iteration</button><button id="small">Small example (4 × 4)</button><button id="play">Pause</button><button id="replay">Replay</button><button id="generate">Generate</button><button id="random">Random seed</button><button id="save">Save PNG</button></div>
+<section id="lesson" class="lesson" hidden aria-label="Algorithm walkthrough"><div class="legend"><span style="--key:#ffcc66">Current cell</span><span style="--key:#77e6aa">Available neighbors</span><span style="--key:#708eff">Stack / active path</span><span style="--key:#eb94d9">Last move / backtrack</span></div><p id="explanation" role="status" aria-live="polite"></p><p id="state"></p><p id="stack"></p></section>
 <canvas id="maze" width="1400" height="900" aria-label="Generated glowing maze"></canvas></main><script>
 const $=id=>document.getElementById(id),canvas=$('maze'),ctx=canvas.getContext('2d');
-let steps=[],walls=[],cols=22,rows=14,progress=0,playing=true,last=0,frame=0;
+let steps=[],walls=[],cols=22,rows=14,progress=0,playing=true,last=null,frame=0,budget=0;
+let visited=new Set(),path=[],current=0,previous=null;
+const dirs=[[-1,0,0,2],[0,1,1,3],[1,0,2,0],[0,-1,3,1]];
 function random(seed){let a=seed|0;return ()=>{a+=0x6D2B79F5;let t=a;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return ((t^t>>>14)>>>0)/4294967296}}
+function neighbors(id,seen){const r=Math.floor(id/cols),c=id%cols;return dirs.map(([dr,dc,a,b])=>[r+dr,c+dc,a,b]).filter(([nr,nc])=>nr>=0&&nr<rows&&nc>=0&&nc<cols&&!seen.has(nr*cols+nc))}
+function cellName(id){return id===null?'none':`(${Math.floor(id/cols)+1}, ${id%cols+1})`}
+function reset(){progress=0;budget=0;last=null;walls=Array.from({length:cols*rows},()=>[true,true,true,true]);visited=new Set([0]);path=[0];current=0;previous=null}
+function setPlaying(value){playing=value;$('play').textContent=value?'Pause':'Play';last=null;budget=0}
 function build(){
-cancelAnimationFrame(frame);cols=Math.max(4,Math.min(65,+$('cols').value||22));rows=Math.max(4,Math.min(45,+$('rows').value||14));
-const rng=random(+$('seed').value||0),seen=new Uint8Array(cols*rows),stack=[0],dirs=[[-1,0,0,2],[0,1,1,3],[1,0,2,0],[0,-1,3,1]];
-steps=[];seen[0]=1;
-while(stack.length){let id=stack[stack.length-1],r=Math.floor(id/cols),c=id%cols;
-let options=dirs.map(([dr,dc,a,b])=>[r+dr,c+dc,a,b]).filter(([nr,nc])=>nr>=0&&nr<rows&&nc>=0&&nc<cols&&!seen[nr*cols+nc]);
-if(!options.length){stack.pop();continue}
-let [nr,nc,a,b]=options[Math.floor(rng()*options.length)],next=nr*cols+nc;
-steps.push([id,a,next,b]);seen[next]=1;stack.push(next)}
-progress=0;playing=!window.matchMedia('(prefers-reduced-motion: reduce)').matches;$('play').textContent=playing?'Pause':'Play';last=0;tick(0)}
+cancelAnimationFrame(frame);cols=Math.max(4,Math.min(65,Math.floor(+$('cols').value||22)));rows=Math.max(4,Math.min(45,Math.floor(+$('rows').value||14)));$('cols').value=cols;$('rows').value=rows;
+const rng=random(+$('seed').value||0),seen=new Set([0]),stack=[0];steps=[];
+while(stack.length){const id=stack[stack.length-1],options=neighbors(id,seen);
+if(!options.length){stack.pop();steps.push({type:'backtrack',from:id,to:stack.length?stack[stack.length-1]:null});continue}
+const [nr,nc,a,b]=options[Math.floor(rng()*options.length)],next=nr*cols+nc;
+steps.push({type:'carve',from:id,to:next,a,b,options:options.length});seen.add(next);stack.push(next)}
+reset();setPlaying(!$('learn').checked&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches);render();updateLesson();frame=requestAnimationFrame(tick)}
+function advance(){if(progress>=steps.length)return;const move=steps[progress++];previous=move;
+if(move.type==='carve'){walls[move.from][move.a]=false;walls[move.to][move.b]=false;visited.add(move.to);path.push(move.to)}else{path.pop()}
+current=move.to;if(progress===steps.length)setPlaying(false)}
+function updateLesson(){
+$('rate').textContent=Number($('speed').value)+' / sec';$('lesson').hidden=!$('learn').checked;$('step').disabled=progress===steps.length;
+if(!$('learn').checked)return;
+const options=current===null?[]:neighbors(current,visited);
+let text='Start at (1, 1). Mark it visited and push it onto the stack. No walls have been removed.';
+if(previous){text=previous.type==='carve'?`Iteration ${progress}: ${cellName(previous.from)} had ${previous.options} unvisited neighbor(s). Randomly choose ${cellName(previous.to)}, remove the shared wall (in both cells), mark the new cell visited, and push it onto the stack.`:previous.to===null?`Iteration ${progress}: the start cell has no unvisited neighbors left. Pop it; the stack is empty, so the maze is complete.`:`Iteration ${progress}: ${cellName(previous.from)} has no unvisited neighbors. Pop it and return to ${cellName(previous.to)}. Backtracking removes no walls.`}
+$('explanation').textContent=text;
+$('state').textContent=`Iteration ${progress} / ${steps.length} · Visited ${visited.size} / ${cols*rows} · Current: ${cellName(current)} · Next available: ${options.map(([r,c])=>cellName(r*cols+c)).join(', ')||'none'}${current!==null&&!options.length?' (next iteration backtracks)':''}`;
+const tail=path.slice(-12);$('stack').textContent=`Stack (oldest → newest): ${path.length>12?'… → ':''}${tail.map(cellName).join(' → ')||'empty'} (${path.length} cells). Coordinates are (row, column), starting at 1.`}
 function render(){
-walls=Array.from({length:cols*rows},()=>[true,true,true,true]);
-for(let j=0;j<Math.floor(progress);j++){const [id,a,next,b]=steps[j];walls[id][a]=false;walls[next][b]=false}
 ctx.fillStyle='#060b11';ctx.fillRect(0,0,canvas.width,canvas.height);
 const cell=Math.min((canvas.width-110)/cols,(canvas.height-110)/rows),ox=(canvas.width-cols*cell)/2,oy=(canvas.height-rows*cell)/2,segments=[];
+if($('learn').checked&&!exporting){
+const fill=(id,color)=>{ctx.fillStyle=color;ctx.fillRect(ox+(id%cols)*cell+3,oy+Math.floor(id/cols)*cell+3,cell-6,cell-6)};
+for(const id of visited)fill(id,'rgba(76,201,255,.06)');
+for(const id of path)fill(id,'rgba(112,142,255,.25)');
+if(previous)fill(previous.from,'rgba(235,148,217,.48)');
+if(current!==null){for(const [r,c] of neighbors(current,visited))fill(r*cols+c,'rgba(119,230,170,.48)');fill(current,'rgba(255,204,102,.70)')}
+const displayScale=canvas.clientWidth/canvas.width;
+if(cell*displayScale>=40){ctx.font=`${Math.min(16/displayScale,cell*.24)}px system-ui`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#dcebf4';for(let id=0;id<cols*rows;id++)ctx.fillText(cellName(id),ox+(id%cols+.5)*cell,oy+(Math.floor(id/cols)+.5)*cell)}
+}
 for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){let w=walls[r*cols+c],x=ox+c*cell,y=oy+r*cell;
 if(w[0])segments.push([x,y,x+cell,y]);if(w[3])segments.push([x,y,x,y+cell]);
 if(r===rows-1&&w[2])segments.push([x,y+cell,x+cell,y+cell]);if(c===cols-1&&w[1])segments.push([x+cell,y,x+cell,y+cell])}
@@ -35,10 +59,15 @@ ctx.lineJoin='miter';
 for(const [width,color] of [[13,'rgba(76,201,255,.035)'],[7,'rgba(101,216,255,.12)'],[3,'rgba(167,236,255,.40)'],[1.1,'rgba(229,250,255,.98)']]){
 ctx.strokeStyle=color;ctx.lineWidth=width;ctx.beginPath();for(const [x,y,x2,y2] of segments){ctx.moveTo(x,y);ctx.lineTo(x2,y2)}ctx.stroke()}
 }
-function tick(t){if(playing&&last){progress=Math.min(steps.length,progress+(t-last)/1000*(2+Number($('speed').value)*.85));if(progress===steps.length){playing=false;$('play').textContent='Play'}}last=t;render();frame=requestAnimationFrame(tick)}
+let exporting=false;
+function tick(t){if(playing&&last!==null){budget+=Math.min((t-last)/1000,.25)*Number($('speed').value);while(budget>=1&&playing){budget-=1;advance()}render();updateLesson()}last=t;frame=requestAnimationFrame(tick)}
 $('generate').onclick=build;$('random').onclick=()=>{$('seed').value=Math.floor(Math.random()*1000000000);build()};
-$('replay').onclick=()=>{progress=0;playing=true;$('play').textContent='Pause'};
-$('play').onclick=()=>{if(progress===steps.length)progress=0;playing=!playing;$('play').textContent=playing?'Pause':'Play'};
-$('save').onclick=()=>{const p=progress;progress=steps.length;render();const a=document.createElement('a');a.download='procedural-maze.png';a.href=canvas.toDataURL('image/png');a.click();progress=p;render()};
-document.addEventListener('visibilitychange',()=>{last=0});build();
+$('replay').onclick=()=>{reset();setPlaying(!$('learn').checked&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches);render();updateLesson()};
+$('play').onclick=()=>{if(progress===steps.length)reset();setPlaying(!playing);render();updateLesson()};
+$('step').onclick=()=>{setPlaying(false);advance();render();updateLesson()};
+$('learn').onchange=()=>{if($('learn').checked){$('speed').value=1;setPlaying(false)}render();updateLesson()};
+$('small').onclick=()=>{$('cols').value=4;$('rows').value=4;$('learn').checked=true;$('speed').value=1;build()};
+$('speed').oninput=updateLesson;
+$('save').onclick=()=>{const saved={walls,progress,visited,path,current,previous,playing};walls=walls.map(w=>w.slice());visited=new Set(visited);path=path.slice();while(progress<steps.length)advance();exporting=true;render();const a=document.createElement('a');a.download='procedural-maze.png';a.href=canvas.toDataURL('image/png');a.click();({walls,progress,visited,path,current,previous,playing}=saved);exporting=false;$('play').textContent=playing?'Pause':'Play';last=null;budget=0;render();updateLesson()};
+document.addEventListener('visibilitychange',()=>{last=null;budget=0});build();
 </script></body></html>
