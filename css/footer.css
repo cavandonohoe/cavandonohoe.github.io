@@ -34,3 +34,33 @@
   outline-offset: 2px;
 }
 
+/* Optional project support */
+#footer_stuff .project-support {
+  margin: 1.5em 0 0;
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+
+#footer_stuff .project-support a {
+  display: inline-block;
+  padding: 0.35em 0;
+  color: var(--link-color, #337ab7);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+#footer_stuff .project-support a:hover {
+  text-decoration-thickness: 2px;
+}
+
+#footer_stuff .project-support a:focus-visible {
+  outline: 2px solid var(--link-color, #337ab7);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+#footer_stuff .project-support-note {
+  display: block;
+  margin-top: 0.15em;
+  color: var(--text-color, #333);
+}
