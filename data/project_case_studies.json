@@ -162,7 +162,7 @@
     {
       "project": "images",
       "tracked_files": 14,
-      "commits_touching_project": 59,
+      "commits_touching_project": 60,
       "top_extensions": [
         [
           ".jpg",
@@ -212,7 +212,7 @@
     {
       "project": "podcast-dashboard",
       "tracked_files": 6,
-      "commits_touching_project": 16,
+      "commits_touching_project": 17,
       "top_extensions": [
         [
           ".json",
@@ -228,6 +228,21 @@
         ],
         [
           ".r",
+          1
+        ]
+      ]
+    },
+    {
+      "project": "projects",
+      "tracked_files": 2,
+      "commits_touching_project": 1,
+      "top_extensions": [
+        [
+          ".md",
+          1
+        ],
+        [
+          ".py",
           1
         ]
       ]
