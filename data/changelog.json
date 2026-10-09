@@ -1,6 +1,24 @@
 {
-  "generated_at": "2026-10-08T21:26:23.937539+00:00",
+  "generated_at": "2026-10-09T21:08:13.171358+00:00",
   "events": [
+    {
+      "date": "2026-10-09",
+      "type": "merged_pr",
+      "title": "Add optional Venmo support link to site footer",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/221"
+    },
+    {
+      "date": "2026-10-09",
+      "type": "merged_pr",
+      "title": "Add interactive procedural maze art generator",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/222"
+    },
+    {
+      "date": "2026-10-08",
+      "type": "merged_pr",
+      "title": "Show schedule charts as images in Pacific time",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/220"
+    },
     {
       "date": "2026-10-08",
       "type": "merged_pr",
@@ -310,6 +328,15 @@
   ],
   "daily_summaries": [
     {
+      "date": "2026-10-09",
+      "items": [
+        {
+          "emoji": "\ud83d\udcbb",
+          "text": "2 PRs merged"
+        }
+      ]
+    },
+    {
       "date": "2026-10-08",
       "items": [
         {
@@ -319,7 +346,7 @@
         },
         {
           "emoji": "\ud83d\udcbb",
-          "text": "2 PRs merged"
+          "text": "3 PRs merged"
         }
       ]
     },
@@ -391,11 +418,6 @@
           "emoji": "\ud83c\udfac",
           "text": "Movie & TV projects updated",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/204"
-        },
-        {
-          "emoji": "\ud83c\udfac",
-          "text": "Movie & TV data refreshed",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/432afab37877da4c031d9e00e0e507c2c0fde46b"
         }
       ]
     },
@@ -500,16 +522,6 @@
         {
           "emoji": "\ud83d\udcbb",
           "text": "2 PRs merged"
-        }
-      ]
-    },
-    {
-      "date": "2026-09-15",
-      "items": [
-        {
-          "emoji": "\ud83d\ude80",
-          "text": "Guard the scheduled data refreshes and fix preview deploy hygiene",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/169"
         }
       ]
     }
