@@ -1,9 +1,9 @@
 {
   "year": 2026,
-  "commits": 829,
-  "pull_requests": 214,
+  "commits": 823,
+  "pull_requests": 215,
   "repositories_touched": 6,
-  "lines_added": 61061563,
+  "lines_added": 61500247,
   "most_used_language": "R",
   "language_lines_added": {
     "R": 30572,
@@ -12,7 +12,7 @@
     "JavaScript": 4687,
     "HTML": 4592,
     "SQL": 4352,
-    "CSS": 1008,
+    "CSS": 1068,
     "Shell": 190
   },
   "language_files": {
@@ -61,8 +61,18 @@
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "css/footer.css",
-        "lines_added": 72,
+        "lines_added": 132,
         "commits": [
+          {
+            "sha": "2c514112692383440c981bb3ccd87124daf86ae9",
+            "date": "2026-10-09",
+            "lines_added": 30
+          },
+          {
+            "sha": "01ffff6fac008d2b503698a4692e2cc4da11ff5c",
+            "date": "2026-10-09",
+            "lines_added": 30
+          },
           {
             "sha": "981a7a9815e2913a3f3187b0dba6d37cbf9fd2ef",
             "date": "2026-02-02",
@@ -5789,19 +5799,19 @@
     ]
   },
   "excluded_language_lines_added": {
-    "JavaScript": 15988394,
-    "HTML": 6374408,
-    "CSS": 3696096,
-    "R": 889390,
-    "TypeScript": 253875,
-    "SQL": 131539,
-    "Python": 92458,
-    "Shell": 5313
+    "JavaScript": 16060450,
+    "HTML": 6433735,
+    "CSS": 3718202,
+    "R": 896801,
+    "TypeScript": 256110,
+    "SQL": 132689,
+    "Python": 94002,
+    "Shell": 5382
   },
   "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, dependency files, and raw HTML inputs are excluded.",
   "most_active_month": "June",
-  "longest_streak_days": 8,
-  "active_days": 91,
+  "longest_streak_days": 9,
+  "active_days": 92,
   "monthly_commits": [
     28,
     77,
@@ -5812,12 +5822,12 @@
     122,
     44,
     107,
-    133,
+    127,
     0,
     0
   ],
   "biggest_project": "cavandonohoe.github.io",
-  "biggest_project_commits": 737,
+  "biggest_project_commits": 731,
   "repositories": [
     "cavandonohoe/cavandonohoe",
     "cavandonohoe/cavandonohoe.github.io",
@@ -5827,7 +5837,7 @@
     "cavandonohoe/rent-vs-buy"
   ],
   "repository_commits": {
-    "cavandonohoe/cavandonohoe.github.io": 737,
+    "cavandonohoe/cavandonohoe.github.io": 731,
     "cavandonohoe/rent-vs-buy": 38,
     "cavandonohoe/grocery-compare": 18,
     "cavandonohoe/confederate_statues": 17,
@@ -5836,5 +5846,5 @@
   },
   "scope": "Author-matched commits reachable from branches and tags in public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bots and other authors are excluded. Language totals exclude Linguist-generated, vendored, conventional dependency files, and raw HTML inputs. Overall lines added still include all files. PRs count public pull requests authored by the user, when available.",
   "is_partial_year": true,
-  "generated_at": "2026-10-08T15:50:02.003566+00:00"
+  "generated_at": "2026-10-09T15:32:06.066043+00:00"
 }
