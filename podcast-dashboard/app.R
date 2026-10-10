@@ -1,4 +1,4 @@
-# Saved Podcast Episodes — library export with retained API metadata.
+# Saved Podcast Episodes: library export plus daily API additions.
 
 library(shiny)
 library(bslib)
@@ -13,6 +13,14 @@ library(tibble)
 
 raw <- jsonlite::fromJSON("data/saved_episodes.json", simplifyDataFrame = TRUE)
 meta <- raw$meta
+# Membership has two sources: the last Account Data export (YourLibrary.json)
+# and episodes the daily Web API refresh appended afterwards. Older files
+# without export_n_episodes treat every episode as export membership.
+n_total <- nrow(raw$episodes)
+n_export <- min(n_total, if (is.null(meta$export_n_episodes)) n_total else meta$export_n_episodes)
+n_api_added <- n_total - n_export
+export_date <- meta$generated_at
+api_refresh_date <- if (is.null(meta$api_refreshed_at)) "never" else meta$api_refreshed_at
 episodes <- raw$episodes |>
   dplyr::mutate(
     added_at = as.Date(added_at),
@@ -126,8 +134,12 @@ ui <- bslib::page_sidebar(
     tags$small(
       style = "color:#9a9a9a;",
       sprintf(
-        "Imported: %s \u00b7 %s library episodes",
-        meta$generated_at, meta$n_episodes
+        paste(
+          "Library export imported: %s \u00b7 Latest API refresh with new data: %s",
+          "\u00b7 %s episodes (%s from export, %s added by API)"
+        ),
+        export_date, api_refresh_date, scales::comma(n_total),
+        scales::comma(n_export), scales::comma(n_api_added)
       )
     )
   ),
@@ -155,9 +167,17 @@ ui <- bslib::page_sidebar(
       "background:#1e1e1e; border:1px solid #2a2a2a; color:#c9c9c9;",
       "font-size:0.85rem;"
     ),
-    tags$strong(sprintf("Showing %s episodes. ", meta$n_episodes)),
-    "Membership comes from YourLibrary.json. Titles, shows and links cover every episode. ",
-    "Lengths and saved dates are retained where available from the earlier API snapshot. ",
+    tags$strong(sprintf("Showing %s episodes. ", scales::comma(n_total))),
+    sprintf(
+      paste0(
+        "%s come from the Account Data export (YourLibrary.json, imported %s); ",
+        "%s were added later by the daily Spotify API refresh (latest change %s). "
+      ),
+      scales::comma(n_export), export_date, scales::comma(n_api_added), api_refresh_date
+    ),
+    "The API refresh only adds saves, so an episode removed from the library stays ",
+    "listed until the next export is imported. Titles, shows and links cover every episode. ",
+    "Lengths and saved dates come from the Spotify API where available. ",
     sprintf("%s episodes have unknown lengths; %s have unknown saved dates. ",
             sum(is.na(episodes$dur_min)), sum(is.na(episodes$added_at))),
     "Duration statistics and the saved-date chart cover known values only. ",
