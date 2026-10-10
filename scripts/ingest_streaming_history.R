@@ -10,10 +10,20 @@
 # folder of Streaming_History_Audio_*.json (and optional _Video_*.json) files.
 #
 # Usage:
-#   Rscript scripts/ingest_streaming_history.R <export_dir> [out_dir]
+#   Rscript scripts/ingest_streaming_history.R <export_dir> [out_dir] [--min-ms=N]
 #
-#   <export_dir>  folder containing Streaming_History_*.json
-#   [out_dir]     where to write outputs (default: streaming-history/data)
+#   <export_dir>  folder containing Streaming_History_*.json (top level only,
+#                 so a re-unzipped copy in a subfolder is not double counted)
+#   [out_dir]     where to write outputs (default: streaming-history/data,
+#                 which is gitignored because it holds the real play log)
+#   --min-ms=N    drop streams shorter than N ms (e.g. 30000 to match
+#                 Spotify's own "counted stream" rule); default 0 keeps all
+#
+# Timestamps: Spotify's `ts` is UTC. played_at, date and month are all UTC;
+# nothing is converted to local time.
+#
+# Duplicate plays (same ts, item URI and ms_played, e.g. from overlapping or
+# repeated exports) are kept once.
 #
 # Outputs (in out_dir):
 #   plays.csv          one row per stream (tidy, the full log)
@@ -26,17 +36,28 @@ suppressWarnings(suppressMessages({
   ok <- requireNamespace("jsonlite", quietly = TRUE) &&
     requireNamespace("dplyr", quietly = TRUE) &&
     requireNamespace("lubridate", quietly = TRUE) &&
-    requireNamespace("readr", quietly = TRUE)
+    requireNamespace("readr", quietly = TRUE) &&
+    requireNamespace("tibble", quietly = TRUE)
 }))
 if (!ok) {
-  stop("Needs the jsonlite, dplyr, lubridate and readr packages.")
+  stop("Needs the jsonlite, dplyr, lubridate, readr and tibble packages.")
 }
 
 `%||%` <- function(a, b) if (is.null(a)) b else a
 
 args <- commandArgs(trailingOnly = TRUE)
+flag_args <- grepl("^--", args)
+min_ms <- 0
+for (flag in args[flag_args]) {
+  if (!grepl("^--min-ms=\\d+$", flag)) stop("unknown option: ", flag)
+  min_ms <- as.numeric(sub("^--min-ms=", "", flag))
+}
+args <- args[!flag_args]
 if (!length(args)) {
-  stop("usage: Rscript scripts/ingest_streaming_history.R <export_dir> [out_dir]")
+  stop(paste(
+    "usage: Rscript scripts/ingest_streaming_history.R",
+    "<export_dir> [out_dir] [--min-ms=N]"
+  ))
 }
 export_dir <- args[[1]]
 out_dir <- if (length(args) >= 2) args[[2]] else "streaming-history/data"
@@ -48,12 +69,12 @@ if (!dir.exists(export_dir)) {
 files <- list.files(
   export_dir,
   pattern = "Streaming_History_(Audio|Video).*\\.json$",
-  full.names = TRUE, recursive = TRUE
+  full.names = TRUE, recursive = FALSE
 )
 if (!length(files)) {
   stop(
     "No Streaming_History_*.json files found under ", export_dir,
-    ". Point this at the unzipped Extended Streaming History folder."
+    ". Point this at the unzipped Extended Streaming History folder itself."
   )
 }
 
@@ -63,7 +84,9 @@ if (!length(files)) {
 #   ts, ms_played, master_metadata_track_name,
 #   master_metadata_album_artist_name, master_metadata_album_album_name,
 #   spotify_track_uri, episode_name, episode_show_name, spotify_episode_uri,
-#   reason_start, reason_end, shuffle, skipped, platform, conn_country
+#   reason_start, reason_end, shuffle, skipped, platform, conn_country,
+#   audiobook_title, audiobook_uri, audiobook_chapter_title,
+#   audiobook_chapter_uri
 read_one <- function(path) {
   recs <- jsonlite::fromJSON(path, simplifyDataFrame = FALSE)
   if (!length(recs)) return(NULL)
@@ -83,6 +106,10 @@ read_one <- function(path) {
     episode = col("episode_name", NA_character_),
     show = col("episode_show_name", NA_character_),
     episode_uri = col("spotify_episode_uri", NA_character_),
+    audiobook = col("audiobook_title", NA_character_),
+    audiobook_uri = col("audiobook_uri", NA_character_),
+    chapter = col("audiobook_chapter_title", NA_character_),
+    chapter_uri = col("audiobook_chapter_uri", NA_character_),
     reason_start = col("reason_start", NA_character_),
     reason_end = col("reason_end", NA_character_),
     shuffle = col("shuffle", NA),
@@ -98,20 +125,33 @@ if (!nrow(plays)) {
   stop("Parsed 0 streams from the export files.")
 }
 
+# Overlapping or repeated exports repeat the same play, sometimes with
+# different incidental fields, so dedup on the play's identity.
+n_raw <- nrow(plays)
+plays <- plays |>
+  dplyr::mutate(item_uri = dplyr::coalesce(track_uri, episode_uri, chapter_uri, audiobook_uri)) |>
+  dplyr::distinct(ts, item_uri, ms_played, .keep_all = TRUE)
+duplicates_removed <- n_raw - nrow(plays)
+
+n_before_threshold <- nrow(plays)
+plays <- plays |> dplyr::filter(is.na(ms_played) | ms_played >= min_ms)
+below_threshold <- n_before_threshold - nrow(plays)
+
 # --- derive tidy fields -----------------------------------------------------
 plays <- plays |>
   dplyr::mutate(
-    played_at = lubridate::ymd_hms(ts, quiet = TRUE),
-    date = as.Date(played_at),
+    played_at = lubridate::ymd_hms(ts, quiet = TRUE, tz = "UTC"),
+    date = as.Date(played_at, tz = "UTC"),
     month = lubridate::floor_date(date, "month"),
     min_played = ms_played / 60000,
     kind = dplyr::case_when(
       !is.na(episode) & nzchar(episode) ~ "podcast",
+      !is.na(audiobook) & nzchar(audiobook) ~ "audiobook",
       !is.na(track) & nzchar(track) ~ "music",
       TRUE ~ "other"
     ),
-    title = dplyr::coalesce(track, episode),
-    source_name = dplyr::coalesce(artist, show)
+    title = dplyr::coalesce(track, episode, chapter, audiobook),
+    source_name = dplyr::coalesce(artist, show, audiobook)
   ) |>
   dplyr::filter(!is.na(played_at)) |>
   dplyr::arrange(played_at)
@@ -148,7 +188,12 @@ top_shows <- plays |>
 meta <- list(
   imported_at = format(Sys.time(), "%Y-%m-%dT%H:%M:%SZ", tz = "UTC"),
   source = "Spotify Extended Streaming History (GDPR export)",
+  synthetic = FALSE,
+  timezone = "UTC",
   files_ingested = length(files),
+  min_ms_played = min_ms,
+  duplicates_removed = duplicates_removed,
+  below_min_ms_removed = below_threshold,
   n_streams = nrow(plays),
   first_stream = format(min(plays$date, na.rm = TRUE)),
   last_stream = format(max(plays$date, na.rm = TRUE)),
@@ -156,6 +201,9 @@ meta <- list(
   music_minutes = round(sum(plays$min_played[plays$kind == "music"], na.rm = TRUE)),
   podcast_minutes = round(
     sum(plays$min_played[plays$kind == "podcast"], na.rm = TRUE)
+  ),
+  audiobook_minutes = round(
+    sum(plays$min_played[plays$kind == "audiobook"], na.rm = TRUE)
   )
 )
 
@@ -171,7 +219,10 @@ jsonlite::write_json(
 )
 
 cat(sprintf(
-  "Ingested %d streams from %d file(s), %s to %s. Wrote outputs to %s\n",
+  paste(
+    "Ingested %d streams from %d file(s), %s to %s (UTC);",
+    "dropped %d duplicate(s) and %d below %s ms. Wrote outputs to %s\n"
+  ),
   meta$n_streams, meta$files_ingested, meta$first_stream, meta$last_stream,
-  out_dir
+  duplicates_removed, below_threshold, format(min_ms), out_dir
 ))
