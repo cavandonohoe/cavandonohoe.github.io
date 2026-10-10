@@ -57,7 +57,7 @@ panel <- paste0(
   '<div class="live-activity-panel">',
   '<div class="live-activity-topline"><span class="live-dot"></span> LIVE DATA <span class="live-updated">Updated ', updated, '</span></div>',
   '<div class="live-stat-grid">',
-  '<div class="live-stat"><strong>', commits, '</strong><span>commits · 30 days</span></div>',
+  '<div class="live-stat"><strong>', commits, '</strong><span>commits · 30 days (bots excluded)</span></div>',
   '<div class="live-stat"><strong>', areas, '</strong><span>active areas</span></div>',
   '<div class="live-stat"><strong>', events, '</strong><span>recent events</span></div>',
   '</div>',
@@ -79,9 +79,14 @@ if (!is.null(changelog$daily_summaries) && length(changelog$daily_summaries) > 0
     item_html <- vapply(day$items, function(item) {
       emoji <- if (!is.null(item$emoji)) item$emoji else "✨"
       text <- if (!is.null(item$text)) item$text else "Site updated"
-      body <- paste0('<span class="activity-emoji">', emoji, '</span><span>', text, '</span>')
-      if (!is.null(item$url) && nzchar(item$url)) {
-        body <- paste0('<a href="', item$url, '">', body, '</a>')
+      body <- paste0(
+        '<span class="activity-emoji">', htmltools::htmlEscape(emoji), '</span>',
+        '<span>', htmltools::htmlEscape(text), '</span>'
+      )
+      url <- item$url
+      if (is.character(url) && length(url) == 1 && startsWith(url, "https://github.com/")) {
+        href <- htmltools::htmlEscape(url, attribute = TRUE)
+        body <- paste0('<a href="', href, '">', body, '</a>')
       }
       paste0('<li>', body, '</li>')
     }, character(1))
