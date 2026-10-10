@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>ACTIONS_SCHEDULE</title>
+
+<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Cavan Donohoe</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="fa fa-info"></span>
+     
+    About Me
+  </a>
+</li>
+<li>
+  <a href="services.html">
+    <span class="fa fa-wrench"></span>
+     
+    Services
+  </a>
+</li>
+<li>
+  <a href="cv.html">
+    <span class="fa fa-id-card"></span>
+     
+    CV
+  </a>
+</li>
+<li>
+  <a href="publications.html">
+    <span class="fa fa-book"></span>
+     
+    Publications
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-laptop"></span>
+     
+    Projects
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">--- Movies &amp; TV ---</li>
+    <li>
+      <a href="imdb_exceptional_episodes.html">Exceptional IMDb Episodes</a>
+    </li>
+    <li>
+      <a href="imdb_top_250_tv_series.html">IMDb TV Series</a>
+    </li>
+    <li>
+      <a href="imdb_rating_plot.html">IMDb Rating Plot by Season and Episode</a>
+    </li>
+    <li>
+      <a href="tv_decline_leaderboard.html">Did They Quit While They Were Ahead?</a>
+    </li>
+    <li>
+      <a href="top_250_imdb_with_rt.html">Top 250 IMDb Movies with Rotten Tomato Scores</a>
+    </li>
+    <li>
+      <a href="best_picture_nominees.html">Best Picture Nominees</a>
+    </li>
+    <li>
+      <a href="best_pic_vs_top_1000.html">Best Picture and Top 1000 Box Office</a>
+    </li>
+    <li>
+      <a href="director_box_office_trajectory.html">Director Box Office Trajectory</a>
+    </li>
+    <li>
+      <a href="my_imdb.html">My IMDb Ratings</a>
+    </li>
+    <li class="dropdown-header">--- Sports &amp; Personal ---</li>
+    <li>
+      <a href="avca_all_americans.html">AVCA Men's Volleyball All-Americans</a>
+    </li>
+    <li>
+      <a href="firefighter_schedule.html">Jason, Owen, and Wyett's Firefighter Schedule</a>
+    </li>
+    <li>
+      <a href="google_maps_saved_places.html">Google Maps: Want To Go + Favorites</a>
+    </li>
+    <li>
+      <a href="my_travels.html">Get Bloggy With It</a>
+    </li>
+    <li>
+      <a href="tohs_reunion.html">TOHS Class of 2012 Reunion</a>
+    </li>
+    <li class="dropdown-header">--- Visualizations ---</li>
+    <li>
+      <a href="https://cavandonohoe.shinyapps.io/podcast-dashboard/">Saved Podcast Episodes</a>
+    </li>
+    <li>
+      <a href="detour-finder/index.html">Detour Finder</a>
+    </li>
+    <li>
+      <a href="confederate_statues.html">When Were Confederate Statues Erected?</a>
+    </li>
+    <li>
+      <a href="maze-art.html">Animated Procedural Maze</a>
+    </li>
+    <li>
+      <a href="sierpinski_triangle.html">Sierpinski Triangle</a>
+    </li>
+    <li>
+      <a href="airplane_boarding.html">Airplane Boarding Simulation</a>
+    </li>
+    <li class="dropdown-header">--- Real Estate &amp; Finance ---</li>
+    <li>
+      <a href="us_rental_markets.html">US Rental Investment Markets</a>
+    </li>
+    <li>
+      <a href="la_real_estate.html">LA Neighborhoods: Price per Sq Ft</a>
+    </li>
+    <li>
+      <a href="la_housing_heatmap.html">LA Housing Prices: Animated Heat Map</a>
+    </li>
+    <li>
+      <a href="https://cavandonohoe.shinyapps.io/rent-vs-buy/">Rent vs. Buy Calculator</a>
+    </li>
+    <li class="dropdown-header">--- Data Science &amp; Clinical ---</li>
+    <li>
+      <a href="sdtm_with_r.html">SDTM with R</a>
+    </li>
+    <li class="dropdown-header">--- Archive ---</li>
+    <li>
+      <a href="sp500.html">S&amp;P 500 Perspective</a>
+    </li>
+    <li>
+      <a href="covid_cases_nostalgia.html">Covid Cases: Then &amp; Now</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-graduation-cap"></span>
+     
+    Learn R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="learn_r.html">Course Overview</a>
+    </li>
+    <li class="dropdown-header">--- Lessons ---</li>
+    <li>
+      <a href="intro_to_r.html">1. Introduction to R</a>
+    </li>
+    <li>
+      <a href="basic_operations_r.html">2. Basic Operations</a>
+    </li>
+    <li>
+      <a href="data_manipulation_r.html">3. Data Manipulation</a>
+    </li>
+    <li>
+      <a href="data_visualization_r.html">4. Data Visualization</a>
+    </li>
+    <li>
+      <a href="statistics_with_r.html">5. Statistics with R</a>
+    </li>
+    <li>
+      <a href="rmarkdown_r.html">6. Reproducible Reports with R Markdown</a>
+    </li>
+    <li>
+      <a href="capstone_r.html">7. Capstone Project</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div id="github-actions-schedule" class="section level1">
+<h1>GitHub Actions schedule</h1>
+<p>The automation clock for <a
+href="https://cavandonohoe.github.io">Cavan’s website</a>: <strong>27
+scheduled workflows, 28 cron rules</strong>, plus workflows triggered by
+pushes, PRs, issues, or other workflows.</p>
+<p>Checked against <code>main</code> on <strong>2026-10-08</strong> (<a
+href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/4960c97e0bd23e251a4ceda81640590f9f3f1a90">source
+snapshot</a>). The YAML files in <a
+href=".github/workflows/">.github/workflows/</a> are the source of
+truth.</p>
+<div id="reading-the-clock" class="section level2">
+<h2>Reading the clock</h2>
+<ul>
+<li><strong>Charts and tables use current Pacific time: PDT (UTC−7),
+checked October 8, 2026.</strong> Update the displayed times when the
+clock changes. Cron expressions remain in UTC.</li>
+<li>Each diamond is a <strong>scheduled start</strong>, not a measured
+runtime. Chart dates are illustrative; the pattern repeats at the
+cadence shown.</li>
+<li>Scheduled runs can be delayed. Spaced start times do not guarantee
+that one workflow finishes before the next starts.</li>
+<li>Workflows with <code>workflow_dispatch</code> can also be run from
+the <a
+href="https://github.com/cavandonohoe/cavandonohoe.github.io/actions">Actions
+tab</a>.</li>
+<li>Charts are embedded SVG images so they display without Mermaid
+support. Expand <strong>Mermaid source</strong> below each image to
+inspect the diagram code.</li>
+<li>This is a documentation snapshot. Update the tables, Mermaid source,
+and chart images when a workflow’s triggers change.</li>
+</ul>
+</div>
+<div id="throughout-the-day" class="section level2">
+<h2>Throughout the day</h2>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Workflow</th>
+<th>Pacific time (PDT)</th>
+<th>Cron</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href=".github/workflows/update_tohs_reunion.yml">TOHS
+reunion</a></td>
+<td>Every hour at :23</td>
+<td><code>23 * * * *</code></td>
+<td>Refresh coverage; deploy if published snapshot differs</td>
+</tr>
+<tr class="even">
+<td><a
+href=".github/workflows/update_movie_ranker_personal.yml">Personal movie
+rankings</a></td>
+<td>05:37, 11:37, 17:37, 23:37</td>
+<td><code>37 */6 * * *</code></td>
+<td>Refresh rankings; request site build when changed</td>
+</tr>
+</tbody>
+</table>
+<p>The daily chart includes all four movie-ranking runs. The hourly
+reunion check is omitted from the chart to keep it readable.</p>
+</div>
+<div id="daily-rhythm" class="section level2">
+<h2>Daily rhythm</h2>
+<div class="float">
+<img src="images/actions-schedule/daily.svg"
+alt="Daily scheduled starts in Pacific daylight time" />
+<div class="figcaption">Daily scheduled starts in Pacific daylight
+time</div>
+</div>
+<details>
+<summary>
+Mermaid source
+</summary>
+<pre class="mermaid"><code>gantt
+    title Daily scheduled starts (Pacific daylight time)
+    dateFormat YYYY-MM-DD HH:mm
+    axisFormat %H:%M
+    todayMarker off
+    section Six-hour refresh
+    Movie rankings 17h37 :milestone, rank0, 2026-10-05 17:37, 0m
+    Movie rankings 23h37 :milestone, rank1, 2026-10-05 23:37, 0m
+    Movie rankings 05h37 :milestone, rank2, 2026-10-05 05:37, 0m
+    Movie rankings 11h37 :milestone, rank3, 2026-10-05 11:37, 0m
+    section Daily refreshes
+    Saved podcasts 01h23 :milestone, daily0, 2026-10-05 01:23, 0m
+    Developer year in review 01h37 :milestone, daily1, 2026-10-05 01:37, 0m
+    Site sanity build 05h11 :milestone, daily2, 2026-10-05 05:11, 0m
+    Personal changelog 09h31 :milestone, daily3, 2026-10-05 09:31, 0m
+    Lately feed 09h43 :milestone, daily4, 2026-10-05 09:43, 0m
+    Activity art 10h07 :milestone, daily5, 2026-10-05 10:07, 0m</code></pre>
+</details>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Workflow</th>
+<th>Pacific calendar</th>
+<th>Pacific time (PDT)</th>
+<th>Cron</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href=".github/workflows/update_saved_episodes.yml">Saved
+podcasts</a></td>
+<td>Daily</td>
+<td>01:23</td>
+<td><code>23 8 * * *</code></td>
+<td>Refresh JSON and redeploy Shiny dashboard</td>
+</tr>
+<tr class="even">
+<td><a href=".github/workflows/year-in-review.yml">Developer year in
+review</a></td>
+<td>Daily</td>
+<td>01:37</td>
+<td><code>37 8 * * *</code></td>
+<td>Commit current-year stats (daily); previous-year snapshot
+(annual)</td>
+</tr>
+<tr class="odd">
+<td><a href=".github/workflows/pages-rmarkdown.yml">Site sanity
+build</a></td>
+<td>Daily</td>
+<td>05:11</td>
+<td><code>11 12 * * *</code></td>
+<td>Render and validate; no deployment</td>
+</tr>
+<tr class="even">
+<td><a href=".github/workflows/personal-changelog.yml">Personal
+changelog</a></td>
+<td>Daily</td>
+<td>09:31</td>
+<td><code>31 16 * * *</code></td>
+<td>Commit changelog JSON</td>
+</tr>
+<tr class="odd">
+<td><a href=".github/workflows/lately.yml">Lately feed</a></td>
+<td>Daily</td>
+<td>09:43</td>
+<td><code>43 16 * * *</code></td>
+<td>Commit recent-activity summary</td>
+</tr>
+<tr class="even">
+<td><a href=".github/workflows/activity-art.yml">Activity art</a></td>
+<td>Daily</td>
+<td>10:07</td>
+<td><code>7 17 * * *</code></td>
+<td>Commit activity SVG</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="weekly-rhythm" class="section level2">
+<h2>Weekly rhythm</h2>
+<p>These runs are in addition to the hourly and daily work above. Monday
+has the largest cluster of scheduled checks and data refreshes.</p>
+<div class="float">
+<img src="images/actions-schedule/weekly.svg"
+alt="Weekly scheduled starts in Pacific daylight time" />
+<div class="figcaption">Weekly scheduled starts in Pacific daylight
+time</div>
+</div>
+<details>
+<summary>
+Mermaid source
+</summary>
+<pre class="mermaid"><code>gantt
+    title Weekly scheduled starts (Pacific daylight time)
+    dateFormat YYYY-MM-DD HH:mm
+    axisFormat %a %H:%M
+    todayMarker off
+    section Monday
+    IMDb episode ratings 01h23 :milestone, week1_0, 2026-10-05 01:23, 0m
+    Watched TV episodes 01h41 :milestone, week1_1, 2026-10-05 01:41, 0m
+    Exceptional IMDb episodes 02h17 :milestone, week1_2, 2026-10-05 02:17, 0m
+    Repo size 06h44 :milestone, week1_3, 2026-10-05 06:44, 0m
+    Broken links 07h13 :milestone, week1_4, 2026-10-05 07:13, 0m
+    Supabase keepalive 07h17 :milestone, week1_5, 2026-10-05 07:17, 0m
+    Accessibility audit 08h21 :milestone, week1_6, 2026-10-05 08:21, 0m
+    My Maps export 10h17 :milestone, week1_7, 2026-10-05 10:17, 0m
+    section Tuesday
+    CV PDF / DOCX 04h33 :milestone, week2_0, 2026-10-06 04:33, 0m
+    section Saturday
+    S&amp;P 500 / VOO 06h29 :milestone, week6_0, 2026-10-10 06:29, 0m
+    section Sunday
+    Sitemap 06h37 :milestone, week0_0, 2026-10-11 06:37, 0m
+    Commit activity charts 06h41 :milestone, week0_1, 2026-10-11 06:41, 0m
+    Weekly Wrapped 09h17 :milestone, week0_2, 2026-10-11 09:17, 0m</code></pre>
+</details>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Workflow</th>
+<th>Pacific calendar</th>
+<th>Pacific time (PDT)</th>
+<th>Cron</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href=".github/workflows/update_imdb_ratings.yml">IMDb episode
+ratings</a></td>
+<td>Mon</td>
+<td>01:23</td>
+<td><code>23 8 * * 1</code></td>
+<td>Refresh ratings; request site build when changed</td>
+</tr>
+<tr class="even">
+<td><a href=".github/workflows/update_watched_episodes.yml">Watched TV
+episodes</a></td>
+<td>Mon</td>
+<td>01:41</td>
+<td><code>41 8 * * 1</code></td>
+<td>Refresh episodes; request site build when changed</td>
+</tr>
+<tr class="odd">
+<td><a
+href=".github/workflows/update_imdb_exceptional_episodes.yml">Exceptional
+IMDb episodes</a></td>
+<td>Mon</td>
+<td>02:17</td>
+<td><code>17 9 * * 1</code></td>
+<td>Validate official datasets; publish results and request site
+build</td>
+</tr>
+<tr class="even">
+<td><a href=".github/workflows/repo-size.yml">Repo size</a></td>
+<td>Mon</td>
+<td>06:44</td>
+<td><code>44 13 * * 1</code></td>
+<td>Upload report; may open threshold issue</td>
+</tr>
+<tr class="odd">
+<td><a href=".github/workflows/link-check.yml">Broken links</a></td>
+<td>Mon</td>
+<td>07:13</td>
+<td><code>13 14 * * 1</code></td>
+<td>Upload report; open or update issue on broken links</td>
+</tr>
+<tr class="even">
+<td><a href=".github/workflows/ping-movie-ranker-supabase.yml">Supabase
+keepalive</a></td>
+<td>Mon</td>
+<td>07:17</td>
+<td><code>17 14 * * 1</code></td>
+<td>Read one row to keep database active</td>
+</tr>
+<tr class="odd">
+<td><a href=".github/workflows/pa11y.yml">Accessibility audit</a></td>
+<td>Mon</td>
+<td>08:21</td>
+<td><code>21 15 * * 1</code></td>
+<td>Upload report; open or update issue on errors</td>
+</tr>
+<tr class="even">
+<td><a href=".github/workflows/update_mymaps_export.yml">My Maps
+export</a></td>
+<td>Mon</td>
+<td>10:17</td>
+<td><code>17 17 * * 1</code></td>
+<td>Refresh KML/CSV; request site build when changed</td>
+</tr>
+<tr class="odd">
+<td><a href=".github/workflows/rebuild_cv.yml">CV PDF / DOCX</a></td>
+<td>Tue</td>
+<td>04:33</td>
+<td><code>33 11 * * 2</code></td>
+<td>Open PR for meaningful CV changes</td>
+</tr>
+<tr class="even">
+<td><a href=".github/workflows/update_sp500.yml">S&amp;P 500 /
+VOO</a></td>
+<td>Sat</td>
+<td>06:29</td>
+<td><code>29 13 * * 6</code></td>
+<td>Refresh prices; request site build when changed</td>
+</tr>
+<tr class="odd">
+<td><a href=".github/workflows/refresh-sitemap.yml">Sitemap</a></td>
+<td>Sun</td>
+<td>06:37</td>
+<td><code>37 13 * * 0</code></td>
+<td>Commit sitemap; request site build when changed</td>
+</tr>
+<tr class="even">
+<td><a href=".github/workflows/refresh-commit-activity.yml">Commit
+activity charts</a></td>
+<td>Sun</td>
+<td>06:41</td>
+<td><code>41 13 * * 0</code></td>
+<td>Re-knit README and charts; request site build when changed</td>
+</tr>
+<tr class="odd">
+<td><a href=".github/workflows/weekly-wrapped.yml">Weekly
+Wrapped</a></td>
+<td>Sun</td>
+<td>09:17</td>
+<td><code>17 16 * * 0</code></td>
+<td>Commit weekly activity snapshot</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Dependabot is separate:</strong> <a
+href=".github/dependabot.yml">.github/dependabot.yml</a> checks GitHub
+Actions dependencies on <strong>Mondays at 10:00
+America/Los_Angeles</strong>, opening grouped update PRs as needed. It
+runs at 10:00 Pacific.</p>
+</div>
+<div id="monthly-rhythm" class="section level2">
+<h2>Monthly rhythm</h2>
+<div class="float">
+<img src="images/actions-schedule/monthly.svg"
+alt="Monthly scheduled starts in Pacific daylight time" />
+<div class="figcaption">Monthly scheduled starts in Pacific daylight
+time</div>
+</div>
+<details>
+<summary>
+Mermaid source
+</summary>
+<pre class="mermaid"><code>gantt
+    title Monthly scheduled starts (Pacific daylight time)
+    dateFormat YYYY-MM-DD HH:mm
+    axisFormat %d %b
+    todayMarker off
+    section Monthly data
+    Confederate statues (day 1, 07h17) :milestone, month0, 2026-10-01 07:17, 0m
+    US rental markets (day 5, 07h47) :milestone, month1, 2026-10-05 07:47, 0m
+    Top 1000 box office (day 8, 05h41) :milestone, month2, 2026-10-08 05:41, 0m
+    Top 250 + Rotten Tomatoes (day 12, 06h53) :milestone, month3, 2026-10-12 06:53, 0m
+    Director filmographies (day 17, 07h07) :milestone, month4, 2026-10-17 07:07, 0m</code></pre>
+</details>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Workflow</th>
+<th>Pacific calendar</th>
+<th>Pacific time (PDT)</th>
+<th>Cron</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a
+href=".github/workflows/update_confederate_statues_data.yml">Confederate
+statues</a></td>
+<td>Day 1</td>
+<td>07:17</td>
+<td><code>17 14 1 * *</code></td>
+<td>Refresh CSV; request site build when changed</td>
+</tr>
+<tr class="even">
+<td><a href=".github/workflows/update_us_rentals.yml">US rental
+markets</a></td>
+<td>Day 5</td>
+<td>07:47</td>
+<td><code>47 14 5 * *</code></td>
+<td>Refresh Zillow data; request site build when changed</td>
+</tr>
+<tr class="odd">
+<td><a href=".github/workflows/update_top1000_box_office.yml">Top 1000
+box office</a></td>
+<td>Day 8</td>
+<td>05:41</td>
+<td><code>41 12 8 * *</code></td>
+<td>Refresh box office and caches; request site build when changed</td>
+</tr>
+<tr class="even">
+<td><a href=".github/workflows/update_top250_with_rt.yml">Top 250 +
+Rotten Tomatoes</a></td>
+<td>Day 12</td>
+<td>06:53</td>
+<td><code>53 13 12 * *</code></td>
+<td>Refresh ratings; request site build when changed</td>
+</tr>
+<tr class="odd">
+<td><a
+href=".github/workflows/update_director_filmographies.yml">Director
+filmographies</a></td>
+<td>Day 17</td>
+<td>07:07</td>
+<td><code>7 14 17 * *</code></td>
+<td>Refresh TMDb data; request site build when changed</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="annual-checkpoints" class="section level2">
+<h2>Annual checkpoints</h2>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Workflow</th>
+<th>Pacific calendar</th>
+<th>Pacific time (PDT)</th>
+<th>Cron</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href=".github/workflows/update_best_picture_winners.yml">Best
+Picture winners</a></td>
+<td>Mar 23</td>
+<td>09:23</td>
+<td><code>23 16 23 3 *</code></td>
+<td>Open PR if winners data changed</td>
+</tr>
+<tr class="even">
+<td><a href=".github/workflows/year-in-review.yml">Developer year in
+review</a></td>
+<td>Jan 1</td>
+<td>10:13</td>
+<td><code>13 17 1 1 *</code></td>
+<td>Commit current-year stats (daily); previous-year snapshot
+(annual)</td>
+</tr>
+</tbody>
+</table>
+<p>The daily Developer year in review run updates the current UTC
+calendar year. Its January 1 run snapshots the year that just ended.
+Manual runs also support a chosen year or a full historical
+backfill.</p>
+</div>
+<div id="workflows-without-a-clock" class="section level2">
+<h2>Workflows without a clock</h2>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Workflow</th>
+<th>Trigger</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href=".github/workflows/pages-branch-previews.yml">Site deploy
+and previews</a></td>
+<td>Push to <code>main</code>; PR activity and closure; manual</td>
+<td>Publish production, create PR previews, and clean up closed
+previews</td>
+</tr>
+<tr class="even">
+<td><a href=".github/workflows/lighthouse.yml">Lighthouse</a></td>
+<td>PR activity; completed site-deploy workflow; manual</td>
+<td>Audit PR previews and successful production build artifacts</td>
+</tr>
+<tr class="odd">
+<td><a href=".github/workflows/lint.yml">R lint</a></td>
+<td>PR touching matching R/Rmd or lint configuration files; manual</td>
+<td>Lint changed files</td>
+</tr>
+<tr class="even">
+<td><a href=".github/workflows/pr-smoke.yml">Rmd smoke test</a></td>
+<td>PR touching matching Rmd or site configuration files; manual</td>
+<td>Render changed Rmd pages</td>
+</tr>
+<tr class="odd">
+<td><a href=".github/workflows/test.yml">R tests</a></td>
+<td>Push/PR touching matching test, R script, or hook files; manual</td>
+<td>Run hook smoke test and R tests</td>
+</tr>
+<tr class="even">
+<td><a href=".github/workflows/typos.yml">Spell check</a></td>
+<td>PR; manual</td>
+<td>Check spelling</td>
+</tr>
+<tr class="odd">
+<td><a href=".github/workflows/labeler.yml">PR labeler</a></td>
+<td>PR target activity</td>
+<td>Apply labels based on changed paths</td>
+</tr>
+<tr class="even">
+<td><a href=".github/workflows/project-case-studies.yml">Project case
+studies</a></td>
+<td>Push to <code>main</code>; manual</td>
+<td>Refresh project metadata</td>
+</tr>
+<tr class="odd">
+<td><a href=".github/workflows/data-question.yml">Data question
+intake</a></td>
+<td>Issue opened</td>
+<td>Acknowledge supported public-data questions</td>
+</tr>
+<tr class="even">
+<td><a href=".github/workflows/refresh-data.yml">Shared data
+refresh</a></td>
+<td>Called by another workflow</td>
+<td>Shared refresh, validation, commit, and build-dispatch logic; no
+independent schedule</td>
+</tr>
+</tbody>
+</table>
+<p>Some scheduled workflows also have event triggers: the site sanity
+build and commit charts run on matching pushes; saved podcasts run on
+dashboard/workflow pushes; Lately runs when its workflow changes;
+broken-link and repo-size checks also run on PRs; reunion, exceptional
+episodes, and year-in-review have scoped PR validation triggers. See
+each linked YAML for path filters and job conditions.</p>
+</div>
+<div id="refresh-versus-publish" class="section level2">
+<h2>Refresh versus publish</h2>
+<p>The daily <strong>site sanity build does not deploy</strong>.
+Production publishing belongs to
+<code>pages-branch-previews.yml</code>.</p>
+<p>A data commit and a published page are separate steps. Many refresh
+workflows explicitly dispatch the site build after changes because
+pushes made with <code>GITHUB_TOKEN</code> do not trigger ordinary
+downstream push workflows. Saved podcasts redeploy their Shiny app
+instead. CV and Best Picture winners open PRs for review.</p>
+<p>Activity art, the personal changelog, Lately, Weekly Wrapped, and
+Developer year in review commit generated output without explicitly
+dispatching the site deployment. Their scheduled start should not be
+read as a guaranteed production-update time.</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
