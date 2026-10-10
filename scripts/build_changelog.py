@@ -1,27 +1,20 @@
 #!/usr/bin/env python3
-import json
 import os
 import re
-import subprocess
 from collections import defaultdict
 from datetime import datetime, timezone, timedelta
+
+from generated_output import gh_api, gh_api_pages, merged_prs_since, write_json_if_changed
 
 repo = os.environ.get("GITHUB_REPOSITORY", "cavandonohoe/cavandonohoe.github.io")
 since = datetime.now(timezone.utc) - timedelta(days=30)
 since_iso = since.isoformat().replace("+00:00", "Z")
 
-def gh(path):
-    return json.loads(subprocess.check_output(["gh", "api", path], text=True))
-
-prs = gh(f"/repos/{repo}/pulls?state=closed&per_page=100")
+prs = merged_prs_since(repo, since)
 events = []
 prs_by_day = defaultdict(list)
 for p in prs:
-    if not p.get("merged_at"):
-        continue
     dt = datetime.fromisoformat(p["merged_at"].replace("Z", "+00:00"))
-    if dt < since:
-        continue
     event = {
         "date": dt.date().isoformat(),
         "type": "merged_pr",
@@ -33,7 +26,7 @@ for p in prs:
 
 events.sort(key=lambda x: (x["date"], x["title"]), reverse=True)
 
-commits = gh(f"/repos/{repo}/commits?since={since_iso}&per_page=100")
+commits = list(gh_api_pages(f"/repos/{repo}/commits", {"since": since_iso}))
 signals_by_day = defaultdict(list)
 
 def add_signal(day, emoji, text, url=None, priority=50):
@@ -59,7 +52,7 @@ for c in commits:
 
     if "auto-update saved podcast episodes" in lower:
         try:
-            detail = gh(f"/repos/{repo}/commits/{c['sha']}")
+            detail = gh_api(f"/repos/{repo}/commits/{c['sha']}")
             for f in detail.get("files", []):
                 if f.get("filename") != "podcast-dashboard/data/saved_episodes.json":
                     continue
@@ -123,10 +116,9 @@ for day in all_days:
     if items:
         daily_summaries.append({"date": day, "items": items})
 
-os.makedirs("data", exist_ok=True)
 payload = {
     "generated_at": datetime.now(timezone.utc).isoformat(),
     "events": events,
     "daily_summaries": daily_summaries[:14],
 }
-open("data/changelog.json", "w").write(json.dumps(payload, indent=2) + "\n")
+write_json_if_changed("data/changelog.json", payload)

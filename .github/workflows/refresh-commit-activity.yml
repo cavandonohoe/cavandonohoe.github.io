@@ -15,8 +15,10 @@ permissions:
   contents: write
   actions: write
 
+# Per-workflow group: never cancels another workflow's pending run.
+# Cross-workflow push races are handled by the retry loop below.
 concurrency:
-  group: site-generated-writeback
+  group: ${{ github.workflow }}
   cancel-in-progress: false
 
 jobs:
@@ -95,4 +97,4 @@ jobs:
         if: steps.push.outputs.pushed == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh workflow run pages-branch-previews.yml --ref main
+        run: gh workflow run pages-branch-previews.yml --ref main -f deploy_root=true
