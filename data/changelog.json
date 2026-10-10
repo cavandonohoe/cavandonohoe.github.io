@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-09T21:08:13.171358+00:00",
+  "generated_at": "2026-10-10T20:14:53.517840+00:00",
   "events": [
     {
       "date": "2026-10-09",
@@ -318,15 +318,19 @@
       "type": "merged_pr",
       "title": "Guard the scheduled data refreshes and fix preview deploy hygiene",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/169"
-    },
-    {
-      "date": "2026-09-10",
-      "type": "merged_pr",
-      "title": "Auto-refresh the activity-over-time charts via CI",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/166"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-10-10",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "5 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/508899e3b0bdb5c287da809b97e4ff8d52f99cdd"
+        }
+      ]
+    },
     {
       "date": "2026-10-09",
       "items": [
@@ -513,15 +517,6 @@
           "emoji": "\ud83d\udcda",
           "text": "Publications section expanded",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/173"
-        }
-      ]
-    },
-    {
-      "date": "2026-09-16",
-      "items": [
-        {
-          "emoji": "\ud83d\udcbb",
-          "text": "2 PRs merged"
         }
       ]
     }
