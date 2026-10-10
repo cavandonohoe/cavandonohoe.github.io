@@ -1,14 +1,14 @@
 {
   "year": 2026,
-  "commits": 823,
-  "pull_requests": 215,
+  "commits": 830,
+  "pull_requests": 218,
   "repositories_touched": 6,
-  "lines_added": 61500247,
+  "lines_added": 62375100,
   "most_used_language": "R",
   "language_lines_added": {
-    "R": 30572,
+    "R": 30625,
     "TypeScript": 7453,
-    "Python": 6728,
+    "Python": 6975,
     "JavaScript": 4687,
     "HTML": 4592,
     "SQL": 4352,
@@ -715,6 +715,40 @@
         ]
       },
       {
+        "repository": "cavandonohoe/confederate_statues",
+        "path": "service/tests/test_ingest.py",
+        "lines_added": 184,
+        "commits": [
+          {
+            "sha": "edbdc61e2c9a96f679aa761a19870aa912951709",
+            "date": "2026-10-10",
+            "lines_added": 94
+          },
+          {
+            "sha": "3e0dd92de3fc13b131519879bba5efd8d472faae",
+            "date": "2026-06-22",
+            "lines_added": 90
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/confederate_statues",
+        "path": "service/src/statue_api/ingest.py",
+        "lines_added": 164,
+        "commits": [
+          {
+            "sha": "edbdc61e2c9a96f679aa761a19870aa912951709",
+            "date": "2026-10-10",
+            "lines_added": 55
+          },
+          {
+            "sha": "3e0dd92de3fc13b131519879bba5efd8d472faae",
+            "date": "2026-06-22",
+            "lines_added": 109
+          }
+        ]
+      },
+      {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "analysis/imdb-exceptional-episodes/download.py",
         "lines_added": 120,
@@ -738,18 +772,6 @@
             "sha": "12bc84ea3618b39fde138c08c7460051434daf97",
             "date": "2026-10-03",
             "lines_added": 45
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/confederate_statues",
-        "path": "service/src/statue_api/ingest.py",
-        "lines_added": 109,
-        "commits": [
-          {
-            "sha": "3e0dd92de3fc13b131519879bba5efd8d472faae",
-            "date": "2026-06-22",
-            "lines_added": 109
           }
         ]
       },
@@ -795,6 +817,23 @@
         ]
       },
       {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "projects/maze-art/maze_art.py",
+        "lines_added": 96,
+        "commits": [
+          {
+            "sha": "1395c17de159030615ed9f49aeaef20d8a6663a8",
+            "date": "2026-10-09",
+            "lines_added": 48
+          },
+          {
+            "sha": "1249fc131ede5a1bd28d51b957a120dcc85e5a5b",
+            "date": "2026-10-09",
+            "lines_added": 48
+          }
+        ]
+      },
+      {
         "repository": "cavandonohoe/confederate_statues",
         "path": "service/tests/conftest.py",
         "lines_added": 96,
@@ -803,18 +842,6 @@
             "sha": "3e0dd92de3fc13b131519879bba5efd8d472faae",
             "date": "2026-06-22",
             "lines_added": 96
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/confederate_statues",
-        "path": "service/tests/test_ingest.py",
-        "lines_added": 90,
-        "commits": [
-          {
-            "sha": "3e0dd92de3fc13b131519879bba5efd8d472faae",
-            "date": "2026-06-22",
-            "lines_added": 90
           }
         ]
       },
@@ -1075,6 +1102,23 @@
       },
       {
         "repository": "cavandonohoe/confederate_statues",
+        "path": "service/src/statue_api/models.py",
+        "lines_added": 53,
+        "commits": [
+          {
+            "sha": "edbdc61e2c9a96f679aa761a19870aa912951709",
+            "date": "2026-10-10",
+            "lines_added": 2
+          },
+          {
+            "sha": "3e0dd92de3fc13b131519879bba5efd8d472faae",
+            "date": "2026-06-22",
+            "lines_added": 51
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/confederate_statues",
         "path": "service/src/statue_api/logging_config.py",
         "lines_added": 52,
         "commits": [
@@ -1100,18 +1144,6 @@
       {
         "repository": "cavandonohoe/confederate_statues",
         "path": "service/alembic/versions/0001_initial.py",
-        "lines_added": 51,
-        "commits": [
-          {
-            "sha": "3e0dd92de3fc13b131519879bba5efd8d472faae",
-            "date": "2026-06-22",
-            "lines_added": 51
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/confederate_statues",
-        "path": "service/src/statue_api/models.py",
         "lines_added": 51,
         "commits": [
           {
@@ -3204,8 +3236,13 @@
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "index.Rmd",
-        "lines_added": 260,
+        "lines_added": 261,
         "commits": [
+          {
+            "sha": "1395c17de159030615ed9f49aeaef20d8a6663a8",
+            "date": "2026-10-09",
+            "lines_added": 1
+          },
           {
             "sha": "6a1b6420b2541f8d4f25d2690ca98bae3b89793b",
             "date": "2026-10-05",
@@ -3495,6 +3532,43 @@
         ]
       },
       {
+        "repository": "cavandonohoe/confederate_statues",
+        "path": "README.Rmd",
+        "lines_added": 193,
+        "commits": [
+          {
+            "sha": "edbdc61e2c9a96f679aa761a19870aa912951709",
+            "date": "2026-10-10",
+            "lines_added": 28
+          },
+          {
+            "sha": "711abfbd898f5eb86049531677febde9cba9b14f",
+            "date": "2026-07-01",
+            "lines_added": 3
+          },
+          {
+            "sha": "9c2724fb3b9d199947b4a0bfc83b03183c8e0ba6",
+            "date": "2026-06-22",
+            "lines_added": 38
+          },
+          {
+            "sha": "4454f4b38ac86d0d9791ba44e2e8d268af26a2a3",
+            "date": "2026-06-22",
+            "lines_added": 57
+          },
+          {
+            "sha": "3e0dd92de3fc13b131519879bba5efd8d472faae",
+            "date": "2026-06-22",
+            "lines_added": 21
+          },
+          {
+            "sha": "172adf9c7a0b5476457c12cb42cfa38b0b31ee9b",
+            "date": "2026-06-22",
+            "lines_added": 46
+          }
+        ]
+      },
+      {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "avca_all_americans.Rmd",
         "lines_added": 178,
@@ -3594,38 +3668,6 @@
             "sha": "0d98881ccdc2862e88f432b76b09e74f9bee92e6",
             "date": "2026-04-24",
             "lines_added": 169
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/confederate_statues",
-        "path": "README.Rmd",
-        "lines_added": 165,
-        "commits": [
-          {
-            "sha": "711abfbd898f5eb86049531677febde9cba9b14f",
-            "date": "2026-07-01",
-            "lines_added": 3
-          },
-          {
-            "sha": "9c2724fb3b9d199947b4a0bfc83b03183c8e0ba6",
-            "date": "2026-06-22",
-            "lines_added": 38
-          },
-          {
-            "sha": "4454f4b38ac86d0d9791ba44e2e8d268af26a2a3",
-            "date": "2026-06-22",
-            "lines_added": 57
-          },
-          {
-            "sha": "3e0dd92de3fc13b131519879bba5efd8d472faae",
-            "date": "2026-06-22",
-            "lines_added": 21
-          },
-          {
-            "sha": "172adf9c7a0b5476457c12cb42cfa38b0b31ee9b",
-            "date": "2026-06-22",
-            "lines_added": 46
           }
         ]
       },
@@ -3757,6 +3799,38 @@
         ]
       },
       {
+        "repository": "cavandonohoe/confederate_statues",
+        "path": "tests/testthat/test-scrape.R",
+        "lines_added": 149,
+        "commits": [
+          {
+            "sha": "edbdc61e2c9a96f679aa761a19870aa912951709",
+            "date": "2026-10-10",
+            "lines_added": 18
+          },
+          {
+            "sha": "d74cae143063752588428f936df25be5b3a09a74",
+            "date": "2026-07-01",
+            "lines_added": 23
+          },
+          {
+            "sha": "a845a6d048b1423c6953e4d26e2fe25aafd7d840",
+            "date": "2026-07-01",
+            "lines_added": 17
+          },
+          {
+            "sha": "711abfbd898f5eb86049531677febde9cba9b14f",
+            "date": "2026-07-01",
+            "lines_added": 12
+          },
+          {
+            "sha": "9c2724fb3b9d199947b4a0bfc83b03183c8e0ba6",
+            "date": "2026-06-22",
+            "lines_added": 79
+          }
+        ]
+      },
+      {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "scripts/trader_joes_data.R",
         "lines_added": 142,
@@ -3857,33 +3931,6 @@
         ]
       },
       {
-        "repository": "cavandonohoe/confederate_statues",
-        "path": "tests/testthat/test-scrape.R",
-        "lines_added": 131,
-        "commits": [
-          {
-            "sha": "d74cae143063752588428f936df25be5b3a09a74",
-            "date": "2026-07-01",
-            "lines_added": 23
-          },
-          {
-            "sha": "a845a6d048b1423c6953e4d26e2fe25aafd7d840",
-            "date": "2026-07-01",
-            "lines_added": 17
-          },
-          {
-            "sha": "711abfbd898f5eb86049531677febde9cba9b14f",
-            "date": "2026-07-01",
-            "lines_added": 12
-          },
-          {
-            "sha": "9c2724fb3b9d199947b4a0bfc83b03183c8e0ba6",
-            "date": "2026-06-22",
-            "lines_added": 79
-          }
-        ]
-      },
-      {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "scripts/imdb_plotly_layout.R",
         "lines_added": 130,
@@ -3903,8 +3950,13 @@
       {
         "repository": "cavandonohoe/confederate_statues",
         "path": "R/scrape.R",
-        "lines_added": 127,
+        "lines_added": 130,
         "commits": [
+          {
+            "sha": "edbdc61e2c9a96f679aa761a19870aa912951709",
+            "date": "2026-10-10",
+            "lines_added": 3
+          },
           {
             "sha": "d74cae143063752588428f936df25be5b3a09a74",
             "date": "2026-07-01",
@@ -4503,6 +4555,23 @@
         ]
       },
       {
+        "repository": "cavandonohoe/confederate_statues",
+        "path": "plots.Rmd",
+        "lines_added": 5,
+        "commits": [
+          {
+            "sha": "edbdc61e2c9a96f679aa761a19870aa912951709",
+            "date": "2026-10-10",
+            "lines_added": 3
+          },
+          {
+            "sha": "9c2724fb3b9d199947b4a0bfc83b03183c8e0ba6",
+            "date": "2026-06-22",
+            "lines_added": 2
+          }
+        ]
+      },
+      {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "sierpinski_triangle.Rmd",
         "lines_added": 2,
@@ -4516,18 +4585,6 @@
             "sha": "123bd4c9f8c8cade075414dcff3dd58103be072f",
             "date": "2026-05-27",
             "lines_added": 1
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/confederate_statues",
-        "path": "plots.Rmd",
-        "lines_added": 2,
-        "commits": [
-          {
-            "sha": "9c2724fb3b9d199947b4a0bfc83b03183c8e0ba6",
-            "date": "2026-06-22",
-            "lines_added": 2
           }
         ]
       },
@@ -5799,19 +5856,19 @@
     ]
   },
   "excluded_language_lines_added": {
-    "JavaScript": 16060450,
-    "HTML": 6433735,
-    "CSS": 3718202,
-    "R": 896801,
-    "TypeScript": 256110,
-    "SQL": 132689,
-    "Python": 94002,
-    "Shell": 5382
+    "JavaScript": 16204562,
+    "HTML": 6551285,
+    "CSS": 3762414,
+    "R": 911623,
+    "TypeScript": 260580,
+    "SQL": 134989,
+    "Python": 97186,
+    "Shell": 5520
   },
   "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, dependency files, and raw HTML inputs are excluded.",
   "most_active_month": "June",
-  "longest_streak_days": 9,
-  "active_days": 92,
+  "longest_streak_days": 10,
+  "active_days": 93,
   "monthly_commits": [
     28,
     77,
@@ -5822,12 +5879,12 @@
     122,
     44,
     107,
-    127,
+    134,
     0,
     0
   ],
   "biggest_project": "cavandonohoe.github.io",
-  "biggest_project_commits": 731,
+  "biggest_project_commits": 737,
   "repositories": [
     "cavandonohoe/cavandonohoe",
     "cavandonohoe/cavandonohoe.github.io",
@@ -5837,14 +5894,14 @@
     "cavandonohoe/rent-vs-buy"
   ],
   "repository_commits": {
-    "cavandonohoe/cavandonohoe.github.io": 731,
+    "cavandonohoe/cavandonohoe.github.io": 737,
     "cavandonohoe/rent-vs-buy": 38,
+    "cavandonohoe/confederate_statues": 18,
     "cavandonohoe/grocery-compare": 18,
-    "cavandonohoe/confederate_statues": 17,
     "cavandonohoe/docuchat": 12,
     "cavandonohoe/cavandonohoe": 7
   },
   "scope": "Author-matched commits reachable from branches and tags in public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bots and other authors are excluded. Language totals exclude Linguist-generated, vendored, conventional dependency files, and raw HTML inputs. Overall lines added still include all files. PRs count public pull requests authored by the user, when available.",
   "is_partial_year": true,
-  "generated_at": "2026-10-09T15:32:06.066043+00:00"
+  "generated_at": "2026-10-10T14:39:52.531030+00:00"
 }
