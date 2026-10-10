@@ -6,7 +6,8 @@ Checked against `main` on **2026-10-08** ([source snapshot](https://github.com/c
 
 ## Reading the clock
 
-- **Charts and tables use current Pacific time: PDT (UTC−7), checked October 8, 2026.** Update the displayed times when the clock changes. Cron expressions remain in UTC.
+- **UTC is the source of truth.** GitHub evaluates every cron expression in UTC, so the **UTC** column and the cron never move.
+- **Pacific times are a convenience view in PDT (UTC−7).** Pacific daylight time ends on **November 1, 2026**; from then until DST resumes on March 14, 2027, every run starts **one hour earlier** in Pacific time (PST, UTC−8). For example, 16:43 UTC is 09:43 PDT but 08:43 PST. The charts are drawn in PDT.
 - Each diamond is a **scheduled start**, not a measured runtime. Chart dates are illustrative; the pattern repeats at the cadence shown.
 - Scheduled runs can be delayed. Spaced start times do not guarantee that one workflow finishes before the next starts.
 - Workflows with `workflow_dispatch` can also be run from the [Actions tab](https://github.com/cavandonohoe/cavandonohoe.github.io/actions).
@@ -15,10 +16,10 @@ Checked against `main` on **2026-10-08** ([source snapshot](https://github.com/c
 
 ## Throughout the day
 
-| Workflow | Pacific time (PDT) | Cron | Result |
-|---|---|---|---|
-| [TOHS reunion](.github/workflows/update_tohs_reunion.yml) | Every hour at :23 | `23 * * * *` | Refresh coverage; deploy if published snapshot differs |
-| [Personal movie rankings](.github/workflows/update_movie_ranker_personal.yml) | 05:37, 11:37, 17:37, 23:37 | `37 */6 * * *` | Refresh rankings; request site build when changed |
+| Workflow | UTC | Pacific time (PDT) | Cron | Result |
+|---|---|---|---|---|
+| [TOHS reunion](.github/workflows/update_tohs_reunion.yml) | Every hour at :23 | Every hour at :23 | `23 * * * *` | Refresh coverage; deploy if published snapshot differs |
+| [Personal movie rankings](.github/workflows/update_movie_ranker_personal.yml) | 00:37, 06:37, 12:37, 18:37 | 05:37, 11:37, 17:37, 23:37 | `37 */6 * * *` | Refresh rankings; request site build when changed |
 
 The daily chart includes all four movie-ranking runs. The hourly reunion check is omitted from the chart to keep it readable.
 
@@ -51,14 +52,14 @@ gantt
 
 </details>
 
-| Workflow | Pacific calendar | Pacific time (PDT) | Cron | Result |
-|---|---|---|---|---|
-| [Saved podcasts](.github/workflows/update_saved_episodes.yml) | Daily | 01:23 | `23 8 * * *` | Refresh JSON and redeploy Shiny dashboard |
-| [Developer year in review](.github/workflows/year-in-review.yml) | Daily | 01:37 | `37 8 * * *` | Commit current-year stats (daily); previous-year snapshot (annual) |
-| [Site sanity build](.github/workflows/pages-rmarkdown.yml) | Daily | 05:11 | `11 12 * * *` | Render and validate; no deployment |
-| [Personal changelog](.github/workflows/personal-changelog.yml) | Daily | 09:31 | `31 16 * * *` | Commit changelog JSON |
-| [Lately feed](.github/workflows/lately.yml) | Daily | 09:43 | `43 16 * * *` | Commit recent-activity summary |
-| [Activity art](.github/workflows/activity-art.yml) | Daily | 10:07 | `7 17 * * *` | Commit activity SVG |
+| Workflow | Pacific calendar | UTC | Pacific time (PDT) | Cron | Result |
+|---|---|---|---|---|---|
+| [Saved podcasts](.github/workflows/update_saved_episodes.yml) | Daily | 08:23 | 01:23 | `23 8 * * *` | Refresh JSON and redeploy Shiny dashboard |
+| [Developer year in review](.github/workflows/year-in-review.yml) | Daily | 08:37 | 01:37 | `37 8 * * *` | Commit current-year stats (daily); previous-year snapshot (annual) |
+| [Site sanity build](.github/workflows/pages-rmarkdown.yml) | Daily | 12:11 | 05:11 | `11 12 * * *` | Render and validate; no deployment |
+| [Personal changelog](.github/workflows/personal-changelog.yml) | Daily | 16:31 | 09:31 | `31 16 * * *` | Commit changelog JSON; request site build when changed |
+| [Lately feed](.github/workflows/lately.yml) | Daily | 16:43 | 09:43 | `43 16 * * *` | Commit recent-activity summary; request site build when changed |
+| [Activity art](.github/workflows/activity-art.yml) | Daily | 17:07 | 10:07 | `7 17 * * *` | Commit activity SVG; request site build when changed |
 
 ## Weekly rhythm
 
@@ -96,21 +97,21 @@ gantt
 
 </details>
 
-| Workflow | Pacific calendar | Pacific time (PDT) | Cron | Result |
-|---|---|---|---|---|
-| [IMDb episode ratings](.github/workflows/update_imdb_ratings.yml) | Mon | 01:23 | `23 8 * * 1` | Refresh ratings; request site build when changed |
-| [Watched TV episodes](.github/workflows/update_watched_episodes.yml) | Mon | 01:41 | `41 8 * * 1` | Refresh episodes; request site build when changed |
-| [Exceptional IMDb episodes](.github/workflows/update_imdb_exceptional_episodes.yml) | Mon | 02:17 | `17 9 * * 1` | Validate official datasets; publish results and request site build |
-| [Repo size](.github/workflows/repo-size.yml) | Mon | 06:44 | `44 13 * * 1` | Upload report; may open threshold issue |
-| [Broken links](.github/workflows/link-check.yml) | Mon | 07:13 | `13 14 * * 1` | Upload report; open or update issue on broken links |
-| [Supabase keepalive](.github/workflows/ping-movie-ranker-supabase.yml) | Mon | 07:17 | `17 14 * * 1` | Read one row to keep database active |
-| [Accessibility audit](.github/workflows/pa11y.yml) | Mon | 08:21 | `21 15 * * 1` | Upload report; open or update issue on errors |
-| [My Maps export](.github/workflows/update_mymaps_export.yml) | Mon | 10:17 | `17 17 * * 1` | Refresh KML/CSV; request site build when changed |
-| [CV PDF / DOCX](.github/workflows/rebuild_cv.yml) | Tue | 04:33 | `33 11 * * 2` | Open PR for meaningful CV changes |
-| [S&P 500 / VOO](.github/workflows/update_sp500.yml) | Sat | 06:29 | `29 13 * * 6` | Refresh prices; request site build when changed |
-| [Sitemap](.github/workflows/refresh-sitemap.yml) | Sun | 06:37 | `37 13 * * 0` | Commit sitemap; request site build when changed |
-| [Commit activity charts](.github/workflows/refresh-commit-activity.yml) | Sun | 06:41 | `41 13 * * 0` | Re-knit README and charts; request site build when changed |
-| [Weekly Wrapped](.github/workflows/weekly-wrapped.yml) | Sun | 09:17 | `17 16 * * 0` | Commit weekly activity snapshot |
+| Workflow | Pacific calendar | UTC | Pacific time (PDT) | Cron | Result |
+|---|---|---|---|---|---|
+| [IMDb episode ratings](.github/workflows/update_imdb_ratings.yml) | Mon | 08:23 | 01:23 | `23 8 * * 1` | Refresh ratings; request site build when changed |
+| [Watched TV episodes](.github/workflows/update_watched_episodes.yml) | Mon | 08:41 | 01:41 | `41 8 * * 1` | Refresh episodes; request site build when changed |
+| [Exceptional IMDb episodes](.github/workflows/update_imdb_exceptional_episodes.yml) | Mon | 09:17 | 02:17 | `17 9 * * 1` | Validate official datasets; publish results and request site build |
+| [Repo size](.github/workflows/repo-size.yml) | Mon | 13:44 | 06:44 | `44 13 * * 1` | Upload report; may open threshold issue |
+| [Broken links](.github/workflows/link-check.yml) | Mon | 14:13 | 07:13 | `13 14 * * 1` | Upload report; open or update issue on broken links |
+| [Supabase keepalive](.github/workflows/ping-movie-ranker-supabase.yml) | Mon | 14:17 | 07:17 | `17 14 * * 1` | Read one row to keep database active |
+| [Accessibility audit](.github/workflows/pa11y.yml) | Mon | 15:21 | 08:21 | `21 15 * * 1` | Upload report; open or update issue on errors |
+| [My Maps export](.github/workflows/update_mymaps_export.yml) | Mon | 17:17 | 10:17 | `17 17 * * 1` | Refresh KML/CSV; request site build when changed |
+| [CV PDF / DOCX](.github/workflows/rebuild_cv.yml) | Tue | 11:33 | 04:33 | `33 11 * * 2` | Open PR for meaningful CV changes |
+| [S&P 500 / VOO](.github/workflows/update_sp500.yml) | Sat | 13:29 | 06:29 | `29 13 * * 6` | Refresh prices; request site build when changed |
+| [Sitemap](.github/workflows/refresh-sitemap.yml) | Sun | 13:37 | 06:37 | `37 13 * * 0` | Commit sitemap; request site build when changed |
+| [Commit activity charts](.github/workflows/refresh-commit-activity.yml) | Sun | 13:41 | 06:41 | `41 13 * * 0` | Re-knit README and charts; request site build when changed |
+| [Weekly Wrapped](.github/workflows/weekly-wrapped.yml) | Sun | 16:17 | 09:17 | `17 16 * * 0` | Commit weekly activity snapshot |
 
 **Dependabot is separate:** [.github/dependabot.yml](.github/dependabot.yml) checks GitHub Actions dependencies on **Mondays at 10:00 America/Los_Angeles**, opening grouped update PRs as needed. It runs at 10:00 Pacific.
 
@@ -137,20 +138,20 @@ gantt
 
 </details>
 
-| Workflow | Pacific calendar | Pacific time (PDT) | Cron | Result |
-|---|---|---|---|---|
-| [Confederate statues](.github/workflows/update_confederate_statues_data.yml) | Day 1 | 07:17 | `17 14 1 * *` | Refresh CSV; request site build when changed |
-| [US rental markets](.github/workflows/update_us_rentals.yml) | Day 5 | 07:47 | `47 14 5 * *` | Refresh Zillow data; request site build when changed |
-| [Top 1000 box office](.github/workflows/update_top1000_box_office.yml) | Day 8 | 05:41 | `41 12 8 * *` | Refresh box office and caches; request site build when changed |
-| [Top 250 + Rotten Tomatoes](.github/workflows/update_top250_with_rt.yml) | Day 12 | 06:53 | `53 13 12 * *` | Refresh ratings; request site build when changed |
-| [Director filmographies](.github/workflows/update_director_filmographies.yml) | Day 17 | 07:07 | `7 14 17 * *` | Refresh TMDb data; request site build when changed |
+| Workflow | Pacific calendar | UTC | Pacific time (PDT) | Cron | Result |
+|---|---|---|---|---|---|
+| [Confederate statues](.github/workflows/update_confederate_statues_data.yml) | Day 1 | 14:17 | 07:17 | `17 14 1 * *` | Refresh CSV; request site build when changed |
+| [US rental markets](.github/workflows/update_us_rentals.yml) | Day 5 | 14:47 | 07:47 | `47 14 5 * *` | Refresh Zillow data; request site build when changed |
+| [Top 1000 box office](.github/workflows/update_top1000_box_office.yml) | Day 8 | 12:41 | 05:41 | `41 12 8 * *` | Refresh box office and caches; request site build when changed |
+| [Top 250 + Rotten Tomatoes](.github/workflows/update_top250_with_rt.yml) | Day 12 | 13:53 | 06:53 | `53 13 12 * *` | Refresh ratings; request site build when changed |
+| [Director filmographies](.github/workflows/update_director_filmographies.yml) | Day 17 | 14:07 | 07:07 | `7 14 17 * *` | Refresh TMDb data; request site build when changed |
 
 ## Annual checkpoints
 
-| Workflow | Pacific calendar | Pacific time (PDT) | Cron | Result |
-|---|---|---|---|---|
-| [Best Picture winners](.github/workflows/update_best_picture_winners.yml) | Mar 23 | 09:23 | `23 16 23 3 *` | Open PR if winners data changed |
-| [Developer year in review](.github/workflows/year-in-review.yml) | Jan 1 | 10:13 | `13 17 1 1 *` | Commit current-year stats (daily); previous-year snapshot (annual) |
+| Workflow | Pacific calendar | UTC | Pacific time (PDT) | Cron | Result |
+|---|---|---|---|---|---|
+| [Best Picture winners](.github/workflows/update_best_picture_winners.yml) | Mar 23 | 16:23 | 09:23 | `23 16 23 3 *` | Open PR if winners data changed |
+| [Developer year in review](.github/workflows/year-in-review.yml) | Jan 1 | 17:13 | 09:13 (PST) | `13 17 1 1 *` | Commit current-year stats (daily); previous-year snapshot (annual) |
 
 The daily Developer year in review run updates the current UTC calendar year. Its January 1 run snapshots the year that just ended. Manual runs also support a chosen year or a full historical backfill.
 
@@ -177,4 +178,4 @@ The daily **site sanity build does not deploy**. Production publishing belongs t
 
 A data commit and a published page are separate steps. Many refresh workflows explicitly dispatch the site build after changes because pushes made with `GITHUB_TOKEN` do not trigger ordinary downstream push workflows. Saved podcasts redeploy their Shiny app instead. CV and Best Picture winners open PRs for review.
 
-Activity art, the personal changelog, Lately, Weekly Wrapped, and Developer year in review commit generated output without explicitly dispatching the site deployment. Their scheduled start should not be read as a guaranteed production-update time.
+Activity art, the personal changelog, Lately, and the commit-activity charts dispatch a production deploy only when they actually push a commit, and skip the commit entirely when nothing but a generated timestamp changed. Weekly Wrapped and project case studies write data the site does not render, so they do not dispatch a deploy. Developer year in review commits generated output without explicitly dispatching the site deployment.
