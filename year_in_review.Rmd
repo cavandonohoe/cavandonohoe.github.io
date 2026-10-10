@@ -8,7 +8,7 @@ output:
 lang: "en"
 ---
 
-Commit totals and streaks reflect my personal commits in public repositories. Automated bot commits are excluded. Streaks use UTC calendar days.
+Commit totals and streaks reflect my personal commits on the default branch of my public repositories. Bot commits and automated site deploys are excluded. Streaks use UTC calendar days.
 
 <style>
 .year-hero { scroll-margin-top:6rem; margin: 2rem 0; padding: 2.4rem; border-radius: 18px; background: linear-gradient(135deg,#111827,#1f2937); color:#fff; box-shadow:0 14px 34px rgba(0,0,0,.18); }
@@ -61,11 +61,18 @@ if (!length(files) || !requireNamespace("jsonlite", quietly = TRUE)) {
   years <- as.integer(sub("\\.json$", "", basename(files)))
   files <- files[order(years, decreasing = TRUE)]
   reviews <- lapply(files, jsonlite::fromJSON)
+  # Decide "year to date" from today's UTC date, not the stored flag, so a
+  # failed Jan 1 finalization run cannot leave last year labeled YTD.
+  current_year <- as.integer(format(Sys.time(), "%Y", tz = "UTC"))
+  is_partial <- function(d) d$year >= current_year
+  # Default to the newest year with commits so a fresh Jan 1 file does not hide last year.
+  has_data <- vapply(reviews, function(d) isTRUE(d$commits > 0), logical(1))
+  default_year <- if (any(has_data)) reviews[[which(has_data)[1]]]$year else reviews[[1]]$year
   cat('<p>Explore a year of commits, projects, and coding activity. Choose a year below.</p>')
   cat('<nav class="year-nav" aria-label="Review year">')
   for (d in reviews) {
     cat(paste0('<a href="#year-', d$year, '">', d$year,
-               if (isTRUE(d$is_partial_year)) ' · YTD' else '', '</a>'))
+               if (is_partial(d)) ' · YTD' else '', '</a>'))
   }
   cat('</nav>')
   val <- function(x, fallback="—") if (is.null(x) || is.na(x) || identical(x, "")) fallback else x
@@ -80,8 +87,12 @@ if (!length(files) || !requireNamespace("jsonlite", quietly = TRUE)) {
     language <- d$most_used_language
     files <- if (!is.null(language)) d$language_files[[language]] else NULL
     heading <- paste0('<strong>Top language by lines added:</strong> ', escape(language))
-    if (is.null(files) || !nrow(files)) {
+    if (is.null(d$language_files)) {
       return(paste0('<div class="year-detail">', heading, '<p>File and commit breakdown unavailable for this snapshot.</p></div>'))
+    }
+    if (is.null(files) || !NROW(files)) {
+      return(paste0('<div class="year-detail">', heading,
+                    '<p>0 first-party lines added in recognized languages so far.</p></div>'))
     }
     rows <- vapply(seq_len(nrow(files)), function(i) {
       file <- files[i, ]
@@ -108,12 +119,13 @@ if (!length(files) || !requireNamespace("jsonlite", quietly = TRUE)) {
   }
   for (d in reviews) {
   cat(paste0(
-    '<section class="year-hero" id="year-', d$year, '" aria-label="', d$year, ' developer review">',
-    '<div class="year-kicker">', if (isTRUE(d$is_partial_year)) 'Year to date' else 'Developer year in review', '</div>',
+    '<section class="year-hero" id="year-', d$year, '"', if (d$year == default_year) ' data-default-year' else '',
+    ' aria-label="', d$year, ' developer review">',
+    '<div class="year-kicker">', if (is_partial(d)) 'Year to date' else 'Developer year in review', '</div>',
     '<div class="year-title">', d$year, ' IN CODE</div>',
     '<div class="year-grid">',
       '<div class="year-stat"><strong>', fmt(d$commits), '</strong><span>commits</span></div>',
-      '<div class="year-stat"><strong>', fmt(d$pull_requests), '</strong><span>pull requests</span></div>',
+      '<div class="year-stat"><strong>', fmt(d$pull_requests), '</strong><span>merged pull requests</span></div>',
       '<div class="year-stat"><strong>', fmt(d$repositories_touched), '</strong><span>repositories touched</span></div>',
       '<div class="year-stat"><strong>', fmt(d$lines_added), '</strong><span>lines added</span></div>',
     '</div>',
@@ -139,7 +151,7 @@ if (!length(files) || !requireNamespace("jsonlite", quietly = TRUE)) {
       '<thead><tr><th scope="col">Year</th><th scope="col" class="year-web-number">JavaScript</th><th scope="col" class="year-web-number">HTML</th></tr></thead><tbody>')
   for (d in reviews) {
     cat(paste0('<tr data-review-year="', d$year, '"><th scope="row"><a href="#year-', d$year, '">', d$year,
-               if (isTRUE(d$is_partial_year)) ' · YTD' else '', '</a></th>',
+               if (is_partial(d)) ' · YTD' else '', '</a></th>',
                '<td class="year-web-number">', fmt(language_total(d, 'JavaScript')), '</td>',
                '<td class="year-web-number">', fmt(language_total(d, 'HTML')), '</td></tr>'))
   }
@@ -156,7 +168,8 @@ Past reviews are reconstructed from public commit history. Each January 1, GitHu
   const languageRows = Array.from(document.querySelectorAll('.year-web-table tr[data-review-year]'));
   if (!reviews.length) return;
   function selectYear(scrollToReview = false) {
-    const selected = reviews.find(review => '#' + review.id === window.location.hash) || reviews[0];
+    const fallback = reviews.find(review => review.hasAttribute('data-default-year')) || reviews[0];
+    const selected = reviews.find(review => '#' + review.id === window.location.hash) || fallback;
     reviews.forEach(review => { review.hidden = review !== selected; });
     links.forEach(link => {
       if (link.getAttribute('href') === '#' + selected.id) link.setAttribute('aria-current', 'page');
