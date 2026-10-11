@@ -83,7 +83,7 @@
     {
       "project": "css",
       "tracked_files": 2,
-      "commits_touching_project": 3,
+      "commits_touching_project": 4,
       "top_extensions": [
         [
           ".css",
@@ -124,7 +124,7 @@
     {
       "project": "docs",
       "tracked_files": 1,
-      "commits_touching_project": 2,
+      "commits_touching_project": 3,
       "top_extensions": [
         [
           ".md",
@@ -235,7 +235,7 @@
     {
       "project": "projects",
       "tracked_files": 2,
-      "commits_touching_project": 1,
+      "commits_touching_project": 2,
       "top_extensions": [
         [
           ".md",
@@ -292,7 +292,7 @@
     {
       "project": "tests",
       "tracked_files": 12,
-      "commits_touching_project": 16,
+      "commits_touching_project": 18,
       "top_extensions": [
         [
           ".r",
