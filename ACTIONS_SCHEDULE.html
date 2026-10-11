@@ -441,9 +441,15 @@ truth.</p>
 <div id="reading-the-clock" class="section level2">
 <h2>Reading the clock</h2>
 <ul>
-<li><strong>Charts and tables use current Pacific time: PDT (UTC−7),
-checked October 8, 2026.</strong> Update the displayed times when the
-clock changes. Cron expressions remain in UTC.</li>
+<li><strong>UTC is the source of truth.</strong> GitHub evaluates every
+cron expression in UTC, so the <strong>UTC</strong> column and the cron
+never move.</li>
+<li><strong>Pacific times are a convenience view in PDT
+(UTC−7).</strong> Pacific daylight time ends on <strong>November 1,
+2026</strong>; from then until DST resumes on March 14, 2027, every run
+starts <strong>one hour earlier</strong> in Pacific time (PST, UTC−8).
+For example, 16:43 UTC is 09:43 PDT but 08:43 PST. The charts are drawn
+in PDT.</li>
 <li>Each diamond is a <strong>scheduled start</strong>, not a measured
 runtime. Chart dates are illustrative; the pattern repeats at the
 cadence shown.</li>
@@ -464,14 +470,16 @@ and chart images when a workflow’s triggers change.</li>
 <h2>Throughout the day</h2>
 <table>
 <colgroup>
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th>Workflow</th>
+<th>UTC</th>
 <th>Pacific time (PDT)</th>
 <th>Cron</th>
 <th>Result</th>
@@ -482,6 +490,7 @@ and chart images when a workflow’s triggers change.</li>
 <td><a href=".github/workflows/update_tohs_reunion.yml">TOHS
 reunion</a></td>
 <td>Every hour at :23</td>
+<td>Every hour at :23</td>
 <td><code>23 * * * *</code></td>
 <td>Refresh coverage; deploy if published snapshot differs</td>
 </tr>
@@ -489,6 +498,7 @@ reunion</a></td>
 <td><a
 href=".github/workflows/update_movie_ranker_personal.yml">Personal movie
 rankings</a></td>
+<td>00:37, 06:37, 12:37, 18:37</td>
 <td>05:37, 11:37, 17:37, 23:37</td>
 <td><code>37 */6 * * *</code></td>
 <td>Refresh rankings; request site build when changed</td>
@@ -528,18 +538,20 @@ Mermaid source
     Lately feed 09h43 :milestone, daily4, 2026-10-05 09:43, 0m
     Activity art 10h07 :milestone, daily5, 2026-10-05 10:07, 0m</code></pre>
 </details>
-<table>
+<table style="width:100%;">
 <colgroup>
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th>Workflow</th>
 <th>Pacific calendar</th>
+<th>UTC</th>
 <th>Pacific time (PDT)</th>
 <th>Cron</th>
 <th>Result</th>
@@ -550,6 +562,7 @@ Mermaid source
 <td><a href=".github/workflows/update_saved_episodes.yml">Saved
 podcasts</a></td>
 <td>Daily</td>
+<td>08:23</td>
 <td>01:23</td>
 <td><code>23 8 * * *</code></td>
 <td>Refresh JSON and redeploy Shiny dashboard</td>
@@ -558,6 +571,7 @@ podcasts</a></td>
 <td><a href=".github/workflows/year-in-review.yml">Developer year in
 review</a></td>
 <td>Daily</td>
+<td>08:37</td>
 <td>01:37</td>
 <td><code>37 8 * * *</code></td>
 <td>Commit current-year stats (daily); previous-year snapshot
@@ -567,6 +581,7 @@ review</a></td>
 <td><a href=".github/workflows/pages-rmarkdown.yml">Site sanity
 build</a></td>
 <td>Daily</td>
+<td>12:11</td>
 <td>05:11</td>
 <td><code>11 12 * * *</code></td>
 <td>Render and validate; no deployment</td>
@@ -575,23 +590,26 @@ build</a></td>
 <td><a href=".github/workflows/personal-changelog.yml">Personal
 changelog</a></td>
 <td>Daily</td>
+<td>16:31</td>
 <td>09:31</td>
 <td><code>31 16 * * *</code></td>
-<td>Commit changelog JSON</td>
+<td>Commit changelog JSON; request site build when changed</td>
 </tr>
 <tr class="odd">
 <td><a href=".github/workflows/lately.yml">Lately feed</a></td>
 <td>Daily</td>
+<td>16:43</td>
 <td>09:43</td>
 <td><code>43 16 * * *</code></td>
-<td>Commit recent-activity summary</td>
+<td>Commit recent-activity summary; request site build when changed</td>
 </tr>
 <tr class="even">
 <td><a href=".github/workflows/activity-art.yml">Activity art</a></td>
 <td>Daily</td>
+<td>17:07</td>
 <td>10:07</td>
 <td><code>7 17 * * *</code></td>
-<td>Commit activity SVG</td>
+<td>Commit activity SVG; request site build when changed</td>
 </tr>
 </tbody>
 </table>
@@ -633,18 +651,20 @@ Mermaid source
     Commit activity charts 06h41 :milestone, week0_1, 2026-10-11 06:41, 0m
     Weekly Wrapped 09h17 :milestone, week0_2, 2026-10-11 09:17, 0m</code></pre>
 </details>
-<table>
+<table style="width:100%;">
 <colgroup>
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th>Workflow</th>
 <th>Pacific calendar</th>
+<th>UTC</th>
 <th>Pacific time (PDT)</th>
 <th>Cron</th>
 <th>Result</th>
@@ -655,6 +675,7 @@ Mermaid source
 <td><a href=".github/workflows/update_imdb_ratings.yml">IMDb episode
 ratings</a></td>
 <td>Mon</td>
+<td>08:23</td>
 <td>01:23</td>
 <td><code>23 8 * * 1</code></td>
 <td>Refresh ratings; request site build when changed</td>
@@ -663,6 +684,7 @@ ratings</a></td>
 <td><a href=".github/workflows/update_watched_episodes.yml">Watched TV
 episodes</a></td>
 <td>Mon</td>
+<td>08:41</td>
 <td>01:41</td>
 <td><code>41 8 * * 1</code></td>
 <td>Refresh episodes; request site build when changed</td>
@@ -672,6 +694,7 @@ episodes</a></td>
 href=".github/workflows/update_imdb_exceptional_episodes.yml">Exceptional
 IMDb episodes</a></td>
 <td>Mon</td>
+<td>09:17</td>
 <td>02:17</td>
 <td><code>17 9 * * 1</code></td>
 <td>Validate official datasets; publish results and request site
@@ -680,6 +703,7 @@ build</td>
 <tr class="even">
 <td><a href=".github/workflows/repo-size.yml">Repo size</a></td>
 <td>Mon</td>
+<td>13:44</td>
 <td>06:44</td>
 <td><code>44 13 * * 1</code></td>
 <td>Upload report; may open threshold issue</td>
@@ -687,6 +711,7 @@ build</td>
 <tr class="odd">
 <td><a href=".github/workflows/link-check.yml">Broken links</a></td>
 <td>Mon</td>
+<td>14:13</td>
 <td>07:13</td>
 <td><code>13 14 * * 1</code></td>
 <td>Upload report; open or update issue on broken links</td>
@@ -695,6 +720,7 @@ build</td>
 <td><a href=".github/workflows/ping-movie-ranker-supabase.yml">Supabase
 keepalive</a></td>
 <td>Mon</td>
+<td>14:17</td>
 <td>07:17</td>
 <td><code>17 14 * * 1</code></td>
 <td>Read one row to keep database active</td>
@@ -702,6 +728,7 @@ keepalive</a></td>
 <tr class="odd">
 <td><a href=".github/workflows/pa11y.yml">Accessibility audit</a></td>
 <td>Mon</td>
+<td>15:21</td>
 <td>08:21</td>
 <td><code>21 15 * * 1</code></td>
 <td>Upload report; open or update issue on errors</td>
@@ -710,6 +737,7 @@ keepalive</a></td>
 <td><a href=".github/workflows/update_mymaps_export.yml">My Maps
 export</a></td>
 <td>Mon</td>
+<td>17:17</td>
 <td>10:17</td>
 <td><code>17 17 * * 1</code></td>
 <td>Refresh KML/CSV; request site build when changed</td>
@@ -717,6 +745,7 @@ export</a></td>
 <tr class="odd">
 <td><a href=".github/workflows/rebuild_cv.yml">CV PDF / DOCX</a></td>
 <td>Tue</td>
+<td>11:33</td>
 <td>04:33</td>
 <td><code>33 11 * * 2</code></td>
 <td>Open PR for meaningful CV changes</td>
@@ -725,6 +754,7 @@ export</a></td>
 <td><a href=".github/workflows/update_sp500.yml">S&amp;P 500 /
 VOO</a></td>
 <td>Sat</td>
+<td>13:29</td>
 <td>06:29</td>
 <td><code>29 13 * * 6</code></td>
 <td>Refresh prices; request site build when changed</td>
@@ -732,6 +762,7 @@ VOO</a></td>
 <tr class="odd">
 <td><a href=".github/workflows/refresh-sitemap.yml">Sitemap</a></td>
 <td>Sun</td>
+<td>13:37</td>
 <td>06:37</td>
 <td><code>37 13 * * 0</code></td>
 <td>Commit sitemap; request site build when changed</td>
@@ -740,6 +771,7 @@ VOO</a></td>
 <td><a href=".github/workflows/refresh-commit-activity.yml">Commit
 activity charts</a></td>
 <td>Sun</td>
+<td>13:41</td>
 <td>06:41</td>
 <td><code>41 13 * * 0</code></td>
 <td>Re-knit README and charts; request site build when changed</td>
@@ -748,6 +780,7 @@ activity charts</a></td>
 <td><a href=".github/workflows/weekly-wrapped.yml">Weekly
 Wrapped</a></td>
 <td>Sun</td>
+<td>16:17</td>
 <td>09:17</td>
 <td><code>17 16 * * 0</code></td>
 <td>Commit weekly activity snapshot</td>
@@ -784,18 +817,20 @@ Mermaid source
     Top 250 + Rotten Tomatoes (day 12, 06h53) :milestone, month3, 2026-10-12 06:53, 0m
     Director filmographies (day 17, 07h07) :milestone, month4, 2026-10-17 07:07, 0m</code></pre>
 </details>
-<table>
+<table style="width:100%;">
 <colgroup>
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th>Workflow</th>
 <th>Pacific calendar</th>
+<th>UTC</th>
 <th>Pacific time (PDT)</th>
 <th>Cron</th>
 <th>Result</th>
@@ -807,6 +842,7 @@ Mermaid source
 href=".github/workflows/update_confederate_statues_data.yml">Confederate
 statues</a></td>
 <td>Day 1</td>
+<td>14:17</td>
 <td>07:17</td>
 <td><code>17 14 1 * *</code></td>
 <td>Refresh CSV; request site build when changed</td>
@@ -815,6 +851,7 @@ statues</a></td>
 <td><a href=".github/workflows/update_us_rentals.yml">US rental
 markets</a></td>
 <td>Day 5</td>
+<td>14:47</td>
 <td>07:47</td>
 <td><code>47 14 5 * *</code></td>
 <td>Refresh Zillow data; request site build when changed</td>
@@ -823,6 +860,7 @@ markets</a></td>
 <td><a href=".github/workflows/update_top1000_box_office.yml">Top 1000
 box office</a></td>
 <td>Day 8</td>
+<td>12:41</td>
 <td>05:41</td>
 <td><code>41 12 8 * *</code></td>
 <td>Refresh box office and caches; request site build when changed</td>
@@ -831,6 +869,7 @@ box office</a></td>
 <td><a href=".github/workflows/update_top250_with_rt.yml">Top 250 +
 Rotten Tomatoes</a></td>
 <td>Day 12</td>
+<td>13:53</td>
 <td>06:53</td>
 <td><code>53 13 12 * *</code></td>
 <td>Refresh ratings; request site build when changed</td>
@@ -840,6 +879,7 @@ Rotten Tomatoes</a></td>
 href=".github/workflows/update_director_filmographies.yml">Director
 filmographies</a></td>
 <td>Day 17</td>
+<td>14:07</td>
 <td>07:07</td>
 <td><code>7 14 17 * *</code></td>
 <td>Refresh TMDb data; request site build when changed</td>
@@ -849,18 +889,20 @@ filmographies</a></td>
 </div>
 <div id="annual-checkpoints" class="section level2">
 <h2>Annual checkpoints</h2>
-<table>
+<table style="width:100%;">
 <colgroup>
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th>Workflow</th>
 <th>Pacific calendar</th>
+<th>UTC</th>
 <th>Pacific time (PDT)</th>
 <th>Cron</th>
 <th>Result</th>
@@ -871,6 +913,7 @@ filmographies</a></td>
 <td><a href=".github/workflows/update_best_picture_winners.yml">Best
 Picture winners</a></td>
 <td>Mar 23</td>
+<td>16:23</td>
 <td>09:23</td>
 <td><code>23 16 23 3 *</code></td>
 <td>Open PR if winners data changed</td>
@@ -879,7 +922,8 @@ Picture winners</a></td>
 <td><a href=".github/workflows/year-in-review.yml">Developer year in
 review</a></td>
 <td>Jan 1</td>
-<td>10:13</td>
+<td>17:13</td>
+<td>09:13 (PST)</td>
 <td><code>13 17 1 1 *</code></td>
 <td>Commit current-year stats (daily); previous-year snapshot
 (annual)</td>
@@ -982,10 +1026,13 @@ workflows explicitly dispatch the site build after changes because
 pushes made with <code>GITHUB_TOKEN</code> do not trigger ordinary
 downstream push workflows. Saved podcasts redeploy their Shiny app
 instead. CV and Best Picture winners open PRs for review.</p>
-<p>Activity art, the personal changelog, Lately, Weekly Wrapped, and
-Developer year in review commit generated output without explicitly
-dispatching the site deployment. Their scheduled start should not be
-read as a guaranteed production-update time.</p>
+<p>Activity art, the personal changelog, Lately, and the commit-activity
+charts dispatch a production deploy only when they actually push a
+commit, and skip the commit entirely when nothing but a generated
+timestamp changed. Weekly Wrapped and project case studies write data
+the site does not render, so they do not dispatch a deploy. Developer
+year in review commits generated output without explicitly dispatching
+the site deployment.</p>
 </div>
 </div>
 
