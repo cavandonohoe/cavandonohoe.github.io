@@ -9,7 +9,8 @@ on:
       - '.gitattributes'
       - 'data/year-in-review/**'
   schedule:
-    # Daily at 08:37 UTC; refresh only the current calendar year.
+    # Daily at 08:37 UTC; refresh the current calendar year (and finalize any
+    # earlier year still marked partial).
     - cron: '37 8 * * *'
     # Jan 1 at 17:13 UTC; snapshots the year that just ended.
     - cron: '13 17 1 1 *'
@@ -26,6 +27,10 @@ on:
         type: boolean
 permissions:
   contents: write
+# Serialize runs (daily, Jan 1, manual) so snapshot pushes never race.
+concurrency:
+  group: year-in-review
+  cancel-in-progress: false
 jobs:
   review:
     runs-on: ubuntu-latest

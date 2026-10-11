@@ -20,15 +20,23 @@ class HistoryTests(unittest.TestCase):
         self.assertFalse(review.authored_by_user("Other Person", "other@example.com"))
 
     def test_history_uses_utc_author_dates_and_deduplicates_branches(self):
+        def commit(sha, stamp, name, email, numstat, committer="Cavan Donohoe|cavandonohoe@gmail.com", subject="Change"):
+            return f"\x1e{sha}|{stamp}|{name}|{email}|{committer}|{subject}\0\n" + "".join(f"{line}\0" for line in numstat)
         log = (
-            "\x1eabc|2025-12-31T23:30:00-08:00|Cavan Donohoe|cavandonohoe@gmail.com\n3\t0\tapp.R\n"
-            "\x1edef|2026-01-01T00:00:00+09:00|cavandonohoe|cavandonohoe@users.noreply.github.com\n4\t2\tapp.py\n-\t-\timage.png\n"
-            "\x1eabc|2025-12-31T23:30:00-08:00|Cavan Donohoe|cavandonohoe@gmail.com\n3\t0\tapp.R\n"
-            "\x1ebot|2026-01-01T00:00:00Z|github-actions[bot]|bot@example.com\n99\t0\tapp.R\n"
+            commit("abc", "2025-12-31T23:30:00-08:00", "Cavan Donohoe", "cavandonohoe@gmail.com", ["3\t0\tapp.R"])
+            + commit("def", "2026-01-01T00:00:00+09:00", "cavandonohoe", "cavandonohoe@users.noreply.github.com", ["4\t2\tapp.py", "-\t-\timage.png"])
+            + commit("abc", "2025-12-31T23:30:00-08:00", "Cavan Donohoe", "cavandonohoe@gmail.com", ["3\t0\tapp.R"])
+            + commit("bot", "2026-01-01T00:00:00Z", "github-actions[bot]", "bot@example.com", ["99\t0\tapp.R"])
+            + commit("dep", "2026-02-01T00:00:00Z", "cavandonohoe", "cavandonohoe@users.noreply.github.com", ["9999\t0\tindex.html"], subject="deploy: 1234abcd")
+            + commit("bcm", "2026-02-02T00:00:00Z", "Cavan Donohoe", "cavandonohoe@gmail.com", ["50\t0\tapp.R"], committer="github-actions[bot]|41898282+github-actions[bot]@users.noreply.github.com")
         )
+        calls = []
         def fixture_git(repo, *args):
-            if args[0] == "rev-parse":
+            calls.append(args)
+            if args[:2] == ("rev-parse", "--is-shallow-repository"):
                 return "false\n"
+            if args[0] == "rev-parse":
+                return "0123abcd\n"
             if args[0] == "log":
                 return log
             if args[0] == "check-attr":
@@ -37,6 +45,9 @@ class HistoryTests(unittest.TestCase):
         with patch.object(review, "git", side_effect=fixture_git):
             rows = list(review.read_history("fixture"))
         self.assertEqual(len(rows), 2)
+        log_args = next(args for args in calls if args[0] == "log")
+        self.assertNotIn("--all", log_args)
+        self.assertIn("0123abcd", log_args)
         now = datetime(2026, 10, 5, tzinfo=timezone.utc)
         records = [("cavandonohoe/project", row) for row in rows]
         previous = review.snapshot(2025, records, now)
@@ -151,6 +162,94 @@ class HistoryTests(unittest.TestCase):
     def test_streak_deduplicates_days_and_spans_year_end(self):
         self.assertEqual(review.longest_streak([date(2025, 12, 30), date(2025, 12, 31), date(2025, 12, 31), date(2026, 1, 1)]), 3)
         self.assertEqual(review.longest_streak([]), 0)
+
+    def _repo(self, tmp):
+        repo = Path(tmp) / "source"
+        repo.mkdir()
+        review.git(repo, "init", "-q", "-b", "main")
+        review.git(repo, "config", "user.name", "Cavan Donohoe")
+        review.git(repo, "config", "user.email", "cavandonohoe@example.com")
+        return repo
+
+    def _commit(self, repo, files, message):
+        for path, content in files.items():
+            target = repo / path
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(content)
+        review.git(repo, "add", "-A")
+        review.git(repo, "commit", "-qm", message)
+
+    def test_only_default_branch_counts_and_deploys_are_skipped(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = self._repo(tmp)
+            self._commit(repo, {"app.R": "x <- 1\n" * 2}, "Add app")
+            review.git(repo, "checkout", "-q", "-b", "feature")
+            self._commit(repo, {"unmerged.R": "y <- 1\n" * 50}, "Unmerged work")
+            review.git(repo, "checkout", "-q", "--orphan", "gh-pages")
+            self._commit(repo, {"index.html": "<p>site</p>\n" * 500}, "deploy: abc123")
+            review.git(repo, "checkout", "-q", "main")
+            self._commit(repo, {"deployed.html": "<p>x</p>\n" * 70}, "deploy: copied into main")
+            clone = Path(tmp) / "clone"
+            subprocess.run(["git", "clone", "--quiet", "--no-checkout", str(repo), str(clone)], check=True)
+            rows = list(review.read_history(clone, "main"))
+            self.assertEqual([row["added"] for row in rows], [2])
+            # origin/HEAD fallback when the API branch is unavailable.
+            self.assertEqual(len(list(review.read_history(clone))), 1)
+
+    def test_renames_count_changed_lines_on_new_non_ascii_path(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = self._repo(tmp)
+            self._commit(repo, {"old café.R": "".join(f"x{i} <- {i}\n" for i in range(20))}, "Add")
+            (repo / "dir").mkdir()
+            review.git(repo, "mv", "old café.R", "dir/new café.R")
+            with open(repo / "dir/new café.R", "a") as handle:
+                handle.write("y <- 2\n")
+            review.git(repo, "commit", "-qam", "Move")
+            rows = list(review.read_history(repo, "main"))
+            moved = rows[0]
+            self.assertEqual(moved["added"], 1)
+            self.assertEqual(moved["language_files"], {"R": {"dir/new café.R": 1}})
+            self.assertEqual(rows[1]["language_files"], {"R": {"old café.R": 20}})
+
+    def test_built_in_generated_patterns_and_attribute_override(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = self._repo(tmp)
+            self._commit(repo, {".gitattributes": "dist/keep.js linguist-generated=false\n"}, "Rules")
+            for path in ["lib/jquery.min.js", "css/site-min.css", "app.bundle.js", "dist/app.js", "renv/library/R-4.4/pkg/R/x.R", "docs/site.js", "_freeze/a.js", "bower_components/x/x.js"]:
+                with self.subTest(path=path):
+                    self.assertTrue(review.excluded_from_language_stats(repo, path))
+            for path in ["dist/keep.js", "src/minimal.js", "renv_helpers.R", "R/library.R"]:
+                with self.subTest(path=path):
+                    self.assertFalse(review.excluded_from_language_stats(repo, path))
+
+    def test_ties_break_deterministically(self):
+        records = [
+            ("cavandonohoe/zeta", {"sha": "a", "day": date(2026, 3, 1), "added": 5, "languages": {"R": 5}, "language_files": {}}),
+            ("cavandonohoe/alpha", {"sha": "b", "day": date(2026, 2, 1), "added": 5, "languages": {"Python": 5}, "language_files": {}}),
+        ]
+        result = review.snapshot(2026, records, datetime(2026, 10, 7, tzinfo=timezone.utc))
+        self.assertEqual(result["biggest_project"], "alpha")
+        self.assertEqual(result["most_used_language"], "Python")
+        self.assertEqual(result["most_active_month"], "February")
+        self.assertEqual(list(result["repository_commits"]), ["cavandonohoe/alpha", "cavandonohoe/zeta"])
+
+    def test_snapshot_written_only_when_data_changes(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "2026.json"
+            out = {"year": 2026, "commits": 3, "generated_at": "2026-10-01T00:00:00+00:00"}
+            self.assertTrue(review.write_snapshot(path, out))
+            self.assertFalse(review.write_snapshot(path, {**out, "generated_at": "2026-10-02T00:00:00+00:00"}))
+            self.assertIn("2026-10-01", path.read_text())
+            self.assertTrue(review.write_snapshot(path, {**out, "commits": 4}))
+
+    def test_stale_partial_years_are_refinalized(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp)
+            (out / "2024.json").write_text('{"is_partial_year": false}')
+            (out / "2025.json").write_text('{"is_partial_year": true}')
+            (out / "2026.json").write_text('{"is_partial_year": true}')
+            now = datetime(2026, 1, 2, tzinfo=timezone.utc)
+            self.assertEqual(review.stale_partial_years(out, now), [2025])
 
 
 if __name__ == "__main__":
