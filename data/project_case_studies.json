@@ -57,7 +57,7 @@
     {
       "project": "assets",
       "tracked_files": 1,
-      "commits_touching_project": 10,
+      "commits_touching_project": 12,
       "top_extensions": [
         [
           ".svg",
@@ -162,7 +162,7 @@
     {
       "project": "images",
       "tracked_files": 14,
-      "commits_touching_project": 60,
+      "commits_touching_project": 61,
       "top_extensions": [
         [
           ".jpg",
@@ -212,7 +212,7 @@
     {
       "project": "podcast-dashboard",
       "tracked_files": 6,
-      "commits_touching_project": 17,
+      "commits_touching_project": 18,
       "top_extensions": [
         [
           ".json",
