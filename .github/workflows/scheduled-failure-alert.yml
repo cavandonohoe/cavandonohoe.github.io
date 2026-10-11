@@ -1,0 +1,68 @@
+name: Scheduled workflow failure alert
+
+# Opens one issue per failing scheduled workflow and closes it on the next
+# green scheduled run. Add new scheduled workflows to the list below.
+on:
+  workflow_run:
+    workflows:
+      - "Accessibility audit (pa11y-ci)"
+      - "Broken link check"
+      - "Build R Markdown site (sanity check)"
+      - "Check Best Picture winners"
+      - "Developer year in review"
+      - "Generate activity art"
+      - "Ping movie-ranker Supabase"
+      - "Prune stale PR previews"
+      - "Rebuild CV PDF/DOCX"
+      - "Refresh Confederate statues data"
+      - "Refresh S&P 500 (VOO) data"
+      - "Refresh TOHS reunion"
+      - "Refresh Top 1000 box office data"
+      - "Refresh Top 250 movies with Rotten Tomatoes"
+      - "Refresh US rental markets data"
+      - "Refresh commit-activity charts"
+      - "Refresh director filmographies (TMDb)"
+      - "Refresh exceptional IMDb episodes"
+      - "Refresh lately feed"
+      - "Refresh personal changelog"
+      - "Refresh sitemap.xml"
+      - "Update IMDb episode ratings"
+      - "Update My Maps export"
+      - "Update movie-ranker personal CSV"
+      - "Update saved podcast episodes"
+      - "Update watched TV episodes"
+      - "Weekly Cavan Wrapped"
+      - "Repo size monitor"
+    types: [completed]
+
+permissions:
+  actions: read
+  issues: write
+
+jobs:
+  alert:
+    if: ${{ github.event.workflow_run.event == 'schedule' && (github.event.workflow_run.conclusion == 'failure' || github.event.workflow_run.conclusion == 'success') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Open, update or close the failure issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          WORKFLOW_NAME: ${{ github.event.workflow_run.name }}
+          CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          RUN_URL: ${{ github.event.workflow_run.html_url }}
+        run: |
+          set -euo pipefail
+          title="Scheduled workflow failing: ${WORKFLOW_NAME}"
+          existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --label automated --limit 200 \
+            --json number,title | jq -r --arg t "$title" '.[] | select(.title==$t) | .number' | head -1)
+          if [ "$CONCLUSION" = "failure" ]; then
+            if [ -n "$existing" ]; then
+              gh issue comment "$existing" --repo "$GITHUB_REPOSITORY" --body "Failed again: ${RUN_URL}"
+            else
+              body="The scheduled run failed: ${RUN_URL} (this issue closes itself on the next successful scheduled run)"
+              gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --label automated --label ci --body "$body"
+            fi
+          elif [ -n "$existing" ]; then
+            gh issue close "$existing" --repo "$GITHUB_REPOSITORY" --comment "Recovered on the next scheduled run: ${RUN_URL}"
+          fi

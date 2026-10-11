@@ -172,6 +172,16 @@ jobs:
       group: gh-pages-deploy
       cancel-in-progress: false
     steps:
+      # Runs inside the gh-pages-deploy lock, so a PR closed while this job was
+      # queued is seen here and its preview is never re-created after cleanup.
+      - name: Check PR is still open
+        id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          state=$(gh pr view "${{ github.event.pull_request.number }}" --repo "${{ github.repository }}" --json state --jq .state)
+          echo "open=$([ "$state" = "OPEN" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+          echo "PR state: $state"
       # Checkout source so .github/scripts/sticky-comment.sh is available for
       # the "Comment preview URL" step. peaceiris clones gh-pages into its own
       # temp dir, so this source checkout does not interfere with publishing.
@@ -181,6 +191,7 @@ jobs:
           name: site
           path: _site
       - name: Publish PR preview folder
+        if: ${{ steps.pr.outputs.open == 'true' }}
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -190,7 +201,7 @@ jobs:
           keep_files: true
           exclude_assets: 'sa.json'
       - name: Comment preview URL
-        if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+        if: ${{ steps.pr.outputs.open == 'true' && github.event.pull_request.head.repo.full_name == github.repository }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
