@@ -1,6 +1,36 @@
 {
-  "generated_at": "2026-10-10T20:14:53.517840+00:00",
+  "generated_at": "2026-10-11T20:30:16.621544+00:00",
   "events": [
+    {
+      "date": "2026-10-11",
+      "type": "merged_pr",
+      "title": "Make generated-activity workflows race-safe, paginated, and deployed",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/229"
+    },
+    {
+      "date": "2026-10-11",
+      "type": "merged_pr",
+      "title": "Fix maze hang, animation loop and review findings from #228",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/232"
+    },
+    {
+      "date": "2026-10-11",
+      "type": "merged_pr",
+      "title": "Count only default-branch personal commits in Developer Year in Review",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/230"
+    },
+    {
+      "date": "2026-10-11",
+      "type": "merged_pr",
+      "title": "CI health: preview race, real size monitor, failure alerts, npm Dependabot",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/240"
+    },
+    {
+      "date": "2026-10-11",
+      "type": "merged_pr",
+      "title": "Apply TOHS contact submissions once and protect organizer edits",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/231"
+    },
     {
       "date": "2026-10-09",
       "type": "merged_pr",
@@ -322,6 +352,25 @@
   ],
   "daily_summaries": [
     {
+      "date": "2026-10-11",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "1 podcast episode added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/21a161869fedb5d4e95be62511828d6b03a0a35a"
+        },
+        {
+          "emoji": "\ud83d\udcbb",
+          "text": "5 PRs merged"
+        },
+        {
+          "emoji": "\u2699\ufe0f",
+          "text": "Developer activity + site automation expanded",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/229"
+        }
+      ]
+    },
+    {
       "date": "2026-10-10",
       "items": [
         {
@@ -422,12 +471,22 @@
           "emoji": "\ud83c\udfac",
           "text": "Movie & TV projects updated",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/204"
+        },
+        {
+          "emoji": "\ud83c\udfac",
+          "text": "Movie & TV data refreshed",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/432afab37877da4c031d9e00e0e507c2c0fde46b"
         }
       ]
     },
     {
       "date": "2026-10-02",
       "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "10 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/40837f3b448170c0aeacb08f728a3c3ceea260ef"
+        },
         {
           "emoji": "\ud83d\udcbb",
           "text": "2 PRs merged"
@@ -455,6 +514,16 @@
           "emoji": "\ud83d\uddfa\ufe0f",
           "text": "Data-viz projects polished",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/196"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "1 podcast episode added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/4114d99c20c9108f34048b2b1bb5bcba1a35552a"
         }
       ]
     },
@@ -493,30 +562,6 @@
           "emoji": "\ud83c\udfac",
           "text": "Movie & TV projects updated",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/181"
-        }
-      ]
-    },
-    {
-      "date": "2026-09-23",
-      "items": [
-        {
-          "emoji": "\ud83d\udcbb",
-          "text": "4 PRs merged"
-        },
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "Podcast + Spotify experience improved",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/177"
-        }
-      ]
-    },
-    {
-      "date": "2026-09-22",
-      "items": [
-        {
-          "emoji": "\ud83d\udcda",
-          "text": "Publications section expanded",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/173"
         }
       ]
     }
