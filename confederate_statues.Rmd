@@ -79,36 +79,38 @@ with_max <- max_statues %>%
   dplyr::pull(n)
 ```
 
-Also, we witness the most statues being built in a single year in `r mode` with `r with_max` statues.
+Each row in the data is a year recorded for an entry on Wikipedia's lists of Confederate monuments, memorials, and named places (schools, counties, and so on). An entry can record more than one year, so the counts below are recorded year entries, not unique statues or installation dates.
 
-These bins are of width = 5 years.
+Also, we witness the most recorded year entries in a single year in `r mode` with `r with_max` entries.
+
+These bins are 5 years wide and centered on multiples of five (for example, 1910 covers 1908 through 1912), matching the chart in the [confederate_statues repository](https://github.com/cavandonohoe/confederate_statues).
 
 ```{r graph1, fig.width=10, fig.height=7.5}
 all_dates_clean <- all_dates %>%
   dplyr::group_by(year) %>%
   dplyr::count() %>%
   dplyr::ungroup() %>%
-  dplyr::mutate(date_bins = cut(year, breaks = seq(min(year), max(year)+5, by = 5),
-    right = FALSE),
+  # 5-year bins centered on multiples of five, i.e. [center - 2.5, center + 2.5),
+  # the same boundaries as ggplot2::geom_histogram(binwidth = 5) upstream.
+  dplyr::mutate(date = 5 * round(year / 5),
          text = paste0(year, ": ", n)) %>%
-  dplyr::group_by(date_bins) %>%
+  dplyr::group_by(date) %>%
   dplyr::summarise(n = sum(n),
             text = paste(text, collapse = "\n")) %>%
   dplyr::ungroup() %>%
-  dplyr::mutate(date_min = as.numeric(gsub("\\[(\\d+),.*", "\\1", date_bins))) %>%
-  dplyr::rename(date = date_min)
+  dplyr::mutate(text = paste0(date - 2, "-", date + 2, ": ", n, " entries\n", text))
 
 confederate_statue_hist <- all_dates_clean %>%
   ggplot2::ggplot(ggplot2::aes(x = date, text = text, y = n)) +
-  ggplot2::geom_col(fill = "red") +
+  ggplot2::geom_col(fill = "red", width = 5) +
   ggplot2::scale_x_continuous(breaks = seq(min(all_dates_clean$date), max(all_dates_clean$date),
     by = 5)) +
   ggplot2::theme(axis.title.x = ggplot2::element_blank(),
         axis.text.x = ggplot2::element_text(size=12, angle = 90),
         axis.text.y = ggplot2::element_text(size=15),
         title = ggplot2::element_text(size=15)) +
-  ggplot2::ylab("# of Statues") +
-  ggplot2::ggtitle("Number of Confederate Statues Over Time")
+  ggplot2::ylab("# of recorded year entries") +
+  ggplot2::ggtitle("Recorded years for Confederate monuments and named places")
 
 confederate_statue_hist %>%
   plotly::ggplotly()
