@@ -17,3 +17,20 @@ updates:
       github-actions:
         patterns:
           - "*"
+  - package-ecosystem: "npm"
+    directory: "/movie-ranker"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "10:00"
+      timezone: "America/Los_Angeles"
+    commit-message:
+      prefix: "deps"
+    labels:
+      - "dependencies"
+    open-pull-requests-limit: 5
+    groups:
+      npm-minor-patch:
+        update-types:
+          - "minor"
+          - "patch"

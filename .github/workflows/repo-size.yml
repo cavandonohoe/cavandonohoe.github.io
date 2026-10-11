@@ -23,6 +23,8 @@ jobs:
 
       - name: Compute size report
         id: report
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           total_kb=$(du -sk . 2>/dev/null | cut -f1)
@@ -30,6 +32,14 @@ jobs:
           git_kb=$(du -sk .git 2>/dev/null | cut -f1 || echo 0)
           git_mb=$(( git_kb / 1024 ))
           threshold_mb=500
+
+          # The checkout is depth 1, so ask GitHub for the real numbers.
+          repo_mb=$(( $(gh api "repos/${GITHUB_REPOSITORY}" --jq .size) / 1024 ))
+          repo_threshold_mb=1000
+          pages_mb=$(gh api "repos/${GITHUB_REPOSITORY}/git/trees/gh-pages?recursive=1" \
+            --jq '([.tree[].size // 0] | add) / 1048576 | floor')
+          pages_truncated=$(gh api "repos/${GITHUB_REPOSITORY}/git/trees/gh-pages?recursive=1" --jq .truncated)
+          pages_threshold_mb=1000
 
           {
             echo "## Repo size report"
@@ -65,14 +75,22 @@ jobs:
             echo "**Working tree total:** ${total_mb} MB"
             echo "**.git total:** ${git_mb} MB"
             echo "**Threshold:** ${threshold_mb} MB"
-            if [ "$total_mb" -gt "$threshold_mb" ]; then
-              echo ":warning: Working tree exceeds threshold."
+            echo ""
+            echo "**Repository (GitHub-reported, includes history):** ${repo_mb} MB (threshold ${repo_threshold_mb} MB)"
+            echo "**gh-pages tip (production + PR previews):** ${pages_mb} MB (threshold ${pages_threshold_mb} MB)"
+            if [ "$pages_truncated" = "true" ]; then
+              echo "_gh-pages tree listing was truncated, so that number is a lower bound._"
+            fi
+            if [ "$total_mb" -gt "$threshold_mb" ] || [ "$repo_mb" -gt "$repo_threshold_mb" ] || [ "$pages_mb" -gt "$pages_threshold_mb" ]; then
+              echo ":warning: One or more sizes exceed their threshold."
             else
               echo ":white_check_mark: Within threshold."
             fi
           } > size-report.md
 
-          if [ "$total_mb" -gt "$threshold_mb" ]; then
+          if [ "$total_mb" -gt "$threshold_mb" ] \
+            || [ "$repo_mb" -gt "$repo_threshold_mb" ] \
+            || [ "$pages_mb" -gt "$pages_threshold_mb" ]; then
             echo "exceeded=true" >> "$GITHUB_OUTPUT"
           else
             echo "exceeded=false" >> "$GITHUB_OUTPUT"
