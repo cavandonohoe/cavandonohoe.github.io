@@ -1,0 +1,8 @@
+{
+  "verified": false,
+  "manifest": null,
+  "files": {
+    "contact_workflow.js": "scripts/tohs/contact_workflow.js",
+    "acceptance_test.js": "scripts/tohs/acceptance_test.js"
+  }
+}
