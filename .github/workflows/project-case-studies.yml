@@ -7,8 +7,10 @@ on:
 permissions:
   contents: write
 
+# Per-workflow group: never cancels another workflow's pending run.
+# Cross-workflow push races are handled by push_generated_changes.sh.
 concurrency:
-  group: site-generated-writeback
+  group: ${{ github.workflow }}
   cancel-in-progress: false
 
 jobs:
@@ -20,38 +22,12 @@ jobs:
         with:
           fetch-depth: 0
       - name: Generate project metadata
-        run: |
-          mkdir -p data
-          python3 - <<'PY'
-          import json, os, subprocess
-          from collections import Counter
-          skip={'.git','.github','data','scripts'}
-          dirs=[d for d in os.listdir('.') if os.path.isdir(d) and not d.startswith('.') and d not in skip]
-          projects=[]
-          for d in sorted(dirs):
-            files=subprocess.check_output(['git','ls-files',d],text=True).splitlines()
-            if not files: continue
-            ext=Counter(os.path.splitext(f)[1].lower() or '[none]' for f in files)
-            commits=int(subprocess.check_output(['git','rev-list','--count','HEAD','--',d],text=True).strip() or 0)
-            projects.append({'project':d,'tracked_files':len(files),'commits_touching_project':commits,'top_extensions':ext.most_common(5)})
-          open('data/project_case_studies.json','w').write(json.dumps({'projects':projects},indent=2)+'\n')
-          PY
+        run: python3 scripts/build_project_case_studies.py
+      # data/project_case_studies.json is not rendered by the site, so no
+      # redeploy is dispatched.
       - name: Commit and safely push changes
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add data/project_case_studies.json
-          if git diff --cached --quiet; then
-            exit 0
-          fi
-          git commit -m 'Refresh project case-study metadata'
-          for attempt in 1 2 3; do
-            git fetch origin main
-            git rebase origin/main
-            if git push origin HEAD:main; then
-              exit 0
-            fi
-            sleep $((attempt * 2))
-          done
-          echo 'Failed to push generated metadata after 3 attempts.' >&2
-          exit 1
+        run: >-
+          scripts/push_generated_changes.sh
+          'Refresh project case-study metadata'
+          'python3 scripts/build_project_case_studies.py'
+          data/project_case_studies.json

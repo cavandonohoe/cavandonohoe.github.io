@@ -4,14 +4,18 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/lately.yml'
+      - 'scripts/build_lately.py'
   schedule:
     - cron: '43 16 * * *'
   workflow_dispatch:
 permissions:
   contents: write
+  actions: write # needed for the "gh workflow run" redeploy dispatch below
 
+# Per-workflow group: never cancels another workflow's pending run.
+# Cross-workflow push races are handled by push_generated_changes.sh.
 concurrency:
-  group: site-generated-writeback
+  group: ${{ github.workflow }}
   cancel-in-progress: false
 
 jobs:
@@ -22,36 +26,17 @@ jobs:
         with:
           fetch-depth: 0
       - name: Summarize recent work
-        run: |
-          mkdir -p data
-          python3 - <<'PY'
-          import json, subprocess
-          from collections import Counter
-          from datetime import datetime, timezone, timedelta
-          since=datetime.now(timezone.utc)-timedelta(days=30)
-          lines=subprocess.check_output(['git','log',f'--since={since.isoformat()}','--name-only','--pretty='],text=True).splitlines()
-          files=[x for x in lines if x]
-          areas=Counter((f.split('/')[0] if '/' in f else 'site') for f in files)
-          commits=subprocess.check_output(['git','rev-list','--count',f'--since={since.isoformat()}','HEAD'],text=True).strip()
-          out={'generated_at':datetime.now(timezone.utc).isoformat(),'window_days':30,'commits':int(commits),'active_areas':[{'name':k,'file_touches':v} for k,v in areas.most_common(5)]}
-          open('data/lately.json','w').write(json.dumps(out,indent=2)+'\n')
-          PY
+        run: python3 scripts/build_lately.py
       - name: Commit and safely push changes
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add data/lately.json
-          if git diff --cached --quiet; then
-            exit 0
-          fi
-          git commit -m 'Refresh lately feed'
-          for attempt in 1 2 3; do
-            git fetch origin main
-            git rebase origin/main
-            if git push origin HEAD:main; then
-              exit 0
-            fi
-            sleep $((attempt * 2))
-          done
-          echo 'Failed to push lately feed after 3 attempts.' >&2
-          exit 1
+        id: push
+        run: >-
+          scripts/push_generated_changes.sh
+          'Refresh lately feed'
+          'python3 scripts/build_lately.py'
+          data/lately.json
+      # Pushes made with GITHUB_TOKEN do not trigger the push-based deploy.
+      - name: Trigger site redeploy
+        if: steps.push.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages-branch-previews.yml --ref main -f deploy_root=true

@@ -15,4 +15,4 @@ jobs:
           ISSUE: ${{ github.event.issue.number }}
           REPO: ${{ github.repository }}
         run: |
-          gh issue comment "$ISSUE" --repo "$REPO" --body "Thanks — this question is queued against the site's public datasets. This first version intentionally does not execute issue text as code. Future iterations can add a constrained query layer for supported questions."
+          gh issue comment "$ISSUE" --repo "$REPO" --body "Thanks for the question. Nothing processes it automatically: this intake only posts this acknowledgement and never executes issue text as code. Any answer will come as a manual reply on this issue."
