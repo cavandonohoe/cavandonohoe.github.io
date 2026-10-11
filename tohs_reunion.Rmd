@@ -64,7 +64,7 @@ Help us reach the TOHS Class of 2012 for our next reunion! We currently have ema
 
 Also, here is a link to [**the lancer: SENIOR ISSUE 2012**](https://issuu.com/thelancer/docs/seniorissue2012) (our Lancer newspaper), if you want to walk down memory lane.
 
-As of `r data_updated_at`, we have the following missing emails:
+The list below last changed on `r data_updated_at` (it is checked every few hours). These classmates are still missing emails:
 
 ```{r}
 cat(missing_list)

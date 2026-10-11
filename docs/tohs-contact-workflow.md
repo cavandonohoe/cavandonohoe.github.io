@@ -3,7 +3,8 @@
 ## Current rollout status
 
 The new Form is installed and published, with a native response tab, submission
-trigger and hourly recovery trigger. The private master is rebuilt successfully.
+trigger and an hourly recovery trigger. The private workbook now uses the
+editable `Contacts` mode described below.
 The production website remains on the old workflow until PR 206 is reviewed and
 merged. No legacy data or old Form has been replaced or deleted.
 
@@ -31,12 +32,13 @@ These counts are a point-in-time check, not hardcoded workflow inputs.
 flowchart TD
   F["New reunion Form"] --> R["Private raw response tab"]
   F --> S["Submit trigger and hourly recovery"]
-  O["Original roster and legacy contacts"] --> S
+  O["Contacts tab and Legacy Intake"] --> S
   D["Organizer review decisions"] --> S
+  S --> O
   S --> M["Private Master Contacts by roster ID"]
   S --> Q["Private Match Review and audit"]
   M --> P["Separate safe export workbook"]
-  P --> A["Hourly GitHub Action"]
+  P --> A["Scheduled GitHub Action"]
   A --> C["Allowlisted public CSV"]
   C --> W["GitHub Pages reunion page"]
 ```
@@ -76,7 +78,7 @@ for organizer-entered contacts. Do not edit generated Master Contacts or exports
 After installation, run `refreshContactWorkflow()` and confirm that each supplied
 contact is either accepted in Master Contacts or present in Match Review, with an
 outcome in Match Audit. Confirm the separate safe export and deployed website too.
-The regression suite covers a Karis-style sheet-only entry, duplicate/native
+The regression suite covers a synthetic sheet-only entry, duplicate/native
 response decisions, row reordering, partial/conflicting inputs and publication
 refusal when an input is absent from the audit.
 
@@ -92,9 +94,12 @@ refusal when an input is absent from the audit.
 * Fill empty fields. Keep nonempty existing fields. Blank answers never erase data.
   Differing nonempty values are retained in the raw source and queued for review.
   Other nonconflicting empty fields can still be filled from that same submission.
-* Rebuild legacy submissions first, then new submissions in timestamp/response-ID
-  order. The original roster is always the starting point. Repeated delivery of
-  the same response is applied once. Full rebuilds are deterministic.
+* Process legacy submissions first, then new submissions in timestamp/response-ID
+  order. Repeated delivery of the same response is applied once; a reused
+  response ID with different content stops the refresh. In the original-workbook
+  mode the immutable roster is the starting point of every run. In `Contacts`
+  mode (below) the persisted Contacts tab is the starting point and each
+  submission is applied to it only once.
 * `Master Contacts` holds accepted contacts, interests, and field-source response
   IDs. `Match Audit` records match outcomes. Original contacts remain in their
   original cells even after an explicitly approved V2 replacement.
@@ -107,6 +112,38 @@ identity and fills empties; it does not replace conflicting fields. `Approve
 replacement` explicitly accepts nonblank replacement values from that response.
 Keep source IDs unchanged and unique; changing legacy source IDs invalidates any
 decisions attached to them. Never edit generated Master Contacts directly.
+`Reject` also undoes an earlier automatic fill from that response: fields whose
+recorded source is the rejected response are cleared, unless an organizer has
+since edited that value (the edit is kept).
+
+## Contacts mode (editable roster)
+
+When the private workbook has a `Contacts` tab, it replaces the original
+workbook as the roster and `Legacy Intake` replaces the old legacy tabs.
+Organizers edit Contacts directly; generated tabs remain read-only views.
+
+* Every non-empty Contacts row must have a unique `Roster ID`. A row with data
+  but no ID stops the refresh before anything is written. Add an ID first.
+* Every non-empty `Legacy Intake` row must have a unique `response_id`; a
+  missing or duplicate ID stops the refresh instead of dropping the row.
+* `Field Sources` is script-owned JSON. Per field it records the response ID and
+  the value applied (`{"email":{"id":"...","value":"..."}}`), and under
+  `_applied` the responses already applied to that contact and at which level
+  (`auto`, `Approve fill`, `Approve replacement`). A response is applied once per
+  level. On later runs it is only checked for conflicts, so values an organizer
+  edited or cleared are not restored by a replay, and an `Approve replacement`
+  does not revert later manual edits. Older rows that list plain response IDs
+  are treated as already applied for those responses.
+* The script writes back by Roster ID, only to Roster ID through Contact Status,
+  and only rows whose values changed. Alternate Email, Last Contacted, Last
+  Verified, Contact Source and Notes are never written by the script.
+* If Contacts changes while a refresh is running, that refresh writes no
+  Contacts cells and fails; the next run picks up the edit.
+* Adding or removing Roster IDs stops publication (`Contacts roster IDs
+  changed`). If the change is intended, run `acceptContactsRosterChange()` once
+  from the Apps Script editor; it refreshes and records the new ID set as the
+  `Master Contacts` baseline. The public refresh still refuses roster drops
+  above 20%.
 
 ## Privacy boundary and reliability
 
@@ -127,16 +164,22 @@ temporarily used a safe test snapshot with a prominent TEST ONLY banner; both we
 restored before review. The real contact records were never changed by the test.
 
 The V2 Action reads only `Public Export`. It rejects unknown columns, malformed
-coverage flags, unsafe names, inconsistent timestamps, export age over three hours,
+coverage flags, unsafe names (including any digit), inconsistent timestamps,
+export age over three hours,
 and roster drops above 20%. Failed refreshes keep the last good public snapshot.
 The website renderer only reads the checked-in snapshot and never bootstraps from
 a private Sheet. A missing snapshot stops rendering.
 
 The submit trigger refreshes the private views immediately. The hourly Google
-trigger recovers missed events and applies reviews. GitHub checks at minute 23 of
-each hour, updates only the allowlisted CSV/Form URL, and requests a Pages build
-when the deployed data or Form URL differs. Google/GitHub scheduling and build
-queues can delay this; it is not a real-time delivery guarantee.
+trigger recovers missed events and applies reviews. The GitHub Action is
+scheduled for minute 23 of each hour, but GitHub delays and drops scheduled runs
+under load, so in practice runs land every few hours. Each run updates only the
+allowlisted CSV/Form URL and requests a Pages build when the deployed data or
+Form URL differs. It is not a real-time delivery guarantee.
+
+The CSV `updated_at` (shown on the page as when the list "last changed") moves
+only when the public rows change. It is the time of the last data change, not
+the time of the last successful check.
 
 Keep the entire contact workflow workbook private. GitHub has reader access only
 to the separate export file, never the private response/master workbook. Google
@@ -162,47 +205,30 @@ The old Form, original roster, old contacts and historical responses remain
 available. Roll back by reverting the PR and running the old refresh/deployment;
 retain the new response workbook and Form data. Do not delete anything at cutover.
 
-## Meghan Conlan acceptance test
+## Acceptance test
 
-Meghan is original roster ID 90, row 92 at inspection. Her original email is blank
-and neither legacy contact tab contains a matching Conlan row. No real updated
-email was found, so this PR does not invent or write one.
+The acceptance test used one existing roster entry whose original email was
+blank. No real updated email was supplied, so no contact value was invented or
+written.
 
-The local synthetic test verifies that a Meghan submission resolves to ID 90,
-fills an empty email, increases coverage by one, disappears from the missing-email
-list consumed by the website, leaves the input roster untouched, and exports no
-email address. It also checks conflicts, duplicates, ambiguous identity, rejection,
-replay, malformed values, and formula-like user input.
+The local synthetic tests use fictional names and IDs only. They verify that a
+submission resolves to a single roster ID, fills an empty email, increases
+coverage by one, leaves the missing-email list consumed by the website, leaves
+the input roster untouched, and exports no email address. They also check
+conflicts, duplicates, ambiguous identity, rejection (including undoing an
+auto-fill), replay onto a persisted Contacts tab, manual edit preservation,
+ID-less rows, phone-like names, malformed values, and formula-like input.
 
-Observed acceptance evidence on 2026-10-04 UTC:
+An isolated browser acceptance run (separate **TEST ONLY** Form and response tab)
+matched the expected roster ID, produced `email_bool = TRUE` in its isolated
+outputs, and was verified on a PR preview. Production Master Contacts, the export
+and the original workbook were not changed, and the final PR restored the real
+snapshot. The test helper code contains only a reserved example.invalid address.
 
-* A browser submitted one Meghan response to **TEST ONLY — TOHS Meghan acceptance**.
-  Its linked native response tab is `TEST ONLY Responses`. The separate submit
-  handler completed with 0% errors and wrote `Acceptance Test Status = PASS`.
-* The isolated test matched roster ID 90, produced `email_bool = TRUE`, and
-  increased reconciled coverage from 219 to 220 of 574. Production Master Contacts
-  and its export retained Meghan's blank email and `FALSE` coverage flag.
-* Test snapshot commit `efdd0bf0f36a2812904b4acc680306edd537deda` built and deployed
-  the actual reunion page at the PR preview. Browser verification showed 220/574,
-  Meghan absent from the missing list, and no synthetic address in rendered HTML.
-  All nine CI workflows passed. A screenshot was saved as acceptance evidence.
-* The production-source PR Action independently authenticated as the existing
-  service account, read the separate safe Sheet, passed R tests/data sanity and
-  reported 219/574. No private source contact values were found in that job's logs.
-* The final PR restores the real 219/574 snapshot and removes the test banner.
-  No test contact was ever written into production master/export or the original
-  workbook. The original three tabs and their native preservation copy match.
-
-The test helper and test response evidence remain private in the workflow workbook;
-its synthetic helper code contains only a reserved example.invalid address. The
-test Form is separate from the published reunion Form.
-
-**Production acceptance remains pending merge and a real supplied contact update.**
-No verified Meghan email was supplied. After reviewing/merging PR 206, dispatch
-`Refresh TOHS reunion` on main, verify deployment, then submit her verified update
-and confirm ID 90 in Master Contacts, TRUE in the separate export, and removal
-from the production missing list. The isolated preview test is not a claim that
-Meghan's real contact update is live.
+**Production acceptance still requires a real, verified contact update.** Submit
+it, then confirm the roster ID in Contacts and Master Contacts, TRUE in the
+separate export, and removal from the production missing list after the next
+scheduled refresh.
 
 Local checks: `node --test tests/tohs-contact-workflow.test.cjs`; R checks:
 `Rscript -e 'testthat::test_file("tests/testthat/test-tohs_reunion.R", stop_on_failure=TRUE)'`.

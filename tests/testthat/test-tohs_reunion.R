@@ -21,7 +21,7 @@ testthat::test_that("empty or changed sheets fail rather than publish bad covera
 })
 
 testthat::test_that("V2 export rejects private fields and malformed flags", {
-  public <- data.frame(first_name = "Meghan", last_name = "Conlan", email_bool = "TRUE",
+  public <- data.frame(first_name = "Testy", last_name = "Fakename", email_bool = "TRUE",
                        updated_at = "2026-10-04T00:00:00.000Z", stringsAsFactors = FALSE)
   testthat::expect_true(tohs_validate_public(public, FALSE)$email_bool)
   private <- public
@@ -32,10 +32,16 @@ testthat::test_that("V2 export rejects private fields and malformed flags", {
   public$email_bool <- "TRUE"
   public$first_name <- "private@example.invalid"
   testthat::expect_error(tohs_validate_public(public, FALSE), "Unsafe public name")
+  for (bad in c("555-123-4567", "Testy 2", "Fakename5")) {
+    public$first_name <- bad
+    testthat::expect_error(tohs_validate_public(public, FALSE), "Unsafe public name")
+  }
+  public$first_name <- "O'Example-Smith"
+  testthat::expect_identical(tohs_validate_public(public, FALSE)$first_name, "O'Example-Smith")
 })
 
 testthat::test_that("stale V2 exports never replace the last good snapshot", {
-  public <- data.frame(first_name = "Meghan", last_name = "Conlan", email_bool = "TRUE",
+  public <- data.frame(first_name = "Testy", last_name = "Fakename", email_bool = "TRUE",
                        updated_at = "2000-01-01T00:00:00.000Z", stringsAsFactors = FALSE)
   testthat::expect_error(tohs_validate_public(public), "stale")
 })
