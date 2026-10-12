@@ -21,7 +21,11 @@ def merge_library(library, previous):
         row.update(id=episode_id, name=item['name'], show=item['show'],
                    url=f'https://open.spotify.com/episode/{episode_id}')
         episodes.append(row)
+    # generated_at is the import date of the Account Data export;
+    # export_n_episodes stays fixed until the next export so the dashboard can
+    # split export membership from episodes appended later by the API refresh.
     return {'meta': {'generated_at': datetime.date.today().isoformat(),
+                     'export_n_episodes': len(episodes),
                      'source': 'Spotify Account Data / YourLibrary.json',
                      'n_episodes': len(episodes),
                      'previous_only_count': len(set(known) - seen)},

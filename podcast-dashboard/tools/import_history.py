@@ -5,18 +5,28 @@ import json
 from pathlib import Path
 
 
+def play_key(row):
+    """Identity of one playback event: timestamp, item URI, and ms played."""
+    uri = (row.get('spotify_episode_uri') or row.get('spotify_track_uri')
+           or row.get('audiobook_chapter_uri') or row.get('audiobook_uri'))
+    return row.get('ts'), uri, row.get('ms_played')
+
+
 def summarize(directory, saved_ids):
     grouped = collections.defaultdict(list)
     timestamps = []
     seen = set()
+    # Top level only: a re-unzipped copy in a subfolder must not double count.
     for path in sorted(Path(directory).glob('Streaming_History_*.json')):
         for row in json.loads(path.read_text()):
             timestamps.append(row['ts'])
             episode_id = (row.get('spotify_episode_uri') or '').removeprefix('spotify:episode:')
             if episode_id not in saved_ids:
                 continue
-            # Exact duplicates across export files should not inflate totals.
-            key = json.dumps(row, sort_keys=True)
+            # The same play can appear in overlapping or re-downloaded exports
+            # with differing incidental fields (IP, platform string, offline
+            # timestamp), so dedup on the identity of the play itself.
+            key = play_key(row)
             if key in seen:
                 continue
             seen.add(key)

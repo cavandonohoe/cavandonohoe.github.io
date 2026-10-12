@@ -18,8 +18,8 @@
 #   - Create an app, note its Client ID / Client Secret.
 #   - Add a Redirect URI of exactly http://127.0.0.1:8888/callback
 #
-# Scopes requested: user-library-read (saved episodes) and user-follow-read
-# (followed shows, used for the missingness coverage estimate).
+# Scope requested: user-library-read (saved episodes). Nothing else is read,
+# so no other scope is requested.
 #
 # Usage:
 #   SPOTIFY_CLIENT_ID=xxx SPOTIFY_CLIENT_SECRET=yyy \
@@ -46,7 +46,7 @@ auth_url <- httr2::url_modify(
     client_id = client_id,
     response_type = "code",
     redirect_uri = redirect_uri,
-    scope = "user-library-read user-follow-read",
+    scope = "user-library-read",
     show_dialog = "true"
   )
 )
