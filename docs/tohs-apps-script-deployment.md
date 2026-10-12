@@ -238,7 +238,9 @@ mean code already changed: disable the repository variable, inspect privately,
 and compare a fresh clone. Do not keep rerunning blindly. Secrets, downloaded
 source, and private diagnostics must never be printed to debug a failure.
 
-If main advanced while a deployment waited, or a prior source deployment was
+Later main commits that touch neither `scripts/tohs/` nor `tools/tohs-apps-script/`
+(for example, bot data/chart refreshes) do not block a waiting deployment. If main
+advanced with deployable changes while a deployment waited, or a prior source deployment was
 skipped/failed, the job stops rather than pushing an older or unverified version.
 Open a reconciliation PR from current main, compare a fresh private clone against
 its candidate, and replace the bootstrap secret with the new live/target pair.

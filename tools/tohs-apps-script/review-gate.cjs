@@ -16,6 +16,16 @@ function approved(pr, reviews, sha, repository) {
   return decisions.some(r => r.state === 'APPROVED' && r.commit_id === pr.head.sha &&
     r.user.login !== pr.user.login && r.user.type === 'User');
 }
+// Paths whose changes alter what would be deployed. Later main commits that touch none
+// of these (e.g. bots refreshing charts or metadata) do not make this deployment stale.
+const DEPLOY_PATHS = [/^scripts\/tohs\//, /^tools\/tohs-apps-script\//];
+function supersedes(comparison) {
+  if (comparison.status === 'identical') return false;
+  if (comparison.status !== 'ahead') return true;
+  const files = comparison.files || [];
+  if (files.length >= 300) return true;  // GitHub truncates the file list; be conservative.
+  return files.some(f => [f.filename, f.previous_filename].some(n => n && DEPLOY_PATHS.some(p => p.test(n))));
+}
 async function gate() {
   const {GITHUB_TOKEN:token,GITHUB_REPOSITORY:repo,GITHUB_SHA:sha} = process.env;
   const event = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH,'utf8'));
@@ -28,7 +38,8 @@ async function gate() {
     return r.json();
   }
   const current = await get('git/ref/heads/main');
-  if (current.object.sha !== sha) throw new Error('Stale deployment; reconcile on current main');
+  if (current.object.sha !== sha && supersedes(await get(`compare/${sha}...${current.object.sha}`)))
+    throw new Error('Stale deployment; reconcile on current main');
   const commit = await get(`commits/${sha}`);
   if (commit.parents[0]?.sha !== event.before) throw new Error('Use one squash or merge commit per push; multi-commit pushes are refused');
   const prs = await get(`commits/${sha}/pulls?per_page=100`);
@@ -44,5 +55,5 @@ async function gate() {
   }
   throw new Error('No merged owner PR or approved PR for this commit; deployment refused');
 }
-module.exports = {approved, gate};
+module.exports = {approved, supersedes, gate};
 if (require.main === module) gate().catch(() => { console.error('Reviewed-merge gate refused deployment; see deployment guide.'); process.exitCode=1; });
