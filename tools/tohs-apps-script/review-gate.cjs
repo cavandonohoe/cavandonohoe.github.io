@@ -8,8 +8,13 @@ function approved(pr, reviews, sha, repository) {
     if (['APPROVED','CHANGES_REQUESTED','DISMISSED'].includes(r.state)) latest.set(r.user.login,r);
   }
   const decisions = [...latest.values()];
-  return !decisions.some(r => r.state === 'CHANGES_REQUESTED') && decisions.some(r =>
-    r.state === 'APPROVED' && r.commit_id === pr.head.sha && r.user.login !== pr.user.login && r.user.type === 'User');
+  if (decisions.some(r => r.state === 'CHANGES_REQUESTED')) return false;
+  // Solo repository: the owner's own merged PR is the review. Anyone else's PR still
+  // needs a human, non-author approval of its final head commit.
+  const owner = repository.split('/')[0];
+  if (pr.user.login === owner && pr.user.type === 'User') return true;
+  return decisions.some(r => r.state === 'APPROVED' && r.commit_id === pr.head.sha &&
+    r.user.login !== pr.user.login && r.user.type === 'User');
 }
 async function gate() {
   const {GITHUB_TOKEN:token,GITHUB_REPOSITORY:repo,GITHUB_SHA:sha} = process.env;
@@ -35,9 +40,9 @@ async function gate() {
       reviews.push(...batch);
       if (batch.length < 100) break;
     }
-    if (approved(pr,reviews,sha,repo)) { console.log('Merged PR and approval of its final head verified.'); return; }
+    if (approved(pr,reviews,sha,repo)) { console.log('Merged PR from the owner or with an approval of its final head verified.'); return; }
   }
-  throw new Error('No merged PR with a human approval of its final head; deployment refused');
+  throw new Error('No merged owner PR or approved PR for this commit; deployment refused');
 }
 module.exports = {approved, gate};
 if (require.main === module) gate().catch(() => { console.error('Reviewed-merge gate refused deployment; see deployment guide.'); process.exitCode=1; });
