@@ -13,7 +13,7 @@
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.45.4",
     "framer-motion": "^12.40.0",
-    "next": "14.2.15",
+    "next": "15.5.27",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
@@ -23,7 +23,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "14.2.15",
+    "eslint-config-next": "15.5.27",
     "postcss": "^8.4.47",
     "tailwindcss": "^4.3.3",
     "typescript": "^5"
