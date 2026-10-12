@@ -185,7 +185,7 @@
     {
       "project": "movie-ranker",
       "tracked_files": 33,
-      "commits_touching_project": 5,
+      "commits_touching_project": 6,
       "top_extensions": [
         [
           ".ts",
