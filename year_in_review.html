@@ -8794,9 +8794,27 @@ year is a snapshot through its generation date.</p>
       if ('year-' + row.dataset.reviewYear === selected.id) row.setAttribute('aria-current', 'true');
       else row.removeAttribute('aria-current');
     });
+    // Pad the review's scroll margin by the year picker's height so anchor jumps (native or
+    // scripted) land with the picker still on screen and the other years one click away.
+    const nav = document.querySelector('.year-nav');
+    if (nav) {
+      const navbar = document.querySelector('.navbar-fixed-top, .fixed-top');
+      const offset = (navbar ? navbar.offsetHeight : 0) + 16 +
+        selected.getBoundingClientRect().top - nav.getBoundingClientRect().top;
+      reviews.forEach(review => { review.style.scrollMarginTop = offset + 'px'; });
+    }
     if (scrollToReview) selected.scrollIntoView({ block: 'start' });
   }
+  // Picking a year from the nav swaps the review in place instead of jumping past the nav.
+  links.forEach(link => link.addEventListener('click', event => {
+    event.preventDefault();
+    const hash = link.getAttribute('href');
+    if (window.location.hash !== hash) history.pushState(null, '', hash);
+    selectYear(false);
+  }));
   window.addEventListener('hashchange', () => selectYear(true));
+  window.addEventListener('popstate', () => selectYear(true));
+  window.addEventListener('resize', () => selectYear(false));
   selectYear(Boolean(window.location.hash));
 })();
 </script>
