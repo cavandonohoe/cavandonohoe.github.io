@@ -162,7 +162,7 @@
     {
       "project": "images",
       "tracked_files": 14,
-      "commits_touching_project": 68,
+      "commits_touching_project": 69,
       "top_extensions": [
         [
           ".jpg",
@@ -318,8 +318,8 @@
     },
     {
       "project": "tools",
-      "tracked_files": 8,
-      "commits_touching_project": 3,
+      "tracked_files": 9,
+      "commits_touching_project": 4,
       "top_extensions": [
         [
           ".cjs",
@@ -328,6 +328,10 @@
         [
           ".json",
           3
+        ],
+        [
+          ".md",
+          1
         ]
       ]
     },
