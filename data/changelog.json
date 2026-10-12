@@ -1,6 +1,126 @@
 {
-  "generated_at": "2026-10-11T20:30:16.621544+00:00",
+  "generated_at": "2026-10-12T23:09:28.085269+00:00",
   "events": [
+    {
+      "date": "2026-10-12",
+      "type": "merged_pr",
+      "title": "movie-ranker: finish Tailwind v4 migration (build broken on main)",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/261"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "merged_pr",
+      "title": "deps: bump source-map-js from 1.2.1 to 1.2.2 in /movie-ranker",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/251"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "merged_pr",
+      "title": "deps: bump postcss-selector-parser and tailwindcss in /movie-ranker",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/249"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "merged_pr",
+      "title": "deps: bump js-yaml from 4.2.0 to 4.3.2 in /movie-ranker",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/254"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "merged_pr",
+      "title": "deps: bump browserslist from 4.28.2 to 4.29.3 in /movie-ranker",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/252"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "merged_pr",
+      "title": "deps: bump brace-expansion from 1.1.15 to 1.1.21 in /movie-ranker",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/258"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "merged_pr",
+      "title": "deps: bump baseline-browser-mapping from 2.10.37 to 2.11.28 in /movie-ranker",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/253"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "merged_pr",
+      "title": "TOHS reunion: disclose that the roster is public and offer an opt-out",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/256"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "merged_pr",
+      "title": "TOHS Apps Script: owner PRs deploy after environment approval",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/243"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "merged_pr",
+      "title": "TOHS Apps Script: don't treat unrelated bot commits as a stale deploy",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/246"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "merged_pr",
+      "title": "Prepare initial TOHS Apps Script deployment",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/245"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "merged_pr",
+      "title": "Link existing TOHS Apps Script with preserved file layout",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/244"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "merged_pr",
+      "title": "Fix podcast dashboard deploy: map RSPM to real repository URLs",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/248"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "merged_pr",
+      "title": "Fix podcast dashboard deploy failing renv pre-flight (missing cpp11)",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/247"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "merged_pr",
+      "title": "Fix maze learning-mode playback, announcements and speed restore",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/234"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "merged_pr",
+      "title": "Fix Spotify/IMDb review findings: provenance, refresh reliability, dedup",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/233"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "merged_pr",
+      "title": "Fix Dependabot npm updates for movie-ranker",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/242"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "merged_pr",
+      "title": "CI: build movie-ranker on PRs that touch it",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/257"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "merged_pr",
+      "title": "Add step-by-step maze learning mode",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/223"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "merged_pr",
+      "title": "Add guarded GitHub deployment for TOHS Apps Script",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/241"
+    },
     {
       "date": "2026-10-11",
       "type": "merged_pr",
@@ -352,6 +472,25 @@
   ],
   "daily_summaries": [
     {
+      "date": "2026-10-12",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "1 podcast episode added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/10a72e02acf290e4057f54e77f3efb65c9f967bc"
+        },
+        {
+          "emoji": "\ud83d\udcbb",
+          "text": "20 PRs merged"
+        },
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "Podcast + Spotify experience improved",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/248"
+        }
+      ]
+    },
+    {
       "date": "2026-10-11",
       "items": [
         {
@@ -543,25 +682,6 @@
           "emoji": "\ud83d\udcc4",
           "text": "CV rebuilt from the latest source data",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/185"
-        }
-      ]
-    },
-    {
-      "date": "2026-09-28",
-      "items": [
-        {
-          "emoji": "\ud83d\udcbb",
-          "text": "4 PRs merged"
-        },
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "Podcast + Spotify experience improved",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/182"
-        },
-        {
-          "emoji": "\ud83c\udfac",
-          "text": "Movie & TV projects updated",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/181"
         }
       ]
     }
