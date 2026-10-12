@@ -30,7 +30,7 @@
     {
       "project": "analysis",
       "tracked_files": 12,
-      "commits_touching_project": 3,
+      "commits_touching_project": 4,
       "top_extensions": [
         [
           ".csv",
@@ -57,7 +57,7 @@
     {
       "project": "assets",
       "tracked_files": 1,
-      "commits_touching_project": 12,
+      "commits_touching_project": 13,
       "top_extensions": [
         [
           ".svg",
@@ -162,7 +162,7 @@
     {
       "project": "images",
       "tracked_files": 14,
-      "commits_touching_project": 61,
+      "commits_touching_project": 64,
       "top_extensions": [
         [
           ".jpg",
@@ -185,7 +185,7 @@
     {
       "project": "movie-ranker",
       "tracked_files": 33,
-      "commits_touching_project": 4,
+      "commits_touching_project": 5,
       "top_extensions": [
         [
           ".ts",
@@ -212,7 +212,7 @@
     {
       "project": "podcast-dashboard",
       "tracked_files": 6,
-      "commits_touching_project": 18,
+      "commits_touching_project": 21,
       "top_extensions": [
         [
           ".json",
@@ -269,7 +269,7 @@
     {
       "project": "streaming-history",
       "tracked_files": 7,
-      "commits_touching_project": 1,
+      "commits_touching_project": 2,
       "top_extensions": [
         [
           ".csv",
@@ -291,16 +291,16 @@
     },
     {
       "project": "tests",
-      "tracked_files": 12,
-      "commits_touching_project": 18,
+      "tracked_files": 14,
+      "commits_touching_project": 19,
       "top_extensions": [
         [
           ".r",
-          7
+          8
         ],
         [
           ".py",
-          2
+          3
         ],
         [
           ".txt",

@@ -1,5 +1,9 @@
 # TOHS reunion contact workflow
 
+For GitHub-managed source and deployment setup, see
+[Apps Script deployment](tohs-apps-script-deployment.md). Deployment stays disabled
+until the existing project, live source, and manifest have been verified.
+
 ## Current rollout status
 
 The new Form is installed and published, with a native response tab, submission
