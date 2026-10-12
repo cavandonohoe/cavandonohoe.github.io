@@ -58,6 +58,9 @@ class HistoryTests(unittest.TestCase):
         self.assertTrue(current["is_partial_year"])
         self.assertFalse(previous["is_partial_year"])
         self.assertEqual(sum(current["monthly_commits"]), current["commits"])
+        # Daily activity uses UTC days, so each commit lands in the year it is counted in.
+        self.assertEqual(previous["daily_activity"], [{"date": "2025-12-31", "commits": 1, "lines_added": 4}])
+        self.assertEqual(current["daily_activity"], [{"date": "2026-01-01", "commits": 1, "lines_added": 3}])
 
     def test_shallow_history_is_rejected(self):
         with patch.object(review, "git", return_value="true\n"):

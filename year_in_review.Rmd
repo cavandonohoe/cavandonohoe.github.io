@@ -50,6 +50,21 @@ Commit totals and streaks reflect my personal commits on the default branch of m
 .year-web-table tr[aria-current="true"] { background:#e0f2fe; font-weight:700; }
 .year-web-table a { color:#075985; text-decoration:underline; }
 .year-web-history .year-web-note { margin-top:1rem; color:#475569; font-size:.9rem; }
+.year-activity { position:relative; margin:2rem 0; padding:1.4rem; border:1px solid #cbd5e1; border-radius:14px; background:#f8fafc; color:#0f172a; }
+.year-activity h2 { margin-top:0; font-size:1.5rem; }
+.year-activity-toggle { display:inline-flex; gap:.4rem; margin:.2rem 0 .8rem; }
+.year-activity-toggle button { padding:.45rem .9rem; border:1px solid #94a3b8; border-radius:999px; background:#fff; color:#0f172a; font-weight:600; cursor:pointer; }
+.year-activity-toggle button[aria-pressed="true"] { background:#111827; color:#fff; border-color:#111827; }
+.year-activity svg { display:block; width:100%; height:auto; touch-action:pan-y; }
+.year-activity .axis text { fill:#475569; font-size:12px; }
+.year-activity .grid line { stroke:#e2e8f0; }
+.year-activity .guide { stroke:#64748b; stroke-dasharray:3 3; }
+.year-activity-legend { display:flex; flex-wrap:wrap; gap:.4rem 1rem; margin:.6rem 0 0; padding:0; list-style:none; font-size:.9rem; }
+.year-activity-legend span { display:inline-block; width:1.4rem; height:.25rem; margin-right:.4rem; vertical-align:middle; border-radius:2px; }
+.year-activity-tooltip { position:absolute; pointer-events:none; padding:.5rem .7rem; border-radius:8px; background:#111827; color:#fff; font-size:.85rem; line-height:1.4; white-space:nowrap; box-shadow:0 6px 16px rgba(0,0,0,.2); }
+.year-activity-tooltip[hidden] { display:none; }
+.year-activity-tooltip i { display:inline-block; width:.6rem; height:.6rem; margin-right:.35rem; border-radius:50%; }
+.year-activity .year-web-note { margin-top:1rem; color:#475569; font-size:.9rem; }
 @media(max-width:480px) { .year-hero { padding:1.2rem; } .year-stat strong { font-size:1.5rem; } }
 </style>
 
@@ -160,6 +175,170 @@ if (!length(files) || !requireNamespace("jsonlite", quietly = TRUE)) {
 ```
 
 Past reviews are reconstructed from public commit history. Each January 1, GitHub Actions saves the year that just ended. The current year is a snapshot through its generation date.
+
+```{r year-activity, echo=FALSE, results='asis'}
+activity_files <- list.files(
+  "data/year-in-review", pattern = "^[0-9]{4}\\.json$", full.names = TRUE
+)
+if (length(activity_files) && requireNamespace("jsonlite", quietly = TRUE)) {
+  activity <- lapply(activity_files, function(f) {
+    d <- jsonlite::fromJSON(f, simplifyVector = FALSE)
+    days <- d$daily_activity
+    if (is.null(days)) return(NULL)
+    list(
+      year = d$year,
+      generated = substr(if (is.null(d$generated_at)) "" else d$generated_at, 1, 10),
+      days = lapply(days, function(x) list(x$date, x$commits, x$lines_added))
+    )
+  })
+  activity <- Filter(Negate(is.null), activity)
+  if (length(activity)) {
+    payload <- jsonlite::toJSON(activity, auto_unbox = TRUE)
+    # Keep "</script>" sequences in the payload from closing the data block early.
+    payload <- gsub("</", "<\\/", payload, fixed = TRUE)
+    cat(
+      '<section class="year-activity" aria-labelledby="year-activity-title">',
+      '<h2 id="year-activity-title">Year over year</h2>',
+      '<p>Running total for each year, aligned by calendar date. ',
+      'Hover or tap the chart to compare years on the same day.</p>',
+      '<div class="year-activity-toggle" role="group" aria-label="Chart metric">',
+      '<button type="button" data-metric="commits" aria-pressed="true">Commits</button>',
+      '<button type="button" data-metric="lines" aria-pressed="false">Lines added</button>',
+      '</div>',
+      '<div class="year-activity-chart"></div>',
+      '<div class="year-activity-tooltip" role="status" hidden></div>',
+      '<ul class="year-activity-legend"></ul>',
+      '<p class="year-web-note">Cumulative totals use UTC calendar days. ',
+      'The current year stops at its latest snapshot.</p>',
+      '<script type="application/json" id="year-activity-data">', payload, '</script>',
+      '</section>',
+      sep = ""
+    )
+  }
+}
+```
+
+<script>
+(function () {
+  const section = document.querySelector('.year-activity');
+  const source = document.getElementById('year-activity-data');
+  if (!section || !source) return;
+  const years = JSON.parse(source.textContent).sort((a, b) => a.year - b.year);
+  const chart = section.querySelector('.year-activity-chart');
+  const tooltip = section.querySelector('.year-activity-tooltip');
+  const buttons = Array.from(section.querySelectorAll('.year-activity-toggle button'));
+  const palette = ['#64748b', '#a78bfa', '#f472b6', '#fb923c', '#facc15', '#34d399', '#22d3ee',
+    '#60a5fa', '#f87171', '#4ade80'];
+  const latest = years[years.length - 1].year;
+  const colorFor = (y, i) => y.year === latest ? '#2563eb' : palette[i % palette.length];
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov',
+    'Dec'];
+  const monthStart = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+  // Position every year on a common non-leap Jan 1..Dec 31 axis; Feb 29 shares Feb 28's slot.
+  const dayIndex = iso => {
+    const m = Number(iso.slice(5, 7)) - 1;
+    const d = Number(iso.slice(8, 10));
+    return monthStart[m] + Math.min(d, m === 1 ? 28 : 31) - 1;
+  };
+  const ns = 'http://www.w3.org/2000/svg';
+  const el = (name, attrs) => {
+    const node = document.createElementNS(ns, name);
+    Object.entries(attrs || {}).forEach(([k, v]) => node.setAttribute(k, v));
+    return node;
+  };
+  const fmt = n => n.toLocaleString('en-US');
+  const short = n => n >= 1e6 ? (n / 1e6).toFixed(n >= 1e7 ? 0 : 1) + 'M' :
+    n >= 1e3 ? (n / 1e3).toFixed(n >= 1e4 ? 0 : 1) + 'k' : String(n);
+  // Cumulative series per year: one value per calendar day through the year's end
+  // (or through the snapshot date for the year in progress).
+  const series = years.map((y, i) => {
+    const commits = new Array(365).fill(0);
+    const lines = new Array(365).fill(0);
+    y.days.forEach(([date, c, l]) => { const k = dayIndex(date); commits[k] += c; lines[k] += l; });
+    const ended = y.year < latest || !y.generated || Number(y.generated.slice(0, 4)) > y.year;
+    const last = ended ? 364 : dayIndex(y.generated);
+    for (let k = 1; k < 365; k++) { commits[k] += commits[k - 1]; lines[k] += lines[k - 1]; }
+    return { year: y.year, color: colorFor(y, i), last, commits, lines };
+  });
+  const legend = section.querySelector('.year-activity-legend');
+  series.forEach(s => {
+    const item = document.createElement('li');
+    item.innerHTML = '<span style="background:' + s.color + '"></span>' + s.year;
+    legend.appendChild(item);
+  });
+  const W = 760, H = 380, M = { top: 16, right: 20, bottom: 32, left: 56 };
+  const iw = W - M.left - M.right, ih = H - M.top - M.bottom;
+  const x = k => M.left + (k / 364) * iw;
+  let metric = 'commits';
+  function niceMax(v) {
+    if (v <= 0) return 1;
+    const p = Math.pow(10, Math.floor(Math.log10(v)));
+    return [1, 2, 2.5, 5, 10].map(f => f * p).find(t => t >= v);
+  }
+  function draw() {
+    const max = niceMax(Math.max(...series.map(s => s[metric][s.last])));
+    const y = v => M.top + ih - (v / max) * ih;
+    const label = metric === 'commits' ? 'Commits' : 'Lines added';
+    const svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img',
+      'aria-label': 'Cumulative ' + label.toLowerCase() + ' by date, one line per year' });
+    const grid = el('g', { class: 'grid' });
+    const axis = el('g', { class: 'axis' });
+    for (let t = 0; t <= 4; t++) {
+      const v = (max / 4) * t;
+      grid.appendChild(el('line', { x1: M.left, x2: W - M.right, y1: y(v), y2: y(v) }));
+      const text = el('text', { x: M.left - 8, y: y(v) + 4, 'text-anchor': 'end' });
+      text.textContent = short(v);
+      axis.appendChild(text);
+    }
+    monthStart.forEach((k, i) => {
+      const text = el('text', { x: x(k + 14), y: H - 10, 'text-anchor': 'middle' });
+      text.textContent = months[i];
+      axis.appendChild(text);
+    });
+    svg.appendChild(grid);
+    svg.appendChild(axis);
+    series.forEach(s => {
+      const pts = [];
+      for (let k = 0; k <= s.last; k++) pts.push(x(k).toFixed(1) + ',' + y(s[metric][k]).toFixed(1));
+      svg.appendChild(el('polyline', { points: pts.join(' '), fill: 'none', stroke: s.color,
+        'stroke-width': s.year === latest ? 3 : 2, 'stroke-linejoin': 'round' }));
+    });
+    const guide = el('line', { class: 'guide', y1: M.top, y2: M.top + ih, visibility: 'hidden' });
+    svg.appendChild(guide);
+    const hit = el('rect', { x: M.left, y: M.top, width: iw, height: ih, fill: 'transparent' });
+    svg.appendChild(hit);
+    function show(evt) {
+      const box = svg.getBoundingClientRect();
+      const px = (evt.clientX - box.left) * (W / box.width);
+      const k = Math.max(0, Math.min(364, Math.round(((px - M.left) / iw) * 364)));
+      const m = monthStart.filter(s => s <= k).length - 1;
+      guide.setAttribute('x1', x(k));
+      guide.setAttribute('x2', x(k));
+      guide.setAttribute('visibility', 'visible');
+      const rows = series.filter(s => k <= s.last).reverse().map(s =>
+        '<i style="background:' + s.color + '"></i>' + s.year + ': ' + fmt(s[metric][k]));
+      tooltip.innerHTML = '<strong>' + months[m] + ' ' + (k - monthStart[m] + 1) + '</strong><br>' +
+        rows.join('<br>');
+      tooltip.hidden = false;
+      const host = section.getBoundingClientRect();
+      const left = evt.clientX - host.left + 14;
+      tooltip.style.left = Math.min(left, host.width - tooltip.offsetWidth - 8) + 'px';
+      tooltip.style.top = (evt.clientY - host.top + 14) + 'px';
+    }
+    function hide() { guide.setAttribute('visibility', 'hidden'); tooltip.hidden = true; }
+    hit.addEventListener('pointermove', show);
+    hit.addEventListener('pointerdown', show);
+    hit.addEventListener('pointerleave', hide);
+    chart.replaceChildren(svg);
+  }
+  buttons.forEach(button => button.addEventListener('click', () => {
+    metric = button.dataset.metric;
+    buttons.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+    draw();
+  }));
+  draw();
+})();
+</script>
 
 <script>
 (function () {
