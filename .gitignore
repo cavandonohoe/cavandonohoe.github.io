@@ -89,3 +89,10 @@ __pycache__/
 # committed synthetic sample lives in streaming-history/sample-data/.
 streaming-history/data/
 streaming-history/rsconnect/
+
+# Apps Script authentication, local linking, and private comparison snapshots
+**/.clasprc*.json
+**/.clasp.json
+**/client_secret*.json
+/tools/tohs-apps-script/node_modules/
+/tools/tohs-apps-script/.local/

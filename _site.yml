@@ -6,6 +6,8 @@ include:
   - css
   - analysis/imdb-exceptional-episodes/results
 exclude:
+  - tools
+  - private
   - _archive
 navbar:
   title: "Cavan Donohoe"
