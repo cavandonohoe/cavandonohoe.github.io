@@ -1,8 +1,12 @@
-# Spotify Streaming History — Shiny dashboard
+# Spotify Streaming History: Shiny dashboard
 # Data: tidy CSVs produced by scripts/ingest_streaming_history.R from a
 # Spotify "Extended Streaming History" GDPR export (the full listening log,
 # which is NOT available through the Web API). See that script's header for
 # how to request and ingest the export. Deployed to shinyapps.io.
+#
+# Real ingest output goes to data/ (gitignored). Without it, the app falls back
+# to the committed synthetic sample in sample-data/ and says so on the page.
+# All dates and times are UTC, as recorded by Spotify.
 
 library(shiny)
 library(bslib)
@@ -14,9 +18,10 @@ library(plotly)
 library(DT)
 library(scales)
 
-data_dir <- "data"
+data_dir <- if (file.exists(file.path("data", "meta.json"))) "data" else "sample-data"
 
 meta <- jsonlite::fromJSON(file.path(data_dir, "meta.json"))
+is_sample <- data_dir == "sample-data" || isTRUE(meta$synthetic)
 plays <- readr::read_csv(
   file.path(data_dir, "plays.csv"),
   show_col_types = FALSE
@@ -46,24 +51,40 @@ ui <- page_sidebar(
   sidebar = sidebar(
     title = "Filters",
     dateRangeInput(
-      "dates", "Played between",
+      "dates", "Played between (UTC dates)",
       start = meta$first_stream, end = meta$last_stream
     ),
     checkboxGroupInput(
       "kinds", "Kind",
-      choices = c("music", "podcast", "other"),
-      selected = c("music", "podcast")
+      choices = c("music", "podcast", "audiobook", "other"),
+      selected = c("music", "podcast", "audiobook")
     ),
     hr(),
     tags$small(
       style = "color:#9a9a9a;",
       sprintf(
-        "Last imported %s · Data through %s · %s streams · Coverage starts %s",
+        paste(
+          "Last imported %s \u00b7 Data through %s (UTC) \u00b7 %s streams",
+          "\u00b7 Coverage starts %s (UTC)%s"
+        ),
         meta$imported_at, meta$last_stream, fmt_int(meta$n_streams),
-        meta$first_stream
+        meta$first_stream,
+        if (is.null(meta$min_ms_played) || meta$min_ms_played == 0) {
+          ""
+        } else {
+          sprintf(" \u00b7 Streams under %s ms excluded", fmt_int(meta$min_ms_played))
+        }
       )
     )
   ),
+  if (is_sample) {
+    tags$div(
+      class = "alert alert-warning", role = "note",
+      tags$strong("Synthetic sample data. "),
+      "These few streams are made up so the dashboard renders; they are not a real ",
+      "listening history."
+    )
+  },
   bslib::layout_columns(
     fill = FALSE,
     bslib::value_box("Streams", textOutput("kpi_streams"), theme = "dark"),
@@ -74,7 +95,7 @@ ui <- page_sidebar(
   bslib::layout_columns(
     col_widths = c(12),
     bslib::card(
-      bslib::card_header("Listening minutes per month (music vs podcast)"),
+      bslib::card_header("Listening minutes per month by kind (UTC months)"),
       plotlyOutput("area_monthly", height = "320px")
     )
   ),
@@ -167,10 +188,11 @@ server <- function(input, output, session) {
   output$tbl <- DT::renderDataTable({
     d <- filtered() |>
       dplyr::transmute(
-        played_at, kind, title, source_name,
+        `Played at (UTC)` = format(played_at, "%Y-%m-%d %H:%M", tz = "UTC"),
+        kind, title, source_name,
         min_played = round(min_played, 1)
       ) |>
-      dplyr::arrange(dplyr::desc(played_at))
+      dplyr::arrange(dplyr::desc(`Played at (UTC)`))
     DT::datatable(
       d, rownames = FALSE,
       options = list(pageLength = 15, order = list(list(0, "desc"))),

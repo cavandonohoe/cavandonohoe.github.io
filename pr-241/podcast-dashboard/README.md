@@ -7,11 +7,15 @@ time.
 
 ## Data
 
-`data/saved_episodes.json` uses the Account Data export's `YourLibrary.json`
-for saved membership, titles, shows, and Spotify IDs. Known dates, descriptions,
-and durations are retained from the previous API snapshot. The current export
-contains 322 episodes (144 overlap the previous snapshot; 178 are additional).
-The 42 previous-only IDs are not treated as currently saved.
+`data/saved_episodes.json` starts from the Account Data export's
+`YourLibrary.json` for saved membership, titles, shows, and Spotify IDs. The
+daily `update_saved_episodes` workflow then calls the Spotify Web API, refreshes
+metadata (dates, descriptions, durations) for known episodes, and **appends**
+newly saved ones. `meta.export_n_episodes` is the export's count; the rest were
+added by the API. The API is capped and never removes episodes, so an unsave is
+not reflected until the next export is imported. The dashboard footer shows
+both the export import date and the latest API refresh that changed the data.
+The API refresh only rewrites the file (and redeploys) when episodes change.
 
 Unknown lengths and saved dates remain null and are included in filters by
 default. Disable "Include unknown lengths / saved dates" for complete metadata
@@ -69,7 +73,8 @@ another extended-history export (Python 3.9+):
 python3 podcast-dashboard/tools/import_history.py "/path/to/Spotify Extended Streaming History"
 ```
 
-The importer reads audio and video files, removes exact duplicate records, and
+The importer reads audio and video files at the top level of the export folder
+(not subfolders), counts a play once per timestamp, URI, and `ms_played`, and
 writes only aggregates for IDs already in the saved snapshot. Raw exports, IP
 addresses, devices, and unrelated listening history are not published. Start/end
 reasons retain Spotify's raw codes and counts; they are not completion labels.

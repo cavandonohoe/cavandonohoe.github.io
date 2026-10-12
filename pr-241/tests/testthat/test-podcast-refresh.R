@@ -27,3 +27,47 @@ testthat::test_that("token helper reads a redirected URL under Rscript", {
                     input = url, stdout = TRUE)
   testthat::expect_identical(result, url)
 })
+
+load_merge_saved_episodes <- function() {
+  expressions <- as.list(parse("../../scripts/update_saved_episodes.R"))
+  wanted <- c("%||%", "merge_saved_episodes")
+  defs <- Filter(function(x) {
+    is.call(x) && identical(x[[1]], as.name("<-")) && as.character(x[[2]]) %in% wanted
+  }, expressions)
+  env <- new.env()
+  for (d in defs) eval(d, envir = env)
+  env$merge_saved_episodes
+}
+
+testthat::test_that("an unchanged API refresh leaves meta (and the file) untouched", {
+  merge_saved_episodes <- load_merge_saved_episodes()
+  existing <- list(
+    meta = list(generated_at = "2026-09-27", n_episodes = 1, export_n_episodes = 1,
+                api_refreshed_at = "2026-10-01", api_saved_count = 1),
+    episodes = list(list(id = "a", added_at = "2026-09-01", name = "A", dur_min = 30))
+  )
+  same <- list(list(id = "a", added_at = "2026-09-01", name = "A", dur_min = 30))
+  result <- merge_saved_episodes(existing, same, today = as.Date("2026-10-10"))
+  testthat::expect_false(result$changed)
+  testthat::expect_identical(result$payload$meta, existing$meta)
+})
+
+testthat::test_that("a new API save appends and stamps meta without moving the export count", {
+  merge_saved_episodes <- load_merge_saved_episodes()
+  existing <- list(
+    meta = list(n_episodes = 1, export_n_episodes = 1, api_refreshed_at = "2026-10-01"),
+    episodes = list(list(id = "a", added_at = NULL, name = "A", dur_min = NULL))
+  )
+  api <- list(
+    list(id = "a", added_at = "2026-09-01", name = "A", dur_min = 30),
+    list(id = "b", added_at = "2026-10-09", name = "B", dur_min = 45)
+  )
+  result <- merge_saved_episodes(existing, api, today = as.Date("2026-10-10"))
+  testthat::expect_true(result$changed)
+  testthat::expect_equal(result$n_new, 1L)
+  meta <- result$payload$meta
+  testthat::expect_equal(meta$n_episodes, 2L)
+  testthat::expect_equal(meta$export_n_episodes, 1)
+  testthat::expect_equal(meta$api_refreshed_at, "2026-10-10")
+  testthat::expect_equal(result$payload$episodes[[1]]$dur_min, 30)
+})

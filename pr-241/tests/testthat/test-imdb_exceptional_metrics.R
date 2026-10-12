@@ -38,3 +38,19 @@ testthat::test_that("percentage uses all episodes and is undefined for an empty 
   testthat::expect_equal(result$percent_exceptional[result$series_id == "a"], 10)
   testthat::expect_true(is.na(result$percent_exceptional[result$series_id == "b"]))
 })
+
+testthat::test_that("source dates come from manifest headers, not the analysis run", {
+  manifest <- list(datasets = list(
+    title.basics = list(headers = list(
+      `Last-Modified` = "Sun, 04 Oct 2026 12:48:22 GMT", `x-amz-meta-run-date` = "2026-10-04"
+    )),
+    title.ratings = list(headers = list(`last-modified` = "Mon, 05 Oct 2026 00:40:17 GMT"))
+  ))
+  dates <- imdb_source_dates(manifest)
+  testthat::expect_equal(dates$dataset, c("title.basics", "title.ratings"))
+  testthat::expect_equal(dates$run_date, as.Date(c("2026-10-04", "2026-10-05")))
+  testthat::expect_equal(
+    format(dates$last_modified, "%Y-%m-%d %H:%M", tz = "UTC"),
+    c("2026-10-04 12:48", "2026-10-05 00:40")
+  )
+})
