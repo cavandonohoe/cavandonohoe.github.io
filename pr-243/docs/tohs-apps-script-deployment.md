@@ -149,9 +149,11 @@ comparison. No automated linking command calls `push`, an installer, or a refres
 Before enabling deployment:
 
 1. Create environment **`tohs-apps-script-production`** in repository Settings →
-   Environments; allow deployments from the `main` branch only, not tags. Optional
-   required environment reviewers can add a release approval, but are not needed
-   for the normal reviewed-PR flow.
+   Environments; allow deployments from the `main` branch only, not tags. Add the
+   repository owner as a **required reviewer** with "Prevent self-review" off. Each
+   deployment then pauses until the owner clicks "Approve and deploy" (or the run
+   expires after 30 days, leaving live source untouched). This is the human check
+   for owner-authored PRs, including ones opened and merged by automation.
 2. Branch protection on main is optional. The deployment job's own gate already
    refuses direct pushes, force pushes, and multi-commit pushes. Requiring PRs on
    main would also block the scheduled data Actions that push generated data there.
@@ -195,7 +197,8 @@ and `_site.yml` excludes `tools` and `private` from site output.
 
 Edit `scripts/tohs/` on a branch, run the checks, and open a PR. The secret-free
 validation job runs on every PR so its required check does not remain pending due
-to path filters. Only a push to main affecting source/tooling/workflow can deploy.
+to path filters. Only a push to main affecting `scripts/tohs/` or `tools/tohs-apps-script/` can
+deploy; workflow-only edits are validated on their PR but do not deploy.
 There is no manual dispatch, schedule, PR deployment, or `pull_request_target`.
 
 After validation, the deployment job verifies that the current main SHA is a
