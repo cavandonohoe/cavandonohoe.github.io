@@ -219,6 +219,21 @@ jobs:
           install-pandoc: false
           install-quarto: false
 
+      # renv (>= 1.3) refuses to snapshot when a dependency's LinkingTo packages
+      # (e.g. cpp11 for timechange/tidyr) are absent. Binary installs never pull
+      # them in, so install whatever is missing before the deployment check.
+      - name: Install missing LinkingTo packages
+        run: |
+          Rscript -e '
+            ip <- utils::installed.packages()
+            lt <- tools::package_dependencies(rownames(ip), db = ip, which = "LinkingTo")
+            missing <- setdiff(unique(unlist(lt)), c(rownames(ip), "R"))
+            if (length(missing)) {
+              message("Installing LinkingTo packages: ", paste(missing, collapse = ", "))
+              utils::install.packages(missing)
+            }
+          '
+
       - name: Verify dashboard deployment dependencies
         run: |
           Rscript -e '
