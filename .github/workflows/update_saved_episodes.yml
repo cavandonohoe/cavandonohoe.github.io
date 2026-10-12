@@ -203,18 +203,21 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
+          # Plain names, not any::, so pak records them as standard CRAN-like installs.
+          # rsconnect cannot map pak's "any" source to a repository URL, and the
+          # shinyapps.io build then fails fetching "RSPM/src/contrib/...".
           packages: |
-            any::rsconnect
-            any::shiny
-            any::bslib
-            any::jsonlite
-            any::dplyr
-            any::lubridate
-            any::plotly
-            any::DT
-            any::scales
-            any::stringr
-            any::tibble
+            rsconnect
+            shiny
+            bslib
+            jsonlite
+            dplyr
+            lubridate
+            plotly
+            DT
+            scales
+            stringr
+            tibble
           dependencies: '"hard"'
           install-pandoc: false
           install-quarto: false
