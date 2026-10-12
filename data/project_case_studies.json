@@ -30,7 +30,7 @@
     {
       "project": "analysis",
       "tracked_files": 12,
-      "commits_touching_project": 4,
+      "commits_touching_project": 5,
       "top_extensions": [
         [
           ".csv",
@@ -124,7 +124,7 @@
     {
       "project": "docs",
       "tracked_files": 2,
-      "commits_touching_project": 4,
+      "commits_touching_project": 5,
       "top_extensions": [
         [
           ".md",
@@ -162,7 +162,7 @@
     {
       "project": "images",
       "tracked_files": 14,
-      "commits_touching_project": 66,
+      "commits_touching_project": 67,
       "top_extensions": [
         [
           ".jpg",
@@ -319,7 +319,7 @@
     {
       "project": "tools",
       "tracked_files": 8,
-      "commits_touching_project": 1,
+      "commits_touching_project": 2,
       "top_extensions": [
         [
           ".cjs",
