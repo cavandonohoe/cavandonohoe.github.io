@@ -1,218 +1,30 @@
 {
   "year": 2025,
-  "commits": 123,
-  "pull_requests": 26,
+  "commits": 55,
+  "pull_requests": 20,
   "repositories_touched": 1,
-  "lines_added": 2541071,
+  "lines_added": 94138,
   "most_used_language": "R",
   "language_lines_added": {
-    "R": 5389,
-    "CSS": 76
+    "R": 3275,
+    "CSS": 25
   },
   "language_files": {
     "CSS": [
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "cv_stuff/cv_css.css",
-        "lines_added": 76,
+        "lines_added": 25,
         "commits": [
-          {
-            "sha": "bfe94b68862d9233d2f725b104fe76dd958a73f7",
-            "date": "2025-12-28",
-            "lines_added": 25
-          },
           {
             "sha": "52f3416cd7cf1560c595388fdb3325e5b2507dc1",
             "date": "2025-12-28",
             "lines_added": 25
-          },
-          {
-            "sha": "ef8b1ec046c402aae3010235b4a8ed5278a08eae",
-            "date": "2025-10-11",
-            "lines_added": 26
           }
         ]
       }
     ],
     "R": [
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "web_scraping/imdb_season_episode_ratings_plot.R",
-        "lines_added": 852,
-        "commits": [
-          {
-            "sha": "67b50269cc291385ff2e14ff653d311a13e61b57",
-            "date": "2025-12-29",
-            "lines_added": 154
-          },
-          {
-            "sha": "31fa5ae93c266578452b8d09c9b804604a7769f7",
-            "date": "2025-12-29",
-            "lines_added": 154
-          },
-          {
-            "sha": "c952860ce6d8e91c22fb07dffac2c1bf66b3600f",
-            "date": "2025-12-15",
-            "lines_added": 3
-          },
-          {
-            "sha": "3de05e684f4fd23d7984287e9caba151af606e54",
-            "date": "2025-12-15",
-            "lines_added": 3
-          },
-          {
-            "sha": "f0f79acd650fa0efe19db562592af0dc8ad39727",
-            "date": "2025-12-14",
-            "lines_added": 3
-          },
-          {
-            "sha": "6b34f092e86b34ad244239d4e78393f690e0c2aa",
-            "date": "2025-12-14",
-            "lines_added": 3
-          },
-          {
-            "sha": "427e11b4c4c04696d24d867a90aecadfa001bb76",
-            "date": "2025-12-14",
-            "lines_added": 3
-          },
-          {
-            "sha": "08d9fc069a7cb82f9a23e1fa4063dafb0a528c0d",
-            "date": "2025-12-14",
-            "lines_added": 3
-          },
-          {
-            "sha": "a6d07ea2e21dc5a9046435794270cd7962c08ee2",
-            "date": "2025-12-11",
-            "lines_added": 127
-          },
-          {
-            "sha": "4e89ebfe025ea1c6ad75fa3d0e342bff8127b4c0",
-            "date": "2025-12-11",
-            "lines_added": 127
-          },
-          {
-            "sha": "d9b3fdd7aec0248818dda20a2f1c52a286fc3a24",
-            "date": "2025-12-08",
-            "lines_added": 39
-          },
-          {
-            "sha": "2a857c10329115e805777aa78a361cbab58310b9",
-            "date": "2025-12-08",
-            "lines_added": 39
-          },
-          {
-            "sha": "ef8b1ec046c402aae3010235b4a8ed5278a08eae",
-            "date": "2025-10-11",
-            "lines_added": 194
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "web_scraping/top250_movies_with_rt.R",
-        "lines_added": 626,
-        "commits": [
-          {
-            "sha": "67b50269cc291385ff2e14ff653d311a13e61b57",
-            "date": "2025-12-29",
-            "lines_added": 135
-          },
-          {
-            "sha": "31fa5ae93c266578452b8d09c9b804604a7769f7",
-            "date": "2025-12-29",
-            "lines_added": 135
-          },
-          {
-            "sha": "d9b3fdd7aec0248818dda20a2f1c52a286fc3a24",
-            "date": "2025-12-08",
-            "lines_added": 1
-          },
-          {
-            "sha": "2a857c10329115e805777aa78a361cbab58310b9",
-            "date": "2025-12-08",
-            "lines_added": 1
-          },
-          {
-            "sha": "ef8b1ec046c402aae3010235b4a8ed5278a08eae",
-            "date": "2025-10-11",
-            "lines_added": 354
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "web_scraping/imdb_tv_series_web_scraping.R",
-        "lines_added": 564,
-        "commits": [
-          {
-            "sha": "67b50269cc291385ff2e14ff653d311a13e61b57",
-            "date": "2025-12-29",
-            "lines_added": 36
-          },
-          {
-            "sha": "31fa5ae93c266578452b8d09c9b804604a7769f7",
-            "date": "2025-12-29",
-            "lines_added": 36
-          },
-          {
-            "sha": "a6d07ea2e21dc5a9046435794270cd7962c08ee2",
-            "date": "2025-12-11",
-            "lines_added": 210
-          },
-          {
-            "sha": "4e89ebfe025ea1c6ad75fa3d0e342bff8127b4c0",
-            "date": "2025-12-11",
-            "lines_added": 210
-          },
-          {
-            "sha": "d9b3fdd7aec0248818dda20a2f1c52a286fc3a24",
-            "date": "2025-12-08",
-            "lines_added": 1
-          },
-          {
-            "sha": "2a857c10329115e805777aa78a361cbab58310b9",
-            "date": "2025-12-08",
-            "lines_added": 1
-          },
-          {
-            "sha": "ef8b1ec046c402aae3010235b4a8ed5278a08eae",
-            "date": "2025-10-11",
-            "lines_added": 70
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "web_scraping/best_picture_nominees.R",
-        "lines_added": 363,
-        "commits": [
-          {
-            "sha": "67b50269cc291385ff2e14ff653d311a13e61b57",
-            "date": "2025-12-29",
-            "lines_added": 99
-          },
-          {
-            "sha": "31fa5ae93c266578452b8d09c9b804604a7769f7",
-            "date": "2025-12-29",
-            "lines_added": 99
-          },
-          {
-            "sha": "d9b3fdd7aec0248818dda20a2f1c52a286fc3a24",
-            "date": "2025-12-08",
-            "lines_added": 1
-          },
-          {
-            "sha": "2a857c10329115e805777aa78a361cbab58310b9",
-            "date": "2025-12-08",
-            "lines_added": 1
-          },
-          {
-            "sha": "ef8b1ec046c402aae3010235b4a8ed5278a08eae",
-            "date": "2025-10-11",
-            "lines_added": 163
-          }
-        ]
-      },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "imdb_rating_plot.Rmd",
@@ -356,6 +168,65 @@
       },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "web_scraping/imdb_season_episode_ratings_plot.R",
+        "lines_added": 329,
+        "commits": [
+          {
+            "sha": "67b50269cc291385ff2e14ff653d311a13e61b57",
+            "date": "2025-12-29",
+            "lines_added": 154
+          },
+          {
+            "sha": "3de05e684f4fd23d7984287e9caba151af606e54",
+            "date": "2025-12-15",
+            "lines_added": 3
+          },
+          {
+            "sha": "f0f79acd650fa0efe19db562592af0dc8ad39727",
+            "date": "2025-12-14",
+            "lines_added": 3
+          },
+          {
+            "sha": "6b34f092e86b34ad244239d4e78393f690e0c2aa",
+            "date": "2025-12-14",
+            "lines_added": 3
+          },
+          {
+            "sha": "a6d07ea2e21dc5a9046435794270cd7962c08ee2",
+            "date": "2025-12-11",
+            "lines_added": 127
+          },
+          {
+            "sha": "2a857c10329115e805777aa78a361cbab58310b9",
+            "date": "2025-12-08",
+            "lines_added": 39
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "web_scraping/imdb_tv_series_web_scraping.R",
+        "lines_added": 247,
+        "commits": [
+          {
+            "sha": "67b50269cc291385ff2e14ff653d311a13e61b57",
+            "date": "2025-12-29",
+            "lines_added": 36
+          },
+          {
+            "sha": "a6d07ea2e21dc5a9046435794270cd7962c08ee2",
+            "date": "2025-12-11",
+            "lines_added": 210
+          },
+          {
+            "sha": "2a857c10329115e805777aa78a361cbab58310b9",
+            "date": "2025-12-08",
+            "lines_added": 1
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "_archive/covid_cases_nostalgia.Rmd",
         "lines_added": 241,
         "commits": [
@@ -368,38 +239,6 @@
             "sha": "2a857c10329115e805777aa78a361cbab58310b9",
             "date": "2025-12-08",
             "lines_added": 1
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "web_scraping/top1000_box_office.R",
-        "lines_added": 215,
-        "commits": [
-          {
-            "sha": "67b50269cc291385ff2e14ff653d311a13e61b57",
-            "date": "2025-12-29",
-            "lines_added": 60
-          },
-          {
-            "sha": "31fa5ae93c266578452b8d09c9b804604a7769f7",
-            "date": "2025-12-29",
-            "lines_added": 60
-          },
-          {
-            "sha": "d9b3fdd7aec0248818dda20a2f1c52a286fc3a24",
-            "date": "2025-12-08",
-            "lines_added": 1
-          },
-          {
-            "sha": "2a857c10329115e805777aa78a361cbab58310b9",
-            "date": "2025-12-08",
-            "lines_added": 1
-          },
-          {
-            "sha": "ef8b1ec046c402aae3010235b4a8ed5278a08eae",
-            "date": "2025-10-11",
-            "lines_added": 93
           }
         ]
       },
@@ -422,46 +261,26 @@
       },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "web_scraping/best_picture_winners.R",
-        "lines_added": 209,
+        "path": "web_scraping/top250_movies_with_rt.R",
+        "lines_added": 136,
         "commits": [
           {
             "sha": "67b50269cc291385ff2e14ff653d311a13e61b57",
             "date": "2025-12-29",
-            "lines_added": 58
-          },
-          {
-            "sha": "31fa5ae93c266578452b8d09c9b804604a7769f7",
-            "date": "2025-12-29",
-            "lines_added": 58
-          },
-          {
-            "sha": "d9b3fdd7aec0248818dda20a2f1c52a286fc3a24",
-            "date": "2025-12-08",
-            "lines_added": 1
+            "lines_added": 135
           },
           {
             "sha": "2a857c10329115e805777aa78a361cbab58310b9",
             "date": "2025-12-08",
             "lines_added": 1
-          },
-          {
-            "sha": "ef8b1ec046c402aae3010235b4a8ed5278a08eae",
-            "date": "2025-10-11",
-            "lines_added": 91
           }
         ]
       },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "scripts/ensure_gs4_guards.R",
-        "lines_added": 178,
+        "lines_added": 114,
         "commits": [
-          {
-            "sha": "ef8b1ec046c402aae3010235b4a8ed5278a08eae",
-            "date": "2025-10-11",
-            "lines_added": 64
-          },
           {
             "sha": "14a0b88ea54726add2cf6b239e0f8e13db6612fd",
             "date": "2025-10-08",
@@ -523,23 +342,18 @@
       },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "cv_stuff/archive/cv-builder.R",
-        "lines_added": 95,
+        "path": "web_scraping/best_picture_nominees.R",
+        "lines_added": 100,
         "commits": [
           {
-            "sha": "d9b3fdd7aec0248818dda20a2f1c52a286fc3a24",
-            "date": "2025-12-08",
-            "lines_added": 2
+            "sha": "67b50269cc291385ff2e14ff653d311a13e61b57",
+            "date": "2025-12-29",
+            "lines_added": 99
           },
           {
             "sha": "2a857c10329115e805777aa78a361cbab58310b9",
             "date": "2025-12-08",
-            "lines_added": 2
-          },
-          {
-            "sha": "ef8b1ec046c402aae3010235b4a8ed5278a08eae",
-            "date": "2025-10-11",
-            "lines_added": 91
+            "lines_added": 1
           }
         ]
       },
@@ -557,33 +371,6 @@
             "sha": "2a857c10329115e805777aa78a361cbab58310b9",
             "date": "2025-12-08",
             "lines_added": 1
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "scripts/insert_gs_deauth.R",
-        "lines_added": 82,
-        "commits": [
-          {
-            "sha": "67b50269cc291385ff2e14ff653d311a13e61b57",
-            "date": "2025-12-29",
-            "lines_added": 2
-          },
-          {
-            "sha": "31fa5ae93c266578452b8d09c9b804604a7769f7",
-            "date": "2025-12-29",
-            "lines_added": 2
-          },
-          {
-            "sha": "ef8b1ec046c402aae3010235b4a8ed5278a08eae",
-            "date": "2025-10-11",
-            "lines_added": 39
-          },
-          {
-            "sha": "3694e5ea86195cf7553be45892277265c2d8fc98",
-            "date": "2025-10-05",
-            "lines_added": 39
           }
         ]
       },
@@ -635,6 +422,40 @@
       },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "web_scraping/top1000_box_office.R",
+        "lines_added": 61,
+        "commits": [
+          {
+            "sha": "67b50269cc291385ff2e14ff653d311a13e61b57",
+            "date": "2025-12-29",
+            "lines_added": 60
+          },
+          {
+            "sha": "2a857c10329115e805777aa78a361cbab58310b9",
+            "date": "2025-12-08",
+            "lines_added": 1
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "web_scraping/best_picture_winners.R",
+        "lines_added": 59,
+        "commits": [
+          {
+            "sha": "67b50269cc291385ff2e14ff653d311a13e61b57",
+            "date": "2025-12-29",
+            "lines_added": 58
+          },
+          {
+            "sha": "2a857c10329115e805777aa78a361cbab58310b9",
+            "date": "2025-12-08",
+            "lines_added": 1
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "confederate_statues.Rmd",
         "lines_added": 46,
         "commits": [
@@ -642,6 +463,23 @@
             "sha": "67b50269cc291385ff2e14ff653d311a13e61b57",
             "date": "2025-12-29",
             "lines_added": 46
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "scripts/insert_gs_deauth.R",
+        "lines_added": 41,
+        "commits": [
+          {
+            "sha": "67b50269cc291385ff2e14ff653d311a13e61b57",
+            "date": "2025-12-29",
+            "lines_added": 2
+          },
+          {
+            "sha": "3694e5ea86195cf7553be45892277265c2d8fc98",
+            "date": "2025-10-05",
+            "lines_added": 39
           }
         ]
       },
@@ -708,23 +546,6 @@
       },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "scripts/after_build.R",
-        "lines_added": 34,
-        "commits": [
-          {
-            "sha": "9e6274e2cd5dceea6a5203609e8b16ad2257bcc1",
-            "date": "2025-12-29",
-            "lines_added": 17
-          },
-          {
-            "sha": "35b8ee71bc1a39996847bd9e4e2d13bf26ae594c",
-            "date": "2025-12-29",
-            "lines_added": 17
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "selling_vs_renting.R",
         "lines_added": 32,
         "commits": [
@@ -744,6 +565,18 @@
             "sha": "67b50269cc291385ff2e14ff653d311a13e61b57",
             "date": "2025-12-29",
             "lines_added": 31
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "scripts/after_build.R",
+        "lines_added": 17,
+        "commits": [
+          {
+            "sha": "9e6274e2cd5dceea6a5203609e8b16ad2257bcc1",
+            "date": "2025-12-29",
+            "lines_added": 17
           }
         ]
       },
@@ -778,23 +611,6 @@
       },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "scripts/build_site.R",
-        "lines_added": 4,
-        "commits": [
-          {
-            "sha": "9e6274e2cd5dceea6a5203609e8b16ad2257bcc1",
-            "date": "2025-12-29",
-            "lines_added": 2
-          },
-          {
-            "sha": "35b8ee71bc1a39996847bd9e4e2d13bf26ae594c",
-            "date": "2025-12-29",
-            "lines_added": 2
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "about.Rmd",
         "lines_added": 3,
         "commits": [
@@ -819,6 +635,30 @@
             "sha": "67b50269cc291385ff2e14ff653d311a13e61b57",
             "date": "2025-12-29",
             "lines_added": 3
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "cv_stuff/archive/cv-builder.R",
+        "lines_added": 2,
+        "commits": [
+          {
+            "sha": "2a857c10329115e805777aa78a361cbab58310b9",
+            "date": "2025-12-08",
+            "lines_added": 2
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "scripts/build_site.R",
+        "lines_added": 2,
+        "commits": [
+          {
+            "sha": "9e6274e2cd5dceea6a5203609e8b16ad2257bcc1",
+            "date": "2025-12-29",
+            "lines_added": 2
           }
         ]
       },
@@ -849,15 +689,14 @@
     ]
   },
   "excluded_language_lines_added": {
-    "JavaScript": 1147419,
-    "CSS": 432077,
-    "HTML": 362333,
-    "R": 34126
+    "JavaScript": 33487,
+    "HTML": 32675,
+    "CSS": 434
   },
-  "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, dependency files, and raw HTML inputs are excluded.",
-  "most_active_month": "December",
-  "longest_streak_days": 4,
-  "active_days": 26,
+  "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, dependency, build, docs, minified, and raw HTML input files are excluded.",
+  "most_active_month": "October",
+  "longest_streak_days": 3,
+  "active_days": 19,
   "monthly_commits": [
     3,
     1,
@@ -868,19 +707,19 @@
     0,
     1,
     1,
-    53,
-    5,
-    58
+    34,
+    0,
+    14
   ],
   "biggest_project": "cavandonohoe.github.io",
-  "biggest_project_commits": 123,
+  "biggest_project_commits": 55,
   "repositories": [
     "cavandonohoe/cavandonohoe.github.io"
   ],
   "repository_commits": {
-    "cavandonohoe/cavandonohoe.github.io": 123
+    "cavandonohoe/cavandonohoe.github.io": 55
   },
-  "scope": "Author-matched commits reachable from branches and tags in public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bots and other authors are excluded. Language totals exclude Linguist-generated, vendored, conventional dependency files, and raw HTML inputs. Overall lines added still include all files. PRs count public pull requests authored by the user, when available.",
+  "scope": "Author-matched commits on the default branch of public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bot-authored or bot-committed commits, deploy commits, and other authors are excluded. Moved files count only changed lines. Language totals use .gitattributes Linguist overrides plus built-in generated, vendored, dependency, build, docs, minified, and raw HTML input patterns. Overall lines added still include all files. PRs count public pull requests the user authored and merged into their own repositories during the year, when available.",
   "is_partial_year": false,
-  "generated_at": "2026-10-07T03:32:18.308884+00:00"
+  "generated_at": "2026-10-10T22:04:01.693722+00:00"
 }

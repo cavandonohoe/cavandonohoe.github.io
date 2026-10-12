@@ -34,8 +34,9 @@ tohs_validate_public <- function(sheet, check_freshness = TRUE) {
   if (!nrow(sheet)) stop("Public export returned no graduates")
   for (field in c("first_name", "last_name")) {
     values <- trimws(as.character(sheet[[field]]))
+    # Names never contain digits; any digit may be a leaked phone number or ID.
     if (anyNA(values) || any(!nzchar(values)) || any(nchar(values) > 100) ||
-        any(grepl("@|[<>\\r\\n]|https?:|[0-9]{5}", values, perl = TRUE)))
+        any(grepl("@|[<>\\r\\n]|https?:|[0-9]", values, perl = TRUE)))
       stop("Unsafe public name; publication refused")
     sheet[[field]] <- values
   }

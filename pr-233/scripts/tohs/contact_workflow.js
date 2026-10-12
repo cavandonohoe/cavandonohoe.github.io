@@ -14,19 +14,66 @@ function sameContact(field, a, b) {
     nameKey(a) === nameKey(b);
 }
 
-// Pure rebuild: original roster is immutable; derived contacts retain stable roster IDs.
+// Field Sources format: {"<field>": {"id": responseId, "value": appliedValue},
+// "_applied": {responseId: action}}. Older rows stored plain response ID strings.
+const TOHS_ACTION_RANK = {'auto': 1, 'Approve fill': 2, 'Approve replacement': 3};
+function sourceId(source) { return source && typeof source === 'object' ? source.id : source; }
+function copySources(sources, decisions) {
+  const result = Object.assign({}, sources || {});
+  result._applied = Object.assign({}, result._applied || {});
+  // Legacy rows have no applied record: treat every response already recorded as a
+  // field source as applied, so it is not replayed over organizer edits.
+  if (!(sources && sources._applied)) {
+    for (const field of TOHS_FIELDS) {
+      const id = sourceId(result[field]);
+      const d = (decisions || {})[id];
+      if (id && !result._applied[id]) result._applied[id] = d && TOHS_ACTION_RANK[d.action] ? d.action : 'auto';
+    }
+  }
+  return result;
+}
+function clearRejectedSource(master, responseId) {
+  for (const row of master) {
+    for (const field of TOHS_FIELDS) {
+      const source = row.sources[field];
+      if (sourceId(source) !== responseId) continue;
+      // Keep organizer edits made after the auto-fill; clear only the untouched value.
+      const untouched = !(source && typeof source === 'object') ||
+        textValue(row[field]) === textValue(source.value);
+      if (untouched) row[field] = '';
+      delete row.sources[field];
+    }
+    delete row.sources._applied[responseId];
+  }
+}
+
+// Each submission is applied to a contact at most once per action level. On later
+// runs it is only re-checked for conflicts, so organizer edits and cleared fields
+// in the persisted Contacts tab are never overwritten by a replay.
 function reconcileContacts(roster, submissions, decisions) {
   if (!roster.length || new Set(roster.map(r => r.id)).size !== roster.length ||
       roster.some(r => !r.id || !r.first || !r.last)) throw new Error('Invalid roster IDs or names');
-  const master = roster.map(r => Object.assign({}, r, {sources: Object.assign({}, r.sources)}));
-  const review = [], audit = [], seen = new Set();
+  const master = roster.map(r => Object.assign({}, r, {sources: copySources(r.sources, decisions)}));
+  const review = [], audit = [], seen = new Map();
+  for (const s of submissions) {
+    if (!s.response_id) throw new Error('Contact submission without response ID');
+  }
   const sorted = submissions.slice().sort((a, b) =>
     textValue(a.timestamp).localeCompare(textValue(b.timestamp)) || a.response_id.localeCompare(b.response_id));
   for (const s of sorted) {
-    if (!s.response_id || seen.has(s.response_id)) continue;
-    seen.add(s.response_id);
+    const signature = JSON.stringify(['timestamp', ...TOHS_FIELDS, 'first', 'last']
+      .map(f => textValue(s[f])));
+    if (seen.has(s.response_id)) {
+      // Repeated delivery of the same response is applied once; reused IDs are an error.
+      if (seen.get(s.response_id) !== signature) throw new Error('Duplicate contact submission ID');
+      continue;
+    }
+    seen.set(s.response_id, signature);
     const d = (decisions || {})[s.response_id];
-    if (d && d.action === 'Reject') { audit.push({response_id:s.response_id, status:'rejected'}); continue; }
+    if (d && d.action === 'Reject') {
+      clearRejectedSource(master, s.response_id);
+      audit.push({response_id:s.response_id, status:'rejected'}); continue;
+    }
     let match;
     if (d && ['Approve fill', 'Approve replacement'].includes(d.action)) {
       match = master.find(r => r.id === textValue(d.roster_id));
@@ -43,6 +90,9 @@ function reconcileContacts(roster, submissions, decisions) {
       audit.push({response_id:s.response_id, status:'needs identity review'}); continue;
     }
     const conflicts = [];
+    const action = d ? d.action : 'auto';
+    const applied = match.sources._applied[s.response_id];
+    const apply = !applied || TOHS_ACTION_RANK[action] > TOHS_ACTION_RANK[applied];
     for (const field of TOHS_FIELDS) {
       const incoming = textValue(s[field]), existing = textValue(match[field]);
       if (!incoming) continue; // Blank answers never erase existing data.
@@ -50,18 +100,24 @@ function reconcileContacts(roster, submissions, decisions) {
       if (['reunion','committee'].includes(field) && !['Yes','No','Maybe'].includes(incoming)) {
         conflicts.push('invalid ' + field); continue;
       }
-      if (!existing || (d && d.action === 'Approve replacement')) {
+      if (apply && (!existing || action === 'Approve replacement')) {
         match[field] = incoming;
-        match.sources[field] = s.response_id;
-      } else if (!sameContact(field, incoming, existing)) conflicts.push(field);
+        match.sources[field] = {id:s.response_id, value:incoming};
+      } else if (existing && !sameContact(field, incoming, existing) &&
+        sourceId(match.sources[field]) !== s.response_id &&
+        !(applied && action === 'Approve replacement')) conflicts.push(field);
+      // A value this submission already supplied is not re-reviewed after an organizer edit.
+      // An already-applied value that an organizer later cleared stays cleared.
     }
+    if (apply) match.sources._applied[s.response_id] = action;
     const status = conflicts.length ? 'needs field review: ' + conflicts.join(', ') : 'matched';
     if (conflicts.length) review.push(Object.assign({}, s, {roster_id:match.id, reason:status}));
     audit.push({response_id:s.response_id, roster_id:match.id, status});
   }
   const publicRows = master.map(r => {
     for (const n of [r.first,r.last]) {
-      if (n.length > 100 || /[@\r\n<>]|https?:|\d{5}/i.test(n)) throw new Error('Unsafe public name');
+      // Names never contain digits; any digit may be a leaked phone number or ID.
+      if (n.length > 100 || /[@\r\n<>\d]|https?:/i.test(n)) throw new Error('Unsafe public name');
     }
     return {first_name:r.first, last_name:r.last, email_bool:!!textValue(r.email)};
   });
@@ -197,7 +253,13 @@ function readDecisions(ss) {
   return result;
 }
 
-function refreshContactWorkflow() {
+function refreshContactWorkflow() { runContactRefresh({}); }
+
+// Run manually after an intended roster ID change (people added to or removed from
+// Contacts). One refresh accepts the new ID set as the Master Contacts baseline.
+function acceptContactsRosterChange() { runContactRefresh({acceptRosterChange:true}); }
+
+function runContactRefresh(options) {
   const lock = LockService.getScriptLock(); lock.waitLock(30000);
   try {
     const target = SpreadsheetApp.openById(TOHS_WORKFLOW_ID);
@@ -209,9 +271,11 @@ function refreshContactWorkflow() {
     const sheetResponses = responseSheetSubmissions(target,form,nativeResponses);
     const submissions = (organized ? organizedLegacySubmissions(target) : legacySubmissions(source)).concat(nativeResponses,sheetResponses);
     const decisions = organized ? readOrganizedDecisions(target) : readDecisions(target);
-    const result = reconcileContacts(organized ? editableRoster(target) : sourceRoster(source), submissions, decisions);
+    const contactRows = organized ? readContactRows(target) : null;
+    const roster = organized ? editableRoster(target, contactRows, options) : sourceRoster(source);
+    const result = reconcileContacts(roster, submissions, decisions);
     assertSubmissionAudit(submissions,result);
-    if (organized) writeEditableContacts(target,result);
+    if (organized) writeEditableContacts(target,result,contactRows);
     const masterHeader = ['roster_id','first_name','last_name','preferred_name','email','phone',
       'reunion_interest','committee_interest','field_sources'];
     writeGenerated(target,'Master Contacts',masterHeader,result.master.map(r =>
@@ -283,14 +347,34 @@ if (typeof module !== 'undefined') module.exports = {reconcileContacts,literalCe
 
 // Contacts is the only editable roster; generated sheets are views of it.
 const TOHS_CONTACT_HEADERS = ['Roster ID','First Name','Graduation Last Name','Current/Preferred Name','Primary Email','Phone','Reunion Interest','Committee Interest','Field Sources','Contact Status','Alternate Email','Last Contacted','Last Verified','Contact Source','Notes'];
-function editableRoster(ss) {
+// Script-owned Contacts columns (Roster ID through Contact Status). Tracking
+// columns after them are organizer-only and are never written by the script.
+const TOHS_CONTACT_WRITE_COLUMNS = 10;
+function readContactRows(ss) {
   const rows = ss.getSheetByName('Contacts').getDataRange().getDisplayValues();
   if (TOHS_CONTACT_HEADERS.some((h,i) => rows[0][i] !== h)) throw new Error('Contacts schema changed');
-  const roster = rows.slice(1).filter(r => textValue(r[0])).map(r => ({id:textValue(r[0]),first:textValue(r[1]),last:textValue(r[2]),preferred:textValue(r[3]),email:textValue(r[4]),phone:textValue(r[5]),reunion:textValue(r[6]),committee:textValue(r[7]),sources:JSON.parse(r[8] || '{}')}));
+  return rows;
+}
+function editableRoster(ss, contactRows, options) {
+  const rows = contactRows || readContactRows(ss);
+  rows.slice(1).forEach((r, i) => {
+    if (!textValue(r[0]) && r.some(cell => textValue(cell)))
+      throw new Error('Contacts row ' + (i + 2) + ' has data but no Roster ID; add an ID first');
+  });
+  const roster = rows.slice(1).filter(r => textValue(r[0])).map((r, i) => {
+    let sources;
+    try { sources = JSON.parse(r[8] || '{}'); } catch (error) {
+      throw new Error('Invalid Field Sources for roster ID ' + textValue(r[0]));
+    }
+    return {id:textValue(r[0]),first:textValue(r[1]),last:textValue(r[2]),preferred:textValue(r[3]),
+      email:textValue(r[4]),phone:textValue(r[5]),reunion:textValue(r[6]),committee:textValue(r[7]),
+      sources};
+  });
   const baseline = ss.getSheetByName('Master Contacts');
-  if (baseline) {
+  if (baseline && !(options && options.acceptRosterChange)) {
     const ids = baseline.getDataRange().getDisplayValues().slice(1).map(r=>textValue(r[0])).filter(Boolean);
-    if (ids.length && (ids.length !== roster.length || ids.some(id=>!roster.some(r=>r.id===id)))) throw new Error('Contacts roster IDs changed; review before publishing');
+    if (ids.length && (ids.length !== roster.length || ids.some(id=>!roster.some(r=>r.id===id))))
+      throw new Error('Contacts roster IDs changed; if intended, run acceptContactsRosterChange()');
   }
   if (roster.some(r=>r.email && !validEmail(r.email))) throw new Error('Invalid primary email in Contacts');
   return roster;
@@ -299,15 +383,44 @@ function organizedLegacySubmissions(ss) {
   const rows = ss.getSheetByName('Legacy Intake').getDataRange().getDisplayValues();
   const fields = ['response_id','timestamp','first','last','preferred','email','phone','reunion','committee'];
   if (fields.some((f,i)=>rows[0][i]!==f)) throw new Error('Legacy intake schema changed');
-  return rows.slice(1).filter(r=>textValue(r[0])).map(r=>Object.fromEntries(fields.map((f,i)=>[f,textValue(r[i])])));
+  const ids = new Set(), result = [];
+  rows.slice(1).forEach((r, i) => {
+    const id = textValue(r[0]);
+    if (!id) {
+      if (r.some(cell => textValue(cell)))
+        throw new Error('Legacy Intake row ' + (i + 2) + ' has data but no response_id');
+      return;
+    }
+    if (ids.has(id)) throw new Error('Duplicate Legacy Intake response_id ' + id);
+    ids.add(id);
+    result.push(Object.fromEntries(fields.map((f,j)=>[f,textValue(r[j])])));
+  });
+  return result;
 }
-function writeEditableContacts(ss, result) {
+// Writes back by Roster ID, only the script-owned cells that actually changed.
+// If Contacts was edited after the refresh read it, nothing is written and the
+// run fails so the next refresh starts from the organizer's latest edits.
+function writeEditableContacts(ss, result, contactRows) {
   const sheet = ss.getSheetByName('Contacts');
-  const previous = sheet.getDataRange().getValues().slice(1);
-  const extras = new Map(previous.map(r=>[textValue(r[0]),Array.from({length:5},(_,i)=>r[i+10] == null ? '' : r[i+10])]));
+  const before = contactRows || readContactRows(ss);
+  const current = sheet.getDataRange().getDisplayValues();
+  if (JSON.stringify(current) !== JSON.stringify(before))
+    throw new Error('Contacts changed during refresh; no Contacts cells written, retry');
+  const rowById = new Map();
+  current.forEach((r, i) => { if (i > 0 && textValue(r[0])) rowById.set(textValue(r[0]), i); });
   const pending = new Set(result.review.map(r=>textValue(r.roster_id)).filter(Boolean));
-  const rows = result.master.map(r => [r.id,r.first,r.last,r.preferred,r.email,r.phone,r.reunion,r.committee,JSON.stringify(r.sources),pending.has(r.id)?'Needs review':r.email?'Email collected':'Missing email',...(extras.get(r.id)||['','','','',''])]);
-  sheet.getRange(2,1,rows.length,15).setValues(rows.map(row=>row.map(literalCell)));
+  const writes = [];
+  for (const r of result.master) {
+    const index = rowById.get(r.id);
+    if (index === undefined) throw new Error('Roster ID missing from Contacts: ' + r.id);
+    const row = [r.id,r.first,r.last,r.preferred,r.email,r.phone,r.reunion,r.committee,
+      JSON.stringify(r.sources),pending.has(r.id)?'Needs review':r.email?'Email collected':'Missing email'];
+    const existing = current[index];
+    if (row.some((value, j) => textValue(value) !== textValue(existing[j]))) writes.push([index + 1, row]);
+  }
+  for (const [rowNumber, row] of writes)
+    sheet.getRange(rowNumber,1,1,TOHS_CONTACT_WRITE_COLUMNS).setValues([row.map(literalCell)]);
+  return writes.length;
 }
 
 function readOrganizedDecisions(ss) {
