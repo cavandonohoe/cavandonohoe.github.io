@@ -2,10 +2,10 @@
   "meta": {
     "generated_at": "2026-09-27",
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 374,
+    "n_episodes": 375,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-10-11",
-    "api_saved_count": 181
+    "api_refreshed_at": "2026-10-12",
+    "api_saved_count": 167
   },
   "episodes": [
     {
@@ -4121,6 +4121,17 @@
       "release": "2026-10-11",
       "url": "https://open.spotify.com/episode/2j6v8AJxb35KgEvEaUtwpv",
       "desc": "Catch all of the past week's great guests in one place.  Jacob Coxon, a former Anthropic and OpenAI researcher who spoke out about the dangers of artificial intelligence, opens up to Jon Stewart about the grim reality of the tech industry— from malicious hacks to potential biological attacks. The two discuss the future, AI-led utopia that tech companies are trying to sell us, the megalomania and riskiness that underlie the industry, and the terrifying capabilities Coxon witnessed while training AI models at Anthropic and OpenAI.  Academy Award-winning screenwriter Aaron Sorkin sits down with Michael Kosta to discuss writing and directing his new film, \"The Social Reckoning.\" Sorkin discusses revisiting Mark Zuckerberg as an anti-hero 16 years after “The Social Network,” balancing his role as both writer and director of the film, and recounting how intense physicality during the writing process once landed him in the hospital with a broken nose.  Sebastian Stan sits down with Michael to talk about the Palme d'Or-winning film “Fjord,” which explores the story of an immigrant family in Norway whose children are taken away by authorities who believe they’re acting for the right reasons. Stan opens up about his personal connections to the film, leaving Romania at the age of eight, and reconnecting with the country he left behind. Plus, Kosta talks about Stan’s eclectic career choices, from the Marvel Cinematic Universe to playing President Donald Trump.  Emmy-nominated and Golden Globe-winning actor Kyle MacLachlan joins Michael to discuss his bestselling memoir, \"Fictional Selves.\" MacLachlan opens up about bouncing back from a disappointing debut in the 1984 version of “Dune,” the tight-knit relationship he developed with director David Lynch throughout his career, his most iconic roles from “Sex and the City” to “Showgirls,” and the surprising, industry-changing success of “Twin Peaks.” Plus, hear about the wine label MacLachlan started with his dad and how he learned to navigate Hollywood and advocate for himself on set.  --  The Daily Show airs weeknights at 11/10c on Comedy Central.  Stream full episodes on Paramount+  Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices"
+    },
+    {
+      "id": "64WT0PMF1a91EdMH7TSylX",
+      "added_at": "2026-10-12",
+      "show": "The Indicator from Planet Money",
+      "publisher": null,
+      "name": "The echo of the bison (Encore)",
+      "dur_min": 10,
+      "release": "2026-10-12",
+      "url": "https://open.spotify.com/episode/64WT0PMF1a91EdMH7TSylX",
+      "desc": "Nearly 30 million bison once roamed North America, from modern Canada to Mexico. In the late 1800s, white settlers and the U.S. military annihilated the population of bison, bringing these creatures to the brink of extinction. The consequences for the people who relied on the bison were dire — and still being felt today. In an episode that first aired in August 2023, we spoke to one economist who reveals the shocking numbers about the destruction of the bison, and one member of the Blackfeet Nation who is trying to bring them back.Fact checking by Sierra Juarez. This episode originally aired Aug. 21, 2023.Your Next Listen –Blood, oil, and the Osage Nation: The battle over headrights –Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet Money –The Indicator newsletter — a weekly roundup of news, ideas and staff picks. –Instagram, TikTok and YouTube –Find the Planet Money book –Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop! Support public media by subscribing to NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
     }
   ]
 }
