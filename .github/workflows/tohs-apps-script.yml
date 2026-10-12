@@ -5,10 +5,11 @@ on:
     branches: [main]
   push:
     branches: [main]
+    # Workflow-only edits (e.g. Dependabot action bumps) are validated on their PR but
+    # do not change script source, so they do not start a deployment.
     paths:
       - 'scripts/tohs/**'
       - 'tools/tohs-apps-script/**'
-      - '.github/workflows/tohs-apps-script.yml'
 
 permissions:
   contents: read
