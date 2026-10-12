@@ -2,26 +2,25 @@
 
 ## Status and existing system
 
-Infrastructure is installed **disabled**. No Google login, live script download,
-script push, function execution, trigger edit, sharing change, or response/Sheet
-write was performed during setup. The repository identifies the installed project
-as **TOHS 2012 Contact Workflow**; its Script ID and live contents still require
-owner verification. Drive metadata search did not expose the script project.
-Do not substitute a workbook ID or create another Apps Script project.
+The existing **TOHS 2012 Contact Workflow** was inspected and downloaded privately on
+2026-10-12. Its complete file inventory is `Code.gs` (normalized to `Code.js` by clasp)
+and `appsscript.json`. The live manifest uses America/Los_Angeles, V8, STACKDRIVER
+exception logging, and an empty dependencies object. Deployment remains disabled
+until the owner completes activation below.
 
-The existing source remains in `scripts/tohs/contact_workflow.js` and
-`scripts/tohs/acceptance_test.js`. There is no duplicate runtime source tree.
-`tools/tohs-apps-script/project.json` maps repository files to the **existing
-remote filenames** and will hold the exact live `appsscript.json` manifest after
-linking. Its initial filenames are provisional, `verified` is false, and
-`manifest` is null. A guessed manifest must never be deployed.
+`tools/tohs-apps-script/project.json` maps the existing `Code.js` to an ordered list
+of repository sources: the current contact workflow, the existing live acceptance
+helpers, and the existing manual maintenance helpers. The deployer joins these
+sources into one remote file without adding, deleting, or renaming live files.
+String mappings remain supported for projects with separate remote files. Each
+source may appear only once and the workflow and acceptance helper are required.
 
-[PR #231](https://github.com/cavandonohoe/cavandonohoe.github.io/pull/231) was open
-when this infrastructure was prepared. It fixes response replay, rejection,
-organizer edits, ID validation, concurrent edits, and public-name privacy checks.
-This is a separate infrastructure change against main; it does not silently ship
-that PR's unmerged code. Review and merge #231 before the initial live comparison
-and activation. Any newer live-only changes must also be reconciled through a PR.
+The live source matches the owner's supplied backup. The linking candidate applies
+the already-merged reconciliation and organizer-edit protections from main while
+preserving the live acceptance and maintenance functions. No installer, refresh,
+acceptance helper, or trigger modification runs during linking or deployment.
+The Script ID, OAuth credentials, raw backup, and bootstrap hashes stay outside
+this public repository. The OAuth credentials are separate from `GCP_SA_KEY`.
 
 The data flow is unchanged:
 
@@ -41,8 +40,8 @@ integrations; if one needs updating, plan it separately.
 
 ## One-time Google authorization and private comparison
 
-Use Node 22 and run from the repository root, on a new linking branch after this
-infrastructure and #231 have merged:
+Use Node 22 and run from the repository root, on a new linking branch after the deployment
+infrastructure has merged:
 
 ```sh
 git switch -c infra/tohs-link-existing-script
@@ -99,7 +98,7 @@ live-only code into this public repository. Keep runtime secrets in Script
 Properties. Do not commit raw responses, backups, properties, or private logs.
 
 In the linking PR, adjust `project.json` file keys to the actual remote filenames
-(e.g. `Code.js`, not an invented rename). Values point to reviewed files under
+(e.g. `Code.js`, not an invented rename). Values point to a reviewed file or an ordered array of JavaScript files under
 `scripts/tohs/`. Preserve every remote file, including acceptance helpers; the
 preflight refuses any addition/deletion/rename or manifest difference. The current
 inventory supports flat JavaScript/HTML filenames using letters, digits, `_` and

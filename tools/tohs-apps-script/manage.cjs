@@ -27,21 +27,31 @@ function readAt(file, ref) {
   return ref ? execFileSync('git', ['show', `${ref}:${file}`], {cwd:ROOT, encoding:'utf8', stdio:['ignore','pipe','pipe']}) :
     fs.readFileSync(path.join(ROOT, file), 'utf8');
 }
-function bundle(ref, requireVerified = false) {
-  const config = JSON.parse(readAt(CONFIG, ref));
+function bundle(ref, requireVerified = false, read = readAt) {
+  const config = JSON.parse(read(CONFIG, ref));
   assert(typeof config.verified === 'boolean', 'Missing verification state');
   assert(!requireVerified || config.verified, 'Live project has not been verified; follow the linking guide');
   assert(config.files && Object.keys(config.files).length > 0, 'Empty source inventory');
   const files = {};
-  for (const [target, source] of Object.entries(config.files)) {
+  const included = new Set();
+  for (const [target, mapping] of Object.entries(config.files)) {
     assert(/^[A-Za-z0-9_-]+\.(js|html)$/.test(target), 'Unsafe remote filename');
-    assert(/^scripts\/tohs\/[A-Za-z0-9_-]+\.(js|html)$/.test(source), 'Source must be reviewed under scripts/tohs');
-    const text = readAt(source, ref);
+    const sources = Array.isArray(mapping) ? mapping : [mapping];
+    assert(sources.length > 0, 'Empty source mapping');
+    assert(!Array.isArray(mapping) || target.endsWith('.js'), 'Only JavaScript files can combine sources');
+    const parts = sources.map(source => {
+      assert(typeof source === 'string' && /^scripts\/tohs\/[A-Za-z0-9_-]+\.(js|html)$/.test(source), 'Source must be reviewed under scripts/tohs');
+      assert(source.endsWith(path.extname(target)), 'Source and target types must match');
+      assert(!included.has(source), 'Source mapped more than once');
+      included.add(source);
+      return read(source, ref);
+    });
+    const text = parts.join('\n');
     if (target.endsWith('.js')) new vm.Script(text, {filename:target});
     files[target] = text;
   }
-  assert(Object.values(config.files).includes('scripts/tohs/contact_workflow.js'), 'Missing contact workflow');
-  assert(Object.values(config.files).includes('scripts/tohs/acceptance_test.js'), 'Preserve the existing acceptance helper');
+  assert(included.has('scripts/tohs/contact_workflow.js'), 'Missing contact workflow');
+  assert(included.has('scripts/tohs/acceptance_test.js'), 'Preserve the existing acceptance helper');
   // Do not invent scopes, timezone, advanced services, or execution settings.
   if (config.verified) {
     assert(config.manifest && typeof config.manifest === 'object' && !Array.isArray(config.manifest), 'Import the exact live manifest');
