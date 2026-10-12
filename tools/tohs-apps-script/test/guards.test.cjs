@@ -39,7 +39,18 @@ test('snapshot handles .gs but refuses duplicate names and unexpected private fi
 const pr={merged:true,base:{ref:'main',repo:{full_name:'owner/repo'}},merge_commit_sha:'merge',head:{sha:'head'},user:{login:'author'}};
 const review={id:1,state:'APPROVED',commit_id:'head',user:{login:'reviewer',type:'User'}};
 const ok=(p=pr,r=[review])=>approved(p,r,'merge','owner/repo');
-test('only final-head human approval of the merged main PR permits deployment', () => {
+const own={...pr,user:{login:'owner',type:'User'}};
+test('the owner\'s own merged main PR deploys without a second reviewer', () => {
+  assert.equal(ok(own,[]),true);
+  assert.equal(ok(own,[{...review,commit_id:'stale'}]),true);
+  assert.equal(ok({...own,merged:false},[]),false);
+  assert.equal(ok({...own,merge_commit_sha:'other'},[]),false);
+  assert.equal(ok({...own,base:{ref:'dev',repo:{full_name:'owner/repo'}}},[]),false);
+  assert.equal(ok({...own,base:{ref:'main',repo:{full_name:'fork/repo'}}},[]),false);
+  assert.equal(ok({...own,user:{login:'owner',type:'Bot'}},[]),false);
+  assert.equal(ok(own,[{...review,state:'CHANGES_REQUESTED'}]),false);
+});
+test('other authors still need final-head human approval of the merged main PR', () => {
   assert.equal(ok(),true);
   assert.equal(ok({...pr,merged:false}),false);
   assert.equal(ok({...pr,merge_commit_sha:'other'}),false);

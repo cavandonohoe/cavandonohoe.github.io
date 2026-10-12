@@ -149,17 +149,16 @@ comparison. No automated linking command calls `push`, an installer, or a refres
 Before enabling deployment:
 
 1. Create environment **`tohs-apps-script-production`** in repository Settings →
-   Environments; allow deployments from the `main` branch only, not tags. Optional
-   required environment reviewers can add a release approval, but are not needed
-   for the normal reviewed-PR flow.
-2. Protect main with a ruleset/branch protection requiring a PR, at least one human
-   approval, dismissal of stale reviews, resolution of review conversations, and
-   **Validate Apps Script** as a required check. Prevent force pushes and deletion.
-   The repository had no main protection/rulesets when inspected. Coordinate this
-   with the existing scheduled data Actions, which currently push generated data
-   directly to main; migrate them to PRs or explicitly scope any trusted-bot bypass.
-   Never grant a bypass for script source or deployment tooling. The deployment
-   workflow independently rejects direct pushes even if a bot has a data bypass.
+   Environments; allow deployments from the `main` branch only, not tags. Add the
+   repository owner as a **required reviewer** with "Prevent self-review" off. Each
+   deployment then pauses until the owner clicks "Approve and deploy" (or the run
+   expires after 30 days, leaving live source untouched). This is the human check
+   for owner-authored PRs, including ones opened and merged by automation.
+2. Branch protection on main is optional. The deployment job's own gate already
+   refuses direct pushes, force pushes, and multi-commit pushes. Requiring PRs on
+   main would also block the scheduled data Actions that push generated data there.
+   If you add protection later, make **Validate Apps Script** a required check and
+   never grant a bypass for script source or deployment tooling.
 3. Store these **environment secrets**, not repository files or general variables:
 
    | Secret | Value |
@@ -179,15 +178,15 @@ Before enabling deployment:
 4. Keep repository variable `TOHS_APPS_SCRIPT_ENABLED` absent or `false` until the
    comparison, secrets, environment restrictions, protection settings, and linking
    PR have been verified. Set the **repository-level** variable to `true` immediately
-   before merging the approved linking PR (job-level conditions cannot use variables
+   before merging the linking PR (job-level conditions cannot use variables
    available only after entering an environment). If linking was already merged
    with the switch off, open a small reviewed follow-up under `scripts/tohs/` or
    `tools/tohs-apps-script/` to trigger the first deployment. Do not push to main.
-5. Have another human approve the PR's **final head commit**, then squash-merge or
-   use a merge commit into main. Self-approval, bot approvals, stale approvals,
-   outstanding change requests, rebase/multi-commit pushes, and stale workflow
-   commits are deliberately refused. A solo owner must arrange another reviewer;
-   do not bypass this check to make deployment run.
+5. Squash-merge (or merge-commit) the PR into main. A merged PR authored by the
+   repository owner deploys without a second reviewer. A PR from anyone else needs
+   a human, non-author approval of its **final head commit**. Outstanding change
+   requests, bot authors, rebase/multi-commit pushes, and stale workflow commits are
+   always refused.
 
 The initial baseline can be removed after a successful readback. Keep the local
 backup securely. Delete/revoke OAuth credentials when retiring access; never
@@ -198,11 +197,13 @@ and `_site.yml` excludes `tools` and `private` from site output.
 
 Edit `scripts/tohs/` on a branch, run the checks, and open a PR. The secret-free
 validation job runs on every PR so its required check does not remain pending due
-to path filters. Only a push to main affecting source/tooling/workflow can deploy.
+to path filters. Only a push to main affecting `scripts/tohs/` or `tools/tohs-apps-script/` can
+deploy; workflow-only edits are validated on their PR but do not deploy.
 There is no manual dispatch, schedule, PR deployment, or `pull_request_target`.
 
 After validation, the deployment job verifies that the current main SHA is a
-single merge/squash commit from an approved PR. It installs locked clasp 3.4.1
+single merge/squash commit from a merged PR (owner-authored, or approved by
+another human). It installs locked clasp 3.4.1
 without package lifecycle scripts, retests the merged tree, then:
 
 1. Authenticates with a temporary private auth file and pulls the whole live
