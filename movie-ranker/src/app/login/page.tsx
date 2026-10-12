@@ -27,7 +27,7 @@ export default function LoginPage({
             required
             autoFocus
             placeholder="••••"
-            className="w-full rounded-xl border border-white/10 bg-slate px-4 py-3 text-base text-ink placeholder:text-mist/50 focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-gold/30"
+            className="w-full rounded-xl border border-white/10 bg-slate px-4 py-3 text-base text-ink placeholder:text-mist/50 focus:border-white/30 focus:outline-hidden focus:ring-2 focus:ring-gold/30"
           />
         </label>
 
