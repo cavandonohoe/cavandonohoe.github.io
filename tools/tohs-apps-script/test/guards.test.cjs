@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
 const {fingerprint,bundle,snapshot,allowedBaseline} = require('../manage.cjs');
-const {approved} = require('../review-gate.cjs');
+const {approved, supersedes} = require('../review-gate.cjs');
 test('checked-in inventory compiles; unverified project cannot deploy', () => {
   const {config} = bundle();
   if (!config.verified) assert.throws(() => bundle(undefined,true), /not been verified/);
@@ -87,4 +87,16 @@ test('combined remote file preserves ordered helpers and refuses unsafe mappings
   }
   config.files = {'Code.js':workflow,'Acceptance.js':helper};
   assert.equal(Object.keys(bundle(undefined,true,read).files).length,3);
+});
+test('only later main commits that change deployable TOHS paths make a deployment stale', () => {
+  const later=(...files)=>({status:'ahead',files:files.map(f=>typeof f==='string'?{filename:f}:f)});
+  assert.equal(supersedes({status:'identical',files:[]}),false);
+  assert.equal(supersedes(later('data/activity.json','projects/case-studies.json')),false);
+  assert.equal(supersedes(later('.github/workflows/tohs-apps-script.yml')),false);
+  assert.equal(supersedes(later('data/x.json','scripts/tohs/contact_workflow.js')),true);
+  assert.equal(supersedes(later('tools/tohs-apps-script/project.json')),true);
+  assert.equal(supersedes(later({filename:'scripts/old.js',previous_filename:'scripts/tohs/old.js'})),true);
+  assert.equal(supersedes({status:'diverged',files:[]}),true);
+  assert.equal(supersedes({status:'behind',files:[]}),true);
+  assert.equal(supersedes({status:'ahead',files:Array.from({length:300},(_,i)=>({filename:`d/${i}`}))}),true);
 });
