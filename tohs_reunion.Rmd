@@ -62,6 +62,8 @@ missing_list <- grad_list_clean %>%
 
 Help us reach the TOHS Class of 2012 for our next reunion! We currently have emails for **`r percent_accounted_text`** of our class. If you see yourself on the list below, please [update your reunion contact details](`r form_url`). Your email, phone number, and responses are kept private to reunion organizers.
 
+**About this list:** this page is public. It shows the first and last names of classmates we have not reached yet, and the published roster data in this site's public GitHub repository also records whether we have an email for each classmate (never the email itself). If you would rather not be listed, say so in the [contact form](`r form_url`) or reach out to the organizers and we will take your name off. Earlier versions of the published data may remain in the repository history.
+
 Also, here is a link to [**the lancer: SENIOR ISSUE 2012**](https://issuu.com/thelancer/docs/seniorissue2012) (our Lancer newspaper), if you want to walk down memory lane.
 
 The list below last changed on `r data_updated_at` (it is checked every few hours). These classmates are still missing emails:
