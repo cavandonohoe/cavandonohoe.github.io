@@ -203,18 +203,21 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
+          # Plain names, not any::, so pak records them as standard CRAN-like installs.
+          # rsconnect cannot map pak's "any" source to a repository URL, and the
+          # shinyapps.io build then fails fetching "RSPM/src/contrib/...".
           packages: |
-            any::rsconnect
-            any::shiny
-            any::bslib
-            any::jsonlite
-            any::dplyr
-            any::lubridate
-            any::plotly
-            any::DT
-            any::scales
-            any::stringr
-            any::tibble
+            rsconnect
+            shiny
+            bslib
+            jsonlite
+            dplyr
+            lubridate
+            plotly
+            DT
+            scales
+            stringr
+            tibble
           dependencies: '"hard"'
           install-pandoc: false
           install-quarto: false
@@ -234,16 +237,49 @@ jobs:
             }
           '
 
-      - name: Verify dashboard deployment dependencies
+      # pak installs from Posit Package Manager, which stamps each package's
+      # DESCRIPTION with Repository: RSPM. Name both repositories with real
+      # *source* URLs (shinyapps.io builds from source) and drop the binary-mirror
+      # override, so the manifest never records the bare name "RSPM" as a URL.
+      # setup-r-dependencies installs some of its own helpers (e.g. jsonlite) as
+      # any::<pkg>. rsconnect cannot map that "any" source to a repository URL,
+      # so reinstall those as ordinary repository installs.
+      - name: Normalize pak "any::" installs
         run: |
           Rscript -e '
-            options(repos = c(CRAN = "https://cloud.r-project.org"))
-            rsconnect::appDependencies(appDir = "podcast-dashboard")
+            ip <- utils::installed.packages(fields = "RemoteType")
+            anyref <- rownames(ip)[!is.na(ip[, "RemoteType"]) & ip[, "RemoteType"] == "any"]
+            if (length(anyref)) {
+              message("Reinstalling from repository: ", paste(anyref, collapse = ", "))
+              utils::install.packages(anyref)
+            }
+          '
+
+      - name: Verify dashboard deployment dependencies
+        run: |
+          unset RENV_CONFIG_REPOS_OVERRIDE
+          Rscript -e '
+            options(repos = c(
+              RSPM = "https://packagemanager.posit.co/cran/latest",
+              CRAN = "https://cloud.r-project.org"
+            ))
+            deps <- rsconnect::appDependencies(appDir = "podcast-dashboard")
+            bad <- deps[!is.na(deps$Repository) & !grepl("^https?://", deps$Repository), ]
+            if (nrow(bad)) {
+              print(bad[, c("Package", "Version", "Source", "Repository")])
+              stop("Packages without a fetchable repository URL")
+            }
+            print(table(deps$Source, useNA = "ifany"))
           '
 
       - name: Redeploy shinyapps.io app
         run: |
+          unset RENV_CONFIG_REPOS_OVERRIDE
           Rscript -e '
+            options(repos = c(
+              RSPM = "https://packagemanager.posit.co/cran/latest",
+              CRAN = "https://cloud.r-project.org"
+            ))
             rsconnect::setAccountInfo(
               name = Sys.getenv("SHINYAPPS_NAME"),
               token = Sys.getenv("SHINYAPPS_TOKEN"),
