@@ -241,6 +241,20 @@ jobs:
       # DESCRIPTION with Repository: RSPM. Name both repositories with real
       # *source* URLs (shinyapps.io builds from source) and drop the binary-mirror
       # override, so the manifest never records the bare name "RSPM" as a URL.
+      # setup-r-dependencies installs some of its own helpers (e.g. jsonlite) as
+      # any::<pkg>. rsconnect cannot map that "any" source to a repository URL,
+      # so reinstall those as ordinary repository installs.
+      - name: Normalize pak "any::" installs
+        run: |
+          Rscript -e '
+            ip <- utils::installed.packages(fields = "RemoteType")
+            anyref <- rownames(ip)[!is.na(ip[, "RemoteType"]) & ip[, "RemoteType"] == "any"]
+            if (length(anyref)) {
+              message("Reinstalling from repository: ", paste(anyref, collapse = ", "))
+              utils::install.packages(anyref)
+            }
+          '
+
       - name: Verify dashboard deployment dependencies
         run: |
           unset RENV_CONFIG_REPOS_OVERRIDE
