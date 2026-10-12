@@ -142,5 +142,29 @@ class RefreshTests(unittest.TestCase):
         self.assertFalse(target.with_suffix('.gz.part').exists())
 
 
+    def test_source_dates_use_imdb_headers_and_flag_disagreement(self):
+        def headers(modified, run=None):
+            value = {'Last-Modified': modified}
+            if run:
+                value['x-amz-meta-run-date'] = run
+            return json.dumps(value)
+
+        (self.inputs / 'title.basics.headers.json').write_text(
+            headers('Sun, 04 Oct 2026 12:48:22 GMT', '2026-10-04'))
+        (self.inputs / 'title.episode.headers.json').write_text(
+            headers('Sun, 04 Oct 2026 12:48:44 GMT', '2026-10-04'))
+        (self.inputs / 'title.ratings.headers.json').write_text(
+            headers('Mon, 05 Oct 2026 00:40:17 GMT', '2026-10-04'))
+        dates = download.source_dates(self.inputs)
+        self.assertEqual(dates['title.ratings'][1].isoformat(), '2026-10-05T00:40:17+00:00')
+        self.assertIsNone(download.date_mismatch_warning(dates))
+
+        # Without IMDb's run-date header, fall back to Last-Modified dates.
+        (self.inputs / 'title.ratings.headers.json').write_text(
+            headers('Wed, 07 Oct 2026 00:40:17 GMT'))
+        warning = download.date_mismatch_warning(download.source_dates(self.inputs))
+        self.assertIn('title.ratings 2026-10-07', warning)
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -26,7 +26,18 @@ snapshot <- readr::read_csv(file.path(result_dir, "cohort_summary.csv"), show_co
 validation <- readr::read_csv(file.path(result_dir, "validation_summary.csv"), show_col_types = FALSE)
 manifest <- jsonlite::fromJSON(file.path(result_dir, "manifest.json"))
 snapshot_time <- if (!is.null(manifest$analyzed_utc)) manifest$analyzed_utc else manifest$retrieved_utc
-snapshot_date <- format(as.Date(substr(snapshot_time, 1, 10)), "%d %B %Y")
+fmt_day <- function(x) sub("^0", "", format(as.Date(x), "%d %B %Y"))
+analysis_date <- fmt_day(substr(snapshot_time, 1, 10))
+# Snapshot provenance comes from IMDb's own file headers, not the analysis run.
+source_dates <- imdb_source_dates(manifest)
+source_run_dates <- sort(unique(source_dates$run_date))
+source_dates_agree <- length(source_run_dates) == 1
+source_date_label <- paste(fmt_day(source_run_dates), collapse = " to ")
+source_modified_label <- paste(
+  sprintf("`%s` %s UTC", source_dates$dataset,
+          format(source_dates$last_modified, "%d %b %Y %H:%M", tz = "UTC")),
+  collapse = ", "
+)
 counts <- lapply(c(1000L, 5000L, 10000L), function(n) imdb_exceptional_counts(series, episodes, n))
 names(counts) <- c("1000", "5000", "10000")
 primary <- counts[["5000"]]
@@ -49,6 +60,15 @@ stopifnot(
 main <- sensitivity |> dplyr::filter(episode_votes == 5000)
 outside <- primary |> dplyr::filter(!saved_cohort, exceptional_episodes > 0)
 fmt <- function(x) format(x, big.mark = ",", scientific = FALSE, trim = TRUE)
+saved_eligible <- snapshot |>
+  dplyr::filter(cohort == "saved_cohort_eligible", episode_vote_threshold == 5000)
+saved_unique <- manifest$saved_cohort_unique_shows
+top250_check <- validation |> dplyr::filter(file == "top250_imdb_series.csv")
+stopifnot(nrow(saved_eligible) == 1, nrow(top250_check) == 1, !is.null(manifest$repo_commit))
+source_url <- paste0(
+  "https://github.com/cavandonohoe/cavandonohoe.github.io/tree/",
+  manifest$repo_commit, "/analysis/imdb-exceptional-episodes"
+)
 ```
 
 <style>
@@ -64,7 +84,18 @@ I looked beyond the IMDb Top 250 at **all TV series and miniseries with at least
 in IMDb's official downloadable datasets. An exceptional episode earns **at least 9.7/10 with at least
 5,000 episode votes**.
 
-**Snapshot: `r snapshot_date` (UTC).** Ratings and vote counts can change.
+**Snapshot: IMDb export of `r source_date_label`.** Source files last modified: `r source_modified_label`.
+Analyzed `r analysis_date` (UTC). Ratings and vote counts can change.
+
+```{r source-date-warning, results='asis'}
+if (!source_dates_agree) {
+  cat(paste0(
+    '<div class="alert alert-warning" role="note">The three IMDb files come from ',
+    "different export dates (", source_date_label, "), so ratings and episode links ",
+    "may describe slightly different moments.</div>"
+  ))
+}
+```
 
 ```{r headline, results='asis'}
 cat(sprintf(
@@ -121,12 +152,14 @@ Search for a title or genre. On narrow screens, expand a show’s row to see all
 uses the primary cutoff: rating ≥9.7 with ≥5,000 episode votes. “Total episodes” means every
 episode linked to the show in IMDb's snapshot, including specials, unrated entries, and any
 upcoming placeholders. It is not restricted to episodes that received enough votes.
+“Rated episodes” counts the linked episodes that have any IMDb rating record, as a supplemental
+reference for shows with many unrated specials or placeholders.
 
 ```{r shows-table}
 show_table <- primary |> dplyr::transmute(
   Show = series_title, Year = start_year, Type = title_type,
   Genres = genres, `Series rating` = series_rating, `Series votes` = series_votes,
-  `Total episodes` = linked_episodes,
+  `Total episodes` = linked_episodes, `Rated episodes` = rated_episodes,
   `Episodes: ≥1,000 votes` = exceptional_1000,
   `Episodes: ≥5,000 votes` = exceptional_5000,
   `Episodes: ≥10,000 votes` = exceptional_10000,
@@ -135,15 +168,15 @@ show_table <- primary |> dplyr::transmute(
 )
 DT::datatable(show_table, rownames = FALSE, extensions = c("Buttons", "Responsive"),
               caption = "Exceptional episodes have rating ≥9.7. All eligible shows remain in the denominator.",
-              options = list(pageLength = 15, responsive = TRUE, order = list(list(8, "desc")),
+              options = list(pageLength = 15, responsive = TRUE, order = list(list(9, "desc")),
                              columnDefs = list(
                                list(responsivePriority = 1, targets = 0),
-                               list(responsivePriority = 2, targets = 10),
-                               list(responsivePriority = 3, targets = 8),
+                               list(responsivePriority = 2, targets = 11),
+                               list(responsivePriority = 3, targets = 9),
                                list(responsivePriority = 4, targets = 6)
                              ),
                              dom = "Bfrtip", buttons = c("copy", "csv"))) |>
-  DT::formatRound(c("Series votes", "Total episodes", "Episodes: ≥1,000 votes",
+  DT::formatRound(c("Series votes", "Total episodes", "Rated episodes", "Episodes: ≥1,000 votes",
                     "Episodes: ≥5,000 votes", "Episodes: ≥10,000 votes"), digits = 0) |>
   DT::formatRound("Exceptional share (%)", digits = 2)
 ```
@@ -151,7 +184,8 @@ DT::datatable(show_table, rownames = FALSE, extensions = c("Buttons", "Responsiv
 ## Which shows have the highest exceptional share?
 
 This view divides the primary exceptional-episode count by the show's total episode count.
-Short shows can rank highly with only a few standout episodes. The labels show the numerator, denominator, and percentage.
+Short shows can rank highly with only a few standout episodes. The labels show the numerator, denominator,
+percentage, and how many of the show's episodes have a rating.
 Shows without an exceptional episode are omitted from this chart and remain in the full table above.
 
 ```{r percentage-chart}
@@ -163,7 +197,7 @@ share_leaders$series_title <- factor(share_leaders$series_title, levels = rev(sh
 plotly::plot_ly(
   share_leaders, height = 650, x = ~percent_exceptional, y = ~series_title, type = "bar", orientation = "h",
   text = ~paste0(exceptional_episodes, " / ", linked_episodes, " episodes<br>",
-                 sprintf("%.2f", percent_exceptional), "%"),
+                 sprintf("%.2f", percent_exceptional), "% · ", fmt(rated_episodes), " rated"),
   hoverinfo = "skip", textposition = "outside", textfont = list(size = 11),
   cliponaxis = FALSE, marker = list(color = "#6b5b95")
 ) |>
@@ -176,7 +210,8 @@ plotly::plot_ly(
   imdb_plotly_layout(
     titles = share_leaders$series_title,
     labels = paste0(share_leaders$exceptional_episodes, " / ", share_leaders$linked_episodes,
-                    " episodes<br>", sprintf("%.2f", share_leaders$percent_exceptional), "%"),
+                    " episodes<br>", sprintf("%.2f", share_leaders$percent_exceptional), "% · ",
+                    fmt(share_leaders$rated_episodes), " rated"),
     left_margin = 210, axis_title = "Share of all episodes rated ≥9.7 with ≥5,000 votes (%)",
     compact_axis_title = "Exceptional share (%)", compact_row_height = 76
   )
@@ -243,8 +278,8 @@ episode_widget(10000L)
 
 ## Comparison with the saved Top 250
 
-The existing CSV contains 250 distinct show IDs. Of those, **218 meet the 25,000-series-vote cutoff**
-in this snapshot. This comparison uses official episode ratings for those historical IDs.
+The existing CSV contains `r fmt(saved_unique)` distinct show IDs. Of those,
+**`r fmt(saved_eligible$cohort_shows)` meet the 25,000-series-vote cutoff** in this snapshot. This comparison uses official episode ratings for those historical IDs.
 I haven't rebuilt the chart by sorting bulk ratings: IMDb's Top 250 uses its own ranking rules.
 
 ```{r cohort-table}
@@ -261,7 +296,8 @@ knitr::kable(cohort_table)
 ```
 
 The cohort rows overlap: eligible saved members and eligible shows outside the saved list together
-make up the broader universe. The all-member saved cohort also includes 32 shows below the series-vote cutoff.
+make up the broader universe. The all-member saved cohort also includes
+`r fmt(saved_unique - saved_eligible$cohort_shows)` shows below the series-vote cutoff.
 
 ## Sources, validation, and limitations
 
@@ -270,9 +306,10 @@ The universe comes from [IMDb's official non-commercial datasets](https://data.i
 and `title.ratings` provides weighted ratings and vote counts. Series votes are for the show itself;
 they are not a sum of episode votes. There are no language, country, animation, or documentary exclusions.
 
-Existing CSVs serve as validation checks. The stored Top 250 CSV has 15,519 rows; 15,405 match a unique
-official series/season/episode key. Twenty matched rows change their primary exceptional classification
-between snapshots. Because the stored CSV lacks episode IDs, matching is provisional and can be affected
+Existing CSVs serve as validation checks. The stored Top 250 CSV has `r fmt(top250_check$rows)` rows;
+`r fmt(top250_check$matched)` match a unique official series/season/episode key.
+`r fmt(top250_check$primary_classification_changes)` matched rows change their primary exceptional
+classification between snapshots. Because the stored CSV lacks episode IDs, matching is provisional and can be affected
 by renumbering as well as changes in ratings and votes.
 
 Specials and season-zero entries are included. The downloads lack exact episode air dates, so this analysis
@@ -284,6 +321,6 @@ of very small samples but do not eliminate fandom effects or organized voting.
 [Download cohort sensitivity results](analysis/imdb-exceptional-episodes/results/cohort_summary.csv) ·
 [Download CSV validation summary](analysis/imdb-exceptional-episodes/results/validation_summary.csv)
 
-The [project source and refresh instructions](https://github.com/cavandonohoe/cavandonohoe.github.io/tree/75d095f24e258d90ef3f0d56b2e714df9bf0f6e5/analysis/imdb-exceptional-episodes)
+The [project source and refresh instructions](`r source_url`) (at the commit that produced this snapshot)
 include dataset hashes and source HTTP metadata for this dated snapshot. The page renders from checked-in
 data; building the website does not download IMDb's full datasets.

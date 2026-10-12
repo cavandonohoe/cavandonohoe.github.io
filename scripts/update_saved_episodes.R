@@ -11,11 +11,12 @@
 # Endpoint: GET /v1/me/episodes (current_user_saved_episodes). NOTE: this
 # returns only episodes you explicitly SAVED (hearted). It does NOT include
 # auto-downloaded / followed-show / auto-added episodes that show up under
-# "Your Episodes" in the app, and it is capped at offset 200. We measure both
-# gaps (see the meta$missingness block written below) rather than guessing.
+# "Your Episodes" in the app, and it is capped at offset 200, so it only ever
+# appends to the Account Data export membership and never removes episodes.
 #
 # Output shape (must match what app.R reads):
-#   { "meta": { generated_at, source, n_episodes, missingness{...} },
+#   { "meta": { generated_at, export_n_episodes, source, n_episodes,
+#               api_refreshed_at, api_saved_count, ... },
 #     "episodes": [ { id, added_at, show, publisher, name, dur_min, release,
 #                     url, desc }, ... ] }
 
@@ -114,47 +115,65 @@ api_episodes <- lapply(items, function(it) {
   )
 })
 
-existing <- jsonlite::fromJSON(out_path, simplifyDataFrame = FALSE)
-episodes <- existing$episodes %||% list()
-existing_ids <- vapply(episodes, function(e) e$id %||% NA_character_, character(1))
-api_ids <- vapply(api_episodes, function(e) e$id %||% NA_character_, character(1))
+# Merge API rows into the existing library. Returns the updated payload and
+# whether the episode list changed. Meta is only touched when episodes change:
+# stamping the refresh date every day would otherwise produce a daily commit and
+# redeploy even when nothing new was saved, so `api_refreshed_at` means "last
+# refresh that changed the library". `export_n_episodes` (set by
+# import_library.py) is left alone, so n_episodes - export_n_episodes is the
+# number of episodes appended by the API since the last Account Data export.
+merge_saved_episodes <- function(existing, api_episodes, today = Sys.Date()) {
+  episodes <- existing$episodes %||% list()
+  existing_ids <- vapply(episodes, function(e) e$id %||% NA_character_, character(1))
+  api_ids <- vapply(api_episodes, function(e) e$id %||% NA_character_, character(1))
 
-# Enrich existing library rows with fresh API metadata without dropping fields
-# that only exist in the Account Data export.
-for (i in seq_along(episodes)) {
-  id <- existing_ids[[i]]
-  j <- match(id, api_ids)
-  if (!is.na(j)) {
-    fresh <- api_episodes[[j]]
-    for (field in c("added_at", "publisher", "dur_min", "release", "url", "desc")) {
-      value <- fresh[[field]]
-      if (!is.null(value) && length(value) && !all(is.na(value))) {
-        episodes[[i]][[field]] <- value
+  # Enrich existing library rows with fresh API metadata without dropping
+  # fields that only exist in the Account Data export.
+  for (i in seq_along(episodes)) {
+    j <- match(existing_ids[[i]], api_ids)
+    if (!is.na(j)) {
+      fresh <- api_episodes[[j]]
+      for (field in c("added_at", "publisher", "dur_min", "release", "url", "desc")) {
+        value <- fresh[[field]]
+        if (!is.null(value) && length(value) && !all(is.na(value))) {
+          episodes[[i]][[field]] <- value
+        }
       }
     }
   }
+
+  # Newly saved API episodes may post-date the last Account Data export. Append
+  # them so the dashboard grows between manual exports. API absence is NOT used
+  # to delete anything because the endpoint is capped and does not represent
+  # the complete library.
+  new_idx <- which(!is.na(api_ids) & nzchar(api_ids) & !(api_ids %in% existing_ids))
+  if (length(new_idx)) episodes <- c(episodes, api_episodes[new_idx])
+
+  as_json <- function(x) jsonlite::toJSON(x, auto_unbox = TRUE, na = "null", null = "null")
+  changed <- !identical(as_json(episodes), as_json(existing$episodes %||% list()))
+  meta <- existing$meta %||% list()
+  if (changed) {
+    meta$n_episodes <- length(episodes)
+    meta$api_refreshed_at <- format(today)
+    meta$api_saved_count <- length(api_episodes)
+    meta$source <- "Spotify Account Data export + Spotify Web API incremental refresh"
+  }
+  list(
+    payload = list(meta = meta, episodes = episodes),
+    changed = changed, n_new = length(new_idx)
+  )
 }
 
-# Newly saved API episodes may post-date the last Account Data export. Append
-# them so the dashboard grows between manual exports. API absence is NOT used
-# to delete anything because the endpoint is capped and does not represent the
-# complete library.
-new_idx <- which(!is.na(api_ids) & nzchar(api_ids) & !(api_ids %in% existing_ids))
-if (length(new_idx)) episodes <- c(episodes, api_episodes[new_idx])
-
-meta <- existing$meta %||% list()
-meta$n_episodes <- length(episodes)
-meta$api_refreshed_at <- format(Sys.Date())
-meta$api_saved_count <- length(api_episodes)
-meta$source <- "Spotify Account Data export + Spotify Web API incremental refresh"
-
-payload <- list(meta = meta, episodes = episodes)
+existing <- jsonlite::fromJSON(out_path, simplifyDataFrame = FALSE)
+merged <- merge_saved_episodes(existing, api_episodes)
+payload <- merged$payload
 json <- jsonlite::toJSON(
   payload, auto_unbox = TRUE, pretty = TRUE, na = "null", null = "null"
 )
-writeLines(json, out_path)
+if (merged$changed) writeLines(json, out_path)
 
 cat(sprintf(
-  "Refreshed %d API saves; library now contains %d episodes (%d newly appended)\n",
-  length(api_episodes), length(episodes), length(new_idx)
+  "Refreshed %d API saves; library now contains %d episodes (%d newly appended)%s\n",
+  length(api_episodes), length(payload$episodes), merged$n_new,
+  if (merged$changed) "" else "; no changes, JSON left untouched"
 ))

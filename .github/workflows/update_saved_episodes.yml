@@ -11,6 +11,12 @@ name: Update saved podcast episodes
 # scripts/get_spotify_refresh_token.R.
 #
 # Saves are low-frequency, so a daily cadence is plenty.
+#
+# The refresh and the redeploy are separate jobs so a slow or flaky
+# shinyapps.io deploy can be retried on its own ("Re-run failed jobs") after
+# the data commit has already landed. Packages come from Posit Package
+# Manager Linux binaries via pak, cached on the resolved lockfile, instead of
+# CRAN source builds.
 
 on:
   workflow_dispatch:
@@ -33,18 +39,18 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
+    outputs:
+      pushed: ${{ steps.push.outputs.pushed }}
+      sha: ${{ steps.push.outputs.sha }}
     env:
       SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
       SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
       SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
-      SHINYAPPS_NAME: ${{ secrets.SHINYAPPS_NAME }}
-      SHINYAPPS_TOKEN: ${{ secrets.SHINYAPPS_TOKEN }}
-      SHINYAPPS_SECRET: ${{ secrets.SHINYAPPS_SECRET }}
       # The repo .Rprofile sources renv/activate.R, which switches .libPaths()
       # to an empty renv project library and breaks library() here. This job
-      # manages its own packages via the setup action, so disable the renv
-      # autoloader for every Rscript call (see update_movie_ranker_personal).
+      # manages its own packages, so disable the renv autoloader for every
+      # Rscript call (see update_movie_ranker_personal).
       RENV_CONFIG_AUTOLOADER_ENABLED: "FALSE"
     steps:
       - uses: actions/checkout@v7
@@ -56,37 +62,24 @@ jobs:
           [ -z "${SPOTIFY_CLIENT_ID:-}" ] && missing="$missing SPOTIFY_CLIENT_ID"
           [ -z "${SPOTIFY_CLIENT_SECRET:-}" ] && missing="$missing SPOTIFY_CLIENT_SECRET"
           [ -z "${SPOTIFY_REFRESH_TOKEN:-}" ] && missing="$missing SPOTIFY_REFRESH_TOKEN"
-          [ -z "${SHINYAPPS_NAME:-}" ] && missing="$missing SHINYAPPS_NAME"
-          [ -z "${SHINYAPPS_TOKEN:-}" ] && missing="$missing SHINYAPPS_TOKEN"
-          [ -z "${SHINYAPPS_SECRET:-}" ] && missing="$missing SHINYAPPS_SECRET"
           if [ -n "$missing" ]; then
             echo "::error::Missing required secrets:$missing"
             exit 1
           fi
 
-      - uses: ./.github/actions/setup-r-env
+      - uses: r-lib/actions/setup-r@v2
         with:
-          restore: "false"
+          use-public-rspm: true
+          r-version: "4.6"
 
-      - name: Install refresh and dashboard packages
-        run: |
-          Rscript -e '
-            packages <- c(
-              "httr2", "jsonlite", "rsconnect", "shiny", "bslib", "dplyr",
-              "lubridate", "plotly", "DT", "scales", "stringr", "tibble"
-            )
-            install.packages(packages, repos = "https://cloud.r-project.org")
-            missing <- packages[!vapply(packages, requireNamespace,
-              logical(1), quietly = TRUE)]
-            if (length(missing)) stop("Missing packages: ", paste(missing, collapse = ", "))
-          '
-
-      - name: Verify dashboard deployment dependencies
-        run: |
-          Rscript -e '
-            options(repos = c(CRAN = "https://cloud.r-project.org"))
-            rsconnect::appDependencies(appDir = "podcast-dashboard")
-          '
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::httr2
+            any::jsonlite
+          dependencies: '"hard"'
+          install-pandoc: false
+          install-quarto: false
 
       - name: Refresh saved-episodes JSON
         run: Rscript scripts/update_saved_episodes.R
@@ -94,7 +87,8 @@ jobs:
       - name: Verify only the saved-episodes JSON changed
         run: |
           set -euo pipefail
-          unexpected="$(git diff --name-only HEAD             | grep -Ev '^podcast-dashboard/data/saved_episodes\.json$' || true)"
+          unexpected="$(git diff --name-only HEAD \
+            | grep -Ev '^podcast-dashboard/data/saved_episodes\.json$' || true)"
           if [ -n "$unexpected" ]; then
             echo "ERROR: script modified files outside the saved-episodes JSON:"
             echo "$unexpected"
@@ -143,6 +137,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes."
             echo "pushed=false" >> "$GITHUB_OUTPUT"
+            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
@@ -158,6 +153,7 @@ jobs:
           for i in 1 2 3; do
             if git push; then
               echo "pushed=true" >> "$GITHUB_OUTPUT"
+              echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
               exit 0
             fi
             echo "Push failed; rebasing on remote and retrying ($i/3)..."
@@ -166,10 +162,71 @@ jobs:
           echo "ERROR: failed to push after 3 attempts."
           exit 1
 
-      # Redeploy so the live shinyapps.io app picks up repo-side app changes
-      # and/or refreshed data. Scheduled runs redeploy only when the data changed.
+  # Redeploy so the live shinyapps.io app picks up repo-side app changes
+  # and/or refreshed data. Scheduled runs redeploy only when the data changed.
+  # Runs from the exact commit the update job produced, so re-running just this
+  # job after a deploy failure ships the same data.
+  deploy:
+    needs: update
+    if: >-
+      needs.update.outputs.pushed == 'true' ||
+      github.event_name == 'workflow_dispatch' ||
+      github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      SHINYAPPS_NAME: ${{ secrets.SHINYAPPS_NAME }}
+      SHINYAPPS_TOKEN: ${{ secrets.SHINYAPPS_TOKEN }}
+      SHINYAPPS_SECRET: ${{ secrets.SHINYAPPS_SECRET }}
+      RENV_CONFIG_AUTOLOADER_ENABLED: "FALSE"
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.update.outputs.sha || github.sha }}
+
+      - name: Verify secrets present
+        run: |
+          set -euo pipefail
+          missing=""
+          [ -z "${SHINYAPPS_NAME:-}" ] && missing="$missing SHINYAPPS_NAME"
+          [ -z "${SHINYAPPS_TOKEN:-}" ] && missing="$missing SHINYAPPS_TOKEN"
+          [ -z "${SHINYAPPS_SECRET:-}" ] && missing="$missing SHINYAPPS_SECRET"
+          if [ -n "$missing" ]; then
+            echo "::error::Missing required secrets:$missing"
+            exit 1
+          fi
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+          r-version: "4.6"
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::rsconnect
+            any::shiny
+            any::bslib
+            any::jsonlite
+            any::dplyr
+            any::lubridate
+            any::plotly
+            any::DT
+            any::scales
+            any::stringr
+            any::tibble
+          dependencies: '"hard"'
+          install-pandoc: false
+          install-quarto: false
+
+      - name: Verify dashboard deployment dependencies
+        run: |
+          Rscript -e '
+            options(repos = c(CRAN = "https://cloud.r-project.org"))
+            rsconnect::appDependencies(appDir = "podcast-dashboard")
+          '
+
       - name: Redeploy shinyapps.io app
-        if: steps.push.outputs.pushed == 'true' || github.event_name == 'workflow_dispatch' || github.event_name == 'push'
         run: |
           Rscript -e '
             rsconnect::setAccountInfo(

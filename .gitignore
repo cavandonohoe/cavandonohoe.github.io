@@ -84,3 +84,8 @@ podcast-dashboard/rsconnect/
 
 # Bytecode from running scripts/*.py locally.
 __pycache__/
+
+# Real Spotify streaming-history ingest output (full personal play log). The
+# committed synthetic sample lives in streaming-history/sample-data/.
+streaming-history/data/
+streaming-history/rsconnect/
