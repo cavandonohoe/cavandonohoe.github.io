@@ -1,27 +1,28 @@
 {
-  "generated_at": "2026-10-09T21:18:53.629692+00:00",
+  "generated_at": "2026-10-11T20:35:45.801191+00:00",
   "window_days": 30,
-  "commits": 214,
+  "commits": 58,
+  "excludes_bot_commits": true,
   "active_areas": [
     {
-      "name": "data",
-      "file_touches": 369
-    },
-    {
       "name": "site",
-      "file_touches": 117
-    },
-    {
-      "name": "images",
-      "file_touches": 113
+      "file_touches": 64
     },
     {
       "name": ".github",
-      "file_touches": 52
+      "file_touches": 51
     },
     {
-      "name": "podcast-dashboard",
-      "file_touches": 26
+      "name": "data",
+      "file_touches": 35
+    },
+    {
+      "name": "scripts",
+      "file_touches": 34
+    },
+    {
+      "name": "tests",
+      "file_touches": 17
     }
   ]
 }

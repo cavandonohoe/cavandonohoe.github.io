@@ -3,10 +3,10 @@
   "commits": 100,
   "pull_requests": 0,
   "repositories_touched": 2,
-  "lines_added": 214376,
+  "lines_added": 170109,
   "most_used_language": "R",
   "language_lines_added": {
-    "R": 3025,
+    "R": 2781,
     "CSS": 26
   },
   "language_files": {
@@ -130,33 +130,6 @@
             "sha": "26bcae2c846c58fb43515102f318c2517cffe4e1",
             "date": "2021-10-02",
             "lines_added": 72
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "cv.Rmd",
-        "lines_added": 189,
-        "commits": [
-          {
-            "sha": "487779dccdc4b322a9aa33eafed14e44ceda654e",
-            "date": "2021-09-23",
-            "lines_added": 1
-          },
-          {
-            "sha": "cb3e97b9feb6ae22cfdbdf327e70209898ef7b18",
-            "date": "2021-09-16",
-            "lines_added": 2
-          },
-          {
-            "sha": "66a2263d0a35d422e4d66703420eeb10b06bbdc7",
-            "date": "2021-09-16",
-            "lines_added": 1
-          },
-          {
-            "sha": "07bbd46ec6adb1054ec4a4d4eb35d7162b63544e",
-            "date": "2021-08-25",
-            "lines_added": 185
           }
         ]
       },
@@ -476,7 +449,7 @@
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "cv-builder.R",
-        "lines_added": 92,
+        "lines_added": 91,
         "commits": [
           {
             "sha": "bee1804b2429cc07e9f6093d01b1f6d1665c172b",
@@ -486,7 +459,7 @@
           {
             "sha": "5798c499d7505c098ef35f2709306a7cff69acc7",
             "date": "2021-08-25",
-            "lines_added": 91
+            "lines_added": 90
           }
         ]
       },
@@ -546,18 +519,6 @@
             "sha": "54a01dae24b2d362dd0b7fce5edffc260d3d9aee",
             "date": "2021-09-15",
             "lines_added": 54
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "web_scraping/imdb_tv_series_web_scraping.R",
-        "lines_added": 61,
-        "commits": [
-          {
-            "sha": "45095bd4c0500ea4a1b56e3137464f5e3b7eb33a",
-            "date": "2021-09-27",
-            "lines_added": 61
           }
         ]
       },
@@ -654,6 +615,33 @@
       },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "cv.Rmd",
+        "lines_added": 7,
+        "commits": [
+          {
+            "sha": "487779dccdc4b322a9aa33eafed14e44ceda654e",
+            "date": "2021-09-23",
+            "lines_added": 1
+          },
+          {
+            "sha": "cb3e97b9feb6ae22cfdbdf327e70209898ef7b18",
+            "date": "2021-09-16",
+            "lines_added": 2
+          },
+          {
+            "sha": "66a2263d0a35d422e4d66703420eeb10b06bbdc7",
+            "date": "2021-09-16",
+            "lines_added": 1
+          },
+          {
+            "sha": "07bbd46ec6adb1054ec4a4d4eb35d7162b63544e",
+            "date": "2021-08-25",
+            "lines_added": 3
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "git_test_cli.R",
         "lines_added": 3,
         "commits": [
@@ -667,11 +655,11 @@
     ]
   },
   "excluded_language_lines_added": {
-    "JavaScript": 147001,
-    "CSS": 14044,
-    "HTML": 8778
+    "JavaScript": 118731,
+    "CSS": 13610,
+    "HTML": 8767
   },
-  "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, dependency files, and raw HTML inputs are excluded.",
+  "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, dependency, build, docs, minified, and raw HTML input files are excluded.",
   "most_active_month": "September",
   "longest_streak_days": 5,
   "active_days": 42,
@@ -699,7 +687,7 @@
     "cavandonohoe/cavandonohoe.github.io": 99,
     "cavandonohoe/cavandonohoe": 1
   },
-  "scope": "Author-matched commits reachable from branches and tags in public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bots and other authors are excluded. Language totals exclude Linguist-generated, vendored, conventional dependency files, and raw HTML inputs. Overall lines added still include all files. PRs count public pull requests authored by the user, when available.",
+  "scope": "Author-matched commits on the default branch of public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bot-authored or bot-committed commits, deploy commits, and other authors are excluded. Moved files count only changed lines. Language totals use .gitattributes Linguist overrides plus built-in generated, vendored, dependency, build, docs, minified, and raw HTML input patterns. Overall lines added still include all files. PRs count public pull requests the user authored and merged into their own repositories during the year, when available.",
   "is_partial_year": false,
-  "generated_at": "2026-10-07T03:32:18.308884+00:00"
+  "generated_at": "2026-10-10T22:04:01.693722+00:00"
 }
