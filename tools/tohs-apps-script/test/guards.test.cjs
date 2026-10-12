@@ -62,3 +62,29 @@ test('other authors still need final-head human approval of the merged main PR',
   assert.equal(ok(pr,[review,{...review,id:2,state:'CHANGES_REQUESTED'}]),false);
   assert.equal(ok(pr,[review,{...review,id:2,state:'COMMENTED'}]),true);
 });
+
+test('combined remote file preserves ordered helpers and refuses unsafe mappings', () => {
+  const workflow = 'scripts/tohs/contact_workflow.js';
+  const helper = 'scripts/tohs/acceptance_test.js';
+  const config = {verified:true, manifest:{runtimeVersion:'V8',timeZone:'America/Los_Angeles'},
+    files:{'Code.js':[workflow,helper]}};
+  const read = name => name.endsWith('project.json') ? JSON.stringify(config) :
+    name === workflow ? 'const workflow = 1;' : 'function acceptance() {}';
+  const result = bundle(undefined,true,read);
+  assert.deepEqual(Object.keys(result.files).sort(), ['Code.js','appsscript.json']);
+  assert.equal(result.files['Code.js'], 'const workflow = 1;\nfunction acceptance() {}');
+  for (const files of [
+    {'Code.js':[]},
+    {'Code.js':[workflow,helper,workflow]},
+    {'Code.js':[workflow,'../private.js']},
+    {'Code.html':[workflow,helper]},
+    {'Code.js':[workflow]},
+    {'Code.js':[workflow,helper], 'Other.js':helper},
+    {'Code.js':[workflow,helper,123]}
+  ]) {
+    config.files = files;
+    assert.throws(() => bundle(undefined,true,read));
+  }
+  config.files = {'Code.js':workflow,'Acceptance.js':helper};
+  assert.equal(Object.keys(bundle(undefined,true,read).files).length,3);
+});
