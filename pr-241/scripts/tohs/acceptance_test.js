@@ -2,7 +2,7 @@ function installAcceptanceTest() {
   const p=PropertiesService.getScriptProperties();
   let id=p.getProperty('TOHS_ACCEPTANCE_FORM_ID');
   if (!id) {
-    const f=FormApp.create('TEST ONLY — TOHS Meghan acceptance',false);
+    const f=FormApp.create('TEST ONLY: TOHS synthetic acceptance',false);
     p.setProperty('TOHS_ACCEPTANCE_FORM_ID',f.getId()); id=f.getId();
     f.setDescription('Isolated synthetic acceptance test. Does not update production contacts.');
     TOHS_QUESTIONS.forEach((title,i)=> {
@@ -22,7 +22,7 @@ function onAcceptanceSubmit() {
   const f=FormApp.openById(PropertiesService.getScriptProperties().getProperty('TOHS_ACCEPTANCE_FORM_ID'));
   const r=reconcileContacts(sourceRoster(s),legacySubmissions(s).concat(formSubmissions(f)),{});
   const m=r.master.find(x=>x.id==='90');
-  if(!m || m.email!=='meghan.acceptance@example.invalid') throw new Error('Acceptance match failed');
+  if(!m || m.email!=='testy.acceptance@example.invalid') throw new Error('Acceptance match failed');
   writeGenerated(t,'Acceptance Test Master',['roster_id','first_name','last_name','email','phone','test_only'],[[m.id,m.first,m.last,m.email,m.phone,true]]);
   const updated=new Date().toISOString();
   writeGenerated(t,'Acceptance Test Public',['first_name','last_name','email_bool','updated_at'],r.publicRows.map(x=>[x.first_name,x.last_name,x.email_bool,updated]));
