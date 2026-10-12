@@ -29,18 +29,19 @@ function isCompareKind(v: string | undefined): v is CompareKind {
 export default async function LeaderboardPage({
   searchParams
 }: {
-  searchParams: SearchParams;
+  searchParams: Promise<SearchParams>;
 }) {
-  const view: View = searchParams.view === "global" ? "global" : "personal";
-  const group: Group = searchParams.group === "flat" ? "flat" : "bucket";
-  const kind: CompareKind = isCompareKind(searchParams.kind)
-    ? (searchParams.kind as CompareKind)
+  const sp = await searchParams;
+  const view: View = sp.view === "global" ? "global" : "personal";
+  const group: Group = sp.group === "flat" ? "flat" : "bucket";
+  const kind: CompareKind = isCompareKind(sp.kind)
+    ? (sp.kind as CompareKind)
     : "movie";
-  const bucketFilter = searchParams.bucket
-    ? parseInt(searchParams.bucket, 10)
+  const bucketFilter = sp.bucket
+    ? parseInt(sp.bucket, 10)
     : null;
 
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const [{ data: titlesData, error: titlesError }, { data: userData }] =
     await Promise.all([
