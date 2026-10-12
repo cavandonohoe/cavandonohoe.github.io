@@ -123,12 +123,12 @@
     },
     {
       "project": "docs",
-      "tracked_files": 1,
-      "commits_touching_project": 3,
+      "tracked_files": 2,
+      "commits_touching_project": 4,
       "top_extensions": [
         [
           ".md",
-          1
+          2
         ]
       ]
     },
@@ -162,7 +162,7 @@
     {
       "project": "images",
       "tracked_files": 14,
-      "commits_touching_project": 64,
+      "commits_touching_project": 66,
       "top_extensions": [
         [
           ".jpg",
@@ -313,6 +313,21 @@
         [
           ".cjs",
           1
+        ]
+      ]
+    },
+    {
+      "project": "tools",
+      "tracked_files": 8,
+      "commits_touching_project": 1,
+      "top_extensions": [
+        [
+          ".cjs",
+          5
+        ],
+        [
+          ".json",
+          3
         ]
       ]
     },
