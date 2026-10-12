@@ -234,16 +234,35 @@ jobs:
             }
           '
 
+      # pak installs from Posit Package Manager, which stamps each package's
+      # DESCRIPTION with Repository: RSPM. Name both repositories with real
+      # *source* URLs (shinyapps.io builds from source) and drop the binary-mirror
+      # override, so the manifest never records the bare name "RSPM" as a URL.
       - name: Verify dashboard deployment dependencies
         run: |
+          unset RENV_CONFIG_REPOS_OVERRIDE
           Rscript -e '
-            options(repos = c(CRAN = "https://cloud.r-project.org"))
-            rsconnect::appDependencies(appDir = "podcast-dashboard")
+            options(repos = c(
+              RSPM = "https://packagemanager.posit.co/cran/latest",
+              CRAN = "https://cloud.r-project.org"
+            ))
+            deps <- rsconnect::appDependencies(appDir = "podcast-dashboard")
+            bad <- deps[!is.na(deps$Repository) & !grepl("^https?://", deps$Repository), ]
+            if (nrow(bad)) {
+              print(bad[, c("Package", "Version", "Source", "Repository")])
+              stop("Packages without a fetchable repository URL")
+            }
+            print(table(deps$Source, useNA = "ifany"))
           '
 
       - name: Redeploy shinyapps.io app
         run: |
+          unset RENV_CONFIG_REPOS_OVERRIDE
           Rscript -e '
+            options(repos = c(
+              RSPM = "https://packagemanager.posit.co/cran/latest",
+              CRAN = "https://cloud.r-project.org"
+            ))
             rsconnect::setAccountInfo(
               name = Sys.getenv("SHINYAPPS_NAME"),
               token = Sys.getenv("SHINYAPPS_TOKEN"),
