@@ -28,6 +28,7 @@ on:
       - "Refresh sitemap.xml"
       - "Update IMDb episode ratings"
       - "Update My Maps export"
+      - "Backfill movie-ranker posters"
       - "Update movie-ranker personal CSV"
       - "Update saved podcast episodes"
       - "Update watched TV episodes"
