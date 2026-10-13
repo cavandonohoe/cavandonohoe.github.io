@@ -207,6 +207,13 @@ def snapshot(year, records, now):
         for entry in files.values():
             entry["commits"].sort(key=lambda commit: (commit["date"], commit["sha"]), reverse=True)
     project, project_commits = ranked(repos)[0] if repos else (None, 0)
+    daily_commits, daily_added = Counter(days), Counter()
+    for _, row in rows:
+        daily_added[row["day"]] += row["added"]
+    daily_activity = [
+        {"date": day.isoformat(), "commits": daily_commits[day], "lines_added": daily_added[day]}
+        for day in sorted(daily_commits)
+    ]
     return {
         "year": year,
         "commits": len(rows),
@@ -222,6 +229,8 @@ def snapshot(year, records, now):
         "longest_streak_days": longest_streak(days),
         "active_days": len(set(days)),
         "monthly_commits": [months[m] for m in range(1, 13)],
+        # Active days only (sorted); feeds the year-over-year activity chart.
+        "daily_activity": daily_activity,
         "biggest_project": project.split("/", 1)[-1] if project else None,
         "biggest_project_commits": project_commits,
         "repositories": sorted(repos),

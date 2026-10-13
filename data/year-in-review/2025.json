@@ -711,6 +711,103 @@
     0,
     14
   ],
+  "daily_activity": [
+    {
+      "date": "2025-01-12",
+      "commits": 3,
+      "lines_added": 34100
+    },
+    {
+      "date": "2025-02-12",
+      "commits": 1,
+      "lines_added": 130
+    },
+    {
+      "date": "2025-06-18",
+      "commits": 1,
+      "lines_added": 32334
+    },
+    {
+      "date": "2025-08-20",
+      "commits": 1,
+      "lines_added": 209
+    },
+    {
+      "date": "2025-09-02",
+      "commits": 1,
+      "lines_added": 164
+    },
+    {
+      "date": "2025-10-05",
+      "commits": 14,
+      "lines_added": 2196
+    },
+    {
+      "date": "2025-10-06",
+      "commits": 6,
+      "lines_added": 80
+    },
+    {
+      "date": "2025-10-08",
+      "commits": 8,
+      "lines_added": 85
+    },
+    {
+      "date": "2025-10-09",
+      "commits": 1,
+      "lines_added": 23
+    },
+    {
+      "date": "2025-10-11",
+      "commits": 4,
+      "lines_added": 186
+    },
+    {
+      "date": "2025-10-15",
+      "commits": 1,
+      "lines_added": 0
+    },
+    {
+      "date": "2025-12-08",
+      "commits": 1,
+      "lines_added": 99
+    },
+    {
+      "date": "2025-12-11",
+      "commits": 1,
+      "lines_added": 22231
+    },
+    {
+      "date": "2025-12-12",
+      "commits": 2,
+      "lines_added": 2
+    },
+    {
+      "date": "2025-12-14",
+      "commits": 4,
+      "lines_added": 160
+    },
+    {
+      "date": "2025-12-15",
+      "commits": 1,
+      "lines_added": 184
+    },
+    {
+      "date": "2025-12-28",
+      "commits": 1,
+      "lines_added": 47
+    },
+    {
+      "date": "2025-12-29",
+      "commits": 2,
+      "lines_added": 1905
+    },
+    {
+      "date": "2025-12-30",
+      "commits": 2,
+      "lines_added": 3
+    }
+  ],
   "biggest_project": "cavandonohoe.github.io",
   "biggest_project_commits": 55,
   "repositories": [
@@ -721,5 +818,5 @@
   },
   "scope": "Author-matched commits on the default branch of public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bot-authored or bot-committed commits, deploy commits, and other authors are excluded. Moved files count only changed lines. Language totals use .gitattributes Linguist overrides plus built-in generated, vendored, dependency, build, docs, minified, and raw HTML input patterns. Overall lines added still include all files. PRs count public pull requests the user authored and merged into their own repositories during the year, when available.",
   "is_partial_year": false,
-  "generated_at": "2026-10-10T22:04:01.693722+00:00"
+  "generated_at": "2026-10-12T23:40:54.945871+00:00"
 }

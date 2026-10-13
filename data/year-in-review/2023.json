@@ -633,6 +633,228 @@
     4,
     6
   ],
+  "daily_activity": [
+    {
+      "date": "2023-01-03",
+      "commits": 1,
+      "lines_added": 80
+    },
+    {
+      "date": "2023-01-21",
+      "commits": 1,
+      "lines_added": 11
+    },
+    {
+      "date": "2023-02-14",
+      "commits": 2,
+      "lines_added": 24
+    },
+    {
+      "date": "2023-02-17",
+      "commits": 1,
+      "lines_added": 22
+    },
+    {
+      "date": "2023-02-18",
+      "commits": 1,
+      "lines_added": 11
+    },
+    {
+      "date": "2023-02-19",
+      "commits": 1,
+      "lines_added": 511
+    },
+    {
+      "date": "2023-02-20",
+      "commits": 3,
+      "lines_added": 97
+    },
+    {
+      "date": "2023-02-28",
+      "commits": 5,
+      "lines_added": 35172
+    },
+    {
+      "date": "2023-03-01",
+      "commits": 1,
+      "lines_added": 408
+    },
+    {
+      "date": "2023-03-02",
+      "commits": 6,
+      "lines_added": 61
+    },
+    {
+      "date": "2023-03-06",
+      "commits": 1,
+      "lines_added": 98
+    },
+    {
+      "date": "2023-03-13",
+      "commits": 5,
+      "lines_added": 66
+    },
+    {
+      "date": "2023-03-14",
+      "commits": 3,
+      "lines_added": 266
+    },
+    {
+      "date": "2023-03-21",
+      "commits": 1,
+      "lines_added": 11
+    },
+    {
+      "date": "2023-03-22",
+      "commits": 2,
+      "lines_added": 625
+    },
+    {
+      "date": "2023-03-30",
+      "commits": 2,
+      "lines_added": 2812
+    },
+    {
+      "date": "2023-04-05",
+      "commits": 2,
+      "lines_added": 47
+    },
+    {
+      "date": "2023-05-03",
+      "commits": 1,
+      "lines_added": 12
+    },
+    {
+      "date": "2023-05-09",
+      "commits": 1,
+      "lines_added": 12
+    },
+    {
+      "date": "2023-05-18",
+      "commits": 1,
+      "lines_added": 12
+    },
+    {
+      "date": "2023-06-13",
+      "commits": 1,
+      "lines_added": 184
+    },
+    {
+      "date": "2023-07-10",
+      "commits": 2,
+      "lines_added": 33922
+    },
+    {
+      "date": "2023-08-01",
+      "commits": 1,
+      "lines_added": 490
+    },
+    {
+      "date": "2023-08-24",
+      "commits": 1,
+      "lines_added": 17
+    },
+    {
+      "date": "2023-08-31",
+      "commits": 2,
+      "lines_added": 80
+    },
+    {
+      "date": "2023-09-11",
+      "commits": 5,
+      "lines_added": 4314
+    },
+    {
+      "date": "2023-09-13",
+      "commits": 4,
+      "lines_added": 331
+    },
+    {
+      "date": "2023-09-15",
+      "commits": 2,
+      "lines_added": 644
+    },
+    {
+      "date": "2023-09-20",
+      "commits": 1,
+      "lines_added": 13
+    },
+    {
+      "date": "2023-09-28",
+      "commits": 1,
+      "lines_added": 1557
+    },
+    {
+      "date": "2023-10-10",
+      "commits": 1,
+      "lines_added": 63
+    },
+    {
+      "date": "2023-10-11",
+      "commits": 3,
+      "lines_added": 36
+    },
+    {
+      "date": "2023-10-12",
+      "commits": 2,
+      "lines_added": 99
+    },
+    {
+      "date": "2023-10-13",
+      "commits": 1,
+      "lines_added": 45
+    },
+    {
+      "date": "2023-10-23",
+      "commits": 1,
+      "lines_added": 14
+    },
+    {
+      "date": "2023-10-31",
+      "commits": 1,
+      "lines_added": 14
+    },
+    {
+      "date": "2023-11-06",
+      "commits": 2,
+      "lines_added": 964
+    },
+    {
+      "date": "2023-11-14",
+      "commits": 1,
+      "lines_added": 14
+    },
+    {
+      "date": "2023-11-16",
+      "commits": 1,
+      "lines_added": 14
+    },
+    {
+      "date": "2023-12-02",
+      "commits": 1,
+      "lines_added": 14
+    },
+    {
+      "date": "2023-12-04",
+      "commits": 1,
+      "lines_added": 14
+    },
+    {
+      "date": "2023-12-10",
+      "commits": 1,
+      "lines_added": 14
+    },
+    {
+      "date": "2023-12-15",
+      "commits": 2,
+      "lines_added": 17
+    },
+    {
+      "date": "2023-12-22",
+      "commits": 1,
+      "lines_added": 14
+    }
+  ],
   "biggest_project": "cavandonohoe.github.io",
   "biggest_project_commits": 79,
   "repositories": [
@@ -645,5 +867,5 @@
   },
   "scope": "Author-matched commits on the default branch of public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bot-authored or bot-committed commits, deploy commits, and other authors are excluded. Moved files count only changed lines. Language totals use .gitattributes Linguist overrides plus built-in generated, vendored, dependency, build, docs, minified, and raw HTML input patterns. Overall lines added still include all files. PRs count public pull requests the user authored and merged into their own repositories during the year, when available.",
   "is_partial_year": false,
-  "generated_at": "2026-10-10T22:04:01.693722+00:00"
+  "generated_at": "2026-10-12T23:40:54.945871+00:00"
 }
