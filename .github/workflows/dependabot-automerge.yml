@@ -2,7 +2,7 @@ name: Dependabot auto-merge
 
 # Squash-merge Dependabot PRs once every other check on the PR has passed.
 # Minor/patch bumps merge on their own; major bumps (including any grouped PR
-# that contains one) and PRs with unparseable versions stay open for review.
+# that contains one) and PRs with unparsable versions stay open for review.
 #
 # pull_request_target runs in the base-repo context (secrets available) and
 # this workflow never checks out or executes PR code. It only reads check
