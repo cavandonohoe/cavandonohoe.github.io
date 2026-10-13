@@ -110,6 +110,83 @@
     0,
     0
   ],
+  "daily_activity": [
+    {
+      "date": "2024-01-08",
+      "commits": 1,
+      "lines_added": 17
+    },
+    {
+      "date": "2024-02-03",
+      "commits": 1,
+      "lines_added": 14
+    },
+    {
+      "date": "2024-02-06",
+      "commits": 1,
+      "lines_added": 14
+    },
+    {
+      "date": "2024-02-20",
+      "commits": 1,
+      "lines_added": 14
+    },
+    {
+      "date": "2024-02-29",
+      "commits": 1,
+      "lines_added": 14
+    },
+    {
+      "date": "2024-03-12",
+      "commits": 1,
+      "lines_added": 14
+    },
+    {
+      "date": "2024-06-10",
+      "commits": 2,
+      "lines_added": 70991
+    },
+    {
+      "date": "2024-06-11",
+      "commits": 2,
+      "lines_added": 210
+    },
+    {
+      "date": "2024-06-17",
+      "commits": 1,
+      "lines_added": 47
+    },
+    {
+      "date": "2024-08-01",
+      "commits": 1,
+      "lines_added": 44
+    },
+    {
+      "date": "2024-08-05",
+      "commits": 1,
+      "lines_added": 44
+    },
+    {
+      "date": "2024-08-16",
+      "commits": 1,
+      "lines_added": 2
+    },
+    {
+      "date": "2024-10-08",
+      "commits": 1,
+      "lines_added": 223
+    },
+    {
+      "date": "2024-10-09",
+      "commits": 3,
+      "lines_added": 657
+    },
+    {
+      "date": "2024-10-11",
+      "commits": 3,
+      "lines_added": 126
+    }
+  ],
   "biggest_project": "cavandonohoe.github.io",
   "biggest_project_commits": 20,
   "repositories": [
@@ -122,5 +199,5 @@
   },
   "scope": "Author-matched commits on the default branch of public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bot-authored or bot-committed commits, deploy commits, and other authors are excluded. Moved files count only changed lines. Language totals use .gitattributes Linguist overrides plus built-in generated, vendored, dependency, build, docs, minified, and raw HTML input patterns. Overall lines added still include all files. PRs count public pull requests the user authored and merged into their own repositories during the year, when available.",
   "is_partial_year": false,
-  "generated_at": "2026-10-10T22:04:01.693722+00:00"
+  "generated_at": "2026-10-12T23:40:54.945871+00:00"
 }

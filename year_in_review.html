@@ -690,6 +690,21 @@ are excluded. Streaks use UTC calendar days.</p>
 .year-web-table tr[aria-current="true"] { background:#e0f2fe; font-weight:700; }
 .year-web-table a { color:#075985; text-decoration:underline; }
 .year-web-history .year-web-note { margin-top:1rem; color:#475569; font-size:.9rem; }
+.year-activity { position:relative; margin:2rem 0; padding:1.4rem; border:1px solid #cbd5e1; border-radius:14px; background:#f8fafc; color:#0f172a; }
+.year-activity h2 { margin-top:0; font-size:1.5rem; }
+.year-activity-toggle { display:inline-flex; gap:.4rem; margin:.2rem 0 .8rem; }
+.year-activity-toggle button { padding:.45rem .9rem; border:1px solid #94a3b8; border-radius:999px; background:#fff; color:#0f172a; font-weight:600; cursor:pointer; }
+.year-activity-toggle button[aria-pressed="true"] { background:#111827; color:#fff; border-color:#111827; }
+.year-activity svg { display:block; width:100%; height:auto; touch-action:pan-y; }
+.year-activity .axis text { fill:#475569; font-size:12px; }
+.year-activity .grid line { stroke:#e2e8f0; }
+.year-activity .guide { stroke:#64748b; stroke-dasharray:3 3; }
+.year-activity-legend { display:flex; flex-wrap:wrap; gap:.4rem 1rem; margin:.6rem 0 0; padding:0; list-style:none; font-size:.9rem; }
+.year-activity-legend span { display:inline-block; width:1.4rem; height:.25rem; margin-right:.4rem; vertical-align:middle; border-radius:2px; }
+.year-activity-tooltip { position:absolute; pointer-events:none; padding:.5rem .7rem; border-radius:8px; background:#111827; color:#fff; font-size:.85rem; line-height:1.4; white-space:nowrap; box-shadow:0 6px 16px rgba(0,0,0,.2); }
+.year-activity-tooltip[hidden] { display:none; }
+.year-activity-tooltip i { display:inline-block; width:.6rem; height:.6rem; margin-right:.35rem; border-radius:50%; }
+.year-activity .year-web-note { margin-top:1rem; color:#475569; font-size:.9rem; }
 @media(max-width:480px) { .year-hero { padding:1.2rem; } .year-stat strong { font-size:1.5rem; } }
 </style>
 <p>
@@ -709,16 +724,16 @@ Year to date
 </div>
 <div class="year-grid">
 <div class="year-stat">
-<strong>296</strong><span>commits</span>
+<strong>310</strong><span>commits</span>
 </div>
 <div class="year-stat">
-<strong>206</strong><span>merged pull requests</span>
+<strong>220</strong><span>merged pull requests</span>
 </div>
 <div class="year-stat">
 <strong>6</strong><span>repositories touched</span>
 </div>
 <div class="year-stat">
-<strong>395,227</strong><span>lines added</span>
+<strong>403,089</strong><span>lines added</span>
 </div>
 </div>
 <div class="year-details">
@@ -728,7 +743,7 @@ Year to date
 </summary>
 <div class="year-language-content">
 <p>
-18,698 first-party R lines added across 97 files. Expand a file to see
+19,088 first-party R lines added across 98 files. Expand a file to see
 its contributing commits and GitHub changes.
 </p>
 <p>
@@ -939,9 +954,15 @@ at this commit</a>
 class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>podcast-dashboard/app.R
 <details>
 <summary>
-7 contributing commits
+8 contributing commits
 </summary>
 <ul class="year-file-commits">
+<li>
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/f7332d197ed6c5ae99acbf89d903a039863bb588">f7332d1</a>
+· 2026-10-12 · 26 lines added ·
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/f7332d197ed6c5ae99acbf89d903a039863bb588/podcast-dashboard/app.R">File
+at this commit</a>
+</li>
 <li>
 <a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/d4ded17d22fe59cba1ef59018068aadcacb5236c">d4ded17</a>
 · 2026-09-29 · 11 lines added ·
@@ -988,7 +1009,7 @@ at this commit</a>
 </details>
 </td>
 <td>
-485
+511
 </td>
 </tr>
 <tr>
@@ -1402,6 +1423,40 @@ at this commit</a>
 <tr>
 <td>
 <span
+class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>imdb_exceptional_episodes.Rmd
+<details>
+<summary>
+3 contributing commits
+</summary>
+<ul class="year-file-commits">
+<li>
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/f7332d197ed6c5ae99acbf89d903a039863bb588">f7332d1</a>
+· 2026-10-12 · 54 lines added ·
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/f7332d197ed6c5ae99acbf89d903a039863bb588/imdb_exceptional_episodes.Rmd">File
+at this commit</a>
+</li>
+<li>
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/e3eac316602d0bab5b950e9f903da08598b720e4">e3eac31</a>
+· 2026-10-03 · 286 lines added ·
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/e3eac316602d0bab5b950e9f903da08598b720e4/imdb_exceptional_episodes.Rmd">File
+at this commit</a>
+</li>
+<li>
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/432afab37877da4c031d9e00e0e507c2c0fde46b">432afab</a>
+· 2026-10-03 · 4 lines added ·
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/432afab37877da4c031d9e00e0e507c2c0fde46b/imdb_exceptional_episodes.Rmd">File
+at this commit</a>
+</li>
+</ul>
+</details>
+</td>
+<td>
+344
+</td>
+</tr>
+<tr>
+<td>
+<span
 class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>imdb_rating_plot.Rmd
 <details>
 <summary>
@@ -1791,34 +1846,6 @@ at this commit</a>
 <tr>
 <td>
 <span
-class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>imdb_exceptional_episodes.Rmd
-<details>
-<summary>
-2 contributing commits
-</summary>
-<ul class="year-file-commits">
-<li>
-<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/e3eac316602d0bab5b950e9f903da08598b720e4">e3eac31</a>
-· 2026-10-03 · 286 lines added ·
-<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/e3eac316602d0bab5b950e9f903da08598b720e4/imdb_exceptional_episodes.Rmd">File
-at this commit</a>
-</li>
-<li>
-<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/432afab37877da4c031d9e00e0e507c2c0fde46b">432afab</a>
-· 2026-10-03 · 4 lines added ·
-<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/432afab37877da4c031d9e00e0e507c2c0fde46b/imdb_exceptional_episodes.Rmd">File
-at this commit</a>
-</li>
-</ul>
-</details>
-</td>
-<td>
-290
-</td>
-</tr>
-<tr>
-<td>
-<span
 class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>scripts/refresh_director_filmographies.R
 <details>
 <summary>
@@ -2035,6 +2062,34 @@ at this commit</a>
 <tr>
 <td>
 <span
+class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>scripts/ingest_streaming_history.R
+<details>
+<summary>
+2 contributing commits
+</summary>
+<ul class="year-file-commits">
+<li>
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/f7332d197ed6c5ae99acbf89d903a039863bb588">f7332d1</a>
+· 2026-10-12 · 66 lines added ·
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/f7332d197ed6c5ae99acbf89d903a039863bb588/scripts/ingest_streaming_history.R">File
+at this commit</a>
+</li>
+<li>
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/b0d3d3b2ad831ad336af8b731d882dba1998b137">b0d3d3b</a>
+· 2026-09-28 · 177 lines added ·
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/b0d3d3b2ad831ad336af8b731d882dba1998b137/scripts/ingest_streaming_history.R">File
+at this commit</a>
+</li>
+</ul>
+</details>
+</td>
+<td>
+243
+</td>
+</tr>
+<tr>
+<td>
+<span
 class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>scripts/us_rental_demand_data.R
 <details>
 <summary>
@@ -2212,6 +2267,62 @@ at this commit</a>
 </td>
 <td>
 218
+</td>
+</tr>
+<tr>
+<td>
+<span
+class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>scripts/update_saved_episodes.R
+<details>
+<summary>
+2 contributing commits
+</summary>
+<ul class="year-file-commits">
+<li>
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/f7332d197ed6c5ae99acbf89d903a039863bb588">f7332d1</a>
+· 2026-10-12 · 55 lines added ·
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/f7332d197ed6c5ae99acbf89d903a039863bb588/scripts/update_saved_episodes.R">File
+at this commit</a>
+</li>
+<li>
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/d4ded17d22fe59cba1ef59018068aadcacb5236c">d4ded17</a>
+· 2026-09-29 · 160 lines added ·
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/d4ded17d22fe59cba1ef59018068aadcacb5236c/scripts/update_saved_episodes.R">File
+at this commit</a>
+</li>
+</ul>
+</details>
+</td>
+<td>
+215
+</td>
+</tr>
+<tr>
+<td>
+<span
+class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>streaming-history/app.R
+<details>
+<summary>
+2 contributing commits
+</summary>
+<ul class="year-file-commits">
+<li>
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/f7332d197ed6c5ae99acbf89d903a039863bb588">f7332d1</a>
+· 2026-10-12 · 32 lines added ·
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/f7332d197ed6c5ae99acbf89d903a039863bb588/streaming-history/app.R">File
+at this commit</a>
+</li>
+<li>
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/b0d3d3b2ad831ad336af8b731d882dba1998b137">b0d3d3b</a>
+· 2026-09-28 · 182 lines added ·
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/b0d3d3b2ad831ad336af8b731d882dba1998b137/streaming-history/app.R">File
+at this commit</a>
+</li>
+</ul>
+</details>
+</td>
+<td>
+214
 </td>
 </tr>
 <tr>
@@ -2421,28 +2532,6 @@ at this commit</a>
 <tr>
 <td>
 <span
-class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>streaming-history/app.R
-<details>
-<summary>
-1 contributing commit
-</summary>
-<ul class="year-file-commits">
-<li>
-<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/b0d3d3b2ad831ad336af8b731d882dba1998b137">b0d3d3b</a>
-· 2026-09-28 · 182 lines added ·
-<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/b0d3d3b2ad831ad336af8b731d882dba1998b137/streaming-history/app.R">File
-at this commit</a>
-</li>
-</ul>
-</details>
-</td>
-<td>
-182
-</td>
-</tr>
-<tr>
-<td>
-<span
 class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>avca_all_americans.Rmd
 <details>
 <summary>
@@ -2478,28 +2567,6 @@ at this commit</a>
 </td>
 <td>
 178
-</td>
-</tr>
-<tr>
-<td>
-<span
-class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>scripts/ingest_streaming_history.R
-<details>
-<summary>
-1 contributing commit
-</summary>
-<ul class="year-file-commits">
-<li>
-<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/b0d3d3b2ad831ad336af8b731d882dba1998b137">b0d3d3b</a>
-· 2026-09-28 · 177 lines added ·
-<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/b0d3d3b2ad831ad336af8b731d882dba1998b137/scripts/ingest_streaming_history.R">File
-at this commit</a>
-</li>
-</ul>
-</details>
-</td>
-<td>
-177
 </td>
 </tr>
 <tr>
@@ -2636,28 +2703,6 @@ at this commit</a>
 </td>
 <td>
 162
-</td>
-</tr>
-<tr>
-<td>
-<span
-class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>scripts/update_saved_episodes.R
-<details>
-<summary>
-1 contributing commit
-</summary>
-<ul class="year-file-commits">
-<li>
-<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/d4ded17d22fe59cba1ef59018068aadcacb5236c">d4ded17</a>
-· 2026-09-29 · 160 lines added ·
-<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/d4ded17d22fe59cba1ef59018068aadcacb5236c/scripts/update_saved_episodes.R">File
-at this commit</a>
-</li>
-</ul>
-</details>
-</td>
-<td>
-160
 </td>
 </tr>
 <tr>
@@ -3058,6 +3103,34 @@ at this commit</a>
 <tr>
 <td>
 <span
+class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>scripts/get_spotify_refresh_token.R
+<details>
+<summary>
+2 contributing commits
+</summary>
+<ul class="year-file-commits">
+<li>
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/f7332d197ed6c5ae99acbf89d903a039863bb588">f7332d1</a>
+· 2026-10-12 · 3 lines added ·
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/f7332d197ed6c5ae99acbf89d903a039863bb588/scripts/get_spotify_refresh_token.R">File
+at this commit</a>
+</li>
+<li>
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/d4ded17d22fe59cba1ef59018068aadcacb5236c">d4ded17</a>
+· 2026-09-29 · 100 lines added ·
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/d4ded17d22fe59cba1ef59018068aadcacb5236c/scripts/get_spotify_refresh_token.R">File
+at this commit</a>
+</li>
+</ul>
+</details>
+</td>
+<td>
+103
+</td>
+</tr>
+<tr>
+<td>
+<span
 class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>scripts/shows_manifest.R
 <details>
 <summary>
@@ -3127,28 +3200,6 @@ at this commit</a>
 </td>
 <td>
 102
-</td>
-</tr>
-<tr>
-<td>
-<span
-class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>scripts/get_spotify_refresh_token.R
-<details>
-<summary>
-1 contributing commit
-</summary>
-<ul class="year-file-commits">
-<li>
-<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/d4ded17d22fe59cba1ef59018068aadcacb5236c">d4ded17</a>
-· 2026-09-29 · 100 lines added ·
-<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/d4ded17d22fe59cba1ef59018068aadcacb5236c/scripts/get_spotify_refresh_token.R">File
-at this commit</a>
-</li>
-</ul>
-</details>
-</td>
-<td>
-100
 </td>
 </tr>
 <tr>
@@ -3402,6 +3453,34 @@ at this commit</a>
 <tr>
 <td>
 <span
+class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>tests/testthat/test-podcast-refresh.R
+<details>
+<summary>
+2 contributing commits
+</summary>
+<ul class="year-file-commits">
+<li>
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/f7332d197ed6c5ae99acbf89d903a039863bb588">f7332d1</a>
+· 2026-10-12 · 44 lines added ·
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/f7332d197ed6c5ae99acbf89d903a039863bb588/tests/testthat/test-podcast-refresh.R">File
+at this commit</a>
+</li>
+<li>
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/d4ded17d22fe59cba1ef59018068aadcacb5236c">d4ded17</a>
+· 2026-09-29 · 29 lines added ·
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/d4ded17d22fe59cba1ef59018068aadcacb5236c/tests/testthat/test-podcast-refresh.R">File
+at this commit</a>
+</li>
+</ul>
+</details>
+</td>
+<td>
+73
+</td>
+</tr>
+<tr>
+<td>
+<span
 class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>tests/testthat/test-site_helpers.R
 <details>
 <summary>
@@ -3502,6 +3581,28 @@ at this commit</a>
 <tr>
 <td>
 <span
+class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>tests/testthat/test-ingest_streaming_history.R
+<details>
+<summary>
+1 contributing commit
+</summary>
+<ul class="year-file-commits">
+<li>
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/f7332d197ed6c5ae99acbf89d903a039863bb588">f7332d1</a>
+· 2026-10-12 · 64 lines added ·
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/f7332d197ed6c5ae99acbf89d903a039863bb588/tests/testthat/test-ingest_streaming_history.R">File
+at this commit</a>
+</li>
+</ul>
+</details>
+</td>
+<td>
+64
+</td>
+</tr>
+<tr>
+<td>
+<span
 class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>scripts/run_tests.R
 <details>
 <summary>
@@ -3553,6 +3654,34 @@ at this commit</a>
 </td>
 <td>
 58
+</td>
+</tr>
+<tr>
+<td>
+<span
+class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>tests/testthat/test-imdb_exceptional_metrics.R
+<details>
+<summary>
+2 contributing commits
+</summary>
+<ul class="year-file-commits">
+<li>
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/f7332d197ed6c5ae99acbf89d903a039863bb588">f7332d1</a>
+· 2026-10-12 · 16 lines added ·
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/f7332d197ed6c5ae99acbf89d903a039863bb588/tests/testthat/test-imdb_exceptional_metrics.R">File
+at this commit</a>
+</li>
+<li>
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/e3eac316602d0bab5b950e9f903da08598b720e4">e3eac31</a>
+· 2026-10-03 · 40 lines added ·
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/e3eac316602d0bab5b950e9f903da08598b720e4/tests/testthat/test-imdb_exceptional_metrics.R">File
+at this commit</a>
+</li>
+</ul>
+</details>
+</td>
+<td>
+56
 </td>
 </tr>
 <tr>
@@ -3620,12 +3749,46 @@ at this commit</a>
 <tr>
 <td>
 <span
+class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>scripts/imdb_exceptional_metrics.R
+<details>
+<summary>
+2 contributing commits
+</summary>
+<ul class="year-file-commits">
+<li>
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/f7332d197ed6c5ae99acbf89d903a039863bb588">f7332d1</a>
+· 2026-10-12 · 28 lines added ·
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/f7332d197ed6c5ae99acbf89d903a039863bb588/scripts/imdb_exceptional_metrics.R">File
+at this commit</a>
+</li>
+<li>
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/e3eac316602d0bab5b950e9f903da08598b720e4">e3eac31</a>
+· 2026-10-03 · 20 lines added ·
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/e3eac316602d0bab5b950e9f903da08598b720e4/scripts/imdb_exceptional_metrics.R">File
+at this commit</a>
+</li>
+</ul>
+</details>
+</td>
+<td>
+48
+</td>
+</tr>
+<tr>
+<td>
+<span
 class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>tohs_reunion.Rmd
 <details>
 <summary>
-6 contributing commits
+7 contributing commits
 </summary>
 <ul class="year-file-commits">
+<li>
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/35fc98557341bcb192c41d8eb14a92be101f74c5">35fc985</a>
+· 2026-10-12 · 2 lines added ·
+<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/35fc98557341bcb192c41d8eb14a92be101f74c5/tohs_reunion.Rmd">File
+at this commit</a>
+</li>
 <li>
 <a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/ed98afa1b9415005bba3e27da951a838996f9d5a">ed98afa</a>
 · 2026-10-11 · 1 lines added ·
@@ -3666,7 +3829,7 @@ at this commit</a>
 </details>
 </td>
 <td>
-46
+48
 </td>
 </tr>
 <tr>
@@ -3722,28 +3885,6 @@ class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>scripts/covid_d
 <a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/66bd455df731b80109c752869c01446bc1df9f93">66bd455</a>
 · 2026-03-30 · 40 lines added ·
 <a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/66bd455df731b80109c752869c01446bc1df9f93/scripts/covid_data.R">File
-at this commit</a>
-</li>
-</ul>
-</details>
-</td>
-<td>
-40
-</td>
-</tr>
-<tr>
-<td>
-<span
-class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>tests/testthat/test-imdb_exceptional_metrics.R
-<details>
-<summary>
-1 contributing commit
-</summary>
-<ul class="year-file-commits">
-<li>
-<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/e3eac316602d0bab5b950e9f903da08598b720e4">e3eac31</a>
-· 2026-10-03 · 40 lines added ·
-<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/e3eac316602d0bab5b950e9f903da08598b720e4/tests/testthat/test-imdb_exceptional_metrics.R">File
 at this commit</a>
 </li>
 </ul>
@@ -3926,28 +4067,6 @@ at this commit</a>
 <tr>
 <td>
 <span
-class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>tests/testthat/test-podcast-refresh.R
-<details>
-<summary>
-1 contributing commit
-</summary>
-<ul class="year-file-commits">
-<li>
-<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/d4ded17d22fe59cba1ef59018068aadcacb5236c">d4ded17</a>
-· 2026-09-29 · 29 lines added ·
-<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/d4ded17d22fe59cba1ef59018068aadcacb5236c/tests/testthat/test-podcast-refresh.R">File
-at this commit</a>
-</li>
-</ul>
-</details>
-</td>
-<td>
-29
-</td>
-</tr>
-<tr>
-<td>
-<span
 class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>about.Rmd
 <details>
 <summary>
@@ -4021,28 +4140,6 @@ at this commit</a>
 </td>
 <td>
 21
-</td>
-</tr>
-<tr>
-<td>
-<span
-class="year-file-repo">cavandonohoe/cavandonohoe.github.io</span>scripts/imdb_exceptional_metrics.R
-<details>
-<summary>
-1 contributing commit
-</summary>
-<ul class="year-file-commits">
-<li>
-<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/e3eac316602d0bab5b950e9f903da08598b720e4">e3eac31</a>
-· 2026-10-03 · 20 lines added ·
-<a href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/e3eac316602d0bab5b950e9f903da08598b720e4/scripts/imdb_exceptional_metrics.R">File
-at this commit</a>
-</li>
-</ul>
-</details>
-</td>
-<td>
-20
 </td>
 </tr>
 <tr>
@@ -4194,14 +4291,14 @@ at this commit</a>
 </div>
 </details>
 <div class="year-detail">
-<strong>Most-active month:</strong> June
+<strong>Most-active month:</strong> October
 </div>
 <div class="year-detail">
-<strong>Longest streak:</strong> 11 days
+<strong>Longest streak:</strong> 12 days
 </div>
 </div>
 <div class="year-project">
-<strong>Biggest project</strong><br>cavandonohoe.github.io · 214 commits
+<strong>Biggest project</strong><br>cavandonohoe.github.io · 228 commits
 </div>
 <table>
 <caption>
@@ -4223,7 +4320,7 @@ Commits
 cavandonohoe/cavandonohoe.github.io
 </td>
 <td>
-214
+228
 </td>
 </tr>
 <tr>
@@ -5422,7 +5519,7 @@ totals use .gitattributes Linguist overrides plus built-in generated,
 vendored, dependency, build, docs, minified, and raw HTML input
 patterns. Overall lines added still include all files. PRs count public
 pull requests the user authored and merged into their own repositories
-during the year, when available. Snapshot generated 2026-10-10.
+during the year, when available. Snapshot generated 2026-10-12.
 </div>
 </section>
 <section class="year-hero" id="year-2024" aria-label="2024 developer review">
@@ -5659,7 +5756,7 @@ totals use .gitattributes Linguist overrides plus built-in generated,
 vendored, dependency, build, docs, minified, and raw HTML input
 patterns. Overall lines added still include all files. PRs count public
 pull requests the user authored and merged into their own repositories
-during the year, when available. Snapshot generated 2026-10-10.
+during the year, when available. Snapshot generated 2026-10-12.
 </div>
 </section>
 <section class="year-hero" id="year-2023" aria-label="2023 developer review">
@@ -6691,7 +6788,7 @@ totals use .gitattributes Linguist overrides plus built-in generated,
 vendored, dependency, build, docs, minified, and raw HTML input
 patterns. Overall lines added still include all files. PRs count public
 pull requests the user authored and merged into their own repositories
-during the year, when available. Snapshot generated 2026-10-10.
+during the year, when available. Snapshot generated 2026-10-12.
 </div>
 </section>
 <section class="year-hero" id="year-2022" aria-label="2022 developer review">
@@ -7409,7 +7506,7 @@ totals use .gitattributes Linguist overrides plus built-in generated,
 vendored, dependency, build, docs, minified, and raw HTML input
 patterns. Overall lines added still include all files. PRs count public
 pull requests the user authored and merged into their own repositories
-during the year, when available. Snapshot generated 2026-10-10.
+during the year, when available. Snapshot generated 2026-10-12.
 </div>
 </section>
 <section class="year-hero" id="year-2021" aria-label="2021 developer review">
@@ -8430,7 +8527,7 @@ totals use .gitattributes Linguist overrides plus built-in generated,
 vendored, dependency, build, docs, minified, and raw HTML input
 patterns. Overall lines added still include all files. PRs count public
 pull requests the user authored and merged into their own repositories
-during the year, when available. Snapshot generated 2026-10-10.
+during the year, when available. Snapshot generated 2026-10-12.
 </div>
 </section>
 <section class="year-hero" id="year-2020" aria-label="2020 developer review">
@@ -8663,7 +8760,7 @@ totals use .gitattributes Linguist overrides plus built-in generated,
 vendored, dependency, build, docs, minified, and raw HTML input
 patterns. Overall lines added still include all files. PRs count public
 pull requests the user authored and merged into their own repositories
-during the year, when available. Snapshot generated 2026-10-10.
+during the year, when available. Snapshot generated 2026-10-12.
 </div>
 </section>
 <section class="year-web-history" aria-labelledby="year-web-history-title">
@@ -8693,7 +8790,7 @@ HTML
 <a href="#year-2026">2026 · YTD</a>
 </th>
 <td class="year-web-number">
-2,470
+2,934
 </td>
 <td class="year-web-number">
 2,195
@@ -8776,6 +8873,158 @@ means the breakdown is unavailable.
 <p>Past reviews are reconstructed from public commit history. Each
 January 1, GitHub Actions saves the year that just ended. The current
 year is a snapshot through its generation date.</p>
+<section class="year-activity" aria-labelledby="year-activity-title">
+<h2 id="year-activity-title">
+Year over year
+</h2>
+<p>
+Running total for each year, aligned by calendar date. Hover or tap the
+chart to compare years on the same day.
+</p>
+<div class="year-activity-toggle" role="group"
+aria-label="Chart metric">
+<button type="button" data-metric="commits" aria-pressed="true">
+Commits
+</button>
+<button type="button" data-metric="lines" aria-pressed="false">
+Lines added
+</button>
+</div>
+<div class="year-activity-chart">
+
+</div>
+<div class="year-activity-tooltip" role="status" hidden="">
+
+</div>
+<ul class="year-activity-legend">
+</ul>
+<p class="year-web-note">
+Cumulative totals use UTC calendar days. The current year stops at its
+latest snapshot.
+</p>
+<script type="application/json" id="year-activity-data">[{"year":2020,"generated":"2026-10-12","days":[["2020-12-28",6,46740],["2020-12-29",3,89],["2020-12-31",1,128]]},{"year":2021,"generated":"2026-10-12","days":[["2021-08-25",7,84285],["2021-09-14",2,21],["2021-09-15",2,21512],["2021-09-16",15,991],["2021-09-17",4,32357],["2021-09-23",4,77],["2021-09-27",2,2951],["2021-09-28",10,19681],["2021-09-30",7,4546],["2021-10-01",4,1189],["2021-10-02",3,1418],["2021-10-04",1,20],["2021-10-05",4,122],["2021-10-07",2,42],["2021-10-08",1,35],["2021-10-12",1,25],["2021-10-13",1,21],["2021-10-14",2,38],["2021-10-15",1,23],["2021-10-18",2,66],["2021-10-19",1,22],["2021-10-20",1,22],["2021-10-21",1,22],["2021-10-23",1,23],["2021-10-26",1,22],["2021-10-28",1,22],["2021-10-29",1,21],["2021-10-30",1,21],["2021-11-01",2,63],["2021-11-02",1,23],["2021-11-03",2,73],["2021-11-04",2,97],["2021-11-05",1,23],["2021-11-08",1,23],["2021-11-09",1,21],["2021-11-11",1,21],["2021-11-12",1,22],["2021-11-15",1,21],["2021-11-23",1,22],["2021-12-07",1,60],["2021-12-15",1,23],["2021-12-20",1,22]]},{"year":2022,"generated":"2026-10-12","days":[["2022-01-04",1,24],["2022-01-05",1,22],["2022-01-23",3,601],["2022-01-31",1,28],["2022-02-04",1,48722],["2022-02-10",1,23],["2022-02-17",1,23],["2022-03-07",2,25],["2022-03-17",1,28],["2022-03-18",1,23],["2022-03-21",1,22],["2022-03-30",1,23],["2022-04-07",1,23],["2022-04-15",10,989],["2022-04-16",2,57],["2022-04-17",1,24],["2022-04-18",1,24],["2022-04-19",1,25],["2022-04-20",1,24],["2022-04-21",1,25],["2022-04-22",1,25],["2022-04-25",1,25],["2022-05-03",1,457],["2022-05-10",1,23],["2022-05-11",1,22],["2022-06-15",1,289],["2022-07-07",3,117],["2022-07-14",2,40],["2022-07-15",5,97],["2022-07-21",1,21],["2022-08-02",2,308],["2022-08-12",1,1],["2022-08-18",5,67838],["2022-08-19",5,100],["2022-08-20",1,7],["2022-08-22",3,33925],["2022-08-29",2,33957],["2022-09-07",4,19619],["2022-09-12",1,55],["2022-09-15",2,44],["2022-09-28",1,1],["2022-10-14",1,39],["2022-10-28",1,10],["2022-11-07",3,121],["2022-11-08",4,1510],["2022-11-14",2,33946],["2022-11-15",7,171],["2022-11-16",1,40],["2022-12-01",2,12],["2022-12-09",1,50],["2022-12-12",2,41],["2022-12-19",1,38]]},{"year":2023,"generated":"2026-10-12","days":[["2023-01-03",1,80],["2023-01-21",1,11],["2023-02-14",2,24],["2023-02-17",1,22],["2023-02-18",1,11],["2023-02-19",1,511],["2023-02-20",3,97],["2023-02-28",5,35172],["2023-03-01",1,408],["2023-03-02",6,61],["2023-03-06",1,98],["2023-03-13",5,66],["2023-03-14",3,266],["2023-03-21",1,11],["2023-03-22",2,625],["2023-03-30",2,2812],["2023-04-05",2,47],["2023-05-03",1,12],["2023-05-09",1,12],["2023-05-18",1,12],["2023-06-13",1,184],["2023-07-10",2,33922],["2023-08-01",1,490],["2023-08-24",1,17],["2023-08-31",2,80],["2023-09-11",5,4314],["2023-09-13",4,331],["2023-09-15",2,644],["2023-09-20",1,13],["2023-09-28",1,1557],["2023-10-10",1,63],["2023-10-11",3,36],["2023-10-12",2,99],["2023-10-13",1,45],["2023-10-23",1,14],["2023-10-31",1,14],["2023-11-06",2,964],["2023-11-14",1,14],["2023-11-16",1,14],["2023-12-02",1,14],["2023-12-04",1,14],["2023-12-10",1,14],["2023-12-15",2,17],["2023-12-22",1,14]]},{"year":2024,"generated":"2026-10-12","days":[["2024-01-08",1,17],["2024-02-03",1,14],["2024-02-06",1,14],["2024-02-20",1,14],["2024-02-29",1,14],["2024-03-12",1,14],["2024-06-10",2,70991],["2024-06-11",2,210],["2024-06-17",1,47],["2024-08-01",1,44],["2024-08-05",1,44],["2024-08-16",1,2],["2024-10-08",1,223],["2024-10-09",3,657],["2024-10-11",3,126]]},{"year":2025,"generated":"2026-10-12","days":[["2025-01-12",3,34100],["2025-02-12",1,130],["2025-06-18",1,32334],["2025-08-20",1,209],["2025-09-02",1,164],["2025-10-05",14,2196],["2025-10-06",6,80],["2025-10-08",8,85],["2025-10-09",1,23],["2025-10-11",4,186],["2025-10-15",1,0],["2025-12-08",1,99],["2025-12-11",1,22231],["2025-12-12",2,2],["2025-12-14",4,160],["2025-12-15",1,184],["2025-12-28",1,47],["2025-12-29",2,1905],["2025-12-30",2,3]]},{"year":2026,"generated":"2026-10-12","days":[["2026-01-02",4,134],["2026-01-03",4,2067],["2026-01-04",2,1633],["2026-01-27",1,981],["2026-02-02",2,361],["2026-02-16",24,2001],["2026-02-22",1,3],["2026-03-24",12,1136],["2026-03-25",1,568],["2026-03-26",1,669],["2026-03-29",1,4795],["2026-03-30",1,121390],["2026-03-31",14,0],["2026-04-02",1,0],["2026-04-08",1,44],["2026-04-24",6,349],["2026-04-29",1,765],["2026-05-12",1,0],["2026-05-24",3,6489],["2026-05-25",1,95],["2026-05-26",10,10345],["2026-05-27",7,533],["2026-06-07",4,801],["2026-06-08",1,134],["2026-06-09",4,286],["2026-06-12",3,10375],["2026-06-15",4,13290],["2026-06-18",3,1424],["2026-06-22",33,41663],["2026-06-23",4,42],["2026-06-25",2,4],["2026-07-01",11,2135],["2026-07-02",1,23],["2026-07-06",2,7],["2026-07-07",1,1095],["2026-07-08",3,55228],["2026-07-10",3,455],["2026-07-13",1,93],["2026-07-14",1,782],["2026-07-16",4,2582],["2026-07-20",2,226],["2026-07-24",2,186],["2026-07-28",3,328],["2026-07-30",1,213],["2026-07-31",1,80],["2026-08-01",3,120],["2026-08-03",1,5639],["2026-08-04",3,24],["2026-08-05",2,959],["2026-08-06",1,95],["2026-08-13",3,32862],["2026-08-19",1,10],["2026-08-21",1,23],["2026-09-03",2,258],["2026-09-04",13,14927],["2026-09-05",6,506],["2026-09-08",2,4],["2026-09-10",2,162],["2026-09-15",1,510],["2026-09-16",2,912],["2026-09-22",1,84],["2026-09-23",4,2466],["2026-09-28",4,4725],["2026-09-29",3,517],["2026-10-01",13,714],["2026-10-02",2,275],["2026-10-03",4,26123],["2026-10-04",4,1423],["2026-10-05",4,1285],["2026-10-06",2,586],["2026-10-07",4,9004],["2026-10-08",3,1259],["2026-10-09",2,136],["2026-10-10",2,975],["2026-10-11",8,2834],["2026-10-12",14,7862]]}]</script>
+</section>
+<script>
+(function () {
+  const section = document.querySelector('.year-activity');
+  const source = document.getElementById('year-activity-data');
+  if (!section || !source) return;
+  const years = JSON.parse(source.textContent).sort((a, b) => a.year - b.year);
+  const chart = section.querySelector('.year-activity-chart');
+  const tooltip = section.querySelector('.year-activity-tooltip');
+  const buttons = Array.from(section.querySelectorAll('.year-activity-toggle button'));
+  const palette = ['#64748b', '#a78bfa', '#f472b6', '#fb923c', '#facc15', '#34d399', '#22d3ee',
+    '#60a5fa', '#f87171', '#4ade80'];
+  const latest = years[years.length - 1].year;
+  const colorFor = (y, i) => y.year === latest ? '#2563eb' : palette[i % palette.length];
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov',
+    'Dec'];
+  const monthStart = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+  // Position every year on a common non-leap Jan 1..Dec 31 axis; Feb 29 shares Feb 28's slot.
+  const dayIndex = iso => {
+    const m = Number(iso.slice(5, 7)) - 1;
+    const d = Number(iso.slice(8, 10));
+    return monthStart[m] + Math.min(d, m === 1 ? 28 : 31) - 1;
+  };
+  const ns = 'http://www.w3.org/2000/svg';
+  const el = (name, attrs) => {
+    const node = document.createElementNS(ns, name);
+    Object.entries(attrs || {}).forEach(([k, v]) => node.setAttribute(k, v));
+    return node;
+  };
+  const fmt = n => n.toLocaleString('en-US');
+  const short = n => n >= 1e6 ? (n / 1e6).toFixed(n >= 1e7 ? 0 : 1) + 'M' :
+    n >= 1e3 ? (n / 1e3).toFixed(n >= 1e4 ? 0 : 1) + 'k' : String(n);
+  // Cumulative series per year: one value per calendar day through the year's end
+  // (or through the snapshot date for the year in progress).
+  const series = years.map((y, i) => {
+    const commits = new Array(365).fill(0);
+    const lines = new Array(365).fill(0);
+    y.days.forEach(([date, c, l]) => { const k = dayIndex(date); commits[k] += c; lines[k] += l; });
+    const ended = y.year < latest || !y.generated || Number(y.generated.slice(0, 4)) > y.year;
+    const last = ended ? 364 : dayIndex(y.generated);
+    for (let k = 1; k < 365; k++) { commits[k] += commits[k - 1]; lines[k] += lines[k - 1]; }
+    return { year: y.year, color: colorFor(y, i), last, commits, lines };
+  });
+  const legend = section.querySelector('.year-activity-legend');
+  series.forEach(s => {
+    const item = document.createElement('li');
+    item.innerHTML = '<span style="background:' + s.color + '"></span>' + s.year;
+    legend.appendChild(item);
+  });
+  const W = 760, H = 380, M = { top: 16, right: 20, bottom: 32, left: 56 };
+  const iw = W - M.left - M.right, ih = H - M.top - M.bottom;
+  const x = k => M.left + (k / 364) * iw;
+  let metric = 'commits';
+  function niceMax(v) {
+    if (v <= 0) return 1;
+    const p = Math.pow(10, Math.floor(Math.log10(v)));
+    return [1, 2, 2.5, 5, 10].map(f => f * p).find(t => t >= v);
+  }
+  function draw() {
+    const max = niceMax(Math.max(...series.map(s => s[metric][s.last])));
+    const y = v => M.top + ih - (v / max) * ih;
+    const label = metric === 'commits' ? 'Commits' : 'Lines added';
+    const svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img',
+      'aria-label': 'Cumulative ' + label.toLowerCase() + ' by date, one line per year' });
+    const grid = el('g', { class: 'grid' });
+    const axis = el('g', { class: 'axis' });
+    for (let t = 0; t <= 4; t++) {
+      const v = (max / 4) * t;
+      grid.appendChild(el('line', { x1: M.left, x2: W - M.right, y1: y(v), y2: y(v) }));
+      const text = el('text', { x: M.left - 8, y: y(v) + 4, 'text-anchor': 'end' });
+      text.textContent = short(v);
+      axis.appendChild(text);
+    }
+    monthStart.forEach((k, i) => {
+      const text = el('text', { x: x(k + 14), y: H - 10, 'text-anchor': 'middle' });
+      text.textContent = months[i];
+      axis.appendChild(text);
+    });
+    svg.appendChild(grid);
+    svg.appendChild(axis);
+    series.forEach(s => {
+      const pts = [];
+      for (let k = 0; k <= s.last; k++) pts.push(x(k).toFixed(1) + ',' + y(s[metric][k]).toFixed(1));
+      svg.appendChild(el('polyline', { points: pts.join(' '), fill: 'none', stroke: s.color,
+        'stroke-width': s.year === latest ? 3 : 2, 'stroke-linejoin': 'round' }));
+    });
+    const guide = el('line', { class: 'guide', y1: M.top, y2: M.top + ih, visibility: 'hidden' });
+    svg.appendChild(guide);
+    const hit = el('rect', { x: M.left, y: M.top, width: iw, height: ih, fill: 'transparent' });
+    svg.appendChild(hit);
+    function show(evt) {
+      const box = svg.getBoundingClientRect();
+      const px = (evt.clientX - box.left) * (W / box.width);
+      const k = Math.max(0, Math.min(364, Math.round(((px - M.left) / iw) * 364)));
+      const m = monthStart.filter(s => s <= k).length - 1;
+      guide.setAttribute('x1', x(k));
+      guide.setAttribute('x2', x(k));
+      guide.setAttribute('visibility', 'visible');
+      const rows = series.filter(s => k <= s.last).reverse().map(s =>
+        '<i style="background:' + s.color + '"></i>' + s.year + ': ' + fmt(s[metric][k]));
+      tooltip.innerHTML = '<strong>' + months[m] + ' ' + (k - monthStart[m] + 1) + '</strong><br>' +
+        rows.join('<br>');
+      tooltip.hidden = false;
+      const host = section.getBoundingClientRect();
+      const left = evt.clientX - host.left + 14;
+      tooltip.style.left = Math.min(left, host.width - tooltip.offsetWidth - 8) + 'px';
+      tooltip.style.top = (evt.clientY - host.top + 14) + 'px';
+    }
+    function hide() { guide.setAttribute('visibility', 'hidden'); tooltip.hidden = true; }
+    hit.addEventListener('pointermove', show);
+    hit.addEventListener('pointerdown', show);
+    hit.addEventListener('pointerleave', hide);
+    chart.replaceChildren(svg);
+  }
+  buttons.forEach(button => button.addEventListener('click', () => {
+    metric = button.dataset.metric;
+    buttons.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+    draw();
+  }));
+  draw();
+})();
+</script>
 <script>
 (function () {
   const reviews = Array.from(document.querySelectorAll('section.year-hero[id]'));
