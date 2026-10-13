@@ -1,7 +1,7 @@
 # Reel — rank your movies and series
 
 A personal pairwise ranker for everything in `data/imdb_ratings.csv`. Modeled
-on `food-ranker`: Next.js 14 + Supabase + magic-link auth + per-user
+on `food-ranker`: Next.js 16 + Supabase + magic-link auth + per-user
 comparisons + global Elo. The whole point is **resolving the ties**: a
 1–10 IMDb rating leaves you with hundreds of titles all sitting at "8/10",
 and this app turns that into a full order via head-to-head choices.
@@ -12,7 +12,7 @@ and this app turns that into a full order via head-to-head choices.
 
 ## Stack
 
-- Next.js 14 (App Router) + TypeScript
+- Next.js 16 (App Router) + TypeScript
 - Tailwind CSS (dark-mode-first)
 - Supabase (Postgres + Auth)
 
@@ -38,7 +38,7 @@ movie-ranker/
       kinds.ts              # movie / series / short / video_game / other
       database.types.ts
       supabase/{client,server}.ts
-    middleware.ts           # session refresh + /compare gate
+    proxy.ts                # session refresh + /compare gate
   scripts/
     build_seed.mjs          # CSV -> supabase/seed.sql
   supabase/
