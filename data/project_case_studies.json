@@ -162,7 +162,7 @@
     {
       "project": "images",
       "tracked_files": 14,
-      "commits_touching_project": 83,
+      "commits_touching_project": 85,
       "top_extensions": [
         [
           ".jpg",
@@ -184,8 +184,8 @@
     },
     {
       "project": "movie-ranker",
-      "tracked_files": 33,
-      "commits_touching_project": 15,
+      "tracked_files": 35,
+      "commits_touching_project": 16,
       "top_extensions": [
         [
           ".ts",
@@ -200,11 +200,11 @@
           3
         ],
         [
-          ".js",
+          ".md",
           2
         ],
         [
-          ".sql",
+          ".mjs",
           2
         ]
       ]
