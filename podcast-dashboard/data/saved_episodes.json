@@ -3,10 +3,10 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 375,
+    "n_episodes": 377,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-10-12",
-    "api_saved_count": 167
+    "api_refreshed_at": "2026-10-13",
+    "api_saved_count": 157
   },
   "episodes": [
     {
@@ -4133,6 +4133,28 @@
       "release": "2026-10-12",
       "url": "https://open.spotify.com/episode/64WT0PMF1a91EdMH7TSylX",
       "desc": "Nearly 30 million bison once roamed North America, from modern Canada to Mexico. In the late 1800s, white settlers and the U.S. military annihilated the population of bison, bringing these creatures to the brink of extinction. The consequences for the people who relied on the bison were dire — and still being felt today. In an episode that first aired in August 2023, we spoke to one economist who reveals the shocking numbers about the destruction of the bison, and one member of the Blackfeet Nation who is trying to bring them back.Fact checking by Sierra Juarez. This episode originally aired Aug. 21, 2023.Your Next Listen –Blood, oil, and the Osage Nation: The battle over headrights –Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet Money –The Indicator newsletter — a weekly roundup of news, ideas and staff picks. –Instagram, TikTok and YouTube –Find the Planet Money book –Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop! Support public media by subscribing to NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
+    },
+    {
+      "id": "1llbLpOib0HmOHblbfAp1y",
+      "added_at": "2026-10-13",
+      "show": "Stuff You Should Know",
+      "publisher": null,
+      "name": "Asteroooooid De-FENSE!",
+      "dur_min": 42,
+      "release": "2026-10-13",
+      "url": "https://open.spotify.com/episode/1llbLpOib0HmOHblbfAp1y",
+      "desc": "There’s no question that millions of asteroids are circling the Earth at incredible speed and every one of them is just dying to get a chance to smoosh our planet and wipe out life in the universe once and for all. But Earth has an ace up its sleeve: Us!See omnystudio.com/listener for privacy information."
+    },
+    {
+      "id": "0iRSXTdtl1ie75gcFyPEjl",
+      "added_at": "2026-10-13",
+      "show": "StarTalk with Neil deGrasse Tyson",
+      "publisher": null,
+      "name": "The Chemistry of Life with Kate the Chemist",
+      "dur_min": 43,
+      "release": "2026-10-13",
+      "url": "https://open.spotify.com/episode/0iRSXTdtl1ie75gcFyPEjl",
+      "desc": "Would aliens use the same periodic table as us? Neil deGrasse Tyson and comic co-host Negin Farsad sit down with Kate Biberdorf, aka Kate the Chemist, to tackle fan questions about the chemistry of life, diamonds, how fire works, and spontaneous combustion.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/the-chemistry-of-life-with-kate-the-chemist/Thanks to our Patrons Ari, Craig Zimmerman, Alison Frey, Jimmy Melendez, A Miller, Erik Frey, Eric Wall, Jack Weekly, Hayden Waters, Darius Bakunas, Steve, Dejan Rešetar, Ellen Phillips, Dragos Stefan, Jackie Felix, Lace S, Mariusz Milka, RedShiftMyPants, Rk C, De'Anthony Rhea, Rachel Morse, Maeve O'Meara, Hammer of Dog, Abdulaziz Almehmadi, Keaton Nguyen, Daniel Lehr, Bogumila Kenney, Debra Di Blasi, Leonhard Euler, Eli, JOHN DEMASTRI, svkool, Cheyenne McAdam, Ian Soobrattee, Andy Cheng, Scarlet Matthews, deriven, Elizabeth Brandon, Rachel Hewitt, Wtv, Timothy Dragila, James Mihaychuk, Bermuda Tim, donnie, Erly Thornton, Brandon Harper, Obada Alnajjar, and Thomas M for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising."
     }
   ]
 }
