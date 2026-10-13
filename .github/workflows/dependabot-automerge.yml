@@ -1,0 +1,96 @@
+name: Dependabot auto-merge (movie-ranker)
+
+# When "movie-ranker build" passes on a Dependabot npm PR, squash-merge it into
+# main so minor/patch bumps land in the background. Major bumps (or anything
+# whose update type can't be determined) are left open for manual review.
+#
+# Runs on workflow_run (base-repo context) so it can use BOT_PR_TOKEN. Merging
+# with the PAT (not GITHUB_TOKEN) is what lets the push to main trigger the
+# normal deploy. Never checks out or executes PR code.
+on:
+  workflow_run:
+    workflows: ["movie-ranker build"]
+    types: [completed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: dependabot-automerge-${{ github.event.workflow_run.head_branch }}
+  cancel-in-progress: false
+
+jobs:
+  merge:
+    name: Merge passing Dependabot PR
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: >-
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.actor.login == 'dependabot[bot]' &&
+      startsWith(github.event.workflow_run.head_branch, 'dependabot/npm_and_yarn/movie-ranker/')
+    env:
+      GH_TOKEN: ${{ secrets.BOT_PR_TOKEN || secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+      HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+    steps:
+      - name: Find PR and check update type
+        id: check
+        run: |
+          set -euo pipefail
+          pr_json=$(gh pr list --head "$HEAD_BRANCH" --state open \
+            --json number,author,headRefOid --jq '.[0] // empty')
+          if [ -z "$pr_json" ]; then
+            echo "::notice::No open PR for $HEAD_BRANCH; nothing to do."
+            exit 0
+          fi
+          number=$(jq -r '.number' <<<"$pr_json")
+          author=$(jq -r '.author.login' <<<"$pr_json")
+          pr_head=$(jq -r '.headRefOid' <<<"$pr_json")
+
+          if [ "$author" != "app/dependabot" ] && [ "$author" != "dependabot[bot]" ]; then
+            echo "::notice::PR #$number author is $author, not Dependabot; skipping."
+            exit 0
+          fi
+          if [ "$pr_head" != "$HEAD_SHA" ]; then
+            echo "::notice::PR #$number head moved past the built commit; the newer build will decide."
+            exit 0
+          fi
+
+          # Dependabot embeds update metadata in the commit message, one
+          # `update-type: version-update:semver-<level>` per dependency.
+          msg=$(gh api "repos/$GH_REPO/commits/$HEAD_SHA" --jq '.commit.message')
+          types=$(grep -oE 'update-type: version-update:semver-[a-z]+' <<<"$msg" \
+            | sed 's/.*semver-//' | sort -u | tr '\n' ' ' || true)
+
+          # Security updates omit update-type, so fall back to the
+          # "from X to Y" version pairs. For 0.x, a minor bump counts as major.
+          if [ -z "$types" ]; then
+            types=$(grep -oE 'from [0-9][^ ]* to [0-9][^ ]*' <<<"$msg" \
+              | awk '{
+                  split($2, a, "."); split($4, b, ".");
+                  if (a[1] != b[1] || (a[1] == "0" && a[2] != b[2])) print "major";
+                  else print "minor-or-patch"
+                }' | sort -u | tr '\n' ' ' || true)
+          fi
+          echo "PR #$number update types: ${types:-unknown}"
+
+          if [ -z "$types" ]; then
+            echo "::notice::PR #$number has no update-type metadata; leaving for manual review."
+            exit 0
+          fi
+          if grep -qw major <<<"$types"; then
+            echo "::notice::PR #$number includes a major bump; leaving for manual review."
+            exit 0
+          fi
+          echo "number=$number" >> "$GITHUB_OUTPUT"
+
+      - name: Squash-merge
+        if: steps.check.outputs.number != ''
+        env:
+          NUMBER: ${{ steps.check.outputs.number }}
+        run: |
+          gh pr merge "$NUMBER" --squash --match-head-commit "$HEAD_SHA"
+          echo "::notice::Merged PR #$NUMBER."
