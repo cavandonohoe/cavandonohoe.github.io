@@ -159,8 +159,8 @@ keep their Elo and comparison history. Removed titles stay in the DB
 
 ## Hardening checklist
 
-- [ ] Add a `posters/` storage bucket and back-fill `image_url` from TMDB
-      so the cards have art. Code already handles `image_url`.
+- [x] Back-fill `image_url` from TMDB (`scripts/backfill_posters.mjs`, run weekly by
+      the "Backfill movie-ranker posters" workflow).
 - [ ] Move global Elo updates server-side (Server Action with the service
       role) so a malicious client can&apos;t fabricate global ratings.
 - [ ] Restrict `titles` insert/delete to the service role only (currently

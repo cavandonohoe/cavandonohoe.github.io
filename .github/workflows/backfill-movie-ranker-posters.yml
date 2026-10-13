@@ -1,0 +1,47 @@
+name: Backfill movie-ranker posters
+
+# Fills titles.image_url in the movie-ranker Supabase project with TMDB poster
+# URLs (looked up by IMDb id). Only touches rows where image_url is still null,
+# so the weekly run just picks up newly added titles. Pull requests that change
+# the script do a read-only dry run against a sample.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "29 14 * * 1"  # Mondays 14:29 UTC, after the Supabase ping
+  pull_request:
+    paths:
+      - "movie-ranker/scripts/backfill_posters.mjs"
+      - ".github/workflows/backfill-movie-ranker-posters.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: backfill-movie-ranker-posters
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    # Dependabot and fork PRs don't get secrets.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SUPABASE_URL: ${{ secrets.MOVIE_RANKER_SUPABASE_URL }}
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.MOVIE_RANKER_SUPABASE_SERVICE_KEY }}
+      TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+
+      - name: Dry run (pull request)
+        if: github.event_name == 'pull_request'
+        run: node movie-ranker/scripts/backfill_posters.mjs --dry-run --limit 50
+
+      - name: Backfill posters
+        if: github.event_name != 'pull_request'
+        run: node movie-ranker/scripts/backfill_posters.mjs
