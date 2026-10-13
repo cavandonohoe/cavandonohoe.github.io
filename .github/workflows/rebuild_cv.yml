@@ -145,7 +145,10 @@ jobs:
         if: ${{ steps.diff.outputs.changed != '' }}
         uses: peter-evans/create-pull-request@v8
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          # PRs opened with GITHUB_TOKEN have their pull_request workflows held
+          # for manual approval. A PAT makes the PR author a real user so CI
+          # runs immediately. Falls back to GITHUB_TOKEN if the secret is unset.
+          token: ${{ secrets.BOT_PR_TOKEN || secrets.GITHUB_TOKEN }}
           branch: auto/rebuild-cv
           delete-branch: true
           commit-message: "Rebuild CV (PDF + DOCX) from latest Google Sheet"
