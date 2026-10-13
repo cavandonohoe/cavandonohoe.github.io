@@ -184,8 +184,8 @@
     },
     {
       "project": "movie-ranker",
-      "tracked_files": 35,
-      "commits_touching_project": 16,
+      "tracked_files": 36,
+      "commits_touching_project": 17,
       "top_extensions": [
         [
           ".ts",
@@ -196,15 +196,15 @@
           8
         ],
         [
+          ".mjs",
+          3
+        ],
+        [
           ".json",
           3
         ],
         [
           ".md",
-          2
-        ],
-        [
-          ".mjs",
           2
         ]
       ]
