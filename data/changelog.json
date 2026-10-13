@@ -1,6 +1,36 @@
 {
-  "generated_at": "2026-10-12T23:09:28.085269+00:00",
+  "generated_at": "2026-10-13T21:26:40.264263+00:00",
   "events": [
+    {
+      "date": "2026-10-13",
+      "type": "merged_pr",
+      "title": "Remove opt-out line from TOHS reunion roster notice",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/267"
+    },
+    {
+      "date": "2026-10-13",
+      "type": "merged_pr",
+      "title": "Rebuild CV from latest Google Sheet",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/266"
+    },
+    {
+      "date": "2026-10-13",
+      "type": "merged_pr",
+      "title": "Open bot PRs with a PAT so CI runs without approval",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/268"
+    },
+    {
+      "date": "2026-10-13",
+      "type": "merged_pr",
+      "title": "Add year-over-year activity chart to Developer Year in Review",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/265"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "merged_pr",
+      "title": "movie-ranker: upgrade to Next 15 (security fixes)",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/263"
+    },
     {
       "date": "2026-10-12",
       "type": "merged_pr",
@@ -72,6 +102,12 @@
       "type": "merged_pr",
       "title": "Link existing TOHS Apps Script with preserved file layout",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/244"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "merged_pr",
+      "title": "Keep the year picker visible when switching Developer Year in Review years",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/264"
     },
     {
       "date": "2026-10-12",
@@ -472,6 +508,25 @@
   ],
   "daily_summaries": [
     {
+      "date": "2026-10-13",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "2 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/a03fd652f94b35e4182cd3de7cfbcb5090e965cc"
+        },
+        {
+          "emoji": "\ud83d\udcbb",
+          "text": "4 PRs merged"
+        },
+        {
+          "emoji": "\ud83d\udcc4",
+          "text": "CV rebuilt from the latest source data",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/266"
+        }
+      ]
+    },
+    {
       "date": "2026-10-12",
       "items": [
         {
@@ -481,7 +536,7 @@
         },
         {
           "emoji": "\ud83d\udcbb",
-          "text": "20 PRs merged"
+          "text": "22 PRs merged"
         },
         {
           "emoji": "\ud83c\udfa7",
@@ -663,25 +718,6 @@
           "emoji": "\ud83c\udfa7",
           "text": "1 podcast episode added",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/4114d99c20c9108f34048b2b1bb5bcba1a35552a"
-        }
-      ]
-    },
-    {
-      "date": "2026-09-29",
-      "items": [
-        {
-          "emoji": "\ud83d\udcbb",
-          "text": "5 PRs merged"
-        },
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "Podcast + Spotify experience improved",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/186"
-        },
-        {
-          "emoji": "\ud83d\udcc4",
-          "text": "CV rebuilt from the latest source data",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/185"
         }
       ]
     }
