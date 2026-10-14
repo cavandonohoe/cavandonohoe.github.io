@@ -13,7 +13,8 @@ lang: "en"
 ```{r og-meta, echo=FALSE, results='asis'}
 cat('
 <meta property="og:title" content="AVCA Men&#39;s Volleyball All-Americans">
-<meta property="og:description" content="Complete history of NCAA men&#39;s volleyball First-Team All-American selections and national champions.">
+<meta property="og:description"
+      content="Complete history of NCAA men&#39;s volleyball First-Team All-American selections and national champions.">
 <meta property="og:url" content="https://cavandonohoe.github.io/avca_all_americans.html">
 <meta property="og:type" content="article">
 ')
@@ -164,7 +165,10 @@ valid_years <- champ_setter %>% dplyr::filter(!is.na(champion))
 n_with <- sum(!is.na(valid_years$setter))
 n_total <- nrow(valid_years)
 cat(sprintf(
-  "\n\n**Result:** In %d of %d championship seasons (%.0f%%), the national champion had a first-team All-American setter.\n\n",
+  paste0(
+    "\n\n**Result:** In %d of %d championship seasons (%.0f%%), ",
+    "the national champion had a first-team All-American setter.\n\n"
+  ),
   n_with, n_total, 100 * n_with / n_total
 ))
 ```

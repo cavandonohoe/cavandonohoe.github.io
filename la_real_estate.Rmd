@@ -13,7 +13,8 @@ lang: "en"
 ```{r og-meta, echo=FALSE, results='asis'}
 cat('
 <meta property="og:title" content="LA Neighborhoods: Price per Square Foot">
-<meta property="og:description" content="Zillow and Redfin data for LA neighborhoods — median prices, rent, and what $1M buys you.">
+<meta property="og:description"
+      content="Zillow and Redfin data for LA neighborhoods — median prices, rent, and what $1M buys you.">
 <meta property="og:url" content="https://cavandonohoe.github.io/la_real_estate.html">
 <meta property="og:type" content="article">
 ')
