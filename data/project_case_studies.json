@@ -2,16 +2,16 @@
   "projects": [
     {
       "project": "_archive",
-      "tracked_files": 12,
-      "commits_touching_project": 7,
+      "tracked_files": 13,
+      "commits_touching_project": 8,
       "top_extensions": [
         [
-          ".js",
+          ".rmd",
           3
         ],
         [
-          ".rmd",
-          2
+          ".js",
+          3
         ],
         [
           ".dotx",
@@ -57,7 +57,7 @@
     {
       "project": "assets",
       "tracked_files": 1,
-      "commits_touching_project": 15,
+      "commits_touching_project": 16,
       "top_extensions": [
         [
           ".svg",
@@ -82,12 +82,12 @@
     },
     {
       "project": "css",
-      "tracked_files": 2,
-      "commits_touching_project": 4,
+      "tracked_files": 3,
+      "commits_touching_project": 5,
       "top_extensions": [
         [
           ".css",
-          2
+          3
         ]
       ]
     },
@@ -135,7 +135,7 @@
     {
       "project": "header",
       "tracked_files": 11,
-      "commits_touching_project": 16,
+      "commits_touching_project": 17,
       "top_extensions": [
         [
           ".png",
@@ -162,7 +162,7 @@
     {
       "project": "images",
       "tracked_files": 14,
-      "commits_touching_project": 90,
+      "commits_touching_project": 95,
       "top_extensions": [
         [
           ".jpg",
@@ -291,12 +291,12 @@
     },
     {
       "project": "tests",
-      "tracked_files": 14,
-      "commits_touching_project": 21,
+      "tracked_files": 16,
+      "commits_touching_project": 23,
       "top_extensions": [
         [
           ".r",
-          8
+          10
         ],
         [
           ".py",
@@ -338,7 +338,7 @@
     {
       "project": "web_scraping",
       "tracked_files": 8,
-      "commits_touching_project": 57,
+      "commits_touching_project": 58,
       "top_extensions": [
         [
           ".r",

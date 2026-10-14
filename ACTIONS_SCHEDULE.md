@@ -1,6 +1,6 @@
 # GitHub Actions schedule
 
-The automation clock for [Cavan's website](https://cavandonohoe.github.io): **27 scheduled workflows, 28 cron rules**, plus workflows triggered by pushes, PRs, issues, or other workflows.
+The automation clock for [Cavan's website](https://cavandonohoe.github.io): **28 scheduled workflows, 29 cron rules**, plus workflows triggered by pushes, PRs, issues, or other workflows.
 
 Checked against `main` on **2026-10-08** ([source snapshot](https://github.com/cavandonohoe/cavandonohoe.github.io/commit/4960c97e0bd23e251a4ceda81640590f9f3f1a90)). The YAML files in [.github/workflows/](https://github.com/cavandonohoe/cavandonohoe.github.io/blob/main/.github/workflows/) are the source of truth.
 
@@ -87,6 +87,8 @@ gantt
     My Maps export 10h17 :milestone, week1_7, 2026-10-05 10:17, 0m
     section Tuesday
     CV PDF / DOCX 04h33 :milestone, week2_0, 2026-10-06 04:33, 0m
+    section Thursday
+    Shiny app traffic 07h19 :milestone, week4_0, 2026-10-08 07:19, 0m
     section Saturday
     S&P 500 / VOO 06h29 :milestone, week6_0, 2026-10-10 06:29, 0m
     section Sunday
@@ -108,6 +110,7 @@ gantt
 | [Accessibility audit](https://github.com/cavandonohoe/cavandonohoe.github.io/blob/main/.github/workflows/pa11y.yml) | Mon | 15:21 | 08:21 | `21 15 * * 1` | Upload report; open or update issue on errors |
 | [My Maps export](https://github.com/cavandonohoe/cavandonohoe.github.io/blob/main/.github/workflows/update_mymaps_export.yml) | Mon | 17:17 | 10:17 | `17 17 * * 1` | Refresh KML/CSV; request site build when changed |
 | [CV PDF / DOCX](https://github.com/cavandonohoe/cavandonohoe.github.io/blob/main/.github/workflows/rebuild_cv.yml) | Tue | 11:33 | 04:33 | `33 11 * * 2` | Open PR for meaningful CV changes |
+| [Shiny app traffic](https://github.com/cavandonohoe/cavandonohoe.github.io/blob/main/.github/workflows/shiny-traffic.yml) | Thu | 14:19 | 07:19 | `19 14 * * 4` | Commit shinyapps.io traffic history; no site build |
 | [S&P 500 / VOO](https://github.com/cavandonohoe/cavandonohoe.github.io/blob/main/.github/workflows/update_sp500.yml) | Sat | 13:29 | 06:29 | `29 13 * * 6` | Refresh prices; request site build when changed |
 | [Sitemap](https://github.com/cavandonohoe/cavandonohoe.github.io/blob/main/.github/workflows/refresh-sitemap.yml) | Sun | 13:37 | 06:37 | `37 13 * * 0` | Commit sitemap; request site build when changed |
 | [Commit activity charts](https://github.com/cavandonohoe/cavandonohoe.github.io/blob/main/.github/workflows/refresh-commit-activity.yml) | Sun | 13:41 | 06:41 | `41 13 * * 0` | Re-knit README and charts; request site build when changed |
@@ -178,4 +181,4 @@ The daily **site sanity build does not deploy**. Production publishing belongs t
 
 A data commit and a published page are separate steps. Many refresh workflows explicitly dispatch the site build after changes because pushes made with `GITHUB_TOKEN` do not trigger ordinary downstream push workflows. Saved podcasts redeploy their Shiny app instead. CV and Best Picture winners open PRs for review.
 
-Activity art, the personal changelog, Lately, and the commit-activity charts dispatch a production deploy only when they actually push a commit, and skip the commit entirely when nothing but a generated timestamp changed. Weekly Wrapped and project case studies write data the site does not render, so they do not dispatch a deploy. Developer year in review commits generated output without explicitly dispatching the site deployment.
+Activity art, the personal changelog, Lately, and the commit-activity charts dispatch a production deploy only when they actually push a commit, and skip the commit entirely when nothing but a generated timestamp changed. Weekly Wrapped, Shiny app traffic, and project case studies write data the site does not render, so they do not dispatch a deploy. Developer year in review commits generated output without explicitly dispatching the site deployment.

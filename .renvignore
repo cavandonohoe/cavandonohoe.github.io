@@ -5,3 +5,5 @@
 # not leak into the site's renv.lock (doing so makes renv::status() report
 # the library as out of sync and fails CI setup).
 podcast-dashboard/
+# Run by shiny-traffic.yml with its own rsconnect install, not the site build.
+scripts/shiny_traffic.R
