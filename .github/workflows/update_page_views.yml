@@ -1,0 +1,105 @@
+name: Refresh project card traffic ranking
+
+# Reorders the homepage Projects grid by what visitors actually use. Pulls
+# 30 days of GA4 page views plus outbound clicks (for externally hosted apps)
+# via scripts/update_page_views.R and commits only the rank order of page
+# keys to data/page_views.json; raw counts are never committed. index.Rmd keeps
+# the pinned cards first and sorts the rest by that ranking.
+#
+# Setup (one time):
+#   - repo variable GA4_PROPERTY_ID: numeric GA4 property id (Admin > Property
+#     details), not the G-XXXX measurement id.
+#   - grant the GCP_SA_KEY service account "Viewer" on that GA4 property, and
+#     enable the Google Analytics Data API in its GCP project.
+# Until the variable is set, the job skips with a notice instead of failing.
+
+on:
+  schedule:
+    - cron: "43 10 * * *" # Daily 10:43 UTC
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/update_page_views.yml"
+      - "scripts/update_page_views.R"
+      - "scripts/project_cards.R"
+      - "tests/testthat/test-project_cards.R"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: page-views-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: >-
+      github.actor != 'dependabot[bot]' &&
+      (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      actions: write
+    env:
+      GA4_PROPERTY_ID: ${{ vars.GA4_PROPERTY_ID }}
+      GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/ga4-sa.json
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/setup-r-env
+      - name: Test card ordering helpers
+        run: Rscript -e 'testthat::test_file("tests/testthat/test-project_cards.R", stop_on_failure=TRUE)'
+      - name: Check configuration
+        id: config
+        run: |
+          if [ -z "${GA4_PROPERTY_ID:-}" ]; then
+            echo "::notice::GA4_PROPERTY_ID repo variable is not set; skipping the traffic refresh."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Write Google key
+        if: steps.config.outputs.ready == 'true'
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+        run: |
+          test -n "$GCP_SA_KEY" || { echo "GCP_SA_KEY is missing"; exit 1; }
+          printf '%s' "$GCP_SA_KEY" > "$GOOGLE_APPLICATION_CREDENTIALS"
+          chmod 600 "$GOOGLE_APPLICATION_CREDENTIALS"
+      - name: Refresh ranking from GA4
+        if: steps.config.outputs.ready == 'true'
+        run: Rscript scripts/update_page_views.R
+      - name: Verify only the ranking changed
+        if: steps.config.outputs.ready == 'true'
+        run: |
+          set -euo pipefail
+          unexpected="$(git status --porcelain | grep -Ev ' data/page_views\.json$' || true)"
+          if [ -n "$unexpected" ]; then
+            echo "ERROR: unexpected changes:"
+            echo "$unexpected"
+            exit 1
+          fi
+      - name: Commit and publish
+        if: >-
+          steps.config.outputs.ready == 'true' &&
+          github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git add data/page_views.json
+          if git diff --cached --quiet; then
+            echo "Ranking unchanged; nothing to publish."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update project card traffic ranking"
+          git pull --rebase origin main
+          git push origin HEAD:main
+          # Pushes made with GITHUB_TOKEN do not trigger other workflows, so
+          # dispatch the production deploy explicitly.
+          gh workflow run pages-branch-previews.yml --ref main -f deploy_root=true
+      - name: Remove Google key
+        if: always()
+        run: rm -f "$GOOGLE_APPLICATION_CREDENTIALS"

@@ -349,6 +349,18 @@ cards <- list(
     "Tutorial series: intro, data manipulation, visualization, and statistics in R."
   )
 )
+# Pinned cards stay first in this order; the rest follow recent traffic
+# (data/page_views.json, refreshed by update_page_views.yml) and fall back to
+# the order above when there is no data.
+source("scripts/project_cards.R")
+pinned <- c(
+  "imdb_rating_plot.html",
+  "https://cavandonohoe.shinyapps.io/rent-vs-buy/",
+  "imdb_exceptional_episodes.html",
+  "tohs_reunion.html"
+)
+cards <- order_cards(cards, ranking = read_card_ranking(), pinned = pinned)
+
 html <- '<div class="project-grid">'
 card_tpl <- paste0(
   '<a class="project-card" href="%s"><div class="card-icon">%s</div>',
