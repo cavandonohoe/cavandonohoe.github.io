@@ -30,7 +30,7 @@ testthat::test_that("token helper reads a redirected URL under Rscript", {
 
 load_merge_saved_episodes <- function() {
   expressions <- as.list(parse("../../scripts/update_saved_episodes.R"))
-  wanted <- c("%||%", "merge_saved_episodes")
+  wanted <- c("%||%", "backfill_fields", "merge_saved_episodes")
   defs <- Filter(function(x) {
     is.call(x) && identical(x[[1]], as.name("<-")) && as.character(x[[2]]) %in% wanted
   }, expressions)
@@ -70,4 +70,47 @@ testthat::test_that("a new API save appends and stamps meta without moving the e
   testthat::expect_equal(meta$export_n_episodes, 1)
   testthat::expect_equal(meta$api_refreshed_at, "2026-10-10")
   testthat::expect_equal(result$payload$episodes[[1]]$dur_min, 30)
+})
+
+testthat::test_that("backfill fills missing metadata but never invents a saved date", {
+  merge_saved_episodes <- load_merge_saved_episodes()
+  existing <- list(
+    meta = list(n_episodes = 2, export_n_episodes = 2),
+    episodes = list(
+      list(id = "old", added_at = NULL, name = "Old", show = "S", dur_min = NULL,
+           release = NULL, publisher = NULL, desc = NULL),
+      list(id = "kept", added_at = "2026-01-05", name = "Kept", show = "S",
+           dur_min = 20, release = "2026-01-01", publisher = "P", desc = "orig")
+    )
+  )
+  backfill <- list(
+    list(id = "old", added_at = NA_character_, name = "Old", show = "S",
+         dur_min = 42, release = "2024-03-01", publisher = "Pub", desc = "d"),
+    list(id = "kept", added_at = NA_character_, name = "Kept", show = "S",
+         dur_min = 99, release = "1999-01-01", publisher = "X", desc = "new")
+  )
+  result <- merge_saved_episodes(existing, list(), today = as.Date("2026-10-13"),
+                                 backfill = backfill)
+  old <- result$payload$episodes[[1]]
+  kept <- result$payload$episodes[[2]]
+  testthat::expect_true(result$changed)
+  testthat::expect_equal(old$dur_min, 42)
+  testthat::expect_equal(old$release, "2024-03-01")
+  testthat::expect_equal(old$publisher, "Pub")
+  testthat::expect_null(old$added_at)
+  # Existing values are never overwritten by backfill.
+  testthat::expect_equal(kept$dur_min, 20)
+  testthat::expect_equal(kept$desc, "orig")
+  testthat::expect_equal(result$n_new, 0L)
+})
+
+testthat::test_that("an empty backfill leaves an unchanged library untouched", {
+  merge_saved_episodes <- load_merge_saved_episodes()
+  existing <- list(
+    meta = list(n_episodes = 1, api_refreshed_at = "2026-10-01"),
+    episodes = list(list(id = "a", added_at = NULL, name = "A", dur_min = NULL))
+  )
+  result <- merge_saved_episodes(existing, list(), backfill = list())
+  testthat::expect_false(result$changed)
+  testthat::expect_identical(result$payload$meta, existing$meta)
 })

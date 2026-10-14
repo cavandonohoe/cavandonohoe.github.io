@@ -93,18 +93,30 @@ if (!length(items)) {
   stop("Spotify returned 0 saved episodes; refusing to overwrite the JSON.")
 }
 
+# The export covers older saves, so hitting the cap does not lose library
+# membership, but saves older than the 200th stop getting API saved dates.
+# Surface it as a GitHub Actions warning annotation instead of failing the run.
+if (offset >= 200L && last_page_had_next && last_page_size > 0) {
+  cat(paste0(
+    "::warning title=Spotify saved-episodes cap reached::",
+    "/me/episodes stopped at the 200-episode offset cap with more pages left. ",
+    "Saves older than the 200th are not refreshed by the API until the next ",
+    "Account Data export is imported.\n"
+  ))
+}
+
 # --- normalize and merge into the full library export -----------------------
 # The dashboard now uses the Account Data export as its membership source of
 # truth. The Web API is therefore an incremental enrichment source: refresh
 # known metadata and append newly saved episodes, but never replace the full
 # exported library with the API's smaller/capped result.
-api_episodes <- lapply(items, function(it) {
-  ep <- it$episode %||% list()
+normalize_episode <- function(ep, added_at = NA_character_) {
+  ep <- ep %||% list()
   show <- ep$show %||% list()
   dur_ms <- ep$duration_ms %||% NA_real_
   list(
     id = ep$id %||% NA_character_,
-    added_at = substr(it$added_at %||% NA_character_, 1, 10),
+    added_at = added_at,
     show = show$name %||% NA_character_,
     publisher = show$publisher %||% NA_character_,
     name = ep$name %||% NA_character_,
@@ -113,7 +125,31 @@ api_episodes <- lapply(items, function(it) {
     url = (ep$external_urls %||% list())$spotify %||% NA_character_,
     desc = ep$description %||% NA_character_
   )
+}
+
+api_episodes <- lapply(items, function(it) {
+  normalize_episode(it$episode, substr(it$added_at %||% NA_character_, 1, 10))
 })
+
+# Episode metadata by ID (GET /v1/episodes, 50 IDs per call). Used to backfill
+# export-only episodes the capped saved-episodes endpoint no longer returns.
+# Unavailable or removed episodes come back as null and are skipped.
+fetch_episode_metadata <- function(ids) {
+  ids <- unique(ids[!is.na(ids) & nzchar(ids)])
+  chunks <- split(ids, ceiling(seq_along(ids) / 50))
+  out <- list()
+  for (chunk in chunks) {
+    resp <- httr2::request("https://api.spotify.com/v1/episodes") |>
+      httr2::req_auth_bearer_token(access_token) |>
+      httr2::req_url_query(ids = paste(chunk, collapse = ","), market = "US") |>
+      httr2::req_retry(max_tries = 4) |>
+      httr2::req_perform() |>
+      httr2::resp_body_json()
+    eps <- Filter(Negate(is.null), resp$episodes %||% list())
+    out <- c(out, lapply(eps, normalize_episode))
+  }
+  out
+}
 
 # Merge API rows into the existing library. Returns the updated payload and
 # whether the episode list changed. Meta is only touched when episodes change:
@@ -122,10 +158,20 @@ api_episodes <- lapply(items, function(it) {
 # refresh that changed the library". `export_n_episodes` (set by
 # import_library.py) is left alone, so n_episodes - export_n_episodes is the
 # number of episodes appended by the API since the last Account Data export.
-merge_saved_episodes <- function(existing, api_episodes, today = Sys.Date()) {
+#
+# `backfill` is a list of episode-metadata rows from GET /v1/episodes for
+# export-only episodes the saved-episodes endpoint no longer returns. It only
+# fills fields that are still missing and never sets `added_at`: that endpoint
+# describes the episode, not when it was saved, so the save date stays unknown.
+backfill_fields <- c("publisher", "dur_min", "release", "desc")
+
+merge_saved_episodes <- function(existing, api_episodes, today = Sys.Date(),
+                                 backfill = list()) {
   episodes <- existing$episodes %||% list()
   existing_ids <- vapply(episodes, function(e) e$id %||% NA_character_, character(1))
   api_ids <- vapply(api_episodes, function(e) e$id %||% NA_character_, character(1))
+  backfill_ids <- vapply(backfill, function(e) e$id %||% NA_character_, character(1))
+  is_missing <- function(x) is.null(x) || !length(x) || all(is.na(x))
 
   # Enrich existing library rows with fresh API metadata without dropping
   # fields that only exist in the Account Data export.
@@ -136,6 +182,15 @@ merge_saved_episodes <- function(existing, api_episodes, today = Sys.Date()) {
       for (field in c("added_at", "publisher", "dur_min", "release", "url", "desc")) {
         value <- fresh[[field]]
         if (!is.null(value) && length(value) && !all(is.na(value))) {
+          episodes[[i]][[field]] <- value
+        }
+      }
+    }
+    k <- match(existing_ids[[i]], backfill_ids)
+    if (!is.na(k)) {
+      for (field in backfill_fields) {
+        value <- backfill[[k]][[field]]
+        if (is_missing(episodes[[i]][[field]]) && !is_missing(value)) {
           episodes[[i]][[field]] <- value
         }
       }
@@ -165,7 +220,34 @@ merge_saved_episodes <- function(existing, api_episodes, today = Sys.Date()) {
 }
 
 existing <- jsonlite::fromJSON(out_path, simplifyDataFrame = FALSE)
-merged <- merge_saved_episodes(existing, api_episodes)
+
+# Only look up export rows the saved-episodes call did not just refresh and that
+# are still missing metadata, so a fully backfilled library makes no extra
+# calls. A lookup failure keeps today's refresh rather than failing the run.
+api_ids <- vapply(api_episodes, function(e) e$id %||% NA_character_, character(1))
+needs_backfill <- vapply(existing$episodes %||% list(), function(e) {
+  !((e$id %||% NA_character_) %in% api_ids) &&
+    any(vapply(backfill_fields, function(f) {
+      v <- e[[f]]
+      is.null(v) || !length(v) || all(is.na(v))
+    }, logical(1)))
+}, logical(1))
+backfill_ids <- vapply(
+  (existing$episodes %||% list())[needs_backfill],
+  function(e) e$id %||% NA_character_, character(1)
+)
+backfill <- list()
+if (length(backfill_ids)) {
+  backfill <- tryCatch(fetch_episode_metadata(backfill_ids), error = function(e) {
+    cat(paste0(
+      "::warning title=Episode metadata backfill failed::",
+      conditionMessage(e), "\n"
+    ))
+    list()
+  })
+}
+
+merged <- merge_saved_episodes(existing, api_episodes, backfill = backfill)
 payload <- merged$payload
 json <- jsonlite::toJSON(
   payload, auto_unbox = TRUE, pretty = TRUE, na = "null", null = "null"
@@ -173,7 +255,11 @@ json <- jsonlite::toJSON(
 if (merged$changed) writeLines(json, out_path)
 
 cat(sprintf(
-  "Refreshed %d API saves; library now contains %d episodes (%d newly appended)%s\n",
-  length(api_episodes), length(payload$episodes), merged$n_new,
+  paste0(
+    "Refreshed %d API saves; backfilled metadata lookup for %d of %d episodes; ",
+    "library now contains %d episodes (%d newly appended)%s\n"
+  ),
+  length(api_episodes), length(backfill), length(backfill_ids),
+  length(payload$episodes), merged$n_new,
   if (merged$changed) "" else "; no changes, JSON left untouched"
 ))
