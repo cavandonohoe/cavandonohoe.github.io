@@ -43,7 +43,6 @@ jobs:
       actions: write
     env:
       GA4_PROPERTY_ID: ${{ vars.GA4_PROPERTY_ID }}
-      GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/ga4-sa.json
     steps:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-r-env
@@ -64,8 +63,12 @@ jobs:
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
         run: |
           test -n "$GCP_SA_KEY" || { echo "GCP_SA_KEY is missing"; exit 1; }
-          printf '%s' "$GCP_SA_KEY" > "$GOOGLE_APPLICATION_CREDENTIALS"
-          chmod 600 "$GOOGLE_APPLICATION_CREDENTIALS"
+          # runner.temp is not available in job-level env, so export the path
+          # for later steps from here.
+          key="$RUNNER_TEMP/ga4-sa.json"
+          printf '%s' "$GCP_SA_KEY" > "$key"
+          chmod 600 "$key"
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$key" >> "$GITHUB_ENV"
       - name: Refresh ranking from GA4
         if: steps.config.outputs.ready == 'true'
         run: Rscript scripts/update_page_views.R
@@ -102,4 +105,4 @@ jobs:
           gh workflow run pages-branch-previews.yml --ref main -f deploy_root=true
       - name: Remove Google key
         if: always()
-        run: rm -f "$GOOGLE_APPLICATION_CREDENTIALS"
+        run: rm -f "$RUNNER_TEMP/ga4-sa.json"
