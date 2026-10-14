@@ -11,6 +11,7 @@ no_progress = true
 # Don't fail on transient connection issues; we'll see them in the report.
 accept = [200, 206, 301, 302, 303, 307, 308, 403, 429, 999]
 
+
 # Exclude noisy / always-flaky destinations
 exclude = [
   # localhost / private addrs
@@ -57,3 +58,17 @@ exclude_path = [
 # Include verbatim/code blocks too — false positives are mostly excluded above
 include_verbatim = false
 include_mail = false
+
+# Per-host overrides. Keep these tables last: in TOML every key after a
+# [table] header belongs to that table.
+# github.com answers bursts of page requests from Actions runners with 503s
+# (year_in_review alone links ~80 blob pages). Pace requests to it instead of
+# excluding the links.
+[hosts."github.com"]
+concurrency = 2
+request_interval = "500ms"
+
+# shinyapps.io returns 202 Accepted while a sleeping app spins up; that is a
+# live app, not a broken link. Per-host accept replaces the global list.
+[hosts."cavandonohoe.shinyapps.io"]
+accept = [200, 202, 206, 301, 302, 303, 307, 308, 403, 429, 999]
