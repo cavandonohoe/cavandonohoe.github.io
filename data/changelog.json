@@ -1,6 +1,60 @@
 {
-  "generated_at": "2026-10-13T21:26:40.264263+00:00",
+  "generated_at": "2026-10-14T20:18:13.304510+00:00",
   "events": [
+    {
+      "date": "2026-10-14",
+      "type": "merged_pr",
+      "title": "Podcast dashboard: backfill export-only metadata, show undated saves, warn on API cap",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/269"
+    },
+    {
+      "date": "2026-10-14",
+      "type": "merged_pr",
+      "title": "Auto-merge passing minor/patch Dependabot PRs",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/281"
+    },
+    {
+      "date": "2026-10-14",
+      "type": "merged_pr",
+      "title": "Archive Google Ads dashboard",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/286"
+    },
+    {
+      "date": "2026-10-14",
+      "type": "merged_pr",
+      "title": "Add Google Ads dashboard",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/164"
+    },
+    {
+      "date": "2026-10-14",
+      "type": "merged_pr",
+      "title": "Add CBRE multifamily cap rate benchmark and insurance underwriting caveats to rental markets page",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/282"
+    },
+    {
+      "date": "2026-10-13",
+      "type": "merged_pr",
+      "title": "movie-ranker: upgrade to Next 16 and React 19",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/279"
+    },
+    {
+      "date": "2026-10-13",
+      "type": "merged_pr",
+      "title": "movie-ranker: back-fill poster art from TMDB",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/280"
+    },
+    {
+      "date": "2026-10-13",
+      "type": "merged_pr",
+      "title": "deps: bump framer-motion from 12.40.0 to 14.1.0 in /movie-ranker",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/271"
+    },
+    {
+      "date": "2026-10-13",
+      "type": "merged_pr",
+      "title": "deps: bump @types/node from 20.19.43 to 26.6.5 in /movie-ranker",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/270"
+    },
     {
       "date": "2026-10-13",
       "type": "merged_pr",
@@ -18,6 +72,12 @@
       "type": "merged_pr",
       "title": "Open bot PRs with a PAT so CI runs without approval",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/268"
+    },
+    {
+      "date": "2026-10-13",
+      "type": "merged_pr",
+      "title": "Bump Supabase clients, patch nested postcss, ignore blocked majors",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/275"
     },
     {
       "date": "2026-10-13",
@@ -508,6 +568,25 @@
   ],
   "daily_summaries": [
     {
+      "date": "2026-10-14",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "3 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/fcc3bcef68e20ee819c0489b9d0c2ee071a796b8"
+        },
+        {
+          "emoji": "\ud83d\udcbb",
+          "text": "5 PRs merged"
+        },
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "Podcast + Spotify experience improved",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/269"
+        }
+      ]
+    },
+    {
       "date": "2026-10-13",
       "items": [
         {
@@ -517,7 +596,7 @@
         },
         {
           "emoji": "\ud83d\udcbb",
-          "text": "4 PRs merged"
+          "text": "9 PRs merged"
         },
         {
           "emoji": "\ud83d\udcc4",
@@ -708,16 +787,6 @@
           "emoji": "\ud83d\uddfa\ufe0f",
           "text": "Data-viz projects polished",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/196"
-        }
-      ]
-    },
-    {
-      "date": "2026-09-30",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "1 podcast episode added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/4114d99c20c9108f34048b2b1bb5bcba1a35552a"
         }
       ]
     }

@@ -180,7 +180,8 @@ ui <- bslib::page_sidebar(
     "Lengths and saved dates come from the Spotify API where available. ",
     sprintf("%s episodes have unknown lengths; %s have unknown saved dates. ",
             sum(is.na(episodes$dur_min)), sum(is.na(episodes$added_at))),
-    "Duration statistics and the saved-date chart cover known values only. ",
+    "Duration statistics cover known values only; the saved-date chart shows ",
+    "undated episodes in an \"Unknown\" column. ",
     "Episodes absent from this export are excluded from this library view; ",
     "their absence does not establish when or why they left the library."
   ),
@@ -196,7 +197,7 @@ ui <- bslib::page_sidebar(
     )
   ),
   bslib::card(
-    bslib::card_header("Episodes with known saved dates, by show"),
+    bslib::card_header("Episodes by month saved, by show"),
     div(
       class = "plot-hscroll",
       style = paste(
@@ -207,7 +208,12 @@ ui <- bslib::page_sidebar(
     ),
     tags$small(
       style = "color:#9a9a9a;",
-      "Unknown saved dates are excluded. Each month is split by show; scroll to see every month."
+      paste(
+        "Older saves imported from the Account Data export have no saved date",
+        "(Spotify does not provide one), so they appear in the \"Unknown\" column",
+        "when \"Include unknown\" is on. Each month is split by show; scroll to see",
+        "every month."
+      )
     )
   ),
   bslib::card(
@@ -321,7 +327,13 @@ server <- function(input, output, session) {
   })
 
   output$line_time <- renderPlotly({
-    df <- filtered() |> dplyr::filter(!is.na(added_month))
+    all_df <- filtered()
+    df <- all_df |> dplyr::filter(!is.na(added_month))
+    # Episodes from the Account Data export that the API never dated. Spotify
+    # does not expose their save date anywhere, so they get their own
+    # "Unknown" column instead of being silently dropped or guessed.
+    n_unknown <- sum(is.na(all_df$added_month))
+    unknown_label <- "Unknown"
     # Continuous monthly sequence (fill gaps) so the scrollable trend reads
     # month-by-month with no missing columns.
     if (nrow(df) == 0) {
@@ -329,48 +341,54 @@ server <- function(input, output, session) {
     } else {
       months <- seq(min(df$added_month), max(df$added_month), by = "month")
     }
+    month_labels <- format(months, "%b %Y")
+    x_levels <- c(month_labels, if (n_unknown > 0) unknown_label)
     # Collapse the show dimension the same way the per-show charts do: when the
     # "Other" toggle is on, keep the top shows and bucket the rest so the
     # stacked legend stays readable.
-    show_order <- df |>
+    show_order <- all_df |>
       dplyr::count(show, sort = TRUE) |>
       dplyr::pull(show)
     if (isTRUE(input$only_top) && length(show_order) > 8) {
       keep <- show_order[1:8]
-      df <- df |>
+      all_df <- all_df |>
         dplyr::mutate(show_grp = ifelse(show %in% keep, show, "Other"))
       grp_levels <- c(keep, "Other")
     } else {
-      df <- df |> dplyr::mutate(show_grp = show)
+      all_df <- all_df |> dplyr::mutate(show_grp = show)
       grp_levels <- show_order
     }
-    counts <- df |>
-      dplyr::group_by(added_month, show_grp) |>
+    counts <- all_df |>
+      dplyr::mutate(
+        x = ifelse(is.na(added_month), unknown_label, format(added_month, "%b %Y"))
+      ) |>
+      dplyr::group_by(x, show_grp) |>
       dplyr::summarise(
         n = dplyr::n(),
-        saved_dates = paste(
-          sprintf("%d/%d", month(sort(unique(added_at))), day(sort(unique(added_at)))),
-          collapse = ", "
-        ),
+        saved_dates = if (all(is.na(added_at))) {
+          "Not provided by Spotify"
+        } else {
+          d <- sort(unique(added_at[!is.na(added_at)]))
+          paste(sprintf("%d/%d", month(d), day(d)), collapse = ", ")
+        },
         .groups = "drop"
       )
-    plot_width <- max(720, length(months) * 90)
+    plot_width <- max(720, length(x_levels) * 90)
     p <- plot_ly(width = plot_width, height = 320)
     for (g in grp_levels) {
       gd <- counts |> dplyr::filter(show_grp == g)
-      month_data <- tibble::tibble(added_month = months) |>
-        dplyr::left_join(gd, by = "added_month") |>
+      month_data <- tibble::tibble(x = x_levels) |>
+        dplyr::left_join(gd, by = "x") |>
         dplyr::mutate(
           n = dplyr::coalesce(n, 0L),
           saved_dates = dplyr::coalesce(saved_dates, "None")
-        ) |>
-        dplyr::arrange(added_month)
+        )
       p <- p |>
         add_bars(
-          x = months, y = month_data$n, name = g,
+          x = month_data$x, y = month_data$n, name = g,
           customdata = month_data$saved_dates,
           hovertemplate = paste0(
-            g, "<br>%{x|%b %Y}: %{y}",
+            g, "<br>%{x}: %{y}",
             "<br>Saved dates: %{customdata}<extra></extra>"
           )
         )
@@ -381,7 +399,8 @@ server <- function(input, output, session) {
         legend = list(font = list(size = 11)),
         xaxis = list(
           title = "Month saved", gridcolor = "#2a2a2a",
-          dtick = "M1", tickformat = "%b %Y", tickangle = -45
+          type = "category", categoryorder = "array", categoryarray = x_levels,
+          tickangle = -45
         ),
         yaxis = list(title = "Episodes saved", gridcolor = "#2a2a2a"),
         paper_bgcolor = "rgba(0,0,0,0)", plot_bgcolor = "rgba(0,0,0,0)",
