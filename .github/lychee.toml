@@ -9,7 +9,9 @@ timeout = 20
 no_progress = true
 
 # Don't fail on transient connection issues; we'll see them in the report.
-accept = [200, 206, 301, 302, 303, 307, 308, 403, 429, 999]
+# 202 is shinyapps.io answering while a sleeping app spins up (a live app, not
+# a broken link); the pinned lychee version has no per-host accept list.
+accept = [200, 202, 206, 301, 302, 303, 307, 308, 403, 429, 999]
 
 
 # Exclude noisy / always-flaky destinations
@@ -67,8 +69,3 @@ include_mail = false
 [hosts."github.com"]
 concurrency = 2
 request_interval = "500ms"
-
-# shinyapps.io returns 202 Accepted while a sleeping app spins up; that is a
-# live app, not a broken link. Per-host accept replaces the global list.
-[hosts."cavandonohoe.shinyapps.io"]
-accept = [200, 202, 206, 301, 302, 303, 307, 308, 403, 429, 999]
