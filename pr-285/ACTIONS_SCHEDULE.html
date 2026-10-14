@@ -430,8 +430,8 @@ $(document).ready(function () {
 <div id="github-actions-schedule" class="section level1">
 <h1>GitHub Actions schedule</h1>
 <p>The automation clock for <a
-href="https://cavandonohoe.github.io">Cavan’s website</a>: <strong>27
-scheduled workflows, 28 cron rules</strong>, plus workflows triggered by
+href="https://cavandonohoe.github.io">Cavan’s website</a>: <strong>28
+scheduled workflows, 29 cron rules</strong>, plus workflows triggered by
 pushes, PRs, issues, or other workflows.</p>
 <p>Checked against <code>main</code> on <strong>2026-10-08</strong> (<a
 href="https://github.com/cavandonohoe/cavandonohoe.github.io/commit/4960c97e0bd23e251a4ceda81640590f9f3f1a90">source
@@ -653,6 +653,8 @@ Mermaid source
     My Maps export 10h17 :milestone, week1_7, 2026-10-05 10:17, 0m
     section Tuesday
     CV PDF / DOCX 04h33 :milestone, week2_0, 2026-10-06 04:33, 0m
+    section Thursday
+    Shiny app traffic 07h19 :milestone, week4_0, 2026-10-08 07:19, 0m
     section Saturday
     S&amp;P 500 / VOO 06h29 :milestone, week6_0, 2026-10-10 06:29, 0m
     section Sunday
@@ -773,6 +775,16 @@ PDF / DOCX</a></td>
 </tr>
 <tr class="even">
 <td><a
+href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/main/.github/workflows/shiny-traffic.yml">Shiny
+app traffic</a></td>
+<td>Thu</td>
+<td>14:19</td>
+<td>07:19</td>
+<td><code>19 14 * * 4</code></td>
+<td>Commit shinyapps.io traffic history; no site build</td>
+</tr>
+<tr class="odd">
+<td><a
 href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/main/.github/workflows/update_sp500.yml">S&amp;P
 500 / VOO</a></td>
 <td>Sat</td>
@@ -781,7 +793,7 @@ href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/main/.github/w
 <td><code>29 13 * * 6</code></td>
 <td>Refresh prices; request site build when changed</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><a
 href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/main/.github/workflows/refresh-sitemap.yml">Sitemap</a></td>
 <td>Sun</td>
@@ -790,7 +802,7 @@ href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/main/.github/w
 <td><code>37 13 * * 0</code></td>
 <td>Commit sitemap; request site build when changed</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><a
 href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/main/.github/workflows/refresh-commit-activity.yml">Commit
 activity charts</a></td>
@@ -800,7 +812,7 @@ activity charts</a></td>
 <td><code>41 13 * * 0</code></td>
 <td>Re-knit README and charts; request site build when changed</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><a
 href="https://github.com/cavandonohoe/cavandonohoe.github.io/blob/main/.github/workflows/weekly-wrapped.yml">Weekly
 Wrapped</a></td>
@@ -1074,10 +1086,10 @@ instead. CV and Best Picture winners open PRs for review.</p>
 <p>Activity art, the personal changelog, Lately, and the commit-activity
 charts dispatch a production deploy only when they actually push a
 commit, and skip the commit entirely when nothing but a generated
-timestamp changed. Weekly Wrapped and project case studies write data
-the site does not render, so they do not dispatch a deploy. Developer
-year in review commits generated output without explicitly dispatching
-the site deployment.</p>
+timestamp changed. Weekly Wrapped, Shiny app traffic, and project case
+studies write data the site does not render, so they do not dispatch a
+deploy. Developer year in review commits generated output without
+explicitly dispatching the site deployment.</p>
 </div>
 </div>
 
