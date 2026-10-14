@@ -48,11 +48,24 @@ jobs:
           CHROMOTE_CHROME: ${{ steps.chrome.outputs.chrome-path }}
           CI: "true"
         run: |
+          # The `knit: pagedown::chrome_print` hook in cv.Rmd only runs from
+          # the RStudio Knit button; rmarkdown::render() just writes cv.html.
+          # Print the PDF explicitly, and remove the old copy first (it is
+          # stashed in .cv-pre for the comparison below) so a failed print
+          # cannot silently keep a stale cv.pdf.
+          rm -f cv.pdf
           Rscript -e '
           googledrive::drive_auth(path="sa.json", cache=FALSE)
           googlesheets4::gs4_auth(path="sa.json", cache=FALSE)
           rmarkdown::render("cv.Rmd", encoding="UTF-8")
+          pagedown::chrome_print(
+            "cv.html",
+            output = "cv.pdf",
+            browser = Sys.getenv("CHROMOTE_CHROME", "google-chrome"),
+            extra_args = c("--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage")
+          )
           '
+          test -s cv.pdf || { echo "ERROR: cv.pdf was not produced"; exit 1; }
 
       - name: Render cv_doc.Rmd to DOCX
         env:
@@ -132,7 +145,10 @@ jobs:
         if: ${{ steps.diff.outputs.changed != '' }}
         uses: peter-evans/create-pull-request@v8
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          # PRs opened with GITHUB_TOKEN have their pull_request workflows held
+          # for manual approval. A PAT makes the PR author a real user so CI
+          # runs immediately. Falls back to GITHUB_TOKEN if the secret is unset.
+          token: ${{ secrets.BOT_PR_TOKEN || secrets.GITHUB_TOKEN }}
           branch: auto/rebuild-cv
           delete-branch: true
           commit-message: "Rebuild CV (PDF + DOCX) from latest Google Sheet"

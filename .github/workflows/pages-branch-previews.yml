@@ -138,12 +138,31 @@ jobs:
           publish_dir: _site
           keep_files: true        # keep pr-*/ folders
 
+      # keep_files preserves PR previews, but also retains removed production
+      # assets. Remove this archived project from the existing published root.
+      - name: Checkout published branch for archive cleanup
+        uses: actions/checkout@v7
+        with:
+          ref: gh-pages
+      - name: Remove archived World Cup map from production
+        run: |
+          git rm -r --ignore-unmatch wc-momentum _archive/wc-momentum
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Remove archived World Cup map from published site"
+          git push origin HEAD:gh-pages
+
   # PREVIEW: publish to gh-pages/pr-<PR#>/ for PRs
   deploy_preview:
     name: Deploy PR preview (gh-pages/pr-<num>/)
-    if: |
-      (github.event_name == 'pull_request' && github.event.action != 'closed') ||
-      (github.event_name == 'workflow_dispatch')
+    # workflow_dispatch is deliberately excluded: there is no
+    # github.event.pull_request.number outside a PR event, so destination_dir
+    # would resolve to the literal `pr-` and publish an orphan folder that
+    # cleanup_preview (PR-close only) can never remove.
+    if: ${{ github.event_name == 'pull_request' && github.event.action != 'closed' }}
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -153,6 +172,16 @@ jobs:
       group: gh-pages-deploy
       cancel-in-progress: false
     steps:
+      # Runs inside the gh-pages-deploy lock, so a PR closed while this job was
+      # queued is seen here and its preview is never re-created after cleanup.
+      - name: Check PR is still open
+        id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          state=$(gh pr view "${{ github.event.pull_request.number }}" --repo "${{ github.repository }}" --json state --jq .state)
+          echo "open=$([ "$state" = "OPEN" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+          echo "PR state: $state"
       # Checkout source so .github/scripts/sticky-comment.sh is available for
       # the "Comment preview URL" step. peaceiris clones gh-pages into its own
       # temp dir, so this source checkout does not interfere with publishing.
@@ -162,6 +191,7 @@ jobs:
           name: site
           path: _site
       - name: Publish PR preview folder
+        if: ${{ steps.pr.outputs.open == 'true' }}
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -171,7 +201,7 @@ jobs:
           keep_files: true
           exclude_assets: 'sa.json'
       - name: Comment preview URL
-        if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+        if: ${{ steps.pr.outputs.open == 'true' && github.event.pull_request.head.repo.full_name == github.repository }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}

@@ -1,0 +1,45 @@
+name: movie-ranker build
+
+# Install and build the Next.js movie-ranker app on every PR that touches it, so
+# dependency bumps (Dependabot) get a real signal instead of unrelated green checks.
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "movie-ranker/**"
+      - ".github/workflows/movie-ranker-build.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: movie-ranker-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build movie-ranker
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: movie-ranker
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+      # Placeholder values: the build only needs them to be present, it never connects.
+      NEXT_PUBLIC_SUPABASE_URL: https://placeholder.supabase.co
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: placeholder-anon-key
+      SUPABASE_SERVICE_ROLE_KEY: placeholder-service-key
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: movie-ranker/package-lock.json
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Type-check and build
+        run: npm run build

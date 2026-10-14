@@ -1,0 +1,197 @@
+---
+title: "Did They Quit While They Were Ahead?"
+editor_options:
+  chunk_output_type: console
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+    toc: true
+    toc_depth: 3
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+lang: "en"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+suppressPackageStartupMessages({
+  library(dplyr)
+})
+
+source(here::here("scripts", "shows_manifest.R"))
+source(here::here("scripts", "tv_decline_metrics.R"))
+
+shows <- tv_shows_manifest()
+decline <- tv_decline_table(shows)
+
+show_link <- function(title) {
+  sprintf("<a href='imdb_rating_plot.html#%s'>%s</a>", anchor_id(title), title)
+}
+
+status_label <- function(ongoing) ifelse(ongoing, "still airing", "ended")
+```
+
+On [the season-by-season heatmaps](imdb_rating_plot.html) I said I wanted to find the shows
+that figure out when to stop. That page draws the maps but never actually answers the
+question, so this one does the arithmetic. Of the `r nrow(shows)` shows I track,
+`r nrow(decline)` have more than one full season and can actually be ranked.
+
+The idea is simple. For each show I take the average IMDb rating of every season, find its
+best season, and compare that peak to where the show is now. A show that ended near its
+peak went out on a high note. A show sitting two full points below its best season did not.
+
+```{r headline-numbers}
+worst <- decline %>% dplyr::slice_max(peak_to_latest_drop, n = 1, with_ties = FALSE)
+on_peak <- decline %>% dplyr::filter(latest_is_peak, !likely_ongoing)
+```
+
+The single biggest fall from grace is **`r worst$title`**, which peaked in season
+`r worst$peak_season` at `r sprintf("%.2f", worst$peak_avg)` and finished season
+`r worst$latest_season` at `r sprintf("%.2f", worst$latest_avg)`, a drop of
+`r sprintf("%.2f", worst$peak_to_latest_drop)` points. On the other side,
+`r nrow(on_peak)` shows ended their run on their own best season.
+
+## The fall-from-peak leaderboard
+
+Bars are how far a show sits below its own best season. Shows still on the air are shaded
+differently, because their story isn't finished. A dip might still turn into a comeback.
+
+```{r drop-chart, fig.width=9, fig.height=8}
+top_drops <- decline %>%
+  dplyr::filter(peak_to_latest_drop > 0) %>%
+  dplyr::slice_max(peak_to_latest_drop, n = 25) %>%
+  dplyr::mutate(
+    status = status_label(likely_ongoing),
+    label = paste0(
+      title, "<br>peak S", peak_season, ": ", sprintf("%.2f", peak_avg),
+      "<br>latest S", latest_season, ": ", sprintf("%.2f", latest_avg),
+      "<br>drop: ", sprintf("%.2f", peak_to_latest_drop)
+    )
+  )
+
+plotly::plot_ly(
+  top_drops,
+  x = ~peak_to_latest_drop,
+  y = ~reorder(title, peak_to_latest_drop),
+  color = ~status,
+  colors = c("ended" = "#b2182b", "still airing" = "#7fa8b8"),
+  type = "bar",
+  orientation = "h",
+  text = ~label,
+  hoverinfo = "text"
+) %>%
+  plotly::layout(
+    xaxis = list(title = "Rating points below the show's best season"),
+    yaxis = list(title = ""),
+    legend = list(orientation = "h", x = 0, y = 1.05),
+    margin = list(l = 180)
+  )
+```
+
+## Shows that stuck the landing
+
+These shows ended on their highest-rated season, as far as the episode data goes. This is
+the list the whole page was built to find.
+
+```{r stuck-landing}
+on_peak %>%
+  dplyr::arrange(dplyr::desc(latest_avg)) %>%
+  dplyr::transmute(
+    Show = show_link(title),
+    Seasons = seasons,
+    `Final season` = latest_season,
+    `Final season avg` = round(latest_avg, 2),
+    `Last episode` = last_year
+  ) %>%
+  DT::datatable(
+    escape = FALSE,
+    rownames = FALSE,
+    options = list(pageLength = 15, autoWidth = TRUE, order = list(list(3, "desc"))),
+    caption = "Shows whose last full season was also their best. Click a title for its heatmap."
+  )
+```
+
+## The slow slide
+
+The leaderboard above rewards one bad season. This looks at the whole trajectory instead:
+the slope of a straight line through a show's season averages, in rating points per season.
+I only include shows with at least four scored seasons, because a slope drawn through two
+points is just a rumour.
+
+```{r slope-table}
+decline %>%
+  dplyr::filter(seasons_scored >= 4) %>%
+  dplyr::arrange(slope_per_season) %>%
+  dplyr::transmute(
+    Show = show_link(title),
+    Status = status_label(likely_ongoing),
+    `Seasons scored` = seasons_scored,
+    `Points per season` = round(slope_per_season, 3),
+    `Peak` = round(peak_avg, 2),
+    `Latest` = round(latest_avg, 2)
+  ) %>%
+  DT::datatable(
+    escape = FALSE,
+    rownames = FALSE,
+    filter = "top",
+    options = list(pageLength = 15, autoWidth = TRUE, order = list(list(3, "asc"))),
+    caption = "Negative means the show trends down season over season."
+  )
+```
+
+## Everything, all at once
+
+Every metric for every show, sortable and filterable.
+
+```{r full-table}
+decline %>%
+  dplyr::arrange(dplyr::desc(peak_to_latest_drop)) %>%
+  dplyr::transmute(
+    Show = show_link(title),
+    Status = status_label(likely_ongoing),
+    Seasons = seasons,
+    Episodes = episodes,
+    `Peak season` = peak_season,
+    `Peak avg` = round(peak_avg, 2),
+    `Latest season` = latest_season,
+    `Latest avg` = round(latest_avg, 2),
+    Drop = round(peak_to_latest_drop, 2),
+    `Pts/season` = round(slope_per_season, 3),
+    `Episode SD` = round(episode_sd, 2),
+    `Last episode` = last_year
+  ) %>%
+  DT::datatable(
+    escape = FALSE,
+    rownames = FALSE,
+    filter = "top",
+    options = list(pageLength = 20, autoWidth = TRUE, scrollX = TRUE, order = list(list(8, "desc"))),
+    caption = "All tracked shows. Episode SD is how much individual episodes bounce around."
+  )
+```
+
+## How this is calculated, and where it's unfair
+
+A few things worth knowing before you take any of this personally:
+
+- **Seasons with fewer than three episodes are ignored.** Otherwise a show two episodes into
+  a new season would look like it had collapsed.
+- **"Still airing" is a guess.** I flag a show as ongoing if its most recent episode landed
+  within the last year or so. There's no cancellation data here, so a show on hiatus may be
+  mislabelled either way.
+- **Long-running comedies are punished by design.** The Simpsons, South Park, and Family Guy
+  all peaked in the nineties or early 2000s and have been running ever since. Comparing
+  season 37 to season 7 is a big drop, but it isn't really the same show, and "still on the
+  air after 37 seasons" is its own kind of win.
+- **Ratings drift with the audience, not just quality.** Early seasons get rated years later
+  by people who already decided they love the show. Finales get rated the week they air by
+  everyone who's angry. That asymmetry inflates exactly the drop this page measures.
+- **A high peak makes falling easier.** A show that never went above 7.5 has less room to
+  drop than one that hit 9.3.
+
+The episode data refreshes automatically from IMDb, so these numbers move on their own. The
+metric code lives in `scripts/tv_decline_metrics.R` and has tests, in case you want to argue
+with the arithmetic rather than the conclusions.

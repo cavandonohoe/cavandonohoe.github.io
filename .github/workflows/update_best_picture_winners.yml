@@ -23,7 +23,10 @@ jobs:
       - name: Open PR if data changed
         uses: peter-evans/create-pull-request@v8
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          # PRs opened with GITHUB_TOKEN have their pull_request workflows held
+          # for manual approval. A PAT makes the PR author a real user so CI
+          # runs immediately. Falls back to GITHUB_TOKEN if the secret is unset.
+          token: ${{ secrets.BOT_PR_TOKEN || secrets.GITHUB_TOKEN }}
           branch: auto/update-best-picture-winners
           delete-branch: true
           commit-message: "Update Best Picture winners"
