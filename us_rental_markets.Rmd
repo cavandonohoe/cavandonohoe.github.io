@@ -69,7 +69,7 @@ tier_colors <- c(
 
 Where should you buy rental property in the US? This page ranks **`r nrow(markets)` cities** by investment metrics derived from Zillow's public home value and rent indices. The price-to-rent ratio is the standard benchmark:
 
-- **Strong Buy** (P/R < 15): Cash flow positive from day one
+- **Strong Buy** (P/R < 15): Low price-to-rent ratio; positive cash flow is not guaranteed
 - **Moderate** (P/R 15--20): Reasonable returns, some appreciation upside
 - **Lean Rent** (P/R 20--25): Marginal; depends on appreciation
 - **Rent Favored** (P/R > 25): Buy only if you're betting on price growth
@@ -120,6 +120,45 @@ tibble::tribble(
     locations = gt::cells_column_labels()
   )
 ```
+
+## How the Markets Changed: March to October 2026
+
+The original March 29, 2026 dataset contained **3,856 cities**; the October 5 refresh contains **4,423** (**567 more net**). Of those, **3,549 city/state pairs** appear in both snapshots. The unfiltered mean modeled cap rate moved from **3.87% to 3.81%** (a **0.06 percentage-point decline**); this comparison includes coverage changes, so it is **not** a same-city average. For matched cities, the average change was **-0.03 percentage points**.
+
+The following comparison is a **fixed historical snapshot**, not an automatically updating trend. Monthly data updates do not update these historical figures. Values are estimates from Zillow-derived home values and rents, with a flat 35% expense allowance; they are not realized property returns.
+
+| City | March 2026 | October 2026 | Change (pp) |
+|:--|--:|--:|--:|
+| Sag Harbor, NY | 13.13% | 18.21% | +5.08 |
+| Bay Harbor Islands, FL | 3.25% | 5.61% | +2.36 |
+| Isla Vista, CA | 1.73% | 3.86% | +2.13 |
+| Lauderdale Lakes, FL | 10.37% | 11.90% | +1.53 |
+| East Hampton, NY | 17.28% | 13.45% | -3.83 |
+| Ventnor City, NJ | 9.76% | 2.41% | -7.35 |
+| Margate City, NJ | 16.34% | 1.18% | -15.16 |
+
+**Interpretation:** 11 of the original top-20 cities left the top 20 by October. Some exits are city-name or data-coverage changes rather than deteriorating fundamentals (for example, Cahokia, IL versus Cahokia Heights, IL). Exceptionally large movements in seasonal coastal markets may reflect rental-series composition or data availability. Validate the underlying observations before using any such movement as an investment signal.
+
+## Insurance, Property Risk, and Real Net Returns
+
+**Florida vs. Missouri:** A higher modeled yield in Florida may be offset by higher windstorm or flood coverage, deductibles, taxes, or maintenance. Missouri may avoid coastal hurricane exposure, but hail, tornado, river flood, and other risks still vary by address. **Do not interpret the rankings below as insurance-adjusted.**
+
+The existing `est_cap_rate_pct` uses **gross yield × 0.65**, i.e. one **35% flat expense assumption for every city**. It does **not** model each property's insurance quote, tax bill, flood zone, HOA, repairs, property management, or financing. A more realistic underwriting model is:
+
+\[
+\text{Property-level cap rate} =
+\frac{\text{Annual rent} - \text{vacancy} - \text{operating expenses}}{\text{purchase price}}
+\]
+
+Operating expenses should include location-specific insurance premiums, property tax, management, maintenance, utilities paid by the owner, and HOA where applicable. Debt service is excluded from cap rate; use cash-on-cash return separately for leveraged deals. Get actual quotes and inspect exclusions and deductibles before buying.
+
+### Commercial Real Estate: CBRE Data
+
+CBRE's econometric and commercial-property research could add a **separate commercial real estate analysis** with sector-specific rent growth, vacancy, absorption, cap rates, and forecasts. **Residential Zillow ZHVI/ZORI measures are not interchangeable with commercial property NOI, leases, or cap rates.** Any CBRE-derived charts should identify the exact series, geography, observation date, license, and access conditions; do not assume a proprietary CBRE dataset is publicly downloadable or republishable.
+
+Useful starting point: [CBRE Research](https://www.cbre.com/insights). A future commercial dashboard should remain distinct from these residential city rankings until a licensed or openly available dataset is verified.
+
+---
 
 ## Top 40 Cities by Cap Rate {.tabset}
 
