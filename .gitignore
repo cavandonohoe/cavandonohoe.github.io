@@ -10,6 +10,8 @@
 .Renviron
 .Renviron.site
 .httr-oauth
+secrets/
+sa.json
 
 # renv / packrat (keep renv.lock + renv/activate.R + renv/settings.json tracked!)
 renv/library/
