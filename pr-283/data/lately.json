@@ -1,0 +1,28 @@
+{
+  "generated_at": "2026-10-13T21:34:21.801517+00:00",
+  "window_days": 30,
+  "commits": 76,
+  "excludes_bot_commits": true,
+  "active_areas": [
+    {
+      "name": "site",
+      "file_touches": 73
+    },
+    {
+      "name": ".github",
+      "file_touches": 59
+    },
+    {
+      "name": "data",
+      "file_touches": 42
+    },
+    {
+      "name": "scripts",
+      "file_touches": 41
+    },
+    {
+      "name": "tests",
+      "file_touches": 23
+    }
+  ]
+}
