@@ -49,27 +49,35 @@ test_that("rank_card_keys breaks ties alphabetically and handles empty input", {
 })
 
 test_that("order_cards pins first, then ranks, then keeps unranked order", {
-  cards <- list(
-    list("a.html", "", "A", ""),
-    list("b.html", "", "B", ""),
-    list("c.html", "", "C", ""),
-    list("https://app.example.com/x/", "", "X", ""),
-    list("d.html", "", "D", "")
+  cards <- data.frame(
+    href = c("a.html", "b.html", "c.html", "https://app.example.com/x/", "d.html"),
+    title = c("A", "B", "C", "X", "D")
   )
-  titles <- function(x) vapply(x, function(card) card[[3]], character(1))
 
   ordered <- order_cards(cards, ranking = c("d", "https://app.example.com/x"), pinned = "c.html")
-  expect_equal(titles(ordered), c("C", "D", "X", "A", "B"))
+  expect_equal(ordered$title, c("C", "D", "X", "A", "B"))
+  expect_equal(rownames(ordered), as.character(1:5))
 
   # A pinned card that also ranks is not duplicated; unknown pins are ignored.
   ordered <- order_cards(cards, ranking = c("c", "b"), pinned = c("missing.html", "c.html"))
-  expect_equal(titles(ordered), c("C", "B", "A", "X", "D"))
+  expect_equal(ordered$title, c("C", "B", "A", "X", "D"))
 })
 
 test_that("order_cards with no ranking keeps the manual order", {
-  cards <- list(list("a.html"), list("b.html"), list("c.html"))
+  cards <- data.frame(href = c("a.html", "b.html", "c.html"))
   expect_identical(order_cards(cards), cards)
-  expect_identical(order_cards(list()), list())
+  expect_identical(order_cards(cards[0, , drop = FALSE]), cards[0, , drop = FALSE])
+})
+
+test_that("every pinned homepage card exists in data/project_cards.csv", {
+  cards <- read.csv("../../data/project_cards.csv", encoding = "UTF-8")
+  expect_setequal(names(cards), c("href", "icon", "title", "description"))
+  expect_false(anyDuplicated(card_key(cards$href)) > 0)
+  rmd <- readLines("../../index.Rmd", encoding = "UTF-8")
+  start <- grep("^pinned <- c\\($", rmd)
+  end <- start + which(rmd[(start + 1):length(rmd)] == ")")[1]
+  pinned <- eval(parse(text = rmd[start:end]))
+  expect_true(all(card_key(pinned) %in% card_key(cards$href)))
 })
 
 test_that("read_card_ranking tolerates missing or malformed files", {
