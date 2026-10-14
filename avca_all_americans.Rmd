@@ -14,7 +14,7 @@ lang: "en"
 cat('
 <meta property="og:title" content="AVCA Men&#39;s Volleyball All-Americans">
 <meta property="og:description"
-      content="Complete history of NCAA men&#39;s volleyball First-Team All-American selections and national champions.">
+  content="Complete history of NCAA men&#39;s volleyball First-Team All-American selections and national champions.">
 <meta property="og:url" content="https://cavandonohoe.github.io/avca_all_americans.html">
 <meta property="og:type" content="article">
 ')
