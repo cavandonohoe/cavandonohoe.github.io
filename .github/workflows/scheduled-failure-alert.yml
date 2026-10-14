@@ -26,6 +26,7 @@ on:
       - "Refresh exceptional IMDb episodes"
       - "Refresh lately feed"
       - "Refresh personal changelog"
+      - "Refresh project card traffic ranking"
       - "Refresh sitemap.xml"
       - "Update IMDb episode ratings"
       - "Update My Maps export"
