@@ -47,6 +47,12 @@ exclude = [
 
   # GitHub Pages preview URLs (will be 404 until deployed)
   "^https?://cavandonohoe\\.github\\.io/pr-",
+
+  # Commit-pinned GitHub permalinks (year_in_review links ~80 of these).
+  # They are immutable, and github.com answers bulk page fetches from Actions
+  # runners with 503 regardless of pacing. Branch links (blob/main/...) are
+  # still checked.
+  "^https://github\\.com/[^/]+/[^/]+/blob/[0-9a-f]{40}/",
 ]
 
 # Skip HTML fragments that the site build copies into _site but that are not
@@ -60,12 +66,3 @@ exclude_path = [
 # Include verbatim/code blocks too — false positives are mostly excluded above
 include_verbatim = false
 include_mail = false
-
-# Per-host overrides. Keep these tables last: in TOML every key after a
-# [table] header belongs to that table.
-# github.com answers bursts of page requests from Actions runners with 503s
-# (year_in_review alone links ~80 blob pages). Pace requests to it instead of
-# excluding the links.
-[hosts."github.com"]
-concurrency = 2
-request_interval = "500ms"
