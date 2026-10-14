@@ -46,6 +46,14 @@ exclude = [
   "^https?://cavandonohoe\\.github\\.io/pr-",
 ]
 
+# Skip HTML fragments that the site build copies into _site but that are not
+# pages: header/header.html is spliced into every page's <head> via
+# `in_header`, so its relative links (e.g. header/favicon-32x32.png) resolve
+# against the including page, not against _site/header/.
+exclude_path = [
+  "_site/header/",
+]
+
 # Include verbatim/code blocks too — false positives are mostly excluded above
 include_verbatim = false
 include_mail = false
