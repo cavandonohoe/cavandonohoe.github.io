@@ -102,7 +102,7 @@ All data is traceable and reproducible. Run `Rscript scripts/la_real_estate_data
 | [Zillow ZHVI](https://www.zillow.com/research/data/) | Typical home values (neighborhood & city level) | `r zhvi_date` |
 | [Zillow ZORI](https://www.zillow.com/research/data/) | Typical observed rents (zip-code level) | `r zori_date` |
 | [Redfin](https://www.redfin.com/city/11203/CA/Los-Angeles/housing-market) | Median sale prices, $/sqft | Manual; see [source CSV](data/la_neighborhoods_redfin.csv) |
-| [American Home Field](https://americanhomefield.com/) | $/sqft study | 2025 |
+| [American Home Shield](https://www.ahs.com/home-matters/real-estate/most-and-least-expensive-american-neighborhoods/) | $/sqft by neighborhood (Homes.com data, Dec 2023) | Feb 2024 |
 
 Raw data files: [la_neighborhoods.csv](data/la_neighborhoods.csv) | [Redfin sources](data/la_neighborhoods_redfin.csv) | [Zillow ZHVI extract](data/la_zhvi_raw.csv) | [Zillow ZORI extract](data/la_zori_raw.csv)
 
