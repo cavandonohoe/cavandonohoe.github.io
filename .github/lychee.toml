@@ -48,6 +48,10 @@ exclude = [
   # GitHub Pages preview URLs (will be 404 until deployed)
   "^https?://cavandonohoe\\.github\\.io/pr-",
 
+  # FRED series pages fail lychee's HTTP/2 request ("HTTP/2 protocol error")
+  # but load fine in a browser.
+  "^https://fred\\.stlouisfed\\.org/series/",
+
   # Commit-pinned GitHub permalinks (year_in_review links ~80 of these).
   # They are immutable, and github.com answers bulk page fetches from Actions
   # runners with 503 regardless of pacing. Branch links (blob/main/...) are
