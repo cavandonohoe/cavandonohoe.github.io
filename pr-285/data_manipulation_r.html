@@ -50,11 +50,11 @@
   });
 </script>
 <!-- Favicons and app icons -->
-<link rel="apple-touch-icon" sizes="180x180" href="header/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="header/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="header/favicon-16x16.png">
-<link rel="manifest" href="header/site.webmanifest">
-<link rel="mask-icon" href="header/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="apple-touch-icon" sizes="180x180" href="/header/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/header/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/header/favicon-16x16.png">
+<link rel="manifest" href="/header/site.webmanifest">
+<link rel="mask-icon" href="/header/safari-pinned-tab.svg" color="#5bbad5">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
 <!-- Dark mode + site-wide styling -->
@@ -662,9 +662,6 @@ div.tocify {
     <li>
       <a href="sdtm_with_r.html">SDTM with R</a>
     </li>
-    <li>
-      <a href="google_ads_dashboard.html">Google Ads Overview</a>
-    </li>
     <li class="dropdown-header">--- Archive ---</li>
     <li>
       <a href="sp500.html">S&amp;P 500 Perspective</a>
@@ -1163,11 +1160,11 @@ tool for “if-elseif-else” logic. Each <code>~</code> line is “condition
 #&gt; 3 Toyota Coro…  33.9     4  71.1    65  4.22  1.84  19.9     1     1     4     1</code></pre>
 <pre class="r"><code>cars |&gt; slice_sample(n = 3)           # 3 random rows</code></pre>
 <pre><code>#&gt; # A tibble: 3 × 12
-#&gt;   model          mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
-#&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 Fiat 128      32.4     4  78.7    66  4.08  2.2   19.5     1     1     4     1
-#&gt; 2 Hornet 4 Dr…  21.4     6 258     110  3.08  3.22  19.4     1     0     3     1
-#&gt; 3 Merc 280C     17.8     6 168.    123  3.92  3.44  18.9     1     0     4     4</code></pre>
+#&gt;   model         mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+#&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1 Merc 280     19.2     6 168.    123  3.92  3.44  18.3     1     0     4     4
+#&gt; 2 Volvo 142E   21.4     4 121     109  4.11  2.78  18.6     1     1     4     2
+#&gt; 3 Honda Civic  30.4     4  75.7    52  4.93  1.62  18.5     1     1     4     2</code></pre>
 </div>
 <div id="joining-tables" class="section level3">
 <h3>Joining tables</h3>
@@ -1384,7 +1381,7 @@ class="lesson-nav-title">Lesson 4: Data Visualization</span> </a></p>
 </div>
 </div>
 
-<link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="/css/footer.css">
 <footer id="footer_stuff" class="band full" role="contentinfo">
   <div class="bandContent">
     <p id="full_send">Feel free to contact me:</p>
