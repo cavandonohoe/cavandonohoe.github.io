@@ -58,10 +58,13 @@ jobs:
         id: lychee
         uses: lycheeverse/lychee-action@v2
         with:
+          # Quote the glob so lychee expands it (recursively) instead of bash,
+          # which without globstar treats ** as * and only matched files one
+          # directory deep, skipping every top-level page.
           args: >-
             --config .github/lychee.toml
             --no-progress
-            ${{ steps.target.outputs.target == '_site' && format('--root-dir {0}/_site _site/**/*.html', github.workspace) || '*.Rmd README.md' }}
+            ${{ steps.target.outputs.target == '_site' && format('--root-dir {0}/_site ''_site/**/*.html''', github.workspace) || '*.Rmd README.md' }}
           format: markdown
           output: ./lychee-report.md
           fail: false
