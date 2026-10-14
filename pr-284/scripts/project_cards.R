@@ -75,16 +75,18 @@ read_card_ranking <- function(path = "data/page_views.json") {
 
 # Order cards: pinned hrefs first (in the given order), then everything else
 # by traffic rank. Cards without traffic data keep their original relative
-# order after the ranked ones. Each card is a list whose first element is its
-# href.
+# order after the ranked ones. `cards` is a data frame with an `href` column
+# (data/project_cards.csv).
 order_cards <- function(cards, ranking = character(), pinned = character()) {
-  if (length(cards) == 0) {
+  if (nrow(cards) == 0) {
     return(cards)
   }
-  keys <- card_key(vapply(cards, function(card) card[[1]], character(1)))
+  keys <- card_key(cards$href)
   pinned_idx <- unique(stats::na.omit(match(card_key(pinned), keys)))
-  rest <- setdiff(seq_along(cards), pinned_idx)
+  rest <- setdiff(seq_len(nrow(cards)), pinned_idx)
   rank <- match(keys[rest], ranking)
   rank[is.na(rank)] <- Inf
-  cards[c(pinned_idx, rest[order(rank, rest)])]
+  out <- cards[c(pinned_idx, rest[order(rank, rest)]), , drop = FALSE]
+  rownames(out) <- NULL
+  out
 }
