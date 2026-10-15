@@ -1,0 +1,41 @@
+name: Refresh personal changelog
+on:
+  schedule:
+    - cron: '31 16 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: write # needed for the "gh workflow run" redeploy dispatch below
+
+# Per-workflow group: never cancels another workflow's pending run.
+# Cross-workflow push races are handled by push_generated_changes.sh.
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Generate changelog
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/build_changelog.py
+      - name: Commit and safely push changes
+        id: push
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          scripts/push_generated_changes.sh
+          'Refresh personal changelog'
+          'python3 scripts/build_changelog.py'
+          data/changelog.json
+      # Pushes made with GITHUB_TOKEN do not trigger the push-based deploy.
+      - name: Trigger site redeploy
+        if: steps.push.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages-branch-previews.yml --ref main -f deploy_root=true

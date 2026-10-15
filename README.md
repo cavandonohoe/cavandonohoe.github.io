@@ -38,6 +38,8 @@ Movies & data:
 - [Rent vs. Buy
   Calculator](https://cavandonohoe.shinyapps.io/rent-vs-buy/)
   ([source](https://github.com/cavandonohoe/rent-vs-buy))
+- [Saved Podcast
+  Episodes](https://cavandonohoe.shinyapps.io/podcast-dashboard/)
 - [Confederate Statue
   Analysis](https://github.com/cavandonohoe/confederate_statues)
 - [Sierpinski
@@ -90,6 +92,14 @@ manual is a click away on the Actions tab.
 - `update_us_rentals.yml` – monthly Zillow ZHVI/ZORI refresh.
 - `update_mymaps_export.yml` – weekly Google My Maps export.
 
+The uniform ones (`update_sp500`, `update_us_rentals`,
+`update_top250_with_rt`, `update_watched_episodes`) are thin callers of
+`refresh-data.yml`, which owns the shared run/guard/commit/redeploy
+logic. The rest stay standalone because they build dynamic commit
+messages or need extra fetch steps. Every refresh that commits to `main`
+runs `scripts/data_sanity.R` first, so an empty or collapsed scrape
+fails the run instead of landing on `main`.
+
 ### Data refreshes (open PR)
 
 - `update_best_picture_winners.yml` – annual Oscar refresh.
@@ -128,8 +138,8 @@ above. Regenerated each time `README.Rmd` is knit.
 
 <img src="images/readme/commit-activity-cumulative-1.png" alt="Two cumulative line charts showing total commits and total lines changed (insertions + deletions) over time, split by Cavan's own commits vs. scheduled-bot commits."  />
 
-*529 commits since Dec 2020 — 500 by me, 29 by scheduled bots — touching
-2,051,012 lines in total.*
+*1,008 commits since Dec 2020 — 646 by me, 362 by scheduled bots —
+touching 2,925,769 lines in total.*
 
 ## Setup and Local Development
 
@@ -146,8 +156,8 @@ Privacy rules:
 
 - Do not commit statement PDFs, generated workbooks, exported
   transaction CSVs, or Google Sheet URLs.
-- Keep personal owner rules in `config/chase_owner_rules.csv`; that
-  file is ignored by git.
+- Keep personal owner rules in `config/chase_owner_rules.csv`; that file
+  is ignored by git.
 - Use `config/chase_owner_rules.example.csv` as the tracked starting
   rules file for non-sensitive patterns and labels.
 

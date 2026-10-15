@@ -144,7 +144,11 @@ To bump the R version itself, edit `.R-version` and update the `R.Version` field
 1. Create `your_page.Rmd` at the repo root.
 2. Add an entry to `_site.yml` under `navbar:` if it should appear in the top nav, or just under a `Project` card in `index.Rmd` for project pages.
 3. Render locally and confirm `pr-smoke.yml` will pick it up (it auto-discovers changed top-level `.Rmd` files).
-4. If the page needs a scheduled data refresh, add a workflow under `.github/workflows/update_*.yml` modeled on the existing ones.
+4. If the page needs a scheduled data refresh, add a workflow under `.github/workflows/update_*.yml` modeled on the existing ones. Refreshes that commit to `main` should run `scripts/data_sanity.R` on the CSVs they stage, before the commit step, so a collapsed or empty scrape fails the run instead of landing on `main`:
+
+   ```bash
+   Rscript scripts/data_sanity.R [--min-rows N] [--max-drop-pct P] data/your_file.csv
+   ```
 
 ## Adding a new test
 
@@ -159,3 +163,19 @@ Open an issue with:
 - What page or workflow is affected
 - What you expected vs. what happened
 - A link to the relevant page or commit if applicable
+
+## Reunion email coverage
+
+Edit emails in the **Full Grad Class** tab of the existing reunion Google Sheet.
+The **Refresh TOHS reunion** Action checks hourly at minute 23 UTC; use its
+**Run workflow** button on `main` after a batch of edits for a faster update.
+The existing `GCP_SA_KEY` service account must have read access to that sheet.
+Form responses must reach the Full Grad Class tab to count on the page.
+
+The Action saves only names, email-present flags, and the last data-change time
+in `data/tohs_reunion.csv`. It never saves email addresses. Blank or whitespace
+emails count as missing. Empty data, missing columns, or a graduate count drop
+above 20% fail the refresh. Same-repo PR runs validate reads without publishing.
+Changed snapshots trigger the production site build explicitly. Unchanged
+checks skip builds once the same snapshot is on `gh-pages`; a failed deployment
+is retried on the next check. GitHub schedules may be delayed under load.

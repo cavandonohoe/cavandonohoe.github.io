@@ -1,0 +1,18 @@
+name: Data question intake
+on:
+  issues:
+    types: [opened]
+permissions:
+  issues: write
+jobs:
+  intake:
+    if: contains(github.event.issue.labels.*.name, 'data-question')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Acknowledge supported public-data question
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ github.event.issue.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          gh issue comment "$ISSUE" --repo "$REPO" --body "Thanks for the question. Nothing processes it automatically: this intake only posts this acknowledgement and never executes issue text as code. Any answer will come as a manual reply on this issue."

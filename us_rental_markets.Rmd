@@ -80,7 +80,7 @@ Jump to: [Glossary](#plain-english-glossary) · [Cash Flow Calculator](#interact
 
 The price-to-rent ratio is the standard cash-flow benchmark:
 
-- **Strong Buy** (P/R < 15): Cash flow positive from day one
+- **Strong Buy** (P/R < 15): Low price-to-rent ratio; positive cash flow is not guaranteed
 - **Moderate** (P/R 15--20): Reasonable returns, some appreciation upside
 - **Lean Rent** (P/R 20--25): Marginal; depends on appreciation
 - **Rent Favored** (P/R > 25): Buy only if you're betting on price growth
@@ -259,7 +259,8 @@ tibble::tribble(
   "HUD Fair Market Rents (FY26)", "Government rent benchmark by bedroom count; flags ZORI outliers", "FY2026",
   "BLS LAUS", "Monthly metro + county unemployment rate and 12-month change", "Latest month",
   "Realtor.com RDC", "Active/new/pending listings, hotness score, median DOM (county + ZIP)", "Monthly",
-  "Trader Joe's Store Locator", paste0("All ", sum(!is.na(unique(raw$nearest_tj_city))), " US stores, scraped from locations.traderjoes.com"), format(Sys.Date(), "%Y")
+  "Trader Joe's Store Locator", paste0("All ", sum(!is.na(unique(raw$nearest_tj_city))), " US stores, scraped from locations.traderjoes.com"), format(Sys.Date(), "%Y"),
+  "CBRE Cap Rate Survey", "Multifamily cap rate ranges by metro (benchmark only)", "H2 2025"
 ) %>%
   gt::gt() %>%
   gt::tab_header(
@@ -278,7 +279,7 @@ tibble::tribble(
   ) %>%
   gt::tab_style(
     style = gt::cell_fill(color = "#f8f9fa"),
-    locations = gt::cells_body(rows = seq(1, 11, by = 2))
+    locations = gt::cells_body(rows = seq(1, 12, by = 2))
   ) %>%
   gt::tab_options(
     table.font.size = gt::px(14),
@@ -295,6 +296,163 @@ tibble::tribble(
     locations = gt::cells_column_labels()
   )
 ```
+
+## Insurance, Property Risk, and Real Net Returns
+
+**Florida vs. Missouri:** A higher modeled yield in Florida may be offset by higher windstorm or flood coverage, deductibles, taxes, or maintenance. Missouri may avoid coastal hurricane exposure, but hail, tornado, river flood, and other risks still vary by address. **Do not interpret the rankings below as insurance-adjusted.**
+
+The existing `est_cap_rate_pct` uses **gross yield × 0.65**, i.e. one **35% flat expense assumption for every city**. It does **not** model each property's insurance quote, tax bill, flood zone, HOA, repairs, property management, or financing. A more realistic underwriting model is:
+
+\[
+\text{Property-level cap rate} =
+\frac{\text{Annual rent} - \text{vacancy} - \text{operating expenses}}{\text{purchase price}}
+\]
+
+Operating expenses should include location-specific insurance premiums, property tax, management, maintenance, utilities paid by the owner, and HOA where applicable. Debt service is excluded from cap rate; use cash-on-cash return separately for leveraged deals. Get actual quotes and inspect exclusions and deductibles before buying.
+
+## Benchmark: CBRE Multifamily Cap Rates
+
+How do these Zillow-modeled cap rates compare with what professional investors actually pay? CBRE's semiannual [U.S. Cap Rate Survey](https://www.cbre.com/insights/reports/us-cap-rate-survey-h2-2025) publishes the cap rate ranges at which CBRE Capital Markets and Valuation professionals expect assets to trade in each metro. Below, the **H2 2025 Multifamily Suburban, Class A Stabilized** ranges for the South and West regions (the latest survey with public metro tables) are compared against the median modeled cap rate of the cities in each matching Zillow metro.
+
+```{r cbre_data}
+cbre <- readr::read_csv(
+  here::here("data", "cbre_multifamily_cap_rates.csv"),
+  show_col_types = FALSE
+) %>%
+  dplyr::mutate(cap_mid_pct = (cap_low_pct + cap_high_pct) / 2)
+
+cbre_metro_map <- cbre %>%
+  dplyr::select(cbre_market, zillow_metro) %>%
+  tidyr::separate_rows(zillow_metro, sep = ";")
+
+cbre_cmp <- markets %>%
+  dplyr::inner_join(cbre_metro_map, by = c("metro" = "zillow_metro")) %>%
+  dplyr::group_by(cbre_market) %>%
+  dplyr::summarise(
+    n_cities = dplyr::n(),
+    zillow_gross_med = stats::median(gross_yield_pct, na.rm = TRUE),
+    zillow_cap_med = stats::median(est_cap_rate_pct, na.rm = TRUE),
+    zillow_cap_p25 = stats::quantile(est_cap_rate_pct, 0.25, na.rm = TRUE),
+    zillow_cap_p75 = stats::quantile(est_cap_rate_pct, 0.75, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::inner_join(cbre, by = "cbre_market") %>%
+  dplyr::mutate(
+    gap_pp = zillow_cap_med - cap_mid_pct,
+    implied_expense_pct = 100 * (1 - cap_mid_pct / zillow_gross_med),
+    position = dplyr::case_when(
+      zillow_cap_med < cap_low_pct ~ "Below CBRE range",
+      zillow_cap_med > cap_high_pct ~ "Above CBRE range",
+      TRUE ~ "Within CBRE range"
+    )
+  ) %>%
+  dplyr::arrange(gap_pp)
+
+n_below <- sum(cbre_cmp$position == "Below CBRE range")
+n_above <- sum(cbre_cmp$position == "Above CBRE range")
+n_within <- sum(cbre_cmp$position == "Within CBRE range")
+n_negative_expense <- sum(cbre_cmp$implied_expense_pct < 0)
+position_summary <- if (n_below == nrow(cbre_cmp)) {
+  sprintf("in **all %d** metros", nrow(cbre_cmp))
+} else {
+  sprintf(
+    "in **%d** of %d metros (%d within, %d above)",
+    n_below, nrow(cbre_cmp), n_within, n_above
+  )
+}
+narrowest_gap <- paste(utils::tail(cbre_cmp$cbre_market, 3), collapse = ", ")
+widest_gap <- paste(utils::head(cbre_cmp$cbre_market, 3), collapse = ", ")
+```
+
+```{r cbre_chart, fig.height=9}
+cbre_cmp %>%
+  dplyr::mutate(cbre_market = forcats::fct_reorder(cbre_market, gap_pp)) %>%
+  ggplot2::ggplot(ggplot2::aes(y = cbre_market)) +
+  ggplot2::geom_segment(
+    ggplot2::aes(x = cap_low_pct, xend = cap_high_pct, yend = cbre_market),
+    linewidth = 5, color = "#AEB6BF", lineend = "round"
+  ) +
+  ggplot2::geom_errorbarh(
+    ggplot2::aes(xmin = zillow_cap_p25, xmax = zillow_cap_p75),
+    height = 0.3, color = "#2E86C1", alpha = 0.6
+  ) +
+  ggplot2::geom_point(
+    ggplot2::aes(x = zillow_cap_med, color = position),
+    size = 3
+  ) +
+  ggplot2::scale_color_manual(values = c(
+    "Below CBRE range" = "#8B0000",
+    "Within CBRE range" = "#27AE60",
+    "Above CBRE range" = "#D4760A"
+  )) +
+  ggplot2::labs(
+    title = "Zillow-Modeled Cap Rates vs CBRE Multifamily Cap Rate Ranges",
+    subtitle = paste0(
+      "Grey bar: CBRE H2 2025 Multifamily Suburban Class A Stabilized range. ",
+      "Dot: median modeled cap rate of cities in the metro; whiskers: 25th-75th percentile."
+    ),
+    x = "Cap Rate (%)", y = NULL, color = NULL,
+    caption = "Source: CBRE Econometric Advisors, U.S. Cap Rate Survey H2 2025; Zillow ZHVI/ZORI."
+  ) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(
+    legend.position = "top",
+    plot.subtitle = ggplot2::element_text(size = 9),
+    panel.grid.major.y = ggplot2::element_blank()
+  )
+```
+
+**Reading the chart:** `r position_summary`, the typical city's modeled cap rate falls **below** CBRE's Class A apartment range. The *implied expense ratio* in the table asks: what expense ratio would make the metro's median Zillow gross yield equal CBRE's midpoint cap rate? The highest is **`r round(max(cbre_cmp$implied_expense_pct))`%** (`r cbre_cmp$cbre_market[which.max(cbre_cmp$implied_expense_pct)]`), below the 35% assumed on this page, and in **`r n_negative_expense`** metros it is negative: there, even a rental with zero operating expenses would not match an institutional apartment yield.
+
+The gap is mostly about **price, not rent**. ZHVI values single-family homes and condos at owner-occupier prices, which include the value of owning, school districts, and appreciation expectations. Apartment buildings trade on income, at a much lower price per unit relative to rent. The practical read: a city that looks attractive on this page is being compared with other small residential rentals, not with the yields institutional capital demands. The gap is currently narrowest in `r narrowest_gap` and widest in `r widest_gap`; the widest gaps are where single-family prices sit furthest above rental value.
+
+<details class="table-accordion"><summary>Show CBRE comparison table</summary>
+
+```{r cbre_table}
+cbre_cmp %>%
+  dplyr::arrange(dplyr::desc(gap_pp)) %>%
+  dplyr::transmute(
+    Market = cbre_market,
+    Region = region,
+    `CBRE Range` = sprintf("%.2f%% - %.2f%%", cap_low_pct, cap_high_pct),
+    `Zillow Median Gross Yield` = sprintf("%.2f%%", zillow_gross_med),
+    `Zillow Median Est Cap Rate` = sprintf("%.2f%%", zillow_cap_med),
+    `Gap vs CBRE Midpoint (pp)` = sprintf("%+.2f", gap_pp),
+    `Implied Expense Ratio` = sprintf("%.0f%%", implied_expense_pct),
+    Cities = n_cities,
+    Position = position
+  ) %>%
+  gt::gt() %>%
+  gt::tab_header(
+    title = gt::md("**Zillow-Modeled vs CBRE Multifamily Cap Rates**"),
+    subtitle = "CBRE H2 2025, Multifamily Suburban, Class A Stabilized (South and West)"
+  ) %>%
+  gt::cols_align(align = "left", columns = c(Market, Region, Position)) %>%
+  gt::tab_source_note(gt::md(paste0(
+    "Implied expense ratio = 1 \u2212 CBRE midpoint \u00f7 Zillow median gross yield. ",
+    "CBRE ranges transcribed from the public ",
+    "[H2 2025 U.S. Cap Rate Survey](https://www.cbre.com/insights/reports/us-cap-rate-survey-h2-2025); ",
+    "data: [cbre_multifamily_cap_rates.csv](data/cbre_multifamily_cap_rates.csv)."
+  ))) %>%
+  gt::tab_options(
+    table.font.size = gt::px(13),
+    column_labels.font.weight = "bold",
+    column_labels.background.color = "#2C3E50",
+    source_notes.font.size = gt::px(12)
+  ) %>%
+  gt::tab_style(
+    style = gt::cell_text(color = "white"),
+    locations = gt::cells_column_labels()
+  )
+```
+
+</details>
+
+**Caveats.** CBRE's figures are professional estimates for institutional apartment complexes (stabilized NOI over acquisition price), not single-family rentals, and they are ranges, not transaction averages. Market definitions differ: CBRE uses Census metro *divisions* (Miami, Fort Lauderdale, and West Palm Beach are separate), so where Zillow reports one combined metro only the core CBRE market is used. The East and Midwest tables, Inland Empire, and Orange County are omitted because they could not be matched or transcribed reliably.
+
+**Where cap rates may be heading.** In the [H1 2026 survey](https://www.cbre.com/insights/reports/us-cap-rate-survey-h1-2026) (fielded late June 2026), the all-property average cap rate held roughly flat even as the 10-year Treasury rose, and roughly 60% of respondents expected no change over the next six months. More respondents now expect increases than in December, and **infill multifamily was the most bearish subtype**. Respondents put the 10-year yield that would trigger a notable uptick in sales volume at a median of 3.75%. For a rental buyer, the practical read is that cap rate compression (price appreciation from falling yields) is not the base case; underwrite on income. CBRE's H1 2026 metro-level ranges are in the full report and are not yet reflected in the table above.
+
+---
 
 ## Top 40 Cities by Cap Rate {.tabset}
 

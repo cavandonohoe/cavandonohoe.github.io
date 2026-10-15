@@ -1,0 +1,33 @@
+name: Refresh project case-study metadata
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Per-workflow group: never cancels another workflow's pending run.
+# Cross-workflow push races are handled by push_generated_changes.sh.
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Generate project metadata
+        run: python3 scripts/build_project_case_studies.py
+      # data/project_case_studies.json is not rendered by the site, so no
+      # redeploy is dispatched.
+      - name: Commit and safely push changes
+        run: >-
+          scripts/push_generated_changes.sh
+          'Refresh project case-study metadata'
+          'python3 scripts/build_project_case_studies.py'
+          data/project_case_studies.json

@@ -1,0 +1,36 @@
+name: Weekly Cavan Wrapped
+
+on:
+  schedule:
+    - cron: '17 16 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Per-workflow group: never cancels another workflow's pending run.
+# Cross-workflow push races are handled by push_generated_changes.sh.
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  wrapped:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Build weekly snapshot
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/build_weekly_wrapped.py
+      # data/weekly is not rendered by the site, so no redeploy is dispatched.
+      - name: Commit and safely push snapshot
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          scripts/push_generated_changes.sh
+          'Weekly activity snapshot'
+          'python3 scripts/build_weekly_wrapped.py'
+          data/weekly

@@ -1,8 +1,14 @@
 name: "Cavan Donohoe"
 output_dir: "_site"
 include:
+  - data/tohs_reunion.csv
   - imdb_rating_plot_files
   - css
+  - analysis/imdb-exceptional-episodes/results
+exclude:
+  - tools
+  - private
+  - _archive
 navbar:
   title: "Cavan Donohoe"
   type: inverse
@@ -19,14 +25,21 @@ navbar:
     - text: "CV"
       icon: fa-id-card
       href: cv.html
+    - text: "Publications"
+      icon: fa-book
+      href: publications.html
     - text: "Projects"
       icon: fa-laptop
       menu:
       - text: "--- Movies & TV ---"
+      - text: "Exceptional IMDb Episodes"
+        href: imdb_exceptional_episodes.html
       - text: "IMDb TV Series"
         href: imdb_top_250_tv_series.html
       - text: "IMDb Rating Plot by Season and Episode"
         href: imdb_rating_plot.html
+      - text: "Did They Quit While They Were Ahead?"
+        href: tv_decline_leaderboard.html
       - text: "Top 250 IMDb Movies with Rotten Tomato Scores"
         href: top_250_imdb_with_rt.html
       - text: "Best Picture Nominees"
@@ -49,10 +62,14 @@ navbar:
       - text: "TOHS Class of 2012 Reunion"
         href: tohs_reunion.html
       - text: "--- Visualizations ---"
-      - text: "World Cup 3D Momentum Portrait"
-        href: wc-momentum/index.html
+      - text: "Saved Podcast Episodes"
+        href: https://cavandonohoe.shinyapps.io/podcast-dashboard/
+      - text: "Detour Finder"
+        href: detour-finder/index.html
       - text: "When Were Confederate Statues Erected?"
         href: confederate_statues.html
+      - text: "Animated Procedural Maze"
+        href: maze-art.html
       - text: "Sierpinski Triangle"
         href: sierpinski_triangle.html
       - text: "Airplane Boarding Simulation"
@@ -94,4 +111,3 @@ navbar:
         href: rmarkdown_r.html
       - text: "7. Capstone Project"
         href: capstone_r.html
-    

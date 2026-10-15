@@ -6,7 +6,7 @@ import { createClient } from "@/lib/supabase/server";
 import { createServiceClient } from "@/lib/supabase/admin";
 
 export async function signOutAction() {
-  const supabase = createClient();
+  const supabase = await createClient();
   await supabase.auth.signOut();
   revalidatePath("/", "layout");
   redirect("/");
@@ -42,7 +42,7 @@ export async function passwordLoginAction(formData: FormData) {
     );
   }
 
-  const supabase = createClient();
+  const supabase = await createClient();
   const { error: verifyError } = await supabase.auth.verifyOtp({
     type: "magiclink",
     token_hash: data!.properties.hashed_token

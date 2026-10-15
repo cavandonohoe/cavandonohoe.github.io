@@ -1,0 +1,18 @@
+{
+  "name": "tohs-apps-script-tooling",
+  "private": true,
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "validate": "node manage.cjs validate",
+    "test": "cd ../.. && node --test tools/tohs-apps-script/test/*.test.cjs tests/tohs-contact-workflow.test.cjs",
+    "clasp": "clasp",
+    "fingerprint": "node manage.cjs fingerprint",
+    "deploy": "node manage.cjs deploy"
+  },
+  "devDependencies": {
+    "@google/clasp": "3.4.1"
+  }
+}
