@@ -187,6 +187,12 @@ tibble::tribble(
     "Bucket assigned by price-to-rent ratio. Strong Buy = cheap relative to rent; Rent Favored = expensive, only works if prices keep rising.",
     "**Strong Buy:** rental-first, cash-flow markets. **Moderate:** balanced. **Lean Rent:** appreciation-biased. **Rent Favored:** live there or speculate, don't buy to rent out."
 ) %>%
+  # Literal "$" pairs (e.g. "$1,800 ... $180K") would otherwise be parsed by
+  # fmt_markdown() as LaTeX math, which requires the katex package.
+  dplyr::mutate(dplyr::across(
+    c(`What it means`, `Good numbers + how to use it`),
+    ~ gsub("$", "&#36;", .x, fixed = TRUE)
+  )) %>%
   gt::gt(groupname_col = "Category") %>%
   gt::tab_header(
     title = gt::md("**Plain-English Glossary + What's a Good Number**"),
