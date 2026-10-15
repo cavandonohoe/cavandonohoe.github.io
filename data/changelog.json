@@ -1,11 +1,65 @@
 {
-  "generated_at": "2026-10-14T20:18:13.304510+00:00",
+  "generated_at": "2026-10-15T19:59:53.136553+00:00",
   "events": [
+    {
+      "date": "2026-10-15",
+      "type": "merged_pr",
+      "title": "US Rental Markets: investor-focused calculator, leverage metrics, and scoring",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/162"
+    },
+    {
+      "date": "2026-10-15",
+      "type": "merged_pr",
+      "title": "Remove permanently closed XiAn Biang Biang Noodle",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/289"
+    },
+    {
+      "date": "2026-10-15",
+      "type": "merged_pr",
+      "title": "Link check: actually scan every page, and cut the false positives",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/285"
+    },
+    {
+      "date": "2026-10-15",
+      "type": "merged_pr",
+      "title": "Archive beach volleyball player ratings page",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/290"
+    },
+    {
+      "date": "2026-10-15",
+      "type": "merged_pr",
+      "title": "Add beach volleyball player ratings analysis",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/163"
+    },
+    {
+      "date": "2026-10-14",
+      "type": "merged_pr",
+      "title": "Reorder homepage project cards",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/283"
+    },
+    {
+      "date": "2026-10-14",
+      "type": "merged_pr",
+      "title": "Record weekly shinyapps.io traffic history",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/287"
+    },
     {
       "date": "2026-10-14",
       "type": "merged_pr",
       "title": "Podcast dashboard: backfill export-only metadata, show undated saves, warn on API cap",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/269"
+    },
+    {
+      "date": "2026-10-14",
+      "type": "merged_pr",
+      "title": "Order homepage project cards by recent GA4 traffic",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/284"
+    },
+    {
+      "date": "2026-10-14",
+      "type": "merged_pr",
+      "title": "Fix the broken external links the link check found",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/288"
     },
     {
       "date": "2026-10-14",
@@ -568,6 +622,25 @@
   ],
   "daily_summaries": [
     {
+      "date": "2026-10-15",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "3 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/dbe389bde60732bc9f904da59323c70c28d43be2"
+        },
+        {
+          "emoji": "\ud83d\udcbb",
+          "text": "5 PRs merged"
+        },
+        {
+          "emoji": "\ud83d\uddfa\ufe0f",
+          "text": "Data-viz projects polished",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/162"
+        }
+      ]
+    },
+    {
       "date": "2026-10-14",
       "items": [
         {
@@ -577,7 +650,7 @@
         },
         {
           "emoji": "\ud83d\udcbb",
-          "text": "5 PRs merged"
+          "text": "9 PRs merged"
         },
         {
           "emoji": "\ud83c\udfa7",
@@ -768,25 +841,6 @@
           "emoji": "\u2699\ufe0f",
           "text": "Developer activity + site automation expanded",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/200"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-01",
-      "items": [
-        {
-          "emoji": "\ud83d\udcbb",
-          "text": "12 PRs merged"
-        },
-        {
-          "emoji": "\u2699\ufe0f",
-          "text": "Developer activity + site automation expanded",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/199"
-        },
-        {
-          "emoji": "\ud83d\uddfa\ufe0f",
-          "text": "Data-viz projects polished",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/196"
         }
       ]
     }
