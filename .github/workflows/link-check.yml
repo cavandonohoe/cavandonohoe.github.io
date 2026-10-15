@@ -58,13 +58,27 @@ jobs:
         id: lychee
         uses: lycheeverse/lychee-action@v2
         with:
+          # Quote the glob so lychee expands it (recursively) instead of bash,
+          # which without globstar treats ** as * and only matched files one
+          # directory deep, skipping every top-level page.
           args: >-
             --config .github/lychee.toml
             --no-progress
-            ${{ steps.target.outputs.target == '_site' && format('--root-dir {0}/_site _site/**/*.html', github.workspace) || '*.Rmd README.md' }}
+            ${{ steps.target.outputs.target == '_site' && format('--root-dir {0}/_site ''_site/**/*.html''', github.workspace) || '*.Rmd README.md' }}
           format: markdown
           output: ./lychee-report.md
           fail: false
+
+      # `fail: false` keeps broken links (exit 2) from failing the job, but it
+      # also hid lychee itself breaking (exit 1 = runtime/missing input, 3 =
+      # bad config), which then reported a green check with nothing scanned.
+      - name: Fail if lychee did not run
+        if: ${{ steps.lychee.outputs.exit_code != '0' && steps.lychee.outputs.exit_code != '2' }}
+        env:
+          LYCHEE_EXIT: ${{ steps.lychee.outputs.exit_code }}
+        run: |
+          echo "::error::lychee exited with code $LYCHEE_EXIT (not a link failure); check its config and inputs."
+          exit 1
 
       - name: Upload report
         uses: actions/upload-artifact@v7
