@@ -10,6 +10,8 @@ extend-ignore-re = [
   "`[^`]+`",
   # Skip 7-40 char hex shas
   "\\b[0-9a-f]{7,40}\\b",
+  # Ordinal suffixes inside identifiers (e.g. fivb_2nd, fivb_3rd)
+  "\\b\\w*_?[0-9]+(st|nd|rd|th)\\b",
 ]
 
 [default.extend-words]
