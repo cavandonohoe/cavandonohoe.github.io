@@ -1,0 +1,44 @@
+name: Prune stale PR previews
+
+on:
+  schedule:
+    - cron: "27 13 * * 1"  # Mondays 13:27 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    concurrency:
+      group: gh-pages-deploy
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: gh-pages
+      - name: Remove previews for PRs that are not open
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          for dir in pr-*/; do
+            num="${dir#pr-}"; num="${num%/}"
+            [[ "$num" =~ ^[0-9]+$ ]] || continue
+            state=$(gh pr view "$num" --repo "$GITHUB_REPOSITORY" --json state --jq .state)
+            if [ "$state" != "OPEN" ]; then
+              echo "Removing $dir ($state)"
+              git rm -rq "$dir"
+            fi
+          done
+          if git diff --cached --quiet; then
+            echo "Nothing to prune"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: prune previews for PRs that are not open"
+          git push origin HEAD:gh-pages

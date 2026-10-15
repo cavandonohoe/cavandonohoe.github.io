@@ -1,0 +1,91 @@
+name: Record Shiny app traffic
+
+# Weekly snapshot of shinyapps.io traffic for every app on the account
+# (rent-vs-buy, podcast-dashboard, ...). shinyapps.io only keeps a rolling
+# window of metrics, so this pulls the last 30 days of hourly connection
+# counts and merges them into data/shiny_traffic.csv to build a long-running
+# history. A 30-day pull on a weekly schedule leaves room for a few missed or
+# failed runs without losing any days.
+#
+# The CSV is not rendered on the site, so no redeploy is dispatched. The job
+# summary shows a 7/30-day table per app.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "19 14 * * 4" # Thursdays 14:19 UTC (~7:19am Pacific)
+  pull_request:
+    paths:
+      - ".github/workflows/shiny-traffic.yml"
+      - "scripts/shiny_traffic.R"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: shiny-traffic
+  cancel-in-progress: false
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SHINYAPPS_NAME: ${{ secrets.SHINYAPPS_NAME }}
+      SHINYAPPS_TOKEN: ${{ secrets.SHINYAPPS_TOKEN }}
+      SHINYAPPS_SECRET: ${{ secrets.SHINYAPPS_SECRET }}
+      # Only rsconnect + RCurl are needed; skip the project renv library.
+      RENV_CONFIG_AUTOLOADER_ENABLED: "FALSE"
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Verify secrets present
+        run: |
+          set -euo pipefail
+          missing=""
+          [ -z "${SHINYAPPS_NAME:-}" ] && missing="$missing SHINYAPPS_NAME"
+          [ -z "${SHINYAPPS_TOKEN:-}" ] && missing="$missing SHINYAPPS_TOKEN"
+          [ -z "${SHINYAPPS_SECRET:-}" ] && missing="$missing SHINYAPPS_SECRET"
+          if [ -n "$missing" ]; then
+            echo "::error::Missing required secrets:$missing"
+            exit 1
+          fi
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+          r-version: "4.6"
+
+      # rsconnect::showMetrics() calls the shinyapps.io metrics API through RCurl.
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::rsconnect
+            any::RCurl
+          install-pandoc: false
+          install-quarto: false
+
+      - name: Record traffic
+        run: Rscript scripts/shiny_traffic.R --days 30 --out data/shiny_traffic.csv
+
+      - name: Commit and push if changed
+        if: github.event_name != 'pull_request'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/shiny_traffic.csv
+          if git diff --cached --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+          git commit -m "Record Shiny app traffic"
+          for i in 1 2 3; do
+            if git push; then
+              exit 0
+            fi
+            echo "Push failed; rebasing on remote and retrying ($i/3)..."
+            git pull --rebase origin "$(git rev-parse --abbrev-ref HEAD)"
+          done
+          echo "ERROR: failed to push after 3 attempts."
+          exit 1

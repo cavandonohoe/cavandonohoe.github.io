@@ -1,0 +1,16 @@
+{
+  "verified": true,
+  "manifest": {
+    "timeZone": "America/Los_Angeles",
+    "dependencies": {},
+    "exceptionLogging": "STACKDRIVER",
+    "runtimeVersion": "V8"
+  },
+  "files": {
+    "Code.js": [
+      "scripts/tohs/contact_workflow.js",
+      "scripts/tohs/acceptance_test.js",
+      "scripts/tohs/maintenance.js"
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+---
+title: "Publications"
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+lang: "en"
+---
+
+Peer-reviewed journal articles I have contributed to as part of the
+biostatistics and programming team at GRAIL. My contribution to these studies
+was in statistical analysis and programming, and I am credited in the
+acknowledgments of each.
+
+```{r publications, echo=FALSE, results='asis'}
+pubs <- list(
+  list(
+    authors = paste(
+      "Sasieni P, Neal RD, Swanton C, et al.",
+      "(NHS-Galleri Trial Investigators)"
+    ),
+    year = "2026",
+    title = paste(
+      "Effect of a Multicancer Early-Detection Test on Late-Stage Cancer",
+      "Diagnosis"
+    ),
+    journal = "New England Journal of Medicine",
+    doi = "10.1056/NEJMoa2505723",
+    note = "NHS-Galleri clinical utility trial."
+  ),
+  list(
+    authors = "Neal RD, et al. (NHS-Galleri Trial Investigators)",
+    year = "2026",
+    title = paste(
+      "Performance of a multi-cancer early detection test in the randomized",
+      "controlled NHS-Galleri trial"
+    ),
+    journal = "Nature Medicine",
+    doi = "10.1038/s41591-026-04652-8",
+    note = "NHS-Galleri test performance. Open access (CC BY)."
+  ),
+  list(
+    authors = "Nabavizadeh N, McDonnell C, Kurbegov D, et al.",
+    year = "2026",
+    title = paste(
+      "Performance and safety of a multi-cancer early detection test: the",
+      "PATHFINDER 2 study"
+    ),
+    journal = "Nature Medicine",
+    doi = "10.1038/s41591-026-04618-w",
+    note = "PATHFINDER 2 study. Open access (CC BY)."
+  )
+)
+
+html <- '<div class="project-grid">'
+for (p in pubs) {
+  citation <- sprintf(
+    "%s (%s). %s. <em>%s</em>.",
+    p$authors, p$year, p$title, p$journal
+  )
+  html <- paste0(html, sprintf(
+    paste0(
+      '<a class="project-card" href="https://doi.org/%s" ',
+      'rel="noopener noreferrer"><div class="card-icon">&#128218;</div>',
+      "<h3>%s</h3><p>%s</p>",
+      '<p style="margin-top:0.6em;">%s</p>',
+      '<p style="margin-top:0.6em;color:var(--link-color);">',
+      "doi.org/%s</p></a>"
+    ),
+    p$doi, p$title, citation, p$note, p$doi
+  ))
+}
+html <- paste0(html, "</div>")
+cat(html)
+```
+
+<p style="font-size:0.85em;color:var(--muted-text);margin-top:1.5em;">
+The two <em>Nature Medicine</em> articles are open access under a CC BY
+license. The <em>NEJM</em> article is available via the DOI link above.
+</p>

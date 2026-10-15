@@ -32,7 +32,7 @@ export function TitleCard({
             : "hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_24px_60px_-20px_rgba(0,0,0,0.7)] active:scale-[0.99]"
       ].join(" ")}
     >
-      <div className="relative flex aspect-[3/4] w-full items-end overflow-hidden bg-gradient-to-br from-cream to-slate p-5 sm:p-7">
+      <div className="relative flex aspect-[3/4] w-full items-end overflow-hidden bg-linear-to-br from-cream to-slate p-5 sm:p-7">
         {title.image_url ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -45,10 +45,10 @@ export function TitleCard({
             {title.year ?? ""}
           </div>
         )}
-        <span className="absolute left-4 top-4 rounded-full bg-cream/80 px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-ink/80 backdrop-blur">
+        <span className="absolute left-4 top-4 rounded-full bg-cream/80 px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-ink/80 backdrop-blur-sm">
           {title.title_type ?? title.kind}
         </span>
-        <span className="absolute right-4 top-4 rounded-full bg-gold/90 px-3 py-1 text-[11px] font-semibold tracking-wider text-cream backdrop-blur">
+        <span className="absolute right-4 top-4 rounded-full bg-gold/90 px-3 py-1 text-[11px] font-semibold tracking-wider text-cream backdrop-blur-sm">
           {title.your_rating}/10
         </span>
         <div className="relative z-10">

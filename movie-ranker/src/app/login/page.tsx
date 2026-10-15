@@ -1,12 +1,13 @@
 import { passwordLoginAction } from "@/app/actions/auth";
 
-export default function LoginPage({
+export default async function LoginPage({
   searchParams
 }: {
-  searchParams: { next?: string; error?: string };
+  searchParams: Promise<{ next?: string; error?: string }>;
 }) {
-  const next = searchParams.next ?? "/compare";
-  const error = searchParams.error ?? null;
+  const sp = await searchParams;
+  const next = sp.next ?? "/compare";
+  const error = sp.error ?? null;
 
   return (
     <section className="mx-auto flex min-h-[70vh] max-w-md flex-col justify-center">
@@ -27,7 +28,7 @@ export default function LoginPage({
             required
             autoFocus
             placeholder="••••"
-            className="w-full rounded-xl border border-white/10 bg-slate px-4 py-3 text-base text-ink placeholder:text-mist/50 focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-gold/30"
+            className="w-full rounded-xl border border-white/10 bg-slate px-4 py-3 text-base text-ink placeholder:text-mist/50 focus:border-white/30 focus:outline-hidden focus:ring-2 focus:ring-gold/30"
           />
         </label>
 

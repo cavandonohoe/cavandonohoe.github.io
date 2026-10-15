@@ -28,7 +28,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const {
     data: { user }
   } = await supabase.auth.getUser();
@@ -36,7 +36,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
       <body className="min-h-screen bg-cream text-ink antialiased">
-        <header className="sticky top-0 z-30 border-b border-white/5 bg-cream/80 backdrop-blur">
+        <header className="sticky top-0 z-30 border-b border-white/5 bg-cream/80 backdrop-blur-sm">
           <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
             <Link
               href="/"

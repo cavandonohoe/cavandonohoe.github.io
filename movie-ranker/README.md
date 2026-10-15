@@ -1,7 +1,7 @@
 # Reel — rank your movies and series
 
 A personal pairwise ranker for everything in `data/imdb_ratings.csv`. Modeled
-on `food-ranker`: Next.js 14 + Supabase + magic-link auth + per-user
+on `food-ranker`: Next.js 16 + Supabase + magic-link auth + per-user
 comparisons + global Elo. The whole point is **resolving the ties**: a
 1–10 IMDb rating leaves you with hundreds of titles all sitting at "8/10",
 and this app turns that into a full order via head-to-head choices.
@@ -12,7 +12,7 @@ and this app turns that into a full order via head-to-head choices.
 
 ## Stack
 
-- Next.js 14 (App Router) + TypeScript
+- Next.js 16 (App Router) + TypeScript
 - Tailwind CSS (dark-mode-first)
 - Supabase (Postgres + Auth)
 
@@ -38,7 +38,7 @@ movie-ranker/
       kinds.ts              # movie / series / short / video_game / other
       database.types.ts
       supabase/{client,server}.ts
-    middleware.ts           # session refresh + /compare gate
+    proxy.ts                # session refresh + /compare gate
   scripts/
     build_seed.mjs          # CSV -> supabase/seed.sql
   supabase/
@@ -159,8 +159,8 @@ keep their Elo and comparison history. Removed titles stay in the DB
 
 ## Hardening checklist
 
-- [ ] Add a `posters/` storage bucket and back-fill `image_url` from TMDB
-      so the cards have art. Code already handles `image_url`.
+- [x] Back-fill `image_url` from TMDB (`scripts/backfill_posters.mjs`, run weekly by
+      the "Backfill movie-ranker posters" workflow).
 - [ ] Move global Elo updates server-side (Server Action with the service
       role) so a malicious client can&apos;t fabricate global ratings.
 - [ ] Restrict `titles` insert/delete to the service role only (currently

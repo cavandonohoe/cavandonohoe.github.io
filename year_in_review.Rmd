@@ -1,0 +1,444 @@
+---
+title: "Developer Year in Review"
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+lang: "en"
+---
+
+Commit totals and streaks reflect my personal commits on the default branch of my public repositories. Bot commits and automated site deploys are excluded. Streaks use UTC calendar days.
+
+<style>
+.year-hero { scroll-margin-top:6rem; margin: 2rem 0; padding: 2.4rem; border-radius: 18px; background: linear-gradient(135deg,#111827,#1f2937); color:#fff; box-shadow:0 14px 34px rgba(0,0,0,.18); }
+.year-kicker { text-transform:uppercase; letter-spacing:.16em; font-size:.8rem; opacity:.72; }
+.year-title { font-size:clamp(2.3rem,7vw,5.6rem); line-height:.95; margin:.4rem 0 1.6rem; font-weight:800; }
+.year-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(145px,1fr)); gap:1rem; }
+.year-stat { padding:1rem; border:1px solid rgba(255,255,255,.14); border-radius:12px; background:rgba(255,255,255,.06); }
+.year-stat strong { display:block; font-size:1.8rem; }
+.year-stat span { opacity:.72; font-size:.9rem; }
+.year-details { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:.8rem; margin-top:1.2rem; }
+.year-detail { padding:.9rem 1rem; border-radius:10px; background:rgba(255,255,255,.08); }
+.year-project { margin-top:1.2rem; padding:1rem 1.1rem; border-left:4px solid #60a5fa; background:rgba(96,165,250,.12); border-radius:0 10px 10px 0; }
+.year-note { opacity:.62; font-size:.8rem; margin-top:1.1rem; }
+.year-nav { display:flex; flex-wrap:wrap; gap:.6rem; margin:1.5rem 0; }
+.year-nav a { padding:.6rem 1rem; border:1px solid #cbd5e1; border-radius:999px; text-decoration:none; font-weight:600; }
+.year-nav a[aria-current="page"] { background:#111827; color:#fff; border-color:#111827; }
+.year-hero[hidden] { display:none; }
+.year-hero table { width:100%; margin-top:1rem; color:#fff; }
+.year-hero th, .year-hero td { padding:.5rem; text-align:left; border-bottom:1px solid rgba(255,255,255,.14); }
+.year-hero td:first-child { overflow-wrap:anywhere; }
+.year-hero caption { color:#fff; text-align:left; font-weight:600; }
+.year-language summary { cursor:pointer; }
+.year-language[open] { grid-column:1 / -1; }
+.year-language summary:hover { text-decoration:underline; }
+.year-language a { color:#93c5fd; text-decoration:underline; }
+.year-language .year-language-content { margin-top:1rem; }
+.year-language td, .year-language th { vertical-align:top; }
+.year-language td:first-child { width:70%; }
+.year-language .year-file-commits { max-height:18rem; overflow:auto; }
+.year-language .year-file-commits li { margin:.5rem 0; }
+.year-language .year-file-repo { display:block; opacity:.75; font-size:.85em; }
+.year-web-history { margin:2rem 0; padding:1.4rem; border:1px solid #cbd5e1; border-radius:14px; background:#f8fafc; color:#0f172a; }
+.year-web-history h2 { margin-top:0; font-size:1.5rem; }
+.year-web-table { width:100%; table-layout:fixed; }
+.year-web-table caption { color:#475569; text-align:left; margin-bottom:.6rem; }
+.year-web-table th, .year-web-table td { padding:.7rem .45rem; border-bottom:1px solid #cbd5e1; }
+.year-web-table th { text-align:left; }
+.year-web-table .year-web-number { text-align:right; font-variant-numeric:tabular-nums; }
+.year-web-table tr[aria-current="true"] { background:#e0f2fe; font-weight:700; }
+.year-web-table a { color:#075985; text-decoration:underline; }
+.year-web-history .year-web-note { margin-top:1rem; color:#475569; font-size:.9rem; }
+.year-activity { position:relative; margin:2rem 0; padding:1.4rem; border:1px solid #cbd5e1; border-radius:14px; background:#f8fafc; color:#0f172a; }
+.year-activity h2 { margin-top:0; font-size:1.5rem; }
+.year-activity-toggle { display:inline-flex; gap:.4rem; margin:.2rem 0 .8rem; }
+.year-activity-toggle button { padding:.45rem .9rem; border:1px solid #94a3b8; border-radius:999px; background:#fff; color:#0f172a; font-weight:600; cursor:pointer; }
+.year-activity-toggle button[aria-pressed="true"] { background:#111827; color:#fff; border-color:#111827; }
+.year-activity svg { display:block; width:100%; height:auto; touch-action:pan-y; }
+.year-activity .axis text { fill:#475569; font-size:12px; }
+.year-activity .grid line { stroke:#e2e8f0; }
+.year-activity .guide { stroke:#64748b; stroke-dasharray:3 3; }
+.year-activity-legend { display:flex; flex-wrap:wrap; gap:.4rem 1rem; margin:.6rem 0 0; padding:0; list-style:none; font-size:.9rem; }
+.year-activity-legend span { display:inline-block; width:1.4rem; height:.25rem; margin-right:.4rem; vertical-align:middle; border-radius:2px; }
+.year-activity-tooltip { position:absolute; pointer-events:none; padding:.5rem .7rem; border-radius:8px; background:#111827; color:#fff; font-size:.85rem; line-height:1.4; white-space:nowrap; box-shadow:0 6px 16px rgba(0,0,0,.2); }
+.year-activity-tooltip[hidden] { display:none; }
+.year-activity-tooltip i { display:inline-block; width:.6rem; height:.6rem; margin-right:.35rem; border-radius:50%; }
+.year-activity .year-web-note { margin-top:1rem; color:#475569; font-size:.9rem; }
+@media(max-width:480px) { .year-hero { padding:1.2rem; } .year-stat strong { font-size:1.5rem; } }
+</style>
+
+```{r year-review, echo=FALSE, results='asis'}
+files <- list.files("data/year-in-review", pattern = "^[0-9]{4}\\.json$", full.names = TRUE)
+if (!length(files) || !requireNamespace("jsonlite", quietly = TRUE)) {
+  cat(paste0(
+    "<div class=\"year-hero\"><div class=\"year-kicker\">Developer archive</div>",
+    "<div class=\"year-title\">YEAR IN CODE</div>",
+    "<p>The first snapshot will appear here after the annual GitHub Action runs.</p></div>"
+  ))
+} else {
+  years <- as.integer(sub("\\.json$", "", basename(files)))
+  files <- files[order(years, decreasing = TRUE)]
+  reviews <- lapply(files, jsonlite::fromJSON)
+  # Decide "year to date" from today's UTC date, not the stored flag, so a
+  # failed Jan 1 finalization run cannot leave last year labeled YTD.
+  current_year <- as.integer(format(Sys.time(), "%Y", tz = "UTC"))
+  is_partial <- function(d) d$year >= current_year
+  # Default to the newest year with commits so a fresh Jan 1 file does not hide last year.
+  has_data <- vapply(reviews, function(d) isTRUE(d$commits > 0), logical(1))
+  default_year <- if (any(has_data)) reviews[[which(has_data)[1]]]$year else reviews[[1]]$year
+  cat(paste0(
+    "<p>Explore a year of commits, projects, and coding activity. ",
+    "Choose a year below.</p>"
+  ))
+  cat("<nav class=\"year-nav\" aria-label=\"Review year\">")
+  for (d in reviews) {
+    cat(paste0("<a href=\"#year-", d$year, "\">", d$year,
+               if (is_partial(d)) " · YTD" else "", "</a>"))
+  }
+  cat("</nav>")
+  val <- function(x, fallback = "—") {
+    if (is.null(x) || is.na(x) || identical(x, "")) fallback else x
+  }
+  escape <- function(x) as.character(htmltools::htmlEscape(as.character(val(x))))
+  fmt <- function(x) {
+    if (is.numeric(x)) format(x, big.mark = ",", scientific = FALSE, trim = TRUE) else val(x)
+  }
+  language_total <- function(d, language) {
+    if (is.null(d$language_lines_added)) return(NULL)
+    total <- d$language_lines_added[[language]]
+    if (is.null(total)) 0 else total
+  }
+  language_details <- function(d) {
+    language <- d$most_used_language
+    files <- if (!is.null(language)) d$language_files[[language]] else NULL
+    heading <- paste0("<strong>Top language by lines added:</strong> ", escape(language))
+    if (is.null(d$language_files)) {
+      return(paste0(
+        "<div class=\"year-detail\">", heading,
+        "<p>File and commit breakdown unavailable for this snapshot.</p></div>"
+      ))
+    }
+    if (is.null(files) || !NROW(files)) {
+      return(paste0("<div class=\"year-detail\">", heading,
+                    "<p>0 first-party lines added in recognized languages so far.</p></div>"))
+    }
+    rows <- vapply(seq_len(nrow(files)), function(i) {
+      file <- files[i, ]
+      commits <- file$commits[[1]]
+      repo_url <- paste0("https://github.com/", file$repository)
+      path_parts <- strsplit(file$path, "/", fixed = TRUE)[[1]]
+      path_url <- paste(
+        vapply(path_parts, utils::URLencode, character(1), reserved = TRUE),
+        collapse = "/"
+      )
+      commit_items <- vapply(seq_len(nrow(commits)), function(j) {
+        paste0(
+          "<li><a href=\"", repo_url, "/commit/", escape(commits$sha[j]), "\">",
+          escape(substr(commits$sha[j], 1, 7)), "</a>",
+          " · ", escape(commits$date[j]), " · ", fmt(commits$lines_added[j]), " lines added",
+          " · <a href=\"", repo_url, "/blob/", escape(commits$sha[j]), "/", escape(path_url),
+          "\">File at this commit</a></li>"
+        )
+      }, character(1))
+      paste0("<tr><td><span class=\"year-file-repo\">", escape(file$repository), "</span>",
+             escape(file$path),
+             "<details><summary>", nrow(commits), " contributing commit",
+             if (nrow(commits) != 1) "s" else "", "</summary>",
+             "<ul class=\"year-file-commits\">", paste(commit_items, collapse = ""),
+             "</ul></details></td>",
+             "<td>", fmt(file$lines_added), "</td></tr>")
+    }, character(1))
+    paste0("<details class=\"year-detail year-language\"><summary>", heading, "</summary>",
+           "<div class=\"year-language-content\"><p>", fmt(language_total(d, language)),
+           " first-party ", escape(language),
+           " lines added across ", nrow(files),
+           " files. Expand a file to see its contributing commits and GitHub changes.</p>",
+           "<p>Generated outputs, vendored libraries, and raw HTML inputs are excluded. ",
+           "Counts are additions over the year, including repeated edits.</p>",
+           "<table><caption>", escape(language), " files in ", d$year, "</caption>",
+           "<thead><tr><th scope=\"col\">File and commits</th>",
+           "<th scope=\"col\">Lines added</th></tr></thead>",
+           "<tbody>", paste(rows, collapse = ""), "</tbody></table></div></details>")
+  }
+  for (d in reviews) {
+    cat(paste0(
+      "<section class=\"year-hero\" id=\"year-", d$year, "\"",
+      if (d$year == default_year) " data-default-year" else "",
+      " aria-label=\"", d$year, " developer review\">",
+      "<div class=\"year-kicker\">",
+      if (is_partial(d)) "Year to date" else "Developer year in review", "</div>",
+      "<div class=\"year-title\">", d$year, " IN CODE</div>",
+      "<div class=\"year-grid\">",
+      "<div class=\"year-stat\"><strong>", fmt(d$commits),
+      "</strong><span>commits</span></div>",
+      "<div class=\"year-stat\"><strong>", fmt(d$pull_requests),
+      "</strong><span>merged pull requests</span></div>",
+      "<div class=\"year-stat\"><strong>", fmt(d$repositories_touched),
+      "</strong><span>repositories touched</span></div>",
+      "<div class=\"year-stat\"><strong>", fmt(d$lines_added),
+      "</strong><span>lines added</span></div>",
+      "</div>",
+      "<div class=\"year-details\">",
+      language_details(d),
+      "<div class=\"year-detail\"><strong>Most-active month:</strong> ",
+      escape(d$most_active_month), "</div>",
+      "<div class=\"year-detail\"><strong>Longest streak:</strong> ",
+      fmt(d$longest_streak_days), " days</div>",
+      "</div>",
+      "<div class=\"year-project\"><strong>Biggest project</strong><br>",
+      escape(d$biggest_project),
+      if (!is.null(d$biggest_project_commits)) {
+        paste0(" · ", fmt(d$biggest_project_commits), " commits")
+      } else {
+        ""
+      },
+      "</div>",
+      if (!is.null(d$repository_commits)) {
+        paste0(
+          "<table><caption>Projects this year</caption><thead><tr>",
+          "<th scope=\"col\">Repository</th><th scope=\"col\">Commits</th></tr></thead><tbody>",
+          paste(vapply(names(d$repository_commits), function(repo) {
+            paste0("<tr><td>", escape(repo), "</td><td>",
+                   fmt(d$repository_commits[[repo]]), "</td></tr>")
+          }, character(1)), collapse = ""),
+          "</tbody></table>"
+        )
+      } else {
+        ""
+      },
+      "<div class=\"year-note\">", escape(d$scope), " Snapshot generated ",
+      substr(val(d$generated_at), 1, 10), ".</div>",
+      "</section>"
+    ))
+  }
+  cat("<section class=\"year-web-history\" aria-labelledby=\"year-web-history-title\">",
+      "<h2 id=\"year-web-history-title\">JavaScript &amp; HTML through the years</h2>",
+      paste0("<table class=\"year-web-table\"><caption>First-party lines added by year. ",
+             "Select a year to view its full review.</caption>"),
+      paste0("<thead><tr><th scope=\"col\">Year</th>",
+             "<th scope=\"col\" class=\"year-web-number\">JavaScript</th>",
+             "<th scope=\"col\" class=\"year-web-number\">HTML</th></tr></thead><tbody>"))
+  for (d in reviews) {
+    cat(paste0("<tr data-review-year=\"", d$year, "\"><th scope=\"row\"><a href=\"#year-",
+               d$year, "\">", d$year,
+               if (is_partial(d)) " · YTD" else "", "</a></th>",
+               "<td class=\"year-web-number\">", fmt(language_total(d, "JavaScript")), "</td>",
+               "<td class=\"year-web-number\">", fmt(language_total(d, "HTML")), "</td></tr>"))
+  }
+  cat(paste0(
+    "</tbody></table><p class=\"year-web-note\">Generated outputs, vendored libraries, ",
+    "and raw HTML inputs are excluded. Zero means no recorded first-party additions for ",
+    "that language; a dash means the breakdown is unavailable.</p></section>"
+  ))
+}
+```
+
+Past reviews are reconstructed from public commit history. Each January 1, GitHub Actions saves the year that just ended. The current year is a snapshot through its generation date.
+
+```{r year-activity, echo=FALSE, results='asis'}
+activity_files <- list.files(
+  "data/year-in-review", pattern = "^[0-9]{4}\\.json$", full.names = TRUE
+)
+if (length(activity_files) && requireNamespace("jsonlite", quietly = TRUE)) {
+  activity <- lapply(activity_files, function(f) {
+    d <- jsonlite::fromJSON(f, simplifyVector = FALSE)
+    days <- d$daily_activity
+    if (is.null(days)) return(NULL)
+    list(
+      year = d$year,
+      generated = substr(if (is.null(d$generated_at)) "" else d$generated_at, 1, 10),
+      days = lapply(days, function(x) list(x$date, x$commits, x$lines_added))
+    )
+  })
+  activity <- Filter(Negate(is.null), activity)
+  if (length(activity)) {
+    payload <- jsonlite::toJSON(activity, auto_unbox = TRUE)
+    # Keep "</script>" sequences in the payload from closing the data block early.
+    payload <- gsub("</", "<\\/", payload, fixed = TRUE)
+    cat(
+      '<section class="year-activity" aria-labelledby="year-activity-title">',
+      '<h2 id="year-activity-title">Year over year</h2>',
+      '<p>Running total for each year, aligned by calendar date. ',
+      'Hover or tap the chart to compare years on the same day.</p>',
+      '<div class="year-activity-toggle" role="group" aria-label="Chart metric">',
+      '<button type="button" data-metric="commits" aria-pressed="true">Commits</button>',
+      '<button type="button" data-metric="lines" aria-pressed="false">Lines added</button>',
+      '</div>',
+      '<div class="year-activity-chart"></div>',
+      '<div class="year-activity-tooltip" role="status" hidden></div>',
+      '<ul class="year-activity-legend"></ul>',
+      '<p class="year-web-note">Cumulative totals use UTC calendar days. ',
+      'The current year stops at its latest snapshot.</p>',
+      '<script type="application/json" id="year-activity-data">', payload, '</script>',
+      '</section>',
+      sep = ""
+    )
+  }
+}
+```
+
+<script>
+(function () {
+  const section = document.querySelector('.year-activity');
+  const source = document.getElementById('year-activity-data');
+  if (!section || !source) return;
+  const years = JSON.parse(source.textContent).sort((a, b) => a.year - b.year);
+  const chart = section.querySelector('.year-activity-chart');
+  const tooltip = section.querySelector('.year-activity-tooltip');
+  const buttons = Array.from(section.querySelectorAll('.year-activity-toggle button'));
+  const palette = ['#64748b', '#a78bfa', '#f472b6', '#fb923c', '#facc15', '#34d399', '#22d3ee',
+    '#60a5fa', '#f87171', '#4ade80'];
+  const latest = years[years.length - 1].year;
+  const colorFor = (y, i) => y.year === latest ? '#2563eb' : palette[i % palette.length];
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov',
+    'Dec'];
+  const monthStart = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+  // Position every year on a common non-leap Jan 1..Dec 31 axis; Feb 29 shares Feb 28's slot.
+  const dayIndex = iso => {
+    const m = Number(iso.slice(5, 7)) - 1;
+    const d = Number(iso.slice(8, 10));
+    return monthStart[m] + Math.min(d, m === 1 ? 28 : 31) - 1;
+  };
+  const ns = 'http://www.w3.org/2000/svg';
+  const el = (name, attrs) => {
+    const node = document.createElementNS(ns, name);
+    Object.entries(attrs || {}).forEach(([k, v]) => node.setAttribute(k, v));
+    return node;
+  };
+  const fmt = n => n.toLocaleString('en-US');
+  const short = n => n >= 1e6 ? (n / 1e6).toFixed(n >= 1e7 ? 0 : 1) + 'M' :
+    n >= 1e3 ? (n / 1e3).toFixed(n >= 1e4 ? 0 : 1) + 'k' : String(n);
+  // Cumulative series per year: one value per calendar day through the year's end
+  // (or through the snapshot date for the year in progress).
+  const series = years.map((y, i) => {
+    const commits = new Array(365).fill(0);
+    const lines = new Array(365).fill(0);
+    y.days.forEach(([date, c, l]) => { const k = dayIndex(date); commits[k] += c; lines[k] += l; });
+    const ended = y.year < latest || !y.generated || Number(y.generated.slice(0, 4)) > y.year;
+    const last = ended ? 364 : dayIndex(y.generated);
+    for (let k = 1; k < 365; k++) { commits[k] += commits[k - 1]; lines[k] += lines[k - 1]; }
+    return { year: y.year, color: colorFor(y, i), last, commits, lines };
+  });
+  const legend = section.querySelector('.year-activity-legend');
+  series.forEach(s => {
+    const item = document.createElement('li');
+    item.innerHTML = '<span style="background:' + s.color + '"></span>' + s.year;
+    legend.appendChild(item);
+  });
+  const W = 760, H = 380, M = { top: 16, right: 20, bottom: 32, left: 56 };
+  const iw = W - M.left - M.right, ih = H - M.top - M.bottom;
+  const x = k => M.left + (k / 364) * iw;
+  let metric = 'commits';
+  function niceMax(v) {
+    if (v <= 0) return 1;
+    const p = Math.pow(10, Math.floor(Math.log10(v)));
+    return [1, 2, 2.5, 5, 10].map(f => f * p).find(t => t >= v);
+  }
+  function draw() {
+    const max = niceMax(Math.max(...series.map(s => s[metric][s.last])));
+    const y = v => M.top + ih - (v / max) * ih;
+    const label = metric === 'commits' ? 'Commits' : 'Lines added';
+    const svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img',
+      'aria-label': 'Cumulative ' + label.toLowerCase() + ' by date, one line per year' });
+    const grid = el('g', { class: 'grid' });
+    const axis = el('g', { class: 'axis' });
+    for (let t = 0; t <= 4; t++) {
+      const v = (max / 4) * t;
+      grid.appendChild(el('line', { x1: M.left, x2: W - M.right, y1: y(v), y2: y(v) }));
+      const text = el('text', { x: M.left - 8, y: y(v) + 4, 'text-anchor': 'end' });
+      text.textContent = short(v);
+      axis.appendChild(text);
+    }
+    monthStart.forEach((k, i) => {
+      const text = el('text', { x: x(k + 14), y: H - 10, 'text-anchor': 'middle' });
+      text.textContent = months[i];
+      axis.appendChild(text);
+    });
+    svg.appendChild(grid);
+    svg.appendChild(axis);
+    series.forEach(s => {
+      const pts = [];
+      for (let k = 0; k <= s.last; k++) pts.push(x(k).toFixed(1) + ',' + y(s[metric][k]).toFixed(1));
+      svg.appendChild(el('polyline', { points: pts.join(' '), fill: 'none', stroke: s.color,
+        'stroke-width': s.year === latest ? 3 : 2, 'stroke-linejoin': 'round' }));
+    });
+    const guide = el('line', { class: 'guide', y1: M.top, y2: M.top + ih, visibility: 'hidden' });
+    svg.appendChild(guide);
+    const hit = el('rect', { x: M.left, y: M.top, width: iw, height: ih, fill: 'transparent' });
+    svg.appendChild(hit);
+    function show(evt) {
+      const box = svg.getBoundingClientRect();
+      const px = (evt.clientX - box.left) * (W / box.width);
+      const k = Math.max(0, Math.min(364, Math.round(((px - M.left) / iw) * 364)));
+      const m = monthStart.filter(s => s <= k).length - 1;
+      guide.setAttribute('x1', x(k));
+      guide.setAttribute('x2', x(k));
+      guide.setAttribute('visibility', 'visible');
+      const rows = series.filter(s => k <= s.last).reverse().map(s =>
+        '<i style="background:' + s.color + '"></i>' + s.year + ': ' + fmt(s[metric][k]));
+      tooltip.innerHTML = '<strong>' + months[m] + ' ' + (k - monthStart[m] + 1) + '</strong><br>' +
+        rows.join('<br>');
+      tooltip.hidden = false;
+      const host = section.getBoundingClientRect();
+      const left = evt.clientX - host.left + 14;
+      tooltip.style.left = Math.min(left, host.width - tooltip.offsetWidth - 8) + 'px';
+      tooltip.style.top = (evt.clientY - host.top + 14) + 'px';
+    }
+    function hide() { guide.setAttribute('visibility', 'hidden'); tooltip.hidden = true; }
+    hit.addEventListener('pointermove', show);
+    hit.addEventListener('pointerdown', show);
+    hit.addEventListener('pointerleave', hide);
+    chart.replaceChildren(svg);
+  }
+  buttons.forEach(button => button.addEventListener('click', () => {
+    metric = button.dataset.metric;
+    buttons.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+    draw();
+  }));
+  draw();
+})();
+</script>
+
+<script>
+(function () {
+  const reviews = Array.from(document.querySelectorAll('section.year-hero[id]'));
+  const links = Array.from(document.querySelectorAll('.year-nav a'));
+  const languageRows = Array.from(document.querySelectorAll('.year-web-table tr[data-review-year]'));
+  if (!reviews.length) return;
+  function selectYear(scrollToReview = false) {
+    const fallback = reviews.find(review => review.hasAttribute('data-default-year')) || reviews[0];
+    const selected = reviews.find(review => '#' + review.id === window.location.hash) || fallback;
+    reviews.forEach(review => { review.hidden = review !== selected; });
+    links.forEach(link => {
+      if (link.getAttribute('href') === '#' + selected.id) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
+    });
+    languageRows.forEach(row => {
+      if ('year-' + row.dataset.reviewYear === selected.id) row.setAttribute('aria-current', 'true');
+      else row.removeAttribute('aria-current');
+    });
+    // Pad the review's scroll margin by the year picker's height so anchor jumps (native or
+    // scripted) land with the picker still on screen and the other years one click away.
+    const nav = document.querySelector('.year-nav');
+    if (nav) {
+      const navbar = document.querySelector('.navbar-fixed-top, .fixed-top');
+      const offset = (navbar ? navbar.offsetHeight : 0) + 16 +
+        selected.getBoundingClientRect().top - nav.getBoundingClientRect().top;
+      reviews.forEach(review => { review.style.scrollMarginTop = offset + 'px'; });
+    }
+    if (scrollToReview) selected.scrollIntoView({ block: 'start' });
+  }
+  // Picking a year from the nav swaps the review in place instead of jumping past the nav.
+  links.forEach(link => link.addEventListener('click', event => {
+    event.preventDefault();
+    const hash = link.getAttribute('href');
+    if (window.location.hash !== hash) history.pushState(null, '', hash);
+    selectYear(false);
+  }));
+  window.addEventListener('hashchange', () => selectYear(true));
+  window.addEventListener('popstate', () => selectYear(true));
+  window.addEventListener('resize', () => selectYear(false));
+  selectYear(Boolean(window.location.hash));
+})();
+</script>

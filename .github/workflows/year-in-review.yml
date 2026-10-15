@@ -1,0 +1,90 @@
+name: Developer year in review
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/year-in-review.yml'
+      - 'scripts/developer_year_in_review.py'
+      - 'tests/test_developer_year_in_review.py'
+      - '.gitattributes'
+      - 'data/year-in-review/**'
+  schedule:
+    # Daily at 08:37 UTC; refresh the current calendar year (and finalize any
+    # earlier year still marked partial).
+    - cron: '37 8 * * *'
+    # Jan 1 at 17:13 UTC; snapshots the year that just ended.
+    - cron: '13 17 1 1 *'
+  workflow_dispatch:
+    inputs:
+      year:
+        description: 'Year to snapshot (blank = current year, or previous year on Jan 1)'
+        required: false
+        type: string
+      backfill:
+        description: 'Rebuild every available year from past commit history'
+        required: false
+        default: false
+        type: boolean
+permissions:
+  contents: write
+# Serialize runs (daily, Jan 1, manual) so snapshot pushes never race.
+concurrency:
+  group: year-in-review
+  cancel-in-progress: false
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          # Resolve the current branch tip even when rerunning an older run.
+          ref: ${{ github.ref }}
+      - name: Test history aggregation
+        run: python3 -m unittest discover -s tests -p 'test_developer_year_in_review.py'
+      - name: Generate annual developer stats
+        env:
+          GITHUB_USER: cavandonohoe
+          GITHUB_TOKEN: ${{ github.token }}
+          REVIEW_YEAR: ${{ inputs.year }}
+          BACKFILL: ${{ inputs.backfill }}
+        run: |
+          if [ "$BACKFILL" = "true" ] || [ "${{ github.event_name }}" = "pull_request" ]; then
+            python3 scripts/developer_year_in_review.py --all-years --repository-override "$GITHUB_REPOSITORY=$GITHUB_WORKSPACE"
+          elif [ "${{ github.event.schedule }}" = "37 8 * * *" ]; then
+            python3 scripts/developer_year_in_review.py --year "$(date -u +%Y)" --repository-override "$GITHUB_REPOSITORY=$GITHUB_WORKSPACE"
+          else
+            python3 scripts/developer_year_in_review.py --repository-override "$GITHUB_REPOSITORY=$GITHUB_WORKSPACE"
+          fi
+      - name: Upload regenerated snapshots
+        uses: actions/upload-artifact@v7
+        with:
+          name: developer-year-in-review
+          path: data/year-in-review/*.json
+      - name: Commit snapshot
+        if: github.event_name != 'pull_request'
+        env:
+          SNAPSHOT_BRANCH: ${{ github.ref_name }}
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add data/year-in-review
+          if git diff --cached --quiet; then
+            echo "No snapshot changes to commit."
+            exit 0
+          fi
+          git commit -m "Add developer year in review snapshot"
+          for attempt in 1 2 3; do
+            git fetch origin "$SNAPSHOT_BRANCH"
+            if ! git rebase FETCH_HEAD; then
+              git rebase --abort
+              echo "::error::Snapshot conflicts with newer branch changes; refusing to overwrite them."
+              exit 1
+            fi
+            if git push origin "HEAD:refs/heads/$SNAPSHOT_BRANCH"; then
+              exit 0
+            fi
+            echo "Push attempt $attempt failed; fetching the branch again."
+          done
+          echo "::error::Unable to push snapshot after three attempts."
+          exit 1

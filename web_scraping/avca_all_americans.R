@@ -17,8 +17,8 @@
 # --- CONFIG: update these each year ------------------------------------------
 
 excel_url <- paste0(
-  "https://www.avca.org/wp-content/uploads/2024/05/",
-  "AVCA-NCAA-National-Collegiate-MVB-All-America-Teams-Year-by-Year.xlsx"
+  "https://www.avca.org/wp-content/uploads/2026/06/",
+  "AVCA-Natl-Collegiate-MVB-All-America-Teams-Year-by-Year-1991-2026.xlsx"
 )
 
 first_year <- 2005

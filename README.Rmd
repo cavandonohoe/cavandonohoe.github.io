@@ -36,6 +36,7 @@ Movies & data:
 * [Best Picture Nominees](https://cavandonohoe.github.io/best_picture_nominees.html)
 * [Director Box Office Trajectory](https://cavandonohoe.github.io/director_box_office_trajectory.html)
 * [Rent vs. Buy Calculator](https://cavandonohoe.shinyapps.io/rent-vs-buy/) ([source](https://github.com/cavandonohoe/rent-vs-buy))
+* [Saved Podcast Episodes](https://cavandonohoe.shinyapps.io/podcast-dashboard/)
 * [Confederate Statue Analysis](https://github.com/cavandonohoe/confederate_statues)
 * [Sierpinski Triangle](https://cavandonohoe.github.io/sierpinski_triangle.html)
 * [Airplane Boarding Simulation](https://cavandonohoe.github.io/airplane_boarding.html)
@@ -82,6 +83,14 @@ manual is a click away on the Actions tab.
 * `update_us_rentals.yml` -- monthly Zillow ZHVI/ZORI refresh.
 * `update_mymaps_export.yml` -- weekly Google My Maps export.
 
+The uniform ones (`update_sp500`, `update_us_rentals`,
+`update_top250_with_rt`, `update_watched_episodes`) are thin callers of
+`refresh-data.yml`, which owns the shared run/guard/commit/redeploy
+logic. The rest stay standalone because they build dynamic commit
+messages or need extra fetch steps. Every refresh that commits to `main`
+runs `scripts/data_sanity.R` first, so an empty or collapsed scrape
+fails the run instead of landing on `main`.
+
 ### Data refreshes (open PR)
 
 * `update_best_picture_winners.yml` -- annual Oscar refresh.
@@ -118,6 +127,11 @@ refresh workflows above. Regenerated each time `README.Rmd` is
 knit.
 
 ```{r commit-activity, echo = FALSE, message = FALSE, warning = FALSE, fig.width = 14, fig.height = 8, fig.path = "images/readme/", dev = "png", dpi = 110, fig.alt = "Two bar charts showing monthly commits and monthly lines changed (insertions + deletions) for this repository, split by Cavan's own commits vs. scheduled-bot commits."}
+# Bind the magrittr pipe locally so this chunk (and the cumulative/summary
+# chunks that share the knit environment) render standalone without a prior
+# library(dplyr) attach.
+`%>%` <- magrittr::`%>%`
+
 raw <- system(
   "git log --no-merges --pretty=format:'COMMIT|%H|%at|%an' --shortstat",
   intern = TRUE

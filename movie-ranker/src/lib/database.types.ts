@@ -71,6 +71,7 @@ export type Database = {
           created_at?: string;
         };
         Update: Partial<Title>;
+        Relationships: [];
       };
       comparisons: {
         Row: Comparison;
@@ -79,6 +80,7 @@ export type Database = {
           created_at?: string;
         };
         Update: Partial<Comparison>;
+        Relationships: [];
       };
       manual_overrides: {
         Row: ManualOverride;
@@ -86,7 +88,12 @@ export type Database = {
           created_at?: string;
         };
         Update: Partial<ManualOverride>;
+        Relationships: [];
       };
     };
+    Views: { [_ in never]: never };
+    Functions: { [_ in never]: never };
+    Enums: { [_ in never]: never };
+    CompositeTypes: { [_ in never]: never };
   };
 };
