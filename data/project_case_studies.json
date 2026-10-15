@@ -2,11 +2,15 @@
   "projects": [
     {
       "project": "_archive",
-      "tracked_files": 13,
-      "commits_touching_project": 8,
+      "tracked_files": 15,
+      "commits_touching_project": 9,
       "top_extensions": [
         [
           ".rmd",
+          4
+        ],
+        [
+          ".r",
           3
         ],
         [
@@ -15,10 +19,6 @@
         ],
         [
           ".dotx",
-          2
-        ],
-        [
-          ".r",
           2
         ],
         [
