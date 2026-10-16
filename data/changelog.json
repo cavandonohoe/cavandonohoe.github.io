@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15T19:59:53.136553+00:00",
+  "generated_at": "2026-10-16T19:39:51.053764+00:00",
   "events": [
     {
       "date": "2026-10-15",
@@ -612,15 +612,19 @@
       "type": "merged_pr",
       "title": "Add the six live projects missing from the landing page gallery",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/172"
-    },
-    {
-      "date": "2026-09-15",
-      "type": "merged_pr",
-      "title": "Guard the scheduled data refreshes and fix preview deploy hygiene",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/169"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-10-16",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "4 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/36a40c9e3c45cb0e36fd0094c46b897c460da9bd"
+        }
+      ]
+    },
     {
       "date": "2026-10-15",
       "items": [
@@ -822,25 +826,6 @@
           "emoji": "\ud83c\udfac",
           "text": "Movie & TV data refreshed",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/432afab37877da4c031d9e00e0e507c2c0fde46b"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-02",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "10 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/40837f3b448170c0aeacb08f728a3c3ceea260ef"
-        },
-        {
-          "emoji": "\ud83d\udcbb",
-          "text": "2 PRs merged"
-        },
-        {
-          "emoji": "\u2699\ufe0f",
-          "text": "Developer activity + site automation expanded",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/200"
         }
       ]
     }
