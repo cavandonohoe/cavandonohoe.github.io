@@ -3,10 +3,10 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 383,
+    "n_episodes": 387,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-10-15",
-    "api_saved_count": 153
+    "api_refreshed_at": "2026-10-16",
+    "api_saved_count": 154
   },
   "episodes": [
     {
@@ -472,11 +472,11 @@
       "url": "https://open.spotify.com/episode/2yTvPt22jgzZyGnv5it2NP"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-12",
+      "dur_min": 25,
+      "release": "2025-11-12",
       "publisher": null,
-      "desc": null,
+      "desc": "(Note: A version of this episode originally ran in 2022.)Every time you shop online and make it to the checkout screen, you see those colorful pastel buttons at the bottom. Affirm. Klarna. Afterpay. Asking: Do you want to split your payment into interest-free installments? No credit check needed. Get what you want, right now. That temptation got shoppers like Amelia Schmarzo into some money trouble. Back in 2022, she maxed out her credit card after a month of buying now and paying later. She’s not alone. Buy now, pay later is everywhere now. And you can finance almost anything with it. Your clothes, your furniture … even your lips. But if these companies don’t charge interest, how do they make money? In short, people buy more stuff using these services and so sellers are willing to pay up. Which makes buy now, pay later, something of a threat to credit card companies. Cue the tussle for your impulse-buying clicks. Today on the show, we find out how the companies work, who’s most likely to use these services and who’s getting a good deal. And a warning: those little loans will soon be on your credit report. Subscribe to Planet Money+Listen free: Apple Podcasts, Spotify, the NPR app or anywhere you get podcasts.Facebook / Instagram / TikTok / Our weekly Newsletter.This episode was produced by Emma Peaslee, engineered by Josh Newell and edited by Molly Messick. Our update was reported by Vito Emanuel, produced by Willa Rubin, engineered by Gilly Moon and edited by our executive producer, Alex Goldmark.Music: Universal Music Production - \"Retro Funk,\" \"Comin' Back For More,\" \"Reactive Emotion,\" and \"EAT.\"See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "id": "0IOZrrB8LGQtpJbZ3UcCRX",
       "name": "Buy now, pay dearly? (update)",
       "show": "Planet Money",
@@ -736,11 +736,11 @@
       "url": "https://open.spotify.com/episode/79OmsXBCOfQROzibRUMupy"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-20",
+      "dur_min": 51,
+      "release": "2026-01-20",
       "publisher": null,
-      "desc": null,
+      "desc": "Today, Chuck and Josh walk you through the history of keeping time, from sticks in the sun to atomic clocks.See omnystudio.com/listener for privacy information.",
       "id": "6TkjYYB4wx9wj5YGcV5j8b",
       "name": "Keeping Time",
       "show": "Stuff You Should Know",
@@ -1000,11 +1000,11 @@
       "desc": "Seasonal affective disorder, or SAD, is much more than the winter blues. It's a serious subset of depression. Learn all about it and what to do if you suffer from it today. See omnystudio.com/listener for privacy information."
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-13",
+      "dur_min": 50,
+      "release": "2025-11-13",
       "publisher": null,
-      "desc": null,
+      "desc": "Pop Tarts are a legendary breakfast treat in the United States. They're fruit-filled toaster pastries with very little fruit. But who cares right? It's all about that toasty goodness. See omnystudio.com/listener for privacy information.",
       "id": "16lsm5SHcSfDIye1bDcqez",
       "name": "Pop Tarts: No Fruit Necessary",
       "show": "Stuff You Should Know",
@@ -1429,11 +1429,11 @@
       "url": "https://open.spotify.com/episode/39eB5RjDZz8O6ua8kNngmz"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-14",
+      "dur_min": 11,
+      "release": "2025-11-14",
       "publisher": null,
-      "desc": null,
+      "desc": "Legendary Democratic Representative Jim Clyburn of South Carolina shares personal recollections about his close friend Rep. John Lewis, including stories about the first and last times they were together in the presence of Martin Luther King, Jr. Rep. Clyburn’s book, “The First Eight,” is out now.",
       "id": "2pUPFsItj9mtU8lqN2mRgm",
       "name": "Rep. Jim Clyburn",
       "show": "The Late Show Pod Show with Stephen Colbert",
@@ -1781,11 +1781,11 @@
       "url": "https://open.spotify.com/episode/5biteiO28utY9BPXrOkqft"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-12",
+      "dur_min": 13,
+      "release": "2025-11-12",
       "publisher": null,
-      "desc": null,
+      "desc": "People who’ve found themselves in life-or-death situations with their endurance at its limit have reported sensing another presence with them, urging them to continue on and survive. No one knows what the heck is going on here but it sure is interesting.See omnystudio.com/listener for privacy information.",
       "id": "2q5cjcBm6c86wJhRbCQimM",
       "name": "Short Stuff: Third Man Syndrome",
       "show": "Stuff You Should Know",
@@ -2771,11 +2771,11 @@
       "desc": "It’s Indicators of the Week! It is that show where we parse the most fascinating financial numbers in the news and bring them to you. On today's show: Argentina needs a bailout, Microsoft’s new way to cool data centers, and retail hiring…"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-20",
+      "dur_min": 86,
+      "release": "2026-01-20",
       "publisher": null,
-      "desc": null,
+      "desc": "This week on the pod, Seth and Josh welcome Father-Daughter duo Tony Goldwyn and Anna Musky-Goldwyn! Tony and Anna bring some funny (and terrifying) trip stories including talking about their family trip to Iceland, Tony’s hot take on tour guides, Anna’s near-death experience on a ski trip, what it’s been like taking French lessons together, and so much more! Plus, they chat about their new podcast they host together called Far From The Tree, out now!   Watch more Family Trips episodes: https://www.youtube.com/playlist?list=PLlqYOfxU_jQem4_NRJPM8_wLBrEEQ17B6  Support our sponsors: Fitbod Join Fitbod today to get your personalized workout plan. Get 25% off your subscription or try the app FREE for seven days at https://Fitbod.me/trips  IQ Bar Text TRIPS to 64000 to get 20% off all IQBAR products, plus FREE shipping. Message and data rates may apply.   Shipt Download the app or order now at https://shipt.com  Wild Grain Wildgrain is offering our listeners $30 off your first box - PLUS free Croissants for life - when you go to https://Wildgrain.com/TRIPS to start your subscription today.  Olipop Get a free can of OLIPOP:  ○ Buy any 2 cans of Olipop in store, and we'll pay you back for one  ○ Works on any flavor, any retailer go to https://drinkolipop.com/TRIPS  OLIPOP is sold online (https://drinkolipop.com + Amazon) and available in the soda aisle and with the chilled beverages at thousands of retailers nationwide, including Walmart and Target. Learn more about your ad choices. Visit megaphone.fm/adchoices",
       "id": "7EhSsejsSxNCvt0JzzkWj3",
       "name": "TONY GOLDWYN AND ANNA MUSKY-GOLDWYN Toured Iceland Together",
       "show": "Family Trips with the Meyers Brothers",
@@ -3123,11 +3123,11 @@
       "desc": "Are we making science fiction a reality? Is that a good thing? Neil deGrasse Tyson, Chuck Nice, & Gary O’Reilly and guest Adam Becker, science communicator and author of More Everything Forever, discuss sci-fi dreams, tech-bro promises,…"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-20",
+      "dur_min": 61,
+      "release": "2026-01-20",
       "publisher": null,
-      "desc": null,
+      "desc": "What does Hawking radiation look like falling into a black hole? Will we ever find a theory of everything? Neil deGrasse Tyson and comedian Chuck Nice answer questions about invisible fields, many worlds, entropy, the theory of everything, and more with theoretical physicist and philosopher Sean Carroll. NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/cosmic-queries-the-complex-universe-with-sean-carroll/Thanks to our Patrons Craig Rowley, kickhead, Derek Kainz, Mircea Buga, Erin Anthony, Michael Sayer, amadou, Jacob Spector, Michael Burch, Nick Miller, James Campbell, Kathi Drake, Anthony Paz, Mike mendoza, Andrew Henke, Mitch Majernik, John Euill, Ryan LeDuc, Mimi, Conner Mathis, Jeffrey Roe, Marie Richards, Thomas Wilgus jr, Cora Bailey, Alexandra Ursu, Jeffrey, Bryan Berg, NeXuSLemming, Elizabeth, John Shortridge, Ross S, Jose E Gonzalez, Luis Antonio Reyes Roman, Drops-A-Lot, David, Vega, Suranga Rajapakse, Colin McIsaac, Croule, Ping Xiong, Jennifer White, AkKaris, Nina Barton, Ethan Simmonds, anthro-po-COSMIC Dylan, Mark Daniel Cohen, Alan Short, Ryker Voets, Phobicdragon, Manuel Cadena, Walter Rimler, Nolan, Jason 'Jake' Kennedy, Sapien 6, Stephen Landau, Bret, Sp33dy86, Jim Sartor, Tony Parr, Sylvia Vassileva, Chris, john holstein, Lindy, Violet Hefner, David Wolery, kincade ewing, Bas Oosterveld, Clare Chevalier, Ruth Hall, Jonáš Burger, Shourov Kundu, Renato Sampaio, Gainbrainx, Allistare Lute, Royce Ashcroft, Emily Najemy, Paul Beachum, Bengt Weerstand, Osuch, Finn Family, Ricky, pa rn, David the Curious One, Brie Welch, Watt deFino, J. S. Pitcher, Marysa Muceli, and Joe K for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "id": "5aOa5twzTlM8JnFGjNUDof",
       "name": "Cosmic Queries – The Complex Universe with Sean Carroll",
       "show": "StarTalk with Neil deGrasse Tyson",
@@ -3332,11 +3332,11 @@
       "url": "https://open.spotify.com/episode/6gDqqgneArYlBlbqdREtMO"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-21",
+      "dur_min": 46,
+      "release": "2026-01-21",
       "publisher": null,
-      "desc": null,
+      "desc": "After five years, Levitt is ending People I (Mostly) Admire, and will start hosting the occasional Freakonomics Radio episode. We couldn’t be happier. SOURCES:Steve Levitt, co-author of Freakonomics and host of People I (Mostly) Admire. RESOURCES:\"How to Help Kids Succeed,\" by People I (Mostly) Admire (2025).\"Feeling Sound and Hearing Color,\" by People I (Mostly) Admire (2024).\"Richard Dawkins on God, Genes, and Murderous Baby Cuckoos,\" by People I (Mostly) Admire (2024).\"Arnold Schwarzenegger Has Some Advice for You,\" by People I (Mostly) Admire (2024).\"Drawing from Life (and Death),\" by People I (Mostly) Admire (2023).\"Yuval Noah Harari Thinks Life is Meaningless and Amazing,\" by People I (Mostly) Admire (2022).\"Is This the Future of High School?,\" by People I (Mostly) Admire (2022).\"Does Death Have to Be a Death Sentence?,\" by People I (Mostly) Admire (2022).\"Sal Khan: 'If It Works for 15 Cousins, It Could Work for a Billion People.'\" by People I (Mostly) Admire (2021).\"Jared Diamond on the Downfall of Civilizations — and His Optimism for Ours,\" by People I (Mostly) Admire (2021).\"Amanda & Lily Levitt Share What It’s Like to be Steve’s Daughters,\" by People I (Mostly) Admire (2021).\"How Rahm Emanuel Would Run the World,\" by Freakonomics Radio (2020).The Levitt Lab. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "id": "6NAGw1evwhBcIMGRSFXBSr",
       "name": "Steve Levitt Quits His Podcast, Joins Ours",
       "show": "Freakonomics Radio",
@@ -4221,6 +4221,50 @@
       "release": "2026-10-14",
       "url": "https://open.spotify.com/episode/7MYpCE9nnq29JLJYiBpkP3",
       "desc": "Fifty years ago, scientists pioneering a terrifying gene-splicing technology figured out a way to collectively hit pause. Can we do it again with AI? We ask because some top AI industry leaders are saying the technology they’re pushing forward is moving too quickly … and might kill us all. They’re effectively saying, ‘Please, please regulate us! Slow us down! Tie our hands!’ But, by and large, they’re not slowing down, because they don’t want to be left behind. In other words, it’s a classic collective action problem. A type of problem that’s scary, but solvable. We’ve been here before. In 1975, a group of scientists holed up for four days on California's foggy Central Coast to stop the runaway technology of their generation: a new DNA splicing technology that they feared could cause mass death. On today’s show, how they set aside ambition and competition to stop a runaway technology. Live Show: Planet Money Live at Kilkenomics. Kilkenny, Ireland Nov. 6th - 7thRead Planet Money: Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life Our weekly longform Planet Money newsletterOur weekly Indicator round-up newsletterFollow Planet Money: InstagramTikTokYouTubeFacebookListen to more Planet Money: Our short, daily podcast, The Indicator from Planet MoneyOver 1,000 episodes in our archive on the NPR AppMerch: NPR ShopThe Planet Money game, Sell Me A SasquatchSupport public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.This episode was produced by Vito Emanuel. It was edited by Marianne McCune and fact-checked by Sierra Juarez. It was engineered by Travis Hagan. Alex Goldmark is our executive producer. Music: NPR Source Audio - \"Left Coastingg,\" \"Going Nuts,\" and \"Unsatisfied Reflection\"See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
+    },
+    {
+      "id": "2Lo2yeaiPmzpCULGosEl91",
+      "added_at": "2026-10-16",
+      "show": "The Indicator from Planet Money",
+      "publisher": null,
+      "name": "Supercore inflation, Bumble valuation and Pooh's repatriation",
+      "dur_min": 9,
+      "release": "2026-10-16",
+      "url": "https://open.spotify.com/episode/2Lo2yeaiPmzpCULGosEl91",
+      "desc": "This week’s indicators: Why is inflation so super (derogatory)? How did Bumble go from dating app doldrums to a stock market sweetheart?; And oh, bother! Could Winnie the Pooh be moving home to England from New York City?Fact checking by Leyla Doss.Your Next Listen –Retiree benefits bump, credit repayment slump, and a dating app in the dumps–Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet Money–The Indicator newsletter — a weekly roundup of news, ideas and staff picks. –Instagram, TikTok and YouTube –Find the Planet Money book –Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop!Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
+    },
+    {
+      "id": "1Te3To0itv0Zd6sbNOIr1f",
+      "added_at": "2026-10-16",
+      "show": "StarTalk with Neil deGrasse Tyson",
+      "publisher": null,
+      "name": "The Science of Lookmaxxing with Dr. Noc",
+      "dur_min": 59,
+      "release": "2026-10-16",
+      "url": "https://open.spotify.com/episode/1Te3To0itv0Zd6sbNOIr1f",
+      "desc": "Are we doing more harm than good in the pursuit of perfection? Neil deGrasse Tyson, comic co-hosts Chuck Nice and Gary O'Reilly explore looksmaxxing, peptides, body composition, and the scientization of health & beauty trends with pharmaceutical scientist & medfluencer Morgan McSweeney, aka Dr. Noc.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/the-science-of-lookmaxxing-with-dr-noc/Thanks to our Patrons Techpack, Angela DavisGriffith, Renn, Joel Thompson, Steven Berry, Bonham Griggs, Konrad Talik, Dominik Franczyk, Jake Douglas, Ken Weiss, Gary Jordan, and CW Bushman for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising."
+    },
+    {
+      "id": "0XB8h9hWeI7x3Qp8yfsqn2",
+      "added_at": "2026-10-15",
+      "show": "The Indicator from Planet Money",
+      "publisher": null,
+      "name": "How did political campaigns get so expensive?",
+      "dur_min": 8,
+      "release": "2026-10-15",
+      "url": "https://open.spotify.com/episode/0XB8h9hWeI7x3Qp8yfsqn2",
+      "desc": "The 2026 midterm elections are fast approaching, and it’s gearing up to be the most expensive election in American history. So how did we get here, where every election feels more expensive than the last? Today on the show, we’re exploring what’s causing the flood of money into our politics. Fact checking by Sierra Juarez.Your Next Listen –Bad economics, smart politics –Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet Money–The Indicator newsletter — a weekly roundup of news, ideas and staff picks. –Instagram, TikTok and YouTube –Find the Planet Money book –Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop!Support public media by subscribing to NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
+    },
+    {
+      "id": "2bhVSrXGj5iGmV3cmOdsAw",
+      "added_at": "2026-10-15",
+      "show": "Stuff You Should Know",
+      "publisher": null,
+      "name": "The Disappearance of Dorothy Arnold",
+      "dur_min": 42,
+      "release": "2026-10-15",
+      "url": "https://open.spotify.com/episode/2bhVSrXGj5iGmV3cmOdsAw",
+      "desc": "When socialite Dorothy Arnold disappeared in 1910, no one imagined the case would remain forever unsolved. Today we tell her story.See omnystudio.com/listener for privacy information."
     }
   ]
 }
