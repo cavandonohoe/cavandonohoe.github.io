@@ -16,6 +16,7 @@ tv_shows_manifest <- function() {
     "Alice in Borderland", "alice_in_borderland", NA, NA, NA, NA,
     "Always Sunny in Philadelphia", "always_sunny", NA, NA, NA, NA,
     "Andor", "andor", NA, NA, NA, NA,
+    "Arcane", "arcane", NA, NA, NA, NA,
     "Archer", "archer", NA, NA, NA, NA,
     "Attack on Titan", "attack_on_titan", NA, 9, NA, NA,
     "Avatar: The Last Airbender", "avatar", NA, NA, NA, NA,
