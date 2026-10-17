@@ -3,10 +3,10 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 387,
+    "n_episodes": 390,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-10-16",
-    "api_saved_count": 154
+    "api_refreshed_at": "2026-10-17",
+    "api_saved_count": 156
   },
   "episodes": [
     {
@@ -1132,11 +1132,11 @@
       "desc": "For 50 years, the healthcare industry has been trying (and failing) to harness the power of artificial intelligence. It may finally be ready for prime time. What will this mean for human doctors — and the rest of us? (Part four of “The Freakonomics Radio Guide to Getting Better.”) SOURCES:Bob Wachter, professor, chair of the department of medicine at the University of California, San Francisco.Pierre Elias, cardiologist, assistant professor of biomedical informatics at Columbia University, medical director for artificial intelligence at NewYork-Presbyterian Hospital. RESOURCES:A Giant Leap: How AI Is Transforming Healthcare and What That Means for Our Future, by Bob Wachter (2026).\"Epic Systems (MyChart),\" by Acquired (2025).\"Detecting structural heart disease from electrocardiograms using AI,\" by Pierre Elias and Timothy Poterucha (Nature, 2025).\"What Are the Risks of Sharing Medical Records With ChatGPT?\" by Maggie Astor (New York Times, 2025).\"Will Generative Artificial Intelligence Deliver on Its Promise in Health Care?\" by Bob Wachter and Erik Brynjolfsson (JAMA, 2023).The Digital Doctor: Hope, Hype, and Harm at the Dawn of Medicine’s Computer Age, by Bob Wachter (2015). EXTRAS:\"The Doctor Won’t See You Now,\" by Freakonomics Radio (2025).\"How to Stop Worrying and Love the Robot Apocalypse (Update),\" by Freakonomics Radio (2024). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising."
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-21",
+      "dur_min": 9,
+      "release": "2026-01-21",
       "publisher": null,
-      "desc": null,
+      "desc": "President Donald Trump is dead set on acquiring Greenland, and while national security is the stated reason, the country’s untapped mineral wealth could offer another explanation. Today on the show: is Greenland really an untapped land of riches? We talk to one Australian geologist who discovered the great costs and potential rewards of extracting these minerals himself. Related episodes: Add to cart: Greenland Why Trump resurrected the Monroe Doctrine For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez and Julia Ritchey. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "id": "6caw2YIF6oAL1ds5RPv7gk",
       "name": "Is Greenland really an untapped land of riches?",
       "show": "The Indicator from Planet Money",
@@ -1297,11 +1297,11 @@
       "desc": "Meanwhile... Junk from space is falling from the sky, DNA science is helping us learn more about ancient STDs, a Chinese mushroom makes you see tiny people, gym-goers need to go wash their hands right now, Sydney Sweeney has been accused of an undergarment misdemeanor, a bus driver in Delaware did the unthinkable, and scientists announced a big leap forward in robotic speech. "
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-21",
+      "dur_min": 33,
+      "release": "2026-01-21",
       "publisher": null,
-      "desc": null,
+      "desc": "Americans are exhausted by the daily horrors of President Trump’s second term, U.S. consumers would pick up the tab for any new tariffs levied against imports from Europe, and the president indicated he’s no longer interested in peace after losing out on the Nobel Peace Prize.  Vermont’s Senior Senator defines the term “oligarchy” and argues that the United States is already being dominated by billionaires who control the economy, the media and the political system.",
       "id": "4hTifFbhfjAyByPBdST2nW",
       "name": "Sen. Bernie Sanders | Anniversary Grifts",
       "show": "The Late Show Pod Show with Stephen Colbert",
@@ -2320,11 +2320,11 @@
       "url": "https://open.spotify.com/episode/3xvBB4ijiueOzaVQeOSDc5"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-14",
+      "dur_min": 37,
+      "release": "2025-11-14",
       "publisher": null,
-      "desc": null,
+      "desc": "In the wake of new Jeffrey Epstein emails implicating Trump, the GOP unhelpfully backed up the president by releasing 20,000 new Epstein files of their own, and Josh Johnson unpacks new revelations, including the two men’s frenemy relationship and apparent connection to cosmetics heiress Celina Midelfart, as well as conservative pundits like Megyn Kelly’s attempts to downplay the bombshell. Plus, Troy Iwata offers a scathing critique of Epstein’s email grammar. The AI revolution is integrating chatbots like Grok and ChatGPT into all aspects of life, from education to friendship, so Ronny Chieng fights the dumbing effects of AI on college campuses by transforming himself into a real-life chatbot. Grammy award-winning artist Miguel talks to Josh about returning to music after an eight-year break with his new album, “CAOS.” Miguel shares how that time of personal reflection and connection to his Mexican heritage informed his new album through celebration of his culture and solidarity during a time of increased anti-immigrant activity. He also discusses how “Speaking Chaos to Power,” the course he designed as an artist in residence at NYU, emphasizes the importance of emotional expression in art, and records a sexy voicemail greeting for Josh. Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "id": "37Z9Cstk1LhgU7EZPA2OFP",
       "name": "Epstein-Trump Saga Gets 20K Pages Longer & Megyn Kelly Splits Hairs on Pedophilia | Miguel",
       "show": "The Daily Show: Ears Edition",
@@ -3068,11 +3068,11 @@
       "desc": "Is time fundamental to the universe or a human construct? Neil deGrasse Tyson, Chuck Nice, and Gary O’Reilly explore our brain’s relationship with time, how we remember the past, and project the future with Dean Buonomano, Professor of Neurobiology and Psychology at UCLA.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/your-brain-is-a-time-machine-with-dean-buonomano/Thanks to our Patrons Austin koffler, Tommy O’Connor, Igor Vihnanek, Maria Banks, William Warren, Bud K, Dmitry Oksen, M-DOG, Jim Crider, Benjamin Newman, Mark Saravi, Ethan Meirovitz, Poole, Patti, mike hallatt, Barbara, Dicky P, Cody Hansen, Jorge, Jules Bethea, James A Kissell, Nikola Mucnjak, Helen Anderson, Jordan Teets, Bob Conrod, Aaron Clark, Jason Pack, John Munn, Fabrizio_9100, Antonio, Alvin Wuolu-luckett, Frederik Unser, Boptimus Prime, Vincent Davis, Jordyn Grulkowski, Greg Young, Kristopher Warren, Sam Gosin, JJ Budd, Donna L, ryan fontenot, Bill, PJ, jono langley, leats1, Jim Nagel, Nick O, Anthony Delgado, Peter Ainsworth, Joseph Garcia, Jay Reiss, Jimbo, Brian Greene, Anselmo Bernal, Stephane Raymond, Markush, Charles Perry, Steven Hardesty, TZ, Matt Entner, Olly, Joe Liparela, Andrew Rodgers, DJ Homer, Ibrahim Mohmed, Jarrad, AnJean3tte, Ryan Ciehanski, Doogle Chrome, Mick Kolassa, Ida Booth, Bret, Chris Miller, Lasse Callesen, elizabeth zaks, Steinbjorn, Jessica ♥️, Kaptain Karl, Pavel V S [ Dr.Bubble ], Nikki Tink Shubert, SUDIPTO SEN, Nathan Howard, Eldrick Sneed, Kem Phillips, Bradford Peterson, Andrew Davis, Sharvesh Kumar Jeyachandran, and Becky K for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising."
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-14",
+      "dur_min": 78,
+      "release": "2025-11-14",
       "publisher": null,
-      "desc": null,
+      "desc": "Why can’t we run through walls if atoms are mostly empty space? Neil deGrasse Tyson, Chuck Nice, Gary O’Reilly, and astrophysicist Charles Liu explore force fields, warp drive, invisibility, and quantum physics behind superhero powers.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/superhero-science-startalk-live-with-charles-liu/Thanks to our Patrons Dave, Downtime Coffee, David, Colby Bechtold, Carlo Gomez, Mark Hanley, zach, David Bishop, Danielle Grant, Brian Petrunik, Micheal, Private Name, Dustin Hurtt, O.C, Cris Martinella, Václav Pechman, MrMcMuffinJr, Matthew Reagan, Kellie, Christopher Peffers, Vishal Ahmed, Chris Hodgins, Linda Nguyen, Ben F, Kirk, Charles Spence, Kirk, Zack Fay, Dave Lora, Mark Wilson, David Gaston, Emily Keck, Julian Walker, Samantha, Mikeland, Amy, M Rrr1994, Daniel Carter, Bill Holub, Craig Crawford, Rajkumar Polepaka, Tom Mison, Neil Disney, Tomas fridrik, Kurt Hayes, GA Armistead, Andrew Hagan, Jordan Wagner, Mai Tai, Ross Walker, Jonathan Price, FatDunb'Murican, Ann, Isaac Bicher, Michael Tiberg, Darrell Messer, Jeff Smith, Kimberly V Silver, Joe Jenkins, Phillips Williams, Archie, Andrew Wery, Jacob Hernke, John Ryan, Arthur Forlin, Tom Jenkins, Mario Miranda, Douglas, Heather Jones, Mancheno, Marcus Lowe, Mister Sandman, Brand0n Rs, Raj Sivakumar, Ryne Thornsen, Sean Doyle, BRAD BRIDGEWATER, Paul Bernard, Karl Desfosses, Kody Remer, Greg Scopel, Sriti Jha, Tim Enfinger, Jacob Glanville, Rilee Jensen, David W., Micheal Austin, Carlos Alberto Gonzalez, JOSH SHE-BONG, George, and Geezapouch for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "id": "4zWvXR8Tj3OsvsG7tylyoJ",
       "name": "Superhero Science: StarTalk Live! With Charles Liu",
       "show": "StarTalk with Neil deGrasse Tyson",
@@ -3255,11 +3255,11 @@
       "desc": "The U.S. Constitution famously outlaws “cruel and unusual punishments.” But there's another, far more obscure part of the Constitution called the Excessive Fines Clause, which basically says that the fine has to fit the crime. So far, the Supreme Court has been pretty mysterious about what that means. But for Ken Jouppi, the fate of his $95,000 plane hinges on it.Ken is a bush pilot. He used to run an air taxi service in Fairbanks, Alaska. In 2012, police caught one of Ken’s passengers with a six-pack of Budweiser in her luggage. Over that six-pack, Ken was convicted of bootlegging. As punishment, he was ordered to forfeit his $95,000 Cessna.The Supreme Court is now considering whether to take Ken’s case. And what’s at stake here is more than just a plane. Hanging in the balance is an increasingly popular — and controversial — business model for criminal justice.More on economics and the law: - Fine and punishment - The prisoner's solution - Paying for the crime - Rescues at sea, and how to make a fortunePre-order the Planet Money book and get a free gift. / Subscribe to Planet Money+Listen free: Apple Podcasts, Spotify, the NPR app or anywhere you get podcasts.Facebook / Instagram / TikTok / Our weekly Newsletter.Today’s episode was produced by James Sneed and Sam Yellowhorse Kesler with help from Luis Gallo. It was edited by Jess Jiang, fact-checked by Sierra Juarez and engineered by Ko Tagasugi Chernovin with help from Robert Rodriguez. Planet Money's executive producer is Alex Goldmark.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-21",
+      "dur_min": 12,
+      "release": "2026-01-21",
       "publisher": null,
-      "desc": null,
+      "desc": "The Seven Deadly Sins are tied to religion, but not really in the Bible. So where did this naughty list come from?See omnystudio.com/listener for privacy information.",
       "id": "3X9N0IgNiQ6AN8T8KW240T",
       "name": "Short Stuff: The S7VEN Deadly Sins",
       "show": "Stuff You Should Know",
@@ -3299,11 +3299,11 @@
       "desc": "Kevin Warsh has been tapped as the next chair of the Federal Reserve. We’re sure that he’ll have a lot of questions about how to run the Fed if confirmed. So we put together this briefing.On today’s show, three Fed watchers give their advice for the next chair. On politics, interest rate cuts and dealing with the Fed’s repeated trading scandals. Oh, and can someone please forward this episode to Kevin Warsh?Related episodes: One Fed battle after anotherLisa Cook and the fight for the FedA primer on the Federal Reserve's independenceIt's hard out there for a Fed chairFor sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-14",
+      "dur_min": 10,
+      "release": "2025-11-14",
       "publisher": null,
-      "desc": null,
+      "desc": "It’s … Indicators of the Week! We look at some of the most fascinating economic numbers from the news and bring them to you.On today’s episode: The cost of living is outstripping wage growth for most of us, the math behind the Trump administration’s proposed 50-year mortgages, and how we’re just giving Uber and Lyft free money. Related episodes: Trump's plans for the housing market The Money Illusion: Have Americans really gotten a raise? For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "id": "4QKixrwtHtH5X8Sm3qUKwi",
       "name": "50-year mortgages, falling real wages, and doing your rideshare due diligence",
       "show": "The Indicator from Planet Money",
@@ -4265,6 +4265,39 @@
       "release": "2026-10-15",
       "url": "https://open.spotify.com/episode/2bhVSrXGj5iGmV3cmOdsAw",
       "desc": "When socialite Dorothy Arnold disappeared in 1910, no one imagined the case would remain forever unsolved. Today we tell her story.See omnystudio.com/listener for privacy information."
+    },
+    {
+      "id": "48W3wo4ktrTGQJEBvJOHoA",
+      "added_at": "2026-10-17",
+      "show": "Planet Money",
+      "publisher": null,
+      "name": "Anatomy of a movie market",
+      "dur_min": 32,
+      "release": "2026-10-16",
+      "url": "https://open.spotify.com/episode/48W3wo4ktrTGQJEBvJOHoA",
+      "desc": "Before an independent movie makes it to a streaming platform or a theater near you, it first needs to survive an artistic and economic gauntlet. And even for those movies that make it into elite film festivals like Sundance – it can take everything from performance stunts to corporate spycraft to seal the deal. Today on the show, we follow the ‘King of Sundance’ as he and his team try to sell their slate of movies to distributors like Netflix and Sony and Apple. We hear the behind the scenes stories about how films like Little Miss Sunshine, Napoleon Dynamite and Precious got sold. And we learn the strategies that might make the difference in whether or not a film makes it onto screens around the world. For more episodes about the entertainment industry:  \"Based on a true story\"On the Oscars campaign trailWhy platforms like HBO Max are removing streaming TV showsThe summer I turned binge-yThe Writers Revolt (UPDATE)Read: Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life Our weekly longform Planet Money newsletterOur weekly Indicator round-up newsletterFollow: InstagramTikTokYouTubeFacebookSupport public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.This episode of Planet Money was produced by Emma Peaslee. It was edited by Jess Jiang. It was fact checked by Sierra Juarez and engineered by Annlie Huang. Alex Goldmark is Planet Money’s executive producer.Music: NPR Source Audio - \"Lone Star Desert Surfer,\" \"The Westerners,\" and \"Tucson Arizona\"See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
+    },
+    {
+      "id": "0inSkJjz9An8zVlMDGsAfU",
+      "added_at": "2026-10-16",
+      "show": "Freakonomics Radio",
+      "publisher": null,
+      "name": "691. Is This What a “Good Billionaire” Looks Like?",
+      "dur_min": 43,
+      "release": "2026-10-16",
+      "url": "https://open.spotify.com/episode/0inSkJjz9An8zVlMDGsAfU",
+      "desc": "David Rubenstein, a product of the old bipartisan D.C., made his fortune in private equity. He’s been spending it on “patriotic philanthropy” and institutions like the Kennedy Center, where Trump fired him as chairman. Now he wonders if the center can hold. SOURCES:David Rubenstein, co-founder and co-chairman of the Carlyle Group, principal owner of the Baltimore Orioles. RESOURCES:Inside the Owner's Box: Conversations on Power and Leadership in Sports, by David M. Rubenstein (2026).The American Experiment: Dialogues on a Dream, by David M. Rubenstein (2021).The American Story: Conversations With Master Historians, by David M. Rubenstein (2019).Moneyball: The Art of Winning an Unfair Game, by Michael Lewis (2003). EXTRAS:\"The Merger You Never Knew You Wanted,\" by Freakonomics Radio (2025).\"The Secret Life of a C.E.O.,\" series by Freakonomics Radio (2018).\"Extra: David Rubenstein Full Interview,\" by Freakonomics Radio (2018).\"The Longest Long Shot,\" by Freakonomics Radio (2016). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising."
+    },
+    {
+      "id": "3qfIEESGe4sUEGeZIA4jGf",
+      "added_at": "2026-10-16",
+      "show": "The Daily Show: Ears Edition",
+      "publisher": null,
+      "name": "TDS Time Machine | Daily Showographies Pt. 3 - Vladimir Putin, Rudy Giuliani, Pete Hegseth, and More",
+      "dur_min": 50,
+      "release": "2026-10-16",
+      "url": "https://open.spotify.com/episode/3qfIEESGe4sUEGeZIA4jGf",
+      "desc": "Get to know even more weird guys with part 3 of The Daily Showograpies.  Deep dive on the origins of Vladimir Putin, Rudy Giuliani, Pete Hegseth, JD Vance, Mike Johnson and Mitch McConnell.  -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices"
     }
   ]
 }
