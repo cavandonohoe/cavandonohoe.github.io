@@ -1,14 +1,14 @@
 {
   "year": 2026,
-  "commits": 337,
-  "pull_requests": 247,
+  "commits": 340,
+  "pull_requests": 250,
   "repositories_touched": 6,
-  "lines_added": 505223,
+  "lines_added": 505319,
   "most_used_language": "R",
   "language_lines_added": {
-    "R": 24439,
+    "R": 24442,
     "Python": 6031,
-    "TypeScript": 5069,
+    "TypeScript": 5087,
     "JavaScript": 2934,
     "SQL": 2217,
     "HTML": 2195,
@@ -2063,8 +2063,13 @@
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "web_scraping/imdb_season_episode_ratings_plot.R",
-        "lines_added": 386,
+        "lines_added": 388,
         "commits": [
+          {
+            "sha": "9e94f3adbe1e3471a808826312d9e49857ea9f83",
+            "date": "2026-10-16",
+            "lines_added": 2
+          },
           {
             "sha": "716e4453abdb19f668768e4c135690d3d49b277b",
             "date": "2026-09-28",
@@ -3402,26 +3407,14 @@
       },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "scripts/get_spotify_refresh_token.R",
-        "lines_added": 103,
-        "commits": [
-          {
-            "sha": "f7332d197ed6c5ae99acbf89d903a039863bb588",
-            "date": "2026-10-12",
-            "lines_added": 3
-          },
-          {
-            "sha": "d4ded17d22fe59cba1ef59018068aadcacb5236c",
-            "date": "2026-09-29",
-            "lines_added": 100
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "scripts/shows_manifest.R",
-        "lines_added": 103,
+        "lines_added": 104,
         "commits": [
+          {
+            "sha": "9e94f3adbe1e3471a808826312d9e49857ea9f83",
+            "date": "2026-10-16",
+            "lines_added": 1
+          },
           {
             "sha": "162b1ae1727fff02ffaa7adfae59849817e61c49",
             "date": "2026-10-03",
@@ -3436,6 +3429,23 @@
             "sha": "9bbc675db7f567997ce17044b80abcebf37d3fe5",
             "date": "2026-09-16",
             "lines_added": 101
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "scripts/get_spotify_refresh_token.R",
+        "lines_added": 103,
+        "commits": [
+          {
+            "sha": "f7332d197ed6c5ae99acbf89d903a039863bb588",
+            "date": "2026-10-12",
+            "lines_added": 3
+          },
+          {
+            "sha": "d4ded17d22fe59cba1ef59018068aadcacb5236c",
+            "date": "2026-09-29",
+            "lines_added": 100
           }
         ]
       },
@@ -4342,8 +4352,13 @@
       {
         "repository": "cavandonohoe/docuchat",
         "path": "frontend/app/page.tsx",
-        "lines_added": 180,
+        "lines_added": 193,
         "commits": [
+          {
+            "sha": "9690f0f745c2a02552b6e897d3ea86bb668aba02",
+            "date": "2026-10-16",
+            "lines_added": 13
+          },
           {
             "sha": "8ee639bba87e3f55f58d0ee1ac0f27cab12bc320",
             "date": "2026-06-22",
@@ -5252,6 +5267,23 @@
         ]
       },
       {
+        "repository": "cavandonohoe/docuchat",
+        "path": "frontend/next-env.d.ts",
+        "lines_added": 7,
+        "commits": [
+          {
+            "sha": "9690f0f745c2a02552b6e897d3ea86bb668aba02",
+            "date": "2026-10-16",
+            "lines_added": 5
+          },
+          {
+            "sha": "8ee639bba87e3f55f58d0ee1ac0f27cab12bc320",
+            "date": "2026-06-22",
+            "lines_added": 2
+          }
+        ]
+      },
+      {
         "repository": "cavandonohoe/grocery-compare",
         "path": "next.config.ts",
         "lines_added": 5,
@@ -5276,18 +5308,6 @@
         ]
       },
       {
-        "repository": "cavandonohoe/docuchat",
-        "path": "frontend/next-env.d.ts",
-        "lines_added": 2,
-        "commits": [
-          {
-            "sha": "8ee639bba87e3f55f58d0ee1ac0f27cab12bc320",
-            "date": "2026-06-22",
-            "lines_added": 2
-          }
-        ]
-      },
-      {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "movie-ranker/src/proxy.ts",
         "lines_added": 1,
@@ -5308,8 +5328,8 @@
   },
   "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, dependency, build, docs, minified, and raw HTML input files are excluded.",
   "most_active_month": "October",
-  "longest_streak_days": 15,
-  "active_days": 79,
+  "longest_streak_days": 16,
+  "active_days": 80,
   "monthly_commits": [
     11,
     27,
@@ -5320,7 +5340,7 @@
     36,
     15,
     40,
-    89,
+    92,
     0,
     0
   ],
@@ -5719,10 +5739,15 @@
       "date": "2026-10-15",
       "commits": 9,
       "lines_added": 96580
+    },
+    {
+      "date": "2026-10-16",
+      "commits": 3,
+      "lines_added": 96
     }
   ],
   "biggest_project": "cavandonohoe.github.io",
-  "biggest_project_commits": 249,
+  "biggest_project_commits": 250,
   "repositories": [
     "cavandonohoe/cavandonohoe",
     "cavandonohoe/cavandonohoe.github.io",
@@ -5732,14 +5757,14 @@
     "cavandonohoe/rent-vs-buy"
   ],
   "repository_commits": {
-    "cavandonohoe/cavandonohoe.github.io": 249,
+    "cavandonohoe/cavandonohoe.github.io": 250,
     "cavandonohoe/rent-vs-buy": 29,
-    "cavandonohoe/grocery-compare": 21,
+    "cavandonohoe/grocery-compare": 22,
     "cavandonohoe/confederate_statues": 18,
-    "cavandonohoe/docuchat": 12,
+    "cavandonohoe/docuchat": 13,
     "cavandonohoe/cavandonohoe": 8
   },
   "scope": "Author-matched commits on the default branch of public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bot-authored or bot-committed commits, deploy commits, and other authors are excluded. Moved files count only changed lines. Language totals use .gitattributes Linguist overrides plus built-in generated, vendored, dependency, build, docs, minified, and raw HTML input patterns. Overall lines added still include all files. PRs count public pull requests the user authored and merged into their own repositories during the year, when available.",
   "is_partial_year": true,
-  "generated_at": "2026-10-16T13:29:36.625346+00:00"
+  "generated_at": "2026-10-17T12:22:05.319870+00:00"
 }
