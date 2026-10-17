@@ -1,6 +1,12 @@
 {
-  "generated_at": "2026-10-16T19:39:51.053764+00:00",
+  "generated_at": "2026-10-17T18:44:09.376184+00:00",
   "events": [
+    {
+      "date": "2026-10-16",
+      "type": "merged_pr",
+      "title": "Add Arcane to IMDb rating plot",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/291"
+    },
     {
       "date": "2026-10-15",
       "type": "merged_pr",
@@ -600,21 +606,19 @@
       "type": "merged_pr",
       "title": "Add Publications page (NHS-Galleri + PATHFINDER 2 articles)",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/173"
-    },
-    {
-      "date": "2026-09-16",
-      "type": "merged_pr",
-      "title": "Rank every tracked show on whether it quit while it was ahead",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/170"
-    },
-    {
-      "date": "2026-09-16",
-      "type": "merged_pr",
-      "title": "Add the six live projects missing from the landing page gallery",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/172"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-10-17",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "3 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/042fc9497934ff3a1ddbce7b46217ce96bb051d5"
+        }
+      ]
+    },
     {
       "date": "2026-10-16",
       "items": [
@@ -622,6 +626,16 @@
           "emoji": "\ud83c\udfa7",
           "text": "4 podcast episodes added",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/36a40c9e3c45cb0e36fd0094c46b897c460da9bd"
+        },
+        {
+          "emoji": "\ud83c\udfac",
+          "text": "Movie & TV projects updated",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/291"
+        },
+        {
+          "emoji": "\ud83c\udfac",
+          "text": "Movie & TV data refreshed",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/9e94f3adbe1e3471a808826312d9e49857ea9f83"
         }
       ]
     },
@@ -807,25 +821,6 @@
         {
           "emoji": "\ud83d\udcbb",
           "text": "4 PRs merged"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-03",
-      "items": [
-        {
-          "emoji": "\ud83d\udcbb",
-          "text": "4 PRs merged"
-        },
-        {
-          "emoji": "\ud83c\udfac",
-          "text": "Movie & TV projects updated",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/204"
-        },
-        {
-          "emoji": "\ud83c\udfac",
-          "text": "Movie & TV data refreshed",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/432afab37877da4c031d9e00e0e507c2c0fde46b"
         }
       ]
     }
