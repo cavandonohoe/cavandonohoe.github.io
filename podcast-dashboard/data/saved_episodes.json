@@ -3,10 +3,10 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 390,
+    "n_episodes": 393,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-10-17",
-    "api_saved_count": 156
+    "api_refreshed_at": "2026-10-18",
+    "api_saved_count": 155
   },
   "episodes": [
     {
@@ -131,11 +131,11 @@
       "url": "https://open.spotify.com/episode/6qkfwCRFpLvzWpth409jsL"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-14",
+      "dur_min": 62,
+      "release": "2025-11-14",
       "publisher": null,
-      "desc": null,
+      "desc": "Thoroughbred auction prices keep setting records. But tracks are closing, gambling revenues are falling, and the sport is increasingly reliant on subsidies. Is that the kind of long shot anybody wants? (Part three of a series, “The Horse Is Us.”) SOURCES:Anne Archer Hinkle, owner and director of Hinkle Farms.Cormac Breathnach, senior director of sales operations at Keeneland.Emily Plant, thoroughbred researcher and statistician, associate professor of marketing at the University of Montana.Mark Taylor, president of Taylor Made Farm.Marshall Gramm, horse player, professor of economics at Rhodes College in Memphis, Tennessee.Richard Migliore, head racing analyst for Fox Sports and New York Racing Association, retired jockey.Sean Feld, bloodstock agent.Scott Heider, managing principal of Chartwell Capital, thoroughbred investor.Thomas Lambert, economist at the University of Louisville. RESOURCES:Death of a Racehorse: An American Story, by Katie Bo Lillis (2025).\"State of the States 2025: The AGA Analysis of the Commercial Casino Industry,\" (American Gaming Association, 2025).\"An Empirical Analysis of Reputation Effects and Network Centrality in a Multi-Agency Context,\" by Emily Plant (University of Kentucky, 2010).Calculated Bets: Computers, Gambling, and Mathematical Modeling to Win (Outlooks), by Steven Skiena (2001).Bill Oppenheim and Emily Plant's Thoroughbred Market Reports.Horseracing Integrity and Safety Authority. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "id": "2zwYCO3i8uwP3vknHEOjKe",
       "name": "653. Does Horse Racing Have a Future?",
       "show": "Freakonomics Radio",
@@ -2067,11 +2067,11 @@
       "url": "https://open.spotify.com/episode/4ajAmniYjWljT55jdtsdog"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-21",
+      "dur_min": 28,
+      "release": "2026-01-21",
       "publisher": null,
-      "desc": null,
+      "desc": "After receiving a secondhand Nobel Peace Prize from the real winner, Maria Corina Machado, Trump decides peace is for chumps and doubles down on his plans to take over Greenland, angering both Emmanuel Macron and Emmanuel Macron's eye. Plus, while Josh Johnson thinks the president's plan to extort Greenland out of Europe's hands through tariffs will only hurt Americans, Michael Kosta demonstrates how kicking one's own ass is the ultimate fighting strategy. Trump still wants Greenland and is threatening our European allies if they don’t go along with his plan, but this story has been brewing for a while. As Jordan Klepper’s recent trip to Norway showed us, the president’s anti-peace reputation has long been the talk of the town. President and CEO of Big Brothers Big Sisters of America, Artis Stevens, sits down with Josh Johnson to discuss the power of mentorship. They talk about overcoming the barriers of time and perfection by being present, building social infrastructure to change communities, and the correlation between mentorship and educational, financial, and social success. To get simple, online access to personalized, affordable care for ED, Hair Loss, Weight Loss, and more, visit https://Hims.com/dailyshow  Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "id": "2dAEg8yJCZGtyJ8mrJ6gEO",
       "name": "Nobel Prize Snub Fuels Trump's Greenland Threats & Macron Pushes Back at Davos | Artis Stevens - Big Brothers Big Sisters of America",
       "show": "The Daily Show: Ears Edition",
@@ -4298,6 +4298,39 @@
       "release": "2026-10-16",
       "url": "https://open.spotify.com/episode/3qfIEESGe4sUEGeZIA4jGf",
       "desc": "Get to know even more weird guys with part 3 of The Daily Showograpies.  Deep dive on the origins of Vladimir Putin, Rudy Giuliani, Pete Hegseth, JD Vance, Mike Johnson and Mitch McConnell.  -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices"
+    },
+    {
+      "id": "3NB8EVgzuumF5qHnw2D2q2",
+      "added_at": "2026-10-18",
+      "show": "The Indicator from Planet Money",
+      "publisher": null,
+      "name": "Will AI take my job? Ask an economist!",
+      "dur_min": 2,
+      "release": "2026-10-18",
+      "url": "https://open.spotify.com/episode/3NB8EVgzuumF5qHnw2D2q2",
+      "desc": "Is AI coming for our jobs? Anthropic CEO Dario Amodei believes AI could wipe out many white-collar jobs in the next few years. While Nvidia CEO Jensen Huang argues AI will reshape existing roles and create even more jobs than we have now. So which future are we really facing: a job-pocalypse or a jobs transformation?For answers, join The Indicator's Adrian Ma for \"Ask An Economist.” This is a virtual event and live Q&A featuring two economists who've studied this issue: Daron Acemoglu, a Nobel Prize-winning professor at MIT, and Erik Brynjolfsson, a professor at Stanford and director of the Stanford Digital Economy Lab. We’ll also invite you to ask questions and share your thoughts!It's Wednesday, October 28th, at 3:00pm ET, noon PT. This is a Zoom event exclusively for NPR+ and other qualifying supporters. For registration and event details, you can listen to this audio message or check out npr.org/askaneconomist.  Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
+    },
+    {
+      "id": "0cv8NOlfTRR2ufnrqhp3MK",
+      "added_at": "2026-10-17",
+      "show": "Stuff You Should Know",
+      "publisher": null,
+      "name": "Selects: Sacagawea: Impressive Teen",
+      "dur_min": 49,
+      "release": "2026-10-17",
+      "url": "https://open.spotify.com/episode/0cv8NOlfTRR2ufnrqhp3MK",
+      "desc": "Sacagawea was only 16 when she joined the Corps of Discovery. That is one seriously impressive teenager. Find out all about her in this classic episode.See omnystudio.com/listener for privacy information."
+    },
+    {
+      "id": "2p05lfJZC57KWRMfAERrpB",
+      "added_at": "2026-10-17",
+      "show": "Late Night with Seth Meyers Podcast",
+      "publisher": null,
+      "name": "Corrections: The Podcast | Episode 182 - \"The Why-re\"",
+      "dur_min": 14,
+      "release": "2026-10-17",
+      "url": "https://open.spotify.com/episode/2p05lfJZC57KWRMfAERrpB",
+      "desc": "Recorded every Thursday after the audience has left Studio 8G, and witnessed only by scattered members of the Late Night staff and crew… This is Corrections: The Podcast, Episode 182, \"The Why-re.\"See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info."
     }
   ]
 }
