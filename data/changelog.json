@@ -1,6 +1,18 @@
 {
-  "generated_at": "2026-10-18T18:49:28.692404+00:00",
+  "generated_at": "2026-10-19T21:12:47.975487+00:00",
   "events": [
+    {
+      "date": "2026-10-19",
+      "type": "merged_pr",
+      "title": "deps: bump the npm-minor-patch group in /movie-ranker with 6 updates",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/293"
+    },
+    {
+      "date": "2026-10-19",
+      "type": "merged_pr",
+      "title": "Sync README with site nav and workflows",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/292"
+    },
     {
       "date": "2026-10-16",
       "type": "merged_pr",
@@ -610,6 +622,25 @@
   ],
   "daily_summaries": [
     {
+      "date": "2026-10-19",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "4 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/14ef6841e18eaaae9d9326f35e72db375e358029"
+        },
+        {
+          "emoji": "\ud83d\udcbb",
+          "text": "2 PRs merged"
+        },
+        {
+          "emoji": "\ud83c\udfac",
+          "text": "Movie & TV projects updated",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/293"
+        }
+      ]
+    },
+    {
       "date": "2026-10-18",
       "items": [
         {
@@ -798,25 +829,6 @@
           "emoji": "\ud83c\udfa7",
           "text": "6 podcast episodes added",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/d3c21bae13cab84d7413150733bff3c50b00c825"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-05",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "6 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/d4bccd88e8920ebd0d35df62553ac97a1abc04eb"
-        },
-        {
-          "emoji": "\ud83d\udcbb",
-          "text": "4 PRs merged"
-        },
-        {
-          "emoji": "\u2699\ufe0f",
-          "text": "Developer activity + site automation expanded",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/210"
         }
       ]
     }
