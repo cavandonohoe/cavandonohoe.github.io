@@ -5,7 +5,8 @@
 
 <!-- badges: start -->
 
-![](https://github.com/cavandonohoe/cavandonohoe.github.io/actions/workflows/pages-rmarkdown.yml/badge.svg)
+[![Site
+build](https://github.com/cavandonohoe/cavandonohoe.github.io/actions/workflows/pages-rmarkdown.yml/badge.svg)](https://github.com/cavandonohoe/cavandonohoe.github.io/actions/workflows/pages-rmarkdown.yml)
 <!-- badges: end -->
 
 The goal of my website is to display some fun side projects I have been
@@ -15,54 +16,104 @@ a link than an attachment.
 
 Check out my website at <https://cavandonohoe.github.io>
 
-Highlights:
+## Pages
 
-- Data projects and visualizations (IMDb, box office, ratings)
-- Personal pages (blog, reunion, schedule)
-- CV and learning resources
+<!-- Keep these lists in the same order and wording as the navbar in _site.yml. -->
 
-Movies & data:
+### About
 
+- [About Me](https://cavandonohoe.github.io/about.html)
+- [Services](https://cavandonohoe.github.io/services.html)
+- [CV](https://cavandonohoe.github.io/cv.html)
+- [Publications](https://cavandonohoe.github.io/publications.html)
+
+### Movies & TV
+
+- [Exceptional IMDb
+  Episodes](https://cavandonohoe.github.io/imdb_exceptional_episodes.html)
 - [IMDb TV
   Series](https://cavandonohoe.github.io/imdb_top_250_tv_series.html)
-- [Best Picture vs Top 1000 Box
-  Office](https://cavandonohoe.github.io/best_pic_vs_top_1000.html)
-- [Top 250 Rated Movies with Rotten Tomato
+- [IMDb Rating Plot by Season and
+  Episode](https://cavandonohoe.github.io/imdb_rating_plot.html)
+- [Did They Quit While They Were
+  Ahead?](https://cavandonohoe.github.io/tv_decline_leaderboard.html)
+- [Top 250 IMDb Movies with Rotten Tomatoes
   Scores](https://cavandonohoe.github.io/top_250_imdb_with_rt.html)
-- [IMDb Series Rating
-  Plots](https://cavandonohoe.github.io/imdb_rating_plot.html)
 - [Best Picture
   Nominees](https://cavandonohoe.github.io/best_picture_nominees.html)
+- [Best Picture and Top 1000 Box
+  Office](https://cavandonohoe.github.io/best_pic_vs_top_1000.html)
 - [Director Box Office
   Trajectory](https://cavandonohoe.github.io/director_box_office_trajectory.html)
-- [Rent vs. Buy
-  Calculator](https://cavandonohoe.shinyapps.io/rent-vs-buy/)
-  ([source](https://github.com/cavandonohoe/rent-vs-buy))
+- [My IMDb Ratings](https://cavandonohoe.github.io/my_imdb.html)
+
+### Sports & Personal
+
+- [AVCA Men’s Volleyball
+  All-Americans](https://cavandonohoe.github.io/avca_all_americans.html)
+- [Jason, Owen, and Wyett’s Firefighter
+  Schedule](https://cavandonohoe.github.io/firefighter_schedule.html)
+- [Google Maps: Want To Go +
+  Favorites](https://cavandonohoe.github.io/google_maps_saved_places.html)
+- [Get Bloggy With It (travel
+  blog)](https://cavandonohoe.github.io/my_travels.html)
+- [TOHS Class of 2012
+  Reunion](https://cavandonohoe.github.io/tohs_reunion.html)
+
+### Visualizations
+
 - [Saved Podcast
   Episodes](https://cavandonohoe.shinyapps.io/podcast-dashboard/)
-- [Confederate Statue
-  Analysis](https://github.com/cavandonohoe/confederate_statues)
+  (Shiny)
+- [Detour
+  Finder](https://cavandonohoe.github.io/detour-finder/index.html)
+- [When Were Confederate Statues
+  Erected?](https://cavandonohoe.github.io/confederate_statues.html)
+- [Animated Procedural
+  Maze](https://cavandonohoe.github.io/maze-art.html)
 - [Sierpinski
   Triangle](https://cavandonohoe.github.io/sierpinski_triangle.html)
 - [Airplane Boarding
   Simulation](https://cavandonohoe.github.io/airplane_boarding.html)
 
-Personal:
+### Real Estate & Finance
 
-- [Kelly
-  Schedule](https://cavandonohoe.github.io/firefighter_schedule.html)
-- [TOHS Class of 2012
-  Reunion](https://cavandonohoe.github.io/tohs_reunion.html)
-- [Blog](https://cavandonohoe.github.io/my_travels.html)
+- [US Rental Investment
+  Markets](https://cavandonohoe.github.io/us_rental_markets.html)
+- [LA Neighborhoods: Price per Sq
+  Ft](https://cavandonohoe.github.io/la_real_estate.html)
+- [LA Housing Prices: Animated Heat
+  Map](https://cavandonohoe.github.io/la_housing_heatmap.html)
+- [Rent vs. Buy
+  Calculator](https://cavandonohoe.shinyapps.io/rent-vs-buy/) (Shiny,
+  [source](https://github.com/cavandonohoe/rent-vs-buy))
 
-Learning:
+### Data Science & Clinical
 
-- [Learn R (Course on Learning
-  R)](https://cavandonohoe.github.io/learn_r.html)
+- [SDTM with R](https://cavandonohoe.github.io/sdtm_with_r.html)
 
-CV:
+### Learn R
 
-- [CV](https://cavandonohoe.github.io/cv.html)
+- [Course Overview](https://cavandonohoe.github.io/learn_r.html)
+  1.  [Introduction to
+      R](https://cavandonohoe.github.io/intro_to_r.html)
+  2.  [Basic
+      Operations](https://cavandonohoe.github.io/basic_operations_r.html)
+  3.  [Data
+      Manipulation](https://cavandonohoe.github.io/data_manipulation_r.html)
+  4.  [Data
+      Visualization](https://cavandonohoe.github.io/data_visualization_r.html)
+  5.  [Statistics with
+      R](https://cavandonohoe.github.io/statistics_with_r.html)
+  6.  [Reproducible Reports with R
+      Markdown](https://cavandonohoe.github.io/rmarkdown_r.html)
+  7.  [Capstone Project](https://cavandonohoe.github.io/capstone_r.html)
+
+### Archive
+
+- [S&P 500 Perspective](https://cavandonohoe.github.io/sp500.html)
+- [Covid Cases: Then &
+  Now](https://cavandonohoe.github.io/covid_cases_nostalgia.html)
 
 ## Automation
 
@@ -79,7 +130,7 @@ manual is a click away on the Actions tab.
   (deploy is owned by `pages-branch-previews.yml` to avoid Pages
   deployment races).
 
-### Data refreshes (commits to `main`)
+### Scheduled refreshes (commit to `main`)
 
 - `update_imdb_ratings.yml` – weekly IMDb episode ratings refresh.
 - `update_top1000_box_office.yml` – monthly Best Picture + Top 1000 box
@@ -91,6 +142,35 @@ manual is a click away on the Actions tab.
 - `update_sp500.yml` – weekly VOO price refresh.
 - `update_us_rentals.yml` – monthly Zillow ZHVI/ZORI refresh.
 - `update_mymaps_export.yml` – weekly Google My Maps export.
+- `update_watched_episodes.yml` – weekly episode list for every rated
+  series in my IMDb export.
+- `update_imdb_exceptional_episodes.yml` – weekly Exceptional IMDb
+  Episodes refresh.
+- `update_confederate_statues_data.yml` – monthly Confederate statues
+  data refresh.
+- `update_movie_ranker_personal.yml` – every 6 hours, pulls my personal
+  Elo ratings from the movie-ranker Supabase project for My IMDb
+  Ratings.
+- `update_saved_episodes.yml` – daily Spotify saved-episodes refresh,
+  then redeploys the podcast dashboard on shinyapps.io.
+- `update_tohs_reunion.yml` – hourly TOHS reunion sheet snapshot.
+- `update_page_views.yml` – daily GA4 pull that reorders the homepage
+  Projects grid by traffic.
+- `shiny-traffic.yml` – weekly snapshot of shinyapps.io traffic for
+  every app on the account.
+- `year-in-review.yml` – daily current-year developer review, plus a Jan
+  1 snapshot of the year that just ended.
+- `activity-art.yml` – daily 30-day commit activity SVG.
+- `lately.yml` – daily summary of the last 30 days of my commits
+  (`data/lately.json`).
+- `personal-changelog.yml` – daily changelog of PRs merged in the last
+  30 days (`data/changelog.json`).
+- `weekly-wrapped.yml` – weekly 7-day activity snapshot
+  (`data/weekly/`).
+- `project-case-studies.yml` – on push, rebuilds project case-study
+  metadata (`data/project_case_studies.json`).
+- `refresh-commit-activity.yml` – weekly re-knit of this README’s
+  commit-activity charts.
 
 The uniform ones (`update_sp500`, `update_us_rentals`,
 `update_top250_with_rt`, `update_watched_episodes`) are thin callers of
@@ -115,17 +195,35 @@ fails the run instead of landing on `main`.
   with a score comment, plus a post-build audit of the production
   artifact after each successful main build.
 - `repo-size.yml` – weekly + on-PR repo-size report.
+- `scheduled-failure-alert.yml` – opens an issue when a scheduled
+  workflow fails and closes it on the next green run.
 
 ### Code quality
 
 - `lint.yml` – on-PR lintr scan of changed R/Rmd files.
 - `typos.yml` – on-PR spell check.
 - `pr-smoke.yml` – on-PR fast render of only the changed Rmds.
+- `test.yml` – R test suite (`scripts/run_tests.R`) on PRs and pushes.
+
+### Side apps
+
+- `movie-ranker-build.yml` – on-PR build of the Next.js movie-ranker
+  app.
+- `backfill-movie-ranker-posters.yml` – weekly TMDB poster backfill for
+  new movie-ranker titles.
+- `ping-movie-ranker-supabase.yml` – weekly read query so the free-tier
+  Supabase project never auto-pauses.
+- `tohs-apps-script.yml` – validates and deploys the TOHS reunion Google
+  Apps Script.
 
 ### Repo hygiene
 
 - `.github/dependabot.yml` – weekly bump of pinned GitHub Actions.
+- `dependabot-automerge.yml` – squash-merges minor/patch Dependabot PRs
+  once all other checks pass.
 - `labeler.yml` – auto-label PRs by changed paths.
+- `prune-previews.yml` – weekly cleanup of stale PR preview deploys.
+- `data-question.yml` – acknowledges issues labeled `data-question`.
 
 ## Activity over time
 
@@ -138,8 +236,8 @@ above. Regenerated each time `README.Rmd` is knit.
 
 <img src="images/readme/commit-activity-cumulative-1.png" alt="Two cumulative line charts showing total commits and total lines changed (insertions + deletions) over time, split by Cavan's own commits vs. scheduled-bot commits."  />
 
-*1,038 commits since Dec 2020 — 650 by me, 388 by scheduled bots —
-touching 3,033,857 lines in total.*
+*1,043 commits from Dec 2020 to Oct 2026 (650 by me, 393 by scheduled
+bots), touching 3,034,159 lines in total.*
 
 ## Setup and Local Development
 
@@ -203,6 +301,10 @@ Rscript tests/test_chase_parser.R
 - `.github/workflows/`: GitHub Actions workflows for CI/CD
 - `data/`: Data files used by various pages
 - `scripts/`: Utility scripts (e.g., ensuring gs4 guards)
+- `tests/`: R tests run by `test.yml`
+- `podcast-dashboard/`, `movie-ranker/`, `detour-finder/`,
+  `streaming-history/`: self-contained side apps
+- `tools/tohs-apps-script/`: Google Apps Script for the TOHS reunion
 
 ### Deployment
 
