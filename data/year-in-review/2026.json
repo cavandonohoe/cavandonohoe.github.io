@@ -1,34 +1,22 @@
 {
   "year": 2026,
-  "commits": 340,
-  "pull_requests": 250,
-  "repositories_touched": 6,
-  "lines_added": 505319,
+  "commits": 308,
+  "pull_requests": 233,
+  "repositories_touched": 4,
+  "lines_added": 486775,
   "most_used_language": "R",
   "language_lines_added": {
-    "R": 24442,
-    "Python": 6031,
-    "TypeScript": 5087,
-    "JavaScript": 2934,
-    "SQL": 2217,
+    "R": 24556,
+    "Python": 4356,
+    "JavaScript": 2927,
+    "TypeScript": 2369,
     "HTML": 2195,
-    "CSS": 776,
+    "SQL": 2135,
+    "CSS": 348,
     "Shell": 185
   },
   "language_files": {
     "CSS": [
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "app/globals.css",
-        "lines_added": 260,
-        "commits": [
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 260
-          }
-        ]
-      },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "css/learn-r.css",
@@ -38,18 +26,6 @@
             "sha": "d98e6a683dc458dab5b64c881f58ec7f674da4f6",
             "date": "2026-06-15",
             "lines_added": 222
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "frontend/app/globals.css",
-        "lines_added": 168,
-        "commits": [
-          {
-            "sha": "8ee639bba87e3f55f58d0ee1ac0f27cab12bc320",
-            "date": "2026-06-22",
-            "lines_added": 168
           }
         ]
       },
@@ -458,18 +434,6 @@
         ]
       },
       {
-        "repository": "cavandonohoe/docuchat",
-        "path": "frontend/next.config.js",
-        "lines_added": 7,
-        "commits": [
-          {
-            "sha": "8ee639bba87e3f55f58d0ee1ac0f27cab12bc320",
-            "date": "2026-06-22",
-            "lines_added": 7
-          }
-        ]
-      },
-      {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "detour-finder/preload_data.js",
         "lines_added": 1,
@@ -733,18 +697,6 @@
         ]
       },
       {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/evals/runner.py",
-        "lines_added": 100,
-        "commits": [
-          {
-            "sha": "86891058100127393af7ed9141e4be18398e93fa",
-            "date": "2026-06-22",
-            "lines_added": 100
-          }
-        ]
-      },
-      {
         "repository": "cavandonohoe/confederate_statues",
         "path": "service/src/statue_api/main.py",
         "lines_added": 97,
@@ -791,30 +743,6 @@
         ]
       },
       {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/services/qa.py",
-        "lines_added": 83,
-        "commits": [
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 83
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/api/documents.py",
-        "lines_added": 81,
-        "commits": [
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 81
-          }
-        ]
-      },
-      {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "tests/test_podcast_import_history.py",
         "lines_added": 80,
@@ -823,23 +751,6 @@
             "sha": "f7332d197ed6c5ae99acbf89d903a039863bb588",
             "date": "2026-10-12",
             "lines_added": 80
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/main.py",
-        "lines_added": 77,
-        "commits": [
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 76
-          },
-          {
-            "sha": "2ea7ed787e97df33b2c0320ccc9fc994a95ce3ab",
-            "date": "2026-06-22",
-            "lines_added": 1
           }
         ]
       },
@@ -868,42 +779,6 @@
         ]
       },
       {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/evals/reporter.py",
-        "lines_added": 76,
-        "commits": [
-          {
-            "sha": "86891058100127393af7ed9141e4be18398e93fa",
-            "date": "2026-06-22",
-            "lines_added": 76
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/tests/test_eval_metrics.py",
-        "lines_added": 76,
-        "commits": [
-          {
-            "sha": "86891058100127393af7ed9141e4be18398e93fa",
-            "date": "2026-06-22",
-            "lines_added": 76
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/tests/test_qa_pipeline.py",
-        "lines_added": 75,
-        "commits": [
-          {
-            "sha": "2ea7ed787e97df33b2c0320ccc9fc994a95ce3ab",
-            "date": "2026-06-22",
-            "lines_added": 75
-          }
-        ]
-      },
-      {
         "repository": "cavandonohoe/confederate_statues",
         "path": "service/src/statue_api/cli.py",
         "lines_added": 73,
@@ -921,42 +796,6 @@
         ]
       },
       {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/evals/metrics.py",
-        "lines_added": 72,
-        "commits": [
-          {
-            "sha": "86891058100127393af7ed9141e4be18398e93fa",
-            "date": "2026-06-22",
-            "lines_added": 72
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/services/ingest.py",
-        "lines_added": 72,
-        "commits": [
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 72
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/ingestion/chunker.py",
-        "lines_added": 70,
-        "commits": [
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 70
-          }
-        ]
-      },
-      {
         "repository": "cavandonohoe/confederate_statues",
         "path": "service/src/statue_api/routers/statues.py",
         "lines_added": 69,
@@ -965,18 +804,6 @@
             "sha": "3e0dd92de3fc13b131519879bba5efd8d472faae",
             "date": "2026-06-22",
             "lines_added": 69
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/evals/cli.py",
-        "lines_added": 67,
-        "commits": [
-          {
-            "sha": "86891058100127393af7ed9141e4be18398e93fa",
-            "date": "2026-06-22",
-            "lines_added": 67
           }
         ]
       },
@@ -998,18 +825,6 @@
         ]
       },
       {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/ingestion/loaders.py",
-        "lines_added": 64,
-        "commits": [
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 64
-          }
-        ]
-      },
-      {
         "repository": "cavandonohoe/confederate_statues",
         "path": "service/src/statue_api/schemas.py",
         "lines_added": 63,
@@ -1018,18 +833,6 @@
             "sha": "3e0dd92de3fc13b131519879bba5efd8d472faae",
             "date": "2026-06-22",
             "lines_added": 63
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/scripts/seed_eval_corpus.py",
-        "lines_added": 61,
-        "commits": [
-          {
-            "sha": "86891058100127393af7ed9141e4be18398e93fa",
-            "date": "2026-06-22",
-            "lines_added": 61
           }
         ]
       },
@@ -1075,23 +878,6 @@
         ]
       },
       {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/rag/embedder.py",
-        "lines_added": 54,
-        "commits": [
-          {
-            "sha": "cc1a5f4b6ca73b72395584d80246a926c3ce584e",
-            "date": "2026-06-22",
-            "lines_added": 4
-          },
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 50
-          }
-        ]
-      },
-      {
         "repository": "cavandonohoe/confederate_statues",
         "path": "service/src/statue_api/models.py",
         "lines_added": 53,
@@ -1121,18 +907,6 @@
         ]
       },
       {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/rag/retriever.py",
-        "lines_added": 52,
-        "commits": [
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 52
-          }
-        ]
-      },
-      {
         "repository": "cavandonohoe/confederate_statues",
         "path": "service/alembic/versions/0001_initial.py",
         "lines_added": 51,
@@ -1141,47 +915,6 @@
             "sha": "3e0dd92de3fc13b131519879bba5efd8d472faae",
             "date": "2026-06-22",
             "lines_added": 51
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/rag/generator.py",
-        "lines_added": 51,
-        "commits": [
-          {
-            "sha": "cc1a5f4b6ca73b72395584d80246a926c3ce584e",
-            "date": "2026-06-22",
-            "lines_added": 4
-          },
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 47
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/tests/test_eval_reporter.py",
-        "lines_added": 51,
-        "commits": [
-          {
-            "sha": "86891058100127393af7ed9141e4be18398e93fa",
-            "date": "2026-06-22",
-            "lines_added": 51
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/models.py",
-        "lines_added": 48,
-        "commits": [
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 48
           }
         ]
       },
@@ -1215,23 +948,6 @@
         ]
       },
       {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/core/config.py",
-        "lines_added": 45,
-        "commits": [
-          {
-            "sha": "cc1a5f4b6ca73b72395584d80246a926c3ce584e",
-            "date": "2026-06-22",
-            "lines_added": 1
-          },
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 44
-          }
-        ]
-      },
-      {
         "repository": "cavandonohoe/confederate_statues",
         "path": "service/src/statue_api/db.py",
         "lines_added": 42,
@@ -1240,30 +956,6 @@
             "sha": "3e0dd92de3fc13b131519879bba5efd8d472faae",
             "date": "2026-06-22",
             "lines_added": 42
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/schemas.py",
-        "lines_added": 42,
-        "commits": [
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 42
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/tests/test_qa_citations.py",
-        "lines_added": 40,
-        "commits": [
-          {
-            "sha": "2ea7ed787e97df33b2c0320ccc9fc994a95ce3ab",
-            "date": "2026-06-22",
-            "lines_added": 40
           }
         ]
       },
@@ -1292,18 +984,6 @@
         ]
       },
       {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/db/init_db.py",
-        "lines_added": 37,
-        "commits": [
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 37
-          }
-        ]
-      },
-      {
         "repository": "cavandonohoe/confederate_statues",
         "path": "service/tests/test_config.py",
         "lines_added": 35,
@@ -1312,54 +992,6 @@
             "sha": "3e0dd92de3fc13b131519879bba5efd8d472faae",
             "date": "2026-06-22",
             "lines_added": 35
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/tests/test_loaders.py",
-        "lines_added": 35,
-        "commits": [
-          {
-            "sha": "2ea7ed787e97df33b2c0320ccc9fc994a95ce3ab",
-            "date": "2026-06-22",
-            "lines_added": 35
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/evals/dataset.py",
-        "lines_added": 32,
-        "commits": [
-          {
-            "sha": "86891058100127393af7ed9141e4be18398e93fa",
-            "date": "2026-06-22",
-            "lines_added": 32
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/tests/test_chunker.py",
-        "lines_added": 32,
-        "commits": [
-          {
-            "sha": "2ea7ed787e97df33b2c0320ccc9fc994a95ce3ab",
-            "date": "2026-06-22",
-            "lines_added": 32
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/rag/prompts.py",
-        "lines_added": 31,
-        "commits": [
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 31
           }
         ]
       },
@@ -1400,18 +1032,6 @@
         ]
       },
       {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/db/session.py",
-        "lines_added": 28,
-        "commits": [
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 28
-          }
-        ]
-      },
-      {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "scripts/build_weekly_wrapped.py",
         "lines_added": 27,
@@ -1420,90 +1040,6 @@
             "sha": "956962e7abbe42f1c5175d3f3b510db378566eca",
             "date": "2026-10-11",
             "lines_added": 27
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/core/exceptions.py",
-        "lines_added": 27,
-        "commits": [
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 27
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/core/logging.py",
-        "lines_added": 20,
-        "commits": [
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 20
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/api/chat.py",
-        "lines_added": 18,
-        "commits": [
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 18
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/tests/test_health.py",
-        "lines_added": 18,
-        "commits": [
-          {
-            "sha": "2ea7ed787e97df33b2c0320ccc9fc994a95ce3ab",
-            "date": "2026-06-22",
-            "lines_added": 18
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/api/health.py",
-        "lines_added": 15,
-        "commits": [
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 15
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/tests/conftest.py",
-        "lines_added": 11,
-        "commits": [
-          {
-            "sha": "2ea7ed787e97df33b2c0320ccc9fc994a95ce3ab",
-            "date": "2026-06-22",
-            "lines_added": 11
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/evals/__init__.py",
-        "lines_added": 5,
-        "commits": [
-          {
-            "sha": "86891058100127393af7ed9141e4be18398e93fa",
-            "date": "2026-06-22",
-            "lines_added": 5
           }
         ]
       },
@@ -1520,96 +1056,12 @@
         ]
       },
       {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/__init__.py",
-        "lines_added": 3,
-        "commits": [
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 3
-          }
-        ]
-      },
-      {
         "repository": "cavandonohoe/confederate_statues",
         "path": "service/src/statue_api/routers/__init__.py",
         "lines_added": 1,
         "commits": [
           {
             "sha": "3e0dd92de3fc13b131519879bba5efd8d472faae",
-            "date": "2026-06-22",
-            "lines_added": 1
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/api/__init__.py",
-        "lines_added": 1,
-        "commits": [
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 1
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/core/__init__.py",
-        "lines_added": 1,
-        "commits": [
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 1
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/db/__init__.py",
-        "lines_added": 1,
-        "commits": [
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 1
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/ingestion/__init__.py",
-        "lines_added": 1,
-        "commits": [
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 1
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/rag/__init__.py",
-        "lines_added": 1,
-        "commits": [
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
-            "date": "2026-06-22",
-            "lines_added": 1
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "backend/app/services/__init__.py",
-        "lines_added": 1,
-        "commits": [
-          {
-            "sha": "6072ee8c9e8a0bb7c7004cde7ac87c1bfb8b996d",
             "date": "2026-06-22",
             "lines_added": 1
           }
@@ -1838,78 +1290,14 @@
       },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "year_in_review.Rmd",
-        "lines_added": 544,
-        "commits": [
-          {
-            "sha": "c4df3f382e5e9f0a45500791d218955cb7acdbbf",
-            "date": "2026-10-13",
-            "lines_added": 179
-          },
-          {
-            "sha": "769a60d0562107a989cf068fe0326ffd9c393dc7",
-            "date": "2026-10-12",
-            "lines_added": 142
-          },
-          {
-            "sha": "6659d8003d09615eae63670080a46b862e7de315",
-            "date": "2026-10-11",
-            "lines_added": 21
-          },
-          {
-            "sha": "1a2021cfa38a52f4fc88c5164cb00431e14b35e7",
-            "date": "2026-10-07",
-            "lines_added": 50
-          },
-          {
-            "sha": "0bacd4eb4fba0654667d169784edf3c587e2c791",
-            "date": "2026-10-07",
-            "lines_added": 41
-          },
-          {
-            "sha": "6a1b6420b2541f8d4f25d2690ca98bae3b89793b",
-            "date": "2026-10-05",
-            "lines_added": 2
-          },
-          {
-            "sha": "2ae53a3073df683a97922409fa63f95ad1098bfb",
-            "date": "2026-10-05",
-            "lines_added": 52
-          },
-          {
-            "sha": "d0dcbe44d0e337298843c53a19e827e04ff424f8",
-            "date": "2026-10-02",
-            "lines_added": 57
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "web_scraping/top250_movies_with_rt.R",
-        "lines_added": 530,
-        "commits": [
-          {
-            "sha": "f3603cef59f949cf47fd5f981bfc689c0b92c8f3",
-            "date": "2026-05-27",
-            "lines_added": 7
-          },
-          {
-            "sha": "e335163e4910433ad5311048a8463d4dc635f92f",
-            "date": "2026-05-26",
-            "lines_added": 24
-          },
-          {
-            "sha": "76c388550a5d2c91658557718ddade2e7e603184",
-            "date": "2026-01-03",
-            "lines_added": 499
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "README.Rmd",
-        "lines_added": 442,
+        "lines_added": 549,
         "commits": [
+          {
+            "sha": "e7f81afece7a3ec67b356dee1c6208097ac5d65d",
+            "date": "2026-10-19",
+            "lines_added": 107
+          },
           {
             "sha": "35a77cfc80ea5501da40da4e3fb57d85c136039a",
             "date": "2026-09-23",
@@ -1994,6 +1382,75 @@
             "sha": "0c1a8a120d3bbac603318fb015b958a53ea6d734",
             "date": "2026-01-02",
             "lines_added": 21
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "year_in_review.Rmd",
+        "lines_added": 544,
+        "commits": [
+          {
+            "sha": "c4df3f382e5e9f0a45500791d218955cb7acdbbf",
+            "date": "2026-10-13",
+            "lines_added": 179
+          },
+          {
+            "sha": "769a60d0562107a989cf068fe0326ffd9c393dc7",
+            "date": "2026-10-12",
+            "lines_added": 142
+          },
+          {
+            "sha": "6659d8003d09615eae63670080a46b862e7de315",
+            "date": "2026-10-11",
+            "lines_added": 21
+          },
+          {
+            "sha": "1a2021cfa38a52f4fc88c5164cb00431e14b35e7",
+            "date": "2026-10-07",
+            "lines_added": 50
+          },
+          {
+            "sha": "0bacd4eb4fba0654667d169784edf3c587e2c791",
+            "date": "2026-10-07",
+            "lines_added": 41
+          },
+          {
+            "sha": "6a1b6420b2541f8d4f25d2690ca98bae3b89793b",
+            "date": "2026-10-05",
+            "lines_added": 2
+          },
+          {
+            "sha": "2ae53a3073df683a97922409fa63f95ad1098bfb",
+            "date": "2026-10-05",
+            "lines_added": 52
+          },
+          {
+            "sha": "d0dcbe44d0e337298843c53a19e827e04ff424f8",
+            "date": "2026-10-02",
+            "lines_added": 57
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "web_scraping/top250_movies_with_rt.R",
+        "lines_added": 530,
+        "commits": [
+          {
+            "sha": "f3603cef59f949cf47fd5f981bfc689c0b92c8f3",
+            "date": "2026-05-27",
+            "lines_added": 7
+          },
+          {
+            "sha": "e335163e4910433ad5311048a8463d4dc635f92f",
+            "date": "2026-05-26",
+            "lines_added": 24
+          },
+          {
+            "sha": "76c388550a5d2c91658557718ddade2e7e603184",
+            "date": "2026-01-03",
+            "lines_added": 499
           }
         ]
       },
@@ -3108,8 +2565,13 @@
       {
         "repository": "cavandonohoe/cavandonohoe",
         "path": "README.Rmd",
-        "lines_added": 150,
+        "lines_added": 157,
         "commits": [
+          {
+            "sha": "2e68fdd9700efdab04c7f1ab9e41670366583cf1",
+            "date": "2026-10-19",
+            "lines_added": 7
+          },
           {
             "sha": "9a4c16337eb6ede4632f3a81a09093bd1f235fab",
             "date": "2026-09-10",
@@ -4221,18 +3683,6 @@
             "lines_added": 130
           }
         ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "db/schema.sql",
-        "lines_added": 82,
-        "commits": [
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 82
-          }
-        ]
       }
     ],
     "Shell": [
@@ -4321,23 +3771,6 @@
         ]
       },
       {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "scripts/refresh-vons.ts",
-        "lines_added": 265,
-        "commits": [
-          {
-            "sha": "ded60bb69f809268ebadf189d6d4106f181eb1ad",
-            "date": "2026-09-05",
-            "lines_added": 20
-          },
-          {
-            "sha": "a82878cf8ed1c38847d0671cbcb8316e601ca054",
-            "date": "2026-09-05",
-            "lines_added": 245
-          }
-        ]
-      },
-      {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "movie-ranker/src/components/LeaderboardPanel.tsx",
         "lines_added": 213,
@@ -4346,57 +3779,6 @@
             "sha": "40c8ee4a305358978696bfd29eafe83efde7b370",
             "date": "2026-06-15",
             "lines_added": 213
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "frontend/app/page.tsx",
-        "lines_added": 193,
-        "commits": [
-          {
-            "sha": "9690f0f745c2a02552b6e897d3ea86bb668aba02",
-            "date": "2026-10-16",
-            "lines_added": 13
-          },
-          {
-            "sha": "8ee639bba87e3f55f58d0ee1ac0f27cab12bc320",
-            "date": "2026-06-22",
-            "lines_added": 180
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "lib/stores/adapters/vonsApi.ts",
-        "lines_added": 162,
-        "commits": [
-          {
-            "sha": "10242ef62b87c92143350dbc7441ba0edb332e93",
-            "date": "2026-09-05",
-            "lines_added": 4
-          },
-          {
-            "sha": "19f5bafa07da03c1b5037413b4072eebc04fbd7c",
-            "date": "2026-09-04",
-            "lines_added": 158
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "lib/pricing/calculateTotals.test.ts",
-        "lines_added": 154,
-        "commits": [
-          {
-            "sha": "8458c630752c7035931d3fce426b2054c5939e72",
-            "date": "2026-09-04",
-            "lines_added": 72
-          },
-          {
-            "sha": "3c58a9c941c97ebe9baf7be27f22f48fd8e20038",
-            "date": "2026-09-04",
-            "lines_added": 82
           }
         ]
       },
@@ -4440,52 +3822,6 @@
         ]
       },
       {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "lib/stores/adapters/vonsApi.test.ts",
-        "lines_added": 152,
-        "commits": [
-          {
-            "sha": "10242ef62b87c92143350dbc7441ba0edb332e93",
-            "date": "2026-09-05",
-            "lines_added": 14
-          },
-          {
-            "sha": "19f5bafa07da03c1b5037413b4072eebc04fbd7c",
-            "date": "2026-09-04",
-            "lines_added": 138
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "lib/stores/adapters/mockData.ts",
-        "lines_added": 122,
-        "commits": [
-          {
-            "sha": "f50103eac751d2a3bf5c3d453a241efad9003e81",
-            "date": "2026-09-04",
-            "lines_added": 20
-          },
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 102
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "components/grocery-list/CompareWorkspace.tsx",
-        "lines_added": 115,
-        "commits": [
-          {
-            "sha": "ea5260fd07a6fd256965f6aebaecaac12cd420b6",
-            "date": "2026-09-04",
-            "lines_added": 115
-          }
-        ]
-      },
-      {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "movie-ranker/src/lib/database.types.ts",
         "lines_added": 99,
@@ -4499,28 +3835,6 @@
             "sha": "40c8ee4a305358978696bfd29eafe83efde7b370",
             "date": "2026-06-15",
             "lines_added": 92
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "lib/pricing/comparePrices.ts",
-        "lines_added": 98,
-        "commits": [
-          {
-            "sha": "ff2aab402911b0319c8d897e076f7566dde75edc",
-            "date": "2026-09-05",
-            "lines_added": 16
-          },
-          {
-            "sha": "ea5260fd07a6fd256965f6aebaecaac12cd420b6",
-            "date": "2026-09-04",
-            "lines_added": 19
-          },
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 63
           }
         ]
       },
@@ -4559,40 +3873,6 @@
         ]
       },
       {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "lib/ai/matchProducts.ts",
-        "lines_added": 89,
-        "commits": [
-          {
-            "sha": "ff2aab402911b0319c8d897e076f7566dde75edc",
-            "date": "2026-09-05",
-            "lines_added": 45
-          },
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 34
-          },
-          {
-            "sha": "2775d58fcc79c9e5e57124f6ee40c474ecc07278",
-            "date": "2026-09-04",
-            "lines_added": 10
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "lib/stores/adapters/vons.test.ts",
-        "lines_added": 83,
-        "commits": [
-          {
-            "sha": "19f5bafa07da03c1b5037413b4072eebc04fbd7c",
-            "date": "2026-09-04",
-            "lines_added": 83
-          }
-        ]
-      },
-      {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "movie-ranker/src/lib/personal_stats.ts",
         "lines_added": 81,
@@ -4601,35 +3881,6 @@
             "sha": "40c8ee4a305358978696bfd29eafe83efde7b370",
             "date": "2026-06-15",
             "lines_added": 81
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "lib/stores/adapters/vons.ts",
-        "lines_added": 80,
-        "commits": [
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 3
-          },
-          {
-            "sha": "19f5bafa07da03c1b5037413b4072eebc04fbd7c",
-            "date": "2026-09-04",
-            "lines_added": 77
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "app/api/compare/route.test.ts",
-        "lines_added": 79,
-        "commits": [
-          {
-            "sha": "55349b36586bcfd90e78509fc4ce35beff7ae2f3",
-            "date": "2026-09-04",
-            "lines_added": 79
           }
         ]
       },
@@ -4651,23 +3902,6 @@
         ]
       },
       {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "lib/ai/matchProducts.test.ts",
-        "lines_added": 73,
-        "commits": [
-          {
-            "sha": "ff2aab402911b0319c8d897e076f7566dde75edc",
-            "date": "2026-09-05",
-            "lines_added": 10
-          },
-          {
-            "sha": "2775d58fcc79c9e5e57124f6ee40c474ecc07278",
-            "date": "2026-09-04",
-            "lines_added": 63
-          }
-        ]
-      },
-      {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "movie-ranker/src/app/page.tsx",
         "lines_added": 69,
@@ -4676,30 +3910,6 @@
             "sha": "40c8ee4a305358978696bfd29eafe83efde7b370",
             "date": "2026-06-15",
             "lines_added": 69
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "components/comparison/PriceComparisonTable.test.tsx",
-        "lines_added": 65,
-        "commits": [
-          {
-            "sha": "0c3699921e40b0b168915d539e374c123b5ba413",
-            "date": "2026-09-04",
-            "lines_added": 65
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "frontend/app/api.ts",
-        "lines_added": 64,
-        "commits": [
-          {
-            "sha": "8ee639bba87e3f55f58d0ee1ac0f27cab12bc320",
-            "date": "2026-06-22",
-            "lines_added": 64
           }
         ]
       },
@@ -4738,62 +3948,6 @@
         ]
       },
       {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "lib/pricing/calculateTotals.ts",
-        "lines_added": 52,
-        "commits": [
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 29
-          },
-          {
-            "sha": "3c58a9c941c97ebe9baf7be27f22f48fd8e20038",
-            "date": "2026-09-04",
-            "lines_added": 23
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "lib/pricing/comparePrices.test.ts",
-        "lines_added": 52,
-        "commits": [
-          {
-            "sha": "8458c630752c7035931d3fce426b2054c5939e72",
-            "date": "2026-09-04",
-            "lines_added": 50
-          },
-          {
-            "sha": "0c129421d148219cd5feb02667f315a6fcbb0d89",
-            "date": "2026-09-04",
-            "lines_added": 2
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "lib/stores/adapters/createMockAdapter.test.ts",
-        "lines_added": 47,
-        "commits": [
-          {
-            "sha": "ff2aab402911b0319c8d897e076f7566dde75edc",
-            "date": "2026-09-05",
-            "lines_added": 5
-          },
-          {
-            "sha": "c17eebbbdb3e8b46d6e9982f338ba9f689e1f54c",
-            "date": "2026-09-04",
-            "lines_added": 7
-          },
-          {
-            "sha": "8458c630752c7035931d3fce426b2054c5939e72",
-            "date": "2026-09-04",
-            "lines_added": 35
-          }
-        ]
-      },
-      {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "movie-ranker/src/lib/drag.ts",
         "lines_added": 46,
@@ -4802,76 +3956,6 @@
             "sha": "40c8ee4a305358978696bfd29eafe83efde7b370",
             "date": "2026-06-15",
             "lines_added": 46
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "components/comparison/TripWorthItCard.test.tsx",
-        "lines_added": 46,
-        "commits": [
-          {
-            "sha": "0c3699921e40b0b168915d539e374c123b5ba413",
-            "date": "2026-09-04",
-            "lines_added": 46
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "lib/stores/storeCatalog.ts",
-        "lines_added": 45,
-        "commits": [
-          {
-            "sha": "c17eebbbdb3e8b46d6e9982f338ba9f689e1f54c",
-            "date": "2026-09-04",
-            "lines_added": 45
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "components/grocery-list/GroceryListEditor.tsx",
-        "lines_added": 44,
-        "commits": [
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 44
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "lib/stores/adapters/createMockAdapter.ts",
-        "lines_added": 44,
-        "commits": [
-          {
-            "sha": "ff2aab402911b0319c8d897e076f7566dde75edc",
-            "date": "2026-09-05",
-            "lines_added": 2
-          },
-          {
-            "sha": "c17eebbbdb3e8b46d6e9982f338ba9f689e1f54c",
-            "date": "2026-09-04",
-            "lines_added": 4
-          },
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 38
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "lib/stores/storeCatalog.test.ts",
-        "lines_added": 44,
-        "commits": [
-          {
-            "sha": "c17eebbbdb3e8b46d6e9982f338ba9f689e1f54c",
-            "date": "2026-09-04",
-            "lines_added": 44
           }
         ]
       },
@@ -4888,28 +3972,6 @@
         ]
       },
       {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "app/page.tsx",
-        "lines_added": 43,
-        "commits": [
-          {
-            "sha": "f50103eac751d2a3bf5c3d453a241efad9003e81",
-            "date": "2026-09-04",
-            "lines_added": 1
-          },
-          {
-            "sha": "ea5260fd07a6fd256965f6aebaecaac12cd420b6",
-            "date": "2026-09-04",
-            "lines_added": 5
-          },
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 37
-          }
-        ]
-      },
-      {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "movie-ranker/src/lib/kinds.ts",
         "lines_added": 42,
@@ -4918,110 +3980,6 @@
             "sha": "40c8ee4a305358978696bfd29eafe83efde7b370",
             "date": "2026-06-15",
             "lines_added": 42
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "types/store.ts",
-        "lines_added": 42,
-        "commits": [
-          {
-            "sha": "c17eebbbdb3e8b46d6e9982f338ba9f689e1f54c",
-            "date": "2026-09-04",
-            "lines_added": 16
-          },
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 26
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "components/comparison/StoreTotals.test.tsx",
-        "lines_added": 41,
-        "commits": [
-          {
-            "sha": "0c3699921e40b0b168915d539e374c123b5ba413",
-            "date": "2026-09-04",
-            "lines_added": 41
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "app/api/compare/route.ts",
-        "lines_added": 40,
-        "commits": [
-          {
-            "sha": "ea5260fd07a6fd256965f6aebaecaac12cd420b6",
-            "date": "2026-09-04",
-            "lines_added": 20
-          },
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 19
-          },
-          {
-            "sha": "55349b36586bcfd90e78509fc4ce35beff7ae2f3",
-            "date": "2026-09-04",
-            "lines_added": 1
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "lib/pricing/evaluateTripSavings.test.ts",
-        "lines_added": 39,
-        "commits": [
-          {
-            "sha": "8458c630752c7035931d3fce426b2054c5939e72",
-            "date": "2026-09-04",
-            "lines_added": 39
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "lib/pricing/money.test.ts",
-        "lines_added": 38,
-        "commits": [
-          {
-            "sha": "8458c630752c7035931d3fce426b2054c5939e72",
-            "date": "2026-09-04",
-            "lines_added": 38
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "components/comparison/PriceComparisonTable.tsx",
-        "lines_added": 37,
-        "commits": [
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 37
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "types/comparison.ts",
-        "lines_added": 37,
-        "commits": [
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 34
-          },
-          {
-            "sha": "3c58a9c941c97ebe9baf7be27f22f48fd8e20038",
-            "date": "2026-09-04",
-            "lines_added": 3
           }
         ]
       },
@@ -5039,18 +3997,6 @@
             "sha": "40c8ee4a305358978696bfd29eafe83efde7b370",
             "date": "2026-06-15",
             "lines_added": 27
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "components/comparison/StoreTotals.tsx",
-        "lines_added": 29,
-        "commits": [
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 29
           }
         ]
       },
@@ -5084,30 +4030,6 @@
         ]
       },
       {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "lib/pricing/evaluateTripSavings.ts",
-        "lines_added": 24,
-        "commits": [
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 24
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "app/layout.tsx",
-        "lines_added": 21,
-        "commits": [
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 21
-          }
-        ]
-      },
-      {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "movie-ranker/src/lib/supabase/admin.ts",
         "lines_added": 19,
@@ -5120,124 +4042,6 @@
         ]
       },
       {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "components/comparison/TripWorthItCard.tsx",
-        "lines_added": 19,
-        "commits": [
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 19
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "app/api/stores/route.ts",
-        "lines_added": 18,
-        "commits": [
-          {
-            "sha": "c17eebbbdb3e8b46d6e9982f338ba9f689e1f54c",
-            "date": "2026-09-04",
-            "lines_added": 7
-          },
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 11
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "types/grocery.ts",
-        "lines_added": 18,
-        "commits": [
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 18
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "lib/stores/registry.ts",
-        "lines_added": 17,
-        "commits": [
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 17
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "frontend/app/layout.tsx",
-        "lines_added": 15,
-        "commits": [
-          {
-            "sha": "8ee639bba87e3f55f58d0ee1ac0f27cab12bc320",
-            "date": "2026-06-22",
-            "lines_added": 15
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "lib/db/client.ts",
-        "lines_added": 15,
-        "commits": [
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 15
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "lib/pricing/money.ts",
-        "lines_added": 14,
-        "commits": [
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 14
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "lib/stores/types.ts",
-        "lines_added": 10,
-        "commits": [
-          {
-            "sha": "c17eebbbdb3e8b46d6e9982f338ba9f689e1f54c",
-            "date": "2026-09-04",
-            "lines_added": 2
-          },
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 8
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "vitest.setup.ts",
-        "lines_added": 10,
-        "commits": [
-          {
-            "sha": "0c3699921e40b0b168915d539e374c123b5ba413",
-            "date": "2026-09-04",
-            "lines_added": 10
-          }
-        ]
-      },
-      {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "movie-ranker/src/lib/supabase/client.ts",
         "lines_added": 9,
@@ -5246,64 +4050,6 @@
             "sha": "40c8ee4a305358978696bfd29eafe83efde7b370",
             "date": "2026-06-15",
             "lines_added": 9
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "next-env.d.ts",
-        "lines_added": 8,
-        "commits": [
-          {
-            "sha": "f50103eac751d2a3bf5c3d453a241efad9003e81",
-            "date": "2026-09-04",
-            "lines_added": 4
-          },
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 4
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/docuchat",
-        "path": "frontend/next-env.d.ts",
-        "lines_added": 7,
-        "commits": [
-          {
-            "sha": "9690f0f745c2a02552b6e897d3ea86bb668aba02",
-            "date": "2026-10-16",
-            "lines_added": 5
-          },
-          {
-            "sha": "8ee639bba87e3f55f58d0ee1ac0f27cab12bc320",
-            "date": "2026-06-22",
-            "lines_added": 2
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "next.config.ts",
-        "lines_added": 5,
-        "commits": [
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 5
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/grocery-compare",
-        "path": "lib/stores/adapters/ralphs.ts",
-        "lines_added": 3,
-        "commits": [
-          {
-            "sha": "99eaf6ec63c59ac90aa5d9bd6183e3374e8df900",
-            "date": "2026-09-04",
-            "lines_added": 3
           }
         ]
       },
@@ -5336,11 +4082,11 @@
     30,
     9,
     22,
-    58,
+    47,
     36,
     15,
-    40,
-    92,
+    23,
+    88,
     0,
     0
   ],
@@ -5487,8 +4233,8 @@
     },
     {
       "date": "2026-06-22",
-      "commits": 33,
-      "lines_added": 41663
+      "commits": 22,
+      "lines_added": 38731
     },
     {
       "date": "2026-06-23",
@@ -5616,14 +4362,9 @@
       "lines_added": 258
     },
     {
-      "date": "2026-09-04",
-      "commits": 13,
-      "lines_added": 14927
-    },
-    {
       "date": "2026-09-05",
-      "commits": 6,
-      "lines_added": 506
+      "commits": 2,
+      "lines_added": 8
     },
     {
       "date": "2026-09-08",
@@ -5717,7 +4458,7 @@
     },
     {
       "date": "2026-10-11",
-      "commits": 8,
+      "commits": 6,
       "lines_added": 2834
     },
     {
@@ -5737,34 +4478,35 @@
     },
     {
       "date": "2026-10-15",
-      "commits": 9,
-      "lines_added": 96580
+      "commits": 6,
+      "lines_added": 96211
     },
     {
       "date": "2026-10-16",
+      "commits": 1,
+      "lines_added": 22
+    },
+    {
+      "date": "2026-10-19",
       "commits": 3,
-      "lines_added": 96
+      "lines_added": 256
     }
   ],
   "biggest_project": "cavandonohoe.github.io",
-  "biggest_project_commits": 250,
+  "biggest_project_commits": 251,
   "repositories": [
     "cavandonohoe/cavandonohoe",
     "cavandonohoe/cavandonohoe.github.io",
     "cavandonohoe/confederate_statues",
-    "cavandonohoe/docuchat",
-    "cavandonohoe/grocery-compare",
     "cavandonohoe/rent-vs-buy"
   ],
   "repository_commits": {
-    "cavandonohoe/cavandonohoe.github.io": 250,
+    "cavandonohoe/cavandonohoe.github.io": 251,
     "cavandonohoe/rent-vs-buy": 29,
-    "cavandonohoe/grocery-compare": 22,
     "cavandonohoe/confederate_statues": 18,
-    "cavandonohoe/docuchat": 13,
-    "cavandonohoe/cavandonohoe": 8
+    "cavandonohoe/cavandonohoe": 10
   },
   "scope": "Author-matched commits on the default branch of public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bot-authored or bot-committed commits, deploy commits, and other authors are excluded. Moved files count only changed lines. Language totals use .gitattributes Linguist overrides plus built-in generated, vendored, dependency, build, docs, minified, and raw HTML input patterns. Overall lines added still include all files. PRs count public pull requests the user authored and merged into their own repositories during the year, when available.",
   "is_partial_year": true,
-  "generated_at": "2026-10-17T12:22:05.319870+00:00"
+  "generated_at": "2026-10-19T15:50:15.341469+00:00"
 }

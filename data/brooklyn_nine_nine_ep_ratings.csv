@@ -1,154 +1,154 @@
 season,episode,title,rating,votes,episode_year
-1,1,Pilot,7.7,7315,2013
-1,2,The Tagger,7.5,5984,2013
-1,3,The Slump,7.5,5603,2013
-1,4,M.E. Time,7.6,5418,2013
-1,5,The Vulture,7.9,5267,2013
-1,6,Halloween,8.4,5951,2013
-1,7,48 Hours,8,5178,2013
-1,8,Old School,7.6,4977,2013
-1,9,Sal's Pizza,7.5,4861,2013
-1,10,Thanksgiving,8.1,4984,2013
-1,11,Christmas,8.1,4776,2013
-1,12,Pontiac Bandit,8,4836,2014
-1,13,The Bet,8.7,5446,2014
-1,14,The Ebony Falcon,7.5,4502,2014
-1,15,Operation: Broken Feather,8,4696,2014
-1,16,The Party,8.4,4922,2014
-1,17,Full Boyle,7.7,4452,2014
-1,18,The Apartment,7.5,4334,2014
-1,19,Tactical Village,8.3,4599,2014
-1,20,Fancy Brudgom,7.5,4313,2014
-1,21,Unsolvable,8,4375,2014
-1,22,Charges and Specs,8.8,5146,2014
-2,1,Undercover,8.1,4481,2014
-2,2,Chocolate Milk,7.6,4217,2014
-2,3,The Jimmy Jab Games,8.1,4409,2014
-2,4,Halloween II,8.7,4931,2014
-2,5,The Mole,8.1,4209,2014
-2,6,Jake and Sophia,8.1,4209,2014
-2,7,Lockdown,7.7,4062,2014
-2,8,USPIS,7.7,4043,2014
-2,9,The Road Trip,8.1,4181,2014
-2,10,The Pontiac Bandit Returns,8.2,4152,2014
-2,11,Stakeout,7.7,3978,2014
-2,12,Beach House,8.2,4198,2015
-2,13,Payback,7.8,3921,2015
-2,14,Defense Rests,7.6,3881,2015
-2,15,Windbreaker City,8.1,3985,2015
-2,16,The Wednesday Incident,7.9,3895,2015
-2,17,Boyle-Linetti Wedding,8.1,3999,2015
-2,18,Captain Peralta,7.7,3855,2015
-2,19,Sabotage,7.8,3822,2015
-2,20,AC/DC,7.6,3771,2015
-2,21,Det. Dave Majors,7.8,3832,2015
-2,22,The Chopper,8.5,3988,2015
-2,23,Johnny and Dora,9,5204,2015
-3,1,New Captain,8.2,4227,2015
-3,2,The Funeral,7.6,3829,2015
-3,3,Boyle's Hunch,7.7,3747,2015
-3,4,The Oolong Slayer,8.4,4010,2015
-3,5,Halloween III,8.9,4789,2015
-3,6,Into the Woods,7.6,3708,2015
-3,7,The Mattress,7.6,3692,2015
-3,8,Ava,8.1,3788,2015
-3,9,The Swedes,7.7,3807,2015
-3,10,Yippie Kayak,8.7,4288,2015
-3,11,Hostage Situation,7.6,3643,2016
-3,12,9 Days,7.9,3894,2016
-3,13,The Cruise,8,3749,2016
-3,14,Karen Peralta,7.5,3555,2016
-3,15,The 9-8,7.9,3612,2016
-3,16,House Mouses,7.7,3483,2016
-3,17,Adrian Pimento,7.7,3589,2016
-3,18,Cheddar,7.7,3581,2016
-3,19,Terry Kitties,7.6,3421,2016
-3,20,Paranoia,8.1,3518,2016
-3,21,Maximum Security,8,3521,2016
-3,22,Bureau,8.6,3789,2016
-3,23,Greg and Larry,9,4374,2016
-4,1,"Coral Palms, Part 1",8.1,3939,2016
-4,2,"Coral Palms, Part 2",8.1,3753,2016
-4,3,"Coral Palms, Part 3",8.3,3776,2016
-4,4,The Night Shift,7.5,3585,2016
-4,5,Halloween IV,8.7,4261,2016
-4,6,Monster in the Closet,7.8,3461,2016
-4,7,Mr. Santiago,8.1,3657,2016
-4,8,Skyfire Cycle,7.6,3457,2016
-4,9,The Overmining,7.9,3420,2016
-4,10,Captain Latvia,7.5,3420,2016
-4,11,"The Fugitive, Part 1",8.3,3604,2017
-4,12,"The Fugitive, Part 2",8.4,3346,2017
-4,13,The Audit,7.6,3320,2017
-4,14,Serve & Protect,7.7,3330,2017
-4,15,The Last Ride,8.2,3445,2017
-4,16,Moo Moo,8.8,6097,2017
-4,17,Cop-Con,8.2,3376,2017
-4,18,Chasing Amy,7.9,3287,2017
-4,19,Your Honor,7.8,3222,2017
-4,20,The Slaughterhouse,7.9,3219,2017
-4,21,The Bank Job,8.4,3406,2017
-4,22,Crime & Punishment,8.5,3608,2017
-5,1,The Big House Pt. 1,8.4,3887,2017
-5,2,The Big House Pt. 2,8.3,3681,2017
-5,3,Kicks,7.8,3362,2017
-5,4,HalloVeen,9.4,6916,2017
-5,5,Bad Beat,7.8,3308,2017
-5,6,The Venue,7.6,3309,2017
-5,7,Two Turkeys,8,3407,2017
-5,8,Return to Skyfire,7.4,3296,2017
-5,9,99,8.7,4115,2017
-5,10,Game Night,8.4,4185,2017
-5,11,The Favor,7.8,3250,2017
-5,12,Safe House,8.6,3808,2018
-5,13,The Negotiation,8.2,3545,2018
-5,14,The Box,9.5,10607,2018
-5,15,The Puzzle Master,7.6,3253,2018
-5,16,NutriBoom,7.7,3240,2018
-5,17,DFW,7.7,3476,2018
-5,18,Gray Star Mutual,7.8,3190,2018
-5,19,Bachelor/ette Party,8.3,3361,2018
-5,20,Show Me Going,8.2,3584,2018
-5,21,White Whale,7.8,3128,2018
-5,22,Jake & Amy,9.1,4948,2018
-6,1,Honeymoon,8.3,4169,2019
-6,2,Hitchcock & Scully,8.7,4596,2019
-6,3,The Tattler,7.5,3474,2019
-6,4,Four Movements,7.3,3717,2019
-6,5,A Tale of Two Bandits,8,3586,2019
-6,6,The Crime Scene,8.4,3882,2019
-6,7,The Honeypot,8.3,3614,2019
-6,8,"He Said, She Said",7.1,5545,2019
-6,9,The Golden Child,8,3460,2019
-6,10,Gintars,7.3,3226,2019
-6,11,The Therapist,7.9,3299,2019
-6,12,Casecation,7.5,3598,2019
-6,13,The Bimbo,7.8,3153,2019
-6,14,Ticking Clocks,8.2,3513,2019
-6,15,Return of the King,6.4,3829,2019
-6,16,Cinco de Mayo,9,4525,2019
-6,17,Sicko,8.3,3194,2019
-6,18,Suicide Squad,8.9,4055,2019
-7,1,Manhunter,7.9,3490,2020
-7,2,Captain Kim,8.1,3356,2020
-7,3,Pimemento,8.5,3692,2020
-7,4,The Jimmy Jab Games II,7.8,3244,2020
-7,5,Debbie,7.2,3427,2020
-7,6,Trying,7.7,3187,2020
-7,7,Ding Dong,8.6,3627,2020
-7,8,The Takeback,8.1,3242,2020
-7,9,Dillman,8.6,3398,2020
-7,10,Admiral Peralta,7.8,3031,2020
-7,11,Valloweaster,8.1,3318,2020
-7,12,Ransom,8.6,3469,2020
-7,13,Lights Out,9.1,4707,2020
-8,1,The Good Ones,4.9,9800,2021
-8,2,The Lake House,7.6,3950,2021
-8,3,Blue Flu,7,3659,2021
-8,4,Balancing,7.5,3331,2021
-8,5,PB&J,7.8,3525,2021
-8,6,The Set Up,6.7,3649,2021
-8,7,Game of Boyles,7.8,3304,2021
-8,8,Renewal,7.9,3064,2021
-8,9,The Last Day Pt 1,9.2,4775,2021
-8,10,The Last Day Pt 2,9.4,6333,2021
+1,1,Pilot,7.7,7333,2013
+1,2,The Tagger,7.5,5999,2013
+1,3,The Slump,7.5,5618,2013
+1,4,M.E. Time,7.6,5431,2013
+1,5,The Vulture,7.9,5280,2013
+1,6,Halloween,8.4,5967,2013
+1,7,48 Hours,8,5189,2013
+1,8,Old School,7.6,4986,2013
+1,9,Sal's Pizza,7.5,4870,2013
+1,10,Thanksgiving,8.1,4994,2013
+1,11,Christmas,8.1,4785,2013
+1,12,Pontiac Bandit,8,4847,2014
+1,13,The Bet,8.7,5458,2014
+1,14,The Ebony Falcon,7.5,4511,2014
+1,15,Operation: Broken Feather,8,4706,2014
+1,16,The Party,8.4,4933,2014
+1,17,Full Boyle,7.7,4460,2014
+1,18,The Apartment,7.5,4342,2014
+1,19,Tactical Village,8.3,4608,2014
+1,20,Fancy Brudgom,7.5,4321,2014
+1,21,Unsolvable,8,4384,2014
+1,22,Charges and Specs,8.8,5158,2014
+2,1,Undercover,8.1,4491,2014
+2,2,Chocolate Milk,7.6,4225,2014
+2,3,The Jimmy Jab Games,8.1,4421,2014
+2,4,Halloween II,8.7,4943,2014
+2,5,The Mole,8.1,4217,2014
+2,6,Jake and Sophia,8.1,4215,2014
+2,7,Lockdown,7.7,4069,2014
+2,8,USPIS,7.7,4048,2014
+2,9,The Road Trip,8.1,4186,2014
+2,10,The Pontiac Bandit Returns,8.2,4158,2014
+2,11,Stakeout,7.7,3985,2014
+2,12,Beach House,8.2,4205,2015
+2,13,Payback,7.8,3928,2015
+2,14,Defense Rests,7.6,3887,2015
+2,15,Windbreaker City,8.1,3993,2015
+2,16,The Wednesday Incident,7.9,3901,2015
+2,17,Boyle-Linetti Wedding,8.1,4004,2015
+2,18,Captain Peralta,7.7,3863,2015
+2,19,Sabotage,7.8,3830,2015
+2,20,AC/DC,7.6,3779,2015
+2,21,Det. Dave Majors,7.8,3840,2015
+2,22,The Chopper,8.5,3994,2015
+2,23,Johnny and Dora,9,5213,2015
+3,1,New Captain,8.2,4236,2015
+3,2,The Funeral,7.6,3834,2015
+3,3,Boyle's Hunch,7.7,3752,2015
+3,4,The Oolong Slayer,8.4,4015,2015
+3,5,Halloween III,8.9,4798,2015
+3,6,Into the Woods,7.6,3712,2015
+3,7,The Mattress,7.6,3696,2015
+3,8,Ava,8.1,3793,2015
+3,9,The Swedes,7.7,3812,2015
+3,10,Yippie Kayak,8.7,4293,2015
+3,11,Hostage Situation,7.6,3648,2016
+3,12,9 Days,7.9,3898,2016
+3,13,The Cruise,8,3753,2016
+3,14,Karen Peralta,7.5,3559,2016
+3,15,The 9-8,7.9,3616,2016
+3,16,House Mouses,7.7,3487,2016
+3,17,Adrian Pimento,7.7,3595,2016
+3,18,Cheddar,7.7,3586,2016
+3,19,Terry Kitties,7.6,3426,2016
+3,20,Paranoia,8.1,3522,2016
+3,21,Maximum Security,8,3525,2016
+3,22,Bureau,8.6,3792,2016
+3,23,Greg and Larry,9,4379,2016
+4,1,"Coral Palms, Part 1",8.1,3944,2016
+4,2,"Coral Palms, Part 2",8.1,3758,2016
+4,3,"Coral Palms, Part 3",8.3,3781,2016
+4,4,The Night Shift,7.5,3589,2016
+4,5,Halloween IV,8.7,4267,2016
+4,6,Monster in the Closet,7.8,3464,2016
+4,7,Mr. Santiago,8.1,3660,2016
+4,8,Skyfire Cycle,7.6,3460,2016
+4,9,The Overmining,7.9,3423,2016
+4,10,Captain Latvia,7.5,3423,2016
+4,11,"The Fugitive, Part 1",8.3,3607,2017
+4,12,"The Fugitive, Part 2",8.4,3349,2017
+4,13,The Audit,7.6,3323,2017
+4,14,Serve & Protect,7.7,3335,2017
+4,15,The Last Ride,8.2,3449,2017
+4,16,Moo Moo,8.8,6104,2017
+4,17,Cop-Con,8.2,3380,2017
+4,18,Chasing Amy,7.9,3291,2017
+4,19,Your Honor,7.8,3228,2017
+4,20,The Slaughterhouse,7.9,3226,2017
+4,21,The Bank Job,8.4,3414,2017
+4,22,Crime & Punishment,8.5,3616,2017
+5,1,The Big House Pt. 1,8.4,3894,2017
+5,2,The Big House Pt. 2,8.3,3689,2017
+5,3,Kicks,7.8,3366,2017
+5,4,HalloVeen,9.4,6925,2017
+5,5,Bad Beat,7.8,3312,2017
+5,6,The Venue,7.6,3314,2017
+5,7,Two Turkeys,8,3413,2017
+5,8,Return to Skyfire,7.4,3301,2017
+5,9,99,8.7,4122,2017
+5,10,Game Night,8.4,4191,2017
+5,11,The Favor,7.8,3255,2017
+5,12,Safe House,8.6,3814,2018
+5,13,The Negotiation,8.2,3551,2018
+5,14,The Box,9.5,10622,2018
+5,15,The Puzzle Master,7.6,3259,2018
+5,16,NutriBoom,7.7,3246,2018
+5,17,DFW,7.7,3482,2018
+5,18,Gray Star Mutual,7.8,3194,2018
+5,19,Bachelor/ette Party,8.3,3365,2018
+5,20,Show Me Going,8.2,3589,2018
+5,21,White Whale,7.8,3134,2018
+5,22,Jake & Amy,9.1,4958,2018
+6,1,Honeymoon,8.3,4174,2019
+6,2,Hitchcock & Scully,8.7,4605,2019
+6,3,The Tattler,7.5,3479,2019
+6,4,Four Movements,7.3,3722,2019
+6,5,A Tale of Two Bandits,8,3591,2019
+6,6,The Crime Scene,8.4,3887,2019
+6,7,The Honeypot,8.3,3618,2019
+6,8,"He Said, She Said",7.1,5548,2019
+6,9,The Golden Child,8,3462,2019
+6,10,Gintars,7.3,3228,2019
+6,11,The Therapist,7.9,3302,2019
+6,12,Casecation,7.5,3602,2019
+6,13,The Bimbo,7.8,3156,2019
+6,14,Ticking Clocks,8.2,3517,2019
+6,15,Return of the King,6.4,3832,2019
+6,16,Cinco de Mayo,9,4530,2019
+6,17,Sicko,8.3,3197,2019
+6,18,Suicide Squad,8.9,4059,2019
+7,1,Manhunter,7.9,3496,2020
+7,2,Captain Kim,8.1,3363,2020
+7,3,Pimemento,8.5,3698,2020
+7,4,The Jimmy Jab Games II,7.8,3248,2020
+7,5,Debbie,7.2,3433,2020
+7,6,Trying,7.7,3192,2020
+7,7,Ding Dong,8.6,3634,2020
+7,8,The Takeback,8.1,3246,2020
+7,9,Dillman,8.6,3403,2020
+7,10,Admiral Peralta,7.8,3035,2020
+7,11,Valloweaster,8.1,3322,2020
+7,12,Ransom,8.6,3473,2020
+7,13,Lights Out,9.1,4714,2020
+8,1,The Good Ones,4.9,9813,2021
+8,2,The Lake House,7.6,3955,2021
+8,3,Blue Flu,7,3664,2021
+8,4,Balancing,7.5,3336,2021
+8,5,PB&J,7.8,3530,2021
+8,6,The Set Up,6.7,3657,2021
+8,7,Game of Boyles,7.8,3310,2021
+8,8,Renewal,7.9,3069,2021
+8,9,The Last Day Pt 1,9.2,4785,2021
+8,10,The Last Day Pt 2,9.4,6343,2021
