@@ -3,10 +3,10 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 393,
+    "n_episodes": 397,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-10-18",
-    "api_saved_count": 155
+    "api_refreshed_at": "2026-10-19",
+    "api_saved_count": 150
   },
   "episodes": [
     {
@@ -4331,6 +4331,50 @@
       "release": "2026-10-17",
       "url": "https://open.spotify.com/episode/2p05lfJZC57KWRMfAERrpB",
       "desc": "Recorded every Thursday after the audience has left Studio 8G, and witnessed only by scattered members of the Late Night staff and crew… This is Corrections: The Podcast, Episode 182, \"The Why-re.\"See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info."
+    },
+    {
+      "id": "3CX1brOvYDHFxoOAUxrFuB",
+      "added_at": "2026-10-19",
+      "show": "Twenty Thousand Hertz",
+      "publisher": null,
+      "name": "How ​modern Music Supervisors ​craft the ​perfect Needle Drop",
+      "dur_min": 61,
+      "release": "2026-10-19",
+      "url": "https://open.spotify.com/episode/3CX1brOvYDHFxoOAUxrFuB",
+      "desc": "In Part 2 of our deep dive into needle drops, Dallas, Casey and Grace uncover more surprising stories behind some of cinema’s most unforgettable song choices. From a fiercely contested track that became a ‘90s comedy staple, to Quentin Tarantino’s habit of raiding old movie soundtracks, these pairings often took strange and unexpected paths to the screen. Along the way, they explore the hidden world of Music Supervision, impossible price tags, and the controversy around musical “soundalikes.”Twenty Thousand Hertz is produced by Defacto Sound.Subscribe on YouTube⁠⁠⁠⁠⁠⁠⁠⁠⁠ to see our video series.Follow Dallas on ⁠⁠⁠⁠⁠⁠⁠Instagram⁠⁠⁠⁠⁠⁠⁠, ⁠⁠⁠⁠⁠⁠⁠TikTok⁠⁠⁠⁠⁠⁠⁠, ⁠⁠Facebook⁠⁠, and ⁠⁠⁠⁠⁠⁠⁠LinkedIn⁠⁠⁠⁠⁠⁠⁠.If you know what this week's mystery sound is, tell us at ⁠⁠⁠⁠⁠⁠⁠⁠mystery.20k.org⁠⁠⁠⁠⁠⁠⁠⁠.Automate your expenses with Ramp and get $250 off at ramp.com/20k.Get three months of free payroll with Gusto at gusto.com/20k.Get NetSuite's free business guide, \"Aligning for the Agentic Era: How AI Is Changing Everyday Work,\" at netsuite.com/20k."
+    },
+    {
+      "id": "4hke454roOQLspGxV8OMuf",
+      "added_at": "2026-10-19",
+      "show": "Unexplainable",
+      "publisher": null,
+      "name": "An Alzheimer's breakthrough?",
+      "dur_min": 26,
+      "release": "2026-10-19",
+      "url": "https://open.spotify.com/episode/4hke454roOQLspGxV8OMuf",
+      "desc": "The past few months have been full of Alzheimer's optimism: new ideas that could prevent the disease from taking hold, medications that seem to slow it down, and an experimental surgery that might even be able to reverse its progression. It's a lot of hype. Should we believe it?  Guest: ⁠⁠Dylan Scott⁠⁠, senior correspondent at Vox  To watch this episode on video, find us on ⁠⁠⁠Netflix⁠⁠⁠!  For show transcripts, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unxtranscripts ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠For more, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unexplainable ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠And please email us! ⁠⁠⁠⁠unexplainable@vox.com⁠⁠⁠⁠We read every email. Support Unexplainable (and get ad-free episodes) by becoming a Vox Member today: ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/members Learn more about your ad choices. Visit podcastchoices.com/adchoices"
+    },
+    {
+      "id": "2fEG3eTYPe29gGMJaB0svl",
+      "added_at": "2026-10-19",
+      "show": "The Indicator from Planet Money",
+      "publisher": null,
+      "name": "Why Oracle's debt load could be your problem",
+      "dur_min": 9,
+      "release": "2026-10-19",
+      "url": "https://open.spotify.com/episode/2fEG3eTYPe29gGMJaB0svl",
+      "desc": "Oracle, the multinational tech giant has taken on a lot of loans to build up its AI capacity. But Oracle’s investors are not happy with this piling debt load. We explain why Oracle is such a pivotal player — and potentially weak link — in the AI-fueled economy.Fact checking by Sierra Juarez.Your Next Listen –How the bond market is handling AI risk? –Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet Money–The Indicator newsletter — a weekly roundup of news, ideas and staff picks. –Instagram, TikTok and YouTube –Find the Planet Money book –Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop!Support public media by subscribing to NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
+    },
+    {
+      "id": "2vsu7NQvpMYHTZS1KVQmtt",
+      "added_at": "2026-10-19",
+      "show": "The Economics of Everyday Things",
+      "publisher": null,
+      "name": "83. Game Show Winnings",
+      "dur_min": 19,
+      "release": "2026-10-19",
+      "url": "https://open.spotify.com/episode/2vsu7NQvpMYHTZS1KVQmtt",
+      "desc": "How do TV producers decide how much money to give away? A little psychology and a lot of math. Zachary Crockett phones a friend. This episode was originally published on March 9th, 2025. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising."
     }
   ]
 }
