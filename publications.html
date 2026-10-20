@@ -818,11 +818,63 @@ license. The <em>NEJM</em> article is available via the DOI link above.
     }
   }
 
+  function fixGtRowGroupHeadings() {
+    // gt renders each row-group label as a full-width <th> row in <tbody>.
+    // HTML_CodeSniffer (H43) then counts every group <th> as a header for
+    // every cell beneath it in the column, which no headers attribute can
+    // satisfy. Render the label as a styled <td> instead (gt's CSS keys on
+    // the .gt_group_heading class, so it looks the same) and drop the group
+    // id from the cells' headers so they reference only their column.
+    var tables = document.querySelectorAll('table.gt_table');
+    for (var t = 0; t < tables.length; t++) {
+      var groups = tables[t].querySelectorAll('th.gt_group_heading');
+      if (!groups.length) continue;
+      var groupIds = [];
+      for (var i = 0; i < groups.length; i++) {
+        var th = groups[i];
+        var td = document.createElement('td');
+        for (var a = 0; a < th.attributes.length; a++) {
+          var attr = th.attributes[a];
+          if (attr.name !== 'scope') td.setAttribute(attr.name, attr.value);
+        }
+        while (th.firstChild) td.appendChild(th.firstChild);
+        th.parentNode.replaceChild(td, th);
+        if (td.id) groupIds.push(td.id);
+      }
+      var cells = tables[t].querySelectorAll('td[headers]');
+      for (var c = 0; c < cells.length; c++) {
+        var kept = cells[c].getAttribute('headers').split(/\s+/).filter(function(tok) {
+          return tok && groupIds.indexOf(tok) === -1;
+        });
+        cells[c].setAttribute('headers', kept.join(' '));
+      }
+    }
+  }
+
+  function addLeafletLayersSubmit() {
+    // Leaflet's layers control is a <form> of checkboxes/radios that apply on
+    // change, so it has no submit button (H32.2). Add a hidden no-op one and
+    // block real submission so pressing Enter can't reload the page.
+    var forms = document.querySelectorAll('form.leaflet-control-layers-list');
+    for (var i = 0; i < forms.length; i++) {
+      var form = forms[i];
+      if (form.querySelector('[type="submit"]')) continue;
+      var btn = document.createElement('button');
+      btn.type = 'submit';
+      btn.hidden = true;
+      btn.textContent = 'Apply layers';
+      form.appendChild(btn);
+      form.addEventListener('submit', function(e) { e.preventDefault(); });
+    }
+  }
+
   function applyA11yShims() {
     labelNavbarToggle();
     labelPlotlyModebar();
     labelDataTablesControls();
     dedupePlotlySymbolIds();
+    fixGtRowGroupHeadings();
+    addLeafletLayersSubmit();
   }
 
   if (document.readyState === 'loading') {

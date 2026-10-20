@@ -3,9 +3,9 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 397,
+    "n_episodes": 402,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-10-19",
+    "api_refreshed_at": "2026-10-20",
     "api_saved_count": 150
   },
   "episodes": [
@@ -1033,11 +1033,11 @@
       "url": "https://open.spotify.com/episode/3lSEZSBg6tAitbbr3rj1Lz"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-15",
+      "dur_min": 57,
+      "release": "2025-11-15",
       "publisher": null,
-      "desc": null,
+      "desc": "For millennia, we have tried to put human personalities into neat types, an effort psychology took up early in its history in an effort to legitimize itself. But is the idea of types – which all personality inventories are based on - flawed to begin with? Find out in this classic episode.See omnystudio.com/listener for privacy information.",
       "id": "0Eh97PxS9m48ZmQ1qtazrV",
       "name": "Selects: How Personality Tests Work",
       "show": "Stuff You Should Know",
@@ -1055,11 +1055,11 @@
       "url": "https://open.spotify.com/episode/353TduVnOfNqHR6Cu8p4hU"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-22",
+      "dur_min": 51,
+      "release": "2026-01-22",
       "publisher": null,
-      "desc": null,
+      "desc": "Biggie Smalls and Tupac Shakur had a famous beef with one another in the mid-90s. It was so intense, it sparked an even wider rivalry between the East and West Coasts. In just a few years, both men had been murdered and the music world was changed forever.See omnystudio.com/listener for privacy information.",
       "id": "4ggIziD2ifLDUMMB6pI9dg",
       "name": "The Ballad of Biggie and Tupac",
       "show": "Stuff You Should Know",
@@ -1187,11 +1187,11 @@
       "desc": "Actress and businesswoman Priscilla Presley tells Stephen that her new memoir dives deep into details about her life during her marriage to Elvis Presley, which was more difficult than people might have realized at the time. The book,…"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-23",
+      "dur_min": 24,
+      "release": "2026-01-23",
       "publisher": null,
-      "desc": null,
+      "desc": "President Trump says his concept of a deal with Greenland has no end date, anyone with a billion dollars can help Trump rule the world as Chairman for Life of the Board of Peace, and Stephen Colbert is offering an alternative fake club membership for only $100M. Stephen Colbert is on the run from Johnny Law again as the FCC’s Brendan Carr announced a push to enforce rules that would suppress the visibility of political candidates on network talk shows. Chance The Rapper looks back at the year he released his groundbreaking mixtape, “Coloring Book,” and tells Stephen that his recent encounters with Black artists from different parts of the world informed the songwriting on his latest album, “Star Line.” Check out his performance on YouTube and find Chance The Rapper’s upcoming tour dates at https://chancestuff.com.",
       "id": "74Oo9I4LmvEwQ4i7rmX9OM",
       "name": "Chance The Rapper | Bored Of Peace",
       "show": "The Late Show Pod Show with Stephen Colbert",
@@ -1363,11 +1363,11 @@
       "url": "https://open.spotify.com/episode/1D7P2o1OiFcvsgSGE2q7jP"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-22",
+      "dur_min": 24,
+      "release": "2026-01-22",
       "publisher": null,
-      "desc": null,
+      "desc": "Freezing weather could hinder ICE’s operations in Minnesota, President Trump made the Davos summit all about Greenland, the United States reportedly used a disturbing sonic weapon to kill people in Venezuela, and Canada is preparing to repel an American invasion. Legendary actress and political activist Jane Fonda talks about the oppression she witnessed in the former Soviet Union and warns that President Trump’s authoritarian treatment of the American public will spare no one. To learn more about the Committee for the First Amendment visit https://www.committeeforthefirstamendment.com.",
       "id": "1AMoy0cwv6ZS125r2DGNnK",
       "name": "Jane Fonda | Ice Land",
       "show": "The Late Show Pod Show with Stephen Colbert",
@@ -1594,11 +1594,11 @@
       "desc": "President Trump thinks he’s a better award show host than Jimmy Kimmel, FIFA awarded the president a totally made up peace prize, and Stephen wonders if there’s anything Trump can do that would alienate his MAGA base. Iconic actress Sigourney Weaver says she feels complete freedom when acting in front of a green screen under James Cameron’s direction in the special effects-heavy “Avatar” films. Watch “Avatar: Fire & Ash” in theaters December 19th."
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-24",
+      "dur_min": 9,
+      "release": "2025-11-24",
       "publisher": null,
-      "desc": null,
+      "desc": "President Trump has said he’d try to get more Argentine beef into the U.S. So who would actually do the buying? That’s a general theme with a lot of these trade deals — big numbers but vague details. When China says it’ll buy more soybeans, is it the government or companies that does the buying? When South Korea promises to invest in American shipyards, who’s actually doing that?  Today on the show, we dig into two questions from listeners and hear directly from an Argentine butcher. Related episodes: Why beef prices are so highHow the South is trying to win the EV race For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "id": "6fa3EzDLz0nvgQ17pOrXV6",
       "name": "Who’s buying all the beef?",
       "show": "The Indicator from Planet Money",
@@ -1726,22 +1726,22 @@
       "desc": "In an all-new episode of Late Night’s podcast “A Closer Look Back,” A Closer Look Supervising Writer/Producer Sal Gentile and Supervising Producer Emily Erotas are joined by Supervising Producers Melanie Wohr and Lauren Unkel, who discuss the process of creating graphics for A Closer Look segments.See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info."
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-15",
+      "dur_min": 29,
+      "release": "2025-11-15",
       "publisher": null,
-      "desc": null,
+      "desc": "Last month, during the longest government shutdown in U.S. history, Treasury Secretary Scott Bessent announced that the United States had offered to functionally loan Argentina $20 billion. Despite the sums involved, this bailout required no authorization from Congress, because of the loan’s source: an obscure pool of money called the Exchange Stabilization Fund. The ESF is essentially the Treasury Department’s private slush fund. Its history goes all the way back to the Great Depression. But, in the 90 years since its creation, it has only been used one time at this scale to bailout an emerging economy: Mexico, in 1995. That case study contains some helpful lessons that can be used to make sense of Bessent’s recent move. Will this new credit line to Argentina work out as well as it did the last time we tried it? Or will Argentina’s economic troubles hamstring the Exchange Stabilization Fund forever?Pre-order the Planet Money book and get a free gift. /  Subscribe to Planet Money+Listen free: Apple Podcasts, Spotify, the NPR app or anywhere you get podcasts.Facebook / Instagram / TikTok / Our weekly Newsletter.This episode was hosted by Keith Romer and Erika Beras. It was produced by Luis Gallo. It was edited by Eric Mennel and fact checked by Sierra Juarez. It was engineered by Cena Loffredo. Alex Goldmark is Planet Money’s executive producer.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "id": "2uKsp8dGkrZuFMXLqT9TgC",
       "name": "The obscure pool of money the US used to bail out Argentina",
       "show": "Planet Money",
       "url": "https://open.spotify.com/episode/2uKsp8dGkrZuFMXLqT9TgC"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-22",
+      "dur_min": 9,
+      "release": "2026-01-22",
       "publisher": null,
-      "desc": null,
+      "desc": "Beef is back on top. Well, at least on top of Health Secretary Robert F. Kennedy Jr.’s new food pyramid, unveiled alongside updated national dietary guidelines. Red meat really never left the great American menu. But how’d it climb all the way up there?On today’s show, America’s storied love affair with beef. And how big business and government have long influenced what winds up on our plates.Related episodes: Why beef prices are so highWho’s buying all the beef?For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "id": "2ZjOjxyO1JwA6CfzP85OCl",
       "name": "How beef climbed to the top of the food pyramid",
       "show": "The Indicator from Planet Money",
@@ -2089,11 +2089,11 @@
       "url": "https://open.spotify.com/episode/4fLIxaEy41v1lTumbGivyR"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-24",
+      "dur_min": 35,
+      "release": "2025-11-24",
       "publisher": null,
-      "desc": null,
+      "desc": "Ronny Chieng knows the truth: everything is stupid. Take a listen to some of best stupidest things Ronny has covered in his signature segment.  Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "id": "4ziRiOz21lqedDQsw0oBZ2",
       "name": "TDS Time Machine | Everything is Stupid with Ronny Chieng",
       "show": "The Daily Show: Ears Edition",
@@ -3310,11 +3310,11 @@
       "url": "https://open.spotify.com/episode/4QKixrwtHtH5X8Sm3qUKwi"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-22",
+      "dur_min": 36,
+      "release": "2026-01-22",
       "publisher": null,
-      "desc": null,
+      "desc": "Planet Money has teamed up with the company Exploding Kittens to make a board game inspired by the legendary economics paper The Market for Lemons. We’ve decided we want a mass-appeal party game that quietly sneaks in the economics, so that we can report from inside a world that no other Planet Money project has entered: the real shelves at real big box retail stores. We have a great game mechanic and a set of rules. Now all we need is a good name and theme. Turns out, that is way harder and way higher stakes than any of us could have imagined. In the third episode of our series, we learn the importance of a good game name and theme and try to come up with one for our game. Find our other episodes in the board game series, here and here.Subscribe to Planet Money+Listen free: Apple Podcasts, Spotify, the NPR app or anywhere you get podcasts.Facebook / Instagram / TikTok / Our weekly Newsletter.This episode of Planet Money was hosted by Kenny Malone and Erika Beras. It was produced by James Sneed and edited by Marianne McCune, fact-checked by Willa Rubin, and engineered by Cena Loffredo and Kwesi Lee. Alex Goldmark is our executive producer.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "id": "3DGYzs0A7bBNCZLm9psXrA",
       "name": "When designing a GAME, what's in a name?",
       "show": "Planet Money",
@@ -4375,6 +4375,61 @@
       "release": "2026-10-19",
       "url": "https://open.spotify.com/episode/2vsu7NQvpMYHTZS1KVQmtt",
       "desc": "How do TV producers decide how much money to give away? A little psychology and a lot of math. Zachary Crockett phones a friend. This episode was originally published on March 9th, 2025. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising."
+    },
+    {
+      "id": "0007H8IFcUg9VqrJVubrmc",
+      "added_at": "2026-10-20",
+      "show": "Late Night with Seth Meyers Podcast",
+      "publisher": null,
+      "name": "Jenna Ortega | Trump WH in Turmoil, Record-Low Approval, Zacharia & Guilfoyle Out, Golf Course Clash: A Closer Look",
+      "dur_min": 24,
+      "release": "2026-10-20",
+      "url": "https://open.spotify.com/episode/0007H8IFcUg9VqrJVubrmc",
+      "desc": "Seth takes a closer look at Donald Trump's approval rating hitting a new all-time low just two weeks ahead of the midterms. Then, Jenna Ortega talks about filming season three of Netflix's Wednesday, starring in her new film Klara and the Sun, and celebrating her favorite holiday, Halloween.See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info."
+    },
+    {
+      "id": "6LdBXKAXX9nqzQlwW5qBFz",
+      "added_at": "2026-10-20",
+      "show": "The Daily Show: Ears Edition",
+      "publisher": null,
+      "name": "Paris Protests Erupt Over High Fuel Costs & Trump Cuts Diesel Deal with Russia | David Corn",
+      "dur_min": 47,
+      "release": "2026-10-20",
+      "url": "https://open.spotify.com/episode/6LdBXKAXX9nqzQlwW5qBFz",
+      "desc": "Paris is burning, Trump is back to kissing Putin’s ass, and there’s a new war to blame for bank-breaking gas prices. Jon Stewart examines the headlines, including the protests that literally set Paris on fire while President Macron enjoyed a Celine Dion concert. Plus, American allegiances in the Russia-Ukraine war are called into question as Trump signs a diesel deal worth billions with Putin, and Jon gets some key players on the phone to work out why Ukraine is having trouble accessing Elon Musk’s Starlink cell service. Best-selling author and Washington bureau chief for Mother Jones, David Corn, sits down with Jon to discuss his latest book, \"How Russia Won: Donald Trump, Vladimir Putin, and the Fight for America.\" They talk about Trump’s fixation on teaming up with Vladimir Putin, how Trump’s “man crush” on Putin drove him to sign a diesel fuel deal with Russia in spite of the war in Ukraine, Putin embodying Trump’s dream of wealth with full authority, and how Trump employs the theory of “big f**ks small.” -- To get simple, online access to personalized, affordable care for ED, Hair Loss, Weight Loss, and more, visit https://Hims.com/dailyshow  -- New customers can save 35% on your first month of subscription by going to https://dosedaily.co/TDS or entering TDS at checkout. -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices"
+    },
+    {
+      "id": "7lE9UCZ2v21C3i16lZsKgp",
+      "added_at": "2026-10-20",
+      "show": "The Indicator from Planet Money",
+      "publisher": null,
+      "name": "The gamble of trying to inflate away debt",
+      "dur_min": 9,
+      "release": "2026-10-20",
+      "url": "https://open.spotify.com/episode/7lE9UCZ2v21C3i16lZsKgp",
+      "desc": "The United States national debt is running at more than $40 trillion dollars. It’s a potential crisis in the making, but President Donald Trump suggested it can all be solved just by inflating the debt away. Today, we dig into the nitty gritty on how and when inflating the national debt could work.Fact checking by Sierra Juarez.Your Next Listen –Is the federal debt REALLY that bad?–Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet Money–The Indicator newsletter — a weekly roundup of news, ideas and staff picks. –Instagram, TikTok and YouTube –Find the Planet Money book –Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop!Support public media by subscribing to NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
+    },
+    {
+      "id": "16I4QfUvgK0Uoasip6vaLP",
+      "added_at": "2026-10-20",
+      "show": "StarTalk with Neil deGrasse Tyson",
+      "publisher": null,
+      "name": "In Theory with Janna Levin",
+      "dur_min": 41,
+      "release": "2026-10-20",
+      "url": "https://open.spotify.com/episode/16I4QfUvgK0Uoasip6vaLP",
+      "desc": "If something is possible, has the universe tried it? Are all physical possibilities inevitable? Neil deGrasse Tyson sits down with theoretical astrophysicist Janna Levin to launch “In Theory,” a new StarTalk series celebrating the weird, wacky theories of the universe and the theorists who chase them. Out on YouTube October 29, 2026!NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/in-theory-with-janna-levin/Thanks to our Patrons Elamar, Natalia Nelicheva, Kyron Laskosky, Stanley Tai, Jan, Chris Tringali, Nikki Tea, Jay Kapadia, Sean Moran, SnakeSurfer, Roddie, Sam Sillmon, Graham West, Ben Fisk, ChexVC, aitor clemente ramos, Max Forkel, George Fox, and HKRDiary for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising."
+    },
+    {
+      "id": "0njXY7G4XiWfi97cG2QJfQ",
+      "added_at": "2026-10-19",
+      "show": "The Daily Show: Ears Edition",
+      "publisher": null,
+      "name": "The Precap | Ronny Chieng on Hegseth's Cancelled Livestream Execution and Zacharia's \"Lawyer\" Controversy",
+      "dur_min": 44,
+      "release": "2026-10-19",
+      "url": "https://open.spotify.com/episode/0njXY7G4XiWfi97cG2QJfQ",
+      "desc": "This week's host Ronny Chieng sits down with Daily Show writer Jason O. Gilbert to recap the latest headlines, and preview the week to come. They discuss Trump pulling the plug on Pete Hegseth's push for a livestreamed execution of the Fort Hood shooter, White House Press Secretary Katie Zacharia's \"lawyer\" controversy, reports that ousted ambassador Kimberly Guilfoyle has a \"burn book\" that could damage the Trump family, and how a rogue AI agent deleted an entire season of an upcoming Swedish reality show. Plus, the pair looks at how Democrats Jon Ossoff and James Talarico are running circles around their MAGA midterm opponents, and Ronny reveals how he broke his arm while filming a comedy special with Hasan Minhaj. -- New customers can save 35% on your first month of subscription by going to https://dosedaily.co/TDS or entering TDS at checkout. -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices"
     }
   ]
 }
