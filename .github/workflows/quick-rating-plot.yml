@@ -116,6 +116,7 @@ jobs:
           fi
           work="$RUNNER_TEMP/quick-plots-branch"
           if git ls-remote --exit-code --heads origin quick-plots >/dev/null; then
+            git fetch origin refs/heads/quick-plots:refs/remotes/origin/quick-plots
             git worktree add "$work" origin/quick-plots
             git -C "$work" switch -c quick-plots
           else
