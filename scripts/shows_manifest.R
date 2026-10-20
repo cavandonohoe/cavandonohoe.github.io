@@ -13,6 +13,7 @@
 tv_shows_manifest <- function() {
   manifest <- tibble::tribble(
     ~title, ~slug, ~fig_width, ~fig_height, ~png_width, ~png_height,
+    # Preview with the shared episode heatmap.
     "WandaVision", "wandavision", NA, NA, NA, NA,
     "Alice in Borderland", "alice_in_borderland", NA, NA, NA, NA,
     "Always Sunny in Philadelphia", "always_sunny", NA, NA, NA, NA,
