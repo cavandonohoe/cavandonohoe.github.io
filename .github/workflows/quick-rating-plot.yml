@@ -52,7 +52,7 @@ jobs:
             pkgs <- c("magrittr", "dplyr", "stringr", "ggplot2", "RColorBrewer",
                       "scales", "here", "readr", "tibble", "purrr", "httr2",
                       "jsonlite")
-            install.packages(pkgs)
+            install.packages(pkgs, repos = Sys.getenv("RSPM", "https://cloud.r-project.org"))
             missing <- pkgs[!vapply(pkgs, requireNamespace, logical(1), quietly = TRUE)]
             if (length(missing)) stop("Failed to install: ", paste(missing, collapse = ", "))
           '
