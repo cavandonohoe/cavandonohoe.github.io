@@ -91,6 +91,8 @@ Check out my website at <https://cavandonohoe.github.io>
 ### Data Science & Clinical
 
 - [SDTM with R](https://cavandonohoe.github.io/sdtm_with_r.html)
+- [Teams of AI Agents: Cracking Ciphers and Backtesting
+  Rentals](https://cavandonohoe.github.io/agent_experiments.html)
 
 ### Learn R
 
