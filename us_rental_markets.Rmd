@@ -92,17 +92,17 @@ Every term used on this page, translated. If you only read one section, read thi
 ```{r glossary_table}
 tibble::tribble(
   ~Category, ~Term, ~`What it means`, ~`Good numbers + how to use it`,
-  # --- Prices & rents ---
-  "Prices & rents", "ZHVI (home value)",
+  # --- Prices and rents ---
+  "Prices and rents", "ZHVI (home value)",
     "Zillow's estimate of the typical home price in a city. Think \"middle of the market\" -- not the cheapest, not a mansion.",
     "Neither high nor low is good on its own -- it's an input. Pair it with rent. Rule of thumb for rentals: look for ZHVI under ~$400K in markets where monthly ZORI is above 0.6% of ZHVI. High ZHVI + low rent = bad rental.",
-  "Prices & rents", "ZORI (rent index)",
+  "Prices and rents", "ZORI (rent index)",
     "Zillow's estimate of the typical asking rent for a new lease in a city. Similar to a Zestimate but for rent.",
     "Higher is better, but only *relative to ZHVI*. A ZORI of $1,800/mo on a $180K home is a dream; the same $1,800 on a $900K home is a money pit. Target: monthly ZORI / ZHVI \u2265 0.7%.",
-  "Prices & rents", "YoY (year-over-year)",
+  "Prices and rents", "YoY (year-over-year)",
     "How much a number has changed vs the same month one year ago. +5% YoY = 5% higher than last year.",
     "For rent YoY: +3-6% is healthy. Above 10% often reverts. For price YoY: +2-5% supports appreciation; <-5% is a warning sign about demand.",
-  "Prices & rents", "Price-to-rent ratio (P/R)",
+  "Prices and rents", "Price-to-rent ratio (P/R)",
     "Home price \u00f7 annual rent. Low P/R = rent is high relative to price (good for landlords). High P/R = the home is expensive relative to the rent it earns.",
     "**Cash flow land:** P/R < 15. **Balanced:** 15-20. **Appreciation play only:** 20-25. **Avoid for cash flow:** > 25. Coastal superstar cities routinely sit at 30-40.",
 
@@ -1002,16 +1002,19 @@ ggplot2::ggplot(redfin_summary,
 ```{r redfin_table}
 redfin_by_bucket %>%
   dplyr::rename(
-    `DOM bucket` = dom_bucket, `Cities` = cities,
+    `DOM bucket` = dom_bucket, `dom_cities` = cities,
     `Median cap %` = median_cap,
     `Sale / list %` = median_sale_to_list,
     `Sold above list %` = median_above_list,
     `With price drops %` = median_price_drops
   ) %>%
   gt::gt() %>%
+  # The CBRE table also has a "Cities" column; a distinct column name keeps
+  # the generated header ids unique on the page.
+  gt::cols_label(dom_cities = "Cities") %>%
   gt::tab_header(title = "Summary by days-on-market bucket") %>%
   gt::opt_row_striping() %>%
-  gt::fmt_number(columns = c(`Cities`), decimals = 0, use_seps = TRUE)
+  gt::fmt_number(columns = c(dom_cities), decimals = 0, use_seps = TRUE)
 ```
 
 **Reading this**: higher DOM bucket = slower market = more price drops, fewer bids over ask. The tradeoff for the investor is that slower markets also tend to have higher cap rates — because cash flow is what saves you when there's no easy flip. Fast markets are often appreciation plays where you're buying momentum.
