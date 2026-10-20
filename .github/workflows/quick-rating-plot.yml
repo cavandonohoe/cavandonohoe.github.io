@@ -57,7 +57,7 @@ jobs:
             if (length(missing)) stop("Failed to install: ", paste(missing, collapse = ", "))
           '
 
-      - name: Fetch ratings and render PNGs
+      - name: Fetch ratings and render plots
         run: Rscript --no-init-file scripts/quick_plot_new_shows.R "$BASE_SHA" "$PLOT_DIR"
 
       - name: Commit new ratings CSVs to the PR
@@ -80,9 +80,9 @@ jobs:
           git commit -m "Add IMDb episode ratings for new show(s)"
           git push origin "HEAD:$HEAD_REF"
 
-      # GitHub's API can't attach images to comments, so park the PNGs on a
+      # GitHub's API can't attach images to comments, so park the PNG files on a
       # dedicated orphan branch and embed them from raw.githubusercontent.com.
-      - name: Publish PNGs to the quick-plots branch
+      - name: Publish plots to the quick-plots branch
         id: publish
         run: |
           set -euo pipefail
