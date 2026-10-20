@@ -17,12 +17,36 @@ permissions:
 
 concurrency:
   group: quick-rating-plot-${{ github.event.pull_request.number }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  preview:
-    # Same-repo PRs only: fork PRs get no secrets and a read-only token.
+  # The CSV commit below re-triggers this workflow (it's pushed with a PAT so
+  # the normal PR checks run on it). Skip that run instead of redoing the work.
+  # Same-repo PRs only: fork PRs get no secrets and a read-only token.
+  guard:
     if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+    runs-on: ubuntu-latest
+    outputs:
+      skip: ${{ steps.check.outputs.skip }}
+    steps:
+      - id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          subject="$(gh api "repos/$REPO/commits/$HEAD_SHA" --jq '.commit.message' | head -1)"
+          if [ "$subject" = "Add IMDb episode ratings for new show(s)" ]; then
+            echo "Head is the bot's CSV commit; nothing to do."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  preview:
+    needs: guard
+    if: ${{ needs.guard.outputs.skip != 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
