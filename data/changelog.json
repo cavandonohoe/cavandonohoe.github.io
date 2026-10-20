@@ -1,6 +1,12 @@
 {
-  "generated_at": "2026-10-19T21:12:47.975487+00:00",
+  "generated_at": "2026-10-20T20:05:54.864547+00:00",
   "events": [
+    {
+      "date": "2026-10-20",
+      "type": "merged_pr",
+      "title": "Fix pa11y accessibility errors on US rental markets page",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/295"
+    },
     {
       "date": "2026-10-19",
       "type": "merged_pr",
@@ -622,6 +628,21 @@
   ],
   "daily_summaries": [
     {
+      "date": "2026-10-20",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "5 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/54847edf4ee0783490199edf70de2d48436cce15"
+        },
+        {
+          "emoji": "\ud83d\uddfa\ufe0f",
+          "text": "Data-viz projects polished",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/295"
+        }
+      ]
+    },
+    {
       "date": "2026-10-19",
       "items": [
         {
@@ -819,16 +840,6 @@
         {
           "emoji": "\ud83d\udcbb",
           "text": "4 PRs merged"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-06",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "6 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/d3c21bae13cab84d7413150733bff3c50b00c825"
         }
       ]
     }
