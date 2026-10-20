@@ -1,0 +1,183 @@
+name: Quick rating plot preview
+
+# When a PR adds a show to scripts/shows_manifest.R, fetch its IMDb ratings,
+# commit the CSV to the PR, and comment the heatmap PNG inline. This is the
+# fast path: it skips renv and the full site build, so the plot shows up in a
+# few minutes while the normal CI keeps running.
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+    paths:
+      - "scripts/shows_manifest.R"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: quick-rating-plot-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  # The CSV commit below re-triggers this workflow (it's pushed with a PAT so
+  # the normal PR checks run on it). Skip that run instead of redoing the work.
+  # Same-repo PRs only: fork PRs get no secrets and a read-only token.
+  guard:
+    if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+    runs-on: ubuntu-latest
+    outputs:
+      skip: ${{ steps.check.outputs.skip }}
+    steps:
+      - id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          subject="$(gh api "repos/$REPO/commits/$HEAD_SHA" --jq '.commit.message' | head -1)"
+          if [ "$subject" = "Add IMDb episode ratings for new show(s)" ]; then
+            echo "Head is the bot's CSV commit; nothing to do."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  preview:
+    needs: guard
+    if: ${{ needs.guard.outputs.skip != 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PR: ${{ github.event.pull_request.number }}
+      HEAD_REF: ${{ github.event.pull_request.head.ref }}
+      BASE_SHA: ${{ github.event.pull_request.base.sha }}
+      PLOT_DIR: /tmp/quick-plots
+      # Skip the renv autoloader: this job installs only what it needs.
+      RENV_CONFIG_AUTOLOADER_ENABLED: "FALSE"
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+          # A PAT so the CSV commit re-triggers the normal PR checks (pushes
+          # made with GITHUB_TOKEN don't). Falls back to GITHUB_TOKEN.
+          token: ${{ secrets.BOT_PR_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+          r-version: "4.6"
+
+      - name: Install the few packages the plot needs
+        run: |
+          Rscript --no-init-file -e '
+            pkgs <- c("magrittr", "dplyr", "stringr", "ggplot2", "RColorBrewer",
+                      "scales", "here", "readr", "tibble", "purrr", "httr2",
+                      "jsonlite")
+            install.packages(pkgs, repos = Sys.getenv("RSPM", "https://cloud.r-project.org"))
+            missing <- pkgs[!vapply(pkgs, requireNamespace, logical(1), quietly = TRUE)]
+            if (length(missing)) stop("Failed to install: ", paste(missing, collapse = ", "))
+          '
+
+      - name: Fetch ratings and render plots
+        run: Rscript --no-init-file scripts/quick_plot_new_shows.R "$BASE_SHA" "$PLOT_DIR"
+
+      - name: Commit new ratings CSVs to the PR
+        run: |
+          set -euo pipefail
+          git add data/*_ep_ratings.csv
+          if git diff --cached --quiet; then
+            echo "No new CSVs to commit."
+            exit 0
+          fi
+          staged_other="$(git diff --cached --name-only \
+            | grep -Ev '^data/[a-z0-9_]+_ep_ratings\.csv$' || true)"
+          if [ -n "$staged_other" ]; then
+            echo "ERROR: refusing to commit unexpected files:"
+            echo "$staged_other"
+            exit 1
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "Add IMDb episode ratings for new show(s)"
+          git push origin "HEAD:$HEAD_REF"
+
+      # GitHub's API can't attach images to comments, so park the PNG files on a
+      # dedicated orphan branch and embed them from raw.githubusercontent.com.
+      - name: Publish plots to the quick-plots branch
+        id: publish
+        run: |
+          set -euo pipefail
+          if [ "$(wc -l < "$PLOT_DIR/manifest.csv")" -le 1 ]; then
+            echo "has_plots=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          work="$RUNNER_TEMP/quick-plots-branch"
+          if git ls-remote --exit-code --heads origin quick-plots >/dev/null; then
+            git worktree add "$work" origin/quick-plots
+            git -C "$work" switch -c quick-plots
+          else
+            git worktree add --detach "$work"
+            git -C "$work" switch --orphan quick-plots
+          fi
+          mkdir -p "$work/pr-$PR"
+          cp "$PLOT_DIR"/*.png "$work/pr-$PR/"
+          git -C "$work" add "pr-$PR"
+          git -C "$work" config user.name "github-actions[bot]"
+          git -C "$work" config user.email "github-actions[bot]@users.noreply.github.com"
+          if ! git -C "$work" diff --cached --quiet; then
+            git -C "$work" commit -m "Quick rating plots for PR #$PR"
+            pushed=false
+            for _ in 1 2 3; do
+              if git -C "$work" push origin quick-plots; then
+                pushed=true
+                break
+              fi
+              git -C "$work" pull --rebase origin quick-plots
+            done
+            if [ "$pushed" != true ]; then
+              echo "ERROR: could not push to quick-plots after 3 attempts."
+              exit 1
+            fi
+          fi
+          echo "sha=$(git -C "$work" rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          echo "has_plots=true" >> "$GITHUB_OUTPUT"
+
+      - name: Comment the plots on the PR
+        if: steps.publish.outputs.has_plots == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PLOTS_SHA: ${{ steps.publish.outputs.sha }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          marker="<!-- quick-rating-plot -->"
+          body="$RUNNER_TEMP/comment.md"
+          {
+            echo "$marker"
+            echo "### Quick rating plot preview"
+            echo
+            # manifest.csv: title,slug,imdb_id,png,fetched,episodes,seasons
+            # shellcheck disable=SC2016  # single-quoted R code, expanded by R
+            Rscript --no-init-file -e '
+              m <- readr::read_csv(Sys.getenv("PLOT_DIR") |> file.path("manifest.csv"),
+                                   show_col_types = FALSE)
+              base <- sprintf("https://raw.githubusercontent.com/%s/%s/pr-%s",
+                              Sys.getenv("REPO"), Sys.getenv("PLOTS_SHA"), Sys.getenv("PR"))
+              for (i in seq_len(nrow(m))) {
+                cat(sprintf("**%s** ([%s](https://www.imdb.com/title/%s/)): %d episodes, %d season(s)\n\n",
+                            m$title[i], m$imdb_id[i], m$imdb_id[i], m$episodes[i], m$seasons[i]))
+                cat(sprintf("![%s](%s/%s)\n\n", m$title[i], base, utils::URLencode(m$png[i])))
+              }
+            '
+            echo "_Same plotting code as the IMDb Rating Plot page. The full site preview follows from the normal PR checks._"
+          } > "$body"
+          existing="$(gh api "repos/$REPO/issues/$PR/comments" --paginate \
+            --jq "[.[] | select(.body | startswith(\"$marker\"))][0].id // empty")"
+          if [ -n "$existing" ]; then
+            gh api -X PATCH "repos/$REPO/issues/comments/$existing" -F body=@"$body" >/dev/null
+          else
+            gh pr comment "$PR" --repo "$REPO" --body-file "$body"
+          fi

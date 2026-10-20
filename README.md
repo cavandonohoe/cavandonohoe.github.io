@@ -131,6 +131,10 @@ manual is a click away on the Actions tab.
   `library()` validation and gs4 guard checks. Does **not** deploy
   (deploy is owned by `pages-branch-previews.yml` to avoid Pages
   deployment races).
+- `quick-rating-plot.yml` – when a PR adds a show to
+  `scripts/shows_manifest.R`, fetches its IMDb ratings, commits the CSV
+  to the PR, and comments the heatmap PNG inline (hosted on the
+  `quick-plots` branch) a few minutes before the full preview lands.
 
 ### Scheduled refreshes (commit to `main`)
 
@@ -238,13 +242,35 @@ above. Regenerated each time `README.Rmd` is knit.
 
 <img src="images/readme/commit-activity-cumulative-1.png" alt="Two cumulative line charts showing total commits and total lines changed (insertions + deletions) over time, split by Cavan's own commits vs. scheduled-bot commits."  />
 
-*1,065 commits from Dec 2020 to Oct 2026 (652 by me, 413 by scheduled
-bots), touching 3,111,176 lines in total.*
+*1,069 commits from Dec 2020 to Oct 2026 (654 by me, 415 by scheduled
+bots), touching 3,111,901 lines in total.*
 
 ## Setup and Local Development
 
 Local development, prerequisites, build steps, lint/test commands, and
 PR conventions all live in [CONTRIBUTING.md](CONTRIBUTING.md).
+
+### Quick IMDb Rating Plot
+
+Preview a show’s season x episode heatmap in seconds, using the same
+fetch and plotting code as the [IMDb Rating
+Plot](https://cavandonohoe.github.io/imdb_rating_plot.html) page,
+instead of waiting on CI and the full site build:
+
+``` bash
+Rscript scripts/quick_rating_plot.R tt2085059 "Black Mirror"
+```
+
+This writes `data/<slug>_ep_ratings.csv` and
+`imdb_rating_plot_files/<title>.png`, then opens the PNG. Add `--pr` to
+also register the show with the weekly scraper and the shows manifest,
+commit on a new branch off `origin/main`, and open a PR that adds it to
+the page.
+
+Without a local R setup (e.g. from a phone or a cloud coding agent),
+open a PR that only adds the show’s row to `scripts/shows_manifest.R`
+and to the scraper’s show list. `quick-rating-plot.yml` fetches the data
+on GitHub Actions and comments the plot on the PR.
 
 ### Chase Statement Parser
 
