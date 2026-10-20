@@ -309,6 +309,7 @@ update_show <- function(name, imdb_input, csv_path,
 
 shows <- tibble::tribble(
   ~name,                ~imdb_id,      ~slug,
+  "the sopranos", "tt0141842", "the_sopranos",
   "alice in borderland", "tt10795658", "alice_in_borderland",
   "game of thrones",    "tt0944947",   "game_of_thrones",
   "breaking bad",       "tt0903747",   "breaking_bad",
