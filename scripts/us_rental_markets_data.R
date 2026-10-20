@@ -67,6 +67,33 @@ zori_1yr_col <- zori_date_cols[which.min(
 
 cat("  Rows:", nrow(zori), "| Latest:", zori_latest, "\n")
 
+# Rent data-quality flags, written to their own CSV so the monthly refresh can
+# update them without touching the enriched columns in us_rental_markets.csv.
+# - zori_months_24: months of rent data in the trailing 24. Zillow's coverage
+#   roughly doubled after 2020, so many cities have only a short history.
+# - zori_seasonal_amp: peak-to-trough of rent / centered 12-month average over
+#   the trailing 36 months (NA unless all 36 are present). Resort towns swing
+#   with the season, so a summer reading annualizes into a fake yield.
+last24 <- utils::tail(sort(zori_date_cols), 24)
+last36 <- utils::tail(sort(zori_date_cols), 36)
+seasonal_amp <- function(x) {
+  if (length(x) < 36 || any(is.na(x))) {
+    return(NA_real_)
+  }
+  ratio <- x / stats::filter(x, rep(1 / 12, 12), sides = 2) - 1
+  ratio <- ratio[!is.na(ratio)]
+  round(max(ratio) - min(ratio), 4)
+}
+zori_quality <- tibble::tibble(
+  city = zori$RegionName,
+  state = zori$StateName,
+  zori_months_24 = rowSums(!is.na(as.matrix(zori[, last24]))),
+  zori_seasonal_amp = apply(as.matrix(zori[, last36]), 1, seasonal_amp)
+) %>%
+  dplyr::distinct(city, state, .keep_all = TRUE)
+readr::write_csv(zori_quality, file.path(data_dir, "us_rental_zori_quality.csv"))
+cat("  Wrote rent quality flags for", nrow(zori_quality), "cities\n")
+
 zori_slim <- zori %>%
   dplyr::select(
     region_id = RegionID, city = RegionName,

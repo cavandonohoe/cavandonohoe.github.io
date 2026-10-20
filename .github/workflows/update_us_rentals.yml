@@ -18,6 +18,6 @@ jobs:
     uses: ./.github/workflows/refresh-data.yml
     with:
       refresh_command: Rscript scripts/us_rental_markets_data.R
-      data_paths: data/us_rental_markets.csv
+      data_paths: data/us_rental_markets.csv data/us_rental_zori_quality.csv
       commit_message: Auto-update US rental markets data
       timeout_minutes: 30
