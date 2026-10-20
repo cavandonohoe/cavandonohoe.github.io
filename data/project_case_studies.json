@@ -161,8 +161,8 @@
     },
     {
       "project": "images",
-      "tracked_files": 18,
-      "commits_touching_project": 110,
+      "tracked_files": 20,
+      "commits_touching_project": 112,
       "top_extensions": [
         [
           ".jpg",
@@ -170,7 +170,7 @@
         ],
         [
           ".png",
-          6
+          8
         ],
         [
           ".svg",
