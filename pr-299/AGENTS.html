@@ -431,23 +431,46 @@ $(document).ready(function () {
 <h1>Agent notes</h1>
 <div id="make-a-rating-plot-for" class="section level2">
 <h2>“Make a rating plot for <show>”</h2>
-<p>Use the fast path. Do not wait for CI or the site build to show the
-plot.</p>
+<p>Do not wait for the site build. Pick the path that fits your
+environment.</p>
+<div id="cloud-agent-no-imdb-network-access-e.g.-chatgpt-codex"
+class="section level3">
+<h3>Cloud agent / no IMDb network access (e.g. ChatGPT, Codex)</h3>
+<p>Open a PR off <code>main</code> that adds two rows and nothing
+else:</p>
 <ol style="list-style-type: decimal">
-<li><p>Find the show’s IMDb ID (<code>tt...</code>).</p></li>
-<li><p>Run from the repo root:</p>
-<pre class="bash"><code>Rscript scripts/quick_rating_plot.R &lt;tt id or IMDb url&gt; &quot;&lt;Show Title&gt;&quot; --pr</code></pre>
-<p>Drop <code>--pr</code> for a preview only (no branch, no
-PR).</p></li>
-<li><p>Show the user the PNG it prints
-(<code>imdb_rating_plot_files/&lt;title&gt;.png</code>) right away, then
-link the PR.</p></li>
+<li><p><code>scripts/shows_manifest.R</code>: add a row to the
+<code>tribble</code> (order doesn’t matter, the function sorts it):</p>
+<pre class="r"><code>&quot;Black Mirror&quot;, &quot;black_mirror&quot;, NA, NA, NA, NA,</code></pre></li>
+<li><p><code>web_scraping/imdb_season_episode_ratings_plot.R</code>: add
+a row to the <code>shows</code> tribble with the same slug and the
+show’s IMDb id (<code>tt...</code>):</p>
+<pre class="r"><code>&quot;black mirror&quot;, &quot;tt2085059&quot;, &quot;black_mirror&quot;,</code></pre></li>
 </ol>
-<p>The script reuses <code>scripts/episode_plot.R</code> (the same
+<p>Watch the trailing commas: the last row in each tribble has none. The
+slug is lowercase snake_case of the title. Do <strong>not</strong>
+create the CSV yourself.</p>
+<p>The <code>Quick rating plot preview</code> workflow then fetches the
+ratings on GitHub Actions, commits
+<code>data/&lt;slug&gt;_ep_ratings.csv</code> to the PR, and posts the
+heatmap as a PR comment within a few minutes. Link the user to that
+comment.</p>
+</div>
+<div id="local-with-r-and-network-access" class="section level3">
+<h3>Local, with R and network access</h3>
+<pre class="bash"><code>Rscript scripts/quick_rating_plot.R &lt;tt id or IMDb url&gt; &quot;&lt;Show Title&gt;&quot; --pr</code></pre>
+<p>Show the user the PNG it prints
+(<code>imdb_rating_plot_files/&lt;title&gt;.png</code>) right away, then
+link the PR. Drop <code>--pr</code> for a preview only.</p>
+</div>
+<div id="either-way" class="section level3">
+<h3>Either way</h3>
+<p>Both paths use <code>scripts/episode_plot.R</code> (the same
 <code>create_episode_plot()</code> the page uses) and the scraper in
 <code>web_scraping/imdb_season_episode_ratings_plot.R</code>, so the
-preview matches what the page will publish. Never fork the plotting
-code; edit <code>scripts/episode_plot.R</code> instead.</p>
+preview matches what the page publishes. Never fork the plotting code;
+edit <code>scripts/episode_plot.R</code> instead.</p>
+</div>
 </div>
 </div>
 
