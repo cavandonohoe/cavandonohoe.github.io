@@ -58,14 +58,17 @@ jobs:
           let r;
           try { r = JSON.parse(fs.readFileSync('pa11y-report.json','utf8')); }
           catch (e) { console.log('## pa11y report\n\nNo JSON output.'); process.exit(0); }
+          // pa11y-ci's JSON: total = URLs scanned, passes = URLs with no
+          // issues, errors = total issue count across all URLs.
           const total = r.total ?? 0;
           const passes = r.passes ?? 0;
           const errors = r.errors ?? 0;
           console.log(`## pa11y-ci accessibility audit`);
           console.log('');
           console.log(`- URLs scanned: ${total}`);
-          console.log(`- Passing: ${passes}`);
-          console.log(`- With errors: ${errors}`);
+          console.log(`- URLs passing: ${passes}`);
+          console.log(`- URLs with errors: ${total - passes}`);
+          console.log(`- Total errors: ${errors}`);
           console.log('');
           if (r.results) {
             for (const [url, issues] of Object.entries(r.results)) {
@@ -97,7 +100,6 @@ jobs:
 
       - name: Find existing open a11y issue
         id: find_issue
-        if: ${{ steps.audit.outputs.exit_code != '0' }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -109,9 +111,9 @@ jobs:
             | head -1)
           echo "number=${existing}" >> "$GITHUB_OUTPUT"
           if [ -n "$existing" ]; then
-            echo "Updating existing issue #${existing}"
+            echo "Found open issue #${existing}"
           else
-            echo "No open issue found; will open a new one"
+            echo "No open issue found"
           fi
 
       - name: Open or update issue on a11y errors
@@ -124,3 +126,12 @@ jobs:
           labels: |
             accessibility
             automated
+
+      - name: Close open issue when the audit is clean
+        if: ${{ steps.audit.outputs.exit_code == '0' && steps.find_issue.outputs.number != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ steps.find_issue.outputs.number }}
+        run: |
+          gh issue close "$ISSUE" --reason completed \
+            --comment "pa11y-ci audit is clean on the latest build ([run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}))."
