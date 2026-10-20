@@ -91,6 +91,8 @@ Check out my website at <https://cavandonohoe.github.io>
 ### Data Science & Clinical
 
 - [SDTM with R](https://cavandonohoe.github.io/sdtm_with_r.html)
+- [Teams of AI Agents: Cracking Ciphers and Backtesting
+  Rentals](https://cavandonohoe.github.io/agent_experiments.html)
 
 ### Learn R
 
@@ -236,8 +238,8 @@ above. Regenerated each time `README.Rmd` is knit.
 
 <img src="images/readme/commit-activity-cumulative-1.png" alt="Two cumulative line charts showing total commits and total lines changed (insertions + deletions) over time, split by Cavan's own commits vs. scheduled-bot commits."  />
 
-*1,060 commits from Dec 2020 to Oct 2026 (652 by me, 408 by scheduled
-bots), touching 3,111,123 lines in total.*
+*1,065 commits from Dec 2020 to Oct 2026 (652 by me, 413 by scheduled
+bots), touching 3,111,176 lines in total.*
 
 ## Setup and Local Development
 
