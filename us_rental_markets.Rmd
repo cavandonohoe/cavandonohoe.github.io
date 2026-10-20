@@ -57,6 +57,28 @@ markets <- raw %>%
     city_state = paste0(city, ", ", state)
   )
 
+# Rent data-quality flags (see scripts/us_rental_markets_data.R). Shown as
+# warnings rather than filters: the out-of-sample test below found that
+# dropping short-history cities did not improve the ranking.
+zori_quality_path <- here::here("data", "us_rental_zori_quality.csv")
+if (file.exists(zori_quality_path)) {
+  markets <- markets %>%
+    dplyr::left_join(
+      readr::read_csv(zori_quality_path, show_col_types = FALSE),
+      by = c("city", "state")
+    )
+} else {
+  markets <- dplyr::mutate(markets, zori_months_24 = NA_real_, zori_seasonal_amp = NA_real_)
+}
+markets <- markets %>%
+  dplyr::mutate(
+    rent_history = dplyr::case_when(
+      zori_seasonal_amp > 0.12 ~ "Seasonal",
+      zori_months_24 < 24 ~ paste0("Short (", zori_months_24, " mo)"),
+      zori_months_24 >= 24 ~ "OK",
+      TRUE ~ "---"
+    )
+  )
 zhvi_date <- unique(raw$zhvi_date)[1]
 zori_date <- unique(raw$zori_date)[1]
 
@@ -77,7 +99,7 @@ tier_colors <- c(
 
 Where should you buy rental property in the US? This page ranks **`r nrow(markets)` cities** by investment metrics derived from Zillow's public home value and rent indices plus Census demand signals -- and a few unconventional ones like **Trader Joe's adjacency**, a classic real-estate proxy for walkable, amenity-rich neighborhoods with strong demographics.
 
-Jump to: [Glossary](#plain-english-glossary) · [Cash Flow Calculator](#interactive-cash-flow-calculator) · [Trader Joe's Adjacency](#the-trader-joes-adjacency-premium) · [Unicorn Leaderboard](#unicorn-leaderboard-cash-flow-trader-joes) · [TJ Map](#trader-joes-investment-map) · [Listing Activity](#listing-activity-how-fast-are-homes-moving) · [Rent vs FMR Reality Check](#rent-vs-hud-fmr-reality-check) · [Job Market](#job-market-vs-rental-yield) · [Hottest Counties](#hottest-markets-realtor-com) · [ZIP Drill-Down](#zip-level-neighborhood-drill-down) · [Leveraged Returns](#leveraged-returns-at-25-down-7.25-30yr) · [Hidden Gems](#hidden-gems-small-towns-with-big-cash-flow) · [Composite Score](#composite-investment-score)
+Jump to: [Does Yield Work?](#does-ranking-by-yield-actually-work) · [Glossary](#plain-english-glossary) · [Cash Flow Calculator](#interactive-cash-flow-calculator) · [Trader Joe's Adjacency](#the-trader-joes-adjacency-premium) · [Unicorn Leaderboard](#unicorn-leaderboard-cash-flow-trader-joes) · [TJ Map](#trader-joes-investment-map) · [Listing Activity](#listing-activity-how-fast-are-homes-moving) · [Rent vs FMR Reality Check](#rent-vs-hud-fmr-reality-check) · [Job Market](#job-market-vs-rental-yield) · [Hottest Counties](#hottest-markets-realtor-com) · [ZIP Drill-Down](#zip-level-neighborhood-drill-down) · [Leveraged Returns](#leveraged-returns-at-25-down-7.25-30yr) · [Hidden Gems](#hidden-gems-small-towns-with-big-cash-flow) · [Composite Score](#composite-investment-score)
 
 The price-to-rent ratio is the standard cash-flow benchmark:
 
@@ -605,6 +627,34 @@ cbre_cmp %>%
 
 ---
 
+## Does Ranking by Yield Actually Work?
+
+Before trusting a list like the one below, it's worth asking whether ranking by yield
+picks better investments. I tested it with a team of AI agents
+([full write-up](agent_experiments.html)). They only got Zillow data through
+**September 2023**, and their job was to find a rule that beats a plain "top 25 cities
+by gross yield" screen. Their picks were then graded on the real **2023 to 2026**
+returns (price appreciation plus half of gross rent, to cover expenses).
+
+![The agents' yield-plus-momentum rule beat the yield screen in every backtest window, then lost to it out of sample.](images/us-rental-markets/backtest_vs_reality.png)
+
+![Cumulative return from September 2023 to September 2026.](images/us-rental-markets/equity_curves.png)
+
+What that means for this page:
+
+- **The plain yield screen held up.** Both versions roughly doubled the return of the
+  median city, and the agents' cleverer rule (yield plus price momentum) didn't beat it.
+- **Short rent histories aren't a reason to skip a city.** Requiring 24 months of rent
+  data cost a few points of return, because the cities it dropped did well. The
+  table below marks them `Short` instead of dropping them.
+- **Watch out for seasonal rents.** In resort towns like Southampton and Sag Harbor, a
+  summer rent figure annualizes into a yield that isn't real. Cities whose rent swings
+  more than 12% around its 12-month average are marked `Seasonal`.
+- **Three years is a single draw**, from a period when cheap markets happened to do
+  well. Treat this as "yield wasn't wrong", not as proof it always works.
+
+---
+
 ## Top 40 Cities by Cap Rate {.tabset}
 
 ```{r top_markets}
@@ -656,6 +706,7 @@ top40 %>%
     `Rental Vac` = dplyr::if_else(is.na(rental_vacancy_pct), "---", paste0(rental_vacancy_pct, "%")),
     `Net Mig/1K` = dplyr::if_else(is.na(net_mig_rate_per1k), "---", as.character(net_mig_rate_per1k)),
     `% Renter` = dplyr::if_else(is.na(renter_pct), "---", paste0(renter_pct, "%")),
+    `Rent History` = rent_history,
     Tier = tier
   ) %>%
   DT::datatable(
