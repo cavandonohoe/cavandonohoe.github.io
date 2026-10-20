@@ -377,7 +377,8 @@ shows <- tibble::tribble(
   "barry",              "tt5348176",   "barry",
   "community",          "tt1439629",   "community",
   "futurama",           "tt0149460",   "futurama",
-  "arcane",             "tt11126994",  "arcane"
+  "arcane",             "tt11126994",  "arcane",
+  "black mirror", "tt2085059", "black_mirror"
 )
 
 # -----------------------------------------------------------------------------

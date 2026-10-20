@@ -81,7 +81,8 @@ tv_shows_manifest <- function() {
     "Vampire Diaries", "vampire_diaries", NA, NA, NA, NA,
     "Velma", "velma", NA, NA, NA, NA,
     "Westworld", "westworld", NA, NA, NA, NA,
-    "X-Men '97", "x_men_97", NA, NA, NA, NA
+    "X-Men '97", "x_men_97", NA, NA, NA, NA,
+    "Black Mirror", "black_mirror", NA, NA, NA, NA
     # "ZeroZeroZero", "zerozerozero", NA, NA, NA, NA
   )
 
