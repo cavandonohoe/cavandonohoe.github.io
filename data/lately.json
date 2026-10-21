@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-10-20T20:09:23.972888+00:00",
+  "generated_at": "2026-10-21T20:22:40.502259+00:00",
   "window_days": 30,
-  "commits": 93,
+  "commits": 98,
   "excludes_bot_commits": true,
   "active_areas": [
     {
       "name": "site",
-      "file_touches": 91
+      "file_touches": 101
     },
     {
       "name": "data",
-      "file_touches": 63
+      "file_touches": 65
     },
     {
       "name": ".github",
-      "file_touches": 61
+      "file_touches": 64
     },
     {
       "name": "scripts",
-      "file_touches": 51
+      "file_touches": 55
     },
     {
       "name": "movie-ranker",
