@@ -1,12 +1,12 @@
 {
   "year": 2026,
-  "commits": 308,
-  "pull_requests": 233,
+  "commits": 314,
+  "pull_requests": 239,
   "repositories_touched": 4,
-  "lines_added": 486775,
+  "lines_added": 492289,
   "most_used_language": "R",
   "language_lines_added": {
-    "R": 24556,
+    "R": 25314,
     "Python": 4356,
     "JavaScript": 2927,
     "TypeScript": 2369,
@@ -1072,8 +1072,18 @@
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "us_rental_markets.Rmd",
-        "lines_added": 1911,
+        "lines_added": 2165,
         "commits": [
+          {
+            "sha": "8957542c56f29d010b70ef087d95f7ddf3685ed9",
+            "date": "2026-10-20",
+            "lines_added": 202
+          },
+          {
+            "sha": "3169f8c0ed0c01bcd75c06c866d3f1721a9861ee",
+            "date": "2026-10-20",
+            "lines_added": 52
+          },
           {
             "sha": "d805747944aa01217c16c914b6c548ae74adb6c1",
             "date": "2026-10-15",
@@ -1238,61 +1248,19 @@
       },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "podcast-dashboard/app.R",
-        "lines_added": 551,
+        "path": "README.Rmd",
+        "lines_added": 576,
         "commits": [
           {
-            "sha": "68c5dce6a5a5f28ef5f1a376216254c1d95df46b",
-            "date": "2026-10-14",
-            "lines_added": 40
-          },
-          {
-            "sha": "f7332d197ed6c5ae99acbf89d903a039863bb588",
-            "date": "2026-10-12",
+            "sha": "d5c0e5b9a74869fc311d7635f8ac2ba49057a837",
+            "date": "2026-10-20",
             "lines_added": 26
           },
           {
-            "sha": "d4ded17d22fe59cba1ef59018068aadcacb5236c",
-            "date": "2026-09-29",
-            "lines_added": 11
+            "sha": "1919f963f58a3e97cf90bd4b16e8155812175f73",
+            "date": "2026-10-20",
+            "lines_added": 1
           },
-          {
-            "sha": "7e4dc30f285c97f7368dbe9da0909e3434198c2c",
-            "date": "2026-09-29",
-            "lines_added": 21
-          },
-          {
-            "sha": "dd3542198351c08b4432127f64063ede00c6b5a7",
-            "date": "2026-09-28",
-            "lines_added": 41
-          },
-          {
-            "sha": "89ac6003f931f5b99ac90305830ebce129f90f4c",
-            "date": "2026-09-28",
-            "lines_added": 58
-          },
-          {
-            "sha": "d9e22ce3640dd586344463944657be9066e24b61",
-            "date": "2026-09-23",
-            "lines_added": 63
-          },
-          {
-            "sha": "6387d294a1f19fb51f80231e72da4b94e315d2b4",
-            "date": "2026-09-23",
-            "lines_added": 6
-          },
-          {
-            "sha": "27aba3505536b6a277f46b000dafd72f5ee2d59f",
-            "date": "2026-09-23",
-            "lines_added": 285
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "README.Rmd",
-        "lines_added": 549,
-        "commits": [
           {
             "sha": "e7f81afece7a3ec67b356dee1c6208097ac5d65d",
             "date": "2026-10-19",
@@ -1382,6 +1350,58 @@
             "sha": "0c1a8a120d3bbac603318fb015b958a53ea6d734",
             "date": "2026-01-02",
             "lines_added": 21
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "podcast-dashboard/app.R",
+        "lines_added": 551,
+        "commits": [
+          {
+            "sha": "68c5dce6a5a5f28ef5f1a376216254c1d95df46b",
+            "date": "2026-10-14",
+            "lines_added": 40
+          },
+          {
+            "sha": "f7332d197ed6c5ae99acbf89d903a039863bb588",
+            "date": "2026-10-12",
+            "lines_added": 26
+          },
+          {
+            "sha": "d4ded17d22fe59cba1ef59018068aadcacb5236c",
+            "date": "2026-09-29",
+            "lines_added": 11
+          },
+          {
+            "sha": "7e4dc30f285c97f7368dbe9da0909e3434198c2c",
+            "date": "2026-09-29",
+            "lines_added": 21
+          },
+          {
+            "sha": "dd3542198351c08b4432127f64063ede00c6b5a7",
+            "date": "2026-09-28",
+            "lines_added": 41
+          },
+          {
+            "sha": "89ac6003f931f5b99ac90305830ebce129f90f4c",
+            "date": "2026-09-28",
+            "lines_added": 58
+          },
+          {
+            "sha": "d9e22ce3640dd586344463944657be9066e24b61",
+            "date": "2026-09-23",
+            "lines_added": 63
+          },
+          {
+            "sha": "6387d294a1f19fb51f80231e72da4b94e315d2b4",
+            "date": "2026-09-23",
+            "lines_added": 6
+          },
+          {
+            "sha": "27aba3505536b6a277f46b000dafd72f5ee2d59f",
+            "date": "2026-09-23",
+            "lines_added": 285
           }
         ]
       },
@@ -1794,8 +1814,13 @@
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "imdb_rating_plot.Rmd",
-        "lines_added": 336,
+        "lines_added": 339,
         "commits": [
+          {
+            "sha": "d5c0e5b9a74869fc311d7635f8ac2ba49057a837",
+            "date": "2026-10-20",
+            "lines_added": 3
+          },
           {
             "sha": "9bbc675db7f567997ce17044b80abcebf37d3fe5",
             "date": "2026-09-16",
@@ -2191,6 +2216,28 @@
       },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "scripts/us_rental_markets_data.R",
+        "lines_added": 235,
+        "commits": [
+          {
+            "sha": "3169f8c0ed0c01bcd75c06c866d3f1721a9861ee",
+            "date": "2026-10-20",
+            "lines_added": 27
+          },
+          {
+            "sha": "5f8ce3f379044d84cd29c4adfd0e7295a974f120",
+            "date": "2026-05-26",
+            "lines_added": 40
+          },
+          {
+            "sha": "3013161e332eba91f6d9f53c09ed76e705d7233b",
+            "date": "2026-03-29",
+            "lines_added": 168
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "scripts/update_movie_ranker_personal.R",
         "lines_added": 228,
         "commits": [
@@ -2254,23 +2301,6 @@
             "sha": "b0d3d3b2ad831ad336af8b731d882dba1998b137",
             "date": "2026-09-28",
             "lines_added": 182
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "scripts/us_rental_markets_data.R",
-        "lines_added": 208,
-        "commits": [
-          {
-            "sha": "5f8ce3f379044d84cd29c4adfd0e7295a974f120",
-            "date": "2026-05-26",
-            "lines_added": 40
-          },
-          {
-            "sha": "3013161e332eba91f6d9f53c09ed76e705d7233b",
-            "date": "2026-03-29",
-            "lines_added": 168
           }
         ]
       },
@@ -2801,6 +2831,30 @@
       },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "scripts/quick_rating_plot.R",
+        "lines_added": 124,
+        "commits": [
+          {
+            "sha": "d5c0e5b9a74869fc311d7635f8ac2ba49057a837",
+            "date": "2026-10-20",
+            "lines_added": 124
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "agent_experiments.Rmd",
+        "lines_added": 118,
+        "commits": [
+          {
+            "sha": "1919f963f58a3e97cf90bd4b16e8155812175f73",
+            "date": "2026-10-20",
+            "lines_added": 118
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "tests/testthat/test-podcast-refresh.R",
         "lines_added": 117,
         "commits": [
@@ -2864,6 +2918,18 @@
             "sha": "d805747944aa01217c16c914b6c548ae74adb6c1",
             "date": "2026-10-15",
             "lines_added": 108
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "scripts/quick_plot_new_shows.R",
+        "lines_added": 105,
+        "commits": [
+          {
+            "sha": "d5c0e5b9a74869fc311d7635f8ac2ba49057a837",
+            "date": "2026-10-20",
+            "lines_added": 105
           }
         ]
       },
@@ -2935,6 +3001,18 @@
             "sha": "2083bd0e934a7395701b2364534f10ff99ce00a2",
             "date": "2026-10-04",
             "lines_added": 38
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "scripts/episode_plot.R",
+        "lines_added": 100,
+        "commits": [
+          {
+            "sha": "d5c0e5b9a74869fc311d7635f8ac2ba49057a837",
+            "date": "2026-10-20",
+            "lines_added": 100
           }
         ]
       },
@@ -4069,13 +4147,13 @@
   },
   "excluded_language_lines_added": {
     "JavaScript": 54461,
-    "HTML": 25950,
+    "HTML": 26008,
     "R": 1438
   },
   "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, dependency, build, docs, minified, and raw HTML input files are excluded.",
   "most_active_month": "October",
   "longest_streak_days": 16,
-  "active_days": 80,
+  "active_days": 81,
   "monthly_commits": [
     11,
     27,
@@ -4086,7 +4164,7 @@
     36,
     15,
     23,
-    88,
+    94,
     0,
     0
   ],
@@ -4490,10 +4568,15 @@
       "date": "2026-10-19",
       "commits": 3,
       "lines_added": 256
+    },
+    {
+      "date": "2026-10-20",
+      "commits": 6,
+      "lines_added": 5514
     }
   ],
   "biggest_project": "cavandonohoe.github.io",
-  "biggest_project_commits": 251,
+  "biggest_project_commits": 257,
   "repositories": [
     "cavandonohoe/cavandonohoe",
     "cavandonohoe/cavandonohoe.github.io",
@@ -4501,12 +4584,12 @@
     "cavandonohoe/rent-vs-buy"
   ],
   "repository_commits": {
-    "cavandonohoe/cavandonohoe.github.io": 251,
+    "cavandonohoe/cavandonohoe.github.io": 257,
     "cavandonohoe/rent-vs-buy": 29,
     "cavandonohoe/confederate_statues": 18,
     "cavandonohoe/cavandonohoe": 10
   },
   "scope": "Author-matched commits on the default branch of public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bot-authored or bot-committed commits, deploy commits, and other authors are excluded. Moved files count only changed lines. Language totals use .gitattributes Linguist overrides plus built-in generated, vendored, dependency, build, docs, minified, and raw HTML input patterns. Overall lines added still include all files. PRs count public pull requests the user authored and merged into their own repositories during the year, when available.",
   "is_partial_year": true,
-  "generated_at": "2026-10-19T15:50:15.341469+00:00"
+  "generated_at": "2026-10-21T14:05:01.778875+00:00"
 }
