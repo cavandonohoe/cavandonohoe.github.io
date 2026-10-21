@@ -14,11 +14,17 @@
 # "Your Episodes" in the app, and it is capped at offset 200, so it only ever
 # appends to the Account Data export membership and never removes episodes.
 #
+# Played state: with the `user-read-playback-position` scope, each episode
+# carries resume_point.fully_played. It is stored as `fully_played`, and
+# `finished_at` records the first refresh that saw it completed. The dashboard
+# hides fully played episodes; the rows stay in the JSON. Without the scope
+# the field is absent, `fully_played` stays null, and nothing is hidden.
+#
 # Output shape (must match what app.R reads):
 #   { "meta": { generated_at, export_n_episodes, source, n_episodes,
 #               api_refreshed_at, api_saved_count, ... },
 #     "episodes": [ { id, added_at, show, publisher, name, dur_min, release,
-#                     url, desc }, ... ] }
+#                     url, desc, fully_played, finished_at }, ... ] }
 
 suppressWarnings(suppressMessages({
   ok <- requireNamespace("httr2", quietly = TRUE) &&
@@ -114,6 +120,9 @@ normalize_episode <- function(ep, added_at = NA_character_) {
   ep <- ep %||% list()
   show <- ep$show %||% list()
   dur_ms <- ep$duration_ms %||% NA_real_
+  # resume_point is only returned when the token has the
+  # user-read-playback-position scope; NA means "unknown", not "unplayed".
+  fully_played <- (ep$resume_point %||% list())$fully_played %||% NA
   list(
     id = ep$id %||% NA_character_,
     added_at = added_at,
@@ -123,13 +132,24 @@ normalize_episode <- function(ep, added_at = NA_character_) {
     dur_min = if (is.na(dur_ms)) NA_real_ else round(dur_ms / 60000),
     release = ep$release_date %||% NA_character_,
     url = (ep$external_urls %||% list())$spotify %||% NA_character_,
-    desc = ep$description %||% NA_character_
+    desc = ep$description %||% NA_character_,
+    fully_played = as.logical(fully_played)
   )
 }
 
 api_episodes <- lapply(items, function(it) {
   normalize_episode(it$episode, substr(it$added_at %||% NA_character_, 1, 10))
 })
+
+api_played <- vapply(api_episodes, function(e) e$fully_played, logical(1))
+if (all(is.na(api_played))) {
+  cat(paste0(
+    "::warning title=Spotify played state unavailable::",
+    "No saved episode returned resume_point, so finished episodes cannot be ",
+    "hidden. Re-mint SPOTIFY_REFRESH_TOKEN with scripts/get_spotify_refresh_token.R ",
+    "(needs the user-read-playback-position scope).\n"
+  ))
+}
 
 # Episode metadata by ID (GET /v1/episodes, 50 IDs per call). Used to backfill
 # export-only episodes the capped saved-episodes endpoint no longer returns.
@@ -165,6 +185,22 @@ fetch_episode_metadata <- function(ids) {
 # describes the episode, not when it was saved, so the save date stays unknown.
 backfill_fields <- c("publisher", "dur_min", "release", "desc")
 
+# `finished_at` is the first refresh date that saw the episode fully played.
+# It is kept while the episode stays completed and cleared if Spotify later
+# reports it as not fully played (e.g. progress reset). Episodes with unknown
+# played state (null) are left alone.
+stamp_finished <- function(episodes, today) {
+  lapply(episodes, function(e) {
+    played <- e$fully_played
+    if (isTRUE(played) && is.null(e$finished_at)) {
+      e$finished_at <- format(today)
+    } else if (isFALSE(played) && !is.null(e$finished_at)) {
+      e$finished_at <- NULL
+    }
+    e
+  })
+}
+
 merge_saved_episodes <- function(existing, api_episodes, today = Sys.Date(),
                                  backfill = list()) {
   episodes <- existing$episodes %||% list()
@@ -179,7 +215,8 @@ merge_saved_episodes <- function(existing, api_episodes, today = Sys.Date(),
     j <- match(existing_ids[[i]], api_ids)
     if (!is.na(j)) {
       fresh <- api_episodes[[j]]
-      for (field in c("added_at", "publisher", "dur_min", "release", "url", "desc")) {
+      for (field in c("added_at", "publisher", "dur_min", "release", "url", "desc",
+                      "fully_played")) {
         value <- fresh[[field]]
         if (!is.null(value) && length(value) && !all(is.na(value))) {
           episodes[[i]][[field]] <- value
@@ -203,6 +240,8 @@ merge_saved_episodes <- function(existing, api_episodes, today = Sys.Date(),
   # the complete library.
   new_idx <- which(!is.na(api_ids) & nzchar(api_ids) & !(api_ids %in% existing_ids))
   if (length(new_idx)) episodes <- c(episodes, api_episodes[new_idx])
+
+  episodes <- stamp_finished(episodes, today)
 
   as_json <- function(x) jsonlite::toJSON(x, auto_unbox = TRUE, na = "null", null = "null")
   changed <- !identical(as_json(episodes), as_json(existing$episodes %||% list()))
@@ -256,10 +295,12 @@ if (merged$changed) writeLines(json, out_path)
 
 cat(sprintf(
   paste0(
-    "Refreshed %d API saves; backfilled metadata lookup for %d of %d episodes; ",
+    "Refreshed %d API saves (%d fully played); ",
+    "backfilled metadata lookup for %d of %d episodes; ",
     "library now contains %d episodes (%d newly appended)%s\n"
   ),
-  length(api_episodes), length(backfill), length(backfill_ids),
+  length(api_episodes), sum(api_played, na.rm = TRUE),
+  length(backfill), length(backfill_ids),
   length(payload$episodes), merged$n_new,
   if (merged$changed) "" else "; no changes, JSON left untouched"
 ))

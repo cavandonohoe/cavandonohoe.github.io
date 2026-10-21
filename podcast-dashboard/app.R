@@ -29,6 +29,15 @@ episodes <- raw$episodes |>
     dur_hr = dur_min / 60
   )
 
+# Episodes Spotify reports as fully played (resume_point.fully_played, stored by
+# the daily refresh) are dropped from the dashboard. Rows stay in the JSON; an
+# unknown played state (null, e.g. export-only saves) is kept.
+if (!"fully_played" %in% names(episodes)) episodes$fully_played <- NA
+n_finished <- sum(episodes$fully_played %in% TRUE)
+episodes <- episodes |>
+  dplyr::filter(!(fully_played %in% TRUE))
+n_shown <- nrow(episodes)
+
 history <- jsonlite::fromJSON("data/listening_history.json")
 history_meta <- history$meta
 # `events` is numeric (double) here to match how jsonlite deserializes the
@@ -136,10 +145,11 @@ ui <- bslib::page_sidebar(
       sprintf(
         paste(
           "Library export imported: %s \u00b7 Latest API refresh with new data: %s",
-          "\u00b7 %s episodes (%s from export, %s added by API)"
+          "\u00b7 %s episodes (%s from export, %s added by API)",
+          "\u00b7 %s finished hidden"
         ),
         export_date, api_refresh_date, scales::comma(n_total),
-        scales::comma(n_export), scales::comma(n_api_added)
+        scales::comma(n_export), scales::comma(n_api_added), scales::comma(n_finished)
       )
     )
   ),
@@ -167,13 +177,21 @@ ui <- bslib::page_sidebar(
       "background:#1e1e1e; border:1px solid #2a2a2a; color:#c9c9c9;",
       "font-size:0.85rem;"
     ),
-    tags$strong(sprintf("Showing %s episodes. ", scales::comma(n_total))),
+    tags$strong(sprintf("Showing %s episodes. ", scales::comma(n_shown))),
+    if (n_finished > 0) {
+      sprintf(
+        "%s finished episodes (fully played per Spotify) are hidden. ",
+        scales::comma(n_finished)
+      )
+    },
     sprintf(
       paste0(
-        "%s come from the Account Data export (YourLibrary.json, imported %s); ",
+        "The library has %s: %s come from the Account Data export ",
+        "(YourLibrary.json, imported %s); ",
         "%s were added later by the daily Spotify API refresh (latest change %s). "
       ),
-      scales::comma(n_export), export_date, scales::comma(n_api_added), api_refresh_date
+      scales::comma(n_total), scales::comma(n_export), export_date,
+      scales::comma(n_api_added), api_refresh_date
     ),
     "The API refresh only adds saves, so an episode removed from the library stays ",
     "listed until the next export is imported. Titles, shows and links cover every episode. ",

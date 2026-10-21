@@ -17,6 +17,14 @@ not reflected until the next export is imported. The dashboard footer shows
 both the export import date and the latest API refresh that changed the data.
 The API refresh only rewrites the file (and redeploys) when episodes change.
 
+Finished episodes are dropped from the dashboard. The refresh stores Spotify's
+`resume_point.fully_played` as `fully_played` (plus `finished_at`, the first
+refresh that saw it completed), and `app.R` hides rows where it is `true`. The
+rows stay in the JSON. This needs the `user-read-playback-position` scope on
+the refresh token (see `scripts/get_spotify_refresh_token.R`); without it the
+field stays null and nothing is hidden. Only episodes the capped API still
+returns get a played state, so older export-only saves are never hidden.
+
 Unknown lengths and saved dates remain null and are included in filters by
 default. Disable "Include unknown lengths / saved dates" for complete metadata
 only. Duration statistics use known values; the saved-date chart excludes unknown

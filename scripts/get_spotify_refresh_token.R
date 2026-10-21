@@ -4,7 +4,8 @@
 # ONE-TIME local helper to mint a long-lived Spotify refresh token for the
 # scheduled `update_saved_episodes` workflow. The saved-episodes endpoint
 # (current_user_saved_episodes) needs a user-authorized token with the
-# `user-library-read` scope, and access tokens expire hourly, so CI must
+# `user-library-read` scope (plus `user-read-playback-position` for each
+# episode's played/completed state), and access tokens expire hourly, so CI must
 # exchange a stored refresh token for a fresh access token on every run.
 #
 # You only run this once (or whenever you revoke the app). It walks the
@@ -18,8 +19,12 @@
 #   - Create an app, note its Client ID / Client Secret.
 #   - Add a Redirect URI of exactly http://127.0.0.1:8888/callback
 #
-# Scope requested: user-library-read (saved episodes). Nothing else is read,
-# so no other scope is requested.
+# Scopes requested:
+#   - user-library-read: saved episodes.
+#   - user-read-playback-position: each episode's resume_point (fully_played),
+#     so finished episodes can be dropped from the dashboard.
+# Nothing else is read, so no other scope is requested. Adding a scope means
+# re-running this script and replacing the SPOTIFY_REFRESH_TOKEN secret.
 #
 # Usage:
 #   SPOTIFY_CLIENT_ID=xxx SPOTIFY_CLIENT_SECRET=yyy \
@@ -46,7 +51,7 @@ auth_url <- httr2::url_modify(
     client_id = client_id,
     response_type = "code",
     redirect_uri = redirect_uri,
-    scope = "user-library-read",
+    scope = "user-library-read user-read-playback-position",
     show_dialog = "true"
   )
 )

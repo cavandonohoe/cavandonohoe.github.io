@@ -30,7 +30,7 @@ testthat::test_that("token helper reads a redirected URL under Rscript", {
 
 load_merge_saved_episodes <- function() {
   expressions <- as.list(parse("../../scripts/update_saved_episodes.R"))
-  wanted <- c("%||%", "backfill_fields", "merge_saved_episodes")
+  wanted <- c("%||%", "backfill_fields", "stamp_finished", "merge_saved_episodes")
   defs <- Filter(function(x) {
     is.call(x) && identical(x[[1]], as.name("<-")) && as.character(x[[2]]) %in% wanted
   }, expressions)
@@ -113,4 +113,65 @@ testthat::test_that("an empty backfill leaves an unchanged library untouched", {
   result <- merge_saved_episodes(existing, list(), backfill = list())
   testthat::expect_false(result$changed)
   testthat::expect_identical(result$payload$meta, existing$meta)
+})
+
+testthat::test_that("a fully played episode is flagged and stamped with finished_at", {
+  merge_saved_episodes <- load_merge_saved_episodes()
+  existing <- list(
+    meta = list(n_episodes = 2),
+    episodes = list(
+      list(id = "a", added_at = "2026-10-01", name = "A"),
+      list(id = "b", added_at = "2026-10-02", name = "B")
+    )
+  )
+  api <- list(
+    list(id = "a", added_at = "2026-10-01", name = "A", fully_played = TRUE),
+    list(id = "b", added_at = "2026-10-02", name = "B", fully_played = FALSE),
+    list(id = "c", added_at = "2026-10-09", name = "C", fully_played = TRUE)
+  )
+  result <- merge_saved_episodes(existing, api, today = as.Date("2026-10-21"))
+  eps <- result$payload$episodes
+  testthat::expect_true(result$changed)
+  testthat::expect_true(eps[[1]]$fully_played)
+  testthat::expect_equal(eps[[1]]$finished_at, "2026-10-21")
+  testthat::expect_false(eps[[2]]$fully_played)
+  testthat::expect_null(eps[[2]]$finished_at)
+  # Newly appended saves get stamped too.
+  testthat::expect_equal(eps[[3]]$finished_at, "2026-10-21")
+})
+
+testthat::test_that("finished_at keeps the first completion date and clears on reset", {
+  merge_saved_episodes <- load_merge_saved_episodes()
+  existing <- list(
+    meta = list(n_episodes = 2),
+    episodes = list(
+      list(id = "a", name = "A", fully_played = TRUE, finished_at = "2026-10-15"),
+      list(id = "b", name = "B", fully_played = TRUE, finished_at = "2026-10-15")
+    )
+  )
+  api <- list(
+    list(id = "a", name = "A", fully_played = TRUE),
+    list(id = "b", name = "B", fully_played = FALSE)
+  )
+  result <- merge_saved_episodes(existing, api, today = as.Date("2026-10-21"))
+  eps <- result$payload$episodes
+  testthat::expect_equal(eps[[1]]$finished_at, "2026-10-15")
+  testthat::expect_false(eps[[2]]$fully_played)
+  testthat::expect_null(eps[[2]]$finished_at)
+})
+
+testthat::test_that("unknown played state (no scope) changes nothing", {
+  merge_saved_episodes <- load_merge_saved_episodes()
+  existing <- list(
+    meta = list(n_episodes = 1, api_refreshed_at = "2026-10-01"),
+    episodes = list(
+      list(id = "a", added_at = "2026-10-01", name = "A", fully_played = TRUE,
+           finished_at = "2026-10-15")
+    )
+  )
+  api <- list(list(id = "a", added_at = "2026-10-01", name = "A", fully_played = NA))
+  result <- merge_saved_episodes(existing, api, today = as.Date("2026-10-21"))
+  testthat::expect_false(result$changed)
+  testthat::expect_true(result$payload$episodes[[1]]$fully_played)
+  testthat::expect_equal(result$payload$episodes[[1]]$finished_at, "2026-10-15")
 })
