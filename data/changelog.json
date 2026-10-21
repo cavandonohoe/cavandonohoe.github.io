@@ -1,11 +1,41 @@
 {
-  "generated_at": "2026-10-20T20:05:54.864547+00:00",
+  "generated_at": "2026-10-21T20:19:31.810687+00:00",
   "events": [
+    {
+      "date": "2026-10-20",
+      "type": "merged_pr",
+      "title": "Use relative paths for header icons and footer CSS",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/298"
+    },
+    {
+      "date": "2026-10-20",
+      "type": "merged_pr",
+      "title": "US Rental Markets: out-of-sample test and rent-history flags",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/297"
+    },
     {
       "date": "2026-10-20",
       "type": "merged_pr",
       "title": "Fix pa11y accessibility errors on US rental markets page",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/295"
+    },
+    {
+      "date": "2026-10-20",
+      "type": "merged_pr",
+      "title": "Fetch quick-plots branch before creating the publishing worktree",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/301"
+    },
+    {
+      "date": "2026-10-20",
+      "type": "merged_pr",
+      "title": "Add quick IMDb rating plot script",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/299"
+    },
+    {
+      "date": "2026-10-20",
+      "type": "merged_pr",
+      "title": "Add Teams of AI Agents project page",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/296"
     },
     {
       "date": "2026-10-19",
@@ -628,6 +658,16 @@
   ],
   "daily_summaries": [
     {
+      "date": "2026-10-21",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "5 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/ba5aa94f3c675fa6166e88867db6c74a62656376"
+        }
+      ]
+    },
+    {
       "date": "2026-10-20",
       "items": [
         {
@@ -636,9 +676,13 @@
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/54847edf4ee0783490199edf70de2d48436cce15"
         },
         {
-          "emoji": "\ud83d\uddfa\ufe0f",
-          "text": "Data-viz projects polished",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/295"
+          "emoji": "\ud83d\udcbb",
+          "text": "6 PRs merged"
+        },
+        {
+          "emoji": "\ud83c\udfac",
+          "text": "Movie & TV projects updated",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/299"
         }
       ]
     },
@@ -826,20 +870,6 @@
         {
           "emoji": "\ud83d\udcbb",
           "text": "3 PRs merged"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-07",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "5 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/654ecc5627a5b39acbf8f81803ed84967b94096e"
-        },
-        {
-          "emoji": "\ud83d\udcbb",
-          "text": "4 PRs merged"
         }
       ]
     }
