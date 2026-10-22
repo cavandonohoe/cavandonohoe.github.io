@@ -1,6 +1,12 @@
 {
-  "generated_at": "2026-10-21T20:19:31.810687+00:00",
+  "generated_at": "2026-10-22T20:15:44.493766+00:00",
   "events": [
+    {
+      "date": "2026-10-22",
+      "type": "merged_pr",
+      "title": "Track podcast removals and union saved-episode paging",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/304"
+    },
     {
       "date": "2026-10-20",
       "type": "merged_pr",
@@ -658,6 +664,21 @@
   ],
   "daily_summaries": [
     {
+      "date": "2026-10-22",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "6 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/73be57fdb3cf8c9350f3d608147a67d94f16e4a5"
+        },
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "Podcast + Spotify experience improved",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/304"
+        }
+      ]
+    },
+    {
       "date": "2026-10-21",
       "items": [
         {
@@ -856,20 +877,6 @@
         {
           "emoji": "\ud83d\udcbb",
           "text": "2 PRs merged"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-08",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "6 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/6f1944f521224622d15590362073ea37fa4ca227"
-        },
-        {
-          "emoji": "\ud83d\udcbb",
-          "text": "3 PRs merged"
         }
       ]
     }
