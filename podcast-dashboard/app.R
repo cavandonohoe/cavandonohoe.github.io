@@ -29,6 +29,12 @@ removed <- if ("removed_at" %in% names(raw$episodes)) {
 n_removed <- sum(removed)
 n_total <- n_all - n_removed
 export_date <- meta$generated_at
+# Older files predate export_as_of; show the import date alone for those.
+export_label <- if (is.null(meta$export_as_of)) {
+  export_date
+} else {
+  sprintf("%s (snapshot %s)", export_date, meta$export_as_of)
+}
 api_refresh_date <- if (is.null(meta$api_refreshed_at)) "never" else meta$api_refreshed_at
 episodes <- raw$episodes[!removed, , drop = FALSE] |>
   dplyr::mutate(
@@ -147,7 +153,7 @@ ui <- bslib::page_sidebar(
           "Library export imported: %s \u00b7 Latest API refresh with new data: %s",
           "\u00b7 %s episodes (%s from export, %s added by API, %s left the library)"
         ),
-        export_date, api_refresh_date, scales::comma(n_total),
+        export_label, api_refresh_date, scales::comma(n_total),
         scales::comma(n_export), scales::comma(n_api_added), scales::comma(n_removed)
       )
     )

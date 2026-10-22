@@ -30,11 +30,17 @@ dates. Listening history matches 103 current-library episodes.
 To refresh from an Account Data ZIP, then rebuild listening aggregates:
 
 ```sh
-python3 podcast-dashboard/tools/import_library.py "/path/to/my_spotify_data.zip"
+python3 podcast-dashboard/tools/import_library.py "/path/to/my_spotify_data.zip" --as-of 2026-10-25
 python3 podcast-dashboard/tools/import_history.py "/path/to/Spotify Extended Streaming History"
 ```
 
-The import date is not a saved date or an assertion about export generation time.
+The export is the source of truth as of `--as-of`, the day Spotify generated
+it (check the "your data is ready" email; without the flag it falls back to
+the `YourLibrary.json` timestamp inside the ZIP). API evidence from after that
+day still wins: episodes the refresh hid after `--as-of` (finished or unsaved
+since) stay hidden, and episodes saved after it stay listed. Everything else
+follows the export. `meta.export_as_of` records the snapshot date and
+`meta.generated_at` the import date; neither is a saved date.
 Only episode fields are imported; unrelated account data stays out of the repo.
 No live credentials are used at runtime.
 
