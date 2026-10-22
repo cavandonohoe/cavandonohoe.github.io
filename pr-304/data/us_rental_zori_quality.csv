@@ -1,0 +1,4413 @@
+city,state,zori_months_24,zori_seasonal_amp
+New York,NY,24,0.0413
+Los Angeles,CA,24,0.0183
+Houston,TX,24,0.0128
+Chicago,IL,24,0.0325
+San Antonio,TX,24,0.0222
+Philadelphia,PA,24,0.0134
+Phoenix,AZ,24,0.0191
+Las Vegas,NV,24,0.0193
+San Diego,CA,24,0.0158
+Dallas,TX,24,0.0218
+Austin,TX,24,0.0265
+San Jose,CA,24,0.0295
+Jacksonville,FL,24,0.0173
+Charlotte,NC,24,0.0215
+Indianapolis,IN,24,0.0138
+Fort Worth,TX,24,0.023
+Orlando,FL,24,0.0257
+San Francisco,CA,24,0.0408
+Tucson,AZ,24,0.0176
+Columbus,OH,24,0.0267
+Miami,FL,24,0.012
+Louisville,KY,24,0.0178
+El Paso,TX,24,0.0164
+Denver,CO,24,0.0361
+Seattle,WA,24,0.0284
+Portland,OR,24,0.0231
+Nashville,TN,24,0.026
+Washington,DC,24,0.0241
+Sacramento,CA,24,0.0109
+Boston,MA,24,0.0336
+Detroit,MI,24,0.0187
+Pittsburgh,PA,24,0.0153
+Albuquerque,NM,24,0.0165
+Memphis,TN,24,0.0162
+Fresno,CA,24,0.0143
+Baltimore,MD,24,0.013
+Omaha,NE,24,0.0186
+Atlanta,GA,24,0.0193
+Milwaukee,WI,24,0.0142
+Oklahoma City,OK,24,0.0182
+Raleigh,NC,24,0.0222
+Mesa,AZ,24,0.0194
+Colorado Springs,CO,24,0.0295
+Buffalo,NY,24,0.0138
+Kansas City,MO,24,0.0201
+Rochester,NY,24,0.0205
+Cincinnati,OH,24,0.0183
+Long Beach,CA,24,0.016
+Virginia Beach,VA,24,0.0346
+Bakersfield,CA,24,0.0204
+Tampa,FL,24,0.0184
+Oakland,CA,24,0.0229
+Tulsa,OK,24,0.0196
+Minneapolis,MN,24,0.0207
+Aurora,CO,24,0.0316
+Spring,TX,24,0.0298
+Honolulu,HI,24,0.0161
+Knoxville,TN,24,0.0201
+Arlington,TX,24,0.0144
+Baton Rouge,LA,24,0.0244
+New Orleans,LA,24,0.0162
+Wichita,KS,24,0.0163
+Cleveland,OH,24,0.0105
+Riverside,CA,24,0.0127
+Anaheim,CA,24,0.0173
+Vancouver,WA,24,0.0199
+Stockton,CA,24,0.0268
+Marietta,GA,24,0.0287
+Columbia,SC,24,0.0183
+Greensboro,NC,24,0.0197
+Fort Wayne,IN,24,0.0198
+Lexington,KY,24,0.0229
+Naples,FL,24,0.0395
+Henderson,NV,24,0.0272
+Corpus Christi,TX,24,0.0195
+Saint Louis,MO,24,0.022
+Santa Ana,CA,24,0.0225
+Durham,NC,24,0.033
+Silver Spring,MD,24,0.0202
+Saint Paul,MN,24,0.0138
+Spokane,WA,24,0.0236
+Newark,NJ,24,0.0166
+Reno,NV,24,0.0407
+Saint Petersburg,FL,24,0.028
+Irvine,CA,24,0.0379
+Lincoln,NE,24,0.0206
+Toledo,OH,24,0.0149
+Chandler,AZ,24,0.0246
+Tallahassee,FL,24,0.0244
+Jersey City,NJ,24,0.0212
+Plano,TX,24,0.0252
+Lubbock,TX,24,0.0208
+Modesto,CA,24,0.0167
+Katy,TX,24,0.0169
+Lawrenceville,GA,24,0.0212
+Chula Vista,CA,24,0.0239
+Boise,ID,24,0.0405
+Richmond,VA,24,0.0171
+Gilbert,AZ,24,0.0248
+Winston-Salem,NC,24,0.0295
+Madison,WI,24,0.0172
+Laredo,TX,24,NA
+North Las Vegas,NV,24,0.0354
+San Bernardino,CA,24,0.0184
+Lakeland,FL,24,0.0135
+Fort Myers,FL,24,0.0235
+Irving,TX,24,0.0312
+Mobile,AL,24,0.0269
+Glendale,AZ,24,0.0116
+Pensacola,FL,24,0.0203
+Anchorage,AK,24,0.0225
+Chesapeake,VA,24,0.0282
+Sarasota,FL,24,0.0244
+Fayetteville,NC,24,0.0155
+Birmingham,AL,24,0.015
+Hialeah,FL,24,0.0293
+Garland,TX,24,0.0148
+Kissimmee,FL,24,0.0297
+Arlington,VA,24,0.0297
+Scottsdale,AZ,24,0.0246
+Norfolk,VA,24,0.021
+Ocala,FL,24,0.0216
+Santa Clarita,CA,24,0.0225
+Fremont,CA,24,0.0358
+Fontana,CA,24,0.0225
+Springfield,MO,24,0.0256
+Greenville,SC,24,0.0252
+Boca Raton,FL,24,0.0145
+Grand Rapids,MI,24,0.0216
+Bradenton,FL,24,0.0273
+Little Rock,AR,24,0.0223
+Gainesville,FL,24,0.0156
+Port Saint Lucie,FL,24,0.0303
+Tacoma,WA,24,0.0187
+Woodbridge,VA,24,0.0318
+Amarillo,TX,24,0.0201
+Des Moines,IA,24,0.0293
+Savannah,GA,24,0.0258
+Oxnard,CA,24,0.0418
+Santa Rosa,CA,24,0.0199
+Huntsville,AL,24,0.0206
+Akron,OH,24,0.0343
+Wilmington,NC,24,0.033
+Brownsville,TX,24,0.0272
+Yonkers,NY,24,0.0411
+Eugene,OR,24,0.0245
+Corona,CA,24,0.0301
+Dayton,OH,24,0.0093
+Syracuse,NY,24,0.0209
+Montgomery,AL,24,0.0182
+Alexandria,VA,24,0.0268
+Oceanside,CA,24,0.025
+Trenton,NJ,24,0.0211
+Moreno Valley,CA,24,0.021
+Shreveport,LA,24,0.0189
+Wilmington,DE,24,0.0298
+Murfreesboro,TN,24,0.0217
+West Palm Beach,FL,24,0.0285
+Worcester,MA,24,0.0247
+Fort Collins,CO,24,0.0579
+Salt Lake City,UT,24,0.0322
+Beaverton,OR,24,0.0404
+Salinas,CA,24,0.0453
+Frisco,TX,24,0.0388
+McKinney,TX,24,0.0324
+Sioux Falls,SD,24,0.023
+Glendale,CA,24,0.0226
+Reading,PA,24,0.022
+Lancaster,CA,24,0.0184
+Huntington Beach,CA,24,0.015
+Cape Coral,FL,24,0.0328
+Lake Worth Beach,FL,24,0.027
+Hayward,CA,24,0.0229
+Salem,OR,24,0.0231
+Clarksville,TN,24,0.0165
+Grand Prairie,TX,24,0.0259
+Charleston,SC,24,0.0325
+Aurora,IL,24,0.0176
+Peoria,AZ,24,0.0202
+Cypress,TX,24,0.017
+Providence,RI,24,0.0274
+Whittier,CA,24,0.0345
+Overland Park,KS,24,0.0455
+Henrico,VA,24,0.0378
+Palmdale,CA,24,0.0342
+Fredericksburg,VA,24,0.0253
+Chattanooga,TN,24,0.032
+Homestead,FL,24,0.0385
+Cumming,GA,24,0.0391
+Fort Lauderdale,FL,24,0.0113
+Elk Grove,CA,24,0.0313
+Rockford,IL,24,0.0293
+Columbus,GA,24,0.0241
+Evansville,IN,24,0.027
+Erie,PA,24,0.0269
+Edmond,OK,24,0.0161
+York,PA,24,0.0328
+Ontario,CA,24,0.0279
+Killeen,TX,24,0.0132
+Allentown,PA,24,0.0241
+Tempe,AZ,24,0.0345
+Garden Grove,CA,24,0.038
+Lancaster,PA,24,0.0244
+Escondido,CA,24,0.033
+El Cajon,CA,24,0.0191
+Rancho Cucamonga,CA,24,0.042
+Round Rock,TX,24,0.0415
+Newport News,VA,24,0.0388
+Conroe,TX,24,0.0342
+Boynton Beach,FL,24,0.0227
+Harrisburg,PA,24,0.023
+Roanoke,VA,24,0.0216
+Ann Arbor,MI,24,0.0231
+Everett,WA,24,0.0269
+Sugar Land,TX,24,0.0309
+Naperville,IL,24,0.0313
+Fairfax,VA,24,0.0367
+Pembroke Pines,FL,24,0.0196
+Augusta,GA,24,0.0244
+Edinburg,TX,24,0.0168
+Topeka,KS,24,0.0255
+Lakewood,CO,24,0.0505
+Midland,TX,24,0.0582
+Pueblo,CO,24,0.037
+Visalia,CA,24,0.0277
+Odessa,TX,24,0.0441
+Cary,NC,24,0.0418
+Schenectady,NY,24,0.0285
+Lafayette,LA,24,0.036
+Paterson,NJ,24,0.0496
+Tyler,TX,24,0.0164
+Clearwater,FL,24,0.0216
+Sunnyvale,CA,24,0.0406
+Kansas City,KS,24,0.0199
+Springfield,MA,24,0.044
+Lansing,MI,24,0.0219
+Las Cruces,NM,24,0.019
+Macon,GA,24,0.0326
+Hollywood,FL,24,0.0136
+Jackson,MS,24,0.0308
+Columbia,MO,24,0.0294
+Pomona,CA,24,0.0393
+Roseville,CA,24,0.0283
+South Bend,IN,24,0.0232
+Albany,NY,24,0.0241
+Mesquite,TX,24,0.016
+Bellevue,WA,24,0.0512
+Renton,WA,24,0.023
+Pasadena,TX,24,0.0537
+Surprise,AZ,24,0.0232
+Denton,TX,24,0.0469
+Pasadena,CA,24,0.0234
+Newark,DE,24,0.0344
+Santa Maria,CA,24,0.0474
+Richmond,TX,24,0.0148
+Thornton,CO,24,0.0522
+Torrance,CA,24,0.0197
+Victorville,CA,24,0.0362
+Kent,WA,24,0.0226
+Beaumont,TX,24,0.0373
+Summerville,SC,24,0.0224
+Bridgeport,CT,24,0.0214
+McAllen,TX,24,0.0117
+Manassas,VA,24,0.0345
+Yuma,AZ,24,0.0205
+Cedar Rapids,IA,24,0.0302
+Fullerton,CA,24,0.026
+Olathe,KS,24,0.0213
+Canton,OH,24,0.0181
+Myrtle Beach,SC,24,0.023
+Frederick,MD,24,0.0169
+Warren,MI,24,0.0212
+Saint Augustine,FL,24,0.0228
+Billings,MT,24,0.0297
+Abilene,TX,24,0.0438
+West Valley City,UT,24,0.0426
+Orange,CA,24,0.0222
+Metairie,LA,24,0.0242
+Decatur,GA,24,0.0272
+Pearland,TX,24,0.021
+Kalamazoo,MI,24,0.0218
+Compton,CA,24,NA
+Lake Charles,LA,24,0.0432
+Hampton,VA,24,0.0304
+Miramar,FL,24,0.026
+Concord,NC,24,0.0278
+Stamford,CT,24,0.0192
+Hemet,CA,24,0.0224
+Carrollton,TX,24,0.0303
+Coral Springs,FL,24,0.0219
+Sterling Heights,MI,24,0.0346
+Murrieta,CA,24,0.0318
+Elizabeth,NJ,24,0.0334
+Inglewood,CA,24,0.0256
+Clovis,CA,24,0.0184
+Concord,CA,24,0.0284
+Melbourne,FL,24,0.0124
+Hamilton,OH,24,0.0285
+New Haven,CT,24,0.0262
+Santa Fe,NM,24,0.0348
+Gainesville,GA,24,0.0237
+Boulder,CO,24,0.03
+Tracy,CA,24,0.0237
+Broken Arrow,OK,24,0.0191
+Bend,OR,24,0.0463
+Bloomington,IN,24,0.0315
+Lakewood,NJ,9,NA
+College Station,TX,24,0.0576
+Riverview,FL,24,0.0241
+Rochester,MN,24,0.0403
+Puyallup,WA,24,0.0268
+Flint,MI,24,0.0373
+Simi Valley,CA,24,0.0436
+Fargo,ND,24,0.032
+Sparks,NV,24,0.0312
+Santa Clara,CA,24,0.0341
+Saginaw,MI,24,0.039
+Nampa,ID,24,0.0317
+Vallejo,CA,24,0.0219
+Temecula,CA,24,0.0227
+Norman,OK,24,0.0198
+Thousand Oaks,CA,24,0.03
+Independence,MO,24,0.0397
+Meridian,ID,24,0.0341
+Joliet,IL,24,0.0366
+Richmond,CA,24,0.0453
+Charlottesville,VA,24,0.0382
+Bellingham,WA,24,0.0483
+Arvada,CO,24,0.0291
+Stone Mountain,GA,24,0.0356
+Athens,GA,24,0.0181
+Westminster,CO,24,0.0454
+Yakima,WA,24,0.0373
+Tuscaloosa,AL,24,0.0327
+New Port Richey,FL,24,0.034
+Spring Hill,FL,24,0.046
+Elgin,IL,24,0.0514
+Chico,CA,24,0.0277
+Spartanburg,SC,24,0.0249
+Bowling Green,KY,24,0.018
+Largo,FL,24,0.0312
+Falls Church,VA,24,0.0429
+Springfield,IL,24,0.0303
+Hartford,CT,24,0.0215
+Toms River,NJ,24,0.0431
+Lewisville,TX,24,0.03
+Vero Beach,FL,24,0.042
+Berkeley,CA,24,0.0467
+Bethlehem,PA,24,0.0193
+Gresham,OR,24,0.0197
+Palm Bay,FL,24,0.0257
+Asheville,NC,24,0.024
+East Los Angeles,CA,24,0.0971
+Delray Beach,FL,24,0.0323
+Laurel,MD,24,0.0311
+New Braunfels,TX,24,0.0345
+Cambridge,MA,24,0.0725
+Carlsbad,CA,24,0.0268
+Franklin,TN,24,0.0375
+Perris,CA,24,0.0495
+West Jordan,UT,24,0.0494
+Vista,CA,24,0.024
+Fairfield,CA,24,0.0282
+Hillsboro,OR,24,0.0621
+Waco,TX,24,0.03
+Richardson,TX,24,0.0191
+Lehigh Acres,FL,24,0.0308
+Manchester,NH,24,0.0264
+Lowell,MA,24,0.0312
+Costa Mesa,CA,24,0.0226
+Santa Barbara,CA,24,0.0343
+Rock Hill,SC,24,0.0262
+Waterbury,CT,24,0.0272
+Downey,CA,24,0.0314
+League City,TX,24,0.0148
+Pflugerville,TX,24,0.0231
+Provo,UT,24,0.0286
+Ventura,CA,24,0.0258
+Lexington,SC,24,0.0229
+Ashburn,VA,24,0.0502
+Antioch,CA,24,0.0204
+Redding,CA,24,0.0326
+Kennesaw,GA,24,0.0472
+El Monte,CA,24,0.063
+North Charleston,SC,24,0.0279
+West Covina,CA,24,0.0271
+Pompano Beach,FL,24,0.021
+San Leandro,CA,24,0.0202
+Vacaville,CA,24,0.0371
+High Point,NC,24,0.0228
+Saint Charles,MO,24,0.0327
+Winter Haven,FL,24,0.0238
+Grand Junction,CO,24,0.03
+Miami Gardens,FL,24,0.0511
+Centennial,CO,24,0.0373
+Jacksonville,NC,24,0.0177
+Menifee,CA,24,0.0323
+Hesperia,CA,24,0.0343
+Bothell,WA,24,0.0414
+San Mateo,CA,24,0.0398
+Douglasville,GA,24,0.0295
+McDonough,GA,24,0.0311
+Green Bay,WI,24,0.0443
+Lynnwood,WA,24,0.03
+Springfield,VA,24,0.0405
+Dearborn,MI,24,0.056
+Madera,CA,24,NA
+Greenville,NC,24,0.0259
+Burbank,CA,24,0.0196
+Baytown,TX,24,0.028
+Davie,FL,24,0.0221
+Auburn,WA,24,0.0166
+Edison,NJ,24,0.0178
+West Chester,PA,24,0.0273
+Greeley,CO,24,0.0256
+Peoria,IL,24,0.0345
+Merced,CA,24,0.0258
+Rockville,MD,24,0.0337
+Longmont,CO,24,0.0582
+Sandy Springs,GA,24,0.0367
+Missouri City,TX,24,0.0239
+Gaithersburg,MD,24,0.038
+Chapel Hill,NC,24,0.0257
+Woodstock,GA,24,0.0465
+Daly City,CA,24,0.0341
+Jurupa Valley,CA,24,0.0415
+Idaho Falls,ID,24,0.0327
+Rio Rancho,NM,24,0.0366
+Apopka,FL,24,0.0235
+Davenport,IA,24,0.0271
+Lithonia,GA,24,0.0185
+Jackson,MI,24,0.035
+Brockton,MA,24,0.0584
+Wichita Falls,TX,24,0.0203
+Longview,TX,24,0.0255
+Norwalk,CA,24,0.0466
+Plainfield,IL,24,0.03
+Parker,CO,24,0.0537
+Rialto,CA,24,0.0524
+Roswell,GA,24,0.0446
+Bryan,TX,24,0.0196
+Lafayette,IN,24,0.0245
+Midlothian,VA,24,0.0295
+Georgetown,TX,24,0.0435
+Federal Way,WA,24,0.0264
+Anderson,SC,24,0.0453
+Elkhart,IN,24,0.0383
+Clinton Township,MI,24,0.0228
+Lawrence,KS,24,0.0361
+Fayetteville,AR,24,0.0189
+Gastonia,NC,24,0.0308
+Redmond,WA,24,0.0656
+Springfield,OH,24,0.0671
+Allen,TX,24,0.0241
+Columbia,MD,24,0.0471
+Kennewick,WA,24,0.0476
+Acworth,GA,24,0.036
+Lawton,OK,24,0.0209
+Champaign,IL,24,0.0276
+Clermont,FL,24,0.0235
+Lynchburg,VA,24,0.0305
+Sandy,UT,24,0.0372
+Redwood City,CA,24,0.0409
+Fishers,IN,24,0.0322
+Carmel,IN,24,0.0597
+Medford,OR,24,0.0237
+Livermore,CA,24,0.0446
+Canton,GA,24,0.0296
+Tomball,TX,24,0.0348
+Fort Mill,SC,24,0.0319
+Lees Summit,MO,24,0.0424
+Lynn,MA,24,0.025
+Canton,MI,24,0.0356
+Santa Cruz,CA,24,0.0454
+Portsmouth,VA,24,0.0179
+Kenosha,WI,24,0.0481
+Scranton,PA,24,0.0291
+New Bedford,MA,24,0.0297
+Covington,GA,24,0.0267
+Upper Marlboro,MD,24,0.0346
+Bowie,MD,24,0.0476
+San Marcos,CA,24,0.0335
+Napa,CA,24,0.0332
+Williamsburg,VA,24,0.033
+Annapolis,MD,24,0.0541
+Highlands Ranch,CO,24,0.059
+San Angelo,TX,24,0.0297
+Sterling,VA,24,0.0499
+Pittsburg,CA,24,0.0253
+Chino,CA,24,0.038
+Johnson City,TN,24,0.019
+Mission Viejo,CA,23,NA
+Missoula,MT,24,0.0533
+Newnan,GA,24,0.0238
+Sunrise,FL,24,0.0147
+Hawthorne,CA,24,0.0253
+Orem,UT,24,0.027
+Rapid City,SD,24,0.0239
+Spokane Valley,WA,24,0.0436
+Livonia,MI,24,0.0677
+Humble,TX,24,0.0256
+Loveland,CO,24,0.0454
+Cleveland,TN,24,0.0227
+Indio,CA,24,0.0723
+Simpsonville,SC,24,0.0185
+Cheyenne,WY,24,0.028
+Valdosta,GA,24,0.0211
+Saint George,UT,24,0.0293
+South Gate,CA,24,NA
+Gulfport,MS,24,0.0358
+Flagstaff,AZ,24,0.0423
+Ogden,UT,24,0.0264
+Apex,NC,24,0.0476
+Plantation,FL,24,0.0274
+Suffolk,VA,24,0.0258
+Fort Smith,AR,24,0.0329
+Terre Haute,IN,24,0.03
+Holland,MI,24,0.0575
+Port Charlotte,FL,24,0.0371
+Santa Monica,CA,24,0.032
+Goodyear,AZ,24,0.0196
+Lacey,WA,24,0.0395
+Dallas,GA,24,0.0378
+Bismarck,ND,24,0.0355
+Fort Pierce,FL,24,0.0454
+Manteca,CA,24,0.0226
+Florence,SC,24,0.0484
+Glen Burnie,MD,24,0.0357
+Fall River,MA,24,0.0274
+Monroe,LA,23,NA
+Florissant,MO,24,0.0361
+Palm Coast,FL,24,0.0194
+Albany,GA,24,0.0525
+Macomb,MI,24,NA
+Greenwood,IN,24,0.0354
+Herndon,VA,24,0.0339
+Duluth,MN,24,0.0337
+Westminster,CA,24,0.0448
+Conyers,GA,24,0.0494
+San Tan Valley,AZ,24,0.0348
+Nashua,NH,24,0.0192
+Appleton,WI,24,0.0375
+Leesburg,VA,24,0.0534
+Deltona,FL,24,0.0409
+Harlingen,TX,24,0.03
+Ellicott City,MD,24,0.0422
+Greer,SC,24,0.0215
+Muncie,IN,24,0.0343
+Waukegan,IL,24,0.0309
+Bloomington,MN,24,0.0355
+Duluth,GA,24,0.0388
+Sanford,FL,24,0.0223
+Morgantown,WV,24,0.0257
+Mount Pleasant,SC,24,0.0442
+Clifton,NJ,24,0.0654
+Stafford,VA,24,0.0393
+Newton,MA,24,0.0455
+Warner Robins,GA,24,0.0322
+Waldorf,MD,24,0.0579
+Walnut Creek,CA,24,0.0354
+Easton,PA,24,0.0331
+Quincy,MA,24,0.0337
+Saint Cloud,FL,24,0.022
+Jonesboro,AR,24,0.0253
+San Ramon,CA,24,0.0388
+Citrus Heights,CA,24,0.0281
+Mooresville,NC,24,0.0362
+Owensboro,KY,24,0.0638
+Brandon,FL,24,0.0292
+Victoria,TX,24,0.0312
+Charleston,WV,24,0.0199
+Troy,MI,24,0.0249
+Lawrence,MA,24,0.0179
+Sioux City,IA,24,0.0291
+Norwalk,CT,24,0.0335
+Poughkeepsie,NY,24,0.0429
+Iowa City,IA,24,0.0323
+Buckeye,AZ,24,0.0222
+O Fallon,MO,24,0.0293
+Bloomington,IL,24,0.0265
+Danbury,CT,24,0.0362
+Rancho Cordova,CA,24,0.0389
+Germantown,MD,24,0.0233
+Newport Beach,CA,24,0.0273
+Mission,TX,24,0.0334
+Brooklyn Park,MN,24,0.0413
+Pasco,WA,24,0.0201
+Alpharetta,GA,24,0.0357
+Westland,MI,24,0.0276
+Avondale,AZ,24,0.0404
+Cedar Park,TX,24,0.06
+Cicero,IL,24,NA
+Kirkland,WA,24,0.0477
+Springdale,AR,24,0.0168
+Eau Claire,WI,24,0.035
+Hattiesburg,MS,24,0.0241
+Temple,TX,24,0.018
+Deerfield Beach,FL,24,0.0244
+Apple Valley,CA,24,0.0461
+Middletown,OH,24,0.0266
+Valparaiso,IN,24,0.0329
+Battle Creek,MI,24,0.0331
+Buena Park,CA,24,0.044
+Snellville,GA,24,0.0309
+Denham Springs,LA,24,0.0243
+Decatur,IL,24,0.0554
+Covina,CA,24,0.0414
+Watsonville,CA,24,0.0572
+Camarillo,CA,24,0.0361
+Slidell,LA,24,0.0321
+Jackson,TN,24,0.0242
+Farmington Hills,MI,24,0.0417
+Arlington Heights,IL,24,0.0345
+Smyrna,GA,24,0.0344
+Conway,AR,24,0.0228
+Wake Forest,NC,24,0.0293
+Mountain View,CA,24,0.0363
+Des Plaines,IL,24,0.0524
+Oviedo,FL,24,0.0435
+Alhambra,CA,24,0.0361
+Evanston,IL,24,0.0201
+Cranston,RI,24,0.0688
+Westerville,OH,24,0.0471
+Miami Beach,FL,24,0.031
+Maryville,TN,24,0.0264
+Houma,LA,24,NA
+Upland,CA,24,0.0302
+Wesley Chapel,FL,24,0.026
+Kingsport,TN,24,0.0472
+Carson,CA,24,0.0686
+Schaumburg,IL,24,0.0281
+Lexington,NC,24,NA
+Lakewood,CA,24,0.0942
+Salisbury,NC,24,0.0368
+Sumter,SC,24,0.0247
+Johns Creek,GA,24,0.0614
+Noblesville,IN,24,0.0385
+Turlock,CA,24,0.0359
+Mechanicsburg,PA,24,0.0219
+Pharr,TX,24,0.0313
+Tustin,CA,24,0.0196
+Parma,OH,24,0.052
+Milpitas,CA,24,0.0293
+Yuba City,CA,24,0.023
+Lodi,CA,24,0.0349
+Orange Park,FL,24,0.0434
+Bethesda,MD,24,0.0273
+State College,PA,24,0.0399
+Yukon,OK,24,0.0274
+Plymouth,MN,24,0.0483
+Marysville,WA,24,0.0392
+Lake Forest,CA,24,0.0268
+Brandon,MS,24,0.0341
+Porterville,CA,24,0.0312
+Lake Elsinore,CA,24,0.0376
+Plant City,FL,24,0.0324
+Hoover,AL,24,0.0387
+The Villages,FL,24,0.1254
+Chesterfield,VA,24,0.0557
+Dalton,GA,24,NA
+Rome,GA,24,0.0496
+Somerville,MA,24,0.086
+Shelby Township,MI,24,0.0767
+Folsom,CA,24,0.0293
+Bellflower,CA,24,0.0473
+Venice,FL,24,0.0439
+Layton,UT,24,0.0193
+San Marcos,TX,24,0.0509
+Rogers,AR,24,0.0341
+Castle Rock,CO,24,0.0387
+Olympia,WA,24,0.0282
+Conway,SC,24,0.0383
+Winter Park,FL,24,0.0384
+Tulare,CA,24,0.0557
+Redlands,CA,24,0.0276
+Bozeman,MT,24,0.0465
+Winchester,VA,24,0.0336
+Suwanee,GA,24,0.0334
+Dothan,AL,24,0.0459
+Glen Allen,VA,24,0.0267
+Springfield,OR,24,0.0257
+Spring Valley,CA,24,0.0286
+Jupiter,FL,24,0.0405
+Madison,AL,24,0.0202
+Leander,TX,24,0.0528
+La Mesa,CA,24,0.0289
+Racine,WI,24,0.0369
+Hagerstown,MD,24,0.0364
+Rochester Hills,MI,24,0.043
+Southfield,MI,24,0.0313
+White Plains,NY,24,0.0217
+Binghamton,NY,24,0.0524
+Saint Joseph,MO,24,0.0397
+Pleasanton,CA,24,0.041
+Bremerton,WA,24,0.0286
+Buford,GA,24,0.0387
+Milton,FL,24,0.0339
+New Rochelle,NY,24,0.0472
+Brentwood,CA,24,0.0282
+Pawtucket,RI,24,0.0213
+Hot Springs,AR,24,0.0314
+Land O Lakes,FL,24,0.0281
+Flower Mound,TX,24,0.0282
+Chino Hills,CA,24,0.0339
+New Britain,CT,24,0.0413
+Cherry Hill,NJ,24,0.0378
+Ewa Beach,HI,24,0.0243
+Caldwell,ID,24,0.0238
+Gary,IN,24,0.0252
+Palm Beach Gardens,FL,24,0.0276
+Queen Creek,AZ,24,0.027
+Petaluma,CA,24,0.0424
+Great Falls,MT,24,0.0408
+Woodbury,MN,24,0.0372
+Warwick,RI,24,0.0605
+South Jordan,UT,24,0.035
+Davis,CA,24,0.1299
+North Port,FL,24,0.03
+Norcross,GA,24,0.0404
+Lauderhill,FL,24,0.0342
+Aiken,SC,24,0.0344
+Huntington,WV,24,0.0365
+Columbus,IN,24,0.0341
+Broomfield,CO,24,0.0439
+Waipahu,HI,24,0.0266
+Palm Harbor,FL,24,0.038
+Mount Vernon,NY,24,0.0624
+Brick,NJ,24,NA
+Kokomo,IN,24,NA
+Baldwin Park,CA,10,NA
+Sanford,NC,24,0.0397
+Traverse City,MI,24,0.0796
+Utica,NY,24,NA
+Lakeville,MN,24,0.0391
+Clayton,NC,24,0.0168
+Daytona Beach,FL,24,0.0195
+Wilkes-Barre,PA,24,0.04
+Deland,FL,24,0.0261
+Grants Pass,OR,24,0.0787
+Lebanon,PA,24,0.0609
+Troy,NY,24,0.0277
+San Rafael,CA,24,0.0477
+Camden,NJ,24,0.0763
+Bossier City,LA,24,0.038
+North Little Rock,AR,24,0.0351
+Casper,WY,24,0.0654
+Framingham,MA,24,0.0474
+Bolingbrook,IL,24,0.0476
+Lilburn,GA,24,0.038
+West Lafayette,IN,24,0.0432
+Council Bluffs,IA,24,0.0256
+Harrisonburg,VA,24,0.0397
+Hendersonville,TN,24,0.0276
+Corvallis,OR,24,0.0336
+Statesville,NC,24,0.0311
+Yorba Linda,CA,24,0.0293
+Huntersville,NC,24,0.0232
+Auburn,AL,24,0.0353
+Maple Grove,MN,24,0.0232
+Waterloo,IA,24,0.0219
+Hickory,NC,24,0.0465
+Winter Garden,FL,24,0.0171
+Lutz,FL,24,0.0336
+Hanford,CA,24,0.0423
+Lehi,UT,24,0.0291
+Saint Cloud,MN,24,0.0398
+Palatine,IL,24,0.034
+Passaic,NJ,23,NA
+Dubuque,IA,24,0.0555
+Huntington Park,CA,21,NA
+Stockbridge,GA,24,0.0272
+Davenport,FL,24,0.0245
+North Richland Hills,TX,24,0.0255
+Powder Springs,GA,24,0.0184
+Tamarac,FL,24,0.0245
+Snohomish,WA,24,0.0629
+Hammond,IN,24,0.0325
+Ypsilanti,MI,24,0.0406
+Centreville,VA,24,0.0404
+Waterford,MI,24,0.0793
+Ames,IA,24,0.0319
+Lakewood,WA,24,0.0471
+Blaine,MN,24,0.0424
+Mansfield,TX,24,0.0266
+Redondo Beach,CA,24,0.024
+Palo Alto,CA,24,0.0417
+East Orange,NJ,24,0.0207
+Ithaca,NY,24,0.0349
+Dover,DE,24,0.0269
+Fayetteville,GA,24,0.0583
+Jefferson City,MO,24,0.0455
+Atascocita,TX,24,0.0316
+Alameda,CA,24,0.0174
+Norristown,PA,24,0.0285
+Eagan,MN,24,0.0123
+Cookeville,TN,24,0.0356
+Portland,ME,24,0.0393
+Union City,CA,24,0.0459
+Woodland,CA,24,0.0485
+Cocoa,FL,24,0.0261
+Bel Air,MD,24,0.0633
+Littleton,CO,24,0.0563
+Waukesha,WI,24,0.0356
+Easley,SC,24,0.0303
+Salisbury,MD,24,0.0303
+Huntsville,TX,24,0.0192
+Weatherford,TX,24,0.0266
+Union City,NJ,24,0.0257
+Maricopa,AZ,24,0.0215
+Valrico,FL,24,0.0392
+Bellevue,NE,24,0.0449
+Casa Grande,AZ,24,0.0431
+Haverhill,MA,24,0.0345
+Massillon,OH,24,0.0479
+Lebanon,TN,23,NA
+Shawnee,KS,24,0.0558
+Doral,FL,24,0.0156
+Arcadia,CA,24,0.0525
+Kenner,LA,24,0.0446
+Lynwood,CA,24,NA
+Vienna,VA,24,0.0472
+Tigard,OR,24,0.0361
+Oshkosh,WI,24,0.0513
+Grove City,OH,24,0.0161
+Weston,FL,24,0.0259
+Manhattan,KS,24,0.0196
+West Bloomfield,MI,24,0.0559
+Gilroy,CA,24,0.0293
+Middletown,NY,24,0.0453
+Vineland,NJ,7,NA
+Lorain,OH,24,0.0428
+Pocatello,ID,24,0.0485
+Dundalk,MD,24,0.0332
+Bluffton,SC,24,0.046
+Malden,MA,24,0.032
+Pottstown,PA,24,0.0408
+West Des Moines,IA,24,0.0407
+Rocklin,CA,24,0.0414
+Orland Park,IL,24,0.0542
+Brunswick,GA,24,0.0284
+Port Orange,FL,24,0.02
+Albany,OR,24,0.0203
+Sammamish,WA,24,0.049
+Midland,MI,24,0.0337
+Medina,OH,24,0.0303
+Johnstown,PA,24,0.0393
+Eastvale,CA,24,0.0309
+Carson City,NV,24,0.0221
+Prescott,AZ,24,0.0299
+Reston,VA,24,0.037
+West Hartford,CT,24,0.0401
+Mechanicsville,VA,19,NA
+Little Elm,TX,24,0.0272
+Statesboro,GA,24,0.0342
+Richmond,KY,24,0.0217
+Decatur,AL,24,0.0508
+Waltham,MA,24,0.0517
+South San Francisco,CA,24,0.0537
+Mansfield,OH,24,0.0522
+San Luis Obispo,CA,24,0.0554
+Crown Point,IN,24,NA
+La Crosse,WI,24,0.0342
+Towson,MD,24,0.032
+Burnsville,MN,24,0.0258
+Loganville,GA,24,0.0359
+Columbia,TN,24,0.0576
+Fountainbleau,FL,24,0.019
+West Chester,OH,24,0.0389
+Valley Stream,NY,22,NA
+Biloxi,MS,24,0.0385
+Laguna Niguel,CA,24,0.0229
+Niagara Falls,NY,24,0.0513
+Dublin,CA,24,0.0388
+Poinciana,FL,24,0.0207
+Cartersville,GA,24,0.0379
+Eden Prairie,MN,24,0.0366
+Goldsboro,NC,24,0.045
+Coon Rapids,MN,24,0.0231
+San Gabriel,CA,24,0.0862
+Taylor,MI,24,0.0466
+Port Orchard,WA,24,0.0285
+Martinsburg,WV,24,0.0264
+Hilliard,OH,24,0.0489
+Mount Juliet,TN,24,0.0184
+Carmichael,CA,24,0.0304
+Brookline,MA,24,0.0738
+Commerce City,CO,24,0.025
+Fond du Lac,WI,24,0.0564
+Hendersonville,NC,24,0.0372
+North Bergen Township,NJ,24,0.0785
+Ankeny,IA,24,0.0354
+Euless,TX,24,0.0283
+Youngstown,OH,24,0.0559
+Dearborn Heights,MI,24,0.0302
+Elyria,OH,24,0.0387
+Pasadena,MD,24,0.0672
+Levittown,PA,24,NA
+Stuart,FL,24,0.0262
+Skokie,IL,24,0.0385
+Janesville,WI,24,0.046
+Montebello,CA,24,0.0467
+Panama City,FL,24,0.0346
+Howell,MI,24,0.0317
+Monroe,NY,23,NA
+Phenix City,AL,24,0.0352
+La Habra,CA,24,0.038
+Lancaster,OH,24,0.0608
+Florence,AL,24,0.0489
+Medford,MA,24,0.0517
+Altamonte Springs,FL,24,0.0185
+Carlisle,PA,24,0.0324
+Pico Rivera,CA,23,NA
+Downers Grove,IL,24,0.063
+Lufkin,TX,19,NA
+Bentonville,AR,24,0.0299
+Novato,CA,24,0.0459
+Pontiac,MI,24,0.0529
+Fairbanks,AK,24,0.0364
+Wylie,TX,24,0.0296
+Encinitas,CA,24,0.0293
+San Clemente,CA,24,0.0368
+Wellington,FL,24,0.1018
+Meridian,MS,10,NA
+Greenwich,CT,24,0.0406
+Westminster,MD,24,0.0384
+Hamden,CT,24,0.0625
+Altoona,PA,19,NA
+Piscataway,NJ,24,0.0313
+Grand Forks,ND,24,0.0309
+Chambersburg,PA,24,0.0252
+Gardena,CA,24,0.0346
+Azusa,CA,24,0.0571
+Novi,MI,24,0.0394
+Monterey Park,CA,24,0.0319
+Dublin,OH,24,0.0518
+Mishawaka,IN,24,0.0479
+Bristol,CT,24,0.0308
+Chantilly,VA,24,0.0298
+Joplin,MO,24,0.0332
+Taylorsville,UT,24,0.0473
+Saint Peters,MO,24,0.033
+Irvington,NJ,24,0.0446
+Fairfield,CT,24,0.0765
+West Allis,WI,24,0.0329
+Petersburg,VA,24,0.0208
+New Castle,DE,10,NA
+Carrollton,GA,24,0.0582
+Lima,OH,24,NA
+Griffin,GA,24,0.0417
+Richland,WA,24,0.0281
+North Miami,FL,24,0.0347
+Lansdale,PA,24,0.0481
+Meriden,CT,24,NA
+Union,NJ,24,0.0636
+Moore,OK,24,0.0332
+Hoboken,NJ,24,0.0211
+Rosemead,CA,24,0.0964
+Texarkana,TX,17,NA
+Manchester,CT,24,0.0632
+Lompoc,CA,24,0.0534
+Coeur d'Alene,ID,24,0.0501
+Greensburg,PA,24,0.0401
+Riverdale,GA,24,0.0236
+Helena,MT,24,0.0494
+Farmington,NM,24,0.0213
+Oak Lawn,IL,24,0.0287
+Covington,LA,24,0.0555
+Loveland,OH,24,0.0307
+Saint Johns,FL,24,0.0291
+Tinley Park,IL,23,NA
+Wheaton,IL,24,0.0323
+Goose Creek,SC,24,0.0499
+Hempstead,NY,13,NA
+New Iberia,LA,6,NA
+Gretna,LA,24,0.0315
+Taunton,MA,23,NA
+Edmonds,WA,24,0.036
+Danville,VA,24,NA
+Annandale,VA,24,0.0566
+Bayonne,NJ,24,0.0221
+Twin Falls,ID,24,0.0301
+Lake Havasu City,AZ,24,0.0152
+Goshen,IN,20,NA
+Kalispell,MT,24,0.064
+Danville,CA,24,0.0268
+Wilson,NC,24,NA
+Ormond Beach,FL,24,0.023
+Royal Oak,MI,24,0.0336
+McLean,VA,24,0.0392
+Paducah,KY,20,NA
+Cupertino,CA,24,0.0382
+Kernersville,NC,24,0.0612
+Smyrna,TN,24,0.0386
+National City,CA,24,0.0484
+Stillwater,OK,24,0.0257
+The Hammocks,FL,24,0.0294
+Waxahachie,TX,24,0.0266
+Mount Prospect,IL,24,0.0454
+Lenexa,KS,24,0.0521
+Punta Gorda,FL,24,0.0391
+Blacksburg,VA,24,0.0688
+Newark,OH,24,0.0554
+Freehold,NJ,24,0.0498
+Apache Junction,AZ,24,0.0405
+Margate,FL,24,0.0242
+Chillicothe,OH,3,NA
+Jackson,NJ,24,NA
+Castro Valley,CA,24,0.034
+Titusville,FL,24,0.0236
+Leesburg,FL,24,0.0427
+Princeton,NJ,24,0.0461
+Glenview,IL,24,0.0792
+Santee,CA,24,0.03
+Desoto,TX,24,0.0312
+Bensalem,PA,24,0.0464
+Mason,OH,24,0.0248
+Gallatin,TN,24,0.0209
+Kingman,AZ,24,0.0302
+Kettering,OH,24,0.0359
+Midwest City,OK,24,0.026
+Colton,CA,24,0.0419
+Berwyn,IL,24,0.0442
+Burlington,NC,24,0.0292
+Fountain Valley,CA,24,0.0282
+Oregon City,OR,24,0.0391
+Bonita Springs,FL,24,0.0595
+Warren,OH,20,NA
+Bartlett,TN,24,0.0383
+Weymouth,MA,24,0.0588
+Monroe,NC,24,0.0274
+Coconut Creek,FL,24,0.0266
+Olive Branch,MS,24,0.0374
+Roswell,NM,24,NA
+Asheboro,NC,24,NA
+Shoreline,WA,24,0.0203
+Hanover,PA,24,0.032
+Hollister,CA,24,0.0356
+Wyoming,MI,24,0.0728
+Owings Mills,MD,24,0.0281
+Somerset,NJ,24,0.0405
+Butler,PA,21,NA
+La Puente,CA,1,NA
+Muskegon,MI,24,0.0556
+Blue Springs,MO,24,0.0249
+Revere,MA,24,0.0433
+Morristown,TN,24,NA
+Klamath Falls,OR,24,0.0466
+New Brunswick,NJ,24,0.0675
+El Centro,CA,7,NA
+Delaware,OH,24,0.0418
+Grand Island,NE,24,NA
+Wausau,WI,24,0.0531
+Garner,NC,24,0.0203
+Middleburg,FL,24,0.0526
+West Monroe,LA,24,0.0345
+Zanesville,OH,23,NA
+Port Arthur,TX,24,0.0292
+Lincoln,CA,24,0.0367
+Palm Desert,CA,24,0.0491
+Crossville,TN,7,NA
+Chicopee,MA,15,NA
+Anderson,IN,24,0.023
+Apple Valley,MN,24,0.0255
+Coatesville,PA,24,0.0663
+Alexandria,LA,24,NA
+Wayne,NJ,24,NA
+Fort Walton Beach,FL,23,NA
+Athens,AL,24,0.0276
+Beaumont,CA,24,0.0491
+Brookhaven,GA,24,0.0197
+North Fort Myers,FL,24,0.0577
+Spanaway,WA,24,0.0309
+Crestview,FL,24,0.0295
+Perth Amboy,NJ,9,NA
+Zephyrhills,FL,24,0.0538
+Newburgh,NY,24,0.0334
+Kentwood,MI,24,0.0596
+Longwood,FL,24,0.0381
+Collierville,TN,24,0.0399
+Mankato,MN,24,0.0818
+Williamsville,NY,24,0.0627
+Minot,ND,24,0.0353
+Rocky Mount,NC,24,0.0441
+Bonney Lake,WA,24,0.0229
+Glendora,CA,24,0.037
+New Bern,NC,24,0.0277
+Plainfield,NJ,9,NA
+Rowlett,TX,24,0.0312
+Oak Park,IL,24,0.032
+San Jacinto,CA,24,0.0465
+Marion,OH,10,NA
+Grand Blanc,MI,24,0.0573
+Mililani,HI,24,0.0219
+Hacienda Heights,CA,24,0.0448
+Findlay,OH,24,0.069
+Millcreek,UT,24,0.0734
+Morganton,NC,10,NA
+Seminole,FL,24,0.0469
+Lagrange,GA,24,0.0845
+West Sacramento,CA,24,0.0268
+Webster,NY,24,0.0376
+Peabody,MA,24,0.0609
+Yucaipa,CA,24,NA
+Dacula,GA,24,0.0364
+Monroe,MI,24,NA
+Sebring,FL,24,0.0208
+Rosenberg,TX,24,0.0352
+West Haven,CT,24,0.0485
+Pine Hills,FL,24,0.0425
+Catonsville,MD,24,0.0435
+Kapolei,HI,24,0.0428
+Paramount,CA,24,NA
+Evans,GA,24,0.0334
+Saint Clair Shores,MI,24,0.0399
+Edina,MN,24,0.0427
+Crystal Lake,IL,23,NA
+Lombard,IL,24,0.023
+Marrero,LA,23,NA
+Elizabethtown,KY,24,0.0438
+Kailua,HI,24,0.0546
+Florence,KY,24,0.0195
+New Castle,PA,24,NA
+Methuen,MA,24,0.038
+West New York,NJ,24,0.0419
+Lancaster,SC,1,NA
+Bloomfield,NJ,24,0.0478
+Oroville,CA,24,0.0518
+Cuyahoga Falls,OH,24,0.0497
+Placentia,CA,24,0.0261
+Mentor,OH,24,NA
+Fallbrook,CA,24,0.0963
+Sheboygan,WI,23,NA
+Galveston,TX,24,0.0404
+Highland,CA,24,NA
+East Lansing,MI,24,NA
+Fuquay Varina,NC,24,0.0221
+Draper,UT,24,0.0443
+Sicklerville,NJ,24,NA
+Normal,IL,24,0.0414
+Plymouth,MA,24,0.0648
+Beaufort,SC,24,0.0303
+Ballwin,MO,24,0.0375
+Lake Stevens,WA,24,0.0553
+Kannapolis,NC,24,0.0369
+Prescott Valley,AZ,24,0.0286
+Lake City,FL,24,NA
+Morgan Hill,CA,24,0.0426
+Roseburg,OR,24,0.0549
+Granbury,TX,24,0.0435
+Kyle,TX,24,0.0459
+Forney,TX,24,0.0283
+Boerne,TX,24,0.0514
+Frankfort,KY,24,0.0342
+Enid,OK,24,0.0319
+Lockport,NY,24,0.0544
+Cypress,CA,24,0.0252
+Stratford,CT,23,NA
+Fort Washington,MD,24,NA
+Diamond Bar,CA,24,0.0292
+Greenwood,SC,23,NA
+Sherman,TX,24,0.0548
+Pinellas Park,FL,24,0.0378
+Aliso Viejo,CA,24,0.0198
+East Hartford,CT,24,0.0716
+Issaquah,WA,24,0.0659
+Longview,WA,24,0.036
+Grapevine,TX,24,0.0549
+Belleville,IL,24,0.0212
+Milwaukie,OR,24,0.0239
+Seguin,TX,24,NA
+Wentzville,MO,24,0.0452
+Hobbs,NM,24,0.045
+Brea,CA,24,0.0189
+Hammond,LA,24,0.0285
+Quincy,IL,24,NA
+Windermere,FL,24,0.0167
+New Albany,IN,24,0.0368
+Dunwoody,GA,24,0.0272
+Lawrence,IN,24,0.0372
+Poway,CA,24,0.0628
+Post Falls,ID,24,0.0439
+Sierra Vista,AZ,24,0.0335
+Minnetonka,MN,24,0.0506
+Burien,WA,24,0.0356
+Cathedral City,CA,24,0.0444
+Montgomery,TX,24,0.0288
+Salina,KS,24,0.0383
+Saint Louis Park,MN,24,0.0308
+Benton,AR,24,0.036
+Georgetown,KY,24,0.0276
+East Stroudsburg,PA,24,NA
+Brighton,MI,7,NA
+Mount Vernon,WA,24,0.0757
+Columbus,MS,24,NA
+Cerritos,CA,24,0.0353
+Eagle Pass,TX,9,NA
+Hutchinson,KS,24,0.0397
+Port Richey,FL,24,0.0316
+Claremore,OK,24,0.0352
+Southaven,MS,24,0.0381
+Starkville,MS,24,NA
+Shakopee,MN,24,0.0524
+Redford,MI,22,NA
+Gig Harbor,WA,24,0.0556
+Portage,MI,24,NA
+East Brunswick,NJ,24,0.0276
+Kaneohe,HI,24,0.0726
+Liverpool,NY,22,NA
+Cedar Hill,TX,24,0.0653
+La Mirada,CA,24,0.0752
+Sun City,AZ,24,0.06
+Coral Gables,FL,24,0.0447
+Bedford,TX,24,0.0419
+Murray,UT,24,0.0692
+Logan,UT,24,0.0564
+West Orange,NJ,24,0.0684
+Cleburne,TX,24,0.0782
+Prattville,AL,24,0.0198
+Barnstable,MA,24,0.0692
+Desert Hot Springs,CA,24,0.0336
+Everett,MA,24,0.027
+Bloomfield Hills,MI,24,0.0547
+Downingtown,PA,24,0.0432
+Hoffman Estates,IL,24,0.0159
+Wauwatosa,WI,24,0.0446
+Martinez,CA,24,0.0249
+Grass Valley,CA,24,0.0819
+Wasilla,AK,24,0.0525
+Chester,VA,24,0.047
+Washington,PA,23,NA
+Milford,CT,24,0.0517
+Palmetto,FL,24,0.0352
+Newark,CA,24,0.0381
+Rexburg,ID,24,0.0253
+Haines City,FL,24,0.0484
+Spring Hill,TN,24,0.0443
+Weslaco,TX,24,0.0163
+Roseville,MI,24,0.0295
+Clarkston,MI,24,0.0692
+Doylestown,PA,24,0.0671
+Texas City,TX,24,0.0314
+Elmhurst,IL,24,0.0457
+Middletown,CT,24,0.0477
+Antelope,CA,24,0.0462
+Parkersburg,WV,15,NA
+Beavercreek,OH,24,0.0263
+Lakewood,OH,24,0.0256
+Mandeville,LA,24,0.0335
+Winter Springs,FL,24,0.0337
+Lititz,PA,7,NA
+Cleveland,TX,24,NA
+Del Rio,TX,20,NA
+Prairieville,LA,24,0.0301
+Urbana,IL,23,NA
+Rockwall,TX,24,0.0234
+Lake Oswego,OR,24,0.0434
+Northville,MI,24,0.0568
+Eureka,CA,24,0.0541
+Austell,GA,24,0.0496
+Wahiawa,HI,23,NA
+Oxford,MS,24,0.0481
+East Providence,RI,24,0.0426
+La Porte,IN,12,NA
+Potomac,MD,24,0.0492
+Jonesboro,GA,24,0.027
+Alvin,TX,20,NA
+Evesham Township,NJ,24,0.0399
+Palm Springs,CA,24,0.0273
+Thibodaux,LA,24,NA
+Los Banos,CA,24,0.0737
+Watertown,NY,24,0.045
+Williamsport,PA,24,NA
+Hilo,HI,10,NA
+Auburn,CA,24,0.0382
+Brentwood,TN,24,0.0548
+Rockledge,FL,24,0.0252
+Jeffersonville,IN,24,0.0287
+Hinesville,GA,24,0.0332
+Elkton,MD,24,0.0459
+Morristown,NJ,24,0.023
+Yorktown,VA,24,0.0415
+Arlington,MA,24,0.0586
+Chesterfield,MO,24,0.0663
+Hackensack,NJ,24,0.0225
+Attleboro,MA,24,0.059
+Nicholasville,KY,24,0.0391
+Papillion,NE,24,0.0766
+Strongsville,OH,7,NA
+Waianae,HI,23,NA
+Lakeside,CA,24,0.0616
+Richmond,IN,15,NA
+Winder,GA,24,0.0301
+Lake Mary,FL,24,0.0338
+Fairfield,OH,24,0.0551
+Moorhead,MN,24,0.0236
+Muskogee,OK,24,0.1014
+Converse,TX,24,0.0331
+Cleveland Heights,OH,24,0.0305
+Herriman,UT,24,0.0522
+Peachtree Corners,GA,24,0.022
+Lancaster,TX,24,0.0276
+North Augusta,SC,24,0.0524
+Burlington,VT,24,0.0409
+Euclid,OH,24,0.026
+Belton,TX,24,0.0272
+Chesterfield,MI,16,NA
+El Dorado Hills,CA,24,0.0356
+Los Lunas,NM,23,NA
+Brunswick,OH,14,NA
+Arlington,WA,24,0.0359
+Panama City Beach,FL,24,0.0584
+Pine Bluff,AR,7,NA
+Middletown,DE,24,NA
+Bridgewater Township,NJ,24,NA
+Irwin,PA,21,NA
+Bountiful,UT,24,NA
+Phoenixville,PA,24,0.0307
+Alamo,TX,2,NA
+Lindenhurst,NY,4,NA
+Haltom City,TX,24,0.043
+Covington,KY,24,0.0401
+Dekalb,IL,24,0.0317
+Thomasville,NC,24,NA
+Rancho Santa Margarita,CA,24,0.0166
+Patchogue,NY,23,NA
+Merritt Island,FL,24,0.0348
+Rowland Heights,CA,24,0.1206
+Coraopolis,PA,24,0.0493
+Moline,IL,24,0.0427
+Oakland Park,FL,24,0.0156
+Spanish Fork,UT,24,0.0409
+Wenatchee,WA,24,0.0296
+Northport,AL,22,NA
+Riverton,UT,24,0.0523
+Mt Laurel Township,NJ,24,0.0353
+Mount Pleasant,MI,23,NA
+Moses Lake,WA,24,0.0387
+Westbury,NY,10,NA
+Owasso,OK,24,0.0293
+Ocoee,FL,24,0.0319
+Fairburn,GA,24,0.0268
+Hamburg,NY,24,0.0761
+Wallingford,CT,14,NA
+Burke,VA,24,0.0344
+Fenton,MO,24,NA
+Ringgold,GA,24,NA
+Clovis,NM,24,0.027
+Fair Oaks,CA,24,0.0241
+Pittsfield,MA,24,0.0602
+Burleson,TX,24,0.0237
+Tolleson,AZ,24,0.0342
+Orangeburg,SC,22,NA
+Raeford,NC,24,0.0258
+Walla Walla,WA,24,0.0259
+Fairport,NY,24,0.0362
+Concord,NH,24,0.0351
+Windsor Mill,MD,24,0.0301
+Oswego,IL,24,0.032
+Hephzibah,GA,23,NA
+North Tonawanda,NY,21,NA
+Xenia,OH,24,NA
+Madison,MS,24,0.0308
+Paso Robles,CA,24,0.0731
+Linden,NJ,24,0.0291
+Saint Charles,IL,24,0.0636
+Cumberland,MD,22,NA
+Wooster,OH,24,NA
+Brookfield,WI,22,NA
+North Lauderdale,FL,24,0.0478
+Oro Valley,AZ,24,NA
+San Pablo,CA,10,NA
+Brooksville,FL,24,0.0507
+Marion,IN,16,NA
+Cutler Bay,FL,24,0.0411
+Woonsocket,RI,24,0.0419
+Hudson,FL,24,0.1063
+Cape Girardeau,MO,24,0.0325
+Somerset,KY,8,NA
+Leominster,MA,24,NA
+Kent,OH,24,0.0504
+Gonzales,LA,19,NA
+Avon,IN,24,0.0413
+Levittown,NY,6,NA
+Sewell,NJ,9,NA
+Bear,DE,24,0.0479
+Hillsborough Township,NJ,5,NA
+Monrovia,CA,24,0.057
+North Brunswick,NJ,23,NA
+Monroe,GA,24,0.0434
+The Colony,TX,24,0.0562
+Coppell,TX,24,0.0476
+Fitchburg,MA,24,0.0526
+Opelika,AL,24,NA
+Russellville,AR,23,NA
+Campbell,CA,24,0.0225
+Marion,IA,24,0.0462
+Los Gatos,CA,24,0.0559
+Greeneville,TN,21,NA
+San Bruno,CA,24,0.036
+Pahrump,NV,23,NA
+Milton,GA,24,0.0355
+Northbrook,IL,24,0.087
+Enfield,CT,24,NA
+Salem,MA,24,0.0334
+Grovetown,GA,24,0.0301
+Tonawanda,NY,24,0.0607
+Menlo Park,CA,24,0.0538
+Beloit,WI,24,NA
+Elmira,NY,10,NA
+Essex,MD,24,0.0431
+Carol Stream,IL,24,0.0679
+Danville,IL,24,0.1394
+Perrysburg,OH,24,0.0717
+North Miami Beach,FL,24,0.0308
+Billerica,MA,24,0.0484
+Collegeville,PA,24,NA
+Bullhead City,AZ,24,0.0195
+District Heights,MD,24,0.0326
+Warminster,PA,3,NA
+Bartlesville,OK,24,0.0584
+Milledgeville,GA,23,NA
+Oakley,CA,24,0.0353
+Gaffney,SC,24,NA
+Great Neck,NY,23,NA
+Greenacres,FL,24,0.0528
+Fenton,MI,24,0.0326
+Moncks Corner,SC,24,0.0209
+Brownsburg,IN,24,0.0597
+Cibolo,TX,24,0.0484
+Keller,TX,24,0.0565
+Kearny,NJ,24,0.0469
+Marlborough,MA,24,0.0446
+Woodinville,WA,24,0.0473
+Redmond,OR,24,0.0287
+Hicksville,NY,24,0.0775
+Urbandale,IA,24,0.0734
+Maplewood,MN,24,0.0393
+Casselberry,FL,24,0.0339
+Friendswood,TX,24,0.0372
+Teaneck,NJ,20,NA
+Shelton,CT,24,0.0504
+Lebanon,OH,24,0.0842
+Hopkinsville,KY,24,0.0416
+Taylors,SC,24,0.0511
+Lanham Seabrook,MD,24,NA
+Winchester,CA,24,NA
+Montclair,NJ,23,NA
+Hallandale,FL,24,0.0224
+Middle River,MD,24,0.032
+Marana,AZ,24,0.0238
+Westfield,MA,19,NA
+Tupelo,MS,24,0.051
+Gillette,WY,24,0.0399
+Painesville,OH,8,NA
+Aiea,HI,24,0.0641
+Upper Darby,PA,24,0.0526
+Hyattsville,MD,24,0.048
+Clifton Park,NY,24,0.0327
+Woburn,MA,24,0.0449
+Brighton,CO,24,0.0284
+Williamstown,NJ,3,NA
+Lutherville Timonium,MD,21,NA
+Culver City,CA,24,0.0304
+Kerrville,TX,24,0.0392
+Calhoun,GA,24,NA
+Kailua Kona,HI,24,NA
+Streamwood,IL,21,NA
+Manalapan Township,NJ,23,NA
+Eagle Mountain,UT,24,0.0793
+Clinton,MD,2,NA
+Sahuarita,AZ,24,0.0455
+Old Bridge,NJ,9,NA
+Nottingham,MD,24,0.0337
+Hixson,TN,24,0.0488
+Germantown,TN,24,0.0471
+Dunnellon,FL,24,0.0755
+Rome,NY,16,NA
+Holly Springs,NC,24,0.0399
+Duncanville,TX,24,0.0538
+Hurst,TX,24,0.06
+Martinez,GA,24,0.0334
+Norwich,CT,24,0.0697
+Copperas Cove,TX,24,0.031
+Golden,CO,24,0.0685
+Bell Gardens,CA,2,NA
+Park Ridge,IL,9,NA
+Bessemer,AL,24,0.0369
+Indian Trail,NC,24,0.0287
+Jacksonville,AR,24,0.0315
+Lincolnton,NC,21,NA
+Howell,NJ,4,NA
+Chelsea,MA,24,0.0458
+Harvey,LA,23,NA
+Reynoldsburg,OH,24,0.0349
+Lincoln Park,MI,24,0.0314
+Pekin,IL,11,NA
+Aventura,FL,24,0.0188
+Wheeling,WV,24,0.0375
+Carlsbad,NM,12,NA
+Rohnert Park,CA,24,0.0346
+Jamestown,NY,7,NA
+Fort Lee,NJ,24,0.0826
+Englewood,CO,24,0.0481
+Clover,SC,24,NA
+Manor,TX,24,0.0194
+Roy,UT,24,0.0761
+Amherst,MA,24,0.0792
+Sulphur,LA,24,0.0548
+Elizabeth City,NC,24,0.053
+Auburn,NY,9,NA
+Hazleton,PA,1,NA
+Hampton,GA,24,0.0475
+Rancho Palos Verdes,CA,24,0.073
+Merrillville,IN,24,0.0258
+Hudsonville,MI,7,NA
+Pickerington,OH,24,0.05
+Atwater,CA,9,NA
+Fairborn,OH,24,0.0505
+Villa Rica,GA,24,0.0333
+Ellenwood,GA,24,0.0664
+Mundelein,IL,24,NA
+West Babylon,NY,7,NA
+Saratoga Springs,NY,24,0.1074
+Tucker,GA,24,0.053900000000000003
+Bristol,TN,24,NA
+Odenton,MD,24,0.0286
+Bettendorf,IA,24,0.0324
+Stevens Point,WI,22,NA
+La Vergne,TN,24,0.0689
+Addison,IL,9,NA
+Braintree,MA,24,0.0765
+Groton,CT,24,0.0666
+Romeoville,IL,24,0.051
+Rockford,MI,3,NA
+Buffalo Grove,IL,24,0.0502
+Gadsden,AL,5,NA
+Holyoke,MA,15,NA
+Plymouth,MI,24,0.0407
+Shrewsbury,MA,24,0.0593
+Westfield,IN,24,0.0301
+Cullman,AL,21,NA
+Salem,VA,23,NA
+East Meadow,NY,3,NA
+Scarsdale,NY,9,NA
+Ronkonkoma,NY,24,0.0429
+Moorpark,CA,24,NA
+East Point,GA,24,0.0357
+Menomonee Falls,WI,5,NA
+Glen Ellyn,IL,7,NA
+Cottage Grove,MN,24,NA
+McMinnville,OR,24,NA
+Henderson,NC,18,NA
+Canonsburg,PA,24,0.063
+Media,PA,24,0.04
+Kearney,NE,24,NA
+Beverly,MA,24,0.0402
+Alamogordo,NM,24,0.0619
+Miamisburg,OH,24,0.0299
+Greenville,TX,24,0.0251
+Port Huron,MI,22,NA
+Hutto,TX,24,0.0454
+Midlothian,TX,24,0.0509
+Pineville,LA,19,NA
+West Fargo,ND,24,0.0403
+La Quinta,CA,24,0.0779
+Eustis,FL,24,0.0379
+Baldwinsville,NY,10,NA
+Portage,IN,24,0.025
+Pacifica,CA,24,0.0395
+Ramona,CA,24,NA
+Marysville,CA,24,0.0459
+Mableton,GA,24,0.0556
+Leavenworth,KS,24,0.0303
+Belleville,NJ,24,0.0568
+Lorton,VA,24,0.0352
+Trumbull,CT,24,0.0594
+Shawnee,OK,24,0.022
+Claremont,CA,24,0.0524
+South Lyon,MI,6,NA
+Kinston,NC,4,NA
+Montclair,CA,24,0.065
+Rock Island,IL,24,0.088
+Powell,OH,24,NA
+San Juan Capistrano,CA,24,0.0431
+Texarkana,AR,4,NA
+Elkridge,MD,24,0.0385
+Riviera Beach,FL,24,0.0473
+Placerville,CA,24,0.0695
+Richfield,MN,24,0.0558
+Spotsylvania,VA,24,0.0757
+Atlantic City,NJ,24,0.0721
+Gainesville,VA,24,0.0901
+Camas,WA,24,0.0349
+Oak Harbor,WA,24,0.0273
+Huber Heights,OH,24,0.0332
+Reisterstown,MD,24,0.0435
+Northglenn,CO,24,0.0564
+Royal Palm Beach,FL,24,0.0366
+Irmo,SC,24,0.0494
+Henderson,KY,4,NA
+Wheeling,IL,24,0.0494
+Batavia,OH,24,0.0513
+Peachtree City,GA,24,0.0472
+Hanover Park,IL,23,NA
+Waycross,GA,4,NA
+College Park,MD,24,0.0391
+Staunton,VA,24,0.0582
+Santa Paula,CA,3,NA
+Flowery Branch,GA,24,0.0422
+Lewiston,ME,23,NA
+Cabot,AR,24,0.0347
+Kingston,NY,24,0.0385
+Lake Wales,FL,24,NA
+Battle Ground,WA,24,0.0353
+Dayton,TX,8,NA
+Cordova,TN,24,0.0484
+Natick,MA,24,0.0467
+Blackwood,NJ,17,NA
+Wappingers Falls,NY,24,0.0626
+Niles,MI,2,NA
+Ladson,SC,24,0.044
+Sanger,CA,1,NA
+Andover,MA,24,0.0705
+Palestine,TX,7,NA
+Camp Hill,PA,24,0.0525
+Chelmsford,MA,24,0.0451
+Adelanto,CA,23,NA
+Kankakee,IL,24,NA
+Marysville,OH,24,0.0558
+Commerce Township,MI,20,NA
+Buda,TX,24,0.0396
+Fernandina Beach,FL,24,0.0792
+Laramie,WY,24,0.062
+Arnold,MO,9,NA
+Quakertown,PA,24,0.0574
+Winchester,KY,17,NA
+Shelbyville,TN,9,NA
+Roseville,MN,24,NA
+Enterprise,AL,24,0.0255
+Morrisville,NC,24,0.0388
+Mebane,NC,24,0.0513
+Troy,OH,24,0.0557
+Havertown,PA,6,NA
+Carpentersville,IL,3,NA
+North Canton,OH,24,0.0489
+Upper Arlington,OH,24,0.0443
+Boardman,OH,24,NA
+Central Islip,NY,6,NA
+Lewiston,ID,10,NA
+Cumberland,RI,19,NA
+Searcy,AR,18,NA
+Westmont,CA,24,NA
+Newburgh,IN,23,NA
+Franklin,WI,10,NA
+Magnolia,TX,24,0.0271
+Halethorpe,MD,23,NA
+Foley,AL,24,0.0383
+Sonoma,CA,24,0.0724
+Altadena,CA,9,NA
+Lemoore,CA,24,NA
+New Smyrna Beach,FL,24,0.0454
+West Hollywood,CA,24,0.0339
+Plainfield,IN,24,0.0227
+Wildomar,CA,24,0.0712
+Mount Vernon,VA,24,NA
+Oak Creek,WI,22,NA
+Golden Glades,FL,24,0.0495
+Pleasant Grove,UT,24,0.0544
+De Pere,WI,9,NA
+Midvale,UT,24,0.0523
+Mount Airy,NC,1,NA
+Seneca,SC,24,0.0411
+Torrington,CT,24,NA
+Cedar Falls,IA,24,0.0389
+Sykesville,MD,9,NA
+Westwego,LA,21,NA
+Coventry,RI,21,NA
+Willis,TX,24,0.0259
+Bay Shore,NY,23,NA
+Pearl City,HI,24,0.0807
+Pullman,WA,24,0.0508
+Watertown,MA,24,0.0783
+Pleasant Hill,CA,24,0.04
+Montrose,CO,24,0.0728
+Oakville,MO,1,NA
+Kearns,UT,8,NA
+North Ridgeville,OH,8,NA
+Security-Widefield,CO,24,0.0365
+Glastonbury,CT,24,NA
+Shelton,WA,10,NA
+Randolph,MA,23,NA
+Warsaw,IN,21,NA
+Gurnee,IL,24,0.044
+Lafayette,CO,24,0.0764
+Fairhope,AL,24,0.0755
+Tooele,UT,9,NA
+Barstow,CA,24,0.0485
+Ambler,PA,23,NA
+Lauderdale Lakes,FL,24,0.0542
+Porter,TX,24,0.0385
+Hope Mills,NC,24,0.0309
+Orange,TX,24,0.0824
+Athens,OH,7,NA
+Durango,CO,24,0.0423
+El Mirage,AZ,24,0.0447
+Denison,TX,24,0.0506
+Inver Grove Heights,MN,24,0.0479
+Prior Lake,MN,19,NA
+Calumet City,IL,24,0.0685
+Temple City,CA,24,0.0616
+Stow,OH,20,NA
+University City,MO,24,0.0365
+Auburndale,FL,24,0.0533
+Lancaster,NY,7,NA
+University Place,WA,24,0.03
+Sand Springs,OK,24,NA
+Franklin,IN,24,0.0612
+Vestavia Hills,AL,24,NA
+Litchfield Park,AZ,24,0.0384
+Hilton Head Island,SC,24,0.0747
+Leawood,KS,24,NA
+Tarpon Springs,FL,24,0.0474
+Ruston,LA,24,0.0703
+Butte,MT,24,0.0806
+Severn,MD,24,0.0418
+Los Altos,CA,24,0.0568
+Alliance,OH,10,NA
+Parkland,FL,24,0.0419
+Huntington,NY,23,NA
+Thomasville,GA,24,NA
+Derry,NH,24,0.0648
+Shelby,NC,24,0.0243
+Lexington,MA,8,NA
+Warrenton,VA,9,NA
+Arcadia,FL,1,NA
+Angleton,TX,12,NA
+Neptune Township,NJ,24,0.0696
+Banning,CA,19,NA
+Oswego,NY,24,NA
+Ossining,NY,9,NA
+Dartmouth,MA,2,NA
+Chester,PA,24,NA
+Manhattan Beach,CA,24,0.1109
+Winona,MN,2,NA
+Westlake,OH,24,0.0781
+Orion,MI,8,NA
+Williston,ND,24,0.0279
+Eastpointe,MI,24,0.0627
+North Providence,RI,24,0.0378
+Davison,MI,8,NA
+Oakdale,CA,15,NA
+Paris,TX,3,NA
+Gahanna,OH,20,NA
+Bastrop,TX,24,0.0561
+McMinnville,TN,7,NA
+Culpeper,VA,19,NA
+Niles,IL,15,NA
+Millville,NJ,21,NA
+Plattsburgh,NY,3,NA
+Moultrie,GA,1,NA
+Port Angeles,WA,6,NA
+Cottonwood Heights,UT,24,0.0349
+Woodstock,IL,14,NA
+Jasper,AL,22,NA
+Elizabethton,TN,2,NA
+Burlington Township,NJ,9,NA
+Bell,CA,1,NA
+Foster City,CA,24,0.054
+Orange,NJ,24,0.038
+Keizer,OR,24,0.0226
+San Dimas,CA,24,0.0555
+Ukiah,CA,20,NA
+Milford,OH,24,NA
+Ozark,MO,24,0.0495
+Florence,AZ,24,NA
+Indiana,PA,10,NA
+Sherwood,AR,24,0.0202
+Collinsville,IL,23,NA
+Ravenna,OH,1,NA
+Van Buren,AR,19,NA
+Abingdon,MD,24,0.0609
+Huntington Station,NY,7,NA
+Fountain,CO,24,0.0263
+Elk Grove Village,IL,24,0.0497
+Brooklyn Center,MN,22,NA
+Wisconsin Rapids,WI,19,NA
+Navarre,FL,24,0.0444
+Morrisville,PA,11,NA
+Waxhaw,NC,24,0.0296
+Dumfries,VA,24,0.0543
+West Little River,FL,10,NA
+American Fork,UT,24,0.0409
+La Verne,CA,24,0.0589
+Eagle,ID,24,0.0528
+Palmer,AK,6,NA
+Dunedin,FL,24,0.0439
+Franklin,MA,24,0.0759
+Inman,SC,24,0.0451
+Southampton,PA,15,NA
+Dana Point,CA,24,0.0553
+Mercedes,TX,2,NA
+Maple Valley,WA,24,0.0321
+Montgomery Village,MD,24,0.053900000000000003
+Ridgecrest,CA,24,0.0349
+Beverly Hills,CA,24,0.0675
+Pittsford,NY,8,NA
+Bay City,MI,23,NA
+Sun Prairie,WI,24,0.0325
+Sedalia,MO,15,NA
+Happy Valley,OR,24,0.0264
+Piedmont,SC,24,NA
+Melrose Park,IL,1,NA
+Dover,NH,24,0.0538
+Pearl,MS,24,0.0484
+Terrell,TX,21,NA
+Bartow,FL,24,NA
+Murrells Inlet,SC,24,NA
+Sylvania,OH,11,NA
+Matawan,NJ,24,0.0782
+Richmond Hill,GA,24,0.0246
+Estero,FL,24,0.0514
+Wheat Ridge,CO,24,0.0469
+Dracut,MA,11,NA
+Ephrata,PA,24,0.0322
+Rochester,NH,24,NA
+Orangevale,CA,24,NA
+Clemmons,NC,24,0.0486
+Laguna Hills,CA,24,0.0223
+Knightdale,NC,24,0.0463
+Granite City,IL,10,NA
+Rosharon,TX,24,NA
+Cranberry Township,PA,24,0.0637
+Pataskala,OH,10,NA
+Garfield,NJ,24,0.0816
+Seaside,CA,24,0.0739
+Anniston,AL,11,NA
+Grand Haven,MI,23,NA
+Saratoga,CA,24,0.1265
+Aberdeen,SD,15,NA
+Farmers Branch,TX,24,0.0254
+Ballston Spa,NY,24,0.0787
+Prosper,TX,24,0.0742
+Burlingame,CA,24,0.0494
+Wadsworth,OH,9,NA
+Big Spring,TX,14,NA
+Lawndale,CA,24,0.063
+Nixa,MO,24,0.0447
+North Olmsted,OH,19,NA
+Needham,MA,24,0.0896
+Bangor,ME,24,NA
+Seymour,IN,1,NA
+Randallstown,MD,24,0.0281
+Deer Park,TX,20,NA
+Chillum,MD,24,NA
+Woodburn,OR,23,NA
+Arroyo Grande,CA,10,NA
+Princeton,WV,18,NA
+Edwardsville,IL,24,0.0744
+Florin,CA,16,NA
+Drexel Hill,PA,24,0.0529
+Jonesborough,TN,21,NA
+Inverness,FL,24,0.0631
+Seatac,WA,24,0.0577
+Cooper City,FL,24,0.0755
+Woodridge,IL,24,0.0394
+Sugar Hill,GA,24,0.0525
+Harker Heights,TX,24,0.0178
+Marquette,MI,24,NA
+West Bend,WI,20,NA
+Holladay,UT,23,NA
+Rolla,MO,24,0.0596
+Olivehurst,CA,13,NA
+Eagle River,AK,24,0.0742
+Atascadero,CA,24,NA
+Ponchatoula,LA,24,NA
+Willingboro Township,NJ,7,NA
+Ashtabula,OH,1,NA
+Port Chester,NY,17,NA
+Watertown,WI,9,NA
+Brownstown,MI,10,NA
+Alabaster,AL,24,0.0481
+Lawrence Township,NJ,24,0.0541
+Socorro,TX,8,NA
+Channelview,TX,21,NA
+Naugatuck,CT,24,NA
+Boone,NC,12,NA
+Elizabethtown,PA,24,0.0337
+Locust Grove,GA,24,0.0268
+North Andover,MA,24,0.0713
+La Porte,TX,24,0.0362
+Ashland,OH,24,NA
+Norwood,MA,24,0.0347
+Greenfield,IN,24,0.0574
+Livingston,NJ,24,NA
+Aliquippa,PA,24,0.0703
+Zionsville,IN,24,0.0419
+Endicott,NY,17,NA
+Waynesboro,PA,11,NA
+Sapulpa,OK,10,NA
+Shingle Springs,CA,24,NA
+Martinsville,IN,5,NA
+Daphne,AL,24,0.0343
+Schertz,TX,24,0.0621
+Clearfield,UT,24,0.0373
+Crowley,TX,24,0.0439
+Syracuse,UT,10,NA
+Flemington,NJ,20,NA
+Glasgow,KY,2,NA
+Waynesboro,VA,23,NA
+Poulsbo,WA,24,0.0422
+North Royalton,OH,7,NA
+Newtown,PA,23,NA
+White Lake,MI,8,NA
+Langhorne,PA,24,NA
+Martinsville,VA,8,NA
+Hopewell,VA,24,0.0717
+Beltsville,MD,24,NA
+Tewksbury,MA,24,0.0569
+Lebanon,OR,24,0.0441
+Dawsonville,GA,24,0.0336
+Zeeland,MI,3,NA
+San Carlos,CA,24,0.0562
+Red Bluff,CA,21,NA
+New Caney,TX,24,NA
+Ellensburg,WA,24,0.0312
+Cedar City,UT,24,0.0392
+Lake Jackson,TX,24,0.0579
+Woodway,TX,24,0.0402
+Voorhees Township,NJ,22,NA
+Hermiston,OR,12,NA
+Aldie,VA,9,NA
+West Linn,OR,24,0.0455
+Chaska,MN,24,0.0429
+Uniontown,PA,5,NA
+Colonial Heights,VA,24,NA
+Wailuku,HI,21,NA
+San Lorenzo,CA,9,NA
+Canyon Lake,TX,24,NA
+Goleta,CA,24,0.0388
+Saratoga Springs,UT,24,0.0762
+Lewis Center,OH,24,NA
+Tehachapi,CA,24,0.0509
+Lapeer,MI,4,NA
+Shelbyville,KY,5,NA
+Westfield,NJ,21,NA
+Derby,KS,24,0.0494
+Front Royal,VA,15,NA
+Orchard Park,NY,7,NA
+Monterey,CA,24,0.0312
+Blacklick,OH,10,NA
+Newington,CT,20,NA
+Marion,NC,4,NA
+Hernando,MS,24,0.0789
+North Attleboro,MA,23,NA
+West Warwick,RI,24,0.0402
+Fremont,NE,24,NA
+Palm City,FL,24,0.048
+Faribault,MN,3,NA
+Brainerd,MN,8,NA
+Paragould,AR,7,NA
+Ocean Springs,MS,24,0.0492
+Lansing,IL,7,NA
+Phillipsburg,NJ,24,0.0282
+Dania Beach,FL,24,0.0295
+O Fallon,IL,24,0.029
+Newberg,OR,24,0.0751
+Libertyville,IL,7,NA
+Parkville,MD,24,0.0517
+Bethel Park,PA,24,NA
+Coram,NY,24,0.0626
+Oak Ridge,TN,24,0.0363
+Glendale Heights,IL,24,0.0388
+Plainview,NY,5,NA
+Independence,KY,18,NA
+Geneva,IL,24,0.0701
+Matthews,NC,24,0.0289
+Salem,NH,24,0.0199
+Cantonment,FL,24,NA
+Lebanon,MO,3,NA
+Springville,UT,24,NA
+Granger,IN,18,NA
+McKeesport,PA,24,0.0515
+Fitchburg,WI,24,0.0538
+Nutley,NJ,9,NA
+Milford,MA,24,0.053900000000000003
+Hobart,IN,11,NA
+Selma,CA,4,NA
+Mount Pleasant,WI,20,NA
+Vernon,CT,19,NA
+Southgate,MI,24,0.0475
+Kuna,ID,24,0.0473
+Murray,KY,23,NA
+Miami Lakes,FL,24,0.0202
+Des Moines,WA,24,0.0415
+Ruskin,FL,24,0.0512
+Centralia,WA,24,NA
+Springfield,TN,24,NA
+Savage,MN,24,0.0421
+Oak Park,MI,24,0.0248
+Owatonna,MN,10,NA
+Summerfield,FL,8,NA
+Parsippany,NJ,24,0.0347
+Fleming Island,FL,24,0.0435
+South Lake Tahoe,CA,24,0.0645
+Sidney,OH,10,NA
+Central Point,OR,23,NA
+Long Branch,NJ,24,0.0606
+East Windsor Township,NJ,11,NA
+Norfolk,NE,20,NA
+Garfield Heights,OH,24,0.0528
+Azle,TX,24,0.0724
+Green Cove Springs,FL,24,0.0516
+Zebulon,NC,24,0.0414
+Johnston,RI,7,NA
+Mill Valley,CA,24,0.0722
+Ponca City,OK,12,NA
+Port Washington,NY,23,NA
+Englewood,FL,24,0.1329
+Garden City,NY,4,NA
+Benton Harbor,MI,5,NA
+Leesburg,GA,24,NA
+Malvern,PA,24,0.0397
+Magna,UT,12,NA
+Amsterdam,NY,1,NA
+Fridley,MN,24,0.0333
+Trussville,AL,21,NA
+Mason City,IA,1,NA
+Rahway,NJ,24,0.0305
+Austin,MN,23,NA
+Forest Grove,OR,24,NA
+Melrose,MA,24,0.0615
+Stroudsburg,PA,10,NA
+Shippensburg,PA,13,NA
+Raytown,MO,24,0.0397
+Holiday,FL,24,0.033
+Saugus,MA,10,NA
+Windsor,CT,9,NA
+Montgomery,IL,6,NA
+Freeport,IL,9,NA
+Monument,CO,24,0.0544
+Sherwood,OR,24,0.0403
+Lenoir City,TN,24,NA
+South Kingstown,RI,24,0.0569
+Lisle,IL,24,0.0348
+Ponte Vedra Beach,FL,24,0.0565
+Bloomsburg,PA,22,NA
+Temple Hills,MD,24,NA
+King of Prussia,PA,24,0.035
+Whitehall,PA,7,NA
+Schererville,IN,1,NA
+Shaker Heights,OH,24,0.0805
+Stephenville,TX,24,0.0399
+Michigan City,IN,23,NA
+Mount Vernon,OH,5,NA
+Northampton,MA,22,NA
+Wellesley,MA,24,NA
+Bardstown,KY,5,NA
+New Castle,IN,21,NA
+Temple Terrace,FL,24,0.0286
+Chamblee,GA,24,0.0363
+Carbondale,IL,24,NA
+Loxahatchee,FL,24,0.0741
+Englewood,NJ,24,0.0868
+Kingsville,TX,24,NA
+Graham,WA,22,NA
+Bourbonnais,IL,18,NA
+Balch Springs,TX,16,NA
+Neenah,WI,24,NA
+West Springfield,MA,7,NA
+Sebastopol,CA,22,NA
+Corbin,KY,2,NA
+Bella Vista,AR,24,0.074
+Algonquin,IL,8,NA
+Stoughton,MA,24,0.0546
+Crawfordville,FL,19,NA
+Shelbyville,IN,16,NA
+Lake in the Hills,IL,19,NA
+Blythewood,SC,24,0.0375
+Ooltewah,TN,24,0.0294
+Elgin,SC,24,NA
+Beaver Falls,PA,24,NA
+Monroeville,PA,24,0.0603
+Madison Heights,MI,24,0.0257
+Bristol,VA,12,NA
+Lafayette,CA,24,0.0525
+Fort Dodge,IA,14,NA
+Cheshire,CT,8,NA
+Centereach,NY,7,NA
+Grandville,MI,23,NA
+Sequim,WA,10,NA
+Patterson,CA,4,NA
+Latrobe,PA,19,NA
+Dickinson,ND,20,NA
+Wayne,PA,24,NA
+Commack,NY,2,NA
+Allen Park,MI,8,NA
+Walnut,CA,23,NA
+Lakewood Ranch,FL,24,0.0285
+Lithia Springs,GA,24,0.0427
+Wasco,CA,1,NA
+Moscow,ID,24,NA
+New Milford,CT,4,NA
+Lockport,IL,24,0.0675
+Zachary,LA,22,NA
+Franklin,NC,1,NA
+Sebastian,FL,24,NA
+Highland Park,IL,24,NA
+Perkasie,PA,1,NA
+Middletown,NJ,5,NA
+Menasha,WI,21,NA
+Oxon Hill,MD,24,0.0353
+Bridgewater,MA,24,NA
+Jesup,GA,2,NA
+Niceville,FL,24,0.0472
+Royse City,TX,24,0.0208
+Logansport,IN,1,NA
+Mandan,ND,23,NA
+Meadville,PA,7,NA
+Christiansburg,VA,24,0.0715
+Rock Springs,WY,24,0.0862
+Mount Dora,FL,24,0.0557
+Milton,MA,1,NA
+Branford,CT,24,NA
+Chicago Heights,IL,2,NA
+Maumee,OH,8,NA
+Dickson,TN,8,NA
+Liberty,MO,24,0.0319
+North Platte,NE,8,NA
+Mays Landing,NJ,8,NA
+Tualatin,OR,24,0.0527
+Okemos,MI,11,NA
+Cortland,NY,21,NA
+Park City,UT,23,NA
+Celina,TX,24,0.0523
+East Haven,CT,24,0.0706
+Oakdale,MN,24,NA
+Brenham,TX,17,NA
+Cornelius,NC,24,0.0608
+Waynesville,NC,20,NA
+Clarkston,GA,24,NA
+Manchester,TN,10,NA
+Galloway,NJ,8,NA
+Amityville,NY,11,NA
+Beeville,TX,5,NA
+Monroe,WA,24,NA
+Suisun City,CA,24,0.0458
+Hudson,WI,21,NA
+Woodbury,NJ,12,NA
+Beckley,WV,8,NA
+Junction City,KS,24,0.0489
+Belmont,CA,24,0.0447
+Ellijay,GA,2,NA
+Gettysburg,PA,9,NA
+Harvest,AL,21,NA
+Farmington,MN,7,NA
+Marion,IL,23,NA
+Dublin,GA,19,NA
+Jenks,OK,24,0.0413
+Danvers,MA,24,0.0708
+Duncan,OK,12,NA
+Burlington,IA,5,NA
+Mehlville,MO,10,NA
+Dahlonega,GA,9,NA
+Sonora,CA,5,NA
+Berlin,MD,3,NA
+Citrus Park,FL,24,0.0376
+Allendale,MI,1,NA
+Gloucester,MA,20,NA
+North Tustin,CA,1,NA
+Farmington,MO,2,NA
+Emporia,KS,24,0.0695
+Long Beach,NY,24,0.0875
+Odessa,FL,24,0.0568
+Ada,OK,24,NA
+Bixby,OK,24,0.0355
+Rockville Centre,NY,10,NA
+Ramsey,MN,24,NA
+Newtown,CT,2,NA
+Ewing,NJ,24,0.0656
+Oxford,OH,1,NA
+Canon City,CO,24,0.0657
+Talladega,AL,1,NA
+Mountain Home,AR,12,NA
+Peyton,CO,22,NA
+Aubrey,TX,24,0.0386
+Feasterville Trevose,PA,8,NA
+Oconomowoc,WI,23,NA
+Canandaigua,NY,19,NA
+West Windsor Township,NJ,1,NA
+Gladstone,MO,24,0.0324
+Pell City,AL,7,NA
+Kirkwood,MO,24,0.0492
+Villa Park,IL,8,NA
+Severna Park,MD,7,NA
+Windsor,CA,12,NA
+Hamtramck,MI,3,NA
+Wilmette,IL,7,NA
+Norco,CA,2,NA
+Washington,UT,24,0.0354
+Jackson,MO,22,NA
+Lemon Grove,CA,24,0.0334
+East Palo Alto,CA,7,NA
+Stanton,CA,24,NA
+Ashland,OR,24,0.0356
+Gibsonia,PA,1,NA
+Wakefield,MA,24,0.0442
+Garden City,MI,12,NA
+North Wales,PA,24,0.0445
+Grayson,GA,24,0.0564
+Wethersfield,CT,2,NA
+Youngsville,LA,16,NA
+Forest,VA,18,NA
+Nazareth,PA,15,NA
+Seffner,FL,24,0.049
+Walpole,MA,21,NA
+Clinton,MS,24,NA
+Candler,NC,9,NA
+Columbus,NE,8,NA
+Kelso,WA,24,0.072
+Lochearn,MD,24,NA
+Wildwood,FL,24,0.0501
+Paramus,NJ,3,NA
+Lewes,DE,24,0.0446
+Dover,PA,7,NA
+Shoreview,MN,22,NA
+Erie,CO,24,0.0622
+Hiram,GA,24,0.0451
+Sun City West,AZ,24,0.1489
+Blackfoot,ID,7,NA
+Holbrook,NY,20,NA
+Albemarle,NC,4,NA
+Austintown,OH,4,NA
+Merrimack,NH,24,0.0503
+Belmont,MA,24,0.0868
+Silverdale,WA,24,0.053
+South Salt Lake,UT,24,0.0541
+Basking Ridge,NJ,8,NA
+South Windsor,CT,23,NA
+Kaysville,UT,7,NA
+South Pasadena,CA,24,0.0352
+Imperial,MO,4,NA
+Newton,NC,4,NA
+Edgewater,FL,24,0.0892
+Antioch,IL,6,NA
+Evergreen,CO,24,0.0582
+McAlester,OK,1,NA
+Crosby,TX,24,0.0497
+Deer Park,NY,4,NA
+Clarksburg,WV,7,NA
+Isla Vista,CA,12,NA
+Superior,WI,24,0.0553
+Millsboro,DE,7,NA
+Huntington,IN,1,NA
+Palatka,FL,22,NA
+Barberton,OH,8,NA
+Newton,NJ,4,NA
+McHenry,IL,9,NA
+Boiling Springs,SC,24,0.0496
+Wimauma,FL,24,0.0553
+North Kingstown,RI,3,NA
+Mansfield,CT,8,NA
+Royersford,PA,24,NA
+Parkland,WA,24,0.0193
+Durant,OK,20,NA
+Groveland,FL,23,NA
+Homosassa,FL,19,NA
+Farmington,CT,24,NA
+Burton,MI,1,NA
+Mustang,OK,24,0.0328
+Glen Cove,NY,24,0.0669
+Yelm,WA,24,0.0595
+Takoma Park,MD,24,0.0556
+Smithfield,NC,21,NA
+Jackson,GA,9,NA
+Marshfield,WI,4,NA
+Homewood,AL,24,NA
+Warrensburg,MO,24,0.0266
+New London,CT,24,NA
+Troy,MO,3,NA
+Mount Pleasant,TX,8,NA
+Randolph,NJ,6,NA
+Graham,NC,9,NA
+Sheridan,WY,4,NA
+Guthrie,OK,20,NA
+Macungie,PA,24,0.0767
+Depew,NY,19,NA
+Hastings,NE,3,NA
+Washington,MI,5,NA
+Branson,MO,24,0.0403
+Ridgewood,NJ,8,NA
+Colleyville,TX,1,NA
+Burlington,MA,24,0.0485
+Mercer Island,WA,24,0.0732
+Pittsburg,KS,20,NA
+Crawfordsville,IN,24,NA
+King George,VA,7,NA
+East Chicago,IN,24,NA
+Inkster,MI,24,NA
+Anderson,CA,2,NA
+Elk River,MN,9,NA
+Mahwah Township,NJ,8,NA
+Windsor,CO,24,0.0675
+Forest Park,GA,24,0.0551
+Londonderry,NH,5,NA
+Winterville,NC,24,0.0186
+Ives Estates,FL,24,0.0404
+Greater Landover,MD,24,0.0459
+Mahopac,NY,1,NA
+Sun City Center,FL,24,0.0435
+Kahului,HI,1,NA
+Horn Lake,MS,24,0.0387
+Lemont,IL,1,NA
+Lodi,NJ,24,0.0494
+Wilsonville,OR,24,0.0462
+Danville,KY,8,NA
+El Cerrito,CA,24,0.0464
+Grandview,MO,24,0.0433
+Scotch Plains,NJ,4,NA
+Cliffside Park,NJ,24,0.0552
+Westport,CT,24,0.1134
+River Falls,WI,24,NA
+Onalaska,WI,23,NA
+Vidor,TX,4,NA
+Rosemount,MN,23,NA
+Reading,MA,19,NA
+Morton Grove,IL,19,NA
+Buffalo,MN,3,NA
+Oak Forest,IL,8,NA
+West Hempstead,NY,4,NA
+Chevy Chase,MD,24,0.0458
+North Potomac,MD,19,NA
+Parrish,FL,24,0.0476
+Watertown,SD,8,NA
+Waukee,IA,24,0.0303
+Roanoke Rapids,NC,1,NA
+Saginaw,TX,24,0.0491
+Hummelstown,PA,21,NA
+Lathrop,CA,24,NA
+Neosho,MO,2,NA
+Brookings,SD,24,0.0427
+Dover,NJ,7,NA
+Northfield,MN,12,NA
+Imperial Beach,CA,24,0.0534
+Greenbelt,MD,24,0.0461
+Walker,MI,12,NA
+Maywood,CA,1,NA
+Ferndale,WA,24,0.0413
+Round Lake Beach,IL,20,NA
+University Park,TX,9,NA
+Gardner,KS,24,0.0558
+Coos Bay,OR,18,NA
+Carteret,NJ,24,NA
+Menomonie,WI,24,0.0485
+Ridgefield,CT,7,NA
+Ridgeland,MS,24,0.1099
+Romulus,MI,16,NA
+Kings Mountain,NC,9,NA
+Easton,MA,6,NA
+Yucca Valley,CA,24,0.0661
+Lillington,NC,10,NA
+Aberdeen,MD,24,0.0404
+Cottonwood,AZ,24,NA
+Wyandotte,MI,24,NA
+Benicia,CA,24,0.0288
+Rosemont,CA,24,0.0578
+Dedham,MA,24,0.0642
+Yorkville,IL,1,NA
+Portland,TN,1,NA
+Mequon,WI,1,NA
+Sachse,TX,24,0.027
+Alton,IL,24,NA
+Seal Beach,CA,24,NA
+Seymour,TN,19,NA
+Manvel,TX,24,NA
+Belmont,NC,24,0.0305
+Coldwater,MI,4,NA
+Soddy-Daisy,TN,12,NA
+Springboro,OH,8,NA
+Hillsborough,NC,24,NA
+Athens,TN,16,NA
+Spring Lake,NC,24,0.0378
+Aptos,CA,24,0.0915
+Maplewood,NJ,10,NA
+Peekskill,NY,24,NA
+Jefferson,GA,24,0.0867
+Haslet,TX,24,0.024
+Tullahoma,TN,7,NA
+South Plainfield,NJ,9,NA
+Canton,MA,24,0.0327
+Manheim,PA,19,NA
+Elmwood Park,IL,9,NA
+Roselle,IL,10,NA
+Marshfield,MA,6,NA
+Crofton,MD,24,0.055
+Pottsville,PA,24,NA
+La Grange,KY,3,NA
+Weeki Wachee,FL,3,NA
+Simsbury,CT,22,NA
+Radford,VA,23,NA
+Deridder,LA,6,NA
+Burlington,KY,10,NA
+Floresville,TX,7,NA
+Westford,MA,21,NA
+Vernon Hills,IL,24,0.0631
+North Haven,CT,6,NA
+Dyersburg,TN,18,NA
+Bloomingdale,IL,1,NA
+Village of Palmetto Bay,FL,24,0.0373
+Fernley,NV,24,0.0369
+Mulberry,FL,24,0.0873
+Avon,OH,9,NA
+Gardnerville,NV,9,NA
+East Wenatchee,WA,24,NA
+Chanhassen,MN,8,NA
+Tahlequah,OK,23,NA
+Juneau,AK,7,NA
+Middleborough,MA,7,NA
+Westchase,FL,24,0.0681
+Washington,NC,3,NA
+Calabasas,CA,24,0.0624
+Ennis,TX,24,0.024
+Sulphur Springs,TX,9,NA
+Red Bank,NJ,24,0.0613
+Rolling Meadows,IL,24,0.0526
+Willmar,MN,3,NA
+Cockeysville,MD,24,0.0562
+San Fernando,CA,6,NA
+Piqua,OH,2,NA
+Norwalk,OH,3,NA
+Hialeah Gardens,FL,22,NA
+Ottawa,IL,9,NA
+Canby,OR,24,NA
+Westmont,IL,24,0.0572
+Cranford,NJ,24,NA
+Frankfort,IN,1,NA
+Mount Holly,NC,24,0.0245
+Mint Hill,NC,24,0.0455
+Saint Marys,GA,24,0.0263
+Wexford,PA,24,NA
+West Memphis,AR,1,NA
+Nanuet,NY,24,NA
+Newton,KS,21,NA
+Acton,MA,9,NA
+Athens,TX,9,NA
+Easton,MD,14,NA
+Del Valle,TX,24,0.0556
+Webster Groves,MO,7,NA
+Dunn,NC,3,NA
+Steubenville,OH,1,NA
+Auburn Hills,MI,24,0.0607
+Huntingdon Valley,PA,11,NA
+Washington,IL,1,NA
+South Portland,ME,24,0.0521
+Carney,MD,24,0.0414
+Goodlettsville,TN,24,NA
+Mansfield,MA,24,0.1067
+Auburn,ME,21,NA
+Maywood,IL,15,NA
+Willoughby,OH,9,NA
+Kenmore,WA,24,0.0464
+Kilgore,TX,18,NA
+Fredericksburg,TX,12,NA
+Dallas,OR,17,NA
+Eden,NC,3,NA
+Highland,IN,24,NA
+Aberdeen,WA,24,NA
+Middletown,PA,23,NA
+Helena,AL,10,NA
+Kihei,HI,24,0.0772
+Hercules,CA,24,0.0532
+Miami Shores,FL,24,0.0807
+Belgrade,MT,24,NA
+Fresno,TX,24,0.0407
+Powell,TN,10,NA
+Lawrenceburg,TN,3,NA
+Milford,MI,2,NA
+Raymore,MO,24,0.0439
+Rigby,ID,8,NA
+Farragut,TN,24,NA
+Pooler,GA,24,0.0387
+Solon,OH,6,NA
+White Bear Lake,MN,24,0.0203
+Rincon,GA,1,NA
+Marina,CA,24,0.0519
+Millbrae,CA,24,0.0678
+Hampstead,NC,24,0.0483
+Maple Heights,OH,24,0.0637
+Ladera Ranch,CA,24,0.029
+Lexington Park,MD,24,0.066
+Bristol,PA,5,NA
+Derwood,MD,17,NA
+Riverside,OH,8,NA
+Zion,IL,14,NA
+Mill Creek,WA,24,0.0547
+Fountain Hills,AZ,24,0.0628
+Sycamore,IL,9,NA
+Vinings,GA,24,0.0387
+Bethpage,NY,1,NA
+Champlin,MN,11,NA
+Forest Park,OH,24,NA
+New Brighton,MN,24,NA
+Plymouth,IN,1,NA
+Winchester,MA,21,NA
+Agoura Hills,CA,24,0.0591
+McKees Rocks,PA,24,0.0886
+Bainbridge,GA,1,NA
+Lewisburg,TN,2,NA
+Petal,MS,7,NA
+Canfield,OH,2,NA
+North Pole,AK,24,0.0478
+Hingham,MA,19,NA
+Crystal,MN,10,NA
+Elko,NV,10,NA
+Carmel,NY,1,NA
+Parlin,NJ,24,NA
+Wendell,NC,24,NA
+Tavares,FL,24,0.0542
+Ardmore,OK,24,NA
+Fairmont,WV,23,NA
+Watauga,TX,24,0.0403
+Edgewood,MD,24,0.0563
+Dewitt,MI,10,NA
+Darien,IL,19,NA
+Port Hueneme,CA,24,0.0666
+Greater Northdale,FL,24,0.0466
+Bay City,TX,23,NA
+Anthem,AZ,24,0.0563
+Loma Linda,CA,24,0.0483
+Mountain Brook,AL,6,NA
+Wilmington,MA,1,NA
+Keene,NH,24,0.0462
+Lynn Haven,FL,24,0.0411
+Lawrenceburg,KY,6,NA
+Bedford,NH,10,NA
+Stoneham,MA,24,0.0983
+Johnston,IA,22,NA
+Mount Vernon,IL,1,NA
+Stanwood,WA,7,NA
+Glen Mills,PA,21,NA
+Lyndhurst,NJ,21,NA
+Millington,TN,24,0.0434
+Anna,TX,24,0.0419
+South Elgin,IL,2,NA
+Malvern,AR,1,NA
+Republic,MO,24,0.0353
+Orange City,FL,24,0.0494
+Maryland Heights,MO,24,0.0455
+Saline,MI,7,NA
+Washougal,WA,24,0.049
+Cheney,WA,24,0.047
+Belton,MO,24,0.0334
+Harleysville,PA,7,NA
+Clarksburg,MD,8,NA
+Maumelle,AR,24,0.06
+Norton Shores,MI,1,NA
+Prairie Village,KS,24,0.0701
+Lithia,FL,24,0.0427
+Beaver Dam,WI,7,NA
+Tukwila,WA,24,0.0522
+Theodore,AL,1,NA
+Roselle,NJ,24,0.0462
+Warrington,PA,10,NA
+Summit,NJ,24,0.0388
+Haughton,LA,5,NA
+Madison,IN,1,NA
+North Plainfield,NJ,10,NA
+Port Jefferson Station,NY,22,NA
+Twentynine Palms,CA,24,0.0345
+Rosedale,MD,6,NA
+Cameron,NC,24,0.0488
+Chapin,SC,9,NA
+Apollo Beach,FL,24,0.0392
+Benbrook,TX,24,0.119
+Trotwood,OH,8,NA
+The Crossings,FL,24,0.0593
+Chehalis,WA,6,NA
+Grand Island,NY,10,NA
+West Deptford Township,NJ,9,NA
+Rosamond,CA,11,NA
+Clinton,UT,24,NA
+Avon Lake,OH,5,NA
+Los Alamitos,CA,24,0.0501
+Middleton,WI,24,0.0533
+Denver,NC,24,0.0469
+Dixon,CA,5,NA
+Lynden,WA,24,NA
+Debary,FL,24,0.0363
+Camden,SC,4,NA
+Shafter,CA,2,NA
+Stephens City,VA,21,NA
+Gloversville,NY,1,NA
+Jerome,ID,6,NA
+Lebanon,IN,15,NA
+Dixon,IL,5,NA
+Chowchilla,CA,1,NA
+Biddeford,ME,24,0.0659
+Cohoes,NY,24,0.0572
+Bourne,MA,3,NA
+Clifton Heights,PA,22,NA
+Guyton,GA,11,NA
+Central Falls,RI,18,NA
+Golden Valley,MN,24,0.0702
+Princeton,TX,24,0.0207
+Oxford,MI,7,NA
+Harrisburg,NC,24,NA
+Granite Bay,CA,7,NA
+Bryn Mawr,PA,24,0.0653
+Travelers Rest,SC,17,NA
+Perry,GA,7,NA
+American Canyon,CA,9,NA
+Matteson,IL,2,NA
+West Melbourne,FL,24,0.0295
+Amelia,OH,21,NA
+Fallon,NV,3,NA
+Hillside,NJ,1,NA
+Washington Court House,OH,2,NA
+Edgewater,MD,8,NA
+Pace,FL,24,0.027
+Glassboro,NJ,24,0.0357
+Pittsboro,NC,24,NA
+Chalmette,LA,23,NA
+Morris,IL,12,NA
+Portsmouth,NH,24,0.0501
+South Amboy,NJ,24,0.042
+Brawley,CA,4,NA
+Horizon City,TX,24,NA
+South Euclid,OH,24,0.0413
+Collinsville,OK,22,NA
+Arden,NC,24,0.0559
+Jasper,GA,1,NA
+Jenkintown,PA,21,NA
+Key West,FL,23,NA
+Lockhart,TX,9,NA
+Little River,SC,24,NA
+Selma,NC,1,NA
+Green Valley,AZ,10,NA
+Charles Town,WV,24,NA
+Duarte,CA,24,0.0513
+Siloam Springs,AR,24,0.0426
+Red Lion,PA,18,NA
+Essex,VT,3,NA
+Horseheads,NY,2,NA
+Radcliff,KY,24,0.0501
+Mountain Home,ID,23,NA
+New Hope,MN,24,0.0326
+Forest Lake,MN,24,NA
+Columbia Heights,MN,18,NA
+Jacksonville,AL,24,NA
+Evans,CO,24,0.0445
+Sevierville,TN,24,NA
+Brunswick,ME,22,NA
+Roscoe,IL,1,NA
+Darien,CT,9,NA
+La Plata,MD,6,NA
+East Ridge,TN,24,0.0511
+Secaucus,NJ,24,0.0436
+The Dalles,OR,21,NA
+Mountain House,CA,24,0.0661
+Coralville,IA,24,0.0342
+Del City,OK,24,0.0323
+Fountain Inn,SC,24,0.0404
+Labelle,FL,4,NA
+Lusby,MD,2,NA
+Westerly,RI,24,NA
+Ojai,CA,11,NA
+Mineola,NY,24,0.0558
+Franklin,OH,7,NA
+Weaverville,NC,24,NA
+Oneonta,NY,10,NA
+Heber City,UT,24,NA
+Moorestown Township,NJ,1,NA
+Morris Plains,NJ,24,0.0662
+Pleasantville,NJ,11,NA
+Charlotte,MI,1,NA
+Lake Placid,FL,24,NA
+Birmingham,MI,24,0.0538
+Ridgefield,WA,24,0.0369
+Gulf Breeze,FL,24,0.0365
+Deerfield,IL,18,NA
+Elmwood Park,NJ,17,NA
+Canyon,TX,24,0.0392
+New Kensington,PA,2,NA
+Blythe,CA,2,NA
+Hatboro,PA,5,NA
+Twinsburg,OH,2,NA
+Corsicana,TX,24,0.0494
+Choctaw,OK,17,NA
+Sparta Township,NJ,1,NA
+Lino Lakes,MN,1,NA
+Rensselaer,NY,24,NA
+Byron,GA,12,NA
+Leland,NC,24,NA
+Rhinelander,WI,4,NA
+Susanville,CA,1,NA
+Hayden,ID,24,0.0736
+Blue Island,IL,6,NA
+Payson,AZ,7,NA
+Kingsland,GA,24,0.0907
+Arcata,CA,19,NA
+Chalfont,PA,6,NA
+Centerville,OH,24,NA
+Charleston,IL,7,NA
+Enumclaw,WA,24,0.0297
+Verona,WI,24,0.0545
+Scarborough,ME,24,NA
+Harrodsburg,KY,1,NA
+Westborough,MA,24,0.0555
+Decatur,TX,21,NA
+Latham,NY,7,NA
+Sewickley,PA,9,NA
+Palmyra,PA,9,NA
+Corinth,TX,24,0.0447
+Pascagoula,MS,20,NA
+Nipomo,CA,1,NA
+Newport,NC,4,NA
+Crescent City,CA,3,NA
+Forked River,NJ,1,NA
+Baker,LA,4,NA
+Machesney Park,IL,2,NA
+Dade City,FL,24,NA
+Watkinsville,GA,9,NA
+Lomita,CA,24,0.0375
+Loves Park,IL,6,NA
+East Amherst,NY,20,NA
+North Liberty,IA,24,0.0489
+South Saint Paul,MN,11,NA
+Wareham,MA,4,NA
+Tipp City,OH,17,NA
+Lindenwold,NJ,2,NA
+Gardner,MA,24,NA
+Bloomfield,CT,24,0.0387
+Parma Heights,OH,24,NA
+Eatonton,GA,2,NA
+Exton,PA,24,0.044
+Show Low,AZ,3,NA
+Maitland,FL,24,0.0312
+Prineville,OR,18,NA
+Ozark,AL,2,NA
+Mountlake Terrace,WA,24,0.0271
+Louisburg,NC,1,NA
+Lynbrook,NY,5,NA
+Farmingville,NY,2,NA
+La Canada Flintridge,CA,7,NA
+Dayton,TN,2,NA
+Clackamas,OR,24,0.0634
+Erlanger,KY,24,0.0462
+Laurens,SC,1,NA
+Altoona,IA,9,NA
+Palisades Park,NJ,8,NA
+Kaufman,TX,3,NA
+Yulee,FL,24,0.0551
+Morrison,CO,9,NA
+Ashland,VA,8,NA
+Yardley,PA,24,NA
+West Columbia,SC,24,0.0509
+Universal City,TX,24,0.0453
+Palm Springs,FL,24,0.0276
+Rocky River,OH,8,NA
+Newton,IA,10,NA
+Plainsboro,NJ,24,0.0354
+Prospect,KY,24,0.0599
+West Saint Paul,MN,24,0.0262
+Alsip,IL,15,NA
+Louisville,CO,24,0.0611
+Dolton,IL,24,NA
+Blue Bell,PA,24,0.0491
+Homewood,IL,4,NA
+Mc Calla,AL,23,NA
+Covington,WA,24,0.0426
+Angier,NC,24,NA
+Lahaina,HI,24,NA
+Los Alamos,NM,7,NA
+Oldsmar,FL,24,0.064
+Wixom,MI,7,NA
+Louisville,OH,19,NA
+Mineral Wells,TX,3,NA
+Hoschton,GA,24,NA
+Pecan Grove,TX,24,0.0285
+Greencastle,PA,5,NA
+Nederland,TX,24,0.0391
+Lindale,TX,8,NA
+Newport,RI,24,0.1593
+Troutdale,OR,4,NA
+Hobe Sound,FL,23,NA
+Auburn,IN,1,NA
+Carencro,LA,2,NA
+Havelock,NC,24,0.047
+Morganville,NJ,10,NA
+Hilton,NY,1,NA
+New Haven,IN,1,NA
+Jacksonville Beach,FL,24,0.0607
+Milford,DE,6,NA
+East Moline,IL,6,NA
+Mayfield Heights,OH,24,0.053900000000000003
+Jessup,MD,22,NA
+Newtown Square,PA,9,NA
+Westbrook,ME,8,NA
+Hanover,MD,24,0.0629
+La Crescenta-Montrose,CA,24,NA
+Farmington,UT,24,0.1212
+Hudson,MA,23,NA
+Loudon,TN,3,NA
+Mesquite,NV,19,NA
+Browns Mills,NJ,2,NA
+Whitehall,OH,24,0.0752
+Harrison Township,MI,24,0.0392
+Danville,PA,14,NA
+Weirton,WV,6,NA
+Columbia,PA,24,NA
+Rutland,VT,6,NA
+Brookfield,IL,8,NA
+Union City,GA,24,0.0367
+Geneva,NY,4,NA
+Warwick,NY,2,NA
+Dripping Springs,TX,24,0.0817
+Jeannette,PA,1,NA
+Willow Grove,PA,24,NA
+Evergreen Park,IL,1,NA
+Marianna,FL,1,NA
+Corning,NY,1,NA
+Rocky Hill,CT,24,0.0467
+Yankton,SD,1,NA
+Clarksville,IN,10,NA
+Lewisburg,PA,7,NA
+Howard,WI,1,NA
+Jensen Beach,FL,24,0.0802
+Albany,CA,24,0.0494
+Bainbridge Island,WA,24,0.0568
+Indianola,IA,6,NA
+Pendleton,OR,24,NA
+Holly,MI,1,NA
+Maple Shade Township,NJ,21,NA
+Paris,TN,4,NA
+Harriman,TN,2,NA
+Truckee,CA,21,NA
+Saco,ME,19,NA
+Chickasha,OK,17,NA
+South Milwaukee,WI,23,NA
+Grain Valley,MO,24,0.0394
+Monmouth Junction,NJ,18,NA
+Chippewa Falls,WI,24,NA
+Saint Michael,MN,15,NA
+Hood River,OR,16,NA
+Johnson City,NY,19,NA
+Sayreville,NJ,6,NA
+New Richmond,WI,10,NA
+Fulshear,TX,24,NA
+Canal Winchester,OH,24,NA
+Walker,LA,2,NA
+Hawthorne,NJ,5,NA
+Penfield,NY,10,NA
+Orinda,CA,6,NA
+Eloy,AZ,1,NA
+Somerset,MA,1,NA
+Pikesville,MD,3,NA
+Grayslake,IL,9,NA
+Bonaire,GA,23,NA
+Holt,MI,24,NA
+Schwenksville,PA,1,NA
+Rocky Mount,VA,2,NA
+Clive,IA,5,NA
+Big Lake,MN,4,NA
+Ocean,NJ,5,NA
+Mamaroneck,NY,24,NA
+Ferndale,MI,24,0.0441
+Affton,MO,2,NA
+Nevada City,CA,7,NA
+Oregon,OH,1,NA
+Willow Spring,NC,1,NA
+South Burlington,VT,24,NA
+New Cumberland,PA,8,NA
+Saugerities,NY,7,NA
+Cinco Ranch,TX,24,0.0352
+Sandpoint,ID,10,NA
+Woodbridge,NJ,24,0.0396
+Bensenville,IL,11,NA
+Nolensville,TN,7,NA
+Rockmart,GA,7,NA
+Germantown,WI,7,NA
+Tumwater,WA,24,0.0393
+Clanton,AL,17,NA
+Brockport,NY,21,NA
+Anacortes,WA,24,0.04
+Bluefield,WV,4,NA
+Griffith,IN,8,NA
+Harvey,IL,1,NA
+Coronado,CA,24,0.0906
+South Orange,NJ,24,0.082
+Northampton,PA,5,NA
+Park Forest,IL,9,NA
+New Albany,OH,24,0.0788
+Taylor,TX,24,NA
+Tinton Falls,NJ,11,NA
+Ansonia,CT,23,NA
+Sunny Isles Beach,FL,24,0.0265
+Mars,PA,8,NA
+Winthrop,MA,23,NA
+Stillwater,MN,8,NA
+Brigham City,UT,4,NA
+Watervliet,NY,24,NA
+Hanahan,SC,24,NA
+Rossville,GA,24,NA
+Point Pleasant,NJ,7,NA
+Richlands,NC,21,NA
+Fort Valley,GA,5,NA
+Laguna Beach,CA,24,0.0576
+Chatham,NJ,24,0.0418
+Davidson,NC,24,0.0692
+Harrison,NJ,24,0.0248
+Augusta,ME,24,0.0585
+Red Wing,MN,8,NA
+East Hampton,NY,24,0.0908
+Oakton,VA,7,NA
+North Salt Lake,UT,24,0.0407
+Commerce,GA,23,NA
+Berwick,PA,1,NA
+Alpine,CA,24,0.0702
+Hopkinton,MA,21,NA
+Alexandria,KY,2,NA
+Norwood,OH,24,0.0311
+Bethany,OK,24,0.0436
+Sandy,OR,18,NA
+Pinole,CA,1,NA
+Hopkins,MN,24,0.0488
+Caledonia,MI,2,NA
+Belle Glade,FL,1,NA
+Franklin,KY,3,NA
+Great Bend,KS,1,NA
+New Paltz,NY,1,NA
+Rathdrum,ID,9,NA
+Sedona,AZ,24,0.0537
+Rutherford,NJ,18,NA
+Hermosa Beach,CA,24,0.0506
+Gretna,NE,20,NA
+Surfside Beach,SC,24,NA
+Copley,OH,8,NA
+Long Beach,MS,21,NA
+Trenton,MI,1,NA
+Sartell,MN,8,NA
+Otsego,MN,1,NA
+Springtown,TX,3,NA
+North Palm Beach,FL,24,0.0329
+Brookpark,OH,1,NA
+Creve Coeur,MO,24,0.0384
+Lowell,IN,2,NA
+Hudson,NY,21,NA
+Wilton,CT,8,NA
+Ashland,MA,9,NA
+Fletcher,NC,9,NA
+Lincoln,RI,13,NA
+Lake Forest,IL,2,NA
+Foxborough,MA,12,NA
+Joshua,TX,1,NA
+Concord,MA,9,NA
+Ripon,CA,3,NA
+Shepherdsville,KY,5,NA
+Cottage Grove,OR,5,NA
+Lumberton,TX,4,NA
+Sharpsburg,GA,7,NA
+Sappington,MO,22,NA
+Makawao,HI,5,NA
+Imperial,CA,2,NA
+Coolidge,AZ,24,NA
+Emmaus,PA,21,NA
+Angola,IN,1,NA
+Windham,ME,3,NA
+Enola,PA,24,NA
+Greenville,MI,1,NA
+Mukilteo,WA,24,0.0347
+Bolivar,MO,10,NA
+Healdsburg,CA,24,0.0596
+Pennsauken,NJ,23,NA
+Iselin,NJ,24,NA
+Newburyport,MA,24,NA
+Pembroke,MA,4,NA
+Dayton,NV,5,NA
+Hazelwood,MO,24,0.0449
+Pelham,AL,6,NA
+Murphy,TX,6,NA
+Dickinson,TX,21,NA
+Sanford,ME,12,NA
+Conshohocken,PA,24,0.0561
+Selah,WA,21,NA
+Gorham,ME,4,NA
+Livingston,TX,2,NA
+West Richland,WA,9,NA
+Forest Hill,MD,1,NA
+Taft,CA,5,NA
+Elkins Park,PA,18,NA
+Avenel,NJ,3,NA
+Carnegie,PA,23,NA
+Oxford,AL,19,NA
+Steamboat Springs,CO,20,NA
+Grand Ledge,MI,1,NA
+Ponte Vedra,FL,24,0.0525
+Payson,UT,9,NA
+Denville,NJ,1,NA
+Three Rivers,MI,1,NA
+Vinton,VA,6,NA
+Manchester,MO,4,NA
+Saint Joseph,MI,24,NA
+Havre de Grace,MD,2,NA
+Youngsville,NC,10,NA
+Ferguson,MO,24,0.067
+Port Allen,LA,6,NA
+La Vista,NE,24,0.0353
+Beverly Hills,FL,8,NA
+Burtonsville,MD,8,NA
+Sanger,TX,20,NA
+New Hartford,NY,2,NA
+Pinecrest,FL,24,0.1115
+Clemson,SC,24,NA
+Speedway,IN,9,NA
+Polk City,FL,11,NA
+Astoria,OR,23,NA
+Cudahy,WI,10,NA
+El Dorado,KS,15,NA
+Temple,GA,7,NA
+Anoka,MN,23,NA
+Spearfish,SD,4,NA
+Muscle Shoals,AL,1,NA
+Eastlake,OH,2,NA
+Killingly,CT,1,NA
+Webster,MA,7,NA
+Greenfield,MA,1,NA
+Laguna Woods,CA,24,0.0611
+Aledo,TX,23,NA
+Dallas,NC,24,0.0935
+Wayne,MI,16,NA
+Delran Township,NJ,1,NA
+Sylva,NC,2,NA
+Colchester,VT,6,NA
+Bryant,AR,6,NA
+Mount Joy,PA,5,NA
+Liberty Hill,TX,24,0.028
+Mechanicville,NY,8,NA
+Nokomis,FL,24,0.0788
+Southbridge,MA,8,NA
+Burlington,WI,1,NA
+McKinleyville,CA,17,NA
+Bridgeville,PA,9,NA
+Saint Helens,OR,24,NA
+Rancho Mirage,CA,24,0.1498
+Swartz Creek,MI,8,NA
+Madison Heights,VA,8,NA
+Brookfield,CT,4,NA
+Artesia,NM,2,NA
+North Ogden,UT,6,NA
+Pleasant Prairie,WI,1,NA
+Sterling,CO,12,NA
+Streetsboro,OH,3,NA
+Crystal River,FL,24,NA
+White Settlement,TX,24,NA
+East Peoria,IL,1,NA
+Destin,FL,24,0.0879
+Horsham,PA,20,NA
+Beacon,NY,24,0.0652
+Sellersburg,IN,7,NA
+Scottsbluff,NE,2,NA
+Shiloh,IL,24,0.0445
+Cambridge,MD,2,NA
+El Segundo,CA,24,0.042
+Gibsonton,FL,24,NA
+Madison,CT,5,NA
+Bellaire,TX,11,NA
+Hebron,KY,7,NA
+Portland,TX,21,NA
+Madisonville,LA,1,NA
+Hatfield,PA,24,NA
+Hockley,TX,24,NA
+Pierre,SD,7,NA
+Seagoville,TX,24,NA
+Smithfield,VA,2,NA
+Ojus,FL,24,0.0391
+Central,SC,13,NA
+Fairview Park,OH,4,NA
+Belleview,FL,6,NA
+Jackson,WY,8,NA
+Verona,PA,15,NA
+Pleasanton,TX,1,NA
+Aurora,OH,2,NA
+Gautier,MS,10,NA
+Chester Springs,PA,1,NA
+Madison,NJ,24,0.0583
+Westlake Village,CA,24,0.0722
+Overland,MO,9,NA
+Stevenson Ranch,CA,24,0.0358
+Amesbury,MA,24,NA
+Ashwaubenon,WI,5,NA
+Highland,UT,9,NA
+Middletown,RI,24,NA
+Abington,MA,10,NA
+Metuchen,NJ,24,NA
+Brownsville,FL,18,NA
+Brookhaven,PA,9,NA
+Greenbrier,AR,1,NA
+Willimantic,CT,3,NA
+Bellingham,MA,24,NA
+Waterford,CT,18,NA
+Spanish Lake,MO,24,0.0538
+South Charleston,WV,2,NA
+Calera,AL,24,0.0365
+Danville,IN,5,NA
+Auburn,MA,6,NA
+La Marque,TX,24,0.0276
+Prospect Heights,IL,7,NA
+Marble Falls,TX,22,NA
+Orting,WA,2,NA
+Laconia,NH,19,NA
+Stonington,CT,7,NA
+Bluffdale,UT,24,0.0346
+Springfield,NJ,11,NA
+Wharton,TX,4,NA
+Emmett,ID,1,NA
+Saint Simons Island,GA,24,NA
+El Reno,OK,24,NA
+Weehawken,NJ,24,0.0491
+Cody,WY,8,NA
+Lone Tree,CO,23,NA
+Duncan,SC,23,NA
+Berthoud,CO,11,NA
+Bristol,RI,24,NA
+Great Falls,VA,7,NA
+Malibu,CA,24,0.1158
+Owens Cross Roads,AL,24,NA
+Lugoff,SC,1,NA
+Delmar,NY,10,NA
+Hauppauge,NY,15,NA
+Greenwood Village,CO,24,0.077
+Hastings,MN,8,NA
+Carpinteria,CA,19,NA
+Keaau,HI,11,NA
+Denver,PA,5,NA
+Lake Saint Louis,MO,24,NA
+North Arlington,NJ,2,NA
+Stanley,NC,3,NA
+Clairton,PA,24,NA
+Hot Springs Village,AR,3,NA
+Alachua,FL,2,NA
+Camillus,NY,21,NA
+Manlius,NY,1,NA
+Langley Park,MD,6,NA
+Molalla,OR,3,NA
+Advance,NC,1,NA
+Stafford,TX,24,0.0197
+Half Moon Bay,CA,5,NA
+Andover,KS,8,NA
+Moraga,CA,7,NA
+Highland Park,NJ,24,NA
+Joppa,MD,7,NA
+Lock Haven,PA,24,0.0799
+Lansdowne,PA,3,NA
+Glenwood Springs,CO,21,NA
+Glen Carbon,IL,2,NA
+Fort Thomas,KY,21,NA
+Rye,NY,9,NA
+Telford,PA,1,NA
+Abington,PA,7,NA
+Kensington,MD,6,NA
+Worthington,OH,8,NA
+Roanoke,TX,24,0.042
+Aztec,NM,2,NA
+Covington,TN,2,NA
+Center Point,AL,24,0.0426
+Addison,TX,24,0.044
+Gulf Shores,AL,24,NA
+Braselton,GA,24,0.0377
+Winchester,TN,2,NA
+Easthampton,MA,4,NA
+Wimberley,TX,7,NA
+Sweetwater,TN,1,NA
+Bryn Mawr-Skyway,WA,18,NA
+Kathleen,GA,9,NA
+Milford,NH,7,NA
+Satellite Beach,FL,24,0.0702
+Humboldt,TN,1,NA
+Pawleys Island,SC,3,NA
+Moore,SC,5,NA
+Trenton,OH,5,NA
+Silverton,OR,7,NA
+Pinewood,FL,10,NA
+Clearlake,CA,4,NA
+Claymont,DE,22,NA
+Browns Summit,NC,7,NA
+Clementon,NJ,12,NA
+Westwood,MA,12,NA
+Bordentown Township,NJ,21,NA
+Eagle Point,OR,1,NA
+Plymouth Meeting,PA,20,NA
+High Ridge,MO,1,NA
+Gainesville,TX,7,NA
+Bellevue,WI,5,NA
+King,NC,2,NA
+Waterville,ME,20,NA
+China Grove,NC,13,NA
+Exeter,NH,5,NA
+Albert Lea,MN,7,NA
+Benson,NC,7,NA
+Charlestown,IN,10,NA
+Grimes,IA,24,NA
+Hurricane,UT,24,NA
+Platteville,WI,1,NA
+Portsmouth,RI,9,NA
+Wynnewood,PA,24,0.0919
+Clayton,MO,24,0.0944
+South Sioux City,NE,1,NA
+Hershey,PA,19,NA
+San Anselmo,CA,9,NA
+Sunbury,PA,1,NA
+Souderton,PA,4,NA
+Gaines,MI,7,NA
+Lemay,MO,3,NA
+Ashland City,TN,24,0.0453
+Morgan,UT,1,NA
+Red Oak,TX,24,NA
+North East,MD,24,0.0532
+Brazoria,TX,1,NA
+Northborough,MA,4,NA
+Grove City,PA,15,NA
+Crest Hill,IL,1,NA
+Lakeway,TX,24,0.039
+Hugo,MN,1,NA
+Fruita,CO,22,NA
+Bangor,PA,1,NA
+Cortez,CO,18,NA
+Franklinton,NC,1,NA
+North Myrtle Beach,SC,24,NA
+Marshfield,MO,1,NA
+Durham,NH,3,NA
+Beaver,PA,8,NA
+Plain City,OH,17,NA
+Grafton,WI,9,NA
+Broussard,LA,22,NA
+Willowbrook,IL,24,0.0436
+Budd Lake,NJ,23,NA
+Tenafly,NJ,8,NA
+Ruther Glen,VA,3,NA
+Marcus Hook,PA,21,NA
+Alamosa,CO,9,NA
+Skiatook,OK,2,NA
+Leonardtown,MD,1,NA
+Pryor,OK,1,NA
+Asbury Park,NJ,24,0.0859
+Creedmoor,NC,1,NA
+Vail,AZ,24,0.0833
+Delafield,WI,2,NA
+Gambrills,MD,24,NA
+North Bend,WA,24,NA
+Lowell,AR,8,NA
+Northview,MI,9,NA
+Mount Clemens,MI,19,NA
+Berkley,MI,9,NA
+Carthage,NC,11,NA
+Hazel Park,MI,24,0.0392
+Signal Mountain,TN,2,NA
+Potsdam,NY,6,NA
+West Haven,UT,24,0.0363
+South Ogden,UT,23,NA
+Birdsboro,PA,3,NA
+Kingston,TN,1,NA
+Purvis,MS,1,NA
+Columbia Falls,MT,5,NA
+Hubert,NC,24,0.023
+Tomah,WI,14,NA
+Clinton,MA,22,NA
+Whitman,MA,3,NA
+Clifton,VA,1,NA
+Smithfield,RI,2,NA
+Church Hill,TN,1,NA
+Jennings,MO,24,0.0716
+Bessemer City,NC,15,NA
+Harper Woods,MI,24,0.0714
+Bulverde,TX,9,NA
+White House,TN,22,NA
+North Chicago,IL,2,NA
+Carmel-by-the-Sea,CA,16,NA
+Boulder City,NV,21,NA
+Haddonfield,NJ,24,0.0486
+Sikeston,MO,2,NA
+Spanish Fort,AL,24,0.0427
+Fate,TX,24,0.0274
+Hampton,NH,19,NA
+Whitewater,WI,1,NA
+Newport,KY,24,0.04
+Louisa,VA,1,NA
+Harrisonville,MO,4,NA
+Millbrook,AL,24,NA
+Glens Falls,NY,1,NA
+La Grange,IL,21,NA
+College Park,GA,24,0.0781
+Deer Park,WA,1,NA
+Country Club Hills,IL,1,NA
+Sturgeon Bay,WI,1,NA
+Manassas Park,VA,24,0.0508
+Fairview,NJ,10,NA
+Whitefish,MT,23,NA
+Junction City,OR,3,NA
+Chelsea,AL,24,NA
+Opa-locka,FL,24,0.0964
+Hanover,MA,10,NA
+Rockport,TX,20,NA
+Fraser,MI,2,NA
+Ridgeland,SC,8,NA
+Dennis,MA,3,NA
+Whitehouse,TX,23,NA
+Delavan,WI,1,NA
+Hartwell,GA,2,NA
+Hamilton,MT,1,NA
+Bedford,MA,19,NA
+Girard,OH,2,NA
+Sedro-Woolley,WA,9,NA
+Forest Park,IL,24,0.0353
+Kirksville,MO,2,NA
+Robbinsdale,MN,24,0.0603
+Bremen,GA,2,NA
+West Park,FL,24,0.1105
+Bennington,VT,3,NA
+Rex,GA,24,0.0411
+Fairview Heights,IL,12,NA
+Luling,LA,1,NA
+Mineola,TX,1,NA
+Bennington,NE,21,NA
+Fruitland Park,FL,5,NA
+Marblehead,MA,21,NA
+Greenwood,AR,6,NA
+Saddle Brook,NJ,8,NA
+Barrington,RI,1,NA
+Warrenville,IL,24,0.0578
+New Palestine,IN,1,NA
+Amherst,OH,4,NA
+Gibsonville,NC,11,NA
+Pacific Grove,CA,24,0.0324
+Lady Lake,FL,24,NA
+Lebanon,NH,24,NA
+Pleasant Hill,MO,12,NA
+Key Biscayne,FL,24,0.0571
+Safety Harbor,FL,21,NA
+Highland,NY,6,NA
+East Cleveland,OH,24,NA
+Verona,NJ,7,NA
+Delta,CO,1,NA
+Orange,CT,2,NA
+Nyack,NY,24,NA
+Hampton Bays,NY,24,NA
+Washington,NJ,1,NA
+Webb City,MO,19,NA
+Beatrice,NE,2,NA
+Bethlehem,GA,15,NA
+Scotts Valley,CA,10,NA
+Arlington,TN,21,NA
+Pinehurst,NC,24,NA
+Rantoul,IL,24,NA
+Brandywine,MD,15,NA
+Sweet Home,OR,5,NA
+Suffern,NY,3,NA
+Federal Heights,CO,24,NA
+Greensboro,GA,2,NA
+Fortuna,CA,3,NA
+Bonham,TX,7,NA
+Laurel,MT,7,NA
+Perry Hall,MD,7,NA
+Marina del Rey,CA,24,0.0543
+Wayland,MA,8,NA
+Lyndhurst,OH,7,NA
+Vandalia,OH,18,NA
+East Riverdale,MD,20,NA
+Collingswood,NJ,24,0.0829
+Gladeview,FL,3,NA
+Winslow,AZ,1,NA
+Auburn,GA,21,NA
+Darby,PA,9,NA
+Two Rivers,WI,1,NA
+Burlington,WA,24,NA
+University Heights,OH,21,NA
+Miami Springs,FL,3,NA
+Four Oaks,NC,1,NA
+Los Osos,CA,6,NA
+Rossville,MD,24,0.0369
+Edgewater,NJ,24,0.035
+Harrison,NY,22,NA
+Cromwell,CT,4,NA
+Millbury,MA,10,NA
+Ball Ground,GA,6,NA
+Bexley,OH,7,NA
+Uniontown,OH,4,NA
+Ardmore,PA,23,NA
+Beachwood,OH,24,0.1019
+Carbondale,PA,1,NA
+Waconia,MN,8,NA
+Nashville,NC,2,NA
+Warrensville Heights,OH,1,NA
+Norwalk,IA,7,NA
+Swampscott,MA,7,NA
+Orrville,OH,1,NA
+Frederick,CO,2,NA
+Thonotosassa,FL,8,NA
+New Market,MD,22,NA
+Clifton,CO,18,NA
+Carrboro,NC,24,NA
+Pike Road,AL,24,NA
+Cherryville,NC,1,NA
+East Greenwich,RI,19,NA
+Bay Saint Louis,MS,6,NA
+Duson,LA,2,NA
+Sharon,PA,4,NA
+Altus,OK,6,NA
+Ephrata,WA,5,NA
+New Providence,NJ,13,NA
+Middleton,ID,8,NA
+Portales,NM,24,0.0195
+Lakeland,TN,13,NA
+Thompsons Station,TN,22,NA
+Middletown,MD,5,NA
+Hazel Crest,IL,1,NA
+Port Jervis,NY,9,NA
+Holly Hill,FL,23,NA
+Monaca,PA,3,NA
+Reedsburg,WI,1,NA
+Saint Albans,VT,2,NA
+Saraland,AL,8,NA
+Moody,AL,24,NA
+Morehead City,NC,23,NA
+Blue Ash,OH,20,NA
+Wall,NJ,4,NA
+Gardendale,AL,4,NA
+Chicago Ridge,IL,8,NA
+Centerton,AR,24,0.0272
+Eatontown,NJ,9,NA
+North Aurora,IL,10,NA
+Glenn Heights,TX,24,0.0482
+Ammon,ID,24,0.0548
+Woodruff,SC,1,NA
+Quincy,WA,2,NA
+Lincolnia,VA,24,0.0769
+Haysville,KS,2,NA
+Santa Rosa Beach,FL,24,0.0381
+Cornelius,OR,1,NA
+Cave Creek,AZ,1,NA
+Seabrook,TX,15,NA
+Blue Ridge,GA,1,NA
+Black Mountain,NC,11,NA
+Leon Valley,TX,8,NA
+Oak Park,CA,24,0.0497
+Live Oak,TX,24,0.0298
+Brownsville,TN,2,NA
+Lander,WY,5,NA
+Snoqualmie,WA,24,0.0818
+Keyport,NJ,6,NA
+Little Falls,NJ,9,NA
+Garden City,ID,24,0.0697
+New Hope,PA,1,NA
+Sandston,VA,1,NA
+Clayton,CA,1,NA
+Glendale,WI,23,NA
+South Daytona,FL,24,NA
+Sunbury,OH,22,NA
+California,MD,20,NA
+Kingston,PA,24,0.0666
+Glenpool,OK,5,NA
+Rogers,MN,10,NA
+Woodland Park,CO,24,0.1683
+Sharonville,OH,9,NA
+Flanders,NJ,5,NA
+Berkeley Heights,NJ,3,NA
+Ridgefield Park,NJ,2,NA
+Paradise Valley,AZ,24,NA
+Platte City,MO,8,NA
+Lincolnwood,IL,8,NA
+Shorewood,WI,22,NA
+Lake Forest Park,WA,21,NA
+Narragansett,RI,5,NA
+Hueytown,AL,24,0.0254
+Liberty Lake,WA,21,NA
+Johnstown,OH,7,NA
+Bedford,OH,24,NA
+Rochester,MI,19,NA
+Mounds View,MN,1,NA
+Webster,TX,24,0.0568
+Swansea,IL,20,NA
+Chesterton,IN,7,NA
+Sweetwater,FL,3,NA
+Soldotna,AK,3,NA
+Midland,GA,1,NA
+Waddell,AZ,22,NA
+Pleasantville,NY,3,NA
+Livingston,MT,11,NA
+Claremont,NH,14,NA
+Vadnais Heights,MN,22,NA
+Magnolia,DE,1,NA
+Hailey,ID,5,NA
+Jefferson City,TN,2,NA
+Pella,IA,23,NA
+Spring Branch,TX,12,NA
+Lewisville,NC,1,NA
+Lynnfield,MA,7,NA
+Sandwich,MA,2,NA
+Alcoa,TN,24,NA
+Manorville,NY,13,NA
+Sausalito,CA,24,0.0662
+Grover Beach,CA,12,NA
+Lumberton Township,NJ,9,NA
+Oxford,CT,1,NA
+Smiths Station,AL,2,NA
+York,ME,6,NA
+Wickliffe,OH,1,NA
+Manasquan,NJ,5,NA
+Port Neches,TX,4,NA
+West Carrollton,OH,12,NA
+Nanticoke,PA,2,NA
+Aberdeen,NC,22,NA
+Somerville,NJ,24,0.0548
+Adelphi,MD,8,NA
+Lonoke,AR,1,NA
+Wildwood,NJ,2,NA
+South Haven,MI,3,NA
+Southern Pines,NC,24,0.0358
+Wharton,NJ,6,NA
+Ellenton,FL,19,NA
+Carthage,MO,1,NA
+Brown Deer,WI,18,NA
+Kingston,MA,12,NA
+Leeds,AL,10,NA
+Derby,CT,8,NA
+River Ridge,LA,1,NA
+Longs,SC,2,NA
+North Smithfield,RI,10,NA
+Palmer,MA,1,NA
+Bound Brook,NJ,18,NA
+Florham Park,NJ,1,NA
+Hewitt,TX,24,NA
+Sumner,WA,24,0.0305
+Gladstone,OR,23,NA
+Melvindale,MI,19,NA
+North Saint Paul,MN,22,NA
+Emeryville,CA,24,0.0356
+Farmington,NY,11,NA
+Riverview,MI,3,NA
+New Carrollton,MD,24,0.1036
+West Henrietta,NY,19,NA
+Haverstraw,NY,21,NA
+Melissa,TX,24,0.0454
+Moseley,VA,1,NA
+Newberry,FL,24,NA
+Sellersville,PA,1,NA
+Monmouth,OR,18,NA
+Justin,TX,24,0.0582
+Clarksville,MD,1,NA
+Superior,CO,24,0.1167
+Destrehan,LA,4,NA
+Grand Terrace,CA,24,0.0743
+Hasbrouck Heights,NJ,1,NA
+Brattleboro,VT,10,NA
+Coventry,CT,1,NA
+New Brighton,PA,3,NA
+Saint James,NY,1,NA
+Haslett,MI,8,NA
+Tarrytown,NY,7,NA
+Ocklawaha,FL,1,NA
+Camdenton,MO,1,NA
+Wayland,MI,1,NA
+Lake Elmo,MN,1,NA
+Wrentham,MA,1,NA
+Warrenton,MO,1,NA
+Whiting,IN,8,NA
+Montgomery,OH,1,NA
+Pennington,NJ,18,NA
+Elgin,TX,23,NA
+Waynesville,MO,24,0.0392
+Vineyard,UT,23,NA
+Bellefontaine Neighbors,MO,24,0.1159
+River Edge,NJ,4,NA
+Pagosa Springs,CO,6,NA
+Minneola,FL,24,0.0613
+Chubbuck,ID,16,NA
+Prince George,VA,1,NA
+Plattsmouth,NE,5,NA
+Florida City,FL,24,NA
+Lakeport,CA,5,NA
+Canyon Lake,CA,2,NA
+Somersworth,NH,7,NA
+Spencer,MA,1,NA
+Boonton,NJ,1,NA
+Bellmawr,NJ,10,NA
+Star,ID,24,0.0523
+Gulfport,FL,24,0.0732
+Athol,MA,2,NA
+Mauldin,SC,24,0.0325
+Palos Verdes Estates,CA,1,NA
+Ridge,NY,1,NA
+Robinson,TX,1,NA
+Pendleton,SC,15,NA
+El Sobrante,CA,11,NA
+Guttenberg,NJ,23,NA
+Valley Center,KS,1,NA
+Round Lake,IL,1,NA
+Lakeside,VA,12,NA
+Edgewood,WA,24,0.0773
+Norton,OH,2,NA
+Firestone,CO,11,NA
+Duvall,WA,7,NA
+Stallings,NC,6,NA
+River Forest,IL,2,NA
+Minden,NV,1,NA
+Littlestown,PA,1,NA
+Big Bear City,CA,18,NA
+Saint Ann,MO,24,0.0763
+Breinigsville,PA,24,0.0389
+Johnstown,CO,23,NA
+Cornelia,GA,3,NA
+Englewood,OH,5,NA
+Marco Island,FL,24,NA
+Alton,TX,24,NA
+Scappoose,OR,6,NA
+Spring City,PA,7,NA
+California City,CA,24,0.0946
+Troutman,NC,24,0.0625
+Poquoson,VA,2,NA
+Milan,TN,1,NA
+Independence,OR,19,NA
+Gloucester City,NJ,3,NA
+Red Bank,TN,24,0.0554
+Spring Hill,KS,7,NA
+Woods Cross,UT,6,NA
+Knoxville,IA,14,NA
+Signal Hill,CA,8,NA
+Mapleton,UT,2,NA
+Brooklyn Park,MD,10,NA
+Grosse Pointe Park,MI,7,NA
+Jamestown,ND,23,NA
+Orono,ME,1,NA
+Suitland,MD,24,0.0229
+Richton Park,IL,7,NA
+Clawson,MI,8,NA
+Tell City,IN,1,NA
+La Pine,OR,2,NA
+Fife,WA,24,0.0318
+Gold Canyon,AZ,2,NA
+McCordsville,IN,21,NA
+Wallington,NJ,6,NA
+Crandall,TX,11,NA
+Lyman,SC,9,NA
+New Market,AL,10,NA
+Ridgefield,NJ,7,NA
+Argyle,TX,24,NA
+Doctor Phillips,FL,24,0.0298
+View Park-Windsor Hills,CA,2,NA
+Belfair,WA,5,NA
+Brooklyn,OH,2,NA
+Waterford,NY,2,NA
+Solana Beach,CA,24,0.1191
+Little Ferry,NJ,8,NA
+Kennebunk,ME,2,NA
+Westwood,NJ,1,NA
+Supply,NC,1,NA
+Dobbs Ferry,NY,24,NA
+Newcastle,WA,24,0.0683
+Sierra Madre,CA,19,NA
+Manteno,IL,1,NA
+Leola,PA,1,NA
+Hellertown,PA,6,NA
+Aspen,CO,20,NA
+Geneseo,NY,2,NA
+La Riviera,CA,21,NA
+Cahokia Heights,IL,12,NA
+Falling Waters,WV,12,NA
+Wilton Manors,FL,24,0.0409
+Springville,AL,1,NA
+Warren,RI,4,NA
+Leicester,MA,1,NA
+Riverdale,IL,4,NA
+Burkburnett,TX,9,NA
+Pompton Lakes,NJ,1,NA
+Callaway,FL,24,0.0398
+Southampton,NY,24,0.143
+Breckenridge,CO,9,NA
+Little Canada,MN,24,0.0271
+Gypsum,CO,5,NA
+Carterville,IL,3,NA
+Capitol Heights,MD,24,0.0655
+Somers,WI,9,NA
+Commerce,TX,18,NA
+Berwyn,PA,8,NA
+Conley,GA,23,NA
+Itasca,IL,23,NA
+Granby,CT,2,NA
+Wells,ME,3,NA
+South Park,PA,24,0.0623
+Trabuco Canyon,CA,2,NA
+Bedford Heights,OH,19,NA
+Hitchcock,TX,5,NA
+Munhall,PA,23,NA
+Westlake,LA,10,NA
+Henrietta,NY,21,NA
+Ridley Park,PA,1,NA
+Cocoa Beach,FL,24,0.0483
+Brandon,SD,3,NA
+Polson,MT,4,NA
+Tamaqua,PA,5,NA
+Byram,MS,4,NA
+Ellisville,MO,2,NA
+Merriam,KS,7,NA
+Dupont,WA,24,0.0532
+Interlachen,FL,1,NA
+Beaufort,NC,2,NA
+Holly Springs,GA,24,0.0267
+Reading,OH,24,0.0462
+Ridgeville,SC,5,NA
+Corte Madera,CA,12,NA
+Odenville,AL,15,NA
+Maynard,MA,5,NA
+Warr Acres,OK,1,NA
+Rancho Santa Fe,CA,5,NA
+Stevensville,MD,1,NA
+Somers Point,NJ,4,NA
+Hartford,VT,10,NA
+Lighthouse Point,FL,24,NA
+Castle Pines,CO,24,NA
+North Mankato,MN,2,NA
+Hardeeville,SC,19,NA
+Bemidji,MN,12,NA
+Ambridge,PA,10,NA
+Wood River,IL,10,NA
+Kenai,AK,2,NA
+Clute,TX,12,NA
+Newcastle,OK,24,NA
+Shallotte,NC,10,NA
+Rustburg,VA,2,NA
+Oakland,TN,24,0.0819
+East Hanover Township,NJ,17,NA
+Lake Arbor,MD,24,0.0434
+Tremonton,UT,8,NA
+Hampshire,IL,1,NA
+Discovery Bay,CA,19,NA
+Robstown,TX,1,NA
+Tequesta,FL,23,NA
+Montville,NJ,5,NA
+Selma,TX,24,0.0338
+Old Saybrook,CT,6,NA
+Fairview,TX,24,NA
+Tiburon,CA,19,NA
+Bladensburg,MD,16,NA
+Huntington,VA,24,0.0572
+Shiloh,OH,23,NA
+Cayce,SC,23,NA
+Freeport,TX,2,NA
+Galena Park,TX,1,NA
+Blacklick Estates,OH,3,NA
+Pineville,NC,24,0.073
+Bala-Cynwyd,PA,24,0.0785
+Prairie Grove,AR,16,NA
+Edwards,CO,3,NA
+Stansbury Park,UT,2,NA
+River Grove,IL,5,NA
+Blaine,WA,19,NA
+Atlantic Beach,FL,24,0.0616
+Cotati,CA,4,NA
+Lake Alfred,FL,5,NA
+Colbert,WA,7,NA
+Somerdale,NJ,7,NA
+Jarrell,TX,24,0.0523
+Canton,CT,1,NA
+Catskill,NY,2,NA
+Alexandria,MN,1,NA
+Sleepy Hollow,NY,23,NA
+Goddard,KS,3,NA
+Littleton,MA,6,NA
+Muskegon Heights,MI,1,NA
+Port Townsend,WA,4,NA
+Jefferson,LA,19,NA
+Brentwood,PA,21,NA
+Wyomissing,PA,19,NA
+Mission,KS,24,NA
+Kittery,ME,24,NA
+Rancho Mission Viejo,CA,24,0.0315
+Trinidad,CO,3,NA
+Myrtle Creek,OR,1,NA
+Newport,OR,11,NA
+Williston,VT,4,NA
+Plover,WI,12,NA
+Estes Park,CO,3,NA
+Standish,ME,1,NA
+Willoughby Hills,OH,5,NA
+Mt Holly Township,NJ,9,NA
+Ijamsville,MD,1,NA
+North Versailles,PA,2,NA
+Saint Robert,MO,24,0.0265
+Mount Rainier,MD,8,NA
+Linthicum Heights,MD,3,NA
+Carl Junction,MO,2,NA
+Catasauqua,PA,2,NA
+Clarence,NY,1,NA
+Muldrow,OK,1,NA
+Rural Hall,NC,7,NA
+Fairfield,AL,3,NA
+East Rutherford,NJ,24,0.0938
+Bunnell,FL,22,NA
+Soquel,CA,1,NA
+Plainville,MA,9,NA
+Carrollton,VA,3,NA
+Carbondale,CO,8,NA
+Frederickson,WA,24,0.0424
+Hartville,OH,1,NA
+Boone,IA,6,NA
+Umatilla,FL,1,NA
+Berlin,NH,2,NA
+Ladue,MO,5,NA
+Bayfield,CO,3,NA
+Kula,HI,1,NA
+Worth,IL,1,NA
+Pebble Creek,FL,11,NA
+Colonial Beach,VA,8,NA
+Audubon,NJ,1,NA
+Griswold,CT,4,NA
+Sneads Ferry,NC,22,NA
+Doraville,GA,24,NA
+Swannanoa,NC,7,NA
+Highland Springs,VA,7,NA
+Springdale,OH,24,NA
+Marion,AR,4,NA
+West Point,UT,7,NA
+Midland,WA,5,NA
+Ocean City,NJ,4,NA
+Valley Cottage,NY,3,NA
+Vail,CO,9,NA
+Bellefontaine,OH,1,NA
+Winters,CA,2,NA
+Rhinebeck,NY,6,NA
+Henderson,TX,1,NA
+Red Hook,NY,2,NA
+Bondurant,IA,1,NA
+Wood Ridge,NJ,7,NA
+Clinton,IN,1,NA
+Salado,TX,4,NA
+Pitman,NJ,3,NA
+Wellington,CO,8,NA
+Garden City,GA,4,NA
+Fergus Falls,MN,6,NA
+Richland Hills,TX,4,NA
+Wahpeton,ND,11,NA
+Jamestown,NC,4,NA
+Dunbar,WV,1,NA
+Mary Esther,FL,24,0.0858
+Pleasant Grove,AL,4,NA
+Clarendon Hills,IL,8,NA
+Chadds Ford,PA,1,NA
+Eastchester,NY,3,NA
+Newmarket,NH,4,NA
+Diberville,MS,6,NA
+Wolfforth,TX,9,NA
+Woodstock,VA,1,NA
+Spicewood,TX,20,NA
+Cherry Creek,CO,24,0.0573
+Elmsford,NY,19,NA
+Richmond Heights,MO,24,0.045
+Monona,WI,1,NA
+Joshua Tree,CA,24,NA
+Absecon,NJ,1,NA
+Anderson Mill,TX,9,NA
+Silverthorne,CO,20,NA
+Milton,WV,2,NA
+Box Elder,SD,18,NA
+Hoquiam,WA,2,NA
+Rotonda West,FL,24,0.1073
+Saint Anthony,MN,9,NA
+Dent,OH,1,NA
+Berryville,VA,1,NA
+Basehor,KS,1,NA
+Saint Pete Beach,FL,23,NA
+Cresskill,NJ,1,NA
+Ventnor City,NJ,23,NA
+Silver Springs,FL,1,NA
+Vandergrift,PA,1,NA
+Summit,WA,3,NA
+Lake Park,FL,4,NA
+Archdale,NC,9,NA
+Mound,MN,2,NA
+De Forest,WI,24,NA
+Westampton Township,NJ,9,NA
+La Grande,OR,10,NA
+Milton,WI,2,NA
+Rockcreek,OR,24,NA
+Crozet,VA,8,NA
+Incline Village,NV,23,NA
+Boulder Creek,CA,2,NA
+Park Ridge,NJ,10,NA
+Eudora,KS,1,NA
+Salisbury,MA,1,NA
+Pine Hill,NJ,1,NA
+Pleasant Hill,IA,14,NA
+Port Wentworth,GA,24,0.0418
+Highland Park,TX,2,NA
+Lake Arrowhead,CA,23,NA
+Stoughton,WI,8,NA
+Springfield,GA,11,NA
+Bolivia,NC,24,NA
+Lincoln City,OR,17,NA
+Kennedale,TX,1,NA
+Medical Lake,WA,7,NA
+Washingtonville,NY,1,NA
+Dalzell,SC,1,NA
+Arizona City,AZ,16,NA
+Sheffield,AL,4,NA
+North Haledon,NJ,1,NA
+Victoria,MN,10,NA
+Falmouth,MA,1,NA
+Cedarhurst,NY,1,NA
+Franklin,NH,1,NA
+Capitola,CA,24,NA
+Hillview,KY,1,NA
+Edgewater Park Township,NJ,15,NA
+Indian Harbour Beach,FL,24,NA
+Clear Lake,IA,2,NA
+Bath,ME,7,NA
+Collingdale,PA,3,NA
+Parkville,MO,8,NA
+Lincoln,AL,6,NA
+Corrales,NM,1,NA
+Bushkill,PA,2,NA
+Crestline,CA,24,NA
+College Place,WA,8,NA
+Wyncote,PA,24,NA
+Paradise,CA,23,NA
+Rawlins,WY,9,NA
+Bogota,NJ,6,NA
+Washington Terrace,UT,5,NA
+Selbyville,DE,1,NA
+Center Line,MI,1,NA
+Broadview,IL,1,NA
+Bradley,IL,1,NA
+Cape Canaveral,FL,24,0.0477
+Laughlin,NV,21,NA
+Leavenworth,WA,21,NA
+Westville,NJ,5,NA
+Flowood,MS,22,NA
+Montvale,NJ,1,NA
+McCall,ID,2,NA
+Riverdale,UT,9,NA
+Fort Mitchell,KY,6,NA
+Pollock Pines,CA,1,NA
+Winchester,IN,1,NA
+Bel Aire,KS,7,NA
+Marietta,PA,5,NA
+Palm Beach,FL,24,0.1948
+Old Orchard Beach,ME,19,NA
+Bigfork,MT,2,NA
+Fort Belvoir,VA,9,NA
+Braddock,PA,2,NA
+Brentwood,MO,23,NA
+Van Alstyne,TX,5,NA
+Glen Rock,PA,1,NA
+Ward,AR,4,NA
+Spring Lake,NJ,24,NA
+Maplewood,MO,24,0.0294
+Willow Street,PA,4,NA
+Farmington,AR,24,NA
+Monticello,MN,24,NA
+Clover Creek,WA,11,NA
+Saint Francis,WI,23,NA
+Oakwood,GA,24,NA
+Port Isabel,TX,1,NA
+Ayer,MA,5,NA
+Montesano,WA,2,NA
+Berkeley,MO,23,NA
+Keansburg,NJ,9,NA
+Ada,OH,1,NA
+Wittmann,AZ,1,NA
+Oak Island,NC,4,NA
+Gresham Park,GA,24,NA
+Freeport,ME,5,NA
+Irondale,AL,24,0.0625
+Minnetrista,MN,7,NA
+North Bay Village,FL,24,0.0404
+Goldendale,WA,3,NA
+Waretown,NJ,1,NA
+Brigantine,NJ,3,NA
+Saint Helena,CA,2,NA
+Lago Vista,TX,23,NA
+Devon,PA,9,NA
+Buena Vista,CO,2,NA
+Gray,ME,3,NA
+Raritan,NJ,15,NA
+Flint,TX,7,NA
+Charlevoix,MI,1,NA
+Bellwood,VA,9,NA
+Cheviot,OH,8,NA
+Clayton,GA,3,NA
+Winslow,ME,2,NA
+Yarmouth,ME,7,NA
+Ingleside,TX,20,NA
+Milton,WA,16,NA
+Fultondale,AL,10,NA
+East Lyme,CT,10,NA
+White Bluff,TN,1,NA
+Weldon Spring,MO,1,NA
+Alpine,TX,1,NA
+Castroville,TX,4,NA
+Altoona,WI,1,NA
+Trophy Club,TX,11,NA
+Paoli,PA,10,NA
+Leadville,CO,4,NA
+Hales Corners,WI,2,NA
+Mammoth Lakes,CA,6,NA
+Delmar,MD,1,NA
+Jersey Village,TX,23,NA
+Atlantic Highlands,NJ,8,NA
+Bedminster,NJ,1,NA
+Millburn,NJ,7,NA
+Winooski,VT,20,NA
+Gulf Hills,MS,24,NA
+Santaquin,UT,1,NA
+Lake Bluff,IL,10,NA
+West Harrison,NY,2,NA
+Oak Grove,KY,24,0.0252
+Orange,MA,1,NA
+Basalt,CO,2,NA
+Eden Isle,LA,18,NA
+Harrisburg,SD,15,NA
+Liberty,TX,1,NA
+Fox Lake,IL,1,NA
+Port Jefferson,NY,7,NA
+Calistoga,CA,3,NA
+Santa Teresa,NM,14,NA
+Shalimar,FL,24,0.0493
+Fort Mitchell,AL,3,NA
+Kentfield,CA,1,NA
+Philomath,OR,6,NA
+Sagle,ID,1,NA
+Springfield,FL,8,NA
+Kenwood,OH,9,NA
+Whitsett,NC,23,NA
+Fruitland,ID,1,NA
+La Cresta - Altavista,CA,2,NA
+Montrose,VA,12,NA
+Burns,TN,1,NA
+Alamo Heights,TX,9,NA
+Bargersville,IN,7,NA
+Mount Wolf,PA,1,NA
+Pembroke,NH,1,NA
+West Miami,FL,24,0.0584
+Walled Lake,MI,6,NA
+Valley Park,MO,10,NA
+Northlake,TX,12,NA
+White Salmon,WA,2,NA
+Cle Elum,WA,1,NA
+Cross Roads,TX,11,NA
+New Castle,CO,2,NA
+Castle Hayne,NC,8,NA
+Vernal,UT,7,NA
+Meridianville,AL,24,NA
+McFarland,WI,1,NA
+Waite Park,MN,10,NA
+Hiawatha,IA,6,NA
+Wayzata,MN,9,NA
+Elmwood,LA,17,NA
+Bonner Springs,KS,1,NA
+New Hudson,MI,6,NA
+Brush,CO,2,NA
+Waialua,HI,9,NA
+Brookshire,TX,21,NA
+Fishersville,VA,1,NA
+East Rochester,NY,2,NA
+Godley,TX,2,NA
+Black Diamond,WA,21,NA
+Watford City,ND,10,NA
+Williamsburg,MI,2,NA
+Hillsboro,TX,1,NA
+Whitestown,IN,24,NA
+Noble,OK,10,NA
+West Jefferson,OH,3,NA
+Forestdale,AL,4,NA
+Willow Springs,IL,6,NA
+Glenwood,IL,1,NA
+Garrison,MD,24,0.0627
+Turtle Creek,PA,4,NA
+Fort Wright,KY,6,NA
+Midway Park,NC,21,NA
+Carolina Beach,NC,15,NA
+Garden Home-Whitford,OR,24,NA
+Fort Washington,PA,7,NA
+Pembroke Park,FL,2,NA
+Lake Purdy,AL,1,NA
+Tarboro,NC,2,NA
+Black Jack,MO,1,NA
+Oakmont,PA,7,NA
+Carlstadt,NJ,1,NA
+Groveport,OH,1,NA
+Flagler Beach,FL,14,NA
+Fairview,OR,24,0.0365
+Morton,PA,1,NA
+College Grove,TN,1,NA
+Lindstrom,MN,1,NA
+Wickenburg,AZ,4,NA
+Meredith,NH,1,NA
+Knob Noster,MO,6,NA
+Roeland Park,KS,8,NA
+Talent,OR,7,NA
+Rockland,ME,7,NA
+Moraine,OH,2,NA
+Treasure Island,FL,21,NA
+Osprey,FL,1,NA
+Montecito,CA,9,NA
+Oakhurst,NJ,5,NA
+Tortolita,AZ,2,NA
+Century Village,FL,24,NA
+Cohasset,MA,1,NA
+Freeport,FL,24,0.0478
+Jacksonville,OR,6,NA
+Clay,AL,6,NA
+Collegedale,TN,1,NA
+Indian Wells,CA,1,NA
+Mountville,PA,1,NA
+Lemoyne,PA,9,NA
+Osage Beach,MO,7,NA
+Raleigh Hills,OR,9,NA
+Fairfield,ME,1,NA
+Olivette,MO,24,NA
+Sheridan,CO,24,NA
+Tea,SD,7,NA
+Calabash,NC,8,NA
+Saint John,MO,3,NA
+Hapeville,GA,21,NA
+Pea Ridge,AR,18,NA
+Larkspur,CA,24,0.0783
+Belle Haven,VA,24,NA
+Orange Beach,AL,1,NA
+Ludowici,GA,7,NA
+Mills River,NC,1,NA
+Topanga,CA,7,NA
+Elgin,OK,9,NA
+Waikoloa,HI,2,NA
+Mount Healthy,OH,17,NA
+Excelsior Springs,MO,7,NA
+Midway,UT,2,NA
+Ralston,NE,3,NA
+Pacific,WA,10,NA
+Purchase,NY,22,NA
+Stevens,PA,1,NA
+Sherrills Ford,NC,10,NA
+Evans Mills,NY,1,NA
+Yorktown,IN,1,NA
+Paulsboro,NJ,1,NA
+Vass,NC,9,NA
+Bristol,WI,1,NA
+Oxford,FL,15,NA
+Crafton,PA,8,NA
+Haleiwa,HI,10,NA
+Elkins,AR,1,NA
+Siesta Key,FL,10,NA
+Coffeyville,KS,2,NA
+Miramar Beach,FL,8,NA
+Helendale,CA,1,NA
+Belcamp,MD,11,NA
+Victor,ID,6,NA
+Airway Heights,WA,12,NA
+Gardiner,ME,1,NA
+Maineville,OH,1,NA
+West Dundee,IL,24,0.0625
+Sag Harbor,NY,24,0.1248
+Eagle,CO,18,NA
+Adamsville,AL,5,NA
+Brunswick,MD,2,NA
+West Slope,OR,24,NA
+Belmar,NJ,7,NA
+Comstock Northwest,MI,8,NA
+Southport,NC,8,NA
+Lee,MA,1,NA
+Neptune Beach,FL,24,NA
+Slaton,TX,1,NA
+Key Largo,FL,24,NA
+Lochbuie,CO,1,NA
+Gotha,FL,1,NA
+Cold Spring,KY,4,NA
+Chelan,WA,3,NA
+Rumford,ME,1,NA
+Le Claire,IA,1,NA
+Savoy,IL,10,NA
+Rockport,MA,4,NA
+Grottoes,VA,1,NA
+Pismo Beach,CA,22,NA
+Dresher,PA,6,NA
+Hillsborough,NH,1,NA
+Santa Clara,UT,10,NA
+Surfside,FL,24,0.0829
+Maggie Valley,NC,1,NA
+Midfield,AL,6,NA
+Holly Ridge,NC,23,NA
+De Soto,KS,3,NA
+Bridgton,ME,1,NA
+Bensley,VA,2,NA
+Fort Oglethorpe,GA,10,NA
+Peoria Heights,IL,1,NA
+Lake Dallas,TX,2,NA
+Boonville,MO,1,NA
+Cheverly,MD,6,NA
+Chesterbrook,PA,7,NA
+Obetz,OH,2,NA
+San Antonio,FL,19,NA
+Idaho Springs,CO,4,NA
+Dayton,KY,24,NA
+Pinehurst,TX,3,NA
+Guadalupe,AZ,1,NA
+Bolivar,OH,1,NA
+Womelsdorf,PA,1,NA
+Avon,CO,2,NA
+Maize,KS,7,NA
+Youngtown,AZ,1,NA
+Calhan,CO,1,NA
+Turpin Hills,OH,9,NA
+Waterbury,VT,2,NA
+Bellevue,KY,3,NA
+Manitou Springs,CO,16,NA
+Palisade,CO,1,NA
+Deer Park,OH,3,NA
+Grayson Valley,AL,12,NA
+Yaphank,NY,9,NA
+Stratmoor,CO,21,NA
+Ranson,WV,7,NA
+Ave Maria,FL,24,NA
+North Sioux City,SD,1,NA
+Highlands,NJ,2,NA
+Normandy,MO,1,NA
+Breckenridge Hills,MO,3,NA
+Harpswell,ME,2,NA
+Glenarden,MD,1,NA
+Mount Arlington,NJ,13,NA
+North Kansas City,MO,24,NA
+Barling,AR,6,NA
+South Highpoint,FL,1,NA
+Kamas,UT,1,NA
+Big Bear Lake,CA,20,NA
+Bridgeport,PA,5,NA
+Pleasant View,TN,1,NA
+South Bound Brook,NJ,1,NA
+Saint Augustine Beach,FL,21,NA
+Bay Harbor Islands,FL,24,0.0759
+Gladewater,TX,1,NA
+Steilacoom,WA,10,NA
+Glendale,CO,24,0.0562
+West Reading,PA,6,NA
+South Pasadena,FL,9,NA
+Margaret,AL,20,NA
+South Tucson,AZ,2,NA
+Allenstown,NH,5,NA
+Hinesburg,VT,1,NA
+Nolanville,TX,5,NA
+Lake Worth,TX,15,NA
+Lavon,TX,18,NA
+Jackson,MN,1,NA
+Ray City,GA,1,NA
+Edgewater,CO,8,NA
+Ottawa Hills,OH,1,NA
+Lacy-Lakeview,TX,8,NA
+Margate City,NJ,23,NA
+Granby,CO,9,NA
+Seaside,OR,2,NA
+South Lebanon,OH,5,NA
+Bonanza,GA,2,NA
+Boardman,OR,5,NA
+Richmond,IL,1,NA
+Riverton-Boulevard Park,WA,9,NA
+Bradley Beach,NJ,4,NA
+Midland,PA,4,NA
+Rock Hill,MO,1,NA
+Greenhills,OH,1,NA
+Palmetto,GA,2,NA
+Brusly,LA,7,NA
+Point Pleasant Beach,NJ,5,NA
+Highland Heights,KY,4,NA
+Highland Beach,FL,24,0.1824
+Tiffin,IA,1,NA
+Riverdale,NJ,1,NA
+Riverside,MO,1,NA
+Ocean City,MD,3,NA
+Madeira Beach,FL,3,NA
+Cedar Knolls,NJ,13,NA
+Forty Fort,PA,1,NA
+Iowa Colony,TX,24,NA
+Lavallette,NJ,3,NA
+Oakbrook Terrace,IL,8,NA
+Metzger,OR,3,NA
+Springfield,MI,4,NA
+Glasgow Village,MO,24,0.0778
+Cockrell Hill,TX,2,NA
+Dickson City,PA,1,NA
+Frisco,CO,8,NA
+Springdale,PA,1,NA
+Willow Park,TX,24,0.0732
+Northwoods,MO,1,NA
+Parker,FL,24,NA
+Eagle Lake,FL,4,NA
+Arabi,LA,1,NA
+Woodlawn,OH,19,NA
+Long Beach,WA,1,NA
+Wrightwood,CA,1,NA
+Seaside Heights,NJ,5,NA
+Hudson Oaks,TX,24,NA
+Windsor,VT,2,NA
+Tuckerton,NJ,7,NA
+Greenwood Lake,NY,1,NA
+Meridian,CO,24,0.0619
+Fairway,KS,1,NA
+Belleville,MI,19,NA
+Lakemoor,IL,1,NA
+Ocean Shores,WA,7,NA
+Westhampton Beach,NY,1,NA
+Oakland,FL,3,NA
+Etna,PA,2,NA
+Walthourville,GA,6,NA
+Del Mar,CA,20,NA
+Angwin,CA,1,NA
+Maxwell,TX,24,NA
+Berlin,MA,3,NA
+Millvale,PA,1,NA
+Montverde,FL,1,NA
+Kemah,TX,24,NA
+King City,OR,7,NA
+Lake City,GA,1,NA
+Pinedale,WY,3,NA
+Matamoras,PA,1,NA
+Moab,UT,2,NA
+Graysville,AL,1,NA
+Running Springs,CA,4,NA
+Thorndale,PA,1,NA
+McGaheysville,VA,1,NA
+Pitcairn,PA,1,NA
+Southgate,KY,6,NA
+Saint Hedwig,TX,24,NA
+Gunter,TX,1,NA
+Bal Harbour,FL,24,0.0816
+Riverview,MO,1,NA
+Valparaiso,FL,6,NA
+Homestead,PA,10,NA
+Stateline,NV,6,NA
+Huxley,IA,1,NA
+Mabank,TX,10,NA
+Rockford,MN,1,NA
+Indian Rocks Beach,FL,3,NA
+Sixteen Mile Stand,OH,11,NA
+Timnath,CO,12,NA
+Towanda,KS,1,NA
+Longboat Key,FL,1,NA
+Brentwood,MD,2,NA
+East Lansdowne,PA,1,NA
+Shenandoah,TX,24,NA
+Montauk,NY,1,NA
+Roca,NE,1,NA
+Rancho Viejo,TX,1,NA
+Hallowell,ME,1,NA
+Westworth Village,TX,24,NA
+Balcones Heights,TX,1,NA
+Lucerne,CA,1,NA
+Lakeside,MT,2,NA
+Moriches,NY,22,NA
+Sunset Valley,TX,1,NA
+Hypoluxo,FL,23,NA
+Horseshoe Bay,TX,7,NA
+Dublin,PA,1,NA
+Hebron,TX,8,NA
+Seaside Park,NJ,2,NA
+Moline Acres,MO,2,NA
+Waller,TX,23,NA
+Belville,NC,9,NA
+Gentry,AR,1,NA
+Alvarado,TX,7,NA
+Water Mill,NY,1,NA
+Daytona Beach Shores,FL,3,NA
+Annapolis Junction,MD,21,NA
+Cripple Creek,CO,2,NA
+El Portal,FL,10,NA
+Princeville,HI,1,NA
+Bridgehampton,NY,3,NA
+Ranlo,NC,7,NA
+Fraser,CO,5,NA
+Swansboro,NC,3,NA
+Del Rey Oaks,CA,1,NA
+Indialantic,FL,22,NA
+South Palm Beach,FL,7,NA
+Zephyr Cove,NV,1,NA
+Summerset,SD,1,NA
+Wrightsville Beach,NC,1,NA
+North Redington Beach,FL,2,NA
+Emerald Isle,NC,1,NA
+Tahoe Vista,CA,3,NA
+Olympic Valley,CA,1,NA
+Ogunquit,ME,1,NA
+Marlborough,MO,7,NA
+Venus,TX,22,NA
+New Llano,LA,1,NA
+Dillon,CO,8,NA
+North Topsail Beach,NC,2,NA
+Emerson,GA,10,NA
+Presto,PA,1,NA
+Surf City,NC,24,NA
+Carnelian Bay,CA,3,NA
+Atlantic Beach,NC,3,NA
+Palm Beach Shores,FL,2,NA
+Lilydale,MN,1,NA
+Pendergrass,GA,11,NA
+Kellogg,ID,1,NA
+Hahira,GA,7,NA
+Walls,MS,8,NA
+Lake Hart,FL,24,0.0359
+Bullard,TX,6,NA
+Verdi,NV,10,NA
+Farmersville,TX,13,NA
+Morrisville,VT,2,NA
+Stevensville,MI,2,NA
+Rhome,TX,1,NA
+South Padre Island,TX,2,NA
+Inlet Beach,FL,17,NA
+Guilderland Center,NY,2,NA
+Fort Mohave,AZ,1,NA
