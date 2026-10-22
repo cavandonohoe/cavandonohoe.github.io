@@ -11,14 +11,16 @@
 # Endpoint: GET /v1/me/episodes (current_user_saved_episodes). NOTE: this
 # returns only episodes you explicitly SAVED (hearted). It does NOT include
 # auto-downloaded / followed-show / auto-added episodes that show up under
-# "Your Episodes" in the app, and it is capped at offset 200, so it only ever
-# appends to the Account Data export membership and never removes episodes.
+# "Your Episodes" in the app, and its paging is unreliable (see
+# collect_saved_items). It refreshes metadata, appends new saves, and marks
+# rows removed only after repeated absences (see track_api_removals). The
+# Account Data export stays the membership source of truth.
 #
 # Output shape (must match what app.R reads):
 #   { "meta": { generated_at, export_n_episodes, source, n_episodes,
-#               api_refreshed_at, api_saved_count, ... },
+#               n_removed, api_refreshed_at, api_saved_count, ... },
 #     "episodes": [ { id, added_at, show, publisher, name, dur_min, release,
-#                     url, desc }, ... ] }
+#                     url, desc, api_seen, api_misses, removed_at }, ... ] }
 
 suppressWarnings(suppressMessages({
   ok <- requireNamespace("httr2", quietly = TRUE) &&
@@ -72,37 +74,44 @@ fetch_page <- function(offset, limit = 50) {
     httr2::resp_body_json()
 }
 
-items <- list()
-offset <- 0L
-limit <- 50L
-last_page_size <- 0L
-last_page_had_next <- FALSE
-repeat {
-  page <- fetch_page(offset, limit)
-  page_items <- page$items %||% list()
-  last_page_size <- length(page_items)
-  last_page_had_next <- !is.null(page$`next`)
-  if (!length(page_items)) break
-  items <- c(items, page_items)
-  offset <- offset + limit
-  # Spotify caps saved-episode paging at offset 200.
-  if (is.null(page$`next`) || offset >= 200L) break
+# /me/episodes paging is unreliable: `total` shrinks by the requested offset,
+# results stop around the 150th row whatever `total` says, some rows come back
+# with a null episode, and different page sizes return different subsets of
+# the library. Paging once at several page sizes and keeping the union of
+# episode IDs sees far more of the library than any single pass.
+collect_saved_items <- function(fetch, limits = c(50L, 20L, 10L), max_rows = 1000L) {
+  by_id <- list()
+  pass_counts <- integer()
+  for (limit in limits) {
+    offset <- 0L
+    n_pass <- 0L
+    while (offset < max_rows) {
+      page_items <- fetch(offset, limit)$items %||% list()
+      if (!length(page_items)) break
+      for (it in page_items) {
+        id <- (it$episode %||% list())$id %||% NA_character_
+        if (is.na(id) || !nzchar(id)) next
+        n_pass <- n_pass + 1L
+        # Keep the first copy seen; every pass describes the same save.
+        if (is.null(by_id[[id]])) by_id[[id]] <- it
+      }
+      offset <- offset + limit
+    }
+    pass_counts[[as.character(limit)]] <- n_pass
+  }
+  list(items = unname(by_id), pass_counts = pass_counts)
 }
+
+collected <- collect_saved_items(fetch_page)
+items <- collected$items
+cat(sprintf(
+  "Saved-episode passes (page size: episodes): %s; union %d unique\n",
+  paste(names(collected$pass_counts), collected$pass_counts, sep = ": ", collapse = ", "),
+  length(items)
+))
 
 if (!length(items)) {
   stop("Spotify returned 0 saved episodes; refusing to overwrite the JSON.")
-}
-
-# The export covers older saves, so hitting the cap does not lose library
-# membership, but saves older than the 200th stop getting API saved dates.
-# Surface it as a GitHub Actions warning annotation instead of failing the run.
-if (offset >= 200L && last_page_had_next && last_page_size > 0) {
-  cat(paste0(
-    "::warning title=Spotify saved-episodes cap reached::",
-    "/me/episodes stopped at the 200-episode offset cap with more pages left. ",
-    "Saves older than the 200th are not refreshed by the API until the next ",
-    "Account Data export is imported.\n"
-  ))
 }
 
 # --- normalize and merge into the full library export -----------------------
@@ -132,7 +141,7 @@ api_episodes <- lapply(items, function(it) {
 })
 
 # Episode metadata by ID (GET /v1/episodes, 50 IDs per call). Used to backfill
-# export-only episodes the capped saved-episodes endpoint no longer returns.
+# export-only episodes the saved-episodes endpoint does not return.
 # Unavailable or removed episodes come back as null and are skipped.
 fetch_episode_metadata <- function(ids) {
   ids <- unique(ids[!is.na(ids) & nzchar(ids)])
@@ -165,8 +174,38 @@ fetch_episode_metadata <- function(ids) {
 # describes the episode, not when it was saved, so the save date stays unknown.
 backfill_fields <- c("publisher", "dur_min", "release", "desc")
 
+# Finishing an episode (or unsaving it) removes it from "Your Episodes" and
+# from /me/episodes. Paging is too unreliable for one absence to mean anything,
+# so a row is only marked removed after the API has returned it at least once
+# (`api_seen`) and then missed it on `removal_misses` refreshes in a row.
+# A saved date (`added_at`) also counts as seen: only this API supplies it (the
+# export has none and the metadata backfill never sets it), so rows the API
+# returned before `api_seen` existed are tracked too.
+# `removed_at` hides the row in the dashboard; the row stays in the JSON and
+# is restored if the API returns it again. Export-only rows the API has never
+# returned are never marked.
+track_api_removals <- function(episodes, api_ids, today, removal_misses = 2L) {
+  has_value <- function(x) !is.null(x) && length(x) && !all(is.na(x))
+  lapply(episodes, function(e) {
+    if ((e$id %||% NA_character_) %in% api_ids) {
+      e$api_seen <- TRUE
+      e$api_misses <- NULL
+      e$removed_at <- NULL
+    } else if (is.null(e$removed_at) && (isTRUE(e$api_seen) || has_value(e$added_at))) {
+      misses <- (e$api_misses %||% 0L) + 1L
+      if (misses >= removal_misses) {
+        e$api_misses <- NULL
+        e$removed_at <- format(today)
+      } else {
+        e$api_misses <- misses
+      }
+    }
+    e
+  })
+}
+
 merge_saved_episodes <- function(existing, api_episodes, today = Sys.Date(),
-                                 backfill = list()) {
+                                 backfill = list(), track_removals = TRUE) {
   episodes <- existing$episodes %||% list()
   existing_ids <- vapply(episodes, function(e) e$id %||% NA_character_, character(1))
   api_ids <- vapply(api_episodes, function(e) e$id %||% NA_character_, character(1))
@@ -198,17 +237,18 @@ merge_saved_episodes <- function(existing, api_episodes, today = Sys.Date(),
   }
 
   # Newly saved API episodes may post-date the last Account Data export. Append
-  # them so the dashboard grows between manual exports. API absence is NOT used
-  # to delete anything because the endpoint is capped and does not represent
-  # the complete library.
+  # them so the dashboard grows between manual exports.
   new_idx <- which(!is.na(api_ids) & nzchar(api_ids) & !(api_ids %in% existing_ids))
   if (length(new_idx)) episodes <- c(episodes, api_episodes[new_idx])
+
+  if (track_removals) episodes <- track_api_removals(episodes, api_ids, today)
 
   as_json <- function(x) jsonlite::toJSON(x, auto_unbox = TRUE, na = "null", null = "null")
   changed <- !identical(as_json(episodes), as_json(existing$episodes %||% list()))
   meta <- existing$meta %||% list()
   if (changed) {
     meta$n_episodes <- length(episodes)
+    meta$n_removed <- sum(vapply(episodes, function(e) !is.null(e$removed_at), logical(1)))
     meta$api_refreshed_at <- format(today)
     meta$api_saved_count <- length(api_episodes)
     meta$source <- "Spotify Account Data export + Spotify Web API incremental refresh"
@@ -247,7 +287,22 @@ if (length(backfill_ids)) {
   })
 }
 
-merged <- merge_saved_episodes(existing, api_episodes, backfill = backfill)
+# Removal tracking needs a healthy API pass. If today's union is under half of
+# the rows the API is currently known to return, treat it as an API glitch:
+# still refresh metadata, but don't count misses against anything.
+n_tracked <- sum(vapply(existing$episodes %||% list(), function(e) {
+  is.null(e$removed_at) && (isTRUE(e$api_seen) || !is.null(e$added_at))
+}, logical(1)))
+track_removals <- length(api_ids) >= n_tracked / 2
+if (!track_removals) {
+  cat(sprintf(paste0(
+    "::warning title=Removal tracking skipped::API returned %d saves vs %d ",
+    "tracked; not counting misses this run.\n"
+  ), length(api_ids), n_tracked))
+}
+
+merged <- merge_saved_episodes(existing, api_episodes, backfill = backfill,
+                               track_removals = track_removals)
 payload <- merged$payload
 json <- jsonlite::toJSON(
   payload, auto_unbox = TRUE, pretty = TRUE, na = "null", null = "null"
@@ -257,9 +312,10 @@ if (merged$changed) writeLines(json, out_path)
 cat(sprintf(
   paste0(
     "Refreshed %d API saves; backfilled metadata lookup for %d of %d episodes; ",
-    "library now contains %d episodes (%d newly appended)%s\n"
+    "library now contains %d episodes (%d newly appended, %d marked removed)%s\n"
   ),
   length(api_episodes), length(backfill), length(backfill_ids),
   length(payload$episodes), merged$n_new,
+  sum(vapply(payload$episodes, function(e) !is.null(e$removed_at), logical(1))),
   if (merged$changed) "" else "; no changes, JSON left untouched"
 ))

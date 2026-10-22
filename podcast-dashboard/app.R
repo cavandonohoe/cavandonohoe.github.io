@@ -16,12 +16,21 @@ meta <- raw$meta
 # Membership has two sources: the last Account Data export (YourLibrary.json)
 # and episodes the daily Web API refresh appended afterwards. Older files
 # without export_n_episodes treat every episode as export membership.
-n_total <- nrow(raw$episodes)
-n_export <- min(n_total, if (is.null(meta$export_n_episodes)) n_total else meta$export_n_episodes)
-n_api_added <- n_total - n_export
+n_all <- nrow(raw$episodes)
+n_export <- min(n_all, if (is.null(meta$export_n_episodes)) n_all else meta$export_n_episodes)
+n_api_added <- n_all - n_export
+# The daily refresh marks rows `removed_at` once the API has stopped returning
+# them (finished or unsaved). They stay in the JSON but are not shown.
+removed <- if ("removed_at" %in% names(raw$episodes)) {
+  !is.na(raw$episodes$removed_at)
+} else {
+  rep(FALSE, n_all)
+}
+n_removed <- sum(removed)
+n_total <- n_all - n_removed
 export_date <- meta$generated_at
 api_refresh_date <- if (is.null(meta$api_refreshed_at)) "never" else meta$api_refreshed_at
-episodes <- raw$episodes |>
+episodes <- raw$episodes[!removed, , drop = FALSE] |>
   dplyr::mutate(
     added_at = as.Date(added_at),
     added_month = floor_date(added_at, "month"),
@@ -136,10 +145,10 @@ ui <- bslib::page_sidebar(
       sprintf(
         paste(
           "Library export imported: %s \u00b7 Latest API refresh with new data: %s",
-          "\u00b7 %s episodes (%s from export, %s added by API)"
+          "\u00b7 %s episodes (%s from export, %s added by API, %s left the library)"
         ),
         export_date, api_refresh_date, scales::comma(n_total),
-        scales::comma(n_export), scales::comma(n_api_added)
+        scales::comma(n_export), scales::comma(n_api_added), scales::comma(n_removed)
       )
     )
   ),
@@ -175,8 +184,11 @@ ui <- bslib::page_sidebar(
       ),
       scales::comma(n_export), export_date, scales::comma(n_api_added), api_refresh_date
     ),
-    "The API refresh only adds saves, so an episode removed from the library stays ",
-    "listed until the next export is imported. Titles, shows and links cover every episode. ",
+    "Finished or unsaved episodes drop out of the API; once the refresh has ",
+    "missed an episode it previously returned on two runs in a row, it is hidden ",
+    sprintf("here (%s so far). ", scales::comma(n_removed)),
+    "Episodes the API has never returned stay listed until the next export. ",
+    "Titles, shows and links cover every episode. ",
     "Lengths and saved dates come from the Spotify API where available. ",
     sprintf("%s episodes have unknown lengths; %s have unknown saved dates. ",
             sum(is.na(episodes$dur_min)), sum(is.na(episodes$added_at))),

@@ -16,6 +16,10 @@ def merge_library(library, previous):
             continue
         seen.add(episode_id)
         row = dict(known.get(episode_id, {}))
+        # The export says this episode is saved, so drop any API removal
+        # marker. `api_seen` is kept so later absences are still tracked.
+        row.pop('removed_at', None)
+        row.pop('api_misses', None)
         for field in ('added_at', 'dur_min', 'release', 'publisher', 'desc'):
             row.setdefault(field, None)
         row.update(id=episode_id, name=item['name'], show=item['show'],
