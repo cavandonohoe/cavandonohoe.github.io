@@ -12,8 +12,13 @@ time.
 daily `update_saved_episodes` workflow then calls the Spotify Web API, refreshes
 metadata (dates, descriptions, durations) for known episodes, and **appends**
 newly saved ones. `meta.export_n_episodes` is the export's count; the rest were
-added by the API. The API is capped and never removes episodes, so an unsave is
-not reflected until the next export is imported. The dashboard footer shows
+added by the API. Spotify's saved-episodes paging is unreliable (each page size
+returns a different partial slice), so the refresh pages at several sizes and
+keeps the union. Finishing or unsaving an episode drops it from the API; once an
+episode the API previously returned is missing on two runs in a row, it gets
+`removed_at` and the dashboard hides it (the row stays in the JSON and comes
+back if the API returns it again). Episodes the API has never returned are only
+corrected by the next export import. The dashboard footer shows
 both the export import date and the latest API refresh that changed the data.
 The API refresh only rewrites the file (and redeploys) when episodes change.
 

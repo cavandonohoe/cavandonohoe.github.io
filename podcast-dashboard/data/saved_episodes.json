@@ -3,9 +3,9 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 407,
+    "n_episodes": 413,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-10-21",
+    "api_refreshed_at": "2026-10-22",
     "api_saved_count": 150
   },
   "episodes": [
@@ -582,11 +582,11 @@
       "url": "https://open.spotify.com/episode/5lIxvwua0OPkclJpixUU6M"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-23",
+      "dur_min": 65,
+      "release": "2026-01-23",
       "publisher": null,
-      "desc": null,
+      "desc": "Zeke Emanuel (a physician, medical ethicist, and policy wonk) has some different ideas for how to lead a healthy and meaningful life. It starts with ice cream. (Part three of “The Freakonomics Radio Guide to Getting Better.”) SOURCES:Zeke Emanuel, oncologist, bioethicist, professor at the University of Pennsylvania. RESOURCES:Eat Your Ice Cream: Six Simple Rules for a Long and Healthy Life, by Zeke Emanuel (2026).\"Nutrition Science’s Most Preposterous Result,\" by David Merritt Johns (The Atlantic, 2023). EXTRAS:\"Is Ozempic as Magical as It Sounds?\" by Freakonomics Radio (2024).\"The Suddenly Diplomatic Rahm Emanuel,\" by Freakonomics Radio (2023).\"Ari Emanuel Is Never Indifferent,\" by Freakonomics Radio (2023).\"What’s the “Best” Exercise?\" by Freakonomics Radio (2014). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "id": "2QW6tYyZsU7nfgQOzZyN8C",
       "name": "660. The Wellness Industry Is Gigantic — and Mostly Wrong",
       "show": "Freakonomics Radio",
@@ -1374,11 +1374,11 @@
       "url": "https://open.spotify.com/episode/1AMoy0cwv6ZS125r2DGNnK"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-26",
+      "dur_min": 12,
+      "release": "2025-11-26",
       "publisher": null,
-      "desc": null,
+      "desc": "Stephen's on the podcast with an exclusive introduction to his rock star buddy's latest EXTENDED interview for Rock & Roll Thanksgiving: it's Wilco's Jeff Tweedy! The GRAMMY-winner appreciates his luck at being able to record and perform music with members of his family, and he tells Stephen that he was surprised when his new triple album started picking up rave reviews. Check out TWO performances from Jeff Tweedy's latest album, 'Twilight Override,' on The Ed Sullivan Theater stage on our YouTube channel: YouTube.com/ColbertLateShow",
       "id": "3kfQCOMDYdc2hPHBxgUADI",
       "name": "Stephen Presents: Jeff Tweedy (Extended)",
       "show": "The Late Show Pod Show with Stephen Colbert",
@@ -2738,11 +2738,11 @@
       "desc": "In 1960 physicist Freeman Dyson suggested that in the hunt for alien life, we should search for evidence of massive engineering projects that encapsulate stars with solar arrays to harness their energy. Could we humans ever make one ourselves?See omnystudio.com/listener for privacy information."
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2025-11-25",
+      "dur_min": 9,
+      "release": "2025-11-25",
       "publisher": null,
-      "desc": null,
+      "desc": "In a rural pocket of northeastern Louisiana, Meta is building a $30 billion data center called Hyperion. But it’s not being completely financed with Meta’s own money. Today on the show, the opaque system of AI data center financing and why it’s fueling fears of a bubble.  Related episodes: OpenAI’s deals are looking a little frothy No AI data centers in my backyard! What $10B in data centers actually gets you For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "id": "4pRI7Vw4t1xTBpi0EC30yL",
       "name": "Who's financing Meta's massive AI data center?",
       "show": "The Indicator from Planet Money",
@@ -2782,11 +2782,11 @@
       "url": "https://open.spotify.com/episode/7EhSsejsSxNCvt0JzzkWj3"
     },
     {
-      "added_at": null,
-      "dur_min": null,
-      "release": null,
+      "added_at": "2026-01-23",
+      "dur_min": 10,
+      "release": "2026-01-23",
       "publisher": null,
-      "desc": null,
+      "desc": "It’s time for … Indicators of the Week! Our weekly look at some of the most fascinating economic numbers from the news. On today’s episode: Why does Davos feel interesting this year? What if we did cap credit card interest rates? And we’re paying most of those tariffs, aren’t we?  Also, big news! Planet Money wrote a book and we’re going on tour this spring. Find tickets and info at planetmoneybook.com. Related episodes: Trump's backup options for tariffs Globalization At Davos: What Happened? The carbon coin: A novel idea For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "id": "37J8HoYDG9xIXWwLylrcpf",
       "name": "Davos drama, credit card caps and tariff truths",
       "show": "The Indicator from Planet Money",
@@ -4485,6 +4485,72 @@
       "release": "2026-10-21",
       "url": "https://open.spotify.com/episode/4coa0xc14YTHW9bUXUV2CB",
       "desc": "They say they make companies more efficient through savvy management. Critics say they bend the rules to enrich themselves at the expense of consumers and employees. Can they both be right? (Probably not.)  SOURCES:Brendan Ballou, C.E.O. of the Public Integrity Project.Dan Glickberg, venture-capital investor.Hannah Howard, food writer.Sachin Khajuria, investor. RESOURCES:Plunder: Private Equity's Plan to Pillage America, by Brendan Ballou (2023).Two and Twenty: How the Masters of Private Equity Always Win, by Sachin Khajuria (2022).\"Local Journalism under Private Equity Ownership,\" by Michael Ewens, Arpit Gupta, and Sabrina T. Howell (NBER Working Paper, 2022).“Owner Incentives and Performance in Healthcare: Private Equity Investment in Nursing Homes,” by Atul Gupta, Sabrina T. Howell, Constantine Yannelis, and Abhinav Gupta (NBER Working Paper, 2021).“Leveraged Buyouts and Financial Distress,” by Brian Ayash and Mahdi Rastad (Finance Research Letters, 2021). EXTRAS:\"Is This What a 'Good Billionaire' Looks Like?\" by Freakonomics Radio (2026).\"Is the Public Ready for Private Equity?\" by Freakonomics Radio (2025).\"Should You Trust Private Equity to Take Care of Your Dog?\" by Freakonomics Radio (2023).\"Do You Know Who Owns Your Vet?\" by Freakonomics Radio (2023).\"The Secret Life of a C.E.O.,\" series by Freakonomics Radio (2018). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising."
+    },
+    {
+      "id": "3HH5jRGbENHUwpD2pQMKU0",
+      "added_at": "2026-10-22",
+      "show": "Stuff You Should Know",
+      "publisher": null,
+      "name": "The Twilight Zone Episode",
+      "dur_min": 46,
+      "release": "2026-10-22",
+      "url": "https://open.spotify.com/episode/3HH5jRGbENHUwpD2pQMKU0",
+      "desc": "Today, Chuck and Josh unlock a door with the key of imagination. Beyond it is another dimension. A dimension of sound, a dimension of sight, a dimension of mind. You're moving into a land of both shadow and substance, of things and ideas. You've just crossed over into... the Twilight Zone.See omnystudio.com/listener for privacy information."
+    },
+    {
+      "id": "4Jpj80N7bi0avyErADLAlY",
+      "added_at": "2026-10-22",
+      "show": "The Daily Show: Ears Edition",
+      "publisher": null,
+      "name": "Trump Nixes Hegseth's Livestream Execution & JD Vance Unleashes New Laugh | Taika Waititi",
+      "dur_min": 34,
+      "release": "2026-10-22",
+      "url": "https://open.spotify.com/episode/4Jpj80N7bi0avyErADLAlY",
+      "desc": "A guffawing JD Vance struggles to remember what he’s good at, a Venezuelan billionaire knows the way to Trump’s heart is a bribe, and Ronny Chieng gets down to the real reason Pete Hegseth’s livestream firing squad got canceled: ableism? In this edition of In My Opinion, Mo Amer looks at how Michigan Senate hopeful Abdul El-Sayed remains a formidable candidate despite facing a barrage of increasingly unhinged Islamophobia. Mo explains that El-Sayed is neutralizing his attackers with a not-so-secret weapon: He's likable! Just as Zohran Mamdani was able to charm and disarm President Trump, El-Sayed is winning over people like Fox News's Jesse Watters by being a relatable guy with charisma to spare... and the TikTok dance moves to match. Academy Award-winning writer and director Taika Waititi joins Ronny to discuss his new film “Klara and the Sun.” The two discuss working with a star-studded cast to create an unexpectedly topical film about robot friends, shooting the film in New Zealand, and how the film industry in Waititi’s home country has changed over the years. Plus, Ronny shares his experience working with Waititi and how the director prioritizes giving back to the communities that make his movies possible. -- To get simple, online access to personalized, affordable care for ED, Hair Loss, Weight Loss, and more, visit https://Hims.com/dailyshow  --New customers can save 35% on your first month of subscription by going to https://dosedaily.co/TDS or entering TDS at checkout. -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices"
+    },
+    {
+      "id": "2KraTAACZkcVc8E6bmeeah",
+      "added_at": "2026-10-22",
+      "show": "Late Night with Seth Meyers Podcast",
+      "publisher": null,
+      "name": "Liam Neeson | Trump Admires Husted's Ass, Vance Blames Biden for Economy & Hits Record-Low Approval: A Closer Look",
+      "dur_min": 24,
+      "release": "2026-10-22",
+      "url": "https://open.spotify.com/episode/2KraTAACZkcVc8E6bmeeah",
+      "desc": "Seth takes a closer look at JD Vance hitting the campaign trail despite record-low approval ratings and only making things worse for Republicans.Liam Neeson talks about starring in his new movie The Mongoose, discusses filming scenes in a muscle car and answers trivia questions about himself.See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info."
+    },
+    {
+      "id": "3QVBzsgArxlrRmugzw1X5y",
+      "added_at": "2026-10-22",
+      "show": "The Indicator from Planet Money",
+      "publisher": null,
+      "name": "Can a \"moneyball\" system work for campaign funding?",
+      "dur_min": 8,
+      "release": "2026-10-22",
+      "url": "https://open.spotify.com/episode/3QVBzsgArxlrRmugzw1X5y",
+      "desc": "Elections are more expensive than ever, but are campaign donations going to the races where they’ll make the most impact? Today, we talk to the startup co-founder of Oath who believes there’s a smarter way to allocate individual donations.Fact checking by Sierra Juarez.Your Next Listen –How did political campaigns get so expensive?–Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet Money–The Indicator newsletter — a weekly roundup of news, ideas and staff picks. –Instagram, TikTok and YouTube –Find the Planet Money book –Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop!Support public media by subscribing to NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy"
+    },
+    {
+      "id": "0DhL6gWWJWeqNYZvdh9iTa",
+      "added_at": "2026-10-22",
+      "show": "Conan O’Brien Needs A Friend",
+      "publisher": null,
+      "name": "Olivia Harrison",
+      "dur_min": 56,
+      "release": "2026-10-22",
+      "url": "https://open.spotify.com/episode/0DhL6gWWJWeqNYZvdh9iTa",
+      "desc": "Author and film producer Olivia Harrison feels sillier being Conan O’Brien’s friend. Conan sits down with Olivia to discuss the life of her husband and legendary Beatles guitarist George Harrison as revealed through his new book The Third Eye: Early Photographs. For Conan videos, tour dates and more visit TeamCoco.com.Got a question for Conan? Call our voicemail: (323) 362-2295. Get access to all the podcasts you love, music channels and radio shows with the SiriusXM App! Get 3 months free using this show link: https://siriusxm.com/conan. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising."
+    },
+    {
+      "id": "3ruOaM5GPXJLSsRCICEzO8",
+      "added_at": "2026-10-22",
+      "show": "The Economics of Everyday Things",
+      "publisher": null,
+      "name": "84. Mall Cops",
+      "dur_min": 18,
+      "release": "2026-10-22",
+      "url": "https://open.spotify.com/episode/3ruOaM5GPXJLSsRCICEzO8",
+      "desc": "Security guards make malls feel safer, but what can they do when there’s trouble? Zachary Crockett observes and reports. This episode was originally published on March 16th, 2025. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising."
     }
   ]
 }
