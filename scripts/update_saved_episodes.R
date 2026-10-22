@@ -11,8 +11,9 @@
 # Endpoint: GET /v1/me/episodes (current_user_saved_episodes). NOTE: this
 # returns only episodes you explicitly SAVED (hearted). It does NOT include
 # auto-downloaded / followed-show / auto-added episodes that show up under
-# "Your Episodes" in the app, and it is capped at offset 200, so it only ever
-# appends to the Account Data export membership and never removes episodes.
+# "Your Episodes" in the app, and its paging is unreliable (see
+# collect_saved_items), so it only ever appends to the Account Data export
+# membership and never removes episodes.
 #
 # Output shape (must match what app.R reads):
 #   { "meta": { generated_at, export_n_episodes, source, n_episodes,
@@ -72,37 +73,44 @@ fetch_page <- function(offset, limit = 50) {
     httr2::resp_body_json()
 }
 
-items <- list()
-offset <- 0L
-limit <- 50L
-last_page_size <- 0L
-last_page_had_next <- FALSE
-repeat {
-  page <- fetch_page(offset, limit)
-  page_items <- page$items %||% list()
-  last_page_size <- length(page_items)
-  last_page_had_next <- !is.null(page$`next`)
-  if (!length(page_items)) break
-  items <- c(items, page_items)
-  offset <- offset + limit
-  # Spotify caps saved-episode paging at offset 200.
-  if (is.null(page$`next`) || offset >= 200L) break
+# /me/episodes paging is unreliable: `total` shrinks by the requested offset,
+# results stop around the 150th row whatever `total` says, some rows come back
+# with a null episode, and different page sizes return different subsets of
+# the library. Paging once at several page sizes and keeping the union of
+# episode IDs sees far more of the library than any single pass.
+collect_saved_items <- function(fetch, limits = c(50L, 20L, 10L), max_rows = 1000L) {
+  by_id <- list()
+  pass_counts <- integer()
+  for (limit in limits) {
+    offset <- 0L
+    n_pass <- 0L
+    while (offset < max_rows) {
+      page_items <- fetch(offset, limit)$items %||% list()
+      if (!length(page_items)) break
+      for (it in page_items) {
+        id <- (it$episode %||% list())$id %||% NA_character_
+        if (is.na(id) || !nzchar(id)) next
+        n_pass <- n_pass + 1L
+        # Keep the first copy seen; every pass describes the same save.
+        if (is.null(by_id[[id]])) by_id[[id]] <- it
+      }
+      offset <- offset + limit
+    }
+    pass_counts[[as.character(limit)]] <- n_pass
+  }
+  list(items = unname(by_id), pass_counts = pass_counts)
 }
+
+collected <- collect_saved_items(fetch_page)
+items <- collected$items
+cat(sprintf(
+  "Saved-episode passes (page size: episodes): %s; union %d unique\n",
+  paste(names(collected$pass_counts), collected$pass_counts, sep = ": ", collapse = ", "),
+  length(items)
+))
 
 if (!length(items)) {
   stop("Spotify returned 0 saved episodes; refusing to overwrite the JSON.")
-}
-
-# The export covers older saves, so hitting the cap does not lose library
-# membership, but saves older than the 200th stop getting API saved dates.
-# Surface it as a GitHub Actions warning annotation instead of failing the run.
-if (offset >= 200L && last_page_had_next && last_page_size > 0) {
-  cat(paste0(
-    "::warning title=Spotify saved-episodes cap reached::",
-    "/me/episodes stopped at the 200-episode offset cap with more pages left. ",
-    "Saves older than the 200th are not refreshed by the API until the next ",
-    "Account Data export is imported.\n"
-  ))
 }
 
 # --- normalize and merge into the full library export -----------------------
@@ -132,7 +140,7 @@ api_episodes <- lapply(items, function(it) {
 })
 
 # Episode metadata by ID (GET /v1/episodes, 50 IDs per call). Used to backfill
-# export-only episodes the capped saved-episodes endpoint no longer returns.
+# export-only episodes the saved-episodes endpoint does not return.
 # Unavailable or removed episodes come back as null and are skipped.
 fetch_episode_metadata <- function(ids) {
   ids <- unique(ids[!is.na(ids) & nzchar(ids)])
@@ -199,8 +207,8 @@ merge_saved_episodes <- function(existing, api_episodes, today = Sys.Date(),
 
   # Newly saved API episodes may post-date the last Account Data export. Append
   # them so the dashboard grows between manual exports. API absence is NOT used
-  # to delete anything because the endpoint is capped and does not represent
-  # the complete library.
+  # to delete anything because the endpoint's paging is unreliable and does not
+  # represent the complete library.
   new_idx <- which(!is.na(api_ids) & nzchar(api_ids) & !(api_ids %in% existing_ids))
   if (length(new_idx)) episodes <- c(episodes, api_episodes[new_idx])
 

@@ -114,3 +114,45 @@ testthat::test_that("an empty backfill leaves an unchanged library untouched", {
   testthat::expect_false(result$changed)
   testthat::expect_identical(result$payload$meta, existing$meta)
 })
+
+load_collect_saved_items <- function() {
+  expressions <- as.list(parse("../../scripts/update_saved_episodes.R"))
+  wanted <- c("%||%", "collect_saved_items")
+  defs <- Filter(function(x) {
+    is.call(x) && identical(x[[1]], as.name("<-")) && as.character(x[[2]]) %in% wanted
+  }, expressions)
+  env <- new.env()
+  for (d in defs) eval(d, envir = env)
+  env$collect_saved_items
+}
+
+testthat::test_that("paging at several page sizes keeps the union of saved episodes", {
+  collect_saved_items <- load_collect_saved_items()
+  item <- function(id) list(added_at = "2026-10-01T00:00:00Z", episode = list(id = id))
+  # Each page size sees a different slice, with a null episode mixed in.
+  slices <- list(
+    "2" = list(item("a"), item("b"), list(added_at = "2026-10-01", episode = NULL)),
+    "1" = list(item("b"), item("c"))
+  )
+  fetch <- function(offset, limit) {
+    rows <- slices[[as.character(limit)]]
+    idx <- seq_len(limit) + offset
+    list(items = rows[idx[idx <= length(rows)]])
+  }
+  result <- collect_saved_items(fetch, limits = c(2L, 1L))
+  ids <- vapply(result$items, function(it) it$episode$id, character(1))
+  testthat::expect_setequal(ids, c("a", "b", "c"))
+  testthat::expect_identical(result$pass_counts, c("2" = 2L, "1" = 2L))
+})
+
+testthat::test_that("paging stops at max_rows even if the API never runs dry", {
+  collect_saved_items <- load_collect_saved_items()
+  calls <- 0L
+  fetch <- function(offset, limit) {
+    calls <<- calls + 1L
+    list(items = list(list(episode = list(id = paste0("e", offset)))))
+  }
+  result <- collect_saved_items(fetch, limits = 1L, max_rows = 5L)
+  testthat::expect_identical(calls, 5L)
+  testthat::expect_length(result$items, 5L)
+})
