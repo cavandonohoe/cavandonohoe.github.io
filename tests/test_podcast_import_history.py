@@ -75,6 +75,15 @@ class ImportLibraryTests(unittest.TestCase):
         self.assertEqual(result['meta']['previous_only_count'], 1)
         self.assertEqual(result['episodes'][0]['dur_min'], 30)
 
+    def test_import_clears_api_removal_markers(self):
+        library = {'episodes': [{'uri': 'spotify:episode:a', 'name': 'A', 'show': 'S'}]}
+        previous = {'episodes': [{'id': 'a', 'api_seen': True, 'api_misses': 1,
+                                  'removed_at': '2026-10-22'}]}
+        row = import_library.merge_library(library, previous)['episodes'][0]
+        self.assertNotIn('removed_at', row)
+        self.assertNotIn('api_misses', row)
+        self.assertTrue(row['api_seen'])
+
 
 if __name__ == '__main__':
     unittest.main()
