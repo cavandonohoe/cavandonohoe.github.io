@@ -20,14 +20,16 @@ n_all <- nrow(raw$episodes)
 n_export <- min(n_all, if (is.null(meta$export_n_episodes)) n_all else meta$export_n_episodes)
 n_api_added <- n_all - n_export
 # The daily refresh marks rows `removed_at` once the API has stopped returning
-# them (finished or unsaved). They stay in the JSON but are not shown.
-removed <- if ("removed_at" %in% names(raw$episodes)) {
-  !is.na(raw$episodes$removed_at)
-} else {
-  rep(FALSE, n_all)
+# them (finished or unsaved), and `unavailable_at` when Spotify no longer has
+# the episode at all. They stay in the JSON but are not shown.
+flagged <- function(field) {
+  if (field %in% names(raw$episodes)) !is.na(raw$episodes[[field]]) else rep(FALSE, n_all)
 }
+removed <- flagged("removed_at")
+unavailable <- flagged("unavailable_at") & !removed
 n_removed <- sum(removed)
-n_total <- n_all - n_removed
+n_unavailable <- sum(unavailable)
+n_total <- n_all - n_removed - n_unavailable
 export_date <- meta$generated_at
 # Older files predate export_as_of; show the import date alone for those.
 export_label <- if (is.null(meta$export_as_of)) {
@@ -36,7 +38,7 @@ export_label <- if (is.null(meta$export_as_of)) {
   sprintf("%s (snapshot %s)", export_date, meta$export_as_of)
 }
 api_refresh_date <- if (is.null(meta$api_refreshed_at)) "never" else meta$api_refreshed_at
-episodes <- raw$episodes[!removed, , drop = FALSE] |>
+episodes <- raw$episodes[!removed & !unavailable, , drop = FALSE] |>
   dplyr::mutate(
     added_at = as.Date(added_at),
     added_month = floor_date(added_at, "month"),
@@ -151,10 +153,12 @@ ui <- bslib::page_sidebar(
       sprintf(
         paste(
           "Library export imported: %s \u00b7 Latest API refresh with new data: %s",
-          "\u00b7 %s episodes (%s from export, %s added by API, %s left the library)"
+          "\u00b7 %s episodes (%s from export, %s added by API, %s left the library,",
+          "%s no longer on Spotify)"
         ),
         export_label, api_refresh_date, scales::comma(n_total),
-        scales::comma(n_export), scales::comma(n_api_added), scales::comma(n_removed)
+        scales::comma(n_export), scales::comma(n_api_added), scales::comma(n_removed),
+        scales::comma(n_unavailable)
       )
     )
   ),
@@ -193,7 +197,11 @@ ui <- bslib::page_sidebar(
     "Finished or unsaved episodes drop out of the API; once the refresh has ",
     "missed an episode it previously returned on two runs in a row, it is hidden ",
     sprintf("here (%s so far). ", scales::comma(n_removed)),
-    "Episodes the API has never returned stay listed until the next export. ",
+    "Episodes the API has never returned stay listed until the next export, ",
+    sprintf(paste0(
+      "unless Spotify reports the episode itself is gone; those are hidden too ",
+      "(%s so far). "
+    ), scales::comma(n_unavailable)),
     "Titles, shows and links cover every episode. ",
     "Lengths and saved dates come from the Spotify API where available. ",
     sprintf("%s episodes have unknown lengths; %s have unknown saved dates. ",
