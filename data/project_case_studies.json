@@ -57,7 +57,7 @@
     {
       "project": "assets",
       "tracked_files": 1,
-      "commits_touching_project": 24,
+      "commits_touching_project": 25,
       "top_extensions": [
         [
           ".svg",
@@ -162,7 +162,7 @@
     {
       "project": "images",
       "tracked_files": 20,
-      "commits_touching_project": 114,
+      "commits_touching_project": 115,
       "top_extensions": [
         [
           ".jpg",
@@ -211,16 +211,16 @@
     },
     {
       "project": "podcast-dashboard",
-      "tracked_files": 6,
-      "commits_touching_project": 40,
+      "tracked_files": 8,
+      "commits_touching_project": 42,
       "top_extensions": [
         [
           ".json",
-          2
+          3
         ],
         [
           ".py",
-          2
+          3
         ],
         [
           ".md",
@@ -292,7 +292,7 @@
     {
       "project": "tests",
       "tracked_files": 16,
-      "commits_touching_project": 26,
+      "commits_touching_project": 27,
       "top_extensions": [
         [
           ".r",
