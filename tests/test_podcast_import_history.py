@@ -108,6 +108,12 @@ class ImportLibraryTests(unittest.TestCase):
         self.assertEqual(result['meta']['kept_after_export'], 1)
         self.assertEqual(result['meta']['previous_only_count'], 3)
 
+    def test_unavailable_marker_survives_import(self):
+        previous = {'episodes': [{'id': 'a', 'unavailable_at': '2026-10-23'}, {'id': 'b'}]}
+        result = import_library.merge_library(self.export('a', 'b'), previous, self.AS_OF)
+        self.assertEqual(result['episodes'][0]['unavailable_at'], '2026-10-23')
+        self.assertEqual(result['meta']['n_unavailable'], 1)
+
     def test_snapshot_date_reads_zip_timestamp(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = pathlib.Path(tmp) / 'export.zip'
