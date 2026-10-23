@@ -43,6 +43,34 @@ The import date is not a saved date or an assertion about export generation time
 Only episode fields are imported; unrelated account data stays out of the repo.
 No live credentials are used at runtime.
 
+## Completion cutoff
+
+I listen oldest publication date first, not oldest saved. After a listening
+session, record the oldest episode still in the queue; everything published
+strictly before its release date is treated as finished:
+
+```sh
+python3 podcast-dashboard/tools/set_cutoff.py --show "Planet Money" \
+  --title "Exact episode title" --released 2026-03-14
+python3 podcast-dashboard/tools/set_cutoff.py --clear
+```
+
+The tool matches the show and title (case and spacing don't matter) against
+`data/saved_episodes.json` and refuses to write if nothing matches, the title is
+ambiguous, or the stored release date disagrees with `--released`. It writes
+`data/completion_cutoff.json` (`cutoff`, the `boundary` episode, and
+`confirmed_at`); editing that file by hand works too, and `"cutoff": null` turns
+it off. Neither the daily API refresh nor the export import touches this file,
+so the cutoff survives both. Commit it like any other data change.
+
+The dashboard hides episodes with a day-precision release date before the
+cutoff from the queue, and its counts, hours, charts, and table all use that
+same set. The boundary episode and anything released the same day stay. Unknown
+or year/month-only release dates stay listed rather than guessing. The rows are
+not deleted, removal tracking and listening history are unaffected, and a
+sidebar checkbox shows the finished episodes again. The footer and data note
+state the active cutoff and how many episodes it hides.
+
 ## Run locally
 
 ```r

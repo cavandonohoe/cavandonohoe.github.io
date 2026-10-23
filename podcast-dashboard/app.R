@@ -11,6 +11,8 @@ library(scales)
 library(stringr)
 library(tibble)
 
+`%||%` <- function(a, b) if (is.null(a)) b else a
+
 raw <- jsonlite::fromJSON("data/saved_episodes.json", simplifyDataFrame = TRUE)
 meta <- raw$meta
 # Membership has two sources: the last Account Data export (YourLibrary.json)
@@ -58,6 +60,39 @@ episodes <- episodes |>
   dplyr::mutate(
     history_status = ifelse(is.na(events), "No matching history", "Recorded playback")
   )
+
+# Manual completion cutoff (data/completion_cutoff.json, set with
+# tools/set_cutoff.py). I listen oldest publication date first, so episodes
+# published strictly before the confirmed boundary episode's release date are
+# finished. Only day-precision release dates are compared: unknown dates and
+# year/month-only dates stay in the queue rather than guessing.
+before_cutoff <- function(release, cutoff) {
+  if (is.null(cutoff) || length(cutoff) != 1 || is.na(cutoff) || !nzchar(cutoff)) {
+    return(rep(FALSE, length(release)))
+  }
+  release <- as.character(release)
+  !is.na(release) & grepl("^\\d{4}-\\d{2}-\\d{2}$", release) & release < cutoff
+}
+completion <- if (file.exists("data/completion_cutoff.json")) {
+  jsonlite::fromJSON("data/completion_cutoff.json")
+} else {
+  list()
+}
+cutoff_date <- completion$cutoff
+episodes$before_cutoff <- before_cutoff(episodes$release, cutoff_date)
+n_before_cutoff <- sum(episodes$before_cutoff)
+cutoff_active <- !is.null(cutoff_date) && !is.na(cutoff_date) && nzchar(cutoff_date)
+n_queue <- n_total - n_before_cutoff
+cutoff_note <- if (cutoff_active) {
+  b <- completion$boundary
+  sprintf(paste0(
+    "Completion cutoff: everything published before %s is marked finished ",
+    "(oldest unfinished: \"%s\" from %s, confirmed %s), hiding %s episodes. "
+  ), cutoff_date, b$name %||% "?", b$show %||% "?", completion$confirmed_at %||% "?",
+  scales::comma(n_before_cutoff))
+} else {
+  "No completion cutoff is set. "
+}
 
 known_dates <- episodes$added_at[!is.na(episodes$added_at)]
 length_max <- max(c(5, episodes$dur_min), na.rm = TRUE)
@@ -136,6 +171,13 @@ ui <- bslib::page_sidebar(
       start = date_min, end = date_max
     ),
     checkboxInput("include_unknown", "Include unknown lengths / saved dates", TRUE),
+    if (cutoff_active) {
+      checkboxInput(
+        "include_finished",
+        sprintf("Include episodes published before %s (finished)", cutoff_date),
+        FALSE
+      )
+    },
     textInput("q", "Search title / description", placeholder = "e.g. aliens"),
     selectInput(
       "history_status", "Listening history",
@@ -148,11 +190,17 @@ ui <- bslib::page_sidebar(
         paste(
           "Library export imported: %s \u00b7 Latest API refresh with new data: %s",
           "\u00b7 %s episodes (%s from export, %s added by API, %s left the library,",
-          "%s no longer on Spotify)"
+          "%s no longer on Spotify) \u00b7 %s"
         ),
-        export_date, api_refresh_date, scales::comma(n_total),
+        export_date, api_refresh_date, scales::comma(n_queue),
         scales::comma(n_export), scales::comma(n_api_added), scales::comma(n_removed),
-        scales::comma(n_unavailable)
+        scales::comma(n_unavailable),
+        if (cutoff_active) {
+          sprintf("%s hidden by the completion cutoff (%s)",
+                  scales::comma(n_before_cutoff), cutoff_date)
+        } else {
+          "no completion cutoff"
+        }
       )
     )
   ),
@@ -180,7 +228,8 @@ ui <- bslib::page_sidebar(
       "background:#1e1e1e; border:1px solid #2a2a2a; color:#c9c9c9;",
       "font-size:0.85rem;"
     ),
-    tags$strong(sprintf("Showing %s episodes. ", scales::comma(n_total))),
+    tags$strong(sprintf("Showing %s episodes. ", scales::comma(n_queue))),
+    cutoff_note,
     sprintf(
       paste0(
         "%s come from the Account Data export (YourLibrary.json, imported %s); ",
@@ -244,7 +293,11 @@ ui <- bslib::page_sidebar(
 
 server <- function(input, output, session) {
   filtered <- reactive({
-    df <- episodes |>
+    df <- episodes
+    # The cutoff applies before every other filter, so the KPIs, charts and
+    # table all count the same remaining queue.
+    if (!isTRUE(input$include_finished)) df <- df |> dplyr::filter(!before_cutoff)
+    df <- df |>
       dplyr::filter(
         show %in% input$shows,
         (isTRUE(input$include_unknown) & is.na(dur_min)) |
@@ -434,7 +487,7 @@ server <- function(input, output, session) {
   output$tbl <- DT::renderDT({
     d <- filtered() |>
       dplyr::transmute(
-        Added = added_at, Show = show, Episode = name,
+        Added = added_at, Released = release, Show = show, Episode = name,
         `Length (min)` = dur_min, History = history_status,
         `Listened (min)` = round(listened_min, 1), Events = events,
         `First played (UTC)` = first_played, `Last played (UTC)` = last_played,

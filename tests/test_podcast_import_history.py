@@ -1,4 +1,5 @@
 """Synthetic-fixture tests for the podcast listening-history importer."""
+import datetime
 import importlib.util
 import json
 import pathlib
@@ -83,6 +84,45 @@ class ImportLibraryTests(unittest.TestCase):
         self.assertNotIn('removed_at', row)
         self.assertNotIn('api_misses', row)
         self.assertTrue(row['api_seen'])
+
+
+
+SET_CUTOFF = pathlib.Path(__file__).resolve().parents[1] / 'podcast-dashboard/tools/set_cutoff.py'
+cutoff_spec = importlib.util.spec_from_file_location('set_cutoff', SET_CUTOFF)
+set_cutoff = importlib.util.module_from_spec(cutoff_spec)
+cutoff_spec.loader.exec_module(set_cutoff)
+
+
+class SetCutoffTests(unittest.TestCase):
+    EPISODES = [
+        {'id': 'a', 'show': 'Planet Money', 'name': 'The Boundary', 'release': '2026-03-14'},
+        {'id': 'b', 'show': 'Planet Money', 'name': 'Twin', 'release': '2026-01-01'},
+        {'id': 'c', 'show': 'Planet Money', 'name': 'Twin', 'release': '2026-02-01'},
+        {'id': 'd', 'show': 'Unexplainable', 'name': 'Undated', 'release': None},
+    ]
+
+    def test_match_ignores_case_and_spacing(self):
+        ep = set_cutoff.find_boundary(self.EPISODES, 'planet  money', 'the boundary',
+                                      '2026-03-14')
+        self.assertEqual(ep['id'], 'a')
+
+    def test_release_mismatch_is_rejected(self):
+        with self.assertRaisesRegex(ValueError, 'released 2026-03-14'):
+            set_cutoff.find_boundary(self.EPISODES, 'Planet Money', 'The Boundary',
+                                     '2026-03-15')
+
+    def test_missing_and_ambiguous_titles_are_rejected(self):
+        with self.assertRaisesRegex(ValueError, 'No saved episode'):
+            set_cutoff.find_boundary(self.EPISODES, 'Planet Money', 'Nope', '2026-03-14')
+        with self.assertRaisesRegex(ValueError, '2 saved episodes'):
+            set_cutoff.find_boundary(self.EPISODES, 'Planet Money', 'Twin', '2026-01-01')
+
+    def test_undated_boundary_uses_the_given_date(self):
+        ep = set_cutoff.find_boundary(self.EPISODES, 'Unexplainable', 'Undated', '2026-05-05')
+        config = set_cutoff.build_cutoff(ep, '2026-05-05', today=datetime.date(2026, 10, 23))
+        self.assertEqual(config['cutoff'], '2026-05-05')
+        self.assertEqual(config['boundary']['id'], 'd')
+        self.assertEqual(config['confirmed_at'], '2026-10-23')
 
 
 if __name__ == '__main__':
