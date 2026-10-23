@@ -7,7 +7,7 @@
     "previous_only_count": 42,
     "api_refreshed_at": "2026-10-23",
     "api_saved_count": 210,
-    "n_removed": 162,
+    "n_removed": 164,
     "n_unavailable": 26
   },
   "episodes": [
@@ -166,7 +166,7 @@
       "url": "https://open.spotify.com/episode/6eSRM9MSPaGpP23cl4dpY3",
       "desc": "This week’s indicators: Tracking your pain at the gas pump in real-time; OpenAI’s IPO hard-launch tug-of-war; one unexpected ingredient is making fertilizer—and potentially your groceries—a whole lot more expensive.Fact checking by Schuyler Swenson.Your Next Listen — What Iran teaches us about why wars startConnect with The Indicator — Sign up for The Indicator’s weekly newsletter! — Buy the Planet Money book — Find our socials, YouTube and more! — For sponsor-free episodes, subscribe to NPR+ Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": null,
@@ -359,7 +359,7 @@
       "show": "Unexplainable",
       "url": "https://open.spotify.com/episode/65qStIEGChrMEFswdCAg7R",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-11-11",
