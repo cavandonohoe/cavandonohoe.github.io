@@ -71,6 +71,8 @@ def merge_library(library, previous, as_of):
                      'source': 'Spotify Account Data / YourLibrary.json',
                      'n_episodes': len(episodes),
                      'n_removed': sum(1 for r in episodes if r.get('removed_at')),
+                     'n_unavailable': sum(1 for r in episodes
+                                          if r.get('unavailable_at') and not r.get('removed_at')),
                      'previous_only_count': dropped,
                      'kept_after_export': len(after),
                      'kept_removed_after_export': kept_removed},
@@ -99,7 +101,9 @@ if __name__ == '__main__':
     result = merge_library(library, previous, as_of)
     destination.write_text(json.dumps(result, indent=2, ensure_ascii=False) + '\n')
     meta = result['meta']
-    shown = meta['n_episodes'] - meta['n_removed']
+    # Unavailable rows (Spotify answers 404 for the episode) stay hidden even
+    # when the export lists them; the refresh clears the marker if they return.
+    shown = meta['n_episodes'] - meta['n_removed'] - meta['n_unavailable']
     print(f"Export as of {as_of}{'' if args.as_of else ' (from zip timestamp)'}: "
           f"{meta['export_n_episodes']} in export, {meta['kept_after_export']} saved after it "
           f"kept, {meta['kept_removed_after_export']} finished/unsaved after it kept hidden, "
