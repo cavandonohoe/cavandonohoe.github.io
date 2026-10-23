@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-10-23T20:06:51.408748+00:00",
+  "generated_at": "2026-10-22T20:19:15.776120+00:00",
   "window_days": 30,
-  "commits": 97,
+  "commits": 99,
   "excludes_bot_commits": true,
   "active_areas": [
     {
       "name": "site",
-      "file_touches": 92
+      "file_touches": 101
     },
     {
       "name": "data",
@@ -18,10 +18,10 @@
     },
     {
       "name": "scripts",
-      "file_touches": 57
+      "file_touches": 56
     },
     {
-      "name": "tests",
+      "name": "movie-ranker",
       "file_touches": 28
     }
   ]
