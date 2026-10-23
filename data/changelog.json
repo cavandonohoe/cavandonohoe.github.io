@@ -1,6 +1,24 @@
 {
-  "generated_at": "2026-10-22T20:15:44.493766+00:00",
+  "generated_at": "2026-10-23T20:02:27.909811+00:00",
   "events": [
+    {
+      "date": "2026-10-23",
+      "type": "merged_pr",
+      "title": "Treat the podcast export as truth as of its snapshot date",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/305"
+    },
+    {
+      "date": "2026-10-23",
+      "type": "merged_pr",
+      "title": "Refresh podcast listening history through October 21",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/306"
+    },
+    {
+      "date": "2026-10-23",
+      "type": "merged_pr",
+      "title": "Podcast dashboard: fix metadata backfill, hide episodes Spotify no longer has",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/308"
+    },
     {
       "date": "2026-10-22",
       "type": "merged_pr",
@@ -630,39 +648,28 @@
       "type": "merged_pr",
       "title": "Add Alice in Borderland to the IMDb rating plot",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/181"
-    },
-    {
-      "date": "2026-09-23",
-      "type": "merged_pr",
-      "title": "podcast-dashboard: fix search crash and unpin chart height",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/177"
-    },
-    {
-      "date": "2026-09-23",
-      "type": "merged_pr",
-      "title": "podcast-dashboard: fix mobile page scrolling over plotly charts",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/176"
-    },
-    {
-      "date": "2026-09-23",
-      "type": "merged_pr",
-      "title": "Add Saved Podcast Episodes card to homepage",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/175"
-    },
-    {
-      "date": "2026-09-23",
-      "type": "merged_pr",
-      "title": "Add Saved Podcast Episodes Shiny dashboard",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/174"
-    },
-    {
-      "date": "2026-09-22",
-      "type": "merged_pr",
-      "title": "Add Publications page (NHS-Galleri + PATHFINDER 2 articles)",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/173"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-10-23",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "1 podcast episode added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/ad3bd5c87e5159c4dcb90c859e4fa9a8f434f3ed"
+        },
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "8 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/84c8dc82fc25ae05062228ac0746b45bba6620a1"
+        },
+        {
+          "emoji": "\ud83d\udcbb",
+          "text": "3 PRs merged"
+        }
+      ]
+    },
     {
       "date": "2026-10-22",
       "items": [
@@ -868,15 +875,6 @@
           "emoji": "\ud83c\udfa7",
           "text": "5 podcast episodes added",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/508899e3b0bdb5c287da809b97e4ff8d52f99cdd"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-09",
-      "items": [
-        {
-          "emoji": "\ud83d\udcbb",
-          "text": "2 PRs merged"
         }
       ]
     }
