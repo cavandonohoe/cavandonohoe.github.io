@@ -20,7 +20,8 @@
 #   { "meta": { generated_at, export_n_episodes, source, n_episodes,
 #               n_removed, api_refreshed_at, api_saved_count, ... },
 #     "episodes": [ { id, added_at, show, publisher, name, dur_min, release,
-#                     url, desc, api_seen, api_misses, removed_at }, ... ] }
+#                     url, desc, api_seen, api_misses, removed_at,
+#                     unavailable_at }, ... ] }
 
 suppressWarnings(suppressMessages({
   ok <- requireNamespace("httr2", quietly = TRUE) &&
@@ -140,24 +141,39 @@ api_episodes <- lapply(items, function(it) {
   normalize_episode(it$episode, substr(it$added_at %||% NA_character_, 1, 10))
 })
 
-# Episode metadata by ID (GET /v1/episodes, 50 IDs per call). Used to backfill
-# export-only episodes the saved-episodes endpoint does not return.
-# Unavailable or removed episodes come back as null and are skipped.
-fetch_episode_metadata <- function(ids) {
+# One episode's metadata (GET /v1/episodes/{id}), or NULL if Spotify no longer
+# has it (404). The batch GET /v1/episodes?ids= endpoint answers 403 for this
+# app, so episodes are looked up one at a time. Other errors propagate.
+fetch_episode <- function(id) {
+  resp <- httr2::request("https://api.spotify.com/v1/episodes") |>
+    httr2::req_url_path_append(id) |>
+    httr2::req_auth_bearer_token(access_token) |>
+    httr2::req_url_query(market = "US") |>
+    httr2::req_retry(max_tries = 4) |>
+    httr2::req_error(is_error = function(resp) {
+      httr2::resp_status(resp) >= 400 && httr2::resp_status(resp) != 404
+    }) |>
+    httr2::req_perform()
+  if (httr2::resp_status(resp) == 404) return(NULL)
+  httr2::resp_body_json(resp)
+}
+
+# Episode metadata by ID. Used to backfill export-only episodes the
+# saved-episodes endpoint does not return. Returns the normalized rows plus the
+# IDs Spotify reports as gone, so the merge can mark them unavailable.
+fetch_episode_metadata <- function(ids, fetch = fetch_episode) {
   ids <- unique(ids[!is.na(ids) & nzchar(ids)])
-  chunks <- split(ids, ceiling(seq_along(ids) / 50))
-  out <- list()
-  for (chunk in chunks) {
-    resp <- httr2::request("https://api.spotify.com/v1/episodes") |>
-      httr2::req_auth_bearer_token(access_token) |>
-      httr2::req_url_query(ids = paste(chunk, collapse = ","), market = "US") |>
-      httr2::req_retry(max_tries = 4) |>
-      httr2::req_perform() |>
-      httr2::resp_body_json()
-    eps <- Filter(Negate(is.null), resp$episodes %||% list())
-    out <- c(out, lapply(eps, normalize_episode))
+  rows <- list()
+  unavailable <- character()
+  for (id in ids) {
+    ep <- fetch(id)
+    if (is.null(ep)) {
+      unavailable <- c(unavailable, id)
+    } else {
+      rows <- c(rows, list(normalize_episode(ep)))
+    }
   }
-  out
+  list(rows = rows, unavailable = unavailable)
 }
 
 # Merge API rows into the existing library. Returns the updated payload and
@@ -173,6 +189,22 @@ fetch_episode_metadata <- function(ids) {
 # fills fields that are still missing and never sets `added_at`: that endpoint
 # describes the episode, not when it was saved, so the save date stays unknown.
 backfill_fields <- c("publisher", "dur_min", "release", "desc")
+
+# Export-only episodes Spotify answers 404 for (pulled by the publisher or
+# region-locked) can no longer be played, so they get `unavailable_at` and the
+# dashboard hides them like removed rows. The marker clears if Spotify returns
+# the episode again.
+mark_unavailable <- function(episodes, unavailable, available, today) {
+  lapply(episodes, function(e) {
+    id <- e$id %||% NA_character_
+    if (id %in% available) {
+      e$unavailable_at <- NULL
+    } else if (id %in% unavailable && is.null(e$unavailable_at)) {
+      e$unavailable_at <- format(today)
+    }
+    e
+  })
+}
 
 # Finishing an episode (or unsaving it) removes it from "Your Episodes" and
 # from /me/episodes. Paging is too unreliable for one absence to mean anything,
@@ -205,7 +237,8 @@ track_api_removals <- function(episodes, api_ids, today, removal_misses = 2L) {
 }
 
 merge_saved_episodes <- function(existing, api_episodes, today = Sys.Date(),
-                                 backfill = list(), track_removals = TRUE) {
+                                 backfill = list(), track_removals = TRUE,
+                                 unavailable = character()) {
   episodes <- existing$episodes %||% list()
   existing_ids <- vapply(episodes, function(e) e$id %||% NA_character_, character(1))
   api_ids <- vapply(api_episodes, function(e) e$id %||% NA_character_, character(1))
@@ -242,6 +275,7 @@ merge_saved_episodes <- function(existing, api_episodes, today = Sys.Date(),
   if (length(new_idx)) episodes <- c(episodes, api_episodes[new_idx])
 
   if (track_removals) episodes <- track_api_removals(episodes, api_ids, today)
+  episodes <- mark_unavailable(episodes, unavailable, c(api_ids, backfill_ids), today)
 
   as_json <- function(x) jsonlite::toJSON(x, auto_unbox = TRUE, na = "null", null = "null")
   changed <- !identical(as_json(episodes), as_json(existing$episodes %||% list()))
@@ -249,6 +283,9 @@ merge_saved_episodes <- function(existing, api_episodes, today = Sys.Date(),
   if (changed) {
     meta$n_episodes <- length(episodes)
     meta$n_removed <- sum(vapply(episodes, function(e) !is.null(e$removed_at), logical(1)))
+    meta$n_unavailable <- sum(vapply(episodes, function(e) {
+      !is.null(e$unavailable_at)
+    }, logical(1)))
     meta$api_refreshed_at <- format(today)
     meta$api_saved_count <- length(api_episodes)
     meta$source <- "Spotify Account Data export + Spotify Web API incremental refresh"
@@ -261,12 +298,14 @@ merge_saved_episodes <- function(existing, api_episodes, today = Sys.Date(),
 
 existing <- jsonlite::fromJSON(out_path, simplifyDataFrame = FALSE)
 
-# Only look up export rows the saved-episodes call did not just refresh and that
-# are still missing metadata, so a fully backfilled library makes no extra
-# calls. A lookup failure keeps today's refresh rather than failing the run.
+# Only look up export rows the saved-episodes call did not just refresh, that
+# are still shown, and that are still missing metadata, so a fully backfilled
+# library makes few extra calls. Unavailable rows are re-checked so they come
+# back if Spotify restores them. A lookup failure keeps today's refresh rather
+# than failing the run.
 api_ids <- vapply(api_episodes, function(e) e$id %||% NA_character_, character(1))
 needs_backfill <- vapply(existing$episodes %||% list(), function(e) {
-  !((e$id %||% NA_character_) %in% api_ids) &&
+  !((e$id %||% NA_character_) %in% api_ids) && is.null(e$removed_at) &&
     any(vapply(backfill_fields, function(f) {
       v <- e[[f]]
       is.null(v) || !length(v) || all(is.na(v))
@@ -276,16 +315,17 @@ backfill_ids <- vapply(
   (existing$episodes %||% list())[needs_backfill],
   function(e) e$id %||% NA_character_, character(1)
 )
-backfill <- list()
+lookup <- list(rows = list(), unavailable = character())
 if (length(backfill_ids)) {
-  backfill <- tryCatch(fetch_episode_metadata(backfill_ids), error = function(e) {
+  lookup <- tryCatch(fetch_episode_metadata(backfill_ids), error = function(e) {
     cat(paste0(
       "::warning title=Episode metadata backfill failed::",
       conditionMessage(e), "\n"
     ))
-    list()
+    list(rows = list(), unavailable = character())
   })
 }
+backfill <- lookup$rows
 
 # Removal tracking needs a healthy API pass. If today's union is under half of
 # the rows the API is currently known to return, treat it as an API glitch:
@@ -302,7 +342,8 @@ if (!track_removals) {
 }
 
 merged <- merge_saved_episodes(existing, api_episodes, backfill = backfill,
-                               track_removals = track_removals)
+                               track_removals = track_removals,
+                               unavailable = lookup$unavailable)
 payload <- merged$payload
 json <- jsonlite::toJSON(
   payload, auto_unbox = TRUE, pretty = TRUE, na = "null", null = "null"
@@ -311,11 +352,12 @@ if (merged$changed) writeLines(json, out_path)
 
 cat(sprintf(
   paste0(
-    "Refreshed %d API saves; backfilled metadata lookup for %d of %d episodes; ",
-    "library now contains %d episodes (%d newly appended, %d marked removed)%s\n"
+    "Refreshed %d API saves; backfilled metadata for %d of %d episodes ",
+    "(%d unavailable on Spotify); library now contains %d episodes ",
+    "(%d newly appended, %d marked removed)%s\n"
   ),
   length(api_episodes), length(backfill), length(backfill_ids),
-  length(payload$episodes), merged$n_new,
+  length(lookup$unavailable), length(payload$episodes), merged$n_new,
   sum(vapply(payload$episodes, function(e) !is.null(e$removed_at), logical(1))),
   if (merged$changed) "" else "; no changes, JSON left untouched"
 ))

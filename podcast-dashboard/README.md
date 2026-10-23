@@ -18,14 +18,19 @@ keeps the union. Finishing or unsaving an episode drops it from the API; once an
 episode the API previously returned is missing on two runs in a row, it gets
 `removed_at` and the dashboard hides it (the row stays in the JSON and comes
 back if the API returns it again). Episodes the API has never returned are only
-corrected by the next export import. The dashboard footer shows
+corrected by the next export import, except that the refresh also looks each
+one up individually (`GET /v1/episodes/{id}`; the batch endpoint is forbidden
+for this app). That backfills release dates, lengths, and descriptions, and an
+episode Spotify answers 404 for (pulled or region-locked) gets `unavailable_at`
+and is hidden too. The dashboard footer shows
 both the export import date and the latest API refresh that changed the data.
 The API refresh only rewrites the file (and redeploys) when episodes change.
 
 Unknown lengths and saved dates remain null and are included in filters by
 default. Disable "Include unknown lengths / saved dates" for complete metadata
 only. Duration statistics use known values; the saved-date chart excludes unknown
-dates. Listening history matches 103 current-library episodes.
+dates. Listening history matches 202 current-library episodes, with export coverage
+through October 21, 2026 (imported October 22, 2026).
 
 To refresh from an Account Data ZIP, then rebuild listening aggregates:
 
