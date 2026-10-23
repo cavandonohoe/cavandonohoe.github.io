@@ -3,11 +3,11 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 413,
+    "n_episodes": 414,
     "previous_only_count": 42,
     "api_refreshed_at": "2026-10-23",
     "api_saved_count": 199,
-    "n_removed": 154
+    "n_removed": 156
   },
   "episodes": [
     {
@@ -825,7 +825,7 @@
       "release": "2026-01-31",
       "url": "https://open.spotify.com/episode/6vyrGkJwfqSgGQRc10uYBV",
       "desc": "In World War II, a secret department of British 'corkscrew thinkers' hatched a plan to use the cadaver of an unclaimed homeless man to turn the tide of the war in the Allies' favor. It worked. Listen to this classic episode as Josh and Chuck take you through the real life tale.See omnystudio.com/listener for privacy information.",
-      "removed_at": "2026-10-23"
+      "api_seen": true
     },
     {
       "added_at": "2026-09-24",
@@ -1088,7 +1088,7 @@
       "url": "https://open.spotify.com/episode/10T6iDslQsJ4VjsuNMgFaY",
       "desc": "Even though almost half of Americans believe in it, ESP usually is treated as a load of bull by skeptics. But some respected researchers have dared to apply the scientific method to investigate ESP and a few have found some surprising results. Find out all about it with Josh and Chuck in this classic episode.  See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": null,
@@ -1478,7 +1478,7 @@
       "name": "Stephen Presents: Jeff Tweedy (Extended)",
       "show": "The Late Show Pod Show with Stephen Colbert",
       "url": "https://open.spotify.com/episode/3kfQCOMDYdc2hPHBxgUADI",
-      "removed_at": "2026-10-23"
+      "api_seen": true
     },
     {
       "id": "2ouQi6pJ3KlPKqhZ0P6sul",
@@ -2135,7 +2135,7 @@
       "url": "https://open.spotify.com/episode/6nJEIhOxmVkLZKzijbM1ta",
       "desc": "Like and subscribe and don't stop doomscrolling while you listen to The Daily Show tackle the scourge of social media.   Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-11-01",
@@ -2291,7 +2291,7 @@
       "url": "https://open.spotify.com/episode/5PbIaIzUslmalUiTINk8Au",
       "desc": "Michael Kosta dives into the alleged involvement of Portland Trail Blazers head coach Chauncey Billups and Miami Heat star Terry Rozier in illegal gambling schemes. Plus, Donald Trump continues to defend the construction of his mega-sized White House ballroom as he fully demolishes the East Wing. And Josh Johnson thanks the contractor-in-chief on behalf of waltz-loving podcast bros everywhere. Jordan Klepper dives into \"Fox & Friends\" co-host Lawrence Jones, who is breaking the mold as a Black libertarian at a conservative, white-centric network. However, Jones’s unusual interview skills and angry MAGA undertones suggest he really is one of them. Jeff Tweedy, Grammy award-winning frontman of the band Wilco and bestselling author, sits down with Michael to discuss his new solo album, “Twilight Override,” named to evoke his feeling of getting older and watching a world that “appears to be getting darker.” Tweedy also discusses why he’s glad to have spent his formative years as a musician in the midwest, his theory that repressed trauma after Covid is one cause of present-day chaos, and the need for everyone to spend less time on their phones and more time with people who love them. Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2026-01-23",
@@ -2375,7 +2375,8 @@
       "release": "2026-01-10",
       "url": "https://open.spotify.com/episode/592Bl8VN3oWqZKwUNQGNpz",
       "desc": "As the U.S. takes apparent control of Venezuela, after capturing its head of state Nicolás Maduro, take a look back at how we got here with The Daily Show's coverage of Venezuelan political unrest through the years.  Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "0GAalOHgIHWZ7pT3sL8oA6",
@@ -2752,7 +2753,7 @@
       "release": "2025-12-24",
       "url": "https://open.spotify.com/episode/4KOBA2TMbrFLXcPi0GAyV8",
       "desc": "Holly is waxy and super sharp, not exactly the kind of thing you'd want all over your house. Yet it happens every holiday season. Today we dig in to discover why.See omnystudio.com/listener for privacy information.",
-      "removed_at": "2026-10-23"
+      "api_seen": true
     },
     {
       "id": "0LOoLkXJiXWwePoDtPKdnq",
@@ -2824,7 +2825,8 @@
       "release": "2026-02-05",
       "url": "https://open.spotify.com/episode/0vv4oFJ0Qv0ADHo4HMbnwk",
       "desc": "How did the U.S. become the Olympic powerhouse it is today? Cold War competition. The Soviet Union sponsored their athletes. But America wanted its athletes to pull themselves up by their bootstraps. It birthed an unexpected accelerator of Olympic development: College football. Stay with us now.On today’s show, how college football became an Olympic development engine. And how that engine might not be running as smoothly as it once did.Related episodes: Why the Olympics cost so muchYou can't spell Olympics without IPA huge EU-India deal, Heated Rivalry, and a hefty $200k to OlympiansWhy Host The Olympics?The monetization of college sportsFor sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "7eo0YVJX1Ft3vtzp3Fj0MG",
@@ -3358,7 +3360,8 @@
       "release": "2025-11-28",
       "url": "https://open.spotify.com/episode/3oReLxwmpMs9RW2NnNSLZ0",
       "desc": "Are we making science fiction a reality? Is that a good thing? Neil deGrasse Tyson, Chuck Nice, & Gary O’Reilly and guest Adam Becker, science communicator and author of More Everything Forever, discuss sci-fi dreams, tech-bro promises, and the real science shaping our tomorrow.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free.Thanks to our Patrons Jeremiah Washington, Lawrence Burr, PAscal, Melissa Lange, Noah Naccarato, christian lopez, Matthew Thomas Dunn, thalian, Morten Leirkjaer, Jonathan Markey, Expo, Heather, Brandon G, S Gr, carwingo, Neil, Micheal Rogerson, Torgeir Sundet, Nina (aka HelloDaydream) Scott Polaske, Christopher Branch, Matthew Tarter, Jeff Dasteel, Matthew Light, Dj Stuffin, Virginia Walters, Pablo Rojo, Don T, Jacob Searcy, Jeffery Marraccini, Madam Power, Bartosz Jaworski, Jonathan Amir, Brandon D, Zdeněk Bučko, Mason, Benedikt Hopf, L4NK, Susan Baumgartner, Austin Browning, Kari Windham, How to Poe, Richard C, Margie Baker, SubTheGator, Harry W Peters Jr, Sean, Ravi Kapoor, Diego Sanz, Jeremy Malli, Walter Mashman, Arthur Cousland, Jordan Dck, Ryan Kroboth, Daniel Carroll, Bartlomiej Lepka, Christopher M, Starry Dust, Kingfisher9000, Pdub, Mat Cauthon, Leithor, Wesley Wright, MJ Ladiosa, Minty FreSH RandoMness, Gilberto Garza, Daryle Lockhart, Lyric Kite, Sasquatch, Carolyn Duvall, Heather Renn, DavidX, Mr. Thrasher, and Tracy Boomer for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2026-01-20",
@@ -3499,7 +3502,8 @@
       "release": "2025-10-24",
       "url": "https://open.spotify.com/episode/2P8pSGo8OrtS9Ccj8MpnZS",
       "desc": "The U.S. Constitution famously outlaws “cruel and unusual punishments.” But there's another, far more obscure part of the Constitution called the Excessive Fines Clause, which basically says that the fine has to fit the crime. So far, the Supreme Court has been pretty mysterious about what that means. But for Ken Jouppi, the fate of his $95,000 plane hinges on it.Ken is a bush pilot. He used to run an air taxi service in Fairbanks, Alaska. In 2012, police caught one of Ken’s passengers with a six-pack of Budweiser in her luggage. Over that six-pack, Ken was convicted of bootlegging. As punishment, he was ordered to forfeit his $95,000 Cessna.The Supreme Court is now considering whether to take Ken’s case. And what’s at stake here is more than just a plane. Hanging in the balance is an increasingly popular — and controversial — business model for criminal justice.More on economics and the law: - Fine and punishment - The prisoner's solution - Paying for the crime - Rescues at sea, and how to make a fortunePre-order the Planet Money book and get a free gift. / Subscribe to Planet Money+Listen free: Apple Podcasts, Spotify, the NPR app or anywhere you get podcasts.Facebook / Instagram / TikTok / Our weekly Newsletter.Today’s episode was produced by James Sneed and Sam Yellowhorse Kesler with help from Luis Gallo. It was edited by Jess Jiang, fact-checked by Sierra Juarez and engineered by Ko Tagasugi Chernovin with help from Robert Rodriguez. Planet Money's executive producer is Alex Goldmark.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2026-01-21",
@@ -3667,7 +3671,7 @@
       "url": "https://open.spotify.com/episode/0e9PMQc4CoAipa8ejci4K4",
       "desc": "The U.S. has a physician shortage, created in part by a century-old reform that shut down bad medical schools. But why haven’t we filled the gap? Why are some physicians so unhappy? And which is worse: a bad doctor or no doctor at all? SOURCES:Karen Clay, professor of economics and public policy at Carnegie Mellon University.Rochelle Walensky, physician-scientist and former director of the CDC. RESOURCES:\"Medical School Closures, Market Adjustment, and Mortality in the Flexner Report Era,\" by Karen Clay, Grant Miller, Margarita Portnykh, and Ethan Schmick (National Bureau of Economic Research, 2025).\"Application Overload — A Call to Reduce the Burden of Applying to Medical School,\" by Rochelle Walensky and Loren Walensky (New England Journal of Medicine, 2025).\"Challenges to the Future of a Robust Physician Workforce in the United States,\" by Rochelle Walensky and Nicole McCann (New England Journal of Medicine, 2025).\"The first step to addressing the physician shortage,\" by Rochelle Walensky and Nicole McCann (STAT, 2025).\"Physician Workforce: Projections, 2022-2037,\" (National Center for Health Workforce Analysis, 2024).“Projected Estimates of African American Medical Graduates of Closed Historically Black Medical Schools,” by Kendall Campbell, Irma Corral, Jhojana Infante Linares, and Dmitry Tumin (JAMA Network, 2020).\"Medical Education in the United States and Canada,\" by Abraham Flexner (The Carnegie Foundation for the Advancement of Teaching, 1910). EXTRAS:\"Is the Air Traffic Control System Broken?\" series by Freakonomics Radio (2025).\"Are You Ready for the Elder Swell?\" by Freakonomics Radio (2025).\"Are Private Equity Firms Plundering the U.S. Economy?\" by Freakonomics Radio (2023). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2026-09-25",
@@ -3810,7 +3814,7 @@
       "url": "https://open.spotify.com/episode/30JtUCMz2I4hPFFS5zCWIQ",
       "desc": "It’s … Indicators of the Week! Our weekly look at some of the most fascinating economic numbers from the news. On today’s episode: the Amazon global internet outage, Americans plan to siphon their Social Security checks early, and Mann, we love some Heat 2. Related episodes: What does the next era of Social Security look like? Why aren't filmmakers shooting in LA? For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Julia Ritchey Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "2YXYOdRFKrQcaOznf66bKQ",
@@ -4839,7 +4843,7 @@
       "publisher": null,
       "name": "Are Private Equity Firms Plundering the U.S. Economy? (Update)",
       "dur_min": 48,
-      "release": "2026-10-22",
+      "release": "2026-10-21",
       "url": "https://open.spotify.com/episode/4coa0xc14YTHW9bUXUV2CB",
       "desc": "They say they make companies more efficient through savvy management. Critics say they bend the rules to enrich themselves at the expense of consumers and employees. Can they both be right? (Probably not.)  SOURCES:Brendan Ballou, C.E.O. of the Public Integrity Project.Dan Glickberg, venture-capital investor.Hannah Howard, food writer.Sachin Khajuria, investor. RESOURCES:Plunder: Private Equity's Plan to Pillage America, by Brendan Ballou (2023).Two and Twenty: How the Masters of Private Equity Always Win, by Sachin Khajuria (2022).\"Local Journalism under Private Equity Ownership,\" by Michael Ewens, Arpit Gupta, and Sabrina T. Howell (NBER Working Paper, 2022).“Owner Incentives and Performance in Healthcare: Private Equity Investment in Nursing Homes,” by Atul Gupta, Sabrina T. Howell, Constantine Yannelis, and Abhinav Gupta (NBER Working Paper, 2021).“Leveraged Buyouts and Financial Distress,” by Brian Ayash and Mahdi Rastad (Finance Research Letters, 2021). EXTRAS:\"Is This What a 'Good Billionaire' Looks Like?\" by Freakonomics Radio (2026).\"Is the Public Ready for Private Equity?\" by Freakonomics Radio (2025).\"Should You Trust Private Equity to Take Care of Your Dog?\" by Freakonomics Radio (2023).\"Do You Know Who Owns Your Vet?\" by Freakonomics Radio (2023).\"The Secret Life of a C.E.O.,\" series by Freakonomics Radio (2018). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "api_seen": true
@@ -4914,6 +4918,18 @@
       "release": "2026-10-22",
       "url": "https://open.spotify.com/episode/3ruOaM5GPXJLSsRCICEzO8",
       "desc": "Security guards make malls feel safer, but what can they do when there’s trouble? Zachary Crockett observes and reports. This episode was originally published on March 16th, 2025. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
+      "api_seen": true
+    },
+    {
+      "id": "0PaGnJYSU5C1ojccAA4tH2",
+      "added_at": "2026-10-23",
+      "show": "StarTalk with Neil deGrasse Tyson",
+      "publisher": null,
+      "name": "Spooky Science with Mary Roach",
+      "dur_min": 44,
+      "release": "2026-10-23",
+      "url": "https://open.spotify.com/episode/0PaGnJYSU5C1ojccAA4tH2",
+      "desc": "Could ghosts possibly be real? Neil deGrasse Tyson and Eugene Mirman explore ghost hunting techniques, spiritualism, and the non-corporeal plane of existence with Mary Roach and Joe Nickell. Originally Aired October 30, 2011. NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/spooky-science/ Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "api_seen": true
     }
   ]
