@@ -5,9 +5,9 @@
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
     "n_episodes": 413,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-10-22",
-    "api_saved_count": 204,
-    "n_removed": 0
+    "api_refreshed_at": "2026-10-23",
+    "api_saved_count": 199,
+    "n_removed": 154
   },
   "episodes": [
     {
@@ -187,7 +187,7 @@
       "name": "102. “The Starry Night”",
       "show": "The Economics of Everyday Things",
       "url": "https://open.spotify.com/episode/4McfG2iosQpwLYzzhQEH9n",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "0YYOkX5X0UnJZp9xRYDuh0",
@@ -211,7 +211,7 @@
       "release": "2025-10-06",
       "url": "https://open.spotify.com/episode/39BLCVwy32LYjuV0PR2eYf",
       "desc": "The world’s oldest advertising medium has reconfigured itself for the digital age. Zachary Crockett looks up. SOURCES:Anna Bager, president and C.E.O. of the Out-of-Home Advertising Association of America.Dan Levi, chief marketing officer at Clear Channel Outdoor. RESOURCES:\"Advertising Proves Resilient Amidst Economic Uncertainty,\" (Magna Global, 2025).\"Clear Channel Outdoor Holdings, Inc. Reports Results for the First Quarter of 2025,\" (Clear Channel Investor Relations, 2025).\"The Bigger, The Bolder: Outdoor Advertising,\" by Judy Gonyeau (Journal of Antiques and Collectibles, 2024).\"How Digital Billboards Target Passersby (Hint: It's Cellphone Data),\" by Karen Duffin (NPR, 2020).\"The hottest advertising trend of 2018? Billboards.\" by Zachary Crockett (The Hustle, 2019).\"Model Legislation for Banning Billboards,\" (Scenic America). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "2XZIZoqbnd6BQubykhXEkh",
@@ -223,7 +223,7 @@
       "release": "2025-09-29",
       "url": "https://open.spotify.com/episode/2XZIZoqbnd6BQubykhXEkh",
       "desc": "Some singles choose to skip the apps and get fixed up the old-fashioned way — but it doesn't come cheap. Zachary Crockett puts himself out there. SOURCES:Maria Avgitidis, C.E.O. of Agape Match and author of Ask a Matchmaker: Matchmaker…",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": null,
@@ -258,7 +258,7 @@
       "release": "2025-08-06",
       "url": "https://open.spotify.com/episode/0rpzmRqnyf9kQYHcfR5Cvp",
       "desc": "Why do revisions to the jobs report happen? Today on the show, we speak with a former Commissioner of the Bureau of Labor Statistics about why revisions occur and how we should interpret the monthly report's actual message. Related episodes:Can we still trust the monthly jobs report? (Update)What really goes on at the Bureau of Labor Statistics (Update)​​How you're using AI at workFor sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org.Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-08-09",
@@ -270,7 +270,7 @@
       "name": "What happens when governments cook the books",
       "show": "Planet Money",
       "url": "https://open.spotify.com/episode/7AYTNlfqzDPedhkMl5Dt1p",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "5Ys6vDADNU1pcQ9AziVey7",
@@ -282,7 +282,7 @@
       "release": "2025-10-20",
       "url": "https://open.spotify.com/episode/5Ys6vDADNU1pcQ9AziVey7",
       "desc": "Think about the thing you’ve practiced more than anything else in the world. Maybe it’s painting. Or writing. Or playing baseball.  Now, imagine you wake up one day, and you just can’t do it. You’re not sick. You’re not injured. But suddenly, that one thing is impossible. (Originally published in 2024)  Guests: Rick Ankiel, former Major League Baseball star; Sally Akehurst, sports psychologist and a dean at University of Roehampton, London; Steven Frucht, neurologist at NYU Langone  For show transcripts, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unxtranscripts⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠For more, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unexplainable⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠And please email us! ⁠⁠⁠unexplainable@vox.com⁠⁠⁠We read every email.Support Unexplainable (and get ad-free episodes) by becoming a Vox Member today: ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/members⁠⁠⁠⁠⁠⁠⁠⁠Thank you! Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "5sY8ZYUru9aBmzNxKHjTRX",
@@ -306,7 +306,7 @@
       "release": "2025-10-06",
       "url": "https://open.spotify.com/episode/2aKllTxTQmzvzwevlzvl4K",
       "desc": "Donald Trump and RFK Jr. seem convinced that it does. But our friends at Science Vs say the data is far more complicated.  Guest: Meryl Horn, senior producer at Science Vs    For show transcripts, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unxtranscripts⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠  For more, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unexplainable⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠  And please email us! ⁠⁠⁠⁠unexplainable@vox.com⁠⁠⁠⁠  We read every email.  Support Unexplainable (and get ad-free episodes) by becoming a Vox Member today: ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/members⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠  Thank you! Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-10-27",
@@ -330,7 +330,7 @@
       "release": "2025-09-29",
       "url": "https://open.spotify.com/episode/78MBrBY535ywCSAF7a2YgO",
       "desc": "Who are you, really? Our friends at The Gray Area ask whether it's really possible to change.  Guest: ⁠Olga Khazan⁠, author of Me, But Better: The Science and Promise of Personality Change    For show transcripts, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unxtranscripts⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠  For more, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unexplainable⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠  And please email us! ⁠⁠⁠⁠⁠unexplainable@vox.com⁠⁠⁠⁠⁠  We read every email.  Support Unexplainable (and get ad-free episodes) by becoming a Vox Member today: ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/members⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠ Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2026-01-12",
@@ -366,7 +366,7 @@
       "release": "2025-08-06",
       "url": "https://open.spotify.com/episode/3mrQXIKr7NRFozGPFog3zp",
       "desc": "Towering walls of water sometimes appear in the ocean without warning or apparent cause. What drives their terrifying power? (First published in 2023)    Guest: Ton van der Bremer, associate professor of environmental fluid mechanics.    For show transcripts, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unxtranscripts⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠  For more, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unexplainable⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠  And please email us! ⁠⁠⁠unexplainable@vox.com⁠⁠⁠We read every email.  Support Unexplainable (and get ad-free episodes) by becoming a Vox Member today: ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/members Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": null,
@@ -469,7 +469,7 @@
       "release": "2025-10-15",
       "url": "https://open.spotify.com/episode/0dzVQQxAWm5SZwYPpys6ta",
       "desc": "From drones to body armor to bulletproof whiteboards, companies are offering schools a multitude of products to try to deter or protect against the next school shooting. But does any of this stuff work? On today’s show, a look inside the school shooting industry. What's for sale and the psychology behind the growing industry.Related episodes:  Why are so many public schools closing?  For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2026-01-14",
@@ -576,7 +576,7 @@
       "release": "2026-01-08",
       "url": "https://open.spotify.com/episode/6xUGQvKaiHBdlNVxsRBvns",
       "desc": "President Trump claims Venezuela stole American oil. Is that true? We trace Venezuela's oil industry from its 1920s birth through nationalization and then collapse. Today on the show, how did the Venezuelan oil industry get to a point where it’s barely pulling from its reserves? And will anything change now? Related episodes: Venezuela’s economic descent (Update) Venezuela’s recent economic history (Update) Why oil in Guyana could be a curse For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Julia Ritchey. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": null,
@@ -599,7 +599,7 @@
       "release": "2026-01-09",
       "url": "https://open.spotify.com/episode/0E4WljN00FdCRXJL764iYM",
       "desc": "Karissa Tang is a 17-year-old in California who got curious about the impact of AI on typical teen jobs like cashiers and fast food counter workers. She embarked on an ambitious economic research project and shares her findings with us.Related episodes: How much is AI actually affecting the workforce?AI creates, transforms and destroys... jobsWhen does youth employment become child labor?For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2026-09-23",
@@ -611,7 +611,7 @@
       "name": "Why are used cars priced like new cars?",
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/5lIxvwua0OPkclJpixUU6M",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2026-01-23",
@@ -658,7 +658,7 @@
       "release": "2025-10-03",
       "url": "https://open.spotify.com/episode/3b8LdN5yHKpBH9XAEc64JE",
       "desc": "Americans are moving at record lows for work. What’s driving people to, well, not drive cross-country for jobs? On today’s Jobs Friday, we explore the rising homebody economy. Related episodes: Can … we still trust the monthly jobs report? Why moms are leaving their paid jobs How the end of Roe is reshaping the medical workforce For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Corey Bridges. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2026-01-17",
@@ -682,7 +682,7 @@
       "name": "Short Stuff: Devil Horns",
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/0VBvYASnpmkbPihTWdg2Xo",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-08-13",
@@ -694,7 +694,7 @@
       "name": "Why Trump's spending bill could close your grocery store",
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/60sO6KjEJS6X8o3s8dkDIc",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": null,
@@ -741,7 +741,7 @@
       "name": "Summer School 5: The many ways governments influence industry",
       "show": "Planet Money",
       "url": "https://open.spotify.com/episode/0r41B867PbH3vpNUn0MmDb",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-10-31",
@@ -765,7 +765,7 @@
       "name": "Short Stuff: Marianne Bachmeier: Vigilante Mother",
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/05gg3GWkRbIM8WMwUM8USj",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2026-01-15",
@@ -801,7 +801,7 @@
       "release": "2025-10-23",
       "url": "https://open.spotify.com/episode/6rQXfWgJ6K4Df1wXS8IrGu",
       "desc": "Have you ever thought much about screaming? Well we have, and today you'll learn everything we learned. See omnystudio.com/listener for privacy information.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "6g2faBe4toLJbpCPqJ8I0y",
@@ -825,7 +825,7 @@
       "release": "2026-01-31",
       "url": "https://open.spotify.com/episode/6vyrGkJwfqSgGQRc10uYBV",
       "desc": "In World War II, a secret department of British 'corkscrew thinkers' hatched a plan to use the cadaver of an unclaimed homeless man to turn the tide of the war in the Allies' favor. It worked. Listen to this classic episode as Josh and Chuck take you through the real life tale.See omnystudio.com/listener for privacy information.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2026-09-24",
@@ -849,7 +849,7 @@
       "release": "2025-10-16",
       "url": "https://open.spotify.com/episode/7kaLqerXtf5ZpDq8SFXphy",
       "desc": "Today we complete our music video duology with a dive into the mellow pool of VH-1.See omnystudio.com/listener for privacy information.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": null,
@@ -872,7 +872,7 @@
       "release": "2025-10-14",
       "url": "https://open.spotify.com/episode/7kMvv9LQbgOofoxObYpBuJ",
       "desc": "If you've ever wanted to hear a couple of Gen X'ers wax nostalgic about MTV, then you're in luck. See omnystudio.com/listener for privacy information.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "7JFvvt2UIjH7H0Mj51QU36",
@@ -884,7 +884,7 @@
       "release": "2026-01-10",
       "url": "https://open.spotify.com/episode/7JFvvt2UIjH7H0Mj51QU36",
       "desc": "For most of history, forgiveness fell under the domain of religion. But in the 1980s science started investigating it and found that forgiving someone is really, really good for you. Learn how anybody can be the better person in this classic, and really great, episode.See omnystudio.com/listener for privacy information.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "52obTxlv9Cp9rFOqzsI9AO",
@@ -908,7 +908,7 @@
       "name": "Selects: The Disappearance of Flight MH370, Part II",
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/58F0m1d7YTAUr9b7mZCjJ0",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": null,
@@ -955,7 +955,7 @@
       "name": "Selects: How Rape Kits Work",
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/30XJ718foCE01lqrVv5jwG",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "1tP8lGAZlQNmEdcIGvkcCj",
@@ -979,7 +979,7 @@
       "release": "2025-09-30",
       "url": "https://open.spotify.com/episode/1GS0zmLps7F88g81iSf7i4",
       "desc": "It seems ridiculously irresponsible with the benefit of hindsight, but the concept of giving Hitler everything he wanted was the policy among the UK and France as a way to keep the world from sliding into a second world war. Turns out it didn’t work.See omnystudio.com/listener for privacy information.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "42krVXxVR2EC9U5wVsbhvp",
@@ -1063,7 +1063,7 @@
       "release": "2026-01-08",
       "url": "https://open.spotify.com/episode/4tPLEhPaVlskE1drmvq78I",
       "desc": "Seasonal affective disorder, or SAD, is much more than the winter blues. It's a serious subset of depression. Learn all about it and what to do if you suffer from it today. See omnystudio.com/listener for privacy information.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-11-13",
@@ -1087,7 +1087,8 @@
       "release": "2025-10-18",
       "url": "https://open.spotify.com/episode/10T6iDslQsJ4VjsuNMgFaY",
       "desc": "Even though almost half of Americans believe in it, ESP usually is treated as a load of bull by skeptics. But some respected researchers have dared to apply the scientific method to investigate ESP and a few have found some surprising results. Find out all about it with Josh and Chuck in this classic episode.  See omnystudio.com/listener for privacy information.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": null,
@@ -1145,7 +1146,7 @@
       "name": "Who's Up For A Circular Economy",
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/520Mwnv4tKnleb6f1ezIz4",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "1yZ23xnu4cIvgrO8gbUOBy",
@@ -1169,7 +1170,7 @@
       "release": "2026-02-05",
       "url": "https://open.spotify.com/episode/2nlZYMjA20PZtNKMRpAFJw",
       "desc": "The Cajun Navy was formed after Hurricane Katrina and really got its legs after the Louisiana flood of 2016.  They save a lot of lives, but some fear the pitfalls of \"vigilante heroism.\" Learn all about this group of do-gooders today. See omnystudio.com/listener for privacy information.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "4gCTCyRyzqVWu8WtVjtbg8",
@@ -1193,7 +1194,7 @@
       "release": "2026-02-03",
       "url": "https://open.spotify.com/episode/469GjkkOV8OqHH5SKhOzSK",
       "desc": "Helen Keller and Anne Sullivan were one of the most amazing non-magical duos in history. Imagine living trapped in your own mind – unable to see or hear – and then imagine learning to read, traveling the world, and becoming an ambassador of peace.   See omnystudio.com/listener for privacy information.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "0CHP5jKiJjfe1I55YX5S7o",
@@ -1264,7 +1265,7 @@
       "release": "2025-09-29",
       "url": "https://open.spotify.com/episode/6G6fixdl8xZopXjXSzsYIk",
       "desc": "Actress and businesswoman Priscilla Presley tells Stephen that her new memoir dives deep into details about her life during her marriage to Elvis Presley, which was more difficult than people might have realized at the time. The book,…",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2026-01-23",
@@ -1311,7 +1312,7 @@
       "release": "2025-09-27",
       "url": "https://open.spotify.com/episode/78YXvnYYJj4OL5C1ieYhkD",
       "desc": "Arizona Senator Mark Kelly provides insight into the looming battle over funding the government, arguing that the central issue before Congress is the cost of healthcare under the Affordable Care Act.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "6piljSamy5cYgJHc9Exo8c",
@@ -1335,7 +1336,7 @@
       "name": "Stellan Skarsgård | ICE Rage",
       "show": "The Late Show Pod Show with Stephen Colbert",
       "url": "https://open.spotify.com/episode/6l46ECv65j7G3OJl13JVYs",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2026-01-19",
@@ -1382,7 +1383,7 @@
       "release": "2026-02-01",
       "url": "https://open.spotify.com/episode/5sx4xWymoY8VcGRlTTzWw7",
       "desc": "Meanwhile... Junk from space is falling from the sky, DNA science is helping us learn more about ancient STDs, a Chinese mushroom makes you see tiny people, gym-goers need to go wash their hands right now, Sydney Sweeney has been accused of an undergarment misdemeanor, a bus driver in Delaware did the unthinkable, and scientists announced a big leap forward in robotic speech. ",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2026-01-21",
@@ -1441,7 +1442,7 @@
       "name": "Stephen Presents: Ocean Vuong (Extended)",
       "show": "The Late Show Pod Show with Stephen Colbert",
       "url": "https://open.spotify.com/episode/35CKWH5BAh8kYcm0q9woMH",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2026-01-13",
@@ -1477,7 +1478,7 @@
       "name": "Stephen Presents: Jeff Tweedy (Extended)",
       "show": "The Late Show Pod Show with Stephen Colbert",
       "url": "https://open.spotify.com/episode/3kfQCOMDYdc2hPHBxgUADI",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "2ouQi6pJ3KlPKqhZ0P6sul",
@@ -1501,7 +1502,7 @@
       "release": "2026-01-09",
       "url": "https://open.spotify.com/episode/2lZNNvct8d42coWpy2Xg9k",
       "desc": "Trump’s propaganda machine wants you to believe the killing of Renee Nicole Good wasn’t a senseless and predictable crime committed by our government, artificial intelligence is creeping into the health care system in dubious ways, and a $5,000 smart toilet that can call for help is the best new gadget of the year. Acclaimed actor Tom Hiddleston talks about the moral fortitude of his character in “The Night Manager,” and the advice he got from author John le Carré upon whose book the series is based. Season two of “The Night Manager” premieres Sunday on Prime Video.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-08-09",
@@ -1513,7 +1514,7 @@
       "name": "Fred Armisen",
       "show": "The Late Show Pod Show with Stephen Colbert",
       "url": "https://open.spotify.com/episode/4pOxnLI1VGeakydCydS9Hk",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": null,
@@ -1548,7 +1549,7 @@
       "release": "2025-08-01",
       "url": "https://open.spotify.com/episode/3ycfGF3az8ceQbVoSEc1ou",
       "desc": "President Trump’s tariffs are set to kick in on August 1st, school kids will soon be required to pass a new Presidential Fitness Test, the musical tastes of some well-known people were leaked after a Spotify hack, and disgraced lawyer Alan…",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-08-13",
@@ -1560,7 +1561,7 @@
       "name": "Stephen Presents: Asher Perlman's Final Dunk",
       "show": "The Late Show Pod Show with Stephen Colbert",
       "url": "https://open.spotify.com/episode/1Te6dfcYOgVNTj83tdZzwz",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2026-01-24",
@@ -1631,7 +1632,7 @@
       "release": "2025-11-28",
       "url": "https://open.spotify.com/episode/4lzODuk4xfqRZjzFC92UfB",
       "desc": "Stephen and Becca discuss Thanksgiving plans and traditions before launching into a very special interview with Oscar-winning filmmaker and journalist Cameron Crowe, who saw Bob Dylan perform at a school gym in 1964 and interviewed the…",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "3Rfe1eUzEoXIMSEJIGHl20",
@@ -1643,7 +1644,7 @@
       "release": "2025-08-02",
       "url": "https://open.spotify.com/episode/3Rfe1eUzEoXIMSEJIGHl20",
       "desc": "In this extended interview with Stephen Colbert, Michigan Democratic Senator Elissa Slotkin talks about the politicization of intelligence under President Trump, warns that Democrats need to stop being polite and embrace “alpha energy,”…",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2026-01-14",
@@ -1667,7 +1668,7 @@
       "name": "Fmr. Sec. Robert Reich",
       "show": "The Late Show Pod Show with Stephen Colbert",
       "url": "https://open.spotify.com/episode/4uv9rJnQMq4hergAm4q0IE",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "4OdsPR2eYWBkIlfqFGBuKk",
@@ -1691,7 +1692,7 @@
       "name": "The Sound Of Science | Do Sloths Fart?",
       "show": "The Late Show Pod Show with Stephen Colbert",
       "url": "https://open.spotify.com/episode/0vlMI2kDfxRWvKhhfauQiT",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "4TDjAZFn2w8WiyiY1AehFN",
@@ -1774,7 +1775,7 @@
       "release": "2025-10-04",
       "url": "https://open.spotify.com/episode/2GAqfAOEAdHSFPhgOsNrmn",
       "desc": "It’s here! It’s free to download and playtest! It’s the Planet Money game! (Download here.)Download and playtest the game go here Sign up for the 11/1 virtual AMA event and get updates about the gameSubmit your feedback on the gameWatch the how-to video with Kenny and Elan for playtest instructionsIn this episode, the story of how we arrived here. Ride along as our game-making partners at Exploding Kittens help us turn our (sometimes wild) economics game ideas into the next blockbuster game. It’s a behind the scenes look at how to design a game from scratch — a game that is somehow filled with economics, impossible to put down, but does not feel like you’re cramming for school. Which is… harder than we thought.After months of trying to find the perfect balance of ideas and entertainment, the Planet Money game is ready for our next phase. And that’s where you come in, listeners! We need you to playtest the Planet Money game to help us perfect it.Find our other episodes in the board game series, here and here.Subscribe to Planet Money+Listen free: Apple Podcasts, Spotify, the NPR app or anywhere you get podcasts.Facebook / Instagram / TikTok / Our weekly Newsletter.This episode was hosted by Kenny Malone and Erika Beras. It was produced by James Sneed with help from Emma Peaslee and edited by Jess Jiang. It was fact-checked by Sierra Juarez and engineered by Cena Loffredo. Alex Goldmark is Planet Money’s executive producer.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "6I5QP9Hx9TN0n5Mo747wtk",
@@ -1798,7 +1799,7 @@
       "release": "2025-08-02",
       "url": "https://open.spotify.com/episode/7J7g5dLgJbtUic6f4yCb9Z",
       "desc": "Trust in experts is down. In all kinds of institutions and professions - in government, in media, in medical science... and lately, economists are feeling the burn acutely. In fact, President Trump just fired the economist who ran the…",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "3YVPhmDjUFMNvc6gqSgU3q",
@@ -1810,7 +1811,7 @@
       "release": "2026-02-03",
       "url": "https://open.spotify.com/episode/3YVPhmDjUFMNvc6gqSgU3q",
       "desc": "Data centers are getting a lot of heat right now. There’s neighborhood pushback against them for water usage and environmental concerns, and some politicians on both sides of the aisle aren’t fans for the same reasons. There’s also fear that they could drive up the cost of electricity bills. But that last bit isn’t set in stone. Data center electric bill upcharge is not a guarantee. In fact, it is even possible for data centers to cause power bills to go down. Today on the show: the future of your power bill.Related episodes: No AI data centers in my backyard! What AI data centers are doing to your electric billFor sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2026-09-25",
@@ -1834,7 +1835,7 @@
       "release": "2025-12-24",
       "url": "https://open.spotify.com/episode/1I4iBlBR1jrjAiU3WkWzz3",
       "desc": "On the eve of Netflix shoveling a fourish-hour chunk of Stranger Things onto Christmas Day, we visit the past, present, and future of binge-dropped television shows. The strategy of releasing an entire season at the same time has been key to taking Netflix from a little startup that used to lend us DVDs in the mail … to a company so big and powerful, it is maybe going to buy Warner Brothers and own Bugs Bunny and Tony Soprano and the Harry Potter movies.But even Netflix may be flirting with some slightly less binge-y models of content release. Are we entering … the end of the binge drop?On our latest: what data tells us about binge watching. Was it the greatest business decision, and who does binge watching really benefit? Here’s some of the research. Pre-order the Planet Money book and get a free gift. / Subscribe to Planet Money+Listen free: Apple Podcasts, Spotify, the NPR app or anywhere you get podcasts.Facebook / Instagram / TikTok / Our weekly Newsletter.This episode was produced by Willa Rubin and edited by Meg Cramer. It was fact-checked by Dania Suleman and engineered by Maggie Luthar. Alex Goldmark is our executive producer.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "1xau3aoiySZAYFFhsh8NPS",
@@ -1846,7 +1847,7 @@
       "release": "2025-10-20",
       "url": "https://open.spotify.com/episode/1xau3aoiySZAYFFhsh8NPS",
       "desc": "In an all-new episode of Late Night’s podcast “A Closer Look Back,” A Closer Look Supervising Writer/Producer Sal Gentile and Supervising Producer Emily Erotas are joined by Supervising Producers Melanie Wohr and Lauren Unkel, who discuss the process of creating graphics for A Closer Look segments.See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-11-15",
@@ -1882,7 +1883,7 @@
       "release": "2026-01-10",
       "url": "https://open.spotify.com/episode/6lcrWZYf8bhP20FHX5GFIu",
       "desc": "Are we in an AI bubble? That’s the $35 trillion dollar question right now as the stock market soars higher and higher. The problem is that bubbles are famously hard to spot. But some economists say they may have found some telltale clues.On our latest: How do economists detect a bubble? And, how much should society be worried about bubbles in the first place? Related shows:- How to make $35 trillion ... disappear-What is a bubble? (featuring Nobel prize winning economics Eugene Fama and Robert Shiller)-What AI data centers are doing to your electric billPre-order the Planet Money book and get a free gift. / Subscribe to Planet Money+Listen free: Apple Podcasts, Spotify, the NPR app or anywhere you get podcasts.Facebook / Instagram / TikTok / Our weekly Newsletter.This episode was produced by Willa Rubin and edited by Marianne McCune. It was fact-checked by Sierra Juarez and engineered by Cena Loffredo and Robert Rodriguez. Alex Goldmark is our executive producer.Music: NPR Source Audio - “The best is yet to come,” “Marsh mellow,” and “Sunshine beat”See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "0rKCayNMpzDQQRCfdMsrYt",
@@ -1894,7 +1895,7 @@
       "release": "2025-12-24",
       "url": "https://open.spotify.com/episode/0rKCayNMpzDQQRCfdMsrYt",
       "desc": "Happy Holidays from The Indicator! For the next week, we're running some of our favorite shows from this year. On today's show, why celebrities are increasingly investing in their own brands.This piece originally aired August 14, 2025.Related episodes:The celebrity crypto nexusThe Olympian to influencer pipeline (Apple / Spotify)For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-08-07",
@@ -1906,7 +1907,7 @@
       "name": "The legal case for — and against — Trump's tariffs",
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/5biteiO28utY9BPXrOkqft",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-11-12",
@@ -1954,7 +1955,7 @@
       "name": "Summer School 6: When the markets need a designer",
       "show": "Planet Money",
       "url": "https://open.spotify.com/episode/5qNwEQ1lrfiEGj2QbFVxuN",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "41xRyeD4xhMoWZZzjWZXl4",
@@ -1966,7 +1967,7 @@
       "release": "2025-10-20",
       "url": "https://open.spotify.com/episode/41xRyeD4xhMoWZZzjWZXl4",
       "desc": "Since 2020, the cost of veterinary care has increased about 40%—almost twice the rate of inflation. As a result, many pet owners say they've skipped necessary vet care. So, what's going on here? A veterinarian, and a lesser-known economic theory, have some answers. Related episodes: The Vet Clinic Chow Down What Do Private Equity Firms Actually Do? For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "5lisjqVtMahVzDx9TLdzbO",
@@ -1990,7 +1991,7 @@
       "name": "What we're reading on the beach this summer",
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/7ALzIxJcU7w6CXz85iBCks",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-08-15",
@@ -2002,7 +2003,7 @@
       "name": "Why Do People Still Hunt Whales? (Update)",
       "show": "Freakonomics Radio",
       "url": "https://open.spotify.com/episode/2yXKlTVtTFnZq8B40nB7q6",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-08-13",
@@ -2014,7 +2015,7 @@
       "name": "Replay | Pizzagate: Are Democrats Harvesting Children's Blood? | Jordan Klepper Fingers the Conspiracy",
       "show": "The Daily Show: Ears Edition",
       "url": "https://open.spotify.com/episode/74ume9sSWihOPuFNF3kBV9",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "6mEqygurXk3wUHXBGPLJmn",
@@ -2026,7 +2027,7 @@
       "release": "2025-10-04",
       "url": "https://open.spotify.com/episode/6mEqygurXk3wUHXBGPLJmn",
       "desc": "It's a big day in America (Taylor's Version) as Taylor Swift drops a new album. Take a listen to The Daily Show's previous coverage of the life of a showgirl... Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "7FkIqyuu7oz4MkA04Pzi7h",
@@ -2074,7 +2075,7 @@
       "release": "2025-10-15",
       "url": "https://open.spotify.com/episode/6XLIy4ynSzkXPWboglaRm9",
       "desc": "Tensions are high in the nation right now, and The Daily Show has never been afraid to ask the tough questions. Questions like: what's up with celebrities? Find out, with TDS's coverage of celebrity scandals through the years.   Make the switch at http://mintmobile.com/daily Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "6abvtMF5ww0Lc9YPiq99sz",
@@ -2086,7 +2087,7 @@
       "release": "2026-01-09",
       "url": "https://open.spotify.com/episode/6abvtMF5ww0Lc9YPiq99sz",
       "desc": "Minneapolis tells ICE to “get the f**k out” after an agent fatally shot a woman, Kristi Noem smears the victim as a terrorist while MAGA decides she deserved it, and Ronny Chieng questions ICE’s PR push to recruit highly aggressive, unqualified agents and unleash them on American cities. Americans are known for spoiling their living pets, but what about the ones who’ve passed? Michael Kosta explores the rising popularity of pet psychics, like Danielle MacKinnon, who claims to have the intuitive ability to communicate with all animals, past and present. Kosta learns about her process, meets her very real clients, and attempts to glean some insight into his relationship with his own dog, Walter. Actor and producer Lucy Liu sits down with Ronny Chieng to discuss her new film, “Rosemead,” which is based on a true story about a terminally ill mother and her son. They talk about Liu’s connection to the film and how its themes of mental health and grief affected her, why every role feels like a way of documenting her life, the time she directed Ronny onscreen, and how taking risks has led to the biggest rewards in her career. Plus, Simu Liu makes a cameo! Refresh your winter wardrobe with Quince—visit https://quince.com/DAILYSHOW for free shipping and 365-day returns. Let Rocket Money help you reach your financial goals faster—join at https://RocketMoney.com/DAILYSHOW with promo code DAILYSHOW. Join the thousands of parents who trust Fabric to help protect their family. Apply today in just minutes at https://meetfabric.com/daily  Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-11-06",
@@ -2133,7 +2134,8 @@
       "release": "2025-10-25",
       "url": "https://open.spotify.com/episode/6nJEIhOxmVkLZKzijbM1ta",
       "desc": "Like and subscribe and don't stop doomscrolling while you listen to The Daily Show tackle the scourge of social media.   Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2025-11-01",
@@ -2157,7 +2159,7 @@
       "name": "TDS Time Machine | Filmmakers Pt. 2",
       "show": "The Daily Show: Ears Edition",
       "url": "https://open.spotify.com/episode/3ajV0bzTJ0JkkVgudBzC2x",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "1WoclIDAaWNiqe5QhBukVs",
@@ -2169,7 +2171,7 @@
       "release": "2026-02-05",
       "url": "https://open.spotify.com/episode/1WoclIDAaWNiqe5QhBukVs",
       "desc": "Michael Kosta dives into Trump’s recent moves to steer the country back on track, which include the release of lame new “America Is Back” hats, telling CNN’s Kaitlan Collins to get over the Epstein files and smile more, and continuing his D.C. makeover by building a massive arch across from the Lincoln Memorial. Plus, Grace Kuhlenschmidt shares further updates on the president’s construction rampage.  The state that brought you President Ronald Reagan and Governor Arnold Schwarzenegger offers a thrilling new contender for the White House: Governor Gavin Newsom. From enduring humble nepo baby beginnings in San Francisco, to opening a winery backed by an oil tycoon, to casting himself as an all-caps-posting foil to President Trump, Newsom is ready to make his national debut as a 2028 presidential candidate. This is the Daily Showography of Gavin Newsom.  Ms. Pat, comedian, actor, and co-creator of the hit BET+ series, \"The Ms. Pat Show,\" sits down with Michael Kosta to discuss the show's fifth season. They talk about fighting through network pulls for the chance to speak out about immigration, portraying a unique-yet-universal mother to viewers, preparing for a doomsday scenario in the current administration, and learning to believe in herself after being shot, abused, and incarcerated.  Go to https://quince.com/dailyshow for free shipping on your order and 365-day returns. Now available in Canada, too.  Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-10-26",
@@ -2193,7 +2195,7 @@
       "release": "2025-09-28",
       "url": "https://open.spotify.com/episode/5IdMsluj9uBR0Zkaa6fk16",
       "desc": "Health Secretary Robert F. Kennedy Jr. has a way of making waves, and not only when he's strapping dead whales to his car. Keep up to date with a roundup of The Daily Show's coverage of his biggest, weirdest moments. Learn more about your…",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "5e8UyaC0otA6xRlLtO8iE1",
@@ -2205,7 +2207,7 @@
       "release": "2026-02-03",
       "url": "https://open.spotify.com/episode/5e8UyaC0otA6xRlLtO8iE1",
       "desc": "Trump declares himself \"absolved\" by the latest release of Epstein files, while Elon Musk’s Christmas wish for a trip to the sex island is put on blast, and Jon Stewart finds himself on Epstein’s list… for documentary voiceovers. Plus, as MAGA continues to shield the president from all accountability, Jon Stewart shines a light on the double standard of sanctuary given to Trump vs. immigrants.  Historian and Pulitzer Prize-winning author Heather Ann Thompson sits down with Jon Stewart to discuss her new book, “Fear and Fury: The Reagan Eighties, the Bernie Goetz Shootings, and the Rebirth of White Rage.” They talk about how big a figure Bernie Goetz was in 1980s New York, hailed as a \"vigilante\" for shooting four young Black men on a subway train despite the attack being unprovoked, the story’s parallels to ICE shooting protesters in Minneapolis, the costs of violence, and how these types of injustices paved the way for Donald Trump.  Go to https://quince.com/dailyshow for free shipping on your order and 365-day returns. Now available in Canada, too.  Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": null,
@@ -2288,7 +2290,8 @@
       "release": "2025-10-24",
       "url": "https://open.spotify.com/episode/5PbIaIzUslmalUiTINk8Au",
       "desc": "Michael Kosta dives into the alleged involvement of Portland Trail Blazers head coach Chauncey Billups and Miami Heat star Terry Rozier in illegal gambling schemes. Plus, Donald Trump continues to defend the construction of his mega-sized White House ballroom as he fully demolishes the East Wing. And Josh Johnson thanks the contractor-in-chief on behalf of waltz-loving podcast bros everywhere. Jordan Klepper dives into \"Fox & Friends\" co-host Lawrence Jones, who is breaking the mold as a Black libertarian at a conservative, white-centric network. However, Jones’s unusual interview skills and angry MAGA undertones suggest he really is one of them. Jeff Tweedy, Grammy award-winning frontman of the band Wilco and bestselling author, sits down with Michael to discuss his new solo album, “Twilight Override,” named to evoke his feeling of getting older and watching a world that “appears to be getting darker.” Tweedy also discusses why he’s glad to have spent his formative years as a musician in the midwest, his theory that repressed trauma after Covid is one cause of present-day chaos, and the need for everyone to spend less time on their phones and more time with people who love them. Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2026-01-23",
@@ -2324,7 +2327,7 @@
       "release": "2025-08-06",
       "url": "https://open.spotify.com/episode/2jiy054W83wHfoOPJYNkEr",
       "desc": "Celebrate summer movie season with interviews with some of the best directors in the biz. Jon Stewart talks with Martin Scorsese about his love letter to movies, Hugo. Jordan Peele sits down with Trevor Noah to talk Get Out. Greta Gerwig…",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "5hNkffEYZfWKVrQbO6Evl0",
@@ -2336,7 +2339,7 @@
       "release": "2025-11-28",
       "url": "https://open.spotify.com/episode/5hNkffEYZfWKVrQbO6Evl0",
       "desc": "Shake off the turkey coma and pick up your weapon of choice, it's America's favorite holiday free-for-all: Black Friday. Check out The Daily Show's coverage of the annual carnage. Learn more about your ad choices. Visit…",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2026-01-18",
@@ -2384,7 +2387,7 @@
       "release": "2026-02-02",
       "url": "https://open.spotify.com/episode/0GAalOHgIHWZ7pT3sL8oA6",
       "desc": "This week's Daily Show host Michael Kosta is joined by writer Kat Radley to recap the news of the week, and preview what's to come.   They dig into the new Trump account for newborns, the possible suppression of anti-ICE content across social media, and check in on what the FBI is up to now.   Looking ahead they preview another potential government shutdown, and a weirdly sexy Winter Olympics.  Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "478bjDVYoiEd2QC6ofdvxO",
@@ -2396,7 +2399,7 @@
       "release": "2025-10-03",
       "url": "https://open.spotify.com/episode/478bjDVYoiEd2QC6ofdvxO",
       "desc": "Ronny Chieng covers Day 2 of the government shutdown: Republicans and Democrats are dueling via sombrero and cat memes, Trump is going after blue cities with a vengeance, and his administration is surprisingly joyful. Plus, Michael Kosta joins with expert analysis of MAGA’s unconventional shutdown strategy.  White House advisor Thaddeus Mandible Crowley excavates America's ancient laws to justify whatever insane idea jumps into Trump's head, be it fornicating for national security or banning uggos.  Author and features editor at The Verge, Kevin Nguyen, sits down with Ronny to talk about his new book, “Mỹ Documents: A Novel.” They discuss the story’s timely premise about “a far-fetched dystopian future where the government is detaining people for no reason,” the title’s nod to the Vietnamese language, the importance of learning your family’s history, and how the book tackles nuanced ideas around Asian American identity.  Keep it classic and cool this fall—with long-lasting staples from Quince. Go to https://Quince.com/DAILYSHOW for free shipping on your order and 365-day returns. Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "1iijPZT8CXi6qY9VsR7S1c",
@@ -2420,7 +2423,7 @@
       "release": "2025-10-22",
       "url": "https://open.spotify.com/episode/1sQ9iV6kTf9hlj2GChV6pJ",
       "desc": "Michael Kosta checks in on Trump's latest White House makeover, which includes demolishing the First Lady's quarters to build a gigantic ballroom in the East Wing. Plus, while a Democrat apologizes for problematic Reddit posts, Trump's nominee for special counsel blames his pro-Nazi text messages on AI, and Ronny Chieng teaches politicians how to get away with racism. From Fox News to Trump, everyone on the Right is calling NYC mayoral candidate Zohran Mamdani a \"communist.” Desi Lydic sits down with Joe Sims, the co-chair of the Communist Party USA, to discuss how we’re using the C-word all wrong. Catherine Bracy, author of “World Eaters: How Venture Capital is Cannibalizing the Economy,” talks to Michael about the evolution of venture capital, from its origin as a mid-20th-century funding solution for risky companies with big potential for technological advancement, to the harmful economic backbone of the tech industry it has become today. She describes how the investment structure of venture capital pressures companies to “move fast and break things,” has made for a tech industry that prioritizes investors, often at the expense of consumers, how that model has festered into other corners of the economy, including housing, and how the organization she co-founded, TechEquity, is working to put guardrails on Silicon Valley to ensure that tech benefits everyone, not just a few people at the top. Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "1qGuwoSnnEeqORDhiPIOD9",
@@ -2432,7 +2435,7 @@
       "release": "2026-02-01",
       "url": "https://open.spotify.com/episode/1qGuwoSnnEeqORDhiPIOD9",
       "desc": "Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "5ISHjqoIm7O6kNMNQUMN1A",
@@ -2479,7 +2482,7 @@
       "release": "2025-10-06",
       "url": "https://open.spotify.com/episode/3KkqvPnABJpOglsoH9vJst",
       "desc": "This week's host Josh Johnson sits down with Daily Show writer Ashton Womack to preview the week to come, and recap the headlines they missed. They break down Trump's fake videos, the real pain of a government shutdown, the ethics of performing comedy for foreign governments, the anticipation of a Bad Bunny half-time show, and Cardi B's latest beef with Nicki Minaj.  If you want to think critically about the news you consume, check out Ground News through our link: http://groundnews.com/ears You’ll get 40% off their Unlimited Access Vantage Plan Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": null,
@@ -2514,7 +2517,7 @@
       "release": "2025-10-17",
       "url": "https://open.spotify.com/episode/0wmpVXzdxWKgAO18kOXYeR",
       "desc": "While President Trump weighs a bailout for farmers hurt by the trade policies of (checks notes) President Trump, take a listen to The Daily Show's coverage of farms and farmers through the years.  Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "53oq4iscAyVYWpVdNxly0M",
@@ -2538,7 +2541,7 @@
       "release": "2025-10-20",
       "url": "https://open.spotify.com/episode/030DFJeiBXbcTRnEPsOdqi",
       "desc": "This week's host Michael Kosta joins Daily Show writer Zach DiLanzo to break down all the news they missed, and preview the week to come. They dig into Trump's Nobel Peace Prize campaign fail, Time Magazine's unflattering flattery, the short deployment of overweight Texas National Guard troops, what to wear to a protest, and more.  Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "1ihjupMWqBN5gbrNemtUjJ",
@@ -2550,7 +2553,7 @@
       "release": "2025-10-05",
       "url": "https://open.spotify.com/episode/1ihjupMWqBN5gbrNemtUjJ",
       "desc": "The government may be closed, but your ears are open. Take a listen to The Daily Show's coverage of past government shutdowns.  Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-08-08",
@@ -2562,7 +2565,7 @@
       "name": "The First Great American Industry (Update)",
       "show": "Freakonomics Radio",
       "url": "https://open.spotify.com/episode/14GIhImYh3KjA7jjdjCtim",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": null,
@@ -2644,7 +2647,7 @@
       "release": "2025-10-22",
       "url": "https://open.spotify.com/episode/1gEmVP2A6ZOwjJrRSxotwf",
       "desc": "When TikTok videos started to go viral on Instagram and Reddit, TikTok turned to professional sound designers to protect their content.More and more companies are paying to develop a “sonic identity” – a series of sounds, songs, and micro-jingles to help maintain a unified brand.In this episode, in conjunction with the sound design podcast Twenty Thousand Hertz, we hear the backstory to possibly the most successful audio branding campaigns in history. It’s a tale of guerilla marketing and the power of sonic suggestion.Pre-order the Planet Money book, and get a free gift / Subscribe to Planet Money+Listen free: Apple Podcasts, Spotify, the NPR app or anywhere you get podcasts.Facebook / Instagram / TikTok / Our weekly Newsletter.This adapted episode was hosted by Kenny Malone and Dallas Taylor. It was produced by Casey Emmerling and James Sneed. The episode was edited by Jess Jiang. Alex Goldmark is our Executive Producer.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": null,
@@ -2689,7 +2692,7 @@
       "release": "2025-10-05",
       "url": "https://open.spotify.com/episode/2glIof4MRYR27zXsffKWBT",
       "desc": "Crime doesn’t resemble the old days. A deepfake of your voice can be used to convince a relative you need money. AI bots are capable of colluding in financial markets. There are seemingly countless new strategies of making data breaches more common. This week on The Indicator from Planet Money, we bring you five episodes digging into the evolving business of crime. For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2026-01-12",
@@ -2725,7 +2728,7 @@
       "name": "The arduous system for getting aid into Gaza",
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/2hYNU3C2h92ALi0YUTk3Iy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-08-20",
@@ -2737,7 +2740,7 @@
       "name": "Cobalt-free batteries reign in Chinese EVs. Why not the US?",
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/74nS8ZsJ5MwP6RpAx5fAMX",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "4KOBA2TMbrFLXcPi0GAyV8",
@@ -2749,7 +2752,7 @@
       "release": "2025-12-24",
       "url": "https://open.spotify.com/episode/4KOBA2TMbrFLXcPi0GAyV8",
       "desc": "Holly is waxy and super sharp, not exactly the kind of thing you'd want all over your house. Yet it happens every holiday season. Today we dig in to discover why.See omnystudio.com/listener for privacy information.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "0LOoLkXJiXWwePoDtPKdnq",
@@ -2773,7 +2776,7 @@
       "release": "2025-10-06",
       "url": "https://open.spotify.com/episode/6MXKX54MsZSoRIFVplMyB7",
       "desc": "With only several seconds of audio, someone can clone a victim’s voice, call their bank, and potentially get access to … everything. Vocal deepfakes have gotten very good, but so has the technology to fight back. This week on The Indicator we're gonna bring you a special series on the evolving business of crime. In this episode, we hear from the company helping banks beat deepfakes, and we learn about the efforts to protect us all from AI voice fraud. Related episodes: Can you copyright artwork made using AI? AI creates, transforms and destroys... jobs For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2026-01-16",
@@ -2797,7 +2800,7 @@
       "release": "2025-07-25",
       "url": "https://open.spotify.com/episode/0GHSEqnsUucAif2M5V9wjG",
       "desc": "It's ... Indicators of the Week! Our weekly look at some of the most fascinating economic numbers from the news. On today's episode: Nigeria gets a GDP surprise, Magic the Gathering mutes tariff impact for Hasbro, and Bitcoin reaches…",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "33jzG8GQ3Mx5m24cwyua38",
@@ -2809,7 +2812,7 @@
       "release": "2025-10-15",
       "url": "https://open.spotify.com/episode/33jzG8GQ3Mx5m24cwyua38",
       "desc": "In 1975, New York City ran out of money. For a decade it had managed to pay for its hundreds of thousands of city employees and robust social services by taking on billions of dollars in debt. But eventually investors were no longer willing to lend the city any more money. New York teetered on the edge of bankruptcy — the city shuttered more than a dozen firehouses, teachers went on strike and garbage piled up in the streets.Rescuing the city required the cooperation of the state of New York, the banks, the city workers unions, giant property owners and … the White House. But President Gerald Ford was adamantly opposed to bailing out NYC, prompting the famous New York Daily News headline — “Ford to City: Drop Dead.”On today’s show, the story of a group of private citizens who were deputized by the state of New York to try to save the city’s finances. Led by investment banker Felix Rohatyn, the group had to put together a grand bargain that everyone would be willing to agree to, and to come up with the billions of dollars the city needed to survive.Pre-order the Planet Money book and get a free gift / Subscribe to Planet Money+Listen free: Apple Podcasts, Spotify, the NPR app or anywhere you get podcasts.Facebook / Instagram / TikTok / Our weekly Newsletter.Today’s episode of Planet Money was hosted by Keith Romer and Nick Fountain. It was produced by James Sneed with help from Sam Yellowhorse Kesler and Julia Ritchey. It was edited by Jess Jiang, fact-checked by Sierra Juarez, and engineered by Debbie Daughtry and Cena Loffredo. Our executive producer is Alex Goldmark.Special Thanks: Denis Coleman, David Schleicher, Liall Clarke, Kevin Hennigan and everyone at Classical King FM in Seattle.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "0vv4oFJ0Qv0ADHo4HMbnwk",
@@ -2881,7 +2884,7 @@
       "name": "What Doordash, Dell and Palantir all have in common",
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/3kWkWUpP24WXbrus9g9Vtf",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": null,
@@ -2916,7 +2919,7 @@
       "release": "2025-10-15",
       "url": "https://open.spotify.com/episode/04urdKT3WkpGPs7Fg0CQj1",
       "desc": "If you died away from home but wanted to be buried there, don’t worry – Taoist priests had you covered. They’d just have your animated corpse walk itself back home.See omnystudio.com/listener for privacy information.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": null,
@@ -2963,7 +2966,7 @@
       "release": "2025-10-22",
       "url": "https://open.spotify.com/episode/3eF3FDAkiNlagdRALYiCmJ",
       "desc": "It's seven years' bad luck for you if you break a mirror, buddy, sorry. But have you ever wondered why? People have come up with all sorts of great reasons since time immemorial.See omnystudio.com/listener for privacy information.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "1d8rFjfmx0dlTB7hINt5po",
@@ -2975,7 +2978,7 @@
       "release": "2025-09-26",
       "url": "https://open.spotify.com/episode/1d8rFjfmx0dlTB7hINt5po",
       "desc": "It’s Indicators of the Week! It is that show where we parse the most fascinating financial numbers in the news and bring them to you. On today's show: Argentina needs a bailout, Microsoft’s new way to cool data centers, and retail hiring…",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2026-01-20",
@@ -3022,7 +3025,7 @@
       "release": "2025-10-14",
       "url": "https://open.spotify.com/episode/5XB1cuXEjaXoMBM3Tt6vmc",
       "desc": "What is nothing? Could a dying back hole cause the Big Bang? Neil deGrasse Tyson and comic co-host Chuck Nice answer fan questions about a black hole’s dying gasp, lunar eclipses, and the meaning of nothing. NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/cosmic-queries-death-of-a-black-hole/Thanks to our Patrons Josh Gibson, John Radford, Jacob Carlile, Amelyah, Rebecca, Jalien, Logan woods, Justin Stauffer, Boaters Edge, Elizabeth Martinez, Kate Kessner, Kathy Cook, Mohamed Gamal, Sebastian Goeller, Scott Keller, Pravin Kadel, Jake M, David, Lehnert, Chris Fauerbach, Mic Phillips, Sandra Pink, João Samuel Lopes, Darnell Pisco, Santiago, Chewee, Dave, Jeditanker, Mayssam Sayyadian, Thomas Weisbjerg, Max, Harry Wells, Jonathan Lara, Brooks Long, Viktor Damjanovski, ion, David Cowles, Brian Swinteck, Opid Son, Ed, Robert Davis, aaron benedetti, George Daeem, Guillaume Franc, Zach Derbecker, Randle, andrew, j, Patrick Shoemake, Методи Кирилов, Robert Forbes Morrison, Denisse Campo, Scott Knapp, Anthony Suarez, Judy houck, Deyonn Froio, Marquis, Donald Johnson, Mandi G, Kathy Harris-Langham, Gerardo Diaz, Eric Fournier, Sylvia C., clionadh martin, Ari Timonen, Greg Morris, Micheal H., thomas hennigan, Alexandra Bugge, Chris Tenney, Taters, Precious, and Jason Perks for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "7taI3JLd579RKnKpie7kgh",
@@ -3069,7 +3072,7 @@
       "name": "Emergence Explained with David Krakauer",
       "show": "StarTalk with Neil deGrasse Tyson",
       "url": "https://open.spotify.com/episode/7aDLid6vrQ5h70tMaYNHVu",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-11-11",
@@ -3093,7 +3096,7 @@
       "release": "2026-02-06",
       "url": "https://open.spotify.com/episode/0R7Ar5XzA36UizR5F6xBK6",
       "desc": "What is infinity? Neil deGrasse Tyson and comedian Negin Farsad explore whether we are in a finite universe, the issues with infinity, string theory, and more with theoretical physicist Stephon Alexander.Originally aired April 11, 2023. NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/cosmic-queries-understanding-infinity-with-stephon-alexander/ Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "4doyhpDjuaKXMnC8FE3NA9",
@@ -3129,7 +3132,7 @@
       "name": "Are We Alone? with Jill Tarter",
       "show": "StarTalk with Neil deGrasse Tyson",
       "url": "https://open.spotify.com/episode/01DybKX10LY6zHeWLEDkQZ",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "5ETQ44o8JUy3rSAJMd1yD2",
@@ -3141,7 +3144,7 @@
       "release": "2025-09-30",
       "url": "https://open.spotify.com/episode/5ETQ44o8JUy3rSAJMd1yD2",
       "desc": "What will the future of space look like? Neil deGrasse Tyson and comic co-host Chuck Nice explore the engineering challenges and scientific questions shaping the next era of aerospace with aerospace engineer Jeff Thornburg.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/the-new-space-race-with-jeff-thornburg/Thanks to our Patrons Adam Jensen, Eric Forde, Jaren Foreman, Robert Collier, Ryan Sanderson, Michael Franklin, Tiffiany Amber, MSegars, Clinton Hays, Rob, Wesley Michel, Aaron Wright, Vi Rose, James Sorensen, Jamie, David, Russell Knecht (Connect), John T McCoy, Ben Ryan, Fidel Roque-Flores, Eric walburn METZLER, Joseph Strasser, Daniel Ludlow, William Sacher, William Nowottny, Jay Sackett, Bryan Poole, Trevor Walter, Chiem Ma, Robert Rice, Lex Townes, Cavvote Landes, Franny, Keith Dickson, Bill Gallerani, Rosemary Taylor, Lisa Holloway, Jim Staub, Stiven Miranda, Erica, Jon Nebenfuhr, Ranjam69, David R Dykes, Micky Pistillo, Tony Toon, sr, April Lorenzo Spoor, Tom Randall, Jeff, Nico Cerceo, Sterling GRiffin, John, Red Shi, Pete Stoppani, Jonathan Hyatt, Dylan Moore, Shawn Kalas, Eric Dickinson, Kiela Badeaux, Leyna McGrath, Armaghan, bmanone, Much More Matt, Patrick Ritter, Laszlo Zoltan Buru, Indiigo, Isaiah, Brett Sklar, Brian Pickett, Micheal Kaplan, Cecilia, PopoMakBeth, and Shawn Best for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "1AsyCqCgBX6TVgFQBbeffR",
@@ -3153,7 +3156,7 @@
       "release": "2025-08-05",
       "url": "https://open.spotify.com/episode/1AsyCqCgBX6TVgFQBbeffR",
       "desc": "What’s really going on with UAPs? Neil deGrasse Tyson and co-host Paul Mecurio get to the bottom of identifying the unidentifiable with Jon Kosloski, Director of the All-domain Anomaly Resolution Office (AARO). NOTE: StarTalk+ Patrons can…",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "2ZonfTpqPhyCR4yT4gUz4z",
@@ -3165,7 +3168,7 @@
       "release": "2026-02-03",
       "url": "https://open.spotify.com/episode/2ZonfTpqPhyCR4yT4gUz4z",
       "desc": "Is there life in the Venusian Clouds? Neil deGrasse Tyson and comic co-host Chuck Nice are joined by planetary astrobiologist David Grinspoon to discuss NASA’s return to Venus, our space future, and whether we’ll find life in our solar system. NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free.Thanks to our Patrons Nick Pullia, Sean Cater, Keith Reiss, Seph Gordon, Charlie Viola, Miguel Rangel, Andrew Ferguson, JeAnnette Elaine Thomas, Hugh Caley, Daniel Weber, Chris, Peter Grossman, Darryl Baker, Joyce A Edwards, Maxim, Joshua Richard, Patrick ridlon, Kathleen Reardon, David Watts, Angelina Bryant, Liza, Dave Holloway, Ricardo Andrés Morales Muñoz, Damian Wilson, m. szachacz, Vince Johnson, Lucy, Randal Walcott, Rachel Ambrose, andrew wong, Richard Hudson, Peter Galindo, Mehdi Degryse, Carl Starr M.D., Rodrigo De Luca Comelli, Christian Harris, Ryan Grillo, Jose Villavicencio, Kell, Russ, Mota Ephrahim, Andre Campos-Gomez, Catherine Noiboonsook, Sam McClure, Jerry Taylor, Ian Howarth, Gerrard Lobo, Jordan Strauch, Pretender to the Throne, Dustin, Bulbacats, Jim Mirra, Matt, Adrian Martinez, GuruMojo - Kenny, Malcolm Townes, Russell, Vincent Thomas, Caleb Winters, Carsten, Frank, Andrew Sabado, Roger beeper, Jason Burden, lilacjasminetea, Eric, Samantha, Eric Sneddon, philip griffiths, Christian Chidester, Bruce Berky, Bill Polskoy, Maddux Hammer, Tim Neumark, nathan burcl, Paul Santos, Tognia, sugar, Mike Vacay, Niklas lundkvist, JaneB, Gutek, Natalie & Dad, Ashley, J Sh-Wood, Alexej Muehlberg, and Emery for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-10-31",
@@ -3201,7 +3204,7 @@
       "name": "Cosmic Queries - Flat Universe",
       "show": "StarTalk with Neil deGrasse Tyson",
       "url": "https://open.spotify.com/episode/4yQPm6fQzv1hI7NegK5FW4",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "0fMZ9ULrWBpCn00VhIETAt",
@@ -3213,7 +3216,7 @@
       "release": "2025-10-17",
       "url": "https://open.spotify.com/episode/0fMZ9ULrWBpCn00VhIETAt",
       "desc": "Is there anything real left on the internet? Neil deGrasse Tyson and co-hosts Chuck Nice and Gary O’Reilly explore deepfakes, scams, and cybercrime with the Director of Threat Research at Bitdefender, Bogdan Botezatu. ​​Scams are a trillion-dollar industry; keep your loved ones safe with Bitdefender: https://bitdefend.me/90-StarTalkNOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/deepfakes-and-the-war-on-truth-with-bogdan-botezatu/Thanks to our Patrons Bubbalotski, Oskar Yazan Mellemsether, Craig A, Andrew, Liagadd, William ROberts, Pratiksha, Corey Williams, Keith, anirao, matthew, Cody T, Janna Ladd, Jen Richardson, Elizaveta Nikitenko, James Quagliariello, LA Stritt, Rocco Ciccolini, Kyle Jones, Jeremy Jones, Micheal Fiebelkorn, Erik the Nerd, Debbie Gloom, Adam Tobias Lofton, Chad Stewart, Christy Bradford, David Jirel, e4e5Nf3, John Rost, cluckaizo, Diane Féve, Conny Vigström, Julian Farr, karl Lebeau, AnnElizabeth, p johnson, Jarvis, Charles Bouril, Kevin Salam, Alex Rzem, Joseph Strolin, Madelaine Bertelsen, noel jimenez, Arham Jain, Tim Manzer, Alex, Ray Weikal, Kevin O'Reilly, Mila Love, Mert Durak, Scrubbing Bubblez, Lili Rose, Ram Zaidenvorm, Sammy Aleksov, Carter Lampe, Tom Andrusyna, Raghvendra Singh Bais, ramenbrownie, cap kay, B Rhodes, Chrissi Vergoglini, Micheal Reilly, Mone, Brendan D., Mung, J Ram, Katie Holliday, Nico R, Riven, lanagoeh, Shashank, Bradley Andrews, Jeff Raimer, Angel velez, Sara, Timothy Criss, Katy Boyer, Jesse Hausner, Blue Cardinal, Benjamin Kedwards, Dave, Wen Wei LOKE, Micheal Sacher, Lucas, Ken Kuipers, Alex Marks, Amanda Morrison, Gary Ritter Jr, Bushmaster, thomas hennigan, Erin Flynn, Chad F, fro drick, Ben Speire, Sanjiv VIJ, Sam B, BriarPatch, and Mario Boutet for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "3KXxi9xYsKlwgkSq4L86Tq",
@@ -3237,7 +3240,7 @@
       "release": "2025-08-01",
       "url": "https://open.spotify.com/episode/4kqYId9AvEL3SVpUPaDYNo",
       "desc": "“Your scientists were so preoccupied with whether they could, they didn’t stop to think if they should.” Neil deGrasse Tyson and Chuck Nice chat with Jeff Goldblum about Jurassic Park, science, and more—joined by Bill Nye, a…",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": null,
@@ -3272,7 +3275,7 @@
       "release": "2025-10-21",
       "url": "https://open.spotify.com/episode/483hV68f4cX0Bn0B4zQ4WN",
       "desc": "Would Godzilla be structurally sound or too big for its own weight? Neil deGrasse Tyson, Matt Kirshen, and astrophysicist Charles Liu, takes a look at monsters that have terrified us, like zombies in The Last of Us or Godzilla, and the scary speculative science behind them.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/the-science-of-godzilla-zombies-other-monsters-with-charles-liu/Thanks to our Patrons Brandon, Ikumi Nakajima, Vanessa Johnston, Thomas Weeks, Vicvegatw, M G, Vijay Kale, Anshuman Rai, Zach Kellogg, Marcus, Glenn Clark, christian mendez pagan, Felipe Rocha, John Olsson, Ralph Kewish, George Vailakis, Rick Stawicki, Stephen Bradley, Jeffrey Moore, matthew gilmer, Cheryl, Jeanne, Bishop PPB, Rob, Moose Polk, Daniel Rajski, Mila Gregory, Magnus, Paul Chatalbash, Koy Corwin, Max A, James Lott, Frosty, Stacy Hughes, Shay Collins, Darryl Barton, Graham Anderson, Akseli, James Bartram, Hacker Man, Dick Feynman, Theresa Hernandez, Shannon Pincombe, Arnab Mukherjee, James Rinker, (Not) Lord Kelvin, Daniel Smith, Rob Woods, Trevor Krumm, Joan Amelia Tarshis, Brendan Shrimplin, Joshua Sahner, Kalin Zlatinov, Jay2Serious, Marcus, Nathan Charland, ciana marie dolphin, Justin Jacob, Toilet machine, T P Hysmith, David Faulkner, Ernest Huntress, N.L. Peterson, Andrew McCall, Ondrej Pinter, Benjamin Froud, Jason Northrop, Sloopy55, Floris Kuik, Jan Leslie, Ameesa, Angi Brown, Mesa Kevin, Tars, Dk, thomas Appleby, StarlitFox117, Jessica Black, Jesse Lakeman, jbas2015, Ethan Stepp, Patricia J Clements, Emmanual Morales Rodriguez, Laura Michelle, Darwin Gregory, Michelle Man, Rebecca Wright, Helen Dahlberg, Franny R, Vassilis Bakosis, Lance Hoopes, Steven Savicki, Melissa Lange, and Riley Ruffin for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2026-01-23",
@@ -3296,7 +3299,7 @@
       "release": "2026-01-09",
       "url": "https://open.spotify.com/episode/5EtL7sSuJXAT8wULdqTQ99",
       "desc": "Is time fundamental to the universe or a human construct? Neil deGrasse Tyson, Chuck Nice, and Gary O’Reilly explore our brain’s relationship with time, how we remember the past, and project the future with Dean Buonomano, Professor of Neurobiology and Psychology at UCLA.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/your-brain-is-a-time-machine-with-dean-buonomano/Thanks to our Patrons Austin koffler, Tommy O’Connor, Igor Vihnanek, Maria Banks, William Warren, Bud K, Dmitry Oksen, M-DOG, Jim Crider, Benjamin Newman, Mark Saravi, Ethan Meirovitz, Poole, Patti, mike hallatt, Barbara, Dicky P, Cody Hansen, Jorge, Jules Bethea, James A Kissell, Nikola Mucnjak, Helen Anderson, Jordan Teets, Bob Conrod, Aaron Clark, Jason Pack, John Munn, Fabrizio_9100, Antonio, Alvin Wuolu-luckett, Frederik Unser, Boptimus Prime, Vincent Davis, Jordyn Grulkowski, Greg Young, Kristopher Warren, Sam Gosin, JJ Budd, Donna L, ryan fontenot, Bill, PJ, jono langley, leats1, Jim Nagel, Nick O, Anthony Delgado, Peter Ainsworth, Joseph Garcia, Jay Reiss, Jimbo, Brian Greene, Anselmo Bernal, Stephane Raymond, Markush, Charles Perry, Steven Hardesty, TZ, Matt Entner, Olly, Joe Liparela, Andrew Rodgers, DJ Homer, Ibrahim Mohmed, Jarrad, AnJean3tte, Ryan Ciehanski, Doogle Chrome, Mick Kolassa, Ida Booth, Bret, Chris Miller, Lasse Callesen, elizabeth zaks, Steinbjorn, Jessica ♥️, Kaptain Karl, Pavel V S [ Dr.Bubble ], Nikki Tink Shubert, SUDIPTO SEN, Nathan Howard, Eldrick Sneed, Kem Phillips, Bradford Peterson, Andrew Davis, Sharvesh Kumar Jeyachandran, and Becky K for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-11-14",
@@ -3343,7 +3346,7 @@
       "release": "2025-12-23",
       "url": "https://open.spotify.com/episode/1ylEOObpO9qniElWg6XZzT",
       "desc": "What’s a supervolcano? Neil deGrasse Tyson and comic co-host Matt Kirshen discover all types of volcanoes in the solar system with cosmochemist and author of Fire and Ice: The Volcanoes of the Solar System, Natalie Starkey. Is there such a thing as an ice volcano?Originally Aired October 5, 2021. NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/cosmic-queries-space-volcanoes-fire-and-ice-with-natalie-starkey/ Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "3oReLxwmpMs9RW2NnNSLZ0",
@@ -3402,7 +3405,7 @@
       "release": "2025-10-03",
       "url": "https://open.spotify.com/episode/4ETnDszosKxJlOFsKvChRc",
       "desc": "Is social media rewiring childhood and fueling a mental health crisis? Neil deGrasse Tyson, Chuck Nice, and Gary O’Reilly explore the costs of growing up online and how to take back childhood with social psychologist and author of The Anxious Generation, Jonathan Haidt.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/the-anxious-generation-with-jonathan-haidt/Thanks to our Patrons Maz Dunic, gummibear359, Jack Bovee, Richard McCullough, Margaret, Daniel Zaibelt, Micheka K, Steph, Laura Kat Corey, Mark Benthien, Thompson Mhlanga, Robbie James, Micheal Fields, Nathanial Evans, John Malkin, Jonathan Madsen, Luis, Pete hall in Wi, Boonifa-Latifa-Shaweefa-Haweefa-Erikson-Vendez-Jackson-Hausenfef the First, Timmy Johansson, Shatesha, Jay, Lynne Henderson, Nimrod Nir, Candice Manion, Cody Rosenberg, Hai-Tue Han, Brandon DeYoung, Robert Guillot, james, Edward Madden, Jan Bart Verbist, Matthias, Orlando Calvo Arias, Raghav Kaushik, Elisa Castro, No Name, Samuel Griffith, Suresh Narayanan, Chris, Jacob, Duvall, Maarten van Nieuwstadt, Sockrateez, Cozine_stones, ERICA LOPEZ, Larry Maguire, jeffrey l. mueller, Hugo Dart, Alex Wayne, summer barker, Jonathan Thomas-Stagg, and  Vanniar Hernandez Giniebra for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-11-05",
@@ -3438,7 +3441,7 @@
       "release": "2025-10-17",
       "url": "https://open.spotify.com/episode/2ndN31PwLFga1R42wJSFnA",
       "desc": "For the 20th anniversary of Freakonomics, Debbie Millman of Design Matters interviews Stephen Dubner about his upbringing, his writing career, and why it's important to “swing your swing.” Plus: a sneak peek at a new project. SOURCES:Debbie Millman, writer and host of Design Matters with Debbie Millman. RESOURCES:\"Stephen J. Dubner,\" by Design Matters with Debbie Millman (2025).Turbulent Souls: A Catholic Son's Return To His Jewish Family, by Stephen Dubner (1999).\"Choosing My Religion,\" by Stephen Dubner (New York Times, 1996). EXTRAS:\"In Search of the Real Adam Smith,\" by Freakonomics Radio (2022). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "5C2Yb3kHyuNrtwT3nc3eYB",
@@ -3462,7 +3465,7 @@
       "release": "2025-09-30",
       "url": "https://open.spotify.com/episode/2k971mOyOmsezOZTNZyRZj",
       "desc": "Brian Baumgartner joins Seth and Josh on the pod this week! He talks all about growing up in Atlanta, vacations to the Caribbean, snorkeling adventures, playing with alligators, chasing armadillos, and so much more! Plus, he chats about his new golf podcast, \"We Need A Fourth.\"  Watch more Family Trips episodes: https://www.youtube.com/playlist?list=PLlqYOfxU_jQem4_NRJPM8_wLBrEEQ17B6  Support our sponsors: Tavola For a limited time save up to $300 on the Tovala smart oven when you order meals 6+ times by heading to Tovala.com/TRIPS and use our code TRIPS.  Remember: With Tovala, dinner is taken care of.  Laundry Sauce Make laundry day the best day of the week! Get 20% off your entire order @LaundrySauce with code TRIPS at https://laundrysauce.com/TRIPS  #laundrysaucepod  Fabric Join the thousands of parents who trust Fabric to help protect their family. Apply today in just minutes at meetfabric.com/trips.  Policies issued by Western-Southern Life Assurance Company. Not available in certain states. Prices subject to underwriting and health questions  Learn more about your ad choices. Visit megaphone.fm/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": null,
@@ -3532,7 +3535,7 @@
       "release": "2025-10-17",
       "url": "https://open.spotify.com/episode/4ZKVmQ1ZrmiRWFUUra51pS",
       "desc": "It’s … Indicators of the Week! Our weekly look at some of the most fascinating economic numbers from the news. On today’s episode: Frozen and canceled federal dollars, America’s intensifying tit-for-tat with China, and a sloppy trend infiltrating the music business. (With a pocket full of shells.)Related episodes: China's trade war perspective Fighting AI with AI For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Corey Bridges. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "0Z0TLFz1xH3GIWHWsZyA8S",
@@ -3544,7 +3547,7 @@
       "release": "2026-02-02",
       "url": "https://open.spotify.com/episode/0Z0TLFz1xH3GIWHWsZyA8S",
       "desc": "Kevin Warsh has been tapped as the next chair of the Federal Reserve. We’re sure that he’ll have a lot of questions about how to run the Fed if confirmed. So we put together this briefing.On today’s show, three Fed watchers give their advice for the next chair. On politics, interest rate cuts and dealing with the Fed’s repeated trading scandals. Oh, and can someone please forward this episode to Kevin Warsh?Related episodes: One Fed battle after anotherLisa Cook and the fight for the FedA primer on the Federal Reserve's independenceIt's hard out there for a Fed chairFor sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-11-14",
@@ -3615,7 +3618,7 @@
       "release": "2025-10-15",
       "url": "https://open.spotify.com/episode/2SvnGrZwMZo608E1dzaQA6",
       "desc": "Arthur Brooks, an economist and former head of the American Enterprise Institute, believes that there is only one remedy for our political polarization: love. In this 2021 episode, we ask if Brooks is a fool for thinking this — and if perhaps you are his kind of fool? SOURCES:Arthur Brooks, professor of public and nonprofit leadership at Harvard University. RESOURCES:“Vital Statistics on Congress,” by Molly Reynolds and Naomi Maehr (Brookings Institute, 2024).Dopamine Nation: Finding Balance in the Age of Indulgence, by Anna Lembke (2021).“Reading Too Much Political News Is Bad for Your Well-Being,” by Arthur Brooks (The Atlantic, 2020).Love Your Enemies: How Decent People Can Save America from the Culture of Contempt, by Arthur Brooks (2019).“This 75-Year Harvard Study Found the 1 Secret to Leading a Fulfilling Life,” by Melanie Curtin (Inc., 2017).The Conservative Heart: How to Build a Fairer, Happier, and More Prosperous America, by Arthur Brooks (2015).“Grin and Bear It: The Influence of Manipulated Facial Expression on the Stress Response,” by Tara Kraft and Sarah Pressman (Psychological Science, 2012). EXTRAS:“Why Is U.S. Media So Negative?” by Freakonomics Radio (2021). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "1pHeJKVqU1m1IEXxqylk6q",
@@ -3627,7 +3630,7 @@
       "release": "2025-10-03",
       "url": "https://open.spotify.com/episode/1pHeJKVqU1m1IEXxqylk6q",
       "desc": "The N.F.L. is a powerful cartel with imperial desires. College football is about to undergo a financial reckoning. So maybe they should team up? (Part one of a two-part series.) SOURCES:DeMaurice Smith, former executive director of the National Football League Players Association.Domonique Foxworth, sports analyst and former N.F.L. player.Jeffrey Kessler, partner at the law firm of Winston & Strawn.Oliver Luck, sports executive and consultant.Victor Matheson, professor of economics at the College of the Holy Cross. RESOURCES:Turf Wars: The Fight for the Soul of America's Game, by DeMaurice Smith (2025).\"Is there a Case for Subsidizing Sports Stadiums?\" by Victor Matheson (Journal of Policy Analysis and Management, 2018). EXTRAS:\"America’s Hidden Duopoly,\" by Freakonomics Radio (2018).\"Should the U.S. Merge With Mexico?\" by Freakonomics Radio (2014). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "3y30zEjPYgDxTf4gNyv8Xa",
@@ -3639,7 +3642,7 @@
       "release": "2025-08-01",
       "url": "https://open.spotify.com/episode/3y30zEjPYgDxTf4gNyv8Xa",
       "desc": "They should have died out when the lightbulb was invented. Instead they’re a $10 billion industry. What does it mean that we still want tiny fires inside our homes? SOURCES:Tim Cooper, professor emeritus of sustainable design and…",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "17F3sMOmX49lxN9j4zicTu",
@@ -3651,7 +3654,7 @@
       "release": "2025-08-06",
       "url": "https://open.spotify.com/episode/17F3sMOmX49lxN9j4zicTu",
       "desc": "It’s a haphazard way of paying workers, and yet it keeps expanding. With federal tax policy shifting in a pro-tip direction, we revisit an episode from 2019 to find out why. SOURCES:John List, economist at the University of Chicago.Michael…",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "0e9PMQc4CoAipa8ejci4K4",
@@ -3663,7 +3666,8 @@
       "release": "2025-10-24",
       "url": "https://open.spotify.com/episode/0e9PMQc4CoAipa8ejci4K4",
       "desc": "The U.S. has a physician shortage, created in part by a century-old reform that shut down bad medical schools. But why haven’t we filled the gap? Why are some physicians so unhappy? And which is worse: a bad doctor or no doctor at all? SOURCES:Karen Clay, professor of economics and public policy at Carnegie Mellon University.Rochelle Walensky, physician-scientist and former director of the CDC. RESOURCES:\"Medical School Closures, Market Adjustment, and Mortality in the Flexner Report Era,\" by Karen Clay, Grant Miller, Margarita Portnykh, and Ethan Schmick (National Bureau of Economic Research, 2025).\"Application Overload — A Call to Reduce the Burden of Applying to Medical School,\" by Rochelle Walensky and Loren Walensky (New England Journal of Medicine, 2025).\"Challenges to the Future of a Robust Physician Workforce in the United States,\" by Rochelle Walensky and Nicole McCann (New England Journal of Medicine, 2025).\"The first step to addressing the physician shortage,\" by Rochelle Walensky and Nicole McCann (STAT, 2025).\"Physician Workforce: Projections, 2022-2037,\" (National Center for Health Workforce Analysis, 2024).“Projected Estimates of African American Medical Graduates of Closed Historically Black Medical Schools,” by Kendall Campbell, Irma Corral, Jhojana Infante Linares, and Dmitry Tumin (JAMA Network, 2020).\"Medical Education in the United States and Canada,\" by Abraham Flexner (The Carnegie Foundation for the Advancement of Teaching, 1910). EXTRAS:\"Is the Air Traffic Control System Broken?\" series by Freakonomics Radio (2025).\"Are You Ready for the Elder Swell?\" by Freakonomics Radio (2025).\"Are Private Equity Firms Plundering the U.S. Economy?\" by Freakonomics Radio (2023). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2026-09-25",
@@ -3734,7 +3738,7 @@
       "name": "More for Palantir, less for mRNA, and a disaster database redemption arc",
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/3rTGq4dvSVZxRKCdQQ81KU",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "added_at": "2025-11-01",
@@ -3805,7 +3809,8 @@
       "release": "2025-10-24",
       "url": "https://open.spotify.com/episode/30JtUCMz2I4hPFFS5zCWIQ",
       "desc": "It’s … Indicators of the Week! Our weekly look at some of the most fascinating economic numbers from the news. On today’s episode: the Amazon global internet outage, Americans plan to siphon their Social Security checks early, and Mann, we love some Heat 2. Related episodes: What does the next era of Social Security look like? Why aren't filmmakers shooting in LA? For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Julia Ritchey Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "2YXYOdRFKrQcaOznf66bKQ",
@@ -3817,7 +3822,7 @@
       "release": "2025-09-29",
       "url": "https://open.spotify.com/episode/2YXYOdRFKrQcaOznf66bKQ",
       "desc": "Jimmy Kimmel’s brief departure from the airwaves triggered a wave of debate over free speech.  Partly triggering his suspension was the government threatening to leverage its power over pending media deals. That’s in part due to a piece of decades-old legislation. Today on the show, we look at how the Telecommunications Act of 1996 set the stage for government meddling and corporate capitulation. Related episodes: Breaking up big business is hard to do Mergers, acquisitions and Elon’s “rude” proposal For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "0DRWubxZO8QzttEi8AxHdd",
@@ -3829,7 +3834,7 @@
       "release": "2026-09-29",
       "url": "https://open.spotify.com/episode/0DRWubxZO8QzttEi8AxHdd",
       "desc": "What rhymes with \"snakes\" and helps the government classify economic activity? NAICS — or the North American Industry Classification System. These codes categorize every industry from artificial turf installation to zucchini farming. But they’re not exactly easy to get. Today we look at one business’ quest for a NAICS code and what makes them so valuable. Fact checking by Leyla Doss. Your Next Listen — How to take the temperature of the US consumer Connect with The Indicator — Sign up for The Indicator’s weekly newsletter! — Buy the Planet Money book — Find our socials, YouTube and more! — For sponsor-free episodes, subscribe to NPR+ Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "1eCEPnFWdOgyqfQpWfkMLJ",
@@ -3841,7 +3846,7 @@
       "release": "2026-09-29",
       "url": "https://open.spotify.com/episode/1eCEPnFWdOgyqfQpWfkMLJ",
       "desc": "This week on the pod, Seth and Josh welcome Tim Robbins! Tim talks about growing up in 1960s Greenwich Village in a tiny apartment with his family, learning independence and survival on the streets of New York, and being raised by musician parents who took their family on cross-country road trips and travels. He shares stories about his parents’ adventurous life together, raising his own kids, and the road-trip games and punk rock that shaped his family’s travels. Tim also discusses his parents’ retirement in Mexico, his desire to make a film from interviews with them, and his experience working on \"Silo.\" Watch this episode on the Family Trips YouTube or Spotify, or listen wherever you get your podcasts!  00:00 Introduction with Seth Meyers and Josh Meyers08:44 Tim Robbins Joins the Show11:09 Growing Up Greenwich Village15:37 Tiny Apartment Big Family19:27 Hockey Love and Kids Movies28:13 Road Trips Punk Rock and Family Touring41:22 Moving West and Family Reunions42:50 Parents' Adventurous Retirement44:20 Discovering Parents Love Story55:40 Supporting Family in Mexico57:47 Road Trip Games01:02:09 Silo and Working with Great Teams01:06:09 Speed Round and Farewell  Support our sponsors: CologuardIf you're 45 or older and at average risk, talk to your healthcare provider about screening for colon cancer and ask if Cologuard Plus could be right for you. You can also request a Cologuard prescription online today at https://Cologuard.com  Square Get up to $200 off Square hardware when you sign up at https://square.com/go/trips #squarepod Warby ParkerOur listeners can buy one pair of glasses and get 20% off any additional pairs at https://WarbyParker.com/TRIPS — and using our link helps support the show. #WarbyParker #ad IM8Go to https://IM8HEALTH.com/trips RIGHT NOW or click on the link in the description and use code trips for a Free Welcome Kit, five free travel sachets, plus ten percent off your order.  These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.  Family Trips is produced by Rabbit Grin Productions. Theme song written and performed by Jeff Tweedy.  About the Show: Lifelong brothers Seth Meyers and Josh Meyers ask guests to relive childhood memories, unforgettable family trips, and other disasters!   New Episodes of Family Trips with the Meyers Brothers are available every Tuesday.  Executive Producers: Rob Holysz, Jeph Porter, Natalie Holysz Creative Producer: Sam Skelton Coordinating Producer: Derek Johnson Video Editor: Josh Windisch Mix & Master: Josh Windisch Episode Artwork: Analise Jorgensen Learn more about your ad choices. Visit megaphone.fm/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "3uIWQcyYeKRoI6tyLh3QxX",
@@ -3853,7 +3858,7 @@
       "release": "2026-09-29",
       "url": "https://open.spotify.com/episode/3uIWQcyYeKRoI6tyLh3QxX",
       "desc": "Why does string theory need ten dimensions? Neil deGrasse Tyson and comic co-host Jordan Klepper sit down with Lara Anderson, string theorist and associate professor of physics at Virginia Tech, to tackle intersecting dimensions, the nature of gravity, and a unified field theory. NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/quantum-anomalies-with-lara-anderson/Thanks to our Patrons Robin Billings, PhD, Christine Sizemore, Aine DeMoss, Crispy Wisp, Branden Rucker, Rowena Smith, Cory Strauss, Aubrey Etheridge, Aldarien, Philip Arno, Daniel, Kendall Rohach, ChiliPepper, Jim Phelan, Lonnie Draper, Ryan Stanley, Ziad Farhat, Idan Cohen Epstein, Marie Lauzon, Eduardo Larranaga, Dr. DJ Kehoe, Mike Greer, Karen Henton, Pixi, Kari, Mandy, That Geezer, Victor T, Susanne Otero, Dingus Fringus, Jean, Barrie Parkman, Nathaniel Naranjo, Agentm0o, Jason Adair, MJ Jamal, Gianna Williams, Philip B Stanley, Sarabjit Singh, Chuck, Antonio Macias, Kevin Sayet, Braden Gibson, Toms Grinbergs, Andrew Brodbeck, Mr. Pinky, Adam Prentice, Rich Wilkinson, Frejya of Fòlkvangr, Eric Spray, Ian Ledington, Ilona Freeman, Tarsha Fewell, and SuperKamiGrayson for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "5hxak2aQXJyS6Co1IPEEdK",
@@ -3877,7 +3882,7 @@
       "release": "2026-09-29",
       "url": "https://open.spotify.com/episode/6Jbr5rvRDnGypmL8xNclSp",
       "desc": "Seth takes a closer look at Donald Trump saying he rejected an Iranian proposal to reopen the Strait of Hormuz as Republicans openly broke with him and called for an end to the war. Then, Kate McKinnon talks about making homemade tomato sauce for Seth, getting sprayed by a skunk and writing her new book, \"The Millicent Quibb School of Etiquette for Young Ladies of Mad Science: The Jungle of Carabanana.\"See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "2tlQFRWf6XOvLXMlV2RRwN",
@@ -3889,7 +3894,7 @@
       "release": "2026-09-28",
       "url": "https://open.spotify.com/episode/2tlQFRWf6XOvLXMlV2RRwN",
       "desc": "This week's host Jordan Klepper sits down with Daily Show writer Randall Otis to recap the latest news and preview the week to come.   They weigh in on President Xi giving America the glorious gift of pandas during an otherwise fruitless summit with Trump, Sen. Tommy Tuberville obsessing over furry pilots in the airline industry, and Meta launching its Muse Charm AI device as wearable tech continues to gamify everything. Plus, Klepper and Randall examine Trump's uninspired rebrand of artificial intelligence as \"super intelligence\" and look ahead to this week's guests: novelist Marlon James, Irish musician CMAT, and director John Wilson.  --  The Daily Show airs weeknights at 11/10c on Comedy Central.  Stream full episodes on Paramount+  Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "3EmO0S1lmVfIWNycXyjidS",
@@ -3901,7 +3906,7 @@
       "release": "2026-09-28",
       "url": "https://open.spotify.com/episode/3EmO0S1lmVfIWNycXyjidS",
       "desc": "Decades ago, rich Americans used to pay taxes as high as 40% on their investments. Nowadays, an obscure investment strategy is helping them slash that figure toward … 0%. Today on the show, Bloomberg reporter Loukia Gyftopoulou, tells us about this generation’s “great American tax dodge,” and the “mad genius” behind it.A Tax Strategy for the Rich Built the World’s Largest Hedge Fund - BloombergFact checking by Sierra Juarez.Your Next Listen — What’s a revenge tax?Connect with The Indicator — Sign up for The Indicator’s weekly newsletter! — Buy the Planet Money book — Find our socials, YouTube and more! — For sponsor-free episodes, subscribe to NPR+ Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "4yrXpdAkqAsqs2AeTFDsis",
@@ -3925,7 +3930,7 @@
       "release": "2026-09-28",
       "url": "https://open.spotify.com/episode/4zMr5Bh73SnUOiO5vOETNd",
       "desc": "Actors Matthew McConaughey and Woody Harrelson feel very Irish and like a True American, respectively, about being Conan O’Brien’s Friend. Matthew and Woody sit down with Conan to discuss how they first met, their very different approaches to acting, how much of their new show Brothers is based on their real-life personas, and whether they might actually be brothers. Plus, Conan responds to an article about a missing Conan O’Brien commemorative plaque.  Get access to all the podcasts you love, music channels and radio shows with the SiriusXM App! Get 3 months free using this show link: https://siriusxm.com/conan. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "73LjKJqgWhZ1jdkrRAwmpd",
@@ -3937,7 +3942,7 @@
       "release": "2026-09-29",
       "url": "https://open.spotify.com/episode/73LjKJqgWhZ1jdkrRAwmpd",
       "desc": "The history of golf is a bit muddled, but once it was truly born in Scotland, it started the beginning of lifelong obsessions for people dumb enough to pick up a club and give it a try. Learn all about the early history of the most frustrating game ever invented.See omnystudio.com/listener for privacy information.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "7ICGaHK73FDOTM3dj06Jkk",
@@ -3949,7 +3954,7 @@
       "release": "2026-10-02",
       "url": "https://open.spotify.com/episode/7ICGaHK73FDOTM3dj06Jkk",
       "desc": "Most workers can’t start collecting full Social Security benefits until age 67. But a new proposal from Michigan Congresswoman Haley Stevens would allow workers in “physically demanding jobs” to receive full retirement benefits at 60. Today, two social security experts tell us the pros and cons. Fact checking by Sierra Juarez.Your Next Listen — Iceberg ahead for Social SecurityConnect with The Indicator — Sign up for The Indicator’s weekly newsletter! — Buy the Planet Money book — Find our socials, YouTube and more! — For sponsor-free episodes, subscribe to NPR+See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "1wJLwD2R4cypRlEryPm7Lh",
@@ -3961,7 +3966,7 @@
       "release": "2026-10-02",
       "url": "https://open.spotify.com/episode/1wJLwD2R4cypRlEryPm7Lh",
       "desc": "Seth takes a closer look at Donald Trump facing backlash from his own party for using taxpayer dollars to air campaign ads and his handpicked candidate for Senate in Texas bashing him.Then, Dakota Johnson talks about hosting SNL on her birthday, filming her new movie \"Verity\" and starring in Taylor Swift's music video for \"Patient Zero.\"See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "2x2JuwQ4wQ8N8zE4n3UzK1",
@@ -3973,7 +3978,7 @@
       "release": "2026-10-02",
       "url": "https://open.spotify.com/episode/2x2JuwQ4wQ8N8zE4n3UzK1",
       "desc": "Jordan Klepper gets into the headlines: Famously pro-Hispanic President Trump hosts a Hispanic Heritage Month event at the White House, and even invents a new stereotype to honor the occasion! Pete Hegseth purges the U.S. military's “beardos, weirdos, wimps, and radicals,” which has us wondering where that leaves… most of his fellow cabinet members. Plus, Josh Johnson comes to us live from the Pentagon with exciting updates from Hegseth’s star-studded team tasked with studying the future of warfare.   In this installment of In My Opinion, Nick Offerman dives into Gen Z's technology problem, as young people are now spending over six hours a day on their phones and having less sex than previous generations. But Offerman is happy to report that they’ve found a simple, low-tech antidote to this technological albatross: hobbies! From pottery to birdwatching to collecting miniatures, Gen Z is leaning into the joy of hobbies as a respite from a tech world supercharged by AI. And as one of America's premier hobbyists, Offerman couldn't be prouder.   John Wilson joins Jordan to discuss his new documentary, “The History of Concrete.” The creator of “How To with John Wilson” shares how he finds beauty in the mundane through his unique shooting and editing style, how he scored an uninterrupted shot of Kim Kardashian at a fancy dinner party, and what happens when you spend your entire film budget on a creepy wax museum in Rome. Jordan also pitches an idea for Wilson’s next documentary project.  --  To get simple, online access to personalized, affordable care for ED, Hair Loss, Weight Loss, and more, visit https://Hims.com/dailyshow   --  The Daily Show airs weeknights at 11/10c on Comedy Central.  Stream full episodes on Paramount+  Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "3v54PjprZGpUs7mJXeiaFd",
@@ -3985,7 +3990,7 @@
       "release": "2026-10-02",
       "url": "https://open.spotify.com/episode/3v54PjprZGpUs7mJXeiaFd",
       "desc": "Why did intelligence evolve in the universe? Neil deGrasse Tyson, Chuck Nice, and Gary O’Reilly explore the nature of intelligence, information theory, consciousness, and whether AI is actually intelligent at all with David Krakauer, evolutionary biologist and president of the Santa Fe Institute.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/what-is-intelligence-with-david-krakauer/Thanks to our Patrons Vipin Sharma, Saahith, Matthew Rapp, Billy Durr, Gail Lena Martin, Mads Holm, Mothman’s Coroner, Nicholas Strang, Cirwintech - Christopher M. Irwin, Jacqueline West, Casey Gatti, Clem Carlos Schermann, Samuel Jeffman, John Lasher, Shelley Collett, Aerimis, Anthony Schneider, Lolo, Mark M., kegler718, Hayden Scheibe, J Miller, Mark Ulibarri, Mandy Lauber, John McQuiston, Don, Olivier d'Entremont, Shaun Carter, Andres Chavez, Joshua Perks, JonRueben Bubar, Marlin Mark, Michael Lee, Ash Morris, Nate, Bobby Williams, DeborahD, Ciprian Bobe, David Bailey, Boop Doop, Amirali Rabiee, jessie miller, Liva Apse, Jesse, NATE LUKAS, Chris Archer, Keith H., and Huchel for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "4slSNVnZ2rbGzg9nSTKW0n",
@@ -3997,7 +4002,7 @@
       "release": "2026-10-02",
       "url": "https://open.spotify.com/episode/4slSNVnZ2rbGzg9nSTKW0n",
       "desc": "An economist calls America’s beef industry a “miracle.” An antitrust scholar calls it “broken.” Maybe they’re both right? SOURCES:Austin Frerick, agriculture antitrust expert, fellow at Yale University, author of Barons: Money, Power, and the Corruption of America's Food Industry.Robert Hodgen, C.E.O. of King Ranch.Roger Horowitz, food historian, director of the Center for the History of Business, Technology, and Society at the Hagley Museum and Library.Derrell Peel, Charles Breedlove Professorship of Agribusiness in the department of agricultural economics at Oklahoma State University. RESOURCES:\"The hamburger story,\" by Derrell Peel (Beef, 2026).\"Trump is letting in 300,000 tons of beef duty-free. Don’t expect cheaper burgers,\" by Elisabeth Buchwald (CNN, 2026).\"DOJ Probes Soaring Beef Prices at Eight Major Stores Including Walmart,\" by Hugh Cameron (Newsweek, 2026).\"Takeaways from the Pause on Foreign Corrupt Practices Act Enforcement,\" by Brendan Quigley, Bridget Moore, Kyle Clark, and Baker Botts (Harvard Law School, 2025).\"Tyson and Leviathan: USDA Rulemaking and the PSA Harm to Competition Requirement,\" by Spencer James Parts (University of Chicago Business Review, 2022).\"Average Price: All Uncooked Ground Beef (Cost per Pound/453.6 Grams) in U.S. City Average,\" (Federal Reserve Bank of St. Louis). EXTRAS:\"An Economics Lesson from a Talking Pencil (Update),\" by Freakonomics Radio (2025).\"The Future of Meat,\" by Freakonomics Radio (2019). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "1rlCN4ooeDl3BCVtgawQzy",
@@ -4009,7 +4014,7 @@
       "release": "2026-10-01",
       "url": "https://open.spotify.com/episode/1rlCN4ooeDl3BCVtgawQzy",
       "desc": "Basically everything you think of when you think of vampires, mummies, werewolves, and Frankenstein all come from a spate of films made in the 1930s, and every one of them by Universal Pictures. Amazingly, they are still among the best films ever made.See omnystudio.com/listener for privacy information.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "33sYfYsCl2DT17TrkGgpYe",
@@ -4021,7 +4026,7 @@
       "release": "2026-10-01",
       "url": "https://open.spotify.com/episode/33sYfYsCl2DT17TrkGgpYe",
       "desc": "What do influencing, AI and health sciences have in common? They’re all degree programs colleges have launched in the last few years to attract students looking for a new career path. On today's show, how colleges are rethinking degrees for a changing job market.Fact checking by Leyla Doss. Your Next Listen — Community colleges are kind of underrated Connect with The Indicator — Sign up for The Indicator’s weekly newsletter! — Buy the Planet Money book — Find our socials, YouTube and more! — For sponsor-free episodes, subscribe to NPR+ Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "2seyDTK37c6iVHUcxtWfQD",
@@ -4033,7 +4038,7 @@
       "release": "2026-09-30",
       "url": "https://open.spotify.com/episode/2seyDTK37c6iVHUcxtWfQD",
       "desc": "Is retirement bad for your health? Well it certainly can be if you don't take steps to prevent it. Listen in to learn more about the \"retirement curse.\"See omnystudio.com/listener for privacy information.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "46YRG5MFsvGVjsDr0UrEg2",
@@ -4045,7 +4050,7 @@
       "release": "2026-09-30",
       "url": "https://open.spotify.com/episode/46YRG5MFsvGVjsDr0UrEg2",
       "desc": "Universities spend millions of dollars every year on their athletics programs. But does that investment pay off? Today, we interrogate the “Doug Flutie Effect.” Fact checking by Cooper Katz McKim.Your Next Listen — How college sports juiced Olympic developmentConnect with The Indicator — Sign up for The Indicator’s weekly newsletter! — Buy the Planet Money book — Find our socials, YouTube and more! — For sponsor-free episodes, subscribe to NPR+ See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "4Ou15NgwqpumFw3pU9mJnz",
@@ -4057,7 +4062,7 @@
       "release": "2026-09-30",
       "url": "https://open.spotify.com/episode/4Ou15NgwqpumFw3pU9mJnz",
       "desc": "Very soon, Social Security may not have enough money to make full payments to retirees. Very soon. Like by 2032, just six years from now. So what are we gonna do about it? Today on the show, we look at some of the most talked about possible solutions; and exactly whose wallets we’ll have to rifle through to find the money to pay for each. Then we’ll run the options by the Social Security Administration's former Chief Actuary. The guy Congress used to call to crunch numbers and give them the bottom line. Read: - Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life - Our weekly longform Planet Money newsletter- Our weekly Indicator round-up newsletterFollow: - Instagram- TikTok- YouTube- FacebookSupport public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.This episode of Planet Money was hosted by Erika Beras and Jeff Guo, it was produced by James Sneed, and edited by Marianne McCune. Sierra Juarez is our fact-checker, and Annlie Huang & Robert Rodriguez engineered the show. Alex Goldmark is the executive producer of Planet Money.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "46MDIWa1vhS9IdyYIraCZD",
@@ -4069,7 +4074,7 @@
       "release": "2026-10-04",
       "url": "https://open.spotify.com/episode/46MDIWa1vhS9IdyYIraCZD",
       "desc": "Catch all of the past week's great guests in one place.   Wall Street Journal foreign correspondent Evan Gershkovich joins Jon Stewart to talk about his new memoir, “This Cursed Beautiful Land: A Russian-American Story.” Gershkovich, who spent 16 months imprisoned in Russia on false espionage charges, breaks down how a source, a second meeting, and a Putin pep talk to the FSB landed him in Russian prison. He discusses growing up in a Russian-speaking home, what drew him to reporting in Russia, life pre-imprisonment, and how he ultimately became a bargaining chip in a Putin-led prisoner swap scheme. He also weighs in on what a post-Putin Russia might look like and the totalitarian warning signs he sees in the U.S.  Booker Prize-winning and bestselling author Marlon James sits down with Jordan Klepper to discuss his new novel “The Disappearers,\" which The New York Times called \"the novel of the decade, if not the century.” James discusses his childhood in Jamaica, where he hid his sexuality by learning to disappear; his use of violence and sex in his work; and literature’s role in keeping a historical record for those typically erased from mainstream history.  Irish musician CMAT joins Jordan to discuss her acclaimed third album, “Euro-Country.” They talk about how she weaves profound lyricism with Western melodies, what it means for her music to embody “funeral humor,” why the Irish psyche loves country music, and how the title track examines the repercussions of politicians’ actions.  John Wilson joins Jordan to discuss his new documentary, “The History of Concrete.” The creator of “How To with John Wilson” shares how he finds beauty in the mundane through his unique shooting and editing style, how he scored an uninterrupted shot of Kim Kardashian at a fancy dinner party, and what happens when you spend your entire film budget on a creepy wax museum in Rome. Jordan also pitches an idea for Wilson’s next documentary project.  --  The Daily Show airs weeknights at 11/10c on Comedy Central.  Stream full episodes on Paramount+  Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "0JrnaPUF6P5tCAONQrfNrF",
@@ -4105,7 +4110,7 @@
       "release": "2026-10-05",
       "url": "https://open.spotify.com/episode/00NVPNDsVEFJDSfvuBYgBA",
       "desc": "For a special video game edition of our Guess That Sound competition, we invited three game audio experts to test their ears on 18 sounds from gaming history. Play along as they identify iconic fanfares, weapons, spells, power-ups, and some seriously tricky deep cuts. Who will claim the title of ultimate video game sound expert? Featuring Foley Artist and Sound Editor Joanna Fang, Senior Interactive Sound Designer Mark Kilborn, and Sound Designer and Composer Jeffrey Brice.Twenty Thousand Hertz is produced by ⁠⁠Defacto Sound⁠⁠.Support the show and get ad-free episodes at ⁠⁠⁠⁠⁠⁠⁠⁠⁠20k.org/plus⁠⁠⁠⁠⁠⁠⁠⁠⁠.Subscribe on ⁠⁠⁠⁠⁠⁠⁠⁠YouTube⁠⁠⁠⁠⁠⁠⁠⁠⁠ to see our video series.Follow Dallas on ⁠⁠⁠⁠⁠⁠⁠Instagram⁠⁠⁠⁠⁠⁠⁠, ⁠⁠⁠⁠⁠⁠⁠TikTok⁠⁠⁠⁠⁠⁠⁠, ⁠⁠Facebook⁠⁠, and ⁠⁠⁠⁠⁠⁠⁠LinkedIn⁠⁠⁠⁠⁠⁠⁠.If you know what this week's mystery sound is, tell us at ⁠⁠⁠⁠⁠⁠⁠⁠⁠mystery.20k.org⁠⁠⁠⁠⁠⁠⁠⁠⁠.Get three months of free payroll with Gusto at gusto.com/20k.Visit ⁠⁠⁠⁠⁠⁠quo.com/20k⁠⁠⁠⁠⁠⁠ for 20% of your first 6 months of business phone software.Build your home sound system today at sonos.com.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "0uMVt0CZNlf0mpjDIlwsp5",
@@ -4117,7 +4122,7 @@
       "release": "2026-10-05",
       "url": "https://open.spotify.com/episode/0uMVt0CZNlf0mpjDIlwsp5",
       "desc": "In the latest edition of Late Night Lit, Late Night Supervising Producer Sarah Jenks-Daly talks to author Hernan Diaz about his new novel, \"Ply.\" Then, writer Maggie Tokuda-Hall, a founding member of Authors Against Book Bans, discusses that group's efforts to keep books on the shelves of libraries and schools, and talks about her forthcoming book, \"Bathtime for Snow Monkeys.\"See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "1C1D1o2o569Smn7QofdwTL",
@@ -4129,7 +4134,7 @@
       "release": "2026-10-05",
       "url": "https://open.spotify.com/episode/1C1D1o2o569Smn7QofdwTL",
       "desc": "Picture day is an annual tradition for American families — and, for the companies that take the photos, a lucrative one. Zachary Crockett smiles for the camera. This episode was originally published on February 2nd, 2025. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "3M5KZrO27xztKcxIYPyQKs",
@@ -4165,7 +4170,7 @@
       "release": "2026-10-05",
       "url": "https://open.spotify.com/episode/7pVtMwL0hKrS3McEepuGEV",
       "desc": "Actor Owen Wilson feels good about being Conan O’Brien’s friend. Owen sits down with Conan to discuss how military school led him to a creative partnership with Wes Anderson, learning how to wear a cowboy hat, bringing Timothy Olyphant on for season two of Stick, his new film Rolling Loud: The Movie, and more. For Conan videos, tour dates and more visit TeamCoco.com.Got a question for Conan? Call our voicemail: (323) 362-2295. Get access to all the podcasts you love, music channels and radio shows with the SiriusXM App! Get 3 months free using this show link: https://siriusxm.com/conan. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "02dx6RvttaKezoljzXYX2J",
@@ -4177,7 +4182,7 @@
       "release": "2026-10-06",
       "url": "https://open.spotify.com/episode/02dx6RvttaKezoljzXYX2J",
       "desc": "If the multiverse exists, where does our universe end and another begin? Neil deGrasse Tyson and comic co-host Chuck Nice tackle a wide-ranging grab bag of fan questions covering bubble universes, the nature of now, fractals, Hoag's Object, and more.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/cosmic-queries-light-sails-quantum-scales/Thanks to our Patrons Joan Kirk, Robert Roberts, Mike Holland, Manickore, Zaki Imani, Christopher Johnson, Seb, Annette Hinkle, Bruce Davis, Geoff Hansen, Matthew Binggeli, Michael Greer, steph, Jo, Laurie Rieman, Monneke King, TakeOffYourPantsAndJacket, Catharine Hula, John, Mike, Jordan Jefferson, Bruce, Burç Ayata, Armon Jackson, and Sami Röksä for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "0u5GfPwsC8ugY8ZfL2DhSS",
@@ -4225,7 +4230,7 @@
       "release": "2026-10-06",
       "url": "https://open.spotify.com/episode/7MCJlvk6tCg7oIs4ZL9yK5",
       "desc": "Seth takes a closer look at Donald Trump doxxing one Republican candidate and calling another \"controversial\" while hitting the campaign trail amid midterm election panic.After that, Jessica Biel talks about going on ski trips with her family and learning intense vehicle stunts for her role in Matchbox: The Movie before reminiscing on her 7th Heaven audition. See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "5ZumnQGojfOZ4qxFVuOWAC",
@@ -4273,7 +4278,7 @@
       "release": "2026-10-07",
       "url": "https://open.spotify.com/episode/3DCbjWWH7Baf5mSreaDIlP",
       "desc": "Michael Kosta breaks down the headlines as the GOP struggles ahead of the midterms: Texas Senate candidate Ken Paxton drops an ad boasting that he tears down posters of missing children, Ohio gubernatorial candidate Vivek Ramaswamy almost drops a literal child at a campaign rally, and Trump is no help to his flailing party as he focuses on “red-dye diesel” and the inconvenience of daylight saving time. Plus, Kosta chats with Mordok the Clock Keeper (Grace Kuhlenschmidt) to get his take on the cost of changing your clocks.  Jordan Klepper sits down with a J6 insurrectionist demanding a payout for being...the victim?   Academy Award-winning screenwriter Aaron Sorkin sits down with Michael to discuss writing and directing his new film, \"The Social Reckoning.\" Sorkin discusses revisiting Mark Zuckerberg as an anti-hero 16 years after “The Social Network,” balancing his role as both writer and director of the film, and recounting how intense physicality during the writing process once landed him in the hospital with a broken nose.  --Go to https://Quince.com/dailyshow for free shipping on your order and 365-day returns.   --  https://homeserve.com/tds   --  The Daily Show airs weeknights at 11/10c on Comedy Central.  Stream full episodes on Paramount+  Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "3Kj4i902k0J4V7768udcQU",
@@ -4321,7 +4326,7 @@
       "release": "2026-10-08",
       "url": "https://open.spotify.com/episode/0rsVujmLChYTI6u9xRmwGp",
       "desc": "Seth takes a closer look at Trump suggesting Iran could \"take out\" Los Angeles and San Diego as his allies are plotting ways to undermine the midterms.Then, Ben Affleck talks about the time the Red Sox finally won the World Series in 2004, winning Who Wants to be a Millionaire? to benefit his Eastern Congo Initiative charity and what inspired him to give actors freedom with dialogue while directing movies.See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "1N9H8SqCokJGgX0FFfnUku",
@@ -4333,7 +4338,7 @@
       "release": "2026-10-08",
       "url": "https://open.spotify.com/episode/1N9H8SqCokJGgX0FFfnUku",
       "desc": "Michael Kosta dives into the various disasters plotting to kill humanity, from sneaky sinkholes devouring cars, to widespread frozen food contamination, to a possible plague outbreak in Russia. And if Trump’s elevated scientific language is a litmus test of concern, we’re f**ked. Plus, Josh Johnson weighs the pros and cons of grisly death over another round of quarantine hobbies.  Lewis Black has no problem with the whole dying thing, but not everyone shares his passionate yearning for the bright light. In this edition of Back in Black, Lewis looks at how anti-aging biohackers are doing everything they can to delay the inevitable, from tech tycoon Bryan Johnson getting injected with his son's plasma to TikTokers sleeping 12 hours a night and eating \"organ meats.\"   Sebastian Stan sits down with Michael to talk about the Palme d'Or-winning film “Fjord,” which explores the story of an immigrant family in Norway whose children are taken away by authorities who believe they’re acting for the right reasons. Stan opens up about his personal connections to the film, leaving Romania at the age of eight, and reconnecting with the country he left behind. Plus, Kosta talks about Stan’s eclectic career choices, from the Marvel Cinematic Universe to playing President Donald Trump.  --  Go to https://Quince.com/dailyshow for free shipping on your order and 365-day returns.   --  https://homeserve.com/tds   --  The Daily Show airs weeknights at 11/10c on Comedy Central.  Stream full episodes on Paramount+  Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "0PqvGXDpAaNgdAYLoz7gt5",
@@ -4357,7 +4362,7 @@
       "release": "2026-10-08",
       "url": "https://open.spotify.com/episode/3X729JgXcbPBaH0CjXlnlu",
       "desc": "Conan returns with producers Mike Sweeney, Jessie Gaskell, and Jose Arroyo for a deep dive into his travels through Morocco and the Philippines on the newest season of Conan O’Brien Must Go. Wanna get a chance to talk to Conan? Submit here: teamcoco.com/apply Get access to all the podcasts you love, music channels and radio shows with the SiriusXM App! Get 3 months free using this show link: https://siriusxm.com/conan. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "44EuNXqlVRYFmtPSuD35Rk",
@@ -4369,7 +4374,7 @@
       "release": "2026-10-08",
       "url": "https://open.spotify.com/episode/44EuNXqlVRYFmtPSuD35Rk",
       "desc": "Behind that 70% off sign, there’s a liquidation consultant trying to maximize retailer profits. Zachary Crockett seeks a deal. This episode was originally published on February 9th, 2025. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "3RPLhddl9W19cMJ1HRmqSO",
@@ -4381,7 +4386,7 @@
       "release": "2026-10-10",
       "url": "https://open.spotify.com/episode/3RPLhddl9W19cMJ1HRmqSO",
       "desc": "Catch up on the latest headlines with The Daily Show News Team.  Jon Stewart examines the \"better future\" and \"new jobs\" AI CEOs are promising, Trump's refusal to regulate AI, and the growing concern that the technology could kill us all. Michael Kosta weighs in on Vivek Ramaswamy nearly dropping a kid at a rally, President Trump's push to make daylight saving time permanent, and a suspected plague outbreak in Russia. Plus, Kosta comments on Kimberly Guilfoyle's bizarre corruption scandal. Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "3hrR9HV81sQynpGBYV0MPo",
@@ -4429,7 +4434,7 @@
       "release": "2026-10-09",
       "url": "https://open.spotify.com/episode/0T3g6UcOmeVIkDQT5hYqu1",
       "desc": "This week our top indicators include changes to the funding model for SNAP, private equity’s influence on youth baseball and Meta’s attempt to find flaws in its brand new AI assistant. Fact checking by Sierra Juarez.Your Next Listen –Why Trump's spending bill could close your grocery store–Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet Money–The Indicator newsletter — a weekly roundup of news, ideas and staff picks. –Instagram, TikTok and YouTube –Find the Planet Money book –Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop!Support public media by subscribing to NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "2j6v8AJxb35KgEvEaUtwpv",
@@ -4441,7 +4446,7 @@
       "release": "2026-10-11",
       "url": "https://open.spotify.com/episode/2j6v8AJxb35KgEvEaUtwpv",
       "desc": "Catch all of the past week's great guests in one place.  Jacob Coxon, a former Anthropic and OpenAI researcher who spoke out about the dangers of artificial intelligence, opens up to Jon Stewart about the grim reality of the tech industry— from malicious hacks to potential biological attacks. The two discuss the future, AI-led utopia that tech companies are trying to sell us, the megalomania and riskiness that underlie the industry, and the terrifying capabilities Coxon witnessed while training AI models at Anthropic and OpenAI.  Academy Award-winning screenwriter Aaron Sorkin sits down with Michael Kosta to discuss writing and directing his new film, \"The Social Reckoning.\" Sorkin discusses revisiting Mark Zuckerberg as an anti-hero 16 years after “The Social Network,” balancing his role as both writer and director of the film, and recounting how intense physicality during the writing process once landed him in the hospital with a broken nose.  Sebastian Stan sits down with Michael to talk about the Palme d'Or-winning film “Fjord,” which explores the story of an immigrant family in Norway whose children are taken away by authorities who believe they’re acting for the right reasons. Stan opens up about his personal connections to the film, leaving Romania at the age of eight, and reconnecting with the country he left behind. Plus, Kosta talks about Stan’s eclectic career choices, from the Marvel Cinematic Universe to playing President Donald Trump.  Emmy-nominated and Golden Globe-winning actor Kyle MacLachlan joins Michael to discuss his bestselling memoir, \"Fictional Selves.\" MacLachlan opens up about bouncing back from a disappointing debut in the 1984 version of “Dune,” the tight-knit relationship he developed with director David Lynch throughout his career, his most iconic roles from “Sex and the City” to “Showgirls,” and the surprising, industry-changing success of “Twin Peaks.” Plus, hear about the wine label MacLachlan started with his dad and how he learned to navigate Hollywood and advocate for himself on set.  --  The Daily Show airs weeknights at 11/10c on Comedy Central.  Stream full episodes on Paramount+  Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "64WT0PMF1a91EdMH7TSylX",
@@ -4501,7 +4506,7 @@
       "release": "2026-10-14",
       "url": "https://open.spotify.com/episode/2lq2ofmFc6hEpSQFHAJAGv",
       "desc": "Get to know even more weird guys with part 2 of The Daily Showograpies.   Dig into the origin stories of Robert F. Kennedy Jr., Ted Cruz, Jeff Bezos, Gavin Newsom, Stephen A. Smith, and Tim Walz.   --  The Daily Show airs weeknights at 11/10c on Comedy Central.  Stream full episodes on Paramount+  Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "7if6pEzMXLT8Ze0UA9XYxi",
@@ -4525,7 +4530,7 @@
       "release": "2026-10-15",
       "url": "https://open.spotify.com/episode/62r1BJ1cswC4lXfRFdkKQD",
       "desc": "Conan and special guest Taylor Tomlinson speak to flavor scientist Jeremy in San Francisco about how to properly cleanse a palate, performing over 100 sensory tastings in six months, and the one flavor that is universally despised. Wanna get a chance to talk to Conan? Submit here: teamcoco.com/apply Get access to all the podcasts you love, music channels and radio shows with the SiriusXM App! Get 3 months free using this show link: https://siriusxm.com/conan. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "3ALXjdg3MyO4es5Tm5vSRt",
@@ -4537,7 +4542,7 @@
       "release": "2026-10-15",
       "url": "https://open.spotify.com/episode/3ALXjdg3MyO4es5Tm5vSRt",
       "desc": "A fast-food burger has to taste the same — and cost the same — thousands of times a day at restaurants across the country. Zachary Crockett mans the fryer. This episode was originally published on March 2nd, 2025. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "7MYpCE9nnq29JLJYiBpkP3",
@@ -4597,7 +4602,7 @@
       "release": "2026-10-15",
       "url": "https://open.spotify.com/episode/2bhVSrXGj5iGmV3cmOdsAw",
       "desc": "When socialite Dorothy Arnold disappeared in 1910, no one imagined the case would remain forever unsolved. Today we tell her story.See omnystudio.com/listener for privacy information.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "48W3wo4ktrTGQJEBvJOHoA",
@@ -4633,7 +4638,7 @@
       "release": "2026-10-16",
       "url": "https://open.spotify.com/episode/3qfIEESGe4sUEGeZIA4jGf",
       "desc": "Get to know even more weird guys with part 3 of The Daily Showograpies.  Deep dive on the origins of Vladimir Putin, Rudy Giuliani, Pete Hegseth, JD Vance, Mike Johnson and Mitch McConnell.  -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "3NB8EVgzuumF5qHnw2D2q2",
@@ -4669,7 +4674,7 @@
       "release": "2026-10-17",
       "url": "https://open.spotify.com/episode/2p05lfJZC57KWRMfAERrpB",
       "desc": "Recorded every Thursday after the audience has left Studio 8G, and witnessed only by scattered members of the Late Night staff and crew… This is Corrections: The Podcast, Episode 182, \"The Why-re.\"See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "3CX1brOvYDHFxoOAUxrFuB",
@@ -4729,7 +4734,7 @@
       "release": "2026-10-20",
       "url": "https://open.spotify.com/episode/0007H8IFcUg9VqrJVubrmc",
       "desc": "Seth takes a closer look at Donald Trump's approval rating hitting a new all-time low just two weeks ahead of the midterms. Then, Jenna Ortega talks about filming season three of Netflix's Wednesday, starring in her new film Klara and the Sun, and celebrating her favorite holiday, Halloween.See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "6LdBXKAXX9nqzQlwW5qBFz",
@@ -4765,7 +4770,7 @@
       "release": "2026-10-20",
       "url": "https://open.spotify.com/episode/16I4QfUvgK0Uoasip6vaLP",
       "desc": "If something is possible, has the universe tried it? Are all physical possibilities inevitable? Neil deGrasse Tyson sits down with theoretical astrophysicist Janna Levin to launch “In Theory,” a new StarTalk series celebrating the weird, wacky theories of the universe and the theorists who chase them. Out on YouTube October 29, 2026!NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/in-theory-with-janna-levin/Thanks to our Patrons Elamar, Natalia Nelicheva, Kyron Laskosky, Stanley Tai, Jan, Chris Tringali, Nikki Tea, Jay Kapadia, Sean Moran, SnakeSurfer, Roddie, Sam Sillmon, Graham West, Ben Fisk, ChexVC, aitor clemente ramos, Max Forkel, George Fox, and HKRDiary for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "0njXY7G4XiWfi97cG2QJfQ",
@@ -4825,7 +4830,7 @@
       "release": "2026-10-21",
       "url": "https://open.spotify.com/episode/7lflLFeD29WDTt2xEUDBhW",
       "desc": "With the midterms in the homestretch, Trump gets horny over male Republican candidates, a pro-Vivek Ramaswamy ad recruits his opponent's mom to attack her, a Fayette County Council candidate locks in for a drunk interview about AI and guns, and Michael Kosta wonders if Trump has spent more time thinking about Jon Husted's butt or the Iran War. Jordan Klepper profiles Trump's newest former press secretary, Katie Zacharia, who was fired after just five days on the job. Between Zacharia's disastrous first press briefing, her bona fides as a seasoned conspiracy theorist, and her extensive experience as an almost-lawyer, Klepper tries to get to the bottom of why Trump would reject someone who clearly had the whole MAGA package. Death Cab for Cutie’s lead singer, Ben Gibbard, joins Michael to talk about the band’s 11th studio album, “I Built You a Tower,” an exploration of how we compartmentalize grief just to get through the day. Gibbard looks back on 30 years of making music, how songwriting feels like therapy (but shouldn’t replace actual therapy), and how he finds transcendence while running ultramarathons. -- To get simple, online access to personalized, affordable care for ED, Hair Loss, Weight Loss, and more, visit https://Hims.com/dailyshow  --New customers can save 35% on your first month of subscription by going to https://dosedaily.co/TDS or entering TDS at checkout. -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "4coa0xc14YTHW9bUXUV2CB",
@@ -4873,7 +4878,7 @@
       "release": "2026-10-22",
       "url": "https://open.spotify.com/episode/2KraTAACZkcVc8E6bmeeah",
       "desc": "Seth takes a closer look at JD Vance hitting the campaign trail despite record-low approval ratings and only making things worse for Republicans.Liam Neeson talks about starring in his new movie The Mongoose, discusses filming scenes in a muscle car and answers trivia questions about himself.See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
-      "api_misses": 1
+      "removed_at": "2026-10-23"
     },
     {
       "id": "3QVBzsgArxlrRmugzw1X5y",
