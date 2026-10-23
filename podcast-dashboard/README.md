@@ -25,7 +25,8 @@ The API refresh only rewrites the file (and redeploys) when episodes change.
 Unknown lengths and saved dates remain null and are included in filters by
 default. Disable "Include unknown lengths / saved dates" for complete metadata
 only. Duration statistics use known values; the saved-date chart excludes unknown
-dates. Listening history matches 103 current-library episodes.
+dates. Listening history matches 202 current-library episodes, with export coverage
+through October 21, 2026 (imported October 22, 2026).
 
 To refresh from an Account Data ZIP, then rebuild listening aggregates:
 
