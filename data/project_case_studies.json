@@ -212,7 +212,7 @@
     {
       "project": "podcast-dashboard",
       "tracked_files": 6,
-      "commits_touching_project": 35,
+      "commits_touching_project": 38,
       "top_extensions": [
         [
           ".json",
@@ -292,7 +292,7 @@
     {
       "project": "tests",
       "tracked_files": 16,
-      "commits_touching_project": 24,
+      "commits_touching_project": 25,
       "top_extensions": [
         [
           ".r",
