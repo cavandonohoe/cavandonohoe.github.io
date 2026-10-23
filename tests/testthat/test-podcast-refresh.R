@@ -30,7 +30,8 @@ testthat::test_that("token helper reads a redirected URL under Rscript", {
 
 load_merge_saved_episodes <- function() {
   expressions <- as.list(parse("../../scripts/update_saved_episodes.R"))
-  wanted <- c("%||%", "backfill_fields", "track_api_removals", "merge_saved_episodes")
+  wanted <- c("%||%", "backfill_fields", "track_api_removals", "mark_unavailable",
+              "merge_saved_episodes")
   defs <- Filter(function(x) {
     is.call(x) && identical(x[[1]], as.name("<-")) && as.character(x[[2]]) %in% wanted
   }, expressions)
@@ -224,4 +225,64 @@ testthat::test_that("rows with an API saved date are tracked even without api_se
   twice <- merge_saved_episodes(once$payload, api, today = as.Date("2026-10-23"))
   testthat::expect_equal(twice$payload$episodes[[1]]$removed_at, "2026-10-23")
   testthat::expect_null(twice$payload$episodes[[2]]$removed_at)
+})
+
+testthat::test_that("a 404 from the episode lookup marks the row unavailable", {
+  merge_saved_episodes <- load_merge_saved_episodes()
+  existing <- list(meta = list(), episodes = list(
+    list(id = "gone", name = "Gone", release = NULL),
+    list(id = "here", name = "Here", release = NULL)
+  ))
+  backfill <- list(list(id = "here", name = "Here", release = "2025-01-02"))
+  result <- merge_saved_episodes(existing, list(), today = as.Date("2026-10-23"),
+                                 backfill = backfill, unavailable = "gone")
+  gone <- result$payload$episodes[[1]]
+  here <- result$payload$episodes[[2]]
+  testthat::expect_equal(gone$unavailable_at, "2026-10-23")
+  testthat::expect_null(here$unavailable_at)
+  testthat::expect_equal(here$release, "2025-01-02")
+  testthat::expect_equal(result$payload$meta$n_unavailable, 1L)
+  # Still gone a day later: the original date is kept and nothing changes.
+  again <- merge_saved_episodes(result$payload, list(), today = as.Date("2026-10-24"),
+                                unavailable = "gone")
+  testthat::expect_equal(again$payload$episodes[[1]]$unavailable_at, "2026-10-23")
+  testthat::expect_false(again$changed)
+})
+
+testthat::test_that("an unavailable episode Spotify returns again is restored", {
+  merge_saved_episodes <- load_merge_saved_episodes()
+  existing <- list(meta = list(), episodes = list(
+    list(id = "a", name = "A", unavailable_at = "2026-10-20"),
+    list(id = "b", name = "B", unavailable_at = "2026-10-20")
+  ))
+  result <- merge_saved_episodes(
+    existing, list(list(id = "a", name = "A")), today = as.Date("2026-10-23"),
+    backfill = list(list(id = "b", name = "B", release = "2025-05-05"))
+  )
+  testthat::expect_null(result$payload$episodes[[1]]$unavailable_at)
+  testthat::expect_null(result$payload$episodes[[2]]$unavailable_at)
+  testthat::expect_equal(result$payload$meta$n_unavailable, 0L)
+})
+
+testthat::test_that("episode lookups go one ID at a time and collect 404s", {
+  expressions <- as.list(parse("../../scripts/update_saved_episodes.R"))
+  wanted <- c("%||%", "normalize_episode", "fetch_episode_metadata")
+  defs <- Filter(function(x) {
+    is.call(x) && identical(x[[1]], as.name("<-")) && as.character(x[[2]]) %in% wanted
+  }, expressions)
+  env <- new.env()
+  for (d in defs) eval(d, envir = env)
+  calls <- character()
+  fetch <- function(id) {
+    calls <<- c(calls, id)
+    if (id == "gone") return(NULL)
+    list(id = id, name = toupper(id), duration_ms = 1800000, release_date = "2025-01-01",
+         show = list(name = "S", publisher = "P"))
+  }
+  out <- env$fetch_episode_metadata(c("a", "gone", "a", NA, ""), fetch = fetch)
+  testthat::expect_identical(calls, c("a", "gone"))
+  testthat::expect_identical(out$unavailable, "gone")
+  testthat::expect_length(out$rows, 1L)
+  testthat::expect_equal(out$rows[[1]]$dur_min, 30)
+  testthat::expect_equal(out$rows[[1]]$release, "2025-01-01")
 })
