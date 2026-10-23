@@ -3,11 +3,11 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 422,
+    "n_episodes": 423,
     "previous_only_count": 42,
     "api_refreshed_at": "2026-10-23",
-    "api_saved_count": 208,
-    "n_removed": 164,
+    "api_saved_count": 210,
+    "n_removed": 162,
     "n_unavailable": 26
   },
   "episodes": [
@@ -165,7 +165,8 @@
       "release": "2026-09-18",
       "url": "https://open.spotify.com/episode/6eSRM9MSPaGpP23cl4dpY3",
       "desc": "This week’s indicators: Tracking your pain at the gas pump in real-time; OpenAI’s IPO hard-launch tug-of-war; one unexpected ingredient is making fertilizer—and potentially your groceries—a whole lot more expensive.Fact checking by Schuyler Swenson.Your Next Listen — What Iran teaches us about why wars startConnect with The Indicator — Sign up for The Indicator’s weekly newsletter! — Buy the Planet Money book — Find our socials, YouTube and more! — For sponsor-free episodes, subscribe to NPR+ Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": null,
@@ -357,7 +358,8 @@
       "name": "Superbabies?",
       "show": "Unexplainable",
       "url": "https://open.spotify.com/episode/65qStIEGChrMEFswdCAg7R",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2025-11-11",
@@ -1539,7 +1541,7 @@
       "removed_at": "2026-10-23"
     },
     {
-      "added_at": null,
+      "added_at": "2025-11-27",
       "dur_min": 16,
       "release": "2025-11-27",
       "publisher": null,
@@ -1547,7 +1549,8 @@
       "id": "39eB5RjDZz8O6ua8kNngmz",
       "name": "Stephen Presents: Robert Plant (Extended)",
       "show": "The Late Show Pod Show with Stephen Colbert",
-      "url": "https://open.spotify.com/episode/39eB5RjDZz8O6ua8kNngmz"
+      "url": "https://open.spotify.com/episode/39eB5RjDZz8O6ua8kNngmz",
+      "api_seen": true
     },
     {
       "added_at": "2025-11-14",
@@ -1835,7 +1838,7 @@
       "release": "2026-02-03",
       "url": "https://open.spotify.com/episode/3YVPhmDjUFMNvc6gqSgU3q",
       "desc": "Data centers are getting a lot of heat right now. There’s neighborhood pushback against them for water usage and environmental concerns, and some politicians on both sides of the aisle aren’t fans for the same reasons. There’s also fear that they could drive up the cost of electricity bills. But that last bit isn’t set in stone. Data center electric bill upcharge is not a guarantee. In fact, it is even possible for data centers to cause power bills to go down. Today on the show: the future of your power bill.Related episodes: No AI data centers in my backyard! What AI data centers are doing to your electric billFor sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "removed_at": "2026-10-23"
+      "api_seen": true
     },
     {
       "added_at": "2026-09-25",
@@ -2113,7 +2116,7 @@
       "release": "2026-01-09",
       "url": "https://open.spotify.com/episode/6abvtMF5ww0Lc9YPiq99sz",
       "desc": "Minneapolis tells ICE to “get the f**k out” after an agent fatally shot a woman, Kristi Noem smears the victim as a terrorist while MAGA decides she deserved it, and Ronny Chieng questions ICE’s PR push to recruit highly aggressive, unqualified agents and unleash them on American cities. Americans are known for spoiling their living pets, but what about the ones who’ve passed? Michael Kosta explores the rising popularity of pet psychics, like Danielle MacKinnon, who claims to have the intuitive ability to communicate with all animals, past and present. Kosta learns about her process, meets her very real clients, and attempts to glean some insight into his relationship with his own dog, Walter. Actor and producer Lucy Liu sits down with Ronny Chieng to discuss her new film, “Rosemead,” which is based on a true story about a terminally ill mother and her son. They talk about Liu’s connection to the film and how its themes of mental health and grief affected her, why every role feels like a way of documenting her life, the time she directed Ronny onscreen, and how taking risks has led to the biggest rewards in her career. Plus, Simu Liu makes a cameo! Refresh your winter wardrobe with Quince—visit https://quince.com/DAILYSHOW for free shipping and 365-day returns. Let Rocket Money help you reach your financial goals faster—join at https://RocketMoney.com/DAILYSHOW with promo code DAILYSHOW. Join the thousands of parents who trust Fabric to help protect their family. Apply today in just minutes at https://meetfabric.com/daily  Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "removed_at": "2026-10-23"
+      "api_seen": true
     },
     {
       "added_at": "2025-11-06",
@@ -5072,6 +5075,18 @@
       "release": "2026-10-23",
       "url": "https://open.spotify.com/episode/78UjmDnwKoXa2rQEbE8wrY",
       "desc": "Writers, designers, actors, coders, musicians, thinkers — they’re all worried about being replaced by machines. But what if the A.I.s are actually here to help? (Part one of a two-part series.) SOURCES:Sean Astin, actor, president of SAG-AFTRA.Kevin Kelly, co-founder of Wired.Ethan Mollick, associate professor of management at the Wharton School of the University of Pennsylvania.Eline Van der Velden, founder and C.E.O. of Particle6. RESOURCES:Co-Existence: The Next Phase of AI, by Ethan Mollick (2026).\"Apocalypse Now and Then,\" by Arundhati Roy (Equator, 2026).\"Artificial Intelligence and Its Impact on Creativity and Diversity: An Empirical Study of Large Language Model-Generated Product Ideas,\" by Christian Terwiesch, Lennart Meincke, Karan Girotra, Ethan Mollick, Gideon Nave, and Karl Ulrich (Production and Operations Management, 2026).\"Quiet, My Exoself,\" by Kevin Kelly (KK, 2026).Co-Intelligence: Living and Working With AI, by Ethan Mollick (2024).\"The O-Ring Theory of Economic Development,\" by Michael Kremer (Quarterly Journal of Economics, 1993). EXTRAS:\"How to Poison the A.I. Machine,\" by Freakonomics Radio (2025).\"The Curious, Brilliant, Vanishing Mr. Feynman,\" series by Freakonomics Radio (2024).\"How to Think About A.I.,\" series by Freakonomics Radio (2023).\"103 Pieces of Advice That May or May Not Work,\" by Freakonomics Radio (2022). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
+      "api_seen": true
+    },
+    {
+      "id": "7eolgw8M7uAPNQHa0urtqV",
+      "added_at": "2026-10-23",
+      "show": "Planet Money",
+      "publisher": null,
+      "name": "How surveillance crept up on us",
+      "dur_min": 35,
+      "release": "2026-10-23",
+      "url": "https://open.spotify.com/episode/7eolgw8M7uAPNQHa0urtqV",
+      "desc": "For years, police have spent billions of tax dollars on watching us, tracking us, and recording us. In the largest police department in the country, these surveillance systems were paid for and adopted without the kind of public oversight cities usually require. In the wake of 9/11, the New York Police Department built one of the most sophisticated and omnipresent surveillance systems in the country. And while decisions were being made about what tech to adopt and how much to pay for it, few outside the NYPD were consulted. Not the City Council nor the public. For over a decade, the only paper trail of these purchases were offline, stored in filing cabinets, inaccessible to the public. Today on the show, how the country’s largest police department built its surveillance system, and the fight to get police everywhere to tell us how they’re watching us. Read: Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life Our weekly longform Planet Money newsletterOur weekly Indicator round-up newsletterFollow: InstagramTikTokYouTubeFacebookSupport public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.This episode was produced by Vito Emanuel and edited by Marianne McCune. It was fact-checked by Sierra Juarez and engineered by Cena Loffredo. Alex Goldmark is our executive producer.Music: NPR Source Audio - \"Funky Space Mama,\" \"Sunday Lights,\" and \"Blammo\"See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true
     }
   ]
