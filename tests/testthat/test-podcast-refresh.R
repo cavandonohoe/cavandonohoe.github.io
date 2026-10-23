@@ -286,3 +286,40 @@ testthat::test_that("episode lookups go one ID at a time and collect 404s", {
   testthat::expect_equal(out$rows[[1]]$dur_min, 30)
   testthat::expect_equal(out$rows[[1]]$release, "2025-01-01")
 })
+
+load_before_cutoff <- function() {
+  expressions <- as.list(parse("../../podcast-dashboard/app.R"))
+  defs <- Filter(function(x) {
+    is.call(x) && identical(x[[1]], as.name("<-")) &&
+      identical(as.character(x[[2]]), "before_cutoff")
+  }, expressions)
+  env <- new.env()
+  for (d in defs) eval(d, envir = env)
+  env$before_cutoff
+}
+
+testthat::test_that("the completion cutoff hides only day-precision releases before it", {
+  before_cutoff <- load_before_cutoff()
+  release <- c("2026-03-13", "2026-03-14", "2026-03-15", NA, "2025", "2026-02", "")
+  testthat::expect_identical(
+    before_cutoff(release, "2026-03-14"),
+    c(TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE)
+  )
+})
+
+testthat::test_that("no cutoff (null, NA or empty) hides nothing", {
+  before_cutoff <- load_before_cutoff()
+  release <- c("2001-01-01", NA)
+  for (cutoff in list(NULL, NA, NA_character_, "")) {
+    testthat::expect_identical(before_cutoff(release, cutoff), c(FALSE, FALSE))
+  }
+})
+
+testthat::test_that("the refresh and import never write the cutoff file", {
+  sources <- c("../../scripts/update_saved_episodes.R",
+               "../../podcast-dashboard/tools/import_library.py",
+               "../../podcast-dashboard/tools/import_history.py")
+  for (path in sources) {
+    testthat::expect_false(any(grepl("completion_cutoff", readLines(path))), info = path)
+  }
+})
