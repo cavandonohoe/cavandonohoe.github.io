@@ -2,10 +2,19 @@
   "meta": {
     "source": "Spotify Extended Streaming History",
     "coverage_start": "2012-01-15",
-    "coverage_end": "2026-09-23",
-    "matched_episodes": 103
+    "coverage_end": "2026-10-21",
+    "matched_episodes": 202
   },
   "episodes": [
+    {
+      "id": "00NVPNDsVEFJDSfvuBYgBA",
+      "events": 1,
+      "listened_min": 25.729,
+      "first_played": "2026-10-10",
+      "last_played": "2026-10-10",
+      "start_reasons": "clickrow: 1",
+      "end_reasons": "trackdone: 1"
+    },
     {
       "id": "01DybKX10LY6zHeWLEDkQZ",
       "events": 1,
@@ -16,13 +25,49 @@
       "end_reasons": "fwdbtn: 1"
     },
     {
-      "id": "0ABrwxZw1uQ0DnbqONINEU",
+      "id": "02dx6RvttaKezoljzXYX2J",
+      "events": 3,
+      "listened_min": 29.549,
+      "first_played": "2026-10-10",
+      "last_played": "2026-10-10",
+      "start_reasons": "appload: 2; clickrow: 1",
+      "end_reasons": "logout: 2; trackdone: 1"
+    },
+    {
+      "id": "04urdKT3WkpGPs7Fg0CQj1",
       "events": 1,
-      "listened_min": 6.047,
+      "listened_min": 8.32,
+      "first_played": "2026-10-19",
+      "last_played": "2026-10-19",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "05gg3GWkRbIM8WMwUM8USj",
+      "events": 3,
+      "listened_min": 8.06,
+      "first_played": "2026-09-30",
+      "last_played": "2026-10-01",
+      "start_reasons": "appload: 1; trackdone: 2",
+      "end_reasons": "fwdbtn: 1; unexpected-exit-while-paused: 2"
+    },
+    {
+      "id": "0ABrwxZw1uQ0DnbqONINEU",
+      "events": 5,
+      "listened_min": 41.148,
       "first_played": "2025-08-29",
-      "last_played": "2025-08-29",
-      "start_reasons": "playbtn: 1",
-      "end_reasons": "endplay: 1"
+      "last_played": "2026-10-14",
+      "start_reasons": "appload: 1; playbtn: 3; trackdone: 1",
+      "end_reasons": "endplay: 2; logout: 1; trackdone: 1; unexpected-exit-while-paused: 1"
+    },
+    {
+      "id": "0DRWubxZO8QzttEi8AxHdd",
+      "events": 1,
+      "listened_min": 5.496,
+      "first_played": "2026-10-02",
+      "last_played": "2026-10-02",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
     },
     {
       "id": "0E4WljN00FdCRXJL764iYM",
@@ -79,13 +124,22 @@
       "end_reasons": "backbtn: 1"
     },
     {
+      "id": "0PqvGXDpAaNgdAYLoz7gt5",
+      "events": 1,
+      "listened_min": 0.395,
+      "first_played": "2026-10-09",
+      "last_played": "2026-10-09",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "fwdbtn: 1"
+    },
+    {
       "id": "0R7Ar5XzA36UizR5F6xBK6",
-      "events": 2,
-      "listened_min": 24.119,
+      "events": 3,
+      "listened_min": 26.389,
       "first_played": "2026-09-18",
-      "last_played": "2026-09-18",
-      "start_reasons": "appload: 1; trackdone: 1",
-      "end_reasons": "endplay: 1; logout: 1"
+      "last_played": "2026-10-18",
+      "start_reasons": "appload: 1; fwdbtn: 1; trackdone: 1",
+      "end_reasons": "endplay: 1; logout: 1; trackdone: 1"
     },
     {
       "id": "0SOWk1UKarBJHlMVy6LQw0",
@@ -95,6 +149,33 @@
       "last_played": "2026-01-12",
       "start_reasons": "trackdone: 1",
       "end_reasons": "endplay: 1"
+    },
+    {
+      "id": "0T3g6UcOmeVIkDQT5hYqu1",
+      "events": 1,
+      "listened_min": 5.404,
+      "first_played": "2026-10-21",
+      "last_played": "2026-10-21",
+      "start_reasons": "clickrow: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "0VBvYASnpmkbPihTWdg2Xo",
+      "events": 1,
+      "listened_min": 7.901,
+      "first_played": "2026-10-12",
+      "last_played": "2026-10-12",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "0XB8h9hWeI7x3Qp8yfsqn2",
+      "events": 2,
+      "listened_min": 0.229,
+      "first_played": "2026-10-17",
+      "last_played": "2026-10-17",
+      "start_reasons": "appload: 1; trackdone: 1",
+      "end_reasons": "endplay: 1; logout: 1"
     },
     {
       "id": "0Z0TLFz1xH3GIWHWsZyA8S",
@@ -115,6 +196,15 @@
       "end_reasons": "fwdbtn: 1; remote: 1"
     },
     {
+      "id": "0dzVQQxAWm5SZwYPpys6ta",
+      "events": 1,
+      "listened_min": 4.982,
+      "first_played": "2026-10-19",
+      "last_played": "2026-10-19",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
       "id": "0hxJpYQ1M6ZNUUaxXKwwg5",
       "events": 4,
       "listened_min": 0.038,
@@ -125,12 +215,12 @@
     },
     {
       "id": "0irvCdaoQmTQl2Ib6FhKT3",
-      "events": 3,
-      "listened_min": 8.512,
+      "events": 4,
+      "listened_min": 16.329,
       "first_played": "2025-08-25",
-      "last_played": "2025-09-25",
-      "start_reasons": "fwdbtn: 1; trackdone: 2",
-      "end_reasons": "endplay: 1; remote: 1; unexpected-exit: 1"
+      "last_played": "2026-10-12",
+      "start_reasons": "fwdbtn: 1; trackdone: 3",
+      "end_reasons": "endplay: 1; remote: 1; trackdone: 1; unexpected-exit: 1"
     },
     {
       "id": "0isqRQnhdlKb8tY3qiwMOn",
@@ -152,12 +242,21 @@
     },
     {
       "id": "0r41B867PbH3vpNUn0MmDb",
-      "events": 2,
-      "listened_min": 17.274,
+      "events": 3,
+      "listened_min": 19.035,
       "first_played": "2025-08-06",
-      "last_played": "2025-08-06",
-      "start_reasons": "appload: 1; clickrow: 1",
-      "end_reasons": "logout: 1; remote: 1"
+      "last_played": "2026-09-30",
+      "start_reasons": "appload: 1; clickrow: 1; trackdone: 1",
+      "end_reasons": "logout: 1; remote: 1; trackdone: 1"
+    },
+    {
+      "id": "0rE9iUsCqUxmBj5teE1EBV",
+      "events": 1,
+      "listened_min": 6.355,
+      "first_played": "2026-10-12",
+      "last_played": "2026-10-12",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
     },
     {
       "id": "0rKCayNMpzDQQRCfdMsrYt",
@@ -169,22 +268,40 @@
       "end_reasons": "endplay: 1"
     },
     {
-      "id": "0vlMI2kDfxRWvKhhfauQiT",
+      "id": "0rpzmRqnyf9kQYHcfR5Cvp",
+      "events": 2,
+      "listened_min": 5.322,
+      "first_played": "2026-09-27",
+      "last_played": "2026-09-30",
+      "start_reasons": "playbtn: 1; trackdone: 1",
+      "end_reasons": "logout: 1; trackdone: 1"
+    },
+    {
+      "id": "0rsVujmLChYTI6u9xRmwGp",
       "events": 1,
-      "listened_min": 0.097,
+      "listened_min": 2.267,
+      "first_played": "2026-10-09",
+      "last_played": "2026-10-09",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "0vlMI2kDfxRWvKhhfauQiT",
+      "events": 3,
+      "listened_min": 3.306,
       "first_played": "2025-11-11",
-      "last_played": "2025-11-11",
-      "start_reasons": "clickrow: 1",
-      "end_reasons": "endplay: 1"
+      "last_played": "2026-10-10",
+      "start_reasons": "appload: 1; clickrow: 1; trackdone: 1",
+      "end_reasons": "endplay: 1; logout: 1; trackdone: 1"
     },
     {
       "id": "0wmpVXzdxWKgAO18kOXYeR",
-      "events": 2,
-      "listened_min": 9.824,
+      "events": 3,
+      "listened_min": 18.103,
       "first_played": "2025-10-17",
-      "last_played": "2025-10-18",
-      "start_reasons": "playbtn: 1; trackdone: 1",
-      "end_reasons": "endplay: 2"
+      "last_played": "2026-10-19",
+      "start_reasons": "clickrow: 1; playbtn: 1; trackdone: 1",
+      "end_reasons": "endplay: 2; trackdone: 1"
     },
     {
       "id": "10T6iDslQsJ4VjsuNMgFaY",
@@ -197,21 +314,75 @@
     },
     {
       "id": "10y1mkrt5szhvQd04BXWgD",
-      "events": 1,
-      "listened_min": 0.0,
+      "events": 2,
+      "listened_min": 0.137,
       "first_played": "2025-09-25",
-      "last_played": "2025-09-25",
-      "start_reasons": "backbtn: 1",
-      "end_reasons": "fwdbtn: 1"
+      "last_played": "2026-10-13",
+      "start_reasons": "backbtn: 1; playbtn: 1",
+      "end_reasons": "endplay: 1; fwdbtn: 1"
+    },
+    {
+      "id": "14GIhImYh3KjA7jjdjCtim",
+      "events": 2,
+      "listened_min": 25.421,
+      "first_played": "2026-10-01",
+      "last_played": "2026-10-03",
+      "start_reasons": "trackdone: 2",
+      "end_reasons": "endplay: 1; trackdone: 1"
+    },
+    {
+      "id": "17DTiwTireukG0zrlSeege",
+      "events": 1,
+      "listened_min": 5.5,
+      "first_played": "2026-10-13",
+      "last_played": "2026-10-13",
+      "start_reasons": "clickrow: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "17F3sMOmX49lxN9j4zicTu",
+      "events": 1,
+      "listened_min": 25.894,
+      "first_played": "2026-09-27",
+      "last_played": "2026-09-27",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
     },
     {
       "id": "1AsyCqCgBX6TVgFQBbeffR",
-      "events": 2,
-      "listened_min": 0.047,
+      "events": 3,
+      "listened_min": 26.74,
       "first_played": "2025-08-05",
-      "last_played": "2025-11-11",
-      "start_reasons": "trackdone: 2",
-      "end_reasons": "endplay: 1; fwdbtn: 1"
+      "last_played": "2026-09-27",
+      "start_reasons": "trackdone: 3",
+      "end_reasons": "endplay: 1; fwdbtn: 1; trackdone: 1"
+    },
+    {
+      "id": "1C1D1o2o569Smn7QofdwTL",
+      "events": 2,
+      "listened_min": 0.871,
+      "first_played": "2026-10-10",
+      "last_played": "2026-10-10",
+      "start_reasons": "appload: 1; trackdone: 1",
+      "end_reasons": "endplay: 1; logout: 1"
+    },
+    {
+      "id": "1GS0zmLps7F88g81iSf7i4",
+      "events": 1,
+      "listened_min": 25.98,
+      "first_played": "2026-10-16",
+      "last_played": "2026-10-16",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "1N9H8SqCokJGgX0FFfnUku",
+      "events": 2,
+      "listened_min": 17.505,
+      "first_played": "2026-10-09",
+      "last_played": "2026-10-09",
+      "start_reasons": "appload: 1; trackdone: 1",
+      "end_reasons": "logout: 1; trackdone: 1"
     },
     {
       "id": "1NupSuvaOVBeLwMFpqfUyS",
@@ -223,13 +394,58 @@
       "end_reasons": "endplay: 1"
     },
     {
-      "id": "1dHoDljr9yz6mr2JlHzcAb",
+      "id": "1Te3To0itv0Zd6sbNOIr1f",
       "events": 1,
-      "listened_min": 4.681,
-      "first_played": "2025-09-26",
-      "last_played": "2025-09-26",
+      "listened_min": 9.647,
+      "first_played": "2026-10-21",
+      "last_played": "2026-10-21",
       "start_reasons": "trackdone: 1",
-      "end_reasons": "remote: 1"
+      "end_reasons": "endplay: 1"
+    },
+    {
+      "id": "1Te6dfcYOgVNTj83tdZzwz",
+      "events": 1,
+      "listened_min": 1.107,
+      "first_played": "2026-10-10",
+      "last_played": "2026-10-10",
+      "start_reasons": "clickrow: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "1VuOkskVjmcOnB2LWlbtwH",
+      "events": 1,
+      "listened_min": 21.323,
+      "first_played": "2026-10-12",
+      "last_played": "2026-10-12",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "1d8rFjfmx0dlTB7hINt5po",
+      "events": 1,
+      "listened_min": 4.601,
+      "first_played": "2026-10-13",
+      "last_played": "2026-10-13",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "1dHoDljr9yz6mr2JlHzcAb",
+      "events": 2,
+      "listened_min": 11.713,
+      "first_played": "2025-09-26",
+      "last_played": "2026-10-12",
+      "start_reasons": "trackdone: 2",
+      "end_reasons": "remote: 1; trackdone: 1"
+    },
+    {
+      "id": "1eCEPnFWdOgyqfQpWfkMLJ",
+      "events": 2,
+      "listened_min": 35.945,
+      "first_played": "2026-10-01",
+      "last_played": "2026-10-02",
+      "start_reasons": "appload: 1; clickrow: 1",
+      "end_reasons": "endplay: 1; trackdone: 1"
     },
     {
       "id": "1gEmVP2A6ZOwjJrRSxotwf",
@@ -242,12 +458,12 @@
     },
     {
       "id": "1ihjupMWqBN5gbrNemtUjJ",
-      "events": 1,
-      "listened_min": 22.631,
+      "events": 4,
+      "listened_min": 44.404,
       "first_played": "2025-10-06",
-      "last_played": "2025-10-06",
-      "start_reasons": "trackdone: 1",
-      "end_reasons": "logout: 1"
+      "last_played": "2026-10-18",
+      "start_reasons": "appload: 2; trackdone: 2",
+      "end_reasons": "logout: 3; trackdone: 1"
     },
     {
       "id": "1myeJUyt2grM3vgo3MqqWk",
@@ -257,6 +473,24 @@
       "last_played": "2026-09-23",
       "start_reasons": "trackdone: 1",
       "end_reasons": "endplay: 1"
+    },
+    {
+      "id": "1pHHFomZq3B65UnS7Xbpyi",
+      "events": 1,
+      "listened_min": 0.039,
+      "first_played": "2026-10-10",
+      "last_played": "2026-10-10",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "endplay: 1"
+    },
+    {
+      "id": "1pHeJKVqU1m1IEXxqylk6q",
+      "events": 3,
+      "listened_min": 36.532,
+      "first_played": "2026-10-14",
+      "last_played": "2026-10-18",
+      "start_reasons": "clickrow: 3",
+      "end_reasons": "endplay: 1; trackdone: 1; unexpected-exit-while-paused: 1"
     },
     {
       "id": "1qGuwoSnnEeqORDhiPIOD9",
@@ -277,6 +511,42 @@
       "end_reasons": "clickrow: 1"
     },
     {
+      "id": "1rlCN4ooeDl3BCVtgawQzy",
+      "events": 1,
+      "listened_min": 21.913,
+      "first_played": "2026-10-03",
+      "last_played": "2026-10-03",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "1sQ9iV6kTf9hlj2GChV6pJ",
+      "events": 2,
+      "listened_min": 7.732,
+      "first_played": "2026-09-24",
+      "last_played": "2026-09-24",
+      "start_reasons": "clickrow: 1; trackdone: 1",
+      "end_reasons": "endplay: 1; logout: 1"
+    },
+    {
+      "id": "1wJLwD2R4cypRlEryPm7Lh",
+      "events": 1,
+      "listened_min": 13.453,
+      "first_played": "2026-10-03",
+      "last_played": "2026-10-03",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "1xau3aoiySZAYFFhsh8NPS",
+      "events": 4,
+      "listened_min": 16.349,
+      "first_played": "2026-10-21",
+      "last_played": "2026-10-21",
+      "start_reasons": "appload: 3; clickrow: 1",
+      "end_reasons": "logout: 3; trackdone: 1"
+    },
+    {
       "id": "1ylEOObpO9qniElWg6XZzT",
       "events": 3,
       "listened_min": 22.026,
@@ -286,13 +556,40 @@
       "end_reasons": "endplay: 1; fwdbtn: 1; logout: 1"
     },
     {
-      "id": "23pTX4bHuMEv4epv1gOFRT",
+      "id": "21KzaG6zLUDtsuUCwokzDX",
       "events": 1,
-      "listened_min": 0.024,
-      "first_played": "2025-09-11",
-      "last_played": "2025-09-11",
+      "listened_min": 12.004,
+      "first_played": "2026-10-12",
+      "last_played": "2026-10-12",
       "start_reasons": "trackdone: 1",
-      "end_reasons": "fwdbtn: 1"
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "23pTX4bHuMEv4epv1gOFRT",
+      "events": 2,
+      "listened_min": 25.631,
+      "first_played": "2025-09-11",
+      "last_played": "2026-10-14",
+      "start_reasons": "trackdone: 2",
+      "end_reasons": "fwdbtn: 1; trackdone: 1"
+    },
+    {
+      "id": "2A6dFmPiFz8yWdcM2Kv9te",
+      "events": 1,
+      "listened_min": 5.311,
+      "first_played": "2026-10-12",
+      "last_played": "2026-10-12",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "2GAqfAOEAdHSFPhgOsNrmn",
+      "events": 3,
+      "listened_min": 19.114,
+      "first_played": "2026-10-16",
+      "last_played": "2026-10-18",
+      "start_reasons": "appload: 1; trackdone: 2",
+      "end_reasons": "logout: 1; trackdone: 1; unexpected-exit-while-paused: 1"
     },
     {
       "id": "2QW6tYyZsU7nfgQOzZyN8C",
@@ -313,13 +610,40 @@
       "end_reasons": "endplay: 3"
     },
     {
-      "id": "2XZIZoqbnd6BQubykhXEkh",
+      "id": "2SvnGrZwMZo608E1dzaQA6",
       "events": 1,
-      "listened_min": 4.962,
+      "listened_min": 22.417,
+      "first_played": "2026-10-19",
+      "last_played": "2026-10-19",
+      "start_reasons": "clickrow: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "2XZIZoqbnd6BQubykhXEkh",
+      "events": 2,
+      "listened_min": 13.978,
       "first_played": "2025-09-29",
-      "last_played": "2025-09-29",
+      "last_played": "2026-10-13",
+      "start_reasons": "trackdone: 2",
+      "end_reasons": "logout: 1; trackdone: 1"
+    },
+    {
+      "id": "2YXYOdRFKrQcaOznf66bKQ",
+      "events": 1,
+      "listened_min": 4.746,
+      "first_played": "2026-10-14",
+      "last_played": "2026-10-14",
       "start_reasons": "trackdone: 1",
-      "end_reasons": "logout: 1"
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "2aKllTxTQmzvzwevlzvl4K",
+      "events": 2,
+      "listened_min": 13.276,
+      "first_played": "2026-10-18",
+      "last_played": "2026-10-19",
+      "start_reasons": "clickrow: 1; trackdone: 1",
+      "end_reasons": "fwdbtn: 1; trackdone: 1"
     },
     {
       "id": "2aZumkQ1gUNnzhrFLpwggD",
@@ -331,22 +655,58 @@
       "end_reasons": "fwdbtn: 1; logout: 1"
     },
     {
-      "id": "2hYNU3C2h92ALi0YUTk3Iy",
+      "id": "2bhVSrXGj5iGmV3cmOdsAw",
       "events": 1,
-      "listened_min": 0.869,
+      "listened_min": 0.257,
+      "first_played": "2026-10-21",
+      "last_played": "2026-10-21",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "2glIof4MRYR27zXsffKWBT",
+      "events": 1,
+      "listened_min": 0.687,
+      "first_played": "2026-10-18",
+      "last_played": "2026-10-18",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "2hYNU3C2h92ALi0YUTk3Iy",
+      "events": 3,
+      "listened_min": 4.884,
       "first_played": "2025-08-15",
-      "last_played": "2025-08-15",
-      "start_reasons": "fwdbtn: 1",
-      "end_reasons": "remote: 1"
+      "last_played": "2026-10-10",
+      "start_reasons": "appload: 1; fwdbtn: 1; trackdone: 1",
+      "end_reasons": "endplay: 1; logout: 1; remote: 1"
+    },
+    {
+      "id": "2jiy054W83wHfoOPJYNkEr",
+      "events": 2,
+      "listened_min": 20.546,
+      "first_played": "2026-09-27",
+      "last_played": "2026-09-27",
+      "start_reasons": "appload: 1; trackdone: 1",
+      "end_reasons": "trackdone: 1; unexpected-exit-while-paused: 1"
     },
     {
       "id": "2k971mOyOmsezOZTNZyRZj",
-      "events": 3,
-      "listened_min": 24.733,
+      "events": 6,
+      "listened_min": 38.069,
       "first_played": "2025-10-02",
-      "last_played": "2025-10-03",
-      "start_reasons": "clickrow: 2; trackdone: 1",
-      "end_reasons": "endplay: 2; logout: 1"
+      "last_played": "2026-10-16",
+      "start_reasons": "clickrow: 4; trackdone: 2",
+      "end_reasons": "endplay: 3; logout: 1; remote: 1; trackdone: 1"
+    },
+    {
+      "id": "2ndN31PwLFga1R42wJSFnA",
+      "events": 3,
+      "listened_min": 36.555,
+      "first_played": "2026-10-19",
+      "last_played": "2026-10-21",
+      "start_reasons": "appload: 1; trackdone: 2",
+      "end_reasons": "logout: 1; remote: 1; trackdone: 1"
     },
     {
       "id": "2q5cjcBm6c86wJhRbCQimM",
@@ -358,13 +718,58 @@
       "end_reasons": "endplay: 2"
     },
     {
-      "id": "2uvvStShxG04mpEXHOECFj",
+      "id": "2seyDTK37c6iVHUcxtWfQD",
+      "events": 1,
+      "listened_min": 7.848,
+      "first_played": "2026-10-03",
+      "last_played": "2026-10-03",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "2tlQFRWf6XOvLXMlV2RRwN",
       "events": 2,
-      "listened_min": 0.95,
+      "listened_min": 24.037,
+      "first_played": "2026-10-14",
+      "last_played": "2026-10-14",
+      "start_reasons": "appload: 1; fwdbtn: 1",
+      "end_reasons": "logout: 1; trackdone: 1"
+    },
+    {
+      "id": "2uvvStShxG04mpEXHOECFj",
+      "events": 7,
+      "listened_min": 2.67,
       "first_played": "2025-09-18",
-      "last_played": "2025-09-24",
-      "start_reasons": "fwdbtn: 1; trackdone: 1",
-      "end_reasons": "endplay: 1; fwdbtn: 1"
+      "last_played": "2026-10-17",
+      "start_reasons": "fwdbtn: 1; playbtn: 3; trackdone: 3",
+      "end_reasons": "endplay: 5; fwdbtn: 2"
+    },
+    {
+      "id": "2x2JuwQ4wQ8N8zE4n3UzK1",
+      "events": 1,
+      "listened_min": 20.248,
+      "first_played": "2026-10-03",
+      "last_played": "2026-10-03",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "2xjdQNmzruAiMvSf2InOh9",
+      "events": 1,
+      "listened_min": 0.219,
+      "first_played": "2026-10-09",
+      "last_played": "2026-10-09",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "endplay: 1"
+    },
+    {
+      "id": "2yXKlTVtTFnZq8B40nB7q6",
+      "events": 1,
+      "listened_min": 22.896,
+      "first_played": "2026-10-12",
+      "last_played": "2026-10-12",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
     },
     {
       "id": "2zwYCO3i8uwP3vknHEOjKe",
@@ -395,21 +800,39 @@
     },
     {
       "id": "33jzG8GQ3Mx5m24cwyua38",
-      "events": 1,
-      "listened_min": 0.44,
+      "events": 2,
+      "listened_min": 17.527,
       "first_played": "2025-10-15",
-      "last_played": "2025-10-15",
-      "start_reasons": "playbtn: 1",
-      "end_reasons": "logout: 1"
+      "last_played": "2026-10-19",
+      "start_reasons": "playbtn: 1; trackdone: 1",
+      "end_reasons": "logout: 1; trackdone: 1"
+    },
+    {
+      "id": "33sYfYsCl2DT17TrkGgpYe",
+      "events": 1,
+      "listened_min": 4.906,
+      "first_played": "2026-10-03",
+      "last_played": "2026-10-03",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
     },
     {
       "id": "353TduVnOfNqHR6Cu8p4hU",
-      "events": 3,
-      "listened_min": 0.454,
+      "events": 6,
+      "listened_min": 28.452,
       "first_played": "2025-09-03",
-      "last_played": "2025-09-11",
-      "start_reasons": "playbtn: 1; trackdone: 2",
-      "end_reasons": "endplay: 2; fwdbtn: 1"
+      "last_played": "2026-10-14",
+      "start_reasons": "appload: 1; playbtn: 2; trackdone: 3",
+      "end_reasons": "endplay: 2; fwdbtn: 2; logout: 1; trackdone: 1"
+    },
+    {
+      "id": "35CKWH5BAh8kYcm0q9woMH",
+      "events": 1,
+      "listened_min": 9.389,
+      "first_played": "2026-10-12",
+      "last_played": "2026-10-12",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
     },
     {
       "id": "378KstSEGXxGvuingCAkUN",
@@ -421,6 +844,15 @@
       "end_reasons": "backbtn: 1"
     },
     {
+      "id": "39BLCVwy32LYjuV0PR2eYf",
+      "events": 1,
+      "listened_min": 13.743,
+      "first_played": "2026-10-18",
+      "last_played": "2026-10-18",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
       "id": "39eB5RjDZz8O6ua8kNngmz",
       "events": 1,
       "listened_min": 0.0,
@@ -430,6 +862,24 @@
       "end_reasons": "backbtn: 1"
     },
     {
+      "id": "3CX1brOvYDHFxoOAUxrFuB",
+      "events": 1,
+      "listened_min": 0.182,
+      "first_played": "2026-10-19",
+      "last_played": "2026-10-19",
+      "start_reasons": "clickrow: 1",
+      "end_reasons": "fwdbtn: 1"
+    },
+    {
+      "id": "3DCbjWWH7Baf5mSreaDIlP",
+      "events": 1,
+      "listened_min": 15.782,
+      "first_played": "2026-10-09",
+      "last_played": "2026-10-09",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
       "id": "3DGYzs0A7bBNCZLm9psXrA",
       "events": 1,
       "listened_min": 4.485,
@@ -437,6 +887,15 @@
       "last_played": "2026-04-27",
       "start_reasons": "trackdone: 1",
       "end_reasons": "logout: 1"
+    },
+    {
+      "id": "3EmO0S1lmVfIWNycXyjidS",
+      "events": 1,
+      "listened_min": 5.272,
+      "first_played": "2026-10-20",
+      "last_played": "2026-10-20",
+      "start_reasons": "clickrow: 1",
+      "end_reasons": "trackdone: 1"
     },
     {
       "id": "3IIuzyE9GKeocOuday8Nz3",
@@ -457,13 +916,67 @@
       "end_reasons": "endplay: 1"
     },
     {
+      "id": "3Kj4i902k0J4V7768udcQU",
+      "events": 1,
+      "listened_min": 1.15,
+      "first_played": "2026-10-08",
+      "last_played": "2026-10-08",
+      "start_reasons": "clickrow: 1",
+      "end_reasons": "logout: 1"
+    },
+    {
       "id": "3KkqvPnABJpOglsoH9vJst",
-      "events": 6,
-      "listened_min": 14.748,
+      "events": 10,
+      "listened_min": 36.203,
       "first_played": "2025-10-06",
-      "last_played": "2025-10-15",
-      "start_reasons": "appload: 2; trackdone: 4",
-      "end_reasons": "endplay: 3; logout: 2; remote: 1"
+      "last_played": "2026-10-19",
+      "start_reasons": "appload: 3; remote: 1; trackdone: 6",
+      "end_reasons": "endplay: 4; logout: 3; remote: 2; trackdone: 1"
+    },
+    {
+      "id": "3Rfe1eUzEoXIMSEJIGHl20",
+      "events": 1,
+      "listened_min": 8.701,
+      "first_played": "2026-09-27",
+      "last_played": "2026-09-27",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "3X729JgXcbPBaH0CjXlnlu",
+      "events": 2,
+      "listened_min": 17.307,
+      "first_played": "2026-10-09",
+      "last_played": "2026-10-09",
+      "start_reasons": "appload: 1; clickrow: 1",
+      "end_reasons": "logout: 1; trackdone: 1"
+    },
+    {
+      "id": "3ajV0bzTJ0JkkVgudBzC2x",
+      "events": 1,
+      "listened_min": 14.719,
+      "first_played": "2026-10-01",
+      "last_played": "2026-10-01",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "3b8LdN5yHKpBH9XAEc64JE",
+      "events": 1,
+      "listened_min": 5.218,
+      "first_played": "2026-10-18",
+      "last_played": "2026-10-18",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "3kWkWUpP24WXbrus9g9Vtf",
+      "events": 2,
+      "listened_min": 4.647,
+      "first_played": "2026-10-03",
+      "last_played": "2026-10-03",
+      "start_reasons": "appload: 1; trackdone: 1",
+      "end_reasons": "logout: 1; trackdone: 1"
     },
     {
       "id": "3kfQCOMDYdc2hPHBxgUADI",
@@ -476,12 +989,21 @@
     },
     {
       "id": "3lSEZSBg6tAitbbr3rj1Lz",
-      "events": 4,
-      "listened_min": 0.189,
+      "events": 8,
+      "listened_min": 24.604,
       "first_played": "2025-08-28",
-      "last_played": "2025-09-25",
-      "start_reasons": "backbtn: 1; clickrow: 1; fwdbtn: 1; trackdone: 1",
-      "end_reasons": "backbtn: 1; fwdbtn: 2; logout: 1"
+      "last_played": "2026-10-12",
+      "start_reasons": "appload: 1; backbtn: 1; clickrow: 1; fwdbtn: 1; remote: 1; trackdone: 2; trackerror: 1",
+      "end_reasons": "backbtn: 1; endplay: 1; fwdbtn: 2; logout: 2; remote: 1; unexpected-exit-while-paused: 1"
+    },
+    {
+      "id": "3mrQXIKr7NRFozGPFog3zp",
+      "events": 2,
+      "listened_min": 13.386,
+      "first_played": "2026-10-01",
+      "last_played": "2026-10-01",
+      "start_reasons": "clickrow: 1; trackdone: 1",
+      "end_reasons": "fwdbtn: 1; trackdone: 1"
     },
     {
       "id": "3oReLxwmpMs9RW2NnNSLZ0",
@@ -493,22 +1015,76 @@
       "end_reasons": "backbtn: 1"
     },
     {
-      "id": "3y30zEjPYgDxTf4gNyv8Xa",
+      "id": "3qfIEESGe4sUEGeZIA4jGf",
       "events": 1,
-      "listened_min": 10.648,
-      "first_played": "2025-08-02",
-      "last_played": "2025-08-02",
+      "listened_min": 9.499,
+      "first_played": "2026-10-21",
+      "last_played": "2026-10-21",
+      "start_reasons": "clickrow: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "3rTGq4dvSVZxRKCdQQ81KU",
+      "events": 1,
+      "listened_min": 5.272,
+      "first_played": "2026-10-04",
+      "last_played": "2026-10-04",
       "start_reasons": "trackdone: 1",
-      "end_reasons": "logout: 1"
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "3uIWQcyYeKRoI6tyLh3QxX",
+      "events": 2,
+      "listened_min": 27.134,
+      "first_played": "2026-10-02",
+      "last_played": "2026-10-03",
+      "start_reasons": "appload: 1; trackdone: 1",
+      "end_reasons": "logout: 1; trackdone: 1"
+    },
+    {
+      "id": "3v54PjprZGpUs7mJXeiaFd",
+      "events": 1,
+      "listened_min": 38.669,
+      "first_played": "2026-10-03",
+      "last_played": "2026-10-03",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "3wdkPIzlrzqpJ19OmYeKfL",
+      "events": 1,
+      "listened_min": 3.78,
+      "first_played": "2026-10-17",
+      "last_played": "2026-10-17",
+      "start_reasons": "clickrow: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "3y30zEjPYgDxTf4gNyv8Xa",
+      "events": 3,
+      "listened_min": 26.419,
+      "first_played": "2025-08-02",
+      "last_played": "2026-09-27",
+      "start_reasons": "playbtn: 1; trackdone: 2",
+      "end_reasons": "logout: 1; trackdone: 1; unexpected-exit-while-paused: 1"
     },
     {
       "id": "3ycfGF3az8ceQbVoSEc1ou",
-      "events": 1,
-      "listened_min": 8.093,
+      "events": 2,
+      "listened_min": 20.284,
       "first_played": "2025-08-01",
-      "last_played": "2025-08-01",
-      "start_reasons": "trackdone: 1",
-      "end_reasons": "endplay: 1"
+      "last_played": "2026-09-27",
+      "start_reasons": "trackdone: 2",
+      "end_reasons": "endplay: 1; trackdone: 1"
+    },
+    {
+      "id": "41xRyeD4xhMoWZZzjWZXl4",
+      "events": 2,
+      "listened_min": 4.868,
+      "first_played": "2026-10-21",
+      "last_played": "2026-10-21",
+      "start_reasons": "appload: 1; trackdone: 1",
+      "end_reasons": "logout: 1; trackdone: 1"
     },
     {
       "id": "42krVXxVR2EC9U5wVsbhvp",
@@ -520,6 +1096,24 @@
       "end_reasons": "endplay: 2; logout: 1"
     },
     {
+      "id": "46YRG5MFsvGVjsDr0UrEg2",
+      "events": 1,
+      "listened_min": 5.423,
+      "first_played": "2026-10-03",
+      "last_played": "2026-10-03",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "478bjDVYoiEd2QC6ofdvxO",
+      "events": 1,
+      "listened_min": 8.37,
+      "first_played": "2026-10-16",
+      "last_played": "2026-10-16",
+      "start_reasons": "clickrow: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
       "id": "483hV68f4cX0Bn0B4zQ4WN",
       "events": 2,
       "listened_min": 1.407,
@@ -529,13 +1123,40 @@
       "end_reasons": "endplay: 2"
     },
     {
-      "id": "4McfG2iosQpwLYzzhQEH9n",
+      "id": "4ETnDszosKxJlOFsKvChRc",
       "events": 1,
-      "listened_min": 3.42,
-      "first_played": "2025-08-20",
-      "last_played": "2025-08-20",
+      "listened_min": 24.5,
+      "first_played": "2026-10-16",
+      "last_played": "2026-10-16",
       "start_reasons": "trackdone: 1",
-      "end_reasons": "endplay: 1"
+      "end_reasons": "unexpected-exit: 1"
+    },
+    {
+      "id": "4McfG2iosQpwLYzzhQEH9n",
+      "events": 2,
+      "listened_min": 9.966,
+      "first_played": "2025-08-20",
+      "last_played": "2026-10-10",
+      "start_reasons": "trackdone: 2",
+      "end_reasons": "endplay: 1; trackdone: 1"
+    },
+    {
+      "id": "4Ou15NgwqpumFw3pU9mJnz",
+      "events": 1,
+      "listened_min": 14.615,
+      "first_played": "2026-10-03",
+      "last_played": "2026-10-03",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "4PFYKIprDgKphmiXlIw4Bq",
+      "events": 1,
+      "listened_min": 6.732,
+      "first_played": "2026-10-12",
+      "last_played": "2026-10-12",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
     },
     {
       "id": "4TDjAZFn2w8WiyiY1AehFN",
@@ -545,6 +1166,24 @@
       "last_played": "2025-12-10",
       "start_reasons": "trackdone: 1",
       "end_reasons": "endplay: 1"
+    },
+    {
+      "id": "4ZKVmQ1ZrmiRWFUUra51pS",
+      "events": 2,
+      "listened_min": 5.041,
+      "first_played": "2026-10-21",
+      "last_played": "2026-10-21",
+      "start_reasons": "trackdone: 2",
+      "end_reasons": "endplay: 1; trackdone: 1"
+    },
+    {
+      "id": "4hke454roOQLspGxV8OMuf",
+      "events": 3,
+      "listened_min": 3.492,
+      "first_played": "2026-10-19",
+      "last_played": "2026-10-19",
+      "start_reasons": "appload: 1; remote: 1; trackdone: 1",
+      "end_reasons": "logout: 1; remote: 1; unexpected-exit-while-paused: 1"
     },
     {
       "id": "4ihRLkytBTl2g8UeRlrK1j",
@@ -566,12 +1205,12 @@
     },
     {
       "id": "4kqYId9AvEL3SVpUPaDYNo",
-      "events": 2,
-      "listened_min": 0.783,
+      "events": 3,
+      "listened_min": 27.815,
       "first_played": "2025-08-14",
-      "last_played": "2025-08-14",
-      "start_reasons": "appload: 1; trackdone: 1",
-      "end_reasons": "logout: 2"
+      "last_played": "2026-09-27",
+      "start_reasons": "appload: 1; trackdone: 2",
+      "end_reasons": "logout: 2; trackdone: 1"
     },
     {
       "id": "4lzODuk4xfqRZjzFC92UfB",
@@ -593,12 +1232,12 @@
     },
     {
       "id": "4pOxnLI1VGeakydCydS9Hk",
-      "events": 1,
-      "listened_min": 0.001,
+      "events": 3,
+      "listened_min": 5.196,
       "first_played": "2025-11-11",
-      "last_played": "2025-11-11",
-      "start_reasons": "clickrow: 1",
-      "end_reasons": "endplay: 1"
+      "last_played": "2026-10-10",
+      "start_reasons": "appload: 1; clickrow: 2",
+      "end_reasons": "endplay: 1; logout: 1; trackdone: 1"
     },
     {
       "id": "4pRI7Vw4t1xTBpi0EC30yL",
@@ -608,6 +1247,24 @@
       "last_played": "2025-12-01",
       "start_reasons": "backbtn: 1; trackdone: 1",
       "end_reasons": "backbtn: 1; endplay: 1"
+    },
+    {
+      "id": "4slSNVnZ2rbGzg9nSTKW0n",
+      "events": 1,
+      "listened_min": 24.708,
+      "first_played": "2026-10-03",
+      "last_played": "2026-10-03",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "4uv9rJnQMq4hergAm4q0IE",
+      "events": 1,
+      "listened_min": 5.447,
+      "first_played": "2026-10-10",
+      "last_played": "2026-10-10",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
     },
     {
       "id": "4yQPm6fQzv1hI7NegK5FW4",
@@ -637,6 +1294,15 @@
       "end_reasons": "logout: 1"
     },
     {
+      "id": "520Mwnv4tKnleb6f1ezIz4",
+      "events": 2,
+      "listened_min": 26.518,
+      "first_played": "2026-10-01",
+      "last_played": "2026-10-01",
+      "start_reasons": "appload: 1; trackdone: 1",
+      "end_reasons": "logout: 1; trackdone: 1"
+    },
+    {
       "id": "53oq4iscAyVYWpVdNxly0M",
       "events": 7,
       "listened_min": 2.536,
@@ -647,12 +1313,21 @@
     },
     {
       "id": "5ETQ44o8JUy3rSAJMd1yD2",
-      "events": 2,
-      "listened_min": 20.414,
+      "events": 3,
+      "listened_min": 38.099,
       "first_played": "2025-10-01",
-      "last_played": "2025-10-02",
-      "start_reasons": "trackdone: 2",
-      "end_reasons": "endplay: 1; logout: 1"
+      "last_played": "2026-10-16",
+      "start_reasons": "trackdone: 3",
+      "end_reasons": "endplay: 1; logout: 1; trackdone: 1"
+    },
+    {
+      "id": "5IdMsluj9uBR0Zkaa6fk16",
+      "events": 1,
+      "listened_min": 7.043,
+      "first_played": "2026-10-13",
+      "last_played": "2026-10-13",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
     },
     {
       "id": "5LJvsiaBKS3tqASCnMgQ2E",
@@ -665,12 +1340,21 @@
     },
     {
       "id": "5XB1cuXEjaXoMBM3Tt6vmc",
-      "events": 2,
-      "listened_min": 0.801,
+      "events": 3,
+      "listened_min": 2.594,
       "first_played": "2025-10-14",
-      "last_played": "2025-10-14",
-      "start_reasons": "appload: 1; trackdone: 1",
-      "end_reasons": "endplay: 1; logout: 1"
+      "last_played": "2026-10-19",
+      "start_reasons": "appload: 1; trackdone: 2",
+      "end_reasons": "endplay: 2; logout: 1"
+    },
+    {
+      "id": "5Ys6vDADNU1pcQ9AziVey7",
+      "events": 3,
+      "listened_min": 11.318,
+      "first_played": "2026-10-21",
+      "last_played": "2026-10-21",
+      "start_reasons": "appload: 2; trackdone: 1",
+      "end_reasons": "endplay: 1; logout: 1; unexpected-exit-while-paused: 1"
     },
     {
       "id": "5aOa5twzTlM8JnFGjNUDof",
@@ -682,22 +1366,40 @@
       "end_reasons": "logout: 1"
     },
     {
+      "id": "5biteiO28utY9BPXrOkqft",
+      "events": 3,
+      "listened_min": 5.327,
+      "first_played": "2026-10-01",
+      "last_played": "2026-10-03",
+      "start_reasons": "clickrow: 1; trackdone: 2",
+      "end_reasons": "fwdbtn: 1; logout: 1; trackdone: 1"
+    },
+    {
       "id": "5hNkffEYZfWKVrQbO6Evl0",
-      "events": 1,
-      "listened_min": 0.017,
+      "events": 3,
+      "listened_min": 9.229,
       "first_played": "2025-12-01",
-      "last_played": "2025-12-01",
-      "start_reasons": "backbtn: 1",
-      "end_reasons": "backbtn: 1"
+      "last_played": "2026-10-10",
+      "start_reasons": "appload: 1; backbtn: 1; clickrow: 1",
+      "end_reasons": "backbtn: 1; endplay: 1; unexpected-exit-while-paused: 1"
+    },
+    {
+      "id": "5hxak2aQXJyS6Co1IPEEdK",
+      "events": 2,
+      "listened_min": 2.856,
+      "first_played": "2026-10-20",
+      "last_played": "2026-10-20",
+      "start_reasons": "clickrow: 1; remote: 1",
+      "end_reasons": "logout: 1; remote: 1"
     },
     {
       "id": "5lIxvwua0OPkclJpixUU6M",
-      "events": 1,
-      "listened_min": 0.451,
+      "events": 2,
+      "listened_min": 5.617,
       "first_played": "2026-09-23",
-      "last_played": "2026-09-23",
-      "start_reasons": "trackdone: 1",
-      "end_reasons": "endplay: 1"
+      "last_played": "2026-10-03",
+      "start_reasons": "clickrow: 1; trackdone: 1",
+      "end_reasons": "endplay: 1; trackdone: 1"
     },
     {
       "id": "5lisjqVtMahVzDx9TLdzbO",
@@ -709,6 +1411,15 @@
       "end_reasons": "endplay: 1; logout: 1"
     },
     {
+      "id": "5nvbNmE8NYeb0hLvHztV7b",
+      "events": 1,
+      "listened_min": 28.404,
+      "first_played": "2026-10-12",
+      "last_played": "2026-10-12",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
       "id": "5pgrh1DiABUBr1Ck25HRVW",
       "events": 2,
       "listened_min": 7.575,
@@ -716,6 +1427,42 @@
       "last_played": "2026-01-04",
       "start_reasons": "appload: 1; fwdbtn: 1",
       "end_reasons": "logout: 1; remote: 1"
+    },
+    {
+      "id": "5qNwEQ1lrfiEGj2QbFVxuN",
+      "events": 4,
+      "listened_min": 19.264,
+      "first_played": "2026-10-11",
+      "last_played": "2026-10-12",
+      "start_reasons": "clickrow: 1; playbtn: 1; remote: 1; trackdone: 1",
+      "end_reasons": "fwdbtn: 1; remote: 1; trackdone: 1; unexpected-exit-while-paused: 1"
+    },
+    {
+      "id": "60sO6KjEJS6X8o3s8dkDIc",
+      "events": 3,
+      "listened_min": 4.58,
+      "first_played": "2026-10-10",
+      "last_played": "2026-10-11",
+      "start_reasons": "appload: 1; playbtn: 1; trackdone: 1",
+      "end_reasons": "endplay: 1; logout: 1; trackdone: 1"
+    },
+    {
+      "id": "62r1BJ1cswC4lXfRFdkKQD",
+      "events": 1,
+      "listened_min": 16.024,
+      "first_played": "2026-10-17",
+      "last_played": "2026-10-17",
+      "start_reasons": "clickrow: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "64WT0PMF1a91EdMH7TSylX",
+      "events": 1,
+      "listened_min": 0.007,
+      "first_played": "2026-10-12",
+      "last_played": "2026-10-12",
+      "start_reasons": "playbtn: 1",
+      "end_reasons": "endplay: 1"
     },
     {
       "id": "64tCyvTUrzipEo1GKqfzk9",
@@ -746,12 +1493,12 @@
     },
     {
       "id": "6DfjcYPXD5UWj771CQxRyA",
-      "events": 1,
-      "listened_min": 0.009,
+      "events": 4,
+      "listened_min": 5.728,
       "first_played": "2025-09-04",
-      "last_played": "2025-09-04",
-      "start_reasons": "fwdbtn: 1",
-      "end_reasons": "fwdbtn: 1"
+      "last_played": "2026-10-14",
+      "start_reasons": "appload: 1; fwdbtn: 1; trackdone: 2",
+      "end_reasons": "fwdbtn: 1; logout: 2; trackdone: 1"
     },
     {
       "id": "6FtTVYSLJRI0wf5WZ7CS7c",
@@ -761,6 +1508,15 @@
       "last_played": "2025-12-01",
       "start_reasons": "backbtn: 1",
       "end_reasons": "backbtn: 1"
+    },
+    {
+      "id": "6G6fixdl8xZopXjXSzsYIk",
+      "events": 2,
+      "listened_min": 2.767,
+      "first_played": "2026-10-13",
+      "last_played": "2026-10-14",
+      "start_reasons": "fwdbtn: 1; trackdone: 1",
+      "end_reasons": "logout: 1; trackdone: 1"
     },
     {
       "id": "6I5QP9Hx9TN0n5Mo747wtk",
@@ -781,6 +1537,15 @@
       "end_reasons": "backbtn: 1"
     },
     {
+      "id": "6MXKX54MsZSoRIFVplMyB7",
+      "events": 1,
+      "listened_min": 5.086,
+      "first_played": "2026-10-19",
+      "last_played": "2026-10-19",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
       "id": "6TxhXCXoDJIjGq15nfvMBW",
       "events": 5,
       "listened_min": 23.8,
@@ -788,6 +1553,33 @@
       "last_played": "2026-05-03",
       "start_reasons": "appload: 2; clickrow: 1; trackdone: 2",
       "end_reasons": "endplay: 2; logout: 3"
+    },
+    {
+      "id": "6XLIy4ynSzkXPWboglaRm9",
+      "events": 1,
+      "listened_min": 12.66,
+      "first_played": "2026-10-19",
+      "last_played": "2026-10-19",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "6amlUjxvGMW2nImItwrRso",
+      "events": 3,
+      "listened_min": 33.34,
+      "first_played": "2026-10-12",
+      "last_played": "2026-10-12",
+      "start_reasons": "appload: 1; trackdone: 2",
+      "end_reasons": "endplay: 1; trackdone: 1; unexpected-exit-while-paused: 1"
+    },
+    {
+      "id": "6fsTBhy5dMgpAWfpymtIJh",
+      "events": 1,
+      "listened_min": 0.494,
+      "first_played": "2026-10-03",
+      "last_played": "2026-10-03",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "endplay: 1"
     },
     {
       "id": "6g2faBe4toLJbpCPqJ8I0y",
@@ -808,6 +1600,24 @@
       "end_reasons": "endplay: 2"
     },
     {
+      "id": "6l46ECv65j7G3OJl13JVYs",
+      "events": 4,
+      "listened_min": 6.528,
+      "first_played": "2026-10-11",
+      "last_played": "2026-10-11",
+      "start_reasons": "appload: 3; trackdone: 1",
+      "end_reasons": "logout: 2; trackdone: 1; unexpected-exit: 1"
+    },
+    {
+      "id": "6lmxlh2SjjXdSo4OeFbDfH",
+      "events": 1,
+      "listened_min": 4.887,
+      "first_played": "2026-10-12",
+      "last_played": "2026-10-12",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
       "id": "6lw3E4FBIw1J08kAYaTXJk",
       "events": 2,
       "listened_min": 3.445,
@@ -817,13 +1627,22 @@
       "end_reasons": "endplay: 1; logout: 1"
     },
     {
+      "id": "6mEqygurXk3wUHXBGPLJmn",
+      "events": 1,
+      "listened_min": 3.331,
+      "first_played": "2026-10-18",
+      "last_played": "2026-10-18",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
       "id": "6qa01VPOcWjahDdq6dxDzp",
-      "events": 4,
-      "listened_min": 23.81,
+      "events": 6,
+      "listened_min": 31.822,
       "first_played": "2025-09-26",
-      "last_played": "2026-04-29",
-      "start_reasons": "appload: 1; clickrow: 1; trackdone: 2",
-      "end_reasons": "endplay: 2; logout: 2"
+      "last_played": "2026-10-13",
+      "start_reasons": "appload: 2; clickrow: 2; trackdone: 2",
+      "end_reasons": "endplay: 2; logout: 3; trackdone: 1"
     },
     {
       "id": "6rQXfWgJ6K4Df1wXS8IrGu",
@@ -853,13 +1672,31 @@
       "end_reasons": "endplay: 1"
     },
     {
-      "id": "74nS8ZsJ5MwP6RpAx5fAMX",
+      "id": "73LjKJqgWhZ1jdkrRAwmpd",
       "events": 1,
-      "listened_min": 0.224,
+      "listened_min": 29.85,
+      "first_played": "2026-10-03",
+      "last_played": "2026-10-03",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "74Oo9I4LmvEwQ4i7rmX9OM",
+      "events": 1,
+      "listened_min": 8.459,
+      "first_played": "2026-10-17",
+      "last_played": "2026-10-17",
+      "start_reasons": "clickrow: 1",
+      "end_reasons": "logout: 1"
+    },
+    {
+      "id": "74nS8ZsJ5MwP6RpAx5fAMX",
+      "events": 2,
+      "listened_min": 5.485,
       "first_played": "2025-08-23",
-      "last_played": "2025-08-23",
-      "start_reasons": "fwdbtn: 1",
-      "end_reasons": "endplay: 1"
+      "last_played": "2026-10-12",
+      "start_reasons": "fwdbtn: 1; trackdone: 1",
+      "end_reasons": "endplay: 1; trackdone: 1"
     },
     {
       "id": "77YfrAtCQHA81oBHjWbCRA",
@@ -872,30 +1709,30 @@
     },
     {
       "id": "78MBrBY535ywCSAF7a2YgO",
-      "events": 2,
-      "listened_min": 18.912,
+      "events": 3,
+      "listened_min": 20.215,
       "first_played": "2025-09-29",
-      "last_played": "2025-09-30",
-      "start_reasons": "appload: 1; playbtn: 1",
-      "end_reasons": "endplay: 1; logout: 1"
+      "last_played": "2026-10-14",
+      "start_reasons": "appload: 1; playbtn: 1; trackdone: 1",
+      "end_reasons": "endplay: 1; logout: 1; trackdone: 1"
     },
     {
       "id": "78YXvnYYJj4OL5C1ieYhkD",
-      "events": 1,
-      "listened_min": 0.316,
+      "events": 3,
+      "listened_min": 6.689,
       "first_played": "2025-09-27",
-      "last_played": "2025-09-27",
-      "start_reasons": "trackdone: 1",
-      "end_reasons": "fwdbtn: 1"
+      "last_played": "2026-10-13",
+      "start_reasons": "appload: 1; trackdone: 2",
+      "end_reasons": "fwdbtn: 1; logout: 1; trackdone: 1"
     },
     {
       "id": "7E9bFOjsY2z7v1WFG0jvli",
-      "events": 1,
-      "listened_min": 0.117,
+      "events": 2,
+      "listened_min": 5.774,
       "first_played": "2025-08-21",
-      "last_played": "2025-08-21",
-      "start_reasons": "trackdone: 1",
-      "end_reasons": "endplay: 1"
+      "last_played": "2026-10-12",
+      "start_reasons": "trackdone: 2",
+      "end_reasons": "endplay: 1; trackdone: 1"
     },
     {
       "id": "7FkIqyuu7oz4MkA04Pzi7h",
@@ -907,6 +1744,15 @@
       "end_reasons": "logout: 2"
     },
     {
+      "id": "7ICGaHK73FDOTM3dj06Jkk",
+      "events": 1,
+      "listened_min": 5.592,
+      "first_played": "2026-10-03",
+      "last_played": "2026-10-03",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
       "id": "7IrILWb7mPNpkUFiTg6Hqi",
       "events": 1,
       "listened_min": 0.049,
@@ -916,13 +1762,49 @@
       "end_reasons": "endplay: 1"
     },
     {
-      "id": "7kaLqerXtf5ZpDq8SFXphy",
+      "id": "7J7g5dLgJbtUic6f4yCb9Z",
+      "events": 1,
+      "listened_min": 17.295,
+      "first_played": "2026-09-27",
+      "last_played": "2026-09-27",
+      "start_reasons": "trackdone: 1",
+      "end_reasons": "trackdone: 1"
+    },
+    {
+      "id": "7aDLid6vrQ5h70tMaYNHVu",
       "events": 5,
-      "listened_min": 14.476,
+      "listened_min": 14.527,
+      "first_played": "2026-10-04",
+      "last_played": "2026-10-10",
+      "start_reasons": "appload: 2; clickrow: 1; playbtn: 1; trackdone: 1",
+      "end_reasons": "endplay: 2; logout: 3"
+    },
+    {
+      "id": "7kMvv9LQbgOofoxObYpBuJ",
+      "events": 10,
+      "listened_min": 32.613,
+      "first_played": "2026-10-19",
+      "last_played": "2026-10-21",
+      "start_reasons": "appload: 3; clickrow: 2; playbtn: 4; trackdone: 1",
+      "end_reasons": "endplay: 5; logout: 2; trackdone: 1; unexpected-exit-while-paused: 2"
+    },
+    {
+      "id": "7kaLqerXtf5ZpDq8SFXphy",
+      "events": 7,
+      "listened_min": 41.52,
       "first_played": "2025-10-16",
-      "last_played": "2025-10-19",
-      "start_reasons": "appload: 1; clickrow: 1; playbtn: 1; trackdone: 2",
-      "end_reasons": "endplay: 3; logout: 2"
+      "last_played": "2026-10-21",
+      "start_reasons": "appload: 1; clickrow: 1; playbtn: 1; trackdone: 4",
+      "end_reasons": "endplay: 4; logout: 2; trackdone: 1"
+    },
+    {
+      "id": "7lflLFeD29WDTt2xEUDBhW",
+      "events": 1,
+      "listened_min": 6.242,
+      "first_played": "2026-10-21",
+      "last_played": "2026-10-21",
+      "start_reasons": "clickrow: 1",
+      "end_reasons": "trackdone: 1"
     },
     {
       "id": "7n5TcsEhZujjglm8QNtEN3",
@@ -932,6 +1814,15 @@
       "last_played": "2026-05-02",
       "start_reasons": "trackdone: 1",
       "end_reasons": "endplay: 1"
+    },
+    {
+      "id": "7pVtMwL0hKrS3McEepuGEV",
+      "events": 1,
+      "listened_min": 28.344,
+      "first_played": "2026-10-09",
+      "last_played": "2026-10-09",
+      "start_reasons": "fwdbtn: 1",
+      "end_reasons": "trackdone: 1"
     }
   ]
 }
