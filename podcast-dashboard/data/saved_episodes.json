@@ -3,11 +3,11 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 423,
+    "n_episodes": 425,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-10-23",
-    "api_saved_count": 210,
-    "n_removed": 164,
+    "api_refreshed_at": "2026-10-24",
+    "api_saved_count": 199,
+    "n_removed": 162,
     "n_unavailable": 26
   },
   "episodes": [
@@ -334,7 +334,8 @@
       "name": "This episode is haunted and spooky",
       "show": "Unexplainable",
       "url": "https://open.spotify.com/episode/6ywpAUcAhXpj1jVHrCfNwn",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "78MBrBY535ywCSAF7a2YgO",
@@ -477,7 +478,8 @@
       "name": "Are China and India BFFs now?",
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/0KOrdBClRlfW1B6hsZmiFi",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "0dzVQQxAWm5SZwYPpys6ta",
@@ -620,7 +622,7 @@
       "release": "2026-01-09",
       "url": "https://open.spotify.com/episode/0E4WljN00FdCRXJL764iYM",
       "desc": "Karissa Tang is a 17-year-old in California who got curious about the impact of AI on typical teen jobs like cashiers and fast food counter workers. She embarked on an ambitious economic research project and shares her findings with us.Related episodes: How much is AI actually affecting the workforce?AI creates, transforms and destroys... jobsWhen does youth employment become child labor?For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "removed_at": "2026-10-23"
+      "api_seen": true
     },
     {
       "added_at": "2026-09-23",
@@ -738,7 +740,8 @@
       "name": "The new language of AI tech workers",
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/13JAUYbX0DLbG9G10VjejQ",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2026-01-13",
@@ -774,7 +777,8 @@
       "name": "651. The Ultimate Dance Partner",
       "show": "Freakonomics Radio",
       "url": "https://open.spotify.com/episode/5pgrh1DiABUBr1Ck25HRVW",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2025-08-06",
@@ -933,7 +937,7 @@
       "removed_at": "2026-10-23"
     },
     {
-      "added_at": null,
+      "added_at": "2025-11-27",
       "dur_min": 52,
       "release": "2025-11-27",
       "publisher": null,
@@ -941,7 +945,8 @@
       "id": "64tCyvTUrzipEo1GKqfzk9",
       "name": "Julia Child, la Grandes Gourmande",
       "show": "Stuff You Should Know",
-      "url": "https://open.spotify.com/episode/64tCyvTUrzipEo1GKqfzk9"
+      "url": "https://open.spotify.com/episode/64tCyvTUrzipEo1GKqfzk9",
+      "api_seen": true
     },
     {
       "id": "5LJvsiaBKS3tqASCnMgQ2E",
@@ -1037,7 +1042,8 @@
       "name": "Selects: How Extinction Works",
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/1T46cHrJ8RhCQUn8mMRUbv",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2025-11-08",
@@ -1204,7 +1210,8 @@
       "release": "2025-12-09",
       "url": "https://open.spotify.com/episode/4gCTCyRyzqVWu8WtVjtbg8",
       "desc": "If we told you that World War III was in danger of happening over the trimming of a tree would you believe us? This was Operation Paul Bunyan.See omnystudio.com/listener for privacy information.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "469GjkkOV8OqHH5SKhOzSK",
@@ -2080,7 +2087,8 @@
       "name": "Trump Forces a Playdate with Xi Jinping & MTG Makes Too Much Sense for Desi Lydic | Justine Lupe",
       "show": "The Daily Show: Ears Edition",
       "url": "https://open.spotify.com/episode/7sxMhBCPOmHbYjlZjWhMue",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2026-01-16",
@@ -2177,7 +2185,8 @@
       "name": "TDS Time Machine | Halloween",
       "show": "The Daily Show: Ears Edition",
       "url": "https://open.spotify.com/episode/6OkEv4U7ON0VGfeAGJV0XE",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2025-08-08",
@@ -2237,8 +2246,8 @@
       "dur_min": 43,
       "release": "2026-02-03",
       "url": "https://open.spotify.com/episode/5e8UyaC0otA6xRlLtO8iE1",
-      "desc": "Trump declares himself \"absolved\" by the latest release of Epstein files, while Elon Musk’s Christmas wish for a trip to the sex island is put on blast, and Jon Stewart finds himself on Epstein’s list… for documentary voiceovers. Plus, as MAGA continues to shield the president from all accountability, Jon Stewart shines a light on the double standard of sanctuary given to Trump vs. immigrants.  Historian and Pulitzer Prize-winning author Heather Ann Thompson sits down with Jon Stewart to discuss her new book, “Fear and Fury: The Reagan Eighties, the Bernie Goetz Shootings, and the Rebirth of White Rage.” They talk about how big a figure Bernie Goetz was in 1980s New York, hailed as a \"vigilante\" for shooting four young Black men on a subway train despite the attack being unprovoked, the story’s parallels to ICE shooting protesters in Minneapolis, the costs of violence, and how these types of injustices paved the way for Donald Trump.  Go to https://quince.com/dailyshow for free shipping on your order and 365-day returns. Now available in Canada, too.  Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "removed_at": "2026-10-23"
+      "desc": "Trump declares himself \"absolved\" by the latest release of Epstein files, while Elon Musk’s Christmas wish for a trip to the sex island is put on blast, and Jon Stewart finds himself on Epstein’s list… for documentary voiceovers. Plus, as MAGA continues to shield the president from all accountability, Jon Stewart shines a light on the double standard of sanctuary given to Trump vs. immigrants. Historian and Pulitzer Prize-winning author Heather Ann Thompson sits down with Jon Stewart to discuss her new book, “Fear and Fury: The Reagan Eighties, the Bernie Goetz Shootings, and the Rebirth of White Rage.” They talk about how big a figure Bernie Goetz was in 1980s New York, hailed as a \"vigilante\" for shooting four young Black men on a subway train despite the attack being unprovoked, the story’s parallels to ICE shooting protesters in Minneapolis, the costs of violence, and how these types of injustices paved the way for Donald Trump. Go to https://quince.com/dailyshow for free shipping on your order and 365-day returns. Now available in Canada, too.  Learn more about your ad choices. Visit podcastchoices.com/adchoices",
+      "api_seen": true
     },
     {
       "added_at": null,
@@ -2273,7 +2282,8 @@
       "name": "The Precap | Jordan Klepper on \"Don't Believe Your Eyes\" Week",
       "show": "The Daily Show: Ears Edition",
       "url": "https://open.spotify.com/episode/4fLIxaEy41v1lTumbGivyR",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2025-11-24",
@@ -2492,7 +2502,8 @@
       "name": "The Precap | Desi Lydic on White House Construction Grift and Business Casual Rebels",
       "show": "The Daily Show: Ears Edition",
       "url": "https://open.spotify.com/episode/4JnoWFKowECX0HUazqEK0R",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": null,
@@ -2562,7 +2573,8 @@
       "release": "2026-09-18",
       "url": "https://open.spotify.com/episode/53oq4iscAyVYWpVdNxly0M",
       "desc": "Mayor Zohran Mamdani is expanding NYC’s public restrooms, which is good because the war in Iran is once again going to s**t. Michael Kosta breaks down how the war continues to drive up prices, including the price of diesel (the fuel, not the jeans brand). Plus, move over, Strait of Hormuz: a hot, new, geopolitically tense strait has entered the villa. Ronny Chieng and Michael Kosta butt heads over the biggest sports stories of the day: NY Giants quarterback Jameis Winston goes on a cologne-spritzing spree in the locker room, Sydney Sweeney takes heat for her naked Novig sports betting ad, and an Australian athlete becomes the Usain Bolt of sharting, in the latest edition of Sports War. Defector Media staff writer & cofounder and bestselling author, Giri Nathan, sits down with Michael Kosta to discuss his book “Changeover: A Young Rivalry and a New Era of Men's Tennis,\" about the rise and rivalry of pro tennis players Carlos Alcaraz and Jannik Sinner. The two tennis superfans review this year’s U.S. Open, discussing Honey Deuce towers, influencer drama, and both the men’s and women’s finals. Plus, how the USTA can grow tennis fandom while preserving the sport’s spectacle and tradition. -- Dose - New customers can save 35% on your first month of subscription by going to https://dosedaily.co/TDS or entering TDS at checkout. -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "030DFJeiBXbcTRnEPsOdqi",
@@ -2949,7 +2961,8 @@
       "name": "A school cellphone ban study, white collar jobs wither, and spooky candy prices",
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/1FoASRxJQa6Xkq1RfCUrMp",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "04urdKT3WkpGPs7Fg0CQj1",
@@ -3105,7 +3118,8 @@
       "name": "Bill Nye Takeover",
       "show": "StarTalk with Neil deGrasse Tyson",
       "url": "https://open.spotify.com/episode/6TxhXCXoDJIjGq15nfvMBW",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2025-08-08",
@@ -3225,7 +3239,8 @@
       "name": "What Loneliness Does To Your Brain with Ben Rein",
       "show": "StarTalk with Neil deGrasse Tyson",
       "url": "https://open.spotify.com/episode/6893EFBF7gqG8sVmfDrgj6",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "4k8Is3Z4IiJ77ySPe9lUte",
@@ -3799,7 +3814,8 @@
       "name": "After the shutdown, SNAP will still be in trouble",
       "show": "Planet Money",
       "url": "https://open.spotify.com/episode/3pdLrMmWLHxHmBWoIqGrCR",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2026-09-23",
@@ -4991,7 +5007,8 @@
       "release": "2026-07-30",
       "url": "https://open.spotify.com/episode/4xPL6pFBm3r8ZbAV91gdbm",
       "desc": "This week on the pod, Seth and Josh are back for the monthly listener episode! They hear from one listener whose family was unexpectedly surrounded by horseback riders on a remote road in Mexico, another whose dad’s camping constipation led to an unforgettable bag-of-prunes disaster on the Buffalo River, and a couple who accidentally attended a funeral in a tiny Swiss church after mistaking it for a local cultural event. Plus, Seth and Josh reminisce about old family jingles and share a few of their own camping stories along the way. Watch this episode on the Family Trips YouTube or Spotify, or listen wherever you get your podcasts!  Want to submit your family trips story for our next listener episode? Or send a question in to Seth and Josh? Submit your voicemail to speakpipe.com/familytripspod!  Watch more Family Trips episodes: https://www.youtube.com/playlist?list=PLlqYOfxU_jQem4_NRJPM8_wLBrEEQ17B6  ------------------------- 00:00 Introduction with Seth Meyers and Josh Meyers 01:17 Jimmy Kimmel - Josh's Gavin Newsom And Hit Improv 07:05 Swim Across America Disaster 15:04 Boat Camp And Life Jacket Punishment 21:52 Susan Mexico Road Trip 23:07 Horse Ambush 24:22 Not Kidnapped After All 30:34 Becky Canoe Trip Chaos 40:15 Swiss Funeral Crash Finale  ------------------------- Support our sponsors: Quince Make your summer wardrobe easier. Go to https://quince.com/trips for free shipping on your order and 365-day returns. Now available in Canada, too.   Fitbod Get 25% off your subscription or try the app FREE for seven days at Fitbod.me/TRIP.  CashApp Download Cash App Today: https://capl.onelink.me/vFut/4aafc4yf #CashAppPod  Cash App is a financial services platform, not a bank. Banking services provided by Cash App's bank partner(s). Prepaid debit cards issued by Sutton Bank, Member FDIC. Cash App Visa® Debit Flex Cards issued by Sutton Bank, Member FDIC, and The Bancorp Bank, N.A., pursuant to a license from Visa U.S.A. Inc. See terms and conditions for the Sutton prepaid card at cash.app/legal/us/en-us/card-agreement, for the Sutton debit flex card at cash.app/legal/us/en-us/debit-flex-card-agreement-sutton and for the Bancorp debit flex card at cash.app/legal/us/en-us/debit-flex-card-agreement-bancorp. Savings and Offers provided by Cash App, a Block Inc. brand. Offers may not be affiliated with third party merchants. Parents and legal guardians can open a managed account for kids 6-12.  Cash App will pass through a portion of the interest paid on your savings balance held in an account for the benefit of Cash App customers at Wells Fargo Bank, N.A., Member FDIC. To earn interest on your Cash App savings balance, you need to have sponsor approval. Exceptions may apply. Savings yield rate is subject to change. Visit cash.app/legal/podcast for full disclosures.  ------------------------- Family Trips is produced by Rabbit Grin Productions. Theme song written and performed by Jeff Tweedy.  ------------------------- About the Show: Lifelong brothers Seth Meyers and Josh Meyers ask guests to relive childhood memories, unforgettable family trips, and other disasters!   New Episodes of Family Trips with the Meyers Brothers are available every Tuesday.  ------------------------- Executive Producers: Rob Holysz, Jeph Porter, Natalie Holysz Creative Producer: Sam Skelton Coordinating Producer: Derek Johnson Video Editor: Josh Windisch Mix & Master: Josh Windisch Episode Artwork: Analise Jorgensen  #familytrips #sethmeyers #joshmeyers Learn more about your ad choices. Visit megaphone.fm/adchoices",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "5FJACZ2zRU5MehyCZStZoy",
@@ -5087,6 +5104,30 @@
       "release": "2026-10-23",
       "url": "https://open.spotify.com/episode/7eolgw8M7uAPNQHa0urtqV",
       "desc": "For years, police have spent billions of tax dollars on watching us, tracking us, and recording us. In the largest police department in the country, these surveillance systems were paid for and adopted without the kind of public oversight cities usually require. In the wake of 9/11, the New York Police Department built one of the most sophisticated and omnipresent surveillance systems in the country. And while decisions were being made about what tech to adopt and how much to pay for it, few outside the NYPD were consulted. Not the City Council nor the public. For over a decade, the only paper trail of these purchases were offline, stored in filing cabinets, inaccessible to the public. Today on the show, how the country’s largest police department built its surveillance system, and the fight to get police everywhere to tell us how they’re watching us. Read: Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life Our weekly longform Planet Money newsletterOur weekly Indicator round-up newsletterFollow: InstagramTikTokYouTubeFacebookSupport public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.This episode was produced by Vito Emanuel and edited by Marianne McCune. It was fact-checked by Sierra Juarez and engineered by Cena Loffredo. Alex Goldmark is our executive producer.Music: NPR Source Audio - \"Funky Space Mama,\" \"Sunday Lights,\" and \"Blammo\"See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
+      "api_seen": true
+    },
+    {
+      "id": "7Ekqyh2K1pqsaB6lXhDNJW",
+      "added_at": "2026-10-24",
+      "show": "Stuff You Should Know",
+      "publisher": null,
+      "name": "Selects: John Lennon and the FBI",
+      "dur_min": 43,
+      "release": "2026-10-24",
+      "url": "https://open.spotify.com/episode/7Ekqyh2K1pqsaB6lXhDNJW",
+      "desc": "Did you know that Richard Nixon had a FBI case file open on Beatle John Lennon? Well he did! Why? Listen to this classic episode to find out.See omnystudio.com/listener for privacy information.",
+      "api_seen": true
+    },
+    {
+      "id": "68iR8LB2GvyuQ0AQoGGMAL",
+      "added_at": "2026-10-24",
+      "show": "The Daily Show: Ears Edition",
+      "publisher": null,
+      "name": "This Week's News | Jon Stewart on French Riots, Kosta on Midterm Meltdowns & Ronny on Vance's New Laugh",
+      "dur_min": 42,
+      "release": "2026-10-24",
+      "url": "https://open.spotify.com/episode/68iR8LB2GvyuQ0AQoGGMAL",
+      "desc": "Catch up on the latest headlines with The Daily Show News Team. Jon Stewart examines the riots in Paris, Trump's ass-kissing diesel deal with Russia, and Ukraine's sudden trouble accessing Elon Musk's Starlink service. Michael Kosta checks in on the midterm candidates, including Vivek Ramaswamy's ad recruiting his opponent's estranged mother, Jaime West's seemingly s**t-faced interview, and President Trump's admiration of Jon Husted's butt. Ronny Chieng covers JD Vance's creepy new laugh and Trump canceling a livestream of the Fort Hood shooter's execution. Plus, Ronny handles more midterm updates, including deep-red states getting a little less red, Trump professing his love for Tim Scott, and Susan Collins attacking Troy Jackson's family tree. -- To get simple, online access to personalized, affordable care for ED, Hair Loss, Weight Loss, and more, visit https://Hims.com/dailyshow  -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true
     }
   ]
