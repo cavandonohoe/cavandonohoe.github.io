@@ -5,9 +5,9 @@
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
     "n_episodes": 425,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-10-24",
-    "api_saved_count": 199,
-    "n_removed": 162,
+    "api_refreshed_at": "2026-10-25",
+    "api_saved_count": 198,
+    "n_removed": 178,
     "n_unavailable": 26
   },
   "episodes": [
@@ -335,7 +335,7 @@
       "show": "Unexplainable",
       "url": "https://open.spotify.com/episode/6ywpAUcAhXpj1jVHrCfNwn",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-25"
     },
     {
       "id": "78MBrBY535ywCSAF7a2YgO",
@@ -479,7 +479,7 @@
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/0KOrdBClRlfW1B6hsZmiFi",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-25"
     },
     {
       "id": "0dzVQQxAWm5SZwYPpys6ta",
@@ -741,7 +741,7 @@
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/13JAUYbX0DLbG9G10VjejQ",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-25"
     },
     {
       "added_at": "2026-01-13",
@@ -778,7 +778,7 @@
       "show": "Freakonomics Radio",
       "url": "https://open.spotify.com/episode/5pgrh1DiABUBr1Ck25HRVW",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-25"
     },
     {
       "added_at": "2025-08-06",
@@ -1043,7 +1043,7 @@
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/1T46cHrJ8RhCQUn8mMRUbv",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-25"
     },
     {
       "added_at": "2025-11-08",
@@ -1211,7 +1211,7 @@
       "url": "https://open.spotify.com/episode/4gCTCyRyzqVWu8WtVjtbg8",
       "desc": "If we told you that World War III was in danger of happening over the trimming of a tree would you believe us? This was Operation Paul Bunyan.See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-25"
     },
     {
       "id": "469GjkkOV8OqHH5SKhOzSK",
@@ -2088,7 +2088,7 @@
       "show": "The Daily Show: Ears Edition",
       "url": "https://open.spotify.com/episode/7sxMhBCPOmHbYjlZjWhMue",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-25"
     },
     {
       "added_at": "2026-01-16",
@@ -2186,7 +2186,7 @@
       "show": "The Daily Show: Ears Edition",
       "url": "https://open.spotify.com/episode/6OkEv4U7ON0VGfeAGJV0XE",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-25"
     },
     {
       "added_at": "2025-08-08",
@@ -2283,7 +2283,7 @@
       "show": "The Daily Show: Ears Edition",
       "url": "https://open.spotify.com/episode/4fLIxaEy41v1lTumbGivyR",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-25"
     },
     {
       "added_at": "2025-11-24",
@@ -2503,7 +2503,7 @@
       "show": "The Daily Show: Ears Edition",
       "url": "https://open.spotify.com/episode/4JnoWFKowECX0HUazqEK0R",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-25"
     },
     {
       "added_at": null,
@@ -2574,7 +2574,7 @@
       "url": "https://open.spotify.com/episode/53oq4iscAyVYWpVdNxly0M",
       "desc": "Mayor Zohran Mamdani is expanding NYC’s public restrooms, which is good because the war in Iran is once again going to s**t. Michael Kosta breaks down how the war continues to drive up prices, including the price of diesel (the fuel, not the jeans brand). Plus, move over, Strait of Hormuz: a hot, new, geopolitically tense strait has entered the villa. Ronny Chieng and Michael Kosta butt heads over the biggest sports stories of the day: NY Giants quarterback Jameis Winston goes on a cologne-spritzing spree in the locker room, Sydney Sweeney takes heat for her naked Novig sports betting ad, and an Australian athlete becomes the Usain Bolt of sharting, in the latest edition of Sports War. Defector Media staff writer & cofounder and bestselling author, Giri Nathan, sits down with Michael Kosta to discuss his book “Changeover: A Young Rivalry and a New Era of Men's Tennis,\" about the rise and rivalry of pro tennis players Carlos Alcaraz and Jannik Sinner. The two tennis superfans review this year’s U.S. Open, discussing Honey Deuce towers, influencer drama, and both the men’s and women’s finals. Plus, how the USTA can grow tennis fandom while preserving the sport’s spectacle and tradition. -- Dose - New customers can save 35% on your first month of subscription by going to https://dosedaily.co/TDS or entering TDS at checkout. -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-25"
     },
     {
       "id": "030DFJeiBXbcTRnEPsOdqi",
@@ -2962,7 +2962,7 @@
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/1FoASRxJQa6Xkq1RfCUrMp",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-25"
     },
     {
       "id": "04urdKT3WkpGPs7Fg0CQj1",
@@ -3119,7 +3119,7 @@
       "show": "StarTalk with Neil deGrasse Tyson",
       "url": "https://open.spotify.com/episode/6TxhXCXoDJIjGq15nfvMBW",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-25"
     },
     {
       "added_at": "2025-08-08",
@@ -3240,7 +3240,7 @@
       "show": "StarTalk with Neil deGrasse Tyson",
       "url": "https://open.spotify.com/episode/6893EFBF7gqG8sVmfDrgj6",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-25"
     },
     {
       "id": "4k8Is3Z4IiJ77ySPe9lUte",
@@ -3778,7 +3778,8 @@
       "name": "The Sound Barrier #1: The myth of hearing",
       "show": "Unexplainable",
       "url": "https://open.spotify.com/episode/7n5TcsEhZujjglm8QNtEN3",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2025-11-06",
@@ -3815,7 +3816,7 @@
       "show": "Planet Money",
       "url": "https://open.spotify.com/episode/3pdLrMmWLHxHmBWoIqGrCR",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-25"
     },
     {
       "added_at": "2026-09-23",
@@ -5008,7 +5009,7 @@
       "url": "https://open.spotify.com/episode/4xPL6pFBm3r8ZbAV91gdbm",
       "desc": "This week on the pod, Seth and Josh are back for the monthly listener episode! They hear from one listener whose family was unexpectedly surrounded by horseback riders on a remote road in Mexico, another whose dad’s camping constipation led to an unforgettable bag-of-prunes disaster on the Buffalo River, and a couple who accidentally attended a funeral in a tiny Swiss church after mistaking it for a local cultural event. Plus, Seth and Josh reminisce about old family jingles and share a few of their own camping stories along the way. Watch this episode on the Family Trips YouTube or Spotify, or listen wherever you get your podcasts!  Want to submit your family trips story for our next listener episode? Or send a question in to Seth and Josh? Submit your voicemail to speakpipe.com/familytripspod!  Watch more Family Trips episodes: https://www.youtube.com/playlist?list=PLlqYOfxU_jQem4_NRJPM8_wLBrEEQ17B6  ------------------------- 00:00 Introduction with Seth Meyers and Josh Meyers 01:17 Jimmy Kimmel - Josh's Gavin Newsom And Hit Improv 07:05 Swim Across America Disaster 15:04 Boat Camp And Life Jacket Punishment 21:52 Susan Mexico Road Trip 23:07 Horse Ambush 24:22 Not Kidnapped After All 30:34 Becky Canoe Trip Chaos 40:15 Swiss Funeral Crash Finale  ------------------------- Support our sponsors: Quince Make your summer wardrobe easier. Go to https://quince.com/trips for free shipping on your order and 365-day returns. Now available in Canada, too.   Fitbod Get 25% off your subscription or try the app FREE for seven days at Fitbod.me/TRIP.  CashApp Download Cash App Today: https://capl.onelink.me/vFut/4aafc4yf #CashAppPod  Cash App is a financial services platform, not a bank. Banking services provided by Cash App's bank partner(s). Prepaid debit cards issued by Sutton Bank, Member FDIC. Cash App Visa® Debit Flex Cards issued by Sutton Bank, Member FDIC, and The Bancorp Bank, N.A., pursuant to a license from Visa U.S.A. Inc. See terms and conditions for the Sutton prepaid card at cash.app/legal/us/en-us/card-agreement, for the Sutton debit flex card at cash.app/legal/us/en-us/debit-flex-card-agreement-sutton and for the Bancorp debit flex card at cash.app/legal/us/en-us/debit-flex-card-agreement-bancorp. Savings and Offers provided by Cash App, a Block Inc. brand. Offers may not be affiliated with third party merchants. Parents and legal guardians can open a managed account for kids 6-12.  Cash App will pass through a portion of the interest paid on your savings balance held in an account for the benefit of Cash App customers at Wells Fargo Bank, N.A., Member FDIC. To earn interest on your Cash App savings balance, you need to have sponsor approval. Exceptions may apply. Savings yield rate is subject to change. Visit cash.app/legal/podcast for full disclosures.  ------------------------- Family Trips is produced by Rabbit Grin Productions. Theme song written and performed by Jeff Tweedy.  ------------------------- About the Show: Lifelong brothers Seth Meyers and Josh Meyers ask guests to relive childhood memories, unforgettable family trips, and other disasters!   New Episodes of Family Trips with the Meyers Brothers are available every Tuesday.  ------------------------- Executive Producers: Rob Holysz, Jeph Porter, Natalie Holysz Creative Producer: Sam Skelton Coordinating Producer: Derek Johnson Video Editor: Josh Windisch Mix & Master: Josh Windisch Episode Artwork: Analise Jorgensen  #familytrips #sethmeyers #joshmeyers Learn more about your ad choices. Visit megaphone.fm/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-25"
     },
     {
       "id": "5FJACZ2zRU5MehyCZStZoy",
