@@ -1,6 +1,30 @@
 {
-  "generated_at": "2026-10-24T18:56:32.092778+00:00",
+  "generated_at": "2026-10-26T21:09:38.220976+00:00",
   "events": [
+    {
+      "date": "2026-10-26",
+      "type": "merged_pr",
+      "title": "deps: bump the npm-minor-patch group in /movie-ranker with 4 updates",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/314"
+    },
+    {
+      "date": "2026-10-26",
+      "type": "merged_pr",
+      "title": "Make long navbar dropdowns scrollable",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/313"
+    },
+    {
+      "date": "2026-10-26",
+      "type": "merged_pr",
+      "title": "Bump fast-uri from 3.1.8 to 3.1.9 in /tools/tohs-apps-script",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/315"
+    },
+    {
+      "date": "2026-10-26",
+      "type": "merged_pr",
+      "title": "Advance podcast completion cutoff to November 5, 2025",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/311"
+    },
     {
       "date": "2026-10-23",
       "type": "merged_pr",
@@ -664,6 +688,25 @@
   ],
   "daily_summaries": [
     {
+      "date": "2026-10-26",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "4 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/20c58dc59bcc53afe0635cd07db016eb7d1009f6"
+        },
+        {
+          "emoji": "\ud83d\udcbb",
+          "text": "4 PRs merged"
+        },
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "Podcast + Spotify experience improved",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/311"
+        }
+      ]
+    },
+    {
       "date": "2026-10-24",
       "items": [
         {
@@ -868,25 +911,6 @@
           "emoji": "\ud83c\udfa7",
           "text": "Podcast + Spotify experience improved",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/248"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-11",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "1 podcast episode added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/21a161869fedb5d4e95be62511828d6b03a0a35a"
-        },
-        {
-          "emoji": "\ud83d\udcbb",
-          "text": "5 PRs merged"
-        },
-        {
-          "emoji": "\u2699\ufe0f",
-          "text": "Developer activity + site automation expanded",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/229"
         }
       ]
     }
