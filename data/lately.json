@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-24T19:02:10.497163+00:00",
+  "generated_at": "2026-10-26T21:12:45.580720+00:00",
   "window_days": 30,
-  "commits": 99,
+  "commits": 102,
   "excludes_bot_commits": true,
   "active_areas": [
     {
@@ -22,7 +22,7 @@
     },
     {
       "name": "podcast-dashboard",
-      "file_touches": 32
+      "file_touches": 33
     }
   ]
 }
