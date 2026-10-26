@@ -2,8 +2,8 @@
   "projects": [
     {
       "project": "_archive",
-      "tracked_files": 15,
-      "commits_touching_project": 9,
+      "tracked_files": 16,
+      "commits_touching_project": 10,
       "top_extensions": [
         [
           ".rmd",
@@ -162,7 +162,7 @@
     {
       "project": "images",
       "tracked_files": 20,
-      "commits_touching_project": 118,
+      "commits_touching_project": 119,
       "top_extensions": [
         [
           ".jpg",
