@@ -88,6 +88,27 @@ body {
 }
 .dark-mode-toggle:hover { color: #fff; }
 
+/* Long navbar menus: the navbar is fixed, so a dropdown taller than the
+   viewport can't be reached by scrolling the page. Let it scroll itself. */
+@media (min-width: 768px) {
+  .navbar-fixed-top .dropdown-menu {
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+/* Collapsed (mobile) menu: Bootstrap caps it at 340px; use the full screen. */
+@media (max-width: 767px) {
+  .navbar-fixed-top .navbar-collapse {
+    max-height: calc(100vh - 50px);
+    max-height: calc(100dvh - 50px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 /* Live homepage activity */
 .live-activity-panel {
   background: var(--card-bg);
