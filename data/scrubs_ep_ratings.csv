@@ -1,11 +1,11 @@
 season,episode,title,rating,votes,episode_year
-1,1,My First Day,8.3,3171,2001
-1,2,My Mentor,8,2469,2001
-1,3,My Best Friend's Mistake,7.8,2323,2001
-1,4,My Old Lady,9.1,3460,2001
-1,5,My Two Dads,8.1,2116,2001
-1,6,My Bad,8.1,2088,2001
-1,7,My Super Ego,7.9,2001,2001
+1,1,My First Day,8.3,3175,2001
+1,2,My Mentor,8,2472,2001
+1,3,My Best Friend's Mistake,7.8,2326,2001
+1,4,My Old Lady,9.1,3462,2001
+1,5,My Two Dads,8.1,2119,2001
+1,6,My Bad,8.1,2091,2001
+1,7,My Super Ego,7.9,2003,2001
 1,8,My Fifteen Minutes,8,1982,2001
 1,9,My Day Off,8,1915,2001
 1,10,My Nickname,8,1942,2001
@@ -23,30 +23,30 @@ season,episode,title,rating,votes,episode_year
 1,22,My Occurrence,9,2354,2002
 1,23,My Hero,8.7,1942,2002
 1,24,My Last Day,8.7,1803,2002
-2,1,My Overkill,8.5,1933,2002
-2,2,My Nightingale,7.8,1577,2002
-2,3,My Case Study,7.9,1523,2002
-2,4,My Big Mouth,7.7,1510,2002
+2,1,My Overkill,8.5,1934,2002
+2,2,My Nightingale,7.8,1578,2002
+2,3,My Case Study,7.9,1524,2002
+2,4,My Big Mouth,7.7,1511,2002
 2,5,My New Coat,7.8,1495,2002
 2,6,My Big Brother,7.8,1521,2002
-2,7,My First Step,7.9,1493,2002
-2,8,My Fruit Cups,8.1,1527,2002
-2,9,My Lucky Day,8,1502,2002
-2,10,My Monster,8,1516,2002
+2,7,My First Step,7.9,1492,2002
+2,8,My Fruit Cups,8.1,1526,2002
+2,9,My Lucky Day,8,1501,2002
+2,10,My Monster,8,1515,2002
 2,11,My Sex Buddy,8.1,1484,2003
 2,12,My New Old Friend,8,1462,2003
 2,13,My Philosophy,8.5,1735,2003
 2,14,"My Brother, My Keeper",7.8,1464,2003
 2,15,His Story,8.6,1622,2003
-2,16,My Karma,8,1425,2003
-2,17,My Own Private Practice Guy,7.9,1417,2003
-2,18,My T.C.W.,8.5,1602,2003
-2,19,My Kingdom,7.8,1385,2003
-2,20,My Interpretation,8.2,1453,2003
-2,21,My Drama Queen,7.9,1381,2003
-2,22,My Dream Job,8.5,1546,2003
+2,16,My Karma,8,1424,2003
+2,17,My Own Private Practice Guy,7.9,1416,2003
+2,18,My T.C.W.,8.5,1601,2003
+2,19,My Kingdom,7.8,1384,2003
+2,20,My Interpretation,8.2,1452,2003
+2,21,My Drama Queen,7.9,1380,2003
+2,22,My Dream Job,8.5,1545,2003
 3,1,My Own American Girl,8,1433,2003
-3,2,My Journey,7.8,1405,2003
+3,2,My Journey,7.8,1406,2003
 3,3,My White Whale,7.8,1399,2003
 3,4,My Lucky Night,8,1371,2003
 3,5,"My Brother, Where Art Thou?",8.1,1394,2003
@@ -56,18 +56,18 @@ season,episode,title,rating,votes,episode_year
 3,9,My Dirty Secret,7.8,1326,2003
 3,10,My Rule of Thumb,7.7,1313,2004
 3,11,My Clean Break,7.8,1311,2004
-3,12,My Catalyst,8.9,1836,2004
+3,12,My Catalyst,8.9,1837,2004
 3,13,My Porcelain God,8.6,1572,2004
-3,14,My Screwup,9.7,6852,2004
+3,14,My Screwup,9.7,6854,2004
 3,15,My Tormented Mentor,8,1388,2004
 3,16,My Butterfly,8.7,1639,2004
 3,17,My Moment of Un-Truth,7.8,1291,2004
 3,18,His Story II,7.9,1305,2004
-3,19,My Choosiest Choice of All,8,1355,2004
-3,20,My Fault,8.2,1309,2004
-3,21,My Self-Examination,8.1,1316,2004
-3,22,My Best Friend's Wedding,8.4,1407,2004
-4,1,My Old Friend's New Friend,8.4,1340,2004
+3,19,My Choosiest Choice of All,8,1356,2004
+3,20,My Fault,8.2,1311,2004
+3,21,My Self-Examination,8.1,1317,2004
+3,22,My Best Friend's Wedding,8.4,1408,2004
+4,1,My Old Friend's New Friend,8.4,1341,2004
 4,2,My Office,8.1,1267,2004
 4,3,My New Game,8,1254,2004
 4,4,My First Kill,8,1264,2004
@@ -83,26 +83,26 @@ season,episode,title,rating,votes,episode_year
 4,14,My Lucky Charm,8.2,1482,2005
 4,15,My Hypocritical Oath,8,1210,2005
 4,16,My Quarantine,8,1239,2005
-4,17,My Life in Four Cameras,8.3,1475,2005
-4,18,My Roommates,8.1,1215,2005
+4,17,My Life in Four Cameras,8.3,1476,2005
+4,18,My Roommates,8.1,1216,2005
 4,19,My Best Laid Plans,8.4,1340,2005
-4,20,My Boss's Free Haircut,8.3,1258,2005
-4,21,My Lips Are Sealed,8,1165,2005
-4,22,My Big Move,8.1,1183,2005
-4,23,My Faith in Humanity,7.8,1187,2005
-4,24,My Drive By,7.8,1167,2005
-4,25,My Changing Ways,8,1167,2005
-5,1,My Intern's Eyes,7.9,1255,2006
+4,20,My Boss's Free Haircut,8.3,1259,2005
+4,21,My Lips Are Sealed,8,1166,2005
+4,22,My Big Move,8.1,1184,2005
+4,23,My Faith in Humanity,7.8,1189,2005
+4,24,My Drive By,7.8,1168,2005
+4,25,My Changing Ways,8,1168,2005
+5,1,My Intern's Eyes,7.9,1256,2006
 5,2,My Rite of Passage,7.7,1178,2006
 5,3,My Day at the Races,8.1,1293,2006
 5,4,My Jiggly Ball,8.4,1326,2006
 5,5,My New God,7.8,1272,2006
 5,6,My Missed Perception,7.8,1186,2006
-5,7,My Way Home,9.1,2273,2006
-5,8,My Big Bird,8.2,1282,2006
+5,7,My Way Home,9.1,2274,2006
+5,8,My Big Bird,8.2,1283,2006
 5,9,My Half-Acre,8.6,1495,2006
 5,10,Her Story II,8.2,1280,2006
-5,11,My Buddy's Booty,7.8,1152,2006
+5,11,My Buddy's Booty,7.8,1153,2006
 5,12,My Cabbage,8.2,1249,2006
 5,13,My Five Stages,8.4,1301,2006
 5,14,My Own Personal Hell,7.9,1139,2006
@@ -111,23 +111,23 @@ season,episode,title,rating,votes,episode_year
 5,17,My Chopped Liver,8,1177,2006
 5,18,My New Suit,7.7,1165,2006
 5,19,His Story III,8.5,1352,2006
-5,20,My Lunch,9.6,4630,2006
-5,21,My Fallen Idol,9.2,2077,2006
+5,20,My Lunch,9.6,4639,2006
+5,21,My Fallen Idol,9.2,2078,2006
 5,22,"My Déjà Vu, My Déjà Vu",7.8,1214,2006
 5,23,My Urologist,8,1197,2006
 5,24,My Transition,8.3,1209,2006
 6,1,My Mirror Image,8,1270,2006
 6,2,My Best Friend's Baby's Baby and My Baby's Baby,8.1,1264,2006
 6,3,My Coffee,7.8,1167,2006
-6,4,My House,8.1,1231,2007
-6,5,My Friend with Money,7.6,1169,2007
-6,6,My Musical,8.9,3926,2007
-6,7,His Story IV,8.1,1338,2007
-6,8,My Road to Nowhere,8.4,1246,2007
-6,9,My Perspective,8,1144,2007
-6,10,My Therapeutic Month,7.8,1151,2007
-6,11,My Night to Remember,5.3,1710,2007
-6,12,My Fishbowl,7.8,1238,2007
+6,4,My House,8.1,1232,2007
+6,5,My Friend with Money,7.6,1170,2007
+6,6,My Musical,8.9,3927,2007
+6,7,His Story IV,8.1,1339,2007
+6,8,My Road to Nowhere,8.4,1247,2007
+6,9,My Perspective,8,1145,2007
+6,10,My Therapeutic Month,7.8,1152,2007
+6,11,My Night to Remember,5.3,1711,2007
+6,12,My Fishbowl,7.8,1239,2007
 6,13,My Scrubs,8.1,1194,2007
 6,14,My No Good Reason,8.7,1480,2007
 6,15,My Long Goodbye,9,1768,2007
@@ -148,26 +148,26 @@ season,episode,title,rating,votes,episode_year
 7,8,My Manhood,7.8,1072,2008
 7,9,My Dumb Luck,8.5,1265,2008
 7,10,My Waste of Time,7.8,1073,2008
-7,11,My Princess,8,1497,2008
-8,1,My Jerks,7.9,1329,2009
-8,2,My Last Words,9.3,2692,2009
-8,3,My Saving Grace,7.7,1122,2009
-8,4,My Happy Place,8,1177,2009
-8,5,My ABC's,8.1,1199,2009
-8,6,My Cookie Pants,8,1111,2009
-8,7,My New Role,7.8,1082,2009
-8,8,My Lawyer's in Love,8.3,1252,2009
-8,9,My Absence,7.5,1076,2009
-8,10,My Comedy Show,7.6,1062,2009
-8,11,My Nah Nah Nah,7.5,1073,2009
-8,12,Their Story II,7.5,1055,2009
-8,13,My Full Moon,7.7,1121,2009
-8,14,My Soul on Fire: Part 1,7.8,1135,2009
-8,15,My Soul on Fire: Part 2,8.2,1251,2009
-8,16,My Cuz,7.7,1047,2009
-8,17,My Chief Concern,8,1113,2009
-8,18,My Finale: Part 1,9.1,2264,2009
-8,19,My Finale: Part 2,9.7,6608,2009
+7,11,My Princess,8,1498,2008
+8,1,My Jerks,7.9,1330,2009
+8,2,My Last Words,9.3,2693,2009
+8,3,My Saving Grace,7.7,1124,2009
+8,4,My Happy Place,8,1179,2009
+8,5,My ABC's,8.1,1201,2009
+8,6,My Cookie Pants,8,1113,2009
+8,7,My New Role,7.8,1083,2009
+8,8,My Lawyer's in Love,8.3,1253,2009
+8,9,My Absence,7.5,1077,2009
+8,10,My Comedy Show,7.6,1063,2009
+8,11,My Nah Nah Nah,7.5,1074,2009
+8,12,Their Story II,7.5,1056,2009
+8,13,My Full Moon,7.7,1123,2009
+8,14,My Soul on Fire: Part 1,7.8,1136,2009
+8,15,My Soul on Fire: Part 2,8.2,1252,2009
+8,16,My Cuz,7.7,1049,2009
+8,17,My Chief Concern,8,1115,2009
+8,18,My Finale: Part 1,9.1,2266,2009
+8,19,My Finale: Part 2,9.7,6610,2009
 9,1,Our First Day of School,6.4,1247,2009
 9,2,Our Drunk Friend,6.4,1001,2009
 9,3,Our Role Models,6.4,939,2009

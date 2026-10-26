@@ -1,61 +1,61 @@
 season,episode,title,rating,votes,episode_year
-1,1,Wolferton Splash,8.2,7950,2016
-1,2,Hyde Park Corner,8.9,7967,2016
-1,3,Windsor,8.1,6266,2016
-1,4,Act of God,8.6,6452,2016
-1,5,Smoke and Mirrors,8.5,6054,2016
-1,6,Gelignite,8,5561,2016
-1,7,Scientia Potentia Est,8.7,5942,2016
-1,8,Pride & Joy,8.3,5482,2016
-1,9,Assassins,9,6771,2016
-1,10,Gloriana,8.5,5445,2016
-2,1,Misadventure,8.1,5079,2017
-2,2,A Company of Men,8.1,4913,2017
-2,3,Lisbon,8.3,4827,2017
-2,4,Beryl,8.5,5508,2017
-2,5,Marionettes,8.9,5533,2017
-2,6,Vergangenheit,9.1,6005,2017
-2,7,Matrimonium,8,4805,2017
-2,8,Dear Mrs. Kennedy,9.1,6333,2017
-2,9,Paterfamilias,8.7,5650,2017
-2,10,Mystery Man,8.3,4734,2017
-3,1,Olding,7.8,5607,2019
-3,2,Margaretology,8.4,5329,2019
-3,3,Aberfan,9.3,7998,2019
-3,4,Bubbikins,8.6,5574,2019
-3,5,Coup,8,4822,2019
-3,6,Tywysog Cymru,9.1,6661,2019
-3,7,Moondust,8.1,5501,2019
-3,8,Dangling Man,8.1,4523,2019
-3,9,Imbroglio,8,4179,2019
-3,10,Cri de Coeur,8.2,4388,2019
-4,1,Gold Stick,8.4,4966,2020
-4,2,The Balmoral Test,8.6,4921,2020
-4,3,Fairytale,8.7,4853,2020
-4,4,Favourites,8.2,4443,2020
-4,5,Fagan,8.5,4788,2020
-4,6,Terra Nullius,8.8,4822,2020
-4,7,The Hereditary Principle,8.2,4348,2020
-4,8,48:1,8.5,4237,2020
-4,9,Avalanche,8.2,3971,2020
-4,10,War,8.7,4357,2020
-5,1,Queen Victoria Syndrome,7.4,4236,2022
-5,2,The System,7.5,3648,2022
-5,3,Mou Mou,8.4,4604,2022
+1,1,Wolferton Splash,8.2,7957,2016
+1,2,Hyde Park Corner,8.9,7973,2016
+1,3,Windsor,8.1,6271,2016
+1,4,Act of God,8.6,6456,2016
+1,5,Smoke and Mirrors,8.5,6056,2016
+1,6,Gelignite,8,5564,2016
+1,7,Scientia Potentia Est,8.7,5947,2016
+1,8,Pride & Joy,8.3,5486,2016
+1,9,Assassins,9,6773,2016
+1,10,Gloriana,8.5,5446,2016
+2,1,Misadventure,8.1,5083,2017
+2,2,A Company of Men,8.1,4916,2017
+2,3,Lisbon,8.3,4829,2017
+2,4,Beryl,8.5,5511,2017
+2,5,Marionettes,8.9,5535,2017
+2,6,Vergangenheit,9.1,6009,2017
+2,7,Matrimonium,8,4808,2017
+2,8,Dear Mrs. Kennedy,9.1,6337,2017
+2,9,Paterfamilias,8.7,5656,2017
+2,10,Mystery Man,8.3,4738,2017
+3,1,Olding,7.8,5609,2019
+3,2,Margaretology,8.4,5333,2019
+3,3,Aberfan,9.3,8006,2019
+3,4,Bubbikins,8.6,5579,2019
+3,5,Coup,8,4827,2019
+3,6,Tywysog Cymru,9.1,6666,2019
+3,7,Moondust,8.1,5507,2019
+3,8,Dangling Man,8.1,4528,2019
+3,9,Imbroglio,8,4184,2019
+3,10,Cri de Coeur,8.2,4394,2019
+4,1,Gold Stick,8.4,4970,2020
+4,2,The Balmoral Test,8.6,4926,2020
+4,3,Fairytale,8.7,4857,2020
+4,4,Favourites,8.2,4445,2020
+4,5,Fagan,8.5,4792,2020
+4,6,Terra Nullius,8.8,4824,2020
+4,7,The Hereditary Principle,8.2,4350,2020
+4,8,48:1,8.5,4238,2020
+4,9,Avalanche,8.2,3972,2020
+4,10,War,8.7,4360,2020
+5,1,Queen Victoria Syndrome,7.4,4238,2022
+5,2,The System,7.5,3650,2022
+5,3,Mou Mou,8.4,4606,2022
 5,4,Annus Horribilis,7.9,3589,2022
-5,5,The Way Ahead,7.6,3349,2022
-5,6,Ipatiev House,7.9,3504,2022
-5,7,No Woman's Land,7.5,3120,2022
-5,8,Gunpowder,8.2,3280,2022
-5,9,Couple 31,7.8,3077,2022
-5,10,Decommissioned,7.3,3091,2022
-6,1,Persona Non Grata,7.8,3188,2023
-6,2,Two Photographs,7.8,2982,2023
-6,3,Dis-Moi Oui,8.1,3346,2023
-6,4,Aftermath,8.2,3568,2023
-6,5,Willsmania,7.6,2842,2023
-6,6,Ruritania,7.4,2671,2023
-6,7,Alma Mater,7.4,2639,2023
-6,8,Ritz,8.6,3546,2023
-6,9,Hope Street,8,2506,2023
-6,10,"Sleep, Dearie Sleep",9,4154,2023
+5,5,The Way Ahead,7.6,3352,2022
+5,6,Ipatiev House,7.9,3508,2022
+5,7,No Woman's Land,7.5,3121,2022
+5,8,Gunpowder,8.2,3282,2022
+5,9,Couple 31,7.8,3081,2022
+5,10,Decommissioned,7.3,3095,2022
+6,1,Persona Non Grata,7.8,3193,2023
+6,2,Two Photographs,7.8,2986,2023
+6,3,Dis-Moi Oui,8.1,3350,2023
+6,4,Aftermath,8.2,3574,2023
+6,5,Willsmania,7.6,2844,2023
+6,6,Ruritania,7.4,2673,2023
+6,7,Alma Mater,7.4,2640,2023
+6,8,Ritz,8.6,3549,2023
+6,9,Hope Street,8,2508,2023
+6,10,"Sleep, Dearie Sleep",9,4159,2023

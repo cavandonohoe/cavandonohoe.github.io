@@ -223,14 +223,14 @@ season,episode,title,rating,votes,episode_year
 5,42,Episode 37,6.4,19,2019
 5,43,Episode 38,6.1,18,2019
 5,44,Episode 39,6.2,18,2019
-5,45,Episode 40,6.3,17,2019
-5,46,Episode 41,6.3,17,2019
-5,47,Episode 42,6.3,17,2019
-5,48,Episode 43,6.3,17,2019
-5,49,Episode 44,7.6,26,2019
-5,50,Episode 45,6.4,18,2019
-5,51,Episode 46,6,16,2019
-5,52,Episode 47,6.3,17,2019
+5,45,Episode 40,6.3,18,2019
+5,46,Episode 41,6.2,18,2019
+5,47,Episode 42,6.3,18,2019
+5,48,Episode 43,6.2,18,2019
+5,49,Episode 44,7.6,27,2019
+5,50,Episode 45,6.4,19,2019
+5,51,Episode 46,6,17,2019
+5,52,Episode 47,6.3,18,2019
 5,53,Episode 48,6.2,17,2019
 5,54,The Final,6.5,19,2019
 6,1,Episode 1,6.4,51,2020
@@ -331,23 +331,23 @@ season,episode,title,rating,votes,episode_year
 7,55,Unseen Bits 8,3.7,16,2021
 7,56,Episode 48,5.8,22,2021
 7,57,Episode 49,4.3,26,2021
-8,1,Episode 1,5.2,47,2022
-8,2,Episode 2,5.3,31,2022
-8,3,Episode 3,5.4,29,2022
-8,4,Episode 4,5.8,32,2022
-8,5,Episode 5,5.6,28,2022
-8,6,Unseen Bits 1,5.7,12,2022
-8,7,Episode 7,5.7,17,2022
-8,8,Episode 8,5.7,17,2022
-8,9,Episode 9,5.6,18,2022
-8,10,Episode 10,5.7,17,2022
-8,11,Episode 11,5.7,18,2022
-8,12,Episode 12,5.6,18,2022
-8,13,Unseen Bits 2,6,13,2022
-8,14,Episode 14,5.4,16,2022
-8,15,Episode 15,5.2,13,2022
-8,16,Episode 16,5.4,16,2022
-8,17,Episode 17,5.5,16,2022
+8,1,Episode 1,5.2,48,2022
+8,2,Episode 2,5.4,32,2022
+8,3,Episode 3,5.5,30,2022
+8,4,Episode 4,5.8,33,2022
+8,5,Episode 5,5.6,29,2022
+8,6,Unseen Bits 1,5.8,13,2022
+8,7,Episode 7,5.8,18,2022
+8,8,Episode 8,5.8,18,2022
+8,9,Episode 9,5.6,19,2022
+8,10,Episode 10,5.8,18,2022
+8,11,Episode 11,5.8,19,2022
+8,12,Episode 12,5.7,19,2022
+8,13,Unseen Bits 2,6.1,14,2022
+8,14,Episode 14,5.5,17,2022
+8,15,Episode 15,5.3,14,2022
+8,16,Episode 16,5.5,17,2022
+8,17,Episode 17,5.6,17,2022
 8,18,Episode 18,5.6,17,2022
 8,19,Episode 19,5.4,16,2022
 8,21,Episode 21,5.5,16,2022
@@ -573,8 +573,8 @@ season,episode,title,rating,votes,episode_year
 13,5,Episode #13.5,6,22,2026
 13,6,Unseen Bits,5.6,12,2026
 13,7,Episode #13.7,6.4,23,2026
-13,8,Episode #13.8,6.5,23,2026
-13,9,Episode #13.9,6.5,23,2026
+13,8,Episode #13.8,6.4,24,2026
+13,9,Episode #13.9,6.5,24,2026
 13,10,Episode #13.10,6.2,20,2026
 13,11,Episode #13.11,6.2,22,2026
 13,12,Episode #13.12,6.2,20,2026
@@ -613,7 +613,7 @@ season,episode,title,rating,votes,episode_year
 13,47,Episode #13.47,6.6,9,2026
 13,49,Episode #13.49,6.8,9,2026
 13,50,Episode #13.50,6.7,9,2026
-13,51,Episode #13.51,7,7,2026
+13,51,Episode #13.51,6.9,8,2026
 13,52,Episode #13.52,5.8,8,2026
 13,53,Episode #13.53,6,7,2026
 13,54,Episode #13.54,6.1,8,2026
