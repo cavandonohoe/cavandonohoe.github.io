@@ -6,8 +6,8 @@
     "n_episodes": 429,
     "previous_only_count": 42,
     "api_refreshed_at": "2026-10-26",
-    "api_saved_count": 201,
-    "n_removed": 170,
+    "api_saved_count": 198,
+    "n_removed": 175,
     "n_unavailable": 26
   },
   "episodes": [
@@ -262,8 +262,7 @@
       "release": "2026-09-18",
       "url": "https://open.spotify.com/episode/6nlwch2PfK8pJCPyXT1KVw",
       "desc": "Throughout the history of the world, there have been many cases of what is known as collective hysteria - groups of people, usually young women, who all exhibit the same physical symptoms of non-existent conditions. Is it psychosomatic? Is it group think?See omnystudio.com/listener for privacy information.",
-      "api_seen": true,
-      "api_misses": 1
+      "api_seen": true
     },
     {
       "id": "0rpzmRqnyf9kQYHcfR5Cvp",
@@ -588,8 +587,7 @@
       "release": "2025-12-10",
       "url": "https://open.spotify.com/episode/7hmq5mlJsihREypjnZziwY",
       "desc": "If you want to make Bitcoin, you need powerful computers and a lot of energy. Well, it turns out the same infrastructure needed for Bitcoin mining is pretty valuable in the era of AI. Today on the show, why some miners are starting to throw in the towel on crypto in favor of supporting AI infrastructure. Related episodes: Whose financing Meta’s massive AI Data Center?This indicator hasn’t flashed this red since the dot-com bubbleFor sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true,
-      "api_misses": 1
+      "api_seen": true
     },
     {
       "id": "6xUGQvKaiHBdlNVxsRBvns",
@@ -912,7 +910,8 @@
       "release": "2026-01-10",
       "url": "https://open.spotify.com/episode/7JFvvt2UIjH7H0Mj51QU36",
       "desc": "For most of history, forgiveness fell under the domain of religion. But in the 1980s science started investigating it and found that forgiving someone is really, really good for you. Learn how anybody can be the better person in this classic, and really great, episode.See omnystudio.com/listener for privacy information.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "52obTxlv9Cp9rFOqzsI9AO",
@@ -1261,8 +1260,7 @@
       "release": "2026-09-18",
       "url": "https://open.spotify.com/episode/3tvnIB08U6tO1j3KXdsJJ3",
       "desc": "The famous blue people of Kentucky are no longer blue. But why were they like that in the first place?See omnystudio.com/listener for privacy information.",
-      "api_seen": true,
-      "api_misses": 1
+      "api_seen": true
     },
     {
       "id": "3wj8zYVR9Y5CATLInChYGW",
@@ -1740,8 +1738,7 @@
       "release": "2025-12-09",
       "url": "https://open.spotify.com/episode/4TDjAZFn2w8WiyiY1AehFN",
       "desc": "President Trump thinks he’s a better award show host than Jimmy Kimmel, FIFA awarded the president a totally made up peace prize, and Stephen wonders if there’s anything Trump can do that would alienate his MAGA base. Iconic actress Sigourney Weaver says she feels complete freedom when acting in front of a green screen under James Cameron’s direction in the special effects-heavy “Avatar” films. Watch “Avatar: Fire & Ash” in theaters December 19th.",
-      "api_seen": true,
-      "api_misses": 1
+      "api_seen": true
     },
     {
       "added_at": "2025-11-24",
@@ -1766,7 +1763,7 @@
       "url": "https://open.spotify.com/episode/0oAWTBiSQOK1BYfdnHz4ql",
       "desc": "Dragons are like mermaids in that they're not real. And that's about where the comparison ends. Learn all about dragons today.See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-26"
     },
     {
       "added_at": "2026-09-25",
@@ -2215,7 +2212,8 @@
       "release": "2026-02-05",
       "url": "https://open.spotify.com/episode/1WoclIDAaWNiqe5QhBukVs",
       "desc": "Michael Kosta dives into Trump’s recent moves to steer the country back on track, which include the release of lame new “America Is Back” hats, telling CNN’s Kaitlan Collins to get over the Epstein files and smile more, and continuing his D.C. makeover by building a massive arch across from the Lincoln Memorial. Plus, Grace Kuhlenschmidt shares further updates on the president’s construction rampage. The state that brought you President Ronald Reagan and Governor Arnold Schwarzenegger offers a thrilling new contender for the White House: Governor Gavin Newsom. From enduring humble nepo baby beginnings in San Francisco, to opening a winery backed by an oil tycoon, to casting himself as an all-caps-posting foil to President Trump, Newsom is ready to make his national debut as a 2028 presidential candidate. This is the Daily Showography of Gavin Newsom. Ms. Pat, comedian, actor, and co-creator of the hit BET+ series, \"The Ms. Pat Show,\" sits down with Michael Kosta to discuss the show's fifth season. They talk about fighting through network pulls for the chance to speak out about immigration, portraying a unique-yet-universal mother to viewers, preparing for a doomsday scenario in the current administration, and learning to believe in herself after being shot, abused, and incarcerated. Go to https://quince.com/dailyshow for free shipping on your order and 365-day returns. Now available in Canada, too.  Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2025-10-26",
@@ -2386,7 +2384,8 @@
       "release": "2025-11-28",
       "url": "https://open.spotify.com/episode/5hNkffEYZfWKVrQbO6Evl0",
       "desc": "Shake off the turkey coma and pick up your weapon of choice, it's America's favorite holiday free-for-all: Black Friday. Check out The Daily Show's coverage of the annual carnage.  Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2026-01-18",
@@ -2422,7 +2421,8 @@
       "release": "2026-01-10",
       "url": "https://open.spotify.com/episode/592Bl8VN3oWqZKwUNQGNpz",
       "desc": "As the U.S. takes apparent control of Venezuela, after capturing its head of state Nicolás Maduro, take a look back at how we got here with The Daily Show's coverage of Venezuelan political unrest through the years.  Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "0GAalOHgIHWZ7pT3sL8oA6",
@@ -2759,7 +2759,7 @@
       "show": "Twenty Thousand Hertz",
       "url": "https://open.spotify.com/episode/0CkhiXsRCmSzLEaGmn2n6A",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-26"
     },
     {
       "added_at": "2026-01-16",
@@ -2880,7 +2880,8 @@
       "release": "2026-02-05",
       "url": "https://open.spotify.com/episode/0vv4oFJ0Qv0ADHo4HMbnwk",
       "desc": "How did the U.S. become the Olympic powerhouse it is today? Cold War competition. The Soviet Union sponsored their athletes. But America wanted its athletes to pull themselves up by their bootstraps. It birthed an unexpected accelerator of Olympic development: College football. Stay with us now.On today’s show, how college football became an Olympic development engine. And how that engine might not be running as smoothly as it once did.Related episodes: Why the Olympics cost so muchYou can't spell Olympics without IPA huge EU-India deal, Heated Rivalry, and a hefty $200k to OlympiansWhy Host The Olympics?The monetization of college sportsFor sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "7eo0YVJX1Ft3vtzp3Fj0MG",
@@ -3172,7 +3173,7 @@
       "url": "https://open.spotify.com/episode/4doyhpDjuaKXMnC8FE3NA9",
       "desc": "What if our universe is the inside of a black hole… inside another black hole? Neil deGrasse Tyson and Paul Mecurio answer a grab bag of fan questions about black hole mergers, the misconception about gravity assists, and if there’s such a thing as laws of physics.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free.Thanks to our Patrons Beth, Rebecca Yoswein, Leigh, Desiree Doporto, Bao Le, Thomas Alvarez, Eric Venus, Max And Gaz, Angel, Rebecca Schatz, Micheal Booth, Bruce Walton Jr, Rhea Rosier, Blake Rottmann, Patrick Clark, Cap, Paul Porter, Matthew Walton, Tiffany Brown, Brenda Eaves, Nash Bosworth, Billy Smith, Mike, Frenchy (Michael French), Teddy Funk, Randall Napier, Mary Zoellner, Carl L. Blackwell, Boris Barberic, Dexter Blackman, Joel Barjon, Kev, Abhay Joshi, Catherine Mary Darensbourg, Dav W, Brian Loop, cryHAVOC884, Daniel Bernal, Brian Page, Brendon Dougherty, hello hello is this thing on, Randy, Mary, Max, lo-res file, \"CK\" with th maual curly quotes, Draszje, David Szacik, Jason Nowak, Charlie Waddell, Danielle Taylor, Guillermo Gonzales, Gary in SD, Ohana, Jesse Abelson, Alex Nijman, Thorigrim, Peter J. Kushar, Kerry Lamb, Lengua Franca, Pamela Diane Carls, Jon, L Moore, RobbaYaga, Vilius Kazakauskas, Bjorn Nelson, Bob Watson, Shawn, MadWarrior, Devin, Brady Tomberlin, Micheal McEvoy, Pat, Kevin B, Tyler, Blaine Willick, Matthew CRessman, Zac, Julius Chatterjee, and Rigel Lopez for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-26"
     },
     {
       "added_at": "2026-01-13",
@@ -3423,7 +3424,8 @@
       "release": "2025-11-28",
       "url": "https://open.spotify.com/episode/3oReLxwmpMs9RW2NnNSLZ0",
       "desc": "Are we making science fiction a reality? Is that a good thing? Neil deGrasse Tyson, Chuck Nice, & Gary O’Reilly and guest Adam Becker, science communicator and author of More Everything Forever, discuss sci-fi dreams, tech-bro promises, and the real science shaping our tomorrow.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free.Thanks to our Patrons Jeremiah Washington, Lawrence Burr, PAscal, Melissa Lange, Noah Naccarato, christian lopez, Matthew Thomas Dunn, thalian, Morten Leirkjaer, Jonathan Markey, Expo, Heather, Brandon G, S Gr, carwingo, Neil, Micheal Rogerson, Torgeir Sundet, Nina (aka HelloDaydream) Scott Polaske, Christopher Branch, Matthew Tarter, Jeff Dasteel, Matthew Light, Dj Stuffin, Virginia Walters, Pablo Rojo, Don T, Jacob Searcy, Jeffery Marraccini, Madam Power, Bartosz Jaworski, Jonathan Amir, Brandon D, Zdeněk Bučko, Mason, Benedikt Hopf, L4NK, Susan Baumgartner, Austin Browning, Kari Windham, How to Poe, Richard C, Margie Baker, SubTheGator, Harry W Peters Jr, Sean, Ravi Kapoor, Diego Sanz, Jeremy Malli, Walter Mashman, Arthur Cousland, Jordan Dck, Ryan Kroboth, Daniel Carroll, Bartlomiej Lepka, Christopher M, Starry Dust, Kingfisher9000, Pdub, Mat Cauthon, Leithor, Wesley Wright, MJ Ladiosa, Minty FreSH RandoMness, Gilberto Garza, Daryle Lockhart, Lyric Kite, Sasquatch, Carolyn Duvall, Heather Renn, DavidX, Mr. Thrasher, and Tracy Boomer for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2026-01-20",
@@ -3483,7 +3485,7 @@
       "show": "Unexplainable",
       "url": "https://open.spotify.com/episode/2r6X3Pqs1BGbQc5EuONO3m",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-26"
     },
     {
       "id": "39vxNHaDVbn8R2aoxb4Hx7",
@@ -3652,8 +3654,7 @@
       "name": "PHOEBE ROBINSON Got Thrown In a Trashcan ",
       "show": "Family Trips with the Meyers Brothers",
       "url": "https://open.spotify.com/episode/6gDqqgneArYlBlbqdREtMO",
-      "api_seen": true,
-      "api_misses": 1
+      "api_seen": true
     },
     {
       "added_at": "2026-01-21",
@@ -4759,7 +4760,8 @@
       "release": "2026-10-19",
       "url": "https://open.spotify.com/episode/3CX1brOvYDHFxoOAUxrFuB",
       "desc": "In Part 2 of our deep dive into needle drops, Dallas, Casey and Grace uncover more surprising stories behind some of cinema’s most unforgettable song choices. From a fiercely contested track that became a ‘90s comedy staple, to Quentin Tarantino’s habit of raiding old movie soundtracks, these pairings often took strange and unexpected paths to the screen. Along the way, they explore the hidden world of Music Supervision, impossible price tags, and the controversy around musical “soundalikes.”Twenty Thousand Hertz is produced by Defacto Sound.Subscribe on YouTube⁠⁠⁠⁠⁠⁠⁠⁠⁠ to see our video series.Follow Dallas on ⁠⁠⁠⁠⁠⁠⁠Instagram⁠⁠⁠⁠⁠⁠⁠, ⁠⁠⁠⁠⁠⁠⁠TikTok⁠⁠⁠⁠⁠⁠⁠, ⁠⁠Facebook⁠⁠, and ⁠⁠⁠⁠⁠⁠⁠LinkedIn⁠⁠⁠⁠⁠⁠⁠.If you know what this week's mystery sound is, tell us at ⁠⁠⁠⁠⁠⁠⁠⁠mystery.20k.org⁠⁠⁠⁠⁠⁠⁠⁠.Automate your expenses with Ramp and get $250 off at ramp.com/20k.Get three months of free payroll with Gusto at gusto.com/20k.Get NetSuite's free business guide, \"Aligning for the Agentic Era: How AI Is Changing Everyday Work,\" at netsuite.com/20k.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "4hke454roOQLspGxV8OMuf",
@@ -5052,7 +5054,7 @@
       "url": "https://open.spotify.com/episode/6ekwFZ1FMymsEWNEk5uZG2",
       "desc": "This week on the pod, Seth and Josh celebrate their 200th episode before welcoming comedian Sam Morril! Sam talks about growing up in Manhattan, his love of touring and returning home to New York, and getting his start in stand-up by watching the greats. He shares stories from a teenage trip to Miami, touring Europe and navigating different audiences, a disastrous private gig in Corfu, and an unexpected party in Milan’s opera scene. Sam also reflects on his blended family, his favorite restaurant in Budapest, and more! Plus, he chats about his Netflix comedy special, Incorrect. Watch this episode on the Family Trips YouTube or Spotify, or listen wherever you get your podcasts!  Watch more Family Trips episodes: https://www.youtube.com/playlist?list=PLlqYOfxU_jQem4_NRJPM8_wLBrEEQ17B6  ------------------------- 00:00 Introduction with Seth Meyers and Josh Meyers 05:32 200 Episodes Celebration 07:55 Meet Sam Morril 09:55 NYC Roots and Early Comedy 17:51 Childhood Trips and Frasier Taping 19:11 Miami Misadventure and Intervention 20:31 Street Smarts and City Life 30:56 Ridge Power Bank Pitch 33:07 Grandparents Trips Boston Florida 35:38 Tour Cities Theaters Energy 39:08 Liverpool Romance Corfu Bombs 54:39 Speed Round Farewell Outro Song  ------------------------- Support our sponsors: Article Article is offering our listeners $50 off your first purchase of $100 or more. To claim, visit https://www.article.com/discount/trips and the discount will be automatically applied at checkout.  Fitbod Get 25% off your Fitbod subscription or try the app FREE for seven days at https://Fitbod.me/trip  Ridge One thing to pack, five ways to power! Get 10% Off @Ridge with code TRIPS at https://www.Ridge.com/TRIPS #Ridgepod  Mint Mobile To get your new wireless plan for just 15 bucks a month, go to https://mintmobile.com/trips.  Cut your wireless bill to 15 bucks. That’s it there’s no catch.  Upfront payment of: $45 for 3-months, $90 for 6-months, or $180 for 12-months, plan required, $15 per month equivalent. Taxes & fees extra. Initial plan term only. Greater than 50GB may slow when network is busy. Includes up to 20GB hotspot. Capable device required. Availability, speed & coverage varies. See https:/mintmobile.com   ------------------------- Family Trips is produced by Rabbit Grin Productions. Theme song written and performed by Jeff Tweedy.  ------------------------- About the Show: Lifelong brothers Seth Meyers and Josh Meyers ask guests to relive childhood memories, unforgettable family trips, and other disasters!   New Episodes of Family Trips with the Meyers Brothers are available every Tuesday.  ------------------------- Executive Producers: Rob Holysz, Jeph Porter, Natalie Holysz Creative Producer: Sam Skelton Coordinating Producer: Derek Johnson Video Editor: Josh Windisch Mix & Master: Josh Windisch Episode Artwork: Analise Jorgensen  #familytrips #sethmeyers #joshmeyers Learn more about your ad choices. Visit megaphone.fm/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-26"
     },
     {
       "id": "0b45133mjf1qjmYoENIrt5",
@@ -5184,7 +5186,8 @@
       "release": "2026-10-26",
       "url": "https://open.spotify.com/episode/14kfMery6nNfPXLvzOLwJU",
       "desc": "When a Fortune 500 company needs a new leader, it turns to a well-connected headhunter who assesses candidates with psychological tests and mock TV interviews. Zachary Crockett activates his network. This episode was originally published on March 23rd, 2025. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     }
   ]
 }
