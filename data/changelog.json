@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T21:09:38.220976+00:00",
+  "generated_at": "2026-10-27T20:51:45.848075+00:00",
   "events": [
     {
       "date": "2026-10-26",
@@ -688,6 +688,16 @@
   ],
   "daily_summaries": [
     {
+      "date": "2026-10-27",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "6 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/410f6cc23844044dfaa88d7142e807befa769e49"
+        }
+      ]
+    },
+    {
       "date": "2026-10-26",
       "items": [
         {
@@ -892,25 +902,6 @@
           "emoji": "\ud83d\udcc4",
           "text": "CV rebuilt from the latest source data",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/266"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-12",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "1 podcast episode added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/10a72e02acf290e4057f54e77f3efb65c9f967bc"
-        },
-        {
-          "emoji": "\ud83d\udcbb",
-          "text": "22 PRs merged"
-        },
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "Podcast + Spotify experience improved",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/248"
         }
       ]
     }
