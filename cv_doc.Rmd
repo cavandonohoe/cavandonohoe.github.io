@@ -181,6 +181,21 @@ pos_bullets_final %>%
                                                                     .na = "")
 ```
 
+Selected Projects {data-icon=code}
+--------------------------------------------------------------------------------
+
+
+```{r doc_projects, echo=FALSE, results='asis'}
+pos_bullets_final %>%
+  dplyr::filter(section == "Projects") %>%
+  glue::glue_data(
+    "### {title}", "\n\n",
+    "#### {institution}", "\n\n",
+    "{description_section}", "\n\n",
+    .na = ""
+  )
+```
+
 Education {data-icon=graduation-cap data-concise=true}
 --------------------------------------------------------------------------------
 
