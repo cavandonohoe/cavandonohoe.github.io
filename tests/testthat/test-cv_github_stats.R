@@ -22,3 +22,16 @@ testthat::test_that("fill_github_stats errors on unresolved placeholders", {
     "Unresolved CV stat placeholders"
   )
 })
+
+testthat::test_that("cv_github_stats falls back to the cache without a token", {
+  cache <- tempfile(fileext = ".json")
+  jsonlite::write_json(list(n_workflows = "40+", n_merged_prs = "200+"), cache, auto_unbox = TRUE)
+  real_token <- cv_github_token
+  assign("cv_github_token", function() "", envir = environment(cv_github_stats))
+  on.exit(assign("cv_github_token", real_token, envir = environment(cv_github_stats)))
+  testthat::expect_equal(
+    cv_github_stats(cache),
+    c(n_workflows = "40+", n_merged_prs = "200+")
+  )
+  testthat::expect_error(cv_github_stats(tempfile()), "no cache")
+})

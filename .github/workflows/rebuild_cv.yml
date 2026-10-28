@@ -166,6 +166,7 @@ jobs:
           add-paths: |
             cv.pdf
             cv_doc.docx
+            data/cv_github_stats.json
           labels: |
             cv
             automated

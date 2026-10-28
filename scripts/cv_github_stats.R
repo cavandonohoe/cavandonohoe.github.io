@@ -110,6 +110,24 @@ fill_github_stats <- function(x, formatted) {
 }
 
 # Convenience wrapper used by the CV Rmds.
-cv_github_stats <- function() {
-  format_github_stats(get_github_stats())
+#
+# Live stats need a GitHub token. Renders without one (site builds, branch
+# previews, fork PRs) fall back to the last formatted values cached in
+# `cache_file`. A successful live fetch refreshes that cache; the weekly
+# rebuild_cv.yml run commits it alongside the regenerated CV.
+cv_github_stats <- function(cache_file = here::here("data", "cv_github_stats.json")) {
+  live <- if (nzchar(cv_github_token())) {
+    tryCatch(format_github_stats(get_github_stats()), error = function(e) {
+      warning("Live GitHub stats failed, using cache: ", conditionMessage(e))
+      NULL
+    })
+  }
+  if (!is.null(live) && !anyNA(live)) {
+    jsonlite::write_json(as.list(live), cache_file, auto_unbox = TRUE, pretty = TRUE)
+    return(live)
+  }
+  if (!file.exists(cache_file)) {
+    stop("No GitHub token or live stats, and no cache at ", cache_file)
+  }
+  unlist(jsonlite::read_json(cache_file))
 }
