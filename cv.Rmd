@@ -81,6 +81,15 @@ last_update <- if (!is.null(file_info) && length(file_info$drive_resource) > 0) 
   Sys.Date()
 }
 
+# fill live GitHub stats placeholders (e.g. {n_merged_prs}) from the sheet
+source(here::here("scripts", "cv_github_stats.R"))
+github_stats <- cv_github_stats()
+resume <- resume %>%
+  dplyr::mutate(dplyr::across(
+    tidyselect::starts_with("description"),
+    ~ fill_github_stats(as.character(.x), github_stats)
+  ))
+
 resume_v1.1 <- resume %>%
   dplyr::mutate(dplyr::across(c(start, end), format_resume_date)) %>%
   dplyr::mutate(dplyr::across(tidyselect::starts_with("description"), as.character)) %>%
@@ -251,6 +260,23 @@ pos_bullets_final %>%
                                                                     "{description_section}",
                                                                     "\n\n",
                                                                     .na = "")
+```
+
+Selected Projects {data-icon=code}
+--------------------------------------------------------------------------------
+
+
+```{r projects, echo=FALSE, results='asis'}
+pos_bullets_final %>%
+  dplyr::filter(section == "Projects") %>%
+  glue::glue_data(
+    "### {title}", "\n\n",
+    "{institution}", "\n\n",
+    "{location}", "\n\n",
+    "{time_period}", "\n\n",
+    "{description_section}", "\n\n",
+    .na = ""
+  )
 ```
 
 Education {data-icon=graduation-cap data-concise=true}

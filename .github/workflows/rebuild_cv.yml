@@ -3,6 +3,9 @@ name: Rebuild CV PDF/DOCX
 on:
   workflow_dispatch:
   schedule:
+    # Also refreshes the CV's live GitHub stats. Stats are floored (e.g.
+    # "225+"), so a PR only opens when a threshold is crossed or the Google
+    # Sheet changes.
     - cron: "33 11 * * 2"  # Tuesdays 11:33 UTC (~3:33am Pacific)
 
 permissions:
@@ -19,6 +22,9 @@ jobs:
     timeout-minutes: 30
     env:
       GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/sa.json
+      # Read-only GitHub API access for the CV's live stats
+      # (scripts/cv_github_stats.R).
+      GITHUB_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v7
 
@@ -160,6 +166,7 @@ jobs:
           add-paths: |
             cv.pdf
             cv_doc.docx
+            data/cv_github_stats.json
           labels: |
             cv
             automated
