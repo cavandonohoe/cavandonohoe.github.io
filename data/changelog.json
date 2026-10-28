@@ -1,6 +1,30 @@
 {
-  "generated_at": "2026-10-27T20:51:45.848075+00:00",
+  "generated_at": "2026-10-28T21:16:13.921148+00:00",
   "events": [
+    {
+      "date": "2026-10-28",
+      "type": "merged_pr",
+      "title": "Show Personal Data Site history since 2020 on CV",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/319"
+    },
+    {
+      "date": "2026-10-28",
+      "type": "merged_pr",
+      "title": "Rebuild CV from latest Google Sheet",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/318"
+    },
+    {
+      "date": "2026-10-28",
+      "type": "merged_pr",
+      "title": "Bump qs from 6.16.0 to 6.17.0 in /tools/tohs-apps-script",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/317"
+    },
+    {
+      "date": "2026-10-28",
+      "type": "merged_pr",
+      "title": "Add Selected Projects section to CV with live GitHub stats",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/316"
+    },
     {
       "date": "2026-10-26",
       "type": "merged_pr",
@@ -660,33 +684,28 @@
       "type": "merged_pr",
       "title": "Continually refresh Spotify saved-episodes data via scheduled CI",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/178"
-    },
-    {
-      "date": "2026-09-28",
-      "type": "merged_pr",
-      "title": "Expand podcast dashboard using saved library export",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/182"
-    },
-    {
-      "date": "2026-09-28",
-      "type": "merged_pr",
-      "title": "Add listening history to saved podcast dashboard",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/180"
-    },
-    {
-      "date": "2026-09-28",
-      "type": "merged_pr",
-      "title": "Add Spotify streaming-history export ingestion + dashboard",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/179"
-    },
-    {
-      "date": "2026-09-28",
-      "type": "merged_pr",
-      "title": "Add Alice in Borderland to the IMDb rating plot",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/181"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-10-28",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "4 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/7f4defc9b1e68048bd1037d9cde9fe2f401590bf"
+        },
+        {
+          "emoji": "\ud83d\udcbb",
+          "text": "4 PRs merged"
+        },
+        {
+          "emoji": "\ud83d\udcc4",
+          "text": "CV rebuilt from the latest source data",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/319"
+        }
+      ]
+    },
     {
       "date": "2026-10-27",
       "items": [
@@ -883,25 +902,6 @@
           "emoji": "\ud83c\udfa7",
           "text": "Podcast + Spotify experience improved",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/269"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-13",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "2 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/a03fd652f94b35e4182cd3de7cfbcb5090e965cc"
-        },
-        {
-          "emoji": "\ud83d\udcbb",
-          "text": "9 PRs merged"
-        },
-        {
-          "emoji": "\ud83d\udcc4",
-          "text": "CV rebuilt from the latest source data",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/266"
         }
       ]
     }
