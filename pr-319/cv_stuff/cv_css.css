@@ -29,18 +29,25 @@ body{
 .aside{
   display: flex;
   flex-direction: column;
+  box-sizing: border-box; /* keep padding inside the page height */
   height: var(--content-area-height);
-  padding-bottom: 0.3in;
+  padding-top: 0.4in;
+  padding-bottom: 0.25in;
 }
 
 #disclaimer{
   position: static;
-  margin-top: 0.25in;
+  margin-top: auto; /* pin to the bottom of the sidebar */
+  padding-top: 0.15in;
 }
 
 /* Tighten sidebar section spacing so the disclaimer fits on page 1. */
 .aside .level2{
-  margin-top: 0.35in;
+  margin-top: 0.25in;
+}
+
+#skills{
+  line-height: 1.35;
 }
 
 @media screen {
