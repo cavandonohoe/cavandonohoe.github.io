@@ -94,7 +94,7 @@
     {
       "project": "cv_stuff",
       "tracked_files": 2,
-      "commits_touching_project": 8,
+      "commits_touching_project": 9,
       "top_extensions": [
         [
           "[none]",
@@ -162,7 +162,7 @@
     {
       "project": "images",
       "tracked_files": 20,
-      "commits_touching_project": 123,
+      "commits_touching_project": 124,
       "top_extensions": [
         [
           ".jpg",
