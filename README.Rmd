@@ -161,7 +161,7 @@ fails the run instead of landing on `main`.
 
 * `update_best_picture_winners.yml` -- annual Oscar refresh.
 * `rebuild_cv.yml` -- weekly CV PDF/DOCX rebuild from Google Sheet,
-  opens a PR if anything changed.
+  with live GitHub stats; opens a PR if anything changed.
 * `refresh-sitemap.yml` -- weekly `sitemap.xml` regeneration.
 
 ### Site health
