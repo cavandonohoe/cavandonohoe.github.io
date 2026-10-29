@@ -114,5 +114,25 @@ the drag.
   finding: a plain yield screen with basic data hygiene is hard to beat, and that's the
   direction I'm taking my rental page.
 
-A live paper portfolio built with the same rule started in September 2026 and updates
-itself monthly, so I'll know more in a year.
+## Season 2: real costs
+
+The 50% rule ignores the fact that a house in Cook County and a house in Alabama
+come with very different tax bills. So I ran the desk again with two new roles: a
+data agent that pulled county property-tax rates and state insurance premiums (each
+dated, so a 2017 backtest only saw numbers published by 2017), and an underwriter
+that turned them into a real net return, including buying and selling costs.
+
+Two rules made this season harder than the first. Everyone had now seen what happened
+from 2023 to 2026, so the skeptic treated any appeal to it as cheating (it caught one,
+from the portfolio manager). And the trial count carried over: 41 rules across both
+seasons.
+
+The value quant's favorite idea, ranking on yield *after* costs, beat the plain screen
+on its own cost model and lost on raw returns. It traced the problem to tax data that
+reflects what homeowners pay, not landlords, and withdrew the idea itself. Momentum was
+rejected on backtest evidence alone. What shipped is the honest answer: the plain
+top-25 yield screen with a two-year rent-history filter. Real costs took 5 to 10 points
+off every portfolio over three years but barely changed the order.
+
+Both desks' books, the naive screen, and the Strong Buy tier are now on a
+[live scoreboard](rental_desk.html) that updates monthly.

@@ -37,6 +37,12 @@ on:
         required: false
         type: number
         default: 20
+    secrets:
+      fetch_token:
+        description: >-
+          Optional token exposed to the refresh command as FETCH_TOKEN (e.g. a
+          read-only token for a private source repo).
+        required: false
 
 permissions:
   contents: write
@@ -56,6 +62,7 @@ jobs:
       - name: Refresh data
         env:
           REFRESH_COMMAND: ${{ inputs.refresh_command }}
+          FETCH_TOKEN: ${{ secrets.fetch_token }}
         run: $REFRESH_COMMAND
 
       # Turn the input paths into an anchored alternation so the guards below

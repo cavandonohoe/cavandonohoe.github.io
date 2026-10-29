@@ -80,6 +80,8 @@ Check out my website at <https://cavandonohoe.github.io>
 
 - [US Rental Investment
   Markets](https://cavandonohoe.github.io/us_rental_markets.html)
+- [Rental Desk: Live
+  Scoreboard](https://cavandonohoe.github.io/rental_desk.html)
 - [LA Neighborhoods: Price per Sq
   Ft](https://cavandonohoe.github.io/la_real_estate.html)
 - [LA Housing Prices: Animated Heat
@@ -147,6 +149,10 @@ manual is a click away on the Actions tab.
   filmography refresh for the Director Box Office Trajectory page.
 - `update_sp500.yml` – weekly VOO price refresh.
 - `update_us_rentals.yml` – monthly Zillow ZHVI/ZORI refresh.
+- `update_rental_desk.yml` – monthly copy of the private rental-desk
+  repo’s live tracker for the Rental Desk scoreboard (needs the
+  `RENTAL_DESK_TOKEN` secret; without it the run keeps the committed
+  snapshot).
 - `update_mymaps_export.yml` – weekly Google My Maps export.
 - `update_watched_episodes.yml` – weekly episode list for every rated
   series in my IMDb export.
@@ -179,12 +185,13 @@ manual is a click away on the Actions tab.
   commit-activity charts.
 
 The uniform ones (`update_sp500`, `update_us_rentals`,
-`update_top250_with_rt`, `update_watched_episodes`) are thin callers of
-`refresh-data.yml`, which owns the shared run/guard/commit/redeploy
-logic. The rest stay standalone because they build dynamic commit
-messages or need extra fetch steps. Every refresh that commits to `main`
-runs `scripts/data_sanity.R` first, so an empty or collapsed scrape
-fails the run instead of landing on `main`.
+`update_rental_desk`, `update_top250_with_rt`,
+`update_watched_episodes`) are thin callers of `refresh-data.yml`, which
+owns the shared run/guard/commit/redeploy logic. The rest stay
+standalone because they build dynamic commit messages or need extra
+fetch steps. Every refresh that commits to `main` runs
+`scripts/data_sanity.R` first, so an empty or collapsed scrape fails the
+run instead of landing on `main`.
 
 ### Data refreshes (open PR)
 
@@ -242,8 +249,8 @@ above. Regenerated each time `README.Rmd` is knit.
 
 <img src="images/readme/commit-activity-cumulative-1.png" alt="Two cumulative line charts showing total commits and total lines changed (insertions + deletions) over time, split by Cavan's own commits vs. scheduled-bot commits."  />
 
-*1,162 commits from Dec 2020 to Oct 2026 (669 by me, 493 by scheduled
-bots), touching 3,183,641 lines in total.*
+*1,169 commits from Dec 2020 to Oct 2026 (669 by me, 500 by scheduled
+bots), touching 3,184,044 lines in total.*
 
 ## Setup and Local Development
 

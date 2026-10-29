@@ -4,6 +4,7 @@
 "imdb_exceptional_episodes.html","⭐","Exceptional IMDb Episodes","Which popular shows have episodes rated 9.7+? Explore IMDb data, episode vote thresholds, and the Top 250 comparison."
 "tohs_reunion.html","🎓","TOHS Class of 2012 Reunion","Tracking down classmates for the reunion, and who we're still missing emails for."
 "us_rental_markets.html","🏘️","US Rental Investment Markets","Cap rates, vacancy, and demand signals for 3,800+ cities using Zillow and Census data."
+"rental_desk.html","🏆","Rental Desk: Live Scoreboard","Paper rental portfolios picked by AI agents, graded monthly against a plain yield screen."
 "la_real_estate.html","🏡","LA Neighborhoods: Price per Sq Ft","Zillow + Redfin data for LA neighborhoods: median prices, rent, and what $1M buys you."
 "la_housing_heatmap.html","🗺️","LA Housing Prices: Animated Heat Map","Zillow home values across LA County ZIP codes, animated year by year, with Case-Shiller and Shiller's long-run series for context."
 "https://cavandonohoe.shinyapps.io/podcast-dashboard/","🎧","Saved Podcast Episodes","Interactive Shiny dashboard of my saved Spotify podcast episodes: per-show breakdowns, listening hours, and a monthly saving timeline."
