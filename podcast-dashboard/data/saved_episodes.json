@@ -3,11 +3,11 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 439,
+    "n_episodes": 442,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-10-28",
-    "api_saved_count": 195,
-    "n_removed": 180,
+    "api_refreshed_at": "2026-10-29",
+    "api_saved_count": 193,
+    "n_removed": 191,
     "n_unavailable": 27
   },
   "episodes": [
@@ -261,8 +261,7 @@
       "release": "2026-09-18",
       "url": "https://open.spotify.com/episode/6nlwch2PfK8pJCPyXT1KVw",
       "desc": "Throughout the history of the world, there have been many cases of what is known as collective hysteria - groups of people, usually young women, who all exhibit the same physical symptoms of non-existent conditions. Is it psychosomatic? Is it group think?See omnystudio.com/listener for privacy information.",
-      "api_seen": true,
-      "removed_at": "2026-10-28"
+      "api_seen": true
     },
     {
       "id": "0rpzmRqnyf9kQYHcfR5Cvp",
@@ -372,7 +371,7 @@
       "show": "Unexplainable",
       "url": "https://open.spotify.com/episode/5lv31Wh14vKQZft7DuXwkG",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-29"
     },
     {
       "id": "3mrQXIKr7NRFozGPFog3zp",
@@ -504,7 +503,7 @@
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/5Re5YXo4qagb8YyNbtCNdG",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-29"
     },
     {
       "added_at": null,
@@ -553,7 +552,8 @@
       "release": "2025-12-17",
       "url": "https://open.spotify.com/episode/4zLVoPLQI8yMavyqWuAosz",
       "desc": "Welcome to the inaugural Planet Money Pop Culture Draft! In today's episode (a Planet Money+ episode we’re releasing into the main feed) we're gonna go back to the year 1999. Three hosts, Kenny Malone, Wailin Wong, and Jeff Guo, go head to head and each drafts a “team” of economic pop culture. So a movie, a song, and a wild card pick that best represents the Planet Money spirit!It could be a movie related to business or maybe a song about money … as long as it came out in 1999! Listen to hear each of them make the case for why their team should be crowned the winner!If you want more bonus episodes like this one and to support our work, sign up for Planet Money+.Listen free: Apple Podcasts, Spotify, the NPR app or anywhere you get podcasts.Facebook / Instagram / TikTok / Our weekly Newsletter.This episode was hosted by Kenny Malone, Wailin Wong, and Jeff Guo. It was produced by Viet Le and edited by Planet Money’s executive producer Alex Goldmark.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "4ihRLkytBTl2g8UeRlrK1j",
@@ -577,7 +577,8 @@
       "name": "Introducing 3 Putt Bogey",
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/2v9oU0hszHtauTS1VtVKqe",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "7hmq5mlJsihREypjnZziwY",
@@ -589,8 +590,7 @@
       "release": "2025-12-10",
       "url": "https://open.spotify.com/episode/7hmq5mlJsihREypjnZziwY",
       "desc": "If you want to make Bitcoin, you need powerful computers and a lot of energy. Well, it turns out the same infrastructure needed for Bitcoin mining is pretty valuable in the era of AI. Today on the show, why some miners are starting to throw in the towel on crypto in favor of supporting AI infrastructure. Related episodes: Whose financing Meta’s massive AI Data Center?This indicator hasn’t flashed this red since the dot-com bubbleFor sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true,
-      "removed_at": "2026-10-28"
+      "api_seen": true
     },
     {
       "id": "6xUGQvKaiHBdlNVxsRBvns",
@@ -758,7 +758,7 @@
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/6EesGkPqAk4obhaE3VkRoF",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-29"
     },
     {
       "added_at": "2025-08-06",
@@ -807,7 +807,8 @@
       "name": "Data Centers: Can't Live With Em, Can't Live Without Em",
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/79OmsXBCOfQROzibRUMupy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2026-01-20",
@@ -868,7 +869,7 @@
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/6fsTBhy5dMgpAWfpymtIJh",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-29"
     },
     {
       "id": "7kaLqerXtf5ZpDq8SFXphy",
@@ -964,7 +965,7 @@
       "url": "https://open.spotify.com/episode/5LJvsiaBKS3tqASCnMgQ2E",
       "desc": "The BBC has been around as long as there has been radio. Today we salute the venerable institution that's as British as tea and crumpets. See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-29"
     },
     {
       "added_at": "2025-11-11",
@@ -976,7 +977,8 @@
       "name": "Eco-Disasters 101: The Salton Sea",
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/2aZumkQ1gUNnzhrFLpwggD",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2025-08-16",
@@ -1001,7 +1003,7 @@
       "url": "https://open.spotify.com/episode/1tP8lGAZlQNmEdcIGvkcCj",
       "desc": "Everybody’s always bagging on pessimists and telling everybody they should be more optimistic. Well, nuts to that! There are plenty of benefits from being a pessimist. Although being an optimist still wins in basically every category ☹See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-29"
     },
     {
       "id": "1GS0zmLps7F88g81iSf7i4",
@@ -1064,7 +1066,7 @@
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/0isqRQnhdlKb8tY3qiwMOn",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-29"
     },
     {
       "added_at": "2026-09-26",
@@ -1267,8 +1269,7 @@
       "release": "2026-09-18",
       "url": "https://open.spotify.com/episode/3tvnIB08U6tO1j3KXdsJJ3",
       "desc": "The famous blue people of Kentucky are no longer blue. But why were they like that in the first place?See omnystudio.com/listener for privacy information.",
-      "api_seen": true,
-      "removed_at": "2026-10-28"
+      "api_seen": true
     },
     {
       "id": "3wj8zYVR9Y5CATLInChYGW",
@@ -1329,7 +1330,7 @@
       "url": "https://open.spotify.com/episode/6lw3E4FBIw1J08kAYaTXJk",
       "desc": "President Trump’s Chief of Staff dropped dirt on her boss and his cronies in a series of interviews, the president’s new White House ballroom is being built on top of an emergency operations bunker, and the Madagascar hissing cockroach is the spy of the future. The hosts of “Anderson Cooper 360” and “Watch What Happens Live” stop by for their annual Late Show visit ahead of their big New Year’s Eve broadcast, which typically results in Anderson Cooper being overserved.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-29"
     },
     {
       "added_at": null,
@@ -1700,7 +1701,7 @@
       "show": "The Late Show Pod Show with Stephen Colbert",
       "url": "https://open.spotify.com/episode/0MeUvLLKiUDBRM7P0v6pXB",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-29"
     },
     {
       "added_at": "2025-08-11",
@@ -1748,8 +1749,7 @@
       "release": "2025-12-09",
       "url": "https://open.spotify.com/episode/4TDjAZFn2w8WiyiY1AehFN",
       "desc": "President Trump thinks he’s a better award show host than Jimmy Kimmel, FIFA awarded the president a totally made up peace prize, and Stephen wonders if there’s anything Trump can do that would alienate his MAGA base. Iconic actress Sigourney Weaver says she feels complete freedom when acting in front of a green screen under James Cameron’s direction in the special effects-heavy “Avatar” films. Watch “Avatar: Fire & Ash” in theaters December 19th.",
-      "api_seen": true,
-      "removed_at": "2026-10-28"
+      "api_seen": true
     },
     {
       "added_at": "2025-11-24",
@@ -1786,7 +1786,7 @@
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/3gwx1amLEjwo9dbe90rlaC",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-29"
     },
     {
       "added_at": null,
@@ -1809,7 +1809,8 @@
       "name": "Why Trump resurrected the Monroe Doctrine",
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/0Rh1yslB4WWMyoDWPTxRLb",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "2GAqfAOEAdHSFPhgOsNrmn",
@@ -1869,7 +1870,8 @@
       "name": "Middlegarchs are the new Oligarchs",
       "show": "Planet Money",
       "url": "https://open.spotify.com/episode/4IIVXIE9JvJEyuj92bdyIj",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "1I4iBlBR1jrjAiU3WkWzz3",
@@ -1965,7 +1967,8 @@
       "name": "Short Stuff: Third Man Syndrome",
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/2q5cjcBm6c86wJhRbCQimM",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2026-01-12",
@@ -2147,7 +2150,7 @@
       "show": "The Daily Show: Ears Edition",
       "url": "https://open.spotify.com/episode/7DCqfmg9YzfVnCh6ZxonYa",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-29"
     },
     {
       "id": "7eTvxqMoggpIwxYsri6ey2",
@@ -2681,7 +2684,8 @@
       "release": "2025-12-18",
       "url": "https://open.spotify.com/episode/521K1SiLktx6YeEkBvcZAH",
       "desc": "After a firehose of economic news in 2025, we wanted to check back on some of the people we’ve heard from on our show. Today, we check in with a former federal employee caught in the Trump administration's wood chipper, a Louisiana shrimper on Trump’s tariffs and an update on a financial aid scam. Related episodes: Why do shrimpers like tariffs? What’s the long-term cost of federal layoffs? A big bank’s mistake, explained For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "2uJNhEDkkSSIZ44EDkUf0a",
@@ -3155,7 +3159,7 @@
       "show": "StarTalk with Neil deGrasse Tyson",
       "url": "https://open.spotify.com/episode/1NupSuvaOVBeLwMFpqfUyS",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-29"
     },
     {
       "id": "0R7Ar5XzA36UizR5F6xBK6",
@@ -3266,7 +3270,7 @@
       "url": "https://open.spotify.com/episode/4k8Is3Z4IiJ77ySPe9lUte",
       "desc": "How did scientists discover evidence for dark energy? Neil deGrasse Tyson and comedian Paul Mecurio explore dark energy, Hubble tension, and the beginning and end of the universe with astrophysicist and Nobel laureate, Adam Riess.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/origins-of-dark-energy-with-adam-riess/Thanks to our Patrons micpoc, Nathan, Matthew, Aislynn Schaffer, Mark Domino, Lou Wheeland, Matrograde, Elliott Natale, Machael Lipovski, Mathew Moore, Tony, Pablo P, Toni, Brian Futterman, quantumAnomaly, Robin Steiner, Errol Norwitz, Donovan Meek, Alan Geist, Sriganesh Arunanthi, Nuno Abreu, Ross Ziobro, Petr Doležal, Mandar Parikh, Bryan Tollin, Fooj, David Bozarth, Kolja Dobrindt, Sean Poplawski, Brad Durbin, Christian Nielsen, Zen Kurokawa, Lương Tiến, Joel Arbuckle, Chad L Ingham, Mark Morris, dylndmg, Derrick Korstick, EleanorRigbyy, Tarun C, Larry Infante, Jaclyn Anderson, Dave, Kayla Finch, The Bayside Volunteer Jam Band, Dale Allen Platt, Raymond Boulay, Lawrence Zeller, David, Kim Matthews, Jon Gefen, Mark A. Hasty, Clifford Dedmore, Mario De La Crus and Brianni Massin, jordan visina, Ryan Brown, Sebastian H, Daniel Voth, Karen Hollis, Josua Ennis, Julius Adams, Christie L Hall, Filip Risteski, scottdunbar_io, Samantha Davis, Don Franks, Corey Butler, Josh Jones, Daniel Vilasuso, J MR, joe, I Am Austin, bobmac69, Anthony cole, Zan, Erik LeRoy, Kevin George, Arman Adei, Christopher Pickett, John Morlock, AllTheScience, Juana Bee, Jeff Chastain, Jaimal Eiseman, Ed Matte, Lorkhan, D, roninraver, z67760, Orghanik Productions, and CubedWombat for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-29"
     },
     {
       "added_at": "2025-08-12",
@@ -3468,7 +3472,7 @@
       "show": "StarTalk with Neil deGrasse Tyson",
       "url": "https://open.spotify.com/episode/0YOKII1OfMMwcHG2garyFd",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-29"
     },
     {
       "id": "4ETnDszosKxJlOFsKvChRc",
@@ -3603,7 +3607,7 @@
       "show": "Planet Money",
       "url": "https://open.spotify.com/episode/4pDvWWG2dB7vvDrNIMOCVb",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-29"
     },
     {
       "id": "4ZKVmQ1ZrmiRWFUUra51pS",
@@ -3663,8 +3667,7 @@
       "name": "PHOEBE ROBINSON Got Thrown In a Trashcan ",
       "show": "Family Trips with the Meyers Brothers",
       "url": "https://open.spotify.com/episode/6gDqqgneArYlBlbqdREtMO",
-      "api_seen": true,
-      "removed_at": "2026-10-28"
+      "api_seen": true
     },
     {
       "added_at": "2026-01-21",
@@ -3761,7 +3764,7 @@
       "show": "Freakonomics Radio",
       "url": "https://open.spotify.com/episode/19CBE3cIiavviFNl7Je1Nm",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-10-29"
     },
     {
       "added_at": null,
@@ -3784,7 +3787,8 @@
       "name": "What Happens When You Turn 20",
       "show": "Freakonomics Radio",
       "url": "https://open.spotify.com/episode/0bcdrcfMRVYcqWD1r76qdD",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2025-11-03",
@@ -5225,7 +5229,8 @@
       "release": "2026-10-27",
       "url": "https://open.spotify.com/episode/1d8ZclVlKwSc9Qqx6uEXkT",
       "desc": "Seth takes a closer look at MAGA losing their minds after Obama roasted Trump's White House renovations as Trump and the GOP resort to increasingly desperate attacks as the midterm elections approach.Then, Liev Schreiber talks about his viral red carpet exchange with a reporter, having an active chicken coop at his New York City apartment and growing a mustache for his role as a homicide detective in the show.See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "1fqxSAj5ibLQgBub8ppME1",
@@ -5321,6 +5326,42 @@
       "release": "2026-10-28",
       "url": "https://open.spotify.com/episode/0RyBZCZhzdlmuFFEG8jSz4",
       "desc": "Does business school fix the world? Or does it just churn out consultants, bankers and tech workers? A professor and a dean debate the value of the modern-day MBA.Fact checking by Sierra Juarez.Your Next Listen ––Are small town colleges going extinct?––Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet Money–The Indicator newsletter — a weekly roundup of news, ideas and staff picks. –Instagram, TikTok and YouTube –Find the Planet Money book –Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop!Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
+      "api_seen": true
+    },
+    {
+      "id": "4iLpRie5kKOhZXFxnD6KZH",
+      "added_at": "2026-10-29",
+      "show": "The Indicator from Planet Money",
+      "publisher": null,
+      "name": "Can Montana end Citizens United?",
+      "dur_min": 9,
+      "release": "2026-10-29",
+      "url": "https://open.spotify.com/episode/4iLpRie5kKOhZXFxnD6KZH",
+      "desc": "The landmark supreme source case Citizens United v. Federal Election Commission opened the floodgates for massive corporate spending in elections. Today, can a Montana ballot initiative pave the way for getting corporate money out of American elections?  Fact checking by Sierra Juarez.Your Next Listen –Can a \"moneyball\" system work for campaign funding?–Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet Money–The Indicator newsletter — a weekly roundup of news, ideas and staff picks. –Instagram, TikTok and YouTube –Find the Planet Money book –Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop!Support public media by subscribing to NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
+      "api_seen": true
+    },
+    {
+      "id": "3zVQp8fONsAPVl0bUX6YR3",
+      "added_at": "2026-10-29",
+      "show": "The Economics of Everyday Things",
+      "publisher": null,
+      "name": "86. Toothpaste",
+      "dur_min": 17,
+      "release": "2026-10-29",
+      "url": "https://open.spotify.com/episode/3zVQp8fONsAPVl0bUX6YR3",
+      "desc": "We reach for it twice a day — without thinking about the decades of research and engineering that went into that squeezable tube of minty goo. Zachary Crockett extracts the last bit. This episode was originally published on March 30th, 2025. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
+      "api_seen": true
+    },
+    {
+      "id": "6FQBcKpS2CDPKm380EOLTd",
+      "added_at": "2026-10-28",
+      "show": "Family Trips with the Meyers Brothers",
+      "publisher": null,
+      "name": "A Ghostly Encounter, a Cruise Gone Wrong, & a Copperhead Bite: Listener Episode #29",
+      "dur_min": 45,
+      "release": "2026-10-29",
+      "url": "https://open.spotify.com/episode/6FQBcKpS2CDPKm380EOLTd",
+      "desc": "This week on the pod, Seth and Josh are back for the monthly listener episode! They kick things off with some Halloween planning, fall traditions, and football talk before hearing from listeners with some truly spooky and scary family trip stories. One listener shares a tale of a seemingly haunted apartment, complete with mysterious hands grabbing ankles and a ghostly woman on a bench. Another recalls a 2011 Halloween cruise to nowhere that turned into an unexpected adventure during a nor’easter, while a third shares two North Carolina camping trips gone wrong, including a baby copperhead bite and an antivenom scare! Watch this episode on the Family Trips YouTube or Spotify, or listen wherever you get your podcasts!  Want to submit your family trips story for our next listener episode? Or send a question in to Seth and Josh? Submit your voicemail to speakpipe.com/familytripspod!  Watch more Family Trips episodes: https://www.youtube.com/playlist?list=PLlqYOfxU_jQem4_NRJPM8_wLBrEEQ17B6  ------------------------- 00:00 Introduction with Seth Meyers and Josh Meyers01:46 Halloween Steelers Costumes03:40 Pittsburgh Trick or Treat Plans05:59 Fall Foliage Weekend Recap11:27 Listener Ghost House Story21:43 Unplugged Halloween Cruise22:46 Nor’easter Hits at Sea23:51 Home to a Blackout33:11 Camping Fails and Snake Bite  ------------------------- Support our sponsors: Cologuard If you're 45 or older and at average risk, talk to your healthcare provider about screening for colon cancer and ask if Cologuard Plus could be right for you. You can also request a Cologuard prescription online today at https://Cologuard.com  EllaOla EllaOla is offering our listeners 20% off your first purchase. Just go to https://EllaOla.com/TRIPS, discount applied automatically; No code needed.  Try it risk-free with EllaOla's 45-day money-back guarantee;   Mint Mobile To get your new wireless plan for just 15 bucks a month, go to https://mintmobile.com/trips.  Cut your wireless bill to 15 bucks. That’s it there’s no catch.  Upfront payment of: $45 for 3-months, $90 for 6-months, or $180 for 12-months, plan required, $15 per month equivalent. Taxes & fees extra. Initial plan term only. Greater than 50GB may slow when network is busy. Includes up to 20GB hotspot. Capable device required. Availability, speed & coverage varies. See https://MintMobile.com  ------------------------- Family Trips is produced by Rabbit Grin Productions. Theme song written and performed by Jeff Tweedy.  ------------------------- About the Show: Lifelong brothers Seth Meyers and Josh Meyers ask guests to relive childhood memories, unforgettable family trips, and other disasters!   New Episodes of Family Trips with the Meyers Brothers are available every Tuesday.  ------------------------- Executive Producers: Rob Holysz, Jeph Porter, Natalie Holysz Creative Producer: Sam Skelton Coordinating Producer: Derek Johnson Video Editor: Josh Windisch Mix & Master: Josh Windisch Episode Artwork: Analise Jorgensen  #familytrips #sethmeyers #joshmeyers Learn more about your ad choices. Visit megaphone.fm/adchoices",
       "api_seen": true
     }
   ]
