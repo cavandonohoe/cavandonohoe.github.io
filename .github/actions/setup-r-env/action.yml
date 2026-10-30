@@ -7,9 +7,12 @@ description: >-
 
 inputs:
   r-version:
-    description: R version passed to r-lib/actions/setup-r (e.g. '4.6', 'release').
+    description: >-
+      R version passed to r-lib/actions/setup-r. Keep this equal to the R version
+      in renv.lock so a new R patch release does not silently change the renv
+      cache key and force a full (and possibly failing) library rebuild.
     required: false
-    default: "4.6"
+    default: "4.6.1"
   pandoc-version:
     description: >-
       Pandoc version to install. Leave empty to skip installing pandoc via

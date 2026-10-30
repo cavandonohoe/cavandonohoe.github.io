@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-28T21:16:13.921148+00:00",
+  "generated_at": "2026-10-29T21:21:20.931330+00:00",
   "events": [
     {
       "date": "2026-10-28",
@@ -654,39 +654,19 @@
       "type": "merged_pr",
       "title": "Add automated developer year-in-review snapshots",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/191"
-    },
-    {
-      "date": "2026-09-29",
-      "type": "merged_pr",
-      "title": "ci: bump dawidd6/action-download-artifact from 24 to 25 in the github-actions group",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/184"
-    },
-    {
-      "date": "2026-09-29",
-      "type": "merged_pr",
-      "title": "Refine podcast dashboard hovers and summary cards",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/183"
-    },
-    {
-      "date": "2026-09-29",
-      "type": "merged_pr",
-      "title": "Rebuild CV from latest Google Sheet",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/185"
-    },
-    {
-      "date": "2026-09-29",
-      "type": "merged_pr",
-      "title": "Fix Spotify Shiny redeploys after app changes",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/186"
-    },
-    {
-      "date": "2026-09-29",
-      "type": "merged_pr",
-      "title": "Continually refresh Spotify saved-episodes data via scheduled CI",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/178"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-10-29",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "3 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/8570905e80fdab428bb4107e8fcdb5d5d85c3512"
+        }
+      ]
+    },
     {
       "date": "2026-10-28",
       "items": [
@@ -883,25 +863,6 @@
           "emoji": "\ud83d\uddfa\ufe0f",
           "text": "Data-viz projects polished",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/162"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-14",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "3 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/fcc3bcef68e20ee819c0489b9d0c2ee071a796b8"
-        },
-        {
-          "emoji": "\ud83d\udcbb",
-          "text": "9 PRs merged"
-        },
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "Podcast + Spotify experience improved",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/269"
         }
       ]
     }
