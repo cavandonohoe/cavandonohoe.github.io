@@ -1,6 +1,18 @@
 {
-  "generated_at": "2026-10-29T21:21:20.931330+00:00",
+  "generated_at": "2026-10-30T20:59:35.255391+00:00",
   "events": [
+    {
+      "date": "2026-10-30",
+      "type": "merged_pr",
+      "title": "Pin R to 4.6.1 to fix renv restore failures",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/322"
+    },
+    {
+      "date": "2026-10-30",
+      "type": "merged_pr",
+      "title": "Add Rental Desk live scoreboard",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/320"
+    },
     {
       "date": "2026-10-28",
       "type": "merged_pr",
@@ -658,6 +670,25 @@
   ],
   "daily_summaries": [
     {
+      "date": "2026-10-30",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "8 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/9dfcfde61a76fb1b1f1256cdf92e35a96fb57a49"
+        },
+        {
+          "emoji": "\ud83d\udcbb",
+          "text": "2 PRs merged"
+        },
+        {
+          "emoji": "\ud83d\uddfa\ufe0f",
+          "text": "Data-viz projects polished",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/320"
+        }
+      ]
+    },
+    {
       "date": "2026-10-29",
       "items": [
         {
@@ -844,25 +875,6 @@
           "emoji": "\ud83c\udfac",
           "text": "Movie & TV data refreshed",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/9e94f3adbe1e3471a808826312d9e49857ea9f83"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-15",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "3 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/dbe389bde60732bc9f904da59323c70c28d43be2"
-        },
-        {
-          "emoji": "\ud83d\udcbb",
-          "text": "5 PRs merged"
-        },
-        {
-          "emoji": "\ud83d\uddfa\ufe0f",
-          "text": "Data-viz projects polished",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/162"
         }
       ]
     }
