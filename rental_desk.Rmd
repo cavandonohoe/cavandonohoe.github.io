@@ -1,0 +1,200 @@
+---
+title: "Rental Desk: Live Scoreboard"
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+lang: "en"
+---
+
+```{r og-meta, echo=FALSE, results='asis'}
+cat('
+<meta property="og:title" content="Rental Desk: Live Scoreboard">
+<meta property="og:description"
+  content="Paper rental portfolios picked by teams of AI agents, tracked month by month on Zillow data.">
+<meta property="og:url" content="https://cavandonohoe.github.io/rental_desk.html">
+<meta property="og:type" content="article">
+')
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 10)
+`%>%` <- magrittr::`%>%`
+
+perf <- readr::read_csv(
+  here::here("data", "rental_desk", "live_performance.csv"),
+  show_col_types = FALSE
+)
+v1 <- readr::read_csv(here::here("data", "rental_desk", "live_v1.csv"), show_col_types = FALSE)
+v2 <- readr::read_csv(here::here("data", "rental_desk", "live_v2.csv"), show_col_types = FALSE)
+
+entry <- as.Date(perf$live_entry[1])
+live <- dplyr::filter(perf, date >= entry)
+latest <- max(live$date)
+months_live <- nrow(live) - 1
+
+books <- tibble::tribble(
+  ~col, ~book, ~basis,
+  "live_v2_ret", "Desk v2 (gated yield)", "Gross (50% rule)",
+  "live_ret", "Desk v1 (yield + momentum)", "Gross (50% rule)",
+  "naive_ret", "Naive top-25 yield", "Gross (50% rule)",
+  "strong_buy_ret", "Strong Buy tier", "Gross (50% rule)",
+  "universe_ret", "All eligible cities", "Gross (50% rule)",
+  "live_v2_net_ret", "Desk v2 (gated yield)", "Net of real costs",
+  "naive_net_ret", "Naive top-25 yield", "Net of real costs",
+  "strong_buy_net_ret", "Strong Buy tier", "Net of real costs"
+)
+book_pal <- c(
+  "Desk v2 (gated yield)" = "#2b6cb0",
+  "Desk v1 (yield + momentum)" = "#805ad5",
+  "Naive top-25 yield" = "#dd6b20",
+  "Strong Buy tier" = "#27AE60",
+  "All eligible cities" = "#718096"
+)
+long <- live %>%
+  dplyr::select(date, dplyr::any_of(books$col)) %>%
+  tidyr::pivot_longer(-date, names_to = "col", values_to = "ret") %>%
+  dplyr::inner_join(books, by = "col") %>%
+  dplyr::filter(!is.na(ret)) %>%
+  dplyr::mutate(book = factor(book, levels = names(book_pal)))
+pct <- function(x) sprintf("%+.1f%%", 100 * x)
+```
+
+Two teams of AI agents each picked 25 US cities to own as rentals, using only
+Zillow home-value and rent data. Their portfolios are on paper (no money is
+invested), and this page grades them every month against the obvious
+alternatives. The backstory, including how the agents argued their way to these
+rules, is on [Teams of AI Agents](agent_experiments.html).
+
+**Status:** `r months_live` month`r if (months_live == 1) "" else "s"` since the
+books were bought on `r format(entry, "%B %d, %Y")`. Latest Zillow data:
+`r format(latest, "%B %Y")`.
+`r if (months_live == 0) "The first graded month arrives in late November, after Zillow's mid-month release." else ""`
+
+## The contestants
+
+- **Desk v2** (season 2, locked October 2026): the 25 highest gross-yield cities
+  that have at least two years of rent history, at most 3 per metro. After
+  charging each city its real property tax, insurance, upkeep, and buying and
+  selling costs, no cleverer rule beat this in the agents' backtests.
+- **Desk v1** (season 1): yield plus 12-month price momentum, with filters.
+  It beat the naive screen in every backtest, then lost to it from 2023 to 2026.
+  It's still held, to see whether that repeats.
+- **Naive top-25 yield**: the 25 highest gross-yield cities, no filters. This
+  is the bar to beat.
+- **Strong Buy tier**: every city my
+  [US Rental Investment Markets](us_rental_markets.html) page labels Strong Buy
+  (price-to-rent under 15), equal-weighted.
+- **All eligible cities**: the average city, for scale.
+
+## Standings
+
+```{r standings}
+standings <- long %>%
+  dplyr::filter(date == latest) %>%
+  dplyr::arrange(basis, dplyr::desc(ret)) %>%
+  dplyr::transmute(Basis = basis, Portfolio = as.character(book), `Return since entry` = pct(ret))
+knitr::kable(standings, align = c("l", "l", "r"))
+```
+
+"Gross" is price appreciation plus half of rent collected (the 50% rule). "Net"
+charges each city its own costs and assumes a sale at the end of the month, so
+it starts about 8% in the hole from buying and selling costs and has to earn
+its way back.
+
+```{r curves, fig.height=6, eval=months_live > 0}
+ggplot2::ggplot(long, ggplot2::aes(date, ret, colour = book)) +
+  ggplot2::geom_hline(yintercept = 0, colour = "#cbd5e0") +
+  ggplot2::geom_line(linewidth = 1.1) +
+  ggplot2::geom_point(size = 1.8) +
+  ggplot2::facet_wrap(~basis, nrow = 1, scales = "free_y") +
+  ggplot2::scale_colour_manual(values = book_pal, name = NULL) +
+  ggplot2::scale_y_continuous(labels = scales::percent) +
+  ggplot2::scale_x_date(date_labels = "%b %Y") +
+  ggplot2::labs(x = NULL, y = "Cumulative return since entry") +
+  ggplot2::theme_minimal(base_size = 13) +
+  ggplot2::theme(legend.position = "top", panel.grid.minor = ggplot2::element_blank())
+```
+
+## The 2023 book, still running
+
+Season 1's locked 2023 picks are graded on the same terms and keep compounding.
+Three years in, they were up about 23% on the 50% rule.
+
+```{r cohort-2023, fig.height=4.5}
+perf %>%
+  dplyr::filter(!is.na(backtest_2023_09_ret)) %>%
+  ggplot2::ggplot(ggplot2::aes(date, backtest_2023_09_ret)) +
+  ggplot2::geom_line(colour = "#805ad5", linewidth = 1.1) +
+  ggplot2::geom_vline(xintercept = entry, linetype = "dashed", colour = "#a0aec0") +
+  ggplot2::annotate(
+    "text", x = entry, y = 0.02, label = "new books start",
+    hjust = 1.05, colour = "#4a5568", size = 3.5
+  ) +
+  ggplot2::scale_y_continuous(labels = scales::percent) +
+  ggplot2::labs(x = NULL, y = "Cumulative return since Sept 2023") +
+  ggplot2::theme_minimal(base_size = 13) +
+  ggplot2::theme(panel.grid.minor = ggplot2::element_blank())
+```
+
+## What each desk owns
+
+```{r holdings}
+holdings <- function(df) {
+  df %>%
+    dplyr::mutate(rank = dplyr::row_number(), City = paste0(city, ", ", state)) %>%
+    dplyr::select(rank, City, Metro = metro)
+}
+both <- intersect(v1$RegionID, v2$RegionID)
+```
+
+The two desks share `r length(both)` of 25 cities.
+
+<div class="row">
+<div class="col-md-6">
+**Desk v2**
+
+```{r holdings-v2}
+knitr::kable(holdings(v2), col.names = c("#", "City", "Metro"))
+```
+</div>
+<div class="col-md-6">
+**Desk v1**
+
+```{r holdings-v1}
+knitr::kable(holdings(v1), col.names = c("#", "City", "Metro"))
+```
+</div>
+</div>
+
+## Known weak spots (not overridden)
+
+The rules are systematic, so odd picks stay in rather than getting hand-removed.
+Watch these:
+
+- **Century Village, FL** (v2's top pick) is a 55+ condo community, where
+  rental restrictions are common. Its yield may not be achievable.
+- **Southampton and Sag Harbor, NY** (v1) are Hamptons towns whose summer rents
+  inflate the annual yield.
+- **Taxes are understated for landlords.** Cost data uses what owner-occupants
+  pay, which includes homestead exemptions landlords don't get (notably FL, TX,
+  MI and Philadelphia), so net returns there are optimistic.
+- Zillow indices are smoothed and not investable, and the backtests behind these
+  rules cover about 1.3 independent three-year periods. One good or bad year
+  here won't settle anything.
+
+## When to call it
+
+The agents wrote down their exit rules before the books started:
+
+- If v2 trails the naive screen after 18 to 24 months, there's no point in the
+  history filter.
+- If either desk trails the average city, the rule has failed at the one thing
+  it should do reliably.
+- If a single data artifact (a resort or age-restricted town) drives the result
+  in either direction, the result is about the data, not the market.
+
+<p class="data-timestamp">Updated monthly from the rental desk's tracker.
+Source data: Zillow Research ZHVI and ZORI (city level); Census ACS property
+taxes; NAIC homeowners insurance.</p>

@@ -1,0 +1,29 @@
+name: Refresh rental desk scoreboard data
+
+on:
+  workflow_dispatch:
+  schedule:
+    # The rental-desk tracker runs on the 20th, after Zillow's mid-month release.
+    - cron: "23 15 21 * *"
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: refresh-rental-desk
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    uses: ./.github/workflows/refresh-data.yml
+    with:
+      refresh_command: Rscript scripts/rental_desk_data.R
+      data_paths: >-
+        data/rental_desk/live_performance.csv
+        data/rental_desk/live_v1.csv
+        data/rental_desk/live_v2.csv
+      commit_message: Auto-update rental desk scoreboard data
+      timeout_minutes: 15
+    secrets:
+      fetch_token: ${{ secrets.RENTAL_DESK_TOKEN }}
