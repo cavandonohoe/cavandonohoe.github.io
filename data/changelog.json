@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-30T20:59:35.255391+00:00",
+  "generated_at": "2026-10-31T20:12:06.311444+00:00",
   "events": [
     {
       "date": "2026-10-30",
@@ -600,75 +600,19 @@
       "type": "merged_pr",
       "title": "Turn recent activity into a big-picture emoji timeline",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/199"
-    },
-    {
-      "date": "2026-10-01",
-      "type": "merged_pr",
-      "title": "Surface live automated activity on the homepage",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/195"
-    },
-    {
-      "date": "2026-10-01",
-      "type": "merged_pr",
-      "title": "Start a fresh lately refresh when its workflow changes",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/197"
-    },
-    {
-      "date": "2026-10-01",
-      "type": "merged_pr",
-      "title": "Replace LA heatmap fire emoji",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/196"
-    },
-    {
-      "date": "2026-10-01",
-      "type": "merged_pr",
-      "title": "Harden generated-data Actions against writeback races",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/194"
-    },
-    {
-      "date": "2026-10-01",
-      "type": "merged_pr",
-      "title": "Generate self-updating project case-study metadata",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/190"
-    },
-    {
-      "date": "2026-10-01",
-      "type": "merged_pr",
-      "title": "Generate daily GitHub activity data art",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/192"
-    },
-    {
-      "date": "2026-10-01",
-      "type": "merged_pr",
-      "title": "Generate a live \u201cLately\u201d activity feed",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/189"
-    },
-    {
-      "date": "2026-10-01",
-      "type": "merged_pr",
-      "title": "Add \u201cAsk my public data\u201d GitHub Issue workflow",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/193"
-    },
-    {
-      "date": "2026-10-01",
-      "type": "merged_pr",
-      "title": "Add weekly Cavan Wrapped activity snapshots",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/187"
-    },
-    {
-      "date": "2026-10-01",
-      "type": "merged_pr",
-      "title": "Add automated personal changelog feed",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/188"
-    },
-    {
-      "date": "2026-10-01",
-      "type": "merged_pr",
-      "title": "Add automated developer year-in-review snapshots",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/191"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-10-31",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "4 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/9deef1e8d6d50ec10a48cb51fcfcaad7d373dd23"
+        }
+      ]
+    },
     {
       "date": "2026-10-30",
       "items": [
@@ -855,26 +799,6 @@
           "emoji": "\ud83c\udfa7",
           "text": "3 podcast episodes added",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/042fc9497934ff3a1ddbce7b46217ce96bb051d5"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-16",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "4 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/36a40c9e3c45cb0e36fd0094c46b897c460da9bd"
-        },
-        {
-          "emoji": "\ud83c\udfac",
-          "text": "Movie & TV projects updated",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/291"
-        },
-        {
-          "emoji": "\ud83c\udfac",
-          "text": "Movie & TV data refreshed",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/9e94f3adbe1e3471a808826312d9e49857ea9f83"
         }
       ]
     }
