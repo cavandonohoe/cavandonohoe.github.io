@@ -1,12 +1,12 @@
 {
   "year": 2026,
-  "commits": 326,
-  "pull_requests": 250,
+  "commits": 328,
+  "pull_requests": 252,
   "repositories_touched": 4,
-  "lines_added": 494650,
+  "lines_added": 495103,
   "most_used_language": "R",
   "language_lines_added": {
-    "R": 26016,
+    "R": 26316,
     "Python": 4615,
     "JavaScript": 2927,
     "TypeScript": 2369,
@@ -1121,8 +1121,13 @@
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "us_rental_markets.Rmd",
-        "lines_added": 2165,
+        "lines_added": 2171,
         "commits": [
+          {
+            "sha": "9280790d1f29a2387267330520ae85703cc682c8",
+            "date": "2026-10-30",
+            "lines_added": 6
+          },
           {
             "sha": "8957542c56f29d010b70ef087d95f7ddf3685ed9",
             "date": "2026-10-20",
@@ -1357,21 +1362,14 @@
       },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "scripts/beach_volleyball_data.R",
-        "lines_added": 578,
+        "path": "README.Rmd",
+        "lines_added": 583,
         "commits": [
           {
-            "sha": "cd6435e64683a892bcbafbe48c68e31287dc4acf",
-            "date": "2026-10-15",
-            "lines_added": 578
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "README.Rmd",
-        "lines_added": 577,
-        "commits": [
+            "sha": "9280790d1f29a2387267330520ae85703cc682c8",
+            "date": "2026-10-30",
+            "lines_added": 6
+          },
           {
             "sha": "d01f0250e8d357f0dd7a200b99a8793a69ae674a",
             "date": "2026-10-28",
@@ -1476,6 +1474,18 @@
             "sha": "0c1a8a120d3bbac603318fb015b958a53ea6d734",
             "date": "2026-01-02",
             "lines_added": 21
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "scripts/beach_volleyball_data.R",
+        "lines_added": 578,
+        "commits": [
+          {
+            "sha": "cd6435e64683a892bcbafbe48c68e31287dc4acf",
+            "date": "2026-10-15",
+            "lines_added": 578
           }
         ]
       },
@@ -2432,6 +2442,18 @@
       },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "rental_desk.Rmd",
+        "lines_added": 200,
+        "commits": [
+          {
+            "sha": "9280790d1f29a2387267330520ae85703cc682c8",
+            "date": "2026-10-30",
+            "lines_added": 200
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "intro_to_r.Rmd",
         "lines_added": 198,
         "commits": [
@@ -2827,6 +2849,23 @@
         ]
       },
       {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "agent_experiments.Rmd",
+        "lines_added": 140,
+        "commits": [
+          {
+            "sha": "9280790d1f29a2387267330520ae85703cc682c8",
+            "date": "2026-10-30",
+            "lines_added": 22
+          },
+          {
+            "sha": "1919f963f58a3e97cf90bd4b16e8155812175f73",
+            "date": "2026-10-20",
+            "lines_added": 118
+          }
+        ]
+      },
+      {
         "repository": "cavandonohoe/confederate_statues",
         "path": "scripts/validate_data.R",
         "lines_added": 140,
@@ -2976,18 +3015,6 @@
             "sha": "d5c0e5b9a74869fc311d7635f8ac2ba49057a837",
             "date": "2026-10-20",
             "lines_added": 124
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "agent_experiments.Rmd",
-        "lines_added": 118,
-        "commits": [
-          {
-            "sha": "1919f963f58a3e97cf90bd4b16e8155812175f73",
-            "date": "2026-10-20",
-            "lines_added": 118
           }
         ]
       },
@@ -3372,6 +3399,18 @@
             "sha": "367a59131707460936fcf977e10082056b5f418d",
             "date": "2026-05-25",
             "lines_added": 52
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "scripts/rental_desk_data.R",
+        "lines_added": 66,
+        "commits": [
+          {
+            "sha": "9280790d1f29a2387267330520ae85703cc682c8",
+            "date": "2026-10-30",
+            "lines_added": 66
           }
         ]
       },
@@ -4286,7 +4325,7 @@
   "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, dependency, build, docs, minified, and raw HTML input files are excluded.",
   "most_active_month": "October",
   "longest_streak_days": 16,
-  "active_days": 85,
+  "active_days": 86,
   "monthly_commits": [
     11,
     27,
@@ -4297,7 +4336,7 @@
     36,
     15,
     23,
-    106,
+    108,
     0,
     0
   ],
@@ -4726,10 +4765,15 @@
       "date": "2026-10-28",
       "commits": 3,
       "lines_added": 247
+    },
+    {
+      "date": "2026-10-30",
+      "commits": 2,
+      "lines_added": 453
     }
   ],
   "biggest_project": "cavandonohoe.github.io",
-  "biggest_project_commits": 269,
+  "biggest_project_commits": 271,
   "repositories": [
     "cavandonohoe/cavandonohoe",
     "cavandonohoe/cavandonohoe.github.io",
@@ -4737,12 +4781,12 @@
     "cavandonohoe/rent-vs-buy"
   ],
   "repository_commits": {
-    "cavandonohoe/cavandonohoe.github.io": 269,
+    "cavandonohoe/cavandonohoe.github.io": 271,
     "cavandonohoe/rent-vs-buy": 29,
     "cavandonohoe/confederate_statues": 18,
     "cavandonohoe/cavandonohoe": 10
   },
   "scope": "Author-matched commits on the default branch of public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bot-authored or bot-committed commits, deploy commits, and other authors are excluded. Moved files count only changed lines. Language totals use .gitattributes Linguist overrides plus built-in generated, vendored, dependency, build, docs, minified, and raw HTML input patterns. Overall lines added still include all files. PRs count public pull requests the user authored and merged into their own repositories during the year, when available.",
   "is_partial_year": true,
-  "generated_at": "2026-10-29T15:29:26.663923+00:00"
+  "generated_at": "2026-10-31T14:42:11.253080+00:00"
 }

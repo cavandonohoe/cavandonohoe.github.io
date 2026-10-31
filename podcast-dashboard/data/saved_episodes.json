@@ -3,11 +3,11 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 450,
+    "n_episodes": 454,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-10-30",
-    "api_saved_count": 196,
-    "n_removed": 206,
+    "api_refreshed_at": "2026-10-31",
+    "api_saved_count": 201,
+    "n_removed": 194,
     "n_unavailable": 28
   },
   "episodes": [
@@ -213,7 +213,8 @@
       "release": "2025-12-22",
       "url": "https://open.spotify.com/episode/0YYOkX5X0UnJZp9xRYDuh0",
       "desc": "Would you pay a professional $2,500 or more to put up your holiday lights? Zachary Crockett is walking in a winter wonderland. SOURCES:Chuck Smith, creator of Planet Christmas.Dean Lyons, founder and CEO of Bright Nights. RESOURCES:\"The Suburban Maximalists Making Viral Christmas Displays,\" by Graham Hacia (WIRED, 2017).\"Incandescent vs. LED Christmas Lights: How Much Does it Impact Your Power Bill?,\" by Kelly Bedrich (Electricity Plans).\"Why Christmas Light Installation Is a Great Add-on Service for Contractors,\" (Sprinkler School).Brite Nites.Planet Christmas. EXTRAS:\"How Christmas Lights Are Made,\" (Insider, 2018). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "39BLCVwy32LYjuV0PR2eYf",
@@ -502,8 +503,7 @@
       "name": "Can a good story change economic reality?",
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/5Re5YXo4qagb8YyNbtCNdG",
-      "api_seen": true,
-      "removed_at": "2026-10-29"
+      "api_seen": true
     },
     {
       "added_at": null,
@@ -553,8 +553,7 @@
       "release": "2025-12-17",
       "url": "https://open.spotify.com/episode/4zLVoPLQI8yMavyqWuAosz",
       "desc": "Welcome to the inaugural Planet Money Pop Culture Draft! In today's episode (a Planet Money+ episode we’re releasing into the main feed) we're gonna go back to the year 1999. Three hosts, Kenny Malone, Wailin Wong, and Jeff Guo, go head to head and each drafts a “team” of economic pop culture. So a movie, a song, and a wild card pick that best represents the Planet Money spirit!It could be a movie related to business or maybe a song about money … as long as it came out in 1999! Listen to hear each of them make the case for why their team should be crowned the winner!If you want more bonus episodes like this one and to support our work, sign up for Planet Money+.Listen free: Apple Podcasts, Spotify, the NPR app or anywhere you get podcasts.Facebook / Instagram / TikTok / Our weekly Newsletter.This episode was hosted by Kenny Malone, Wailin Wong, and Jeff Guo. It was produced by Viet Le and edited by Planet Money’s executive producer Alex Goldmark.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true,
-      "removed_at": "2026-10-30"
+      "api_seen": true
     },
     {
       "id": "4ihRLkytBTl2g8UeRlrK1j",
@@ -700,7 +699,8 @@
       "name": "Chevron, Venezuela and the Paradox of Plenty",
       "show": "Planet Money",
       "url": "https://open.spotify.com/episode/1PeIFyNkiFYmuO4cQkLwM0",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2025-08-13",
@@ -810,8 +810,7 @@
       "name": "Data Centers: Can't Live With Em, Can't Live Without Em",
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/79OmsXBCOfQROzibRUMupy",
-      "api_seen": true,
-      "removed_at": "2026-10-30"
+      "api_seen": true
     },
     {
       "added_at": "2026-01-20",
@@ -1003,8 +1002,7 @@
       "release": "2025-12-16",
       "url": "https://open.spotify.com/episode/1tP8lGAZlQNmEdcIGvkcCj",
       "desc": "Everybody’s always bagging on pessimists and telling everybody they should be more optimistic. Well, nuts to that! There are plenty of benefits from being a pessimist. Although being an optimist still wins in basically every category ☹See omnystudio.com/listener for privacy information.",
-      "api_seen": true,
-      "removed_at": "2026-10-29"
+      "api_seen": true
     },
     {
       "id": "1GS0zmLps7F88g81iSf7i4",
@@ -1028,7 +1026,8 @@
       "release": "2025-12-20",
       "url": "https://open.spotify.com/episode/42krVXxVR2EC9U5wVsbhvp",
       "desc": "When your life is as outsized as the World’s Greatest Showman PT Barnum it’s pretty easy to - you know - gloss over the grimmer aspects when you turn it into an uplifting musical movie. But the way to understand a person is to look at them, warts and all. Josh and Chuck take a full accounting in this classic episode.See omnystudio.com/listener for privacy information.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2026-01-13",
@@ -1091,7 +1090,8 @@
       "name": "Selects: BPD: The Worst Disorder or Not a Disorder at All?",
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/1XqPHar55a4sWyWioKp5HH",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "4tPLEhPaVlskE1drmvq78I",
@@ -1331,8 +1331,7 @@
       "release": "2025-12-17",
       "url": "https://open.spotify.com/episode/6lw3E4FBIw1J08kAYaTXJk",
       "desc": "President Trump’s Chief of Staff dropped dirt on her boss and his cronies in a series of interviews, the president’s new White House ballroom is being built on top of an emergency operations bunker, and the Madagascar hissing cockroach is the spy of the future. The hosts of “Anderson Cooper 360” and “Watch What Happens Live” stop by for their annual Late Show visit ahead of their big New Year’s Eve broadcast, which typically results in Anderson Cooper being overserved.",
-      "api_seen": true,
-      "removed_at": "2026-10-29"
+      "api_seen": true
     },
     {
       "added_at": null,
@@ -1450,7 +1449,8 @@
       "name": "Gov.-Elect Abigail Spanberger",
       "show": "The Late Show Pod Show with Stephen Colbert",
       "url": "https://open.spotify.com/episode/0dJ2HnhmfX9OT14tccKw3M",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "058UfigkExiUPhrJNFlsJa",
@@ -1665,7 +1665,8 @@
       "release": "2025-12-22",
       "url": "https://open.spotify.com/episode/6195SVR6O1O2mSSVDmX6hs",
       "desc": "Stephen's back on the podcast for some very special holiday podcast introductions! Tonight he and his podcast producer Becca are going deep in the vault and tucking our listeners into their cozy beds with these two Bedtime Stories: listen as the incomparable Julie Andrews reads a story by A.A. Milne with Stephen, and Stephen's group chat buddy George Saunders reads an original piece for the Christmas season. George Saunders originally aired December 8th, 2015; Julie Andrews originally aired October 22nd, 2019.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "4lzODuk4xfqRZjzFC92UfB",
@@ -1701,8 +1702,7 @@
       "name": "Amanda Seyfried | Wrong! Said Fed",
       "show": "The Late Show Pod Show with Stephen Colbert",
       "url": "https://open.spotify.com/episode/0MeUvLLKiUDBRM7P0v6pXB",
-      "api_seen": true,
-      "removed_at": "2026-10-29"
+      "api_seen": true
     },
     {
       "added_at": "2025-08-11",
@@ -1786,8 +1786,7 @@
       "name": "Unaffordability index: Rent, GLP-1s, Obamacare",
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/3gwx1amLEjwo9dbe90rlaC",
-      "api_seen": true,
-      "removed_at": "2026-10-29"
+      "api_seen": true
     },
     {
       "added_at": null,
@@ -1871,8 +1870,7 @@
       "name": "Middlegarchs are the new Oligarchs",
       "show": "Planet Money",
       "url": "https://open.spotify.com/episode/4IIVXIE9JvJEyuj92bdyIj",
-      "api_seen": true,
-      "removed_at": "2026-10-30"
+      "api_seen": true
     },
     {
       "id": "1I4iBlBR1jrjAiU3WkWzz3",
@@ -2029,7 +2027,8 @@
       "release": "2025-12-20",
       "url": "https://open.spotify.com/episode/5lisjqVtMahVzDx9TLdzbO",
       "desc": "As a country, we are spending more to get data centers up and running than we spent to build the entire interstate highway system. (Yes, that’s inflation-adjusted.) With tech companies spending hundreds of billions of dollars on AI, data centers have kind of become the thing in the US economy. But along with that growth have come a lot of questions. Like where is all the electricity to run these data centers supposed to come from? And how much are residential customers’ electric bills increasing as a result?On today’s episode, we go to Ohio to trace one electric bill back to its source, to see what exactly is causing the big price increases people are seeing. We take a tour of a data center hot spot, and get to the bottom of how prices are set from inside the power company.Related episodes: - Asking for a friend … which jobs are safe from AI?  - No AI data centers in my backyard!  - What $10 billion in data centers actually gets you  - Is AI overrated or underrated?  - Green energy gridlockPre-order the Planet Money book and get a free gift. / Subscribe to Planet Money+Listen free: Apple Podcasts, Spotify, the NPR app or anywhere you get podcasts.Facebook / Instagram / TikTok / Our weekly Newsletter.Today's show was hosted by Keith Romer and Jeff Guo. It was produced by Sam Yellowhorse Kesler. It was edited by Jess Jiang and fact checked by Sierra Juarez and Vito Emanuel. It was engineered by Cena Loffredo. Alex Goldmark is Planet Money's executive producer. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2025-08-11",
@@ -3267,8 +3266,7 @@
       "release": "2025-12-16",
       "url": "https://open.spotify.com/episode/4k8Is3Z4IiJ77ySPe9lUte",
       "desc": "How did scientists discover evidence for dark energy? Neil deGrasse Tyson and comedian Paul Mecurio explore dark energy, Hubble tension, and the beginning and end of the universe with astrophysicist and Nobel laureate, Adam Riess.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/origins-of-dark-energy-with-adam-riess/Thanks to our Patrons micpoc, Nathan, Matthew, Aislynn Schaffer, Mark Domino, Lou Wheeland, Matrograde, Elliott Natale, Machael Lipovski, Mathew Moore, Tony, Pablo P, Toni, Brian Futterman, quantumAnomaly, Robin Steiner, Errol Norwitz, Donovan Meek, Alan Geist, Sriganesh Arunanthi, Nuno Abreu, Ross Ziobro, Petr Doležal, Mandar Parikh, Bryan Tollin, Fooj, David Bozarth, Kolja Dobrindt, Sean Poplawski, Brad Durbin, Christian Nielsen, Zen Kurokawa, Lương Tiến, Joel Arbuckle, Chad L Ingham, Mark Morris, dylndmg, Derrick Korstick, EleanorRigbyy, Tarun C, Larry Infante, Jaclyn Anderson, Dave, Kayla Finch, The Bayside Volunteer Jam Band, Dale Allen Platt, Raymond Boulay, Lawrence Zeller, David, Kim Matthews, Jon Gefen, Mark A. Hasty, Clifford Dedmore, Mario De La Crus and Brianni Massin, jordan visina, Ryan Brown, Sebastian H, Daniel Voth, Karen Hollis, Josua Ennis, Julius Adams, Christie L Hall, Filip Risteski, scottdunbar_io, Samantha Davis, Don Franks, Corey Butler, Josh Jones, Daniel Vilasuso, J MR, joe, I Am Austin, bobmac69, Anthony cole, Zan, Erik LeRoy, Kevin George, Arman Adei, Christopher Pickett, John Morlock, AllTheScience, Juana Bee, Jeff Chastain, Jaimal Eiseman, Ed Matte, Lorkhan, D, roninraver, z67760, Orghanik Productions, and CubedWombat for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_seen": true,
-      "removed_at": "2026-10-29"
+      "api_seen": true
     },
     {
       "added_at": "2025-08-12",
@@ -3471,8 +3469,7 @@
       "name": "Cosmic Queries – Space Junk! with Moriba Jah",
       "show": "StarTalk with Neil deGrasse Tyson",
       "url": "https://open.spotify.com/episode/0YOKII1OfMMwcHG2garyFd",
-      "api_seen": true,
-      "removed_at": "2026-10-29"
+      "api_seen": true
     },
     {
       "id": "4ETnDszosKxJlOFsKvChRc",
@@ -3606,8 +3603,7 @@
       "name": "How much money President Trump and his family have made",
       "show": "Planet Money",
       "url": "https://open.spotify.com/episode/4pDvWWG2dB7vvDrNIMOCVb",
-      "api_seen": true,
-      "removed_at": "2026-10-29"
+      "api_seen": true
     },
     {
       "id": "4ZKVmQ1ZrmiRWFUUra51pS",
@@ -3763,8 +3759,7 @@
       "name": "688. When Is a Bet Not a Bet?",
       "show": "Freakonomics Radio",
       "url": "https://open.spotify.com/episode/19CBE3cIiavviFNl7Je1Nm",
-      "api_seen": true,
-      "removed_at": "2026-10-29"
+      "api_seen": true
     },
     {
       "added_at": null,
@@ -4241,7 +4236,8 @@
       "release": "2026-10-05",
       "url": "https://open.spotify.com/episode/3M5KZrO27xztKcxIYPyQKs",
       "desc": "How do you ask your friends to pay you back in a timely way? We’ve got an etiquette coach to help with that. Fact checking by Sierra Juarez.Your Next Listen — Is this a bank?Connect with The Indicator — Sign up for The Indicator’s weekly newsletter! — Buy the Planet Money book — Find our socials, YouTube and more! — For sponsor-free episodes, subscribe to NPR+ Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "66qOTq7rAMpJr90fPptG6Y",
@@ -4302,7 +4298,8 @@
       "release": "2026-10-06",
       "url": "https://open.spotify.com/episode/6VD2brjgRwgNExSHdocliq",
       "desc": "As the threats posed by AI models continue to grow, AI oligarchs struggle to explain the upsides of their technology. Jon Stewart breaks down the latest tech headlines, including Trump’s refusal to regulate AI and CEOs’ awkward attempts to make human annihilation seem less scary (at least Grok can make funny videos!). Plus, Jon chats with Meta’s totally cute and totally not-sinister Muse AI agent, who makes him feel WAY better about the situation. Jacob Coxon, a former Anthropic and OpenAI researcher who spoke out about the dangers of artificial intelligence, opens up to Jon about the grim reality of the tech industry— from malicious hacks to potential biological attacks. The two discuss the future, AI-led utopia that tech companies are trying to sell us, the megalomania and riskiness that underlies the industry, and the terrifying capabilities Coxon witnessed while training AI models at Anthropic and OpenAI. --Go to https://Quince.com/dailyshow for free shipping on your order and 365-day returns.  --https://homeserve.com/tds  -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "6b55YnKaQmphyHFAK3aiTj",
@@ -4314,7 +4311,8 @@
       "release": "2026-10-06",
       "url": "https://open.spotify.com/episode/6b55YnKaQmphyHFAK3aiTj",
       "desc": "Chuck and Josh do their best to tackle “the craft,” which most normal people call stand-up comedy. Stand-up dates back to the vaudeville days but it really started to take off in the 60s when comics stopped wearing suits and started getting edgy.See omnystudio.com/listener for privacy information.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "7MCJlvk6tCg7oIs4ZL9yK5",
@@ -4338,7 +4336,8 @@
       "release": "2026-10-05",
       "url": "https://open.spotify.com/episode/5ZumnQGojfOZ4qxFVuOWAC",
       "desc": "This week's host Michael Kosta sits down with Daily Show writer Nicole Conlan to recap the latest news, and preview the week to come. They discuss the bubonic plague making a comeback in Russia, Vivek Ramaswamy nearly dropping a child after struggling to pick him up at a campaign rally, former DHS Secretary Kristi Noem filing for divorce, and Mayor Mamdani joining forces (and hands) with his former rival Curtis Sliwa to spread flu shot awareness in NYC. Plus, Kosta and Nicole look ahead to this week's guests: Aaron Sorkin, Sebastian Stan, and Kyle MacLachlan. Check out Michael's interview with Gianna Toboni on YouTube. Check out Nicole's podcast The Climate Denier's Playbook on Apple Podcasts or Spotify -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "40VBBhFo4a96cKLH73gBCm",
@@ -5464,6 +5463,54 @@
       "release": "2026-10-29",
       "url": "https://open.spotify.com/episode/33ihteXgORORQofhSyxarJ",
       "desc": "Get yourself ready to freak out with this year’s extra-freak Halloween freak-fest, starring the voice acting talents of Chuck and Josh. This year we feature stories from WW Jacobs and WF Harvey, both of whom, if they were alive, would love this episode.See omnystudio.com/listener for privacy information.",
+      "api_seen": true
+    },
+    {
+      "id": "3LcXbn7BYLReUhBl7ov3qm",
+      "added_at": "2026-10-31",
+      "show": "The Daily Show: Ears Edition",
+      "publisher": null,
+      "name": "This Week's News | Jon Stewart & Jordan Klepper on Trump's Ass Obsession & GOP's Midterm Boogeymen",
+      "dur_min": 47,
+      "release": "2026-10-31",
+      "url": "https://open.spotify.com/episode/3LcXbn7BYLReUhBl7ov3qm",
+      "desc": "Catch up on the latest headlines with The Daily Show News Team. Jon Stewart dives into Trump’s midterm closing arguments, which featured an array of Islamophobic attacks against Abdul El-Sayed, bragging about oil companies' profits amid high gas prices, a quid pro quo for sick veterans, and a look into who the “you” is that Trump claims to represent. Jordan Klepper weighs in on Obama’s Cheesecake Factory diss that had MAGA obsessing over the restaurant chain, the d**k pics and ass talk eating the midterm elections alive, uproar over a second “Dan Sullivan” on Alaska's Senate ballot, and Republicans' last-ditch fearmongering campaign, including Ted Cruz calling El-Sayed a \"jihadist leprechaun.\"  -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
+      "api_seen": true
+    },
+    {
+      "id": "3fj9loTPwQF9P10wO2eION",
+      "added_at": "2026-10-31",
+      "show": "Stuff You Should Know",
+      "publisher": null,
+      "name": "Selects: Salem Witchcraft Trials: More Bonkers Than You Know",
+      "dur_min": 50,
+      "release": "2026-10-31",
+      "url": "https://open.spotify.com/episode/3fj9loTPwQF9P10wO2eION",
+      "desc": "Looking back 300 years on, it’s easy to overgeneralize why the Salem Villagers decided to persecute (and execute) their neighbors. But as much as this story has become an American history chestnut, we still don’t understand why Salem lost its mind. Listen to this classic episode to find out what we think we know and what we don't.See omnystudio.com/listener for privacy information.",
+      "api_seen": true
+    },
+    {
+      "id": "4AST3KoOsjZsHnF4Yjtlti",
+      "added_at": "2026-10-31",
+      "show": "Late Night with Seth Meyers Podcast",
+      "publisher": null,
+      "name": "Corrections: The Podcast | Episode 183 - \"This Isn't Corrections\"",
+      "dur_min": 12,
+      "release": "2026-10-31",
+      "url": "https://open.spotify.com/episode/4AST3KoOsjZsHnF4Yjtlti",
+      "desc": "Recorded every Thursday after the audience has left Studio 8G, and witnessed only by scattered members of the Late Night staff and crew… This is Corrections: The Podcast, Episode 183, \"This Isn't Corrections.\"See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
+      "api_seen": true
+    },
+    {
+      "id": "44E8v8uTAUkfxZD305yIVT",
+      "added_at": "2026-10-31",
+      "show": "Planet Money",
+      "publisher": null,
+      "name": "Is this how the great international borrowing spree ends?",
+      "dur_min": 26,
+      "release": "2026-10-31",
+      "url": "https://open.spotify.com/episode/44E8v8uTAUkfxZD305yIVT",
+      "desc": "In recent months, there have been serious whispers about an outrageous possibility: that one day soon, France — the seventh largest economy in the world — might not be able to pay back its debts. Right now, protesters in France are complaining about crumbling schools, the lack of teachers, and the overall high cost of living. But the government is struggling to find the money to address all the country’s problems.France is in a lot of debt. It has been borrowing record amounts of money. So have many other countries including the U.S., the U.K., Italy, Canada. For more than a decade, there has been an international borrowing spree going on. Now, as interest rates climb, that borrowing spree might have to come to an end. And the consequences could get ugly.Live Show: Planet Money Live at Kilkenomics. Kilkenny, Ireland Nov. 6th - 7thRead: Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life Our weekly longform Planet Money newsletterOur weekly Indicator round-up newsletterFollow: InstagramTikTokYouTubeFacebookSupport public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.This episode was hosted by Jeff Guo and Erika Beras. It was produced by Sam Yellowhorse Kesler and edited by Marianne McCune. It was fact-checked by Charlotte Isidore and Sierra Juarez. Jimmy Keeley and Travis Hagan engineered the show. Alex Goldmark is the executive producer of Planet Money.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true
     }
   ]
