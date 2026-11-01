@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-31T20:12:06.311444+00:00",
+  "generated_at": "2026-11-01T20:44:20.852377+00:00",
   "events": [
     {
       "date": "2026-10-30",
@@ -588,21 +588,19 @@
       "type": "merged_pr",
       "title": "Add date labels to Live Activity chart",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/200"
-    },
-    {
-      "date": "2026-10-02",
-      "type": "merged_pr",
-      "title": "Add automated developer year in review",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/198"
-    },
-    {
-      "date": "2026-10-01",
-      "type": "merged_pr",
-      "title": "Turn recent activity into a big-picture emoji timeline",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/199"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-11-01",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "1 podcast episode added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/2574a630790ff0a0b60331dd51f16739806ff327"
+        }
+      ]
+    },
     {
       "date": "2026-10-31",
       "items": [
@@ -789,16 +787,6 @@
           "emoji": "\ud83c\udfa7",
           "text": "3 podcast episodes added",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/524104539c8a926e967c2a2ed4f51a0dc208f48f"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-17",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "3 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/042fc9497934ff3a1ddbce7b46217ce96bb051d5"
         }
       ]
     }
