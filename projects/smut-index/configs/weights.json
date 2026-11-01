@@ -1,0 +1,30 @@
+{
+  "starting": {
+    "explicit": 0.35,
+    "anatomy": 0.25,
+    "intimacy": 0.2,
+    "language": 0.1,
+    "intensity": 0.1
+  },
+  "equal": {
+    "explicit": 0.2,
+    "anatomy": 0.2,
+    "intimacy": 0.2,
+    "language": 0.2,
+    "intensity": 0.2
+  },
+  "acts_focused": {
+    "explicit": 0.6,
+    "anatomy": 0.1,
+    "intimacy": 0.1,
+    "language": 0.1,
+    "intensity": 0.1
+  },
+  "romance_focused": {
+    "explicit": 0.2,
+    "anatomy": 0.1,
+    "intimacy": 0.4,
+    "language": 0.2,
+    "intensity": 0.1
+  }
+}

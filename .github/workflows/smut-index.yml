@@ -1,0 +1,33 @@
+name: Smut Index
+on:
+  pull_request:
+    paths:
+      - 'projects/smut-index/**'
+      - '.github/workflows/smut-index.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: projects/smut-index
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: projects/smut-index/requirements.lock
+      - run: python -m pip install -r requirements.lock
+      - run: python -m pip install --no-deps -e .
+      - run: python -m ruff check src tests scripts
+      - run: python -m pytest -q
+      - run: python -m smut_index.cli build
+      - name: Verify deterministic derived results
+        run: git diff --exit-code -- reports/results.json reports/reproduction_manifest.json reports/dashboard.html reports/figures/*.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: smut-index-research-dashboard
+          path: projects/smut-index/reports/

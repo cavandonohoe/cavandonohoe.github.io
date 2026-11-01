@@ -1,0 +1,13 @@
+data/private/
+data/raw/
+.env*
+!.env.example
+*.epub
+*.srt
+*.vtt
+*.pdf
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+.venv/

@@ -1,0 +1,18 @@
+{
+  "version": "rules-v1",
+  "seed": 20261031,
+  "confidence_policy": "No numeric confidence threshold is active until calibrated confidence exists; all candidates require review.",
+  "llm": null,
+  "patterns": {
+    "kissing": "\\bkiss(?:ed|ing|es)?\\b",
+    "nonsexual_affection": "\\b(?:hug(?:ged|ging|s)?|cuddl(?:e|ed|ing)|held hands)\\b",
+    "sexual_touching": "\\b(?:grop(?:e|ed|ing)|caress(?:ed|ing)?)\\b",
+    "implied_activity": "\\b(?:slept together|made love|spent the night together)\\b",
+    "explicit_activity": "\\b(?:intercourse|orgasm|sex)\\b",
+    "nudity": "\\b(?:naked|nude|undress(?:ed|ing)?)\\b",
+    "sexual_dialogue": "\\b(?:brothel|whore|virgin|bed you)\\b",
+    "sexual_thoughts": "\\b(?:arous(?:al|ed)|lust|desire)\\b",
+    "sexual_violence": "\\b(?:rape|raped|raping|sexual assault|forced kiss)\\b"
+  },
+  "minimum_pattern_hits": 1
+}

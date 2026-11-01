@@ -1,0 +1,92 @@
+{
+  "scope": "first_novel_vs_first_novel",
+  "verdict": "undetermined",
+  "works": {
+    "got": {
+      "secondary_clusters": 4,
+      "primary_verified_events": 0,
+      "summary_chapters_reviewed": 5,
+      "primary_chapters_reviewed": 0,
+      "chapter_units": 73,
+      "metrics_on_reviewed_scenes": {
+        "events": null,
+        "events_per_10000_words": null,
+        "events_per_hour": null,
+        "scenes_pct": null,
+        "runtime_pct": null,
+        "severity_per_scene": null,
+        "severity_per_10000_words": null,
+        "sexual_word_span_pct": null
+      },
+      "sensitivity": {
+        "starting": {
+          "score": null,
+          "lower": null,
+          "upper": null,
+          "status": "no_complete_scene_inventory"
+        },
+        "equal": {
+          "score": null,
+          "lower": null,
+          "upper": null,
+          "status": "no_complete_scene_inventory"
+        },
+        "acts_focused": {
+          "score": null,
+          "lower": null,
+          "upper": null,
+          "status": "no_complete_scene_inventory"
+        },
+        "romance_focused": {
+          "score": null,
+          "lower": null,
+          "upper": null,
+          "status": "no_complete_scene_inventory"
+        }
+      }
+    },
+    "acotar": {
+      "secondary_clusters": 7,
+      "primary_verified_events": 0,
+      "summary_chapters_reviewed": 5,
+      "primary_chapters_reviewed": 0,
+      "chapter_units": 46,
+      "metrics_on_reviewed_scenes": {
+        "events": null,
+        "events_per_10000_words": null,
+        "events_per_hour": null,
+        "scenes_pct": null,
+        "runtime_pct": null,
+        "severity_per_scene": null,
+        "severity_per_10000_words": null,
+        "sexual_word_span_pct": null
+      },
+      "sensitivity": {
+        "starting": {
+          "score": null,
+          "lower": null,
+          "upper": null,
+          "status": "no_complete_scene_inventory"
+        },
+        "equal": {
+          "score": null,
+          "lower": null,
+          "upper": null,
+          "status": "no_complete_scene_inventory"
+        },
+        "acts_focused": {
+          "score": null,
+          "lower": null,
+          "upper": null,
+          "status": "no_complete_scene_inventory"
+        },
+        "romance_focused": {
+          "score": null,
+          "lower": null,
+          "upper": null,
+          "status": "no_complete_scene_inventory"
+        }
+      }
+    }
+  }
+}
