@@ -1,0 +1,31 @@
+{
+  "inputs": {
+    "configs/pipeline.json": "2eab1db60ada4ec71f73337756b911553236385918f1bdee2095286c9c3f5c65",
+    "configs/taxonomy.json": "a15dd52febd394f21c016d4e0b5f677047db27fc35fad17ef8ddcc139d9c4dbe",
+    "configs/weights.json": "ce09ac37acee7887657d852dc6f679b76a8a5136b7f3234fd5a873129ba1e72e",
+    "data/chapters.csv": "f289100c480805a66d4de7d7c6d997494581ce7c7fc0d5ad6a4b8cb20a46ab4b",
+    "data/coverage.json": "96cf80569e657dc0c9efa22413d8e228846eeeae1dbcde3f5ab161310240368f",
+    "data/events.jsonl": "946cb4493a8f8ffdfe3ed42ae65aec7a3caac9743d261c0f090e7975cd7c620a",
+    "data/scenes.jsonl": "20d73f7adfa098f9b7e266bb1f871f9f7aadcf379a42609bae205a10901c5f8f",
+    "data/sources.json": "d4c31be98c56776bd3514589e4fd8526ce114b6350d88b171dbf2b34bb07fdae",
+    "pyproject.toml": "daf2622d69ad9894d77cde7228034aed1edbcdcc1191c4520e8026ad3883a2b0",
+    "requirements.lock": "cc73b3a0a3772c7c361dcd8f69355a4f88c66bb968497193baba3af25ae22894",
+    "src/smut_index/__init__.py": "9f45cd36c684cd5b0327bc918cd63c44afad95c82fa62506308a952144f50bad",
+    "src/smut_index/analysis.py": "8fa421ae934536fb2538fef80c7ce51f9f75086567506f89f263db747c2922d5",
+    "src/smut_index/classification.py": "d2208583ddc6061004cbe0e0defe2440e69e6d6bc729c145eb04d328499a1ea3",
+    "src/smut_index/cli.py": "063b4f6863f1d7052609d53a1be5bc4cbd31f4eb232b449a093c32573a7cf1f6",
+    "src/smut_index/ingestion.py": "7365600917997e22b8838f9b932efab50768575c694890a9a902f93440ccf601",
+    "src/smut_index/schema.py": "6f75cc8bafdb72c1d1e7a9372d646f3453ab3e2efb0fd562af9ab22136db14b1",
+    "src/smut_index/scoring.py": "64bd7f0d5d05e6ab14f6758abf7b4a41269edb10169aae647652d19b1b9ee760",
+    "src/smut_index/validation.py": "ab111ab5e6535a7c518ea489d8f1b5007ee5fa92e79935083e7e046e835b59e0",
+    "src/smut_index/visualization.py": "3946a01aa8d1c8c019d33624bafe3d8962bf915e00d7d427d0040bdd46e2528d"
+  },
+  "versions": {
+    "pandas": "2.2.3",
+    "pydantic": "2.12.3",
+    "plotly": "6.3.1"
+  },
+  "model": null,
+  "rules": "rules-v1",
+  "seed": 20261031
+}
