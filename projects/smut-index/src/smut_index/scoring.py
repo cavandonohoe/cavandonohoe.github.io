@@ -129,6 +129,11 @@ def exposure_metrics(events, scenes):
         raise ValueError("Compute exposure metrics for one work at a time")
     reviewed = [s for s in scenes if s.reviewed_all_categories]
     keys = {(s.work, s.unit_id, s.scene_id) for s in reviewed}
+    if any(
+        (e.work, e.unit_id, e.scene_id) in keys and e.verification != "primary_verified"
+        for e in events
+    ):
+        raise ValueError("Resolve all candidates before marking a scene reviewed")
     selected = [
         e
         for e in events

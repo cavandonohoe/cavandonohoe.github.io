@@ -69,6 +69,16 @@ def test_secondary_cannot_be_primary_verified():
 def test_unknown_severity_cannot_be_verified():
     with pytest.raises(ValidationError):
         event(labels=[Label(category="kissing", subtype="romantic")])
+    with pytest.raises(ValidationError):
+        event(
+            labels=[
+                Label(
+                    category="explicit_activity",
+                    subtype="activity_reported_explicitness_unresolved",
+                    severity=4,
+                )
+            ]
+        )
 
 
 @pytest.mark.parametrize(
@@ -146,6 +156,8 @@ def test_unresolved_candidates_prevent_complete_scene():
     e = event(verification="candidate")
     with pytest.raises(ValueError):
         index_bounds([e], [scene()], WEIGHTS, inventory_complete=True)
+    with pytest.raises(ValueError):
+        exposure_metrics([e], [scene()])
 
 
 def test_bounds_and_no_fake_zero():

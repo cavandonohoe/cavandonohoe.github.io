@@ -56,6 +56,10 @@ class Event(BaseModel):
             raise ValueError("A secondary guide cannot verify the primary work")
         if self.verification == "primary_verified" and any(x.severity is None for x in self.labels):
             raise ValueError("Primary verification requires explicit severity adjudication")
+        if self.verification == "primary_verified" and any(
+            "unresolved" in x.subtype for x in self.labels
+        ):
+            raise ValueError("Resolve provisional subtypes before primary verification")
         if len({x.category for x in self.labels}) != len(self.labels):
             raise ValueError("Use one label per category, with a combined subtype if needed")
         if any(x.category == "sexual_violence" for x in self.labels):

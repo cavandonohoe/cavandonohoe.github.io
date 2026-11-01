@@ -15,8 +15,8 @@
     "src/smut_index/classification.py": "d2208583ddc6061004cbe0e0defe2440e69e6d6bc729c145eb04d328499a1ea3",
     "src/smut_index/cli.py": "063b4f6863f1d7052609d53a1be5bc4cbd31f4eb232b449a093c32573a7cf1f6",
     "src/smut_index/ingestion.py": "7365600917997e22b8838f9b932efab50768575c694890a9a902f93440ccf601",
-    "src/smut_index/schema.py": "164bd8920a8c6541c4b22cdb0cee920878b6635f11bc27c4a353153fdf4a1812",
-    "src/smut_index/scoring.py": "f0effbed3e4ede93a665094e0322eb03d61d6102c71b16c2327eb1956d820bf7",
+    "src/smut_index/schema.py": "6f75cc8bafdb72c1d1e7a9372d646f3453ab3e2efb0fd562af9ab22136db14b1",
+    "src/smut_index/scoring.py": "64bd7f0d5d05e6ab14f6758abf7b4a41269edb10169aae647652d19b1b9ee760",
     "src/smut_index/validation.py": "ab111ab5e6535a7c518ea489d8f1b5007ee5fa92e79935083e7e046e835b59e0",
     "src/smut_index/visualization.py": "3946a01aa8d1c8c019d33624bafe3d8962bf915e00d7d427d0040bdd46e2528d"
   },
