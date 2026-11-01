@@ -6,7 +6,7 @@
   "patterns": {
     "kissing": "\\bkiss(?:ed|ing|es)?\\b",
     "nonsexual_affection": "\\b(?:hug(?:ged|ging|s)?|cuddl(?:e|ed|ing)|held hands)\\b",
-    "sexual_touching": "\\b(?:grop(?:e|ed|ing)|caress(?:ed|ing)?)\\b",
+    "sexual_touching": "\\b(?:grope|groped|groping|caress(?:ed|ing)?)\\b",
     "implied_activity": "\\b(?:slept together|made love|spent the night together)\\b",
     "explicit_activity": "\\b(?:intercourse|orgasm|sex)\\b",
     "nudity": "\\b(?:naked|nude|undress(?:ed|ing)?)\\b",

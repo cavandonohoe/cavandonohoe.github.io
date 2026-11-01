@@ -24,6 +24,10 @@ with sync_playwright() as p:
     assert page.locator('tbody tr[data-work="acotar"]:visible').count() == 0
     assert page.locator('tbody tr[data-work="got"]:visible').count() == 4
     page.set_viewport_size({"width": 390, "height": 844})
+    page.reload()
+    page.wait_for_function(
+        "document.querySelectorAll('.js-plotly-plot').length === 9 && Array.from(document.querySelectorAll('.js-plotly-plot')).every(p => p.querySelector('.main-svg'))"
+    )
     page.screenshot(path=str(root / "reports/figures/dashboard-mobile.png"), full_page=True)
     assert not errors, errors
     browser.close()
