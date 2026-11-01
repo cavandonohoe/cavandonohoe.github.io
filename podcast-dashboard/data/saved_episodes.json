@@ -3,11 +3,11 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 454,
+    "n_episodes": 455,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-10-31",
-    "api_saved_count": 201,
-    "n_removed": 194,
+    "api_refreshed_at": "2026-11-01",
+    "api_saved_count": 197,
+    "n_removed": 202,
     "n_unavailable": 28
   },
   "episodes": [
@@ -153,7 +153,8 @@
       "name": "653. Does Horse Racing Have a Future?",
       "show": "Freakonomics Radio",
       "url": "https://open.spotify.com/episode/2zwYCO3i8uwP3vknHEOjKe",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "6eSRM9MSPaGpP23cl4dpY3",
@@ -214,7 +215,7 @@
       "url": "https://open.spotify.com/episode/0YYOkX5X0UnJZp9xRYDuh0",
       "desc": "Would you pay a professional $2,500 or more to put up your holiday lights? Zachary Crockett is walking in a winter wonderland. SOURCES:Chuck Smith, creator of Planet Christmas.Dean Lyons, founder and CEO of Bright Nights. RESOURCES:\"The Suburban Maximalists Making Viral Christmas Displays,\" by Graham Hacia (WIRED, 2017).\"Incandescent vs. LED Christmas Lights: How Much Does it Impact Your Power Bill?,\" by Kelly Bedrich (Electricity Plans).\"Why Christmas Light Installation Is a Great Add-on Service for Contractors,\" (Sprinkler School).Brite Nites.Planet Christmas. EXTRAS:\"How Christmas Lights Are Made,\" (Insider, 2018). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-01"
     },
     {
       "id": "39BLCVwy32LYjuV0PR2eYf",
@@ -578,8 +579,7 @@
       "name": "Introducing 3 Putt Bogey",
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/2v9oU0hszHtauTS1VtVKqe",
-      "api_seen": true,
-      "removed_at": "2026-10-30"
+      "api_seen": true
     },
     {
       "id": "7hmq5mlJsihREypjnZziwY",
@@ -700,7 +700,7 @@
       "show": "Planet Money",
       "url": "https://open.spotify.com/episode/1PeIFyNkiFYmuO4cQkLwM0",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-01"
     },
     {
       "added_at": "2025-08-13",
@@ -1027,7 +1027,7 @@
       "url": "https://open.spotify.com/episode/42krVXxVR2EC9U5wVsbhvp",
       "desc": "When your life is as outsized as the World’s Greatest Showman PT Barnum it’s pretty easy to - you know - gloss over the grimmer aspects when you turn it into an uplifting musical movie. But the way to understand a person is to look at them, warts and all. Josh and Chuck take a full accounting in this classic episode.See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-01"
     },
     {
       "added_at": "2026-01-13",
@@ -1091,7 +1091,7 @@
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/1XqPHar55a4sWyWioKp5HH",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-01"
     },
     {
       "id": "4tPLEhPaVlskE1drmvq78I",
@@ -1115,7 +1115,8 @@
       "name": "Pop Tarts: No Fruit Necessary",
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/16lsm5SHcSfDIye1bDcqez",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "10T6iDslQsJ4VjsuNMgFaY",
@@ -1402,7 +1403,8 @@
       "name": "Meanwhile | Anchovy Donut, Bungled Bobsled",
       "show": "The Late Show Pod Show with Stephen Colbert",
       "url": "https://open.spotify.com/episode/6wm2YTtKbiqq4KZSjfwptm",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": null,
@@ -1450,7 +1452,7 @@
       "show": "The Late Show Pod Show with Stephen Colbert",
       "url": "https://open.spotify.com/episode/0dJ2HnhmfX9OT14tccKw3M",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-01"
     },
     {
       "id": "058UfigkExiUPhrJNFlsJa",
@@ -1666,7 +1668,7 @@
       "url": "https://open.spotify.com/episode/6195SVR6O1O2mSSVDmX6hs",
       "desc": "Stephen's back on the podcast for some very special holiday podcast introductions! Tonight he and his podcast producer Becca are going deep in the vault and tucking our listeners into their cozy beds with these two Bedtime Stories: listen as the incomparable Julie Andrews reads a story by A.A. Milne with Stephen, and Stephen's group chat buddy George Saunders reads an original piece for the Christmas season. George Saunders originally aired December 8th, 2015; Julie Andrews originally aired October 22nd, 2019.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-01"
     },
     {
       "id": "4lzODuk4xfqRZjzFC92UfB",
@@ -1809,8 +1811,7 @@
       "name": "Why Trump resurrected the Monroe Doctrine",
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/0Rh1yslB4WWMyoDWPTxRLb",
-      "api_seen": true,
-      "removed_at": "2026-10-30"
+      "api_seen": true
     },
     {
       "id": "2GAqfAOEAdHSFPhgOsNrmn",
@@ -2028,7 +2029,7 @@
       "url": "https://open.spotify.com/episode/5lisjqVtMahVzDx9TLdzbO",
       "desc": "As a country, we are spending more to get data centers up and running than we spent to build the entire interstate highway system. (Yes, that’s inflation-adjusted.) With tech companies spending hundreds of billions of dollars on AI, data centers have kind of become the thing in the US economy. But along with that growth have come a lot of questions. Like where is all the electricity to run these data centers supposed to come from? And how much are residential customers’ electric bills increasing as a result?On today’s episode, we go to Ohio to trace one electric bill back to its source, to see what exactly is causing the big price increases people are seeing. We take a tour of a data center hot spot, and get to the bottom of how prices are set from inside the power company.Related episodes: - Asking for a friend … which jobs are safe from AI?  - No AI data centers in my backyard!  - What $10 billion in data centers actually gets you  - Is AI overrated or underrated?  - Green energy gridlockPre-order the Planet Money book and get a free gift. / Subscribe to Planet Money+Listen free: Apple Podcasts, Spotify, the NPR app or anywhere you get podcasts.Facebook / Instagram / TikTok / Our weekly Newsletter.Today's show was hosted by Keith Romer and Jeff Guo. It was produced by Sam Yellowhorse Kesler. It was edited by Jess Jiang and fact checked by Sierra Juarez and Vito Emanuel. It was engineered by Cena Loffredo. Alex Goldmark is Planet Money's executive producer. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-01"
     },
     {
       "added_at": "2025-08-11",
@@ -2562,7 +2563,8 @@
       "name": "Epstein-Trump Saga Gets 20K Pages Longer & Megyn Kelly Splits Hairs on Pedophilia | Miguel",
       "show": "The Daily Show: Ears Edition",
       "url": "https://open.spotify.com/episode/37Z9Cstk1LhgU7EZPA2OFP",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "0wmpVXzdxWKgAO18kOXYeR",
@@ -2682,8 +2684,7 @@
       "release": "2025-12-18",
       "url": "https://open.spotify.com/episode/521K1SiLktx6YeEkBvcZAH",
       "desc": "After a firehose of economic news in 2025, we wanted to check back on some of the people we’ve heard from on our show. Today, we check in with a former federal employee caught in the Trump administration's wood chipper, a Louisiana shrimper on Trump’s tariffs and an update on a financial aid scam. Related episodes: Why do shrimpers like tariffs? What’s the long-term cost of federal layoffs? A big bank’s mistake, explained For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true,
-      "removed_at": "2026-10-30"
+      "api_seen": true
     },
     {
       "id": "2uJNhEDkkSSIZ44EDkUf0a",
@@ -2816,7 +2817,8 @@
       "release": "2025-12-24",
       "url": "https://open.spotify.com/episode/4KOBA2TMbrFLXcPi0GAyV8",
       "desc": "Holly is waxy and super sharp, not exactly the kind of thing you'd want all over your house. Yet it happens every holiday season. Today we dig in to discover why.See omnystudio.com/listener for privacy information.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "0LOoLkXJiXWwePoDtPKdnq",
@@ -3386,7 +3388,8 @@
       "name": "Superhero Science: StarTalk Live! With Charles Liu",
       "show": "StarTalk with Neil deGrasse Tyson",
       "url": "https://open.spotify.com/episode/4zWvXR8Tj3OsvsG7tylyoJ",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2026-01-16",
@@ -3639,7 +3642,8 @@
       "name": "50-year mortgages, falling real wages, and doing your rideshare due diligence",
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/4QKixrwtHtH5X8Sm3qUKwi",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2026-01-22",
@@ -4237,7 +4241,7 @@
       "url": "https://open.spotify.com/episode/3M5KZrO27xztKcxIYPyQKs",
       "desc": "How do you ask your friends to pay you back in a timely way? We’ve got an etiquette coach to help with that. Fact checking by Sierra Juarez.Your Next Listen — Is this a bank?Connect with The Indicator — Sign up for The Indicator’s weekly newsletter! — Buy the Planet Money book — Find our socials, YouTube and more! — For sponsor-free episodes, subscribe to NPR+ Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-01"
     },
     {
       "id": "66qOTq7rAMpJr90fPptG6Y",
@@ -4286,7 +4290,8 @@
       "release": "2026-10-06",
       "url": "https://open.spotify.com/episode/0u5GfPwsC8ugY8ZfL2DhSS",
       "desc": "Norway has the world’s largest sovereign wealth fund, but it’s facing a self-imposed dilemma. Should the fund's investments include companies that directly or indirectly contribute to the ongoing Israel-Hamas war? On today’s show, the ethical tightrope Norway is walking to invest its oil riches responsibly. Fact checking by Sierra Juarez.Your Next Listen —How would a US sovereign wealth fund even work? Connect with The Indicator — Sign up for The Indicator’s weekly newsletter! — Buy the Planet Money book — Find our socials, YouTube and more! — For sponsor-free episodes, subscribe to NPR+ Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "6VD2brjgRwgNExSHdocliq",
@@ -4299,7 +4304,7 @@
       "url": "https://open.spotify.com/episode/6VD2brjgRwgNExSHdocliq",
       "desc": "As the threats posed by AI models continue to grow, AI oligarchs struggle to explain the upsides of their technology. Jon Stewart breaks down the latest tech headlines, including Trump’s refusal to regulate AI and CEOs’ awkward attempts to make human annihilation seem less scary (at least Grok can make funny videos!). Plus, Jon chats with Meta’s totally cute and totally not-sinister Muse AI agent, who makes him feel WAY better about the situation. Jacob Coxon, a former Anthropic and OpenAI researcher who spoke out about the dangers of artificial intelligence, opens up to Jon about the grim reality of the tech industry— from malicious hacks to potential biological attacks. The two discuss the future, AI-led utopia that tech companies are trying to sell us, the megalomania and riskiness that underlies the industry, and the terrifying capabilities Coxon witnessed while training AI models at Anthropic and OpenAI. --Go to https://Quince.com/dailyshow for free shipping on your order and 365-day returns.  --https://homeserve.com/tds  -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-01"
     },
     {
       "id": "6b55YnKaQmphyHFAK3aiTj",
@@ -4312,7 +4317,7 @@
       "url": "https://open.spotify.com/episode/6b55YnKaQmphyHFAK3aiTj",
       "desc": "Chuck and Josh do their best to tackle “the craft,” which most normal people call stand-up comedy. Stand-up dates back to the vaudeville days but it really started to take off in the 60s when comics stopped wearing suits and started getting edgy.See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-01"
     },
     {
       "id": "7MCJlvk6tCg7oIs4ZL9yK5",
@@ -4337,7 +4342,7 @@
       "url": "https://open.spotify.com/episode/5ZumnQGojfOZ4qxFVuOWAC",
       "desc": "This week's host Michael Kosta sits down with Daily Show writer Nicole Conlan to recap the latest news, and preview the week to come. They discuss the bubonic plague making a comeback in Russia, Vivek Ramaswamy nearly dropping a child after struggling to pick him up at a campaign rally, former DHS Secretary Kristi Noem filing for divorce, and Mayor Mamdani joining forces (and hands) with his former rival Curtis Sliwa to spread flu shot awareness in NYC. Plus, Kosta and Nicole look ahead to this week's guests: Aaron Sorkin, Sebastian Stan, and Kyle MacLachlan. Check out Michael's interview with Gianna Toboni on YouTube. Check out Nicole's podcast The Climate Denier's Playbook on Apple Podcasts or Spotify -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-01"
     },
     {
       "id": "40VBBhFo4a96cKLH73gBCm",
@@ -5511,6 +5516,18 @@
       "release": "2026-10-31",
       "url": "https://open.spotify.com/episode/44E8v8uTAUkfxZD305yIVT",
       "desc": "In recent months, there have been serious whispers about an outrageous possibility: that one day soon, France — the seventh largest economy in the world — might not be able to pay back its debts. Right now, protesters in France are complaining about crumbling schools, the lack of teachers, and the overall high cost of living. But the government is struggling to find the money to address all the country’s problems.France is in a lot of debt. It has been borrowing record amounts of money. So have many other countries including the U.S., the U.K., Italy, Canada. For more than a decade, there has been an international borrowing spree going on. Now, as interest rates climb, that borrowing spree might have to come to an end. And the consequences could get ugly.Live Show: Planet Money Live at Kilkenomics. Kilkenny, Ireland Nov. 6th - 7thRead: Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life Our weekly longform Planet Money newsletterOur weekly Indicator round-up newsletterFollow: InstagramTikTokYouTubeFacebookSupport public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.This episode was hosted by Jeff Guo and Erika Beras. It was produced by Sam Yellowhorse Kesler and edited by Marianne McCune. It was fact-checked by Charlotte Isidore and Sierra Juarez. Jimmy Keeley and Travis Hagan engineered the show. Alex Goldmark is the executive producer of Planet Money.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
+      "api_seen": true
+    },
+    {
+      "id": "7pltT6untMH7tVhdKFLQ7S",
+      "added_at": "2026-11-01",
+      "show": "The Daily Show: Ears Edition",
+      "publisher": null,
+      "name": "The Interviews | Matthew Cole, Morgana Robinson, David Byrne, Tracy Letts",
+      "dur_min": 64,
+      "release": "2026-11-01",
+      "url": "https://open.spotify.com/episode/7pltT6untMH7tVhdKFLQ7S",
+      "desc": "Catch all of the past week's great guests in one place. Investigative journalist Matthew Cole sits down with Jon Stewart to talk about his new book, “Princes and Thieves: Jared Kushner and Mohamed bin Zayed’s Secret Plot to Remake the Middle East.” Cole’s book chronicles a five-year investigation into Jared Kushner’s alleged “secret financial agreements and arrangements” made between Trump’s son-in-law and the rulers of Saudi Arabia, the United Arab Emirates, and Qatar. Cole points out that Kushner’s lawyer unequivocally and emphatically denies everything in his book, but Cole remains “very confident that I have the story right.” BAFTA-winning comedian and actor Morgana Robinson chats with Jordan Klepper about her new film, “Ali G: Who Iz I.” The two discuss what it was like to stay in character through long shooting days, how they pulled off the raunchy hijinks in the film, and what the audition process was like for such a unique project. Plus, Klepper learns some new NSFW British slang.  Legendary musician, artist, and author David Byrne chats with Jordan about his new book “Sleeping Beauties: Why Good Ideas Go Dormant and How They Wake Up.” The two discuss Kafka, Melville, and other historical luminaries whose greatest works often went overlooked until their rediscovery later on, how modern hubris repeatedly ignores wisdom of the past, as well as Byrne’s research process for unearthing these forgotten stories. Plus, Byrne shares his writing process behind the song “Let Me Sell You A Dream,” which he wrote and performed for the documentary, “Musk.” Pulitzer Prize-winning playwright and actor Tracy Letts joins Jordan to talk about his new film, “I Play Rocky,” which chronicles the making of the 1976 film, “Rocky.” Letts shares why he doesn’t buy the legend that Sylvester Stallone wrote the entire “Rocky” screenplay in three days and what it’s like to film in the same Philadelphia neighborhoods where the original was shot. Plus, Letts explains the wonders of his digital movie collection of over 12,000 titles and what he learned performing improv in Chicago. -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true
     }
   ]
