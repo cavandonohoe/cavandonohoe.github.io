@@ -7,7 +7,7 @@
     "previous_only_count": 42,
     "api_refreshed_at": "2026-11-02",
     "api_saved_count": 174,
-    "n_removed": 196,
+    "n_removed": 238,
     "n_unavailable": 28
   },
   "episodes": [
@@ -251,7 +251,7 @@
       "show": "Planet Money",
       "url": "https://open.spotify.com/episode/6FtTVYSLJRI0wf5WZ7CS7c",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "6nlwch2PfK8pJCPyXT1KVw",
@@ -505,7 +505,7 @@
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/5Re5YXo4qagb8YyNbtCNdG",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "added_at": null,
@@ -556,7 +556,7 @@
       "url": "https://open.spotify.com/episode/4zLVoPLQI8yMavyqWuAosz",
       "desc": "Welcome to the inaugural Planet Money Pop Culture Draft! In today's episode (a Planet Money+ episode we’re releasing into the main feed) we're gonna go back to the year 1999. Three hosts, Kenny Malone, Wailin Wong, and Jeff Guo, go head to head and each drafts a “team” of economic pop culture. So a movie, a song, and a wild card pick that best represents the Planet Money spirit!It could be a movie related to business or maybe a song about money … as long as it came out in 1999! Listen to hear each of them make the case for why their team should be crowned the winner!If you want more bonus episodes like this one and to support our work, sign up for Planet Money+.Listen free: Apple Podcasts, Spotify, the NPR app or anywhere you get podcasts.Facebook / Instagram / TikTok / Our weekly Newsletter.This episode was hosted by Kenny Malone, Wailin Wong, and Jeff Guo. It was produced by Viet Le and edited by Planet Money’s executive producer Alex Goldmark.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "4ihRLkytBTl2g8UeRlrK1j",
@@ -582,7 +582,7 @@
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/2v9oU0hszHtauTS1VtVKqe",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "7hmq5mlJsihREypjnZziwY",
@@ -764,7 +764,7 @@
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/6EesGkPqAk4obhaE3VkRoF",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "added_at": "2025-08-06",
@@ -814,7 +814,7 @@
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/79OmsXBCOfQROzibRUMupy",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "added_at": "2026-01-20",
@@ -958,7 +958,7 @@
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/64tCyvTUrzipEo1GKqfzk9",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "5LJvsiaBKS3tqASCnMgQ2E",
@@ -971,7 +971,7 @@
       "url": "https://open.spotify.com/episode/5LJvsiaBKS3tqASCnMgQ2E",
       "desc": "The BBC has been around as long as there has been radio. Today we salute the venerable institution that's as British as tea and crumpets. See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "added_at": "2025-11-11",
@@ -1009,7 +1009,7 @@
       "url": "https://open.spotify.com/episode/1tP8lGAZlQNmEdcIGvkcCj",
       "desc": "Everybody’s always bagging on pessimists and telling everybody they should be more optimistic. Well, nuts to that! There are plenty of benefits from being a pessimist. Although being an optimist still wins in basically every category ☹See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "1GS0zmLps7F88g81iSf7i4",
@@ -1158,7 +1158,7 @@
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/0Eh97PxS9m48ZmQ1qtazrV",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "added_at": null,
@@ -1339,7 +1339,7 @@
       "url": "https://open.spotify.com/episode/6lw3E4FBIw1J08kAYaTXJk",
       "desc": "President Trump’s Chief of Staff dropped dirt on her boss and his cronies in a series of interviews, the president’s new White House ballroom is being built on top of an emergency operations bunker, and the Madagascar hissing cockroach is the spy of the future. The hosts of “Anderson Cooper 360” and “Watch What Happens Live” stop by for their annual Late Show visit ahead of their big New Year’s Eve broadcast, which typically results in Anderson Cooper being overserved.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "added_at": null,
@@ -1529,7 +1529,7 @@
       "show": "The Late Show Pod Show with Stephen Colbert",
       "url": "https://open.spotify.com/episode/3kfQCOMDYdc2hPHBxgUADI",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "2ouQi6pJ3KlPKqhZ0P6sul",
@@ -1578,7 +1578,7 @@
       "show": "The Late Show Pod Show with Stephen Colbert",
       "url": "https://open.spotify.com/episode/39eB5RjDZz8O6ua8kNngmz",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "added_at": "2025-11-14",
@@ -1687,7 +1687,7 @@
       "url": "https://open.spotify.com/episode/4lzODuk4xfqRZjzFC92UfB",
       "desc": "Stephen and Becca discuss Thanksgiving plans and traditions before launching into a very special interview with Oscar-winning filmmaker and journalist Cameron Crowe, who saw Bob Dylan perform at a school gym in 1964 and interviewed the world's biggest bands as a teenager, and brings our host a personalized message from the one and only Joni Mitchell. Crowe's new memoir, \"The Uncool,\" is available now. ",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "3Rfe1eUzEoXIMSEJIGHl20",
@@ -1712,7 +1712,7 @@
       "show": "The Late Show Pod Show with Stephen Colbert",
       "url": "https://open.spotify.com/episode/0MeUvLLKiUDBRM7P0v6pXB",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "added_at": "2025-08-11",
@@ -1773,7 +1773,7 @@
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/6fa3EzDLz0nvgQ17pOrXV6",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "0oAWTBiSQOK1BYfdnHz4ql",
@@ -1798,7 +1798,7 @@
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/3gwx1amLEjwo9dbe90rlaC",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "added_at": null,
@@ -1822,7 +1822,7 @@
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/0Rh1yslB4WWMyoDWPTxRLb",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "2GAqfAOEAdHSFPhgOsNrmn",
@@ -1883,7 +1883,7 @@
       "show": "Planet Money",
       "url": "https://open.spotify.com/episode/4IIVXIE9JvJEyuj92bdyIj",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "1I4iBlBR1jrjAiU3WkWzz3",
@@ -1920,7 +1920,7 @@
       "show": "Planet Money",
       "url": "https://open.spotify.com/episode/2uKsp8dGkrZuFMXLqT9TgC",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "added_at": "2026-01-22",
@@ -2102,7 +2102,7 @@
       "url": "https://open.spotify.com/episode/7FkIqyuu7oz4MkA04Pzi7h",
       "desc": "Jordan Klepper sits down with Daily Show Supervising Producer and Segment Director Ian Berger, and Writer Scott Sherman, to discuss their upcoming special, The Daily Show Presents: Jordan Klepper Fingers the Pulse: Give the Man a Prize.  They talk traveling from the South, to the Pacific Northwest and all the way to Norway to unpack Trump's overt quest for the Nobel Peace Prize, despite his escalating of tensions at home and abroad. Watch The Daily Show Presents: Jordan Klepper Fingers the Pulse: Give the Man a Prize on Monday December 8 at 11:30pm after The Daily Show on Comedy Central. Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "added_at": "2025-10-31",
@@ -2190,7 +2190,7 @@
       "show": "The Daily Show: Ears Edition",
       "url": "https://open.spotify.com/episode/6Lh8Vbi8RLeyldQ0E5jot0",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "6nJEIhOxmVkLZKzijbM1ta",
@@ -2325,7 +2325,7 @@
       "show": "The Daily Show: Ears Edition",
       "url": "https://open.spotify.com/episode/4ziRiOz21lqedDQsw0oBZ2",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "4BGt1GlXlWJuT2dRNQi46L",
@@ -2664,7 +2664,7 @@
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/378KstSEGXxGvuingCAkUN",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "0pZlVt3AwuBRkOtMh6fuRE",
@@ -2701,7 +2701,7 @@
       "url": "https://open.spotify.com/episode/521K1SiLktx6YeEkBvcZAH",
       "desc": "After a firehose of economic news in 2025, we wanted to check back on some of the people we’ve heard from on our show. Today, we check in with a former federal employee caught in the Trump administration's wood chipper, a Louisiana shrimper on Trump’s tariffs and an update on a financial aid scam. Related episodes: Why do shrimpers like tariffs? What’s the long-term cost of federal layoffs? A big bank’s mistake, explained For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "2uJNhEDkkSSIZ44EDkUf0a",
@@ -2738,7 +2738,7 @@
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/0OzGSRX6DRpr5ZPQpTDZqK",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "added_at": null,
@@ -3044,7 +3044,7 @@
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/4pRI7Vw4t1xTBpi0EC30yL",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "3eF3FDAkiNlagdRALYiCmJ",
@@ -3287,7 +3287,7 @@
       "url": "https://open.spotify.com/episode/4k8Is3Z4IiJ77ySPe9lUte",
       "desc": "How did scientists discover evidence for dark energy? Neil deGrasse Tyson and comedian Paul Mecurio explore dark energy, Hubble tension, and the beginning and end of the universe with astrophysicist and Nobel laureate, Adam Riess.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/origins-of-dark-energy-with-adam-riess/Thanks to our Patrons micpoc, Nathan, Matthew, Aislynn Schaffer, Mark Domino, Lou Wheeland, Matrograde, Elliott Natale, Machael Lipovski, Mathew Moore, Tony, Pablo P, Toni, Brian Futterman, quantumAnomaly, Robin Steiner, Errol Norwitz, Donovan Meek, Alan Geist, Sriganesh Arunanthi, Nuno Abreu, Ross Ziobro, Petr Doležal, Mandar Parikh, Bryan Tollin, Fooj, David Bozarth, Kolja Dobrindt, Sean Poplawski, Brad Durbin, Christian Nielsen, Zen Kurokawa, Lương Tiến, Joel Arbuckle, Chad L Ingham, Mark Morris, dylndmg, Derrick Korstick, EleanorRigbyy, Tarun C, Larry Infante, Jaclyn Anderson, Dave, Kayla Finch, The Bayside Volunteer Jam Band, Dale Allen Platt, Raymond Boulay, Lawrence Zeller, David, Kim Matthews, Jon Gefen, Mark A. Hasty, Clifford Dedmore, Mario De La Crus and Brianni Massin, jordan visina, Ryan Brown, Sebastian H, Daniel Voth, Karen Hollis, Josua Ennis, Julius Adams, Christie L Hall, Filip Risteski, scottdunbar_io, Samantha Davis, Don Franks, Corey Butler, Josh Jones, Daniel Vilasuso, J MR, joe, I Am Austin, bobmac69, Anthony cole, Zan, Erik LeRoy, Kevin George, Arman Adei, Christopher Pickett, John Morlock, AllTheScience, Juana Bee, Jeff Chastain, Jaimal Eiseman, Ed Matte, Lorkhan, D, roninraver, z67760, Orghanik Productions, and CubedWombat for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "added_at": "2025-08-12",
@@ -3492,7 +3492,7 @@
       "show": "StarTalk with Neil deGrasse Tyson",
       "url": "https://open.spotify.com/episode/0YOKII1OfMMwcHG2garyFd",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "4ETnDszosKxJlOFsKvChRc",
@@ -3627,7 +3627,7 @@
       "show": "Planet Money",
       "url": "https://open.spotify.com/episode/4pDvWWG2dB7vvDrNIMOCVb",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "4ZKVmQ1ZrmiRWFUUra51pS",
@@ -3785,7 +3785,7 @@
       "show": "Freakonomics Radio",
       "url": "https://open.spotify.com/episode/19CBE3cIiavviFNl7Je1Nm",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "added_at": null,
@@ -3885,7 +3885,7 @@
       "show": "Freakonomics Radio",
       "url": "https://open.spotify.com/episode/30DpajpQKqxv4JngrMDBEa",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "added_at": "2025-11-05",
@@ -5183,7 +5183,7 @@
       "url": "https://open.spotify.com/episode/68iR8LB2GvyuQ0AQoGGMAL",
       "desc": "Catch up on the latest headlines with The Daily Show News Team. Jon Stewart examines the riots in Paris, Trump's ass-kissing diesel deal with Russia, and Ukraine's sudden trouble accessing Elon Musk's Starlink service. Michael Kosta checks in on the midterm candidates, including Vivek Ramaswamy's ad recruiting his opponent's estranged mother, Jaime West's seemingly s**t-faced interview, and President Trump's admiration of Jon Husted's butt. Ronny Chieng covers JD Vance's creepy new laugh and Trump canceling a livestream of the Fort Hood shooter's execution. Plus, Ronny handles more midterm updates, including deep-red states getting a little less red, Trump professing his love for Tim Scott, and Susan Collins attacking Troy Jackson's family tree. -- To get simple, online access to personalized, affordable care for ED, Hair Loss, Weight Loss, and more, visit https://Hims.com/dailyshow  -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "0lkYc1jQqyWQa0xBr75eBi",
@@ -5271,7 +5271,7 @@
       "url": "https://open.spotify.com/episode/1fqxSAj5ibLQgBub8ppME1",
       "desc": "Jon Stewart breaks down Trump’s closing argument ahead of the midterm elections, including his celebration of huge profits for oil and gas companies amid high prices, his Islamophobic vow to keep Abdul El-Sayed out of the Senate, and his plan to secure settlements for Camp Lejeune veterans… only IF Republicans win. Plus, Jon tackles Trump’s defense of abusive mothers, Obama’s slam-dunk Cheesecake Factory insult, and who the \"you\" is that Trump claims to represent. Investigative journalist Matthew Cole sits down with Jon to talk about his new book, “Princes and Thieves: Jared Kushner and Mohamed bin Zayed’s Secret Plot to Remake the Middle East.” Cole’s book chronicles a five-year investigation into Jared Kushner’s alleged “secret financial agreements and arrangements” made between Trump’s son-in-law and the rulers of Saudi Arabia, the United Arab Emirates, and Qatar. Cole points out that Kushner’s lawyer unequivocally and emphatically denies everything in his book, but Cole remains “very confident that I have the story right.” -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "68WDnyfi223VaAvLm7bUhj",
@@ -5320,7 +5320,7 @@
       "url": "https://open.spotify.com/episode/1GCCKzBIjKXt7kVBdx48OJ",
       "desc": "Obama roasted Trump’s White House renovations, so conservative media rushes to the defense of… The Cheesecake Factory? Jordan Klepper dives into the headlines as we approach the 2026 midterms, and chats with a very fishermanly John Hodgman, who comes bearing updates on Maine’s contentious Senate race.  With the 2026 midterms just a week away, one group might have an outsized influence: influencers! Desi Lydic breaks down how social media stars are becoming the lifeblood of American political campaigns, with candidates joining them to answer illuminating questions like \"What are your icks?\" But not all influencers are motivated by civic duty. Amid reports of candidates using campaign funds to quietly pay influencers large sums of money, Desi urges everyone to vet their sources ahead of the election. Because casting your vote on the advice of a paid political hack will always be an ick. BAFTA-winning comedian and actor Morgana Robinson chats with Jordan about her new film, “Ali G: Who Iz I.” The two discuss what it was like to stay in character through long shooting days, how they pulled off the raunchy hijinks in the film, and what the audition process was like for such a unique project. Plus, Klepper learns some new NSFW British slang. -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "5abDVNaC0V1lMUH9YLFLOA",
@@ -5418,7 +5418,7 @@
       "url": "https://open.spotify.com/episode/3ubxJPy4jXZXaiOhdId1JT",
       "desc": "Seth takes a closer look at Obama firing back at Republicans who freaked out about his Cheesecake Factory joke as Trump and the GOP stoop to disgusting new lows in their attacks on Senate candidates Abdul El-Sayed and James Talarico.Then, George Fouracres talks about his first interaction with Lorne Michaels, his unexpected reaction to finding out he was cast on SNL UK and why it was so crucial for them to be allowed to curse on the show.See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "3vPJRjl04ddxJfTpUv3hA0",
@@ -5431,7 +5431,7 @@
       "url": "https://open.spotify.com/episode/3vPJRjl04ddxJfTpUv3hA0",
       "desc": "Jordan Klepper dives into the headlines with Republicans unleashing a last-ditch tactic in this final midterm sprint: spooky stories. From socialist dystopias to jihadist leprechauns to forced gender reassignment surgeries happening at your kids’ school, nothing is off the table for these GOP tales, just in time for Halloween. But hey, that’s what happens when you can't convince voters with your actual ideas or accomplishments. As calls to tax the rich reach a fever pitch in the U.S., billionaires have become America's newest oppressed minority. Michael Kosta traveled to California to hear both sides of the wealth tax debate, with March for Billionaires organizer Derik Kauffman fighting on behalf of the nation's beleaguered top earners, and wealthy investor Tom Steyer calling his fellow billionaires \"insanely selfish and delusional\" for opposing it. Pulitzer Prize-winning playwright and actor Tracy Letts joins Jordan to talk about his new film, “I Play Rocky,” which chronicles the making of the 1976 film, “Rocky.” Letts shares why he doesn’t buy the legend that Sylvester Stallone wrote the entire “Rocky” screenplay in three days and what it’s like to film in the same Philadelphia neighborhoods where the original was shot. Plus, Letts explains the wonders of his physical movie collection of over 12,000 titles and what he learned performing improv in Chicago. -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "5SNshC1rlkoxIiqXES76Nc",
@@ -5468,7 +5468,7 @@
       "url": "https://open.spotify.com/episode/2ZGFe175BRx197TseSzieE",
       "desc": " With less than a week until the 2026 midterms, Republicans are running out of ways to expose their own weaknesses, so Tennessee congressional candidate Brent Taylor chose the most literal way: with a d**k pic scandal. Jordan Klepper breaks down Taylor's \"youthful indiscretion\" from when he was 53, Trump's ongoing ass tour, and the president's DOJ moving to block certification of Alaska's Senate race over confusion around two candidates named Dan Sullivan, but only if the Republican Dan loses. In this installment of In My Opinion, Charlamagne Tha God looks at how politicians and pundits are turning the 2026 midterms into a masculinity contest. From Fox News trashing Troy Jackson's manhood over a cup of boba tea to Democrats going hard at the gym in campaign ads, Charlamagne takes on the cartoonish machismo in America's political discourse with a reminder that, in the end, \"being a man\" comes down to character. Legendary musician, artist, and author David Byrne chats with Jordan about his new book “Sleeping Beauties: Why Good Ideas Go Dormant and How They Wake Up.” The two discuss Kafka, Melville, and other historical luminaries whose greatest works often went overlooked until their rediscovery later on, how modern hubris repeatedly ignores wisdom of the past, as well as Byrne’s research process for unearthing these forgotten stories. Plus, Byrne shares his writing process behind the song “Let Me Sell You A Dream,” which he wrote and performed for the documentary, “Musk.” -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "2phuhhcZlBdke5rh8SPgY8",
@@ -5481,7 +5481,7 @@
       "url": "https://open.spotify.com/episode/2phuhhcZlBdke5rh8SPgY8",
       "desc": "Seth takes a closer look at Trump focusing on a sitting U.S. senator's ass instead of crucial issues like the Iran war and high cost of living during his Texas rallies.Then, Jessica Tarlov talks about being the lone liberal voice on The Five on Fox News, being friends with her colleagues despite their opposing views and how she feels about Trump's strange midterm closing message.See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "33ihteXgORORQofhSyxarJ",
@@ -5506,7 +5506,7 @@
       "url": "https://open.spotify.com/episode/3LcXbn7BYLReUhBl7ov3qm",
       "desc": "Catch up on the latest headlines with The Daily Show News Team. Jon Stewart dives into Trump’s midterm closing arguments, which featured an array of Islamophobic attacks against Abdul El-Sayed, bragging about oil companies' profits amid high gas prices, a quid pro quo for sick veterans, and a look into who the “you” is that Trump claims to represent. Jordan Klepper weighs in on Obama’s Cheesecake Factory diss that had MAGA obsessing over the restaurant chain, the d**k pics and ass talk eating the midterm elections alive, uproar over a second “Dan Sullivan” on Alaska's Senate ballot, and Republicans' last-ditch fearmongering campaign, including Ted Cruz calling El-Sayed a \"jihadist leprechaun.\"  -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "3fj9loTPwQF9P10wO2eION",
@@ -5531,7 +5531,7 @@
       "url": "https://open.spotify.com/episode/4AST3KoOsjZsHnF4Yjtlti",
       "desc": "Recorded every Thursday after the audience has left Studio 8G, and witnessed only by scattered members of the Late Night staff and crew… This is Corrections: The Podcast, Episode 183, \"This Isn't Corrections.\"See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "44E8v8uTAUkfxZD305yIVT",
@@ -5556,7 +5556,7 @@
       "url": "https://open.spotify.com/episode/7pltT6untMH7tVhdKFLQ7S",
       "desc": "Catch all of the past week's great guests in one place. Investigative journalist Matthew Cole sits down with Jon Stewart to talk about his new book, “Princes and Thieves: Jared Kushner and Mohamed bin Zayed’s Secret Plot to Remake the Middle East.” Cole’s book chronicles a five-year investigation into Jared Kushner’s alleged “secret financial agreements and arrangements” made between Trump’s son-in-law and the rulers of Saudi Arabia, the United Arab Emirates, and Qatar. Cole points out that Kushner’s lawyer unequivocally and emphatically denies everything in his book, but Cole remains “very confident that I have the story right.” BAFTA-winning comedian and actor Morgana Robinson chats with Jordan Klepper about her new film, “Ali G: Who Iz I.” The two discuss what it was like to stay in character through long shooting days, how they pulled off the raunchy hijinks in the film, and what the audition process was like for such a unique project. Plus, Klepper learns some new NSFW British slang.  Legendary musician, artist, and author David Byrne chats with Jordan about his new book “Sleeping Beauties: Why Good Ideas Go Dormant and How They Wake Up.” The two discuss Kafka, Melville, and other historical luminaries whose greatest works often went overlooked until their rediscovery later on, how modern hubris repeatedly ignores wisdom of the past, as well as Byrne’s research process for unearthing these forgotten stories. Plus, Byrne shares his writing process behind the song “Let Me Sell You A Dream,” which he wrote and performed for the documentary, “Musk.” Pulitzer Prize-winning playwright and actor Tracy Letts joins Jordan to talk about his new film, “I Play Rocky,” which chronicles the making of the 1976 film, “Rocky.” Letts shares why he doesn’t buy the legend that Sylvester Stallone wrote the entire “Rocky” screenplay in three days and what it’s like to film in the same Philadelphia neighborhoods where the original was shot. Plus, Letts explains the wonders of his digital movie collection of over 12,000 titles and what he learned performing improv in Chicago. -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-02"
     },
     {
       "id": "5IIqAbksXMtc3kh6oenCxQ",
