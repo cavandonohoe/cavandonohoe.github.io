@@ -1,73 +1,73 @@
 {
-  "analyzed_utc": "2026-10-26T16:07:27.709554+00:00",
-  "repo_commit": "494cb5162b9aa8dcd5e58cd56d51cb2b7260d49c",
+  "analyzed_utc": "2026-11-02T19:30:02.504283+00:00",
+  "repo_commit": "ebeb7173d1d08a7eb040afe9c1b74d5e5fd5420a",
   "cohort_note": "Live Top 250 blocked (403); saved cohort is historical, not verified current.",
   "saved_cohort_unique_shows": 250,
   "eligible_title_types": {
     "tvSeries": 1142,
-    "tvMiniSeries": 211
+    "tvMiniSeries": 212
   },
   "eligible_without_linked_episodes": 0,
   "eligible_without_rated_episodes": 0,
   "datasets": {
     "title.basics": {
-      "sha256": "20232add2ee87945fb3f31e51f0bdb0597f808d05690c8974ffe0effd91db583",
+      "sha256": "974296c1a1ef87eac9fb2a343a477f9c217c2f906a3722ff296474731ab4311b",
       "headers": {
         "Content-Type": "binary/octet-stream",
-        "Content-Length": "229245871",
+        "Content-Length": "229581474",
         "Connection": "close",
         "Server": "AmazonS3",
-        "Date": "Mon, 26 Oct 2026 08:02:43 GMT",
-        "Last-Modified": "Mon, 26 Oct 2026 00:34:01 GMT",
-        "ETag": "\"fac1a0ff90997c0b393812e7ed073d78-28\"",
+        "Date": "Mon, 02 Nov 2026 12:00:06 GMT",
+        "Last-Modified": "Mon, 02 Nov 2026 00:36:51 GMT",
+        "ETag": "\"3cf0e3b62301262daadeaefdcc3770de-28\"",
         "x-amz-server-side-encryption": "AES256",
-        "x-amz-meta-run-date": "2026-10-25",
+        "x-amz-meta-run-date": "2026-11-01",
         "Accept-Ranges": "bytes",
         "X-Cache": "Hit from cloudfront",
-        "Via": "1.1 1a4a180d7b0f7a2c10cb34c8a8ac4d9a.cloudfront.net (CloudFront)",
-        "X-Amz-Cf-Pop": "ORD58-P17",
-        "X-Amz-Cf-Id": "0f-Pv2WXQcvuEel81muaKfglsub3rqqTpCNC9GmPx-IcpTITlvvLbw==",
-        "Age": "29043"
+        "Via": "1.1 14297931ed83255a730c70ecb2e4d6cc.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Pop": "PHX52-P3",
+        "X-Amz-Cf-Id": "VI-5NHzpwJvwjy8JnmklkcP4yJxSF4jQHpzAEIfL_Fd7PhJ36ZVlDw==",
+        "Age": "26923"
       }
     },
     "title.episode": {
-      "sha256": "49c230ebd47938f92ccb2833cc79d7db68e740fd2ecd57453777955208537a81",
+      "sha256": "d06a28d37db48fb57c81c7f311b888fd4ef99bb27d4ff3f824542de63a4ff5c1",
       "headers": {
         "Content-Type": "binary/octet-stream",
-        "Content-Length": "55188266",
+        "Content-Length": "55288202",
         "Connection": "close",
         "Server": "AmazonS3",
-        "Date": "Mon, 26 Oct 2026 09:00:03 GMT",
-        "Last-Modified": "Mon, 26 Oct 2026 00:34:21 GMT",
-        "ETag": "\"6719fc7d44a0a1795813bb22ea33a7cd-7\"",
+        "Date": "Mon, 02 Nov 2026 12:00:04 GMT",
+        "Last-Modified": "Mon, 02 Nov 2026 00:37:09 GMT",
+        "ETag": "\"fa2b7e2d58d53d855d83e5fe8df2cc35-7\"",
         "x-amz-server-side-encryption": "AES256",
-        "x-amz-meta-run-date": "2026-10-25",
+        "x-amz-meta-run-date": "2026-11-01",
         "Accept-Ranges": "bytes",
         "X-Cache": "Hit from cloudfront",
-        "Via": "1.1 0224ab4185e38ab2ded7238238961bde.cloudfront.net (CloudFront)",
-        "X-Amz-Cf-Pop": "ORD58-P17",
-        "X-Amz-Cf-Id": "nw1auLopjklkuw2_6pozRioS9Bpcn4Y_i_JEumIl5QINYQjd0oCgGg==",
-        "Age": "25603"
+        "Via": "1.1 523337ea6437f30d60b126f4a782be5c.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Pop": "PHX52-P3",
+        "X-Amz-Cf-Id": "iKytWO2smNWF1kQVlnxAfInO7-8tOVTkXff2vqmpVWsqCThM6XSt0g==",
+        "Age": "26925"
       }
     },
     "title.ratings": {
-      "sha256": "1e0edc61d194cd4e862ed7ea2bd7ac8a1df74e5e94169133d7520fb584d5c086",
+      "sha256": "88e839f798e0e4dbb6b543ab4f77cdd7a88446ea7faa19c66f7960327dcfa171",
       "headers": {
         "Content-Type": "binary/octet-stream",
-        "Content-Length": "8719225",
+        "Content-Length": "8731221",
         "Connection": "close",
         "Server": "AmazonS3",
-        "Date": "Mon, 26 Oct 2026 08:00:09 GMT",
-        "Last-Modified": "Mon, 26 Oct 2026 00:35:00 GMT",
-        "ETag": "\"2278571f8d1d8af1af8068a6c509a756-2\"",
+        "Date": "Mon, 02 Nov 2026 01:18:16 GMT",
+        "Last-Modified": "Mon, 02 Nov 2026 00:37:50 GMT",
+        "ETag": "\"0a9d1672c7280d0a2ec9de12e5025e9e-2\"",
         "x-amz-server-side-encryption": "AES256",
-        "x-amz-meta-run-date": "2026-10-25",
+        "x-amz-meta-run-date": "2026-11-01",
         "Accept-Ranges": "bytes",
         "X-Cache": "Hit from cloudfront",
-        "Via": "1.1 aff58c10883d93aef0d2864cae283b4e.cloudfront.net (CloudFront)",
-        "X-Amz-Cf-Pop": "ORD58-P17",
-        "X-Amz-Cf-Id": "K2p7qefWfnthcrb7ZhM0VphDoMcXuv-rHt_CP-tU9iYyMb5svPDepA==",
-        "Age": "29197"
+        "Via": "1.1 675245de1db0c790eddcb3869e2d4150.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Pop": "PHX52-P3",
+        "X-Amz-Cf-Id": "78SZA16sAGuRnSO50gMTsKOmGGN2C0OSu-NqhrRd6wHHPw1P3WnHZg==",
+        "Age": "65433"
       }
     }
   }
