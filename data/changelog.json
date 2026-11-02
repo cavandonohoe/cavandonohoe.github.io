@@ -1,6 +1,12 @@
 {
-  "generated_at": "2026-11-01T20:44:20.852377+00:00",
+  "generated_at": "2026-11-02T23:40:12.392679+00:00",
   "events": [
+    {
+      "date": "2026-11-02",
+      "type": "merged_pr",
+      "title": "deps: bump the npm-minor-patch group in /movie-ranker with 3 updates",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/326"
+    },
     {
       "date": "2026-10-30",
       "type": "merged_pr",
@@ -558,39 +564,29 @@
       "type": "merged_pr",
       "title": "Add hourly TOHS reunion email coverage refresh",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/205"
-    },
-    {
-      "date": "2026-10-03",
-      "type": "merged_pr",
-      "title": "Automatically refresh exceptional IMDb episode data weekly",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/204"
-    },
-    {
-      "date": "2026-10-03",
-      "type": "merged_pr",
-      "title": "Archive World Cup 3D map",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/201"
-    },
-    {
-      "date": "2026-10-03",
-      "type": "merged_pr",
-      "title": "Add an R Markdown project for exceptional IMDb episodes",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/203"
-    },
-    {
-      "date": "2026-10-03",
-      "type": "merged_pr",
-      "title": "Add Star Wars: Visions to IMDb rating plot",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/202"
-    },
-    {
-      "date": "2026-10-02",
-      "type": "merged_pr",
-      "title": "Add date labels to Live Activity chart",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/200"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-11-02",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "5 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/127b558c32ef06ff032872314c834b7bf365ee92"
+        },
+        {
+          "emoji": "\ud83c\udfac",
+          "text": "Movie & TV projects updated",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/326"
+        },
+        {
+          "emoji": "\ud83c\udfac",
+          "text": "Movie & TV data refreshed",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/35ca3a3675f69b2f43d8338a2788a5bc7b323255"
+        }
+      ]
+    },
     {
       "date": "2026-11-01",
       "items": [
@@ -777,16 +773,6 @@
           "emoji": "\ud83c\udfac",
           "text": "Movie & TV projects updated",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/293"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-18",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "3 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/524104539c8a926e967c2a2ed4f51a0dc208f48f"
         }
       ]
     }
