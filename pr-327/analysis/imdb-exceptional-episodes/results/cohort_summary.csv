@@ -1,0 +1,13 @@
+cohort,episode_vote_threshold,cohort_shows,shows_with_exceptional_episodes,percent_shows,exceptional_episodes
+broader_eligible,1000,1354,100,7.39,275
+broader_eligible,5000,1354,81,5.98,240
+broader_eligible,10000,1354,59,4.36,175
+saved_cohort_all,1000,250,56,22.4,213
+saved_cohort_all,5000,250,50,20.0,175
+saved_cohort_all,10000,250,38,15.2,140
+saved_cohort_eligible,1000,218,54,24.77,191
+saved_cohort_eligible,5000,218,49,22.48,174
+saved_cohort_eligible,10000,218,38,17.43,140
+outside_saved_cohort,1000,1136,46,4.05,84
+outside_saved_cohort,5000,1136,32,2.82,66
+outside_saved_cohort,10000,1136,21,1.85,35
