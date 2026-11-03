@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-02T23:40:12.392679+00:00",
+  "generated_at": "2026-11-03T21:58:54.025989+00:00",
   "events": [
     {
       "date": "2026-11-02",
@@ -544,29 +544,21 @@
     {
       "date": "2026-10-04",
       "type": "merged_pr",
-      "title": "Make reunion update timestamp readable",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/207"
-    },
-    {
-      "date": "2026-10-04",
-      "type": "merged_pr",
       "title": "Fix reunion date showing NA after hourly refresh",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/208"
-    },
-    {
-      "date": "2026-10-04",
-      "type": "merged_pr",
-      "title": "Create private TOHS contact workflow and isolate the website export",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/206"
-    },
-    {
-      "date": "2026-10-04",
-      "type": "merged_pr",
-      "title": "Add hourly TOHS reunion email coverage refresh",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/205"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-11-03",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "5 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/7859876424ba2fff4d032189bee48e64ed5684d0"
+        }
+      ]
+    },
     {
       "date": "2026-11-02",
       "items": [
@@ -754,25 +746,6 @@
           "emoji": "\ud83c\udfac",
           "text": "Movie & TV projects updated",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/299"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-19",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "4 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/14ef6841e18eaaae9d9326f35e72db375e358029"
-        },
-        {
-          "emoji": "\ud83d\udcbb",
-          "text": "2 PRs merged"
-        },
-        {
-          "emoji": "\ud83c\udfac",
-          "text": "Movie & TV projects updated",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/293"
         }
       ]
     }
