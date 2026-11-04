@@ -1,6 +1,12 @@
 {
-  "generated_at": "2026-11-03T21:58:54.025989+00:00",
+  "generated_at": "2026-11-04T22:05:30.461049+00:00",
   "events": [
+    {
+      "date": "2026-11-04",
+      "type": "merged_pr",
+      "title": "Rebuild CV from latest Google Sheet",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/327"
+    },
     {
       "date": "2026-11-02",
       "type": "merged_pr",
@@ -528,27 +534,24 @@
       "type": "merged_pr",
       "title": "Import sheet-only reunion contacts so submissions cannot be silently skipped",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/212"
-    },
-    {
-      "date": "2026-10-05",
-      "type": "merged_pr",
-      "title": "Clarify year-in-review stats count personal commits",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/210"
-    },
-    {
-      "date": "2026-10-05",
-      "type": "merged_pr",
-      "title": "Add a 2020\u20132026 Developer Year in Review archive",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/209"
-    },
-    {
-      "date": "2026-10-04",
-      "type": "merged_pr",
-      "title": "Fix reunion date showing NA after hourly refresh",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/208"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-11-04",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "6 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/5d07344efbefeacdda89fdfbd300c09aaa89a3c5"
+        },
+        {
+          "emoji": "\ud83d\udcc4",
+          "text": "CV rebuilt from the latest source data",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/327"
+        }
+      ]
+    },
     {
       "date": "2026-11-03",
       "items": [
@@ -727,25 +730,6 @@
           "emoji": "\ud83c\udfa7",
           "text": "5 podcast episodes added",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/ba5aa94f3c675fa6166e88867db6c74a62656376"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-20",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "5 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/54847edf4ee0783490199edf70de2d48436cce15"
-        },
-        {
-          "emoji": "\ud83d\udcbb",
-          "text": "6 PRs merged"
-        },
-        {
-          "emoji": "\ud83c\udfac",
-          "text": "Movie & TV projects updated",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/299"
         }
       ]
     }
