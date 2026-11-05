@@ -6,8 +6,8 @@
     "n_episodes": 477,
     "previous_only_count": 42,
     "api_refreshed_at": "2026-11-05",
-    "api_saved_count": 165,
-    "n_removed": 257,
+    "api_saved_count": 166,
+    "n_removed": 242,
     "n_unavailable": 28
   },
   "episodes": [
@@ -555,8 +555,7 @@
       "release": "2025-12-17",
       "url": "https://open.spotify.com/episode/4zLVoPLQI8yMavyqWuAosz",
       "desc": "Welcome to the inaugural Planet Money Pop Culture Draft! In today's episode (a Planet Money+ episode we’re releasing into the main feed) we're gonna go back to the year 1999. Three hosts, Kenny Malone, Wailin Wong, and Jeff Guo, go head to head and each drafts a “team” of economic pop culture. So a movie, a song, and a wild card pick that best represents the Planet Money spirit!It could be a movie related to business or maybe a song about money … as long as it came out in 1999! Listen to hear each of them make the case for why their team should be crowned the winner!If you want more bonus episodes like this one and to support our work, sign up for Planet Money+.Listen free: Apple Podcasts, Spotify, the NPR app or anywhere you get podcasts.Facebook / Instagram / TikTok / Our weekly Newsletter.This episode was hosted by Kenny Malone, Wailin Wong, and Jeff Guo. It was produced by Viet Le and edited by Planet Money’s executive producer Alex Goldmark.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true,
-      "api_misses": 1
+      "api_seen": true
     },
     {
       "id": "4ihRLkytBTl2g8UeRlrK1j",
@@ -569,7 +568,7 @@
       "url": "https://open.spotify.com/episode/4ihRLkytBTl2g8UeRlrK1j",
       "desc": "2025 was a wild year for the U.S. economy. Tariffs transformed the global economy, consumer sentiment hit near-historic lows, and the stock market hit scary, spooky, blood-curdling new heights! So … which of these economic stories defined the year? Our hosts from Planet Money and The Indicator duke it out during our annual … Family Feud!Tell us who you think has THE indicator of the year by emailing us at indicator@npr.org. Put “Family Feud” in the subject line. Related episodes:The Indicators of this year and next This indicator hasn’t flashed this red since the dot-com bubble What would it mean to actually refund the tariffs?For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Corey Bridges. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true,
-      "removed_at": "2026-11-05"
+      "api_misses": 1
     },
     {
       "added_at": "2026-09-26",
@@ -594,7 +593,7 @@
       "url": "https://open.spotify.com/episode/7hmq5mlJsihREypjnZziwY",
       "desc": "If you want to make Bitcoin, you need powerful computers and a lot of energy. Well, it turns out the same infrastructure needed for Bitcoin mining is pretty valuable in the era of AI. Today on the show, why some miners are starting to throw in the towel on crypto in favor of supporting AI infrastructure. Related episodes: Whose financing Meta’s massive AI Data Center?This indicator hasn’t flashed this red since the dot-com bubbleFor sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true,
-      "removed_at": "2026-11-05"
+      "api_misses": 1
     },
     {
       "id": "6xUGQvKaiHBdlNVxsRBvns",
@@ -606,7 +605,8 @@
       "release": "2026-01-08",
       "url": "https://open.spotify.com/episode/6xUGQvKaiHBdlNVxsRBvns",
       "desc": "President Trump claims Venezuela stole American oil. Is that true? We trace Venezuela's oil industry from its 1920s birth through nationalization and then collapse. Today on the show, how did the Venezuelan oil industry get to a point where it’s barely pulling from its reserves? And will anything change now? Related episodes: Venezuela’s economic descent (Update) Venezuela’s recent economic history (Update) Why oil in Guyana could be a curse For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Julia Ritchey. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "removed_at": "2026-11-05"
     },
     {
       "added_at": null,
@@ -970,7 +970,7 @@
       "url": "https://open.spotify.com/episode/5LJvsiaBKS3tqASCnMgQ2E",
       "desc": "The BBC has been around as long as there has been radio. Today we salute the venerable institution that's as British as tea and crumpets. See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "removed_at": "2026-11-05"
+      "api_misses": 1
     },
     {
       "added_at": "2025-11-11",
@@ -1107,7 +1107,8 @@
       "release": "2026-01-08",
       "url": "https://open.spotify.com/episode/4tPLEhPaVlskE1drmvq78I",
       "desc": "Seasonal affective disorder, or SAD, is much more than the winter blues. It's a serious subset of depression. Learn all about it and what to do if you suffer from it today. See omnystudio.com/listener for privacy information.",
-      "api_seen": true
+      "api_seen": true,
+      "removed_at": "2026-11-05"
     },
     {
       "added_at": "2025-11-13",
@@ -1265,7 +1266,8 @@
       "name": "Is Greenland really an untapped land of riches?",
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/6caw2YIF6oAL1ds5RPv7gk",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "3tvnIB08U6tO1j3KXdsJJ3",
@@ -1374,7 +1376,7 @@
       "url": "https://open.spotify.com/episode/6piljSamy5cYgJHc9Exo8c",
       "desc": "President Trump is offending his own voters when he mocks America’s affordability crisis, Mark Zuckerberg is defunding the metaverse after losing $70B on the effort, and Secretary of State Marco Rubio is waging war on the use of “woke” fonts at the State Department. 14-time GRAMMY-winner Taylor Swift joins Stephen Colbert for a four-part conversation that begins with a look at her extraordinary globe-trotting “Eras” tour and the effect it had on her fans. Watch “The End of an Era” and “Taylor Swift | The Eras Tour | The Final Show” premiering Friday on Disney+. ",
       "api_seen": true,
-      "removed_at": "2026-11-05"
+      "api_misses": 1
     },
     {
       "added_at": "2026-01-16",
@@ -1447,7 +1449,8 @@
       "name": "Sen. Bernie Sanders | Anniversary Grifts",
       "show": "The Late Show Pod Show with Stephen Colbert",
       "url": "https://open.spotify.com/episode/4hTifFbhfjAyByPBdST2nW",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2026-01-17",
@@ -1459,8 +1462,7 @@
       "name": "Gov.-Elect Abigail Spanberger",
       "show": "The Late Show Pod Show with Stephen Colbert",
       "url": "https://open.spotify.com/episode/0dJ2HnhmfX9OT14tccKw3M",
-      "api_seen": true,
-      "api_misses": 1
+      "api_seen": true
     },
     {
       "id": "058UfigkExiUPhrJNFlsJa",
@@ -2708,8 +2710,7 @@
       "release": "2025-12-18",
       "url": "https://open.spotify.com/episode/521K1SiLktx6YeEkBvcZAH",
       "desc": "After a firehose of economic news in 2025, we wanted to check back on some of the people we’ve heard from on our show. Today, we check in with a former federal employee caught in the Trump administration's wood chipper, a Louisiana shrimper on Trump’s tariffs and an update on a financial aid scam. Related episodes: Why do shrimpers like tariffs? What’s the long-term cost of federal layoffs? A big bank’s mistake, explained For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true,
-      "api_misses": 1
+      "api_seen": true
     },
     {
       "id": "2uJNhEDkkSSIZ44EDkUf0a",
@@ -2930,7 +2931,7 @@
       "url": "https://open.spotify.com/episode/7eo0YVJX1Ft3vtzp3Fj0MG",
       "desc": "From nuclear fission to GPS to the internet, it’s common knowledge that many of the most resource intensive technologies of the last century got their start as military R&D projects in government-funded labs. But as Avery Trufelman explains in her fashion history podcast, Articles of Interest, the influence of the US military is, in many ways, even more intimate than that, shaping much of the clothing we all wear everyday. On today’s show, a tale of Army surplus economics. How military designs trickled down from the soldiers on the front lines to the hippies on the war protest line to the yuppies in line at Banana Republic. And why some of your favorite outdoor brands may just be moonlighting as U.S. military suppliers, while keeping it as under the radar as they can.Pre-order the Planet Money book and get a free gift. / Subscribe to Planet Money+Listen free: Apple Podcasts, Spotify, the NPR app or anywhere you get podcasts.Facebook / Instagram / TikTok / Our weekly Newsletter.This episode of Planet Money was produced by Luis Gallo, edited by Jess Jiang, fact checked by Yasmine Alsayyad, and engineered by Robert Rodriguez. Alex Goldmark is Planet Money’s executive producer.Articles of Interest is produced by Avery Trufelman, edited by Alison Beringer, fact checked by Yasmine Alsayyad, and engineered by Jocelyn Gonzalez.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true,
-      "removed_at": "2026-11-05"
+      "api_misses": 1
     },
     {
       "id": "5JXn9m6eUlXmS0lvGb5yHp",
@@ -3227,7 +3228,7 @@
       "show": "StarTalk with Neil deGrasse Tyson",
       "url": "https://open.spotify.com/episode/2ze8LxiPJZjIeowQNLZYp5",
       "api_seen": true,
-      "removed_at": "2026-11-05"
+      "api_misses": 1
     },
     {
       "added_at": "2025-08-19",
@@ -3276,7 +3277,7 @@
       "url": "https://open.spotify.com/episode/2ZonfTpqPhyCR4yT4gUz4z",
       "desc": "Is there life in the Venusian Clouds? Neil deGrasse Tyson and comic co-host Chuck Nice are joined by planetary astrobiologist David Grinspoon to discuss NASA’s return to Venus, our space future, and whether we’ll find life in our solar system. NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free.Thanks to our Patrons Nick Pullia, Sean Cater, Keith Reiss, Seph Gordon, Charlie Viola, Miguel Rangel, Andrew Ferguson, JeAnnette Elaine Thomas, Hugh Caley, Daniel Weber, Chris, Peter Grossman, Darryl Baker, Joyce A Edwards, Maxim, Joshua Richard, Patrick ridlon, Kathleen Reardon, David Watts, Angelina Bryant, Liza, Dave Holloway, Ricardo Andrés Morales Muñoz, Damian Wilson, m. szachacz, Vince Johnson, Lucy, Randal Walcott, Rachel Ambrose, andrew wong, Richard Hudson, Peter Galindo, Mehdi Degryse, Carl Starr M.D., Rodrigo De Luca Comelli, Christian Harris, Ryan Grillo, Jose Villavicencio, Kell, Russ, Mota Ephrahim, Andre Campos-Gomez, Catherine Noiboonsook, Sam McClure, Jerry Taylor, Ian Howarth, Gerrard Lobo, Jordan Strauch, Pretender to the Throne, Dustin, Bulbacats, Jim Mirra, Matt, Adrian Martinez, GuruMojo - Kenny, Malcolm Townes, Russell, Vincent Thomas, Caleb Winters, Carsten, Frank, Andrew Sabado, Roger beeper, Jason Burden, lilacjasminetea, Eric, Samantha, Eric Sneddon, philip griffiths, Christian Chidester, Bruce Berky, Bill Polskoy, Maddux Hammer, Tim Neumark, nathan burcl, Paul Santos, Tognia, sugar, Mike Vacay, Niklas lundkvist, JaneB, Gutek, Natalie & Dad, Ashley, J Sh-Wood, Alexej Muehlberg, and Emery for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "api_seen": true,
-      "removed_at": "2026-11-05"
+      "api_misses": 1
     },
     {
       "added_at": "2025-10-31",
@@ -3302,7 +3303,7 @@
       "url": "https://open.spotify.com/episode/4k8Is3Z4IiJ77ySPe9lUte",
       "desc": "How did scientists discover evidence for dark energy? Neil deGrasse Tyson and comedian Paul Mecurio explore dark energy, Hubble tension, and the beginning and end of the universe with astrophysicist and Nobel laureate, Adam Riess.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/origins-of-dark-energy-with-adam-riess/Thanks to our Patrons micpoc, Nathan, Matthew, Aislynn Schaffer, Mark Domino, Lou Wheeland, Matrograde, Elliott Natale, Machael Lipovski, Mathew Moore, Tony, Pablo P, Toni, Brian Futterman, quantumAnomaly, Robin Steiner, Errol Norwitz, Donovan Meek, Alan Geist, Sriganesh Arunanthi, Nuno Abreu, Ross Ziobro, Petr Doležal, Mandar Parikh, Bryan Tollin, Fooj, David Bozarth, Kolja Dobrindt, Sean Poplawski, Brad Durbin, Christian Nielsen, Zen Kurokawa, Lương Tiến, Joel Arbuckle, Chad L Ingham, Mark Morris, dylndmg, Derrick Korstick, EleanorRigbyy, Tarun C, Larry Infante, Jaclyn Anderson, Dave, Kayla Finch, The Bayside Volunteer Jam Band, Dale Allen Platt, Raymond Boulay, Lawrence Zeller, David, Kim Matthews, Jon Gefen, Mark A. Hasty, Clifford Dedmore, Mario De La Crus and Brianni Massin, jordan visina, Ryan Brown, Sebastian H, Daniel Voth, Karen Hollis, Josua Ennis, Julius Adams, Christie L Hall, Filip Risteski, scottdunbar_io, Samantha Davis, Don Franks, Corey Butler, Josh Jones, Daniel Vilasuso, J MR, joe, I Am Austin, bobmac69, Anthony cole, Zan, Erik LeRoy, Kevin George, Arman Adei, Christopher Pickett, John Morlock, AllTheScience, Juana Bee, Jeff Chastain, Jaimal Eiseman, Ed Matte, Lorkhan, D, roninraver, z67760, Orghanik Productions, and CubedWombat for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "api_seen": true,
-      "removed_at": "2026-11-05"
+      "api_misses": 1
     },
     {
       "added_at": "2025-08-12",
@@ -3339,7 +3340,7 @@
       "url": "https://open.spotify.com/episode/3KXxi9xYsKlwgkSq4L86Tq",
       "desc": "Are we in a simulation? On this episode, Neil deGrasse Tyson and comic co-host Chuck Nice take a deep dive into simulation theory, consciousness, and free will with Oxford theorist Nick Bostrom. Is this The Matrix? Originally Aired December 21, 2021.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/cosmic-queries-living-in-a-simulation-with-nick-bostrom/ Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "api_seen": true,
-      "removed_at": "2026-11-05"
+      "api_misses": 1
     },
     {
       "id": "4kqYId9AvEL3SVpUPaDYNo",
@@ -3375,7 +3376,7 @@
       "url": "https://open.spotify.com/episode/0F5LDRzFNH11yLqkE0OZF8",
       "desc": "What do astrophysicists mean when they talk about “information”? Neil deGrasse Tyson and comic co-host Chuck Nice dive into questions about the black hole information paradox, moon moons, wormholes between black hole universes, and more! NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here:https://startalkmedia.com/show/cosmic-queries-black-hole-information-paradox/Thanks to our Patrons Dustin Franke, Joel Bradley, Bill, Bailey's Old Guard, Ezrah Davies, Joseph, David Tilbury, David Holt, Andrew Bowen, John Blair, BigShrimpin, Niall Heaton, Stefan Tabakov, Roger McVay, Steve, John Skobrak, Mau Guzmán, Marcus, Michael Astro-Knight, Charlize, Zach Sweet, Trish Edwards, 에이 큐, Michael Kitchen, Alboogie, studioofmars, Anders Öqvist, Liris, Robbie Bentley, Harry Campbell Blyth Clark, Timmeh, Stupot, Wick3dHeathen, Denise Pinheiro, Kenneth Millen, Porn Person, Bill, PotatoGraphick, Conrad Dunfee, Steve A, Priit Pääsukene, Étienne Pouly, thomas rodriguez, Jibak, Michael S, Kerin McGee, Kyle Young, S.P., Adam Sweeney, Micah Sell, Austin, Emmyb, Caiden Osborne, Devinder Singh, John Posey, Thierry Hubert, Spider, B. Nielsen, jonathan Ryan Munns, tanya henry, K Be, Tyler, Moseph Thuglewits, A O, Tim Gibbs I, Robert Buckley, Maggy, Abhi Arikapudi, Luna Sylvan, omarelsewefy, Kevin, Sylvain Racicot, Aiden Nathan, naked alien, Mohammed Al-Sabah, Derek S., Mark Oestereich, DarkInferno, Joseph Hernandez, Osboyjr, Jay Titus, Nathan Hargett, Dave Baxter, aspiring scientific journalist Also a cow, Charles Ian Norman Venn, Amanda, Tony DeGregorio, Michael Chunn, jeffrey gerber, Raymond McGovern, Ricky Byrd, Glen Bizeau, Richard Rines, Matthew Drumheiser, Raj, and kornschnitzel for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "api_seen": true,
-      "removed_at": "2026-11-05"
+      "api_misses": 1
     },
     {
       "id": "483hV68f4cX0Bn0B4zQ4WN",
@@ -3400,7 +3401,7 @@
       "show": "StarTalk with Neil deGrasse Tyson",
       "url": "https://open.spotify.com/episode/5JW07B3rZd9dLjMiMzoi13",
       "api_seen": true,
-      "removed_at": "2026-11-05"
+      "api_misses": 1
     },
     {
       "id": "5EtL7sSuJXAT8wULdqTQ99",
@@ -3438,7 +3439,7 @@
       "show": "StarTalk with Neil deGrasse Tyson",
       "url": "https://open.spotify.com/episode/4zMPRhEoL0QqbvUzCKNNUg",
       "api_seen": true,
-      "removed_at": "2026-11-05"
+      "api_misses": 1
     },
     {
       "added_at": null,
@@ -3719,7 +3720,7 @@
       "show": "Freakonomics Radio",
       "url": "https://open.spotify.com/episode/6NAGw1evwhBcIMGRSFXBSr",
       "api_seen": true,
-      "removed_at": "2026-11-05"
+      "api_misses": 1
     },
     {
       "added_at": null,
@@ -4424,8 +4425,7 @@
       "release": "2026-10-07",
       "url": "https://open.spotify.com/episode/3Kj4i902k0J4V7768udcQU",
       "desc": "Music can give us goosebumps. It can make us cry. It can make us move. How? Guests: Amelia Meath, songwriter and singer in Sylvan Esso; Elizabeth Margulis,  director of the Music Cognition Lab at Princeton University and author of On Repeat: How Music Plays the Mind  For show transcripts, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unxtranscripts⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠For more, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unexplainable⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠And please email us! ⁠⁠⁠unexplainable@vox.com⁠⁠⁠We read every email.Support Unexplainable (and get ad-free episodes) by becoming a Vox Member today: ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/members⁠⁠⁠⁠⁠⁠⁠⁠Thank you! Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true,
-      "api_misses": 1
+      "api_seen": true
     },
     {
       "id": "2ku6denxn54xzlzW3Pf7IY",
@@ -4437,8 +4437,7 @@
       "release": "2026-10-07",
       "url": "https://open.spotify.com/episode/2ku6denxn54xzlzW3Pf7IY",
       "desc": "Rising electricity prices are one of the primary reasons why data centers are a public enemy this election cycle. But is it realistic to expect energy prices to stay high forever? Fact checking by Sierra Juarez.Your Next Listen No AI data centers in my backyard!Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet MoneyThe Indicator newsletter — a weekly roundup of news, ideas and staff picks.Instagram, TikTok and YouTubeFind the Planet Money book Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop!Support public media by subscribing to NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true,
-      "api_misses": 1
+      "api_seen": true
     },
     {
       "id": "2xjdQNmzruAiMvSf2InOh9",
@@ -4537,7 +4536,7 @@
       "url": "https://open.spotify.com/episode/3hrR9HV81sQynpGBYV0MPo",
       "desc": "Swing states are all the rage once again this election season, but the makeup has changed a bit. In this classic episode, learn all about what makes a swing state a swing state right now.See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "removed_at": "2026-11-05"
+      "api_misses": 1
     },
     {
       "id": "0S3oXY63Qt7qmVmp9LOnHv",
@@ -4550,7 +4549,7 @@
       "url": "https://open.spotify.com/episode/0S3oXY63Qt7qmVmp9LOnHv",
       "desc": "Companies are getting billions of dollars back. How about us? It seems simple, right? We paid higher prices for imported goods because of tariffs. Then the tariffs were ruled illegal. Courts said the money paid to the U.S. government had to be refunded. Companies are getting that money now. It would seem like we, the customers, should get paid back, too. But … it’s not so simple. Once again, we’re dipping back into the drama of import tax law. We’re engrossed in the ups, downs, betrayal, and romance of … the Days of our Tariffs. In this edition:  “Refunds and Regrets.” How and why some companies and people are getting their IEEPA tariff refunds and other people are out of luck. Live Show:- Planet Money Live at Kilkenomics. Kilkenny, Ireland Nov. 6th - 7thRead Planet Money: - Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life - Our weekly longform Planet Money newsletter- Our weekly Indicator round-up newsletterFollow Planet Money: - Instagram- TikTok- YouTube- FacebookListen to more Planet Money: - Our short, daily podcast, The Indicator from Planet Money- Over 1,000 episodes in our archive on the NPR AppMerch: - NPR Shop- The Planet Money game, Sell Me A SasquatchSupport public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.This episode was hosted by Kenny Malone. It was produced by Sam Yellowhorse Kesler and James Sneed. It was edited by our executive producer Alex Goldmark. It was fact-checked by Sierra Juarez and Sam Yellowhorse Kesler. It was engineered by Jimmy Keeley and Cena Loffredo. Special thanks this week to everyone who wrote in with a tale of tariff drama.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true,
-      "removed_at": "2026-11-05"
+      "api_misses": 1
     },
     {
       "id": "6C80ZbVwAPaPAU9FQ1ok0n",
@@ -4563,7 +4562,7 @@
       "url": "https://open.spotify.com/episode/6C80ZbVwAPaPAU9FQ1ok0n",
       "desc": "Podcasting started as a niche-nerd pursuit. Now it’s a $9 billion industry. Is that a lot? The strange economics of this thing we do. SOURCES:Jim Bankoff, chairman and C.E.O. of Vox Media.Ben Davis, head of digital at WME.Will Page, former chief economist at Spotify and author of Pivot.Jenna Weiss-Berman, head of Paper Kite Audio and executive producer of Good Hang with Amy Poehler.Jeanine Wright, co-founder and C.E.O. of Liquid Studios (Inception Point AI). RESOURCES:\"U.S. AI infrastructure buildout is surpassing every prior investment in American history,\" by Cris Tolomia (Quartz, 2026).\"The AMP Accords,\" (Alliance for Measurement in Podcasting, 2026).\"Owl & Co: Global Podcast Economy Grew 23% To $9.2 Billion In 2025.\" (Inside Radio, 2026).\"James Murdoch to Buy New York Magazine, Other Vox Assets for Around $300 Million,\" by Isabella Simonetti and Jessica Toonkel (The Wall Street Journal, 2026).\"Patreon Says Podcasters Earned $629 Million in 2025, Up 33%, as Platform's Biggest Content Category Keeps Growing,\" by Todd Spangler (Variety, 2026). EXTRAS:\"How to Think About A.I.,\" series by Freakonomics Radio (2023).\"How Spotify Saved the Music Industry (But Not Necessarily Musicians),\" by Freakonomics Radio (2019).\"Our 100th Episode!\" by Freakonomics Radio (2012). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "api_seen": true,
-      "removed_at": "2026-11-05"
+      "api_misses": 1
     },
     {
       "id": "0T3g6UcOmeVIkDQT5hYqu1",
@@ -4600,7 +4599,7 @@
       "url": "https://open.spotify.com/episode/64WT0PMF1a91EdMH7TSylX",
       "desc": "Nearly 30 million bison once roamed North America, from modern Canada to Mexico. In the late 1800s, white settlers and the U.S. military annihilated the population of bison, bringing these creatures to the brink of extinction. The consequences for the people who relied on the bison were dire — and still being felt today. In an episode that first aired in August 2023, we spoke to one economist who reveals the shocking numbers about the destruction of the bison, and one member of the Blackfeet Nation who is trying to bring them back.Fact checking by Sierra Juarez. This episode originally aired Aug. 21, 2023.Your Next Listen –Blood, oil, and the Osage Nation: The battle over headrights –Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet Money –The Indicator newsletter — a weekly roundup of news, ideas and staff picks. –Instagram, TikTok and YouTube –Find the Planet Money book –Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop! Support public media by subscribing to NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true,
-      "removed_at": "2026-11-05"
+      "api_misses": 1
     },
     {
       "id": "1llbLpOib0HmOHblbfAp1y",
@@ -4612,7 +4611,8 @@
       "release": "2026-10-13",
       "url": "https://open.spotify.com/episode/1llbLpOib0HmOHblbfAp1y",
       "desc": "There’s no question that millions of asteroids are circling the Earth at incredible speed and every one of them is just dying to get a chance to smoosh our planet and wipe out life in the universe once and for all. But Earth has an ace up its sleeve: Us!See omnystudio.com/listener for privacy information.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "0iRSXTdtl1ie75gcFyPEjl",
@@ -4624,7 +4624,8 @@
       "release": "2026-10-13",
       "url": "https://open.spotify.com/episode/0iRSXTdtl1ie75gcFyPEjl",
       "desc": "Would aliens use the same periodic table as us? Neil deGrasse Tyson and comic co-host Negin Farsad sit down with Kate Biberdorf, aka Kate the Chemist, to tackle fan questions about the chemistry of life, diamonds, how fire works, and spontaneous combustion.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/the-chemistry-of-life-with-kate-the-chemist/Thanks to our Patrons Ari, Craig Zimmerman, Alison Frey, Jimmy Melendez, A Miller, Erik Frey, Eric Wall, Jack Weekly, Hayden Waters, Darius Bakunas, Steve, Dejan Rešetar, Ellen Phillips, Dragos Stefan, Jackie Felix, Lace S, Mariusz Milka, RedShiftMyPants, Rk C, De'Anthony Rhea, Rachel Morse, Maeve O'Meara, Hammer of Dog, Abdulaziz Almehmadi, Keaton Nguyen, Daniel Lehr, Bogumila Kenney, Debra Di Blasi, Leonhard Euler, Eli, JOHN DEMASTRI, svkool, Cheyenne McAdam, Ian Soobrattee, Andy Cheng, Scarlet Matthews, deriven, Elizabeth Brandon, Rachel Hewitt, Wtv, Timothy Dragila, James Mihaychuk, Bermuda Tim, donnie, Erly Thornton, Brandon Harper, Obada Alnajjar, and Thomas M for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "0AWzeY6J22UIsVHaFu31Kr",
@@ -5808,8 +5809,7 @@
       "release": "2026-11-05",
       "url": "https://open.spotify.com/episode/6fVadi8TUzBo17vudVfORe",
       "desc": "Seth takes a closer look at the midterms ending with a blue wave as Democrats win control of Congress and Trump looks for someone to blame.Then, John Malkovich talks about filming Wild Horse Nine with Sam Rockwell and eating an entire hot fudge sundae while doing a monologue for a play before reminiscing on filming Con Air. See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
-      "api_seen": true,
-      "api_misses": 1
+      "api_seen": true
     },
     {
       "id": "1T2lvebk9ZTxbUwWCX2k0I",
@@ -5833,8 +5833,7 @@
       "release": "2026-11-05",
       "url": "https://open.spotify.com/episode/1rJ4REjsfPdU3v7SWSaSQA",
       "desc": "Conan talks to Broadway producer Sean from Issaquah, Washington about switching career paths to the arts later in life and how he’d pitch Conan O’Brien Need a Friend: The Musical. Wanna get a chance to talk to Conan? Submit here: teamcoco.com/apply Get access to all the podcasts you love, music channels and radio shows with the SiriusXM App! Get 3 months free using this show link: https://siriusxm.com/conan. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_seen": true,
-      "api_misses": 1
+      "api_seen": true
     },
     {
       "id": "6wiy4HSBEQT6tcwhnVMrFX",
