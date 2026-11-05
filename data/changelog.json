@@ -1,6 +1,12 @@
 {
-  "generated_at": "2026-11-04T22:05:30.461049+00:00",
+  "generated_at": "2026-11-05T22:13:03.341197+00:00",
   "events": [
+    {
+      "date": "2026-11-05",
+      "type": "merged_pr",
+      "title": "Advance podcast cutoff to December 11, 2025",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/328"
+    },
     {
       "date": "2026-11-04",
       "type": "merged_pr",
@@ -516,27 +522,24 @@
       "type": "merged_pr",
       "title": "Fix Developer Year in Review language attribution and vendor stats",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/215"
-    },
-    {
-      "date": "2026-10-06",
-      "type": "merged_pr",
-      "title": "Refresh the current Developer Year in Review daily",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/213"
-    },
-    {
-      "date": "2026-10-05",
-      "type": "merged_pr",
-      "title": "ci: bump the github-actions group with 4 updates",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/211"
-    },
-    {
-      "date": "2026-10-05",
-      "type": "merged_pr",
-      "title": "Import sheet-only reunion contacts so submissions cannot be silently skipped",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/212"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-11-05",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "6 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/c2d71b530326dc3e1519b67ecbc5af3f164ff913"
+        },
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "Podcast + Spotify experience improved",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/328"
+        }
+      ]
+    },
     {
       "date": "2026-11-04",
       "items": [
@@ -720,16 +723,6 @@
           "emoji": "\ud83c\udfa7",
           "text": "Podcast + Spotify experience improved",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/304"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-21",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "5 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/ba5aa94f3c675fa6166e88867db6c74a62656376"
         }
       ]
     }
