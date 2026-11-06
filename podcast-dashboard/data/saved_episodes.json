@@ -3,10 +3,10 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 477,
+    "n_episodes": 480,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-11-05",
-    "api_saved_count": 163,
+    "api_refreshed_at": "2026-11-06",
+    "api_saved_count": 162,
     "n_removed": 261,
     "n_unavailable": 28
   },
@@ -606,7 +606,8 @@
       "release": "2026-01-08",
       "url": "https://open.spotify.com/episode/6xUGQvKaiHBdlNVxsRBvns",
       "desc": "President Trump claims Venezuela stole American oil. Is that true? We trace Venezuela's oil industry from its 1920s birth through nationalization and then collapse. Today on the show, how did the Venezuelan oil industry get to a point where it’s barely pulling from its reserves? And will anything change now? Related episodes: Venezuela’s economic descent (Update) Venezuela’s recent economic history (Update) Why oil in Guyana could be a curse For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Julia Ritchey. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": null,
@@ -701,8 +702,7 @@
       "name": "Chevron, Venezuela and the Paradox of Plenty",
       "show": "Planet Money",
       "url": "https://open.spotify.com/episode/1PeIFyNkiFYmuO4cQkLwM0",
-      "api_seen": true,
-      "api_misses": 1
+      "api_seen": true
     },
     {
       "added_at": "2025-08-13",
@@ -1009,7 +1009,7 @@
       "url": "https://open.spotify.com/episode/1tP8lGAZlQNmEdcIGvkcCj",
       "desc": "Everybody’s always bagging on pessimists and telling everybody they should be more optimistic. Well, nuts to that! There are plenty of benefits from being a pessimist. Although being an optimist still wins in basically every category ☹See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-06"
     },
     {
       "id": "1GS0zmLps7F88g81iSf7i4",
@@ -1109,7 +1109,8 @@
       "release": "2026-01-08",
       "url": "https://open.spotify.com/episode/4tPLEhPaVlskE1drmvq78I",
       "desc": "Seasonal affective disorder, or SAD, is much more than the winter blues. It's a serious subset of depression. Learn all about it and what to do if you suffer from it today. See omnystudio.com/listener for privacy information.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2025-11-13",
@@ -1267,7 +1268,8 @@
       "name": "Is Greenland really an untapped land of riches?",
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/6caw2YIF6oAL1ds5RPv7gk",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "3tvnIB08U6tO1j3KXdsJJ3",
@@ -1341,7 +1343,7 @@
       "url": "https://open.spotify.com/episode/6lw3E4FBIw1J08kAYaTXJk",
       "desc": "President Trump’s Chief of Staff dropped dirt on her boss and his cronies in a series of interviews, the president’s new White House ballroom is being built on top of an emergency operations bunker, and the Madagascar hissing cockroach is the spy of the future. The hosts of “Anderson Cooper 360” and “Watch What Happens Live” stop by for their annual Late Show visit ahead of their big New Year’s Eve broadcast, which typically results in Anderson Cooper being overserved.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-06"
     },
     {
       "added_at": null,
@@ -1450,7 +1452,8 @@
       "name": "Sen. Bernie Sanders | Anniversary Grifts",
       "show": "The Late Show Pod Show with Stephen Colbert",
       "url": "https://open.spotify.com/episode/4hTifFbhfjAyByPBdST2nW",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2026-01-17",
@@ -1462,8 +1465,7 @@
       "name": "Gov.-Elect Abigail Spanberger",
       "show": "The Late Show Pod Show with Stephen Colbert",
       "url": "https://open.spotify.com/episode/0dJ2HnhmfX9OT14tccKw3M",
-      "api_seen": true,
-      "removed_at": "2026-11-05"
+      "api_seen": true
     },
     {
       "id": "058UfigkExiUPhrJNFlsJa",
@@ -1900,7 +1902,8 @@
       "release": "2025-12-24",
       "url": "https://open.spotify.com/episode/1I4iBlBR1jrjAiU3WkWzz3",
       "desc": "On the eve of Netflix shoveling a fourish-hour chunk of Stranger Things onto Christmas Day, we visit the past, present, and future of binge-dropped television shows. The strategy of releasing an entire season at the same time has been key to taking Netflix from a little startup that used to lend us DVDs in the mail … to a company so big and powerful, it is maybe going to buy Warner Brothers and own Bugs Bunny and Tony Soprano and the Harry Potter movies.But even Netflix may be flirting with some slightly less binge-y models of content release. Are we entering … the end of the binge drop?On our latest: what data tells us about binge watching. Was it the greatest business decision, and who does binge watching really benefit? Here’s some of the research. Pre-order the Planet Money book and get a free gift. / Subscribe to Planet Money+Listen free: Apple Podcasts, Spotify, the NPR app or anywhere you get podcasts.Facebook / Instagram / TikTok / Our weekly Newsletter.This episode was produced by Willa Rubin and edited by Meg Cramer. It was fact-checked by Dania Suleman and engineered by Maggie Luthar. Alex Goldmark is our executive producer.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "1xau3aoiySZAYFFhsh8NPS",
@@ -3720,7 +3723,8 @@
       "name": "Steve Levitt Quits His Podcast, Joins Ours",
       "show": "Freakonomics Radio",
       "url": "https://open.spotify.com/episode/6NAGw1evwhBcIMGRSFXBSr",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": null,
@@ -4327,8 +4331,7 @@
       "release": "2026-10-06",
       "url": "https://open.spotify.com/episode/0u5GfPwsC8ugY8ZfL2DhSS",
       "desc": "Norway has the world’s largest sovereign wealth fund, but it’s facing a self-imposed dilemma. Should the fund's investments include companies that directly or indirectly contribute to the ongoing Israel-Hamas war? On today’s show, the ethical tightrope Norway is walking to invest its oil riches responsibly. Fact checking by Sierra Juarez.Your Next Listen —How would a US sovereign wealth fund even work? Connect with The Indicator — Sign up for The Indicator’s weekly newsletter! — Buy the Planet Money book — Find our socials, YouTube and more! — For sponsor-free episodes, subscribe to NPR+ Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true,
-      "api_misses": 1
+      "api_seen": true
     },
     {
       "id": "6VD2brjgRwgNExSHdocliq",
@@ -4426,8 +4429,7 @@
       "release": "2026-10-07",
       "url": "https://open.spotify.com/episode/3Kj4i902k0J4V7768udcQU",
       "desc": "Music can give us goosebumps. It can make us cry. It can make us move. How? Guests: Amelia Meath, songwriter and singer in Sylvan Esso; Elizabeth Margulis,  director of the Music Cognition Lab at Princeton University and author of On Repeat: How Music Plays the Mind  For show transcripts, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unxtranscripts⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠For more, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unexplainable⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠And please email us! ⁠⁠⁠unexplainable@vox.com⁠⁠⁠We read every email.Support Unexplainable (and get ad-free episodes) by becoming a Vox Member today: ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/members⁠⁠⁠⁠⁠⁠⁠⁠Thank you! Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true,
-      "removed_at": "2026-11-05"
+      "api_seen": true
     },
     {
       "id": "2ku6denxn54xzlzW3Pf7IY",
@@ -4439,8 +4441,7 @@
       "release": "2026-10-07",
       "url": "https://open.spotify.com/episode/2ku6denxn54xzlzW3Pf7IY",
       "desc": "Rising electricity prices are one of the primary reasons why data centers are a public enemy this election cycle. But is it realistic to expect energy prices to stay high forever? Fact checking by Sierra Juarez.Your Next Listen No AI data centers in my backyard!Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet MoneyThe Indicator newsletter — a weekly roundup of news, ideas and staff picks.Instagram, TikTok and YouTubeFind the Planet Money book Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop!Support public media by subscribing to NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true,
-      "removed_at": "2026-11-05"
+      "api_seen": true
     },
     {
       "id": "2xjdQNmzruAiMvSf2InOh9",
@@ -4601,7 +4602,8 @@
       "release": "2026-10-12",
       "url": "https://open.spotify.com/episode/64WT0PMF1a91EdMH7TSylX",
       "desc": "Nearly 30 million bison once roamed North America, from modern Canada to Mexico. In the late 1800s, white settlers and the U.S. military annihilated the population of bison, bringing these creatures to the brink of extinction. The consequences for the people who relied on the bison were dire — and still being felt today. In an episode that first aired in August 2023, we spoke to one economist who reveals the shocking numbers about the destruction of the bison, and one member of the Blackfeet Nation who is trying to bring them back.Fact checking by Sierra Juarez. This episode originally aired Aug. 21, 2023.Your Next Listen –Blood, oil, and the Osage Nation: The battle over headrights –Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet Money –The Indicator newsletter — a weekly roundup of news, ideas and staff picks. –Instagram, TikTok and YouTube –Find the Planet Money book –Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop! Support public media by subscribing to NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "1llbLpOib0HmOHblbfAp1y",
@@ -4613,7 +4615,8 @@
       "release": "2026-10-13",
       "url": "https://open.spotify.com/episode/1llbLpOib0HmOHblbfAp1y",
       "desc": "There’s no question that millions of asteroids are circling the Earth at incredible speed and every one of them is just dying to get a chance to smoosh our planet and wipe out life in the universe once and for all. But Earth has an ace up its sleeve: Us!See omnystudio.com/listener for privacy information.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "0iRSXTdtl1ie75gcFyPEjl",
@@ -4625,7 +4628,8 @@
       "release": "2026-10-13",
       "url": "https://open.spotify.com/episode/0iRSXTdtl1ie75gcFyPEjl",
       "desc": "Would aliens use the same periodic table as us? Neil deGrasse Tyson and comic co-host Negin Farsad sit down with Kate Biberdorf, aka Kate the Chemist, to tackle fan questions about the chemistry of life, diamonds, how fire works, and spontaneous combustion.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/the-chemistry-of-life-with-kate-the-chemist/Thanks to our Patrons Ari, Craig Zimmerman, Alison Frey, Jimmy Melendez, A Miller, Erik Frey, Eric Wall, Jack Weekly, Hayden Waters, Darius Bakunas, Steve, Dejan Rešetar, Ellen Phillips, Dragos Stefan, Jackie Felix, Lace S, Mariusz Milka, RedShiftMyPants, Rk C, De'Anthony Rhea, Rachel Morse, Maeve O'Meara, Hammer of Dog, Abdulaziz Almehmadi, Keaton Nguyen, Daniel Lehr, Bogumila Kenney, Debra Di Blasi, Leonhard Euler, Eli, JOHN DEMASTRI, svkool, Cheyenne McAdam, Ian Soobrattee, Andy Cheng, Scarlet Matthews, deriven, Elizabeth Brandon, Rachel Hewitt, Wtv, Timothy Dragila, James Mihaychuk, Bermuda Tim, donnie, Erly Thornton, Brandon Harper, Obada Alnajjar, and Thomas M for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "0AWzeY6J22UIsVHaFu31Kr",
@@ -5786,7 +5790,7 @@
       "url": "https://open.spotify.com/episode/34kFjSGWpSncGnYltvBMEy",
       "desc": "Michael Kosta recaps the 2026 midterm elections after Democrats’ historic sweep: Kansas’s last Democratic senator was born the year the light bulb was invented, Elon Musk is out $500 million after blowing it on failed campaigns, and the media cannot stop coming up with dumbass “blue” puns. Plus, Troy Iwata vents to Kosta about losing out on Trump’s $5K checks. The media and even some Republicans agree that the 2026 midterm bloodbath was a rejection of Donald Trump, but one political observer begs to differ: Donald Trump. Michael covers the president's insistence that he \"wasn't on the ballot,\" his cope-heavy celebration of a GOP victory in Guam, and his renewed commitment to helping everyday Americans by continuing to obsess over the White House ballroom. Harvard Kennedy School professor and author of \"Civil Resistance: What Everyone Needs to Know,” Erica Chenoweth, sits down with Michael to discuss their groundbreaking research on nonviolent resistance that led to the development of “The 3.5% Rule,” which found that no mass movements against dictatorships in the 20th century failed once they reached active participation by about 3.5% of the population. They talk about utilizing momentum, organization, and mass non-cooperation, along with protest, to achieve successful mass nonviolent resistance, and how the Declaration of Independence was the ultimate act of civil disobedience. -- Go to https://Quince.com/dailyshow for free shipping on your order and 365-day returns.  --https://homeserve.com/tds  -- Head to https://policygenius.com/DAILYSHOW to compare quotes now. -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-06"
     },
     {
       "id": "5vl5L83r7GQuR1yimvz8FO",
@@ -5848,6 +5852,42 @@
       "release": "2026-11-05",
       "url": "https://open.spotify.com/episode/6wiy4HSBEQT6tcwhnVMrFX",
       "desc": "Those tiny treats that predict your future may come free at the end of a Chinese meal, but they’re big business (and not Chinese). Zachary Crockett will go on a long journey.  This episode was originally published on April 13th, 2025. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
+      "api_seen": true
+    },
+    {
+      "id": "24o36X94zKselaXVyZO1va",
+      "added_at": "2026-11-06",
+      "show": "Freakonomics Radio",
+      "publisher": null,
+      "name": "694. Does Democracy Really Need Elections?",
+      "dur_min": 65,
+      "release": "2026-11-06",
+      "url": "https://open.spotify.com/episode/24o36X94zKselaXVyZO1va",
+      "desc": "Stephen Dubner recently served on a criminal jury. Twelve strangers — selected randomly and barely paid — took the job seriously. Afterward, he wondered: why can’t our politics work that way? A growing movement, inspired by Athenian democracy, says it can. SOURCES:Terry Bouricius, author and former Vermont state representative.Dj Hairston, public-defense lawyer.Kathy Hochul, governor of New York.Hélène Landemore, professor of political science at Yale University. RESOURCES:Democracy Without Politicians: Government by the People, by Terry Bouricius (2026).Politics Without Politicians: The Case for Citizen Rule, by Hélène Landemore (2026).The Principles of Representative Government, by Bernard Manin (1997). EXTRAS:\"Has America Lost the Plot?\" by Freakonomics Radio (2026). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
+      "api_seen": true
+    },
+    {
+      "id": "3W4dpLblkwc9L0SizYsnpL",
+      "added_at": "2026-11-06",
+      "show": "Late Night with Seth Meyers Podcast",
+      "publisher": null,
+      "name": "Martin McDonagh | Republicans Say Trump Era Is Over & MAGA Is Dead After Blowout, Vance Blames Iran War: A Closer Look",
+      "dur_min": 28,
+      "release": "2026-11-06",
+      "url": "https://open.spotify.com/episode/3W4dpLblkwc9L0SizYsnpL",
+      "desc": "Seth takes a closer look at Republicans backpedaling away from Trump and the MAGA movement after what they are calling a \"tsunami\" and an \"extinction-level event\" in the midterms, while Trump copes by talking about construction.Then, writer-director Martin McDonagh talks about being terrified to meet John Malkovich for the first time, getting permission to film Wild Horse Nine in Easter Island (Rapa Nui) and Sam Rockwell improvising lines in the film.See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
+      "api_seen": true
+    },
+    {
+      "id": "3puP9ezwhmntEgkiwJ4hsI",
+      "added_at": "2026-11-06",
+      "show": "The Daily Show: Ears Edition",
+      "publisher": null,
+      "name": "GOP Turns on Trump & Rep. Constantino Blasts \"A**holes\" | Teddy Schleifer",
+      "dur_min": 34,
+      "release": "2026-11-06",
+      "url": "https://open.spotify.com/episode/3puP9ezwhmntEgkiwJ4hsI",
+      "desc": "Republicans mourn the midterm results with some light criticism of Trump, JD Vance blames the Iran War for the blue wave, New York elects potty-mouthed Republican Anthony Constantino, who wants Trump to free Diddy, and Jordan Klepper wonders if the president's beam will be strong enough to support MAGA's cracks. Grace Kuhlenschmidt gets into the biggest headlines in tech: Americans get unhelpful voting tips from ChatGPT, Elon Musk's new \"flying\" car takes a safety-last approach, and a Kung Fu robot bodyguard can kickflip burglars in the taint. New York Times reporter Teddy Schleifer joins Jordan to discuss what it’s like covering the billionaire beat and if money is losing its power in American politics. Schleifer shares how the ultra-wealthy think about political giving and why he’s surprised they don’t spend even more. He also explains how the world of dark money plays an outsized role and why both parties’ establishments quietly benefit from the status quo, even if most voters can’t stand it. Plus, he shares why he thinks real change takes years, pointing to Texas where people waited over a decade to see it turn blue. -- Go to https://Quince.com/dailyshow for free shipping on your order and 365-day returns.  -- Head to https://policygenius.com/DAILYSHOW to compare quotes now. -- https://homeserve.com/tds  -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true
     }
   ]
