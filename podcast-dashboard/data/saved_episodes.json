@@ -3,11 +3,11 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 480,
+    "n_episodes": 481,
     "previous_only_count": 42,
     "api_refreshed_at": "2026-11-06",
     "api_saved_count": 162,
-    "n_removed": 261,
+    "n_removed": 268,
     "n_unavailable": 28
   },
   "episodes": [
@@ -607,7 +607,7 @@
       "url": "https://open.spotify.com/episode/6xUGQvKaiHBdlNVxsRBvns",
       "desc": "President Trump claims Venezuela stole American oil. Is that true? We trace Venezuela's oil industry from its 1920s birth through nationalization and then collapse. Today on the show, how did the Venezuelan oil industry get to a point where it’s barely pulling from its reserves? And will anything change now? Related episodes: Venezuela’s economic descent (Update) Venezuela’s recent economic history (Update) Why oil in Guyana could be a curse For sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Julia Ritchey. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-06"
     },
     {
       "added_at": null,
@@ -1096,8 +1096,7 @@
       "name": "Selects: BPD: The Worst Disorder or Not a Disorder at All?",
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/1XqPHar55a4sWyWioKp5HH",
-      "api_seen": true,
-      "removed_at": "2026-11-04"
+      "api_seen": true
     },
     {
       "id": "4tPLEhPaVlskE1drmvq78I",
@@ -1110,7 +1109,7 @@
       "url": "https://open.spotify.com/episode/4tPLEhPaVlskE1drmvq78I",
       "desc": "Seasonal affective disorder, or SAD, is much more than the winter blues. It's a serious subset of depression. Learn all about it and what to do if you suffer from it today. See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-06"
     },
     {
       "added_at": "2025-11-13",
@@ -1269,7 +1268,7 @@
       "show": "The Indicator from Planet Money",
       "url": "https://open.spotify.com/episode/6caw2YIF6oAL1ds5RPv7gk",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-06"
     },
     {
       "id": "3tvnIB08U6tO1j3KXdsJJ3",
@@ -1453,7 +1452,7 @@
       "show": "The Late Show Pod Show with Stephen Colbert",
       "url": "https://open.spotify.com/episode/4hTifFbhfjAyByPBdST2nW",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-06"
     },
     {
       "added_at": "2026-01-17",
@@ -1561,7 +1560,8 @@
       "release": "2026-01-09",
       "url": "https://open.spotify.com/episode/2lZNNvct8d42coWpy2Xg9k",
       "desc": "Trump’s propaganda machine wants you to believe the killing of Renee Nicole Good wasn’t a senseless and predictable crime committed by our government, artificial intelligence is creeping into the health care system in dubious ways, and a $5,000 smart toilet that can call for help is the best new gadget of the year. Acclaimed actor Tom Hiddleston talks about the moral fortitude of his character in “The Night Manager,” and the advice he got from author John le Carré upon whose book the series is based. Season two of “The Night Manager” premieres Sunday on Prime Video.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2025-08-09",
@@ -1903,7 +1903,7 @@
       "url": "https://open.spotify.com/episode/1I4iBlBR1jrjAiU3WkWzz3",
       "desc": "On the eve of Netflix shoveling a fourish-hour chunk of Stranger Things onto Christmas Day, we visit the past, present, and future of binge-dropped television shows. The strategy of releasing an entire season at the same time has been key to taking Netflix from a little startup that used to lend us DVDs in the mail … to a company so big and powerful, it is maybe going to buy Warner Brothers and own Bugs Bunny and Tony Soprano and the Harry Potter movies.But even Netflix may be flirting with some slightly less binge-y models of content release. Are we entering … the end of the binge drop?On our latest: what data tells us about binge watching. Was it the greatest business decision, and who does binge watching really benefit? Here’s some of the research. Pre-order the Planet Money book and get a free gift. / Subscribe to Planet Money+Listen free: Apple Podcasts, Spotify, the NPR app or anywhere you get podcasts.Facebook / Instagram / TikTok / Our weekly Newsletter.This episode was produced by Willa Rubin and edited by Meg Cramer. It was fact-checked by Dania Suleman and engineered by Maggie Luthar. Alex Goldmark is our executive producer.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-06"
     },
     {
       "id": "1xau3aoiySZAYFFhsh8NPS",
@@ -3637,7 +3637,8 @@
       "name": "Short Stuff: The S7VEN Deadly Sins",
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/3X9N0IgNiQ6AN8T8KW240T",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2026-01-14",
@@ -3724,7 +3725,7 @@
       "show": "Freakonomics Radio",
       "url": "https://open.spotify.com/episode/6NAGw1evwhBcIMGRSFXBSr",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-06"
     },
     {
       "added_at": null,
@@ -4404,8 +4405,7 @@
       "release": "2026-10-07",
       "url": "https://open.spotify.com/episode/1pHHFomZq3B65UnS7Xbpyi",
       "desc": "Charles Ponzi was down on his luck. In 1919, the Italian immigrant had spent a decade and a half in the U.S. He was looking for a way to get rich and tried his hand at everything — including bookkeeping, sign painting, grocery clerk, dishwasher, and librarian.He caught a lucky break in August, when he received a letter from Europe. In the envelope was an International Reply Coupon, a clever way to prepay for international postage. Ponzi realized he might be able to use these coupons to make his fortune. All he needed was investors.What happened next made him a household name. This is the story of the man behind the eponymous Ponzi scheme — a tale of financial fraud that lives up to its linguistic legacy.(Note: The original version of this episode ran in 2023.)Read Planet Money:  • Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life  • Our weekly longform Planet Money newsletter • Our weekly Indicator round-up newsletterFollow Planet Money:  • Instagram • TikTok • YouTube • FacebookListen to more Planet Money:  • Our short, daily podcast, The Indicator from Planet Money • Over 1,000 episodes in our archive on the NPR AppMerch:  • NPR Shop • The Planet Money game, Sell Me A SasquatchSupport public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.This episode was produced by James Sneed. It was fact checked by Sierra Juarez, mastered by Natasha Branch, and edited by Jess Jiang. It's based on the book Ponzi's Scheme, by Mitchell Zuckoff.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true,
-      "removed_at": "2026-11-05"
+      "api_seen": true
     },
     {
       "id": "3DCbjWWH7Baf5mSreaDIlP",
@@ -4603,7 +4603,7 @@
       "url": "https://open.spotify.com/episode/64WT0PMF1a91EdMH7TSylX",
       "desc": "Nearly 30 million bison once roamed North America, from modern Canada to Mexico. In the late 1800s, white settlers and the U.S. military annihilated the population of bison, bringing these creatures to the brink of extinction. The consequences for the people who relied on the bison were dire — and still being felt today. In an episode that first aired in August 2023, we spoke to one economist who reveals the shocking numbers about the destruction of the bison, and one member of the Blackfeet Nation who is trying to bring them back.Fact checking by Sierra Juarez. This episode originally aired Aug. 21, 2023.Your Next Listen –Blood, oil, and the Osage Nation: The battle over headrights –Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet Money –The Indicator newsletter — a weekly roundup of news, ideas and staff picks. –Instagram, TikTok and YouTube –Find the Planet Money book –Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop! Support public media by subscribing to NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-06"
     },
     {
       "id": "1llbLpOib0HmOHblbfAp1y",
@@ -4616,7 +4616,7 @@
       "url": "https://open.spotify.com/episode/1llbLpOib0HmOHblbfAp1y",
       "desc": "There’s no question that millions of asteroids are circling the Earth at incredible speed and every one of them is just dying to get a chance to smoosh our planet and wipe out life in the universe once and for all. But Earth has an ace up its sleeve: Us!See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-06"
     },
     {
       "id": "0iRSXTdtl1ie75gcFyPEjl",
@@ -4629,7 +4629,7 @@
       "url": "https://open.spotify.com/episode/0iRSXTdtl1ie75gcFyPEjl",
       "desc": "Would aliens use the same periodic table as us? Neil deGrasse Tyson and comic co-host Negin Farsad sit down with Kate Biberdorf, aka Kate the Chemist, to tackle fan questions about the chemistry of life, diamonds, how fire works, and spontaneous combustion.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/the-chemistry-of-life-with-kate-the-chemist/Thanks to our Patrons Ari, Craig Zimmerman, Alison Frey, Jimmy Melendez, A Miller, Erik Frey, Eric Wall, Jack Weekly, Hayden Waters, Darius Bakunas, Steve, Dejan Rešetar, Ellen Phillips, Dragos Stefan, Jackie Felix, Lace S, Mariusz Milka, RedShiftMyPants, Rk C, De'Anthony Rhea, Rachel Morse, Maeve O'Meara, Hammer of Dog, Abdulaziz Almehmadi, Keaton Nguyen, Daniel Lehr, Bogumila Kenney, Debra Di Blasi, Leonhard Euler, Eli, JOHN DEMASTRI, svkool, Cheyenne McAdam, Ian Soobrattee, Andy Cheng, Scarlet Matthews, deriven, Elizabeth Brandon, Rachel Hewitt, Wtv, Timothy Dragila, James Mihaychuk, Bermuda Tim, donnie, Erly Thornton, Brandon Harper, Obada Alnajjar, and Thomas M for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-06"
     },
     {
       "id": "0AWzeY6J22UIsVHaFu31Kr",
@@ -4665,7 +4665,8 @@
       "release": "2026-10-14",
       "url": "https://open.spotify.com/episode/7if6pEzMXLT8Ze0UA9XYxi",
       "desc": "A labyrinthine rebate process. Shrinking cereal boxes. Mystery rental car charges. Cockroaches?! We share listener tales of Consumer Rage and unpack the economic forces driving that ANGER.Fact checking by Sierra Juarez.Your Next Listen –Consumers are mad as hell and aren't gonna take it anymore–Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet Money–The Indicator newsletter — a weekly roundup of news, ideas and staff picks. –Instagram, TikTok and YouTube –Find the Planet Money book –Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop!Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "62r1BJ1cswC4lXfRFdkKQD",
@@ -5888,6 +5889,18 @@
       "release": "2026-11-06",
       "url": "https://open.spotify.com/episode/3puP9ezwhmntEgkiwJ4hsI",
       "desc": "Republicans mourn the midterm results with some light criticism of Trump, JD Vance blames the Iran War for the blue wave, New York elects potty-mouthed Republican Anthony Constantino, who wants Trump to free Diddy, and Jordan Klepper wonders if the president's beam will be strong enough to support MAGA's cracks. Grace Kuhlenschmidt gets into the biggest headlines in tech: Americans get unhelpful voting tips from ChatGPT, Elon Musk's new \"flying\" car takes a safety-last approach, and a Kung Fu robot bodyguard can kickflip burglars in the taint. New York Times reporter Teddy Schleifer joins Jordan to discuss what it’s like covering the billionaire beat and if money is losing its power in American politics. Schleifer shares how the ultra-wealthy think about political giving and why he’s surprised they don’t spend even more. He also explains how the world of dark money plays an outsized role and why both parties’ establishments quietly benefit from the status quo, even if most voters can’t stand it. Plus, he shares why he thinks real change takes years, pointing to Texas where people waited over a decade to see it turn blue. -- Go to https://Quince.com/dailyshow for free shipping on your order and 365-day returns.  -- Head to https://policygenius.com/DAILYSHOW to compare quotes now. -- https://homeserve.com/tds  -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
+      "api_seen": true
+    },
+    {
+      "id": "7oW9eJX8AEO7WFrTk827BE",
+      "added_at": "2026-11-06",
+      "show": "The Indicator from Planet Money",
+      "publisher": null,
+      "name": "Caution: Men NOT at Work",
+      "dur_min": 9,
+      "release": "2026-11-06",
+      "url": "https://open.spotify.com/episode/7oW9eJX8AEO7WFrTk827BE",
+      "desc": "An increasing number of men are dropping out of the workforce.  What’s behind this trend and can anything be done about it?Fact checking by Leyla Doss.Your Next Listen –What's going on with men's labor force participation?–Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet Money–The Indicator newsletter — a weekly roundup of news, ideas and staff picks. –Instagram, TikTok and YouTube –Find the Planet Money book –Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop!Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true
     }
   ]
