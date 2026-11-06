@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T22:13:03.341197+00:00",
+  "generated_at": "2026-11-06T21:44:05.790216+00:00",
   "events": [
     {
       "date": "2026-11-05",
@@ -498,33 +498,24 @@
       "type": "merged_pr",
       "title": "Add GitHub Actions schedule with Mermaid timelines",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/219"
-    },
-    {
-      "date": "2026-10-07",
-      "type": "merged_pr",
-      "title": "Use Contacts as the editable reunion roster",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/214"
-    },
-    {
-      "date": "2026-10-07",
-      "type": "merged_pr",
-      "title": "Show files and commits behind the top yearly language",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/217"
-    },
-    {
-      "date": "2026-10-07",
-      "type": "merged_pr",
-      "title": "Highlight JavaScript and HTML across Developer Year in Review",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/216"
-    },
-    {
-      "date": "2026-10-07",
-      "type": "merged_pr",
-      "title": "Fix Developer Year in Review language attribution and vendor stats",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/215"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-11-06",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "1 podcast episode added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/2a194d5e3c89e431ff5b5e0c2d6ac03e25caf6d4"
+        },
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "3 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/f0cc90cdc5489beb05c045b50fbb0eaa04db0041"
+        }
+      ]
+    },
     {
       "date": "2026-11-05",
       "items": [
@@ -708,21 +699,6 @@
         {
           "emoji": "\ud83d\udcbb",
           "text": "5 PRs merged"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-22",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "6 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/73be57fdb3cf8c9350f3d608147a67d94f16e4a5"
-        },
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "Podcast + Spotify experience improved",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/304"
         }
       ]
     }
