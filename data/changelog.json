@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-06T21:44:05.790216+00:00",
+  "generated_at": "2026-11-07T20:26:26.596665+00:00",
   "events": [
     {
       "date": "2026-11-05",
@@ -486,21 +486,19 @@
       "type": "merged_pr",
       "title": "Show schedule charts as images in Pacific time",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/220"
-    },
-    {
-      "date": "2026-10-08",
-      "type": "merged_pr",
-      "title": "Fix Developer Year in Review snapshot push failures",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/218"
-    },
-    {
-      "date": "2026-10-08",
-      "type": "merged_pr",
-      "title": "Add GitHub Actions schedule with Mermaid timelines",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/219"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-11-07",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "2 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/fd931b7089413e4ff2f47459d19233b95838daa8"
+        }
+      ]
+    },
     {
       "date": "2026-11-06",
       "items": [
@@ -680,25 +678,6 @@
           "emoji": "\ud83c\udfa7",
           "text": "2 podcast episodes added",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/edf584fb82ef105cc6df4a48054f4c40385bc238"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-23",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "1 podcast episode added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/a29d6e71285e18fba6271648891ff8c8b92fde74"
-        },
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "8 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/84c8dc82fc25ae05062228ac0746b45bba6620a1"
-        },
-        {
-          "emoji": "\ud83d\udcbb",
-          "text": "5 PRs merged"
         }
       ]
     }
