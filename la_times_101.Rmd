@@ -34,6 +34,7 @@ How often does the L.A. Times 101 list make room for a first-timer? Every editio
 .la101 caption { color: #354d45; }
 </style>
 
+```{=html}
 <div id="la101" class="la101">
   <h2>Year by year</h2>
   <div class="legend">
@@ -76,6 +77,7 @@ How often does the L.A. Times 101 list make room for a first-timer? Every editio
   </div>
   <noscript><p>Enable JavaScript to explore the annual counts and entries.</p></noscript>
 </div>
+```
 
 ## How I counted
 
