@@ -57,6 +57,8 @@ navbar:
         href: firefighter_schedule.html
       - text: "Google Maps: Want To Go + Favorites"
         href: google_maps_saved_places.html
+      - text: "L.A. Times 101 Restaurant Tracker"
+        href: la_times_101.html
       - text: "Get Bloggy With It"
         href: my_travels.html
       - text: "TOHS Class of 2012 Reunion"

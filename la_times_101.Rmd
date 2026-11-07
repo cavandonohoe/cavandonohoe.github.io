@@ -1,0 +1,167 @@
+---
+title: "The L.A. Times 101 Restaurant Tracker"
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+lang: "en"
+---
+
+How often does the L.A. Times 101 list make room for a first-timer? Every edition since 2013 is here. Pick a year to see who made their debut, who came back, and who stayed on.
+
+<style>
+.la101 { --debut: #9e351f; --return: #ecc37e; --repeat: #245b53; --other: #dce3e0; }
+.la101 .edition-chart { display: grid; gap: 5px; margin: 12px 0 22px; }
+.la101 .edition-button {
+  display: grid; grid-template-columns: 4.5rem minmax(0, 1fr) 10rem; gap: 8px;
+  align-items: center; padding: 4px 8px; width: 100%; text-align: left;
+  border: 1px solid #cbd4d0; border-radius: 5px; background: #fff; color: #1b302b;
+}
+.la101 .edition-button:hover,
+.la101 .edition-button[aria-pressed="true"] { background: #e9f2ef; border-color: #245b53; }
+.la101 .edition-bar { display: flex; overflow: hidden; height: 12px; border-radius: 8px; }
+.la101 .debut { background: var(--debut); }
+.la101 .return { background: var(--return); }
+.la101 .repeat { background: var(--repeat); }
+.la101 .other { background: var(--other); }
+.la101 .legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 15px; }
+.la101 .swatch { display: inline-block; width: 12px; height: 12px; margin-right: 5px; }
+.la101 .controls { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; margin: 12px 0; }
+.la101 .controls label { display: grid; gap: 4px; }
+.la101 select, .la101 input { min-height: 32px; padding: 3px 6px; }
+.la101 .table-wrap { overflow-x: auto; }
+.la101 caption { color: #354d45; }
+</style>
+
+<div id="la101" class="la101">
+  <h2>Year by year</h2>
+  <div class="legend">
+    <span><i class="swatch debut" aria-hidden="true"></i>First appearance</span>
+    <span><i class="swatch return" aria-hidden="true"></i>Comeback</span>
+    <span><i class="swatch repeat" aria-hidden="true"></i>Previous edition</span>
+    <span><i class="swatch other" aria-hidden="true"></i>Other honoree</span>
+  </div>
+  <div id="la101-chart" class="edition-chart" role="group" aria-label="Choose an edition"></div>
+  <h2>Explore an edition</h2>
+  <div class="controls">
+    <label>Edition <select id="la101-year"></select></label>
+    <label>Appearance
+      <select id="la101-status">
+        <option value="">All entries</option>
+        <option>First appearance</option>
+        <option>Comeback</option>
+        <option>Previous edition</option>
+        <option value="Other">Other honoree</option>
+      </select>
+    </label>
+    <label>Restaurant name <input id="la101-query" type="search" placeholder="e.g. Sqirl"></label>
+  </div>
+  <p id="la101-summary" aria-live="polite"></p>
+  <p><a id="la101-source">Read the original L.A. Times edition</a></p>
+  <div class="table-wrap">
+    <table class="table table-striped">
+      <caption>Names as published, in alphabetical order</caption>
+      <thead><tr><th scope="col">Entry</th><th scope="col">Appearance</th><th scope="col">First listed</th><th scope="col">Last listed before this edition</th></tr></thead>
+      <tbody id="la101-entries"></tbody>
+    </table>
+  </div>
+  <noscript><p>Enable JavaScript to explore the annual counts and entries.</p></noscript>
+</div>
+
+## How I counted
+
+I compared all 101 published entries in each edition with the complete history up to that year. An entry is a **first appearance** if it has no earlier match, a **comeback** if its latest match was more than a year earlier, and a **previous edition** pick if it appeared the year before.
+
+I matched spelling changes, moves and relaunches of the same restaurant. A separately reviewed branch can debut on its own, as Badmaash Venice did in 2026. A grouped entry takes up one slot and can establish an appearance for its co-featured restaurants. For example, the 2025 Mercado La Paloma entry keeps Holbox and Komal in the running going into 2026. Mentions in broader market write-ups and the separate Hall of Fame are excluded. The 2020 edition used nine slots for profiles of people and organizations, shown as other honorees.
+
+Sources are the [L.A. Times archive of annual lists](https://www.latimes.com/food/story/2024-12-03/101-best-los-angeles-restaurants-since-2013-jonathan-gold-bill-addison) and the original edition linked for each year.
+
+```{r la101-data, echo=FALSE, results='asis'}
+edition_json <- paste(readLines("data/la_times_101.json", encoding = "UTF-8", warn = FALSE), collapse = "\n")
+cat('<script type="application/json" id="la101-data">\n',
+    gsub("<", "\\u003c", edition_json, fixed = TRUE), '\n</script>\n', sep = "")
+```
+
+<script>
+(() => {
+  const data = JSON.parse(document.getElementById("la101-data").textContent);
+  const years = Object.keys(data).reverse();
+  const chart = document.getElementById("la101-chart");
+  const year = document.getElementById("la101-year");
+  const status = document.getElementById("la101-status");
+  const query = document.getElementById("la101-query");
+  const summary = document.getElementById("la101-summary");
+  const source = document.getElementById("la101-source");
+  const entries = document.getElementById("la101-entries");
+
+  function element(tag, text) {
+    const node = document.createElement(tag);
+    if (text != null) node.textContent = text;
+    return node;
+  }
+
+  function searchKey(text) {
+    return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  }
+
+  function renderEdition() {
+    const { source: url, rows, counts } = data[year.value];
+    const needle = searchKey(query.value.trim());
+    const visible = rows.filter(row =>
+      (!status.value || row.status === status.value) &&
+      searchKey([row.name, row.note, row.match].join(" ")).includes(needle)
+    );
+    source.href = url;
+    const [debut, comeback, previous, other] = counts;
+    const otherText = other ? `, ${other} other honoree slots` : "";
+    summary.textContent = `${year.value} · ${debut} first appearances, ${comeback} comebacks, ${previous} from the previous edition${otherText}. Showing ${visible.length} of ${rows.length} entries.`;
+    entries.replaceChildren();
+    for (const row of visible) {
+      const tr = element("tr");
+      const label = element("th", row.name);
+      label.scope = "row";
+      tr.append(label, element("td", row.status === "Other" ? "Other honoree" : row.status),
+        element("td", row.first ?? "—"), element("td", row.previous ?? "—"));
+      if (row.match && row.match !== row.name) {
+        tr.lastElementChild.append(element("small", ` · ${row.match}`));
+      }
+      entries.append(tr);
+    }
+    for (const button of chart.children) {
+      button.setAttribute("aria-pressed", button.dataset.year === year.value);
+    }
+  }
+
+  for (const edition of years) {
+    const option = element("option", edition);
+    year.append(option);
+    const { counts } = data[edition];
+    const [debut, comeback, previous, other] = counts;
+    const button = element("button");
+    button.type = "button";
+    button.className = "edition-button";
+    button.dataset.year = edition;
+    button.setAttribute("aria-label", `${edition}, ${debut} first appearances, ${comeback} comebacks, ${previous} from the previous edition, ${other} other honoree slots`);
+    const bar = element("span");
+    bar.className = "edition-bar";
+    bar.setAttribute("aria-hidden", "true");
+    ["debut", "return", "repeat", "other"].forEach((className, index) => {
+      const segment = element("span");
+      segment.className = className;
+      segment.style.flexGrow = counts[index];
+      bar.append(segment);
+    });
+    button.append(element("strong", edition), bar, element("span", `${debut} new · ${comeback} back`));
+    button.addEventListener("click", () => {
+      year.value = edition;
+      renderEdition();
+    });
+    chart.append(button);
+  }
+  year.addEventListener("change", renderEdition);
+  status.addEventListener("change", renderEdition);
+  query.addEventListener("input", renderEdition);
+  renderEdition();
+})();
+</script>
