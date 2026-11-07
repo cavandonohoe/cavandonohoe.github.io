@@ -32,10 +32,31 @@ How often does the L.A. Times 101 list make room for a first-timer? Every editio
 .la101 select, .la101 input { min-height: 32px; padding: 3px 6px; }
 .la101 .table-wrap { overflow-x: auto; }
 .la101 caption { color: #354d45; }
+.la101 .history { margin: 16px 0 24px; }
+.la101 .history summary { cursor: pointer; font-weight: 700; }
+.la101 .history .table-wrap { max-height: 420px; overflow: auto; }
+.la101 .history thead th { position: sticky; top: 0; background: #fff; }
+.la101 .history td:nth-child(2) { white-space: nowrap; }
 </style>
 
 ```{=html}
 <div id="la101" class="la101">
+  <details class="history">
+    <summary>All-time appearances</summary>
+    <p>Restaurants sorted by how many editions they appeared in. A restaurant can appear
+      once per year, including when it shares a slot. Separately reviewed branches have their own records.</p>
+    <div class="controls">
+      <label>Search all editions <input id="la101-history-query" type="search" placeholder="e.g. Providence"></label>
+    </div>
+    <p id="la101-history-summary" aria-live="polite"></p>
+    <div class="table-wrap">
+      <table class="table table-striped">
+        <caption>Most appearances first</caption>
+        <thead><tr><th scope="col">Restaurant</th><th scope="col" aria-sort="descending">Appearances</th><th scope="col">Editions</th></tr></thead>
+        <tbody id="la101-history-entries"></tbody>
+      </table>
+    </div>
+  </details>
   <h2>Year by year</h2>
   <div class="legend">
     <span><i class="swatch debut" aria-hidden="true"></i>First appearance</span>
@@ -106,6 +127,9 @@ cat('<script type="application/json" id="la101-data">\n',
   const summary = document.getElementById("la101-summary");
   const source = document.getElementById("la101-source");
   const entries = document.getElementById("la101-entries");
+  const historyQuery = document.getElementById("la101-history-query");
+  const historySummary = document.getElementById("la101-history-summary");
+  const historyEntries = document.getElementById("la101-history-entries");
 
   function element(tag, text) {
     const node = document.createElement(tag);
@@ -115,6 +139,59 @@ cat('<script type="application/json" id="la101-data">\n',
 
   function searchKey(text) {
     return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  }
+
+  function buildHistory() {
+    const restaurants = new Map();
+    const standaloneByYear = new Map();
+    for (const [edition, { rows }] of Object.entries(data)) {
+      const standalone = new Map();
+      standaloneByYear.set(Number(edition), standalone);
+      for (const row of rows) {
+        if (row.status === "Other") continue;
+        const names = (row.note || row.name).split(" / ");
+        const isStandalone = names.length === 1;
+        // Follow prior names for the same restaurant without merging the members of a shared slot.
+        const previousKey = isStandalone && standaloneByYear.get(row.previous)?.get(row.match);
+        for (const name of names) {
+          const key = previousKey || searchKey(name).replace(/[^a-z0-9]/g, "");
+          if (!restaurants.has(key)) {
+            restaurants.set(key, { name, aliases: new Set(), editions: new Set() });
+          }
+          const restaurant = restaurants.get(key);
+          restaurant.editions.add(edition);
+          restaurant.aliases.add(name);
+          restaurant.aliases.add(row.name);
+          if (isStandalone) {
+            restaurant.name = name;
+            standalone.set(row.name, key);
+          }
+        }
+      }
+    }
+    return Array.from(restaurants.values()).sort((a, b) =>
+      b.editions.size - a.editions.size || a.name.localeCompare(b.name, "en")
+    );
+  }
+
+  const history = buildHistory();
+
+  function renderHistory() {
+    const needle = searchKey(historyQuery.value.trim());
+    const visible = history.filter(restaurant =>
+      Array.from(restaurant.aliases).some(name => searchKey(name).includes(needle))
+    );
+    const rows = document.createDocumentFragment();
+    for (const restaurant of visible) {
+      const tr = element("tr");
+      const label = element("th", restaurant.name);
+      label.scope = "row";
+      tr.append(label, element("td", `${restaurant.editions.size} / ${years.length}`),
+        element("td", Array.from(restaurant.editions).join(", ")));
+      rows.append(tr);
+    }
+    historyEntries.replaceChildren(rows);
+    historySummary.textContent = `Showing ${visible.length} of ${history.length} entries.`;
   }
 
   function renderEdition() {
@@ -178,6 +255,8 @@ cat('<script type="application/json" id="la101-data">\n',
   year.addEventListener("change", renderEdition);
   status.addEventListener("change", renderEdition);
   query.addEventListener("input", renderEdition);
+  historyQuery.addEventListener("input", renderHistory);
+  renderHistory();
   renderEdition();
 })();
 </script>
