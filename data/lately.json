@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-06T21:46:26.837949+00:00",
+  "generated_at": "2026-11-07T20:32:35.535393+00:00",
   "window_days": 30,
-  "commits": 72,
+  "commits": 70,
   "excludes_bot_commits": true,
   "active_areas": [
     {
       "name": "site",
-      "file_touches": 78
+      "file_touches": 77
     },
     {
       "name": ".github",
-      "file_touches": 47
+      "file_touches": 46
     },
     {
       "name": "data",
