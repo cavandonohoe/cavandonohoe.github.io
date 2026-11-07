@@ -43,6 +43,14 @@ How often does the L.A. Times 101 list make room for a first-timer? Every editio
     <span><i class="swatch other" aria-hidden="true"></i>Other honoree</span>
   </div>
   <div id="la101-chart" class="edition-chart" role="group" aria-label="Choose an edition"></div>
+  <p id="la101-2018-note"><strong>* 2018 · First edition after Jonathan Gold</strong><br>
+    Gold died on July 21, 2018. His final list was the ranked 2017 edition.
+    That December, the L.A. Times food team published <em>101 Restaurants We Love</em>,
+    an unranked guide organized by neighborhood. The team started with Gold’s 2017 list
+    and included 15 first-time picks he had reviewed.
+    <a href="https://www.latimes.com/local/obituaries/la-fo-jonathan-gold-obit-20180721-story.html">Obituary</a>
+    · <a href="https://www.latimes.com/food/dailydish/la-fo-re-101-list-20181203-story.html">How the 2018 list was made</a>
+  </p>
   <h2>Explore an edition</h2>
   <div class="controls">
     <label>Edition <select id="la101-year"></select></label>
@@ -74,6 +82,8 @@ How often does the L.A. Times 101 list make room for a first-timer? Every editio
 I compared all 101 published entries in each edition with the complete history up to that year. An entry is a **first appearance** if it has no earlier match, a **comeback** if its latest match was more than a year earlier, and a **previous edition** pick if it appeared the year before.
 
 I matched spelling changes, moves and relaunches of the same restaurant. A separately reviewed branch can debut on its own, as Badmaash Venice did in 2026. A grouped entry takes up one slot and can establish an appearance for its co-featured restaurants. For example, the 2025 Mercado La Paloma entry keeps Holbox and Komal in the running going into 2026. Mentions in broader market write-ups and the separate Hall of Fame are excluded. The 2020 edition used nine slots for profiles of people and organizations, shown as other honorees.
+
+The [Times’ 2018 roundup](https://www.latimes.com/food/dailydish/la-fo-re-new-101-list-20181205-story.html) highlighted 31 debuts. This tracker counts 28 new slots that year. Bar Amá and Somni appeared in shared slots with previously listed restaurants, and Jon & Vinny’s had already appeared in 2015.
 
 Sources are the [L.A. Times archive of annual lists](https://www.latimes.com/food/story/2024-12-03/101-best-los-angeles-restaurants-since-2013-jonathan-gold-bill-addison) and the original edition linked for each year.
 
@@ -134,7 +144,10 @@ cat('<script type="application/json" id="la101-data">\n',
   }
 
   for (const edition of years) {
-    const option = element("option", edition);
+    const isTransition = edition === "2018";
+    const label = isTransition ? "2018*" : edition;
+    const option = element("option", label);
+    option.value = edition;
     year.append(option);
     const { counts } = data[edition];
     const [debut, comeback, previous, other] = counts;
@@ -142,6 +155,7 @@ cat('<script type="application/json" id="la101-data">\n',
     button.type = "button";
     button.className = "edition-button";
     button.dataset.year = edition;
+    if (isTransition) button.setAttribute("aria-describedby", "la101-2018-note");
     button.setAttribute("aria-label", `${edition}, ${debut} first appearances, ${comeback} comebacks, ${previous} from the previous edition, ${other} other honoree slots`);
     const bar = element("span");
     bar.className = "edition-bar";
@@ -152,7 +166,7 @@ cat('<script type="application/json" id="la101-data">\n',
       segment.style.flexGrow = counts[index];
       bar.append(segment);
     });
-    button.append(element("strong", edition), bar, element("span", `${debut} new · ${comeback} back`));
+    button.append(element("strong", label), bar, element("span", `${debut} new · ${comeback} back`));
     button.addEventListener("click", () => {
       year.value = edition;
       renderEdition();
