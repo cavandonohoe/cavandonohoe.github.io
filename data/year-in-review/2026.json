@@ -1,9 +1,9 @@
 {
   "year": 2026,
-  "commits": 334,
+  "commits": 335,
   "pull_requests": 256,
   "repositories_touched": 4,
-  "lines_added": 495333,
+  "lines_added": 495337,
   "most_used_language": "R",
   "language_lines_added": {
     "R": 26413,
@@ -4375,7 +4375,7 @@
   "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, dependency, build, docs, minified, and raw HTML input files are excluded.",
   "most_active_month": "October",
   "longest_streak_days": 16,
-  "active_days": 89,
+  "active_days": 90,
   "monthly_commits": [
     11,
     27,
@@ -4387,7 +4387,7 @@
     15,
     23,
     108,
-    6,
+    7,
     0
   ],
   "daily_activity": [
@@ -4835,10 +4835,15 @@
       "date": "2026-11-05",
       "commits": 3,
       "lines_added": 130
+    },
+    {
+      "date": "2026-11-06",
+      "commits": 1,
+      "lines_added": 4
     }
   ],
   "biggest_project": "cavandonohoe.github.io",
-  "biggest_project_commits": 275,
+  "biggest_project_commits": 276,
   "repositories": [
     "cavandonohoe/cavandonohoe",
     "cavandonohoe/cavandonohoe.github.io",
@@ -4846,12 +4851,12 @@
     "cavandonohoe/rent-vs-buy"
   ],
   "repository_commits": {
-    "cavandonohoe/cavandonohoe.github.io": 275,
+    "cavandonohoe/cavandonohoe.github.io": 276,
     "cavandonohoe/rent-vs-buy": 29,
     "cavandonohoe/confederate_statues": 20,
     "cavandonohoe/cavandonohoe": 10
   },
   "scope": "Author-matched commits on the default branch of public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bot-authored or bot-committed commits, deploy commits, and other authors are excluded. Moved files count only changed lines. Language totals use .gitattributes Linguist overrides plus built-in generated, vendored, dependency, build, docs, minified, and raw HTML input patterns. Overall lines added still include all files. PRs count public pull requests the user authored and merged into their own repositories during the year, when available.",
   "is_partial_year": true,
-  "generated_at": "2026-11-06T16:11:48.980950+00:00"
+  "generated_at": "2026-11-07T15:04:06.135915+00:00"
 }
