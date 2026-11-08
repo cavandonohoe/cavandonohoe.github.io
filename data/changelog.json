@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-07T20:26:26.596665+00:00",
+  "generated_at": "2026-11-08T20:42:10.160726+00:00",
   "events": [
     {
       "date": "2026-11-05",
@@ -472,23 +472,21 @@
     {
       "date": "2026-10-09",
       "type": "merged_pr",
-      "title": "Add optional Venmo support link to site footer",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/221"
-    },
-    {
-      "date": "2026-10-09",
-      "type": "merged_pr",
       "title": "Add interactive procedural maze art generator",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/222"
-    },
-    {
-      "date": "2026-10-08",
-      "type": "merged_pr",
-      "title": "Show schedule charts as images in Pacific time",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/220"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-11-08",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "1 podcast episode added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/02e6038162ba5682f35317fe2087c49d45adfdc1"
+        }
+      ]
+    },
     {
       "date": "2026-11-07",
       "items": [
@@ -668,16 +666,6 @@
           "emoji": "\ud83c\udfa7",
           "text": "Podcast + Spotify experience improved",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/311"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-24",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "2 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/edf584fb82ef105cc6df4a48054f4c40385bc238"
         }
       ]
     }
