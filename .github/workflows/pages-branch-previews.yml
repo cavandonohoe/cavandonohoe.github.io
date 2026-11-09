@@ -111,6 +111,8 @@ jobs:
         with:
           name: site
           path: _site
+          # Only consumed by the workflow_run Lighthouse job right after the build.
+          retention-days: 1
 
   # PROD: update gh-pages root only when main changes
   deploy_prod:
