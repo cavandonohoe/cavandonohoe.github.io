@@ -123,12 +123,12 @@
     },
     {
       "project": "docs",
-      "tracked_files": 2,
-      "commits_touching_project": 7,
+      "tracked_files": 3,
+      "commits_touching_project": 8,
       "top_extensions": [
         [
           ".md",
-          2
+          3
         ]
       ]
     },
