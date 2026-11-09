@@ -169,7 +169,7 @@ testthat::test_that("a shared slot takes the earliest first and latest previous 
 testthat::test_that("stale or misspelled overrides stop the build", {
   src <- list("2020" = edition("Alpha"), "2021" = edition("Alpha"))
   testthat::expect_error(
-    la101_derive(src, override(2021, "Alpah", name = "Alpha")),
+    la101_derive(src, override(2021, "Not scraped", name = "Alpha")),
     "match no scraped name"
   )
   testthat::expect_error(
