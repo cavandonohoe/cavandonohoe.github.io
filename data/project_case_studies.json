@@ -30,7 +30,7 @@
     {
       "project": "analysis",
       "tracked_files": 12,
-      "commits_touching_project": 8,
+      "commits_touching_project": 9,
       "top_extensions": [
         [
           ".csv",
@@ -162,7 +162,7 @@
     {
       "project": "images",
       "tracked_files": 20,
-      "commits_touching_project": 136,
+      "commits_touching_project": 137,
       "top_extensions": [
         [
           ".jpg",
