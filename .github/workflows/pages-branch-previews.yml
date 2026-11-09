@@ -111,8 +111,10 @@ jobs:
         with:
           name: site
           path: _site
-          # Only consumed by the workflow_run Lighthouse job right after the build.
-          retention-days: 1
+          # Consumed right after the build by the workflow_run Lighthouse job, and by the
+          # weekly pa11y (hard fail if missing) and link-check (warn) runs, which pull the
+          # latest main build. 7 days covers the weekly schedule.
+          retention-days: 7
 
   # PROD: update gh-pages root only when main changes
   deploy_prod:
