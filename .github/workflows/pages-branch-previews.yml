@@ -25,7 +25,7 @@ jobs:
     name: Build site
     # Skip on Dependabot PRs: those don't get repo secrets, so we can't auth
     # to Google Sheets, and several Rmds assume sheet data is present.
-    if: ${{ github.actor != 'dependabot[bot]' }}
+    if: ${{ github.actor != 'dependabot[bot]' && !(github.event_name == 'pull_request' && github.event.action == 'closed') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout (PR SHA or current SHA)
@@ -227,9 +227,12 @@ jobs:
       - name: Delete folder and push
         run: |
           set -e
-          rm -rf "pr-${{ github.event.pull_request.number }}"
+          git rm -r --ignore-unmatch -- "pr-${{ github.event.pull_request.number }}"
+          if git diff --cached --quiet; then
+            echo "Preview already absent; nothing to remove."
+            exit 0
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "chore: remove preview for PR #${{ github.event.pull_request.number }}" || echo "No changes"
-          git push
+          git commit -m "chore: remove preview for PR #${{ github.event.pull_request.number }}"
+          git push origin HEAD:gh-pages
