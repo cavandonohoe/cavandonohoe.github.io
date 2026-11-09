@@ -111,8 +111,11 @@ jobs:
         with:
           name: site
           path: _site
-          # Only consumed by the workflow_run Lighthouse job right after the build.
-          retention-days: 1
+          # PR builds are only used inside their own run, so 1 day is enough. Main builds are
+          # also pulled later by the weekly pa11y (hard fail if missing) and link-check (warn)
+          # runs and by manual (workflow_dispatch) Lighthouse runs, all with branch: main.
+          # 7 days covers the weekly schedule.
+          retention-days: ${{ github.ref == 'refs/heads/main' && 7 || 1 }}
 
   # PROD: update gh-pages root only when main changes
   deploy_prod:
