@@ -2,7 +2,7 @@ name: Prune stale PR previews
 
 on:
   schedule:
-    - cron: "27 13 * * 1"  # Mondays 13:27 UTC
+    - cron: "27 13 * * *"  # Daily 13:27 UTC
   workflow_dispatch:
 
 permissions:
@@ -25,10 +25,15 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
+          shopt -s nullglob
           for dir in pr-*/; do
             num="${dir#pr-}"; num="${num%/}"
             [[ "$num" =~ ^[0-9]+$ ]] || continue
-            state=$(gh pr view "$num" --repo "$GITHUB_REPOSITORY" --json state --jq .state)
+            # Never remove a preview if its PR state cannot be verified.
+            if ! state=$(gh pr view "$num" --repo "$GITHUB_REPOSITORY" --json state --jq .state); then
+              echo "::warning::Could not verify PR #$num; preserving $dir"
+              continue
+            fi
             if [ "$state" != "OPEN" ]; then
               echo "Removing $dir ($state)"
               git rm -rq "$dir"
