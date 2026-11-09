@@ -55,6 +55,7 @@ Check out my website at <https://cavandonohoe.github.io>
   Schedule](https://cavandonohoe.github.io/firefighter_schedule.html)
 - [Google Maps: Want To Go +
   Favorites](https://cavandonohoe.github.io/google_maps_saved_places.html)
+- [L.A. Times 101 Restaurant Tracker](https://cavandonohoe.github.io/la_times_101.html)
 - [Get Bloggy With It (travel
   blog)](https://cavandonohoe.github.io/my_travels.html)
 - [TOHS Class of 2012

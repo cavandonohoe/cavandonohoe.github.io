@@ -1,0 +1,393 @@
+---
+title: "The L.A. Times 101 Restaurant Tracker"
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+lang: "en"
+---
+
+How often does the L.A. Times 101 list make room for a first-timer? Every edition since 2013 is here. Pick a year to see who made their debut, who came back, and who stayed on.
+
+<style>
+.la101 { --debut: #9e351f; --return: #ecc37e; --repeat: #245b53; --other: #dce3e0; }
+.la101 .edition-chart { display: grid; gap: 5px; margin: 12px 0 22px; }
+.la101 .edition-button {
+  display: grid; grid-template-columns: 4.5rem minmax(0, 1fr) 10rem; gap: 8px;
+  align-items: center; padding: 4px 8px; width: 100%; text-align: left;
+  border: 1px solid #cbd4d0; border-radius: 5px; background: #fff; color: #1b302b;
+}
+.la101 .edition-button:hover,
+.la101 .edition-button[aria-pressed="true"] { background: #e9f2ef; border-color: #245b53; }
+.la101 .edition-bar { display: flex; overflow: hidden; height: 12px; border-radius: 8px; }
+.la101 .debut { background: var(--debut); }
+.la101 .return { background: var(--return); }
+.la101 .repeat { background: var(--repeat); }
+.la101 .other { background: var(--other); }
+.la101 .legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 15px; }
+.la101 .swatch { display: inline-block; width: 12px; height: 12px; margin-right: 5px; }
+.la101 .controls { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; margin: 12px 0; }
+.la101 .controls label { display: grid; gap: 4px; }
+.la101 select, .la101 input { min-height: 32px; padding: 3px 6px; }
+.la101 .table-wrap { overflow-x: auto; }
+.la101 caption { color: #354d45; }
+.la101 .history { margin: 16px 0 24px; }
+.la101 .history summary { cursor: pointer; font-weight: 700; }
+.la101 .history .table-wrap { max-height: 420px; overflow: auto; }
+.la101 .history thead th { position: sticky; top: 0; background: #fff; }
+.la101 .history td:nth-child(2) { white-space: nowrap; }
+.la101 .geography { margin: 16px 0 24px; }
+.la101 .geography > summary { cursor: pointer; font-weight: 700; }
+.la101 .geo-matrix th, .la101 .geo-matrix td { white-space: nowrap; }
+.la101 .geo-matrix th:first-child { position: sticky; left: 0; z-index: 1; background: #fff; }
+.la101 .geo-matrix td { padding: 3px; }
+.la101 .geo-matrix button {
+  width: 100%; min-width: 3.25rem; min-height: 32px; border: 1px solid #cbd4d0;
+  border-radius: 4px; color: #15352e;
+  background: hsl(161, 37%, var(--geo-lightness, 98%));
+}
+.la101 .geo-matrix button[aria-pressed="true"] { border: 2px solid #164a40; font-weight: 700; }
+</style>
+
+```{=html}
+<div id="la101" class="la101">
+  <details class="geography">
+    <summary>Regions &amp; neighborhoods</summary>
+    <p>Compare how many of the 101 slots each area received. Darker cells mark the busiest
+      years within each region. Select a count to see the neighborhoods and restaurants behind it.</p>
+    <div class="table-wrap">
+      <table class="table geo-matrix" id="la101-geo-matrix">
+        <caption>Published slots by region and edition, newest first</caption>
+        <thead></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <h3>Neighborhoods and cities</h3>
+    <div class="controls">
+      <label>Geography edition <select id="la101-geo-year"></select></label>
+      <label>Region <select id="la101-geo-region"><option value="">All regions</option></select></label>
+    </div>
+    <p id="la101-geo-summary" aria-live="polite"></p>
+    <div class="table-wrap">
+      <table class="table table-striped">
+        <caption>Neighborhoods and cities by number of published slots</caption>
+        <thead><tr><th scope="col">Area</th><th scope="col">Slots</th><th scope="col">Entries</th></tr></thead>
+        <tbody id="la101-geo-entries"></tbody>
+      </table>
+    </div>
+    <p>Locations reflect the edition year. I used the guide’s location labels or its printed
+      addresses when labels were unavailable. Broader regions use a consistent grouping for this tracker.
+      A shared slot counts once. The mobile or multiple-location category covers entries without a
+      primary location. The 2020 profiles of people and organizations have their own row.</p>
+  </details>
+  <details class="history">
+    <summary>All-time appearances</summary>
+    <p>Restaurants sorted by how many editions they appeared in. A restaurant can appear
+      once per year, including when it shares a slot. Separately reviewed branches have their own records.</p>
+    <div class="controls">
+      <label>Search all editions <input id="la101-history-query" type="search" placeholder="e.g. Providence"></label>
+    </div>
+    <p id="la101-history-summary" aria-live="polite"></p>
+    <div class="table-wrap">
+      <table class="table table-striped">
+        <caption>Most appearances first</caption>
+        <thead><tr><th scope="col">Restaurant</th><th scope="col" aria-sort="descending">Appearances</th><th scope="col">Editions</th></tr></thead>
+        <tbody id="la101-history-entries"></tbody>
+      </table>
+    </div>
+  </details>
+  <h2>Year by year</h2>
+  <div class="legend">
+    <span><i class="swatch debut" aria-hidden="true"></i>First appearance</span>
+    <span><i class="swatch return" aria-hidden="true"></i>Comeback</span>
+    <span><i class="swatch repeat" aria-hidden="true"></i>Previous edition</span>
+    <span><i class="swatch other" aria-hidden="true"></i>Other honoree</span>
+  </div>
+  <div id="la101-chart" class="edition-chart" role="group" aria-label="Choose an edition"></div>
+  <p id="la101-2018-note"><strong>* 2018 · First edition after Jonathan Gold</strong><br>
+    Gold died on July 21, 2018. His final list was the ranked 2017 edition.
+    That December, the L.A. Times food team published <em>101 Restaurants We Love</em>,
+    an unranked guide organized by neighborhood. The team started with Gold’s 2017 list
+    and included 15 first-time picks he had reviewed.
+    <a href="https://www.latimes.com/local/obituaries/la-fo-jonathan-gold-obit-20180721-story.html">Obituary</a>
+    · <a href="https://www.latimes.com/food/dailydish/la-fo-re-101-list-20181203-story.html">How the 2018 list was made</a>
+  </p>
+  <h2>Explore an edition</h2>
+  <div class="controls">
+    <label>Edition <select id="la101-year"></select></label>
+    <label>Appearance
+      <select id="la101-status">
+        <option value="">All entries</option>
+        <option>First appearance</option>
+        <option>Comeback</option>
+        <option>Previous edition</option>
+        <option value="Other">Other honoree</option>
+      </select>
+    </label>
+    <label>Restaurant name <input id="la101-query" type="search" placeholder="e.g. Sqirl"></label>
+  </div>
+  <p id="la101-summary" aria-live="polite"></p>
+  <p><a id="la101-source">Read the original L.A. Times edition</a></p>
+  <div class="table-wrap">
+    <table class="table table-striped">
+      <caption>Names as published, in alphabetical order</caption>
+      <thead><tr><th scope="col">Entry</th><th scope="col">Appearance</th><th scope="col">First listed</th><th scope="col">Last listed before this edition</th></tr></thead>
+      <tbody id="la101-entries"></tbody>
+    </table>
+  </div>
+  <noscript><p>Enable JavaScript to explore the annual counts and entries.</p></noscript>
+</div>
+```
+
+## How I counted
+
+I compared all 101 published entries in each edition with the complete history up to that year. An entry is a **first appearance** if it has no earlier match, a **comeback** if its latest match was more than a year earlier, and a **previous edition** pick if it appeared the year before.
+
+I matched spelling changes, moves and relaunches of the same restaurant. A separately reviewed branch can debut on its own, as Badmaash Venice did in 2026. A grouped entry takes up one slot and can establish an appearance for its co-featured restaurants. For example, the 2025 Mercado La Paloma entry keeps Holbox and Komal in the running going into 2026. Mentions in broader market write-ups and the separate Hall of Fame are excluded. The 2020 edition used nine slots for profiles of people and organizations, shown as other honorees.
+
+The [Times’ 2018 roundup](https://www.latimes.com/food/dailydish/la-fo-re-new-101-list-20181205-story.html) highlighted 31 debuts. This tracker counts 28 new slots that year. Bar Amá and Somni appeared in shared slots with previously listed restaurants, and Jon & Vinny’s had already appeared in 2015.
+
+Sources are the [L.A. Times archive of annual lists](https://www.latimes.com/food/story/2024-12-03/101-best-los-angeles-restaurants-since-2013-jonathan-gold-bill-addison) and the original edition linked for each year.
+
+```{r la101-data, echo=FALSE, results='asis'}
+edition_json <- paste(readLines("data/la_times_101.json", encoding = "UTF-8", warn = FALSE), collapse = "\n")
+cat('<script type="application/json" id="la101-data">\n',
+    gsub("<", "\\u003c", edition_json, fixed = TRUE), '\n</script>\n', sep = "")
+geo_lines <- readLines("data/la_times_101_geography.json", encoding = "UTF-8", warn = FALSE)
+cat('<script type="application/json" id="la101-geo-data">\n',
+    gsub("<", "\\u003c", paste(geo_lines, collapse = "\n"), fixed = TRUE), '\n</script>\n', sep = "")
+```
+
+<script>
+(() => {
+  const data = JSON.parse(document.getElementById("la101-data").textContent);
+  const years = Object.keys(data).reverse();
+  const chart = document.getElementById("la101-chart");
+  const year = document.getElementById("la101-year");
+  const status = document.getElementById("la101-status");
+  const query = document.getElementById("la101-query");
+  const summary = document.getElementById("la101-summary");
+  const source = document.getElementById("la101-source");
+  const entries = document.getElementById("la101-entries");
+  const historyQuery = document.getElementById("la101-history-query");
+  const historySummary = document.getElementById("la101-history-summary");
+  const historyEntries = document.getElementById("la101-history-entries");
+
+  function element(tag, text) {
+    const node = document.createElement(tag);
+    if (text != null) node.textContent = text;
+    return node;
+  }
+
+  function searchKey(text) {
+    return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  }
+
+  function setupGeography() {
+    const geography = JSON.parse(document.getElementById("la101-geo-data").textContent);
+    const matrix = document.getElementById("la101-geo-matrix");
+    const geoYear = document.getElementById("la101-geo-year");
+    const geoRegion = document.getElementById("la101-geo-region");
+    const geoSummary = document.getElementById("la101-geo-summary");
+    const geoEntries = document.getElementById("la101-geo-entries");
+    const buttons = [];
+    const byYear = Object.fromEntries(years.map(edition => {
+      const areas = new Map();
+      for (const [name, place] of Object.entries(geography.editions[edition] || {})) {
+        if (!areas.has(place)) areas.set(place, []);
+        areas.get(place).push(name);
+      }
+      return [edition, areas];
+    }));
+
+    function renderGeography() {
+      const places = byYear[geoYear.value];
+      const region = geoRegion.value;
+      const filtered = Array.from(places).filter(([place]) => !region || geography.regions[region].includes(place));
+      filtered.sort(([a, aNames], [b, bNames]) => bNames.length - aNames.length || a.localeCompare(b, "en"));
+      const total = filtered.reduce((sum, [, names]) => sum + names.length, 0);
+      geoSummary.textContent = `${geoYear.value} · ${region || "All regions"} · ${total} of ${data[geoYear.value].rows.length} slots`;
+      geoEntries.replaceChildren();
+      for (const [place, names] of filtered) {
+        const tr = element("tr");
+        const label = element("th", place);
+        label.scope = "row";
+        tr.append(label, element("td", names.length), element("td", names.join(", ")));
+        geoEntries.append(tr);
+      }
+      for (const button of buttons) {
+        button.setAttribute("aria-pressed", button.dataset.year === geoYear.value && button.dataset.region === region);
+      }
+    }
+
+    const header = element("tr");
+    for (const label of ["Region", ...years]) {
+      const th = element("th", label);
+      th.scope = "col";
+      header.append(th);
+    }
+    matrix.tHead.append(header);
+    for (const edition of years) {
+      const option = element("option", edition);
+      option.value = edition;
+      geoYear.append(option);
+    }
+
+    for (const [region, places] of Object.entries(geography.regions)) {
+      const option = element("option", region);
+      option.value = region;
+      geoRegion.append(option);
+      const counts = years.map(edition =>
+        places.reduce((sum, place) => sum + (byYear[edition].get(place)?.length || 0), 0)
+      );
+      const peak = Math.max(1, ...counts);
+      const tr = element("tr");
+      const label = element("th", region);
+      label.scope = "row";
+      tr.append(label);
+      years.forEach((edition, index) => {
+        const count = counts[index];
+        const button = element("button", count);
+        button.type = "button";
+        button.dataset.year = edition;
+        button.dataset.region = region;
+        button.setAttribute("aria-label", `${region}, ${edition}, ${count} slots`);
+        button.style.setProperty("--geo-lightness", `${98 - 30 * count / peak}%`);
+        button.addEventListener("click", () => {
+          geoYear.value = edition;
+          geoRegion.value = region;
+          renderGeography();
+        });
+        buttons.push(button);
+        const td = element("td");
+        td.append(button);
+        tr.append(td);
+      });
+      matrix.tBodies[0].append(tr);
+    }
+    geoYear.addEventListener("change", renderGeography);
+    geoRegion.addEventListener("change", renderGeography);
+    renderGeography();
+  }
+
+  function buildHistory() {
+    const restaurants = new Map();
+    const standaloneByYear = new Map();
+    for (const [edition, { rows }] of Object.entries(data)) {
+      const standalone = new Map();
+      standaloneByYear.set(Number(edition), standalone);
+      for (const row of rows) {
+        if (row.status === "Other") continue;
+        const names = (row.note || row.name).split(" / ");
+        const isStandalone = names.length === 1;
+        // Follow prior names for the same restaurant without merging the members of a shared slot.
+        const previousKey = isStandalone && standaloneByYear.get(row.previous)?.get(row.match);
+        for (const name of names) {
+          const key = previousKey || searchKey(name).replace(/[^a-z0-9]/g, "");
+          if (!restaurants.has(key)) {
+            restaurants.set(key, { name, aliases: new Set(), editions: new Set() });
+          }
+          const restaurant = restaurants.get(key);
+          restaurant.editions.add(edition);
+          restaurant.aliases.add(name);
+          restaurant.aliases.add(row.name);
+          if (isStandalone) {
+            restaurant.name = name;
+            standalone.set(row.name, key);
+          }
+        }
+      }
+    }
+    return Array.from(restaurants.values()).sort((a, b) =>
+      b.editions.size - a.editions.size || a.name.localeCompare(b.name, "en")
+    );
+  }
+
+  const history = buildHistory();
+
+  function renderHistory() {
+    const needle = searchKey(historyQuery.value.trim());
+    const visible = history.filter(restaurant =>
+      Array.from(restaurant.aliases).some(name => searchKey(name).includes(needle))
+    );
+    const rows = document.createDocumentFragment();
+    for (const restaurant of visible) {
+      const tr = element("tr");
+      const label = element("th", restaurant.name);
+      label.scope = "row";
+      tr.append(label, element("td", `${restaurant.editions.size} / ${years.length}`),
+        element("td", Array.from(restaurant.editions).join(", ")));
+      rows.append(tr);
+    }
+    historyEntries.replaceChildren(rows);
+    historySummary.textContent = `Showing ${visible.length} of ${history.length} entries.`;
+  }
+
+  function renderEdition() {
+    const { source: url, rows, counts } = data[year.value];
+    const needle = searchKey(query.value.trim());
+    const visible = rows.filter(row =>
+      (!status.value || row.status === status.value) &&
+      searchKey([row.name, row.note, row.match].join(" ")).includes(needle)
+    );
+    source.href = url;
+    const [debut, comeback, previous, other] = counts;
+    const otherText = other ? `, ${other} other honoree slots` : "";
+    summary.textContent = `${year.value} · ${debut} first appearances, ${comeback} comebacks, ${previous} from the previous edition${otherText}. Showing ${visible.length} of ${rows.length} entries.`;
+    entries.replaceChildren();
+    for (const row of visible) {
+      const tr = element("tr");
+      const label = element("th", row.name);
+      label.scope = "row";
+      tr.append(label, element("td", row.status === "Other" ? "Other honoree" : row.status),
+        element("td", row.first ?? "—"), element("td", row.previous ?? "—"));
+      if (row.match && row.match !== row.name) {
+        tr.lastElementChild.append(element("small", ` · ${row.match}`));
+      }
+      entries.append(tr);
+    }
+    for (const button of chart.children) {
+      button.setAttribute("aria-pressed", button.dataset.year === year.value);
+    }
+  }
+
+  for (const edition of years) {
+    const isTransition = edition === "2018";
+    const label = isTransition ? "2018*" : edition;
+    const option = element("option", label);
+    option.value = edition;
+    year.append(option);
+    const { counts } = data[edition];
+    const [debut, comeback, previous, other] = counts;
+    const button = element("button");
+    button.type = "button";
+    button.className = "edition-button";
+    button.dataset.year = edition;
+    if (isTransition) button.setAttribute("aria-describedby", "la101-2018-note");
+    button.setAttribute("aria-label", `${edition}, ${debut} first appearances, ${comeback} comebacks, ${previous} from the previous edition, ${other} other honoree slots`);
+    const bar = element("span");
+    bar.className = "edition-bar";
+    bar.setAttribute("aria-hidden", "true");
+    ["debut", "return", "repeat", "other"].forEach((className, index) => {
+      const segment = element("span");
+      segment.className = className;
+      segment.style.flexGrow = counts[index];
+      bar.append(segment);
+    });
+    button.append(element("strong", label), bar, element("span", `${debut} new · ${comeback} back`));
+    button.addEventListener("click", () => {
+      year.value = edition;
+      renderEdition();
+    });
+    chart.append(button);
+  }
+  year.addEventListener("change", renderEdition);
+  status.addEventListener("change", renderEdition);
+  query.addEventListener("input", renderEdition);
+  historyQuery.addEventListener("input", renderHistory);
+  renderHistory();
+  renderEdition();
+  setupGeography();
+})();
+</script>
