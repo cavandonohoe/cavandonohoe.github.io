@@ -1,0 +1,49 @@
+name: Personalized email test
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/personalized-email-test.yml
+      - scripts/send_test_email.py
+      - docs/github-actions-email-test.md
+  workflow_dispatch:
+    inputs:
+      recipient_name:
+        description: Name to use in the email greeting
+        required: true
+        default: Cavan
+        type: string
+      send_email:
+        description: Send one real email to EMAIL_TEST_RECIPIENT (otherwise dry run)
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  test-personalized-email:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Dry run personalized email (never sends)
+        env:
+          RECIPIENT_NAME: ${{ inputs.recipient_name || 'Cavan' }}
+        run: python scripts/send_test_email.py --name "$RECIPIENT_NAME"
+
+      # Only an explicit manual dispatch with send_email=true can use secrets.
+      # No email is sent by pull requests, merges, pushes, or schedules.
+      - name: Send one real email via Gmail SMTP
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.send_email }}
+        env:
+          RECIPIENT_NAME: ${{ inputs.recipient_name }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_APP_PASSWORD: ${{ secrets.SMTP_APP_PASSWORD }}
+          EMAIL_TEST_RECIPIENT: ${{ secrets.EMAIL_TEST_RECIPIENT }}
+        run: python scripts/send_test_email.py --name "$RECIPIENT_NAME" --send
