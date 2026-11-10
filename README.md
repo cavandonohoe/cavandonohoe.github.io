@@ -281,6 +281,28 @@ open a PR that only adds the show’s row to `scripts/shows_manifest.R`
 and to the scraper’s show list. `quick-rating-plot.yml` fetches the data
 on GitHub Actions and comments the plot on the PR.
 
+### L.A. Times 101 Data
+
+`data/la_times_101.json` (the data behind the [L.A. Times 101 Restaurant
+Tracker](https://cavandonohoe.github.io/la_times_101.html)) is rebuilt
+from the published lists in two steps:
+
+1.  `--scrape` reads the restaurant names from each edition’s page and
+    snapshots them in `data/la_times_101_source_names.json`.
+2.  The build derives first appearances, comebacks, and previous-edition
+    picks from that snapshot plus the hand-kept
+    `data/la_times_101_overrides.csv` (renames, shared slots, 2020
+    non-restaurant honorees).
+
+``` bash
+Rscript scripts/build_la_times_101.R           # derive from the snapshot
+Rscript scripts/build_la_times_101.R --scrape  # re-fetch the pages first
+```
+
+A new edition needs one row in `la101_editions()`, any overrides its
+names need, and neighborhoods in `data/la_times_101_geography.json`. The
+build stops with the missing names if either is incomplete.
+
 ### Chase Statement Parser
 
 The Chase statement parser is a local utility for turning Chase credit
