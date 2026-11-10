@@ -1,13 +1,13 @@
 {
   "year": 2026,
-  "commits": 335,
-  "pull_requests": 256,
+  "commits": 341,
+  "pull_requests": 262,
   "repositories_touched": 4,
-  "lines_added": 495337,
+  "lines_added": 501097,
   "most_used_language": "R",
   "language_lines_added": {
-    "R": 26413,
-    "Python": 4631,
+    "R": 27424,
+    "Python": 4712,
     "JavaScript": 2927,
     "TypeScript": 2369,
     "HTML": 2195,
@@ -831,6 +831,18 @@
         ]
       },
       {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "scripts/send_test_email.py",
+        "lines_added": 81,
+        "commits": [
+          {
+            "sha": "93c74a80aad34eef4ab7ce8bb95ae1d5b617a7d2",
+            "date": "2026-11-09",
+            "lines_added": 81
+          }
+        ]
+      },
+      {
         "repository": "cavandonohoe/confederate_statues",
         "path": "service/src/statue_api/metrics.py",
         "lines_added": 76,
@@ -1360,21 +1372,19 @@
       },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "la_housing_heatmap.Rmd",
-        "lines_added": 603,
+        "path": "README.Rmd",
+        "lines_added": 606,
         "commits": [
           {
-            "sha": "ee2196f0fafd77576f9aa0842f7f540ac1b30c2e",
-            "date": "2026-06-12",
-            "lines_added": 603
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "README.Rmd",
-        "lines_added": 583,
-        "commits": [
+            "sha": "3625f14dd7424778dc93cab9a0eac69878923d03",
+            "date": "2026-11-10",
+            "lines_added": 22
+          },
+          {
+            "sha": "c322b9f9133abc00d8b8ebee018ea8003a59219a",
+            "date": "2026-11-09",
+            "lines_added": 1
+          },
           {
             "sha": "9280790d1f29a2387267330520ae85703cc682c8",
             "date": "2026-10-30",
@@ -1484,6 +1494,18 @@
             "sha": "0c1a8a120d3bbac603318fb015b958a53ea6d734",
             "date": "2026-01-02",
             "lines_added": 21
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "la_housing_heatmap.Rmd",
+        "lines_added": 603,
+        "commits": [
+          {
+            "sha": "ee2196f0fafd77576f9aa0842f7f540ac1b30c2e",
+            "date": "2026-06-12",
+            "lines_added": 603
           }
         ]
       },
@@ -1653,6 +1675,18 @@
       },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "scripts/build_la_times_101.R",
+        "lines_added": 404,
+        "commits": [
+          {
+            "sha": "3625f14dd7424778dc93cab9a0eac69878923d03",
+            "date": "2026-11-10",
+            "lines_added": 404
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "web_scraping/best_picture_nominees.R",
         "lines_added": 394,
         "commits": [
@@ -1660,6 +1694,18 @@
             "sha": "7df7b0585ff16d6e015ff38cabf7d4da9dff9966",
             "date": "2026-01-04",
             "lines_added": 394
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "la_times_101.Rmd",
+        "lines_added": 393,
+        "commits": [
+          {
+            "sha": "c322b9f9133abc00d8b8ebee018ea8003a59219a",
+            "date": "2026-11-09",
+            "lines_added": 393
           }
         ]
       },
@@ -2572,6 +2618,18 @@
             "sha": "9bbc675db7f567997ce17044b80abcebf37d3fe5",
             "date": "2026-09-16",
             "lines_added": 197
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "tests/testthat/test-la_times_101.R",
+        "lines_added": 191,
+        "commits": [
+          {
+            "sha": "3625f14dd7424778dc93cab9a0eac69878923d03",
+            "date": "2026-11-10",
+            "lines_added": 191
           }
         ]
       },
@@ -4375,7 +4433,7 @@
   "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, dependency, build, docs, minified, and raw HTML input files are excluded.",
   "most_active_month": "October",
   "longest_streak_days": 16,
-  "active_days": 90,
+  "active_days": 92,
   "monthly_commits": [
     11,
     27,
@@ -4387,7 +4445,7 @@
     15,
     23,
     108,
-    7,
+    13,
     0
   ],
   "daily_activity": [
@@ -4840,10 +4898,20 @@
       "date": "2026-11-06",
       "commits": 1,
       "lines_added": 4
+    },
+    {
+      "date": "2026-11-09",
+      "commits": 5,
+      "lines_added": 3553
+    },
+    {
+      "date": "2026-11-10",
+      "commits": 1,
+      "lines_added": 2207
     }
   ],
   "biggest_project": "cavandonohoe.github.io",
-  "biggest_project_commits": 276,
+  "biggest_project_commits": 282,
   "repositories": [
     "cavandonohoe/cavandonohoe",
     "cavandonohoe/cavandonohoe.github.io",
@@ -4851,12 +4919,12 @@
     "cavandonohoe/rent-vs-buy"
   ],
   "repository_commits": {
-    "cavandonohoe/cavandonohoe.github.io": 276,
+    "cavandonohoe/cavandonohoe.github.io": 282,
     "cavandonohoe/rent-vs-buy": 29,
     "cavandonohoe/confederate_statues": 20,
     "cavandonohoe/cavandonohoe": 10
   },
   "scope": "Author-matched commits on the default branch of public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bot-authored or bot-committed commits, deploy commits, and other authors are excluded. Moved files count only changed lines. Language totals use .gitattributes Linguist overrides plus built-in generated, vendored, dependency, build, docs, minified, and raw HTML input patterns. Overall lines added still include all files. PRs count public pull requests the user authored and merged into their own repositories during the year, when available.",
   "is_partial_year": true,
-  "generated_at": "2026-11-07T15:04:06.135915+00:00"
+  "generated_at": "2026-11-10T16:35:08.364066+00:00"
 }
