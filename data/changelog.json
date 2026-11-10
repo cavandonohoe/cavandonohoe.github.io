@@ -1,6 +1,12 @@
 {
-  "generated_at": "2026-11-10T00:23:23.766147+00:00",
+  "generated_at": "2026-11-10T21:54:08.685518+00:00",
   "events": [
+    {
+      "date": "2026-11-10",
+      "type": "merged_pr",
+      "title": "Rebuild the L.A. Times 101 data from the published lists",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/338"
+    },
     {
       "date": "2026-11-09",
       "type": "merged_pr",
@@ -480,39 +486,19 @@
       "type": "merged_pr",
       "title": "Add guarded GitHub deployment for TOHS Apps Script",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/241"
-    },
-    {
-      "date": "2026-10-11",
-      "type": "merged_pr",
-      "title": "Make generated-activity workflows race-safe, paginated, and deployed",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/229"
-    },
-    {
-      "date": "2026-10-11",
-      "type": "merged_pr",
-      "title": "Fix maze hang, animation loop and review findings from #228",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/232"
-    },
-    {
-      "date": "2026-10-11",
-      "type": "merged_pr",
-      "title": "Count only default-branch personal commits in Developer Year in Review",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/230"
-    },
-    {
-      "date": "2026-10-11",
-      "type": "merged_pr",
-      "title": "CI health: preview race, real size monitor, failure alerts, npm Dependabot",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/240"
-    },
-    {
-      "date": "2026-10-11",
-      "type": "merged_pr",
-      "title": "Apply TOHS contact submissions once and protect organizer edits",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/231"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-11-10",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "5 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/660e3f6ac3afa5f832f764696016edde33564b19"
+        }
+      ]
+    },
     {
       "date": "2026-11-09",
       "items": [
@@ -692,16 +678,6 @@
           "emoji": "\ud83d\udcc4",
           "text": "CV rebuilt from the latest source data",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/319"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-27",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "6 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/410f6cc23844044dfaa88d7142e807befa769e49"
         }
       ]
     }
