@@ -1,6 +1,48 @@
 {
-  "generated_at": "2026-11-08T20:42:10.160726+00:00",
+  "generated_at": "2026-11-10T00:23:23.766147+00:00",
   "events": [
+    {
+      "date": "2026-11-09",
+      "type": "merged_pr",
+      "title": "deps: bump the npm-minor-patch group in /movie-ranker with 6 updates",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/331"
+    },
+    {
+      "date": "2026-11-09",
+      "type": "merged_pr",
+      "title": "ci: bump dawidd6/action-download-artifact from 27 to 28",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/330"
+    },
+    {
+      "date": "2026-11-09",
+      "type": "merged_pr",
+      "title": "Test personalized emails from GitHub Actions (Gmail SMTP)",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/332"
+    },
+    {
+      "date": "2026-11-09",
+      "type": "merged_pr",
+      "title": "Make PR preview cleanup reliable and run daily",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/333"
+    },
+    {
+      "date": "2026-11-09",
+      "type": "merged_pr",
+      "title": "Keep the site build artifact for 7 days so weekly pa11y can find it",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/337"
+    },
+    {
+      "date": "2026-11-09",
+      "type": "merged_pr",
+      "title": "Expire the site build artifact after 1 day",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/335"
+    },
+    {
+      "date": "2026-11-09",
+      "type": "merged_pr",
+      "title": "Add an interactive L.A. Times 101 restaurant tracker",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/329"
+    },
     {
       "date": "2026-11-05",
       "type": "merged_pr",
@@ -468,15 +510,28 @@
       "type": "merged_pr",
       "title": "Apply TOHS contact submissions once and protect organizer edits",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/231"
-    },
-    {
-      "date": "2026-10-09",
-      "type": "merged_pr",
-      "title": "Add interactive procedural maze art generator",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/222"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-11-09",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "5 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/edefdaf5e0561831d41e8f4d313476275129d335"
+        },
+        {
+          "emoji": "\ud83d\udcbb",
+          "text": "7 PRs merged"
+        },
+        {
+          "emoji": "\ud83c\udfac",
+          "text": "Movie & TV projects updated",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/331"
+        }
+      ]
+    },
     {
       "date": "2026-11-08",
       "items": [
@@ -647,25 +702,6 @@
           "emoji": "\ud83c\udfa7",
           "text": "6 podcast episodes added",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/410f6cc23844044dfaa88d7142e807befa769e49"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-26",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "4 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/20c58dc59bcc53afe0635cd07db016eb7d1009f6"
-        },
-        {
-          "emoji": "\ud83d\udcbb",
-          "text": "4 PRs merged"
-        },
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "Podcast + Spotify experience improved",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/311"
         }
       ]
     }
