@@ -28,6 +28,7 @@ tv_shows_manifest <- function() {
     "Bluey", "bluey", 4, 9, NA, NA,
     "Bojack Horseman", "bojack", NA, NA, NA, NA,
     "Breaking Bad", "breaking_bad", NA, NA, NA, NA,
+    "Bob's Burgers", "bobs_burgers", NA, NA, NA, NA,
     "Brooklyn Nine-Nine", "brooklyn_nine_nine", NA, NA, NA, NA,
     "Chernobyl", "chernobyl", NA, NA, NA, NA,
     "Clone Wars", "clone_wars", NA, NA, NA, NA,
