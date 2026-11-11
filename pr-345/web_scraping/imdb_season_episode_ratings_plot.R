@@ -356,6 +356,7 @@ shows <- tibble::tribble(
   "death note",         "tt0877057",   "death_note",
   "andor",              "tt9253284",   "andor",
   "modern love",        "tt8543390",   "modern_love",
+  "my adventures with superman", "tt14681924", "my_adventures_with_superman",
   "my hero academia",   "tt5626028",   "my_hero_academia",
   "x-men 97",           "tt16026746",  "x_men_97",
   "the boys",           "tt1190634",   "the_boys",
