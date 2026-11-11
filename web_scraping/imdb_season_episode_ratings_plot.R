@@ -334,6 +334,7 @@ shows <- tibble::tribble(
   "love island (uk)",   "tt4770018",   "love_island",
   "south park",         "tt0121955",   "south_park",
   "family guy",         "tt0182576",   "family_guy",
+  "bobs burgers",        "tt1561755",   "bobs_burgers",
   "invincible",         "tt6741278",   "invincible",
   "clone wars",         "tt0458290",   "clone_wars",
   "mr robot",           "tt4158110",   "mr_robot",
