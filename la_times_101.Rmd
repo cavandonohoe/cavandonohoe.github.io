@@ -164,10 +164,10 @@ Sources are the [L.A. Times archive of annual lists](https://www.latimes.com/foo
 ```{r la101-data, echo=FALSE, results='asis'}
 edition_json <- paste(readLines("data/la_times_101.json", encoding = "UTF-8", warn = FALSE), collapse = "\n")
 cat('<script type="application/json" id="la101-data">\n',
-    gsub("<", "\\u003c", edition_json, fixed = TRUE), '\n</script>\n', sep = "")
+    gsub("<", "\\u003c", edition_json, fixed = TRUE), "\n</script>\n", sep = "")
 geo_lines <- readLines("data/la_times_101_geography.json", encoding = "UTF-8", warn = FALSE)
 cat('<script type="application/json" id="la101-geo-data">\n',
-    gsub("<", "\\u003c", paste(geo_lines, collapse = "\n"), fixed = TRUE), '\n</script>\n', sep = "")
+    gsub("<", "\\u003c", paste(geo_lines, collapse = "\n"), fixed = TRUE), "\n</script>\n", sep = "")
 ```
 
 <script>
