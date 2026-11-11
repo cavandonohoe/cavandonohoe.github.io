@@ -32,11 +32,22 @@ How often does the L.A. Times 101 list make room for a first-timer? Every editio
 .la101 select, .la101 input { min-height: 32px; padding: 3px 6px; }
 .la101 .table-wrap { overflow-x: auto; }
 .la101 caption { color: #354d45; }
+.la101 .rownum { width: 1%; color: #5a6e68; text-align: right; font-variant-numeric: tabular-nums; }
+.la101 th.sortable { padding: 0; }
+.la101 .sort-button {
+  display: flex; align-items: center; gap: 4px; width: 100%; padding: 8px;
+  border: 0; background: none; color: inherit; font: inherit; font-weight: 700;
+  text-align: left; cursor: pointer;
+}
+.la101 .sort-button::after { content: "\2195"; color: #8a9a95; font-weight: 400; }
+.la101 th[aria-sort="ascending"] .sort-button::after { content: "\25B2"; color: #245b53; }
+.la101 th[aria-sort="descending"] .sort-button::after { content: "\25BC"; color: #245b53; }
+.la101 .sort-button:hover { background: #e9f2ef; }
 .la101 .history { margin: 16px 0 24px; }
 .la101 .history summary { cursor: pointer; font-weight: 700; }
 .la101 .history .table-wrap { max-height: 420px; overflow: auto; }
 .la101 .history thead th { position: sticky; top: 0; background: #fff; }
-.la101 .history td:nth-child(2) { white-space: nowrap; }
+.la101 .history td:nth-child(3) { white-space: nowrap; }
 .la101 .geography { margin: 16px 0 24px; }
 .la101 .geography > summary { cursor: pointer; font-weight: 700; }
 .la101 .geo-matrix th, .la101 .geo-matrix td { white-space: nowrap; }
@@ -71,8 +82,8 @@ How often does the L.A. Times 101 list make room for a first-timer? Every editio
     <p id="la101-geo-summary" aria-live="polite"></p>
     <div class="table-wrap">
       <table class="table table-striped">
-        <caption>Neighborhoods and cities by number of published slots</caption>
-        <thead><tr><th scope="col">Area</th><th scope="col">Slots</th><th scope="col">Entries</th></tr></thead>
+        <caption>Neighborhoods and cities by number of published slots. Select a column heading to sort.</caption>
+        <thead><tr><th scope="col">#</th><th scope="col" data-sort="area">Area</th><th scope="col" data-sort="slots" data-first-dir="desc">Slots</th><th scope="col">Entries</th></tr></thead>
         <tbody id="la101-geo-entries"></tbody>
       </table>
     </div>
@@ -91,8 +102,8 @@ How often does the L.A. Times 101 list make room for a first-timer? Every editio
     <p id="la101-history-summary" aria-live="polite"></p>
     <div class="table-wrap">
       <table class="table table-striped">
-        <caption>Most appearances first</caption>
-        <thead><tr><th scope="col">Restaurant</th><th scope="col" aria-sort="descending">Appearances</th><th scope="col">Editions</th></tr></thead>
+        <caption>Most appearances first by default. Select a column heading to sort.</caption>
+        <thead><tr><th scope="col">#</th><th scope="col" data-sort="name">Restaurant</th><th scope="col" data-sort="appearances" data-first-dir="desc">Appearances</th><th scope="col" data-sort="latest" data-first-dir="desc">Editions</th></tr></thead>
         <tbody id="la101-history-entries"></tbody>
       </table>
     </div>
@@ -131,8 +142,8 @@ How often does the L.A. Times 101 list make room for a first-timer? Every editio
   <p><a id="la101-source">Read the original L.A. Times edition</a></p>
   <div class="table-wrap">
     <table class="table table-striped">
-      <caption>Names as published, in alphabetical order</caption>
-      <thead><tr><th scope="col">Entry</th><th scope="col">Appearance</th><th scope="col">First listed</th><th scope="col">Last listed before this edition</th></tr></thead>
+      <caption>Names as published, alphabetical by default. Select a column heading to sort.</caption>
+      <thead><tr><th scope="col">#</th><th scope="col" data-sort="name">Entry</th><th scope="col" data-sort="status">Appearance</th><th scope="col" data-sort="first">First listed</th><th scope="col" data-sort="previous">Last listed before this edition</th></tr></thead>
       <tbody id="la101-entries"></tbody>
     </table>
   </div>
@@ -184,6 +195,56 @@ cat('<script type="application/json" id="la101-geo-data">\n',
     return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
   }
 
+  const statusRank = { "First appearance": 0, "Comeback": 1, "Previous edition": 2, "Other": 3 };
+
+  // Sort on one column; blanks always go last. Ties fall back to `tiebreak`.
+  function sortRows(rows, state, getters, tiebreak) {
+    const get = getters[state.key];
+    return rows.slice().sort((a, b) => {
+      const x = get(a);
+      const y = get(b);
+      if (x == null || y == null) {
+        if (x != null || y != null) return x == null ? 1 : -1;
+      } else if (x !== y) {
+        const order = typeof x === "string" ? x.localeCompare(y, "en") : x - y;
+        if (order) return state.dir * order;
+      }
+      return tiebreak(a, b);
+    });
+  }
+
+  // Turn every th[data-sort] into a toggle button that updates `state` and re-renders.
+  function makeSortable(table, state, rerender) {
+    const heads = Array.from(table.querySelectorAll("th[data-sort]"));
+    const mark = () => {
+      for (const th of heads) {
+        th.setAttribute("aria-sort", th.dataset.sort !== state.key ? "none" :
+          state.dir > 0 ? "ascending" : "descending");
+      }
+    };
+    for (const th of heads) {
+      const button = element("button", th.textContent);
+      button.type = "button";
+      button.className = "sort-button";
+      th.classList.add("sortable");
+      th.replaceChildren(button);
+      button.addEventListener("click", () => {
+        const firstDir = th.dataset.firstDir === "desc" ? -1 : 1;
+        state.dir = state.key === th.dataset.sort ? -state.dir : firstDir;
+        state.key = th.dataset.sort;
+        mark();
+        rerender();
+      });
+    }
+    mark();
+  }
+
+  function rowNumber(n) {
+    const td = element("td", n);
+    td.className = "rownum";
+    return td;
+  }
+
   function setupGeography() {
     const geography = JSON.parse(document.getElementById("la101-geo-data").textContent);
     const matrix = document.getElementById("la101-geo-matrix");
@@ -192,6 +253,8 @@ cat('<script type="application/json" id="la101-geo-data">\n',
     const geoSummary = document.getElementById("la101-geo-summary");
     const geoEntries = document.getElementById("la101-geo-entries");
     const buttons = [];
+    const geoSort = { key: "slots", dir: -1 };
+    const geoGetters = { area: ([place]) => place, slots: ([, names]) => names.length };
     const byYear = Object.fromEntries(years.map(edition => {
       const areas = new Map();
       for (const [name, place] of Object.entries(geography.editions[edition] || {})) {
@@ -205,17 +268,19 @@ cat('<script type="application/json" id="la101-geo-data">\n',
       const places = byYear[geoYear.value];
       const region = geoRegion.value;
       const filtered = Array.from(places).filter(([place]) => !region || geography.regions[region].includes(place));
-      filtered.sort(([a, aNames], [b, bNames]) => bNames.length - aNames.length || a.localeCompare(b, "en"));
       const total = filtered.reduce((sum, [, names]) => sum + names.length, 0);
       geoSummary.textContent = `${geoYear.value} · ${region || "All regions"} · ${total} of ${data[geoYear.value].rows.length} slots`;
       geoEntries.replaceChildren();
-      for (const [place, names] of filtered) {
+      const sorted = sortRows(filtered, geoSort, geoGetters, ([a, aNames], [b, bNames]) =>
+        bNames.length - aNames.length || a.localeCompare(b, "en"));
+      sorted.forEach(([place, names], index) => {
         const tr = element("tr");
         const label = element("th", place);
         label.scope = "row";
-        tr.append(label, element("td", names.length), element("td", names.join(", ")));
+        tr.append(rowNumber(index + 1), label, element("td", names.length),
+          element("td", names.join(", ")));
         geoEntries.append(tr);
-      }
+      });
       for (const button of buttons) {
         button.setAttribute("aria-pressed", button.dataset.year === geoYear.value && button.dataset.region === region);
       }
@@ -268,6 +333,7 @@ cat('<script type="application/json" id="la101-geo-data">\n',
     }
     geoYear.addEventListener("change", renderGeography);
     geoRegion.addEventListener("change", renderGeography);
+    makeSortable(geoEntries.closest("table"), geoSort, renderGeography);
     renderGeography();
   }
 
@@ -305,6 +371,14 @@ cat('<script type="application/json" id="la101-geo-data">\n',
   }
 
   const history = buildHistory();
+  const historySort = { key: "appearances", dir: -1 };
+  const historyGetters = {
+    name: restaurant => restaurant.name,
+    appearances: restaurant => restaurant.editions.size,
+    latest: restaurant => Math.max(...Array.from(restaurant.editions, Number))
+  };
+  const historyTiebreak = (a, b) =>
+    b.editions.size - a.editions.size || a.name.localeCompare(b.name, "en");
 
   function renderHistory() {
     const needle = searchKey(historyQuery.value.trim());
@@ -312,41 +386,53 @@ cat('<script type="application/json" id="la101-geo-data">\n',
       Array.from(restaurant.aliases).some(name => searchKey(name).includes(needle))
     );
     const rows = document.createDocumentFragment();
-    for (const restaurant of visible) {
+    sortRows(visible, historySort, historyGetters, historyTiebreak).forEach((restaurant, index) => {
       const tr = element("tr");
       const label = element("th", restaurant.name);
       label.scope = "row";
-      tr.append(label, element("td", `${restaurant.editions.size} / ${years.length}`),
+      tr.append(rowNumber(index + 1), label,
+        element("td", `${restaurant.editions.size} / ${years.length}`),
         element("td", Array.from(restaurant.editions).join(", ")));
       rows.append(tr);
-    }
+    });
     historyEntries.replaceChildren(rows);
     historySummary.textContent = `Showing ${visible.length} of ${history.length} entries.`;
   }
 
+  const editionSort = { key: "name", dir: 1 };
+
   function renderEdition() {
     const { source: url, rows, counts } = data[year.value];
     const needle = searchKey(query.value.trim());
-    const visible = rows.filter(row =>
+    const matches = rows.filter(row =>
       (!status.value || row.status === status.value) &&
       searchKey([row.name, row.note, row.match].join(" ")).includes(needle)
     );
+    // Names keep their published (alphabetical) order unless another column is chosen.
+    const published = (a, b) => rows.indexOf(a) - rows.indexOf(b);
+    const visible = sortRows(matches, editionSort, {
+      name: row => rows.indexOf(row),
+      status: row => statusRank[row.status],
+      first: row => row.first,
+      previous: row => row.previous
+    }, published);
     source.href = url;
     const [debut, comeback, previous, other] = counts;
     const otherText = other ? `, ${other} other honoree slots` : "";
     summary.textContent = `${year.value} · ${debut} first appearances, ${comeback} comebacks, ${previous} from the previous edition${otherText}. Showing ${visible.length} of ${rows.length} entries.`;
     entries.replaceChildren();
-    for (const row of visible) {
+    visible.forEach((row, index) => {
       const tr = element("tr");
       const label = element("th", row.name);
       label.scope = "row";
-      tr.append(label, element("td", row.status === "Other" ? "Other honoree" : row.status),
+      tr.append(rowNumber(index + 1), label,
+        element("td", row.status === "Other" ? "Other honoree" : row.status),
         element("td", row.first ?? "—"), element("td", row.previous ?? "—"));
       if (row.match && row.match !== row.name) {
         tr.lastElementChild.append(element("small", ` · ${row.match}`));
       }
       entries.append(tr);
-    }
+    });
     for (const button of chart.children) {
       button.setAttribute("aria-pressed", button.dataset.year === year.value);
     }
@@ -386,6 +472,8 @@ cat('<script type="application/json" id="la101-geo-data">\n',
   status.addEventListener("change", renderEdition);
   query.addEventListener("input", renderEdition);
   historyQuery.addEventListener("input", renderHistory);
+  makeSortable(historyEntries.closest("table"), historySort, renderHistory);
+  makeSortable(entries.closest("table"), editionSort, renderEdition);
   renderHistory();
   renderEdition();
   setupGeography();
