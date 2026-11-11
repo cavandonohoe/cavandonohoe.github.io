@@ -52,6 +52,7 @@ tv_shows_manifest <- function() {
     "Mad Men", "mad_men", NA, NA, NA, NA,
     #   "Modern Love", "modern_love", NA, NA, NA, NA,
     #   "Mr Robot", "mr_robot", NA, NA, NA, NA,
+    "My Adventures with Superman", "my_adventures_with_superman", NA, NA, NA, NA,
     "My Hero Academia", "my_hero_academia", NA, NA, NA, NA,
     "New Girl", "new_girl", NA, NA, NA, NA,
     #   "Paris Hilton's My New BFF", "paris_hilton_bff", NA, NA, NA, NA,
