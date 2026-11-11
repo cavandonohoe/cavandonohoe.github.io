@@ -1,0 +1,192 @@
+{
+  "generated_at": "2026-10-18T18:38:59.722273+00:00",
+  "period_start": "2026-10-11T18:38:59.722273+00:00",
+  "commits": 165,
+  "prs_merged": 46,
+  "merged_prs": [
+    {
+      "number": 234,
+      "title": "Fix maze learning-mode playback, announcements and speed restore"
+    },
+    {
+      "number": 242,
+      "title": "Fix Dependabot npm updates for movie-ranker"
+    },
+    {
+      "number": 223,
+      "title": "Add step-by-step maze learning mode"
+    },
+    {
+      "number": 233,
+      "title": "Fix Spotify/IMDb review findings: provenance, refresh reliability, dedup"
+    },
+    {
+      "number": 241,
+      "title": "Add guarded GitHub deployment for TOHS Apps Script"
+    },
+    {
+      "number": 243,
+      "title": "TOHS Apps Script: owner PRs deploy after environment approval"
+    },
+    {
+      "number": 244,
+      "title": "Link existing TOHS Apps Script with preserved file layout"
+    },
+    {
+      "number": 245,
+      "title": "Prepare initial TOHS Apps Script deployment"
+    },
+    {
+      "number": 246,
+      "title": "TOHS Apps Script: don't treat unrelated bot commits as a stale deploy"
+    },
+    {
+      "number": 247,
+      "title": "Fix podcast dashboard deploy failing renv pre-flight (missing cpp11)"
+    },
+    {
+      "number": 248,
+      "title": "Fix podcast dashboard deploy: map RSPM to real repository URLs"
+    },
+    {
+      "number": 257,
+      "title": "CI: build movie-ranker on PRs that touch it"
+    },
+    {
+      "number": 249,
+      "title": "deps: bump postcss-selector-parser and tailwindcss in /movie-ranker"
+    },
+    {
+      "number": 251,
+      "title": "deps: bump source-map-js from 1.2.1 to 1.2.2 in /movie-ranker"
+    },
+    {
+      "number": 252,
+      "title": "deps: bump browserslist from 4.28.2 to 4.29.3 in /movie-ranker"
+    },
+    {
+      "number": 253,
+      "title": "deps: bump baseline-browser-mapping from 2.10.37 to 2.11.28 in /movie-ranker"
+    },
+    {
+      "number": 254,
+      "title": "deps: bump js-yaml from 4.2.0 to 4.3.2 in /movie-ranker"
+    },
+    {
+      "number": 256,
+      "title": "TOHS reunion: disclose that the roster is public and offer an opt-out"
+    },
+    {
+      "number": 258,
+      "title": "deps: bump brace-expansion from 1.1.15 to 1.1.21 in /movie-ranker"
+    },
+    {
+      "number": 261,
+      "title": "movie-ranker: finish Tailwind v4 migration (build broken on main)"
+    },
+    {
+      "number": 263,
+      "title": "movie-ranker: upgrade to Next 15 (security fixes)"
+    },
+    {
+      "number": 264,
+      "title": "Keep the year picker visible when switching Developer Year in Review years"
+    },
+    {
+      "number": 265,
+      "title": "Add year-over-year activity chart to Developer Year in Review"
+    },
+    {
+      "number": 267,
+      "title": "Remove opt-out line from TOHS reunion roster notice"
+    },
+    {
+      "number": 268,
+      "title": "Open bot PRs with a PAT so CI runs without approval"
+    },
+    {
+      "number": 266,
+      "title": "Rebuild CV from latest Google Sheet"
+    },
+    {
+      "number": 275,
+      "title": "Bump Supabase clients, patch nested postcss, ignore blocked majors"
+    },
+    {
+      "number": 270,
+      "title": "deps: bump @types/node from 20.19.43 to 26.6.5 in /movie-ranker"
+    },
+    {
+      "number": 271,
+      "title": "deps: bump framer-motion from 12.40.0 to 14.1.0 in /movie-ranker"
+    },
+    {
+      "number": 279,
+      "title": "movie-ranker: upgrade to Next 16 and React 19"
+    },
+    {
+      "number": 280,
+      "title": "movie-ranker: back-fill poster art from TMDB"
+    },
+    {
+      "number": 281,
+      "title": "Auto-merge passing minor/patch Dependabot PRs"
+    },
+    {
+      "number": 282,
+      "title": "Add CBRE multifamily cap rate benchmark and insurance underwriting caveats to rental markets page"
+    },
+    {
+      "number": 269,
+      "title": "Podcast dashboard: backfill export-only metadata, show undated saves, warn on API cap"
+    },
+    {
+      "number": 164,
+      "title": "Add Google Ads dashboard"
+    },
+    {
+      "number": 286,
+      "title": "Archive Google Ads dashboard"
+    },
+    {
+      "number": 287,
+      "title": "Record weekly shinyapps.io traffic history"
+    },
+    {
+      "number": 283,
+      "title": "Reorder homepage project cards"
+    },
+    {
+      "number": 288,
+      "title": "Fix the broken external links the link check found"
+    },
+    {
+      "number": 284,
+      "title": "Order homepage project cards by recent GA4 traffic"
+    },
+    {
+      "number": 285,
+      "title": "Link check: actually scan every page, and cut the false positives"
+    },
+    {
+      "number": 289,
+      "title": "Remove permanently closed XiAn Biang Biang Noodle"
+    },
+    {
+      "number": 163,
+      "title": "Add beach volleyball player ratings analysis"
+    },
+    {
+      "number": 162,
+      "title": "US Rental Markets: investor-focused calculator, leverage metrics, and scoring"
+    },
+    {
+      "number": 290,
+      "title": "Archive beach volleyball player ratings page"
+    },
+    {
+      "number": 291,
+      "title": "Add Arcane to IMDb rating plot"
+    }
+  ]
+}
