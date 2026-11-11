@@ -1,0 +1,5 @@
+ts,ms_played,track,artist,album,track_uri,episode,show,episode_uri,reason_start,reason_end,shuffle,skipped,platform,country,played_at,date,month,min_played,kind,title,source_name
+2024-01-15T08:30:00Z,210000,Song A,Artist One,Album X,spotify:track:aaa,NA,NA,NA,trackdone,trackdone,TRUE,FALSE,osx,US,2024-01-15T08:30:00Z,2024-01-15,2024-01-01,3.5,music,Song A,Artist One
+2024-01-15T09:00:00Z,1500000,NA,NA,NA,NA,Episode 1,Stuff You Should Know,spotify:episode:bbb,clickrow,endplay,FALSE,FALSE,ios,US,2024-01-15T09:00:00Z,2024-01-15,2024-01-01,25,podcast,Episode 1,Stuff You Should Know
+2024-02-03T20:15:00Z,180000,Song B,Artist One,Album Y,spotify:track:ccc,NA,NA,NA,clickrow,trackdone,FALSE,FALSE,osx,US,2024-02-03T20:15:00Z,2024-02-03,2024-02-01,3,music,Song B,Artist One
+2024-02-20T07:45:00Z,2400000,NA,NA,NA,NA,Episode 2,The Indicator from Planet Money,spotify:episode:ddd,trackdone,endplay,FALSE,FALSE,ios,US,2024-02-20T07:45:00Z,2024-02-20,2024-02-01,40,podcast,Episode 2,The Indicator from Planet Money
