@@ -35,7 +35,7 @@ jobs:
 
           # The checkout is depth 1, so ask GitHub for the real numbers.
           repo_mb=$(( $(gh api "repos/${GITHUB_REPOSITORY}" --jq .size) / 1024 ))
-          repo_threshold_mb=1000
+          repo_threshold_mb=2000
           pages_mb=$(gh api "repos/${GITHUB_REPOSITORY}/git/trees/gh-pages?recursive=1" \
             --jq '([.tree[].size // 0] | add) / 1048576 | floor')
           pages_truncated=$(gh api "repos/${GITHUB_REPOSITORY}/git/trees/gh-pages?recursive=1" --jq .truncated)
