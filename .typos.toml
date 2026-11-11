@@ -60,6 +60,7 @@ extend-exclude = [
   "**/*.kml",
   "**/*.rds",
   "**/*.gif",
+  "**/*.webp",
   "**/*.ico",
   "**/*.png",
   "**/*.jpg",
