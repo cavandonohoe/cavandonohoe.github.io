@@ -162,7 +162,7 @@
     {
       "project": "images",
       "tracked_files": 20,
-      "commits_touching_project": 147,
+      "commits_touching_project": 148,
       "top_extensions": [
         [
           ".jpg",
@@ -177,7 +177,7 @@
           3
         ],
         [
-          ".gif",
+          ".webp",
           1
         ]
       ]
