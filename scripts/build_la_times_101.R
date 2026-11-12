@@ -34,6 +34,12 @@ la101_editions <- function() {
     parser = c(
       rep("ballots", 5), "slides", rep("review", 2), rep("itemlist", 6)
     ),
+    # Direction the published ranking runs down the page: "asc" lists No. 1 first,
+    # "desc" counts down to No. 1. NA marks the unranked 2018, 2020 and 2021 editions.
+    ranking = c(
+      "desc", "desc", "asc", "asc", "asc", NA, "asc", NA, NA,
+      "asc", "asc", "desc", "desc", "desc"
+    ),
     source = c(
       paste0(ballots, "101-best-restaurants-jonathan-gold-2013-list/"),
       paste0(ballots, "101-best-restaurants-jonathan-gold-2014/"),
@@ -203,6 +209,13 @@ la101_split_links <- function(x) {
   )
 }
 
+# Published rank for each scraped name, in page order (NA when the edition is unranked).
+la101_ranks <- function(year, n, editions = la101_editions()) {
+  dir <- editions$ranking[match(year, editions$year)]
+  if (length(dir) == 0 || is.na(dir)) return(rep(NA_integer_, n))
+  if (dir == "asc") seq_len(n) else rev(seq_len(n))
+}
+
 # Turns the scraped names into rows. Identity is a spelling-insensitive name key;
 # overrides handle renames (links_to) and shared slots (several names in links_to,
 # the first being the one later spellings attach to). A row's first/previous come from
@@ -262,14 +275,16 @@ la101_derive <- function(source_names, overrides) {
     }
 
     rows <- vector("list", length(src))
+    ranks <- la101_ranks(year, length(src))
     for (i in seq_along(src)) {
       plan <- plans[[i]]
       if (isTRUE(plan$other)) {
         rows[[i]] <- list(name = plan$name, status = "Other", first = NA, previous = NA,
-                          match = NA_character_, note = plan$note)
+                          match = NA_character_, note = plan$note, rank = ranks[i])
         next
       }
-      rows[[i]] <- plan$row[c("name", "status", "first", "previous", "match", "note")]
+      rows[[i]] <- c(plan$row[c("name", "status", "first", "previous", "match", "note")],
+                     rank = ranks[i])
       # Register the row: members and created components are seen this edition.
       ids <- plan$members
       for (n in plan$created) {
@@ -356,9 +371,13 @@ la101_to_json <- function(editions) {
     ed <- editions[[year]]
     rows <- vapply(ed$rows, function(r) {
       sprintf(
-        '      {"name":%s,"status":%s,"first":%s,"previous":%s,"match":%s,"note":%s}',
+        paste0(
+          '      {"name":%s,"status":%s,"first":%s,"previous":%s,"match":%s,"note":%s,',
+          '"rank":%s}'
+        ),
         la101_json_value(r$name), la101_json_value(r$status), la101_json_value(r$first),
-        la101_json_value(r$previous), la101_json_value(r$match), la101_json_value(r$note)
+        la101_json_value(r$previous), la101_json_value(r$match), la101_json_value(r$note),
+        la101_json_value(r$rank)
       )
     }, character(1))
     paste0(
