@@ -251,8 +251,8 @@ above. Regenerated each time `README.Rmd` is knit.
 
 <img src="images/readme/commit-activity-cumulative-1.png" alt="Two cumulative line charts showing total commits and total lines changed (insertions + deletions) over time, split by Cavan's own commits vs. scheduled-bot commits."  />
 
-*1,305 commits from Dec 2020 to Nov 2026 (687 by me, 618 by scheduled
-bots), touching 3,363,884 lines in total.*
+*1,313 commits from Dec 2020 to Nov 2026 (688 by me, 625 by scheduled
+bots), touching 3,367,429 lines in total.*
 
 ## Setup and Local Development
 
