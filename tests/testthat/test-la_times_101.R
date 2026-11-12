@@ -178,6 +178,28 @@ testthat::test_that("stale or misspelled overrides stop the build", {
   )
 })
 
+testthat::test_that("ranks follow each edition's published order", {
+  built <- la101_derive(committed_snapshot(), committed_overrides())
+  number_one <- function(year) {
+    rows <- built[[as.character(year)]]$rows
+    rows[[which(vapply(rows, function(r) identical(r$rank, 1L), logical(1)))]]$name
+  }
+  testthat::expect_identical(number_one(2013), "Providence")
+  testthat::expect_identical(number_one(2022), "Hayato")
+  testthat::expect_identical(number_one(2026), "Lielle")
+  for (year in names(built)) {
+    ranks <- vapply(built[[year]]$rows, function(r) as.integer(r$rank), integer(1))
+    if (year %in% c("2018", "2020", "2021")) {
+      testthat::expect_true(all(is.na(ranks)))
+    } else {
+      testthat::expect_identical(sort(ranks), 1:101)
+    }
+  }
+  testthat::expect_identical(la101_ranks(2013, 3), 3:1)
+  testthat::expect_identical(la101_ranks(2015, 3), 1:3)
+  testthat::expect_identical(la101_ranks(2018, 2), c(NA_integer_, NA_integer_))
+})
+
 testthat::test_that("validation rejects short editions and unknown geography", {
   built <- la101_derive(committed_snapshot(), committed_overrides())
   short <- built

@@ -142,8 +142,8 @@ How often does the L.A. Times 101 list make room for a first-timer? Every editio
   <p><a id="la101-source">Read the original L.A. Times edition</a></p>
   <div class="table-wrap">
     <table class="table table-striped">
-      <caption>Names as published, alphabetical by default. Select a column heading to sort.</caption>
-      <thead><tr><th scope="col">#</th><th scope="col" data-sort="name">Entry</th><th scope="col" data-sort="status">Appearance</th><th scope="col" data-sort="first">First listed</th><th scope="col" data-sort="previous">Last listed before this edition</th></tr></thead>
+      <caption>Names as published, alphabetical by default. Rank is the L.A. Times ranking (blank for the unranked 2018, 2020 and 2021 editions). Select a column heading to sort.</caption>
+      <thead><tr><th scope="col">#</th><th scope="col" data-sort="rank">Rank</th><th scope="col" data-sort="name">Entry</th><th scope="col" data-sort="status">Appearance</th><th scope="col" data-sort="first">First listed</th><th scope="col" data-sort="previous">Last listed before this edition</th></tr></thead>
       <tbody id="la101-entries"></tbody>
     </table>
   </div>
@@ -412,6 +412,7 @@ cat('<script type="application/json" id="la101-geo-data">\n',
     const published = (a, b) => rows.indexOf(a) - rows.indexOf(b);
     const visible = sortRows(matches, editionSort, {
       name: row => rows.indexOf(row),
+      rank: row => row.rank,
       status: row => statusRank[row.status],
       first: row => row.first,
       previous: row => row.previous
@@ -425,7 +426,9 @@ cat('<script type="application/json" id="la101-geo-data">\n',
       const tr = element("tr");
       const label = element("th", row.name);
       label.scope = "row";
-      tr.append(rowNumber(index + 1), label,
+      const rank = element("td", row.rank ?? "—");
+      rank.className = "rownum";
+      tr.append(rowNumber(index + 1), rank, label,
         element("td", row.status === "Other" ? "Other honoree" : row.status),
         element("td", row.first ?? "—"), element("td", row.previous ?? "—"));
       if (row.match && row.match !== row.name) {
