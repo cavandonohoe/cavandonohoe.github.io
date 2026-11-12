@@ -142,7 +142,7 @@ How often does the L.A. Times 101 list make room for a first-timer? Every editio
   <p><a id="la101-source">Read the original L.A. Times edition</a></p>
   <div class="table-wrap">
     <table class="table table-striped">
-      <caption>Names as published, alphabetical by default. Rank is the L.A. Times ranking (blank for the unranked 2018, 2020 and 2021 editions). Select a column heading to sort.</caption>
+      <caption>Ranked by the L.A. Times by default. The unranked 2018, 2020 and 2021 editions are alphabetical. Select a column heading to sort.</caption>
       <thead><tr><th scope="col">#</th><th scope="col" data-sort="rank">Rank</th><th scope="col" data-sort="name">Entry</th><th scope="col" data-sort="status">Appearance</th><th scope="col" data-sort="first">First listed</th><th scope="col" data-sort="previous">Last listed before this edition</th></tr></thead>
       <tbody id="la101-entries"></tbody>
     </table>
@@ -399,7 +399,7 @@ cat('<script type="application/json" id="la101-geo-data">\n',
     historySummary.textContent = `Showing ${visible.length} of ${history.length} entries.`;
   }
 
-  const editionSort = { key: "name", dir: 1 };
+  const editionSort = { key: "rank", dir: 1 };
 
   function renderEdition() {
     const { source: url, rows, counts } = data[year.value];
@@ -408,7 +408,7 @@ cat('<script type="application/json" id="la101-geo-data">\n',
       (!status.value || row.status === status.value) &&
       searchKey([row.name, row.note, row.match].join(" ")).includes(needle)
     );
-    // Names keep their published (alphabetical) order unless another column is chosen.
+    // Ties and unranked editions fall back to alphabetical order.
     const published = (a, b) => rows.indexOf(a) - rows.indexOf(b);
     const visible = sortRows(matches, editionSort, {
       name: row => rows.indexOf(row),
