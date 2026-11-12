@@ -16,9 +16,13 @@ permissions:
   contents: write
   pull-requests: write
 
+# Key PR runs on the PR number: a closed PR's ref is the base branch, so every
+# merged PR used to share one group and a newer run could cancel a close run
+# before cleanup_preview started, orphaning the preview. Close runs never cancel
+# (or get cancelled by) an in-flight build for the same PR.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event_name }}
-  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}-${{ github.event_name }}
+  cancel-in-progress: ${{ github.event.action != 'closed' }}
 
 jobs:
   build:
