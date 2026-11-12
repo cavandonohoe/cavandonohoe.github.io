@@ -1,6 +1,18 @@
 {
-  "generated_at": "2026-11-11T22:56:00.753250+00:00",
+  "generated_at": "2026-11-12T22:24:33.637667+00:00",
   "events": [
+    {
+      "date": "2026-11-12",
+      "type": "merged_pr",
+      "title": "Shrink sierpinski animation and stop close runs being cancelled",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/344"
+    },
+    {
+      "date": "2026-11-12",
+      "type": "merged_pr",
+      "title": "Add row numbers and sortable columns to L.A. Times 101 tables",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/346"
+    },
     {
       "date": "2026-11-11",
       "type": "merged_pr",
@@ -358,53 +370,25 @@
     {
       "date": "2026-10-13",
       "type": "merged_pr",
-      "title": "Remove opt-out line from TOHS reunion roster notice",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/267"
-    },
-    {
-      "date": "2026-10-13",
-      "type": "merged_pr",
-      "title": "Rebuild CV from latest Google Sheet",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/266"
-    },
-    {
-      "date": "2026-10-13",
-      "type": "merged_pr",
-      "title": "Open bot PRs with a PAT so CI runs without approval",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/268"
-    },
-    {
-      "date": "2026-10-13",
-      "type": "merged_pr",
       "title": "Bump Supabase clients, patch nested postcss, ignore blocked majors",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/275"
-    },
-    {
-      "date": "2026-10-13",
-      "type": "merged_pr",
-      "title": "Add year-over-year activity chart to Developer Year in Review",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/265"
-    },
-    {
-      "date": "2026-10-12",
-      "type": "merged_pr",
-      "title": "movie-ranker: upgrade to Next 15 (security fixes)",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/263"
-    },
-    {
-      "date": "2026-10-12",
-      "type": "merged_pr",
-      "title": "movie-ranker: finish Tailwind v4 migration (build broken on main)",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/261"
-    },
-    {
-      "date": "2026-10-12",
-      "type": "merged_pr",
-      "title": "Keep the year picker visible when switching Developer Year in Review years",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/264"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-11-12",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "5 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/359a73d6776ceb7ccdeba08cb608d2cd30f0ac3a"
+        },
+        {
+          "emoji": "\ud83d\udcbb",
+          "text": "2 PRs merged"
+        }
+      ]
+    },
     {
       "date": "2026-11-11",
       "items": [
@@ -584,16 +568,6 @@
           "emoji": "\ud83d\uddfa\ufe0f",
           "text": "Data-viz projects polished",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/320"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-29",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "3 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/8570905e80fdab428bb4107e8fcdb5d5d85c3512"
         }
       ]
     }
