@@ -1,0 +1,20 @@
+{
+  "generated_at": "2026-11-08T20:29:28.750307+00:00",
+  "period_start": "2026-11-01T20:29:28.750307+00:00",
+  "commits": 62,
+  "prs_merged": 3,
+  "merged_prs": [
+    {
+      "number": 326,
+      "title": "deps: bump the npm-minor-patch group in /movie-ranker with 3 updates"
+    },
+    {
+      "number": 327,
+      "title": "Rebuild CV from latest Google Sheet"
+    },
+    {
+      "number": 328,
+      "title": "Advance podcast cutoff to December 11, 2025"
+    }
+  ]
+}
