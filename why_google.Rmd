@@ -141,13 +141,14 @@ history <- tibble::tribble(
   "2018", "Waymo launches the first commercial robotaxi service in Phoenix.",
   "2023", "Google Brain and DeepMind merge. Gemini launches.",
   "2024", "First ever dividend. AlphaFold co-creators win the Nobel Prize in Chemistry.",
-  "2025", "Revenue passes $400B for the first time. Courts find Google a monopolist in search and
-    ad tech but decline to break it up.",
+  "2025", "Revenue passes $400B for the first time. Loses the ad tech antitrust case, but the
+    search case remedies stop well short of a breakup.",
   "2026", "Cloud more than doubles. Waymo raises $16B at a $126B valuation. SpaceX IPO hands
-    Alphabet a huge gain on its early stake."
+    Alphabet a huge gain on its early stake. Ad tech judge also declines a breakup."
 )
 history$Milestone <- gsub("\\s+", " ", history$Milestone)
-knitr::kable(history)
+knitr::kable(history, format = "html",
+  table.attr = 'class="table table-condensed table-striped"')
 ```
 
 A YouTube that cost \$1.65B now does more than \$60B a year in revenue. An Android that cost
@@ -251,7 +252,8 @@ returns_wide <- returns %>%
     `$10k in SPY is now` = value_10k_SPY,
     `SPY per year` = cagr_SPY
   )
-knitr::kable(returns_wide, align = c("l", "r", "r", "r", "r"))
+knitr::kable(returns_wide, align = c("l", "r", "r", "r", "r"), format = "html",
+  table.attr = 'class="table table-condensed table-striped"')
 ```
 
 ### Growth of $10,000 since the IPO
@@ -333,7 +335,8 @@ scenario_table <- scenarios %>%
   ) %>%
   dplyr::select(Scenario, `Per year`, `Price in 5 years`, `Price in 10 years`,
     `$10k in 10 years`, `What has to happen` = Story)
-knitr::kable(scenario_table, align = c("l", "r", "r", "r", "r", "l"))
+knitr::kable(scenario_table, align = c("l", "r", "r", "r", "r", "l"), format = "html",
+  table.attr = 'class="table table-condensed table-striped"')
 ```
 
 ```{r scenario_chart}

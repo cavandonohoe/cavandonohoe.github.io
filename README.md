@@ -91,6 +91,7 @@ Check out my website at <https://cavandonohoe.github.io>
 - [Rent vs. Buy
   Calculator](https://cavandonohoe.shinyapps.io/rent-vs-buy/) (Shiny,
   [source](https://github.com/cavandonohoe/rent-vs-buy))
+- [Why I Own Google](https://cavandonohoe.github.io/why_google.html)
 
 ### Data Science & Clinical
 
@@ -150,6 +151,8 @@ manual is a click away on the Actions tab.
 - `update_director_filmographies.yml` – monthly TMDb director
   filmography refresh for the Director Box Office Trajectory page.
 - `update_sp500.yml` – weekly VOO price refresh.
+- `update_googl.yml` – weekly GOOGL and SPY price refresh for Why I Own
+  Google.
 - `update_us_rentals.yml` – monthly Zillow ZHVI/ZORI refresh.
 - `update_rental_desk.yml` – monthly copy of the private rental-desk
   repo’s live tracker for the Rental Desk scoreboard (needs the
@@ -186,7 +189,7 @@ manual is a click away on the Actions tab.
 - `refresh-commit-activity.yml` – weekly re-knit of this README’s
   commit-activity charts.
 
-The uniform ones (`update_sp500`, `update_us_rentals`,
+The uniform ones (`update_sp500`, `update_googl`, `update_us_rentals`,
 `update_rental_desk`, `update_top250_with_rt`,
 `update_watched_episodes`) are thin callers of `refresh-data.yml`, which
 owns the shared run/guard/commit/redeploy logic. The rest stay
@@ -251,8 +254,8 @@ above. Regenerated each time `README.Rmd` is knit.
 
 <img src="images/readme/commit-activity-cumulative-1.png" alt="Two cumulative line charts showing total commits and total lines changed (insertions + deletions) over time, split by Cavan's own commits vs. scheduled-bot commits."  />
 
-*1,331 commits from Dec 2020 to Nov 2026 (690 by me, 641 by scheduled
-bots), touching 3,367,879 lines in total.*
+*1,338 commits from Dec 2020 to Nov 2026 (691 by me, 647 by scheduled
+bots), touching 3,368,587 lines in total.*
 
 ## Setup and Local Development
 

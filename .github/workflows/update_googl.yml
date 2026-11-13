@@ -2,10 +2,6 @@ name: Refresh Alphabet (GOOGL) vs SPY data
 
 on:
   workflow_dispatch:
-  # Temporary: seed the CSV on the PR branch. Removed before merge.
-  push:
-    branches: [cdonohoe/why-google]
-    paths: [scripts/googl_data.R]
   schedule:
     - cron: "41 13 * * 6"  # Saturdays 13:41 UTC (~6:41am Pacific), after market close
 
