@@ -1,12 +1,12 @@
 {
   "year": 2026,
-  "commits": 346,
-  "pull_requests": 267,
+  "commits": 348,
+  "pull_requests": 269,
   "repositories_touched": 4,
-  "lines_added": 501455,
+  "lines_added": 503081,
   "most_used_language": "R",
   "language_lines_added": {
-    "R": 27428,
+    "R": 27585,
     "Python": 4712,
     "JavaScript": 2927,
     "TypeScript": 2369,
@@ -1592,6 +1592,23 @@
       },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "la_times_101.Rmd",
+        "lines_added": 504,
+        "commits": [
+          {
+            "sha": "71a0a9937d1c5b5f40b88dd3a7a14c8b9b8c3bd4",
+            "date": "2026-11-12",
+            "lines_added": 111
+          },
+          {
+            "sha": "c322b9f9133abc00d8b8ebee018ea8003a59219a",
+            "date": "2026-11-09",
+            "lines_added": 393
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "scripts/update_saved_episodes.R",
         "lines_added": 473,
         "commits": [
@@ -1619,6 +1636,23 @@
             "sha": "d4ded17d22fe59cba1ef59018068aadcacb5236c",
             "date": "2026-09-29",
             "lines_added": 160
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "scripts/build_la_times_101.R",
+        "lines_added": 427,
+        "commits": [
+          {
+            "sha": "71a0a9937d1c5b5f40b88dd3a7a14c8b9b8c3bd4",
+            "date": "2026-11-12",
+            "lines_added": 23
+          },
+          {
+            "sha": "3625f14dd7424778dc93cab9a0eac69878923d03",
+            "date": "2026-11-10",
+            "lines_added": 404
           }
         ]
       },
@@ -1675,18 +1709,6 @@
       },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "scripts/build_la_times_101.R",
-        "lines_added": 404,
-        "commits": [
-          {
-            "sha": "3625f14dd7424778dc93cab9a0eac69878923d03",
-            "date": "2026-11-10",
-            "lines_added": 404
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "web_scraping/best_picture_nominees.R",
         "lines_added": 394,
         "commits": [
@@ -1694,18 +1716,6 @@
             "sha": "7df7b0585ff16d6e015ff38cabf7d4da9dff9966",
             "date": "2026-01-04",
             "lines_added": 394
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "la_times_101.Rmd",
-        "lines_added": 393,
-        "commits": [
-          {
-            "sha": "c322b9f9133abc00d8b8ebee018ea8003a59219a",
-            "date": "2026-11-09",
-            "lines_added": 393
           }
         ]
       },
@@ -2508,6 +2518,23 @@
       },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "tests/testthat/test-la_times_101.R",
+        "lines_added": 213,
+        "commits": [
+          {
+            "sha": "71a0a9937d1c5b5f40b88dd3a7a14c8b9b8c3bd4",
+            "date": "2026-11-12",
+            "lines_added": 22
+          },
+          {
+            "sha": "3625f14dd7424778dc93cab9a0eac69878923d03",
+            "date": "2026-11-10",
+            "lines_added": 191
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "rental_desk.Rmd",
         "lines_added": 200,
         "commits": [
@@ -2628,18 +2655,6 @@
             "sha": "9bbc675db7f567997ce17044b80abcebf37d3fe5",
             "date": "2026-09-16",
             "lines_added": 197
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "tests/testthat/test-la_times_101.R",
-        "lines_added": 191,
-        "commits": [
-          {
-            "sha": "3625f14dd7424778dc93cab9a0eac69878923d03",
-            "date": "2026-11-10",
-            "lines_added": 191
           }
         ]
       },
@@ -3976,8 +3991,13 @@
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "sierpinski_triangle.Rmd",
-        "lines_added": 2,
+        "lines_added": 3,
         "commits": [
+          {
+            "sha": "97f926e6832dcabe84efd342dd75b255be0154fd",
+            "date": "2026-11-12",
+            "lines_added": 1
+          },
           {
             "sha": "ae817e7bc71a444cf268b5ee7a0a316857e5b816",
             "date": "2026-06-23",
@@ -4453,7 +4473,7 @@
   "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, dependency, build, docs, minified, and raw HTML input files are excluded.",
   "most_active_month": "October",
   "longest_streak_days": 16,
-  "active_days": 93,
+  "active_days": 94,
   "monthly_commits": [
     11,
     27,
@@ -4465,7 +4485,7 @@
     15,
     23,
     108,
-    18,
+    20,
     0
   ],
   "daily_activity": [
@@ -4933,10 +4953,15 @@
       "date": "2026-11-11",
       "commits": 5,
       "lines_added": 358
+    },
+    {
+      "date": "2026-11-12",
+      "commits": 2,
+      "lines_added": 1626
     }
   ],
   "biggest_project": "cavandonohoe.github.io",
-  "biggest_project_commits": 287,
+  "biggest_project_commits": 289,
   "repositories": [
     "cavandonohoe/cavandonohoe",
     "cavandonohoe/cavandonohoe.github.io",
@@ -4944,12 +4969,12 @@
     "cavandonohoe/rent-vs-buy"
   ],
   "repository_commits": {
-    "cavandonohoe/cavandonohoe.github.io": 287,
+    "cavandonohoe/cavandonohoe.github.io": 289,
     "cavandonohoe/rent-vs-buy": 29,
     "cavandonohoe/confederate_statues": 20,
     "cavandonohoe/cavandonohoe": 10
   },
   "scope": "Author-matched commits on the default branch of public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bot-authored or bot-committed commits, deploy commits, and other authors are excluded. Moved files count only changed lines. Language totals use .gitattributes Linguist overrides plus built-in generated, vendored, dependency, build, docs, minified, and raw HTML input patterns. Overall lines added still include all files. PRs count public pull requests the user authored and merged into their own repositories during the year, when available.",
   "is_partial_year": true,
-  "generated_at": "2026-11-12T17:00:41.462329+00:00"
+  "generated_at": "2026-11-13T16:41:50.522553+00:00"
 }
