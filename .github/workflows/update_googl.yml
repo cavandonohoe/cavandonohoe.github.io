@@ -1,0 +1,27 @@
+name: Refresh Alphabet (GOOGL) vs SPY data
+
+on:
+  workflow_dispatch:
+  # Temporary: seed the CSV on the PR branch. Removed before merge.
+  push:
+    branches: [cdonohoe/why-google]
+    paths: [scripts/googl_data.R]
+  schedule:
+    - cron: "41 13 * * 6"  # Saturdays 13:41 UTC (~6:41am Pacific), after market close
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: refresh-googl
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    uses: ./.github/workflows/refresh-data.yml
+    with:
+      refresh_command: Rscript scripts/googl_data.R
+      data_paths: data/googl_vs_spy_prices.csv
+      commit_message: Auto-update GOOGL and SPY prices
+      timeout_minutes: 20

@@ -1,0 +1,398 @@
+---
+title: "Why I Own Google"
+editor_options:
+  chunk_output_type: console
+output:
+  html_document:
+    includes:
+      in_header: header/header.html
+      after_body: include_footer.html
+lang: "en"
+---
+
+```{r og-meta, echo=FALSE, results='asis'}
+cat('
+<meta property="og:title" content="Why I Own Google">
+<meta property="og:description" content="My case for Alphabet: what Google has built, what it does
+now, how the stock has returned against the S&amp;P 500, and where it could go from here.">
+<meta property="og:url" content="https://cavandonohoe.github.io/why_google.html">
+<meta property="og:type" content="article">
+')
+```
+
+```{r pipe, include=FALSE}
+`%>%` <- magrittr::`%>%`
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE
+)
+```
+
+```{r data}
+prices <- readr::read_csv(
+  here::here("data", "googl_vs_spy_prices.csv"),
+  show_col_types = FALSE
+)
+financials <- readr::read_csv(
+  here::here("data", "alphabet_financials.csv"),
+  show_col_types = FALSE
+)
+
+latest_date <- max(prices$date)
+googl <- prices %>%
+  dplyr::filter(symbol == "GOOGL") %>%
+  dplyr::arrange(date)
+latest_price <- dplyr::last(googl$close)
+
+# Total return (adjusted close, so dividends are reinvested) over a lookback window.
+window_return <- function(sym, years = NULL) {
+  df <- prices %>%
+    dplyr::filter(symbol == sym) %>%
+    dplyr::arrange(date)
+  start_date <- if (is.null(years)) {
+    min(df$date)
+  } else {
+    latest_date - lubridate::years(years)
+  }
+  start <- df %>%
+    dplyr::filter(date >= start_date) %>%
+    dplyr::slice(1)
+  end <- df %>% dplyr::slice(dplyr::n())
+  span <- as.numeric(end$date - start$date) / 365.25
+  growth <- end$adjusted / start$adjusted
+  tibble::tibble(
+    symbol = sym,
+    start_date = start$date,
+    multiple = growth,
+    cagr = growth^(1 / span) - 1
+  )
+}
+
+windows <- list("1 year" = 1, "5 years" = 5, "10 years" = 10, "15 years" = 15,
+  "Since IPO (Aug 2004)" = NULL)
+returns <- purrr::imap_dfr(windows, function(yrs, label) {
+  dplyr::bind_rows(window_return("GOOGL", yrs), window_return("SPY", yrs)) %>%
+    dplyr::mutate(window = label)
+})
+ipo_multiple <- returns$multiple[returns$symbol == "GOOGL" &
+  returns$window == "Since IPO (Aug 2004)"]
+ipo_cagr <- returns$cagr[returns$symbol == "GOOGL" & returns$window == "Since IPO (Aug 2004)"]
+spy_ipo_cagr <- returns$cagr[returns$symbol == "SPY" & returns$window == "Since IPO (Aug 2004)"]
+googl_10y_cagr <- returns$cagr[returns$symbol == "GOOGL" & returns$window == "10 years"]
+```
+
+```{r timestamp, results='asis'}
+cat(sprintf(
+  '<span class="data-timestamp">Prices as of %s (GOOGL close: %s)</span>\n',
+  format(latest_date, "%B %d, %Y"),
+  scales::dollar(latest_price, accuracy = 0.01)
+))
+```
+
+<div class="alert alert-warning" role="note">
+This is my personal reasoning for why I hold Alphabet. It is not financial advice, and
+nothing here is a recommendation for anyone else to buy or sell anything. The projections
+below are simple what-if scenarios, not forecasts.
+</div>
+
+## The short version
+
+Google is the rare company that keeps building the next big business while the old one is
+still printing money. Search paid for Android, YouTube, Chrome, Cloud, DeepMind, TPUs, and
+Waymo. Now those bets are turning into businesses of their own. I own it because:
+
+* **The core is a cash machine.** Search alone did more than $220B in revenue in 2025, and AI
+  Overviews / AI Mode have so far grown usage instead of killing it.
+* **They own the whole AI stack.** Their own chips (TPUs), their own models (Gemini), their own
+  cloud to sell it through, and billions of users across Search, Android, Chrome, Gmail, and
+  YouTube to put it in front of. Very few companies have all of those pieces.
+* **Cloud went from a money pit to a rocket.** Google Cloud lost money as recently as 2022. In
+  Q3 2026 it did $30.7B in a single quarter, up 103% year over year, with a 36% operating
+  margin and a $561B backlog.
+* **Free options.** Waymo, the SpaceX and Anthropic stakes, Isomorphic Labs, and quantum
+  computing are all things I don't have to pay much for at today's price, but any one of them
+  could matter a lot.
+* **The track record.** Since the 2004 IPO, GOOGL has turned every \$1 into about
+  `r scales::dollar(ipo_multiple, accuracy = 1)`
+  (`r scales::percent(ipo_cagr, accuracy = 0.1)` a year) vs
+  `r scales::percent(spy_ipo_cagr, accuracy = 0.1)` a year for the S&P 500.
+
+## What they've done before
+
+Google has a habit of building or buying something that looks small or weird at the time
+and then turning it into a category leader.
+
+```{r history}
+history <- tibble::tribble(
+  ~Year, ~Milestone,
+  "1998", "Larry Page and Sergey Brin found Google out of a Stanford research project (PageRank).",
+  "2000", "AdWords launches. Search ads become the business model that funds everything else.",
+  "2004", "IPO at $85 a share (about $2 split-adjusted). Gmail launches with a crazy 1 GB inbox.",
+  "2005", "Buys Android for roughly $50M. Google Maps launches.",
+  "2006", "Buys YouTube for $1.65B, which a lot of people called an overpay.",
+  "2008", "Launches Chrome and the first Android phone.",
+  "2014", "Buys DeepMind.",
+  "2015", "Reorganizes into Alphabet, splitting Google from the Other Bets.",
+  "2016", "Reveals the TPU, its own AI chip. AlphaGo beats Lee Sedol.",
+  "2017", "Google researchers publish \"Attention Is All You Need,\" the transformer paper behind
+    basically every modern AI model.",
+  "2018", "Waymo launches the first commercial robotaxi service in Phoenix.",
+  "2023", "Google Brain and DeepMind merge. Gemini launches.",
+  "2024", "First ever dividend. AlphaFold co-creators win the Nobel Prize in Chemistry.",
+  "2025", "Revenue passes $400B for the first time. Courts find Google a monopolist in search and
+    ad tech but decline to break it up.",
+  "2026", "Cloud more than doubles. Waymo raises $16B at a $126B valuation. SpaceX IPO hands
+    Alphabet a huge gain on its early stake."
+)
+history$Milestone <- gsub("\\s+", " ", history$Milestone)
+knitr::kable(history)
+```
+
+A YouTube that cost \$1.65B now does more than \$60B a year in revenue. An Android that cost
+about \$50M runs most of the phones on the planet. That is the pattern I am betting continues.
+
+## What they do now
+
+Alphabet reports three segments:
+
+* **Google Services**: Search, YouTube, Android, Chrome, Maps, Play, Gmail, Pixel, and
+  subscriptions (YouTube Premium, Google One, YouTube TV). This is the vast majority of
+  revenue and profit.
+* **Google Cloud**: Google Cloud Platform, Workspace, Gemini for businesses, and now selling
+  TPU systems directly. The fastest growing part of the company.
+* **Other Bets**: Waymo, Verily, Wing, and others. Still losing money, but this is where the
+  long-dated upside sits.
+
+### Revenue and profit, 2015 to 2025
+
+```{r revenue_chart}
+fin_long <- financials %>%
+  dplyr::select(year, Revenue = revenue_bn, `Operating income` = operating_income_bn,
+    `Capital spending` = capex_bn) %>%
+  tidyr::pivot_longer(-year, names_to = "metric", values_to = "billions")
+
+revenue_plot <- fin_long %>%
+  ggplot2::ggplot(ggplot2::aes(x = year, y = billions, color = metric)) +
+  ggplot2::geom_line(linewidth = 1) +
+  ggplot2::geom_point(size = 2) +
+  ggplot2::scale_y_continuous(labels = scales::dollar_format(suffix = "B")) +
+  ggplot2::scale_x_continuous(breaks = financials$year) +
+  ggplot2::scale_color_manual(values = c(
+    Revenue = "#4285F4", `Operating income` = "#34A853", `Capital spending` = "#EA4335"
+  )) +
+  ggplot2::labs(x = NULL, y = NULL, color = NULL,
+    title = "Alphabet annual revenue, operating income, and capex") +
+  ggplot2::theme_minimal() +
+  ggplot2::theme(legend.position = "bottom")
+
+plotly::ggplotly(revenue_plot) %>%
+  plotly::layout(legend = list(orientation = "h", y = -0.15))
+```
+
+```{r growth_stats}
+rev_cagr_10 <- (financials$revenue_bn[financials$year == 2025] /
+  financials$revenue_bn[financials$year == 2015])^(1 / 10) - 1
+oi_cagr_10 <- (financials$operating_income_bn[financials$year == 2025] /
+  financials$operating_income_bn[financials$year == 2015])^(1 / 10) - 1
+margin_2025 <- financials$operating_income_bn[financials$year == 2025] /
+  financials$revenue_bn[financials$year == 2025]
+```
+
+Over the last ten reported years, revenue grew about
+`r scales::percent(rev_cagr_10, accuracy = 0.1)` a year and operating income about
+`r scales::percent(oi_cagr_10, accuracy = 0.1)` a year, so the business got bigger *and*
+more profitable (a `r scales::percent(margin_2025, accuracy = 1)` operating margin in 2025).
+That red line is the one everyone is arguing about right now, more on that below.
+
+### Google Cloud
+
+```{r cloud_chart}
+cloud_plot <- financials %>%
+  dplyr::filter(!is.na(cloud_revenue_bn)) %>%
+  ggplot2::ggplot(ggplot2::aes(x = year, y = cloud_revenue_bn)) +
+  ggplot2::geom_col(fill = "#4285F4") +
+  ggplot2::geom_text(
+    ggplot2::aes(label = scales::dollar(cloud_revenue_bn, accuracy = 0.1, suffix = "B")),
+    vjust = -0.4, size = 3.5
+  ) +
+  ggplot2::scale_y_continuous(labels = scales::dollar_format(suffix = "B"),
+    expand = ggplot2::expansion(mult = c(0, 0.1))) +
+  ggplot2::scale_x_continuous(breaks = 2017:2025) +
+  ggplot2::labs(x = NULL, y = NULL, title = "Google Cloud annual revenue") +
+  ggplot2::theme_minimal()
+
+cloud_plot
+```
+
+And 2026 is on a different curve: Cloud grew 63% in Q1, 82% in Q2, and 103% in Q3, when it
+did \$30.7B in one quarter. Management says just over half of the \$561B backlog should turn
+into revenue over the next two years, and they are still capacity constrained (they are
+renting other people's data centers to keep up).
+
+## Returns vs the S&P 500
+
+These are total returns using adjusted closing prices, so dividends are reinvested. SPY
+stands in for the S&P 500.
+
+```{r returns_table}
+returns_wide <- returns %>%
+  dplyr::mutate(
+    value_10k = scales::dollar(10000 * multiple, accuracy = 1),
+    cagr = scales::percent(cagr, accuracy = 0.1)
+  ) %>%
+  dplyr::select(window, symbol, value_10k, cagr) %>%
+  tidyr::pivot_wider(names_from = symbol, values_from = c(value_10k, cagr)) %>%
+  dplyr::select(
+    Window = window,
+    `$10k in GOOGL is now` = value_10k_GOOGL,
+    `GOOGL per year` = cagr_GOOGL,
+    `$10k in SPY is now` = value_10k_SPY,
+    `SPY per year` = cagr_SPY
+  )
+knitr::kable(returns_wide, align = c("l", "r", "r", "r", "r"))
+```
+
+### Growth of $10,000 since the IPO
+
+```{r growth_chart}
+growth <- prices %>%
+  dplyr::group_by(symbol) %>%
+  dplyr::arrange(date, .by_group = TRUE) %>%
+  dplyr::mutate(value = 10000 * adjusted / dplyr::first(adjusted)) %>%
+  dplyr::ungroup() %>%
+  dplyr::mutate(symbol = dplyr::recode(symbol, GOOGL = "Alphabet (GOOGL)",
+    SPY = "S&P 500 (SPY)"))
+
+growth_plot <- growth %>%
+  ggplot2::ggplot(ggplot2::aes(x = date, y = value, color = symbol)) +
+  ggplot2::geom_line() +
+  ggplot2::scale_y_log10(labels = scales::dollar_format(accuracy = 1)) +
+  ggplot2::scale_color_manual(values = c("Alphabet (GOOGL)" = "#4285F4",
+    "S&P 500 (SPY)" = "grey40")) +
+  ggplot2::labs(x = NULL, y = "Value of $10,000 (log scale)", color = NULL) +
+  ggplot2::theme_minimal() +
+  ggplot2::theme(legend.position = "bottom")
+
+plotly::ggplotly(growth_plot) %>%
+  plotly::layout(legend = list(orientation = "h", y = -0.15))
+```
+
+```{r drawdowns}
+drawdowns <- googl %>%
+  dplyr::mutate(peak = cummax(adjusted), drawdown = adjusted / peak - 1)
+max_dd <- drawdowns %>% dplyr::slice_min(drawdown, n = 1, with_ties = FALSE)
+current_dd <- dplyr::last(drawdowns$drawdown)
+```
+
+It has not been a smooth ride. The worst peak-to-trough drop was
+`r scales::percent(max_dd$drawdown, accuracy = 1)` (bottoming in
+`r format(max_dd$date, "%B %Y")`), and the stock fell about 13% in a single day after Q3
+2026 earnings. Right now it sits
+`r if (current_dd > -0.005) "at an all-time high" else
+  paste(scales::percent(-current_dd, accuracy = 1), "below its all-time high")`.
+Owning it means sitting through stretches like that.
+
+## Where it could go
+
+Nobody knows, including me. So instead of a price target, here are three simple scenarios
+for what the stock could return per year from today's price, and why each one could happen.
+
+```{r scenarios}
+scenarios <- tibble::tribble(
+  ~Scenario, ~annual_return, ~Story,
+  "Bear", 0.02, "The capex binge does not pay back, AI chatbots eat into Search, and the
+    market pays a lower multiple for a slower, more capital-heavy company.",
+  "Base", 0.11, "Low-teens earnings growth as Cloud keeps compounding and Search grows
+    high single digits, with the valuation roughly flat.",
+  "Bull", 0.18, "Cloud and TPUs become an AWS-sized business, AI Mode monetizes as well as
+    classic Search, and Waymo starts to show up in the numbers."
+) %>%
+  dplyr::mutate(Story = gsub("\\s+", " ", Story)) %>%
+  dplyr::bind_rows(tibble::tibble(
+    Scenario = "Last 10 years' pace",
+    annual_return = googl_10y_cagr,
+    Story = "Just repeat what actually happened over the last decade."
+  ))
+
+horizon_years <- 0:10
+paths <- tidyr::expand_grid(scenarios, t = horizon_years) %>%
+  dplyr::mutate(
+    date = latest_date + lubridate::days(round(t * 365.25)),
+    price = latest_price * (1 + annual_return)^t,
+    Scenario = factor(Scenario, levels = scenarios$Scenario)
+  )
+
+scenario_table <- scenarios %>%
+  dplyr::mutate(
+    `Per year` = scales::percent(annual_return, accuracy = 0.1),
+    `Price in 5 years` = scales::dollar(latest_price * (1 + annual_return)^5, accuracy = 1),
+    `Price in 10 years` = scales::dollar(latest_price * (1 + annual_return)^10, accuracy = 1),
+    `$10k in 10 years` = scales::dollar(10000 * (1 + annual_return)^10, accuracy = 1)
+  ) %>%
+  dplyr::select(Scenario, `Per year`, `Price in 5 years`, `Price in 10 years`,
+    `$10k in 10 years`, `What has to happen` = Story)
+knitr::kable(scenario_table, align = c("l", "r", "r", "r", "r", "l"))
+```
+
+```{r scenario_chart}
+recent <- googl %>%
+  dplyr::filter(date >= latest_date - lubridate::years(5))
+
+scenario_plot <- ggplot2::ggplot() +
+  ggplot2::geom_line(data = recent, ggplot2::aes(x = date, y = close), color = "black") +
+  ggplot2::geom_line(data = paths,
+    ggplot2::aes(x = date, y = price, color = Scenario), linetype = "dashed") +
+  ggplot2::scale_y_continuous(labels = scales::dollar_format(accuracy = 1)) +
+  ggplot2::scale_color_manual(values = c(Bear = "#EA4335", Base = "#4285F4", Bull = "#34A853",
+    "Last 10 years' pace" = "#FBBC05")) +
+  ggplot2::labs(x = NULL, y = "GOOGL price", color = NULL,
+    title = "Last 5 years of GOOGL, plus 10 years of what-ifs") +
+  ggplot2::theme_minimal() +
+  ggplot2::theme(legend.position = "bottom")
+
+plotly::ggplotly(scenario_plot) %>%
+  plotly::layout(legend = list(orientation = "h", y = -0.15))
+```
+
+The base case is roughly "earnings growth plus a small dividend." The historical pace is
+there as a reality check: matching the last decade again from a company this size would be
+hard, which is why I don't use it as my base case.
+
+## What could go wrong
+
+I'd be lying to myself if I skipped this part.
+
+* **The capex bill.** Alphabet expects to spend \$195 to \$205B on capex in 2026 and said
+  2027 will be significantly higher. Free cash flow went negative in Q2 and Q3 2026, which
+  Google investors are not used to seeing. If AI demand cools, that is a lot of servers to
+  depreciate.
+* **Dilution.** To fund the buildout, Alphabet raised about \$85B in new equity in June 2026
+  (including \$10B from Berkshire Hathaway) and did no buybacks in Q3. A company that used to
+  shrink its share count every year is now issuing shares.
+* **Search disruption.** Search growth slowed to 12% in Q3 2026 from 17% the quarter before.
+  If people get answers from chatbots and AI Mode does not monetize as well as ten blue links,
+  the core business shrinks.
+* **Antitrust.** Courts have found Google an illegal monopolist in both search and ad tech.
+  So far the remedies are behavioral (no forced sale of Chrome, Android, or AdX), but appeals
+  are still running in the US and Europe is still weighing its options.
+* **Noisy earnings.** Huge gains and losses on the SpaceX and Anthropic stakes now swing GAAP
+  net income by tens of billions a quarter (a \$99B gain in Q2 2026, an \$8.7B loss in Q3), so
+  headline EPS is less useful than it used to be. Operating income is the number to watch.
+
+## Why I'm still in
+
+Every one of those risks is real, but they mostly come from Google spending heavily into
+the biggest technology shift since mobile, from a position of owning the chips, the models,
+the cloud, and the distribution. I would rather own the company placing that bet than the
+ones it is placing it against.
+
+### Sources
+
+* Alphabet quarterly earnings releases (Q4 2025, Q1 to Q3 2026) and annual 10-K filings for
+  the financials table.
+* Price history from Yahoo Finance, refreshed weekly.
+* Coverage of the [Q3 2026 results](https://finance.yahoo.com/markets/stocks/articles/alphabet-google-cloud-revenue-doubles-204015708.html),
+  the [Q2 2026 SpaceX gain](https://fortune.com/2026/07/23/alphabet-q2-earnings-spacex-gain-ai-investment/),
+  and the [ad tech remedy ruling](https://www.justice.gov/opa/pr/department-justice-again-wins-substantial-relief-against-google).
