@@ -5,11 +5,12 @@ on:
     branches: [main]
   push:
     branches: [main]
-    # Workflow-only edits (e.g. Dependabot action bumps) are validated on their PR but
-    # do not change script source, so they do not start a deployment.
+    # Dependency lockfile and workflow-only changes are validated on their PR.
+    # A push that also changes source or other tooling still triggers deployment.
     paths:
       - 'scripts/tohs/**'
       - 'tools/tohs-apps-script/**'
+      - '!tools/tohs-apps-script/package-lock.json'
 
 permissions:
   contents: read
