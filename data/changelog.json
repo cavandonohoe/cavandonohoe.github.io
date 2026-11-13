@@ -1,11 +1,29 @@
 {
-  "generated_at": "2026-11-12T22:24:33.637667+00:00",
+  "generated_at": "2026-11-13T22:05:32.569959+00:00",
   "events": [
+    {
+      "date": "2026-11-13",
+      "type": "merged_pr",
+      "title": "Advance Spotify podcast cutoff to February 1, 2026",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/351"
+    },
     {
       "date": "2026-11-12",
       "type": "merged_pr",
       "title": "Shrink sierpinski animation and stop close runs being cancelled",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/344"
+    },
+    {
+      "date": "2026-11-12",
+      "type": "merged_pr",
+      "title": "Bump hono from 4.13.13 to 4.13.18 in /tools/tohs-apps-script",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/349"
+    },
+    {
+      "date": "2026-11-12",
+      "type": "merged_pr",
+      "title": "Bump @hono/node-server from 2.1.4 to 2.1.8 in /tools/tohs-apps-script",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/348"
     },
     {
       "date": "2026-11-12",
@@ -288,93 +306,24 @@
       "type": "merged_pr",
       "title": "Add beach volleyball player ratings analysis",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/163"
-    },
-    {
-      "date": "2026-10-14",
-      "type": "merged_pr",
-      "title": "Reorder homepage project cards",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/283"
-    },
-    {
-      "date": "2026-10-14",
-      "type": "merged_pr",
-      "title": "Record weekly shinyapps.io traffic history",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/287"
-    },
-    {
-      "date": "2026-10-14",
-      "type": "merged_pr",
-      "title": "Podcast dashboard: backfill export-only metadata, show undated saves, warn on API cap",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/269"
-    },
-    {
-      "date": "2026-10-14",
-      "type": "merged_pr",
-      "title": "Order homepage project cards by recent GA4 traffic",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/284"
-    },
-    {
-      "date": "2026-10-14",
-      "type": "merged_pr",
-      "title": "Fix the broken external links the link check found",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/288"
-    },
-    {
-      "date": "2026-10-14",
-      "type": "merged_pr",
-      "title": "Auto-merge passing minor/patch Dependabot PRs",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/281"
-    },
-    {
-      "date": "2026-10-14",
-      "type": "merged_pr",
-      "title": "Archive Google Ads dashboard",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/286"
-    },
-    {
-      "date": "2026-10-14",
-      "type": "merged_pr",
-      "title": "Add Google Ads dashboard",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/164"
-    },
-    {
-      "date": "2026-10-14",
-      "type": "merged_pr",
-      "title": "Add CBRE multifamily cap rate benchmark and insurance underwriting caveats to rental markets page",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/282"
-    },
-    {
-      "date": "2026-10-13",
-      "type": "merged_pr",
-      "title": "movie-ranker: upgrade to Next 16 and React 19",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/279"
-    },
-    {
-      "date": "2026-10-13",
-      "type": "merged_pr",
-      "title": "movie-ranker: back-fill poster art from TMDB",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/280"
-    },
-    {
-      "date": "2026-10-13",
-      "type": "merged_pr",
-      "title": "deps: bump framer-motion from 12.40.0 to 14.1.0 in /movie-ranker",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/271"
-    },
-    {
-      "date": "2026-10-13",
-      "type": "merged_pr",
-      "title": "deps: bump @types/node from 20.19.43 to 26.6.5 in /movie-ranker",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/270"
-    },
-    {
-      "date": "2026-10-13",
-      "type": "merged_pr",
-      "title": "Bump Supabase clients, patch nested postcss, ignore blocked majors",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/275"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-11-13",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "4 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/1ebcd10fa676dd8abae904ee52b18390c76573af"
+        },
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "Podcast + Spotify experience improved",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/351"
+        }
+      ]
+    },
     {
       "date": "2026-11-12",
       "items": [
@@ -385,7 +334,7 @@
         },
         {
           "emoji": "\ud83d\udcbb",
-          "text": "2 PRs merged"
+          "text": "4 PRs merged"
         }
       ]
     },
@@ -549,25 +498,6 @@
           "emoji": "\ud83c\udfa7",
           "text": "4 podcast episodes added",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/9deef1e8d6d50ec10a48cb51fcfcaad7d373dd23"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-30",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "8 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/9dfcfde61a76fb1b1f1256cdf92e35a96fb57a49"
-        },
-        {
-          "emoji": "\ud83d\udcbb",
-          "text": "2 PRs merged"
-        },
-        {
-          "emoji": "\ud83d\uddfa\ufe0f",
-          "text": "Data-viz projects polished",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/320"
         }
       ]
     }
