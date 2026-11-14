@@ -3,11 +3,11 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 506,
+    "n_episodes": 507,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-11-13",
-    "api_saved_count": 97,
-    "n_removed": 357,
+    "api_refreshed_at": "2026-11-14",
+    "api_saved_count": 95,
+    "n_removed": 360,
     "n_unavailable": 28
   },
   "episodes": [
@@ -874,7 +874,7 @@
       "url": "https://open.spotify.com/episode/6vyrGkJwfqSgGQRc10uYBV",
       "desc": "In World War II, a secret department of British 'corkscrew thinkers' hatched a plan to use the cadaver of an unclaimed homeless man to turn the tide of the war in the Allies' favor. It worked. Listen to this classic episode as Josh and Chuck take you through the real life tale.See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-14"
     },
     {
       "added_at": "2026-09-24",
@@ -1274,7 +1274,7 @@
       "url": "https://open.spotify.com/episode/0CHP5jKiJjfe1I55YX5S7o",
       "desc": "For 50 years, the healthcare industry has been trying (and failing) to harness the power of artificial intelligence. It may finally be ready for prime time. What will this mean for human doctors — and the rest of us? (Part four of “The Freakonomics Radio Guide to Getting Better.”) SOURCES:Bob Wachter, professor, chair of the department of medicine at the University of California, San Francisco.Pierre Elias, cardiologist, assistant professor of biomedical informatics at Columbia University, medical director for artificial intelligence at NewYork-Presbyterian Hospital. RESOURCES:A Giant Leap: How AI Is Transforming Healthcare and What That Means for Our Future, by Bob Wachter (2026).\"Epic Systems (MyChart),\" by Acquired (2025).\"Detecting structural heart disease from electrocardiograms using AI,\" by Pierre Elias and Timothy Poterucha (Nature, 2025).\"What Are the Risks of Sharing Medical Records With ChatGPT?\" by Maggie Astor (New York Times, 2025).\"Will Generative Artificial Intelligence Deliver on Its Promise in Health Care?\" by Bob Wachter and Erik Brynjolfsson (JAMA, 2023).The Digital Doctor: Hope, Hype, and Harm at the Dawn of Medicine’s Computer Age, by Bob Wachter (2015). EXTRAS:\"The Doctor Won’t See You Now,\" by Freakonomics Radio (2025).\"How to Stop Worrying and Love the Robot Apocalypse (Update),\" by Freakonomics Radio (2024). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-14"
     },
     {
       "added_at": "2026-01-21",
@@ -1460,7 +1460,7 @@
       "url": "https://open.spotify.com/episode/5sx4xWymoY8VcGRlTTzWw7",
       "desc": "Meanwhile... Junk from space is falling from the sky, DNA science is helping us learn more about ancient STDs, a Chinese mushroom makes you see tiny people, gym-goers need to go wash their hands right now, Sydney Sweeney has been accused of an undergarment misdemeanor, a bus driver in Delaware did the unthinkable, and scientists announced a big leap forward in robotic speech. ",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-14"
     },
     {
       "added_at": "2026-01-21",
@@ -2516,7 +2516,8 @@
       "release": "2026-02-02",
       "url": "https://open.spotify.com/episode/0GAalOHgIHWZ7pT3sL8oA6",
       "desc": "This week's Daily Show host Michael Kosta is joined by writer Kat Radley to recap the news of the week, and preview what's to come.  They dig into the new Trump account for newborns, the possible suppression of anti-ICE content across social media, and check in on what the FBI is up to now.  Looking ahead they preview another potential government shutdown, and a weirdly sexy Winter Olympics.  Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "478bjDVYoiEd2QC6ofdvxO",
@@ -2541,7 +2542,7 @@
       "url": "https://open.spotify.com/episode/1iijPZT8CXi6qY9VsR7S1c",
       "desc": "Democrats express their outrage over the Trump administration's immigration crackdown, with Chuck Schumer calling Kristi Noem and Stephen Miller \"f**king liars\" and Hakeem Jeffries on accidental mute. Plus, Desi Lydic plunges into the world of Melania ahead of her documentary debut, which was produced by Jeff Bezos, directed by disgraced filmmaker Brett Ratner, and created by a crew too ashamed to have their names in the credits. Grace Kuhlenschmidt meets Wisconsin native and snakebite enthusiast Tim Friede, who has built up an immunity to 19 of the most venomous snake species, and learns that doing your own medical research actually can save lives... when done with the help of a team of medical science experts. Emmy Award-winning actress Katherine LaNasa sits down with Desi Lydic to discuss her starring role as Nurse Dana in “The Pitt.” They talk about landing an acting job on her last day of cancer radiation, her experience with ER nurses throughout treatment, the insight “The Pitt” gives into broken hospital systems, and how the scripted medical cases made her more compassionate towards real healthcare workers. Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-14"
     },
     {
       "id": "1sQ9iV6kTf9hlj2GChV6pJ",
@@ -2565,7 +2566,8 @@
       "release": "2026-02-01",
       "url": "https://open.spotify.com/episode/1qGuwoSnnEeqORDhiPIOD9",
       "desc": " Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "5ISHjqoIm7O6kNMNQUMN1A",
@@ -3727,7 +3729,8 @@
       "release": "2026-02-02",
       "url": "https://open.spotify.com/episode/0Z0TLFz1xH3GIWHWsZyA8S",
       "desc": "Kevin Warsh has been tapped as the next chair of the Federal Reserve. We’re sure that he’ll have a lot of questions about how to run the Fed if confirmed. So we put together this briefing.On today’s show, three Fed watchers give their advice for the next chair. On politics, interest rate cuts and dealing with the Fed’s repeated trading scandals. Oh, and can someone please forward this episode to Kevin Warsh?Related episodes: One Fed battle after anotherLisa Cook and the fight for the FedA primer on the Federal Reserve's independenceIt's hard out there for a Fed chairFor sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2025-11-14",
@@ -4279,8 +4282,7 @@
       "release": "2026-10-03",
       "url": "https://open.spotify.com/episode/0JrnaPUF6P5tCAONQrfNrF",
       "desc": "Bras are loved and hated, sometimes at the same time. But as difficult and restrictive as they can be, they rescued women from a much cruel contraption: corsets. The question remains, though, do women need bras at all? Listen to this classic episode to find out.See omnystudio.com/listener for privacy information.",
-      "api_seen": true,
-      "removed_at": "2026-11-12"
+      "api_seen": true
     },
     {
       "id": "6cntflMsLtwvZ8ghx05l05",
@@ -4454,7 +4456,8 @@
       "release": "2026-10-07",
       "url": "https://open.spotify.com/episode/40VBBhFo4a96cKLH73gBCm",
       "desc": "Why do clothing styles get stale and then come back into fashion? Listen in to find out.See omnystudio.com/listener for privacy information.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "1pHHFomZq3B65UnS7Xbpyi",
@@ -6291,6 +6294,18 @@
       "release": "2026-11-13",
       "url": "https://open.spotify.com/episode/2mqaoMCsulSwWqz75WJ83j",
       "desc": "How do you live longer and better? Neil deGrasse Tyson and co-hosts Chuck Nice and Gary O’Reilly sit down with biomedical scientist Rhonda Patrick to explore healthspan, fad diets, and how to exercise for longevity.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/the-longevity-playbook-with-rhonda-patrick/Thanks to our Patrons Max Mandelbaum, Kevin Bridgewater, Curtis Preminger, Summer Nelson, Jan Kos, James Harrison, Sootgecko, GLEN PHELPS, Dachi., Charlie Pence, Xavier Nelson, Stacey Paré, Debra Davati, Tom Determan, Casey Saunders, bethie, marcus mitchell, Carl Perkins, AM23, OldGuy, Oona, and Mariana Vidal for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
+      "api_seen": true
+    },
+    {
+      "id": "2SxD5jlu7K0K3cEgHBixzF",
+      "added_at": "2026-11-13",
+      "show": "Planet Money",
+      "publisher": null,
+      "name": "Are wildfires making the future uninsurable?",
+      "dur_min": 41,
+      "release": "2026-11-13",
+      "url": "https://open.spotify.com/episode/2SxD5jlu7K0K3cEgHBixzF",
+      "desc": "Over the past decade, increasingly catastrophic wildfires have wrought unprecedented destruction and upended the basic math of the insurance industry. In some of the riskiest parts of the country, homeowners have seen spiking premiums or lost their coverage altogether.Today on the show, we travel to the forested foothills of Northern California to see how communities in wildfire-prone areas are trying to conjure the private insurance market back into existence. What actually happens when a megafire comes knocking at your door. And what all this means for the biggest question: In the age of climate change, could the future simply become uninsurable?For more about how natural disasters are changing the insurance industry: Insurance in the time of climate changeInside the insurance industry’s destruction labEpisode 797: Flood Money Episode 570: The Fine Print Read: Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life Our weekly longform Planet Money newsletterOur weekly Indicator round-up newsletterFollow: InstagramTikTokYouTubeFacebookThis episode was produced by Vito Emanuel and edited by Jess Jiang. It was engineered by Travis Hagan and fact-checked by Sierra Juarez. Alex Goldmark is our executive producer. Music: NPR Source Audio - \"FasterFasterBrighter,\" \"Country Butter,\" and \"Chrome and Wax\"Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true
     }
   ]
