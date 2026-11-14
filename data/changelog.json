@@ -1,6 +1,18 @@
 {
-  "generated_at": "2026-11-13T22:05:32.569959+00:00",
+  "generated_at": "2026-11-14T20:53:06.585897+00:00",
   "events": [
+    {
+      "date": "2026-11-14",
+      "type": "merged_pr",
+      "title": "Check whether validated TOHS Apps Script pushes change the deployable bundle",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/350"
+    },
+    {
+      "date": "2026-11-14",
+      "type": "merged_pr",
+      "title": "Add Why I Own Google page",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/352"
+    },
     {
       "date": "2026-11-13",
       "type": "merged_pr",
@@ -276,39 +288,23 @@
       "type": "merged_pr",
       "title": "Add Arcane to IMDb rating plot",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/291"
-    },
-    {
-      "date": "2026-10-15",
-      "type": "merged_pr",
-      "title": "US Rental Markets: investor-focused calculator, leverage metrics, and scoring",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/162"
-    },
-    {
-      "date": "2026-10-15",
-      "type": "merged_pr",
-      "title": "Remove permanently closed XiAn Biang Biang Noodle",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/289"
-    },
-    {
-      "date": "2026-10-15",
-      "type": "merged_pr",
-      "title": "Link check: actually scan every page, and cut the false positives",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/285"
-    },
-    {
-      "date": "2026-10-15",
-      "type": "merged_pr",
-      "title": "Archive beach volleyball player ratings page",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/290"
-    },
-    {
-      "date": "2026-10-15",
-      "type": "merged_pr",
-      "title": "Add beach volleyball player ratings analysis",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/163"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-11-14",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "1 podcast episode added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/54379348ab775aeb9323243daf9f587dd76bc5c6"
+        },
+        {
+          "emoji": "\ud83d\udcbb",
+          "text": "2 PRs merged"
+        }
+      ]
+    },
     {
       "date": "2026-11-13",
       "items": [
@@ -488,16 +484,6 @@
           "emoji": "\ud83c\udfa7",
           "text": "1 podcast episode added",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/2574a630790ff0a0b60331dd51f16739806ff327"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-31",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "4 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/9deef1e8d6d50ec10a48cb51fcfcaad7d373dd23"
         }
       ]
     }
