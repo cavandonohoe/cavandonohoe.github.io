@@ -230,7 +230,7 @@ cloud_plot
 And 2026 is on a different curve: Cloud grew 63% in Q1, 82% in Q2, and 103% in Q3, when it
 did \$30.7B in one quarter. Management says just over half of the \$561B backlog should turn
 into revenue over the next two years, and they are still capacity constrained (they are
-renting other people's data centers to keep up).
+renting third-party compute to keep up).
 
 ## Returns vs the S&P 500
 
@@ -371,12 +371,13 @@ I'd be lying to myself if I skipped this part.
   2027 will be significantly higher. Free cash flow went negative in Q2 and Q3 2026, which
   Google investors are not used to seeing. If AI demand cools, that is a lot of servers to
   depreciate.
-* **Dilution.** To fund the buildout, Alphabet raised about \$85B in new equity in June 2026
-  (including \$10B from Berkshire Hathaway) and did no buybacks in Q3. A company that used to
-  shrink its share count every year is now issuing shares.
-* **Search disruption.** Search growth slowed to 12% in Q3 2026 from 17% the quarter before.
-  If people get answers from chatbots and AI Mode does not monetize as well as ten blue links,
-  the core business shrinks.
+* **Dilution.** To fund the buildout, Alphabet announced an ~\$85B equity raise in June 2026
+  (including \$10B from Berkshire Hathaway), part of it sold gradually through an
+  at-the-market program, and bought back no stock in the first nine months of 2026. A company
+  that used to shrink its share count every year is now issuing shares.
+* **Search disruption.** Search growth slowed to 12% in Q3 2026 from 17% the quarter before
+  (management blamed mostly FX and a World Cup-inflated Q2). If people get answers from
+  chatbots and AI Mode does not monetize as well as ten blue links, the core business shrinks.
 * **Antitrust.** Courts have found Google an illegal monopolist in both search and ad tech.
   So far the remedies are behavioral (no forced sale of Chrome, Android, or AdX), but appeals
   are still running in the US and Europe is still weighing its options.
@@ -394,7 +395,12 @@ ones it is placing it against.
 ### Sources
 
 * Alphabet quarterly earnings releases (Q4 2025, Q1 to Q3 2026) and annual 10-K filings for
-  the financials table.
+  the financials table, in particular the
+  [Q4 2025 release](https://www.sec.gov/Archives/edgar/data/1652044/000165204426000012/googexhibit991q42025.htm),
+  the
+  [Q3 2026 release](https://www.sec.gov/Archives/edgar/data/1652044/000165204426000080/googexhibit991q32026.htm),
+  and the
+  [June 2026 equity raise announcement](https://www.sec.gov/Archives/edgar/data/1652044/000119312526257724/d83560dex992.htm).
 * Price history from Yahoo Finance, refreshed weekly.
 * Coverage of the [Q3 2026 results](https://finance.yahoo.com/markets/stocks/articles/alphabet-google-cloud-revenue-doubles-204015708.html),
   the [Q2 2026 SpaceX gain](https://fortune.com/2026/07/23/alphabet-q2-earnings-spacex-gain-ai-investment/),
