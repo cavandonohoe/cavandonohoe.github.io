@@ -87,6 +87,8 @@ navbar:
         href: la_housing_heatmap.html
       - text: "Rent vs. Buy Calculator"
         href: https://cavandonohoe.shinyapps.io/rent-vs-buy/
+      - text: "Why I Own Google"
+        href: why_google.html
       - text: "--- Data Science & Clinical ---"
       - text: "SDTM with R"
         href: sdtm_with_r.html

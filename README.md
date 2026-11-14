@@ -91,6 +91,7 @@ Check out my website at <https://cavandonohoe.github.io>
 - [Rent vs. Buy
   Calculator](https://cavandonohoe.shinyapps.io/rent-vs-buy/) (Shiny,
   [source](https://github.com/cavandonohoe/rent-vs-buy))
+- [Why I Own Google](https://cavandonohoe.github.io/why_google.html)
 
 ### Data Science & Clinical
 
@@ -150,6 +151,8 @@ manual is a click away on the Actions tab.
 - `update_director_filmographies.yml` – monthly TMDb director
   filmography refresh for the Director Box Office Trajectory page.
 - `update_sp500.yml` – weekly VOO price refresh.
+- `update_googl.yml` – weekly GOOGL and SPY price refresh for Why I Own
+  Google.
 - `update_us_rentals.yml` – monthly Zillow ZHVI/ZORI refresh.
 - `update_rental_desk.yml` – monthly copy of the private rental-desk
   repo’s live tracker for the Rental Desk scoreboard (needs the
@@ -186,7 +189,7 @@ manual is a click away on the Actions tab.
 - `refresh-commit-activity.yml` – weekly re-knit of this README’s
   commit-activity charts.
 
-The uniform ones (`update_sp500`, `update_us_rentals`,
+The uniform ones (`update_sp500`, `update_googl`, `update_us_rentals`,
 `update_rental_desk`, `update_top250_with_rt`,
 `update_watched_episodes`) are thin callers of `refresh-data.yml`, which
 owns the shared run/guard/commit/redeploy logic. The rest stay
