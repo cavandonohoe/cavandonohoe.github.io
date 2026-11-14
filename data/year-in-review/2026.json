@@ -1,9 +1,9 @@
 {
   "year": 2026,
-  "commits": 348,
-  "pull_requests": 269,
+  "commits": 350,
+  "pull_requests": 270,
   "repositories_touched": 4,
-  "lines_added": 503081,
+  "lines_added": 503092,
   "most_used_language": "R",
   "language_lines_added": {
     "R": 27585,
@@ -4473,7 +4473,7 @@
   "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, dependency, build, docs, minified, and raw HTML input files are excluded.",
   "most_active_month": "October",
   "longest_streak_days": 16,
-  "active_days": 94,
+  "active_days": 96,
   "monthly_commits": [
     11,
     27,
@@ -4485,7 +4485,7 @@
     15,
     23,
     108,
-    20,
+    22,
     0
   ],
   "daily_activity": [
@@ -4958,10 +4958,20 @@
       "date": "2026-11-12",
       "commits": 2,
       "lines_added": 1626
+    },
+    {
+      "date": "2026-11-13",
+      "commits": 1,
+      "lines_added": 6
+    },
+    {
+      "date": "2026-11-14",
+      "commits": 1,
+      "lines_added": 5
     }
   ],
   "biggest_project": "cavandonohoe.github.io",
-  "biggest_project_commits": 289,
+  "biggest_project_commits": 291,
   "repositories": [
     "cavandonohoe/cavandonohoe",
     "cavandonohoe/cavandonohoe.github.io",
@@ -4969,12 +4979,12 @@
     "cavandonohoe/rent-vs-buy"
   ],
   "repository_commits": {
-    "cavandonohoe/cavandonohoe.github.io": 289,
+    "cavandonohoe/cavandonohoe.github.io": 291,
     "cavandonohoe/rent-vs-buy": 29,
     "cavandonohoe/confederate_statues": 20,
     "cavandonohoe/cavandonohoe": 10
   },
   "scope": "Author-matched commits on the default branch of public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bot-authored or bot-committed commits, deploy commits, and other authors are excluded. Moved files count only changed lines. Language totals use .gitattributes Linguist overrides plus built-in generated, vendored, dependency, build, docs, minified, and raw HTML input patterns. Overall lines added still include all files. PRs count public pull requests the user authored and merged into their own repositories during the year, when available.",
   "is_partial_year": true,
-  "generated_at": "2026-11-13T16:41:50.522553+00:00"
+  "generated_at": "2026-11-14T15:18:15.192239+00:00"
 }
