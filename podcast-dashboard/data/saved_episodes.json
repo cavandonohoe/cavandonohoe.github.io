@@ -6,8 +6,8 @@
     "n_episodes": 507,
     "previous_only_count": 42,
     "api_refreshed_at": "2026-11-14",
-    "api_saved_count": 95,
-    "n_removed": 360,
+    "api_saved_count": 90,
+    "n_removed": 363,
     "n_unavailable": 28
   },
   "episodes": [
@@ -1261,7 +1261,8 @@
       "release": "2026-02-03",
       "url": "https://open.spotify.com/episode/469GjkkOV8OqHH5SKhOzSK",
       "desc": "Helen Keller and Anne Sullivan were one of the most amazing non-magical duos in history. Imagine living trapped in your own mind – unable to see or hear – and then imagine learning to read, traveling the world, and becoming an ambassador of peace.   See omnystudio.com/listener for privacy information.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "0CHP5jKiJjfe1I55YX5S7o",
@@ -1910,7 +1911,8 @@
       "release": "2026-02-03",
       "url": "https://open.spotify.com/episode/3YVPhmDjUFMNvc6gqSgU3q",
       "desc": "Data centers are getting a lot of heat right now. There’s neighborhood pushback against them for water usage and environmental concerns, and some politicians on both sides of the aisle aren’t fans for the same reasons. There’s also fear that they could drive up the cost of electricity bills. But that last bit isn’t set in stone. Data center electric bill upcharge is not a guarantee. In fact, it is even possible for data centers to cause power bills to go down. Today on the show: the future of your power bill.Related episodes: No AI data centers in my backyard! What AI data centers are doing to your electric billFor sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2026-09-25",
@@ -2325,7 +2327,8 @@
       "release": "2026-02-03",
       "url": "https://open.spotify.com/episode/5e8UyaC0otA6xRlLtO8iE1",
       "desc": "Trump declares himself \"absolved\" by the latest release of Epstein files, while Elon Musk’s Christmas wish for a trip to the sex island is put on blast, and Jon Stewart finds himself on Epstein’s list… for documentary voiceovers. Plus, as MAGA continues to shield the president from all accountability, Jon Stewart shines a light on the double standard of sanctuary given to Trump vs. immigrants. Historian and Pulitzer Prize-winning author Heather Ann Thompson sits down with Jon Stewart to discuss her new book, “Fear and Fury: The Reagan Eighties, the Bernie Goetz Shootings, and the Rebirth of White Rage.” They talk about how big a figure Bernie Goetz was in 1980s New York, hailed as a \"vigilante\" for shooting four young Black men on a subway train despite the attack being unprovoked, the story’s parallels to ICE shooting protesters in Minneapolis, the costs of violence, and how these types of injustices paved the way for Donald Trump. Go to https://quince.com/dailyshow for free shipping on your order and 365-day returns. Now available in Canada, too.  Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": null,
@@ -2517,7 +2520,7 @@
       "url": "https://open.spotify.com/episode/0GAalOHgIHWZ7pT3sL8oA6",
       "desc": "This week's Daily Show host Michael Kosta is joined by writer Kat Radley to recap the news of the week, and preview what's to come.  They dig into the new Trump account for newborns, the possible suppression of anti-ICE content across social media, and check in on what the FBI is up to now.  Looking ahead they preview another potential government shutdown, and a weirdly sexy Winter Olympics.  Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-14"
     },
     {
       "id": "478bjDVYoiEd2QC6ofdvxO",
@@ -2567,7 +2570,7 @@
       "url": "https://open.spotify.com/episode/1qGuwoSnnEeqORDhiPIOD9",
       "desc": " Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-14"
     },
     {
       "id": "5ISHjqoIm7O6kNMNQUMN1A",
@@ -2973,7 +2976,8 @@
       "release": "2026-02-05",
       "url": "https://open.spotify.com/episode/0vv4oFJ0Qv0ADHo4HMbnwk",
       "desc": "How did the U.S. become the Olympic powerhouse it is today? Cold War competition. The Soviet Union sponsored their athletes. But America wanted its athletes to pull themselves up by their bootstraps. It birthed an unexpected accelerator of Olympic development: College football. Stay with us now.On today’s show, how college football became an Olympic development engine. And how that engine might not be running as smoothly as it once did.Related episodes: Why the Olympics cost so muchYou can't spell Olympics without IPA huge EU-India deal, Heated Rivalry, and a hefty $200k to OlympiansWhy Host The Olympics?The monetization of college sportsFor sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "7eo0YVJX1Ft3vtzp3Fj0MG",
@@ -3730,7 +3734,7 @@
       "url": "https://open.spotify.com/episode/0Z0TLFz1xH3GIWHWsZyA8S",
       "desc": "Kevin Warsh has been tapped as the next chair of the Federal Reserve. We’re sure that he’ll have a lot of questions about how to run the Fed if confirmed. So we put together this briefing.On today’s show, three Fed watchers give their advice for the next chair. On politics, interest rate cuts and dealing with the Fed’s repeated trading scandals. Oh, and can someone please forward this episode to Kevin Warsh?Related episodes: One Fed battle after anotherLisa Cook and the fight for the FedA primer on the Federal Reserve's independenceIt's hard out there for a Fed chairFor sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-14"
     },
     {
       "added_at": "2025-11-14",
@@ -4282,7 +4286,8 @@
       "release": "2026-10-03",
       "url": "https://open.spotify.com/episode/0JrnaPUF6P5tCAONQrfNrF",
       "desc": "Bras are loved and hated, sometimes at the same time. But as difficult and restrictive as they can be, they rescued women from a much cruel contraption: corsets. The question remains, though, do women need bras at all? Listen to this classic episode to find out.See omnystudio.com/listener for privacy information.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "6cntflMsLtwvZ8ghx05l05",
@@ -4456,8 +4461,7 @@
       "release": "2026-10-07",
       "url": "https://open.spotify.com/episode/40VBBhFo4a96cKLH73gBCm",
       "desc": "Why do clothing styles get stale and then come back into fashion? Listen in to find out.See omnystudio.com/listener for privacy information.",
-      "api_seen": true,
-      "api_misses": 1
+      "api_seen": true
     },
     {
       "id": "1pHHFomZq3B65UnS7Xbpyi",
@@ -6306,7 +6310,8 @@
       "release": "2026-11-13",
       "url": "https://open.spotify.com/episode/2SxD5jlu7K0K3cEgHBixzF",
       "desc": "Over the past decade, increasingly catastrophic wildfires have wrought unprecedented destruction and upended the basic math of the insurance industry. In some of the riskiest parts of the country, homeowners have seen spiking premiums or lost their coverage altogether.Today on the show, we travel to the forested foothills of Northern California to see how communities in wildfire-prone areas are trying to conjure the private insurance market back into existence. What actually happens when a megafire comes knocking at your door. And what all this means for the biggest question: In the age of climate change, could the future simply become uninsurable?For more about how natural disasters are changing the insurance industry: Insurance in the time of climate changeInside the insurance industry’s destruction labEpisode 797: Flood Money Episode 570: The Fine Print Read: Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life Our weekly longform Planet Money newsletterOur weekly Indicator round-up newsletterFollow: InstagramTikTokYouTubeFacebookThis episode was produced by Vito Emanuel and edited by Jess Jiang. It was engineered by Travis Hagan and fact-checked by Sierra Juarez. Alex Goldmark is our executive producer. Music: NPR Source Audio - \"FasterFasterBrighter,\" \"Country Butter,\" and \"Chrome and Wax\"Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     }
   ]
 }
