@@ -5,9 +5,8 @@ on:
     branches: [main]
   push:
     branches: [main]
-    # Workflow-only edits (e.g. Dependabot action bumps) are validated on their PR but
-    # do not change script source, so they do not start a deployment.
     paths:
+      - '.github/workflows/tohs-apps-script.yml'
       - 'scripts/tohs/**'
       - 'tools/tohs-apps-script/**'
 
@@ -19,10 +18,13 @@ jobs:
     name: Validate Apps Script
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    outputs:
+      bundle_changed: ${{ steps.bundle.outputs.changed }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
+          fetch-depth: 0
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           node-version: '22'
@@ -35,12 +37,29 @@ jobs:
           npm run validate
           npm test
 
+      - name: Compare the Apps Script bundles before and after the push
+        id: bundle
+        if: github.event_name == 'push'
+        working-directory: tools/tohs-apps-script
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const { bundle, fingerprint } = require('./manage.cjs');
+          const before = process.env.BEFORE_SHA;
+          if (!/^[a-f0-9]{40}$/.test(before)) throw new Error('Missing previous main SHA');
+          const changed = fingerprint(bundle(before).files) !== fingerprint(bundle().files);
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `changed=${changed}\n`);
+          console.log(changed ? 'Apps Script bundle changed.' : 'Apps Script bundle is identical.');
+          NODE
+
   deploy:
     name: Deploy existing Apps Script
     needs: validate
     if: >-
       github.event_name == 'push' && github.ref == 'refs/heads/main' &&
-      vars.TOHS_APPS_SCRIPT_ENABLED == 'true'
+      vars.TOHS_APPS_SCRIPT_ENABLED == 'true' && needs.validate.outputs.bundle_changed == 'true'
     environment: tohs-apps-script-production
     concurrency:
       group: tohs-apps-script-production
