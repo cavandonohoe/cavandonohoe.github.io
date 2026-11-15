@@ -1,6 +1,12 @@
 {
-  "generated_at": "2026-11-14T20:53:06.585897+00:00",
+  "generated_at": "2026-11-15T21:10:06.631355+00:00",
   "events": [
+    {
+      "date": "2026-11-15",
+      "type": "merged_pr",
+      "title": "Fit L.A. Times geography tables on mobile",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/353"
+    },
     {
       "date": "2026-11-14",
       "type": "merged_pr",
@@ -282,15 +288,19 @@
       "type": "merged_pr",
       "title": "Sync README with site nav and workflows",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/292"
-    },
-    {
-      "date": "2026-10-16",
-      "type": "merged_pr",
-      "title": "Add Arcane to IMDb rating plot",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/291"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-11-15",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "3 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/1b38469b64d67de77c948cf465a98caeacc26f7d"
+        }
+      ]
+    },
     {
       "date": "2026-11-14",
       "items": [
@@ -474,16 +484,6 @@
           "emoji": "\ud83c\udfac",
           "text": "Movie & TV data refreshed",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/35ca3a3675f69b2f43d8338a2788a5bc7b323255"
-        }
-      ]
-    },
-    {
-      "date": "2026-11-01",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "1 podcast episode added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/2574a630790ff0a0b60331dd51f16739806ff327"
         }
       ]
     }
