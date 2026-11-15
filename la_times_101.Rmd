@@ -66,14 +66,18 @@ How often does the L.A. Times 101 list make room for a first-timer? Every editio
   .la101 .geo-matrix td { padding: 2px 1px; }
   .la101 .geo-matrix th { white-space: normal; overflow-wrap: anywhere; }
   .la101 .geo-matrix th:first-child { width: 28%; font-size: 11px; }
-  .la101 .geo-matrix { width: calc(100% - 6px); }
+  .la101 .geo-matrix { width: calc(100% - 12px); }
   .la101 .geo-matrix thead th:first-child { position: static; }
   .la101 .geo-matrix thead th:not(:first-child) {
-    position: relative; height: 30px; font-size: 10px; line-height: 1;
+    position: relative; height: 34px; font-size: 10px; line-height: 1;
   }
   .la101 .geo-matrix thead th:not(:first-child) span {
-    position: absolute; left: 1px; bottom: 2px; white-space: nowrap;
+    position: absolute; left: 50%; bottom: 6px; white-space: nowrap;
     transform: rotate(-45deg); transform-origin: left bottom;
+  }
+  .la101 .geo-matrix thead th:not(:first-child)::after {
+    content: ""; position: absolute; left: 50%; bottom: 0;
+    width: 1px; height: 6px; background: #5a6e68;
   }
   .la101 .geo-matrix button {
     min-width: 0; min-height: 26px; padding: 0; font-size: 10px;
