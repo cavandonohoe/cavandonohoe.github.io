@@ -59,6 +59,29 @@ How often does the L.A. Times 101 list make room for a first-timer? Every editio
   background: hsl(161, 37%, var(--geo-lightness, 98%));
 }
 .la101 .geo-matrix button[aria-pressed="true"] { border: 2px solid #164a40; font-weight: 700; }
+.la101 .geo-year-short { display: none; }
+@media (max-width: 600px) {
+  .la101 .geo-matrix,
+  .la101 .neighborhood-table { width: 100%; table-layout: fixed; }
+  .la101 .geo-matrix th,
+  .la101 .geo-matrix td { padding: 2px 1px; }
+  .la101 .geo-matrix th { white-space: normal; overflow-wrap: anywhere; }
+  .la101 .geo-matrix th:first-child { width: 28%; font-size: 11px; }
+  .la101 .geo-matrix th:not(:first-child) { text-align: center; font-size: 10px; }
+  .la101 .geo-year-full { display: none; }
+  .la101 .geo-year-short { display: inline; }
+  .la101 .geo-matrix button {
+    min-width: 0; min-height: 26px; padding: 0; font-size: 10px;
+  }
+  .la101 .neighborhood-table { font-size: 12px; }
+  .la101 .neighborhood-table th,
+  .la101 .neighborhood-table td { padding: 4px; overflow-wrap: anywhere; }
+  .la101 .neighborhood-table th.sortable { padding: 0; }
+  .la101 .neighborhood-table .sort-button { padding: 4px; gap: 2px; min-height: 24px; }
+  .la101 .neighborhood-table thead th:first-child { width: 28px; }
+  .la101 .neighborhood-table thead th:nth-child(2) { width: 31%; }
+  .la101 .neighborhood-table thead th:nth-child(3) { width: 46px; }
+}
 </style>
 
 ```{=html}
@@ -81,7 +104,7 @@ How often does the L.A. Times 101 list make room for a first-timer? Every editio
     </div>
     <p id="la101-geo-summary" aria-live="polite"></p>
     <div class="table-wrap">
-      <table class="table table-striped">
+      <table class="table table-striped neighborhood-table">
         <caption>Neighborhoods and cities by number of published slots. Select a column heading to sort.</caption>
         <thead><tr><th scope="col">#</th><th scope="col" data-sort="area">Area</th><th scope="col" data-sort="slots" data-first-dir="desc">Slots</th><th scope="col">Entries</th></tr></thead>
         <tbody id="la101-geo-entries"></tbody>
@@ -290,6 +313,14 @@ cat('<script type="application/json" id="la101-geo-data">\n',
     for (const label of ["Region", ...years]) {
       const th = element("th", label);
       th.scope = "col";
+      if (label !== "Region") {
+        th.setAttribute("aria-label", label);
+        const fullYear = element("span", label);
+        fullYear.className = "geo-year-full";
+        const shortYear = element("span", String(label).slice(-2));
+        shortYear.className = "geo-year-short";
+        th.replaceChildren(fullYear, shortYear);
+      }
       header.append(th);
     }
     matrix.tHead.append(header);
