@@ -3,11 +3,11 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 507,
+    "n_episodes": 510,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-11-14",
-    "api_saved_count": 90,
-    "n_removed": 363,
+    "api_refreshed_at": "2026-11-15",
+    "api_saved_count": 87,
+    "n_removed": 366,
     "n_unavailable": 28
   },
   "episodes": [
@@ -166,7 +166,8 @@
       "release": "2026-09-18",
       "url": "https://open.spotify.com/episode/6eSRM9MSPaGpP23cl4dpY3",
       "desc": "This week’s indicators: Tracking your pain at the gas pump in real-time; OpenAI’s IPO hard-launch tug-of-war; one unexpected ingredient is making fertilizer—and potentially your groceries—a whole lot more expensive.Fact checking by Schuyler Swenson.Your Next Listen — What Iran teaches us about why wars startConnect with The Indicator — Sign up for The Indicator’s weekly newsletter! — Buy the Planet Money book — Find our socials, YouTube and more! — For sponsor-free episodes, subscribe to NPR+ Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": null,
@@ -1262,7 +1263,7 @@
       "url": "https://open.spotify.com/episode/469GjkkOV8OqHH5SKhOzSK",
       "desc": "Helen Keller and Anne Sullivan were one of the most amazing non-magical duos in history. Imagine living trapped in your own mind – unable to see or hear – and then imagine learning to read, traveling the world, and becoming an ambassador of peace.   See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-15"
     },
     {
       "id": "0CHP5jKiJjfe1I55YX5S7o",
@@ -1826,7 +1827,8 @@
       "release": "2026-09-18",
       "url": "https://open.spotify.com/episode/0oAWTBiSQOK1BYfdnHz4ql",
       "desc": "Dragons are like mermaids in that they're not real. And that's about where the comparison ends. Learn all about dragons today.See omnystudio.com/listener for privacy information.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2026-09-25",
@@ -1912,7 +1914,7 @@
       "url": "https://open.spotify.com/episode/3YVPhmDjUFMNvc6gqSgU3q",
       "desc": "Data centers are getting a lot of heat right now. There’s neighborhood pushback against them for water usage and environmental concerns, and some politicians on both sides of the aisle aren’t fans for the same reasons. There’s also fear that they could drive up the cost of electricity bills. But that last bit isn’t set in stone. Data center electric bill upcharge is not a guarantee. In fact, it is even possible for data centers to cause power bills to go down. Today on the show: the future of your power bill.Related episodes: No AI data centers in my backyard! What AI data centers are doing to your electric billFor sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.  See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-15"
     },
     {
       "added_at": "2026-09-25",
@@ -2290,7 +2292,8 @@
       "release": "2026-02-05",
       "url": "https://open.spotify.com/episode/1WoclIDAaWNiqe5QhBukVs",
       "desc": "Michael Kosta dives into Trump’s recent moves to steer the country back on track, which include the release of lame new “America Is Back” hats, telling CNN’s Kaitlan Collins to get over the Epstein files and smile more, and continuing his D.C. makeover by building a massive arch across from the Lincoln Memorial. Plus, Grace Kuhlenschmidt shares further updates on the president’s construction rampage. The state that brought you President Ronald Reagan and Governor Arnold Schwarzenegger offers a thrilling new contender for the White House: Governor Gavin Newsom. From enduring humble nepo baby beginnings in San Francisco, to opening a winery backed by an oil tycoon, to casting himself as an all-caps-posting foil to President Trump, Newsom is ready to make his national debut as a 2028 presidential candidate. This is the Daily Showography of Gavin Newsom. Ms. Pat, comedian, actor, and co-creator of the hit BET+ series, \"The Ms. Pat Show,\" sits down with Michael Kosta to discuss the show's fifth season. They talk about fighting through network pulls for the chance to speak out about immigration, portraying a unique-yet-universal mother to viewers, preparing for a doomsday scenario in the current administration, and learning to believe in herself after being shot, abused, and incarcerated. Go to https://quince.com/dailyshow for free shipping on your order and 365-day returns. Now available in Canada, too.  Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": "2025-10-26",
@@ -2328,7 +2331,7 @@
       "url": "https://open.spotify.com/episode/5e8UyaC0otA6xRlLtO8iE1",
       "desc": "Trump declares himself \"absolved\" by the latest release of Epstein files, while Elon Musk’s Christmas wish for a trip to the sex island is put on blast, and Jon Stewart finds himself on Epstein’s list… for documentary voiceovers. Plus, as MAGA continues to shield the president from all accountability, Jon Stewart shines a light on the double standard of sanctuary given to Trump vs. immigrants. Historian and Pulitzer Prize-winning author Heather Ann Thompson sits down with Jon Stewart to discuss her new book, “Fear and Fury: The Reagan Eighties, the Bernie Goetz Shootings, and the Rebirth of White Rage.” They talk about how big a figure Bernie Goetz was in 1980s New York, hailed as a \"vigilante\" for shooting four young Black men on a subway train despite the attack being unprovoked, the story’s parallels to ICE shooting protesters in Minneapolis, the costs of violence, and how these types of injustices paved the way for Donald Trump. Go to https://quince.com/dailyshow for free shipping on your order and 365-day returns. Now available in Canada, too.  Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-15"
     },
     {
       "added_at": null,
@@ -2667,7 +2670,8 @@
       "release": "2026-09-18",
       "url": "https://open.spotify.com/episode/53oq4iscAyVYWpVdNxly0M",
       "desc": "Mayor Zohran Mamdani is expanding NYC’s public restrooms, which is good because the war in Iran is once again going to s**t. Michael Kosta breaks down how the war continues to drive up prices, including the price of diesel (the fuel, not the jeans brand). Plus, move over, Strait of Hormuz: a hot, new, geopolitically tense strait has entered the villa. Ronny Chieng and Michael Kosta butt heads over the biggest sports stories of the day: NY Giants quarterback Jameis Winston goes on a cologne-spritzing spree in the locker room, Sydney Sweeney takes heat for her naked Novig sports betting ad, and an Australian athlete becomes the Usain Bolt of sharting, in the latest edition of Sports War. Defector Media staff writer & cofounder and bestselling author, Giri Nathan, sits down with Michael Kosta to discuss his book “Changeover: A Young Rivalry and a New Era of Men's Tennis,\" about the rise and rivalry of pro tennis players Carlos Alcaraz and Jannik Sinner. The two tennis superfans review this year’s U.S. Open, discussing Honey Deuce towers, influencer drama, and both the men’s and women’s finals. Plus, how the USTA can grow tennis fandom while preserving the sport’s spectacle and tradition. -- Dose - New customers can save 35% on your first month of subscription by going to https://dosedaily.co/TDS or entering TDS at checkout. -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "030DFJeiBXbcTRnEPsOdqi",
@@ -2977,7 +2981,7 @@
       "url": "https://open.spotify.com/episode/0vv4oFJ0Qv0ADHo4HMbnwk",
       "desc": "How did the U.S. become the Olympic powerhouse it is today? Cold War competition. The Soviet Union sponsored their athletes. But America wanted its athletes to pull themselves up by their bootstraps. It birthed an unexpected accelerator of Olympic development: College football. Stay with us now.On today’s show, how college football became an Olympic development engine. And how that engine might not be running as smoothly as it once did.Related episodes: Why the Olympics cost so muchYou can't spell Olympics without IPA huge EU-India deal, Heated Rivalry, and a hefty $200k to OlympiansWhy Host The Olympics?The monetization of college sportsFor sponsor-free episodes of The Indicator from Planet Money, subscribe to Planet Money+ via Apple Podcasts or at plus.npr.org. Fact-checking by Sierra Juarez. Music by Drop Electric. Find us: TikTok, Instagram, Facebook, Newsletter.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-15"
     },
     {
       "id": "7eo0YVJX1Ft3vtzp3Fj0MG",
@@ -3201,7 +3205,8 @@
       "release": "2026-09-18",
       "url": "https://open.spotify.com/episode/7taI3JLd579RKnKpie7kgh",
       "desc": "Do the fractal nature of the universe and the human brain have anything to do with each other? Neil deGrasse Tyson and co-hosts Chuck Nice and Gary O’Reilly welcome back Geek-In-Chief Charles Liu, for a grab bag covering deep space travel, fractal mathematics, multiverse theory, and what we might never know about the universe.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free.Thanks to our Patrons Mike Allen, Hailey Thorn, Daniel, Kyle Jones, Halloween Jack, Chris McDermott, AmberDawn, Jesabi Lornkapi, John Olsson, 🔭reality smacks!, Sam Paterson, Calder DeFord, Heerat Singh, Dylan Ledford, Xander Soren, Victoria S, Christoffer R Hansen, Montreaux Rodgers, Chris from VA, Scott Stroud, H, Prince, Samuel, Heidi Jim, Benjamin Ruso, Jason Sturgeon, Lonny Trestrail, Susan Levaque, Willy Croezen, Luke Stancs, Clare Bear, Alan Davis, Anthony Ware, Alejandro Pedraza, Monday Olives, Hal Garland, Ralts, Vaughan Hall, Cynthia, Darrel Wallace, Bryan Marks, Tsveta Bahchevanska, Steven Webber, North.T, Tyler O'Brien, Bob, Larry Prosser, Sean Mueller, LilBopper, Bender, n1ck_knack, Hisui Hyena, and Lou Taylor for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "added_at": null,
@@ -4118,7 +4123,8 @@
       "release": "2026-09-28",
       "url": "https://open.spotify.com/episode/4yrXpdAkqAsqs2AeTFDsis",
       "desc": "When things fall into bogs, they sometimes wind up being beautifully preserved. This includes bodies, sometimes dating back thousands of years. We’re still trying to understand who was buried in the bogs and why.  Guest: Anna North, journalist and author of Bog Queen  To watch this episode on video, find us on ⁠Netflix⁠!  For show transcripts, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unxtranscripts⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠For more, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unexplainable⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠And please email us! ⁠⁠⁠⁠unexplainable@vox.com⁠⁠⁠⁠ We read every email.Support Unexplainable (and get ad-free episodes) by becoming a Vox Member today: ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/members⁠ Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "4zMr5Bh73SnUOiO5vOETNd",
@@ -4286,8 +4292,7 @@
       "release": "2026-10-03",
       "url": "https://open.spotify.com/episode/0JrnaPUF6P5tCAONQrfNrF",
       "desc": "Bras are loved and hated, sometimes at the same time. But as difficult and restrictive as they can be, they rescued women from a much cruel contraption: corsets. The question remains, though, do women need bras at all? Listen to this classic episode to find out.See omnystudio.com/listener for privacy information.",
-      "api_seen": true,
-      "api_misses": 1
+      "api_seen": true
     },
     {
       "id": "6cntflMsLtwvZ8ghx05l05",
@@ -4347,8 +4352,7 @@
       "release": "2026-10-05",
       "url": "https://open.spotify.com/episode/3M5KZrO27xztKcxIYPyQKs",
       "desc": "How do you ask your friends to pay you back in a timely way? We’ve got an etiquette coach to help with that. Fact checking by Sierra Juarez.Your Next Listen — Is this a bank?Connect with The Indicator — Sign up for The Indicator’s weekly newsletter! — Buy the Planet Money book — Find our socials, YouTube and more! — For sponsor-free episodes, subscribe to NPR+ Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true,
-      "removed_at": "2026-11-13"
+      "api_seen": true
     },
     {
       "id": "66qOTq7rAMpJr90fPptG6Y",
@@ -4360,8 +4364,7 @@
       "release": "2026-10-05",
       "url": "https://open.spotify.com/episode/66qOTq7rAMpJr90fPptG6Y",
       "desc": "Is it yellow? Is it green? Or what if, as one scientist argues, “there’s no such thing as a color?” Guest: Bevil Conway, visual artist and neuroscientist at the National Eye Institute  To watch this episode on video, find us on Netflix!  For show transcripts, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unxtranscripts⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠For more, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unexplainable⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠And please email us! ⁠⁠⁠⁠unexplainable@vox.com⁠⁠⁠⁠  We read every email.Support Unexplainable (and get ad-free episodes) by becoming a Vox Member today: ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/members⁠ Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true,
-      "removed_at": "2026-11-12"
+      "api_seen": true
     },
     {
       "id": "7pVtMwL0hKrS3McEepuGEV",
@@ -4461,7 +4464,8 @@
       "release": "2026-10-07",
       "url": "https://open.spotify.com/episode/40VBBhFo4a96cKLH73gBCm",
       "desc": "Why do clothing styles get stale and then come back into fashion? Listen in to find out.See omnystudio.com/listener for privacy information.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "1pHHFomZq3B65UnS7Xbpyi",
@@ -4524,7 +4528,8 @@
       "release": "2026-10-08",
       "url": "https://open.spotify.com/episode/2xjdQNmzruAiMvSf2InOh9",
       "desc": "The SYSK boys continue the episode on stand-up comedy in part two, placing it in the rarefied company of other two-parters like Evel Knievel, the Hoover Dam, and the Trail of Tears. In this ep: should anything be off limits for stand-up? Consensus: no.See omnystudio.com/listener for privacy information.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "0rsVujmLChYTI6u9xRmwGp",
@@ -4560,7 +4565,8 @@
       "release": "2026-10-08",
       "url": "https://open.spotify.com/episode/0PqvGXDpAaNgdAYLoz7gt5",
       "desc": "Federal immigration enforcement arrests reached record highs this past summer, and under the second Trump administration, immigration agents can now more easily access so-called sensitive areas, including hospitals. Today on the show: how both patients and healthcare workers are bearing the physical and economic costs of these deportation campaigns. Featuring Dr. William D. Lopez, author of Raiding the Heartland: an American Story of Deportation and Resistance.Fact checking by Sierra Juarez.Your Next Listen  How ICE arrests are creating 'economies of fear'Connect with The Indicator from Planet MoneyThe Indicator newsletter - a weekly roundup of news, ideas and staff picks.Buy the Planet Money book InstagramTikTokYouTubeFor sponsor-free episodes, subscribe to NPR+ Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "3X729JgXcbPBaH0CjXlnlu",
@@ -6311,7 +6317,43 @@
       "url": "https://open.spotify.com/episode/2SxD5jlu7K0K3cEgHBixzF",
       "desc": "Over the past decade, increasingly catastrophic wildfires have wrought unprecedented destruction and upended the basic math of the insurance industry. In some of the riskiest parts of the country, homeowners have seen spiking premiums or lost their coverage altogether.Today on the show, we travel to the forested foothills of Northern California to see how communities in wildfire-prone areas are trying to conjure the private insurance market back into existence. What actually happens when a megafire comes knocking at your door. And what all this means for the biggest question: In the age of climate change, could the future simply become uninsurable?For more about how natural disasters are changing the insurance industry: Insurance in the time of climate changeInside the insurance industry’s destruction labEpisode 797: Flood Money Episode 570: The Fine Print Read: Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life Our weekly longform Planet Money newsletterOur weekly Indicator round-up newsletterFollow: InstagramTikTokYouTubeFacebookThis episode was produced by Vito Emanuel and edited by Jess Jiang. It was engineered by Travis Hagan and fact-checked by Sierra Juarez. Alex Goldmark is our executive producer. Music: NPR Source Audio - \"FasterFasterBrighter,\" \"Country Butter,\" and \"Chrome and Wax\"Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-15"
+    },
+    {
+      "id": "27160846BLEY5ivtUNafL8",
+      "added_at": "2026-11-14",
+      "show": "Stuff You Should Know",
+      "publisher": null,
+      "name": "Selects: Gobble Gobble: Turkeys!",
+      "dur_min": 47,
+      "release": "2026-11-14",
+      "url": "https://open.spotify.com/episode/27160846BLEY5ivtUNafL8",
+      "desc": "Turkeys are a very interesting bird as it turns out. Which may be why many people are leaving it off their Thanksgiving table this year. Learn all about them right now in this classic episode!See omnystudio.com/listener for privacy information.",
+      "api_seen": true
+    },
+    {
+      "id": "6x8FarrHUCbXIokd4eLdbR",
+      "added_at": "2026-11-14",
+      "show": "Late Night with Seth Meyers Podcast",
+      "publisher": null,
+      "name": "Corrections: The Podcast | Episode 185 - \"Law of Diminishing Returns\"",
+      "dur_min": 12,
+      "release": "2026-11-14",
+      "url": "https://open.spotify.com/episode/6x8FarrHUCbXIokd4eLdbR",
+      "desc": "Recorded every Thursday after the audience has left Studio 8G, and witnessed only by scattered members of the Late Night staff and crew… This is Corrections: The Podcast, Episode 185, \"Law of Diminishing Returns.\"See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
+      "api_seen": true
+    },
+    {
+      "id": "7ioPwjh5DkMpL6WWg4qKq2",
+      "added_at": "2026-11-14",
+      "show": "The Daily Show: Ears Edition",
+      "publisher": null,
+      "name": "This Week's News | Jon Stewart on Stephen Miller & Desi on Scott Colom's Mississippi Win",
+      "dur_min": 42,
+      "release": "2026-11-14",
+      "url": "https://open.spotify.com/episode/7ioPwjh5DkMpL6WWg4qKq2",
+      "desc": "Catch up on the latest headlines with The Daily Show News Team. Jon Stewart covers how Republicans are reacting to the blue wave from last week's midterm elections, Trump grappling with an afterlife dilemma on \"60 Minutes,\" and Stephen Miller's first day as the new White House chief of staff. Desi Lydic weighs in on Nvidia CEO Jensen Huang's honey trap sexpionage scandal, Lauren Boebert losing her congressional seat, and how House Democrats blew a Pete Hegseth impeachment vote after 11 of their members didn't show up. Plus, Desi chimes in on Scott Colom's historic win in Mississippi, where he became the first Black senator elected to the state in 150 years. -- To get simple, online access to personalized, affordable care for ED, Hair Loss, Weight Loss, and more, visit https://Hims.com/dailyshow  -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
+      "api_seen": true
     }
   ]
 }
