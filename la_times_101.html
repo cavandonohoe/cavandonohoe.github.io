@@ -732,6 +732,38 @@ debut, who came back, and who stayed on.</p>
   background: hsl(161, 37%, var(--geo-lightness, 98%));
 }
 .la101 .geo-matrix button[aria-pressed="true"] { border: 2px solid #164a40; font-weight: 700; }
+@media (max-width: 600px) {
+  .la101 .geo-matrix,
+  .la101 .neighborhood-table { width: 100%; table-layout: fixed; }
+  .la101 .geo-matrix th,
+  .la101 .geo-matrix td { padding: 2px 1px; }
+  .la101 .geo-matrix th { white-space: normal; overflow-wrap: anywhere; }
+  .la101 .geo-matrix th:first-child { width: 28%; font-size: 11px; }
+  .la101 .geo-matrix { width: calc(100% - 12px); }
+  .la101 .geo-matrix thead th:first-child { position: static; }
+  .la101 .geo-matrix thead th:not(:first-child) {
+    position: relative; height: 34px; font-size: 10px; line-height: 1;
+  }
+  .la101 .geo-matrix thead th:not(:first-child) span {
+    position: absolute; left: 50%; bottom: 6px; white-space: nowrap;
+    transform: rotate(-45deg); transform-origin: left bottom;
+  }
+  .la101 .geo-matrix thead th:not(:first-child)::after {
+    content: ""; position: absolute; left: 50%; bottom: 0;
+    width: 1px; height: 6px; background: #5a6e68;
+  }
+  .la101 .geo-matrix button {
+    min-width: 0; min-height: 26px; padding: 0; font-size: 10px;
+  }
+  .la101 .neighborhood-table { font-size: 12px; }
+  .la101 .neighborhood-table th,
+  .la101 .neighborhood-table td { padding: 4px; overflow-wrap: anywhere; }
+  .la101 .neighborhood-table th.sortable { padding: 0; }
+  .la101 .neighborhood-table .sort-button { padding: 4px; gap: 2px; min-height: 24px; }
+  .la101 .neighborhood-table thead th:first-child { width: 28px; }
+  .la101 .neighborhood-table thead th:nth-child(2) { width: 31%; }
+  .la101 .neighborhood-table thead th:nth-child(3) { width: 46px; }
+}
 </style>
 <div id="la101" class="la101">
   <details class="geography">
@@ -752,7 +784,7 @@ debut, who came back, and who stayed on.</p>
     </div>
     <p id="la101-geo-summary" aria-live="polite"></p>
     <div class="table-wrap">
-      <table class="table table-striped">
+      <table class="table table-striped neighborhood-table">
         <caption>Neighborhoods and cities by number of published slots. Select a column heading to sort.</caption>
         <thead><tr><th scope="col">#</th><th scope="col" data-sort="area">Area</th><th scope="col" data-sort="slots" data-first-dir="desc">Slots</th><th scope="col">Entries</th></tr></thead>
         <tbody id="la101-geo-entries"></tbody>
@@ -3929,8 +3961,9 @@ each year.</p>
 
     const header = element("tr");
     for (const label of ["Region", ...years]) {
-      const th = element("th", label);
+      const th = element("th");
       th.scope = "col";
+      th.append(element("span", label));
       header.append(th);
     }
     matrix.tHead.append(header);
