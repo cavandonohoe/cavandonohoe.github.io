@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-11-14T20:56:28.967738+00:00",
+  "generated_at": "2026-11-15T21:18:56.688040+00:00",
   "window_days": 30,
   "commits": 44,
   "excludes_bot_commits": true,
   "active_areas": [
     {
       "name": "site",
-      "file_touches": 44
+      "file_touches": 45
     },
     {
       "name": "podcast-dashboard",
@@ -22,7 +22,7 @@
     },
     {
       "name": "data",
-      "file_touches": 17
+      "file_touches": 16
     }
   ]
 }
