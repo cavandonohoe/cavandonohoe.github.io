@@ -190,6 +190,9 @@ fails the run instead of landing on `main`.
 * `typos.yml` -- on-PR spell check.
 * `pr-smoke.yml` -- on-PR fast render of only the changed Rmds.
 * `test.yml` -- R test suite (`scripts/run_tests.R`) on PRs and pushes.
+* `personalized-email-test.yml` -- dry run of the personalized email
+  script on PRs that touch it; a manual dispatch with `send_email` on
+  sends one real test email.
 
 ### Side apps
 
@@ -204,7 +207,8 @@ fails the run instead of landing on `main`.
 
 ### Repo hygiene
 
-* `.github/dependabot.yml` -- weekly bump of pinned GitHub Actions.
+* `.github/dependabot.yml` -- weekly bump of pinned GitHub Actions and
+  the npm deps for movie-ranker and the TOHS Apps Script.
 * `dependabot-automerge.yml` -- squash-merges minor/patch Dependabot
   PRs once all other checks pass.
 * `labeler.yml` -- auto-label PRs by changed paths.
