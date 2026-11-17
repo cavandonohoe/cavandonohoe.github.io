@@ -1,6 +1,12 @@
 {
-  "generated_at": "2026-11-15T21:10:06.631355+00:00",
+  "generated_at": "2026-11-17T00:24:12.816857+00:00",
   "events": [
+    {
+      "date": "2026-11-16",
+      "type": "merged_pr",
+      "title": "deps: bump the npm-minor-patch group in /movie-ranker with 3 updates",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/356"
+    },
     {
       "date": "2026-11-15",
       "type": "merged_pr",
@@ -292,6 +298,26 @@
   ],
   "daily_summaries": [
     {
+      "date": "2026-11-16",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "3 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/e1e406e51db1ebb410f2a0abca87eb025ba5955b"
+        },
+        {
+          "emoji": "\ud83c\udfac",
+          "text": "Movie & TV projects updated",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/356"
+        },
+        {
+          "emoji": "\ud83c\udfac",
+          "text": "Movie & TV data refreshed",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/13f2a2fe20b6b44e43e5b58036715a7b757db03e"
+        }
+      ]
+    },
+    {
       "date": "2026-11-15",
       "items": [
         {
@@ -464,26 +490,6 @@
           "emoji": "\ud83c\udfa7",
           "text": "5 podcast episodes added",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/7859876424ba2fff4d032189bee48e64ed5684d0"
-        }
-      ]
-    },
-    {
-      "date": "2026-11-02",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "5 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/127b558c32ef06ff032872314c834b7bf365ee92"
-        },
-        {
-          "emoji": "\ud83c\udfac",
-          "text": "Movie & TV projects updated",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/326"
-        },
-        {
-          "emoji": "\ud83c\udfac",
-          "text": "Movie & TV data refreshed",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/35ca3a3675f69b2f43d8338a2788a5bc7b323255"
         }
       ]
     }
