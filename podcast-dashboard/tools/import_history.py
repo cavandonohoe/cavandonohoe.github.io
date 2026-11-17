@@ -14,6 +14,10 @@ def play_key(row):
 
 def summarize(directory, saved_ids):
     grouped = collections.defaultdict(list)
+    # Daily podcast totals cover every episode played, saved or not, so the
+    # listening rate is not limited to what is still in the library.
+    daily_ms = collections.Counter()
+    daily_finished = collections.defaultdict(set)
     timestamps = []
     seen = set()
     # Top level only: a re-unzipped copy in a subfolder must not double count.
@@ -21,7 +25,7 @@ def summarize(directory, saved_ids):
         for row in json.loads(path.read_text()):
             timestamps.append(row['ts'])
             episode_id = (row.get('spotify_episode_uri') or '').removeprefix('spotify:episode:')
-            if episode_id not in saved_ids:
+            if not episode_id:
                 continue
             # The same play can appear in overlapping or re-downloaded exports
             # with differing incidental fields (IP, platform string, offline
@@ -30,7 +34,12 @@ def summarize(directory, saved_ids):
             if key in seen:
                 continue
             seen.add(key)
-            grouped[episode_id].append(row)
+            day = row['ts'][:10]
+            daily_ms[day] += row.get('ms_played') or 0
+            if row.get('reason_end') == 'trackdone':
+                daily_finished[day].add(episode_id)
+            if episode_id in saved_ids:
+                grouped[episode_id].append(row)
     if not timestamps:
         raise ValueError('No streaming-history records found')
     episodes = []
@@ -48,7 +57,10 @@ def summarize(directory, saved_ids):
     return {'meta': {'source': 'Spotify Extended Streaming History',
                      'coverage_start': min(timestamps)[:10],
                      'coverage_end': max(timestamps)[:10],
-                     'matched_episodes': len(episodes)}, 'episodes': episodes}
+                     'matched_episodes': len(episodes)}, 'episodes': episodes,
+            'daily': [dict(date=day, listened_min=round(ms / 60000, 3),
+                           finished=len(daily_finished[day]))
+                      for day, ms in sorted(daily_ms.items())]}
 
 
 if __name__ == '__main__':

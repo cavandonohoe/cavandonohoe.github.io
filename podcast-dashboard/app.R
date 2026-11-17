@@ -67,6 +67,44 @@ episodes <- episodes |>
     history_status = ifelse(is.na(events), "No matching history", "Recorded playback")
   )
 
+# Listening rate. Newer history imports carry `daily` totals over every podcast
+# play; older ones only have per-episode totals for saved episodes, so fall
+# back to those, crediting each episode's time and finish to its last play day.
+rate_from_daily <- length(history$daily) > 0
+rate_days <- if (rate_from_daily) {
+  tibble::as_tibble(history$daily) |>
+    dplyr::transmute(date = as.Date(date), listened_min, finished)
+} else {
+  history_rows |>
+    dplyr::group_by(date = as.Date(last_played)) |>
+    dplyr::summarise(
+      listened_min = sum(listened_min),
+      finished = sum(grepl("trackdone", end_reasons, fixed = TRUE)),
+      .groups = "drop"
+    )
+}
+rate_end <- as.Date(history_meta$coverage_end)
+rate_window <- 90
+rate_days <- tibble::tibble(date = seq(rate_end - rate_window + 1, rate_end, by = "day")) |>
+  dplyr::left_join(rate_days, by = "date") |>
+  dplyr::mutate(
+    listened_min = dplyr::coalesce(listened_min, 0),
+    finished = dplyr::coalesce(finished, 0)
+  )
+rate_over <- function(days) {
+  d <- rate_days |> dplyr::filter(date > rate_end - days)
+  sprintf("%.1f eps \u00b7 %d min", sum(d$finished) / days, round(sum(d$listened_min) / days))
+}
+rate_note <- if (rate_from_daily) {
+  "Daily totals cover every podcast episode played, saved or not. "
+} else {
+  paste(
+    "This history import has no daily totals, so the rate counts saved episodes only",
+    "and credits each episode's listening time and finish to the last day it was played.",
+    "Re-run tools/import_history.py for exact daily totals. "
+  )
+}
+
 # Manual completion cutoff (data/completion_cutoff.json, set with
 # tools/set_cutoff.py). I listen oldest publication date first, so episodes
 # published strictly before the confirmed boundary episode's release date are
@@ -272,6 +310,24 @@ ui <- bslib::page_sidebar(
     )
   ),
   bslib::card(
+    bslib::card_header(sprintf(
+      "Listening rate (last %d days of the listening export, through %s)",
+      rate_window, rate_end
+    )),
+    bslib::layout_columns(
+      fill = FALSE,
+      bslib::value_box("Per day, last 7 days", rate_over(7), theme = "dark"),
+      bslib::value_box("Per day, last 30 days", rate_over(30), theme = "dark"),
+      bslib::value_box("Per day, last 90 days", rate_over(90), theme = "dark")
+    ),
+    plotlyOutput("rate_daily", height = 300),
+    tags$small(
+      style = "color:#9a9a9a;",
+      rate_note,
+      "Finished means the episode played to the end; minutes include partial and repeat plays."
+    )
+  ),
+  bslib::card(
     bslib::card_header("Episodes by month saved, by show"),
     div(
       class = "plot-hscroll",
@@ -403,6 +459,26 @@ server <- function(input, output, session) {
   output$bar_hours <- renderPlotly({
     d <- per_show() |> dplyr::filter(!is.na(hours)) |> dplyr::mutate(hours = round(hours, 1))
     hbar(d, "hours", "Hours")
+  })
+
+  output$rate_daily <- renderPlotly({
+    plot_ly(
+      rate_days,
+      x = ~date, y = ~ round(listened_min), type = "bar",
+      marker = list(color = accent),
+      customdata = ~finished,
+      hovertemplate = paste0(
+        "%{x|%b %d, %Y}<br>%{y} min listened<br>",
+        "%{customdata} finished<extra></extra>"
+      )
+    ) |>
+      layout(
+        xaxis = list(title = "", gridcolor = "#2a2a2a"),
+        yaxis = list(title = "Minutes", gridcolor = "#2a2a2a"),
+        paper_bgcolor = "rgba(0,0,0,0)", plot_bgcolor = "rgba(0,0,0,0)",
+        font = list(color = "#e8e8e8"), dragmode = FALSE
+      ) |>
+      config(displayModeBar = FALSE, scrollZoom = FALSE)
   })
 
   output$line_time <- renderPlotly({
