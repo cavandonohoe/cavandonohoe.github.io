@@ -9,6 +9,8 @@ exclude:
   - tools
   - private
   - _archive
+  - "*.dotx"
+  - "*.xlsx"
 navbar:
   title: "Cavan Donohoe"
   type: inverse

@@ -87,7 +87,7 @@ cat("  Bedroom cols:", paste(names(fmr_cols), fmr_cols, sep = "=", collapse = ",
 
 fmr_county <- fmr_county_raw %>%
   dplyr::transmute(
-    fips = sprintf("%05s", as.character(.data[[fips_col]])) %>% stringr::str_pad(5, pad = "0") %>% substr(1, 5),
+    fips = stringr::str_pad(as.character(.data[[fips_col]]), 5, pad = "0") %>% substr(1, 5),
     state_alpha = if ("state_alpha" %in% nm) state_alpha else NA_character_,
     countyname = if ("countyname" %in% nm) countyname else NA_character_,
     areaname = if ("areaname" %in% nm) areaname else NA_character_,

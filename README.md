@@ -222,6 +222,9 @@ run instead of landing on `main`.
 - `typos.yml` – on-PR spell check.
 - `pr-smoke.yml` – on-PR fast render of only the changed Rmds.
 - `test.yml` – R test suite (`scripts/run_tests.R`) on PRs and pushes.
+- `personalized-email-test.yml` – dry run of the personalized email
+  script on PRs that touch it; a manual dispatch with `send_email` on
+  sends one real test email.
 
 ### Side apps
 
@@ -236,7 +239,8 @@ run instead of landing on `main`.
 
 ### Repo hygiene
 
-- `.github/dependabot.yml` – weekly bump of pinned GitHub Actions.
+- `.github/dependabot.yml` – weekly bump of pinned GitHub Actions and
+  the npm deps for movie-ranker and the TOHS Apps Script.
 - `dependabot-automerge.yml` – squash-merges minor/patch Dependabot PRs
   once all other checks pass.
 - `labeler.yml` – auto-label PRs by changed paths.
@@ -254,8 +258,8 @@ above. Regenerated each time `README.Rmd` is knit.
 
 <img src="images/readme/commit-activity-cumulative-1.png" alt="Two cumulative line charts showing total commits and total lines changed (insertions + deletions) over time, split by Cavan's own commits vs. scheduled-bot commits."  />
 
-*1,377 commits from Dec 2020 to Nov 2026 (694 by me, 683 by scheduled
-bots), touching 3,462,391 lines in total.*
+*1,372 commits from Dec 2020 to Nov 2026 (695 by me, 677 by scheduled
+bots), touching 3,462,364 lines in total.*
 
 ## Setup and Local Development
 
