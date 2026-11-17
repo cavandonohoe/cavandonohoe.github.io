@@ -119,6 +119,17 @@ python3 podcast-dashboard/tools/import_history.py "/path/to/Spotify Extended Str
 
 The importer reads audio and video files at the top level of the export folder
 (not subfolders), counts a play once per timestamp, URI, and `ms_played`, and
-writes only aggregates for IDs already in the saved snapshot. Raw exports, IP
-addresses, devices, and unrelated listening history are not published. Start/end
-reasons retain Spotify's raw codes and counts; they are not completion labels.
+writes per-episode aggregates only for IDs already in the saved snapshot. It
+also writes `daily` podcast totals (UTC date, minutes played, distinct episodes
+that played to the end) over every episode played, saved or not; music is
+excluded. Raw exports, IP addresses, devices, and individual plays are not
+published. Start/end reasons retain Spotify's raw codes and counts; they are not
+completion labels.
+
+### Listening rate
+
+The "Listening rate" card shows finished episodes and minutes per day over the
+last 7, 30, and 90 days of the history export, plus a daily minutes chart. It
+ignores the sidebar filters. Files without `daily` totals fall back to the
+saved-episode aggregates, crediting each episode's time and finish to its last
+play day, which undercounts episodes that already left the library.
