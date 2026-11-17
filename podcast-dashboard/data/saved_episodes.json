@@ -7,7 +7,7 @@
     "previous_only_count": 42,
     "api_refreshed_at": "2026-11-17",
     "api_saved_count": 70,
-    "n_removed": 393,
+    "n_removed": 399,
     "n_unavailable": 28
   },
   "episodes": [
@@ -266,7 +266,7 @@
       "url": "https://open.spotify.com/episode/6nlwch2PfK8pJCPyXT1KVw",
       "desc": "Throughout the history of the world, there have been many cases of what is known as collective hysteria - groups of people, usually young women, who all exhibit the same physical symptoms of non-existent conditions. Is it psychosomatic? Is it group think?See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-17"
     },
     {
       "id": "0rpzmRqnyf9kQYHcfR5Cvp",
@@ -890,7 +890,7 @@
       "show": "Stuff You Should Know",
       "url": "https://open.spotify.com/episode/6fsTBhy5dMgpAWfpymtIJh",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-17"
     },
     {
       "id": "7kaLqerXtf5ZpDq8SFXphy",
@@ -1306,7 +1306,7 @@
       "url": "https://open.spotify.com/episode/3tvnIB08U6tO1j3KXdsJJ3",
       "desc": "The famous blue people of Kentucky are no longer blue. But why were they like that in the first place?See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-17"
     },
     {
       "id": "3wj8zYVR9Y5CATLInChYGW",
@@ -2791,7 +2791,7 @@
       "url": "https://open.spotify.com/episode/2uJNhEDkkSSIZ44EDkUf0a",
       "desc": "The Hotel Cecil in downtown Los Angeles has had no less than 16 unnatural deaths, from suicides to murders and everything in between. Listen in to the history of this decidedly creepy hotel. See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-17"
     },
     {
       "id": "1gEmVP2A6ZOwjJrRSxotwf",
@@ -3116,7 +3116,7 @@
       "url": "https://open.spotify.com/episode/2y34cosrIFKB24R5rOC9H8",
       "desc": "In 1960 physicist Freeman Dyson suggested that in the hunt for alien life, we should search for evidence of massive engineering projects that encapsulate stars with solar arrays to harness their energy. Could we humans ever make one ourselves?See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-17"
     },
     {
       "added_at": "2025-11-25",
@@ -3975,7 +3975,7 @@
       "show": "Planet Money",
       "url": "https://open.spotify.com/episode/4FjZHj6BP2KbJ1IU8uvOsl",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-17"
     },
     {
       "added_at": "2025-11-27",
@@ -4379,8 +4379,7 @@
       "release": "2026-10-05",
       "url": "https://open.spotify.com/episode/66qOTq7rAMpJr90fPptG6Y",
       "desc": "Is it yellow? Is it green? Or what if, as one scientist argues, “there’s no such thing as a color?” Guest: Bevil Conway, visual artist and neuroscientist at the National Eye Institute  To watch this episode on video, find us on Netflix!  For show transcripts, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unxtranscripts⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠For more, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unexplainable⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠And please email us! ⁠⁠⁠⁠unexplainable@vox.com⁠⁠⁠⁠  We read every email.Support Unexplainable (and get ad-free episodes) by becoming a Vox Member today: ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/members⁠ Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true,
-      "removed_at": "2026-11-17"
+      "api_seen": true
     },
     {
       "id": "7pVtMwL0hKrS3McEepuGEV",
@@ -4443,7 +4442,7 @@
       "url": "https://open.spotify.com/episode/6b55YnKaQmphyHFAK3aiTj",
       "desc": "Chuck and Josh do their best to tackle “the craft,” which most normal people call stand-up comedy. Stand-up dates back to the vaudeville days but it really started to take off in the 60s when comics stopped wearing suits and started getting edgy.See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-17"
     },
     {
       "id": "7MCJlvk6tCg7oIs4ZL9yK5",
@@ -6426,7 +6425,8 @@
       "release": "2026-11-17",
       "url": "https://open.spotify.com/episode/2R3eJbSJzg8EXEKFGJLNq8",
       "desc": "Is the story of Chester Weger a case of wrongful incarceration? It appears to be. Listen in to his story today.See omnystudio.com/listener for privacy information.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "2vHssTfoGQnLwNLmR3EUhn",
