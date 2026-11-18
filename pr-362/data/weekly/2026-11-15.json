@@ -1,0 +1,92 @@
+{
+  "generated_at": "2026-11-15T21:02:09.633868+00:00",
+  "period_start": "2026-11-08T21:02:09.633868+00:00",
+  "commits": 101,
+  "prs_merged": 21,
+  "merged_prs": [
+    {
+      "number": 330,
+      "title": "ci: bump dawidd6/action-download-artifact from 27 to 28"
+    },
+    {
+      "number": 335,
+      "title": "Expire the site build artifact after 1 day"
+    },
+    {
+      "number": 333,
+      "title": "Make PR preview cleanup reliable and run daily"
+    },
+    {
+      "number": 337,
+      "title": "Keep the site build artifact for 7 days so weekly pa11y can find it"
+    },
+    {
+      "number": 331,
+      "title": "deps: bump the npm-minor-patch group in /movie-ranker with 6 updates"
+    },
+    {
+      "number": 332,
+      "title": "Test personalized emails from GitHub Actions (Gmail SMTP)"
+    },
+    {
+      "number": 329,
+      "title": "Add an interactive L.A. Times 101 restaurant tracker"
+    },
+    {
+      "number": 338,
+      "title": "Rebuild the L.A. Times 101 data from the published lists"
+    },
+    {
+      "number": 340,
+      "title": "Update Spotify podcast completion cutoff to January 22, 2026"
+    },
+    {
+      "number": 343,
+      "title": "Raise repo-size monitor threshold to 2000 MB"
+    },
+    {
+      "number": 341,
+      "title": "Update Spotify podcast boundary to Indicator beef episode"
+    },
+    {
+      "number": 339,
+      "title": "Add My Adventures with Superman to IMDb rating plots"
+    },
+    {
+      "number": 345,
+      "title": "Add Bob's Burgers IMDb episode ratings source"
+    },
+    {
+      "number": 346,
+      "title": "Add row numbers and sortable columns to L.A. Times 101 tables"
+    },
+    {
+      "number": 344,
+      "title": "Shrink sierpinski animation and stop close runs being cancelled"
+    },
+    {
+      "number": 348,
+      "title": "Bump @hono/node-server from 2.1.4 to 2.1.8 in /tools/tohs-apps-script"
+    },
+    {
+      "number": 349,
+      "title": "Bump hono from 4.13.13 to 4.13.18 in /tools/tohs-apps-script"
+    },
+    {
+      "number": 351,
+      "title": "Advance Spotify podcast cutoff to February 1, 2026"
+    },
+    {
+      "number": 352,
+      "title": "Add Why I Own Google page"
+    },
+    {
+      "number": 350,
+      "title": "Check whether validated TOHS Apps Script pushes change the deployable bundle"
+    },
+    {
+      "number": 353,
+      "title": "Fit L.A. Times geography tables on mobile"
+    }
+  ]
+}
