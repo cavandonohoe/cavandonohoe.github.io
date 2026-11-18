@@ -140,6 +140,20 @@ How often does the L.A. Times 101 list make room for a first-timer? Every editio
       </table>
     </div>
   </details>
+  <details class="history" id="best-etc-comparison">
+    <summary>Best, Etc. Top 100 vs. all L.A. Times 101 editions</summary>
+    <p>Compare the <a href="https://bestetc.com/editions/los-angeles">Best, Etc. Los Angeles Top 100</a> snapshot from November 17, 2026 against every Times edition from 2013 onward. A restaurant is "Never listed" only if it has no match in any edition, including shared entries. This is a snapshot, not a live feed.</p>
+    <div class="controls">
+      <label>Times history <select id="bestetc-filter"><option value="never">Never listed</option><option value="ever">Previously listed</option><option value="all">All 100</option></select></label>
+      <label>Restaurant <input type="search" id="bestetc-query" placeholder="Search restaurants"></label>
+    </div>
+    <p id="bestetc-summary" aria-live="polite"></p>
+    <div class="table-wrap"><table class="table table-striped">
+      <thead><tr><th>#</th><th>Best, Etc. position</th><th>Restaurant</th><th>Score</th><th>Times editions</th></tr></thead>
+      <tbody id="bestetc-entries"></tbody>
+    </table></div>
+    <p><small>Matches use the tracker’s grouped-entry history and known naming aliases. Separate branches and ambiguous name changes may require manual verification. Best, Etc. positions are list positions; tied official ranks may differ.</small></p>
+  </details>
   <h2>Year by year</h2>
   <div class="legend">
     <span><i class="swatch debut" aria-hidden="true"></i>First appearance</span>
@@ -197,6 +211,9 @@ Sources are the [L.A. Times archive of annual lists](https://www.latimes.com/foo
 edition_json <- paste(readLines("data/la_times_101.json", encoding = "UTF-8", warn = FALSE), collapse = "\n")
 cat('<script type="application/json" id="la101-data">\n',
     gsub("<", "\\u003c", edition_json, fixed = TRUE), "\n</script>\n", sep = "")
+bestetc_lines <- readLines("data/best_etc_la_100.json", encoding = "UTF-8", warn = FALSE)
+cat('<script type="application/json" id="bestetc-data">\n',
+    gsub("<", "\\u003c", paste(bestetc_lines, collapse = "\n"), fixed = TRUE), "\n</script>\n", sep = "")
 geo_lines <- readLines("data/la_times_101_geography.json", encoding = "UTF-8", warn = FALSE)
 cat('<script type="application/json" id="la101-geo-data">\n',
     gsub("<", "\\u003c", paste(geo_lines, collapse = "\n"), fixed = TRUE), "\n</script>\n", sep = "")
@@ -431,6 +448,61 @@ cat('<script type="application/json" id="la101-geo-data">\n',
     historyEntries.replaceChildren(rows);
     historySummary.textContent = `Showing ${visible.length} of ${history.length} entries.`;
   }
+
+
+  // Compare against the full historical tracker, not just the latest Times edition.
+  const bestetc = JSON.parse(document.getElementById("bestetc-data").textContent);
+  const bestetcFilter = document.getElementById("bestetc-filter");
+  const bestetcQuery = document.getElementById("bestetc-query");
+  const bestetcEntries = document.getElementById("bestetc-entries");
+  const bestetcSummary = document.getElementById("bestetc-summary");
+  const bestetcAliases = {
+    "Holbox": ["Chichen Itza / Holbox", "Mercado La Paloma"],
+    "Komal": ["Mercado La Paloma"],
+    "Restaurant Ki": ["Ki"],
+    "Yang’s Kitchen": ["Yang's Kitchen"],
+    "Langer's Deli": ["Langer's"],
+    "Moo's Craft Barbecue": ["Moo's"],
+    "Pasta|Bar": ["Pasta/Bar"],
+    "R|O-Rebel Omakase": ["R/O-Rebel Omakase"]
+  };
+  const bestetcKey = value => searchKey(value).replace(/[^a-z0-9]/g, "");
+  function timesYears(name) {
+    const aliases = [name, ...(bestetcAliases[name] || [])].map(bestetcKey);
+    const matched = new Set();
+    for (const [edition, record] of Object.entries(data)) {
+      for (const row of record.rows) {
+        if (row.status === "Other") continue;
+        const fields = [row.name, row.note, row.match].filter(Boolean);
+        if (fields.some(field => aliases.some(alias => bestetcKey(field).includes(alias)))) {
+          matched.add(edition);
+        }
+      }
+    }
+    return Array.from(matched).sort();
+  }
+  const bestetcRows = bestetc.restaurants.map(item => ({...item, editions: timesYears(item.name)}));
+  function renderBestetc() {
+    const needle = searchKey(bestetcQuery.value.trim());
+    const rows = bestetcRows.filter(item =>
+      (bestetcFilter.value === "all" ||
+       (bestetcFilter.value === "never" ? item.editions.length === 0 : item.editions.length > 0)) &&
+      searchKey(item.name).includes(needle)
+    );
+    const fragment = document.createDocumentFragment();
+    for (const [i, item] of rows.entries()) {
+      const tr = element("tr");
+      tr.append(rowNumber(i + 1), element("td", item.position),
+        element("th", item.name), element("td", item.score),
+        element("td", item.editions.length ? item.editions.join(", ") : "Never listed"));
+      fragment.append(tr);
+    }
+    bestetcEntries.replaceChildren(fragment);
+    bestetcSummary.textContent = `${bestetcRows.filter(x => !x.editions.length).length} of 100 Best, Etc. entries have no historical L.A. Times 101 match. Showing ${rows.length} entries.`;
+  }
+  bestetcFilter.addEventListener("change", renderBestetc);
+  bestetcQuery.addEventListener("input", renderBestetc);
+  renderBestetc();
 
   const editionSort = { key: "rank", dir: 1 };
 
