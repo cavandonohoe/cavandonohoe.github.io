@@ -1,6 +1,12 @@
 {
-  "generated_at": "2026-11-17T23:37:27.780959+00:00",
+  "generated_at": "2026-11-18T23:02:10.241120+00:00",
   "events": [
+    {
+      "date": "2026-11-18",
+      "type": "merged_pr",
+      "title": "Compare Best, Etc. Top 100 against every LA Times 101 edition",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/362"
+    },
     {
       "date": "2026-11-17",
       "type": "merged_pr",
@@ -324,21 +330,19 @@
       "type": "merged_pr",
       "title": "Add Teams of AI Agents project page",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/296"
-    },
-    {
-      "date": "2026-10-19",
-      "type": "merged_pr",
-      "title": "deps: bump the npm-minor-patch group in /movie-ranker with 6 updates",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/293"
-    },
-    {
-      "date": "2026-10-19",
-      "type": "merged_pr",
-      "title": "Sync README with site nav and workflows",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/292"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-11-18",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "4 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/89fc2615d66228d7eb1b1eacec8741bd03ad54d7"
+        }
+      ]
+    },
     {
       "date": "2026-11-17",
       "items": [
@@ -526,21 +530,6 @@
           "emoji": "\ud83c\udfa7",
           "text": "Podcast + Spotify experience improved",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/328"
-        }
-      ]
-    },
-    {
-      "date": "2026-11-04",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "6 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/5d07344efbefeacdda89fdfbd300c09aaa89a3c5"
-        },
-        {
-          "emoji": "\ud83d\udcc4",
-          "text": "CV rebuilt from the latest source data",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/327"
         }
       ]
     }

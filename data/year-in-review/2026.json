@@ -1,13 +1,13 @@
 {
   "year": 2026,
-  "commits": 354,
-  "pull_requests": 274,
+  "commits": 358,
+  "pull_requests": 278,
   "repositories_touched": 4,
-  "lines_added": 514862,
+  "lines_added": 515553,
   "most_used_language": "R",
   "language_lines_added": {
-    "R": 28072,
-    "Python": 4712,
+    "R": 28220,
+    "Python": 4727,
     "JavaScript": 2927,
     "TypeScript": 2369,
     "HTML": 2195,
@@ -843,6 +843,28 @@
         ]
       },
       {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "podcast-dashboard/tools/import_history.py",
+        "lines_added": 79,
+        "commits": [
+          {
+            "sha": "17936b9a7b7894959467f8d895e6f80652ff308c",
+            "date": "2026-11-17",
+            "lines_added": 15
+          },
+          {
+            "sha": "f7332d197ed6c5ae99acbf89d903a039863bb588",
+            "date": "2026-10-12",
+            "lines_added": 12
+          },
+          {
+            "sha": "89ac6003f931f5b99ac90305830ebce129f90f4c",
+            "date": "2026-09-28",
+            "lines_added": 52
+          }
+        ]
+      },
+      {
         "repository": "cavandonohoe/confederate_statues",
         "path": "service/src/statue_api/metrics.py",
         "lines_added": 76,
@@ -892,23 +914,6 @@
             "sha": "3e0dd92de3fc13b131519879bba5efd8d472faae",
             "date": "2026-06-22",
             "lines_added": 69
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "podcast-dashboard/tools/import_history.py",
-        "lines_added": 64,
-        "commits": [
-          {
-            "sha": "f7332d197ed6c5ae99acbf89d903a039863bb588",
-            "date": "2026-10-12",
-            "lines_added": 12
-          },
-          {
-            "sha": "89ac6003f931f5b99ac90305830ebce129f90f4c",
-            "date": "2026-09-28",
-            "lines_added": 52
           }
         ]
       },
@@ -1284,8 +1289,13 @@
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "podcast-dashboard/app.R",
-        "lines_added": 655,
+        "lines_added": 731,
         "commits": [
+          {
+            "sha": "17936b9a7b7894959467f8d895e6f80652ff308c",
+            "date": "2026-11-17",
+            "lines_added": 76
+          },
           {
             "sha": "9b8256a73af009fbc5fb2fcd1b55c0a6f90e63bb",
             "date": "2026-10-23",
@@ -1509,6 +1519,33 @@
       },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "la_times_101.Rmd",
+        "lines_added": 611,
+        "commits": [
+          {
+            "sha": "1e2e9a13c8ab7ee8fd8384b1445b4d052c616c22",
+            "date": "2026-11-18",
+            "lines_added": 72
+          },
+          {
+            "sha": "cd03c464605fbcb603ee0e3c355f47e3e57f33d9",
+            "date": "2026-11-15",
+            "lines_added": 35
+          },
+          {
+            "sha": "71a0a9937d1c5b5f40b88dd3a7a14c8b9b8c3bd4",
+            "date": "2026-11-12",
+            "lines_added": 111
+          },
+          {
+            "sha": "c322b9f9133abc00d8b8ebee018ea8003a59219a",
+            "date": "2026-11-09",
+            "lines_added": 393
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
         "path": "la_housing_heatmap.Rmd",
         "lines_added": 603,
         "commits": [
@@ -1575,28 +1612,6 @@
             "sha": "d0dcbe44d0e337298843c53a19e827e04ff424f8",
             "date": "2026-10-02",
             "lines_added": 57
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "la_times_101.Rmd",
-        "lines_added": 539,
-        "commits": [
-          {
-            "sha": "cd03c464605fbcb603ee0e3c355f47e3e57f33d9",
-            "date": "2026-11-15",
-            "lines_added": 35
-          },
-          {
-            "sha": "71a0a9937d1c5b5f40b88dd3a7a14c8b9b8c3bd4",
-            "date": "2026-11-12",
-            "lines_added": 111
-          },
-          {
-            "sha": "c322b9f9133abc00d8b8ebee018ea8003a59219a",
-            "date": "2026-11-09",
-            "lines_added": 393
           }
         ]
       },
@@ -4517,7 +4532,7 @@
   "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, dependency, build, docs, minified, and raw HTML input files are excluded.",
   "most_active_month": "October",
   "longest_streak_days": 16,
-  "active_days": 98,
+  "active_days": 99,
   "monthly_commits": [
     11,
     27,
@@ -4529,7 +4544,7 @@
     15,
     23,
     108,
-    26,
+    30,
     0
   ],
   "daily_activity": [
@@ -5020,12 +5035,17 @@
     },
     {
       "date": "2026-11-17",
+      "commits": 4,
+      "lines_added": 146
+    },
+    {
+      "date": "2026-11-18",
       "commits": 1,
-      "lines_added": 33
+      "lines_added": 578
     }
   ],
   "biggest_project": "cavandonohoe.github.io",
-  "biggest_project_commits": 295,
+  "biggest_project_commits": 299,
   "repositories": [
     "cavandonohoe/cavandonohoe",
     "cavandonohoe/cavandonohoe.github.io",
@@ -5033,12 +5053,12 @@
     "cavandonohoe/rent-vs-buy"
   ],
   "repository_commits": {
-    "cavandonohoe/cavandonohoe.github.io": 295,
+    "cavandonohoe/cavandonohoe.github.io": 299,
     "cavandonohoe/rent-vs-buy": 29,
     "cavandonohoe/confederate_statues": 20,
     "cavandonohoe/cavandonohoe": 10
   },
   "scope": "Author-matched commits on the default branch of public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bot-authored or bot-committed commits, deploy commits, and other authors are excluded. Moved files count only changed lines. Language totals use .gitattributes Linguist overrides plus built-in generated, vendored, dependency, build, docs, minified, and raw HTML input patterns. Overall lines added still include all files. PRs count public pull requests the user authored and merged into their own repositories during the year, when available.",
   "is_partial_year": true,
-  "generated_at": "2026-11-17T17:49:19.920806+00:00"
+  "generated_at": "2026-11-18T17:29:34.669423+00:00"
 }
