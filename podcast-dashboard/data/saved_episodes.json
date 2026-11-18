@@ -3,11 +3,11 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 518,
+    "n_episodes": 522,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-11-17",
+    "api_refreshed_at": "2026-11-18",
     "api_saved_count": 70,
-    "n_removed": 399,
+    "n_removed": 400,
     "n_unavailable": 28
   },
   "episodes": [
@@ -4367,7 +4367,8 @@
       "release": "2026-10-05",
       "url": "https://open.spotify.com/episode/3M5KZrO27xztKcxIYPyQKs",
       "desc": "How do you ask your friends to pay you back in a timely way? We’ve got an etiquette coach to help with that. Fact checking by Sierra Juarez.Your Next Listen — Is this a bank?Connect with The Indicator — Sign up for The Indicator’s weekly newsletter! — Buy the Planet Money book — Find our socials, YouTube and more! — For sponsor-free episodes, subscribe to NPR+ Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "66qOTq7rAMpJr90fPptG6Y",
@@ -4379,7 +4380,8 @@
       "release": "2026-10-05",
       "url": "https://open.spotify.com/episode/66qOTq7rAMpJr90fPptG6Y",
       "desc": "Is it yellow? Is it green? Or what if, as one scientist argues, “there’s no such thing as a color?” Guest: Bevil Conway, visual artist and neuroscientist at the National Eye Institute  To watch this episode on video, find us on Netflix!  For show transcripts, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unxtranscripts⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠For more, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unexplainable⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠And please email us! ⁠⁠⁠⁠unexplainable@vox.com⁠⁠⁠⁠  We read every email.Support Unexplainable (and get ad-free episodes) by becoming a Vox Member today: ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/members⁠ Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "7pVtMwL0hKrS3McEepuGEV",
@@ -4515,7 +4517,8 @@
       "release": "2026-10-07",
       "url": "https://open.spotify.com/episode/3Kj4i902k0J4V7768udcQU",
       "desc": "Music can give us goosebumps. It can make us cry. It can make us move. How? Guests: Amelia Meath, songwriter and singer in Sylvan Esso; Elizabeth Margulis,  director of the Music Cognition Lab at Princeton University and author of On Repeat: How Music Plays the Mind  For show transcripts, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unxtranscripts⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠For more, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unexplainable⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠And please email us! ⁠⁠⁠unexplainable@vox.com⁠⁠⁠We read every email.Support Unexplainable (and get ad-free episodes) by becoming a Vox Member today: ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/members⁠⁠⁠⁠⁠⁠⁠⁠Thank you! Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "2ku6denxn54xzlzW3Pf7IY",
@@ -4527,7 +4530,8 @@
       "release": "2026-10-07",
       "url": "https://open.spotify.com/episode/2ku6denxn54xzlzW3Pf7IY",
       "desc": "Rising electricity prices are one of the primary reasons why data centers are a public enemy this election cycle. But is it realistic to expect energy prices to stay high forever? Fact checking by Sierra Juarez.Your Next Listen No AI data centers in my backyard!Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet MoneyThe Indicator newsletter — a weekly roundup of news, ideas and staff picks.Instagram, TikTok and YouTubeFind the Planet Money book Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop!Support public media by subscribing to NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "2xjdQNmzruAiMvSf2InOh9",
@@ -6426,7 +6430,7 @@
       "url": "https://open.spotify.com/episode/2R3eJbSJzg8EXEKFGJLNq8",
       "desc": "Is the story of Chester Weger a case of wrongful incarceration? It appears to be. Listen in to his story today.See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-18"
     },
     {
       "id": "2vHssTfoGQnLwNLmR3EUhn",
@@ -6474,6 +6478,54 @@
       "release": "2026-11-17",
       "url": "https://open.spotify.com/episode/2e3nmFqbkLouwPs77MMIE6",
       "desc": "This week on the pod, Seth and Josh welcome actor Timothy Simons (Veep, Nobody Wants This)! Tim talks about growing up in Readfield, Maine, family camping trips to Acadia, and a memorable road trip to Michigan filled with sibling fights in the backseat. He shares what it’s like traveling with his 14-year-old twins and looks back on a cross-country road trip that turned into an extended stay in Maine surrounded by family reunions. Tim also shares stories about his days working at video stores, including some hilariously awkward adult-film rentals. Watch this episode on the Family Trips YouTube or Spotify, or listen wherever you get your podcasts!  Watch more Family Trips episodes: https://www.youtube.com/playlist?list=PLlqYOfxU_jQem4_NRJPM8_wLBrEEQ17B6  ------------------------- 00:00 Introduction with Seth Meyers and Josh Meyers01:45 Operation Delta Dog Gala03:00 Dad Surprise And Award12:18 Tim Simons Joins 14:15 Maine Roots And City Kids35:24 Family Road Trips And Sibling Fights47:39 Aura Frames Memories49:42 Twins And Swearing Rules55:32 Family Trips And Sick Memories01:05:49 Camping Fails And Video Stores01:21:24 Speed Round And Farewell  ------------------------- Support our sponsors: Cologuard If you're 45 or older and at average risk, talk to your healthcare provider about screening for colon cancer and ask if Cologuard Plus could be right for you. You can also request a Cologuard prescription online today at https://Cologuard.com  TinCan  Go to https://tincan.com/TRIPS for $10 off. And when you use our link you’re supporting our show!   Amazon “Get a head start on holiday gifting with Amazon's low prices. Shop now at amazon.com/holiday.”  Aura Starting November 19, visit AuraFrames.com and get up to $50 off select frames plus an additional $5 off your order with the promo code TRIPS.   Blueland Blueland’s biggest sale of the year is here! Save up to 30% when you go to Blueland dot com slash TRIPS.  iM8 Go to https://IM8HEALTH.com/trips RIGHT NOW for a Free Welcome Kit, five free travel sachets, plus ten percent off your order.  These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.  Mint Mobile To get your new wireless plan for 15 bucks a month, go to https://mintmobile.com/trips    Upfront payment of: $45 for 3-month., $90 for 6-month., or $180 for 12-month. plan required ($15 per month equivalent). Taxes & fees extra. Initial plan term only. Greater than 50GB may slow when network is busy. Capable device required. Availability, speed & coverage varies. See mintmobile.com.  ------------------------- Family Trips is produced by Rabbit Grin Productions. Theme song written and performed by Jeff Tweedy.  ------------------------- About the Show: Lifelong brothers Seth Meyers and Josh Meyers ask guests to relive childhood memories, unforgettable family trips, and other disasters!   New Episodes of Family Trips with the Meyers Brothers are available every Tuesday.  ------------------------- Executive Producers: Rob Holysz, Jeph Porter, Natalie Holysz Creative Producer: Sam Skelton Coordinating Producer: Derek Johnson Video Editor: Josh Windisch Mix & Master: Josh Windisch Episode Artwork: Analise Jorgensen  #familytrips #sethmeyers #joshmeyers Learn more about your ad choices. Visit megaphone.fm/adchoices",
+      "api_seen": true
+    },
+    {
+      "id": "0MfYfhfsBeZ4rq59jlc0XQ",
+      "added_at": "2026-11-18",
+      "show": "Stuff You Should Know",
+      "publisher": null,
+      "name": "Short Stuff: How Much Does A Cloud Weigh",
+      "dur_min": 11,
+      "release": "2026-11-18",
+      "url": "https://open.spotify.com/episode/0MfYfhfsBeZ4rq59jlc0XQ",
+      "desc": "Yes, clouds have weight – and a lot of it, too! Find out why and how you can guess the weight of a cloud right from the comfort of your own backyard!See omnystudio.com/listener for privacy information.",
+      "api_seen": true
+    },
+    {
+      "id": "0iQKbVPMLBwzHCoCOGwkDL",
+      "added_at": "2026-11-18",
+      "show": "Unexplainable",
+      "publisher": null,
+      "name": "The farthest thing we’ve ever made",
+      "dur_min": 42,
+      "release": "2026-11-18",
+      "url": "https://open.spotify.com/episode/0iQKbVPMLBwzHCoCOGwkDL",
+      "desc": "The Voyager 1 spacecraft, launched in 1977, just hit a milestone no man-made object has ever reached: one light-day from Earth. Over 16 billion miles away. And it’s carrying the Golden Record, a message from humanity to the universe. Our friends at This Is Love dig into how it was made and the love story at the heart of it. Guests: Phoebe Judge, host of This is Love; Ann Druyan, documentary producer and creative director of The Golden Record  Watch us on Netflix!  For show transcripts, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unxtranscripts⁠ ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠For more, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unexplainable⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠ And please email us! ⁠⁠⁠⁠⁠unexplainable@vox.com⁠⁠⁠⁠⁠ We read every email. Support Unexplainable (and get ad-free episodes) by becoming a Vox Member today: ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/members⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠ Thank you! Learn more about your ad choices. Visit podcastchoices.com/adchoices",
+      "api_seen": true
+    },
+    {
+      "id": "2J0BPUaylSHAZE0pGUTAI3",
+      "added_at": "2026-11-18",
+      "show": "Planet Money",
+      "publisher": null,
+      "name": "Two ways big bets on data centers might affect you (Two Indicators)",
+      "dur_min": 18,
+      "release": "2026-11-18",
+      "url": "https://open.spotify.com/episode/2J0BPUaylSHAZE0pGUTAI3",
+      "desc": "Your money might be fueling the AI boom … just as some AI data center bets are starting to look riskier. If you own stocks, that money is likely tied up in giant tech companies like Microsoft and Nvidia. And if your 401(k) has money invested in the US bond fund, you might be lending tech companies the money to build data centers. Today on the show, two stories from our short daily podcast The Indicator from Planet Money on how risky these data center bets are for investors and the companies making them. And, of course, for all of us. Read: Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life Our weekly longform Planet Money newsletterOur weekly Indicator round-up newsletterFollow: InstagramTikTokYouTubeFacebookThe original Indicator episodes were produced by Corey Bridges and Julia Ritchey. They were engineered by Kwesi Lee and Cena Loffredo, fact checked by Sierra Juarez and edited by Kate Concannon. This episode of Planet Money was produced by Vito Emanuel and Emma Peaslee. Alex Goldmark is our executive producer.Music: NPR Source Audio - \"Saunter\" and \"Super-Fi\" Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
+      "api_seen": true
+    },
+    {
+      "id": "66KAdu3ae2L6X8ElHfJ0N0",
+      "added_at": "2026-11-18",
+      "show": "The Indicator from Planet Money",
+      "publisher": null,
+      "name": "We got this economics podcast before GTA VI",
+      "dur_min": 9,
+      "release": "2026-11-18",
+      "url": "https://open.spotify.com/episode/66KAdu3ae2L6X8ElHfJ0N0",
+      "desc": "GTA VI is poised to become one of the biggest entertainment launches of all time when it’s released on November 19. Today, we dig into why this game is such a global phenomenon and how the developers plan to make money from it for years to come. Fact checking by Sierra Juarez.Your Next Listen –Playing Through the Video Game Industry–Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet Money–The Indicator newsletter — a weekly roundup of news, ideas and staff picks. –Instagram, TikTok and YouTube –Find the Planet Money book –Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop!Support public media by subscribing to NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true
     }
   ]
