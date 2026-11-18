@@ -811,6 +811,20 @@ debut, who came back, and who stayed on.</p>
       </table>
     </div>
   </details>
+  <details class="history" id="best-etc-comparison">
+    <summary>Best, Etc. Top 100 vs. all L.A. Times 101 editions</summary>
+    <p>Compare the <a href="https://bestetc.com/editions/los-angeles">Best, Etc. Los Angeles Top 100</a> snapshot from November 17, 2026 against every Times edition from 2013 onward. A restaurant is "Never listed" only if it has no match in any edition, including shared entries. This is a snapshot, not a live feed.</p>
+    <div class="controls">
+      <label>Times history <select id="bestetc-filter"><option value="never">Never listed</option><option value="ever">Previously listed</option><option value="all">All 100</option></select></label>
+      <label>Restaurant <input type="search" id="bestetc-query" placeholder="Search restaurants"></label>
+    </div>
+    <p id="bestetc-summary" aria-live="polite"></p>
+    <div class="table-wrap"><table class="table table-striped">
+      <thead><tr><th>#</th><th>Best, Etc. position</th><th>Restaurant</th><th>Score</th><th>Times editions</th></tr></thead>
+      <tbody id="bestetc-entries"></tbody>
+    </table></div>
+    <p><small>Matches use the tracker’s grouped-entry history and known naming aliases. Separate branches and ambiguous name changes may require manual verification. Best, Etc. positions are list positions; tied official ranks may differ.</small></p>
+  </details>
   <h2>Year by year</h2>
   <div class="legend">
     <span><i class="swatch debut" aria-hidden="true"></i>First appearance</span>
@@ -2378,6 +2392,514 @@ each year.</p>
       {"name":"Yerord Mas","status":"First appearance","first":2026,"previous":null,"match":null,"note":null,"rank":50}
     ]
   }
+}
+</script>
+<script type="application/json" id="bestetc-data">
+{
+  "source": "https://bestetc.com/editions/los-angeles",
+  "captured": "2026-11-17",
+  "restaurants": [
+    {
+      "position": 1,
+      "name": "Providence",
+      "score": 95
+    },
+    {
+      "position": 2,
+      "name": "Somni",
+      "score": 94
+    },
+    {
+      "position": 3,
+      "name": "Kato",
+      "score": 91
+    },
+    {
+      "position": 4,
+      "name": "Hayato",
+      "score": 90
+    },
+    {
+      "position": 5,
+      "name": "Mélisse",
+      "score": 90
+    },
+    {
+      "position": 6,
+      "name": "Vespertine",
+      "score": 90
+    },
+    {
+      "position": 7,
+      "name": "Holbox",
+      "score": 88
+    },
+    {
+      "position": 8,
+      "name": "Seline",
+      "score": 88
+    },
+    {
+      "position": 9,
+      "name": "n/naka",
+      "score": 88
+    },
+    {
+      "position": 10,
+      "name": "Osteria Mozza",
+      "score": 88
+    },
+    {
+      "position": 11,
+      "name": "Restaurant Ki",
+      "score": 87
+    },
+    {
+      "position": 12,
+      "name": "Mori Nozomi",
+      "score": 87
+    },
+    {
+      "position": 13,
+      "name": "Sushi Kaneyoshi",
+      "score": 87
+    },
+    {
+      "position": 14,
+      "name": "Orsa & Winston",
+      "score": 87
+    },
+    {
+      "position": 15,
+      "name": "Kuya Lord",
+      "score": 87
+    },
+    {
+      "position": 16,
+      "name": "Lielle",
+      "score": 87
+    },
+    {
+      "position": 17,
+      "name": "Meteora",
+      "score": 87
+    },
+    {
+      "position": 18,
+      "name": "Sushi Inaba",
+      "score": 86
+    },
+    {
+      "position": 19,
+      "name": "Citrin",
+      "score": 86
+    },
+    {
+      "position": 20,
+      "name": "Corridor 109",
+      "score": 86
+    },
+    {
+      "position": 21,
+      "name": "Heritage",
+      "score": 86
+    },
+    {
+      "position": 22,
+      "name": "Kali Steakhouse",
+      "score": 86
+    },
+    {
+      "position": 23,
+      "name": "KOJIMA",
+      "score": 86
+    },
+    {
+      "position": 24,
+      "name": "Miura",
+      "score": 86
+    },
+    {
+      "position": 25,
+      "name": "Nozawa Bar",
+      "score": 86
+    },
+    {
+      "position": 26,
+      "name": "Pasta|Bar",
+      "score": 86
+    },
+    {
+      "position": 27,
+      "name": "R|O-Rebel Omakase",
+      "score": 86
+    },
+    {
+      "position": 28,
+      "name": "Shin Sushi",
+      "score": 86
+    },
+    {
+      "position": 29,
+      "name": "Anajak Thai",
+      "score": 84
+    },
+    {
+      "position": 30,
+      "name": "Gusto Bread",
+      "score": 83
+    },
+    {
+      "position": 31,
+      "name": "République",
+      "score": 82
+    },
+    {
+      "position": 32,
+      "name": "Ototo",
+      "score": 81
+    },
+    {
+      "position": 33,
+      "name": "1010 Wine and Events",
+      "score": 80
+    },
+    {
+      "position": 34,
+      "name": "The Serving Spoon",
+      "score": 80
+    },
+    {
+      "position": 35,
+      "name": "Pizzeria Sei",
+      "score": 80
+    },
+    {
+      "position": 36,
+      "name": "The Belvedere",
+      "score": 79
+    },
+    {
+      "position": 37,
+      "name": "Komal",
+      "score": 79
+    },
+    {
+      "position": 38,
+      "name": "Baroo",
+      "score": 79
+    },
+    {
+      "position": 39,
+      "name": "Heritage Barbecue",
+      "score": 79
+    },
+    {
+      "position": 40,
+      "name": "Mar'sel",
+      "score": 78
+    },
+    {
+      "position": 41,
+      "name": "Napa Rose",
+      "score": 78
+    },
+    {
+      "position": 42,
+      "name": "San Laurel",
+      "score": 78
+    },
+    {
+      "position": 43,
+      "name": "RVR",
+      "score": 78
+    },
+    {
+      "position": 44,
+      "name": "Yang’s Kitchen",
+      "score": 78
+    },
+    {
+      "position": 45,
+      "name": "Pasjoli",
+      "score": 78
+    },
+    {
+      "position": 46,
+      "name": "Antico Nuovo",
+      "score": 78
+    },
+    {
+      "position": 47,
+      "name": "Evil Cooks",
+      "score": 77
+    },
+    {
+      "position": 48,
+      "name": "Strong Water",
+      "score": 77
+    },
+    {
+      "position": 49,
+      "name": "Pizzeria Mozza",
+      "score": 77
+    },
+    {
+      "position": 50,
+      "name": "Friends & Family",
+      "score": 77
+    },
+    {
+      "position": 51,
+      "name": "Petitgrain Boulangerie",
+      "score": 77
+    },
+    {
+      "position": 52,
+      "name": "Endorffeine",
+      "score": 77
+    },
+    {
+      "position": 53,
+      "name": "CUT",
+      "score": 77
+    },
+    {
+      "position": 54,
+      "name": "Alta Adams",
+      "score": 77
+    },
+    {
+      "position": 55,
+      "name": "Knife Pleat",
+      "score": 77
+    },
+    {
+      "position": 56,
+      "name": "Juliet",
+      "score": 77
+    },
+    {
+      "position": 57,
+      "name": "Melanie Wine Bar",
+      "score": 77
+    },
+    {
+      "position": 58,
+      "name": "Voodoo Vin",
+      "score": 77
+    },
+    {
+      "position": 59,
+      "name": "Spago",
+      "score": 77
+    },
+    {
+      "position": 60,
+      "name": "Raya",
+      "score": 76
+    },
+    {
+      "position": 61,
+      "name": "Marché Moderne",
+      "score": 76
+    },
+    {
+      "position": 62,
+      "name": "Gjelina",
+      "score": 76
+    },
+    {
+      "position": 63,
+      "name": "Quarter Sheets",
+      "score": 76
+    },
+    {
+      "position": 64,
+      "name": "Kismet",
+      "score": 76
+    },
+    {
+      "position": 65,
+      "name": "Pizzeria Bianco",
+      "score": 76
+    },
+    {
+      "position": 66,
+      "name": "Langer's Deli",
+      "score": 76
+    },
+    {
+      "position": 67,
+      "name": "Moo's Craft Barbecue",
+      "score": 76
+    },
+    {
+      "position": 68,
+      "name": "Pine & Crane",
+      "score": 76
+    },
+    {
+      "position": 69,
+      "name": "Sea Harbour",
+      "score": 76
+    },
+    {
+      "position": 70,
+      "name": "CHAAK Kitchen",
+      "score": 76
+    },
+    {
+      "position": 71,
+      "name": "Nobu Malibu",
+      "score": 76
+    },
+    {
+      "position": 72,
+      "name": "71Above",
+      "score": 76
+    },
+    {
+      "position": 73,
+      "name": "Nick + Stef's Steakhouse",
+      "score": 76
+    },
+    {
+      "position": 74,
+      "name": "Parkway Grill",
+      "score": 76
+    },
+    {
+      "position": 75,
+      "name": "The Cellar Restaurant",
+      "score": 76
+    },
+    {
+      "position": 76,
+      "name": "The Hobbit",
+      "score": 76
+    },
+    {
+      "position": 77,
+      "name": "The Ranch Steakhouse",
+      "score": 76
+    },
+    {
+      "position": 78,
+      "name": "Vin Folk Wine Bar",
+      "score": 75
+    },
+    {
+      "position": 79,
+      "name": "Bridgetown Roti",
+      "score": 75
+    },
+    {
+      "position": 80,
+      "name": "Bistro Na's",
+      "score": 75
+    },
+    {
+      "position": 81,
+      "name": "Rasarumah",
+      "score": 75
+    },
+    {
+      "position": 82,
+      "name": "Mae Malai Thai House of Noodles",
+      "score": 75
+    },
+    {
+      "position": 83,
+      "name": "Tsubaki",
+      "score": 75
+    },
+    {
+      "position": 84,
+      "name": "Lugya’h",
+      "score": 75
+    },
+    {
+      "position": 85,
+      "name": "ONYX Restaurant",
+      "score": 75
+    },
+    {
+      "position": 86,
+      "name": "Saddle Peak Lodge",
+      "score": 75
+    },
+    {
+      "position": 87,
+      "name": "The Living Room at The Peninsula Beverly Hills",
+      "score": 75
+    },
+    {
+      "position": 88,
+      "name": "The Restaurant at Hotel Bel-Air",
+      "score": 75
+    },
+    {
+      "position": 89,
+      "name": "Chengdu Taste",
+      "score": 75
+    },
+    {
+      "position": 90,
+      "name": "Fable & Spirit",
+      "score": 75
+    },
+    {
+      "position": 91,
+      "name": "Khan Saab Desi Craft Kitchen",
+      "score": 75
+    },
+    {
+      "position": 92,
+      "name": "Be Bright Coffee",
+      "score": 75
+    },
+    {
+      "position": 93,
+      "name": "Dulan's Soul Food Kitchen",
+      "score": 75
+    },
+    {
+      "position": 94,
+      "name": "Sonoratown",
+      "score": 75
+    },
+    {
+      "position": 95,
+      "name": "Damian",
+      "score": 75
+    },
+    {
+      "position": 96,
+      "name": "Villa's Tacos",
+      "score": 75
+    },
+    {
+      "position": 97,
+      "name": "Si! Mon",
+      "score": 75
+    },
+    {
+      "position": 98,
+      "name": "Rocio's Mexican Kitchen",
+      "score": 75
+    },
+    {
+      "position": 99,
+      "name": "Lalibela",
+      "score": 75
+    },
+    {
+      "position": 100,
+      "name": "Bavel",
+      "score": 75
+    }
+  ]
 }
 </script>
 <script type="application/json" id="la101-geo-data">
@@ -4072,6 +4594,61 @@ each year.</p>
     historyEntries.replaceChildren(rows);
     historySummary.textContent = `Showing ${visible.length} of ${history.length} entries.`;
   }
+
+
+  // Compare against the full historical tracker, not just the latest Times edition.
+  const bestetc = JSON.parse(document.getElementById("bestetc-data").textContent);
+  const bestetcFilter = document.getElementById("bestetc-filter");
+  const bestetcQuery = document.getElementById("bestetc-query");
+  const bestetcEntries = document.getElementById("bestetc-entries");
+  const bestetcSummary = document.getElementById("bestetc-summary");
+  const bestetcAliases = {
+    "Holbox": ["Chichen Itza / Holbox", "Mercado La Paloma"],
+    "Komal": ["Mercado La Paloma"],
+    "Restaurant Ki": ["Ki"],
+    "Yang’s Kitchen": ["Yang's Kitchen"],
+    "Langer's Deli": ["Langer's"],
+    "Moo's Craft Barbecue": ["Moo's"],
+    "Pasta|Bar": ["Pasta/Bar"],
+    "R|O-Rebel Omakase": ["R/O-Rebel Omakase"]
+  };
+  const bestetcKey = value => searchKey(value).replace(/[^a-z0-9]/g, "");
+  function timesYears(name) {
+    const aliases = [name, ...(bestetcAliases[name] || [])].map(bestetcKey);
+    const matched = new Set();
+    for (const [edition, record] of Object.entries(data)) {
+      for (const row of record.rows) {
+        if (row.status === "Other") continue;
+        const fields = [row.name, row.note, row.match].filter(Boolean);
+        if (fields.some(field => aliases.some(alias => bestetcKey(field).includes(alias)))) {
+          matched.add(edition);
+        }
+      }
+    }
+    return Array.from(matched).sort();
+  }
+  const bestetcRows = bestetc.restaurants.map(item => ({...item, editions: timesYears(item.name)}));
+  function renderBestetc() {
+    const needle = searchKey(bestetcQuery.value.trim());
+    const rows = bestetcRows.filter(item =>
+      (bestetcFilter.value === "all" ||
+       (bestetcFilter.value === "never" ? item.editions.length === 0 : item.editions.length > 0)) &&
+      searchKey(item.name).includes(needle)
+    );
+    const fragment = document.createDocumentFragment();
+    for (const [i, item] of rows.entries()) {
+      const tr = element("tr");
+      tr.append(rowNumber(i + 1), element("td", item.position),
+        element("th", item.name), element("td", item.score),
+        element("td", item.editions.length ? item.editions.join(", ") : "Never listed"));
+      fragment.append(tr);
+    }
+    bestetcEntries.replaceChildren(fragment);
+    bestetcSummary.textContent = `${bestetcRows.filter(x => !x.editions.length).length} of 100 Best, Etc. entries have no historical L.A. Times 101 match. Showing ${rows.length} entries.`;
+  }
+  bestetcFilter.addEventListener("change", renderBestetc);
+  bestetcQuery.addEventListener("input", renderBestetc);
+  renderBestetc();
 
   const editionSort = { key: "rank", dir: 1 };
 
