@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-18T23:02:10.241120+00:00",
+  "generated_at": "2026-11-19T23:10:25.594738+00:00",
   "events": [
     {
       "date": "2026-11-18",
@@ -310,12 +310,6 @@
     {
       "date": "2026-10-20",
       "type": "merged_pr",
-      "title": "Fix pa11y accessibility errors on US rental markets page",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/295"
-    },
-    {
-      "date": "2026-10-20",
-      "type": "merged_pr",
       "title": "Fetch quick-plots branch before creating the publishing worktree",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/301"
     },
@@ -333,6 +327,16 @@
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-11-19",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "6 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/4f8d7521abc2d85ad7f7e37c5748cb0a4f57de77"
+        }
+      ]
+    },
     {
       "date": "2026-11-18",
       "items": [
@@ -515,21 +519,6 @@
           "emoji": "\ud83c\udfa7",
           "text": "3 podcast episodes added",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/f0cc90cdc5489beb05c045b50fbb0eaa04db0041"
-        }
-      ]
-    },
-    {
-      "date": "2026-11-05",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "6 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/c2d71b530326dc3e1519b67ecbc5af3f164ff913"
-        },
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "Podcast + Spotify experience improved",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/328"
         }
       ]
     }
