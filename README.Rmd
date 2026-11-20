@@ -313,6 +313,7 @@ p_commits <- ggplot2::ggplot(
     expand = ggplot2::expansion(mult = c(0.01, 0.01))
   ) +
   ggplot2::scale_y_continuous(labels = scales::comma) +
+  ggplot2::coord_cartesian(xlim = range(month_seq)) +
   ggplot2::labs(
     title = "Commits per month",
     x = NULL,
@@ -332,13 +333,13 @@ p_lines <- ggplot2::ggplot(
   ggplot2::scale_x_date(
     date_breaks = "1 month",
     date_labels = "%b %Y",
-    limits = range(month_seq),
     expand = ggplot2::expansion(mult = c(0.01, 0.01))
   ) +
   ggplot2::scale_y_continuous(
     trans = "log10",
     labels = scales::label_number(scale_cut = scales::cut_short_scale())
   ) +
+  ggplot2::coord_cartesian(xlim = range(month_seq)) +
   ggplot2::labs(
     title = "Lines changed per month (insertions + deletions, log scale)",
     x = NULL,

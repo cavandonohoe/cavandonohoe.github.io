@@ -57,6 +57,10 @@ exclude = [
   # runners with 503 regardless of pacing. Branch links (blob/main/...) are
   # still checked.
   "^https://github\\.com/[^/]+/[^/]+/blob/[0-9a-f]{40}/",
+
+  # Commit pages (year_in_review and the home page link hundreds of these).
+  # Same story: immutable SHAs, and github.com 503s bulk fetches from runners.
+  "^https://github\\.com/[^/]+/[^/]+/commit/[0-9a-f]{40}$",
 ]
 
 # Skip HTML fragments that the site build copies into _site but that are not
