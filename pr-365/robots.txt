@@ -1,0 +1,12 @@
+# robots.txt for cavandonohoe.github.io
+User-agent: *
+Allow: /
+
+# Per-PR preview deploys live at /pr-<number>/ and are full copies of the
+# site. Keep them out of search results so they don't compete with the
+# canonical pages.
+Disallow: /pr-
+
+# Sitemap location
+Sitemap: https://cavandonohoe.github.io/sitemap.xml
+
