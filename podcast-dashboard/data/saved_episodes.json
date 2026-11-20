@@ -5,9 +5,9 @@
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
     "n_episodes": 528,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-11-19",
-    "api_saved_count": 66,
-    "n_removed": 404,
+    "api_refreshed_at": "2026-11-20",
+    "api_saved_count": 65,
+    "n_removed": 414,
     "n_unavailable": 28
   },
   "episodes": [
@@ -4482,7 +4482,7 @@
       "url": "https://open.spotify.com/episode/40VBBhFo4a96cKLH73gBCm",
       "desc": "Why do clothing styles get stale and then come back into fashion? Listen in to find out.See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-20"
     },
     {
       "id": "1pHHFomZq3B65UnS7Xbpyi",
@@ -4495,7 +4495,7 @@
       "url": "https://open.spotify.com/episode/1pHHFomZq3B65UnS7Xbpyi",
       "desc": "Charles Ponzi was down on his luck. In 1919, the Italian immigrant had spent a decade and a half in the U.S. He was looking for a way to get rich and tried his hand at everything — including bookkeeping, sign painting, grocery clerk, dishwasher, and librarian.He caught a lucky break in August, when he received a letter from Europe. In the envelope was an International Reply Coupon, a clever way to prepay for international postage. Ponzi realized he might be able to use these coupons to make his fortune. All he needed was investors.What happened next made him a household name. This is the story of the man behind the eponymous Ponzi scheme — a tale of financial fraud that lives up to its linguistic legacy.(Note: The original version of this episode ran in 2023.)Read Planet Money:  • Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life  • Our weekly longform Planet Money newsletter • Our weekly Indicator round-up newsletterFollow Planet Money:  • Instagram • TikTok • YouTube • FacebookListen to more Planet Money:  • Our short, daily podcast, The Indicator from Planet Money • Over 1,000 episodes in our archive on the NPR AppMerch:  • NPR Shop • The Planet Money game, Sell Me A SasquatchSupport public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.This episode was produced by James Sneed. It was fact checked by Sierra Juarez, mastered by Natasha Branch, and edited by Jess Jiang. It's based on the book Ponzi's Scheme, by Mitchell Zuckoff.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-20"
     },
     {
       "id": "3DCbjWWH7Baf5mSreaDIlP",
@@ -4545,7 +4545,8 @@
       "release": "2026-10-08",
       "url": "https://open.spotify.com/episode/2xjdQNmzruAiMvSf2InOh9",
       "desc": "The SYSK boys continue the episode on stand-up comedy in part two, placing it in the rarefied company of other two-parters like Evel Knievel, the Hoover Dam, and the Trail of Tears. In this ep: should anything be off limits for stand-up? Consensus: no.See omnystudio.com/listener for privacy information.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "0rsVujmLChYTI6u9xRmwGp",
@@ -4582,7 +4583,7 @@
       "url": "https://open.spotify.com/episode/0PqvGXDpAaNgdAYLoz7gt5",
       "desc": "Federal immigration enforcement arrests reached record highs this past summer, and under the second Trump administration, immigration agents can now more easily access so-called sensitive areas, including hospitals. Today on the show: how both patients and healthcare workers are bearing the physical and economic costs of these deportation campaigns. Featuring Dr. William D. Lopez, author of Raiding the Heartland: an American Story of Deportation and Resistance.Fact checking by Sierra Juarez.Your Next Listen  How ICE arrests are creating 'economies of fear'Connect with The Indicator from Planet MoneyThe Indicator newsletter - a weekly roundup of news, ideas and staff picks.Buy the Planet Money book InstagramTikTokYouTubeFor sponsor-free episodes, subscribe to NPR+ Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-20"
     },
     {
       "id": "3X729JgXcbPBaH0CjXlnlu",
@@ -4703,7 +4704,7 @@
       "url": "https://open.spotify.com/episode/1llbLpOib0HmOHblbfAp1y",
       "desc": "There’s no question that millions of asteroids are circling the Earth at incredible speed and every one of them is just dying to get a chance to smoosh our planet and wipe out life in the universe once and for all. But Earth has an ace up its sleeve: Us!See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-20"
     },
     {
       "id": "0iRSXTdtl1ie75gcFyPEjl",
@@ -4716,7 +4717,7 @@
       "url": "https://open.spotify.com/episode/0iRSXTdtl1ie75gcFyPEjl",
       "desc": "Would aliens use the same periodic table as us? Neil deGrasse Tyson and comic co-host Negin Farsad sit down with Kate Biberdorf, aka Kate the Chemist, to tackle fan questions about the chemistry of life, diamonds, how fire works, and spontaneous combustion.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/the-chemistry-of-life-with-kate-the-chemist/Thanks to our Patrons Ari, Craig Zimmerman, Alison Frey, Jimmy Melendez, A Miller, Erik Frey, Eric Wall, Jack Weekly, Hayden Waters, Darius Bakunas, Steve, Dejan Rešetar, Ellen Phillips, Dragos Stefan, Jackie Felix, Lace S, Mariusz Milka, RedShiftMyPants, Rk C, De'Anthony Rhea, Rachel Morse, Maeve O'Meara, Hammer of Dog, Abdulaziz Almehmadi, Keaton Nguyen, Daniel Lehr, Bogumila Kenney, Debra Di Blasi, Leonhard Euler, Eli, JOHN DEMASTRI, svkool, Cheyenne McAdam, Ian Soobrattee, Andy Cheng, Scarlet Matthews, deriven, Elizabeth Brandon, Rachel Hewitt, Wtv, Timothy Dragila, James Mihaychuk, Bermuda Tim, donnie, Erly Thornton, Brandon Harper, Obada Alnajjar, and Thomas M for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-20"
     },
     {
       "id": "0AWzeY6J22UIsVHaFu31Kr",
@@ -4897,7 +4898,7 @@
       "url": "https://open.spotify.com/episode/0cv8NOlfTRR2ufnrqhp3MK",
       "desc": "Sacagawea was only 16 when she joined the Corps of Discovery. That is one seriously impressive teenager. Find out all about her in this classic episode.See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-20"
     },
     {
       "id": "2p05lfJZC57KWRMfAERrpB",
@@ -5166,7 +5167,7 @@
       "url": "https://open.spotify.com/episode/0PaGnJYSU5C1ojccAA4tH2",
       "desc": "Could ghosts possibly be real? Neil deGrasse Tyson and Eugene Mirman explore ghost hunting techniques, spiritualism, and the non-corporeal plane of existence with Mary Roach and Joe Nickell. Originally Aired October 30, 2011. NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/spooky-science/ Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-20"
     },
     {
       "id": "4xPL6pFBm3r8ZbAV91gdbm",
@@ -6161,7 +6162,7 @@
       "url": "https://open.spotify.com/episode/7h7N0bjYED0w23WhLINGM4",
       "desc": "All Chuck knew of Zorro was from a couple of movies. So today the guys dive deeper on the legendary figure cutting so many Zs into so many things.See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-20"
     },
     {
       "id": "4xTBq7SewyKWstTPZmBXNn",
@@ -6337,7 +6338,7 @@
       "url": "https://open.spotify.com/episode/2mqaoMCsulSwWqz75WJ83j",
       "desc": "How do you live longer and better? Neil deGrasse Tyson and co-hosts Chuck Nice and Gary O’Reilly sit down with biomedical scientist Rhonda Patrick to explore healthspan, fad diets, and how to exercise for longevity.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/the-longevity-playbook-with-rhonda-patrick/Thanks to our Patrons Max Mandelbaum, Kevin Bridgewater, Curtis Preminger, Summer Nelson, Jan Kos, James Harrison, Sootgecko, GLEN PHELPS, Dachi., Charlie Pence, Xavier Nelson, Stacey Paré, Debra Davati, Tom Determan, Casey Saunders, bethie, marcus mitchell, Carl Perkins, AM23, OldGuy, Oona, and Mariana Vidal for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-20"
     },
     {
       "id": "2SxD5jlu7K0K3cEgHBixzF",
@@ -6363,7 +6364,7 @@
       "url": "https://open.spotify.com/episode/27160846BLEY5ivtUNafL8",
       "desc": "Turkeys are a very interesting bird as it turns out. Which may be why many people are leaving it off their Thanksgiving table this year. Learn all about them right now in this classic episode!See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-20"
     },
     {
       "id": "6x8FarrHUCbXIokd4eLdbR",
