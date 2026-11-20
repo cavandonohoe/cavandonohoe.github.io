@@ -223,7 +223,7 @@ my own commits vs. automated commits from the scheduled data
 refresh workflows above. Regenerated each time `README.Rmd` is
 knit.
 
-```{r commit-activity, echo = FALSE, message = FALSE, warning = FALSE, fig.width = 14, fig.height = 8, fig.path = "images/readme/", dev = "ragg_png", dpi = 110, fig.alt = "Two bar charts showing monthly commits and monthly lines changed (insertions + deletions) for this repository, split by Cavan's own commits vs. scheduled-bot commits."}
+```{r commit-activity, echo = FALSE, message = FALSE, warning = FALSE, fig.width = 14, fig.height = 8, fig.path = "images/readme/", dev = "png", dpi = 150, fig.alt = "Two bar charts showing monthly commits and monthly lines changed (insertions + deletions) for this repository, split by Cavan's own commits vs. scheduled-bot commits."}
 # Bind the magrittr pipe locally so this chunk (and the cumulative/summary
 # chunks that share the knit environment) render standalone without a prior
 # library(dplyr) attach.
@@ -297,6 +297,7 @@ theme_readme <- ggplot2::theme_minimal(base_size = 12) +
     plot.title.position = "plot",
     panel.grid.minor = ggplot2::element_blank(),
     legend.position = "top",
+    legend.margin = ggplot2::margin(t = 2, b = 6),
     axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.5, hjust = 1)
   )
 
@@ -350,7 +351,7 @@ patchwork::wrap_plots(p_commits, p_lines, ncol = 1) +
   ggplot2::theme(legend.position = "top")
 ```
 
-```{r commit-activity-cumulative, echo = FALSE, message = FALSE, warning = FALSE, fig.width = 14, fig.height = 7, fig.path = "images/readme/", dev = "ragg_png", dpi = 110, fig.alt = "Two cumulative line charts showing total commits and total lines changed (insertions + deletions) over time, split by Cavan's own commits vs. scheduled-bot commits."}
+```{r commit-activity-cumulative, echo = FALSE, message = FALSE, warning = FALSE, fig.width = 14, fig.height = 7, fig.path = "images/readme/", dev = "png", dpi = 150, fig.alt = "Two cumulative line charts showing total commits and total lines changed (insertions + deletions) over time, split by Cavan's own commits vs. scheduled-bot commits."}
 cumulative <- monthly %>%
   dplyr::arrange(author_type, month) %>%
   dplyr::group_by(author_type) %>%
