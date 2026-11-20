@@ -1,6 +1,30 @@
 {
-  "generated_at": "2026-11-19T23:10:25.594738+00:00",
+  "generated_at": "2026-11-20T22:46:19.913257+00:00",
   "events": [
+    {
+      "date": "2026-11-20",
+      "type": "merged_pr",
+      "title": "Render README activity charts with ragg so legend labels aren't clipped",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/363"
+    },
+    {
+      "date": "2026-11-20",
+      "type": "merged_pr",
+      "title": "Go back to the default png device for README charts, at higher dpi",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/365"
+    },
+    {
+      "date": "2026-11-20",
+      "type": "merged_pr",
+      "title": "Align README bar chart x-axes and skip commit links in lychee",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/366"
+    },
+    {
+      "date": "2026-11-20",
+      "type": "merged_pr",
+      "title": "Advance Spotify podcast cutoff to October 9, 2026",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/364"
+    },
     {
       "date": "2026-11-18",
       "type": "merged_pr",
@@ -294,39 +318,28 @@
       "type": "merged_pr",
       "title": "Track podcast removals and union saved-episode paging",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/304"
-    },
-    {
-      "date": "2026-10-20",
-      "type": "merged_pr",
-      "title": "Use relative paths for header icons and footer CSS",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/298"
-    },
-    {
-      "date": "2026-10-20",
-      "type": "merged_pr",
-      "title": "US Rental Markets: out-of-sample test and rent-history flags",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/297"
-    },
-    {
-      "date": "2026-10-20",
-      "type": "merged_pr",
-      "title": "Fetch quick-plots branch before creating the publishing worktree",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/301"
-    },
-    {
-      "date": "2026-10-20",
-      "type": "merged_pr",
-      "title": "Add quick IMDb rating plot script",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/299"
-    },
-    {
-      "date": "2026-10-20",
-      "type": "merged_pr",
-      "title": "Add Teams of AI Agents project page",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/296"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-11-20",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "4 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/4b8b343dc1916d6042996a83459c5934ca95e832"
+        },
+        {
+          "emoji": "\ud83d\udcbb",
+          "text": "4 PRs merged"
+        },
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "Podcast + Spotify experience improved",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/364"
+        }
+      ]
+    },
     {
       "date": "2026-11-19",
       "items": [
@@ -504,21 +517,6 @@
           "emoji": "\ud83c\udfa7",
           "text": "2 podcast episodes added",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/fd931b7089413e4ff2f47459d19233b95838daa8"
-        }
-      ]
-    },
-    {
-      "date": "2026-11-06",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "1 podcast episode added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/2a194d5e3c89e431ff5b5e0c2d6ac03e25caf6d4"
-        },
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "3 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/f0cc90cdc5489beb05c045b50fbb0eaa04db0041"
         }
       ]
     }
