@@ -1,0 +1,88 @@
+{
+  "generated_at": "2026-10-11T20:17:34.702965+00:00",
+  "period_start": "2026-10-04T20:17:34.702965+00:00",
+  "commits": 105,
+  "prs_merged": 20,
+  "merged_prs": [
+    {
+      "number": 208,
+      "title": "Fix reunion date showing NA after hourly refresh"
+    },
+    {
+      "number": 209,
+      "title": "Add a 2020\u20132026 Developer Year in Review archive"
+    },
+    {
+      "number": 210,
+      "title": "Clarify year-in-review stats count personal commits"
+    },
+    {
+      "number": 211,
+      "title": "ci: bump the github-actions group with 4 updates"
+    },
+    {
+      "number": 212,
+      "title": "Import sheet-only reunion contacts so submissions cannot be silently skipped"
+    },
+    {
+      "number": 213,
+      "title": "Refresh the current Developer Year in Review daily"
+    },
+    {
+      "number": 214,
+      "title": "Use Contacts as the editable reunion roster"
+    },
+    {
+      "number": 215,
+      "title": "Fix Developer Year in Review language attribution and vendor stats"
+    },
+    {
+      "number": 216,
+      "title": "Highlight JavaScript and HTML across Developer Year in Review"
+    },
+    {
+      "number": 217,
+      "title": "Show files and commits behind the top yearly language"
+    },
+    {
+      "number": 218,
+      "title": "Fix Developer Year in Review snapshot push failures"
+    },
+    {
+      "number": 219,
+      "title": "Add GitHub Actions schedule with Mermaid timelines"
+    },
+    {
+      "number": 220,
+      "title": "Show schedule charts as images in Pacific time"
+    },
+    {
+      "number": 221,
+      "title": "Add optional Venmo support link to site footer"
+    },
+    {
+      "number": 222,
+      "title": "Add interactive procedural maze art generator"
+    },
+    {
+      "number": 229,
+      "title": "Make generated-activity workflows race-safe, paginated, and deployed"
+    },
+    {
+      "number": 230,
+      "title": "Count only default-branch personal commits in Developer Year in Review"
+    },
+    {
+      "number": 231,
+      "title": "Apply TOHS contact submissions once and protect organizer edits"
+    },
+    {
+      "number": 232,
+      "title": "Fix maze hang, animation loop and review findings from #228"
+    },
+    {
+      "number": 240,
+      "title": "CI health: preview race, real size monitor, failure alerts, npm Dependabot"
+    }
+  ]
+}
