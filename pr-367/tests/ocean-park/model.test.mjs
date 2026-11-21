@@ -71,3 +71,13 @@ test("refuse unmapped courts, duplicate intervals and invalid coverage", () => {
     ),
   );
 });
+
+test("estimates cover only calendar gaps and exclude known permit times", async () => {
+  const {estimatedGaps} = await import("../../assets/ocean-park/model.mjs");
+  const slot = (a,b) => ({start:time(a),end:time(b)});
+  const entry = { ...record, permits:[slot(10,11)], calendar:{available:[slot(13,21)]} };
+  assert.deepEqual(estimatedGaps(entry,day),[slot(8,10),slot(11,13)].map(x=>({...x,estimated:true})));
+  assert.deepEqual(estimatedGaps(record,day),[]);
+  assert.deepEqual(estimatedGaps({...entry,calendar:{available:[slot(7,22)]}},day),[]);
+  assert.throws(()=>validate({days:{[day]:{"North-1":{...record,calendar:{url:"https://anc.apm.activecommunities.com/test",available:[]}}}}}));
+});

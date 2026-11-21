@@ -27,3 +27,9 @@ Use one stable id across all courts covered by the same permit. Split overnight 
 Run `node --test tests/ocean-park/model.test.mjs` before publishing via a reviewed PR. On collection failure, leave the last verified file and timestamp intact. Freshness expires after 24 hours unless a retrospective check occurred after the selected day ended. The latter is treated as an archived observation. Stale intervals remain visible in details and the schedule with a warning. Corrections to an archive require a new reviewed snapshot. Missing, malformed or unreadable data fails closed to unknown. Intervals include their start and exclude their end. A positive interval can establish a permit on a partially covered day. Only a complete fresh snapshot can establish absence. The known daily permit count deduplicates permit identifiers across courts. A dash means the total is unknown.
 
 Serve the repository root with `python -m http.server` and open `/ocean_park_volleyball.html` to review locally.
+
+### Estimated unavailable hours
+
+A reviewed court-day can also include a `calendar` with the city's court-specific `url` and the complete list of `available` start/end intervals shown for that date (expand “More”). Only use an empty array with explicit `fullyBooked: true` when the city displays “Fully booked”. Omit the calendar when the lookup fails or its results are incomplete. Review both sources before changing a shared snapshot timestamp.
+
+The displayed estimates are gaps within an assumed 8 AM–9 PM Pacific comparison window. An early or late gap may reflect facility hours. The city calendar does not explain why a slot is unavailable. Known permit intervals appear separately and are excluded from the estimated intervals and counted once. No calendar gaps means coverage of this comparison window, without implying a clear permit record. November 21 observations cover North 1–6, 9 and 10.

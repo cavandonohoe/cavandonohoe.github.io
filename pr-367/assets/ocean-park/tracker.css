@@ -271,3 +271,6 @@ dialog button {
     font-weight: 650;
   }
 }
+
+.estimated { background: #ffe3bf; color: #6d380d; }
+.open { background: #e5f0f3; color: #205461; }

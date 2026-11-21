@@ -39,17 +39,18 @@
         >.
       </p>
       <section aria-labelledby="maptitle">
-        <h2 id="maptitle">Daily court permits</h2>
+        <h2 id="maptitle">Unavailable hours by court</h2>
         <p id="coverage" role="status"></p>
         <div id="stats"></div>
         <div class="legend">
+          <span class="estimated">≈ Estimated unavailable</span>
           <span class="active">● All-day permit</span
           ><span class="partial">◐ Part-day permit</span
           ><span class="clear">✓ No permits</span
           ><span class="unknown">? Unknown</span>
         </div>
         <p>
-          Times are Pacific. Courts are shown in label order. The Pacific is west and Ocean Front
+          Calendar gaps are estimated within an assumed 8 AM to 9 PM Pacific day. Tap a court to see its source. Courts are shown in label order. The Pacific is west and Ocean Front
           Walk is inland. Tile positions are approximate only at the group
           level.
         </p>
@@ -65,7 +66,7 @@
         </p>
       </section>
       <section>
-        <h2>Daily permit schedule</h2>
+        <h2>Daily unavailable hours</h2>
         <div class="filters">
           <label
             >Location<select id="area">
@@ -79,6 +80,7 @@
             >Record status<select id="status">
               <option value="">All records</option>
               <option>Permitted</option>
+              <option>Estimated unavailable</option>
               <option>Stale</option>
             </select></label
           >

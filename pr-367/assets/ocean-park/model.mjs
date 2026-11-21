@@ -66,6 +66,18 @@ export function validate(data) {
           Array.isArray(e.permits),
         "Invalid evidence for " + key,
       );
+      if (e.calendar !== undefined) {
+        const c = e.calendar;
+        requireField(object(c) && typeof c.url === "string" &&
+          c.url.startsWith("https://anc.apm.activecommunities.com/") &&
+          Array.isArray(c.available) && (c.available.length > 0 || c.fullyBooked === true) &&
+          !(c.fullyBooked && c.available.length), "Incomplete calendar snapshot");
+        for (const w of c.available) {
+          requireField(object(w) && instant(w.start) && instant(w.end) &&
+            Date.parse(w.start) >= midnight(day) && Date.parse(w.end) <= midnight(shift(day, 1)) &&
+            Date.parse(w.start) < Date.parse(w.end), "Invalid available window");
+        }
+      }
       const seen = new Set();
       for (const p of e.permits) {
         requireField(
@@ -107,4 +119,28 @@ export function state(entry, day, now) {
     return through === midnight(shift(day, 1)) ? "active" : "partial";
   }
   return entry.complete ? "clear" : "unknown";
+}
+
+// Pacific afternoon and the following midnight share an offset on DST change days.
+export function estimatedGaps(entry, day) {
+  if (!entry?.calendar) return [];
+  const next = midnight(shift(day, 1));
+  let cursor = next - 16 * 60 * minute; // 8 AM Pacific
+  const close = next - 3 * 60 * minute; // 9 PM Pacific
+  const gaps = [];
+  // Known permits get their own rows. Remove their hours from the estimates.
+  const covered = [...entry.calendar.available, ...entry.permits]
+    .map(w => [Date.parse(w.start), Date.parse(w.end)])
+    .sort((a, b) => a[0] - b[0]);
+  function add(end) {
+    if (cursor < end) gaps.push({start: new Date(cursor).toISOString(),
+      end: new Date(end).toISOString(), estimated: true});
+  }
+  for (const [start, end] of covered) {
+    add(Math.min(start, close));
+    cursor = Math.max(cursor, end);
+    if (cursor >= close) break;
+  }
+  add(close);
+  return gaps;
 }
