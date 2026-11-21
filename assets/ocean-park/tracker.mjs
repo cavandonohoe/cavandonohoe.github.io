@@ -1,6 +1,7 @@
 import {
   clock,
   courts,
+  estimatedGaps,
   dayOf,
   fresh,
   shift,
@@ -9,12 +10,14 @@ import {
 } from "./model.mjs";
 const el = (id) => document.getElementById(id);
 const labels = {
+  estimated: "Estimated unavailable",
+  open: "No calendar gaps",
   active: "All-day permit",
   partial: "Part-day permit",
   clear: "No permits",
   unknown: "Unknown",
 };
-const symbols = { active: "●", partial: "◐", clear: "✓", unknown: "?" };
+const symbols = { estimated: "≈", open: "○", active: "●", partial: "◐", clear: "✓", unknown: "?" };
 const buttons = new Map();
 let data = { days: {} },
   failure = false,
@@ -70,7 +73,7 @@ for (const area of ["North", "South"]) {
   }
   el("groups").append(group);
 }
-function details(entry, status, day) {
+function details(entry, status, day, intervals) {
   el("detailTitle").textContent = selected.replace("-", " · Court ");
   const body = el("detailBody");
   body.replaceChildren(node("strong", labels[status]), node("p", day));
@@ -95,9 +98,13 @@ function details(entry, status, day) {
         : "Stale record. Confirm with the city.",
     ),
   );
-  for (const p of [...entry.permits].sort(
-    (a, b) => Date.parse(a.start) - Date.parse(b.start),
-  )) {
+  if (entry.calendar) {
+    const link = node("a", "View city court calendar");
+    link.href = entry.calendar.url;
+    body.append(link, node("p", "Listed availability: " + (entry.calendar.available.map(w =>
+      clock(Date.parse(w.start)) + " to " + clock(Date.parse(w.end))).join(", ") || "Fully booked")));
+  }
+  for (const p of intervals) {
     body.append(
       node(
         "p",
@@ -105,7 +112,7 @@ function details(entry, status, day) {
           " to " +
           clock(Date.parse(p.end)) +
           " · " +
-          (p.holder || "Holder unpublished"),
+          (p.estimated ? "Estimated unavailable" : p.holder || "Holder unpublished"),
       ),
     );
   }
@@ -116,18 +123,22 @@ function render() {
   const now = Date.now();
   const entries = data.days[day] || {};
   el("notice").hidden = day < "2026-11-15" || day > "2026-11-25";
-  const counts = { active: 0, clear: 0, unknown: 0, partial: 0 },
+  const counts = { active: 0, clear: 0, unknown: 0, partial: 0, estimated: 0, open: 0 },
     rows = [],
     permitIds = new Set();
   for (const [key, b] of buttons) {
-    const entry = entries[key],
-      status = state(entry, day, now);
+    const entry = entries[key];
+    const gaps = estimatedGaps(entry, day);
+    const stale = entry && !fresh(entry, day, now);
+    let status = state(entry, day, now);
+    if (entry?.calendar && !stale && !entry.permits.length) {
+      status = gaps.length ? "estimated" : "open";
+    }
     counts[status]++;
     b.className = status;
-    const permits = [...(entry?.permits || [])].sort(
+    const permits = [...(entry?.permits || []), ...gaps].sort(
       (a, b) => Date.parse(a.start) - Date.parse(b.start),
     );
-    const stale = entry && !fresh(entry, day, now);
     b.replaceChildren(node("strong", key.split("-")[1] + " " + symbols[status]));
     if (!permits.length || stale) {
       b.append(node("small", stale ? "Stale record" : labels[status]));
@@ -137,15 +148,15 @@ function render() {
       // Show the offset on both ends when a permit crosses a DST transition.
       const compactStart = start.split(" ").at(-1) === end.split(" ").at(-1)
         ? start.slice(0, start.lastIndexOf(" ")) : start;
-      return compactStart + " – " + end;
+      return compactStart + " – " + end + (p.estimated ? " · Estimated" : " · Permit");
     });
     for (const range of times) b.append(node("small", range));
     b.setAttribute("aria-label", [key.replace("-", " court "), stale ? "Stale record" : labels[status], ...times].join(", "));
-    if (selected === key) details(entry, status, day);
-    for (const p of entry?.permits || []) {
+    if (selected === key) details(entry, status, day, permits);
+    for (const p of permits) {
       const current = fresh(entry, day, now);
-      if (current) permitIds.add(p.id);
-      rows.push({ key, p, status: current ? "Permitted" : "Stale" });
+      if (current && !p.estimated) permitIds.add(p.id);
+      rows.push({ key, p, status: !current ? "Stale" : p.estimated ? "Estimated unavailable" : "Permitted" });
     }
   }
   const n = Object.keys(entries).length;
@@ -160,6 +171,8 @@ function render() {
   for (const [name, value] of [
     ["Courts", 25],
     ["Courts with permits", counts.active + counts.partial],
+    ["Estimated only", counts.estimated],
+    ["No calendar gaps", counts.open],
     ["No permits", counts.clear],
     ["Unknown", counts.unknown],
     ["Known daily permits", permitIds.size || (counts.clear === 25 ? 0 : "—")],
@@ -193,7 +206,7 @@ function render() {
       area,
       clock(start),
       clock(end),
-      p.holder || "Unpublished",
+      p.estimated ? "Unknown" : p.holder || "Unpublished",
       status,
     ].forEach((v, i) => {
       const td = node("td", v);
@@ -213,7 +226,7 @@ function render() {
     ? ""
     : rows.length
       ? "No records match these filters."
-      : "No permit entries on file for this date.";
+      : "No unavailable hours on file for this date.";
 }
 courtOptions();
 el("date").onchange = () => {
