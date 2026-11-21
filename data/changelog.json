@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-20T22:46:19.913257+00:00",
+  "generated_at": "2026-11-21T21:49:18.546964+00:00",
   "events": [
     {
       "date": "2026-11-20",
@@ -312,15 +312,19 @@
       "type": "merged_pr",
       "title": "Podcast dashboard: fix metadata backfill, hide episodes Spotify no longer has",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/308"
-    },
-    {
-      "date": "2026-10-22",
-      "type": "merged_pr",
-      "title": "Track podcast removals and union saved-episode paging",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/304"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-11-21",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "1 podcast episode added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/25afed76bc38f01a221d5b49cc5eb120799ffe97"
+        }
+      ]
+    },
     {
       "date": "2026-11-20",
       "items": [
@@ -507,16 +511,6 @@
           "emoji": "\ud83c\udfa7",
           "text": "1 podcast episode added",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/02e6038162ba5682f35317fe2087c49d45adfdc1"
-        }
-      ]
-    },
-    {
-      "date": "2026-11-07",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "2 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/fd931b7089413e4ff2f47459d19233b95838daa8"
         }
       ]
     }
