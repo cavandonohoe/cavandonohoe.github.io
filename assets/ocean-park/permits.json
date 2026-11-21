@@ -1,1 +1,18 @@
-{"days": {}}
+{
+  "days": {
+    "2026-11-21": {
+      "North-6": {
+        "checked": "2026-11-21T20:34:50.039Z",
+        "source": "Firsthand report of a permit seen at Ocean Park on November 21, 2026. Timestamp records receipt of the report.",
+        "complete": false,
+        "permits": [
+          {
+            "id": "2026-11-21-north-6-1300",
+            "start": "2026-11-21T13:00:00-08:00",
+            "end": "2026-11-21T18:00:00-08:00"
+          }
+        ]
+      }
+    }
+  }
+}
