@@ -3,10 +3,10 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 532,
+    "n_episodes": 533,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-11-20",
-    "api_saved_count": 69,
+    "api_refreshed_at": "2026-11-21",
+    "api_saved_count": 70,
     "n_removed": 415,
     "n_unavailable": 28
   },
@@ -6657,6 +6657,18 @@
       "release": "2026-11-20",
       "url": "https://open.spotify.com/episode/4y4Gy7mo6XGdHs5Hb0JhAg",
       "desc": "Can we use gravitational lensing to view distant planets? Neil deGrasse Tyson and comedian Chuck Nice explore black holes, quasars, entropy, and more with astrophysicist and host of PBS Space Time, Matt O’Dowd. Originally Aired Tuesday, June 13, 2023. NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/cosmic-queries-black-hole-paradox-with-matt-odowd/ Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
+      "api_seen": true
+    },
+    {
+      "id": "5OAmLtfGlDZtBJixAtc63D",
+      "added_at": "2026-11-20",
+      "show": "Planet Money",
+      "publisher": null,
+      "name": "You Can Seize Everything (The U.S. is reviving pirate law)",
+      "dur_min": 25,
+      "release": "2026-11-20",
+      "url": "https://open.spotify.com/episode/5OAmLtfGlDZtBJixAtc63D",
+      "desc": "The U.S. is working on bringing back the ancient maritime practice of prize law — which allowed for privateers, or more recently, navies, to seize enemy-linked ships, and quickly sell them off. Why? Well, the U.S. has been seizing lots of big boats — oil tankers linked to Iran and Venezuela — in what the Pentagon calls an effort to disrupt ‘illicit networks.’ But after they seize the big boats, they have a big problem: Boats are very expensive to maintain, and each day the government owns them adds extra costs. So they want to sell off the tankers and the oil inside as soon as possible.On today’s show, pirates, some swashbuckling, and an interview with the federal judge tasked with standing up a modern-day prize court. Read: Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life Our weekly longform Planet Money newsletterOur weekly Indicator round-up newsletterFollow: InstagramTikTokYouTubeFacebookSupport public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.This episode of Planet Money was hosted by Nick Fountain. It was produced by Sam Yellowhorse Kesler. It was edited by Marianne McCune. It was fact-checked by Sierra Juarez, engineered by Robert Rodriguez and Jimmy Keeley. Alex Goldmark is Planet Money's executive producer. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true
     }
   ]
