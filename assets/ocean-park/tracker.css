@@ -1,0 +1,285 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: #f7f5ee;
+  color: #173c42;
+  font:
+    1rem/1.45 system-ui,
+    sans-serif;
+}
+header {
+  background: #124951;
+  color: white;
+  border-bottom: 5px solid #82c6b6;
+}
+header div,
+main {
+  max-width: 1050px;
+  margin: auto;
+  padding: 20px clamp(14px, 4vw, 42px);
+}
+header a {
+  color: #d2f2e8;
+}
+header p {
+  margin: 16px 0 0;
+  color: #c9e7de;
+}
+h1,
+h2,
+h3 {
+  line-height: 1.12;
+}
+h1 {
+  font:
+    600 clamp(2rem, 5vw, 3.6rem) / 1.06 Georgia,
+    serif;
+  margin: 4px 0 8px;
+}
+h2 {
+  font:
+    600 1.65rem Georgia,
+    serif;
+  margin: 22px 0 6px;
+}
+h3 {
+  margin: 0;
+}
+p {
+  margin: 8px 0 14px;
+}
+a {
+  color: #185c61;
+}
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+  max-width: 100%;
+}
+button,
+select,
+input[type="date"] {
+  background: white;
+  border: 1px solid #95aca7;
+  border-radius: 7px;
+  min-height: 44px;
+  padding: 5px 10px;
+}
+button {
+  cursor: pointer;
+}
+.controls,
+.filters,
+.row,
+.legend,
+#stats {
+  display: flex;
+  align-items: end;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.controls {
+  padding: 14px;
+  background: #fffdf8;
+  border: 1px solid #c7d5cd;
+  border-radius: 12px;
+  gap: 12px 20px;
+}
+label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 650;
+}
+
+
+#stats {
+  gap: 1px;
+  background: #ccdbd3;
+  border: 1px solid #ccdbd3;
+  border-radius: 9px;
+  overflow: hidden;
+}
+#stats span {
+  background: #fffdf8;
+  padding: 9px;
+  flex: 1;
+  align-self: stretch;
+  font-size: 0.82rem;
+}
+#stats b {
+  display: block;
+  font-size: 1.3rem;
+}
+.legend {
+  margin: 13px 0;
+  gap: 6px;
+}
+.legend span {
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.84rem;
+}
+.active {
+  background: #ffd8d2;
+  color: #781f1c;
+}
+.partial {
+  background: #ffeba8;
+  color: #684c02;
+}
+.clear {
+  background: #d1efd9;
+  color: #154d30;
+}
+.unknown {
+  background: #e2e7e7;
+  color: #33474c;
+}
+#groups {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 12px;
+}
+.group {
+  background: #fffdf8;
+  border: 1px solid #c7d5cd;
+  border-radius: 10px;
+  padding: 14px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 105px), 1fr));
+  gap: 6px;
+  margin-top: 10px;
+}
+.court-direction {
+  margin: 10px 0 4px;
+  font-weight: 650;
+  font-size: 0.85rem;
+}
+.north-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+/* The North end rows contain two courts, with four three-court rows between. */
+.north-grid [data-row-start] {
+  grid-column-start: 1;
+}
+.grid button {
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  font-weight: 750;
+  position: relative;
+  min-height: 46px;
+}
+.grid small {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.81em;
+  font-weight: normal;
+}
+.filters label {
+  flex: 1;
+  min-width: 115px;
+}
+.filters select {
+  width: 100%;
+  display: block;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 15px;
+  text-align: left;
+}
+td,
+th {
+  padding: 8px;
+  border-bottom: 1px solid #becdc6;
+}
+footer {
+  margin: 24px 0;
+  border-top: 1px solid #bdcdc4;
+  padding-top: 16px;
+}
+dialog {
+  color: inherit;
+  border: 1px solid #9aafa7;
+  border-radius: 12px;
+  width: min(430px, 92vw);
+  overflow-wrap: anywhere;
+}
+dialog::backdrop {
+  background: #0a292db3;
+}
+dialog button {
+  float: right;
+}
+#notice {
+  padding: 10px 14px;
+  background: #fff0cc;
+  border-left: 4px solid #ad7723;
+}
+.sr {
+  position: absolute;
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+:focus-visible {
+  outline: 3px solid #0b6e9b;
+  outline-offset: 2px;
+}
+@media (max-width: 640px) {
+  #groups {
+    grid-template-columns: 1fr;
+  }
+  .controls {
+    gap: 8px;
+  }
+
+  .row {
+    gap: 4px;
+  }
+  .row button {
+    min-width: 38px;
+  }
+  .controls .row button {
+    min-width: 44px;
+  }
+  #stats span {
+    min-width: 28%;
+  }
+  .filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  thead {
+    position: absolute;
+    clip-path: inset(50%);
+  }
+  tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid #bdcdc4;
+    padding: 8px 0;
+  }
+  td {
+    border: 0;
+    padding: 2px;
+    overflow-wrap: anywhere;
+  }
+  td::before {
+    content: attr(data-label) " ";
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 650;
+  }
+}
+
+.estimated { background: #ffe3bf; color: #6d380d; }
+.open { background: #e5f0f3; color: #205461; }

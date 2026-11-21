@@ -1,0 +1,144 @@
+{
+  "days": {
+    "2026-11-21": {
+      "North-6": {
+        "checked": "2026-11-21T20:37:09.035Z",
+        "source": "Firsthand sighting of the permit. Independently checked against the city’s ActiveNet calendar for North VB#6, which showed availability 8 AM–1 PM and 6–9 PM on Nov 21. The gap matches the reported permit. ActiveNet does not identify its cause or holder. https://anc.apm.activecommunities.com/santamonicarecreation/reservation/landing/search/detail/173",
+        "complete": false,
+        "permits": [
+          {
+            "id": "2026-11-21-north-6-1300",
+            "start": "2026-11-21T13:00:00-08:00",
+            "end": "2026-11-21T18:00:00-08:00"
+          }
+        ],
+        "calendar": {
+          "url": "https://anc.apm.activecommunities.com/santamonicarecreation/reservation/landing/search/detail/173",
+          "available": [
+            {
+              "start": "2026-11-21T08:00:00-08:00",
+              "end": "2026-11-21T13:00:00-08:00"
+            },
+            {
+              "start": "2026-11-21T18:00:00-08:00",
+              "end": "2026-11-21T21:00:00-08:00"
+            }
+          ]
+        }
+      },
+      "North-1": {
+        "checked": "2026-11-21T21:09:18+00:00",
+        "complete": false,
+        "source": "Reviewed November 21 city calendar. A player reported a posted permit; the printed hours were not supplied.",
+        "permits": [],
+        "calendar": {
+          "url": "https://anc.apm.activecommunities.com/santamonicarecreation/reservation/landing/search/detail/168",
+          "available": [
+            {
+              "start": "2026-11-21T08:00:00-08:00",
+              "end": "2026-11-21T09:00:00-08:00"
+            },
+            {
+              "start": "2026-11-21T12:30:00-08:00",
+              "end": "2026-11-21T21:00:00-08:00"
+            }
+          ]
+        }
+      },
+      "North-2": {
+        "checked": "2026-11-21T21:09:18+00:00",
+        "complete": false,
+        "source": "Reviewed November 21 city calendar. A player reported a posted permit; the printed hours were not supplied.",
+        "permits": [],
+        "calendar": {
+          "url": "https://anc.apm.activecommunities.com/santamonicarecreation/reservation/landing/search/detail/169",
+          "available": [
+            {
+              "start": "2026-11-21T08:00:00-08:00",
+              "end": "2026-11-21T09:00:00-08:00"
+            },
+            {
+              "start": "2026-11-21T12:30:00-08:00",
+              "end": "2026-11-21T21:00:00-08:00"
+            }
+          ]
+        }
+      },
+      "North-3": {
+        "checked": "2026-11-21T21:09:18+00:00",
+        "complete": false,
+        "source": "Reviewed November 21 city calendar. A player reported a posted permit; the printed hours were not supplied.",
+        "permits": [],
+        "calendar": {
+          "url": "https://anc.apm.activecommunities.com/santamonicarecreation/reservation/landing/search/detail/170",
+          "available": [
+            {
+              "start": "2026-11-21T13:00:00-08:00",
+              "end": "2026-11-21T21:00:00-08:00"
+            }
+          ]
+        }
+      },
+      "North-4": {
+        "checked": "2026-11-21T21:09:18+00:00",
+        "complete": false,
+        "source": "Reviewed November 21 city calendar. A player reported a posted permit; the printed hours were not supplied.",
+        "permits": [],
+        "calendar": {
+          "url": "https://anc.apm.activecommunities.com/santamonicarecreation/reservation/landing/search/detail/171",
+          "available": [
+            {
+              "start": "2026-11-21T13:00:00-08:00",
+              "end": "2026-11-21T21:00:00-08:00"
+            }
+          ]
+        }
+      },
+      "North-5": {
+        "checked": "2026-11-21T21:09:18+00:00",
+        "complete": false,
+        "source": "Reviewed November 21 city calendar. A player reported a posted permit; the printed hours were not supplied.",
+        "permits": [],
+        "calendar": {
+          "url": "https://anc.apm.activecommunities.com/santamonicarecreation/reservation/landing/search/detail/172",
+          "available": [
+            {
+              "start": "2026-11-21T13:00:00-08:00",
+              "end": "2026-11-21T21:00:00-08:00"
+            }
+          ]
+        }
+      },
+      "North-9": {
+        "checked": "2026-11-21T21:09:18+00:00",
+        "complete": false,
+        "source": "Reviewed November 21 city calendar. A player reported a posted permit; the printed hours were not supplied.",
+        "permits": [],
+        "calendar": {
+          "url": "https://anc.apm.activecommunities.com/santamonicarecreation/reservation/landing/search/detail/182",
+          "available": [
+            {
+              "start": "2026-11-21T09:00:00-08:00",
+              "end": "2026-11-21T21:00:00-08:00"
+            }
+          ]
+        }
+      },
+      "North-10": {
+        "checked": "2026-11-21T21:09:18+00:00",
+        "complete": false,
+        "source": "Reviewed November 21 city calendar. A player reported a posted permit; the printed hours were not supplied.",
+        "permits": [],
+        "calendar": {
+          "url": "https://anc.apm.activecommunities.com/santamonicarecreation/reservation/landing/search/detail/176",
+          "available": [
+            {
+              "start": "2026-11-21T09:00:00-08:00",
+              "end": "2026-11-21T21:00:00-08:00"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

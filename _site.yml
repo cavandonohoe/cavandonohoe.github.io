@@ -4,6 +4,8 @@ include:
   - data/tohs_reunion.csv
   - imdb_rating_plot_files
   - css
+  - ocean_park_volleyball.html
+  - assets/ocean-park
   - analysis/imdb-exceptional-episodes/results
 exclude:
   - tools
@@ -53,6 +55,8 @@ navbar:
       - text: "My IMDb Ratings"
         href: my_imdb.html
       - text: "--- Sports & Personal ---"
+      - text: "Ocean Park Volleyball Permits"
+        href: ocean_park_volleyball.html
       - text: "AVCA Men's Volleyball All-Americans"
         href: avca_all_americans.html
       - text: "Jason, Owen, and Wyett's Firefighter Schedule"

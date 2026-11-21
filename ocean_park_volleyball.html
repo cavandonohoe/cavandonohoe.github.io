@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ocean Park volleyball permits | Cavan Donohoe</title>
+    <link rel="stylesheet" href="assets/ocean-park/tracker.css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <a href="index.html">← Cavan Donohoe</a>
+        <p>Santa Monica, California</p>
+        <h1>Ocean Park volleyball permits</h1>
+      </div>
+    </header>
+    <main>
+      <noscript>Enable JavaScript to view the court schedule.</noscript>
+      <section class="controls" aria-label="Select permit date">
+        <div>
+          <label for="date">Permit date</label>
+          <div class="row">
+            <button id="prev" aria-label="Previous day">‹</button
+            ><input type="date" id="date" /><button
+              id="next"
+              aria-label="Next day"
+            >
+              ›</button
+            ><button id="today">Today</button>
+          </div>
+        </div>
+      </section>
+      <p id="notice" hidden>
+        City closure · Sand removal at Ocean Park South began November 15 at 3
+        PM. The city listed November 25 as a tentative return date.
+        <a
+          href="https://www.santamonica.gov/process-explainers/how-to-reserve-a-volleyball-court-or-beach-soccer-court"
+          >Check the city notice</a
+        >.
+      </p>
+      <section aria-labelledby="maptitle">
+        <h2 id="maptitle">Unavailable hours by court</h2>
+        <p id="coverage" role="status"></p>
+        <div id="stats"></div>
+        <div class="legend">
+          <span class="estimated">≈ Estimated unavailable</span>
+          <span class="active">● All-day permit</span
+          ><span class="partial">◐ Part-day permit</span
+          ><span class="clear">✓ No permits</span
+          ><span class="unknown">? Unknown</span>
+        </div>
+        <p>
+          Calendar gaps are estimated within an assumed 8 AM to 9 PM Pacific day. Tap a court to see its source. North courts follow the player-reported row layout. South courts are shown in letter order. The Pacific is west and Ocean Front Walk is inland.
+        </p>
+        <div id="groups"></div>
+        <dialog id="details">
+          <button id="close">Close</button>
+          <h2 id="detailTitle"></h2>
+          <div id="detailBody"></div>
+        </dialog>
+        <p>
+          Eight additional North Players’ Courts are designated first come,
+          first served. Permit status never guarantees an empty court.
+        </p>
+      </section>
+      <section>
+        <h2>Daily unavailable hours</h2>
+        <div class="filters">
+          <label
+            >Location<select id="area">
+              <option value="">Both areas</option>
+              <option>North</option>
+              <option>South</option>
+            </select></label
+          >
+          <label>Court<select id="court"></select></label>
+          <label
+            >Record status<select id="status">
+              <option value="">All records</option>
+              <option>Permitted</option>
+              <option>Estimated unavailable</option>
+              <option>Stale</option>
+            </select></label
+          >
+        </div>
+        <table>
+          <caption class="sr">
+            Permits for the selected Pacific date
+          </caption>
+          <thead>
+            <tr>
+              <th>Court</th>
+              <th>Location</th>
+              <th>Start</th>
+              <th>End</th>
+              <th>Permit holder / event</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+        <p id="empty"></p>
+      </section>
+      <footer>
+        <strong>Sources</strong> ·
+        <a
+          href="https://anc.apm.activecommunities.com/santamonicarecreation/reservation/landing/search?keyword=Ocean%20Park&amp;resourceType=0&amp;equipmentQty=0"
+          >City court directory</a
+        >
+        ·
+        <a
+          href="https://www.santamonica.gov/process-explainers/how-to-reserve-a-volleyball-court-or-beach-soccer-court"
+          >Beach permits office</a
+        >
+        <p id="updated"></p>
+      </footer>
+    </main>
+    <script type="module" src="assets/ocean-park/tracker.mjs"></script>
+  </body>
+</html>
