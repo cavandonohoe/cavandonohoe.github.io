@@ -6,7 +6,6 @@ import {
   shift,
   clock,
   minute,
-  sameTime,
   courts,
   dayOf,
   validate,
@@ -38,28 +37,12 @@ test("inventory and published snapshot", () => {
   );
 });
 test("partial, complete, missing, stale and overlapping evidence", () => {
-  assert.equal(state(undefined, day, now, false, now), "unknown");
-  assert.equal(state(record, day, now, false, now), "active");
-  assert.equal(state(record, day, Date.parse(time(12)), false, now), "unknown");
-  assert.equal(
-    state({ ...record, complete: true }, day, Date.parse(time(12)), false, now),
-    "clear",
-  );
-  assert.equal(state(record, day, now, true, now), "partial");
-  assert.equal(
-    state(record, day, now, false, now + 24 * 60 * minute),
-    "unknown",
-  );
-  assert.equal(
-    state(
-      { ...record, permits: [{ id: "one", start: time(0), end: time(24) }] },
-      day,
-      now,
-      true,
-      now,
-    ),
-    "active",
-  );
+  assert.equal(state(undefined, day, now), "unknown");
+  assert.equal(state(record, day, now), "partial");
+  assert.equal(state({...record, complete:true, permits:[]},day,now), "clear");
+  assert.equal(state({...record, permits:[]},day,now), "unknown");
+  assert.equal(state(record,day,now + 24*60*minute), "unknown");
+  assert.equal(state({...record, permits:[{id:"all", start:time(0), end:time(24)}]},day,now),"active");
 });
 test("Pacific day boundaries and both occurrences of fall 1 AM", () => {
   for (const [d, h] of [
@@ -71,8 +54,6 @@ test("Pacific day boundaries and both occurrences of fall 1 AM", () => {
   }
   const fall = midnight("2026-11-01");
   assert.notEqual(clock(fall + 90 * minute), clock(fall + 150 * minute));
-  assert.equal(sameTime("2026-03-07", 150, "2026-03-08"), 120);
-  assert.equal(sameTime("2026-11-02", 90, "2026-11-01"), 150);
 });
 test("refuse unmapped courts, duplicate intervals and invalid coverage", () => {
   const pack = (key, e) => ({ days: { [day]: { [key]: e } } });

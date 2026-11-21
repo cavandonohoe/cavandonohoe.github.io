@@ -16,7 +16,7 @@
     </header>
     <main>
       <noscript>Enable JavaScript to view the court schedule.</noscript>
-      <section class="controls" aria-label="Date and time">
+      <section class="controls" aria-label="Select permit date">
         <div>
           <label for="date">Permit date</label>
           <div class="row">
@@ -29,17 +29,6 @@
             ><button id="today">Today</button>
           </div>
         </div>
-        <div>
-          <label for="mode">View</label
-          ><select id="mode">
-            <option value="time">Selected time</option>
-            <option value="day">All day</option>
-          </select>
-        </div>
-        <div class="time">
-          <label for="slider">Pacific time · <output id="clock"></output></label
-          ><input id="slider" type="range" min="0" step="1" />
-        </div>
       </section>
       <p id="notice" hidden>
         City closure · Sand removal at Ocean Park South began November 15 at 3
@@ -50,17 +39,17 @@
         >.
       </p>
       <section aria-labelledby="maptitle">
-        <h2 id="maptitle">Court overview</h2>
+        <h2 id="maptitle">Daily court permits</h2>
         <p id="coverage" role="status"></p>
         <div id="stats"></div>
         <div class="legend">
-          <span class="active">● Active permit</span
+          <span class="active">● All-day permit</span
           ><span class="partial">◐ Part-day permit</span
-          ><span class="clear">✓ No active permit</span
+          ><span class="clear">✓ No permits</span
           ><span class="unknown">? Unknown</span>
         </div>
         <p>
-          Court schematic in label order. The Pacific is west and Ocean Front
+          Times are Pacific. Courts are shown in label order. The Pacific is west and Ocean Front
           Walk is inland. Tile positions are approximate only at the group
           level.
         </p>
@@ -86,14 +75,6 @@
             </select></label
           >
           <label>Court<select id="court"></select></label>
-          <label
-            >Time of day<select id="period">
-              <option value="all">Any time</option>
-              <option value="selected">At slider time</option>
-              <option value="am">Before noon</option>
-              <option value="pm">Noon onward</option>
-            </select></label
-          >
           <label
             >Record status<select id="status">
               <option value="">All records</option>

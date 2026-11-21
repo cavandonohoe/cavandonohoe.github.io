@@ -93,12 +93,12 @@ export function validate(data) {
   }
   return data;
 }
-export function state(entry, day, at, allDay, now) {
+export function state(entry, day, now) {
   if (!fresh(entry, day, now)) return "unknown";
   const intervals = entry.permits
     .map((p) => [Date.parse(p.start), Date.parse(p.end)])
     .sort((a, b) => a[0] - b[0]);
-  if (allDay && intervals.length) {
+  if (intervals.length) {
     let through = midnight(day);
     for (const [start, end] of intervals) {
       if (start > through) break;
@@ -106,35 +106,5 @@ export function state(entry, day, at, allDay, now) {
     }
     return through === midnight(shift(day, 1)) ? "active" : "partial";
   }
-  if (intervals.some(([start, end]) => start <= at && at < end))
-    return "active";
   return entry.complete ? "clear" : "unknown";
-}
-
-// Keep wall time while navigating. In a spring gap, advance to the first valid minute.
-export function sameTime(from, offset, to) {
-  const utcMinuteOfDay = (midnight(from) + offset * minute) % (1440 * minute);
-  const local = new Intl.DateTimeFormat("en-GB", {
-    timeZone: zone,
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-  const wanted = local.format(midnight(from) + offset * minute);
-  const first = midnight(to),
-    last = midnight(shift(to, 1));
-  const candidates = [7, 8]
-    .map(
-      (h) =>
-        Date.parse(to + "T00:00:00Z") +
-        (Number(wanted.slice(0, 2)) * 60 + Number(wanted.slice(3)) + h * 60) *
-          minute,
-    )
-    .filter((ms) => ms >= first && ms < last && local.format(ms) === wanted);
-  if (candidates.length) {
-    const match = candidates.find(
-      (ms) => ms % (1440 * minute) === utcMinuteOfDay,
-    );
-    return ((match ?? candidates[0]) - first) / minute;
-  }
-  return 120;
 }
