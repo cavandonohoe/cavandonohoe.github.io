@@ -1,0 +1,28 @@
+{
+  "generated_at": "2026-11-20T22:49:03.686146+00:00",
+  "window_days": 30,
+  "commits": 46,
+  "excludes_bot_commits": true,
+  "active_areas": [
+    {
+      "name": "site",
+      "file_touches": 40
+    },
+    {
+      "name": "podcast-dashboard",
+      "file_touches": 29
+    },
+    {
+      "name": ".github",
+      "file_touches": 19
+    },
+    {
+      "name": "data",
+      "file_touches": 16
+    },
+    {
+      "name": "images",
+      "file_touches": 14
+    }
+  ]
+}
