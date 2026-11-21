@@ -156,8 +156,17 @@ label {
   gap: 6px;
   margin-top: 10px;
 }
-.group:last-child .grid {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 105px), 1fr));
+.court-direction {
+  margin: 10px 0 4px;
+  font-weight: 650;
+  font-size: 0.85rem;
+}
+.north-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+/* The North end rows contain two courts, with four three-court rows between. */
+.north-grid [data-row-start] {
+  grid-column-start: 1;
 }
 .grid button {
   border: 1px solid currentColor;

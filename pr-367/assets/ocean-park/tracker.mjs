@@ -52,7 +52,7 @@ for (const area of ["North", "South"]) {
   const group = node("div", ""),
     grid = node("div", "");
   group.className = "group";
-  grid.className = "grid";
+  grid.className = area === "North" ? "grid north-grid" : "grid";
   group.append(
     node("h3", "Ocean Park " + area),
     node(
@@ -61,8 +61,16 @@ for (const area of ["North", "South"]) {
     ),
     grid,
   );
+  if (area === "North") {
+    const southEnd = node("p", "South end · Courts 1–2");
+    const northEnd = node("p", "North end · Courts 15–16");
+    southEnd.className = northEnd.className = "court-direction";
+    grid.before(southEnd);
+    grid.after(northEnd);
+  }
   for (const key of courts.filter((k) => k.startsWith(area))) {
     const b = node("button", key.split("-")[1]);
+    if (key === "North-3") b.dataset.rowStart = "true";
     grid.append(b);
     buttons.set(key, b);
     b.onclick = () => {
