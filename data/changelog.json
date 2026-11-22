@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-21T21:49:18.546964+00:00",
+  "generated_at": "2026-11-22T21:57:02.381148+00:00",
   "events": [
     {
       "date": "2026-11-20",
@@ -286,35 +286,21 @@
     {
       "date": "2026-10-23",
       "type": "merged_pr",
-      "title": "Treat the podcast export as truth as of its snapshot date",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/305"
-    },
-    {
-      "date": "2026-10-23",
-      "type": "merged_pr",
-      "title": "Refresh podcast listening history through October 21",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/306"
-    },
-    {
-      "date": "2026-10-23",
-      "type": "merged_pr",
       "title": "Podcast dashboard: set completion cutoff to 2025-10-27",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/310"
-    },
-    {
-      "date": "2026-10-23",
-      "type": "merged_pr",
-      "title": "Podcast dashboard: manual publication-date completion cutoff",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/309"
-    },
-    {
-      "date": "2026-10-23",
-      "type": "merged_pr",
-      "title": "Podcast dashboard: fix metadata backfill, hide episodes Spotify no longer has",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/308"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-11-22",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "1 podcast episode added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/ddb4d22f057082b023e78cecea77a2c934302f20"
+        }
+      ]
+    },
     {
       "date": "2026-11-21",
       "items": [
@@ -501,16 +487,6 @@
           "emoji": "\ud83c\udfac",
           "text": "Movie & TV projects updated",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/331"
-        }
-      ]
-    },
-    {
-      "date": "2026-11-08",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "1 podcast episode added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/02e6038162ba5682f35317fe2087c49d45adfdc1"
         }
       ]
     }
