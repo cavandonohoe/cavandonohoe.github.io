@@ -5,9 +5,9 @@
 #
 # Assumption: any TV Series or TV Mini Series I rated in data/imdb_ratings.csv
 # was watched in its entirety, so every episode of it counts as seen. We pull
-# the full episode list for each rated series from IMDb's public GraphQL
-# endpoint (reusing the fetcher in imdb_season_episode_ratings_plot.R) and
-# write a single combined CSV.
+# the full episode list for each rated series from IMDb's official dataset
+# dumps (reusing get_imdb_all_episodes() from
+# imdb_season_episode_ratings_plot.R) and write a single combined CSV.
 #
 # Output: data/watched_tv_episodes.csv with columns
 #   imdb_id, series_title, my_series_rating, season, episode, title, rating,
@@ -18,7 +18,7 @@
 # newly rated shows get their episodes filled in automatically.
 # -----------------------------------------------------------------------------
 
-# Reuse the GraphQL episode fetcher (get_imdb_all_episodes, extract_imdb_id).
+# Reuse the dataset-backed episode fetcher (get_imdb_all_episodes).
 source(here::here("web_scraping", "imdb_season_episode_ratings_plot.R"))
 
 # Title types in the IMDb export that we treat as "watched in entirety".
@@ -85,8 +85,6 @@ build_watched_episodes <- function(ratings_csv = here::here("data",
       row$my_series_rating, row$series_year)
     cat(sprintf("%d episodes\n", nrow(eps)))
     results[[i]] <- eps
-    # Be polite to IMDb's endpoint between shows.
-    Sys.sleep(0.3)
   }
 
   dplyr::bind_rows(results) %>%
