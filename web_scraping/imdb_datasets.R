@@ -64,12 +64,15 @@ imdb_dataset_path <- function(name, max_tries = 3L) {
   stop("Could not download IMDb dataset ", name, " from ", url)
 }
 
+# readr (vroom) reads .gz natively; data.table::fread would need R.utils,
+# which is not in renv.lock.
 read_imdb_tsv <- function(name, select) {
-  data.table::fread(
+  readr::read_tsv(
     imdb_dataset_path(name),
-    sep = "\t", quote = "", na.strings = "\\N",
-    select = select, colClasses = "character",
-    showProgress = FALSE
+    quote = "", na = "\\N",
+    col_select = dplyr::all_of(select),
+    col_types = readr::cols(.default = readr::col_character()),
+    progress = FALSE
   )
 }
 
