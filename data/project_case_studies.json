@@ -30,7 +30,7 @@
     {
       "project": "analysis",
       "tracked_files": 12,
-      "commits_touching_project": 10,
+      "commits_touching_project": 11,
       "top_extensions": [
         [
           ".csv",
@@ -212,7 +212,7 @@
     {
       "project": "podcast-dashboard",
       "tracked_files": 8,
-      "commits_touching_project": 98,
+      "commits_touching_project": 99,
       "top_extensions": [
         [
           ".json",
@@ -337,12 +337,12 @@
     },
     {
       "project": "web_scraping",
-      "tracked_files": 8,
-      "commits_touching_project": 61,
+      "tracked_files": 9,
+      "commits_touching_project": 62,
       "top_extensions": [
         [
           ".r",
-          8
+          9
         ]
       ]
     }

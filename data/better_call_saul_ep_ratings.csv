@@ -1,64 +1,64 @@
 season,episode,title,rating,votes,episode_year
-1,1,Uno,8.4,37231,2015
-1,2,Mijo,8.9,35205,2015
-1,3,Nacho,8.6,30359,2015
-1,4,Hero,8.3,28746,2015
-1,5,Alpine Shepherd Boy,8,28534,2015
-1,6,Five-O,9.4,39593,2015
-1,7,Bingo,8.6,26539,2015
-1,8,RICO,8.6,25985,2015
-1,9,Pimento,9.4,32865,2015
-1,10,Marco,8.6,27387,2015
-2,1,Switch,8.2,24082,2016
-2,2,Cobbler,8.4,22931,2016
-2,3,Amarillo,8.2,22326,2016
-2,4,Gloves Off,8.9,24132,2016
-2,5,Rebecca,8,23596,2016
-2,6,Bali Ha'i,8.4,21860,2016
-2,7,Inflatable,8.3,21571,2016
-2,8,Fifi,8.3,21301,2016
-2,9,Nailed,9.3,25097,2016
-2,10,Klick,9,23318,2016
-3,1,Mabel,8.1,22472,2017
-3,2,Witness,9,22969,2017
-3,3,Sunk Costs,8.4,21264,2017
-3,4,Sabrosito,8.9,22827,2017
-3,5,Chicanery,9.7,45557,2017
-3,6,Off Brand,8.4,20947,2017
-3,7,Expenses,8.2,20606,2017
-3,8,Slip,8.5,20728,2017
-3,9,Fall,8.8,20418,2017
-3,10,Lantern,9.2,25580,2017
-4,1,Smoke,8.2,21524,2018
-4,2,Breathe,8.8,20858,2018
-4,3,Something Beautiful,8.4,20254,2018
-4,4,Talk,8.2,20293,2018
-4,5,Quite a Ride,8.4,20578,2018
-4,6,Piñata,8.5,20155,2018
-4,7,Something Stupid,8.3,20094,2018
-4,8,Coushatta,8.8,20715,2018
-4,9,Wiedersehen,9.1,21456,2018
-4,10,Winner,9.6,32249,2018
-5,1,Magic Man,8.7,23373,2020
-5,2,50% Off,8.7,22425,2020
-5,3,The Guy for This,9,22754,2020
-5,4,Namaste,8.5,21492,2020
-5,5,Dedicado a Max,8.5,21707,2020
-5,6,Wexler v. Goodman,9.3,26228,2020
-5,7,JMM,9.1,24134,2020
-5,8,Bagman,9.7,41801,2020
-5,9,Bad Choice Road,9.7,39748,2020
-5,10,Something Unforgivable,9.4,31029,2020
-6,1,Wine and Roses,8.8,30858,2022
-6,2,Carrot and Stick,9.1,30963,2022
-6,3,Rock and Hard Place,9.7,52167,2022
-6,4,Hit and Run,8.6,27721,2022
-6,5,Black and Blue,8.1,27151,2022
-6,6,Axe and Grind,8.2,26535,2022
-6,7,Plan and Execution,9.9,90951,2022
-6,8,Point and Shoot,9.8,59891,2022
-6,9,Fun and Games,9.4,38366,2022
-6,10,Nippy,8.5,36089,2022
-6,11,Breaking Bad,9,37902,2022
-6,12,Waterworks,9.4,40867,2022
-6,13,Saul Gone,9.8,82740,2022
+1,1,Uno,8.4,37310,2015
+1,2,Mijo,8.9,35285,2015
+1,3,Nacho,8.6,30434,2015
+1,4,Hero,8.3,28821,2015
+1,5,Alpine Shepherd Boy,8,28609,2015
+1,6,Five-O,9.4,39676,2015
+1,7,Bingo,8.6,26607,2015
+1,8,RICO,8.6,26049,2015
+1,9,Pimento,9.4,32942,2015
+1,10,Marco,8.6,27450,2015
+2,1,Switch,8.2,24144,2016
+2,2,Cobbler,8.4,22993,2016
+2,3,Amarillo,8.2,22386,2016
+2,4,Gloves Off,8.9,24196,2016
+2,5,Rebecca,8,23662,2016
+2,6,Bali Ha'i,8.4,21922,2016
+2,7,Inflatable,8.3,21635,2016
+2,8,Fifi,8.3,21365,2016
+2,9,Nailed,9.3,25170,2016
+2,10,Klick,9,23389,2016
+3,1,Mabel,8.1,22541,2017
+3,2,Witness,9,23034,2017
+3,3,Sunk Costs,8.4,21329,2017
+3,4,Sabrosito,8.9,22896,2017
+3,5,Chicanery,9.7,45657,2017
+3,6,Off Brand,8.4,21007,2017
+3,7,Expenses,8.2,20662,2017
+3,8,Slip,8.5,20782,2017
+3,9,Fall,8.8,20469,2017
+3,10,Lantern,9.2,25638,2017
+4,1,Smoke,8.2,21575,2018
+4,2,Breathe,8.8,20905,2018
+4,3,Something Beautiful,8.4,20301,2018
+4,4,Talk,8.2,20344,2018
+4,5,Quite a Ride,8.4,20629,2018
+4,6,Piñata,8.5,20203,2018
+4,7,Something Stupid,8.3,20141,2018
+4,8,Coushatta,8.8,20768,2018
+4,9,Wiedersehen,9.1,21508,2018
+4,10,Winner,9.6,32318,2018
+5,1,Magic Man,8.7,23427,2020
+5,2,50% Off,8.7,22481,2020
+5,3,The Guy for This,9,22810,2020
+5,4,Namaste,8.5,21549,2020
+5,5,Dedicado a Max,8.5,21766,2020
+5,6,Wexler v. Goodman,9.3,26294,2020
+5,7,JMM,9.1,24199,2020
+5,8,Bagman,9.7,41885,2020
+5,9,Bad Choice Road,9.7,39842,2020
+5,10,Something Unforgivable,9.4,31096,2020
+6,1,Wine and Roses,8.8,30935,2022
+6,2,Carrot and Stick,9.1,31035,2022
+6,3,Rock and Hard Place,9.7,52269,2022
+6,4,Hit and Run,8.6,27788,2022
+6,5,Black and Blue,8.1,27220,2022
+6,6,Axe and Grind,8.2,26602,2022
+6,7,Plan and Execution,9.9,91169,2022
+6,8,Point and Shoot,9.8,60000,2022
+6,9,Fun and Games,9.4,38441,2022
+6,10,Nippy,8.5,36157,2022
+6,11,Breaking Bad,9,37973,2022
+6,12,Waterworks,9.4,40938,2022
+6,13,Saul Gone,9.8,82853,2022
