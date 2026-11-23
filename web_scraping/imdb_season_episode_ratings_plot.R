@@ -15,167 +15,13 @@ extract_imdb_id <- function(input) {
   id
 }
 
-# Retrying POST to IMDb's GraphQL endpoint. httr2's built-in transient-error
-# retry handles 429/5xx responses; we add a small extra layer for connection
-# errors (e.g. transient DNS / TLS).
-imdb_graphql_post <- function(endpoint, body_json, ua, max_tries = 4L) {
-  # IMDb's WAF rejects requests to this endpoint (HTTP 403) unless they look
-  # like they originate from the imdb.com web app, so we send the Origin and
-  # Referer headers the browser client uses. Without them every request 403s.
-  req <- httr2::request(endpoint) %>%
-    httr2::req_method("POST") %>%
-    httr2::req_headers(
-      `User-Agent` = ua,
-      `Content-Type` = "application/json",
-      Accept = "application/graphql+json, application/json",
-      Origin = "https://www.imdb.com",
-      Referer = "https://www.imdb.com/",
-      `Accept-Language` = "en-US,en;q=0.9"
-    ) %>%
-    httr2::req_body_raw(body_json, type = "application/json") %>%
-    httr2::req_retry(
-      max_tries = max_tries,
-      backoff = function(attempt) min(30, 2 ^ attempt)
-    ) %>%
-    httr2::req_timeout(30)
-  httr2::req_perform(req)
-}
+# Episode data comes from IMDb's official dataset dumps (see
+# imdb_datasets.R). IMDb's WAF 403s server-side requests to its GraphQL
+# endpoint, so we no longer query it.
+source(here::here("web_scraping", "imdb_datasets.R"))
 
-# Query IMDb's public GraphQL endpoint for one season of episodes.
-# We use this instead of scraping the HTML pages because IMDb's WAF
-# blocks server-side requests to www.imdb.com (e.g. from GitHub
-# Actions). The caching.graphql.imdb.com endpoint is unauthenticated but
-# its WAF requires the imdb.com Origin/Referer headers (see
-# imdb_graphql_post). Pagination handles long seasons (Family Guy, Simpsons,
-# etc.). Rows with no aggregate rating (unaired/upcoming placeholders
-# IMDb auto-generates) are dropped here so they never reach the CSVs.
-get_imdb_season_episodes <- function(imdb_input, season) {
-  imdb_id <- extract_imdb_id(imdb_input)
-  endpoint <- "https://caching.graphql.imdb.com/"
-  ua <- paste0(
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) ",
-    "AppleWebKit/537.36 (KHTML, like Gecko) ",
-    "Chrome/124.0.0.0 Safari/537.36"
-  )
-  query <- paste0(
-    "query Eps($id: ID!, $season: String!, $first: Int!, $after: ID) {",
-    "  title(id: $id) {",
-    "    episodes {",
-    "      episodes(",
-    "        first: $first,",
-    "        after: $after,",
-    "        filter: { includeSeasons: [$season] }",
-    "      ) {",
-    "        edges {",
-    "          node {",
-    "            series {",
-    "              displayableEpisodeNumber {",
-    "                episodeNumber { text }",
-    "                displayableSeason { text }",
-    "              }",
-    "            }",
-    "            titleText { text }",
-    "            releaseYear { year }",
-    "            ratingsSummary { aggregateRating voteCount }",
-    "          }",
-    "        }",
-    "        pageInfo { endCursor hasNextPage }",
-    "      }",
-    "    }",
-    "  }",
-    "}"
-  )
-
-  empty <- tibble::tibble(
-    season  = integer(),
-    episode = integer(),
-    title   = character(),
-    rating  = numeric(),
-    votes   = integer(),
-    episode_year = integer()
-  )
-
-  all_edges <- list()
-  after <- NULL
-  repeat {
-    body <- list(
-      query = query,
-      variables = list(
-        id = imdb_id,
-        season = as.character(season),
-        first = 50L,
-        after = after
-      )
-    )
-    body_json <- jsonlite::toJSON(body, auto_unbox = TRUE, null = "null")
-    resp <- imdb_graphql_post(endpoint, body_json, ua)
-    parsed <- jsonlite::fromJSON(
-      httr2::resp_body_string(resp),
-      simplifyVector = FALSE
-    )
-    if (!is.null(parsed$errors) && length(parsed$errors) > 0) {
-      stop(
-        "GraphQL error for ", imdb_id, " season ", season, ": ",
-        parsed$errors[[1]]$message
-      )
-    }
-    eps_block <- parsed$data$title$episodes$episodes
-    if (is.null(eps_block) || length(eps_block$edges) == 0) break
-    all_edges <- c(all_edges, eps_block$edges)
-    if (isTRUE(eps_block$pageInfo$hasNextPage)) {
-      after <- eps_block$pageInfo$endCursor
-    } else {
-      break
-    }
-  }
-
-  if (length(all_edges) == 0) return(empty)
-
-  df <- purrr::map_dfr(all_edges, function(edge) {
-    node <- edge$node
-    season_text <- node$series$displayableEpisodeNumber$displayableSeason$text
-    episode_text <- node$series$displayableEpisodeNumber$episodeNumber$text
-    rating <- node$ratingsSummary$aggregateRating
-    votes <- node$ratingsSummary$voteCount
-    title <- node$titleText$text
-    episode_year <- node$releaseYear$year
-    tibble::tibble(
-      season  = suppressWarnings(as.integer(season_text)),
-      episode = suppressWarnings(as.integer(episode_text)),
-      title   = if (is.null(title)) NA_character_ else title,
-      rating  = if (is.null(rating)) NA_real_ else as.numeric(rating),
-      votes   = if (is.null(votes)) 0L else as.integer(votes),
-      episode_year = if (is.null(episode_year)) {
-        NA_integer_
-      } else {
-        as.integer(episode_year)
-      }
-    )
-  })
-
-  df %>% dplyr::filter(!is.na(rating))
-}
-
-get_imdb_all_episodes <- function(imdb_id, max_seasons = 50) {
-  out <- list()
-  for (s in seq_len(max_seasons)) {
-    df <- get_imdb_season_episodes(imdb_id, s)
-    if (nrow(df) == 0) {
-      break
-    }
-    out[[length(out) + 1]] <- df
-  }
-  if (length(out) == 0) {
-    return(tibble::tibble(
-      season  = integer(),
-      episode = integer(),
-      title   = character(),
-      rating  = numeric(),
-      votes   = integer(),
-      episode_year = integer()
-    ))
-  }
-  dplyr::bind_rows(out)
+get_imdb_all_episodes <- function(imdb_input) {
+  get_imdb_dataset_episodes(extract_imdb_id(imdb_input))
 }
 
 # -----------------------------------------------------------------------------
@@ -186,7 +32,7 @@ get_imdb_all_episodes <- function(imdb_id, max_seasons = 50) {
 # the outcome so the runner can print a summary at the end.
 #
 # Safety checks (any failure leaves the existing CSV untouched):
-#   - Network/GraphQL errors are caught (one bad show does not kill the run).
+#   - Dataset download or read errors are caught (one bad show does not kill the run).
 #   - The fetched data must have rows.
 #   - The fetched data must have all required columns.
 #   - The fetched data must not have FEWER rows than the existing CSV
