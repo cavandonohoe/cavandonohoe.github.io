@@ -1,6 +1,24 @@
 {
-  "generated_at": "2026-11-22T21:57:02.381148+00:00",
+  "generated_at": "2026-11-24T03:00:01.664069+00:00",
   "events": [
+    {
+      "date": "2026-11-23",
+      "type": "merged_pr",
+      "title": "deps: bump @supabase/supabase-js from 2.119.0 to 2.119.2 in /movie-ranker in the npm-minor-patch group",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/368"
+    },
+    {
+      "date": "2026-11-23",
+      "type": "merged_pr",
+      "title": "Read IMDb episode data from official datasets instead of GraphQL",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/371"
+    },
+    {
+      "date": "2026-11-23",
+      "type": "merged_pr",
+      "title": "Read IMDb dataset dumps with readr instead of fread",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/372"
+    },
     {
       "date": "2026-11-20",
       "type": "merged_pr",
@@ -282,15 +300,28 @@
       "type": "merged_pr",
       "title": "Advance podcast completion cutoff to November 5, 2025",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/311"
-    },
-    {
-      "date": "2026-10-23",
-      "type": "merged_pr",
-      "title": "Podcast dashboard: set completion cutoff to 2025-10-27",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/310"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-11-23",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "5 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/9bc62e023d38112d8a03abeaff1bbd900f37928a"
+        },
+        {
+          "emoji": "\ud83d\udcbb",
+          "text": "3 PRs merged"
+        },
+        {
+          "emoji": "\ud83c\udfac",
+          "text": "Movie & TV projects updated",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/372"
+        }
+      ]
+    },
     {
       "date": "2026-11-22",
       "items": [
@@ -468,25 +499,6 @@
           "emoji": "\ud83c\udfa7",
           "text": "5 podcast episodes added",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/660e3f6ac3afa5f832f764696016edde33564b19"
-        }
-      ]
-    },
-    {
-      "date": "2026-11-09",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "5 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/edefdaf5e0561831d41e8f4d313476275129d335"
-        },
-        {
-          "emoji": "\ud83d\udcbb",
-          "text": "7 PRs merged"
-        },
-        {
-          "emoji": "\ud83c\udfac",
-          "text": "Movie & TV projects updated",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/331"
         }
       ]
     }
