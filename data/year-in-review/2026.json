@@ -1,12 +1,12 @@
 {
   "year": 2026,
-  "commits": 362,
-  "pull_requests": 282,
+  "commits": 364,
+  "pull_requests": 284,
   "repositories_touched": 4,
-  "lines_added": 515572,
+  "lines_added": 522403,
   "most_used_language": "R",
   "language_lines_added": {
-    "R": 28227,
+    "R": 28364,
     "Python": 4727,
     "JavaScript": 2927,
     "TypeScript": 2369,
@@ -1766,21 +1766,14 @@
       },
       {
         "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "web_scraping/best_picture_nominees.R",
-        "lines_added": 394,
+        "path": "web_scraping/imdb_season_episode_ratings_plot.R",
+        "lines_added": 397,
         "commits": [
           {
-            "sha": "7df7b0585ff16d6e015ff38cabf7d4da9dff9966",
-            "date": "2026-01-04",
-            "lines_added": 394
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "web_scraping/imdb_season_episode_ratings_plot.R",
-        "lines_added": 390,
-        "commits": [
+            "sha": "c5068b73f124a8d290a17cd7b3d44bb7034f8cc8",
+            "date": "2026-11-23",
+            "lines_added": 7
+          },
           {
             "sha": "91013df503126bf58d38eaa20f8b44fd1e6931fa",
             "date": "2026-11-11",
@@ -1855,6 +1848,18 @@
             "sha": "d5751e8de199aeb61e92c22aed2a5d8ab1782a46",
             "date": "2026-05-24",
             "lines_added": 336
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "web_scraping/best_picture_nominees.R",
+        "lines_added": 394,
+        "commits": [
+          {
+            "sha": "7df7b0585ff16d6e015ff38cabf7d4da9dff9966",
+            "date": "2026-01-04",
+            "lines_added": 394
           }
         ]
       },
@@ -3117,6 +3122,28 @@
         ]
       },
       {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "web_scraping/imdb_watched_episodes.R",
+        "lines_added": 138,
+        "commits": [
+          {
+            "sha": "c5068b73f124a8d290a17cd7b3d44bb7034f8cc8",
+            "date": "2026-11-23",
+            "lines_added": 4
+          },
+          {
+            "sha": "6b46b1718593dae89ef4ca43ea31242f92a0e722",
+            "date": "2026-08-21",
+            "lines_added": 10
+          },
+          {
+            "sha": "83ef104d0deebe2d53972111ccea9b0c1d9acaac",
+            "date": "2026-08-13",
+            "lines_added": 124
+          }
+        ]
+      },
+      {
         "repository": "cavandonohoe/confederate_statues",
         "path": "tests/testthat/test-clean.R",
         "lines_added": 138,
@@ -3135,23 +3162,6 @@
             "sha": "4454f4b38ac86d0d9791ba44e2e8d268af26a2a3",
             "date": "2026-06-22",
             "lines_added": 83
-          }
-        ]
-      },
-      {
-        "repository": "cavandonohoe/cavandonohoe.github.io",
-        "path": "web_scraping/imdb_watched_episodes.R",
-        "lines_added": 134,
-        "commits": [
-          {
-            "sha": "6b46b1718593dae89ef4ca43ea31242f92a0e722",
-            "date": "2026-08-21",
-            "lines_added": 10
-          },
-          {
-            "sha": "83ef104d0deebe2d53972111ccea9b0c1d9acaac",
-            "date": "2026-08-13",
-            "lines_added": 124
           }
         ]
       },
@@ -3210,6 +3220,23 @@
             "sha": "cfdcf33f708beb9a391435531a128a692bc22f0b",
             "date": "2026-09-03",
             "lines_added": 127
+          }
+        ]
+      },
+      {
+        "repository": "cavandonohoe/cavandonohoe.github.io",
+        "path": "web_scraping/imdb_datasets.R",
+        "lines_added": 126,
+        "commits": [
+          {
+            "sha": "c5068b73f124a8d290a17cd7b3d44bb7034f8cc8",
+            "date": "2026-11-23",
+            "lines_added": 119
+          },
+          {
+            "sha": "30195a4e681d1bd1ba86ade3f1046d595a073ba0",
+            "date": "2026-11-23",
+            "lines_added": 7
           }
         ]
       },
@@ -4547,7 +4574,7 @@
   "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, dependency, build, docs, minified, and raw HTML input files are excluded.",
   "most_active_month": "October",
   "longest_streak_days": 16,
-  "active_days": 100,
+  "active_days": 101,
   "monthly_commits": [
     11,
     27,
@@ -4559,7 +4586,7 @@
     15,
     23,
     108,
-    34,
+    36,
     0
   ],
   "daily_activity": [
@@ -5062,10 +5089,15 @@
       "date": "2026-11-20",
       "commits": 4,
       "lines_added": 19
+    },
+    {
+      "date": "2026-11-23",
+      "commits": 2,
+      "lines_added": 6831
     }
   ],
   "biggest_project": "cavandonohoe.github.io",
-  "biggest_project_commits": 303,
+  "biggest_project_commits": 305,
   "repositories": [
     "cavandonohoe/cavandonohoe",
     "cavandonohoe/cavandonohoe.github.io",
@@ -5073,12 +5105,12 @@
     "cavandonohoe/rent-vs-buy"
   ],
   "repository_commits": {
-    "cavandonohoe/cavandonohoe.github.io": 303,
+    "cavandonohoe/cavandonohoe.github.io": 305,
     "cavandonohoe/rent-vs-buy": 29,
     "cavandonohoe/confederate_statues": 20,
     "cavandonohoe/cavandonohoe": 10
   },
   "scope": "Author-matched commits on the default branch of public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bot-authored or bot-committed commits, deploy commits, and other authors are excluded. Moved files count only changed lines. Language totals use .gitattributes Linguist overrides plus built-in generated, vendored, dependency, build, docs, minified, and raw HTML input patterns. Overall lines added still include all files. PRs count public pull requests the user authored and merged into their own repositories during the year, when available.",
   "is_partial_year": true,
-  "generated_at": "2026-11-21T16:20:47.344355+00:00"
+  "generated_at": "2026-11-24T19:40:12.302248+00:00"
 }
