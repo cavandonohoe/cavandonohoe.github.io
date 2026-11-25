@@ -1,0 +1,178 @@
+season,episode,title,rating,votes,episode_year
+1,1,Pilot,8.4,8976,2004
+1,2,Paternity,8,6670,2004
+1,3,Occam's Razor,8,6222,2004
+1,4,Maternity,8.3,6084,2004
+1,5,Damned If You Do,8,5815,2004
+1,6,The Socratic Method,8.3,5702,2004
+1,7,Fidelity,8,5520,2004
+1,8,Poison,7.9,5271,2005
+1,9,DNR,8.7,6058,2005
+1,10,Histories,8.4,5581,2005
+1,11,Detox,8.6,5556,2005
+1,12,Sports Medicine,7.8,4896,2005
+1,13,Cursed,8,4919,2005
+1,14,Control,8.5,5212,2005
+1,15,Mob Rules,7.8,4817,2005
+1,16,Heavy,8.2,4787,2005
+1,17,Role Model,8.4,4962,2005
+1,18,Babies & Bathwater,8.8,5418,2005
+1,19,Kids,8.2,4777,2005
+1,20,Love Hurts,8.1,4800,2005
+1,21,Three Stories,9.6,13009,2005
+1,22,Honeymoon,8.6,5124,2005
+2,1,Acceptance,8.3,4938,2005
+2,2,Autopsy,9.1,7088,2005
+2,3,Humpty Dumpty,7.8,4505,2005
+2,4,TB or Not TB,7.9,4537,2005
+2,5,Daddy's Boy,8,4398,2005
+2,6,Spin,7.7,4234,2005
+2,7,Hunting,8.1,4396,2005
+2,8,The Mistake,8.8,5091,2005
+2,9,Deception,8.2,4308,2005
+2,10,Failure to Communicate,8.4,4390,2006
+2,11,Need to Know,8,4188,2006
+2,12,Distractions,8.4,4365,2006
+2,13,Skin Deep,8.4,4962,2006
+2,14,Sex Kills,8.3,4220,2006
+2,15,Clueless,8.4,4270,2006
+2,16,Safe,8.6,4653,2006
+2,17,All In,8.9,5361,2006
+2,18,Sleeping Dogs Lie,8,4150,2006
+2,19,House vs. God,8.4,4574,2006
+2,20,Euphoria: Part 1,9.1,5854,2006
+2,21,Euphoria: Part 2,9.3,6498,2006
+2,22,Forever,7.9,4076,2006
+2,23,Who's Your Daddy?,7.6,4060,2006
+2,24,No Reason,9.4,8232,2006
+3,1,Meaning,8.8,5132,2006
+3,2,Cane and Able,8.3,4249,2006
+3,3,Informed Consent,8.4,4377,2006
+3,4,Lines in the Sand,8.9,5253,2006
+3,5,Fools for Love,8.2,4028,2006
+3,6,Que Será Será,7.9,4095,2006
+3,7,Son of Coma Guy,8.8,5141,2006
+3,8,Whac-A-Mole,7.9,3924,2006
+3,9,Finding Judas,8.4,4017,2006
+3,10,Merry Little Christmas,8.6,4213,2006
+3,11,Words and Deeds,8.4,4149,2007
+3,12,"One Day, One Room",9,8260,2007
+3,13,Needle in a Haystack,7.7,3939,2007
+3,14,Insensitive,8.6,4321,2007
+3,15,Half-Wit,8.9,5289,2007
+3,16,Top Secret,7.9,3896,2007
+3,17,Fetal Position,8.4,4221,2007
+3,18,Airborne,8.9,5022,2007
+3,19,Act Your Age,8,3812,2007
+3,20,House Training,8.1,3961,2007
+3,21,Family,8.2,3794,2007
+3,22,Resignation,8.2,3762,2007
+3,23,The Jerk,8.2,3864,2007
+3,24,Human Error,8.8,4558,2007
+4,1,Alone,8.8,5044,2007
+4,2,The Right Stuff,8.7,4463,2007
+4,3,97 Seconds,8.6,4283,2007
+4,4,Guardian Angels,8.3,3902,2007
+4,5,Mirror Mirror,8.7,4425,2007
+4,6,Whatever It Takes,8.4,4061,2007
+4,7,Ugly,8.1,3941,2007
+4,8,You Don't Want to Know,8.4,3927,2007
+4,9,Games,8.5,4058,2007
+4,10,It's a Wonderful Lie,8.1,3786,2008
+4,11,Frozen,9,5347,2008
+4,12,Don't Ever Change,7.8,3807,2008
+4,13,No More Mr. Nice Guy,7.9,3676,2008
+4,14,Living the Dream,8.1,3753,2008
+4,15,House's Head,9.7,16071,2008
+4,16,Wilson's Heart,9.7,14543,2008
+5,1,Dying Changes Everything,8.2,4100,2008
+5,2,Not Cancer,8.1,3693,2008
+5,3,Adverse Events,7.9,3562,2008
+5,4,Birthmarks,8.9,4649,2008
+5,5,Lucky Thirteen,8.4,3884,2008
+5,6,Joy,8.4,3801,2008
+5,7,The Itch,8,3471,2008
+5,8,Emancipation,7.9,3421,2008
+5,9,Last Resort,8.9,5159,2008
+5,10,Let Them Eat Cake,8.1,3438,2008
+5,11,Joy to the World,8.2,3751,2008
+5,12,Painless,7.9,3429,2009
+5,13,Big Baby,7.8,3296,2009
+5,14,The Greater Good,7.8,3282,2009
+5,15,Unfaithful,8.3,3585,2009
+5,16,The Softer Side,8.4,3598,2009
+5,17,The Social Contract,8.6,3715,2009
+5,18,Here Kitty,8,3484,2009
+5,19,Locked In,9.1,5517,2009
+5,20,Simple Explanation,9.1,5779,2009
+5,21,Saviors,8.2,3496,2009
+5,22,House Divided,9,4586,2009
+5,23,Under My Skin,9.2,4983,2009
+5,24,Both Sides Now,9.6,9136,2009
+6,1,Broken,9.6,13389,2009
+6,2,Epic Fail,8.4,3967,2009
+6,3,The Tyrant,8.9,4495,2009
+6,4,Instant Karma,8.3,3461,2009
+6,5,Brave Heart,8.3,3393,2009
+6,6,Known Unknowns,8.1,3371,2009
+6,7,Teamwork,8,3407,2009
+6,8,Ignorance Is Bliss,8.2,3358,2009
+6,9,Wilson,8.8,4289,2009
+6,10,The Down Low,8.8,4064,2010
+6,11,Remorse,8.5,3600,2010
+6,12,Moving the Chains,7.8,3221,2010
+6,13,5 to 9,8.6,4657,2010
+6,14,Private Lives,7.9,3348,2010
+6,15,Black Hole,7.8,3279,2010
+6,16,Lockdown,8.8,4467,2010
+6,17,Knight Fall,7.7,3180,2010
+6,18,Open and Shut,7.7,3138,2010
+6,19,The Choice,7.9,3269,2010
+6,20,Baggage,8.8,4100,2010
+6,21,Help Me,9.5,7383,2010
+7,1,Now What?,8.2,3879,2010
+7,2,Selfish,8.5,3517,2010
+7,3,Unwritten,8.1,3201,2010
+7,4,Massage Therapy,7.7,3024,2010
+7,5,Unplanned Parenthood,8.1,3189,2010
+7,6,Office Politics,7.9,3050,2010
+7,7,A Pox on Our House,8.6,3619,2010
+7,8,Small Sacrifices,7.5,3004,2010
+7,9,Larger Than Life,8.2,3149,2011
+7,10,Carrot or Stick,7.8,2987,2011
+7,11,Family Practice,8.5,3415,2011
+7,12,You Must Remember This,7.7,2939,2011
+7,13,Two Stories,8.8,4489,2011
+7,14,Recession Proof,7.8,2982,2011
+7,15,Bombshells,8.4,4076,2011
+7,16,Out of the Chute,8.7,3946,2011
+7,17,Fall from Grace,8.3,3309,2011
+7,18,The Dig,8.8,3751,2011
+7,19,Last Temptation,8.3,3165,2011
+7,20,Changes,7.7,2820,2011
+7,21,The Fix,7.6,2830,2011
+7,22,After Hours,9.1,4555,2011
+7,23,Moving On,8.4,3913,2011
+8,1,Twenty Vicodin,8.8,4404,2011
+8,2,Transplant,8,3290,2011
+8,3,Charity Case,8,3136,2011
+8,4,Risky Business,7.7,2957,2011
+8,5,The Confession,8.2,3055,2011
+8,6,Parents,7.8,2841,2011
+8,7,Dead & Buried,8.1,2982,2011
+8,8,Perils of Paranoia,7.6,2851,2011
+8,9,Better Half,7.8,2956,2012
+8,10,Runaways,7.6,2813,2012
+8,11,Nobody's Fault,9.1,4559,2012
+8,12,Chase,8.8,3997,2012
+8,13,Man of the House,7.8,2836,2012
+8,14,Love Is Blind,7.8,2931,2012
+8,15,Blowing the Whistle,7.3,2791,2012
+8,16,Gut Check,7.5,2768,2012
+8,17,We Need the Eggs,7.7,2813,2012
+8,18,Body and Soul,7.8,2992,2012
+8,19,The C Word,9,4311,2012
+8,20,Post Mortem,8.8,3421,2012
+8,21,Holding On,9,4064,2012
+8,22,Everybody Dies,9.3,8119,2012
+8,23,House M.D. Swan Song,8.1,283,2012
