@@ -3,10 +3,10 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 539,
+    "n_episodes": 543,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-11-23",
-    "api_saved_count": 53,
+    "api_refreshed_at": "2026-11-24",
+    "api_saved_count": 56,
     "n_removed": 438,
     "n_unavailable": 28
   },
@@ -5273,7 +5273,7 @@
       "dur_min": 9,
       "release": "2026-10-23",
       "url": "https://open.spotify.com/episode/6glWsQjBItDuIKkBzDH7FF",
-      "desc": "This week’s notable indicators: A distressing credit warning for CoreWeave, a Pokémon heist, and depleted maple syrup reserves in Canada.  Fact checking by Cooper Katz McKim. Your Next Listen –Why Pokemon cards are growing faster than your retirement account –Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet Money–The Indicator newsletter — a weekly roundup of news, ideas and staff picks. –Instagram, TikTok and YouTube –Find the Planet Money book –Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop!Support public media by subscribing to NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
+      "desc": "This week’s notable indicators: A distressing credit warning for CoreWeave, a Pokémon heist, and depleted maple syrup reserves in Canada.  Fact checking by Cooper Katz McKim. Correction:This episode mentions a report from research group Epoch AI that says the cost of achieving a basic level of AI performance is down 13-fold per year. We incorrectly say that a 13-fold reduction is equal to 1,300%. In fact, costs can go up to infinity percent, but down only 100%. The correct percentage is closer to 92%.Your Next Listen –Why Pokemon cards are growing faster than your retirement account –Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet Money–The Indicator newsletter — a weekly roundup of news, ideas and staff picks. –Instagram, TikTok and YouTube –Find the Planet Money book –Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop!Support public media by subscribing to NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true
     },
     {
@@ -5453,7 +5453,8 @@
       "release": "2026-10-26",
       "url": "https://open.spotify.com/episode/2aKMAysAS15PhUsLNsBj6I",
       "desc": "Jordan Klepper and Daily Show Supervising Producer Ian Berger kick off the week with a preview of Klepper's special, Red Flags, which premieres TONIGHT after The Daily Show.  They discuss the whirlwind experience of turning around a 24-minute special in only 20 days and how, with the midterms approaching, the GOP is serving up a \"turducken of fear\" in an incoherent mishmash of McCarthyism and Islamophobia.  Plus, Klepper explores how MAGA rallygoers in Middle American states like Nebraska have positioned NYC Mayor Mamdani as their unlikely boogeyman, while their Texas counterparts are obsessing over God's genitals in their attacks on Senate candidate James Talarico.  Finally, Klepper and Ian wrap things up with a round of Daily Show & Tell and look ahead to this week's guests: Morgana Robinson, David Byrne, and Tracy Letts. -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "1GCCKzBIjKXt7kVBdx48OJ",
@@ -6544,7 +6545,7 @@
       "dur_min": 18,
       "release": "2026-11-18",
       "url": "https://open.spotify.com/episode/2J0BPUaylSHAZE0pGUTAI3",
-      "desc": "Your money might be fueling the AI boom … just as some AI data center bets are starting to look riskier. If you own stocks, that money is likely tied up in giant tech companies like Microsoft and Nvidia. And if your 401(k) has money invested in the US bond fund, you might be lending tech companies the money to build data centers. Today on the show, two stories from our short daily podcast The Indicator from Planet Money on how risky these data center bets are for investors and the companies making them. And, of course, for all of us. Read: Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life Our weekly longform Planet Money newsletterOur weekly Indicator round-up newsletterFollow: InstagramTikTokYouTubeFacebookThe original Indicator episodes were produced by Corey Bridges and Julia Ritchey. They were engineered by Kwesi Lee and Cena Loffredo, fact checked by Sierra Juarez and edited by Kate Concannon. This episode of Planet Money was produced by Vito Emanuel and Emma Peaslee. Alex Goldmark is our executive producer.Music: NPR Source Audio - \"Saunter\" and \"Super-Fi\" Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
+      "desc": "Your money might be fueling the AI boom … just as some AI data center bets are starting to look riskier. If you own stocks, that money is likely tied up in giant tech companies like Microsoft and Nvidia. And if your 401(k) has money invested in the US bond fund, you might be lending tech companies the money to build data centers. Today on the show, two stories from our short daily podcast The Indicator from Planet Money on how risky these data center bets are for investors and the companies making them. And, of course, for all of us. This episode incorrectly says that a report from research group Epoch AI says the cost of achieving a basic level of AI performance is down 1,300%. In fact, the report says the cost is down 13-fold per year, which is closer to 92%.Read: Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life Our weekly longform Planet Money newsletterOur weekly Indicator round-up newsletterFollow: InstagramTikTokYouTubeFacebookThe original Indicator episodes were produced by Corey Bridges and Julia Ritchey. They were engineered by Kwesi Lee and Cena Loffredo, fact checked by Sierra Juarez and edited by Kate Concannon. This episode of Planet Money was produced by Vito Emanuel and Emma Peaslee. Alex Goldmark is our executive producer.Music: NPR Source Audio - \"Saunter\" and \"Super-Fi\" Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true
     },
     {
@@ -6764,6 +6765,54 @@
       "release": "2026-11-23",
       "url": "https://open.spotify.com/episode/1ot4TOoT1ABi5WEkD2OYR7",
       "desc": "These glistening round gemstones have come a long way since your grandmother's time, but procuring them is still a lot of work. The world is Zachary Crockett’s oyster. This episode was originally published on May 25th, 2025. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
+      "api_seen": true
+    },
+    {
+      "id": "17NAbnT0Zl0xSzcFeGe6iC",
+      "added_at": "2026-11-24",
+      "show": "Stuff You Should Know",
+      "publisher": null,
+      "name": "Protein: Yes, But How Much?",
+      "dur_min": 46,
+      "release": "2026-11-24",
+      "url": "https://open.spotify.com/episode/17NAbnT0Zl0xSzcFeGe6iC",
+      "desc": "We need protein, that much is clear. But how much do we need and how much is too much? Those questions turn out to be a little fuzzy, which matters because protein is vital to life. Learn all about what this wonder macronutrient does in this episode.See omnystudio.com/listener for privacy information.",
+      "api_seen": true
+    },
+    {
+      "id": "2V3OYoeODhwZ5uQtvJ2y8I",
+      "added_at": "2026-11-24",
+      "show": "Late Night with Seth Meyers Podcast",
+      "publisher": null,
+      "name": "Adam Driver | Trump Pressures NVIDIA to Reinstate Jensen Huang, NYT Reports Trump Knew About Affair: A Closer Look",
+      "dur_min": 25,
+      "release": "2026-11-24",
+      "url": "https://open.spotify.com/episode/2V3OYoeODhwZ5uQtvJ2y8I",
+      "desc": "Seth takes a closer look at Trump pressuring the board of NVIDIA to reinstate Jensen Huang as CEO, even after bombshell reporting that Trump knew Huang might be entangled with a spy and did nothing.Then, Adam Driver talks about filming the '80s-set movie Paper Tiger, his cool uncle teaching him how to play the piano and playing Mister Sinister in an upcoming X-Men film. See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
+      "api_seen": true
+    },
+    {
+      "id": "6JHyooOTkY6IEyLE31ngfE",
+      "added_at": "2026-11-24",
+      "show": "The Indicator from Planet Money",
+      "publisher": null,
+      "name": "Is Jensen Huang too big to fail?",
+      "dur_min": 9,
+      "release": "2026-11-24",
+      "url": "https://open.spotify.com/episode/6JHyooOTkY6IEyLE31ngfE",
+      "desc": "A couple of weeks ago, Jensen Huang resigned as CEO of Nvidia due to a flurry of scandals. Now, Huang is back at the helm. So… what happened? Today on the show, what you need to know about the drama.Fact checking by Sierra Juarez.Your Next Listen –An inflation scare, workers get their fair share, and Nvidia’s billion-dollar affairs–Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet Money–The Indicator newsletter — a weekly roundup of news, ideas and staff picks. –Instagram, TikTok and YouTube –Find the Planet Money book –Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop!Support public media by subscribing to NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
+      "api_seen": true
+    },
+    {
+      "id": "1V3OHMzBsE95AUW7FjpuU5",
+      "added_at": "2026-11-24",
+      "show": "StarTalk with Neil deGrasse Tyson",
+      "publisher": null,
+      "name": "Neutrinos on Ice with Francis Halzen",
+      "dur_min": 58,
+      "release": "2026-11-24",
+      "url": "https://open.spotify.com/episode/1V3OHMzBsE95AUW7FjpuU5",
+      "desc": "What do neutrinos tell us about the universe? Neil deGrasse Tyson and Chuck Nice sit down with particle physicist and 2026 recipient of the Nobel Prize in Physics, Francis Halzen, to explore IceCube Neutrino Observatory, and what these little neutral ones can tell us about supernovae, cosmic rays, and the standard model.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here:https://startalkmedia.com/show/neutrinos-on-ice-with-francis-halzen/Thanks to our Patrons Joe Ognjenovic, Daniel Corhodzic, Mokscha Haack, Kyle Smith, David Baskind, LB, Thomas Dolan, Matt Rosner, Levi piets, Lisa Montoya, Abby Bellmer, PNW Squatch, 5Entertainment, Michael Davis, Matthew Pruss, Lawrence Schlitt, Anais Alexandre, JJtheGravimeter, Jay Brand, Mary Ann LoBalbo, kyle, Eric Mendoza, Nathan K, Jason Whipple, Eric Holland, Bernhard, Albatross, Kieran Adams, brandon Shannon, Nyx Keuning, and Tashpool for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "api_seen": true
     }
   ]

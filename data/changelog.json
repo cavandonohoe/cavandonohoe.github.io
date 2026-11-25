@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-24T03:00:01.664069+00:00",
+  "generated_at": "2026-11-25T00:59:17.650273+00:00",
   "events": [
     {
       "date": "2026-11-23",
@@ -304,6 +304,16 @@
   ],
   "daily_summaries": [
     {
+      "date": "2026-11-24",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "4 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/5b8cbfd01c4e5be58cb902d9f3c78e3d4881ec8d"
+        }
+      ]
+    },
+    {
       "date": "2026-11-23",
       "items": [
         {
@@ -489,16 +499,6 @@
           "emoji": "\ud83c\udfa7",
           "text": "Podcast + Spotify experience improved",
           "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/341"
-        }
-      ]
-    },
-    {
-      "date": "2026-11-10",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "5 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/660e3f6ac3afa5f832f764696016edde33564b19"
         }
       ]
     }
