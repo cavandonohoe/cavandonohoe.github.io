@@ -3,11 +3,11 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 543,
+    "n_episodes": 549,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-11-24",
-    "api_saved_count": 56,
-    "n_removed": 438,
+    "api_refreshed_at": "2026-11-25",
+    "api_saved_count": 55,
+    "n_removed": 439,
     "n_unavailable": 28
   },
   "episodes": [
@@ -5123,7 +5123,8 @@
       "release": "2026-10-22",
       "url": "https://open.spotify.com/episode/4Jpj80N7bi0avyErADLAlY",
       "desc": "A guffawing JD Vance struggles to remember what he’s good at, a Venezuelan billionaire knows the way to Trump’s heart is a bribe, and Ronny Chieng gets down to the real reason Pete Hegseth’s livestream firing squad got canceled: ableism? In this edition of In My Opinion, Mo Amer looks at how Michigan Senate hopeful Abdul El-Sayed remains a formidable candidate despite facing a barrage of increasingly unhinged Islamophobia. Mo explains that El-Sayed is neutralizing his attackers with a not-so-secret weapon: He's likable! Just as Zohran Mamdani was able to charm and disarm President Trump, El-Sayed is winning over people like Fox News's Jesse Watters by being a relatable guy with charisma to spare... and the TikTok dance moves to match. Academy Award-winning writer and director Taika Waititi joins Ronny to discuss his new film “Klara and the Sun.” The two discuss working with a star-studded cast to create an unexpectedly topical film about robot friends, shooting the film in New Zealand, and how the film industry in Waititi’s home country has changed over the years. Plus, Ronny shares his experience working with Waititi and how the director prioritizes giving back to the communities that make his movies possible. -- To get simple, online access to personalized, affordable care for ED, Hair Loss, Weight Loss, and more, visit https://Hims.com/dailyshow  --New customers can save 35% on your first month of subscription by going to https://dosedaily.co/TDS or entering TDS at checkout. -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "2KraTAACZkcVc8E6bmeeah",
@@ -5250,7 +5251,8 @@
       "release": "2026-10-23",
       "url": "https://open.spotify.com/episode/0b45133mjf1qjmYoENIrt5",
       "desc": "Spider silk can be stronger than steel by weight and tougher than Kevlar. Can scientists make their own? Guest: Greg Holland, professor in the Department of Chemistry and Biochemistry at San Diego State University For show transcripts, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unxtranscripts⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠For more, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unexplainable⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠And please email us! ⁠⁠⁠⁠⁠⁠unexplainable@vox.com⁠⁠⁠⁠⁠⁠We read every email.Support Unexplainable (and get ad-free episodes) by becoming a Vox Member today: ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/members⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠Thank you! Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "0lhhxLYaPtKc9S7xAXiB6z",
@@ -5454,7 +5456,7 @@
       "url": "https://open.spotify.com/episode/2aKMAysAS15PhUsLNsBj6I",
       "desc": "Jordan Klepper and Daily Show Supervising Producer Ian Berger kick off the week with a preview of Klepper's special, Red Flags, which premieres TONIGHT after The Daily Show.  They discuss the whirlwind experience of turning around a 24-minute special in only 20 days and how, with the midterms approaching, the GOP is serving up a \"turducken of fear\" in an incoherent mishmash of McCarthyism and Islamophobia.  Plus, Klepper explores how MAGA rallygoers in Middle American states like Nebraska have positioned NYC Mayor Mamdani as their unlikely boogeyman, while their Texas counterparts are obsessing over God's genitals in their attacks on Senate candidate James Talarico.  Finally, Klepper and Ian wrap things up with a round of Daily Show & Tell and look ahead to this week's guests: Morgana Robinson, David Byrne, and Tracy Letts. -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-25"
     },
     {
       "id": "1GCCKzBIjKXt7kVBdx48OJ",
@@ -6082,7 +6084,8 @@
       "release": "2026-11-08",
       "url": "https://open.spotify.com/episode/5dhtfi1UGQXwgfa5DrU1Am",
       "desc": "Catch all of the past week's great guests in one place. Michael Lewis joins Jon Stewart to discuss his new book, “Blockers: Rebels in the Deep State,” which unveils an inside look into DOGE’s inner workings and champions the civil servants who got in its way. Lewis and Stewart dive deep into stories of the brave civil servants who “blocked” DOGE, including the wild U.S. Institute of Peace standoff where a security guard locked DOGE staffers in a wing of the building until D.C. police showed up and escorted him out. Lewis also shares how DOGE’s young operatives targeted the people he calls “the best among us” and why he somehow walked away from it all optimistically. Award-winning novelist, Min Jin Lee chats with Ronny Chieng about her latest book, \"American Hagwon.\" The two discuss hagwons, the specialized Korean skill schools at the center of Lee’s novel, bond over the traditions of respect, sacrifice, and discipline embedded within Asian culture and education, and debate the real value of an elite higher education. Plus, Lee breaks down how her novel’s exploration of an immigrant family enduring financial instability attempts to answer the question of why bad things happen to good people. Harvard Kennedy School professor and author of \"Civil Resistance: What Everyone Needs to Know,” Erica Chenoweth, sits down with Michael Kosta to discuss their groundbreaking research on nonviolent resistance that led to the development of “The 3.5% Rule,” which found that no mass movements against dictatorships in the 20th century failed once they reached active participation by about 3.5% of the population. They talk about utilizing momentum, organization, and mass non-cooperation, along with protest, to achieve successful mass nonviolent resistance, and how the Declaration of Independence was the ultimate act of civil disobedience. New York Times reporter Teddy Schleifer joins Jordan Klepper to discuss what it’s like covering the billionaire beat and if money is losing its power in American politics. Schleifer shares how the ultra-wealthy think about political giving and why he’s surprised they don’t spend even more. He also explains how the world of dark money plays an outsized role and why both parties’ establishments quietly benefit from the status quo, even if most voters can’t stand it. Plus, he shares why he thinks real change takes years, pointing to Texas where people waited over a decade to see it turn blue. -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "05RnW709FbLf5DDNXgZ7Lr",
@@ -6106,7 +6109,8 @@
       "release": "2026-11-09",
       "url": "https://open.spotify.com/episode/05qVpLaKmlpzfYo5rXHowG",
       "desc": "This week's host Desi Lydic sits down with Daily Show writer Devin Delliquanti to recap the latest news, and preview the week to come.  They discuss the historic blue wave that saw Democrats sweep to power by the largest margin in 50 years and analyze Republican reactions, from JD Vance and Ted Cruz's lengthy post-election pivot essays to Donald Trump's surreal ballroom address about his columns.  They also preview this week's guests: Kathryn Hahn, Ron Howard, and Heather Cox Richardson.  -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "3dHtXJsPBv1vgloDqzvw32",
@@ -6582,7 +6586,8 @@
       "release": "2026-11-19",
       "url": "https://open.spotify.com/episode/6yx4apGcrG9TZzmOL5o3Es",
       "desc": "Seth takes a closer look at the Trump administration struggling to reassure Americans after a series of major tech outages and former NVIDIA CEO Jensen Huang saying he'd be open to making a comeback.Then, Amy Poehler talks about dealing with the flu while accepting her Golden Globe Award from Snoop Dogg and why she doesn't like asking questions as a podcast host before giving her one-word take on current headlines.See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "6MYF0pcXjLfrJrmFxScnP8",
@@ -6753,7 +6758,8 @@
       "release": "2026-11-23",
       "url": "https://open.spotify.com/episode/5jmNZ2MkdzMrUUvYHgxUQb",
       "desc": "Comedy legend Eric Idle feels loosey-goosey about being Conan O’Brien’s friend. Eric sits down with Conan to discuss his memoir Idle in Provence: A Brief History of Thyme, fixing up his homestead in the south of France, and reflecting on the remarkable trajectory of his life. Plus, Conan reacts to a Star Wars character reported to be channeling his essence. For Conan videos, tour dates and more visit TeamCoco.com.Got a question for Conan? Call our voicemail: (323) 362-2295. Get access to all the podcasts you love, music channels and radio shows with the SiriusXM App! Get 3 months free using this show link: https://siriusxm.com/conan. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "1ot4TOoT1ABi5WEkD2OYR7",
@@ -6789,7 +6795,8 @@
       "release": "2026-11-24",
       "url": "https://open.spotify.com/episode/2V3OYoeODhwZ5uQtvJ2y8I",
       "desc": "Seth takes a closer look at Trump pressuring the board of NVIDIA to reinstate Jensen Huang as CEO, even after bombshell reporting that Trump knew Huang might be entangled with a spy and did nothing.Then, Adam Driver talks about filming the '80s-set movie Paper Tiger, his cool uncle teaching him how to play the piano and playing Mister Sinister in an upcoming X-Men film. See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "6JHyooOTkY6IEyLE31ngfE",
@@ -6813,6 +6820,78 @@
       "release": "2026-11-24",
       "url": "https://open.spotify.com/episode/1V3OHMzBsE95AUW7FjpuU5",
       "desc": "What do neutrinos tell us about the universe? Neil deGrasse Tyson and Chuck Nice sit down with particle physicist and 2026 recipient of the Nobel Prize in Physics, Francis Halzen, to explore IceCube Neutrino Observatory, and what these little neutral ones can tell us about supernovae, cosmic rays, and the standard model.NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here:https://startalkmedia.com/show/neutrinos-on-ice-with-francis-halzen/Thanks to our Patrons Joe Ognjenovic, Daniel Corhodzic, Mokscha Haack, Kyle Smith, David Baskind, LB, Thomas Dolan, Matt Rosner, Levi piets, Lisa Montoya, Abby Bellmer, PNW Squatch, 5Entertainment, Michael Davis, Matthew Pruss, Lawrence Schlitt, Anais Alexandre, JJtheGravimeter, Jay Brand, Mary Ann LoBalbo, kyle, Eric Mendoza, Nathan K, Jason Whipple, Eric Holland, Bernhard, Albatross, Kieran Adams, brandon Shannon, Nyx Keuning, and Tashpool for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
+      "api_seen": true
+    },
+    {
+      "id": "0CuhuMOogpSHOD6NMFnExw",
+      "added_at": "2026-11-25",
+      "show": "Late Night with Seth Meyers Podcast",
+      "publisher": null,
+      "name": "Ben Stiller | Trump Posts Bizarre Jensen Huang Meme, Huang Admits to More Affairs in NVIDIA Scandal: A Closer Look",
+      "dur_min": 26,
+      "release": "2026-11-25",
+      "url": "https://open.spotify.com/episode/0CuhuMOogpSHOD6NMFnExw",
+      "desc": "Seth takes a closer look at NVIDIA CEO Jensen Huang admitting to more affairs after Trump pressured the board to reinstate him and Trump posting a bizarre meme celebrating the comeback. Then, Ben Stiller talks about filming a Knicks documentary while watching the Knicks win a championship and filming a cold plunge scene with Robert De Niro in an 80-degree tub for Focker In-Law before sharing how competitive Owen Wilson is.See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
+      "api_seen": true
+    },
+    {
+      "id": "2hnn0geWe45aDXvpjiah14",
+      "added_at": "2026-11-25",
+      "show": "The Indicator from Planet Money",
+      "publisher": null,
+      "name": "Sorry, even store brands are expensive now",
+      "dur_min": 9,
+      "release": "2026-11-25",
+      "url": "https://open.spotify.com/episode/2hnn0geWe45aDXvpjiah14",
+      "desc": "Why have prices for budget groceries risen faster than name brands? Meet cheapflation.Fact checking by Sierra Juarez.Your Next Listen –Go ask ALICE about grocery prices–Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet Money–The Indicator newsletter — a weekly roundup of news, ideas and staff picks. –Instagram, TikTok and YouTube –Find the Planet Money book –Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop!Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
+      "api_seen": true
+    },
+    {
+      "id": "3Gi5QBziHHEQtuu9jtpgHG",
+      "added_at": "2026-11-25",
+      "show": "Planet Money",
+      "publisher": null,
+      "name": "How to steal a truckload of bourbon and not get caught",
+      "dur_min": 27,
+      "release": "2026-11-25",
+      "url": "https://open.spotify.com/episode/3Gi5QBziHHEQtuu9jtpgHG",
+      "desc": "Half a million dollars worth of bourbon – gone. $102,000 worth of turkey. 3,000 pounds of seafood. $100 million worth of data center freight. The nerve center that enables trucks to move all our food and goods – is under attack. And we don’t just mean Bonnie and Clyde style. Today’s cargo thieves have gotten way more sophisticated. Today on the show: Where are our stolen goods ending up? And why it is so hard for the FBI to catch the cargo thieves. Read: Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life Our weekly longform Planet Money newsletterOur weekly Indicator round-up newsletterFollow: InstagramTikTokYouTubeFacebookSupport public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.This episode was produced by Emma Peaslee with help from Vito Emanuel and Sam Yellowhorse Kesler. It was edited by Marianne McCune and fact-checked by Charlotte Isidore. It was engineered by Sophie MacArthur. Alex Goldmark is Planet Money’s executive producer. Music: NPR Source Audio - \"Bassline Motion,\" \"I Told You Once,\" and \"Gravity Calling\"See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
+      "api_seen": true
+    },
+    {
+      "id": "5av47052M0zEF9Jl5OcrYQ",
+      "added_at": "2026-11-25",
+      "show": "Freakonomics Radio",
+      "publisher": null,
+      "name": "Why Is It So Hard (and Expensive) to Build Anything in America? (Update)",
+      "dur_min": 54,
+      "release": "2026-11-25",
+      "url": "https://open.spotify.com/episode/5av47052M0zEF9Jl5OcrYQ",
+      "desc": "Most industries use technology to become more productive over time. But not construction! In this episode, first published in 2023, we identify the causes — and possible solutions. (Can you say ... “prefab”?)  SOURCES:Vaughan Buckley, founder and C.E.O. of the Volumetric Building Companies.Carrie Sturts Dossick, professor of construction management and associate dean of research in the College of Built Environments at the University of Washington. Ed Glaeser, professor of economics at Harvard University.Michael Hough, director of MJH Structural Engineers.Ivan Rupnik, professor of architecture at Northeastern University.Chad Syverson, professor of economics at the University of Chicago Booth School of Business. RESOURCES:\"The Strange and Awful Path of Productivity in the US Construction Sector,\" by Austan Goolsbee and Chad Syverson (BFI Working Paper, 2023).\"Infrastructure Costs,\" by Leah Brooks and Zachary D. Liscow (American Economic Journal: Applied, 2023).\"A Decent Home,\" report by the President's Committee on Urban Housing (1968).\"The Silicon Valley Elite Who Want to Build a City From Scratch,\" by Conor Dougherty and Erin Griffith (The New York Times, 2023).“Silicon Valley’s Dream City Has Crashed Into Small-Town Politics” by Zusha Elinson and  Jonah Reenders (The Wall Street Journal, 2026). EXTRAS:\"Edward Glaeser Explains Why Some Cities Thrive While Others Fade Away,\" by People I (Mostly) Admire (2021).\"Why Are Cities (Still) So Expensive?\" by Freakonomics Radio (2020). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
+      "api_seen": true
+    },
+    {
+      "id": "5ld3NQDZBf4FcIl9WzZjq4",
+      "added_at": "2026-11-25",
+      "show": "The Daily Show: Ears Edition",
+      "publisher": null,
+      "name": "Thirty F#@king Years | Thanksgiving with Jordan Klepper and Grace Kuhlenschmidt",
+      "dur_min": 38,
+      "release": "2026-11-25",
+      "url": "https://open.spotify.com/episode/5ld3NQDZBf4FcIl9WzZjq4",
+      "desc": "Jordan Klepper and Grace Kuhlenschmidt gather to give thanks for thirty years of Daily Show Thanksgivings. They watch some of their favorite holiday clips from TDS legends like Steve Carell, Rob Cordry, Jessica Williams, Lewis Black, Jon Stewart and more.  -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
+      "api_seen": true
+    },
+    {
+      "id": "76DMaukEWzDxGihmL9xGw5",
+      "added_at": "2026-11-25",
+      "show": "Stuff You Should Know",
+      "publisher": null,
+      "name": "Short Stuff: Great Lego Spill of '97",
+      "dur_min": 12,
+      "release": "2026-11-25",
+      "url": "https://open.spotify.com/episode/76DMaukEWzDxGihmL9xGw5",
+      "desc": "Back in 1997 an mini(fig) environmental disaster took place when almost five million Lego pieces ended up in the ocean. They’ve been showing up on beaches ever since. See omnystudio.com/listener for privacy information.",
       "api_seen": true
     }
   ]
