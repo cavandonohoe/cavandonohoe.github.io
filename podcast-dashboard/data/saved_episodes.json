@@ -3,10 +3,10 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 552,
+    "n_episodes": 553,
     "previous_only_count": 42,
     "api_refreshed_at": "2026-11-27",
-    "api_saved_count": 55,
+    "api_saved_count": 56,
     "n_removed": 449,
     "n_unavailable": 28
   },
@@ -6931,6 +6931,18 @@
       "release": "2026-11-27",
       "url": "https://open.spotify.com/episode/3lwDjhUJhq82CeJ8aoXR7L",
       "desc": "What do you learn from creating life from scratch? Neil deGrasse Tyson and cohosts Harrison Greenbaum and Gary O’Reilly learn about mirror life, the first synthetic cell with a complete life cycle, and what we can do with it with biochemist Kate Adamala. Plus, how can synthetic cells help us solve climate change? NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/the-dawn-of-synthetic-cells-with-kate-adamala/Thanks to our Patrons Rick Orlemanski, Alexander Gazimov, Mizanur Rahman, Creator Edse Originals EWB productions, PABLO GARDNER, Amanda Dalton, Victor Manske, Colin McCarthy, Erika Larson, Jerry Lumpkins, kruze, scott freeman, Charlotte Boynton, Esper, Cesar, the sugarman, Melanie Chisholm, Reuben Rutland, Chuck Walbourn, RetiredEng, Dinis Reis Oliveira, Mayah Jaimes, Geoff Christensen, Clive Paterson, DavidG, Flemming Hansson, Madeleine Rose Seabury, and Rene for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
+      "api_seen": true
+    },
+    {
+      "id": "18rQYvdglOx8xEBW6RhIR3",
+      "added_at": "2026-11-27",
+      "show": "The Daily Show: Ears Edition",
+      "publisher": null,
+      "name": "TDS Time Machine | Thanksgiving and Black Friday",
+      "dur_min": 43,
+      "release": "2026-11-27",
+      "url": "https://open.spotify.com/episode/18rQYvdglOx8xEBW6RhIR3",
+      "desc": "In our previous episode of ⁠⁠30 F#@king Years⁠⁠, Jordan Klepper and Grace Kuhlenschmidt broke down their all-time favorite Thanksgiving Daily Show segments. Check out those segments, and more, in full, right here. -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook  Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true
     }
   ]
