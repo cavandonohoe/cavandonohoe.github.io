@@ -3,11 +3,11 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 550,
+    "n_episodes": 552,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-11-26",
-    "api_saved_count": 53,
-    "n_removed": 446,
+    "api_refreshed_at": "2026-11-27",
+    "api_saved_count": 55,
+    "n_removed": 449,
     "n_unavailable": 28
   },
   "episodes": [
@@ -5064,7 +5064,7 @@
       "url": "https://open.spotify.com/episode/26pgK7KZntwnBa5mMG8tRS",
       "desc": "Polling is facing an existential crisis. People aren't picking up the phone. Nobody wants to talk to pollsters. Trust is on the line. We pluck a solution from the economics canon and convince a polling firm to let us test it. Today on the show, we head to Marist College — home of the Marist Poll — to learn how to be pollsters ourselves. We learn the great moments in polling history, the latest science of polling, and find out all the tricks that pollsters use to get people to finish their surveys. Then we get on the phone and give it a try ourselves. And offer some of our own solutions. This episode was originally published before the 2022 midterm elections. We have an update on our idea to save polling, which Marist is still testing, and we find out what it might be able to tell us about the 2026 midterms. Music: \"Partyline, \"The Danzig Connection, and \"Saku\"Read: Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life Our weekly longform Planet Money newsletterOur weekly Indicator round-up newsletterFollow: InstagramTikTokYouTubeFacebookThis update was produced by Emma Peaslee with help from Sam Yellowhorse Kesler. It was mastered by Gilly Moon with help from Cena Loffredo. The original episode was edited by Jess Jiang. Alex Goldmark is Planet Money’s executive producer. Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-27"
     },
     {
       "id": "3dqnSEeQarbY5xWhgeYmYZ",
@@ -5101,7 +5101,7 @@
       "url": "https://open.spotify.com/episode/4coa0xc14YTHW9bUXUV2CB",
       "desc": "They say they make companies more efficient through savvy management. Critics say they bend the rules to enrich themselves at the expense of consumers and employees. Can they both be right? (Probably not.)  SOURCES:Brendan Ballou, C.E.O. of the Public Integrity Project.Dan Glickberg, venture-capital investor.Hannah Howard, food writer.Sachin Khajuria, investor. RESOURCES:Plunder: Private Equity's Plan to Pillage America, by Brendan Ballou (2023).Two and Twenty: How the Masters of Private Equity Always Win, by Sachin Khajuria (2022).\"Local Journalism under Private Equity Ownership,\" by Michael Ewens, Arpit Gupta, and Sabrina T. Howell (NBER Working Paper, 2022).“Owner Incentives and Performance in Healthcare: Private Equity Investment in Nursing Homes,” by Atul Gupta, Sabrina T. Howell, Constantine Yannelis, and Abhinav Gupta (NBER Working Paper, 2021).“Leveraged Buyouts and Financial Distress,” by Brian Ayash and Mahdi Rastad (Finance Research Letters, 2021). EXTRAS:\"Is This What a 'Good Billionaire' Looks Like?\" by Freakonomics Radio (2026).\"Is the Public Ready for Private Equity?\" by Freakonomics Radio (2025).\"Should You Trust Private Equity to Take Care of Your Dog?\" by Freakonomics Radio (2023).\"Do You Know Who Owns Your Vet?\" by Freakonomics Radio (2023).\"The Secret Life of a C.E.O.,\" series by Freakonomics Radio (2018). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-27"
     },
     {
       "id": "3HH5jRGbENHUwpD2pQMKU0",
@@ -6895,7 +6895,7 @@
       "url": "https://open.spotify.com/episode/76DMaukEWzDxGihmL9xGw5",
       "desc": "Back in 1997 an mini(fig) environmental disaster took place when almost five million Lego pieces ended up in the ocean. They’ve been showing up on beaches ever since. See omnystudio.com/listener for privacy information.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-27"
     },
     {
       "id": "4mQXz38i6eQeNDu3uvaula",
@@ -6907,6 +6907,30 @@
       "release": "2026-11-26",
       "url": "https://open.spotify.com/episode/4mQXz38i6eQeNDu3uvaula",
       "desc": "Today we release our 2026 live show from Akron, Ohio where we cover one of the more signifianct wars of the 20th and 21st centuries... THE COLA WAR.See omnystudio.com/listener for privacy information.",
+      "api_seen": true
+    },
+    {
+      "id": "6GiogMJXJa4SXBg96hQ4ek",
+      "added_at": "2026-11-27",
+      "show": "The Indicator from Planet Money",
+      "publisher": null,
+      "name": "How a record El Niño is hitting your wallet",
+      "dur_min": 10,
+      "release": "2026-11-27",
+      "url": "https://open.spotify.com/episode/6GiogMJXJa4SXBg96hQ4ek",
+      "desc": "Today we're bringing you an episode from our friends at Short Wave on the economic toll this year's El Niño could have. Peru's anchovy industry, the largest single-species fishery in the world, is being rocked by the ongoing El Niño . It's not the first time the fishery has been impacted by the natural weather phenomenon — El Niño gets its name from Peruvian fishermen. And it's a stark reminder of the reverberating economic consequences of El Niño events, which can cost the global economy trillions of dollars.Your Next Listen –Insurance in the time of climate change  –Over 2,000 episodes in our archive on the NPR AppConnect with The Indicator from Planet Money–The Indicator newsletter — a weekly roundup of news, ideas and staff picks. –Instagram, TikTok and YouTube –Find the Planet Money book –Find the Planet Money game, Sell Me A Sasquatch, and other merch at the NPR Shop!Support public media by subscribing to NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include sponsor-free listening. Learn more at plus.npr.org. See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
+      "api_seen": true
+    },
+    {
+      "id": "3lwDjhUJhq82CeJ8aoXR7L",
+      "added_at": "2026-11-27",
+      "show": "StarTalk with Neil deGrasse Tyson",
+      "publisher": null,
+      "name": "The Dawn of Synthetic Cells with Kate Adamala",
+      "dur_min": 58,
+      "release": "2026-11-27",
+      "url": "https://open.spotify.com/episode/3lwDjhUJhq82CeJ8aoXR7L",
+      "desc": "What do you learn from creating life from scratch? Neil deGrasse Tyson and cohosts Harrison Greenbaum and Gary O’Reilly learn about mirror life, the first synthetic cell with a complete life cycle, and what we can do with it with biochemist Kate Adamala. Plus, how can synthetic cells help us solve climate change? NOTE: StarTalk+ Patrons can listen to this entire episode commercial-free here: https://startalkmedia.com/show/the-dawn-of-synthetic-cells-with-kate-adamala/Thanks to our Patrons Rick Orlemanski, Alexander Gazimov, Mizanur Rahman, Creator Edse Originals EWB productions, PABLO GARDNER, Amanda Dalton, Victor Manske, Colin McCarthy, Erika Larson, Jerry Lumpkins, kruze, scott freeman, Charlotte Boynton, Esper, Cesar, the sugarman, Melanie Chisholm, Reuben Rutland, Chuck Walbourn, RetiredEng, Dinis Reis Oliveira, Mayah Jaimes, Geoff Christensen, Clive Paterson, DavidG, Flemming Hansson, Madeleine Rose Seabury, and Rene for supporting us this week. Subscribe to SiriusXM Podcasts+ to listen to new episodes of StarTalk Radio ad-free and a whole week early.Start a free trial now on Apple Podcasts or by visiting siriusxm.com/podcastsplus. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "api_seen": true
     }
   ]
