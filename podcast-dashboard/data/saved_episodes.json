@@ -3,11 +3,11 @@
     "generated_at": "2026-09-27",
     "export_n_episodes": 322,
     "source": "Spotify Account Data export + Spotify Web API incremental refresh",
-    "n_episodes": 549,
+    "n_episodes": 550,
     "previous_only_count": 42,
-    "api_refreshed_at": "2026-11-25",
-    "api_saved_count": 55,
-    "n_removed": 439,
+    "api_refreshed_at": "2026-11-26",
+    "api_saved_count": 53,
+    "n_removed": 446,
     "n_unavailable": 28
   },
   "episodes": [
@@ -5063,7 +5063,8 @@
       "release": "2026-10-21",
       "url": "https://open.spotify.com/episode/26pgK7KZntwnBa5mMG8tRS",
       "desc": "Polling is facing an existential crisis. People aren't picking up the phone. Nobody wants to talk to pollsters. Trust is on the line. We pluck a solution from the economics canon and convince a polling firm to let us test it. Today on the show, we head to Marist College — home of the Marist Poll — to learn how to be pollsters ourselves. We learn the great moments in polling history, the latest science of polling, and find out all the tricks that pollsters use to get people to finish their surveys. Then we get on the phone and give it a try ourselves. And offer some of our own solutions. This episode was originally published before the 2022 midterm elections. We have an update on our idea to save polling, which Marist is still testing, and we find out what it might be able to tell us about the 2026 midterms. Music: \"Partyline, \"The Danzig Connection, and \"Saku\"Read: Our book: Planet Money: A Guide to the Economic Forces That Shape Your Life Our weekly longform Planet Money newsletterOur weekly Indicator round-up newsletterFollow: InstagramTikTokYouTubeFacebookThis update was produced by Emma Peaslee with help from Sam Yellowhorse Kesler. It was mastered by Gilly Moon with help from Cena Loffredo. The original episode was edited by Jess Jiang. Alex Goldmark is Planet Money’s executive producer. Support public media with NPR+ and enjoy perks for over 25 podcasts like this one. This show’s perks include bonus episodes and sponsor-free listening. Learn more at plus.npr.org.See pcm.adswizz.com for information about our collection and use of personal data for sponsorship and to manage your podcast sponsorship preferences.NPR Privacy Policy",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "3dqnSEeQarbY5xWhgeYmYZ",
@@ -5099,7 +5100,8 @@
       "release": "2026-10-21",
       "url": "https://open.spotify.com/episode/4coa0xc14YTHW9bUXUV2CB",
       "desc": "They say they make companies more efficient through savvy management. Critics say they bend the rules to enrich themselves at the expense of consumers and employees. Can they both be right? (Probably not.)  SOURCES:Brendan Ballou, C.E.O. of the Public Integrity Project.Dan Glickberg, venture-capital investor.Hannah Howard, food writer.Sachin Khajuria, investor. RESOURCES:Plunder: Private Equity's Plan to Pillage America, by Brendan Ballou (2023).Two and Twenty: How the Masters of Private Equity Always Win, by Sachin Khajuria (2022).\"Local Journalism under Private Equity Ownership,\" by Michael Ewens, Arpit Gupta, and Sabrina T. Howell (NBER Working Paper, 2022).“Owner Incentives and Performance in Healthcare: Private Equity Investment in Nursing Homes,” by Atul Gupta, Sabrina T. Howell, Constantine Yannelis, and Abhinav Gupta (NBER Working Paper, 2021).“Leveraged Buyouts and Financial Distress,” by Brian Ayash and Mahdi Rastad (Finance Research Letters, 2021). EXTRAS:\"Is This What a 'Good Billionaire' Looks Like?\" by Freakonomics Radio (2026).\"Is the Public Ready for Private Equity?\" by Freakonomics Radio (2025).\"Should You Trust Private Equity to Take Care of Your Dog?\" by Freakonomics Radio (2023).\"Do You Know Who Owns Your Vet?\" by Freakonomics Radio (2023).\"The Secret Life of a C.E.O.,\" series by Freakonomics Radio (2018). Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "api_seen": true
+      "api_seen": true,
+      "api_misses": 1
     },
     {
       "id": "3HH5jRGbENHUwpD2pQMKU0",
@@ -5124,7 +5126,7 @@
       "url": "https://open.spotify.com/episode/4Jpj80N7bi0avyErADLAlY",
       "desc": "A guffawing JD Vance struggles to remember what he’s good at, a Venezuelan billionaire knows the way to Trump’s heart is a bribe, and Ronny Chieng gets down to the real reason Pete Hegseth’s livestream firing squad got canceled: ableism? In this edition of In My Opinion, Mo Amer looks at how Michigan Senate hopeful Abdul El-Sayed remains a formidable candidate despite facing a barrage of increasingly unhinged Islamophobia. Mo explains that El-Sayed is neutralizing his attackers with a not-so-secret weapon: He's likable! Just as Zohran Mamdani was able to charm and disarm President Trump, El-Sayed is winning over people like Fox News's Jesse Watters by being a relatable guy with charisma to spare... and the TikTok dance moves to match. Academy Award-winning writer and director Taika Waititi joins Ronny to discuss his new film “Klara and the Sun.” The two discuss working with a star-studded cast to create an unexpectedly topical film about robot friends, shooting the film in New Zealand, and how the film industry in Waititi’s home country has changed over the years. Plus, Ronny shares his experience working with Waititi and how the director prioritizes giving back to the communities that make his movies possible. -- To get simple, online access to personalized, affordable care for ED, Hair Loss, Weight Loss, and more, visit https://Hims.com/dailyshow  --New customers can save 35% on your first month of subscription by going to https://dosedaily.co/TDS or entering TDS at checkout. -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-26"
     },
     {
       "id": "2KraTAACZkcVc8E6bmeeah",
@@ -5252,7 +5254,7 @@
       "url": "https://open.spotify.com/episode/0b45133mjf1qjmYoENIrt5",
       "desc": "Spider silk can be stronger than steel by weight and tougher than Kevlar. Can scientists make their own? Guest: Greg Holland, professor in the Department of Chemistry and Biochemistry at San Diego State University For show transcripts, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unxtranscripts⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠For more, go to ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/unexplainable⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠And please email us! ⁠⁠⁠⁠⁠⁠unexplainable@vox.com⁠⁠⁠⁠⁠⁠We read every email.Support Unexplainable (and get ad-free episodes) by becoming a Vox Member today: ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠vox.com/members⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠Thank you! Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-26"
     },
     {
       "id": "0lhhxLYaPtKc9S7xAXiB6z",
@@ -6085,7 +6087,7 @@
       "url": "https://open.spotify.com/episode/5dhtfi1UGQXwgfa5DrU1Am",
       "desc": "Catch all of the past week's great guests in one place. Michael Lewis joins Jon Stewart to discuss his new book, “Blockers: Rebels in the Deep State,” which unveils an inside look into DOGE’s inner workings and champions the civil servants who got in its way. Lewis and Stewart dive deep into stories of the brave civil servants who “blocked” DOGE, including the wild U.S. Institute of Peace standoff where a security guard locked DOGE staffers in a wing of the building until D.C. police showed up and escorted him out. Lewis also shares how DOGE’s young operatives targeted the people he calls “the best among us” and why he somehow walked away from it all optimistically. Award-winning novelist, Min Jin Lee chats with Ronny Chieng about her latest book, \"American Hagwon.\" The two discuss hagwons, the specialized Korean skill schools at the center of Lee’s novel, bond over the traditions of respect, sacrifice, and discipline embedded within Asian culture and education, and debate the real value of an elite higher education. Plus, Lee breaks down how her novel’s exploration of an immigrant family enduring financial instability attempts to answer the question of why bad things happen to good people. Harvard Kennedy School professor and author of \"Civil Resistance: What Everyone Needs to Know,” Erica Chenoweth, sits down with Michael Kosta to discuss their groundbreaking research on nonviolent resistance that led to the development of “The 3.5% Rule,” which found that no mass movements against dictatorships in the 20th century failed once they reached active participation by about 3.5% of the population. They talk about utilizing momentum, organization, and mass non-cooperation, along with protest, to achieve successful mass nonviolent resistance, and how the Declaration of Independence was the ultimate act of civil disobedience. New York Times reporter Teddy Schleifer joins Jordan Klepper to discuss what it’s like covering the billionaire beat and if money is losing its power in American politics. Schleifer shares how the ultra-wealthy think about political giving and why he’s surprised they don’t spend even more. He also explains how the world of dark money plays an outsized role and why both parties’ establishments quietly benefit from the status quo, even if most voters can’t stand it. Plus, he shares why he thinks real change takes years, pointing to Texas where people waited over a decade to see it turn blue. -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-26"
     },
     {
       "id": "05RnW709FbLf5DDNXgZ7Lr",
@@ -6110,7 +6112,7 @@
       "url": "https://open.spotify.com/episode/05qVpLaKmlpzfYo5rXHowG",
       "desc": "This week's host Desi Lydic sits down with Daily Show writer Devin Delliquanti to recap the latest news, and preview the week to come.  They discuss the historic blue wave that saw Democrats sweep to power by the largest margin in 50 years and analyze Republican reactions, from JD Vance and Ted Cruz's lengthy post-election pivot essays to Donald Trump's surreal ballroom address about his columns.  They also preview this week's guests: Kathryn Hahn, Ron Howard, and Heather Cox Richardson.  -- The Daily Show airs weeknights at 11/10c on Comedy Central. Stream full episodes on Paramount+ Follow TDS: YouTube, TikTok, Instagram, Twitter, Facebook Learn more about your ad choices. Visit podcastchoices.com/adchoices",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-26"
     },
     {
       "id": "3dHtXJsPBv1vgloDqzvw32",
@@ -6587,7 +6589,7 @@
       "url": "https://open.spotify.com/episode/6yx4apGcrG9TZzmOL5o3Es",
       "desc": "Seth takes a closer look at the Trump administration struggling to reassure Americans after a series of major tech outages and former NVIDIA CEO Jensen Huang saying he'd be open to making a comeback.Then, Amy Poehler talks about dealing with the flu while accepting her Golden Globe Award from Snoop Dogg and why she doesn't like asking questions as a podcast host before giving her one-word take on current headlines.See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-26"
     },
     {
       "id": "6MYF0pcXjLfrJrmFxScnP8",
@@ -6759,7 +6761,7 @@
       "url": "https://open.spotify.com/episode/5jmNZ2MkdzMrUUvYHgxUQb",
       "desc": "Comedy legend Eric Idle feels loosey-goosey about being Conan O’Brien’s friend. Eric sits down with Conan to discuss his memoir Idle in Provence: A Brief History of Thyme, fixing up his homestead in the south of France, and reflecting on the remarkable trajectory of his life. Plus, Conan reacts to a Star Wars character reported to be channeling his essence. For Conan videos, tour dates and more visit TeamCoco.com.Got a question for Conan? Call our voicemail: (323) 362-2295. Get access to all the podcasts you love, music channels and radio shows with the SiriusXM App! Get 3 months free using this show link: https://siriusxm.com/conan. Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-26"
     },
     {
       "id": "1ot4TOoT1ABi5WEkD2OYR7",
@@ -6796,7 +6798,7 @@
       "url": "https://open.spotify.com/episode/2V3OYoeODhwZ5uQtvJ2y8I",
       "desc": "Seth takes a closer look at Trump pressuring the board of NVIDIA to reinstate Jensen Huang as CEO, even after bombshell reporting that Trump knew Huang might be entangled with a spy and did nothing.Then, Adam Driver talks about filming the '80s-set movie Paper Tiger, his cool uncle teaching him how to play the piano and playing Mister Sinister in an upcoming X-Men film. See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
       "api_seen": true,
-      "api_misses": 1
+      "removed_at": "2026-11-26"
     },
     {
       "id": "6JHyooOTkY6IEyLE31ngfE",
@@ -6892,6 +6894,19 @@
       "release": "2026-11-25",
       "url": "https://open.spotify.com/episode/76DMaukEWzDxGihmL9xGw5",
       "desc": "Back in 1997 an mini(fig) environmental disaster took place when almost five million Lego pieces ended up in the ocean. They’ve been showing up on beaches ever since. See omnystudio.com/listener for privacy information.",
+      "api_seen": true,
+      "api_misses": 1
+    },
+    {
+      "id": "4mQXz38i6eQeNDu3uvaula",
+      "added_at": "2026-11-26",
+      "show": "Stuff You Should Know",
+      "publisher": null,
+      "name": "SYSK Live in Akron, Ohio",
+      "dur_min": 64,
+      "release": "2026-11-26",
+      "url": "https://open.spotify.com/episode/4mQXz38i6eQeNDu3uvaula",
+      "desc": "Today we release our 2026 live show from Akron, Ohio where we cover one of the more signifianct wars of the 20th and 21st centuries... THE COLA WAR.See omnystudio.com/listener for privacy information.",
       "api_seen": true
     }
   ]
