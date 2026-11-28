@@ -1,6 +1,12 @@
 {
-  "generated_at": "2026-11-27T00:44:16.848475+00:00",
+  "generated_at": "2026-11-28T00:10:58.404869+00:00",
   "events": [
+    {
+      "date": "2026-11-27",
+      "type": "merged_pr",
+      "title": "Advance Spotify podcast cutoff to October 21, 2026",
+      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/373"
+    },
     {
       "date": "2026-11-23",
       "type": "merged_pr",
@@ -252,33 +258,29 @@
       "type": "merged_pr",
       "title": "Add Rental Desk live scoreboard",
       "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/320"
-    },
-    {
-      "date": "2026-10-28",
-      "type": "merged_pr",
-      "title": "Show Personal Data Site history since 2020 on CV",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/319"
-    },
-    {
-      "date": "2026-10-28",
-      "type": "merged_pr",
-      "title": "Rebuild CV from latest Google Sheet",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/318"
-    },
-    {
-      "date": "2026-10-28",
-      "type": "merged_pr",
-      "title": "Bump qs from 6.16.0 to 6.17.0 in /tools/tohs-apps-script",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/317"
-    },
-    {
-      "date": "2026-10-28",
-      "type": "merged_pr",
-      "title": "Add Selected Projects section to CV with live GitHub stats",
-      "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/316"
     }
   ],
   "daily_summaries": [
+    {
+      "date": "2026-11-27",
+      "items": [
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "1 podcast episode added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/eba896b47d6a8d1a2f68ec654db546aca0b6c4eb"
+        },
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "2 podcast episodes added",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/6acff16f91cbcc8ecfa520e464bc5b5516cad0ac"
+        },
+        {
+          "emoji": "\ud83c\udfa7",
+          "text": "Podcast + Spotify experience improved",
+          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/373"
+        }
+      ]
+    },
     {
       "date": "2026-11-26",
       "items": [
@@ -447,21 +449,6 @@
         {
           "emoji": "\ud83d\udcbb",
           "text": "2 PRs merged"
-        }
-      ]
-    },
-    {
-      "date": "2026-11-13",
-      "items": [
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "4 podcast episodes added",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/commit/1ebcd10fa676dd8abae904ee52b18390c76573af"
-        },
-        {
-          "emoji": "\ud83c\udfa7",
-          "text": "Podcast + Spotify experience improved",
-          "url": "https://github.com/cavandonohoe/cavandonohoe.github.io/pull/351"
         }
       ]
     }

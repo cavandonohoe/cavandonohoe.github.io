@@ -1,9 +1,9 @@
 {
   "year": 2026,
-  "commits": 364,
-  "pull_requests": 284,
+  "commits": 365,
+  "pull_requests": 285,
   "repositories_touched": 4,
-  "lines_added": 522403,
+  "lines_added": 522409,
   "most_used_language": "R",
   "language_lines_added": {
     "R": 28364,
@@ -4574,7 +4574,7 @@
   "language_basis": "Lines added in recognized first-party source files during this year; Linguist-generated, vendored, dependency, build, docs, minified, and raw HTML input files are excluded.",
   "most_active_month": "October",
   "longest_streak_days": 16,
-  "active_days": 101,
+  "active_days": 102,
   "monthly_commits": [
     11,
     27,
@@ -4586,7 +4586,7 @@
     15,
     23,
     108,
-    36,
+    37,
     0
   ],
   "daily_activity": [
@@ -5094,10 +5094,15 @@
       "date": "2026-11-23",
       "commits": 2,
       "lines_added": 6831
+    },
+    {
+      "date": "2026-11-27",
+      "commits": 1,
+      "lines_added": 6
     }
   ],
   "biggest_project": "cavandonohoe.github.io",
-  "biggest_project_commits": 305,
+  "biggest_project_commits": 306,
   "repositories": [
     "cavandonohoe/cavandonohoe",
     "cavandonohoe/cavandonohoe.github.io",
@@ -5105,12 +5110,12 @@
     "cavandonohoe/rent-vs-buy"
   ],
   "repository_commits": {
-    "cavandonohoe/cavandonohoe.github.io": 305,
+    "cavandonohoe/cavandonohoe.github.io": 306,
     "cavandonohoe/rent-vs-buy": 29,
     "cavandonohoe/confederate_statues": 20,
     "cavandonohoe/cavandonohoe": 10
   },
   "scope": "Author-matched commits on the default branch of public, non-fork repositories owned by the user, including archived projects. Dates use UTC; bot-authored or bot-committed commits, deploy commits, and other authors are excluded. Moved files count only changed lines. Language totals use .gitattributes Linguist overrides plus built-in generated, vendored, dependency, build, docs, minified, and raw HTML input patterns. Overall lines added still include all files. PRs count public pull requests the user authored and merged into their own repositories during the year, when available.",
   "is_partial_year": true,
-  "generated_at": "2026-11-24T19:40:12.302248+00:00"
+  "generated_at": "2026-11-27T18:24:25.479569+00:00"
 }
